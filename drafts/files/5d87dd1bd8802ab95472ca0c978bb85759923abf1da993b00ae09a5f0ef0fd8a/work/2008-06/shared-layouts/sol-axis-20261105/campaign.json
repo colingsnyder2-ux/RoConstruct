@@ -1,0 +1,55 @@
+{
+  "swap_target": "CRobloxDoc diagnostic closure",
+  "baseline_commit": "e9bfe6671a60913f56cc7efc99de1b9045ede2ecfe9570327ad0a53f2f195188",
+  "baseline_receipt": "research/log.jsonl last baseline: 2 unresolved / 1 duplicate; historical, not freshly linked here",
+  "session": "90462d1bb531481e8b97f2d97b354b62",
+  "run": "work\\2008-06\\native-check-runs\\20261105-122907-a81d3e5b",
+  "hashes": {
+    "rebuild/2008-06/native-classes/AxisMoveToolFactory.cpp": "ee88ced83408c0c49912f67e91598a0bc2d75f22ba52df6ef44f15c95c9f5401",
+    "rebuild/2008-06/native-classes/AxisMoveToolCore.cpp": "ea06c01df9133a13dddfa264fb46ae4b442af1685eef5eea579b1294efb7b585",
+    "rebuild/2008-06/native-headers/tool/AxisMoveTool.h": "1ae357f258445ed75d83bea9a3f74485f82e01b07db8f772bee551a63fae0ba4",
+    "rebuild/2008-06/native-headers/StandardVerbs.h": "76c76e1dfcedc17ccad87e7386efa1032256e4fcac924a96a2742304bfe56431",
+    "rebuild/2008-06/tests/NativeAxisMoveToolTrial.cpp": "6086cd6ba914f7a55824a2ca13b4f860e9a81588840d721a1473e05a858b1ebb"
+  },
+  "blockers": [
+    {
+      "provider": "AxisMoveTool factory 005c6510",
+      "status": "fresh isolated exact with data and direct calls",
+      "owner": "SolAxis20261105",
+      "next_proof": "parent serialized diagnostic link selecting this object exactly once; constructor/EH/vtables/runtime remain separate"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis": "isolate existing authentic specialization from Core, retaining canonical class/template declarations",
+      "result": "accepted 102B exact, data pass, 2/2 calls pass; one compile; no rejected variants"
+    }
+  ],
+  "abi_evidence": [
+    "Original push 0x74 agrees canonical sizeof guard.",
+    "Original accesses this+0xc then DataModel+0x204; canonical RunStateVerb::dataModel and inline DataModel::getWorkspace produce same loads.",
+    "Original constructor return in EAX is returned unchanged; AxisMoveTool -> Named<ArrowToolBase> -> ArrowToolBase -> MouseCommand primary single-base chain, no return adjustment required.",
+    "Original factory ret has no stack parameters; canonical virtual thiscall signature returns MouseCommand*.",
+    "Exception handler reference is data-normalized evidence, not complete EH graph proof."
+  ],
+  "provider_selection": [
+    "Core defines same specialization; never select both Core and isolated Factory.",
+    "Diagnostic source list uses NativeAxisMoveToolTrial.cpp defining ctor but no factory. New isolated object supplies only missing factory without replacing constructor."
+  ],
+  "next_gate": "parent closure build/map and selected provider audit; no local activation",
+  "metrics": {
+    "compiled_units": 1,
+    "exact_checks": 1,
+    "data_checks": 1,
+    "reviewed_direct_calls": 2,
+    "rejected_hypotheses": 0,
+    "selected_executable_exacts": null,
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "resume_queue": [
+    "parent add isolated factory object to serialized diagnostic build",
+    "verify factory selected once and ctor resolves to authentic existing provider",
+    "audit EH/vtable/lifetime gates before activation"
+  ]
+}

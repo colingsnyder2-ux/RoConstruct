@@ -1,0 +1,71 @@
+{
+  "task": "SolAssets20261105",
+  "session": "c97c820927e54c22920dab189244ff23",
+  "source_url": "https://archive.org/download/rbxgssetup/S3FileHandler_RBXGSSetup_0.3.676.0.msi",
+  "source_package": "tools/rbxgs_msi/rbxgs676.msi",
+  "package_sha256": "43935127301bf4189b2cec13bceef23bc32538bd4cd3fed94b14b1143a38e5e0",
+  "package_pin_verified": true,
+  "cabinet": "_06334FC23E41773AED78B5088CA17304",
+  "cabinet_sha256": "27501939d1ca65735a501b76913ce159352daded44f32b4092c57707feba935c",
+  "extraction": "7z Compound stream and cabinet extraction only; WindowsInstaller COM database read mode 0; no installer/custom action execution",
+  "source_assets_sha256": {
+    "fonts/character.rbxm": "df79025993a02dfc9a865a93ba8234263c638259233c8aaf611f3b20ffcaccf3",
+    "fonts/humanoidAnimate.rbxm": "083de26da797ea7b0e46cd334c99defb400c1e27317aa560ca891aed6991af12",
+    "fonts/humanoidHealth.rbxm": "975a25df0e6e8a1884122e8ae06f7ea3b788ef8527f08aa37d2257d74de7e54b",
+    "fonts/humanoidSound.rbxm": "eceddc097d8ca6f809443a3ea136eb2c6d9ef07af5634dbc3c51cc289bf1d0d4",
+    "sky/null_plainsky512_bk.jpg": "c054a173687f7bf18cd386071ffffb4fd45a3f2af39bc201b7aa750088d96249",
+    "sky/null_plainsky512_dn.jpg": "0cf07a5fc64c9d46b73898c3fbb2ff4aafec1fc54c796c387a449849b78530b0",
+    "sky/null_plainsky512_ft.jpg": "34fa945c01a1cfc9a929e48675c52e0ca1f7c5ca33064d0892bdeda647c9928f",
+    "sky/null_plainsky512_lf.jpg": "665c12f846a2dbc08a5ede320683118cd658a6ae1bb980079d3528f030e40be8",
+    "sky/null_plainsky512_rt.jpg": "56532ecfe4367f813e061588c599b3d16d96f2b91e43b46248e82ad5e8dc56fd",
+    "sky/null_plainsky512_up.jpg": "236c0f8e9186c68d07273ea57fb72e016d520ebebbd1a6b4db975248899d6c0f",
+    "sky/skyspheremap.jpg": "5603c747eebd4d0a5774826b481387af63d6013eef4eac10d1a5d0cc6d51b2e9",
+    "textures/Surfaces.png": "af0f882738addbf281dec784b9e523bc96aad4f831d4eb2317d1ab7c500e3a01",
+    "textures/SurfacesStrip.png": "dc5418f1c8dbd2e1fc218c392b41e3b55461817930a9468d821c5d48bdae85e4"
+  },
+  "stage_script_sha256": "2c8b06f393f7385eb9c856861027821232ba12fe49c0e2aea989c7915bac2373",
+  "staged_files_sha256": {
+    "Content/character-assets.json": "c7c92e645e0427eefb4d50c29c7de7b029321f6342e8aba9ccc8e9abd11897c4",
+    "Content/demo-assets.json": "babdafbe6494c93a439af1d7e56df00c3484b17784cf34c3d7166e27fb7b34cd",
+    "Content/fonts/character.rbxm": "df79025993a02dfc9a865a93ba8234263c638259233c8aaf611f3b20ffcaccf3",
+    "Content/fonts/humanoidAnimate.rbxm": "083de26da797ea7b0e46cd334c99defb400c1e27317aa560ca891aed6991af12",
+    "Content/fonts/humanoidHealth.rbxm": "975a25df0e6e8a1884122e8ae06f7ea3b788ef8527f08aa37d2257d74de7e54b",
+    "Content/fonts/humanoidSound.rbxm": "eceddc097d8ca6f809443a3ea136eb2c6d9ef07af5634dbc3c51cc289bf1d0d4",
+    "Content/p4/fixture-assets.json": "2008040660b5f1c8c7a0f017463ff639803cd40d23be1fb7e27c8c83a60c171a",
+    "Content/p4/panel.mesh": "a43afd07ac16846f2b0ec2b8b1e4cd4e154c4dc7f3006ca8e8f351d3195e6612",
+    "Content/p4/quadrants.png": "1f52bf00c024e5fd927efacb269a0074c127068bbb4cf531491b4f0375ffa2b8",
+    "Content/p4/tone.wav": "b0e95cb1badb20186a79c6a191b9baa5835efa56b179e17001c785bd915c7bf3",
+    "Content/sky/null_plainsky512_bk.jpg": "c054a173687f7bf18cd386071ffffb4fd45a3f2af39bc201b7aa750088d96249",
+    "Content/sky/null_plainsky512_dn.jpg": "0cf07a5fc64c9d46b73898c3fbb2ff4aafec1fc54c796c387a449849b78530b0",
+    "Content/sky/null_plainsky512_ft.jpg": "34fa945c01a1cfc9a929e48675c52e0ca1f7c5ca33064d0892bdeda647c9928f",
+    "Content/sky/null_plainsky512_lf.jpg": "665c12f846a2dbc08a5ede320683118cd658a6ae1bb980079d3528f030e40be8",
+    "Content/sky/null_plainsky512_rt.jpg": "56532ecfe4367f813e061588c599b3d16d96f2b91e43b46248e82ad5e8dc56fd",
+    "Content/sky/null_plainsky512_up.jpg": "236c0f8e9186c68d07273ea57fb72e016d520ebebbd1a6b4db975248899d6c0f",
+    "Content/sky/skyspheremap.jpg": "5603c747eebd4d0a5774826b481387af63d6013eef4eac10d1a5d0cc6d51b2e9",
+    "Content/textures/Surfaces.png": "af0f882738addbf281dec784b9e523bc96aad4f831d4eb2317d1ab7c500e3a01",
+    "Content/textures/SurfacesStrip.png": "dc5418f1c8dbd2e1fc218c392b41e3b55461817930a9468d821c5d48bdae85e4",
+    "Places/default.rbxl": "bfcb0d2a7005c5ac818ccae84be6770ae2ca8ed720d54afe7c5f6a27ecd878e4",
+    "Places/local-gallery.rbxl": "74c7e278df4890df03a769d19a0d1d643fa5efe0acf3a1447d4a9edee1f6dcb0",
+    "Places/local-panel.rbxl": "a4891b6f7fc4cede6efa122ac82252a953f9a8f564ad691d28947b850df599c6",
+    "Places/p5-playable.rbxl": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d"
+  },
+  "validation": {
+    "required_original_assets": 9,
+    "optional_character_assets": 4,
+    "source_to_staged_hash_checks": 13,
+    "authored_places": 4,
+    "authored_p4_assets": 4,
+    "conflicts": 0,
+    "missing_optional": []
+  },
+  "caveats": [
+    "Exact June 2008 distribution provenance unproven.",
+    "Four MSI character assets differ from p5-novetus-e49d-animation receipt; no equivalence or runtime claim."
+  ],
+  "runtime_executed": false,
+  "compiled_outputs_modified": false,
+  "resume_queue": [
+    "Snapshot worker may consume staged assets with MSI provenance caveat.",
+    "If Novetus-equivalent characters required, obtain independently pinned matching package; do not overwrite these silently."
+  ]
+}

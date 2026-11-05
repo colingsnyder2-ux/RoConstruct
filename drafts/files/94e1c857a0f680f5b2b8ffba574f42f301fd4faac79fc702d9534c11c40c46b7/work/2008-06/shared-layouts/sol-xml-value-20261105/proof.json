@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/XmlNameValuePairClear.cpp",
+      "checks": [
+        {
+          "addr": "0057c2d0",
+          "symbol": "?clearValue@XmlNameValuePair@@ABEXXZ",
+          "calls": [
+            {
+              "offset": 83,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            },
+            {
+              "offset": 117,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

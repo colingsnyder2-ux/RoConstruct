@@ -1,0 +1,22 @@
+{
+  "baseline_manifest": "work\\2008-06\\shared-layouts\\sol-snapshot-20261105\\baseline.json",
+  "factory_object": "work/2008-06/native-check-runs/20261105-122907-a81d3e5b/unit-000/candidate.obj",
+  "factory_reuse_audit": "work\\2008-06\\shared-layouts\\sol-snapshot-20261105\\factory-reuse-audit.json",
+  "content_remainder": "work/2008-06/shared-layouts/sol-content-owner-20261105/ContentProvider.obj",
+  "raw_archive_replacement_proposal": {
+    "original_archive_sha256": "6d17c86cc5b225b7ba0969223e3ce3c260add1876eec7d60e535c4de4b2db28f",
+    "replacement_archive_sha256": "a2c2e7ba00f70bc8da1eb8a00a38177248a79b732b99fe7a2a2e91cee32701f2",
+    "unchanged_other_members": 266,
+    "changed_member": "ContentProvider.obj",
+    "normal_librarian": true,
+    "scope": "inactive archive; final diagnostic selected link and complete external consumers remain unproven"
+  },
+  "integration_rule": "Replace ContentProvider.obj only in final migrated diagnostic App archive; preserve and compare all other archive members; no whole raw-archive substitution",
+  "required_before_content_relink": [
+    "fresh command/source/dependency hashes",
+    "original ContentProvider member identity",
+    "all other migrated archive members unchanged",
+    "full explicit-input removed-helper provider audit"
+  ],
+  "diagnostic_execution_authorized": false
+}

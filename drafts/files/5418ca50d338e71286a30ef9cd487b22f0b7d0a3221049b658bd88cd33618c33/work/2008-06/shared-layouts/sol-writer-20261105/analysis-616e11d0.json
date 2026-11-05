@@ -1,0 +1,36 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-writer-20261105\\SolWriter20261105-depth.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-122948-dbdc3493\\unit-002\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "0046b550",
+        "requested_symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "status": "different",
+        "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "score": 78,
+        "target_size": 98,
+        "object_size": 103,
+        "target_sha256": "2272b0d17440b2615fc34fb0a31efd04c9611a074b2bea4582351936e60fe1da",
+        "first_byte_difference": 43,
+        "check_seconds": 0.943631
+      },
+      {
+        "addr": "0046b1e0",
+        "requested_symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+        "status": "different",
+        "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+        "score": 95,
+        "target_size": 77,
+        "object_size": 76,
+        "target_sha256": "caeadf6b8a42a3d5146a0ac9adbda4b89dc593a79241accc023a7c30c7761056",
+        "first_byte_difference": 45,
+        "check_seconds": 0.000428
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

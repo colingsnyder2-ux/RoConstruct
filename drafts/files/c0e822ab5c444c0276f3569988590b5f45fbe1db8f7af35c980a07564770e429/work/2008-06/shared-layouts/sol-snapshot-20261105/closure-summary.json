@@ -1,0 +1,155 @@
+{
+  "baseline_run": "work\\2008-06\\native-doc-relinks\\20261105-131239-7df4c488",
+  "factory_run": "work\\2008-06\\native-doc-relinks\\20261105-131253-90ee3d03",
+  "metrics": {
+    "baseline": {
+      "unresolved": 5,
+      "duplicates": 10,
+      "input_drift": []
+    },
+    "factory": {
+      "unresolved": 5,
+      "duplicates": 10,
+      "input_drift": []
+    }
+  },
+  "factory_delta": {
+    "resolved": [
+      "?newMouseCommand@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"
+    ],
+    "new_required": [
+      "??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z"
+    ]
+  },
+  "factory_object_recompiled": false,
+  "fully_gated_swaps": 0,
+  "server_credit": 0,
+  "diagnostic_executed": false,
+  "blockers": [
+    {
+      "symbol": "??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z",
+      "display": "public: __thiscall RBX::AxisMoveTool::AxisMoveTool(class RBX::Workspace *)",
+      "requesters": [
+        "candidate.obj"
+      ]
+    },
+    {
+      "symbol": "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+      "display": "void __cdecl setActiveDocument(bool,class CRobloxDoc *)",
+      "requesters": [
+        "NativeCRobloxDoc.obj"
+      ]
+    },
+    {
+      "symbol": "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ",
+      "display": "public: class RBX::Workspace * __thiscall RBX::ServiceProvider::create<class RBX::Workspace>(void)const ",
+      "requesters": [
+        "NativeDocumentInitializeFull.obj"
+      ]
+    },
+    {
+      "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "display": "public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)",
+      "requesters": [
+        "NativeWorkspaceSaveFull.obj",
+        "NativeWorkspaceWriteFull.obj"
+      ]
+    },
+    {
+      "symbol": "?onServiceProvider@PhysicsService@RBX@@MAEXPBVServiceProvider@2@0@Z",
+      "display": "protected: virtual void __thiscall RBX::PhysicsService::onServiceProvider(class RBX::ServiceProvider const *,class RBX::ServiceProvider const *)",
+      "requesters": [
+        "NativePhysicsServiceAllocationFull.obj",
+        "NativePhysicsServiceLifetimeFull.obj"
+      ]
+    }
+  ],
+  "duplicates": [
+    {
+      "symbol": "?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "display": "\"public: void __thiscall RBX::ContentProvider::load(class RBX::ContentId,class std::vector<class boost::shared_ptr<class RBX::Instance>,class std::allocator<class boost::shared_ptr<class RBX::Instance> > > &)\" (?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z)",
+      "providers": [
+        "linked.lib(ContentProvider.obj)",
+        "NativeContentProviderLoadFull.obj"
+      ]
+    },
+    {
+      "symbol": "?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z",
+      "display": "\"public: static class G3D::Matrix3 const __cdecl RBX::Math::matrixTiltQuadrant(int)\" (?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z)",
+      "providers": [
+        "linked.lib(Math.obj)",
+        "NativeMathTiltMatricesFull.obj"
+      ]
+    },
+    {
+      "symbol": "?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z",
+      "display": "\"public: static int __cdecl RBX::Math::toYAxisQuadrant(class G3D::CoordinateFrame const &)\" (?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z)",
+      "providers": [
+        "linked.lib(Math.obj)",
+        "NativeMathTiltQuadrantFull.obj"
+      ]
+    },
+    {
+      "symbol": "?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z",
+      "display": "\"public: static class G3D::Vector3 __cdecl RBX::Math::closestPointOnRay(class G3D::Ray const &,class G3D::Ray const &)\" (?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z)",
+      "providers": [
+        "linked.lib(Math.obj)",
+        "NativeMathClosestRayFull.obj"
+      ]
+    },
+    {
+      "symbol": "??1VistaAPIs@RBX@@QAE@XZ",
+      "display": "\"public: __thiscall RBX::VistaAPIs::~VistaAPIs(void)\" (??1VistaAPIs@RBX@@QAE@XZ)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+      "display": "\"public: long __stdcall RBX::VistaAPIs::GetIntegrity(unsigned char *)\" (?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "??0VistaAPIs@RBX@@QAE@XZ",
+      "display": "\"public: __thiscall RBX::VistaAPIs::VistaAPIs(void)\" (??0VistaAPIs@RBX@@QAE@XZ)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z",
+      "display": "\"public: long __thiscall RBX::VistaAPIs::SHGetKnownFolderPath(struct _GUID const &,unsigned long,void *,wchar_t * *)\" (?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+      "display": "\"public: static class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl RBX::FileSystem::getUserAppDataDirectory(bool,char const *)\" (?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "?compare@Name@RBX@@SAHAAV12@0@Z",
+      "display": "\"public: static int __cdecl RBX::Name::compare(class RBX::Name &,class RBX::Name &)\" (?compare@Name@RBX@@SAHAAV12@0@Z)",
+      "providers": [
+        "linked.lib(WorldHelpers.obj)",
+        "NativeNameCompareFull.obj"
+      ]
+    }
+  ],
+  "next": [
+    "aggregate content member-only replacement proof on actual migrated final library",
+    "authentic AxisMoveTool ctor provider without duplicate factory/Core",
+    "authentic Workspace factory/writer,Physics service callback,setActiveDocument providers",
+    "resolve duplicate owners using source evidence"
+  ]
+}

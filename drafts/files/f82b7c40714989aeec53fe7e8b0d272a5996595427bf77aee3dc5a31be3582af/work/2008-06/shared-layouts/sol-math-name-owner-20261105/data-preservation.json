@@ -1,0 +1,18 @@
+[
+  {
+    "member": "Math.obj",
+    "retained_named_data": 114,
+    "changed": [],
+    "lost": [
+      "__real@3ee4f8b588e368f1"
+    ],
+    "added": []
+  },
+  {
+    "member": "WorldHelpers.obj",
+    "retained_named_data": 80,
+    "changed": [],
+    "lost": [],
+    "added": []
+  }
+]

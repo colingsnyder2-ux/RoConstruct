@@ -1,0 +1,42 @@
+{
+  "state": "failed",
+  "pid": 17048,
+  "run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125930-a6a4fb73",
+  "output": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125930-a6a4fb73\\output",
+  "exit_code": 2,
+  "stdout": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125930-a6a4fb73\\stdout.log",
+  "stderr": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125930-a6a4fb73\\stderr.log",
+  "observer_sha256": "8ce11c8c2f8affaf7cefb044b396ab95891fa0e712c3e9c622d1eae6cff8cfe9",
+  "builder_sha256": "150fe643ffc61af61e75484d90555386d5fc631ceeaa724b66b9f444ec90d956",
+  "work_log_sha256": "87978a87c88657f2b986218437e54c479c4c671ed72e9f6eb88229729310eab2",
+  "scope": "native-doc diagnostic only; never runs client; link success is not ABI/runtime/P5/P6 proof",
+  "command": [
+    "C:\\Python313\\python.exe",
+    "-u",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\p6\\build_client.py",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out",
+    "--native-doc",
+    "--native-doc-out",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125930-a6a4fb73\\output",
+    "--native-doc-cache"
+  ],
+  "build_pid": 26944,
+  "outcome": "compile_failed",
+  "link_log_present": false,
+  "unique_unresolved": null,
+  "unique_duplicates": 0,
+  "link_error_count": 0,
+  "compiler_errors": [
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceFind.cpp(5) : error C2373: 'RBX::sPhysicsService' : redefinition; different type modifiers",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceFind.cpp(19) : error C2955: 'RBX::NonFactoryProduct' : use of class template requires template argument list",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceFind.cpp(21) : error C2910: 'RBX::NonFactoryProduct<DerivedClass,ClassName>::getClassName' : cannot be explicitly specialized",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceFind.cpp(23) : error C2143: syntax error : missing ';' before '*'",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceFind.cpp(23) : error C4430: missing type specifier - int assumed. Note: C++ does not support default-int",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceFind.cpp(23) : fatal error C1903: unable to recover from previous error(s); stopping compilation"
+  ],
+  "link_errors": [],
+  "result": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125930-a6a4fb73\\result.json",
+  "changed_extra_sources": [],
+  "changed_shared_headers": [],
+  "seconds": 85.896
+}

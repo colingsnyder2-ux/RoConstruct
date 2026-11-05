@@ -1,0 +1,44 @@
+{
+  "swap_target": "CRobloxDoc diagnostic prerequisite closure",
+  "baseline_receipt": "work/2008-06/shared-layouts/sol-snapshot-20261105/prerequisite-status.json",
+  "baseline_commit": null,
+  "draft_session": "51d0a1d05286405596157d02d33aaf8b",
+  "source_changes": "Only sStockSound definition conditioned on shared-owner native context marker; all function bodies unchanged. Donor is a donor harness, not native ABI proof.",
+  "hashes": {
+    "rebuild/2008-06/tests/PlayerNativeSoundChannel.cpp": "3afee71335f32c15e3aff80a0ce976cd1c5f1f5c68d4515149174a609e818c79",
+    "rebuild/2008-06/tests/SolSoundCompat20261105Probe.py": "acfba9b87dba130937942ab241402c816e08aea1bd0a9da2a524eafcd6a2dbf7",
+    "rebuild/2008-06/native-headers/util/Sound.h": "41774db2f7cb0eacb0b2669468f0a957b2d02b1db05746dc8abaff0a27aada51",
+    "tools/rbxgs/Client/App/include/util/Sound.h": "88c3e3fe78bedf57b60b7b90c6da22f4dae7002fb999c86e1c4b08f5de872813",
+    "rebuild/2008-06/modules/p4-sound-asset.json": "1ea520a3a3823f2bfab22ff5952f113d625b154c23f72bc39eb03cf1dd1de99b"
+  },
+  "metrics": {
+    "distinct_context_compiles": 2,
+    "passed": 2,
+    "new_exact_bodies": 0,
+    "selected_exact_delta": 0,
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "attempts": [
+    {
+      "hypothesis": "Explicit declaration context preserves pointer donor prerequisite and native array definition",
+      "result": "Both compiled once; symbol identities distinct as expected. Native array StockSound null-terminated bytes checked."
+    },
+    {
+      "probe_correction": "Donor symbol assertion initially expected PBDA incorrectly; compiler emitted PBDB. Corrected assertion, reused unchanged donor object; no recompilation."
+    }
+  ],
+  "blockers": [
+    {
+      "provider": "P4SoundAsset module/player/P6",
+      "owner": "snapshot",
+      "status": "minimal compile unblocked; module/link/runtime untested",
+      "next_proof": "Rerun p4-sound-asset module once, then continue player/Doc diagnostic build under snapshot ownership"
+    }
+  ],
+  "next_gate": "snapshot module rerun, no activation",
+  "resume_queue": [
+    "Await snapshot module outcome; any new blockers need explicit source ownership. Shared headers/module specs frozen."
+  ],
+  "scope": "No byte/call exact proof claimed, so require-proof analysis not applicable to these compilation-only checks."
+}

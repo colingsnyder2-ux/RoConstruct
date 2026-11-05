@@ -1,0 +1,13 @@
+{
+  "error": "[Errno 2] No such file or directory: 'G:\\\\Projects\\\\RoConstruct-native-claude\\\\tools\\\\rbxgs\\\\Client\\\\App\\\\roc_native_debris_header_2c0ad23d27535ab8.cpp'",
+  "traceback": "Traceback (most recent call last):\n  File \"G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\tests\\SolSnapshot20261105.py\", line 25, in <module>\n    result=rebuild.build_module('2008-06',name)\n  File \"G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\roc\\rebuild.py\", line 1056, in build_module\n    ov = build_overlay(client, spec[\"name\"], spec.get(\"overlay\"))\n  File \"G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\roc\\rebuild.py\", line 924, in build_overlay\n    text = adopted_path(root, new, ROOT).read_text(errors=\"replace\")\n  File \"C:\\Python313\\Lib\\pathlib\\_local.py\", line 546, in read_text\n    return PathBase.read_text(self, encoding, errors, newline)\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Python313\\Lib\\pathlib\\_abc.py\", line 632, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Python313\\Lib\\pathlib\\_local.py\", line 537, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'G:\\\\Projects\\\\RoConstruct-native-claude\\\\tools\\\\rbxgs\\\\Client\\\\App\\\\roc_native_debris_header_2c0ad23d27535ab8.cpp'\n",
+  "completed": [
+    "zlib-winapi",
+    "g3d",
+    "g3d-gl",
+    "zlib",
+    "libpng",
+    "boost",
+    "raknet"
+  ]
+}

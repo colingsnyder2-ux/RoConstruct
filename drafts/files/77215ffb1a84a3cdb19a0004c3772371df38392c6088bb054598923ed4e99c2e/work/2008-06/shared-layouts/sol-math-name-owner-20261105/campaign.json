@@ -1,0 +1,55 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic ownership closure",
+  "baseline_receipt": "work/2008-06/native-doc-relinks/20261105-131253-90ee3d03/result.json",
+  "session": "103bd3163b3a4e4ebab230512c6674c8",
+  "metrics": {
+    "compiled_distinct_sources": 2,
+    "native_body_data_exact": 4,
+    "retained_bodies": 181,
+    "retained_named_data": 194,
+    "changed_retained_bodies": 0,
+    "changed_retained_data": 0,
+    "other_members_preserved_per_step": 266,
+    "new_selected_executable": 0,
+    "fully_gated_swaps": 0,
+    "server_credit": 0
+  },
+  "proof": [
+    {
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeMathTiltMatricesFull.obj",
+      "require_proof": "passed"
+    },
+    {
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeMathTiltQuadrantFull.obj",
+      "require_proof": "passed"
+    },
+    {
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeMathClosestRayFull.obj",
+      "require_proof": "passed"
+    },
+    {
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeNameCompareFull.obj",
+      "require_proof": "rejected: proof incomplete; inspect saved receipt (no ABI/runtime/server credit)"
+    }
+  ],
+  "blockers": [
+    {
+      "symbol": "Name::compare imported std::string::compare",
+      "evidence": "Original0041fb1a FF15 IAT00802424 MSVCP90.dll decorated compare; runner intentionally rejects indirect call. Separate import/provider/ABI proof required.",
+      "status": "separate obligation"
+    },
+    {
+      "provider": "Math switch jump table / all linked providers",
+      "status": "parent isolated cumulative link selection + data/EH/ABI/runtime gates outstanding"
+    }
+  ],
+  "next_gate": "Parent compose guarded Math.obj and WorldHelpers.obj replacements against cumulative Content archive; preserve other266members at each step.",
+  "hypotheses": [
+    "inline annotations only on four named methods; accepted retained source body/data/callee preservation"
+  ],
+  "resume_queue": [
+    "independent imported string compare ABI proof",
+    "selected linked provider/data and implicit library closure"
+  ],
+  "rejected_hypotheses": 0
+}

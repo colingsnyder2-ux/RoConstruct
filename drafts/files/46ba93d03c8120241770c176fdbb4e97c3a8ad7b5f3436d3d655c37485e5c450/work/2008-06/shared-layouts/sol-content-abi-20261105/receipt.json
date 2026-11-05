@@ -1,0 +1,103 @@
+{
+  "scope": "Separate static indirect-call/type identity proof only; no execution, selection or complete callee ABI proof",
+  "session": "8c3f451d23c74adaac53b6bdf39e0bfc",
+  "target": "005628e0",
+  "original_size": 327,
+  "saved_object_sha256": "25cced223266b6af736734dea98ed134216d710c371edc24169224850d6b0860",
+  "prior_analysis": "work/2008-06/native-check-runs/20261105-122951-04c3d3fa/analysis-a25127c6.json",
+  "compiles_this_task": 0,
+  "sites": [
+    {
+      "offset": 59,
+      "status": "static import identity verified",
+      "original_iat": "0x80245c",
+      "import": {
+        "dll": "MSVCP90.dll",
+        "name": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+        "ordinal": null
+      },
+      "object_relocation": {
+        "offset": 61,
+        "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+        "kind": 6,
+        "addend": 0
+      },
+      "prototype": "std::basic_string<char>::basic_string(const basic_string&) thiscall ECX destination, pushed const reference",
+      "genuine_header": "VC/include/xstring:719 copy constructor; :904 destructor; :2220 char DLL template instantiation"
+    },
+    {
+      "offset": 301,
+      "status": "static import identity verified",
+      "original_iat": "0x802468",
+      "import": {
+        "dll": "MSVCP90.dll",
+        "name": "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "ordinal": null
+      },
+      "object_relocation": {
+        "offset": 303,
+        "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "kind": 6,
+        "addend": 0
+      },
+      "prototype": "std::basic_string<char>::~basic_string() thiscall ECX object, no explicit arguments",
+      "genuine_header": "VC/include/xstring:719 copy constructor; :904 destructor; :2220 char DLL template instantiation"
+    },
+    {
+      "offset": 126,
+      "status": "static virtual deletion contract and original concrete target family verified",
+      "dispatch": "vbtable at [stream], displacement [vbtable+4], ECX=stream+displacement, vptr=[ECX], slot0, push 1, call edx",
+      "ownership": "offset126 conditional disposal of released auto_ptr temporary; offset287 scoped_ptr owned stream normal cleanup. getContent result pointer transferred then result zeroed at00562937..0056293f. Genuine memory auto_ptr::release zeros source, ~auto_ptr deletes nonnull; scoped_ptr.hpp:72..77 checked_delete; checked_delete.hpp:29..34 delete x.",
+      "type": "genuine ContentProvider.h:133 auto_ptr<std::istream>; VC/include/istream:18 virtual basic_ios base, :41 virtual destructor",
+      "original_concrete_providers": [
+        {
+          "type": "std::ifstream",
+          "construction": "0056203f MSVCP90 constructor;00562045 store vtable0082deac at+58",
+          "slot0": "005620c0",
+          "contract": "ECX-58; call MSVCP90 virtual-base destructor via00802408; test deletion flag1; delete via006a067a;ret4"
+        },
+        {
+          "type": "std::istringstream",
+          "construction": "00561ff0 MSVCP90 constructor;00561ff6 store vtable0082deb4 at+50",
+          "slot0": "00562090",
+          "contract": "ECX-50; call MSVCP90 virtual-base destructor via00802440; test deletion flag1; delete via006a067a;ret4"
+        }
+      ],
+      "deallocator": "006a067a FF25 thunk to00803bf4; MFC90 ordinal800; genuine mfc90.def maps800 to ??3@YAXPAX@Z (void __cdecl operator delete(void*))"
+    },
+    {
+      "offset": 287,
+      "status": "static virtual deletion contract and original concrete target family verified",
+      "dispatch": "vbtable at [stream], displacement [vbtable+4], ECX=stream+displacement, vptr=[ECX], slot0, push 1, call edx",
+      "ownership": "offset126 conditional disposal of released auto_ptr temporary; offset287 scoped_ptr owned stream normal cleanup. getContent result pointer transferred then result zeroed at00562937..0056293f. Genuine memory auto_ptr::release zeros source, ~auto_ptr deletes nonnull; scoped_ptr.hpp:72..77 checked_delete; checked_delete.hpp:29..34 delete x.",
+      "type": "genuine ContentProvider.h:133 auto_ptr<std::istream>; VC/include/istream:18 virtual basic_ios base, :41 virtual destructor",
+      "original_concrete_providers": [
+        {
+          "type": "std::ifstream",
+          "construction": "0056203f MSVCP90 constructor;00562045 store vtable0082deac at+58",
+          "slot0": "005620c0",
+          "contract": "ECX-58; call MSVCP90 virtual-base destructor via00802408; test deletion flag1; delete via006a067a;ret4"
+        },
+        {
+          "type": "std::istringstream",
+          "construction": "00561ff0 MSVCP90 constructor;00561ff6 store vtable0082deb4 at+50",
+          "slot0": "00562090",
+          "contract": "ECX-50; call MSVCP90 virtual-base destructor via00802440; test deletion flag1; delete via006a067a;ret4"
+        }
+      ],
+      "deallocator": "006a067a FF25 thunk to00803bf4; MFC90 ordinal800; genuine mfc90.def maps800 to ??3@YAXPAX@Z (void __cdecl operator delete(void*))"
+    }
+  ],
+  "boundaries": [
+    "Runner require-proof remains failing four indirect sites by design; separate receipt does not change runner coverage.",
+    "Static target family proven for original getContent observed branches; actual linked native getContent object/vtable/CRT provider selection still requires current archive/map audit.",
+    "Imported DLL implementations not executed or exhaustively ABI-reviewed; CRT version/configuration, allocation compatibility and EH exceptional cleanup remain promotion obligations.",
+    "No P5/P6/runtime or fully gated class claim; no activation, default selection or credit changes."
+  ],
+  "resume_queue": [
+    "Await exact fresh ContentProvider command and current RbxgsApp linked.lib from parent; audit 54 removed functions and19 data against ALL external current consumers/providers (including archive members), not merely intra-retained edges.",
+    "Compare current baseline member identity and retained bodies/data/relocations before replacement.",
+    "Resolve selected stream destructor/vtable/import and EH providers from diagnostic map before selection proof."
+  ],
+  "evidence_sha256": "a0e39d4df73cbdea8de4378558e64a6d2dac952d5441a9256070095dffb2065b"
+}

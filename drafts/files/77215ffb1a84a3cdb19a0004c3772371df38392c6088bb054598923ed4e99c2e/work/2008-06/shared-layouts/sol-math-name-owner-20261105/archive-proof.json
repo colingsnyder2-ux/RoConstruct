@@ -1,0 +1,34 @@
+{
+  "baseline": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\null-tool-owner\\linked.lib",
+  "baseline_sha256": "7388fd3bfb96473f268288a5d3aa4164c0d4deb9dc89137ea033f2601b34c05d",
+  "member_steps": [
+    {
+      "member": "Math.obj",
+      "input_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\null-tool-owner\\linked.lib",
+      "input_sha256": "7388fd3bfb96473f268288a5d3aa4164c0d4deb9dc89137ea033f2601b34c05d",
+      "output_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-math-name-owner-20261105\\Math-archive\\linked.lib",
+      "output_sha256": "acc38fb32ceee707dd22b50adb587a465d65d243d380e7a76a79f220d6c62015",
+      "unchanged_other_members": 266,
+      "baseline_member_sha256": "95fbf49dac143c3450c6ac31c10cb05884067e51ca1208dba8cbbdc282dd049b",
+      "replacement_sha256": "f4a06d2d463d5aeb7640b41fafe7b14a95ae9acb4d118910cebd64d4e1bce76e"
+    },
+    {
+      "member": "WorldHelpers.obj",
+      "input_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-math-name-owner-20261105\\Math-archive\\linked.lib",
+      "input_sha256": "acc38fb32ceee707dd22b50adb587a465d65d243d380e7a76a79f220d6c62015",
+      "output_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-math-name-owner-20261105\\WorldHelpers-archive\\linked.lib",
+      "output_sha256": "7e112b1d548009b367158d8d00c97a29a6b4ecd277518f75e5a28e5ca71f023c",
+      "unchanged_other_members": 266,
+      "baseline_member_sha256": "f2741ab2ce756d696f4db7d7e471421ff400476d23f9bc6d6e72ed9c0c34d9d5",
+      "replacement_sha256": "b9416a8d398513e4ef1a908bffbfac19c0dc1de1a522dd179acc81afcb46abca"
+    }
+  ],
+  "lost_helpers": [
+    "??DG3D@@YA?AVVector3@0@MABV10@@Z"
+  ],
+  "external_references": [],
+  "explicit_objects_audited": 22614,
+  "short_imports_counted": 21199,
+  "implicit_default_library_closure": "separate unproven obligation",
+  "composition": "Use guarded member replacements against parent current cumulative archive; never select this whole private archive over Content changes"
+}

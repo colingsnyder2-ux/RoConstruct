@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/WorkspaceWrite.cpp",
+      "checks": [
+        {
+          "addr": "0046bd70",
+          "symbol": "?Write@CWorkspace@@UAGJPAPAUIContent@@@Z"
+        },
+        {
+          "addr": "0046bfd0",
+          "symbol": "?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z"
+        }
+      ]
+    }
+  ]
+}

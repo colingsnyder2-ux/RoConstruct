@@ -1,0 +1,53 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "session": "6b0781fe75374d8ab0929c948f8aca39",
+  "run": "20261105-123434-ffef8bd3",
+  "baseline_commit": "e9bfe6671a60913f56cc7efc99de1b9045ede2ecfe9570327ad0a53f2f195188",
+  "baseline_receipt": "sol-writer-20261105/campaign.json",
+  "metrics": {
+    "compiled_units": 1,
+    "body_data_exact": 1,
+    "body_bytes": 143,
+    "reviewed_direct_calls": 2,
+    "strict_require_proof_pass": 0,
+    "unresolved_virtual_calls": 2,
+    "identified_import_indirect_calls": 1,
+    "conditional_COM_EH_nodes_each": 28,
+    "conditional_COM_EH_errors_each": 0,
+    "selected_delta": 0,
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "hypotheses": [
+    {
+      "name": "authentic donor body with frozen declarations",
+      "result": "143B body/data exact first compile; no rejected variants"
+    }
+  ],
+  "blockers": [
+    {
+      "provider": "clearValue shared_ptr dispose/destroy",
+      "status": "static slots identified; selected dynamic providers/lifetime unproven",
+      "evidence": "slot-evidence.json",
+      "owner": "snapshot/Instance provider owner",
+      "next_proof": "fresh selected archive/map and actual Instance control-block allocations; correlate all reachable concrete vtables, Deleter/predelete/destructor selection and lifetime"
+    },
+    {
+      "address": "0046b860",
+      "status": "parked three rejected prior hypotheses; untouched"
+    }
+  ],
+  "next_gate": "Parent selected module snapshot plus ownership/Instance lifetime evidence; no permissible independent source change can establish selection",
+  "hashes": {
+    "rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp": "6417b99cc2eb19efc3102f74412f784837c9989635cfc6f19273edca0f799cc9",
+    "rebuild/2008-06/native-headers/v8xml/XmlElement.h": "9fb2186f9cd2a7b71cc2e213244b480d674fa9997d2199e8df5fc3108406e76a",
+    "tools/rbxgs/Client/App/v8xml/XmlElement.cpp": "436c0dd3ee6e632a37e7dc70e73f152211487584737b526d1992cefee5ffeae5",
+    "tools/rbxgs/Client/App/include/util/Handle.h": "ee14671d251cd816980fb6d77059e1801059530c45a05077316fcd04326a182f",
+    "tools/rbxgs/Client/App/util/Handle.cpp": "58c9d00b874b3209bdd548b37ea209b08c333a46be74e7bd878ff60fbf0b017b",
+    "tools/rbxgs/Client/App/include/util/Object.h": "a90ae0f4fb6fe30b5d0632caf64285aa7f54d898f3ec20244831f209d41fa909",
+    "tools/rbxgs/Client/boost_1_34_1/src/boost/detail/sp_counted_base_w32.hpp": "543cc85220efe6da0d8b1b11a0ea6df1ee5ab31db2f4ad4392f38ecb047015cf",
+    "tools/rbxgs/Client/boost_1_34_1/src/boost/detail/sp_counted_impl.hpp": "9221e9c796ee6d34a65c432edf0e6e4e5626987af6627bbb180207ef03167ef3",
+    "tools/rbxgs/Client/boost_1_34_1/src/boost/detail/shared_count.hpp": "16fb0fb4f5364dabc15682a767aa1501754050e0258d3b494116587a618abeb9"
+  },
+  "scope": "Additive inactive authentic source only; conditional EH continuation is not closed provider ABI proof. No selection/full build/submission."
+}

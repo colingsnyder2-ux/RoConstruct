@@ -1,0 +1,15 @@
+{
+  "object_sha256": "9c79c9094dae7a2a20526f79d45f168aac94909e58857d05652c0ac963b18019",
+  "candidate_total_size": 697,
+  "target_main_size": 697,
+  "main_body_exact": true,
+  "catch_relocs": [],
+  "expected_catch_relocs": [
+    612,
+    625,
+    639,
+    683,
+    693
+  ],
+  "full_recorder_pass": false
+}

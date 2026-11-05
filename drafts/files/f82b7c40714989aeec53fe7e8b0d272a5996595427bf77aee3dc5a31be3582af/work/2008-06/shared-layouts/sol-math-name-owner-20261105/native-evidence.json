@@ -1,0 +1,117 @@
+[
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeMathTiltMatricesFull.obj",
+    "sha256": "92305d97e83dee80b171cc1893e4473ae2346853dc0aad05f1037905876f075b",
+    "checks": [
+      {
+        "addr": "005de990",
+        "requested_symbol": "?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z",
+        "status": "exact",
+        "symbol": "?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z",
+        "score": 100,
+        "target_size": 200,
+        "object_size": 200,
+        "target_sha256": "9c218febc150f2f72703e9f6baf06aacda4aa81321b04f8ce90e61a99255b98e",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8504248,
+            4
+          ],
+          [
+            8504248,
+            4
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 2.00572
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeMathTiltQuadrantFull.obj",
+    "sha256": "3f41a2beb6e406cc9c8198474d7d85c2bc94072d0b8dc173fb2c2ca0be087a0e",
+    "checks": [
+      {
+        "addr": "005dea60",
+        "requested_symbol": "?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z",
+        "status": "exact",
+        "symbol": "?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z",
+        "score": 100,
+        "target_size": 99,
+        "object_size": 99,
+        "target_sha256": "517df5f760fe0898abdb70e3b34236fbce970dd12cb75a4dd4a188463053d364",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8641360,
+            4
+          ],
+          [
+            8547948,
+            4
+          ],
+          [
+            8641352,
+            8
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.003012
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeMathClosestRayFull.obj",
+    "sha256": "4fc0017b40cc13f3865a255c3cc17a1018b1372890da0212f21f17e4d125567e",
+    "checks": [
+      {
+        "addr": "005df270",
+        "requested_symbol": "?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z",
+        "status": "exact",
+        "symbol": "?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z",
+        "score": 100,
+        "target_size": 261,
+        "object_size": 261,
+        "target_sha256": "fee21117940c7c9f4889203bff89ab160e6ee453d02b7d2db162a10a3060971d",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8556416,
+            8
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.000367
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeNameCompareFull.obj",
+    "sha256": "308a3fbe73dc90068eabbe2d361e2b060113d0dd4f90c5049328dc868528e596",
+    "checks": [
+      {
+        "addr": "0041faa0",
+        "requested_symbol": "?compare@Name@RBX@@SAHAAV12@0@Z",
+        "status": "exact",
+        "symbol": "?compare@Name@RBX@@SAHAAV12@0@Z",
+        "score": 100,
+        "target_size": 131,
+        "object_size": 131,
+        "target_sha256": "ba8bc71186c9b21be551a29b8c3c1e1a73b1fa05dbe311712b1802fe4f4fb5b0",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.000265
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

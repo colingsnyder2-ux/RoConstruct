@@ -1,0 +1,8 @@
+{
+  "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeContentProviderLoadFull.obj",
+  "sha256": "6dae4514b741a2c99bfc34d0b4259cd074c251376a8d4a25b87d552d76ee3b2d",
+  "size": 327,
+  "code_exact": true,
+  "data_errors": [],
+  "scope": "9 direct calls historically reviewed; four indirect calls remain strict-proof blockers. Static ABI contracts separate. No runtime/selection proof."
+}

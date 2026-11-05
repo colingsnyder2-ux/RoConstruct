@@ -1,0 +1,10 @@
+{
+  "baseline_commit": "e9bfe6671a60913f56cc7efc99de1b9045ede2ecfe9570327ad0a53f2f195188",
+  "session": "b4502d824051470aa979815139321ad6",
+  "source": "rebuild\\2008-06\\native-headers\\util\\Sound.h",
+  "source_sha256": "41774db2f7cb0eacb0b2669468f0a957b2d02b1db05746dc8abaff0a27aada51",
+  "change": "Declaration-context marker only; native array and donor pointer declarations unchanged",
+  "validation": "Header/declaration assertions passed; worker compiling both contexts",
+  "activation": false,
+  "server_credit": 0
+}

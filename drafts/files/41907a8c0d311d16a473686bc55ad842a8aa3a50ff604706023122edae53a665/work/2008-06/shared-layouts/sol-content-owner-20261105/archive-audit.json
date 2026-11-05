@@ -1,0 +1,1887 @@
+{
+  "scope": "Entire CURRENT RbxgsApp archive only; partial final diagnostic inputs. Same-name providers are availability evidence, not selected link or ABI proof.",
+  "archive_sha256": "6d17c86cc5b225b7ba0969223e3ce3c260add1876eec7d60e535c4de4b2db28f",
+  "input_manifest_sha256": "cccbdb8ab2c7cfbf2c720f0f9a94c196b36d5079c561e31de038fd11bbdc3756",
+  "actual_member": "ContentProvider.obj",
+  "baseline_member_identity": true,
+  "members": 267,
+  "removed_bodies": 54,
+  "removed_data": 19,
+  "consumers": [
+    {
+      "member": "type.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "signal.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "reflection_property.obj",
+      "symbols": [
+        "??1XmlNameValuePair@@QAE@XZ",
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "reflection_object.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "reflection_function.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_values.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_surfaces.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_stats_items.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_statics.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_runtime.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_replicator.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_replication.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_reflection_types.obj",
+      "symbols": [
+        "??1XmlNameValuePair@@QAE@XZ",
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_part_instance.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_network_player.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_mouse.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_misc.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_message.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_link_stubs.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_instance_core.obj",
+      "symbols": [
+        "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+        "??1XmlAttribute@@QAE@XZ",
+        "??1XmlElement@@QAE@XZ",
+        "??1XmlNameValuePair@@QAE@XZ",
+        "??_GXmlAttribute@@QAEPAXI@Z",
+        "??_GXmlElement@@QAEPAXI@Z",
+        "?firstChild@?$Parent@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?firstChild@?$Parent@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "?nextSibling@?$Sibling@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?nextSibling@?$Sibling@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+        "__ehhandler$??1XmlElement@@QAE@XZ",
+        "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+        "__unwindtable$??1XmlElement@@QAE@XZ"
+      ]
+    },
+    {
+      "member": "glue_humanoid_climb.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_humanoid.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_enum_descs.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "glue_content_provider.obj",
+      "symbols": [
+        "??$?BV?$basic_istream@DU?$char_traits@D@std@@@std@@@?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE?AU?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@XZ",
+        "??0?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@U?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@@Z",
+        "??0?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@PAV?$basic_istream@DU?$char_traits@D@std@@@1@@Z",
+        "??1?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@XZ",
+        "?release@?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAEPAV?$basic_istream@DU?$char_traits@D@std@@@2@XZ"
+      ]
+    },
+    {
+      "member": "factoryregistration.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "custommesh.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "XmlSerializer.obj",
+      "symbols": [
+        "??$?BV?$basic_istream@DU?$char_traits@D@std@@@std@@@?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE?AU?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@XZ",
+        "??$?BVXmlElement@@@?$auto_ptr@VXmlElement@@@std@@QAE?AU?$auto_ptr_ref@VXmlElement@@@1@XZ",
+        "??$_Destroy@PAPAVXmlElement@@@std@@YAXPAPAPAVXmlElement@@@Z",
+        "??$_Destroy@PAVXmlElement@@@std@@YAXPAPAVXmlElement@@@Z",
+        "??0?$auto_ptr@VXmlElement@@@std@@QAE@U?$auto_ptr_ref@VXmlElement@@@1@@Z",
+        "??0?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@PAV?$basic_istream@DU?$char_traits@D@std@@@1@@Z",
+        "??0?$auto_ptr_ref@VXmlElement@@@std@@QAE@PAVXmlElement@@@Z",
+        "??1?$_Container_base_aux_alloc_real@V?$allocator@PAVXmlElement@@@std@@@std@@IAE@XZ",
+        "??1?$_Deque_map@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$_Deque_val@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@XZ",
+        "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+        "??1?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$stack@PAVXmlElement@@V?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@@std@@QAE@XZ",
+        "??1XmlAttribute@@QAE@XZ",
+        "??1XmlElement@@QAE@XZ",
+        "??1XmlNameValuePair@@QAE@XZ",
+        "??_GXmlAttribute@@QAEPAXI@Z",
+        "??_GXmlElement@@QAEPAXI@Z",
+        "??_R0?AVXmlParser@@@8",
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@XmlParser@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2XmlParser@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3XmlParser@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8",
+        "?_Tidy@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@IAEXXZ",
+        "?deallocate@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@I@Z",
+        "?deallocate@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@I@Z",
+        "?destroy@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@@Z",
+        "?destroy@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@@Z",
+        "?empty@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QBE_NXZ",
+        "?firstChild@?$Parent@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?firstChild@?$Parent@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "?nextSibling@?$Sibling@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?nextSibling@?$Sibling@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "?pop_back@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAEXXZ",
+        "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+        "__ehhandler$??1XmlElement@@QAE@XZ",
+        "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+        "__unwindtable$??1XmlElement@@QAE@XZ"
+      ]
+    },
+    {
+      "member": "XmlElement.obj",
+      "symbols": [
+        "?firstChild@?$Parent@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?nextSibling@?$Sibling@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ"
+      ]
+    },
+    {
+      "member": "Workspace.obj",
+      "symbols": [
+        "??$?BV?$basic_istream@DU?$char_traits@D@std@@@std@@@?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE?AU?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@XZ",
+        "??$?BVXmlElement@@@?$auto_ptr@VXmlElement@@@std@@QAE?AU?$auto_ptr_ref@VXmlElement@@@1@XZ",
+        "??$_Destroy@PAPAVXmlElement@@@std@@YAXPAPAPAVXmlElement@@@Z",
+        "??$_Destroy@PAVXmlElement@@@std@@YAXPAPAVXmlElement@@@Z",
+        "??0?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@U?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@@Z",
+        "??0?$auto_ptr@VXmlElement@@@std@@QAE@U?$auto_ptr_ref@VXmlElement@@@1@@Z",
+        "??0?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@PAV?$basic_istream@DU?$char_traits@D@std@@@1@@Z",
+        "??0?$auto_ptr_ref@VXmlElement@@@std@@QAE@PAVXmlElement@@@Z",
+        "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z",
+        "??1?$_Container_base_aux_alloc_real@V?$allocator@PAVXmlElement@@@std@@@std@@IAE@XZ",
+        "??1?$_Deque_map@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$_Deque_val@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@XZ",
+        "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+        "??1?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$stack@PAVXmlElement@@V?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@@std@@QAE@XZ",
+        "??1TextXmlParser@@QAE@XZ",
+        "??1XmlAttribute@@QAE@XZ",
+        "??1XmlElement@@QAE@XZ",
+        "??1XmlNameValuePair@@QAE@XZ",
+        "??1XmlParser@@QAE@XZ",
+        "??_7TextXmlParser@@6B@",
+        "??_GXmlAttribute@@QAEPAXI@Z",
+        "??_GXmlElement@@QAEPAXI@Z",
+        "??_R0?AVTextXmlParser@@@8",
+        "??_R0?AVXmlParser@@@8",
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@TextXmlParser@@8",
+        "??_R1A@?0A@EA@XmlParser@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2TextXmlParser@@8",
+        "??_R2XmlParser@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3TextXmlParser@@8",
+        "??_R3XmlParser@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8",
+        "??_R4TextXmlParser@@6B@",
+        "?_Tidy@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@IAEXXZ",
+        "?deallocate@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@I@Z",
+        "?deallocate@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@I@Z",
+        "?destroy@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@@Z",
+        "?destroy@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@@Z",
+        "?empty@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QBE_NXZ",
+        "?firstChild@?$Parent@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?firstChild@?$Parent@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "?nextSibling@?$Sibling@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?nextSibling@?$Sibling@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "?pop_back@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAEXXZ",
+        "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+        "__ehhandler$??1XmlElement@@QAE@XZ",
+        "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+        "__unwindtable$??1XmlElement@@QAE@XZ"
+      ]
+    },
+    {
+      "member": "Widget.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Visit.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "UserController.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Tool.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "TimerService.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "ThreadRef.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Teams.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Team.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "SpawnLocation.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Sky.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "SimJobStage.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Service.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Server.obj",
+      "symbols": [
+        "??1XmlAttribute@@QAE@XZ",
+        "??1XmlElement@@QAE@XZ",
+        "??1XmlNameValuePair@@QAE@XZ",
+        "??_GXmlAttribute@@QAEPAXI@Z",
+        "??_GXmlElement@@QAEPAXI@Z",
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8",
+        "?firstChild@?$Parent@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?firstChild@?$Parent@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "?nextSibling@?$Sibling@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?nextSibling@?$Sibling@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+        "__ehhandler$??1XmlElement@@QAE@XZ",
+        "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+        "__unwindtable$??1XmlElement@@QAE@XZ"
+      ]
+    },
+    {
+      "member": "SerializerV2.obj",
+      "symbols": [
+        "??$?BVXmlElement@@@?$auto_ptr@VXmlElement@@@std@@QAE?AU?$auto_ptr_ref@VXmlElement@@@1@XZ",
+        "??$_Destroy@PAPAVXmlElement@@@std@@YAXPAPAPAVXmlElement@@@Z",
+        "??$_Destroy@PAVXmlElement@@@std@@YAXPAPAVXmlElement@@@Z",
+        "??0?$auto_ptr@VXmlElement@@@std@@QAE@U?$auto_ptr_ref@VXmlElement@@@1@@Z",
+        "??0?$auto_ptr_ref@VXmlElement@@@std@@QAE@PAVXmlElement@@@Z",
+        "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z",
+        "??1?$_Container_base_aux_alloc_real@V?$allocator@PAVXmlElement@@@std@@@std@@IAE@XZ",
+        "??1?$_Deque_map@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$_Deque_val@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+        "??1?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$stack@PAVXmlElement@@V?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@@std@@QAE@XZ",
+        "??1TextXmlParser@@QAE@XZ",
+        "??1XmlAttribute@@QAE@XZ",
+        "??1XmlElement@@QAE@XZ",
+        "??1XmlNameValuePair@@QAE@XZ",
+        "??1XmlParser@@QAE@XZ",
+        "??_7TextXmlParser@@6B@",
+        "??_GXmlAttribute@@QAEPAXI@Z",
+        "??_GXmlElement@@QAEPAXI@Z",
+        "??_R0?AVTextXmlParser@@@8",
+        "??_R0?AVXmlParser@@@8",
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@TextXmlParser@@8",
+        "??_R1A@?0A@EA@XmlParser@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2TextXmlParser@@8",
+        "??_R2XmlParser@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3TextXmlParser@@8",
+        "??_R3XmlParser@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8",
+        "??_R4TextXmlParser@@6B@",
+        "?_Tidy@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@IAEXXZ",
+        "?deallocate@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@I@Z",
+        "?deallocate@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@I@Z",
+        "?destroy@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@@Z",
+        "?destroy@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@@Z",
+        "?empty@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QBE_NXZ",
+        "?firstChild@?$Parent@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?firstChild@?$Parent@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "?nextSibling@?$Sibling@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?nextSibling@?$Sibling@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "?pop_back@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAEXXZ",
+        "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+        "__ehhandler$??1XmlElement@@QAE@XZ",
+        "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+        "__unwindtable$??1XmlElement@@QAE@XZ"
+      ]
+    },
+    {
+      "member": "Selection.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Seat.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "ScriptMouseCommand.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "ScriptContext.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Script.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "RunStateOwner.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "RootInstance.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Replicator.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Profiling.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Players.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Player.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8",
+        "?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z"
+      ]
+    },
+    {
+      "member": "PartInstance.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "PVInstance.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "NetworkSettings.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "ModelInstance.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Message.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "MacroTypes.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "LuaInstanceBridge.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "LocakBackpack.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Lighting.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "JointsService.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "JointInstance.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Instance.obj",
+      "symbols": [
+        "??1XmlNameValuePair@@QAE@XZ",
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Humanoid.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Hopper.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Gyro.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "GlobalSettings.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "GameSettings.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "GUI.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "FlagStand.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Flag.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Feature.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "FaceInstance.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Explosion.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "EnumProperty.obj",
+      "symbols": [
+        "??1XmlNameValuePair@@QAE@XZ",
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Decal.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "DebugSettings.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "DebrisService.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "DataModel.obj",
+      "symbols": [
+        "??$?BV?$basic_istream@DU?$char_traits@D@std@@@std@@@?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE?AU?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@XZ",
+        "??$?BVXmlElement@@@?$auto_ptr@VXmlElement@@@std@@QAE?AU?$auto_ptr_ref@VXmlElement@@@1@XZ",
+        "??$_Destroy@PAPAVXmlElement@@@std@@YAXPAPAPAVXmlElement@@@Z",
+        "??$_Destroy@PAVXmlElement@@@std@@YAXPAPAVXmlElement@@@Z",
+        "??$checked_delete@VXmlElement@@@boost@@YAXPAVXmlElement@@@Z",
+        "??0?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@U?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@@Z",
+        "??0?$auto_ptr@VXmlElement@@@std@@QAE@U?$auto_ptr_ref@VXmlElement@@@1@@Z",
+        "??0?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@PAV?$basic_istream@DU?$char_traits@D@std@@@1@@Z",
+        "??0?$auto_ptr_ref@VXmlElement@@@std@@QAE@PAVXmlElement@@@Z",
+        "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z",
+        "??1?$_Container_base_aux_alloc_real@V?$allocator@PAVXmlElement@@@std@@@std@@IAE@XZ",
+        "??1?$_Deque_map@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$_Deque_val@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@XZ",
+        "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+        "??1?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+        "??1?$scoped_ptr@VXmlElement@@@boost@@QAE@XZ",
+        "??1?$stack@PAVXmlElement@@V?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@@std@@QAE@XZ",
+        "??1TextXmlParser@@QAE@XZ",
+        "??1XmlAttribute@@QAE@XZ",
+        "??1XmlElement@@QAE@XZ",
+        "??1XmlNameValuePair@@QAE@XZ",
+        "??1XmlParser@@QAE@XZ",
+        "??_7TextXmlParser@@6B@",
+        "??_GXmlAttribute@@QAEPAXI@Z",
+        "??_GXmlElement@@QAEPAXI@Z",
+        "??_R0?AVTextXmlParser@@@8",
+        "??_R0?AVXmlParser@@@8",
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@TextXmlParser@@8",
+        "??_R1A@?0A@EA@XmlParser@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2TextXmlParser@@8",
+        "??_R2XmlParser@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3TextXmlParser@@8",
+        "??_R3XmlParser@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8",
+        "??_R4TextXmlParser@@6B@",
+        "?_Tidy@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@IAEXXZ",
+        "?deallocate@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@I@Z",
+        "?deallocate@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@I@Z",
+        "?destroy@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@@Z",
+        "?destroy@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@@Z",
+        "?empty@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QBE_NXZ",
+        "?firstChild@?$Parent@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?firstChild@?$Parent@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "?get@?$scoped_ptr@VXmlElement@@@boost@@QBEPAVXmlElement@@XZ",
+        "?nextSibling@?$Sibling@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+        "?nextSibling@?$Sibling@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+        "?pop_back@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAEXXZ",
+        "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+        "__ehhandler$??1XmlElement@@QAE@XZ",
+        "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+        "__unwindtable$??1XmlElement@@QAE@XZ"
+      ]
+    },
+    {
+      "member": "ClumpStage.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Client.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "CharacterAppearance.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Camera.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Backpack.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Assembly.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "AggregatingSceneManager.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "Accoutrement.obj",
+      "symbols": [
+        "??1XmlNameValuePair@@QAE@XZ",
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    },
+    {
+      "member": "API.obj",
+      "symbols": [
+        "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+        "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+        "??_R2noncopyable@noncopyable_@boost@@8",
+        "??_R3noncopyable@noncopyable_@boost@@8"
+      ]
+    }
+  ],
+  "alternate_providers": {
+    "??_R2noncopyable@noncopyable_@boost@@8": [
+      "type.obj",
+      "signal.obj",
+      "reflection_property.obj",
+      "reflection_object.obj",
+      "reflection_function.obj",
+      "glue_values.obj",
+      "glue_surfaces.obj",
+      "glue_stats_items.obj",
+      "glue_statics.obj",
+      "glue_runtime.obj",
+      "glue_replicator.obj",
+      "glue_replication.obj",
+      "glue_reflection_types.obj",
+      "glue_part_instance.obj",
+      "glue_network_player.obj",
+      "glue_mouse.obj",
+      "glue_misc.obj",
+      "glue_message.obj",
+      "glue_link_stubs.obj",
+      "glue_humanoid_climb.obj",
+      "glue_humanoid.obj",
+      "glue_enum_descs.obj",
+      "factoryregistration.obj",
+      "custommesh.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Widget.obj",
+      "Visit.obj",
+      "UserController.obj",
+      "Tool.obj",
+      "TimerService.obj",
+      "ThreadRef.obj",
+      "Teams.obj",
+      "Team.obj",
+      "SpawnLocation.obj",
+      "Sky.obj",
+      "SimJobStage.obj",
+      "Service.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "Selection.obj",
+      "Seat.obj",
+      "ScriptMouseCommand.obj",
+      "ScriptContext.obj",
+      "Script.obj",
+      "RunStateOwner.obj",
+      "RootInstance.obj",
+      "Replicator.obj",
+      "Profiling.obj",
+      "Players.obj",
+      "Player.obj",
+      "PartInstance.obj",
+      "PVInstance.obj",
+      "NetworkSettings.obj",
+      "ModelInstance.obj",
+      "Message.obj",
+      "MacroTypes.obj",
+      "LuaInstanceBridge.obj",
+      "LocakBackpack.obj",
+      "Lighting.obj",
+      "JointsService.obj",
+      "JointInstance.obj",
+      "Instance.obj",
+      "Humanoid.obj",
+      "Hopper.obj",
+      "Gyro.obj",
+      "GlobalSettings.obj",
+      "GameSettings.obj",
+      "GUI.obj",
+      "FlagStand.obj",
+      "Flag.obj",
+      "Feature.obj",
+      "FaceInstance.obj",
+      "Explosion.obj",
+      "EnumProperty.obj",
+      "Decal.obj",
+      "DebugSettings.obj",
+      "DebrisService.obj",
+      "DataModel.obj",
+      "ClumpStage.obj",
+      "Client.obj",
+      "CharacterAppearance.obj",
+      "Camera.obj",
+      "Backpack.obj",
+      "Assembly.obj",
+      "AggregatingSceneManager.obj",
+      "Accoutrement.obj",
+      "API.obj"
+    ],
+    "??_R3noncopyable@noncopyable_@boost@@8": [
+      "type.obj",
+      "signal.obj",
+      "reflection_property.obj",
+      "reflection_object.obj",
+      "reflection_function.obj",
+      "glue_values.obj",
+      "glue_surfaces.obj",
+      "glue_stats_items.obj",
+      "glue_statics.obj",
+      "glue_runtime.obj",
+      "glue_replicator.obj",
+      "glue_replication.obj",
+      "glue_reflection_types.obj",
+      "glue_part_instance.obj",
+      "glue_network_player.obj",
+      "glue_mouse.obj",
+      "glue_misc.obj",
+      "glue_message.obj",
+      "glue_link_stubs.obj",
+      "glue_humanoid_climb.obj",
+      "glue_humanoid.obj",
+      "glue_enum_descs.obj",
+      "factoryregistration.obj",
+      "custommesh.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Widget.obj",
+      "Visit.obj",
+      "UserController.obj",
+      "Tool.obj",
+      "TimerService.obj",
+      "ThreadRef.obj",
+      "Teams.obj",
+      "Team.obj",
+      "SpawnLocation.obj",
+      "Sky.obj",
+      "SimJobStage.obj",
+      "Service.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "Selection.obj",
+      "Seat.obj",
+      "ScriptMouseCommand.obj",
+      "ScriptContext.obj",
+      "Script.obj",
+      "RunStateOwner.obj",
+      "RootInstance.obj",
+      "Replicator.obj",
+      "Profiling.obj",
+      "Players.obj",
+      "Player.obj",
+      "PartInstance.obj",
+      "PVInstance.obj",
+      "NetworkSettings.obj",
+      "ModelInstance.obj",
+      "Message.obj",
+      "MacroTypes.obj",
+      "LuaInstanceBridge.obj",
+      "LocakBackpack.obj",
+      "Lighting.obj",
+      "JointsService.obj",
+      "JointInstance.obj",
+      "Instance.obj",
+      "Humanoid.obj",
+      "Hopper.obj",
+      "Gyro.obj",
+      "GlobalSettings.obj",
+      "GameSettings.obj",
+      "GUI.obj",
+      "FlagStand.obj",
+      "Flag.obj",
+      "Feature.obj",
+      "FaceInstance.obj",
+      "Explosion.obj",
+      "EnumProperty.obj",
+      "Decal.obj",
+      "DebugSettings.obj",
+      "DebrisService.obj",
+      "DataModel.obj",
+      "ClumpStage.obj",
+      "Client.obj",
+      "CharacterAppearance.obj",
+      "Camera.obj",
+      "Backpack.obj",
+      "Assembly.obj",
+      "AggregatingSceneManager.obj",
+      "Accoutrement.obj",
+      "API.obj"
+    ],
+    "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8": [
+      "type.obj",
+      "signal.obj",
+      "reflection_property.obj",
+      "reflection_object.obj",
+      "reflection_function.obj",
+      "glue_values.obj",
+      "glue_surfaces.obj",
+      "glue_stats_items.obj",
+      "glue_statics.obj",
+      "glue_runtime.obj",
+      "glue_replicator.obj",
+      "glue_replication.obj",
+      "glue_reflection_types.obj",
+      "glue_part_instance.obj",
+      "glue_network_player.obj",
+      "glue_mouse.obj",
+      "glue_misc.obj",
+      "glue_message.obj",
+      "glue_link_stubs.obj",
+      "glue_humanoid_climb.obj",
+      "glue_humanoid.obj",
+      "glue_enum_descs.obj",
+      "factoryregistration.obj",
+      "custommesh.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Widget.obj",
+      "Visit.obj",
+      "UserController.obj",
+      "Tool.obj",
+      "TimerService.obj",
+      "ThreadRef.obj",
+      "Teams.obj",
+      "Team.obj",
+      "SpawnLocation.obj",
+      "Sky.obj",
+      "SimJobStage.obj",
+      "Service.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "Selection.obj",
+      "Seat.obj",
+      "ScriptMouseCommand.obj",
+      "ScriptContext.obj",
+      "Script.obj",
+      "RunStateOwner.obj",
+      "RootInstance.obj",
+      "Replicator.obj",
+      "Profiling.obj",
+      "Players.obj",
+      "Player.obj",
+      "PartInstance.obj",
+      "PVInstance.obj",
+      "NetworkSettings.obj",
+      "ModelInstance.obj",
+      "Message.obj",
+      "MacroTypes.obj",
+      "LuaInstanceBridge.obj",
+      "LocakBackpack.obj",
+      "Lighting.obj",
+      "JointsService.obj",
+      "JointInstance.obj",
+      "Instance.obj",
+      "Humanoid.obj",
+      "Hopper.obj",
+      "Gyro.obj",
+      "GlobalSettings.obj",
+      "GameSettings.obj",
+      "GUI.obj",
+      "FlagStand.obj",
+      "Flag.obj",
+      "Feature.obj",
+      "FaceInstance.obj",
+      "Explosion.obj",
+      "EnumProperty.obj",
+      "Decal.obj",
+      "DebugSettings.obj",
+      "DebrisService.obj",
+      "DataModel.obj",
+      "ClumpStage.obj",
+      "Client.obj",
+      "CharacterAppearance.obj",
+      "Camera.obj",
+      "Backpack.obj",
+      "Assembly.obj",
+      "AggregatingSceneManager.obj",
+      "Accoutrement.obj",
+      "API.obj"
+    ],
+    "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8": [
+      "type.obj",
+      "signal.obj",
+      "reflection_property.obj",
+      "reflection_object.obj",
+      "reflection_function.obj",
+      "glue_values.obj",
+      "glue_surfaces.obj",
+      "glue_stats_items.obj",
+      "glue_statics.obj",
+      "glue_reflection_types.obj",
+      "glue_part_instance.obj",
+      "glue_network_player.obj",
+      "glue_mouse.obj",
+      "glue_misc.obj",
+      "glue_message.obj",
+      "glue_link_stubs.obj",
+      "glue_humanoid_climb.obj",
+      "glue_humanoid.obj",
+      "glue_enum_descs.obj",
+      "factoryregistration.obj",
+      "custommesh.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Visit.obj",
+      "UserController.obj",
+      "Tool.obj",
+      "TimerService.obj",
+      "ThreadRef.obj",
+      "Teams.obj",
+      "Team.obj",
+      "SpawnLocation.obj",
+      "Sky.obj",
+      "SimJobStage.obj",
+      "Service.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "Selection.obj",
+      "Seat.obj",
+      "ScriptMouseCommand.obj",
+      "ScriptContext.obj",
+      "Script.obj",
+      "RunStateOwner.obj",
+      "RootInstance.obj",
+      "Replicator.obj",
+      "Players.obj",
+      "Player.obj",
+      "PartInstance.obj",
+      "PVInstance.obj",
+      "NetworkSettings.obj",
+      "ModelInstance.obj",
+      "Message.obj",
+      "MacroTypes.obj",
+      "LuaInstanceBridge.obj",
+      "LocakBackpack.obj",
+      "Lighting.obj",
+      "JointInstance.obj",
+      "Instance.obj",
+      "Humanoid.obj",
+      "Hopper.obj",
+      "Gyro.obj",
+      "GlobalSettings.obj",
+      "GameSettings.obj",
+      "FlagStand.obj",
+      "Flag.obj",
+      "Feature.obj",
+      "FaceInstance.obj",
+      "Explosion.obj",
+      "EnumProperty.obj",
+      "Decal.obj",
+      "DebugSettings.obj",
+      "DebrisService.obj",
+      "DataModel.obj",
+      "Client.obj",
+      "CharacterAppearance.obj",
+      "Camera.obj",
+      "Backpack.obj",
+      "Accoutrement.obj",
+      "API.obj"
+    ],
+    "??_R0?AVnoncopyable@noncopyable_@boost@@@8": [
+      "type.obj",
+      "signal.obj",
+      "reflection_property.obj",
+      "reflection_object.obj",
+      "reflection_function.obj",
+      "glue_values.obj",
+      "glue_surfaces.obj",
+      "glue_stats_items.obj",
+      "glue_statics.obj",
+      "glue_runtime.obj",
+      "glue_replicator.obj",
+      "glue_replication.obj",
+      "glue_reflection_types.obj",
+      "glue_part_instance.obj",
+      "glue_network_player.obj",
+      "glue_mouse.obj",
+      "glue_misc.obj",
+      "glue_message.obj",
+      "glue_link_stubs.obj",
+      "glue_humanoid_climb.obj",
+      "glue_humanoid.obj",
+      "glue_enum_descs.obj",
+      "factoryregistration.obj",
+      "custommesh.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Widget.obj",
+      "Visit.obj",
+      "UserController.obj",
+      "Tool.obj",
+      "TimerService.obj",
+      "ThreadRef.obj",
+      "Teams.obj",
+      "Team.obj",
+      "SpawnLocation.obj",
+      "Sky.obj",
+      "SimJobStage.obj",
+      "Service.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "Selection.obj",
+      "Seat.obj",
+      "ScriptMouseCommand.obj",
+      "ScriptContext.obj",
+      "Script.obj",
+      "RunStateOwner.obj",
+      "RootInstance.obj",
+      "Replicator.obj",
+      "Profiling.obj",
+      "Players.obj",
+      "Player.obj",
+      "PartInstance.obj",
+      "PVInstance.obj",
+      "NetworkSettings.obj",
+      "ModelInstance.obj",
+      "Message.obj",
+      "MacroTypes.obj",
+      "LuaInstanceBridge.obj",
+      "LocakBackpack.obj",
+      "Lighting.obj",
+      "JointsService.obj",
+      "JointInstance.obj",
+      "Instance.obj",
+      "Humanoid.obj",
+      "Hopper.obj",
+      "Gyro.obj",
+      "GlobalSettings.obj",
+      "GameSettings.obj",
+      "GUI.obj",
+      "FlagStand.obj",
+      "Flag.obj",
+      "Feature.obj",
+      "FaceInstance.obj",
+      "Explosion.obj",
+      "EnumProperty.obj",
+      "Decal.obj",
+      "DebugSettings.obj",
+      "DebrisService.obj",
+      "DataModel.obj",
+      "ClumpStage.obj",
+      "Client.obj",
+      "CharacterAppearance.obj",
+      "Camera.obj",
+      "Backpack.obj",
+      "Assembly.obj",
+      "AggregatingSceneManager.obj",
+      "Accoutrement.obj",
+      "API.obj"
+    ],
+    "??1XmlNameValuePair@@QAE@XZ": [
+      "reflection_property.obj",
+      "glue_reflection_types.obj",
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "Instance.obj",
+      "EnumProperty.obj",
+      "DataModel.obj",
+      "Accoutrement.obj"
+    ],
+    "?firstChild@?$Parent@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??1XmlAttribute@@QAE@XZ": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_GXmlAttribute@@QAEPAXI@Z": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_GXmlElement@@QAEPAXI@Z": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "__unwindfunclet$??1XmlElement@@QAE@XZ$0": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "__ehhandler$??1XmlElement@@QAE@XZ": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "?nextSibling@?$Sibling@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "XmlElement.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??1XmlElement@@QAE@XZ": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "__unwindtable$??1XmlElement@@QAE@XZ": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "__ehfuncinfo$??1XmlElement@@QAE@XZ": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "?nextSibling@?$Sibling@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "?firstChild@?$Parent@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ": [
+      "glue_instance_core.obj",
+      "XmlSerializer.obj",
+      "XmlElement.obj",
+      "Workspace.obj",
+      "Server.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??0?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@PAV?$basic_istream@DU?$char_traits@D@std@@@1@@Z": [
+      "glue_content_provider.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "DataModel.obj"
+    ],
+    "??0?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@U?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@@Z": [
+      "glue_content_provider.obj",
+      "Workspace.obj",
+      "DataModel.obj"
+    ],
+    "??$?BV?$basic_istream@DU?$char_traits@D@std@@@std@@@?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE?AU?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@XZ": [
+      "glue_content_provider.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "DataModel.obj"
+    ],
+    "??1?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@XZ": [
+      "glue_content_provider.obj",
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "DataModel.obj"
+    ],
+    "?release@?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAEPAV?$basic_istream@DU?$char_traits@D@std@@@2@XZ": [
+      "glue_content_provider.obj"
+    ],
+    "?deallocate@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@I@Z": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??1?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??0?$auto_ptr_ref@VXmlElement@@@std@@QAE@PAVXmlElement@@@Z": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??1?$_Deque_val@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "?destroy@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@@Z": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "?pop_back@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAEXXZ": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??$_Destroy@PAPAVXmlElement@@@std@@YAXPAPAPAVXmlElement@@@Z": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_R0?AVXmlParser@@@8": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??1?$stack@PAVXmlElement@@V?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@@std@@QAE@XZ": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_R3XmlParser@@8": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "?deallocate@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@I@Z": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_R1A@?0A@EA@XmlParser@@8": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "?empty@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QBE_NXZ": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??0?$auto_ptr@VXmlElement@@@std@@QAE@U?$auto_ptr_ref@VXmlElement@@@1@@Z": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??$?BVXmlElement@@@?$auto_ptr@VXmlElement@@@std@@QAE?AU?$auto_ptr_ref@VXmlElement@@@1@XZ": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??1?$_Container_base_aux_alloc_real@V?$allocator@PAVXmlElement@@@std@@@std@@IAE@XZ": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "?destroy@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@@Z": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_R2XmlParser@@8": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??$_Destroy@PAVXmlElement@@@std@@YAXPAPAVXmlElement@@@Z": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "?_Tidy@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@IAEXXZ": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??1?$_Deque_map@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ": [
+      "XmlSerializer.obj",
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_R3TextXmlParser@@8": [
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_R0?AVTextXmlParser@@@8": [
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z": [
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??1TextXmlParser@@QAE@XZ": [
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??1XmlParser@@QAE@XZ": [
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_7TextXmlParser@@6B@": [
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_R2TextXmlParser@@8": [
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_R4TextXmlParser@@6B@": [
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??_R1A@?0A@EA@TextXmlParser@@8": [
+      "Workspace.obj",
+      "SerializerV2.obj",
+      "DataModel.obj"
+    ],
+    "??$checked_delete@VXmlElement@@@boost@@YAXPAVXmlElement@@@Z": [
+      "DataModel.obj"
+    ],
+    "??1?$scoped_ptr@VXmlElement@@@boost@@QAE@XZ": [
+      "DataModel.obj"
+    ],
+    "?get@?$scoped_ptr@VXmlElement@@@boost@@QBEPAVXmlElement@@XZ": [
+      "DataModel.obj"
+    ]
+  },
+  "referenced_without_alternate": [
+    "?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z"
+  ]
+}

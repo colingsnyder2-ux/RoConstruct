@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/AxisMoveToolConstructor.cpp",
+      "checks": [
+        {
+          "addr": "00640560",
+          "symbol": "??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z",
+          "calls": [
+            {
+              "offset": 35,
+              "target": "006159f0",
+              "symbol": "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z"
+            },
+            {
+              "offset": 102,
+              "target": "00510a30",
+              "symbol": "??0Ray@G3D@@QAE@XZ"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

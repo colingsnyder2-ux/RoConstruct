@@ -1,0 +1,13 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/AxisMoveToolConstructor.cpp",
+      "checks": [
+        {
+          "addr": "00640560",
+          "symbol": "??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z"
+        }
+      ]
+    }
+  ]
+}

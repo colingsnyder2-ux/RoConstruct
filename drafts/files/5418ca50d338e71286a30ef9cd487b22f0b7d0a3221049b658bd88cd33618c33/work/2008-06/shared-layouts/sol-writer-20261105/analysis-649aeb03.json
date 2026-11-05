@@ -1,0 +1,151 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-writer-20261105\\SolWriter20261105-ob1.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-122948-dbdc3493\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "0046b550",
+        "requested_symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "status": "exact",
+        "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "score": 100,
+        "target_size": 98,
+        "object_size": 98,
+        "target_sha256": "2272b0d17440b2615fc34fb0a31efd04c9611a074b2bea4582351936e60fe1da",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8505416,
+            8
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 34,
+              "target": "0058fff0",
+              "symbol": "??0XmlWriter@@IAE@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 66,
+              "target": "00699b30",
+              "symbol": "??0?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@VContentId@RBX@@@1@ABV?$allocator@VContentId@RBX@@@1@@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 2.031803
+      },
+      {
+        "addr": "0046b1e0",
+        "requested_symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+        "status": "exact",
+        "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+        "score": 100,
+        "target_size": 77,
+        "object_size": 77,
+        "target_sha256": "caeadf6b8a42a3d5146a0ac9adbda4b89dc593a79241accc023a7c30c7761056",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 40,
+              "target": "0046b070",
+              "symbol": "??1?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAE@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 56,
+              "target": "004146d0",
+              "symbol": "??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.000458
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-writer-20261105\\SolWriter20261105-ob0.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-122948-dbdc3493\\unit-001\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "0046b550",
+        "requested_symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "status": "different",
+        "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "score": 79,
+        "target_size": 98,
+        "object_size": 88,
+        "target_sha256": "2272b0d17440b2615fc34fb0a31efd04c9611a074b2bea4582351936e60fe1da",
+        "first_byte_difference": 40,
+        "check_seconds": 0.000474
+      },
+      {
+        "addr": "0046b1e0",
+        "requested_symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+        "status": "different",
+        "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+        "score": 95,
+        "target_size": 77,
+        "object_size": 76,
+        "target_sha256": "caeadf6b8a42a3d5146a0ac9adbda4b89dc593a79241accc023a7c30c7761056",
+        "first_byte_difference": 45,
+        "check_seconds": 0.000229
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-writer-20261105\\SolWriter20261105-depth.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-122948-dbdc3493\\unit-002\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "0046b550",
+        "requested_symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "status": "different",
+        "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "score": 78,
+        "target_size": 98,
+        "object_size": 103,
+        "target_sha256": "2272b0d17440b2615fc34fb0a31efd04c9611a074b2bea4582351936e60fe1da",
+        "first_byte_difference": 43,
+        "check_seconds": 0.000459
+      },
+      {
+        "addr": "0046b1e0",
+        "requested_symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+        "status": "different",
+        "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+        "score": 95,
+        "target_size": 77,
+        "object_size": 76,
+        "target_sha256": "caeadf6b8a42a3d5146a0ac9adbda4b89dc593a79241accc023a7c30c7761056",
+        "first_byte_difference": 45,
+        "check_seconds": 0.000217
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

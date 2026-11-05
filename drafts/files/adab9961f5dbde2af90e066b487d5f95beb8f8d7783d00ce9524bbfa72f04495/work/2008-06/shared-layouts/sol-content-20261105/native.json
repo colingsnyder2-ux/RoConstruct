@@ -1,0 +1,1 @@
+﻿{"jobs":[{"source":"native-classes/ContentProviderLoad.cpp","checks":[{"addr":"005628e0","symbol":"?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z"}]}]}

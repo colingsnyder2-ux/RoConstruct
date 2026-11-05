@@ -1,0 +1,32 @@
+[
+  {
+    "member": "Math.obj",
+    "command": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\layer-rbxgs\\Math.command.json",
+    "command_sha256": "f307a50f014c031801d4b61a1e318271fe2646fe9d5f89d119b83725c6921798",
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\App\\util\\Math.cpp",
+    "source_sha256": "06adc9dedc6f28921087014b7310c5b8b30c6e53d5df0688e5cff280364ac0e2",
+    "recorded_source_sha256": "06adc9dedc6f28921087014b7310c5b8b30c6e53d5df0688e5cff280364ac0e2",
+    "variant": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-math-name-owner-20261105\\Math.cpp",
+    "variant_sha256": "dfa2759123a10d43ce3dd5beae2ab31cb4b902a6efde606ca41397d522153c0b",
+    "annotations": [
+      "Math::matrixTiltQuadrant",
+      "Math::toYAxisQuadrant",
+      "Math::closestPointOnRay"
+    ],
+    "dependency_changes": []
+  },
+  {
+    "member": "WorldHelpers.obj",
+    "command": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\layer-rbxgs\\WorldHelpers.command.json",
+    "command_sha256": "6a2403d12e252eb0b3a09cd2924bfbf6f0b3d4a846cb1970aab348460ca20b93",
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\App\\v8world\\WorldHelpers.cpp",
+    "source_sha256": "46ce81d5fd54a9ad2d1d1ecad0dd93de03f975ba1d0739b4df83f1e05c027508",
+    "recorded_source_sha256": "46ce81d5fd54a9ad2d1d1ecad0dd93de03f975ba1d0739b4df83f1e05c027508",
+    "variant": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-math-name-owner-20261105\\WorldHelpers.cpp",
+    "variant_sha256": "6fc069c4afc8ef570642dc222578499ef652d5eaaf32fa37f38de7e82e47da9d",
+    "annotations": [
+      "Name::compare"
+    ],
+    "dependency_changes": []
+  }
+]

@@ -1,0 +1,114 @@
+{
+  "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+  "address": "0046bfd0",
+  "primary_body_size": 600,
+  "primary_body_exact": true,
+  "tool_sha256": "a3012b62350001c3885585d99d157294e6a1fbf58158a449e452fe83cbc10543",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object": "work\\2008-06\\native-check-runs\\20261105-123032-315317b7\\unit-000\\candidate.obj",
+  "object_sha256": "7a79c35dad8a6a63bef9db38975737e6160567cc3788cb381cca76a06f11d3ec",
+  "events": [
+    {
+      "symbol": "__ehhandler$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+      "original": "0x7c3b2b",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+      "original": "0x8db910",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "220593190700000034b98d0001000000dcb88d0000000000000000000000000001000000",
+      "native_bytes": "220593190700000000000000010000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+      "original": "0x8db934",
+      "kind": "EH data",
+      "size": 56,
+      "exact": true,
+      "original_bytes": "ffffffffd03a7c00000000000000000001000000d83a7c0002000000f13a7c00030000000a3b7c0001000000233b7c000000000000000000",
+      "native_bytes": "ffffffff00000000000000000000000001000000000000000200000000000000030000000000000001000000000000000000000000000000"
+    },
+    {
+      "symbol": "__unwindfunclet$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z$3",
+      "original": "0x7c3ad0",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1AFX_MAINTAIN_STATE2@@QAE@XZ",
+      "original": "0x4060f0",
+      "kind": "cleanup/handler code",
+      "size": 30,
+      "exact": true
+    },
+    {
+      "symbol": "__unwindfunclet$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z$4",
+      "original": "0x7c3ad8",
+      "kind": "cleanup/handler code",
+      "size": 25,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+      "original": "0x443570",
+      "kind": "cleanup/handler code",
+      "size": 25,
+      "exact": true
+    },
+    {
+      "symbol": "??1XmlElement@@QAE@XZ",
+      "original": "0x413a70",
+      "kind": "cleanup/handler code",
+      "size": 138,
+      "exact": true
+    },
+    {
+      "symbol": "__ehhandler$??1XmlElement@@QAE@XZ",
+      "original": "0x7bd8db",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+      "original": "0x8d2744",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "22059319010000003c278d00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$??1XmlElement@@QAE@XZ",
+      "original": "0x8d273c",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "original_bytes": "ffffffffd0d87b00",
+      "native_bytes": "ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+      "original": "0x7bd8d0",
+      "kind": "cleanup/handler code",
+      "size": 11,
+      "exact": true
+    },
+    {
+      "symbol": "??1XmlNameValuePair@@QAE@XZ",
+      "original": "0x413470",
+      "kind": "cleanup/handler code",
+      "size": 5,
+      "exact": true
+    }
+  ],
+  "errors": [
+    "('??1XmlNameValuePair@@QAE@XZ', '?clearValue@XmlNameValuePair@@ABEXXZ', '0x57c2d0')"
+  ]
+}

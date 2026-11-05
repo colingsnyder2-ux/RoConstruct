@@ -1,0 +1,52 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic",
+  "baseline_receipt": "run20261105-125930-a6a4fb73",
+  "run": "work\\2008-06\\native-check-runs\\20261105-130507-bc1cef4a",
+  "session": "ad9552da229840b0b03f68a16d327fec",
+  "metrics": {
+    "compiled": 5,
+    "compile_failed": 0,
+    "exact_bytes_data": 13,
+    "require_proof_callbacks": 2,
+    "runtime_selected_delta": 0,
+    "swaps": 0,
+    "server_credit_delta": 0
+  },
+  "commands": [
+    "python work/2008-06/shared-layouts/sol-physics-20261105/exact_profile_runner.py run work/2008-06/shared-layouts/sol-physics-20261105/batch.json --workers 3",
+    "python rebuild/2008-06/tests/native_check_runner.py analyze work\\2008-06\\native-check-runs\\20261105-130507-bc1cef4a --manifest work/2008-06/shared-layouts/sol-physics-20261105/batch.json",
+    "python rebuild/2008-06/tests/native_check_runner.py analyze work\\2008-06\\native-check-runs\\20261105-130507-bc1cef4a --manifest work/2008-06/shared-layouts/sol-physics-20261105/callback-proof.json --require-proof"
+  ],
+  "hashes": {
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceFind.cpp": "916260aa2b53ecd5c210dd2312a2b3772bb647de2ac4d0dd841cca9120a02cb2",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceAllocation.cpp": "f6ffe9df9a598f465bf46fecf005c513d4b53864d766baac1247c389db5561c3",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceLifetime.cpp": "44c411d7a6536aa4d93e31259b6cfef927a10ffcb5e8611e133564fa3743d5ba",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceEvents.cpp": "ca5b4e12ec8733dd6e82ade845a91823ca75b23efe5f4650fb02e35ecd61230a",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceSignals.cpp": "87e7264ce413d96fdebc338f8ab03c66aa7dbdd2d63f6d9be294aec97fa7935f",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\PhysicsService.h": "f2663cd719084a15ccddfa63e535894dd8174c9e9c4161d3cbdc17e38671ff1c",
+    "work\\2008-06\\shared-layouts\\sol-physics-20261105\\exact_profile_runner.py": "a4ecba28e95c19a949e4941eb8f9492ddadc0953f5a4dec7bdbb0a4c620b79c8",
+    "work\\2008-06\\shared-layouts\\sol-physics-20261105\\batch.json": "3ca430cad580f99583638bc4ba5c68f8bef9e85f7117d7ea72ba91f98d94a831"
+  },
+  "hypotheses": [
+    {
+      "change": "const name removes cascading generic-template compiler errors",
+      "result": "confirmed"
+    },
+    {
+      "change": "remove duplicate out-of-line ctor; Allocation emits canonical inline body",
+      "result": "exact allocation and ctor"
+    },
+    {
+      "change": "parent restores static descriptors without layout changes",
+      "result": "all5 compile,13 exact/data clean"
+    }
+  ],
+  "blockers": [
+    "Remaining11 checked bodies lack full independently asserted call bindings; indirect calls and EH closure separate obligations",
+    "Full linked diagnostic belongs to snapshot owner; no fullbuild performed",
+    "P5/P6 runtime and full ABI/vtable proof outstanding"
+  ],
+  "next_gate": "Parent resume guarded diagnostic using coherent frozen inputs; independent direct-call/EH audit on recorded objects",
+  "source_selection": "PhysicsService.cpp remains inactive; selected five providers unchanged",
+  "attempts": "Initial generic-runner batch 20261105-130331-1b964a54 compiled3 failed2 prior to parent header handoff; not selected-profile proof. Final batch uses exact build_client flags and order."
+}

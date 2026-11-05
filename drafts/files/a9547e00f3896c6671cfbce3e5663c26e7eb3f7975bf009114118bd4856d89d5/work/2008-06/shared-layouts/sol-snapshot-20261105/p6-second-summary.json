@@ -1,0 +1,38 @@
+{
+  "state": "failed",
+  "pid": 35284,
+  "run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125658-33156c34",
+  "output": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125658-33156c34\\output",
+  "exit_code": 2,
+  "stdout": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125658-33156c34\\stdout.log",
+  "stderr": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125658-33156c34\\stderr.log",
+  "observer_sha256": "8ce11c8c2f8affaf7cefb044b396ab95891fa0e712c3e9c622d1eae6cff8cfe9",
+  "builder_sha256": "150fe643ffc61af61e75484d90555386d5fc631ceeaa724b66b9f444ec90d956",
+  "work_log_sha256": "87978a87c88657f2b986218437e54c479c4c671ed72e9f6eb88229729310eab2",
+  "scope": "native-doc diagnostic only; never runs client; link success is not ABI/runtime/P5/P6 proof",
+  "command": [
+    "C:\\Python313\\python.exe",
+    "-u",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\p6\\build_client.py",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out",
+    "--native-doc",
+    "--native-doc-out",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125658-33156c34\\output",
+    "--native-doc-cache"
+  ],
+  "build_pid": 22408,
+  "outcome": "compile_failed",
+  "link_log_present": false,
+  "unique_unresolved": null,
+  "unique_duplicates": 0,
+  "link_error_count": 0,
+  "compiler_errors": [
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-headers\\v8datamodel/LocalBackpack.h(26) : error C2039: 'Players' : is not a member of 'RBX::Network'",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-headers\\v8datamodel/LocalBackpack.h(26) : error C2065: 'Players' : undeclared identifier"
+  ],
+  "link_errors": [],
+  "result": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-125658-33156c34\\result.json",
+  "changed_extra_sources": [],
+  "changed_shared_headers": [],
+  "seconds": 67.701
+}

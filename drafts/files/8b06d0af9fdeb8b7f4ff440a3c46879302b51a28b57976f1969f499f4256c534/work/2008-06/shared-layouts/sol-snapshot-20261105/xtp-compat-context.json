@@ -1,0 +1,10 @@
+{
+  "scope": "diagnostic compile portability only; no historical matching claim",
+  "files": {
+    "work\\2008-06\\shared-layouts\\sol-snapshot-20261105\\XtpCompatibility.h": "8a905f18b59c2eab30d45cc4d3600a99bce0a148d59547b574d1d4ea9e984b24",
+    "tools\\libs\\xtp-15.2.1\\Source\\SkinFramework\\XTPSkinObjectTab.cpp": "ed71d975e6b4214c82652c235a0a5737a03a6da5628b688b977e9cf6d3f8b81c",
+    "tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\Tmschema.h": "eb10123a77bbf0ff64cb6792389cdadb141c3165b7b95cb560cec695b6bd1411"
+  },
+  "recipe": "xtp-11.2.2-shared-mfc-internals-rtm",
+  "change": "in-memory append scoped compatibility preinclude"
+}

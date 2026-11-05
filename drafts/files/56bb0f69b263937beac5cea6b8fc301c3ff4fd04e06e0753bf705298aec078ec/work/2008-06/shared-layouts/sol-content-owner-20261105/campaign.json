@@ -1,0 +1,14 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "session": "43b8fd99b7fd47b0862a8e25fb0015f9",
+  "status": "inactive source-owner proposal",
+  "canonical_command_sha256": "f412f2147f467ae6dc471b4d6057a2d52bb52b20993756ea2a7c72450bd0f75d",
+  "inputs_unchanged": true,
+  "metrics": {
+    "retained_bodies": 737,
+    "retained_named_data": 1073
+  },
+  "next_gate": "Complete current link input/archive manifest; classify removed-symbol consumers and alternate providers; normal librarian replacement with all other member bytes unchanged; selected diagnostic link remains parent-owned",
+  "activation": false,
+  "server_credit": 0
+}

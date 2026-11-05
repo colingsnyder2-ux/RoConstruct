@@ -1,0 +1,32 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "session": "43b8fd99b7fd47b0862a8e25fb0015f9",
+  "status": "inactive guarded archive replacement ready; parent aggregate closure pending",
+  "canonical_command_sha256": "f412f2147f467ae6dc471b4d6057a2d52bb52b20993756ea2a7c72450bd0f75d",
+  "inputs_unchanged": true,
+  "metrics": {
+    "retained_bodies": 737,
+    "retained_named_data": 1073
+  },
+  "next_gate": "Parent replay with scoped linked.lib replacement and existing exact native load object, then selected map/provider audit; no activation",
+  "activation": false,
+  "server_credit": 0,
+  "blockers": [
+    "Complete final diagnostic input manifest unavailable; current external audit explicitly partial",
+    "Final selected load/provider/call identity closure remains parent-owned",
+    "Strict native runner still rejects four indirect calls; separate static contracts do not establish complete runtime ABI"
+  ],
+  "native_analysis": "analysis-d8ec2661.json",
+  "attempts": [
+    {
+      "launch": 1,
+      "exit": 3221225781,
+      "result": "Missing installed compiler DLL search path; no object produced, no source compilation"
+    },
+    {
+      "launch": 2,
+      "exit": 0,
+      "result": "Added installed Common7/IDE to PATH; one successful distinct source compile"
+    }
+  ]
+}

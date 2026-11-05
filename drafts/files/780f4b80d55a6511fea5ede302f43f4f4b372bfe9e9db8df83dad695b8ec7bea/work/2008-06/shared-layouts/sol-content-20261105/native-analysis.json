@@ -1,0 +1,111 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\ContentProviderLoad.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-122951-04c3d3fa\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005628e0",
+        "requested_symbol": "?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "status": "exact",
+        "symbol": "?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "score": 100,
+        "target_size": 327,
+        "object_size": 327,
+        "target_sha256": "fdb88af4fbe396b577bf8350d4bd6667ac2dcce87ed25b331424f88be8739e9e",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 59,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 82,
+              "target": "00561f20",
+              "symbol": "?getContent@ContentProvider@RBX@@QAE?AV?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@VContentId@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 126,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 142,
+              "target": "00415350",
+              "symbol": "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 161,
+              "target": "0058f6c0",
+              "symbol": "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 193,
+              "target": "00413a70",
+              "symbol": "??1XmlElement@@QAE@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 199,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 223,
+              "target": "00593250",
+              "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 239,
+              "target": "00413a70",
+              "symbol": "??1XmlElement@@QAE@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 245,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 262,
+              "target": "004147c0",
+              "symbol": "??1TextXmlParser@@QAE@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 287,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 301,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 1.947288
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

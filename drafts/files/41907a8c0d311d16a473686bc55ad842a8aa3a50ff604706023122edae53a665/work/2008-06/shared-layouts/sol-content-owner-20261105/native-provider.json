@@ -1,0 +1,10 @@
+{
+  "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-122951-04c3d3fa\\unit-000\\candidate.obj",
+  "object_sha256": "25cced223266b6af736734dea98ed134216d710c371edc24169224850d6b0860",
+  "symbol": "?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+  "original": "005628e0",
+  "size": 327,
+  "code_exact": true,
+  "data_errors": [],
+  "scope": "Existing native object reused; 4 indirect calls remain strict-runner blockers; static contracts are separate evidence; no selected/runtime claim"
+}
