@@ -4,9 +4,8 @@
 // generated header copy (recorded pending-build-only, not counted).
 #include "v8datamodel/DebugSettings.h"
 #include "v8datamodel/PartInstance.h"
-#ifdef NATIVE_DEBUGSETTINGS_PENDING
-#include "v8datamodel/ModelInstance.h" // pulls the donor Camera.h, which needs the 2008 class-name declaration
-#endif
+#include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/Workspace.h"
 #include "reflection/enumconverter.h"
 #include <G3D/format.h>
 #include <stdexcept>
@@ -175,7 +174,6 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_DEBUGSETTINGS_PENDING
 	void DebugSettings::setShowModelCoordinateFrames(bool value)
 	{
 		if (value != ModelInstance::showModelCoord)
@@ -184,7 +182,15 @@ namespace RBX
 			raisePropertyChanged(prop_ShowModelCoords);
 		}
 	}
-#endif
+
+	void DebugSettings::setShowWorldCoordinateFrames(bool value)
+	{
+		if (value != Workspace::showWorldCoord)
+		{
+			Workspace::showWorldCoord = value;
+			raisePropertyChanged(prop_ShowWorldCoords);
+		}
+	}
 
 	void DebugSettings::setValidatingDebug(bool value)
 	{
