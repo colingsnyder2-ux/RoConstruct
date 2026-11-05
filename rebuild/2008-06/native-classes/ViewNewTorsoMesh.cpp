@@ -1,5 +1,7 @@
 // 2008-06 native RBX::ViewNew::TorsoBuilder / TorsoMesh (inactive): the unit 004fa050..004fab2f.
-// The per-face grid instances (004f7d90..004fa04f, 004fa190) come from ViewNew/QuadVolumeFace.h.
+// The per-face grid instances (004f7d90..004fa04f, 004fa190) come from ViewNew/QuadVolumeFace.h. The functor
+// operator() bodies are class-inline: the original inlines them into the strips (DeformSide 004f7d90 / 004f8790,
+// DeformTop 004f80e0, DeformFrontBack 004f8420 / 004f8ae0; functor at [esp+0x80]: inset, [esp+0x84]: shoulderInset).
 #include "ViewNew/TorsoMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 
@@ -17,7 +19,29 @@ namespace RBX
 				  shoulderInset(shoulderInset)
 			{
 			}
-			void operator()(G3D::Vector3&, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&);
+			void operator()(G3D::Vector3& vertex, G3D::Vector3&, G3D::Vector2& tex, const G3D::Vector3&, const G3D::Vector2int16&)
+			{
+				if (vertex.x > 0)
+					vertex.x -= inset;
+				else
+					vertex.x += inset;
+				if (vertex.y > 0)
+				{
+					vertex.y -= inset;
+					if (vertex.x > 0)
+					{
+						vertex.x -= shoulderInset;
+						tex.x -= shoulderInset;
+					}
+					else
+					{
+						vertex.x += shoulderInset;
+						tex.x += shoulderInset;
+					}
+				}
+				else
+					vertex.y += inset;
+			}
 		};
 
 		class DeformSide
@@ -30,7 +54,20 @@ namespace RBX
 				  shoulderInset(shoulderInset)
 			{
 			}
-			void operator()(G3D::Vector3&, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&);
+			void operator()(G3D::Vector3& vertex, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&)
+			{
+				if (vertex.x > 0)
+					vertex.x -= inset;
+				else
+					vertex.x += inset;
+				if (vertex.y > 0)
+				{
+					vertex.y -= inset;
+					vertex.z -= shoulderInset;
+				}
+				else
+					vertex.y += inset;
+			}
 		};
 
 		class DeformTop
@@ -43,7 +80,23 @@ namespace RBX
 				  shoulderInset(shoulderInset)
 			{
 			}
-			void operator()(G3D::Vector3&, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&);
+			void operator()(G3D::Vector3& vertex, G3D::Vector3&, G3D::Vector2& tex, const G3D::Vector3&, const G3D::Vector2int16&)
+			{
+				if (vertex.x > 0)
+				{
+					vertex.x -= inset + shoulderInset;
+					tex.x -= shoulderInset;
+				}
+				else
+				{
+					vertex.x += inset + shoulderInset;
+					tex.x += shoulderInset;
+				}
+				if (vertex.y > 0)
+					vertex.y -= inset;
+				else
+					vertex.y += inset;
+			}
 		};
 
 		void TorsoBuilder::buildRight(Purpose purpose)

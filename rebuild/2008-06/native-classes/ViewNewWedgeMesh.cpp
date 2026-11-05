@@ -1,5 +1,7 @@
 // 2008-06 native RBX::ViewNew::WedgeBuilder / WedgeMesh (inactive): the unit 004f6e30..004f7d8f.
-// The per-face grid instances (004f5b80.., 004f6fa0, 004f7390) are not recovered here; the face slots call them.
+// The per-face grid instances (004f4e60..004f6a80, 004f6fa0, 004f7390) come from ViewNew/QuadVolumeFace.h. The functor
+// operator() bodies are class-inline: the original inlines them into the strips (DeformSide3 004f4e60 / 004f54d0,
+// DeformTop3 004f51a0, DeformFront 004f5810), whose x87 code they are read from (functor at [esp+0x80]: inset, flip).
 #include "ViewNew/WedgeMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 
@@ -15,7 +17,19 @@ namespace RBX
 				: inset(inset)
 			{
 			}
-			void operator()(G3D::Vector3&, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&);
+			void operator()(G3D::Vector3& vertex, G3D::Vector3& normal, G3D::Vector2&, const G3D::Vector3& size, const G3D::Vector2int16&)
+			{
+				if (vertex.x > 0)
+					vertex.x -= inset;
+				else
+					vertex.x += inset;
+				if (vertex.y > 0)
+					vertex.z = inset - vertex.z;
+				else
+					vertex.y += inset;
+				normal.z = size.y;
+				normal.y = size.z;
+			}
 		};
 
 		class DeformSide3
@@ -28,7 +42,22 @@ namespace RBX
 				  flip(flip ? -1.0f : 1.0f)
 			{
 			}
-			void operator()(G3D::Vector3&, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&);
+			void operator()(G3D::Vector3& vertex, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&)
+			{
+				if (vertex.y > 0)
+				{
+					vertex.y -= inset;
+					vertex.x = (fabs(vertex.x) - inset) * flip;
+				}
+				else
+				{
+					vertex.y += inset;
+					if (vertex.x > 0)
+						vertex.x -= inset;
+					else
+						vertex.x += inset;
+				}
+			}
 		};
 
 		class DeformTop3
@@ -39,7 +68,14 @@ namespace RBX
 				: inset(inset)
 			{
 			}
-			void operator()(G3D::Vector3&, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&);
+			void operator()(G3D::Vector3& vertex, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&)
+			{
+				if (vertex.x > 0)
+					vertex.x -= 2 * inset;
+				else
+					vertex.x += inset;
+				vertex.y = (vertex.y > 0 ? vertex.y : -vertex.y) - inset;
+			}
 		};
 
 		void WedgeBuilder::buildRight(Purpose purpose)

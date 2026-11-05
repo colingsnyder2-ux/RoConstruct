@@ -15,11 +15,17 @@ ViewNew/ directory):
   * native-classes/ViewNewTorsoMesh.cpp  TorsoBuilder / TorsoMesh (004fa050..004fab2f) and the builder dtor 004fab30;
   * native-classes/ViewNewPBBMesh.cpp    PBBBuilder / PBBMesh (004f1eb0, 004f2030, 004f4790..004f4caf; the surface
                                          ctor 004f4cb0 needs the unnamed shadow helper 004e3570 and is not built).
+  * native-classes/ViewNewFileMesh.cpp  FileMesh::create 00500b90 and the shared ??_G 004e54c0; loadFromMeshFile 00500780
+                                         is compiled only with NATIVE_VIEWNEW_FILEMESH_PENDING against a generated copy of
+                                         util/NativeContentProvider.h under out/ (ContentProvider::requestContentFile
+                                         00562670 is not declared there) and is recorded exact=false (pending-build-only).
   * the per-face grid templates of native-headers/ViewNew/QuadVolumeFace.h (included by the Sphere / Cylinder / Head /
     Wedge / Torso / PBB units): every outer instance buildFace<id, F>(F, Vector2int16, Purpose), the strips
     buildFace<id, F>(F, Rect2D, ..) of the plain vertex function and of EndcapTransform / CylinderTransform, and the
-    COMDATs LevelBuilder::offset 004f1ff0 and Rect2D::xyxy 004f35d0. The strips that inline an unrecovered functor
-    body (Deform*, PBB Face / Side) or differ in EH-frame stack layout (Wedge / Torso builder) are non-exact rows.
+    COMDATs LevelBuilder::offset 004f1ff0 and Rect2D::xyxy 004f35d0. The strips of the Wedge / Torso Deform* and
+    PBB Face / Side functors are rows too (their class-inline operator() bodies are recovered from the strips, which
+    inline them); the Wedge / Torso builder-as-functor strips differ in EH-frame stack layout and are
+    non-exact rows.
 
 Every exact row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, constants by bytes, type descriptors and
@@ -56,6 +62,7 @@ UNITS = {
     'wedge': R / 'native-classes/ViewNewWedgeMesh.cpp',
     'torso': R / 'native-classes/ViewNewTorsoMesh.cpp',
     'pbb': R / 'native-classes/ViewNewPBBMesh.cpp',
+    'filemesh': R / 'native-classes/ViewNewFileMesh.cpp',
 }
 HEADERS = sorted((R / 'native-headers/ViewNew').glob('*.h'))
 DISCOVER = bool(os.environ.get('NATIVE_VIEWNEW_DISCOVER'))
@@ -123,6 +130,8 @@ EXTERNAL = {
     '?mapToUvw_Legacy@RBX@@YA?AVVector3@G3D@@ABV23@W4NormalId@1@@Z': 0x5ec9d0,                  # evidence name
     '?xy@Vector3@G3D@@QBE?AVVector2@2@XZ': 0x5185d0,          # ICF with Rect2D::x0y0 (evidence name)
     '?yz@Vector3@G3D@@QBE?AVVector2@2@XZ': 0x518610,          # 004fd53f
+    # FileMesh::create 00500c46 (ICF, evidence: Shader; the same body as the Level instance above)
+    '?setPointer@?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@AAEXPAVMesh@RenderBase@RBX@@@Z': 0x598fa0,
 }
 # The per-face grid template LevelBuilder::buildFace<NormalId, Function>(Function, Vector2int16, Purpose): instances not
 # recovered here; each is bound to the address its call sites in the original use (the face slots of every builder
@@ -181,7 +190,10 @@ EXTERNAL['__ftol2_sse'] = 0x6a17f0                # PBBBuilder ctor 004f1f0a (CR
 # (008270f8, read by 004fa7c2 / 004fa93e).
 UNIT_DATA = {('wedge', '_bevel'): 0x827080, ('torso', '_bevel'): 0x8270f8}
 # BrickMesh::normalPerturbation (0.05f, checked by bytes below): read by the BrickMesh unit 004de50e.. and by Face 004f2040.
-DATA = {'?normalPerturbation@BrickMesh@ViewNew@RBX@@2MB': 0x826e3c}
+DATA = {'?normalPerturbation@BrickMesh@ViewNew@RBX@@2MB': 0x826e3c,
+        # BrickMesh's other 0.0f class constant: read only by the PBB Face / Side strips (004f228d.. six sites); the
+        # BrickMesh unit folds it (checked by bytes below)
+        '?bevel@BrickMesh@ViewNew@RBX@@2MB': 0x826e38}
 FOLDED = {}
 LOCAL_EH = nb.LOCAL_EH
 UNBOUND = []
@@ -282,6 +294,12 @@ PBB_ROWS = [
     (0x4f4b20, '??0PBBMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z'),
     (0x4e54c0, '??_GPBBMesh@ViewNew@RBX@@UAEPAXI@Z'),
 ]
+FILEMESH_ROWS = [
+    (0x500b90, '?create@FileMesh@ViewNew@RBX@@SA?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@'
+               'PAVContentProvider@3@ABVVector3@5@VMeshId@3@@Z'),
+    (0x4e54c0, '??_GFileMesh@ViewNew@RBX@@UAEPAXI@Z'),
+]
+LOAD_FROM_MESH_FILE = '?loadFromMeshFile@FileMesh@ViewNew@RBX@@QAE_NPAVContentProvider@3@ABVVector3@G3D@@VMeshId@3@@Z'
 # ---- the per-face grid templates (native-headers/ViewNew/QuadVolumeFace.h, included by the builder units) -----------
 # Outer grid instances buildFace<id, F>(F, Vector2int16, Purpose) are the BUILD_FACE / GRID_FACE addresses above (the
 # call sites of the face slots); each outer calls its strip buildFace<id, F>(F, Rect2D, depth, origin, extent, axis,
@@ -336,18 +354,10 @@ for symbol, outer in GRID_FACE.items():
     functor = functor.split('@', 1)[0]
     OUTER_ROWS[UNIT_OF[functor]].append((outer, symbol))
     STRIP_OF[strip(n, functor)] = call_after_xyxy(outer)
-# Strips whose functor is inlined into them (Deform*, Face, Side: their operator() bodies are not recovered, so the
-# compiled strip calls them) or whose stack layout differs (the builder-as-functor strips carry an EH frame): bound to
-# the address the outer's call uses and recorded as non-exact.
+# The Deform* / PBB Face / Side functors have class-inline operator() bodies (recovered from the strips, which inline
+# them), so their strips are counted rows. Strips whose stack layout differs (the builder-as-functor strips carry an EH
+# frame) are bound to the address the outer's call uses and recorded as non-exact.
 STRIP_NON_EXACT = {
-    'DeformSide3': 'the original inlines DeformSide3::operator() into the strip; its body is not recovered',
-    'DeformTop3': 'the original inlines DeformTop3::operator() into the strip; its body is not recovered',
-    'DeformFront': 'the original inlines DeformFront::operator() into the strip; its body is not recovered',
-    'DeformSide': 'the original inlines DeformSide::operator() into the strip; its body is not recovered',
-    'DeformTop': 'the original inlines DeformTop::operator() into the strip; its body is not recovered',
-    'DeformFrontBack': 'the original inlines DeformFrontBack::operator() into the strip; its body is not recovered',
-    'Face': 'the original inlines PBB Face::operator() into the strip; its body is not recovered',
-    'Side': 'the original inlines PBB Side::operator() into the strip; its body is not recovered',
     'WedgeBuilder': 'same instructions and size; the EH frame of the by-value builder places the locals 8 bytes '
                     'differently (stack layout only)',
     'TorsoBuilder': 'same instructions and size; the EH frame of the by-value builder places the locals 8 bytes '
@@ -397,12 +407,14 @@ UNPROVEN = {
     # EndcapTransform::operator() (a non-exact row of this recorder) is called by the EndcapTransform strips 004fdd90 /
     # 004fe070 (call 004fdeef)
     '??REndcapTransform@ViewNew@RBX@@QAEXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z': 0x4fdcc0,
+    # FileMesh::loadFromMeshFile (pending-build-only row, below) is called by FileMesh::create 00500c2e
+    LOAD_FROM_MESH_FILE: 0x500780,
 }
 # Vtable slots whose bodies are not built here (bound to the address the original vtable holds).
 SLOT_EXTERNAL = {}
 
 ROWS = {'quad': QUAD_ROWS, 'bevel': BEVEL_ROWS, 'sphere': SPHERE_ROWS, 'cylinder': CYLINDER_ROWS, 'head': HEAD_ROWS,
-        'wedge': WEDGE_ROWS, 'torso': TORSO_ROWS, 'pbb': PBB_ROWS}
+        'wedge': WEDGE_ROWS, 'torso': TORSO_ROWS, 'pbb': PBB_ROWS, 'filemesh': FILEMESH_ROWS}
 for _k in OUTER_ROWS:
     ROWS[_k] = ROWS[_k] + OUTER_ROWS[_k] + STRIP_ROWS[_k]
 NON_EXACT_ROWS += STRIP_NON
@@ -568,6 +580,7 @@ for symbol, address in GRID_FACE.items():
     if FUNCTIONS is not None:
         assert address in FUNCTIONS and FUNCTIONS[address] > 600, (symbol, hex(address))
 assert original.data(0x826e3c, 4) == struct.pack('<f', 0.05), 'normalPerturbation'
+assert original.data(0x826e38, 4) == struct.pack('<f', 0.0), 'BrickMesh::bevel'
 # Vector2::zero 00509ba0: a guarded function-local static (0, 0) whose address is returned.
 _zero, _, _ = match.target('2008-06', '00509ba0')
 assert _zero[-6:-5] == b'\xb8' and _zero[-1:] == b'\xc3' and b'\xd9\xee' in _zero and len(_zero) == 39, _zero.hex()
@@ -649,7 +662,8 @@ for key, cls, address, count in (
         ('torso', 'TorsoBuilder@ViewNew@RBX', 0x827100, 7),
         ('torso', 'TorsoMesh@ViewNew@RBX', 0x827124, 1),
         ('pbb', 'PBBBuilder@ViewNew@RBX', 0x82704c, 7),
-        ('pbb', 'PBBMesh@ViewNew@RBX', 0x827070, 1)):
+        ('pbb', 'PBBMesh@ViewNew@RBX', 0x827070, 1),
+        ('filemesh', 'FileMesh@ViewNew@RBX', 0x8271cc, 1)):
     assert original.vtable_class(address) == ('.?AV%s@@' % cls, 0), (cls, original.vtable_class(address))
     vt[cls] = check_vtable(OBJ[key], '??_7%s@@6B@' % cls, address)
     assert len(vt[cls]) == count, (cls, len(vt[cls]))
@@ -690,6 +704,7 @@ for vtable, cls, key, n, extra in ((0x8270e8, 'WedgeMesh', 'wedge', '$00', {'.?A
     assert bases(vtable) == expect, cls
     _, _, definitions, _ = match._coff_data_index(OBJ[key].read_bytes())
     assert '??_R1IJ@?0A@EA@?$MeshFactory@V%s@ViewNew@RBX@@%s@ViewNew@RBX@@8' % (cls, n) in definitions, cls
+assert bases(0x8271cc) == {'.?AVFileMesh@ViewNew@RBX@@': 0, '.?AVMesh@RenderBase@RBX@@': 0, RCO: 0}
 assert bases(0x826e7c) == {'.?AVBrickMesh@ViewNew@RBX@@': 0, '.?AVMesh@RenderBase@RBX@@': 0, RCO: 0}
 assert bases(0x82d028) == {'.?AVMesh@RenderBase@RBX@@': 0, RCO: 0}
 assert bases(0x826e4c) == {'.?AVLevel@Mesh@RenderBase@RBX@@': 0, RCO: 0}
@@ -713,14 +728,55 @@ alloc_before(0x4fcfb0, 0x28, 0x4dd2e0)
 alloc_before(0x4ee030, 0x8c, 0x4f7780)    # WedgeMesh
 alloc_before(0x4ee530, 0x8c, 0x4fa590)    # TorsoMesh
 alloc_before(0x4edd50, 0x8c, 0x4f49d0)    # PBBMesh (decal)
+alloc_before(0x500b90, 0x88, 0x548570)   # FileMesh::create: new 0x88, Mesh(), then the FileMesh vtable 008271cc
+assert body_has(0x500b90, 0x8271cc)
 for ctor in (0x4f7780, 0x4f78d0, 0x4f7a30, 0x4fa590, 0x4fa700, 0x4fa880, 0x4f49d0, 0x4f4b20):
     alloc_before(ctor, 0x28, 0x4dd2e0)   # new Level(QUADS)
 
+# ---- pending-build-only row: FileMesh::loadFromMeshFile 00500780 ----------------------------------------------------
+# It calls ContentProvider::requestContentFile(const ContentId&, Status*, std::string&) 00562670 (thiscall, ret 0xc;
+# status 1 = succeeded: cmp [ebp+0x58], 1), which util/NativeContentProvider.h (another owner) does not declare. The
+# PENDING build compiles against a generated copy of that header with the proposed declarations; the row is recorded
+# exact=false and is not counted. The original keeps the catch funclet (mov eax, 005007e5; ret) right after the extent
+# at 00500b7f, so the pending body is compared with the extent plus those 6 bytes.
+PENDING_DIR = OUT / 'viewnew-filemesh-pending'
+(PENDING_DIR / 'util').mkdir(parents=True, exist_ok=True)
+_provider = (R / 'native-headers/util/NativeContentProvider.h').read_text()
+_anchor = '    std::string getFile(ContentId);\n'
+assert _provider.count(_anchor) == 1
+PENDING_DECL = ('    enum Status { Failed, Succeeded, Pending };\n'
+                '    void requestContentFile(const ContentId& id, Status* status, std::string& filename);   // 00562670\n'
+                '    Status requestContentFile(const ContentId& id, std::string& filename)\n'
+                '    {\n        Status status;\n        requestContentFile(id, &status, filename);\n        return status;\n    }\n')
+(PENDING_DIR / 'util/NativeContentProvider.h').write_text(_provider.replace(_anchor, _anchor + PENDING_DECL))
+pending_obj, FLAGS['filemesh_pending'] = build('NativeViewNew_filemesh_pending', UNITS['filemesh'],
+                                               ['/fp:fast', '/DNATIVE_VIEWNEW_FILEMESH_PENDING', '/I' + str(PENDING_DIR)])
+_bodies = {n: (b, r) for n, b, r in match.coff_functions(pending_obj.read_bytes())}
+_body, _refs = _bodies[LOAD_FROM_MESH_FILE]
+_target, _target_refs = target_of(0x500780)
+_tail = original.data(0x500780 + len(_target), 6)
+assert _tail[:1] == b'\xb8' and _tail[5:] == b'\xc3' and 0x500780 < struct.unpack('<I', _tail[1:5])[0] < 0x500b7f
+_pending_exact = match.exact_match(_target + _tail, list(_target_refs) + [len(_target) + 1], _body, _refs)
+_create = _bodies[FILEMESH_ROWS[0][1]]
+groups['pending'] = [{
+    'address': '00500780', 'symbol': LOAD_FROM_MESH_FILE, 'size': len(_body), 'target_size': len(_target),
+    'exact': False, 'pending_build_exact': _pending_exact,
+    'reason': 'pending-build-only: needs ContentProvider::requestContentFile (00562670) in util/NativeContentProvider.h; '
+              'the PENDING body is the extent plus the catch funclet 00500b7f',
+}]
+assert _pending_exact, 'pending loadFromMeshFile no longer exact'
+
 sha = nb.sha
 paths = [Path(__file__).resolve(), LAYOUT] + list(UNITS.values()) + HEADERS
-exact = sorted({r['address'] for g in groups.values() for r in g if r['exact']})
+exact = sorted({r['address'] for k, g in groups.items() if k != 'pending' for r in g if r['exact']})
 groups['not_exact'] = non_out
 PROPOSALS = {
+    'util/NativeContentProvider.h (owner: ContentProvider)': 'declare in class ContentProvider: enum Status { Failed, '
+        'Succeeded, Pending }; void requestContentFile(const ContentId&, Status*, std::string&) (00562670, thiscall, '
+        'three pointer arguments, ret 0xc) and the inline Status requestContentFile(const ContentId&, std::string&) '
+        'wrapper (FileMesh::loadFromMeshFile 00500780 keeps the status in the dead provider argument slot [ebp+0x58], '
+        'which the inline wrapper reproduces). Only Succeeded == 1 is derived (cmp [ebp+0x58], 1); the other '
+        'enumerator names are the donor hint. Makes 00500780 a counted row.',
     'RenderBase/Mesh.h (new native header, owner: RenderBase)': 'promote ViewNew/RenderBaseMesh.h: Mesh 0x88 '
         '(levels +0xc, ShadowSurface +0x18, debugBoundingRadius +0x4c, std::vector<unsigned short> +0x50, '
         'std::vector<12-byte> +0x68, owned Ogre sub-mesh +0x80, meshKind +0x84), Level 0x28 (indexArray +0xc, '
@@ -744,8 +800,6 @@ receipt = {
                     'size, Mesh +0x68, Mesh +0x50) when the unnamed byte flag 0096de64 is set; no declaration derivable',
         '004e53c0': 'BrickMesh ctor (meshKind 1, ret 0x1c): unnamed helpers 004e2c80 / 004e3720 / 004e3570 and globals '
                     '00942ec4 / 00972758',
-        '00500b90': 'FileMesh::create: needs the 2008 MeshId (0x24 bytes by value: dword, std::string, dword) from '
-                    'the util owner',
         '00826ec4/00826f94/00826ef8/00826f2c': 'ViewNew::PartChunk / Part / Decal / Texture derive from '
                     'RenderBase::Chunk and read PartInstance (+0x1c8, +0x224): other owners',
     },
@@ -754,5 +808,5 @@ receipt = {
 (ROOT / 'work/2008-06/shared-layouts/viewnew-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS native ViewNew: %d distinct function rows exact (%s); %d non-exact rows not counted; targets and %d '
       'vtables verified' % (len(exact), ', '.join('%s %d' % (k, sum(r['exact'] for r in g))
-                                                   for k, g in groups.items() if k != 'not_exact'),
-                            len(non_out), len(vt)))
+                                                   for k, g in groups.items() if k not in ('not_exact', 'pending')),
+                            len(non_out), len(vt)) + '; 1 pending-build-only row (00500780) not counted')

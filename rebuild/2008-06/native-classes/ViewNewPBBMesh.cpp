@@ -1,5 +1,8 @@
 // 2008-06 native RBX::ViewNew::PBBBuilder / PBBMesh (inactive): the unit 004f1eb0..004f4e3f.
-// The per-face grid instances (004f2110..004f44b0) and the surface ctor 004f4cb0 are not recovered here.
+// The per-face grid instances (004f2110..004f44b0) come from ViewNew/QuadVolumeFace.h; the Face / Side operator() bodies
+// are class-inline (the original inlines them into the strips 004f2110 / 004f2490 and 004f2810..004f3260: inset by
+// BrickMesh::bevel 00826e38, then the bulge loop over normal.x / normal.y, kept as a loop with an if / else body). The
+// surface ctor 004f4cb0 is not recovered here.
 #include "ViewNew/PBBMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 #include "ViewNew/BrickMesh.h"
@@ -12,6 +15,7 @@ namespace RBX
 	{
 		class Face
 		{
+		protected:
 			G3D::Vector2 perturbation;
 			bool bulge[2];
 		public:
@@ -22,13 +26,44 @@ namespace RBX
 				bulge[0] = G3D::uniformRandom() > 0.5f;
 				bulge[1] = G3D::uniformRandom() > 0.5f;
 			}
-			void operator()(G3D::Vector3&, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&);
+			void operator()(G3D::Vector3& vertex, G3D::Vector3& normal, G3D::Vector2&, const G3D::Vector3& size, const G3D::Vector2int16&)
+			{
+				if (vertex.x > 0)
+					vertex.x -= BrickMesh::bevel;
+				else
+					vertex.x += BrickMesh::bevel;
+				if (vertex.y > 0)
+					vertex.y -= BrickMesh::bevel;
+				else
+					vertex.y += BrickMesh::bevel;
+				for (int i = 0; i < 2; ++i)
+				{
+					if (bulge[i])
+						normal[i] = vertex[i] / size[i] * perturbation[i];
+					else
+						normal[i] = perturbation[i];
+				}
+			}
 		};
 
 		class Side : public Face
 		{
 		public:
-			void operator()(G3D::Vector3&, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&);
+			void operator()(G3D::Vector3& vertex, G3D::Vector3& normal, G3D::Vector2&, const G3D::Vector3& size, const G3D::Vector2int16&)
+			{
+				if (vertex.x > 0)
+					vertex.x -= BrickMesh::bevel;
+				else
+					vertex.x += BrickMesh::bevel;
+				vertex.z -= BrickMesh::bevel;
+				for (int i = 0; i < 2; ++i)
+				{
+					if (bulge[i])
+						normal[i] = vertex[i] / size[i] * perturbation[i];
+					else
+						normal[i] = perturbation[i];
+				}
+			}
 		};
 
 		PBBBuilder::PBBBuilder(G3D::ReferenceCountedPointer<RenderBase::Mesh::Level>& level, G3D::Vector3 size, RenderSurfaceTypes surfaceTypes)

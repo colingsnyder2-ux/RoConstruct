@@ -16,6 +16,7 @@ namespace RBX
 		{
 		public:
 			static const float normalPerturbation;    // 00826e3c
+			static const float bevel;                 // 00826e38 (0.0f; read only by the PBB Face / Side strips)
 		};
 	}
 }
