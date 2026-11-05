@@ -29,11 +29,11 @@ def progress_description(data):
     if not total:
         cells[-1] = 23
     bar = ''.join(color * n for color, n in zip(('🟪', '🟧', '🩷', '⬜'), cells))
-    return ('**Integrated code · %.2f%%** · %s / %s target bytes\n%s\n'
-            '🟪 %s integrated · 🟧 %s inactive exact · 🩷 %s draft functions\n'
-            '%s exact waiting · %s functions remaining unintegrated\n'
+    return ('%s\n\n**Integrated code · %.2f%%** · %s / %s target bytes\n\n'
+            '🟪 **%s integrated** · 🟧 **%s inactive exact** · 🩷 **%s draft functions**\n\n'
+            '**%s exact waiting** · **%s functions remaining unintegrated**\n\n'
             'Inactive/draft work adds no runtime activation or server credit.') % (
-                100 * covered / total if total else 0, format(covered, ','), format(total, ','), bar,
+                bar, 100 * covered / total if total else 0, format(covered, ','), format(total, ','),
                 format(integrated['functions'], ','), format(inactive['functions'], ','),
                 format(draft['functions'], ','), format(groups.get('exact_waiting', {}).get('functions', 0), ','),
                 format(sum(g['functions'] for g in groups.values()) - integrated['functions'], ','))

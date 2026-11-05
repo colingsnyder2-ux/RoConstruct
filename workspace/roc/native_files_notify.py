@@ -219,22 +219,46 @@ def link(slug, sha, path):
 
 
 LINKS_PER_MESSAGE = 8   # small messages: 8 links stay far under Discord's 4096-character description limit
-DESCRIPTION_LIMIT = 3900
+DESCRIPTION_LIMIT = 3000
+
+
+def contributor(slug, sha, path):
+    """Attribute immutable uploads to their uploader; distinguish fork/commit credit."""
+    draft = re.match(r'^drafts/files/([0-9a-f]{64})/', path)
+    if draft:
+        try:
+            packet = json.loads(git('show', sha + ':drafts/bundles/' + draft[1] + '.json', check=False))
+            name = packet.get('user') or 'Unknown uploader'
+        except (ValueError, TypeError):
+            name = 'Unknown uploader'
+        label = 'Contributor'
+    elif slug != upstream_slug():
+        label, name = 'Contributor', slug.split('/')[0]
+    else:
+        label = 'Commit author'
+        name = git('log', '-1', '--format=%aN', sha, '--', path, check=False) or 'Unknown author'
+    name = re.sub(r'([\\`*_{}\[\]()<>|~])', r'\\\1', ' '.join(str(name).split())[:80])
+    return '**%s:** %s' % (label, name)
 
 
 def build_payloads(new, cap=None):
     """One small Integration Digest message per chunk of LINKS_PER_MESSAGE files of one (kind, repo, branch).
     Links go in the embed description (4096 limit) as whole lines; nothing is ever cut mid-link."""
     shown = new if cap is None else new[:cap]
-    groups = {}
+    groups, credits = {}, {}
     for slug, branch, sha, path, kind in shown:
-        groups.setdefault((kind != 'new', slug, branch, sha, path.startswith('drafts/files/')), []).append(path)
+        draft = re.match(r'^drafts/files/([0-9a-f]{64})/', path)
+        key = (slug, sha, draft[1] if draft else path)
+        if key not in credits:
+            credits[key] = contributor(slug, sha, path)
+        groups.setdefault((kind != 'new', slug, branch, sha, bool(draft), credits[key]), []).append(path)
     bodies = []
-    for (changed, slug, branch, sha, draft), paths in sorted(groups.items()):
+    for (changed, slug, branch, sha, draft, credit), paths in sorted(groups.items()):
         title = '✏️ Changed native files' if changed else '\U0001F4C4 New native files'
         header = '**2008-06 Client**\n%s · `%s` · `%s`' % (title, slug, branch)
         if draft:
             header += '\nInactive draft upload · unverified; no runtime activation or credit'
+        header += '\n\n' + credit + '\n'
         chunk = []
         for p in paths:
             line = '[%s](%s)' % ('/'.join(p.split('/')[-2:]), link(slug, sha, p))
@@ -264,7 +288,7 @@ def post_files(new, log=print, on_sent=None):
         log('native progress unavailable: %s' % error)
         summary = 'Native progress snapshot unavailable; file uploads remain unverified.'
     for body in payloads:
-        body['embeds'][0]['fields'] = [{'name': 'Native integration progress', 'value': summary, 'inline': False}]
+        body['embeds'][0]['description'] = summary + '\n\n' + body['embeds'][0]['description']
     if not url:
         log('no server_mines_webhook configured; %d new native file(s) not posted' % len(new))
         return False
