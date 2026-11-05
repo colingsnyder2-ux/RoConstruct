@@ -24,6 +24,8 @@ for off,idx,kind in relocs(fs):
  if fv<=off<fv+len(body):
   delta=off-fv;value=struct.unpack_from('<I',full,delta)[0]
   if kind==20:value=(address+delta+4+struct.unpack_from('<i',full,delta)[0])&0xffffffff
+  # DIR32 operands include member offsets; bind the symbol base.
+  if kind==6:value=(value-struct.unpack_from('<i',body,delta)[0])&0xffffffff
   bind(syms[idx][0],value)
 original_relocs=[x-address for x in match._base_relocs('2008-06') if address<=x<address+len(body)]
 assert set(original_relocs)<=set(refs) and match.exact_match(full,original_relocs,body,refs),'primary body must already match before EH graph audit'

@@ -103,8 +103,8 @@ static __declspec(noinline) void launch(const char* first, const char* second)
     if ((UINT_PTR)ShellExecuteA(main->m_hWnd, "open", executable, args, folder, SW_SHOW) <= 32)
         throw std::runtime_error("ShellExecute failed");
 }
-extern CRobloxDoc* currentDocument;
-void setCurrentDocument(bool, CRobloxDoc*);
+extern CRobloxDoc* activeRobloxDoc;
+void setActiveDocument(bool, CRobloxDoc*);
 // Native predicates 00495e60/00495e70 resolve to NetworkClient/NetworkServer lookups.
 namespace RBX { namespace Network {
 class Client { public: static bool clientIsPresent(const Instance*, bool); };
@@ -495,7 +495,7 @@ void CRobloxDoc::DeleteContents() {
         static_cast<IWorkspace*>(workspace)->Release();
         workspace = 0;
     }
-    if (currentDocument == this) setCurrentDocument(1, this);
+    if (activeRobloxDoc == this) setActiveDocument(1, this);
     CDocument::DeleteContents();
 }
 

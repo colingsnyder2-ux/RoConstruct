@@ -1,0 +1,494 @@
+{
+  "schema": 1,
+  "base": "a146ae5ed7a8d05e27af4e1c738143407c205278",
+  "target": "CRobloxDoc active-document provider closure",
+  "result": "consolidated-original-state-and-transition-provider",
+  "runtime_activated": false,
+  "four_main_class_swaps_added": 0,
+  "server_credit_added": 0,
+  "replacement": {
+    "original_address": "00405aa0",
+    "removed_duplicate": "ActiveDocumentData.cpp:setCurrentDocument",
+    "preserved_provider": "ActiveDocument.cpp:setActiveDocument",
+    "bytes": 571,
+    "byte_exact": true,
+    "all_relocation_identities_preserved_except_reviewed_symbol_renames": true
+  },
+  "inventory": {
+    "rebuild/2008-06/native-classes/ActiveDocumentData.cpp": {
+      "base_sha256": "536795adad57a4849f5e9e7b03b5d5942ad1b04a85b80eea81e86e9bc637ee23",
+      "candidate_sha256": "580163ed0a2c5ed26d0d899796177ffa3a554f3c7e94b93e5c659930a86cdea6"
+    },
+    "rebuild/2008-06/native-classes/CRobloxDoc.cpp": {
+      "base_sha256": "f4f9c068b72a2c954227dd9f46e167868ba6774f2c625ba135616dfa04758bbb",
+      "candidate_sha256": "40d9d8ec71ecf38674b41593da87ea6c332b193daac7fc6364be202f266cfbe5"
+    },
+    "rebuild/2008-06/tests/audit_native_eh_graph.py": {
+      "base_sha256": "51ed810a37803d8f310362cece6fe6e794f22232a5ee183e078201be50ab03e4",
+      "candidate_sha256": "a3012b62350001c3885585d99d157294e6a1fbf58158a449e452fe83cbc10543"
+    }
+  },
+  "proof": {
+    "startup_cleanup_and_activation": [
+      {
+        "address": "007ee720",
+        "symbol": "??__EactiveDocViews@@YAXXZ",
+        "size": 35,
+        "byte_exact": true,
+        "bindings": {
+          "?activeDocViews@@": "0x96c23c",
+          "??0?$_Tree@": "0x64b2a0",
+          "??__FactiveDocViews": "0x7fa090",
+          "_atexit": "0x6a17af"
+        },
+        "object_sha256": "7e0631807015bafa48258b2d192f30bb67a70204e2741b844ebc4a387dc5b7b0"
+      },
+      {
+        "address": "007ee750",
+        "symbol": "??__EactiveDocDataModel@@YAXXZ",
+        "size": 12,
+        "byte_exact": true,
+        "bindings": {
+          "??__FactiveDocDataModel": "0x7fa050",
+          "_atexit": "0x6a17af"
+        },
+        "object_sha256": "7e0631807015bafa48258b2d192f30bb67a70204e2741b844ebc4a387dc5b7b0"
+      },
+      {
+        "address": "007fa090",
+        "symbol": "??__FactiveDocViews@@YAXXZ",
+        "size": 10,
+        "byte_exact": true,
+        "bindings": {
+          "?activeDocViews@@": "0x96c23c",
+          "??1?$_Tree@": "0x64b230"
+        },
+        "object_sha256": "7e0631807015bafa48258b2d192f30bb67a70204e2741b844ebc4a387dc5b7b0"
+      },
+      {
+        "address": "007fa050",
+        "symbol": "??__FactiveDocDataModel@@YAXXZ",
+        "size": 56,
+        "byte_exact": true,
+        "bindings": {
+          "?activeDocDataModel@@": "0x96c260"
+        },
+        "object_sha256": "7e0631807015bafa48258b2d192f30bb67a70204e2741b844ebc4a387dc5b7b0"
+      },
+      {
+        "address": "00405aa0",
+        "symbol": "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+        "size": 571,
+        "byte_exact": true,
+        "bindings": {
+          "?activeRobloxDoc@@": "0x96c238"
+        },
+        "object_sha256": "46dceea702dcc971d020a7bb4cb640a14079ae41b3982a29c914bfbdcc7cefac"
+      }
+    ],
+    "doc_bindings": {
+      "?activeRobloxDoc@@3PAVCRobloxDoc@@A": "0x96c238",
+      "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z": "0x405aa0"
+    },
+    "unique_global_owner": true,
+    "doc_bodies": 548,
+    "scope": "Source provider consolidation only; both six-node EH graphs passed with corrected member-addend binding. No runtime activation, completed main-class swap or credit."
+  },
+  "doc_comparison": {
+    "unchanged_doc_bodies": 548,
+    "changed_relocations": {
+      "?DeleteContents@CRobloxDoc@@UAEXXZ": {
+        "before": {
+          "3": [
+            "__ehhandler$?DeleteContents@CRobloxDoc@@UAEXXZ",
+            6
+          ],
+          "40": [
+            "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+            20
+          ],
+          "92": [
+            "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z",
+            20
+          ],
+          "153": [
+            "__imp___invalid_parameter_noinfo",
+            6
+          ],
+          "292": [
+            "__imp___invalid_parameter_noinfo",
+            6
+          ],
+          "310": [
+            "?erase@?$vector@PAVVerb@RBX@@V?$allocator@PAVVerb@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVVerb@RBX@@V?$allocator@PAVVerb@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVVerb@RBX@@V?$allocator@PAVVerb@RBX@@@std@@@2@0@Z",
+            20
+          ],
+          "339": [
+            "??1StandardVerbs@RBX@@QAE@XZ",
+            20
+          ],
+          "345": [
+            "??3@YAXPAX@Z",
+            20
+          ],
+          "365": [
+            "??1Lock@DataModel@RBX@@QAE@XZ",
+            20
+          ],
+          "380": [
+            "?cleanup@CWorkspace@@QAEXXZ",
+            20
+          ],
+          "406": [
+            "?currentDocument@@3PAVCRobloxDoc@@A",
+            6
+          ],
+          "416": [
+            "?setCurrentDocument@@YAX_NPAVCRobloxDoc@@@Z",
+            20
+          ],
+          "426": [
+            "?DeleteContents@CDocument@@UAEXXZ",
+            20
+          ]
+        },
+        "after": {
+          "3": [
+            "__ehhandler$?DeleteContents@CRobloxDoc@@UAEXXZ",
+            6
+          ],
+          "40": [
+            "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+            20
+          ],
+          "92": [
+            "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z",
+            20
+          ],
+          "153": [
+            "__imp___invalid_parameter_noinfo",
+            6
+          ],
+          "292": [
+            "__imp___invalid_parameter_noinfo",
+            6
+          ],
+          "310": [
+            "?erase@?$vector@PAVVerb@RBX@@V?$allocator@PAVVerb@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVVerb@RBX@@V?$allocator@PAVVerb@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVVerb@RBX@@V?$allocator@PAVVerb@RBX@@@std@@@2@0@Z",
+            20
+          ],
+          "339": [
+            "??1StandardVerbs@RBX@@QAE@XZ",
+            20
+          ],
+          "345": [
+            "??3@YAXPAX@Z",
+            20
+          ],
+          "365": [
+            "??1Lock@DataModel@RBX@@QAE@XZ",
+            20
+          ],
+          "380": [
+            "?cleanup@CWorkspace@@QAEXXZ",
+            20
+          ],
+          "406": [
+            "?activeRobloxDoc@@3PAVCRobloxDoc@@A",
+            6
+          ],
+          "416": [
+            "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+            20
+          ],
+          "426": [
+            "?DeleteContents@CDocument@@UAEXXZ",
+            20
+          ]
+        }
+      }
+    },
+    "rename": {
+      "?currentDocument@@3PAVCRobloxDoc@@A": "?activeRobloxDoc@@3PAVCRobloxDoc@@A",
+      "?setCurrentDocument@@YAX_NPAVCRobloxDoc@@@Z": "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z"
+    },
+    "scope": "Primary bodies and relocation symbols only; source/data/provider checks and runtime remain separate."
+  },
+  "eh_graphs": [
+    {
+      "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+      "address": "00405aa0",
+      "primary_body_size": 571,
+      "primary_body_exact": true,
+      "tool_sha256": "837babc4fbd06d6d013f93a75839ea3ddff55f886079e9792f3762bc620108ef",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "object": "work\\2008-06\\native-check-runs\\20261105-130124-94c9dd99\\unit-004\\candidate.obj",
+      "object_sha256": "46dceea702dcc971d020a7bb4cb640a14079ae41b3982a29c914bfbdcc7cefac",
+      "events": [
+        {
+          "symbol": "__ehhandler$?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+          "original": "0x7d2a30",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+          "original": "0x8efaf0",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "original_bytes": "2205931902000000e0fa8e00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190200000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+          "original": "0x8efae0",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "original_bytes": "ffffffff202a7d0000000000282a7d00",
+          "native_bytes": "ffffffff000000000000000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z$0",
+          "original": "0x7d2a20",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$shared_ptr@VDataModel@RBX@@@boost@@QAE@XZ",
+          "original": "0x600660",
+          "kind": "cleanup/handler code",
+          "size": 53,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z$1",
+          "original": "0x7d2a28",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+      "address": "004513c0",
+      "primary_body_size": 449,
+      "primary_body_exact": true,
+      "tool_sha256": "837babc4fbd06d6d013f93a75839ea3ddff55f886079e9792f3762bc620108ef",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "object": "work\\2008-06\\native-check-runs\\20261105-130241-cabc17cd\\unit-001\\candidate.obj",
+      "object_sha256": "5a0077dd55291d08e0af31d934e8af2642cdcc3dd70ebc101977b162bb18a61e",
+      "events": [
+        {
+          "symbol": "__ehhandler$?DeleteContents@CRobloxDoc@@UAEXXZ",
+          "original": "0x7c1cb0",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?DeleteContents@CRobloxDoc@@UAEXXZ",
+          "original": "0x8d8dc4",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "original_bytes": "2205931903000000ac8d8d00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190300000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?DeleteContents@CRobloxDoc@@UAEXXZ",
+          "original": "0x8d8dac",
+          "kind": "EH data",
+          "size": 24,
+          "exact": true,
+          "original_bytes": "ffffffffa01c7c0000000000a81c7c00ffffffffa81c7c00",
+          "native_bytes": "ffffffff000000000000000000000000ffffffff00000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?DeleteContents@CRobloxDoc@@UAEXXZ$0",
+          "original": "0x7c1ca0",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$shared_ptr@VDataModel@RBX@@@boost@@QAE@XZ",
+          "original": "0x600660",
+          "kind": "cleanup/handler code",
+          "size": 53,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$?DeleteContents@CRobloxDoc@@UAEXXZ$2",
+          "original": "0x7c1ca8",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "auditor_regression": {
+    "rejected": true,
+    "reason": "inconsistent original symbol base after mutated DIR32 member offset",
+    "exit": 1
+  },
+  "compiled_sources": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261105-1756\\baseline\\native-classes\\ActiveDocumentData.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261105-130124-94c9dd99\\unit-000\\candidate.obj",
+      "source_sha256": "536795adad57a4849f5e9e7b03b5d5942ad1b04a85b80eea81e86e9bc637ee23",
+      "flags": [
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/IC:/Users/colin/RoConstruct/work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr",
+        "/IC:/Users/colin/RoConstruct/work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/std-noinline-string",
+        "/IC:/Users/colin/RoConstruct/work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/D_XTP_STATICLINK",
+        "/D_XTPLIB_NOAUTOLINK",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
+      ]
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261105-1756\\candidate\\native-classes\\ActiveDocumentData.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261105-130124-94c9dd99\\unit-002\\candidate.obj",
+      "source_sha256": "580163ed0a2c5ed26d0d899796177ffa3a554f3c7e94b93e5c659930a86cdea6",
+      "flags": [
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/IC:/Users/colin/RoConstruct/work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr",
+        "/IC:/Users/colin/RoConstruct/work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/std-noinline-string",
+        "/IC:/Users/colin/RoConstruct/work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/D_XTP_STATICLINK",
+        "/D_XTPLIB_NOAUTOLINK",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
+      ]
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261105-1756\\baseline\\native-classes\\ActiveDocument.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261105-130124-94c9dd99\\unit-004\\candidate.obj",
+      "source_sha256": "cf4da00164e565a605a4f417b4b822af32543f3a08d924d021f4a07076bfae02",
+      "flags": [
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/IC:/Users/colin/RoConstruct/work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr",
+        "/IC:/Users/colin/RoConstruct/work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/std-noinline-string",
+        "/IC:/Users/colin/RoConstruct/work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/D_XTP_STATICLINK",
+        "/D_XTPLIB_NOAUTOLINK",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
+      ]
+    }
+  ],
+  "exclusions": [
+    "138d3a09c8 recovery deletion snapshot",
+    "all unrelated local dirty files",
+    "all headers unchanged",
+    "no diagnostic executable run"
+  ],
+  "remaining": [
+    "CWorkspace::write lifetime/EH exactness",
+    "full selected provider/link closure",
+    "callee ABI, virtual-call and P5/P6/runtime gates"
+  ],
+  "scope": "Inactive source integration. Duplicate 00405aa0 implementation retained in its existing canonical provider; only redundant state/provider removed. Shared headers frozen at base. EH auditor normalizes DIR32 member addends and rejects a deliberately wrong offset. Private execution copy changes ROOT path only."
+}
