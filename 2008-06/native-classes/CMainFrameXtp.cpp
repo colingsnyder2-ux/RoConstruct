@@ -17,6 +17,11 @@ CWrapperView::CWrapperView()
 {
 }
 
+// Original 0070bdf0; the embedded tree draws itself.
+void CWrapperView::OnDraw(CDC*)
+{
+}
+
 BOOL CWrapperView::PreCreateWindow(CREATESTRUCT& cs)
 {
     if (!CView::PreCreateWindow(cs))

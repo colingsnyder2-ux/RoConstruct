@@ -8,7 +8,7 @@ class CBrowserView;
 class CNullDoc : public CDocument {
     DECLARE_DYNCREATE(CNullDoc)
 public:
-    CNullDoc();
+    CNullDoc() {}
 };
 
 // Declarations only. RTTI of vtable 0080d2c4: CBrowserDoc : CNullDoc : CDocument. CRuntimeClass 0080cfac

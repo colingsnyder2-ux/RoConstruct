@@ -32,6 +32,7 @@ int CRobloxApp::Run()
 #include "CRobloxCommandLineInfo.h"
 #include "CBrowserDocManager.h"
 #include "CIDEDocManager.h"
+#include "CRenderSettings.h"
 class NativeAtlModule { public: HRESULT RegisterServer(BOOL, const CLSID*); }; // 0044bea0
 class LogManager { public: static void ReportException(const std::exception&); }; // 00428850
 class NativeClassRegistration { public: NativeClassRegistration(); };             // 005c3ca0
@@ -48,7 +49,6 @@ void nativeRegisterNames2();                          // 0041bb70
 void nativeRegisterNames3();                          // 0041bc40
 void nativeSetVersion(const char*);                   // 0049ecf0
 void nativeInitializeCallbacks();                     // 0044cbb0
-void* nativeStartupContext();                         // 00412d50 (+0x130: startup mode)
 void __stdcall nativeSetRegistrationMode(bool);       // 0044d150
 
 BOOL CRobloxApp::InitInstance()
@@ -104,8 +104,8 @@ BOOL CRobloxApp::InitInstance()
         AfxEnableControlContainer(0);
         initializeSettings();
         nativeInitializeCallbacks();
-        void* startup = nativeStartupContext();
-        if (!nativeStartupMode) nativeStartupMode = *reinterpret_cast<int*>((char*)startup + 0x130);
+        CRenderSettings& settings = CRenderSettings::singleton();
+        if (!nativeStartupMode) nativeStartupMode = settings.graphicsMode;
         if (nativeStartupMode == 5) command.noStartPage = true;
         nativeRegisterNames3();
         if (command.m_bRunEmbedded || command.m_bRunAutomated) {

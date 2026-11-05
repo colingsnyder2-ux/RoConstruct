@@ -4,6 +4,8 @@ import subprocess
 import sys
 import hashlib
 import re
+import time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -13,6 +15,44 @@ from roc import rebuild
 # Compile/check each selected provider once. Checker's exit status alone does not
 # reject nonexact bodies, so require its complete per-method exact summary too.
 checks = [
+    ('native-classes/ActiveDocViewRefresh.cpp', ['00420bd0=?refresh@ActiveDocView']),
+    ('native-classes/CDataModelPropGridUpdate.cpp', ['00442900=?update@CDataModelPropGrid']),
+    ('native-classes/CSelectionCaptionUpdate.cpp', ['00466940=?update@CSelectionCaption', '00466510=??1CSelectionCaption']),
+    ('native-classes/ActiveDocView.cpp', ['00405d50=??0ActiveDocView', '00405d80=??1ActiveDocView']),
+    ('native-classes/CObjectBrowser.cpp', ['00433410=?GetThisClass@CObjectBrowser']),
+    ('native-classes/CRobloxReportSubViews.cpp', ['00455d40=?GetThisClass@CRobloxReportDocView']),
+    ('native-classes/BrowserPopup.cpp', ['0040f050=?showBrowserPopup']),
+    ('native-classes/CChildFrame.cpp', ['00412af0=?GetThisClass@CChildFrame', '00412b80=?GetThisClass@CRbxChildFrame', '00412c90=?CreateObject@CChildFrame', '00412cf0=?CreateObject@CRbxChildFrame', '00412e60=?OnGetMinMaxInfo@CRbxChildFrame']),
+    ('native-classes/CScriptDoc.cpp', ['004638a0=?GetThisClass@CScriptDoc', '004647b0=?CreateObject@CScriptDoc']),
+    ('native-classes/CRobloxViewMethods.cpp', ['00458e70=?GetThisClass@CRobloxView', '004593b0=?OnActivateView', '00459570=?showHelp']),
+    ('native-classes/ActiveDocument.cpp', ['00405aa0=?setActiveDocument']),
+    ('native-classes/CIDEDocManager.cpp', ['00449910=??0CIDEDocManager', '0044a1a0=??_GCRbxDocTemplate', '0044a1c0=??_GCRbxPlayDocTemplate']),
+    ('native-classes/CRbxDocTemplate.cpp', ['0044a170=?CreateNewFrame@CRbxDocTemplate', '004496f0=?RemoveDocument@CRbxPlayDocTemplate']),
+    ('native-classes/TreeNodeRemoveChildren.cpp', ['00425520=?removeChildren@CRobloxTreeCtrlNode']),
+    ('native-classes/TreeNodeRefresh.cpp', ['00422650=?refreshText@CRobloxTreeCtrlNode']),
+    ('native-classes/CRobloxTreeCtrl.cpp', ['00425b00=??0CRobloxTreeCtrl@@', '00424900=??1CRobloxTreeCtrlNode',
+     '00425de0=??0CRobloxTreeCtrlNode', '004262c0=?populate@CRobloxTreeCtrlNode',
+     '004272f0=?GetMessageMap@CRobloxTreeCtrl']),
+    ('native-classes/MarshalWindowGlobals.cpp', ['007ef220=??__EmarshalWindows',
+     '007ef250=??__EmarshalRegistryLock', '007fa9c0=??__FmarshalRegistryLock',
+     '007fa9d0=??__FmarshalWindows']),
+    ('native-classes/CMarshalWindow.cpp', ['00432c50=??0CMarshalWindow', '00432950=?post@CMarshalWindow']),
+    ('native-classes/MarshalWindowRegistry.cpp', ['00432ce0=?acquireMarshalWindow', '00432bd0=?releaseMarshalWindow']),
+    ('native-classes/CPropGrid.cpp', ['00442b20=??0CPropGrid', '00442a30=??1CPropGrid']),
+    ('native-classes/CPropGridMap.cpp', ['00440d20=?GetMessageMap@CPropGrid']),
+    ('native-classes/CSelectionCaption.cpp', ['00466880=??0CSelectionCaption']),
+    ('native-classes/CSelectionTreeCtrl.cpp', ['00425c90=??0CSelectionTreeCtrl']),
+    ('native-classes/CDataModelPropGrid.cpp', ['00431040=??0CDataModelPropGrid', '004310f0=??1CDataModelPropGrid']),
+    ('native-classes/CPatchedControlComboBox.cpp', ['0042eac0=?Compare', '0042eb30=?GetRuntimeClass', '0042fdd0=?Clone']),
+    ('native-classes/LoginRenewer.cpp', ['004277d0=??0LoginRenewer']),
+    ('native-classes/CRobloxControlColorSelector.cpp', ['0044ec60=??0CRobloxControlColorSelector', '0044de10=?SetColor@CRobloxControlColorSelector']),
+    ('native-classes/CMainFrameXtp.cpp', ['0042fcf0=?handle_42fcf0', '0042fe00=?handle_42fe00',
+     '004314e0=?handle_4314e0', '0042fbf0=?handle_42fbf0', '0070bdf0=?OnDraw@CWrapperView',
+     '0042eb40=??0CWrapperView', '0042eb90=?PreCreateWindow@CWrapperView',
+     '0042ebc0=?OnCmdMsg@CWrapperView', '0042ec10=?OnWndMsg@CWrapperView']),
+    ('native-classes/CMainFrameCreate.cpp', ['00431d00=?OnCreate@CMainFrame']),
+    ('native-classes/CMainFrameDisplay.cpp', ['004318b0=?configureFullscreen']),
+    ('native-classes/CMainFrameMap.cpp', ['004321c0=?GetMessageMap@CMainFrame']),
     ('native-classes/CMainFrameDestructor.cpp', ['00432000=??1CMainFrame']),
     ('native-classes/CMainFrameWindow.cpp', ['0042e500=?PreCreateWindow', '00430ae0=?OnSetPreviewMode']),
     ('native-classes/CMainFrameColor.cpp', ['0042e460=?GetRuntimeClass@CMainFrame', '0042fb20=?onEvent@CMainFrame']),
@@ -43,15 +83,24 @@ checks = [
      '0046a370=?GetValue@CVersionInfo', '0046a440=?GetFileVersionAsString',
      '0046a4b0=??1CVersionInfo', '0046a4f0=?Load@CVersionInfo@@QAEHPAU']),
 ]
-verification = []
-for source, methods in checks:
+def verify_provider(check):
+    source, methods = check
+    started = time.monotonic()
     command = [sys.executable, str(ROOT / 'rebuild/2008-06/tests/check_native_class.py'), source] + methods
     run = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
-    verification.append(dict(source=source, output=run.stdout, errors=run.stderr, exit=run.returncode))
     summary = '%d/%d exact' % (len(methods), len(methods))
     if run.returncode or summary not in run.stdout.splitlines():
         raise SystemExit('Provider verification failed: ' + source + '\n' + run.stdout + run.stderr)
-    print(source, summary, flush=True)
+    return dict(source=source, output=run.stdout, errors=run.stderr, exit=run.returncode,
+                seconds=round(time.monotonic() - started, 2))
+
+# Each source has a distinct Check<stem>.obj. Never run two probe instances at
+# once: separate instances would still write those same object paths.
+assert len({Path(source).stem for source, _ in checks}) == len(checks)
+started = time.monotonic()
+with ThreadPoolExecutor(max_workers=3) as pool:
+    verification = list(pool.map(verify_provider, checks))
+print('providers:', len(checks), 'verified in', round(time.monotonic() - started, 2), 'seconds', flush=True)
 
 base = ROOT / 'rebuild/2008-06/out/native-current-audit'
 spec = json.loads((base / 'native-doc-link-command.json').read_text())
@@ -74,6 +123,30 @@ args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckCBrowserDoc.obj'
 args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckCBrowserFrameWnd.obj'))
 args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckApplicationWindowClass.obj'))
 response = base / 'native-app-closure.rsp'
+for name in ('CObjectBrowser', 'CRobloxReportSubViews'):
+    args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckBrowserPopup.obj'))
+args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckActiveDocument.obj'))
+args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckActiveDocView.obj'))
+for name in ('ActiveDocViewRefresh', 'CDataModelPropGridUpdate', 'CSelectionCaptionUpdate'):
+    args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+for name in ('CChildFrame', 'CScriptDoc', 'CRobloxViewMethods'):
+    args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+for name in ('CIDEDocManager', 'CRbxDocTemplate'):
+    args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckTreeNodeRemoveChildren.obj'))
+args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckTreeNodeRefresh.obj'))
+args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckCRobloxTreeCtrl.obj'))
+args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckMarshalWindowGlobals.obj'))
+for name in ('CMarshalWindow', 'MarshalWindowRegistry', 'CPropGrid', 'CPropGridMap'):
+    args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+for name in ('CSelectionCaption', 'CSelectionTreeCtrl', 'CDataModelPropGrid', 'CPatchedControlComboBox'):
+    args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+for name in ('LoginRenewer', 'CRobloxControlColorSelector'):
+    args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+for name in ('CMainFrameXtp', 'CMainFrameCreate', 'CMainFrameDisplay'):
+    args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckCMainFrameMap.obj'))
 for name in ('CMainFrameDestructor', 'CMainFrameWindow', 'CMainFrameColor'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
 for name in ('CMainFrameConstructor', 'CMainFrameCommands'):

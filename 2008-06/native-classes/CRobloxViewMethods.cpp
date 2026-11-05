@@ -7,7 +7,7 @@
 #include <fstream>
 #include <afxdlgs.h>
 
-void fn_00405aa0(bool, CDocument*); // activation bookkeeping, unrecovered
+void setActiveDocument(bool, CRobloxDoc*);
 
 // The target calls std::string::compare(const char*) through the MSVCP import; taking the member's
 // address keeps the call out of line.
@@ -77,10 +77,10 @@ void CRobloxView::layout() {
 void CRobloxView::OnActivateView(BOOL activate, CView* activated, CView* deactivated) {
     CView::OnActivateView(activate, activated, deactivated);
     if (activate) {
-        fn_00405aa0(true, m_pDocument);
+        setActiveDocument(true, static_cast<CRobloxDoc*>(m_pDocument));
         window.setActive(true);
     } else if (activated != deactivated) {
-        fn_00405aa0(false, m_pDocument);
+        setActiveDocument(false, static_cast<CRobloxDoc*>(m_pDocument));
         window.setActive(false);
     }
 }
@@ -184,9 +184,10 @@ void CRobloxView::OnDestroy() {
 
 // Helpers in the browser-view unit: 004060d0 builds the site address, 0040e160 appends a path,
 // 0040f050 opens the popup window for it.
-CString fn_004060d0();
+CString applicationBaseUrl();
 CString fn_0040e160(const CString&, const char*);
-void fn_0040f050(RECT, CWnd*, CString, int);
+class CBrowserView;
+CBrowserView* showBrowserPopup(RECT, CWnd*, CString, IDispatch*);
 
 // 00459570: help popup, centred in the client area with a 12 pixel margin.
 // 0040f050 takes a trailing int (0); 004060d0 takes none.
@@ -197,7 +198,7 @@ void CRobloxView::showHelp() {
     client.right = (client.right - client.left) / 2;
     int height = client.bottom - client.top;
     client.bottom = std::min(480, height) - client.top;
-    fn_0040f050(client, &window, fn_0040e160(fn_004060d0(), "/Game/Help.aspx"), 0);
+    showBrowserPopup(client, &window, fn_0040e160(applicationBaseUrl(), "/Game/Help.aspx"), NULL);
 }
 
 // The target calls CString::operator PCXSTR through the MFC import, so nothing is expanded here.

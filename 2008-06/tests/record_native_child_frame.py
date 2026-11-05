@@ -4,10 +4,7 @@ CRuntimeClass records and message maps.
 Profile: the CMainFrame native profile (rbxgs recipe defines/includes, /O2 /Ob2 /Oy /GF /GS- /EHsc /MD, MFC 9.0 RTM,
 XTP 11.2.2 headers with /D_XTP_STATICLINK), VS2008 RTM 21022.
 
-CRbxChildFrame::OnGetMinMaxInfo (00412e60) is guarded by NATIVE_CHILD_FRAME_PENDING: the original calls
-CRenderSettings::getFullscreenSize out of line, but native-headers/CRenderSettings.h defines it inline in the class.
-The pending build compiles the guarded body against a copy of that header in out/ where the one getter line is
-the plain declaration; that row is recorded as pending, not exact.
+CRbxChildFrame::OnGetMinMaxInfo calls the out-of-line CRenderSettings::getFullscreenSize.
 Run with DISCOVER=1 to list unproven relocation bindings.
 """
 import hashlib, json, os, re, struct, sys
@@ -36,17 +33,7 @@ fixture = here / 'NativeChildFrameLayout.cpp'
 header = root / 'rebuild/2008-06/native-headers/CChildFrame.h'
 settings_header = root / 'rebuild/2008-06/native-headers/CRenderSettings.h'
 obj = out / 'NativeChildFrame.obj'
-pending_obj = out / 'NativeChildFramePending.obj'
-pending_dir = out / 'child-frame-pending'
-pending_dir.mkdir(exist_ok=True)
-INLINE = '    G3D::Vector2int16 getFullscreenSize() const { return fullscreenSize; }\n'
-DECLARED = '    G3D::Vector2int16 getFullscreenSize() const;\n'
-text = settings_header.read_text()
-assert text.count(INLINE) == 1
-(pending_dir / 'CRenderSettings.h').write_text(text.replace(INLINE, DECLARED))
-
-for path, target, extra in [(source, obj, []), (fixture, out / 'NativeChildFrameLayout.obj', []),
-                            (source, pending_obj, ['/DNATIVE_CHILD_FRAME_PENDING', '/I' + str(pending_dir)])]:
+for path, target, extra in [(source, obj, []), (fixture, out / 'NativeChildFrameLayout.obj', [])]:
     code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + extra + includes + ['/Fo' + str(target), str(path)], out)
     assert code == 0, log
 
@@ -103,9 +90,8 @@ METHODS = [
     ('?GetMessageMap@%s@@MBEPBUAFX_MSGMAP@@XZ' % B, 0x412f20),
     ('?GetThisMessageMap@%s@@KGPBUAFX_MSGMAP@@XZ' % B, 0x412f20),
 ]
-PENDING = [('?OnGetMinMaxInfo@%s@@IAEXPAUtagMINMAXINFO@@@Z' % B, 0x412e60)]
+METHODS.append(('?OnGetMinMaxInfo@%s@@IAEXPAUtagMINMAXINFO@@@Z' % B, 0x412e60))
 OWN = dict(METHODS)
-PENDING_OWN = dict(PENDING)
 LOCAL_EH = re.compile(r'^(__ehhandler\$|__unwindfunclet\$|__catch\$|__tryblocktable\$|__unwindtable\$|__ehfuncinfo\$|\$LN\d|__catchsym\$)')
 
 # CRenderSettings bodies proven exact by the CRenderSettings native receipt.
@@ -183,9 +169,6 @@ class Unit:
         if self.weak.get(symbol) in OWN:
             assert OWN[self.weak[symbol]] == value, (where, symbol, hex(value))
             return '%#x (weak external, COFF class 105, defaulting to %s: exact here)' % (value, self.weak[symbol])
-        if symbol in PENDING_OWN:
-            assert PENDING_OWN[symbol] == value, (where, symbol, hex(value))
-            return '%#x (pending row, exact in the pending build)' % value
         if symbol in RECEIPT:
             assert RECEIPT[symbol] == value, (where, symbol, hex(value))
             return '%#x (exact in work/2008-06/shared-layouts/render-settings-working.json)' % value
@@ -253,18 +236,6 @@ for name, address in METHODS:
     verified, local = unit.bind(name, address)
     rows.append({'address': '%08x' % address, 'symbol': name, 'size': len(b), 'exact': True,
                  'verified_targets': verified, 'local_eh': local})
-assert not any(n in unit.bodies for n, _ in PENDING)
-
-pending = Unit(pending_obj)
-pending_rows = []
-for name, address in PENDING:
-    b, r = pending.bodies[name]
-    target, target_refs, _ = match.target('2008-06', '%08x' % address)
-    assert match.exact_match(target, target_refs, b, r), (name, hex(address), len(b), len(target))
-    verified, local = pending.bind(name, address)
-    pending_rows.append({'address': '%08x' % address, 'symbol': name, 'size': len(b), 'exact': False,
-                         'pending_exact': True, 'verified_targets': verified, 'local_eh': local,
-                         'requires': 'native-headers/CRenderSettings.h: "%s" instead of the inline body' % DECLARED.strip()})
 if DISCOVER:
     for k, v in sorted(discovered.items()):
         print(sorted(v), k)
@@ -311,17 +282,17 @@ if DISCOVER:
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 receipt = {
     'class': '%s, %s' % (A, B), 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'flags': flags + includes,
-    'sources': {str(p.relative_to(root)).replace('\\', '/'): sha(p) for p in [Path(__file__).resolve(), source, fixture, header]},
-    'object_sha256': sha(obj), 'pending_object_sha256': sha(pending_obj),
+    'sources': {str(p.relative_to(root)).replace('\\', '/'): sha(p) for p in [Path(__file__).resolve(), source, fixture, header, settings_header]},
+    'object_sha256': sha(obj),
     'layout': {'CChildFrame': '0xf0 = sizeof(CMDIChildWnd), no own members (CRuntimeClass 0080e468, operator new(0xf0) in 00412c90)',
                'CRbxChildFrame': '0xf0, no own members (CRuntimeClass 0080e484, operator new(0xf0) in 00412cf0)',
                'CMDIChildWnd::m_hMenuShared': '0xe8 (cleared by OnCreate 00412b90)'},
     'methods': rows,
-    'pending': pending_rows,
+    'pending': [],
     'vtables': {'0080e4a4': vt_a, '0080e684': vt_b},
     'runtime_classes': runtime,
     'message_maps': maps,
 }
 (root / 'work/2008-06/shared-layouts/child-frame-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS native %s/%s: %d exact rows (%d distinct addresses), %d pending' %
-      (A, B, len(rows), len({r['address'] for r in rows}), len(pending_rows)))
+print('PASS native %s/%s: %d exact rows (%d distinct addresses), 0 pending' %
+      (A, B, len(rows), len({r['address'] for r in rows})))
