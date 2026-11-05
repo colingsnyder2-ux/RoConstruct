@@ -1,0 +1,24 @@
+{
+  "swap_target": "NullTool/ClickDetector runnable integration (native-doc diagnostic closure)",
+  "current_blocker": "NewNullTool::onMouseIdle 00617ec0 calls 00629b20 (ClickDetector::isClickable) via free queryClickDetectors; NewNullTool.cpp does not compile against current native headers (C2664/C2027/C2665) and ClickDetector::isClickable is NATIVE_CLICKDETECTOR_PENDING (needs ModelInstance.h that does not compile, findServiceProvider, findFirstChildOfType)",
+  "required_source_provider": "Genuine NewNullTool (onMouseIdle 00617ec0 135B) + ClickDetector (isClickable 00629b20) + ModelInstance/Workspace headers",
+  "evidence": {
+    "original": "00617ec0 native-asm: call 00629b20 unit RBX::ClickDetector; strings DragCursor/ArrowCursor/ArrowFarCursor; call_targets include 00629b20",
+    "header": "v8datamodel/ClickDetector.h: isClickable 00629b20 walks part ancestors for ClickDetector child with +0x144 > distance; layout +0x140=0, +0x144=32.0 proven",
+    "compile": "run 20261105-181205-4e2cd7e3 failed: compiler C2664 findLocalCharacter/modelIsCharacter, C2027 ModelInstance undefined, C2665 ServiceProvider::find<ControllerService>(Workspace*)",
+    "runs": [
+      "work/2008-06/native-check-runs/20261105-181205-4e2cd7e3"
+    ]
+  },
+  "hypotheses_rejected": 1,
+  "next_proof": "Header proposals for ModelInstance/find APIs (owner-edited), then isolated NewNullTool batch with genuine isClickable call + pending ClickDetector build. No casts/padding to force build.",
+  "status": "parked - awaiting shared header owner work",
+  "global_queue": {
+    "ContentProvider": "inactive 6 exact, parked: needs 10-member requester migration + owned Content (SurfacesStrip.png) for native-doc closure",
+    "NullToolClick": "parked: needs ModelInstance/find headers from owner, then genuine isClickable batch",
+    "Part": "audit 111 consumers/36 inputs; getter COMDAT needs whole native Part provider, not inline tweaks (2 rejected)",
+    "Writer": "parked: caller 130 vs 112 EH state, needs new evidence",
+    "Axis": "link blocked same as closure (needs Content)"
+  },
+  "resume": "On resume: recheck leases, rerun audit only if archive sha changes, do not recompile unchanged Content 6; pick next unleased queue item"
+}

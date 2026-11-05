@@ -1,0 +1,250 @@
+[
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-133438-756ad181\\unit-000\\candidate.obj",
+    "object_sha256": "3ecfe96dcaa3b4b4184c351207637888f48a6f9dea23d5a59e92bfb2e32ef0c3",
+    "analysis": {
+      "checks": [
+        {
+          "addr": "0060dd70",
+          "requested_symbol": "?anyDragPartAlive@MegaDragger@RBX@@QAE_NXZ",
+          "status": "exact",
+          "symbol": "?anyDragPartAlive@MegaDragger@RBX@@QAE_NXZ",
+          "score": 100,
+          "target_size": 13,
+          "object_size": 13,
+          "target_sha256": "0d540f351a3bebc2f3d166c7d1838cb5407b0331c1321d6537274a6a7598c94d",
+          "first_byte_difference": null,
+          "data_matches": [],
+          "data_errors": [],
+          "check_seconds": 1.987538
+        },
+        {
+          "addr": "0060e200",
+          "requested_symbol": "?safeMoveAlongLine@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z",
+          "status": "exact",
+          "symbol": "?safeMoveAlongLine@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z",
+          "score": 100,
+          "target_size": 270,
+          "object_size": 270,
+          "target_sha256": "8337bc419945d4f21114752705f04c46e751a560aedc0a7642a99be7698d43ba",
+          "first_byte_difference": null,
+          "data_matches": [],
+          "data_errors": [],
+          "check_seconds": 0.00059
+        }
+      ],
+      "coverage": [],
+      "layouts": []
+    }
+  },
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-133438-756ad181\\unit-001\\candidate.obj",
+    "object_sha256": "f54cd8c5a8c3370a2c94e64c2c482a6696af6651f0972a0e132653573a6a2ee2",
+    "analysis": {
+      "checks": [
+        {
+          "addr": "00665680",
+          "requested_symbol": "??1Sphere@G3D@@UAE@XZ",
+          "status": "exact",
+          "symbol": "??1Sphere@G3D@@UAE@XZ",
+          "score": 100,
+          "target_size": 7,
+          "object_size": 7,
+          "target_sha256": "7ce3c0e5378818a54858bf527022b3adf0f8ec2d23183ab6e20c71653bf8052f",
+          "first_byte_difference": null,
+          "data_matches": [
+            [
+              8702852,
+              8
+            ]
+          ],
+          "data_errors": [],
+          "check_seconds": 0.000313
+        },
+        {
+          "addr": "006656b0",
+          "requested_symbol": "?hitMoveHandlesInFrame@RBX@@YA_NABVExtents@1@ABVCoordinateFrame@G3D@@ABVRay@4@AAVVector3@4@AAW4NormalId@1@@Z",
+          "status": "exact",
+          "symbol": "?hitMoveHandlesInFrame@RBX@@YA_NABVExtents@1@ABVCoordinateFrame@G3D@@ABVRay@4@AAVVector3@4@AAW4NormalId@1@@Z",
+          "score": 100,
+          "target_size": 462,
+          "object_size": 462,
+          "target_sha256": "4f8abfcac6eb15c0cb9d8118d947168792487855540c60b20eb518d22e269e03",
+          "first_byte_difference": null,
+          "data_matches": [
+            [
+              8512384,
+              4
+            ],
+            [
+              8549380,
+              8
+            ],
+            [
+              8549380,
+              8
+            ]
+          ],
+          "data_errors": [],
+          "check_seconds": 0.000495
+        },
+        {
+          "addr": "00665880",
+          "requested_symbol": "?hitMoveHandles@RBX@@YA_NABVExtents@1@ABVRay@G3D@@AAVVector3@4@AAW4NormalId@1@@Z",
+          "status": "exact",
+          "symbol": "?hitMoveHandles@RBX@@YA_NABVExtents@1@ABVRay@G3D@@AAVVector3@4@AAW4NormalId@1@@Z",
+          "score": 100,
+          "target_size": 281,
+          "object_size": 281,
+          "target_sha256": "bfc29c5e22258c213634fda1be02be489ab4c081b15e3384ac9bac8bb656f5f9",
+          "first_byte_difference": null,
+          "data_matches": [
+            [
+              8493996,
+              4
+            ],
+            [
+              8493996,
+              4
+            ]
+          ],
+          "data_errors": [],
+          "check_seconds": 0.0003
+        }
+      ],
+      "coverage": [],
+      "layouts": []
+    }
+  },
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-133438-756ad181\\unit-002\\candidate.obj",
+    "object_sha256": "70ce681ca8e67b52fe71f6429ff72a33045b34b9ead641437530effcee09c05b",
+    "analysis": {
+      "checks": [
+        {
+          "addr": "0060f340",
+          "requested_symbol": "?collectPrimitives@RBX@@YAXPBVInstance@1@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+          "status": "exact",
+          "symbol": "?collectPrimitives@RBX@@YAXPBVInstance@1@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+          "score": 100,
+          "target_size": 139,
+          "object_size": 139,
+          "target_sha256": "316db24b77d3f8241fbfe6f28f2ca80ff67bd33e2d587b9a4ef55648e08975f7",
+          "first_byte_difference": null,
+          "data_matches": [
+            [
+              9624912,
+              31
+            ],
+            [
+              9605244,
+              27
+            ]
+          ],
+          "data_errors": [],
+          "check_seconds": 0.004016
+        },
+        {
+          "addr": "0060f3d0",
+          "requested_symbol": "?getPrimitives@DragUtilities@RBX@@SAXPBVInstance@2@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+          "status": "exact",
+          "symbol": "?getPrimitives@DragUtilities@RBX@@SAXPBVInstance@2@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+          "score": 100,
+          "target_size": 5,
+          "object_size": 5,
+          "target_sha256": "bf5cfd587b9ea2058021d387ea166107741f8ae4bfa39b85553ea5028f8b978a",
+          "first_byte_difference": null,
+          "data_matches": [],
+          "data_errors": [],
+          "check_seconds": 0.000199
+        },
+        {
+          "addr": "0060ff80",
+          "requested_symbol": "?computeExtents@Dragger@RBX@@SA?AVExtents@2@ABV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+          "status": "exact",
+          "symbol": "?computeExtents@Dragger@RBX@@SA?AVExtents@2@ABV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+          "score": 100,
+          "target_size": 230,
+          "object_size": 230,
+          "target_sha256": "46f0433e948ff136bffe93fe8ac5bd7e664cc1e70c3284e249493cfffef771e5",
+          "first_byte_difference": null,
+          "data_matches": [
+            [
+              8493996,
+              4
+            ],
+            [
+              8493996,
+              4
+            ]
+          ],
+          "data_errors": [],
+          "check_seconds": 0.000196
+        }
+      ],
+      "coverage": [],
+      "layouts": []
+    }
+  },
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-133607-e9149afb\\unit-000\\candidate.obj",
+    "object_sha256": "a6510c2540edae058b3d2e38dd907d94067afb0290e803341e59fdd9f122e8a2",
+    "analysis": {
+      "checks": [
+        {
+          "addr": "006106c0",
+          "requested_symbol": "?safeMoveAlongLine@Dragger@RBX@@SA?AVVector3@G3D@@ABV?$Array@PAVPrimitive@RBX@@@4@ABV34@AAVContactManager@2@@Z",
+          "status": "exact",
+          "symbol": "?safeMoveAlongLine@Dragger@RBX@@SA?AVVector3@G3D@@ABV?$Array@PAVPrimitive@RBX@@@4@ABV34@AAVContactManager@2@@Z",
+          "score": 100,
+          "target_size": 356,
+          "object_size": 356,
+          "target_sha256": "c27bea394b09dd67e0fc28bfd4120bd0aa48f253cf9a6ae4b5bf2a09b8f0c22b",
+          "first_byte_difference": null,
+          "data_matches": [],
+          "data_errors": [],
+          "check_seconds": 0.000745
+        }
+      ],
+      "coverage": [],
+      "layouts": []
+    }
+  },
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-133607-e9149afb\\unit-001\\candidate.obj",
+    "object_sha256": "365e733a68cbcfd33b67c06d33b112d54e87777f4cdc6cd28bde3196d3ee75be",
+    "analysis": {
+      "checks": [
+        {
+          "addr": "00677140",
+          "requested_symbol": "?moveHandleRadius@RBX@@YAMABVVector3@G3D@@0@Z",
+          "status": "exact",
+          "symbol": "?moveHandleRadius@RBX@@YAMABVVector3@G3D@@0@Z",
+          "score": 100,
+          "target_size": 77,
+          "object_size": 77,
+          "target_sha256": "c6dfaa90d33a0bb1786dbf1175c80a6c63a256298f2ec505d9943142f31b82d2",
+          "first_byte_difference": null,
+          "data_matches": [
+            [
+              8493996,
+              4
+            ],
+            [
+              8707812,
+              4
+            ],
+            [
+              8707808,
+              4
+            ]
+          ],
+          "data_errors": [],
+          "check_seconds": 0.000265
+        }
+      ],
+      "coverage": [],
+      "layouts": []
+    }
+  }
+]

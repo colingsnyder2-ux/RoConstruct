@@ -1,0 +1,38 @@
+[
+  {
+    "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-151943-cff659c3\\unit-000\\candidate.obj",
+    "member": null,
+    "offset": null,
+    "sha256": "e5508d0afe443b7195efdce28703b97e7c634e15d85a84a97b4ba28d5fc88767",
+    "symbols": [
+      {
+        "name": "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+        "value": 0,
+        "section": 0,
+        "storage": 2,
+        "type": 32,
+        "aux_hex": "",
+        "weak": null,
+        "section_metadata": null,
+        "real_external_definition": false
+      }
+    ]
+  },
+  {
+    "input": "candidate",
+    "sha256": "0d4820b91d2a4603291db857b1f7e15afb9404b279323c92d09ffd8718977fd9",
+    "symbols": [
+      {
+        "name": "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+        "value": 0,
+        "section": 0,
+        "storage": 2,
+        "type": 32,
+        "aux_hex": "",
+        "weak": null,
+        "section_metadata": null,
+        "real_external_definition": false
+      }
+    ]
+  }
+]

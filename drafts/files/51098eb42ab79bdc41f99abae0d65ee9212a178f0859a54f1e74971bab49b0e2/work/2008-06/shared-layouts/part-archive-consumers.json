@@ -1,0 +1,1881 @@
+{
+  "scope": "Map archive provider references to owning functions; never compile or run a client. References are possible edges, not actual extraction or ABI/runtime proof.",
+  "archive": "rebuild\\2008-06\\out\\RbxgsApp\\linked\\linked.lib",
+  "archive_sha256": "d5ea8f12f4232a4a682a9484ee2cd05bdc0ff2a0bac2a7ef00e8eafbaebe5cee",
+  "member": "PartInstance.obj",
+  "family": "PartInstance",
+  "provider_symbols": [
+    "??$?0P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "??$?0P8PartInstance@RBX@@BE?AW4FormFactor@01@XZP801@AEXW4201@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4FormFactor@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "??$?0P8PartInstance@RBX@@BE?AW4PartType@Part@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4PartType@Part@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "??$?0P8PartInstance@RBX@@BEABVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEABVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "??$?0P8PartInstance@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "??$?0P8PartInstance@RBX@@BE_NXZP801@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE_NXZP832@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "??$?0PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@1@@Z",
+    "??$?0PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+    "??$?0PBD@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@QAE@PBD@Z",
+    "??$?0PBD@?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@IAE@PBD@Z",
+    "??$?0PBD@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@IAE@PBD@Z",
+    "??$?0VInstance@RBX@@@?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@ABV?$shared_ptr@VInstance@RBX@@@1@Ustatic_cast_tag@detail@1@@Z",
+    "??$?0VPartInstance@RBX@@@?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV?$shared_ptr@VPartInstance@RBX@@@1@@Z",
+    "??$?0VPartInstance@RBX@@@?$shared_ptr@VObject@RBX@@@boost@@QAE@ABV?$shared_ptr@VPartInstance@RBX@@@1@@Z",
+    "??$?0VPartInstance@RBX@@@?$weak_ptr@VPartInstance@RBX@@@boost@@QAE@ABV?$shared_ptr@VPartInstance@RBX@@@1@@Z",
+    "??$?0VPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+    "??$?BVGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@QAE?AU?$auto_ptr_ref@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@1@XZ",
+    "??$_Allocate@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@YAPAPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IPAPAV12@@Z",
+    "??$_Allocate@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@IPAV12@@Z",
+    "??$_Checked_base@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@AAPAV12@@Z",
+    "??$_Checked_base@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@AAPAV12@U_Unchanged_checked_iterator_base_type_tag@0@@Z",
+    "??$_Construct@V?$weak_ptr@VPartInstance@RBX@@@boost@@V12@@std@@YAXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@ABV12@@Z",
+    "??$_Copy_backward_opt@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@@std@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "??$_Copy_backward_opt@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@Uforward_iterator_tag@std@@@std@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "??$_Destroy@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@YAXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "??$_Destroy_range@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@YAXPAPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@0AAV?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@0@@Z",
+    "??$_Destroy_range@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@YAXPAPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@0AAV?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@0@U_Scalar_ptr_iterator_tag@0@@Z",
+    "??$_Destroy_range@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@0AAV?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@0@@Z",
+    "??$_Destroy_range@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@0AAV?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+    "??$_Fill@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@V12@@std@@YAXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@0ABV12@@Z",
+    "??$_Iter_random@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@@std@@YA?AUrandom_access_iterator_tag@0@ABQAV?$weak_ptr@VPartInstance@RBX@@@boost@@0@Z",
+    "??$_Move_backward_opt@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@Urandom_access_iterator_tag@std@@U_Undefined_move_tag@4@@std@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@00Urandom_access_iterator_tag@0@U_Undefined_move_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "??$_Move_cat@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@YA?AU_Undefined_move_tag@0@ABQAV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "??$_Ptr_cat@PAPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@PAPAV12@@std@@YA?AU_Scalar_ptr_iterator_tag@0@AAPAPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@0@Z",
+    "??$_Ptr_cat@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@@std@@YA?AU_Nonscalar_ptr_iterator_tag@0@AAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@0@Z",
+    "??$_Umove@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEPAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV23@00@Z",
+    "??$_Unchecked_move_backward@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@@stdext@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@00@Z",
+    "??$_Unchecked_uninitialized_move@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@stdext@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@00AAV?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@Z",
+    "??$_Uninit_copy@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@00AAV?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "??$_Uninit_fill_n@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@IV12@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@IABV12@AAV?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "??$_Uninit_move@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@U_Undefined_move_tag@4@@std@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@00AAV?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@0@U_Undefined_move_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "??$call@M@?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@ABEXPAVPartInstance@2@AAVValue@12@@Z",
+    "??$call@X@?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@ABEXPAVPartInstance@2@AAVValue@12@@Z",
+    "??$create@VPartInstance@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@XZ",
+    "??$fill@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@V12@@std@@YAXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@0ABV12@@Z",
+    "??$getset@P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@std@@P8PartInstance@2@BE?AVVector3@G3D@@XZP852@AEXABV67@@Z@Z",
+    "??$getset@P8PartInstance@RBX@@BE?AW4FormFactor@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@P8PartInstance@2@BE?AW4FormFactor@52@XZP852@AEXW4652@@Z@Z",
+    "??$getset@P8PartInstance@RBX@@BE?AW4PartType@Part@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4PartType@Part@RBX@@@Reflection@RBX@@@std@@P8PartInstance@2@BE?AW4PartType@Part@2@XZP852@AEXW4672@@Z@Z",
+    "??$getset@P8PartInstance@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@std@@P8PartInstance@2@BEABVVector3@G3D@@XZP852@AEXABV67@@Z@Z",
+    "??$getset@P8PartInstance@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8PartInstance@2@BEMXZP852@AEXM@Z@Z",
+    "??$getset@P8PartInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@P8PartInstance@2@BE_NXZP852@AEX_N@Z@Z",
+    "??$rbx_static_cast@PAVPartInstance@RBX@@PAVIMoving@2@@@YAPAVPartInstance@RBX@@PAVIMoving@1@@Z",
+    "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z",
+    "??$shared_static_cast@VPartInstance@RBX@@VInstance@2@@boost@@YA?AV?$shared_ptr@VPartInstance@RBX@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z",
+    "??$sp_enable_shared_from_this@VInstance@RBX@@VPartInstance@2@@detail@boost@@YAXABVshared_count@01@PBV?$enable_shared_from_this@VInstance@RBX@@@1@PBVPartInstance@RBX@@@Z",
+    "??$unchecked_uninitialized_copy@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@stdext@@YAPAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV12@00AAV?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@Z",
+    "??$unchecked_uninitialized_fill_n@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@IV12@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@stdext@@YAXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@IABV12@AAV?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@Z",
+    "??0?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@QAE@P8PartInstance@2@AEMXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "??0?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8PartInstance@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "??0?$ComputeProp@VPart@RBX@@VPartInstance@2@@RBX@@QAE@PAVPartInstance@1@P821@BE?AVPart@1@XZ@Z",
+    "??0?$ComputeProp@_NVPartInstance@RBX@@@RBX@@QAE@PAVPartInstance@1@P821@BE_NXZ@Z",
+    "??0?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@IAE@PBDW4Security@FunctionDescriptor@12@@Z",
+    "??0?$GetSetImpl@P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@P8PartInstance@3@BE?AVVector3@G3D@@XZP843@AEXABV56@@Z@Z",
+    "??0?$GetSetImpl@P8PartInstance@RBX@@BE?AW4FormFactor@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@QAE@P8PartInstance@3@BE?AW4FormFactor@43@XZP843@AEXW4543@@Z@Z",
+    "??0?$GetSetImpl@P8PartInstance@RBX@@BE?AW4PartType@Part@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@QAE@P8PartInstance@3@BE?AW4PartType@Part@3@XZP843@AEXW4563@@Z@Z",
+    "??0?$GetSetImpl@P8PartInstance@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@P8PartInstance@3@BEABVVector3@G3D@@XZP843@AEXABV56@@Z@Z",
+    "??0?$GetSetImpl@P8PartInstance@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@QAE@P8PartInstance@3@BEMXZP843@AEXM@Z@Z",
+    "??0?$GetSetImpl@P8PartInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@QAE@P8PartInstance@3@BE_NXZP843@AEX_N@Z@Z",
+    "??0?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IAE@XZ",
+    "??0?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+    "??0?$_Container_base_aux_alloc_real@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@IAE@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@1@@Z",
+    "??0?$_Iterator_with_base@Urandom_access_iterator_tag@std@@V?$weak_ptr@VPartInstance@RBX@@@boost@@HPBV34@ABV34@V_Iterator_base_aux@2@@std@@QAE@XZ",
+    "??0?$_Ranit@V?$weak_ptr@VPartInstance@RBX@@@boost@@HPBV12@ABV12@@std@@QAE@XZ",
+    "??0?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PBV_Container_base_aux@1@@Z",
+    "??0?$_Vector_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@PAV?$weak_ptr@VPartInstance@RBX@@@boost@@PBV_Container_base_aux@1@@Z",
+    "??0?$_Vector_val@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@IAE@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@1@@Z",
+    "??0?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@QAE@ABV01@@Z",
+    "??0?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@QAE@XZ",
+    "??0?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@QAE@AAV01@@Z",
+    "??0?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@QAE@PAVGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@Z",
+    "??0?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@QAE@U?$auto_ptr_ref@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@1@@Z",
+    "??0?$auto_ptr_ref@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@QAE@PAVGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@Z",
+    "??0?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@ABV01@@Z",
+    "??0?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@XZ",
+    "??0?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+    "??0?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@QAE@XZ",
+    "??0?$weak_ptr@VPartInstance@RBX@@@boost@@QAE@ABV01@@Z",
+    "??0Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@QAE@XZ",
+    "??0GetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@QAE@XZ",
+    "??0PartInstance@RBX@@QAE@XZ",
+    "??1?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UAE@XZ",
+    "??1?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UAE@XZ",
+    "??1?$ComputeProp@VPart@RBX@@VPartInstance@2@@RBX@@QAE@XZ",
+    "??1?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@UAE@XZ",
+    "??1?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@UAE@XZ",
+    "??1?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UAE@XZ",
+    "??1?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@MAE@XZ",
+    "??1?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@UAE@XZ",
+    "??1?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@MAE@XZ",
+    "??1?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@UAE@XZ",
+    "??1?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@UAE@XZ",
+    "??1?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@UAE@XZ",
+    "??1?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@UAE@XZ",
+    "??1?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@UAE@XZ",
+    "??1?$_Container_base_aux_alloc_real@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@IAE@XZ",
+    "??1?$_Vector_val@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@QAE@XZ",
+    "??1?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@QAE@XZ",
+    "??1?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@XZ",
+    "??1?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAE@XZ",
+    "??1?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@QAE@XZ",
+    "??1?$weak_ptr@VPartInstance@RBX@@@boost@@QAE@XZ",
+    "??1Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@QAE@XZ",
+    "??1PartInstance@RBX@@UAE@XZ",
+    "??4?$shared_ptr@VPartInstance@RBX@@@boost@@QAEAAV01@ABV01@@Z",
+    "??4?$weak_ptr@VPartInstance@RBX@@@boost@@QAEAAV01@ABV01@@Z",
+    "??A?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@QAEAAPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@I@Z",
+    "??B?$ComputeProp@_NVPartInstance@RBX@@@RBX@@QBE_NXZ",
+    "??B?$shared_ptr@VPartInstance@RBX@@@boost@@QBEPQ01@PAVPartInstance@RBX@@XZ",
+    "??C?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@QBEPAVGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@XZ",
+    "??C?$shared_ptr@VPartInstance@RBX@@@boost@@QBEPAVPartInstance@RBX@@XZ",
+    "??G?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QBEHABV01@@Z",
+    "??H?$_Vector_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QBE?AV01@H@Z",
+    "??Y?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAEAAV01@H@Z",
+    "??Y?$_Vector_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAEAAV01@H@Z",
+    "??_7?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@6B@",
+    "??_7?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@6B@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentAdded@2@@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BDebugable@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BIControllable@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BILocation@1@@",
+    "??_7?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BIPrimaryPart@1@@",
+    "??_7?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@6B@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentAdded@2@@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BDebugable@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BIControllable@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BILocation@1@@",
+    "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BIPrimaryPart@1@@",
+    "??_7?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@6B@",
+    "??_7?$GetSetImpl@P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@6B@",
+    "??_7?$GetSetImpl@P8PartInstance@RBX@@BE?AW4FormFactor@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@6B@",
+    "??_7?$GetSetImpl@P8PartInstance@RBX@@BE?AW4PartType@Part@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@6B@",
+    "??_7?$GetSetImpl@P8PartInstance@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@6B@",
+    "??_7?$GetSetImpl@P8PartInstance@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@6B@",
+    "??_7?$GetSetImpl@P8PartInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@6B@",
+    "??_7?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@6B@",
+    "??_7?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@6B@",
+    "??_7?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@6B@",
+    "??_7?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@6B@",
+    "??_7?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@6B@",
+    "??_7?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@",
+    "??_7Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B@",
+    "??_7GetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@6B@",
+    "??_7PartInstance@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@",
+    "??_7PartInstance@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@",
+    "??_7PartInstance@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+    "??_7PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@",
+    "??_7PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@",
+    "??_7PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@",
+    "??_7PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentAdded@2@@1@@",
+    "??_7PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@1@@",
+    "??_7PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@",
+    "??_7PartInstance@RBX@@6B?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@1@@",
+    "??_7PartInstance@RBX@@6BDebugable@1@@",
+    "??_7PartInstance@RBX@@6BICameraSubject@1@@",
+    "??_7PartInstance@RBX@@6BIControllable@1@@",
+    "??_7PartInstance@RBX@@6BILocation@1@@",
+    "??_7PartInstance@RBX@@6BIMoving@1@@",
+    "??_7PartInstance@RBX@@6BIPrimaryPart@1@@",
+    "??_7PartInstance@RBX@@6BIRenderable@1@@",
+    "??_8?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@7B@",
+    "??_8?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@7B@",
+    "??_8?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@7B@",
+    "??_8PartInstance@RBX@@7B?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@1@@",
+    "??_8PartInstance@RBX@@7BICameraSubject@1@@",
+    "??_B?1??classDescriptor@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51",
+    "??_B?1??className@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@SAABVName@2@XZ@51",
+    "??_B?3??resize@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@QAEXH_N@Z@53",
+    "??_DPartInstance@RBX@@QAEXXZ",
+    "??_E?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@WBA@AEPAXI@Z",
+    "??_E?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@WBDA@AEPAXI@Z",
+    "??_E?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@WBE@AEPAXI@Z",
+    "??_E?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@WCE@AEPAXI@Z",
+    "??_E?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@WEE@AEPAXI@Z",
+    "??_E?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@WGE@AEPAXI@Z",
+    "??_E?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@WIE@AEPAXI@Z",
+    "??_E?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@WKE@AEPAXI@Z",
+    "??_E?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@WME@AEPAXI@Z",
+    "??_E?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@OBA@AEPAXI@Z",
+    "??_E?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@OBDA@AEPAXI@Z",
+    "??_E?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@OBE@AEPAXI@Z",
+    "??_E?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@OCE@AEPAXI@Z",
+    "??_E?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@OEE@AEPAXI@Z",
+    "??_E?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@OGE@AEPAXI@Z",
+    "??_E?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@OIE@AEPAXI@Z",
+    "??_E?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@OKE@AEPAXI@Z",
+    "??_E?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@OME@AEPAXI@Z",
+    "??_EPartInstance@RBX@@$4PPPPPPPM@DPM@AEPAXI@Z",
+    "??_EPartInstance@RBX@@WBA@AEPAXI@Z",
+    "??_EPartInstance@RBX@@WBDA@AEPAXI@Z",
+    "??_EPartInstance@RBX@@WBE@AEPAXI@Z",
+    "??_EPartInstance@RBX@@WBKA@AEPAXI@Z",
+    "??_EPartInstance@RBX@@WCE@AEPAXI@Z",
+    "??_EPartInstance@RBX@@WEE@AEPAXI@Z",
+    "??_EPartInstance@RBX@@WGE@AEPAXI@Z",
+    "??_EPartInstance@RBX@@WIE@AEPAXI@Z",
+    "??_EPartInstance@RBX@@WKE@AEPAXI@Z",
+    "??_EPartInstance@RBX@@WME@AEPAXI@Z",
+    "??_G?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+    "??_G?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+    "??_G?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@UAEPAXI@Z",
+    "??_G?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UAEPAXI@Z",
+    "??_G?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@MAEPAXI@Z",
+    "??_G?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@UAEPAXI@Z",
+    "??_G?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@UAEPAXI@Z",
+    "??_G?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@UAEPAXI@Z",
+    "??_G?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@UAEPAXI@Z",
+    "??_G?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@UAEPAXI@Z",
+    "??_G?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@UAEPAXI@Z",
+    "??_G?$shared_ptr@VPartInstance@RBX@@@boost@@QAEPAXI@Z",
+    "??_G?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z",
+    "??_G?$weak_ptr@VPartInstance@RBX@@@boost@@QAEPAXI@Z",
+    "??_GPartInstance@RBX@@UAEPAXI@Z",
+    "??_R0?AV?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@@8",
+    "??_R0?AV?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@@8",
+    "??_R0?AV?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@@8",
+    "??_R0?AV?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@@8",
+    "??_R0?AV?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@@8",
+    "??_R0?AV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@@8",
+    "??_R0?AV?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@@8",
+    "??_R0?AV?$GetSetImpl@P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@@8",
+    "??_R0?AV?$GetSetImpl@P8PartInstance@RBX@@BE?AW4FormFactor@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@@8",
+    "??_R0?AV?$GetSetImpl@P8PartInstance@RBX@@BE?AW4PartType@Part@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@@8",
+    "??_R0?AV?$GetSetImpl@P8PartInstance@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@@8",
+    "??_R0?AV?$GetSetImpl@P8PartInstance@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@@8",
+    "??_R0?AV?$GetSetImpl@P8PartInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@@8",
+    "??_R0?AV?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@8",
+    "??_R0?AV?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@@8",
+    "??_R0?AV?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@@8",
+    "??_R0?AV?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@@8",
+    "??_R0?AV?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@@8",
+    "??_R0?AV?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@8",
+    "??_R0?AV?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@@8",
+    "??_R0?AVCreator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@@8",
+    "??_R0?AVGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@8",
+    "??_R0?AVPartInstance@RBX@@@8",
+    "??_R1A@?0A@EA@?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@8",
+    "??_R1A@?0A@EA@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@8",
+    "??_R1A@?0A@EA@?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$GetSetImpl@P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$GetSetImpl@P8PartInstance@RBX@@BE?AW4FormFactor@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$GetSetImpl@P8PartInstance@RBX@@BE?AW4PartType@Part@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$GetSetImpl@P8PartInstance@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$GetSetImpl@P8PartInstance@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$GetSetImpl@P8PartInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@8",
+    "??_R1A@?0A@EA@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@8",
+    "??_R1A@?0A@EA@Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@8",
+    "??_R1A@?0A@EA@GetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@8",
+    "??_R1A@?0A@EA@PartInstance@RBX@@8",
+    "??_R1BKA@?0A@EA@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@8",
+    "??_R2?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@8",
+    "??_R2?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@8",
+    "??_R2?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@8",
+    "??_R2?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@8",
+    "??_R2?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@8",
+    "??_R2?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@8",
+    "??_R2?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@8",
+    "??_R2?$GetSetImpl@P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@8",
+    "??_R2?$GetSetImpl@P8PartInstance@RBX@@BE?AW4FormFactor@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@8",
+    "??_R2?$GetSetImpl@P8PartInstance@RBX@@BE?AW4PartType@Part@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@8",
+    "??_R2?$GetSetImpl@P8PartInstance@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@8",
+    "??_R2?$GetSetImpl@P8PartInstance@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@8",
+    "??_R2?$GetSetImpl@P8PartInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@8",
+    "??_R2?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@8",
+    "??_R2?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@8",
+    "??_R2?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@8",
+    "??_R2?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@8",
+    "??_R2?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@8",
+    "??_R2?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@8",
+    "??_R2?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@8",
+    "??_R2Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@8",
+    "??_R2GetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@8",
+    "??_R2PartInstance@RBX@@8",
+    "??_R3?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@8",
+    "??_R3?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@8",
+    "??_R3?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@8",
+    "??_R3?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@8",
+    "??_R3?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@8",
+    "??_R3?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@8",
+    "??_R3?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@8",
+    "??_R3?$GetSetImpl@P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@8",
+    "??_R3?$GetSetImpl@P8PartInstance@RBX@@BE?AW4FormFactor@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@8",
+    "??_R3?$GetSetImpl@P8PartInstance@RBX@@BE?AW4PartType@Part@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@8",
+    "??_R3?$GetSetImpl@P8PartInstance@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@8",
+    "??_R3?$GetSetImpl@P8PartInstance@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@8",
+    "??_R3?$GetSetImpl@P8PartInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@8",
+    "??_R3?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@8",
+    "??_R3?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@8",
+    "??_R3?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@8",
+    "??_R3?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@8",
+    "??_R3?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@8",
+    "??_R3?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@8",
+    "??_R3?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@8",
+    "??_R3Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@8",
+    "??_R3GetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@8",
+    "??_R3PartInstance@RBX@@8",
+    "??_R4?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@6B@",
+    "??_R4?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@6B@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentAdded@2@@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BDebugable@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BIControllable@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BILocation@1@@",
+    "??_R4?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BIPrimaryPart@1@@",
+    "??_R4?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@6B@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentAdded@2@@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BDebugable@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BIControllable@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BILocation@1@@",
+    "??_R4?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6BIPrimaryPart@1@@",
+    "??_R4?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@6B@",
+    "??_R4?$GetSetImpl@P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@6B@",
+    "??_R4?$GetSetImpl@P8PartInstance@RBX@@BE?AW4FormFactor@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@6B@",
+    "??_R4?$GetSetImpl@P8PartInstance@RBX@@BE?AW4PartType@Part@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@6B@",
+    "??_R4?$GetSetImpl@P8PartInstance@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@6B@",
+    "??_R4?$GetSetImpl@P8PartInstance@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@6B@",
+    "??_R4?$GetSetImpl@P8PartInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@6B@",
+    "??_R4?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@6B@",
+    "??_R4?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@6B@",
+    "??_R4?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@6B@",
+    "??_R4?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@6B@",
+    "??_R4?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@6B@",
+    "??_R4?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@",
+    "??_R4Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@6B@",
+    "??_R4GetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@6B@",
+    "??_R4PartInstance@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@",
+    "??_R4PartInstance@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@",
+    "??_R4PartInstance@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+    "??_R4PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@",
+    "??_R4PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@",
+    "??_R4PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@",
+    "??_R4PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentAdded@2@@1@@",
+    "??_R4PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@1@@",
+    "??_R4PartInstance@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@",
+    "??_R4PartInstance@RBX@@6B?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@1@@",
+    "??_R4PartInstance@RBX@@6BDebugable@1@@",
+    "??_R4PartInstance@RBX@@6BICameraSubject@1@@",
+    "??_R4PartInstance@RBX@@6BIControllable@1@@",
+    "??_R4PartInstance@RBX@@6BILocation@1@@",
+    "??_R4PartInstance@RBX@@6BIMoving@1@@",
+    "??_R4PartInstance@RBX@@6BIPrimaryPart@1@@",
+    "??_R4PartInstance@RBX@@6BIRenderable@1@@",
+    "??__E?creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@0VCreator@12@B@@YAXXZ",
+    "??__F?creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@0VCreator@12@B@@YAXXZ",
+    "??__Ffoo@?1??classDescriptor@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+    "?_Buy@?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@IAE_NI@Z",
+    "?_Destroy@?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@IAEXPAPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@0@Z",
+    "?_Destroy@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@0@Z",
+    "?_Insert_n@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@IABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "?_Tidy@?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@IAEXXZ",
+    "?_Ufill@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEPAV?$weak_ptr@VPartInstance@RBX@@@boost@@PAV34@IABV34@@Z",
+    "?_Xlen@?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@KAXXZ",
+    "?_Xlen@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+    "?aligned@PartInstance@RBX@@QBE_NXZ",
+    "?allocate@?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@QAEPAPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@I@Z",
+    "?allocate@?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@QAEPAV?$weak_ptr@VPartInstance@RBX@@@boost@@I@Z",
+    "?alpha@PartInstance@RBX@@QBEMXZ",
+    "?append@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@QAEXABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "?begin@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@XZ",
+    "?capacity@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QBEIXZ",
+    "?classDescriptor@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+    "?className@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@SAABVName@2@XZ",
+    "?computePersistentPart@PartInstance@RBX@@ABE?AVPart@2@XZ",
+    "?computeSurfacesNeedAdorn@PartInstance@RBX@@ABE_NXZ",
+    "?construct@?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@QAEXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@ABV34@@Z",
+    "?create@Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "?creator$initializer$@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@0P6AXXZA",
+    "?creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@0VCreator@12@B",
+    "?deallocate@?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@QAEXPAPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@I@Z",
+    "?deallocate@?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@QAEXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@I@Z",
+    "?declareSignature@?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@AAEXXZ",
+    "?declareSignature@?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@AAEXXZ",
+    "?destroy@?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@QAEXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "?destroyJoints@PartInstance@RBX@@QAEXXZ",
+    "?dispose@?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ",
+    "?end@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@XZ",
+    "?equalValues@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+    "?equalValues@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+    "?execute@?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "?execute@?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+    "?foo@?1??classDescriptor@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A",
+    "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z",
+    "?fromPrimitiveConst@PartInstance@RBX@@SAPBV12@PBVPrimitive@2@@Z",
+    "?get@?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@QBEPAVGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@XZ",
+    "?getAnchored@PartInstance@RBX@@QBE_NXZ",
+    "?getBiggestPrimitive@PartInstance@RBX@@UBEPBVPrimitive@2@XZ",
+    "?getCameraIgnorePrimitives@PartInstance@RBX@@$4PPPPPPPM@A@AEXAAV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@@Z",
+    "?getCameraIgnorePrimitives@PartInstance@RBX@@UAEXAAV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@@Z",
+    "?getCanCollide@PartInstance@RBX@@QBE_NXZ",
+    "?getClassName@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@UBEABVName@2@XZ",
+    "?getColor3@PartInstance@RBX@@QBE?AVColor3@G3D@@XZ",
+    "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+    "?getDragging@PartInstance@RBX@@QBE_NXZ",
+    "?getElasticity@PartInstance@RBX@@QBEMXZ",
+    "?getEnumValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBEHPBVDescribedBase@23@@Z",
+    "?getExtentsLocal@PartInstance@RBX@@UBE?AVExtents@2@XZ",
+    "?getExtentsWorld@PartInstance@RBX@@UBE?AVExtents@2@XZ",
+    "?getFormFactor@PartInstance@RBX@@QBE?AW4FormFactor@12@XZ",
+    "?getFriction@PartInstance@RBX@@QBEMXZ",
+    "?getIndexValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBEIPBVDescribedBase@23@@Z",
+    "?getLinearVelocity@PartInstance@RBX@@QBEABVVector3@G3D@@XZ",
+    "?getLocation@PartInstance@RBX@@$4PPPPPPPM@A@BE?BVCoordinateFrame@G3D@@XZ",
+    "?getLocation@PartInstance@RBX@@UBE?BVCoordinateFrame@G3D@@XZ",
+    "?getLocked@PartInstance@RBX@@SA_NPAVInstance@2@@Z",
+    "?getMass@PartInstance@RBX@@QAEMXZ",
+    "?getPart@PartInstance@RBX@@QBEABVPart@2@XZ",
+    "?getPartLocked@PartInstance@RBX@@QBE_NXZ",
+    "?getPartSizeUi@PartInstance@RBX@@QBE?AVVector3@G3D@@XZ",
+    "?getPartSizeXml@PartInstance@RBX@@QBEABVVector3@G3D@@XZ",
+    "?getPartType@PartInstance@RBX@@QBE?AW4PartType@Part@2@XZ",
+    "?getPrimaryPart@PartInstance@RBX@@$4PPPPPPPM@A@AEPAV12@XZ",
+    "?getPrimaryPart@PartInstance@RBX@@UAEPAV12@XZ",
+    "?getPrimaryPartConst@PartInstance@RBX@@$4PPPPPPPM@A@BEPBV12@XZ",
+    "?getPrimaryPartConst@PartInstance@RBX@@UBEPBV12@XZ",
+    "?getReflectance@PartInstance@RBX@@QBEMXZ",
+    "?getRenderImportance@PartInstance@RBX@@QBEMXZ",
+    "?getRotationalVelocity@PartInstance@RBX@@QBEABVVector3@G3D@@XZ",
+    "?getStringValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z",
+    "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ",
+    "?getSurfaces@PartInstance@RBX@@QBEABVSurfaces@2@XZ",
+    "?getTranslationUi@PartInstance@RBX@@QBEABVVector3@G3D@@XZ",
+    "?getTransparencyUi@PartInstance@RBX@@QBEMXZ",
+    "?getTransparencyXml@PartInstance@RBX@@QBEMXZ",
+    "?getValue@?$ComputeProp@VPart@RBX@@VPartInstance@2@@RBX@@QBE?AVPart@2@XZ",
+    "?getValue@?$ComputeProp@_NVPartInstance@RBX@@@RBX@@QBE_NXZ",
+    "?getValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@QBE?AW4PartType@Part@3@PBVDescribedBase@23@@Z",
+    "?getValue@?$GetSetImpl@P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE?AVVector3@G3D@@PBVDescribedBase@34@@Z",
+    "?getValue@?$GetSetImpl@P8PartInstance@RBX@@BE?AW4FormFactor@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@UBE?AW4FormFactor@PartInstance@4@PBVDescribedBase@34@@Z",
+    "?getValue@?$GetSetImpl@P8PartInstance@RBX@@BE?AW4PartType@Part@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBE?AW4PartType@Part@4@PBVDescribedBase@34@@Z",
+    "?getValue@?$GetSetImpl@P8PartInstance@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE?AVVector3@G3D@@PBVDescribedBase@34@@Z",
+    "?getValue@?$GetSetImpl@P8PartInstance@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@UBEMPBVDescribedBase@34@@Z",
+    "?getValue@?$GetSetImpl@P8PartInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@UBE_NPBVDescribedBase@34@@Z",
+    "?getValue@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@QBE?AW4FormFactor@PartInstance@3@PBVDescribedBase@23@@Z",
+    "?getValueRef@?$ComputeProp@VPart@RBX@@VPartInstance@2@@RBX@@QBEABVPart@2@XZ",
+    "?getVelocity@PartInstance@RBX@@QBEABVVelocity@2@XZ",
+    "?get_deleter@?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+    "?hasStringValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBE_NXZ",
+    "?hasStringValue@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@UBE_NXZ",
+    "?hitTest@PartInstance@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@@Z",
+    "?inArray@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@AAE_NPBV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "?insert@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@V?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@ABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "?isControllable@PartInstance@RBX@@UBE_NXZ",
+    "?isReadOnly@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBE_NXZ",
+    "?isReadOnly@?$GetSetImpl@P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE_NXZ",
+    "?isReadOnly@?$GetSetImpl@P8PartInstance@RBX@@BE?AW4FormFactor@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@UBE_NXZ",
+    "?isReadOnly@?$GetSetImpl@P8PartInstance@RBX@@BE?AW4PartType@Part@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBE_NXZ",
+    "?isReadOnly@?$GetSetImpl@P8PartInstance@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE_NXZ",
+    "?isReadOnly@?$GetSetImpl@P8PartInstance@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@UBE_NXZ",
+    "?isReadOnly@?$GetSetImpl@P8PartInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@UBE_NXZ",
+    "?isReadOnly@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@UBE_NXZ",
+    "?isWriteOnly@GetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@UBE_NXZ",
+    "?join@PartInstance@RBX@@QAEXXZ",
+    "?legacyTraverseState@PartInstance@RBX@@UAEXABVCoordinateFrame@G3D@@@Z",
+    "?max_size@?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@QBEIXZ",
+    "?max_size@?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@QBEIXZ",
+    "?max_size@?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@QBEIXZ",
+    "?max_size@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QBEIXZ",
+    "?minSize@?3??resize@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@QAEXH_N@Z@4HB",
+    "?n@?1??className@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@SAABVName@3@XZ@4ABV43@B",
+    "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "?onAddListener@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@MBEXPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z",
+    "?onAncestorChanged@PartInstance@RBX@@UAEXABUAncestorChanged@2@@Z",
+    "?onCameraNear@PartInstance@RBX@@$4PPPPPPPM@A@AEXM@Z",
+    "?onCameraNear@PartInstance@RBX@@UAEXM@Z",
+    "?onCanAggregateChanged@PartInstance@RBX@@UAEX_N@Z",
+    "?onChildAdded@PartInstance@RBX@@UAEXPAVInstance@2@@Z",
+    "?onGuidChanged@PartInstance@RBX@@UAEXXZ",
+    "?onParentControllerChanged@PartInstance@RBX@@UAEXXZ",
+    "?onRemoveListener@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@MBEXPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z",
+    "?onSurfaceChanged@PartInstance@RBX@@AAEXW4NormalId@2@@Z",
+    "?onTouchThisStep@PartInstance@RBX@@QAEXV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "?primitivesToParts@PartInstance@RBX@@SAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAV?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@4@@Z",
+    "?push@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@QAEXABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "?push_back@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@QAEXABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "?push_back@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAEXABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "?raise@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IBEXUCanAggregateChanged@2@@Z",
+    "?raise@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IBEXUCanAggregateChanged@2@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z",
+    "?readValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+    "?realloc@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@AAEXH@Z",
+    "?release@?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@QAEPAVGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@XZ",
+    "?render3dAdorn@PartInstance@RBX@@UAEXPAVAdorn@2@@Z",
+    "?render3dSelect@PartInstance@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+    "?reportTouches@PartInstance@RBX@@UBE_NXZ",
+    "?resize@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@QAEXH_N@Z",
+    "?safeMove@PartInstance@RBX@@AAEXXZ",
+    "?setAlphaModifier@PartInstance@RBX@@QAEXM@Z",
+    "?setAnchored@PartInstance@RBX@@QAEX_N@Z",
+    "?setCanCollide@PartInstance@RBX@@QAEX_N@Z",
+    "?setColor@PartInstance@RBX@@QAEXVBrickColor@2@@Z",
+    "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+    "?setDirty@?$ComputeProp@VPart@RBX@@VPartInstance@2@@RBX@@QBE_NXZ",
+    "?setDirty@?$ComputeProp@_NVPartInstance@RBX@@@RBX@@QBE_NXZ",
+    "?setDragging@PartInstance@RBX@@QAEX_N@Z",
+    "?setElasticity@PartInstance@RBX@@QAEXM@Z",
+    "?setEnumValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@H@Z",
+    "?setFormFactorUi@PartInstance@RBX@@QAEXW4FormFactor@12@@Z",
+    "?setFormFactorXml@PartInstance@RBX@@QAEXW4FormFactor@12@@Z",
+    "?setFriction@PartInstance@RBX@@QAEXM@Z",
+    "?setIndexValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@I@Z",
+    "?setLinearVelocity@PartInstance@RBX@@QAEXABVVector3@G3D@@@Z",
+    "?setName@PartInstance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "?setPartLocked@PartInstance@RBX@@QAEX_N@Z",
+    "?setPartSizeUi@PartInstance@RBX@@QAEXABVVector3@G3D@@@Z",
+    "?setPartSizeXml@PartInstance@RBX@@QAEXABVVector3@G3D@@@Z",
+    "?setPartTypeUi@PartInstance@RBX@@QAEXW4PartType@Part@2@@Z",
+    "?setPartTypeXml@PartInstance@RBX@@QAEXW4PartType@Part@2@@Z",
+    "?setPhysics@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+    "?setPhysics@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@ABVVelocity@2@@Z",
+    "?setReflectance@PartInstance@RBX@@QAEXM@Z",
+    "?setRenderImportance@PartInstance@RBX@@QAEXM@Z",
+    "?setRotationalVelocity@PartInstance@RBX@@QAEXABVVector3@G3D@@@Z",
+    "?setStringValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "?setStringValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABVName@3@@Z",
+    "?setTranslationUi@PartInstance@RBX@@QAEXABVVector3@G3D@@@Z",
+    "?setTransparency@PartInstance@RBX@@QAEXM@Z",
+    "?setValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@QBEXPAVDescribedBase@23@W4PartType@Part@3@@Z",
+    "?setValue@?$GetSetImpl@P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVVector3@G3D@@@Z",
+    "?setValue@?$GetSetImpl@P8PartInstance@RBX@@BE?AW4FormFactor@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABW4FormFactor@PartInstance@4@@Z",
+    "?setValue@?$GetSetImpl@P8PartInstance@RBX@@BE?AW4PartType@Part@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABW4PartType@Part@4@@Z",
+    "?setValue@?$GetSetImpl@P8PartInstance@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVVector3@G3D@@@Z",
+    "?setValue@?$GetSetImpl@P8PartInstance@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@UBEXPAVDescribedBase@34@ABM@Z",
+    "?setValue@?$GetSetImpl@P8PartInstance@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@UBEXPAVDescribedBase@34@AB_N@Z",
+    "?shouldRender3dAdorn@PartInstance@RBX@@UBE_NXZ",
+    "?showContactPoints@PartInstance@RBX@@2_NA",
+    "?size@?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@QBEIXZ",
+    "?size@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QBEIXZ",
+    "?uiToXmlSize@PartInstance@RBX@@ABE?AVVector3@G3D@@ABV34@@Z",
+    "?worldSnapLocation@PartInstance@RBX@@QBE?AVCoordinateFrame@G3D@@XZ",
+    "?writeValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBEXPBVDescribedBase@23@PAVXmlElement@@@Z",
+    "__catch$??$?0PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z$0",
+    "__catch$?_Insert_n@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@IABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z$0",
+    "__catch$?_Insert_n@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@IABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z$2",
+    "__catch$?raise@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IBEXUCanAggregateChanged@2@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z$0",
+    "__catchsym$??$?0PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z$3",
+    "__catchsym$?_Insert_n@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@IABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z$8",
+    "__catchsym$?_Insert_n@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@IABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z$9",
+    "__catchsym$?raise@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IBEXUCanAggregateChanged@2@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z$4",
+    "__ehfuncinfo$??$?0P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehfuncinfo$??$?0P8PartInstance@RBX@@BE?AW4FormFactor@01@XZP801@AEXW4201@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4FormFactor@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehfuncinfo$??$?0P8PartInstance@RBX@@BE?AW4PartType@Part@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4PartType@Part@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehfuncinfo$??$?0P8PartInstance@RBX@@BEABVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEABVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehfuncinfo$??$?0P8PartInstance@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehfuncinfo$??$?0P8PartInstance@RBX@@BE_NXZP801@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE_NXZP832@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehfuncinfo$??$?0PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+    "__ehfuncinfo$??$?0PBD@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@QAE@PBD@Z",
+    "__ehfuncinfo$??$?0PBD@?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@IAE@PBD@Z",
+    "__ehfuncinfo$??$?0VPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+    "__ehfuncinfo$??$create@VPartInstance@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@XZ",
+    "__ehfuncinfo$??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z",
+    "__ehfuncinfo$??0?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@QAE@P8PartInstance@2@AEMXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "__ehfuncinfo$??0?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8PartInstance@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "__ehfuncinfo$??0?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IAE@XZ",
+    "__ehfuncinfo$??0?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+    "__ehfuncinfo$??0?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@QAE@XZ",
+    "__ehfuncinfo$??0PartInstance@RBX@@QAE@XZ",
+    "__ehfuncinfo$??1?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UAE@XZ",
+    "__ehfuncinfo$??1?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UAE@XZ",
+    "__ehfuncinfo$??1?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@UAE@XZ",
+    "__ehfuncinfo$??1PartInstance@RBX@@UAE@XZ",
+    "__ehfuncinfo$??_G?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+    "__ehfuncinfo$??_G?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+    "__ehfuncinfo$??_G?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@UAEPAXI@Z",
+    "__ehfuncinfo$?_Insert_n@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@IABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "__ehfuncinfo$?_Xlen@?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@KAXXZ",
+    "__ehfuncinfo$?_Xlen@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+    "__ehfuncinfo$?append@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@QAEXABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "__ehfuncinfo$?classDescriptor@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+    "__ehfuncinfo$?className@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@SAABVName@2@XZ",
+    "__ehfuncinfo$?create@Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "__ehfuncinfo$?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+    "__ehfuncinfo$?hitTest@PartInstance@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@@Z",
+    "__ehfuncinfo$?onTouchThisStep@PartInstance@RBX@@QAEXV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "__ehfuncinfo$?primitivesToParts@PartInstance@RBX@@SAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAV?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@4@@Z",
+    "__ehfuncinfo$?raise@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IBEXUCanAggregateChanged@2@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z",
+    "__ehfuncinfo$?readValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+    "__ehfuncinfo$?render3dAdorn@PartInstance@RBX@@UAEXPAVAdorn@2@@Z",
+    "__ehfuncinfo$?safeMove@PartInstance@RBX@@AAEXXZ",
+    "__ehhandler$??$?0P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehhandler$??$?0P8PartInstance@RBX@@BE?AW4FormFactor@01@XZP801@AEXW4201@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4FormFactor@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehhandler$??$?0P8PartInstance@RBX@@BE?AW4PartType@Part@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4PartType@Part@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehhandler$??$?0P8PartInstance@RBX@@BEABVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEABVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehhandler$??$?0P8PartInstance@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehhandler$??$?0P8PartInstance@RBX@@BE_NXZP801@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE_NXZP832@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__ehhandler$??$?0PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+    "__ehhandler$??$?0PBD@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@QAE@PBD@Z",
+    "__ehhandler$??$?0PBD@?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@IAE@PBD@Z",
+    "__ehhandler$??$?0VPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+    "__ehhandler$??$create@VPartInstance@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@XZ",
+    "__ehhandler$??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z",
+    "__ehhandler$??0?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@QAE@P8PartInstance@2@AEMXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "__ehhandler$??0?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8PartInstance@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "__ehhandler$??0?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IAE@XZ",
+    "__ehhandler$??0?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+    "__ehhandler$??0?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@QAE@XZ",
+    "__ehhandler$??0PartInstance@RBX@@QAE@XZ",
+    "__ehhandler$??1?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UAE@XZ",
+    "__ehhandler$??1?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UAE@XZ",
+    "__ehhandler$??1?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@UAE@XZ",
+    "__ehhandler$??1PartInstance@RBX@@UAE@XZ",
+    "__ehhandler$??_G?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+    "__ehhandler$??_G?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+    "__ehhandler$??_G?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@UAEPAXI@Z",
+    "__ehhandler$?_Insert_n@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@IABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "__ehhandler$?_Xlen@?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@KAXXZ",
+    "__ehhandler$?_Xlen@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+    "__ehhandler$?append@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@QAEXABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "__ehhandler$?classDescriptor@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+    "__ehhandler$?className@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@SAABVName@2@XZ",
+    "__ehhandler$?create@Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "__ehhandler$?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+    "__ehhandler$?hitTest@PartInstance@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@@Z",
+    "__ehhandler$?onTouchThisStep@PartInstance@RBX@@QAEXV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "__ehhandler$?primitivesToParts@PartInstance@RBX@@SAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAV?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@4@@Z",
+    "__ehhandler$?raise@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IBEXUCanAggregateChanged@2@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z",
+    "__ehhandler$?readValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+    "__ehhandler$?render3dAdorn@PartInstance@RBX@@UAEXPAVAdorn@2@@Z",
+    "__ehhandler$?safeMove@PartInstance@RBX@@AAEXXZ",
+    "__tryblocktable$??$?0PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+    "__tryblocktable$?_Insert_n@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@IABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "__tryblocktable$?raise@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IBEXUCanAggregateChanged@2@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z",
+    "__unwindfunclet$??$?0P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z$0",
+    "__unwindfunclet$??$?0P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z$1",
+    "__unwindfunclet$??$?0P8PartInstance@RBX@@BE?AW4FormFactor@01@XZP801@AEXW4201@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4FormFactor@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z$0",
+    "__unwindfunclet$??$?0P8PartInstance@RBX@@BE?AW4FormFactor@01@XZP801@AEXW4201@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4FormFactor@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z$1",
+    "__unwindfunclet$??$?0P8PartInstance@RBX@@BE?AW4PartType@Part@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4PartType@Part@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z$0",
+    "__unwindfunclet$??$?0P8PartInstance@RBX@@BEABVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEABVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z$0",
+    "__unwindfunclet$??$?0P8PartInstance@RBX@@BEABVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEABVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z$1",
+    "__unwindfunclet$??$?0P8PartInstance@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z$0",
+    "__unwindfunclet$??$?0P8PartInstance@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z$1",
+    "__unwindfunclet$??$?0P8PartInstance@RBX@@BE_NXZP801@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE_NXZP832@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z$0",
+    "__unwindfunclet$??$?0P8PartInstance@RBX@@BE_NXZP801@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE_NXZP832@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z$1",
+    "__unwindfunclet$??$?0PBD@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@QAE@PBD@Z$0",
+    "__unwindfunclet$??$?0PBD@?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@IAE@PBD@Z$1",
+    "__unwindfunclet$??$?0VPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z$0",
+    "__unwindfunclet$??$create@VPartInstance@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@XZ$0",
+    "__unwindfunclet$??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z$0",
+    "__unwindfunclet$??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z$1",
+    "__unwindfunclet$??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z$3",
+    "__unwindfunclet$??0?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@QAE@P8PartInstance@2@AEMXZPBDW4Security@FunctionDescriptor@12@@Z$0",
+    "__unwindfunclet$??0?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8PartInstance@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z$0",
+    "__unwindfunclet$??0?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IAE@XZ$1",
+    "__unwindfunclet$??0?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z$0",
+    "__unwindfunclet$??0?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@QAE@XZ$0",
+    "__unwindfunclet$??0PartInstance@RBX@@QAE@XZ$0",
+    "__unwindfunclet$??0PartInstance@RBX@@QAE@XZ$1",
+    "__unwindfunclet$??0PartInstance@RBX@@QAE@XZ$2",
+    "__unwindfunclet$??0PartInstance@RBX@@QAE@XZ$3",
+    "__unwindfunclet$??0PartInstance@RBX@@QAE@XZ$4",
+    "__unwindfunclet$??0PartInstance@RBX@@QAE@XZ$5",
+    "__unwindfunclet$??0PartInstance@RBX@@QAE@XZ$6",
+    "__unwindfunclet$??1?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UAE@XZ$2",
+    "__unwindfunclet$??1?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UAE@XZ$2",
+    "__unwindfunclet$??1?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@UAE@XZ$1",
+    "__unwindfunclet$??1PartInstance@RBX@@UAE@XZ$0",
+    "__unwindfunclet$??1PartInstance@RBX@@UAE@XZ$1",
+    "__unwindfunclet$??1PartInstance@RBX@@UAE@XZ$2",
+    "__unwindfunclet$??1PartInstance@RBX@@UAE@XZ$3",
+    "__unwindfunclet$??1PartInstance@RBX@@UAE@XZ$4",
+    "__unwindfunclet$??1PartInstance@RBX@@UAE@XZ$5",
+    "__unwindfunclet$??_G?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UAEPAXI@Z$2",
+    "__unwindfunclet$??_G?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UAEPAXI@Z$2",
+    "__unwindfunclet$??_G?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@UAEPAXI@Z$1",
+    "__unwindfunclet$?_Insert_n@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@IABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z$4",
+    "__unwindfunclet$?_Insert_n@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@IABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z$5",
+    "__unwindfunclet$?_Xlen@?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@KAXXZ$0",
+    "__unwindfunclet$?_Xlen@?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@KAXXZ$2",
+    "__unwindfunclet$?_Xlen@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@KAXXZ$0",
+    "__unwindfunclet$?_Xlen@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@KAXXZ$2",
+    "__unwindfunclet$?append@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@QAEXABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z$1",
+    "__unwindfunclet$?classDescriptor@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ$0",
+    "__unwindfunclet$?className@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@SAABVName@2@XZ$0",
+    "__unwindfunclet$?create@Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ$1",
+    "__unwindfunclet$?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z$0",
+    "__unwindfunclet$?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z$1",
+    "__unwindfunclet$?hitTest@PartInstance@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@@Z$0",
+    "__unwindfunclet$?onTouchThisStep@PartInstance@RBX@@QAEXV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z$0",
+    "__unwindfunclet$?primitivesToParts@PartInstance@RBX@@SAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAV?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@4@@Z$0",
+    "__unwindfunclet$?raise@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IBEXUCanAggregateChanged@2@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z$2",
+    "__unwindfunclet$?raise@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IBEXUCanAggregateChanged@2@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z$3",
+    "__unwindfunclet$?readValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z$0",
+    "__unwindfunclet$?render3dAdorn@PartInstance@RBX@@UAEXPAVAdorn@2@@Z$0",
+    "__unwindfunclet$?safeMove@PartInstance@RBX@@AAEXXZ$0",
+    "__unwindtable$??$?0P8PartInstance@RBX@@BE?AVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__unwindtable$??$?0P8PartInstance@RBX@@BE?AW4FormFactor@01@XZP801@AEXW4201@@Z@?$PropDescriptor@VPartInstance@RBX@@W4FormFactor@12@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4FormFactor@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__unwindtable$??$?0P8PartInstance@RBX@@BE?AW4PartType@Part@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4PartType@Part@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__unwindtable$??$?0P8PartInstance@RBX@@BEABVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEABVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__unwindtable$??$?0P8PartInstance@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__unwindtable$??$?0P8PartInstance@RBX@@BE_NXZP801@AEX_N@Z@?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE_NXZP832@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z",
+    "__unwindtable$??$?0PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+    "__unwindtable$??$?0PBD@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@QAE@PBD@Z",
+    "__unwindtable$??$?0PBD@?$DescribedCreatable@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@IAE@PBD@Z",
+    "__unwindtable$??$?0VPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+    "__unwindtable$??$create@VPartInstance@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@XZ",
+    "__unwindtable$??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z",
+    "__unwindtable$??0?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@QAE@P8PartInstance@2@AEMXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "__unwindtable$??0?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8PartInstance@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "__unwindtable$??0?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IAE@XZ",
+    "__unwindtable$??0?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+    "__unwindtable$??0?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@QAE@XZ",
+    "__unwindtable$??0PartInstance@RBX@@QAE@XZ",
+    "__unwindtable$??1?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UAE@XZ",
+    "__unwindtable$??1?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UAE@XZ",
+    "__unwindtable$??1?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@UAE@XZ",
+    "__unwindtable$??1PartInstance@RBX@@UAE@XZ",
+    "__unwindtable$??_G?$BoundFuncDesc@VPartInstance@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+    "__unwindtable$??_G?$BoundFuncDesc@VPartInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+    "__unwindtable$??_G?$FuncDesc@VPartInstance@RBX@@@Reflection@RBX@@UAEPAXI@Z",
+    "__unwindtable$?_Insert_n@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@IABV?$weak_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "__unwindtable$?_Xlen@?$vector@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@V?$allocator@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@@std@@@std@@KAXXZ",
+    "__unwindtable$?_Xlen@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+    "__unwindtable$?append@?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@G3D@@QAEXABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "__unwindtable$?classDescriptor@?$Described@VPartInstance@RBX@@$1?sPart@2@3PBDBV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+    "__unwindtable$?className@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@SAABVName@2@XZ",
+    "__unwindtable$?create@Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "__unwindtable$?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+    "__unwindtable$?hitTest@PartInstance@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@@Z",
+    "__unwindtable$?onTouchThisStep@PartInstance@RBX@@QAEXV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+    "__unwindtable$?primitivesToParts@PartInstance@RBX@@SAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAV?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@4@@Z",
+    "__unwindtable$?raise@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@IBEXUCanAggregateChanged@2@PAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z",
+    "__unwindtable$?readValue@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+    "__unwindtable$?render3dAdorn@PartInstance@RBX@@UAEXPAVAdorn@2@@Z",
+    "__unwindtable$?safeMove@PartInstance@RBX@@AAEXXZ"
+  ],
+  "input_sha256": {
+    "archive:glue_surfaces.obj": "c13661ac23530b19384b3b0cf891694287e55dfaaf384f434a622caa2d5fbc73",
+    "archive:glue_runtime.obj": "a120d679d6b81a66fac76d0f86233c0bb3500f4b130dff38503c69185f2728e5",
+    "archive:glue_replicator.obj": "7d7d78cdcdd93bd48376f7ccbd56de95373511648cb1404d3d466ce71cdce466",
+    "archive:glue_part_instance.obj": "f5defd158722404fd056d5c2c4ee9bf49f50bbe7b2d447515ee65f6be82b2acb",
+    "archive:glue_humanoid_climb.obj": "4df7c3c03d35a25b3529f0dc59b58d594f9dd2e936ede3c0ed7a193c89bafb2a",
+    "archive:glue_humanoid.obj": "33f80dddd81bff208d608302be706040055575dbaa0323af008b57c9dd8e531d",
+    "archive:glue_gameplay.obj": "8728abc9eb2b319c98b3243da643f83b57de73e7af176d67a1b2d5b014a386e3",
+    "archive:glue_explosion.obj": "121501c8f08c3e59f81fbcdaed44da4fef5d155bc6e18e06f990d2e68c438922",
+    "archive:Workspace.obj": "c0a092f49e1c76b50aae4809d2502473a6d986ab2110254ec931bee4c09f688b",
+    "archive:ToolsArrow.obj": "7a8919980a26cc44e885eb8be663d6acd1db04d06287315f2db0b6cff15a379b",
+    "archive:ToolMouseCommand.obj": "7ea5a9db3e7f6d3010cf9303809882ea53f8fc8bff97bfcf4efc72e7c1f0f30d",
+    "archive:Tool.obj": "56dc39e2d6bd7cee0dde65da33bbe7779a266976b314f97ee02d59a7aab7fffb",
+    "archive:Surface.obj": "633e41afc91f8764a56ba0da5f7513ac50c57105b2e3c169e305bfe9cb882031",
+    "archive:SpawnLocation.obj": "c4752cf513a204ac93778a6aa762d13391f8b88405a37eaab9a8c70838b8a061",
+    "archive:Seat.obj": "4ad85d662077e529c7f7c4446e9685ab9ac5acfab6176f8e841e56cc037acb9f",
+    "archive:RunDragger.obj": "606ba77171c0bc005e88a6e0b5656045c34ee7b450d302e1a4dc1349b0a35e0a",
+    "archive:RootInstance.obj": "c10a8d5ace85e063f6a23c75ee6571034a52299795d5d4312cabb14520134cea",
+    "archive:Part.obj": "1e53439217453fa7ecb313fd42a9512a4eeee31843b677a2df948ad9d4cbc3c1",
+    "archive:MouseCommand.obj": "c09d7505017ce77978cba761aea052b85a30f5dbce45059e021a3169fcd6ef7c",
+    "archive:ModelInstance.obj": "7d8bc02254e8060455b98ea5f1867b699cd0c380beeb61d9222c3fbd46405c9b",
+    "archive:MegaDragger.obj": "38cebb70426a52175724a2a54269728cdcd23da8720561d6c60b281a4f8f9f01",
+    "archive:JointInstance.obj": "f53e938bbfdb75b0bcb1cd03da9782b5d735678b58d0a6346d195f27be356aaa",
+    "archive:IEquipable.obj": "f5543b105111fc182cbad2349ffb7b119504d0c78bdfc1722e467c9560e66a8a",
+    "archive:Humanoid.obj": "41e327bdee1de1045cc23441929327f904e1f0458d02ff27d4c9645ebfe7e457",
+    "archive:Gyro.obj": "91d0ca8a8d0d9ee81e60ce65d016ce68165e0ae3856cf35551c6aaef922a6ffa",
+    "archive:Freefall.obj": "32c7c50038409fac4e8d72e4cacf2d6664dbd7c9ca3778c7711aa53df3f95fba",
+    "archive:FlagStand.obj": "f9fc3177e771e812190d5abe39e00386cfc18416e946e80b11dcb62f2f5ea6cf",
+    "archive:Filters.obj": "03ca3d729b85f5c9a1305c90d7b9783df458f2803129cd862ddca0002febbad8",
+    "archive:Feature.obj": "eee5c61ef9806601e285ae67dc45a9be21de3df73ff24c1cdc352a7d8b611baa",
+    "archive:Explosion.obj": "aa2c4ca3df8b5732662486fdefa807b21396485bfb2628ac10b153b17fe2ccda",
+    "archive:Dragger.obj": "13cd92b1cc0adabac9b2c67e8beb4e9130a19377ad9a799cd5e4942076145fc4",
+    "archive:DragUtilities.obj": "eec5f5050dc133a9efb1af16ca5141c2aa39ad8189fcf19702babe56bb4bba76",
+    "archive:ClientPhysics.obj": "342609799de8be830b65fdaf238e844d7dae85bb3ceabc354d111f02625ccc2d",
+    "archive:CharacterAppearance.obj": "2545d01efa9c398eec681a7c7dd5eb8f6751b05bdcfea9be59aeaa1ed0e7d188",
+    "archive:Balancing.obj": "c10513170b46ede2ad43b0db07bf0dfcbed60c5fc9a157ca51e4b63f24e975cc",
+    "archive:Accoutrement.obj": "bcf74ee7534821ba35e134d065c66b65c00cc7239c5fc02f03c6183dacf98909"
+  },
+  "consumers": [
+    {
+      "function": "<data-or-unmapped>",
+      "inputs": [
+        "archive:FlagStand.obj",
+        "archive:Seat.obj",
+        "archive:SpawnLocation.obj",
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "??_G?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@UAEPAXI@Z",
+        "??_G?$PropDescriptor@VPartInstance@RBX@@M@Reflection@RBX@@UAEPAXI@Z",
+        "??_G?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@RBX@@UAEPAXI@Z",
+        "??_G?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@RBX@@UAEPAXI@Z",
+        "?getExtentsLocal@PartInstance@RBX@@UBE?AVExtents@2@XZ",
+        "?getExtentsWorld@PartInstance@RBX@@UBE?AVExtents@2@XZ",
+        "?hitTest@PartInstance@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@@Z",
+        "?isControllable@PartInstance@RBX@@UBE_NXZ",
+        "?legacyTraverseState@PartInstance@RBX@@UAEXABVCoordinateFrame@G3D@@@Z",
+        "?onAncestorChanged@PartInstance@RBX@@UAEXABUAncestorChanged@2@@Z",
+        "?onCanAggregateChanged@PartInstance@RBX@@UAEX_N@Z",
+        "?onChildAdded@PartInstance@RBX@@UAEXPAVInstance@2@@Z",
+        "?onGuidChanged@PartInstance@RBX@@UAEXXZ",
+        "?onParentControllerChanged@PartInstance@RBX@@UAEXXZ",
+        "?render3dAdorn@PartInstance@RBX@@UAEXPAVAdorn@2@@Z",
+        "?render3dSelect@PartInstance@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+        "?reportTouches@PartInstance@RBX@@UBE_NXZ",
+        "?setName@PartInstance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "?shouldRender3dAdorn@PartInstance@RBX@@UBE_NXZ"
+      ]
+    },
+    {
+      "function": "??$wrapper2@$00@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "inputs": [
+        "archive:Workspace.obj"
+      ],
+      "symbols": [
+        "?join@PartInstance@RBX@@QAEXXZ"
+      ]
+    },
+    {
+      "function": "??$wrapper2@$0A@@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "inputs": [
+        "archive:Workspace.obj"
+      ],
+      "symbols": [
+        "?destroyJoints@PartInstance@RBX@@QAEXXZ"
+      ]
+    },
+    {
+      "function": "??$wrapper@$00@RBX@@YAXPAVInstance@0@@Z",
+      "inputs": [
+        "archive:Workspace.obj"
+      ],
+      "symbols": [
+        "?join@PartInstance@RBX@@QAEXXZ"
+      ]
+    },
+    {
+      "function": "??$wrapper@$0A@@RBX@@YAXPAVInstance@0@@Z",
+      "inputs": [
+        "archive:Workspace.obj"
+      ],
+      "symbols": [
+        "?destroyJoints@PartInstance@RBX@@QAEXXZ"
+      ]
+    },
+    {
+      "function": "??0?$FactoryProduct@VFlagStand@RBX@@VPartInstance@2@$1?sFlagStand@2@3PBDB@RBX@@IAE@XZ",
+      "inputs": [
+        "archive:FlagStand.obj"
+      ],
+      "symbols": [
+        "??0PartInstance@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "function": "??0?$FactoryProduct@VSeat@RBX@@VPartInstance@2@$1?sSeat@2@3PBDB@RBX@@IAE@XZ",
+      "inputs": [
+        "archive:Seat.obj"
+      ],
+      "symbols": [
+        "??0PartInstance@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "function": "??0?$FactoryProduct@VSpawnLocation@RBX@@VPartInstance@2@$1?sSpawnLocation@2@3PBDB@RBX@@IAE@XZ",
+      "inputs": [
+        "archive:SpawnLocation.obj"
+      ],
+      "symbols": [
+        "??0PartInstance@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "function": "??0FlagStand@RBX@@QAE@XZ",
+      "inputs": [
+        "archive:FlagStand.obj"
+      ],
+      "symbols": [
+        "?setName@PartInstance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    {
+      "function": "??0Freefall@RBX@@QAE@PAVHumanoid@1@@Z",
+      "inputs": [
+        "archive:Freefall.obj"
+      ],
+      "symbols": [
+        "?getFriction@PartInstance@RBX@@QBEMXZ",
+        "?setFriction@PartInstance@RBX@@QAEXM@Z"
+      ]
+    },
+    {
+      "function": "??0JointInstance@RBX@@QAE@PAVJoint@1@@Z",
+      "inputs": [
+        "archive:JointInstance.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "??0Seat@RBX@@QAE@XZ",
+      "inputs": [
+        "archive:Seat.obj"
+      ],
+      "symbols": [
+        "?setName@PartInstance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    {
+      "function": "??0SpawnLocation@RBX@@QAE@XZ",
+      "inputs": [
+        "archive:SpawnLocation.obj"
+      ],
+      "symbols": [
+        "?setName@PartInstance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    {
+      "function": "??1?$FactoryProduct@VFlagStand@RBX@@VPartInstance@2@$1?sFlagStand@2@3PBDB@RBX@@MAE@XZ",
+      "inputs": [
+        "archive:FlagStand.obj"
+      ],
+      "symbols": [
+        "??1PartInstance@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "function": "??1?$FactoryProduct@VSeat@RBX@@VPartInstance@2@$1?sSeat@2@3PBDB@RBX@@MAE@XZ",
+      "inputs": [
+        "archive:Seat.obj"
+      ],
+      "symbols": [
+        "??1PartInstance@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "function": "??1?$FactoryProduct@VSpawnLocation@RBX@@VPartInstance@2@$1?sSpawnLocation@2@3PBDB@RBX@@MAE@XZ",
+      "inputs": [
+        "archive:SpawnLocation.obj"
+      ],
+      "symbols": [
+        "??1PartInstance@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "function": "??1Freefall@RBX@@UAE@XZ",
+      "inputs": [
+        "archive:Freefall.obj"
+      ],
+      "symbols": [
+        "?setFriction@PartInstance@RBX@@QAEXM@Z"
+      ]
+    },
+    {
+      "function": "??__E?prop_Anchored@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@2@B@@YAXXZ",
+      "inputs": [
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "?getAnchored@PartInstance@RBX@@QBE_NXZ",
+        "?setAnchored@PartInstance@RBX@@QAEX_N@Z"
+      ]
+    },
+    {
+      "function": "??__E?prop_BrickColor@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@VBrickColor@2@@Reflection@2@B@@YAXXZ",
+      "inputs": [
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "?setColor@PartInstance@RBX@@QAEXVBrickColor@2@@Z"
+      ]
+    },
+    {
+      "function": "??__E?prop_CFrame@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@2@B@@YAXXZ",
+      "inputs": [
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "??__E?prop_CanCollide@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@2@B@@YAXXZ",
+      "inputs": [
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "?getCanCollide@PartInstance@RBX@@QBE_NXZ",
+        "?setCanCollide@PartInstance@RBX@@QAEX_N@Z"
+      ]
+    },
+    {
+      "function": "??__E?prop_Locked@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@2@B@@YAXXZ",
+      "inputs": [
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "?setPartLocked@PartInstance@RBX@@QAEX_N@Z"
+      ]
+    },
+    {
+      "function": "??__E?prop_Reflectance@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@M@Reflection@2@B@@YAXXZ",
+      "inputs": [
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "?setReflectance@PartInstance@RBX@@QAEXM@Z"
+      ]
+    },
+    {
+      "function": "??__E?prop_RenderImportance@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@M@Reflection@2@B@@YAXXZ",
+      "inputs": [
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "?setRenderImportance@PartInstance@RBX@@QAEXM@Z"
+      ]
+    },
+    {
+      "function": "??__E?prop_Size@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@2@B@@YAXXZ",
+      "inputs": [
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "?getPartSizeXml@PartInstance@RBX@@QBEABVVector3@G3D@@XZ",
+        "?setPartSizeXml@PartInstance@RBX@@QAEXABVVector3@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "??__E?prop_Transparency@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@M@Reflection@2@B@@YAXXZ",
+      "inputs": [
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "?setTransparency@PartInstance@RBX@@QAEXM@Z"
+      ]
+    },
+    {
+      "function": "??__E?prop_shapeXml@PartInstance@RBX@@2V?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@2@B@@YAXXZ",
+      "inputs": [
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "?setPartTypeXml@PartInstance@RBX@@QAEXW4PartType@Part@2@@Z"
+      ]
+    },
+    {
+      "function": "?AffixFlag@FlagStand@RBX@@QAEXPAVFlag@2@@Z",
+      "inputs": [
+        "archive:FlagStand.obj"
+      ],
+      "symbols": [
+        "?join@PartInstance@RBX@@QAEXXZ",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?DetectClimb@RBX@@YA_NPAVHumanoid@1@@Z",
+      "inputs": [
+        "archive:glue_humanoid_climb.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?FindClosestEmptyStandForFlag@FlagStandService@RBX@@QAEPAVFlagStand@2@PAVFlag@2@@Z",
+      "inputs": [
+        "archive:glue_gameplay.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?FindSpawnPositionForPlayer@SpawnerService@RBX@@QAE?AVVector3@G3D@@PAVPlayer@Network@2@@Z",
+      "inputs": [
+        "archive:SpawnLocation.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?GetFlag@FlagStand@RBX@@QAEPAVFlag@2@XZ",
+      "inputs": [
+        "archive:FlagStand.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?OnReceive_ID_TIMESTAMP@Replicator@Network@RBX@@AAE?AW4PluginReceiveResult@@PAUPacket@@@Z",
+      "inputs": [
+        "archive:glue_replicator.obj"
+      ],
+      "symbols": [
+        "?setPhysics@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@ABVVelocity@2@@Z"
+      ]
+    },
+    {
+      "function": "?alignAndCleanParts@MegaDragger@RBX@@QAEXXZ",
+      "inputs": [
+        "archive:MegaDragger.obj"
+      ],
+      "symbols": [
+        "?aligned@PartInstance@RBX@@QBE_NXZ",
+        "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+        "?worldSnapLocation@PartInstance@RBX@@QBE?AVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?alignToGrid@DragUtilities@RBX@@SAXPAVPartInstance@2@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?anyPartAlive@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "function": "?apply@BodyColors@RBX@@EAEXPAVHumanoid@2@@Z",
+      "inputs": [
+        "archive:CharacterAppearance.obj"
+      ],
+      "symbols": [
+        "?setColor@PartInstance@RBX@@QAEXVBrickColor@2@@Z"
+      ]
+    },
+    {
+      "function": "?apply@Skin@RBX@@EAEXPAVHumanoid@2@@Z",
+      "inputs": [
+        "archive:CharacterAppearance.obj"
+      ],
+      "symbols": [
+        "?setColor@PartInstance@RBX@@QAEXVBrickColor@2@@Z"
+      ]
+    },
+    {
+      "function": "?breakJ@RBX@@YAXPAVInstance@1@@Z",
+      "inputs": [
+        "archive:ModelInstance.obj"
+      ],
+      "symbols": [
+        "?destroyJoints@PartInstance@RBX@@QAEXXZ"
+      ]
+    },
+    {
+      "function": "?breakJoints@RBX@@YAXPAVInstance@1@@Z",
+      "inputs": [
+        "archive:Humanoid.obj"
+      ],
+      "symbols": [
+        "?destroyJoints@PartInstance@RBX@@QAEXXZ"
+      ]
+    },
+    {
+      "function": "?buildWeld@IEquipable@RBX@@IAEXPAVPartInstance@2@0ABVCoordinateFrame@G3D@@1ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "inputs": [
+        "archive:IEquipable.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?cframe@PartChunk@View@RBX@@MAEABVCoordinateFrame@G3D@@XZ",
+      "inputs": [
+        "archive:Part.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?characterCanReach@MouseCommand@RBX@@IBE_NABVVector3@G3D@@@Z",
+      "inputs": [
+        "archive:MouseCommand.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?clean@DragUtilities@RBX@@SAXABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?aligned@PartInstance@RBX@@QBE_NXZ",
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?clean@DragUtilities@RBX@@SAXPAVPartInstance@2@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?aligned@PartInstance@RBX@@QBE_NXZ"
+      ]
+    },
+    {
+      "function": "?computeCharacterInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@ABVExtents@2@@Z",
+      "inputs": [
+        "archive:RootInstance.obj"
+      ],
+      "symbols": [
+        "?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z"
+      ]
+    },
+    {
+      "function": "?computeForce@Rocket@RBX@@UAEXM_N@Z",
+      "inputs": [
+        "archive:Gyro.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?doBlast@Explosion@RBX@@AAEXABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+      "inputs": [
+        "archive:Explosion.obj"
+      ],
+      "symbols": [
+        "?destroyJoints@PartInstance@RBX@@QAEXXZ",
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?doKill@Explosion@RBX@@AAEXXZ",
+      "inputs": [
+        "archive:glue_explosion.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?downFrom_Equipped@Tool@RBX@@AAEXXZ",
+      "inputs": [
+        "archive:Tool.obj"
+      ],
+      "symbols": [
+        "?setCanCollide@PartInstance@RBX@@QAEX_N@Z",
+        "?setRotationalVelocity@PartInstance@RBX@@QAEXABVVector3@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?faceOf@?A0xfa925ad7@RBX@@YAAAVSurface@2@PBVDescribedBase@Reflection@2@W4NormalId@2@@Z",
+      "inputs": [
+        "archive:glue_surfaces.obj"
+      ],
+      "symbols": [
+        "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ"
+      ]
+    },
+    {
+      "function": "?filterResult@PartByLocalCharacter@RBX@@UBE?AW4Result@HitTestFilter@2@PBVPrimitive@2@@Z",
+      "inputs": [
+        "archive:Filters.obj"
+      ],
+      "symbols": [
+        "?fromPrimitiveConst@PartInstance@RBX@@SAPBV12@PBVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?filterResult@UnlockedPartByLocalCharacter@RBX@@UBE?AW4Result@HitTestFilter@2@PBVPrimitive@2@@Z",
+      "inputs": [
+        "archive:Filters.obj"
+      ],
+      "symbols": [
+        "?fromPrimitiveConst@PartInstance@RBX@@SAPBV12@PBVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?findNoSnapPosition@RunDragger@RBX@@AAEXABVCoordinateFrame@G3D@@@Z",
+      "inputs": [
+        "archive:RunDragger.obj"
+      ],
+      "symbols": [
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?findSafeY@RunDragger@RBX@@AAEXXZ",
+      "inputs": [
+        "archive:RunDragger.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?getIntendedMovementVector@Humanoid@RBX@@AAE?AVVector3@G3D@@_N@Z",
+      "inputs": [
+        "archive:Humanoid.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?getLocation@Accoutrement@RBX@@MBE?BVCoordinateFrame@G3D@@XZ",
+      "inputs": [
+        "archive:Accoutrement.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?getLocation@Humanoid@RBX@@EBE?BVCoordinateFrame@G3D@@XZ",
+      "inputs": [
+        "archive:Humanoid.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?getLocation@ModelInstance@RBX@@UBE?BVCoordinateFrame@G3D@@XZ",
+      "inputs": [
+        "archive:ModelInstance.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?getLocation@PartInstance@RBX@@UBE?BVCoordinateFrame@G3D@@XZ",
+      "inputs": [
+        "archive:FlagStand.obj",
+        "archive:Seat.obj",
+        "archive:SpawnLocation.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?getLocation@Tool@RBX@@EBE?BVCoordinateFrame@G3D@@XZ",
+      "inputs": [
+        "archive:Tool.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?getMouseInstances@BoxSelectCommand@RBX@@AAEXAAV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@ABVUIEvent@2@AAVRect2D@G3D@@@Z",
+      "inputs": [
+        "archive:ToolsArrow.obj"
+      ],
+      "symbols": [
+        "?getLocked@PartInstance@RBX@@SA_NPAVInstance@2@@Z"
+      ]
+    },
+    {
+      "function": "?getMousePart@MouseCommand@RBX@@SAPAVPartInstance@2@ABVRay@G3D@@ABVContactManager@2@ABV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@PBVHitTestFilter@2@AAVVector3@5@M@Z",
+      "inputs": [
+        "archive:MouseCommand.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?getPrimaryPartInternal@ModelInstance@RBX@@QBEPAVPartInstance@2@XZ",
+      "inputs": [
+        "archive:ModelInstance.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?getRenderCoord@Feature@RBX@@IBE_NAAVCoordinateFrame@G3D@@@Z",
+      "inputs": [
+        "archive:Feature.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?hasWalkToPoint@Humanoid@RBX@@ABE_NAAVVector3@G3D@@@Z",
+      "inputs": [
+        "archive:Humanoid.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?insertRaw@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z",
+      "inputs": [
+        "archive:RootInstance.obj"
+      ],
+      "symbols": [
+        "?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z"
+      ]
+    },
+    {
+      "function": "?instancesToParts@DragUtilities@RBX@@SAXABV?$vector@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z"
+      ]
+    },
+    {
+      "function": "?join@DragUtilities@RBX@@SAXABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?join@PartInstance@RBX@@QAEXXZ",
+        "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "function": "?joinAndStopDragging@DragUtilities@RBX@@SAXABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+        "?setDragging@PartInstance@RBX@@QAEX_N@Z",
+        "?setLinearVelocity@PartInstance@RBX@@QAEXABVVector3@G3D@@@Z",
+        "?setRotationalVelocity@PartInstance@RBX@@QAEXABVVector3@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?makeJ@RBX@@YAXPAVInstance@1@@Z",
+      "inputs": [
+        "archive:ModelInstance.obj"
+      ],
+      "symbols": [
+        "?join@PartInstance@RBX@@QAEXXZ"
+      ]
+    },
+    {
+      "function": "?mousePartAlive@MegaDragger@RBX@@QAE_NXZ",
+      "inputs": [
+        "archive:MegaDragger.obj"
+      ],
+      "symbols": [
+        "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "function": "?move@DragUtilities@RBX@@SAXABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@VCoordinateFrame@G3D@@1@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?moveAndClean@DragUtilities@RBX@@SAXPAVPartInstance@2@ABVVector3@G3D@@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?aligned@PartInstance@RBX@@QBE_NXZ",
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?movePrimitives@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@@Z",
+      "inputs": [
+        "archive:Dragger.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?moveTo@Humanoid@RBX@@QAEXABVVector3@G3D@@PAVPartInstance@2@@Z",
+      "inputs": [
+        "archive:Humanoid.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?notJoined@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "function": "?onCameraNear@PartInstance@RBX@@$4PPPPPPPM@A@AEXM@Z",
+      "inputs": [
+        "archive:FlagStand.obj",
+        "archive:Seat.obj",
+        "archive:SpawnLocation.obj"
+      ],
+      "symbols": [
+        "?onCameraNear@PartInstance@RBX@@UAEXM@Z"
+      ]
+    },
+    {
+      "function": "?onCameraNear@PartInstance@RBX@@$4PPPPPPPM@BI@AEXM@Z",
+      "inputs": [
+        "archive:FlagStand.obj"
+      ],
+      "symbols": [
+        "?onCameraNear@PartInstance@RBX@@UAEXM@Z"
+      ]
+    },
+    {
+      "function": "?onCameraNear@PartInstance@RBX@@$4PPPPPPPM@CA@AEXM@Z",
+      "inputs": [
+        "archive:SpawnLocation.obj"
+      ],
+      "symbols": [
+        "?onCameraNear@PartInstance@RBX@@UAEXM@Z"
+      ]
+    },
+    {
+      "function": "?onCameraNear@PartInstance@RBX@@$4PPPPPPPM@DI@AEXM@Z",
+      "inputs": [
+        "archive:Seat.obj"
+      ],
+      "symbols": [
+        "?onCameraNear@PartInstance@RBX@@UAEXM@Z"
+      ]
+    },
+    {
+      "function": "?onEvent@Rocket@RBX@@MAEXPBVRunService@2@VStepped@2@@Z",
+      "inputs": [
+        "archive:Gyro.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?onLocalHumanoidEnteringWorkspace@Humanoid@RBX@@AAEXXZ",
+      "inputs": [
+        "archive:Humanoid.obj"
+      ],
+      "symbols": [
+        "?setRenderImportance@PartInstance@RBX@@QAEXM@Z"
+      ]
+    },
+    {
+      "function": "?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "function": "?pvsToParts@DragUtilities@RBX@@SAXABV?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z"
+      ]
+    },
+    {
+      "function": "?renderMultiplayer@Humanoid@RBX@@AAEXPAVAdorn@2@ABVGCamera@G3D@@@Z",
+      "inputs": [
+        "archive:glue_humanoid.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?rotatePart@RunDragger@RBX@@SAXPAVPartInstance@2@@Z",
+      "inputs": [
+        "archive:RunDragger.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?safeRotate@Dragger@RBX@@SAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVMatrix3@4@AAVContactManager@2@@Z",
+      "inputs": [
+        "archive:Dragger.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?seatCharacter@Seat@RBX@@AAEXPAVHumanoid@2@@Z",
+      "inputs": [
+        "archive:Seat.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?sendPhysicsData@Replicator@Network@RBX@@AAEXAAVBitStream@RakNet@@ABVAssembly@3@@Z",
+      "inputs": [
+        "archive:glue_replicator.obj"
+      ],
+      "symbols": [
+        "?fromPrimitiveConst@PartInstance@RBX@@SAPBV12@PBVPrimitive@2@@Z",
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+        "?getVelocity@PartInstance@RBX@@QBEABVVelocity@2@XZ"
+      ]
+    },
+    {
+      "function": "?setColor3@PartInstance@RBX@@QAEXABVColor3@G3D@@@Z",
+      "inputs": [
+        "archive:glue_part_instance.obj"
+      ],
+      "symbols": [
+        "?setColor@PartInstance@RBX@@QAEXVBrickColor@2@@Z"
+      ]
+    },
+    {
+      "function": "?setFrontAndTop@ModelInstance@RBX@@QAEXABVVector3@G3D@@@Z",
+      "inputs": [
+        "archive:ModelInstance.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?setParamA@Surface@RBX@@QAEXM@Z",
+      "inputs": [
+        "archive:glue_runtime.obj"
+      ],
+      "symbols": [
+        "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ"
+      ]
+    },
+    {
+      "function": "?setParamB@Surface@RBX@@QAEXM@Z",
+      "inputs": [
+        "archive:glue_runtime.obj"
+      ],
+      "symbols": [
+        "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ"
+      ]
+    },
+    {
+      "function": "?setSurfaceInput@Surface@RBX@@QAEXW4InputType@Controller@2@@Z",
+      "inputs": [
+        "archive:glue_runtime.obj"
+      ],
+      "symbols": [
+        "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ"
+      ]
+    },
+    {
+      "function": "?setSurfaceType@Surface@RBX@@QAEXW4SurfaceType@2@@Z",
+      "inputs": [
+        "archive:Surface.obj"
+      ],
+      "symbols": [
+        "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ",
+        "?onSurfaceChanged@PartInstance@RBX@@AAEXW4NormalId@2@@Z"
+      ]
+    },
+    {
+      "function": "?signalBlast@Explosion@RBX@@AAEXABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+      "inputs": [
+        "archive:Explosion.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?sleep@ClientPhysics@Network@RBX@@QAEXXZ",
+      "inputs": [
+        "archive:ClientPhysics.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?startDragging@MegaDragger@RBX@@QAEXXZ",
+      "inputs": [
+        "archive:MegaDragger.obj"
+      ],
+      "symbols": [
+        "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "function": "?step@Workspace@RBX@@QAEMM@Z",
+      "inputs": [
+        "archive:Workspace.obj"
+      ],
+      "symbols": [
+        "?onTouchThisStep@PartInstance@RBX@@QAEXV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+        "?primitivesToParts@PartInstance@RBX@@SAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAV?$Array@V?$shared_ptr@VPartInstance@RBX@@@boost@@@4@@Z"
+      ]
+    },
+    {
+      "function": "?tellCameraNear@Humanoid@RBX@@EAEXM@Z",
+      "inputs": [
+        "archive:Humanoid.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z",
+        "?setAlphaModifier@PartInstance@RBX@@QAEXM@Z"
+      ]
+    },
+    {
+      "function": "?tiltPart@RunDragger@RBX@@SAXPAVPartInstance@2@ABVCoordinateFrame@G3D@@@Z",
+      "inputs": [
+        "archive:RunDragger.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?tryFloor@Balancing@RBX@@AAEPAVPartInstance@2@ABVRay@G3D@@M@Z",
+      "inputs": [
+        "archive:Balancing.obj"
+      ],
+      "symbols": [
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?turnUpright@RunDragger@RBX@@SAXPAVPartInstance@2@@Z",
+      "inputs": [
+        "archive:RunDragger.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+        "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
+      ]
+    },
+    {
+      "function": "?unJoinAndSetDragging@DragUtilities@RBX@@SAXABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "inputs": [
+        "archive:DragUtilities.obj"
+      ],
+      "symbols": [
+        "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+        "?setDragging@PartInstance@RBX@@QAEX_N@Z"
+      ]
+    },
+    {
+      "function": "?unlocked@Unlocked@RBX@@SA_NPBVPrimitive@2@@Z",
+      "inputs": [
+        "archive:Filters.obj"
+      ],
+      "symbols": [
+        "?fromPrimitiveConst@PartInstance@RBX@@SAPBV12@PBVPrimitive@2@@Z"
+      ]
+    },
+    {
+      "function": "?upTo_Equipped@Accoutrement@RBX@@IAEXXZ",
+      "inputs": [
+        "archive:Accoutrement.obj"
+      ],
+      "symbols": [
+        "?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z"
+      ]
+    },
+    {
+      "function": "?upTo_Equipped@Tool@RBX@@AAEXXZ",
+      "inputs": [
+        "archive:Tool.obj"
+      ],
+      "symbols": [
+        "?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "?setCanCollide@PartInstance@RBX@@QAEX_N@Z"
+      ]
+    },
+    {
+      "function": "?update@ClientPhysics@Network@RBX@@QAEXABV?$shared_ptr@VRunService@RBX@@@boost@@@Z",
+      "inputs": [
+        "archive:ClientPhysics.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?updatePrimaryPart@ModelInstance@RBX@@ABEXPAVPartInstance@2@@Z",
+      "inputs": [
+        "archive:ModelInstance.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    },
+    {
+      "function": "?updateTargetPoint@ToolMouseCommand@RBX@@AAEXABVUIEvent@2@@Z",
+      "inputs": [
+        "archive:ToolMouseCommand.obj"
+      ],
+      "symbols": [
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+      ]
+    }
+  ],
+  "shared_with": "Colin/Crouton Alpha Free 20261105"
+}

@@ -1,0 +1,41 @@
+{
+  "swap_target": "DataModel/Doc runnable integration (native-doc diagnostic closure)",
+  "current_blocker": "ContentProvider::load duplicate: native 327B exact inactive vs archive 331B non-exact; diagnostic 2 unresolved / 1 duplicate; legacy singleton callers still extract archive member",
+  "required_source_provider": "Genuine native ContentProvider service: ContentProviderLoad.cpp (005628e0, 327B) + ContentProvider.cpp core + ImageContent free functions (findHashFile 0055fdc0, registerImageContent 0055fbc0, loadContent 00561980)",
+  "baseline": {
+    "client": "2008-06",
+    "run": "work/2008-06/native-check-runs/20261105-174541-6682957f",
+    "source_sha256": "c737315a53bbba70c7b744bcd494bafadbce67a36350692a93f9adedd2579aab",
+    "object_sha256": "7b9e52200d6c5f4c54389155b30671f39b25c17db074bfd2ef2bd48b5b309ffa",
+    "compiler": "tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/bin/cl.exe (21022)",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load",
+    "result": "1/1 exact bytes + data, score 100, target_sha256 fdb88af4fbe396b577bf8350d4bd6667ac2dcce87ed25b331424f88be8739e9e",
+    "symbol": "?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+    "data_errors": []
+  },
+  "call_review": {
+    "method": "same saved object, original disasm vs candidate relocs (dump_calls.py), no recompile",
+    "direct": [
+      {"offset": 82, "symbol": "?getContent@ContentProvider@RBX@@QAE?AV?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@VContentId@2@@Z", "target": "00561f20"},
+      {"offset": 142, "symbol": "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z", "target": "00415350"},
+      {"offset": 161, "symbol": "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ", "target": "0058f6c0"},
+      {"offset": 193, "symbol": "??1XmlElement@@QAE@XZ", "target": "00413a70"},
+      {"offset": 199, "symbol": "??3@YAXPAX@Z", "target": "006a067a"},
+      {"offset": 223, "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z", "target": "00593250"},
+      {"offset": 239, "symbol": "??1XmlElement@@QAE@XZ", "target": "00413a70"},
+      {"offset": 245, "symbol": "??3@YAXPAX@Z", "target": "006a067a"},
+      {"offset": 262, "symbol": "??1TextXmlParser@@QAE@XZ", "target": "004147c0"}
+    ],
+    "indirect_blockers": [
+      {"offset": 59, "kind": "std::string copy via IAT/import"},
+      {"offset": 126, "kind": "virtual/ indirect call"},
+      {"offset": 287, "kind": "virtual/ indirect call (release)"},
+      {"offset": 301, "kind": "std::string dtor via IAT/import"}
+    ],
+    "scope": "Direct bindings reviewed from saved object; indirect calls remain explicit separate-proof blockers. Not callee ABI, provider selection, EH or runtime proof."
+  },
+  "host_attack": "Ownership: load stays inactive until archive ContentProvider.obj extraction triggers migrated; no archive/COFF edit, no default ownership switch. Next: isolated native-doc closure probe to confirm duplicate count and extraction events, then migrate actual legacy requesters (ScriptContext getFile, NullTool, PartInstance setCoordinateFrame per prior verbose link) to native service methods.",
+  "next_gate": "Fresh native-doc baseline (2 unresolved / 1 duplicate expected) + audit_native_archive_consumers for ContentProvider.obj family; then one bounded ownership migration batch",
+  "metrics": {"inactive_exact": 1, "selected_exact": "unknown (await probe)", "gated_swaps": 0, "server_credit": 0}
+}

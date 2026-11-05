@@ -1,0 +1,67 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "session": "b251155ec6494e26ab16dd2d1c95bd95",
+  "current_run": "20261105-152734-3e8dd256",
+  "source_compiles": 0,
+  "inputs_changed": [],
+  "unresolved": [
+    "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+  ],
+  "duplicates": [],
+  "preserved_owners": [
+    "ScriptContext",
+    "PartInstance",
+    "NewNullTool",
+    "ContentProvider",
+    "Math",
+    "WorldHelpers"
+  ],
+  "next_queue": [
+    "Acquire a specific missing original input; read resume.json and hashes first.",
+    "Reuse exact saved objects and the cumulative b9d archive; never select the conditional8f1d resolver archive without a separately exact method.",
+    "Successful isolated link/map/PE selection, transitive ABI/EH/import/weak binding and affected runtime gates precede activation."
+  ],
+  "activation": false,
+  "gated_swaps": 0,
+  "server_credit": 0,
+  "baseline_receipt": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-145908-8c2e91ac\\result.json",
+  "cumulative_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-member-152732-82bc06\\linked.lib",
+  "cumulative_archive_sha256": "b9d0373b050bafb2c7e0d3eac3302adc3eb3fe2318c30670bac92448aa794ccf",
+  "status": "blocked_on_genuine_original_inputs",
+  "additional_compiles_authorized": 0,
+  "parked": [
+    {
+      "target": "AxisMoveTool::render2d / render3dAdorn",
+      "addresses": [
+        "00640f30",
+        "00641040"
+      ],
+      "rejected_hypotheses": 3,
+      "missing": "Original June2008 Axis TU/PCH/compiler context or version-proven differing Extents/G3D headers.",
+      "receipt": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-extents-evidence-20261105\\evidence.json"
+    },
+    {
+      "target": "CWorkspace::write",
+      "addresses": [
+        "0046b860"
+      ],
+      "rejected_hypotheses": 3,
+      "missing": "Provider-bearing original writer declaration/TU and compiler context preserving implicit destructor boundary and EH state1.",
+      "receipt": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-writer-evidence-20261105\\evidence.json"
+    },
+    {
+      "target": "ArchiveBinder::resolveRefs",
+      "addresses": [
+        "00592720"
+      ],
+      "rejected_hypotheses": 3,
+      "missing": "Genuine new source/compiler context explaining original boolean normalization and epilogue; no H4/grid authorized.",
+      "receipt": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-archive-resolve-final-20261105\\summary.json"
+    }
+  ],
+  "exact_selected_in_pe": null,
+  "fully_gated_swaps": 0,
+  "new_server_credit_claimed": 0
+}

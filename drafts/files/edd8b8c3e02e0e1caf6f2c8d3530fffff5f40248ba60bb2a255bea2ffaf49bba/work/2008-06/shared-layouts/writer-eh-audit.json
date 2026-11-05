@@ -1,0 +1,15 @@
+{
+  "swap_target": "Workspace runnable integration (native-doc diagnostic closure)",
+  "current_blocker": "CWorkspace::write 0046b860 112/112 99% (first diff offset 68: EH state 0 vs 1; push funcinfo 0 vs 0x7c39e8). Prior variants rejected ≥7 (copy-init, scope, provider local, member/ref, service-instance, base novtable, auto_inline/Ob1, real TU, STL extern). No new hypothesis without new evidence.",
+  "required_source_provider": "WorkspaceXmlWriter.cpp (CWorkspace::write) + writer-2008 TextXmlWriterWithEmbeddedContent (ctor 98/dtor 77 exact inactive) + ContentProvider service",
+  "evidence": {
+    "run": "work/2008-06/native-check-runs/20261105-181745-1c214fc4",
+    "source_sha256": "see results.json",
+    "result": "different, score 99, target_sha256 4335bc5beb8a8de06f66fe1a9b0af8f32fe04fa397b777689a950296536f6402, first_byte_difference 68 (mov [esp+0x58],0 vs 1)",
+    "original": "0046b860 native-asm: push 0x7c39e8 (FuncInfo 0x8db774), mov [esp+0x58],1 before serialize 0058e810, -1 before dtor 0046b1e0",
+    "candidate": "push 0, mov [esp+0x58],0, -1 (dump_writer.py); EH audit not run (requires primary match)",
+    "history": "native-workspace-writer-recheck, native-workspace-writer-batch, Workspace writer genuine-header trial parked, Writer implicit lifetime proven, Writer base novtable rejected (research/log.jsonl)"
+  },
+  "next_proof": "New evidence for second EH state (e.g. original EH FuncInfo 0x8db774 funclet analysis or genuine throwing TU). Do not repeat prior variants.",
+  "status": "parked"
+}

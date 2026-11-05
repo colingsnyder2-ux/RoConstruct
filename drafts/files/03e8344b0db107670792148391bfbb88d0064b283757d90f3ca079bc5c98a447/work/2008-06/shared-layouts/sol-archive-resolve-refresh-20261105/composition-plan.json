@@ -1,0 +1,71 @@
+{
+  "status": "CONDITIONAL_INACTIVE_ONLY",
+  "base_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-member-152732-82bc06\\linked.lib",
+  "base_sha256": "b9d0373b050bafb2c7e0d3eac3302adc3eb3fe2318c30670bac92448aa794ccf",
+  "staged_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-archive-resolve-refresh-20261105\\inactive\\linked.lib",
+  "staged_sha256": "8f1d8f913d408eb5f486641753db5078c0a0375de22e049a0bac026864c3a94e",
+  "old_member": "SerializerV2.obj",
+  "old_sha256": "c6f555a65d89f48ff15b4d01fdb45b81698c63eb24031c547aa0dd8d231f35f0",
+  "new_sha256": "0d4820b91d2a4603291db857b1f7e15afb9404b279323c92d09ffd8718977fd9",
+  "members": 267,
+  "other_members_byte_identical": 266,
+  "librarian_args": [
+    "/nologo",
+    "/OUT:G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-archive-resolve-refresh-20261105\\inactive\\linked.lib",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-member-152732-82bc06\\linked.lib",
+    "SerializerV2.obj"
+  ],
+  "current_input_count": 332,
+  "guards": "guards.json; summary.json; consumers.json; symbol-metadata.json",
+  "consumers": [
+    {
+      "object_id": 843,
+      "section": 958,
+      "offset": 12,
+      "type": 6,
+      "addend": 0,
+      "object": {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-151943-cff659c3\\unit-000\\candidate.obj",
+        "member": null,
+        "offset": null,
+        "sha256": "e5508d0afe443b7195efdce28703b97e7c634e15d85a84a97b4ba28d5fc88767"
+      }
+    },
+    {
+      "object_id": 843,
+      "section": 982,
+      "offset": 416,
+      "type": 20,
+      "addend": 0,
+      "object": {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-151943-cff659c3\\unit-000\\candidate.obj",
+        "member": null,
+        "offset": null,
+        "sha256": "e5508d0afe443b7195efdce28703b97e7c634e15d85a84a97b4ba28d5fc88767"
+      }
+    },
+    {
+      "object_id": "candidate",
+      "section": 1486,
+      "offset": 12,
+      "type": 6,
+      "addend": 0,
+      "object": "candidate"
+    },
+    {
+      "object_id": "candidate",
+      "section": 1498,
+      "offset": 62,
+      "type": 20,
+      "addend": 0,
+      "object": "candidate"
+    }
+  ],
+  "other_removed_consumed": 0,
+  "missing_strict_provider": "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+  "pending": "Independent native resolveRefs original target code + referenced data + reviewed calls; a44d near-match is not an exact provider. Parent must verify fresh inputs, compose provider and deletion, then serialize selected-provider diagnostic. Complete ABI/EH/ODR, factory COMDAT selection, indirect calls and runtime remain separate gates.",
+  "no_default_selection_or_current_archive_change": true,
+  "source_compiles": 0,
+  "executables_run": 0,
+  "next_gate": "Parent independently validates native resolveRefs exact candidate before selecting this archive."
+}

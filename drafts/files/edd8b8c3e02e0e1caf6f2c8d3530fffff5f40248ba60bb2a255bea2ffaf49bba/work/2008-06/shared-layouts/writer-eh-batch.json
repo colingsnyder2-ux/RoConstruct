@@ -1,0 +1,1 @@
+﻿{"jobs":[{"source":"native-classes/WorkspaceXmlWriter.cpp","checks":[{"addr":"0046b860","symbol":"?write@CWorkspace@@"}]}]}
