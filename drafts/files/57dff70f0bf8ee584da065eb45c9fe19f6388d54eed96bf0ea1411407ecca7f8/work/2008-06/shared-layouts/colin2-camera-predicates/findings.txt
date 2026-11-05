@@ -1,0 +1,35 @@
+Camera predicate recovery, colin2, GPT-6, 2008-06
+
+Inactive source: rebuild/2008-06/native-classes/CameraPredicates.cpp
+Observer: rebuild/2008-06/tests/record_colin2_camera_predicates.py
+Package authority: RoConstruct/work/workspace, native workflow 52.
+
+The original canZoom at 005cbf90 is 98 bytes; the native bool candidate is
+95 bytes. The original canTilt at 005cc040 is 127 bytes; the candidate is
+124 bytes. VS2008 RTM 21022 compiles both with the persisted flags in receipt.json.
+Candidate disassembly reproduces the observed Camera member accesses through
+the existing native declaration, without raw-offset fields, padding, or stubs.
+The visible difference is full EAX versus AL return writes. Both the packaged
+native Camera.h and vendor Camera.h declare bool canZoom/canTilt(int) const.
+Changing that shared declaration solely to force an exact would be unjustified.
+
+The known mined int analogs contain raw padding and are not layout authority.
+They were inspected for arithmetic clues only and are not copied into the draft.
+research/log.jsonl records the earlier sum-order recovery at 005cbf90.
+The static research dependency graph has no Camera entries. The full graph
+command was interrupted after several minutes without output; a focused
+inventory caller/callee slice and original source packet are retained instead. Original enabled
+command callers at 0057d570 and 0057d5b0 forward the return without a local
+test, so these two callers do not resolve the return-width question.
+
+Rejected variant: promoting the current bool source as byte-identical (two
+compile-successful but nonexact methods). No ABI edits or build activation.
+Next hypothesis: determine the original predicate return declaration from
+authentic provenance or a caller that consumes the result; investigate bool
+codegen context before considering a scoped declaration proposal.
+
+The receipt separately records relocation-instruction correspondence, local
+constant content, and observed external-symbol/original-target pairs. Such
+pairs do not prove final provider selection or runtime ownership. Camera full
+layout/lifetime and dependent implementations remain unresolved. No linked
+build, executable launch, P5/P6 run, integration, or credit claimed.

@@ -1,0 +1,58 @@
+original
+005cbf90 cmp dword ptr [esp + 4], 0
+005cbf95 fld dword ptr [ecx + 0x198]
+005cbf9b fsub dword ptr [ecx + 0x1c8]
+005cbfa1 fld dword ptr [ecx + 0x19c]
+005cbfa7 fsub dword ptr [ecx + 0x1cc]
+005cbfad fld dword ptr [ecx + 0x1a0]
+005cbfb3 fsub dword ptr [ecx + 0x1d0]
+005cbfb9 fmul st(0), st(0)
+005cbfbb fld st(1)
+005cbfbd fmulp st(2)
+005cbfbf faddp st(1)
+005cbfc1 fld st(1)
+005cbfc3 fmulp st(2)
+005cbfc5 faddp st(1)
+005cbfc7 fsqrt 
+005cbfc9 jle 0x5cbfdd
+005cbfcb fcomp dword ptr [0x819bac]
+005cbfd1 fnstsw ax
+005cbfd3 test ah, 0x41
+005cbfd6 je 0x5cbfea
+005cbfd8 xor eax, eax
+005cbfda ret 4
+005cbfdd fcomp dword ptr [0x819dcc]
+005cbfe3 fnstsw ax
+005cbfe5 test ah, 5
+005cbfe8 jp 0x5cbfd8
+005cbfea mov eax, 1
+005cbfef ret 4
+candidate
+005cbf90 cmp dword ptr [esp + 4], 0
+005cbf95 fld dword ptr [ecx + 0x198]
+005cbf9b fsub dword ptr [ecx + 0x1c8]
+005cbfa1 fld dword ptr [ecx + 0x19c]
+005cbfa7 fsub dword ptr [ecx + 0x1cc]
+005cbfad fld dword ptr [ecx + 0x1a0]
+005cbfb3 fsub dword ptr [ecx + 0x1d0]
+005cbfb9 fmul st(0), st(0)
+005cbfbb fld st(1)
+005cbfbd fmulp st(2)
+005cbfbf faddp st(1)
+005cbfc1 fld st(1)
+005cbfc3 fmulp st(2)
+005cbfc5 faddp st(1)
+005cbfc7 fsqrt 
+005cbfc9 jle 0x5cbfdd
+005cbfcb fcomp dword ptr [0]
+005cbfd1 fnstsw ax
+005cbfd3 test ah, 0x41
+005cbfd6 je 0x5cbfea
+005cbfd8 xor al, al
+005cbfda ret 4
+005cbfdd fcomp dword ptr [0]
+005cbfe3 fnstsw ax
+005cbfe5 test ah, 5
+005cbfe8 jp 0x5cbfd8
+005cbfea mov al, 1
+005cbfec ret 4

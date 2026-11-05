@@ -1,0 +1,11 @@
+{
+  "client": "2008-06",
+  "addr": "005cbf90",
+  "build_pointer": "C:\\Users\\colin\\Documents\\Codex\\2026-11-04\\files-pasted-by-the-user-native\\RoConstruct-Native-99436b6a26db4307880eff42397fbe81\\src\\2008-06\\005cbf90.cpp",
+  "wrapper": "// from server: 100% by colin\n// from server: 88% by Espeon\n// roc-lang: cpp\n// roc-cl: 21022\n// roc-flags: /O2 /GS- /EHsc /MD /fp:fast\n// roc-lib: rbxgs-dll roc_005cbf90_0c4f1ca71fa6c099.cpp\n",
+  "source": "#pragma float_control(precise,off,push)\n#include <G3D/Vector3.h>\nstruct Camera{char prefix[0x198];G3D::Vector3 position;char gap[0x24];G3D::Vector3 focus;int canZoom(int);};\n\n\nint Camera::canZoom(int direction){G3D::Vector3 v=position-focus;float distance=sqrtf(v.x*v.x+v.y*v.y+v.z*v.z);if(direction>0){if(!(distance>.5f))return 0;}else if(!(distance<1000.0f))return 0;return 1;}\n",
+  "source_path": "C:\\Users\\colin\\Documents\\Codex\\2026-10-28\\files-pasted-by-the-user-native-2\\RoConstruct-Native-v6\\tools\\rbxgs\\Client\\App\\roc_005cbf90_0c4f1ca71fa6c099.cpp",
+  "kind": "library",
+  "recipe": "rbxgs-dll",
+  "scope": "complete implementation unit; may contain several functions"
+}

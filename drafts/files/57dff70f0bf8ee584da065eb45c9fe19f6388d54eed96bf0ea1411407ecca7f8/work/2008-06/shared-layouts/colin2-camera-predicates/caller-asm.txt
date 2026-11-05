@@ -1,0 +1,20 @@
+== 0057d570 30 bytes unit=RBX::CameraTiltUpCommand
+0057d570  mov ecx, dword ptr [ecx + 0xc]
+0057d573  mov eax, dword ptr [ecx + 0x288]
+0057d579  mov edx, dword ptr [eax + 4]
+0057d57c  add ecx, 0x288
+0057d582  call edx
+0057d584  push -1
+0057d586  mov ecx, eax
+0057d588  call 0x5cc040  ; fn_005cc040 [unit? RBX::Camera]
+0057d58d  ret 
+== 0057d5b0 30 bytes unit=RBX::CameraZoomInCommand
+0057d5b0  mov ecx, dword ptr [ecx + 0xc]
+0057d5b3  mov eax, dword ptr [ecx + 0x288]
+0057d5b9  mov edx, dword ptr [eax + 4]
+0057d5bc  add ecx, 0x288
+0057d5c2  call edx
+0057d5c4  push 1
+0057d5c6  mov ecx, eax
+0057d5c8  call 0x5cbf90  ; fn_005cbf90 [unit? RBX::Camera]
+0057d5cd  ret 

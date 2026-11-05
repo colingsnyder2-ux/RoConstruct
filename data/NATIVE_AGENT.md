@@ -135,6 +135,18 @@ Stop cooperatively; allow watcher to finish final checkpoint. A killed process c
 
 ## Native recovery loop
 
+Default priority: one explicit runnable swap target and its current dependency/ABI
+blocker list. Follow `docs/NATIVE_SWAP_BATCH.md`: evidence-backed batches (at most
+three rejected hypotheses per blocker), compile each source once in isolated
+outputs, reuse that object for byte/diff/data/call checks, then advance the next
+provider/ABI/selection obligation. Use `native_check_runner.py run BATCH.json`;
+`analyze RUN --manifest CHECKS.json --require-proof` asserts fresh exact bytes,
+data and reviewed direct-call bindings without recompiling. Indirect calls remain
+explicit separate-proof blockers. Stop rewriting a match. Prioritize blockers
+needed by the chosen swap over unrelated inactive matches. Track inactive matches,
+selected matches, gated class swaps and server credit separately. Report coherent
+outcomes, not each compile. Keep automatic draft uploads active throughout.
+
 1. Read relevant dependency graph, current research log and existing attempts. Pick one class or shared ownership cause; lease its actual files. Shared headers have one owner; send proposals rather than competing edits.
 2. Trace original assembly, RTTI, allocation sizes, genuine declarations and lifetimes. `roc source 2008-06 ADDRESS --json` and `roc native-asm 2008-06 ADDRESS` provide focused evidence. Mined stand-ins are untrusted analogs, never native layout authority.
 3. Edit native pieces in established paths. New files and incomplete work are welcome. Keep incomplete candidates inactive; preserve active player/accepted overlays. No inline assembly, emitted bytes, invented fields, padding, raw-offset views or stubs to force a build.
