@@ -1,0 +1,104 @@
+{
+  "native-header-families-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Ten shared native families:top8 transitive inline/template assertion headers plus2 source families from genuine existing Quaternion/RunningAverage declarations. Actual per-layer build contexts; no field/ABI invention. Combine safe unique new coverage, independently verify and split rejected combinations.",
+    "native_sweep": {
+      "files": [
+        "App/*/*.cpp",
+        "Network/*.cpp",
+        "Rendering/AppDraw/*.cpp",
+        "Rendering/RenderLib/*.cpp",
+        "RbxView/*.cpp"
+      ],
+      "header_families": [
+        "App/include/util/Debug.h",
+        "App/include/reflection/descriptor.h",
+        "App/include/reflection/enumconverter.h",
+        "App/include/reflection/property.h",
+        "App/include/v8tree/Instance.h",
+        "App/include/reflection/reflection.h",
+        "App/include/v8xml/SerializerV2.h",
+        "App/include/util/IndexArray.h",
+        "App/include/util/Quaternion.h",
+        "App/include/util/RunningAverage.h"
+      ],
+      "new_coverage_only": true,
+      "source_kinds": [
+        "snippet",
+        "vendor-file",
+        "generated-unit"
+      ],
+      "settle_jobs": [
+        "981c606609864414b2c608ce100c68ef"
+      ],
+      "apply": true,
+      "submit": true,
+      "wait": true,
+      "model": "gpt-6.1-sol",
+      "split_rejected": true,
+      "family_edits": {
+        "App/include/util/Quaternion.h": {
+          "edits": [
+            [
+              "return (other.w * w + other.z *z + other.y * y + other.x * x);",
+              "return x * other.x + y * other.y + z * other.z + w * other.w;"
+            ],
+            [
+              "return Quaternion(x * fNum, y * fNum, z * fNum, w * fNum);",
+              "return Quaternion(fNum * x, fNum * y, fNum * z, fNum * w);"
+            ]
+          ],
+          "evidence": "Authentic OpenRBX util/Quaternion.h dot and scalar multiply implementations; existing members and signatures unchanged. Source-family hypothesis only: requires client exact code+data and independent linked/runtime verification."
+        },
+        "App/include/util/RunningAverage.h": {
+          "edits": [
+            [
+              ": position(),\n\t\t\t  angles()",
+              ": position(0, 0, 0),\n\t\t\t  angles(0, 0, 0, 1)"
+            ]
+          ],
+          "evidence": "Authentic OpenRBX util/RunningAverage.h RunningAverageState constructor explicitly initializes position(0,0,0), angles(0,0,0,1). Existing types and fields unchanged; compiler/target proof required."
+        }
+      }
+    },
+    "targets": {}
+  },
+  "native-layer-family-profiles-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Previously skipped native Network/View/rendering profiles must compile under their actual installed layer recipes. After the shared-header campaign terminates, sync its accepted baseline and test release assertion/FP/inline families; only globally unique code+data gains preserving prior ownership may submit.",
+    "native_sweep": {
+      "files": [
+        "Network/*.cpp",
+        "RbxView/*.cpp",
+        "Rendering/AppDraw/*.cpp",
+        "Rendering/RenderLib/*.cpp"
+      ],
+      "modes": [
+        "assertions",
+        "fp-fast",
+        "assertions-fp-fast",
+        "fp-osize",
+        "fp-noautoinline",
+        "osize",
+        "noautoinline"
+      ],
+      "source_kinds": [
+        "snippet",
+        "vendor-file",
+        "generated-unit"
+      ],
+      "new_coverage_only": true,
+      "after_campaign": {
+        "summary": "C:\\Users\\colin\\RoConstruct-native-isolated\\work\\research\\native-header-families-2008\\summary.json",
+        "run_id": "48eb43f013344e8a8c679908bac7ea5f"
+      },
+      "apply": true,
+      "submit": true,
+      "wait": true,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  }
+}

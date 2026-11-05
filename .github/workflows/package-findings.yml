@@ -1,7 +1,7 @@
 name: Package usable findings
 on:
   push:
-    branches: [main]
+    branches: [work]
   workflow_dispatch:
 permissions:
   contents: write
@@ -21,5 +21,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release view findings-latest >/dev/null 2>&1 || gh release create findings-latest --title "Latest findings" --notes "Recovered sources and usable native rebuild inputs." --prerelease
-          gh release upload findings-latest dist/*.zip dist/SHA256SUMS --clobber
+          gh release view work-latest >/dev/null 2>&1 || gh release create work-latest --title "Latest work sources" --notes "Recovered sources and usable native rebuild inputs." --prerelease
+          gh release upload work-latest dist/*.zip dist/SHA256SUMS --clobber

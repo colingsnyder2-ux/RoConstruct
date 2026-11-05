@@ -1,0 +1,21 @@
+{
+ "compiled": true,
+ "linked": true,
+ "ran": true,
+ "exit": 0,
+ "output": "Ogre library ownership: copied references, one final destruction",
+ "unresolved": [],
+ "duplicates": [],
+ "referencers": [],
+ "map": "C:\\Users\\colin\\RoConstruct-codex-force-links\\rebuild\\2008-06\\out\\tests\\ogre_native_templates\\ogre_native_templates.map",
+ "choices": {
+  "verified_0001.obj": "layer-verified",
+  "verified_native-hardware-sharedptr.obj": "layer-verified",
+  "verified_native-header-accessors.obj": "layer-verified",
+  "verified_native-resource-templates.obj": "layer-verified",
+  "verified_native-scene-callbacks.obj": "layer-verified",
+  "verified_native-shadow-delegation.obj": "layer-verified",
+  "verified_native-subentity-contracts.obj": "layer-verified"
+ },
+ "forced_symbols": 29
+}

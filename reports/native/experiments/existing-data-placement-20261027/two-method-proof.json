@@ -1,0 +1,28 @@
+{
+  "accepted_job": "981c606609864414b2c608ce100c68ef",
+  "status": "read-only accepted-artifact audit; no new native credit",
+  "proof": [
+    {
+      "object": "Camera.obj",
+      "object_sha256": "3d56256970990189667aa7ba6be2dd92e41d53c32280a44d23545a7fbbd93a24",
+      "symbol": "?askSetParent@Camera@RBX@@EBE_NPBVInstance@2@@Z",
+      "size": 36,
+      "instruction_twins": 21,
+      "initialized_data_references": 2,
+      "unique_code_and_data_addresses": [
+        "005cbf20"
+      ]
+    },
+    {
+      "object": "ModelInstance.obj",
+      "object_sha256": "bad65a4b42d7c6cc71664aac39c1ca124002d9b2d9ebda78ad058bde3bdb7da0",
+      "symbol": "?askSetParent@ModelInstance@RBX@@MBE_NPBVInstance@2@@Z",
+      "size": 36,
+      "instruction_twins": 21,
+      "initialized_data_references": 2,
+      "unique_code_and_data_addresses": [
+        "005d7640"
+      ]
+    }
+  ]
+}

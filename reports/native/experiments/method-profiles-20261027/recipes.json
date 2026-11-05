@@ -1,0 +1,161 @@
+{
+  "native-scoped-profiles-pilot-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Scope FP and inline pragmas to real out-of-line native methods. Minimize to exact code/data witnesses, restore surrounding compiler state, and preserve existing owned bodies.",
+    "native_sweep": {
+      "files": [
+        "App/v8datamodel/Camera.cpp",
+        "App/v8datamodel/PartInstance.cpp",
+        "App/v8tree/Instance.cpp",
+        "App/v8world/Assembly.cpp",
+        "App/v8world/Joint.cpp",
+        "App/v8kernel/Body.cpp",
+        "App/v8datamodel/Selection.cpp",
+        "App/v8tree/ServiceProvider.cpp"
+      ],
+      "modes": [
+        "scoped-fp-fast",
+        "scoped-noautoinline",
+        "scoped-assertions-fp-noautoinline"
+      ],
+      "apply": false,
+      "submit": false,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  },
+  "native-scoped-profiles-all-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Scope FP and inline pragmas to real out-of-line native methods. Minimize to exact code/data witnesses, restore surrounding compiler state, and preserve existing owned bodies.",
+    "native_sweep": {
+      "files": [
+        "App/*/*.cpp",
+        "Network/*.cpp",
+        "Rendering/AppDraw/*.cpp",
+        "Rendering/RenderLib/*.cpp",
+        "RbxView/*.cpp"
+      ],
+      "modes": [
+        "scoped-fp-fast",
+        "scoped-noautoinline",
+        "scoped-assertions-fp-noautoinline"
+      ],
+      "apply": false,
+      "submit": false,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  },
+  "native-depth-precise-pilot-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Restore precise FP and limit inline depth around individual authentic native methods; compile minimized fixes and preserve all existing owned bodies.",
+    "native_sweep": {
+      "files": [
+        "App/v8datamodel/Camera.cpp",
+        "App/v8datamodel/PartInstance.cpp",
+        "App/v8tree/Instance.cpp",
+        "App/v8datamodel/ModelInstance.cpp",
+        "App/v8datamodel/Workspace.cpp"
+      ],
+      "modes": [
+        "scoped-fp-precise",
+        "scoped-depth0",
+        "scoped-assertions-depth0",
+        "scoped-assertions-fp-precise-depth0"
+      ],
+      "apply": false,
+      "submit": false,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  },
+  "native-retention-pilot-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Retain already exact real native method bodies through method-scoped inline suppression; include authentic vendor/generated native targets, not only snippet labels. Every minimized TU must preserve prior owned bodies and pass independent linked/runtime/ABI verification.",
+    "native_sweep": {
+      "files": [
+        "App/v8datamodel/Camera.cpp",
+        "App/v8datamodel/PartInstance.cpp",
+        "App/v8tree/Instance.cpp",
+        "App/v8datamodel/ModelInstance.cpp",
+        "App/v8world/Primitive.cpp",
+        "App/reflection/property.cpp",
+        "App/reflection/type.cpp"
+      ],
+      "modes": [
+        "scoped-noautoinline"
+      ],
+      "source_kinds": [
+        "snippet",
+        "vendor-file",
+        "generated-unit"
+      ],
+      "retain_existing_objects": true,
+      "apply": false,
+      "submit": false,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  },
+  "native-retention-submit-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Revalidate two reviewed exact native methods absent from verified module ownership, suppress automatic inlining around those real definitions and independently test linked retention.",
+    "native_sweep": {
+      "files": [
+        "App/v8datamodel/Camera.cpp",
+        "App/v8datamodel/ModelInstance.cpp"
+      ],
+      "modes": [
+        "scoped-noautoinline"
+      ],
+      "source_kinds": [
+        "snippet",
+        "vendor-file",
+        "generated-unit"
+      ],
+      "retain_existing_objects": true,
+      "apply": true,
+      "submit": true,
+      "wait": false,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  },
+  "native-retention-all-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Mass native integration by retaining exact out-of-line real method bodies that have no verified module ownership. Include snippet, vendor-file and generated-unit targets; suppress inlining only around minimized proven methods and preserve every previously owned body.",
+    "native_sweep": {
+      "files": [
+        "App/*/*.cpp",
+        "Network/*.cpp",
+        "Rendering/AppDraw/*.cpp",
+        "Rendering/RenderLib/*.cpp",
+        "RbxView/*.cpp"
+      ],
+      "modes": [
+        "scoped-noautoinline"
+      ],
+      "source_kinds": [
+        "snippet",
+        "vendor-file",
+        "generated-unit"
+      ],
+      "retain_existing_objects": true,
+      "settle_jobs": [
+        "70a1a98050e84962ac3e81e4bdef5d98",
+        "4deaf2734e1a4170b95d218e5c551658"
+      ],
+      "apply": true,
+      "submit": true,
+      "wait": true,
+      "model": "gpt-6.1-sol"
+    },
+    "targets": {}
+  }
+}

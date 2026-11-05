@@ -1,0 +1,30 @@
+{
+  "Quaternion.h": {
+    "authentic_source": "C:\\Users\\colin\\RoConstruct\\tools\\openrbx\\Client\\App\\include\\util\\Quaternion.h",
+    "sha256": "7286ad95344e94f8e6e459151617b8d98843dc1eaaf9c452d54c7f9ea47ed3d0",
+    "native_source": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include\\util\\Quaternion.h",
+    "edits": [
+      [
+        "return (other.w * w + other.z *z + other.y * y + other.x * x);",
+        "return x * other.x + y * other.y + z * other.z + w * other.w;"
+      ],
+      [
+        "return Quaternion(x * fNum, y * fNum, z * fNum, w * fNum);",
+        "return Quaternion(fNum * x, fNum * y, fNum * z, fNum * w);"
+      ]
+    ],
+    "status": "unproven native source hypothesis"
+  },
+  "RunningAverage.h": {
+    "authentic_source": "C:\\Users\\colin\\RoConstruct\\tools\\openrbx\\Client\\App\\include\\util\\RunningAverage.h",
+    "sha256": "bec7f150870727d55dbe5455d097dd432ece604339ccb3d7cd355987ae80b6eb",
+    "native_source": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include\\util\\RunningAverage.h",
+    "edits": [
+      [
+        ": position(),\n\t\t\t  angles()",
+        ": position(0, 0, 0),\n\t\t\t  angles(0, 0, 0, 1)"
+      ]
+    ],
+    "status": "unproven native source hypothesis"
+  }
+}

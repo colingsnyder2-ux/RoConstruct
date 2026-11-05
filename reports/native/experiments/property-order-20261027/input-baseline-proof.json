@@ -1,0 +1,7 @@
+{
+ "run_id": "0b9ad69f415c4defa3e26d9c61e3361f",
+ "baseline_revision": "6023a106e73b6e2d12553f4325b26e992aa578a428d9bc8b323d47a17a1ac4d9",
+ "header_snapshots_verified": 489,
+ "source_and_object_hashes_verified": 214,
+ "method": "Reconstructed old accepted overlay from server baseline ledger;all retained variant-shadow headers (property correction applied) and each recorded source/object SHA256 match."
+}

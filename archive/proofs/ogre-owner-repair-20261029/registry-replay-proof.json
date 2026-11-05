@@ -1,0 +1,379 @@
+[
+ {
+  "unit": "roc_g3d_texture_bounds_vector_context_c35a9cb275530619.cpp",
+  "error": null,
+  "requested": 1,
+  "kept": 1,
+  "checks": [
+   {
+    "address": "00670210",
+    "score": 100,
+    "symbol": "?f@S@@QAE?AVRect2D@G3D@@V?$ReferenceCountedPointer@UImage@@@3@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   }
+  ],
+  "provenance": "Outer S/Image interfaces remain codegen analog; Image inherits real G3D base, return value and ownership use genuine G3D headers."
+ },
+ {
+  "unit": "roc_g3d_texture_proxy_context_2c0b3c7d469c1d40.cpp",
+  "error": null,
+  "requested": 1,
+  "kept": 1,
+  "checks": [
+   {
+    "address": "007ae3b0",
+    "score": 100,
+    "symbol": "??1TextureProxy@@UAE@XZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   }
+  ],
+  "provenance": "Existing outer layout and interface remain codegen analog; ownership uses genuine G3D types and no invented release helpers."
+ },
+ {
+  "unit": "roc_g3d_materiallevel_context_d9a3d6c7ffbfabc3.cpp",
+  "error": null,
+  "requested": 1,
+  "kept": 1,
+  "checks": [
+   {
+    "address": "007ad310",
+    "score": 100,
+    "symbol": "??1Level@@UAE@XZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   }
+  ],
+  "provenance": "Existing outer Level layout remains codegen analog; only ownership type replaced by genuine G3D header."
+ },
+ {
+  "unit": "roc_native_subentity_contracts_3c134af6ce3f7619.cpp",
+  "error": null,
+  "requested": 5,
+  "kept": 5,
+  "checks": [
+   {
+    "address": "00685660",
+    "score": 100,
+    "symbol": "??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "00685910",
+    "score": 100,
+    "symbol": "??1RbxSubEntity@Ogre@@UAE@XZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "00685700",
+    "score": 100,
+    "symbol": "?getCastShadows@RbxSubEntity@Ogre@@UBE_NXZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "00685170",
+    "score": 100,
+    "symbol": "?getEdgeList@RbxSubEntity@Ogre@@UAEPAVEdgeData@2@XZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "006851a0",
+    "score": 100,
+    "symbol": "?hasEdgeList@RbxSubEntity@Ogre@@UAE_NXZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   }
+  ],
+  "provenance": "native-header / recovered subclass context"
+ },
+ {
+  "unit": "roc_native_shadow_delegation_5a9fe7bdf9d3d332.cpp",
+  "error": null,
+  "requested": 5,
+  "kept": 5,
+  "checks": [
+   {
+    "address": "00685450",
+    "score": 100,
+    "symbol": "?getWorldTransforms@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEXPAVMatrix4@3@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "00685460",
+    "score": 100,
+    "symbol": "?getWorldOrientation@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "00685470",
+    "score": 100,
+    "symbol": "?getWorldPosition@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVVector3@3@XZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "006851d0",
+    "score": 100,
+    "symbol": "??0RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@QAE@PAVEntity@2@PAVHardwareIndexBufferSharedPtr@2@PBVVertexData@2@_NPAVSubEntity@2@3@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "006853a0",
+    "score": 100,
+    "symbol": "??1RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAE@XZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   }
+  ],
+  "provenance": "native-header / recovered subclass context"
+ },
+ {
+  "unit": "roc_native_hardware_sharedptr_16493fe4099d30fc.cpp",
+  "error": null,
+  "requested": 1,
+  "kept": 1,
+  "checks": [
+   {
+    "address": "004d73c0",
+    "score": 100,
+    "symbol": "??1?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@UAE@XZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   }
+  ],
+  "provenance": "native-header / recovered subclass context"
+ },
+ {
+  "unit": "roc_native_resource_templates_f9febbef6239dc27.cpp",
+  "error": null,
+  "requested": 10,
+  "kept": 10,
+  "checks": [
+   {
+    "address": "004d7380",
+    "score": 100,
+    "symbol": "??1?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAE@XZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "004d73e0",
+    "score": 100,
+    "symbol": "??_G?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAEPAXI@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "004dc670",
+    "score": 100,
+    "symbol": "??$_Uninit_copy@PBVVector3@Ogre@@PAV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAPAVVector3@Ogre@@PBV12@0PAV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "004dca70",
+    "score": 100,
+    "symbol": "??$_Uninit_fill_n@PAVVector3@Ogre@@IV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAXPAVVector3@Ogre@@IABV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "004ddbc0",
+    "score": 100,
+    "symbol": "?_Insert_n@?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@2@IABVVector3@Ogre@@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0067d600",
+    "score": 100,
+    "symbol": "?_Insert_n@?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@2@IABVPlane@Ogre@@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0067f170",
+    "score": 100,
+    "symbol": "??$_Copy_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0067f1d0",
+    "score": 100,
+    "symbol": "??$_Copy_backward_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0067f7c0",
+    "score": 100,
+    "symbol": "??$_Fill@PAVVector3@Ogre@@V12@@std@@YAXPAVVector3@Ogre@@0ABV12@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0068d030",
+    "score": 100,
+    "symbol": "?destroy@?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@MAEXXZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   }
+  ],
+  "provenance": "native-header / recovered subclass context"
+ },
+ {
+  "unit": "roc_native_header_accessors_f042f32e3705715a.cpp",
+  "error": null,
+  "requested": 9,
+  "kept": 9,
+  "checks": [
+   {
+    "address": "0068e920",
+    "score": 100,
+    "symbol": "?getDisplaySceneNodes@NativeSceneManager@Ogre@@UBE_NXZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0068e930",
+    "score": 100,
+    "symbol": "?getShadowTechnique@NativeSceneManager@Ogre@@UBE?AW4ShadowTechnique@2@XZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0068e960",
+    "score": 100,
+    "symbol": "?getShadowFarDistance@NativeSceneManager@Ogre@@UBEMXZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0068e970",
+    "score": 100,
+    "symbol": "?getShadowIndexBufferSize@NativeSceneManager@Ogre@@UBEIXZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0068e990",
+    "score": 100,
+    "symbol": "?getShadowDirLightTextureOffset@NativeSceneManager@Ogre@@UBEMXZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0068e9c0",
+    "score": 100,
+    "symbol": "?getShadowTextureSelfShadow@NativeSceneManager@Ogre@@UBE_NXZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0068e9e0",
+    "score": 100,
+    "symbol": "?getShadowCasterRenderBackFaces@NativeSceneManager@Ogre@@UBE_NXZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0068ea60",
+    "score": 100,
+    "symbol": "?setVisibilityMask@NativeSceneManager@Ogre@@UAEXI@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0068ea70",
+    "score": 100,
+    "symbol": "?getVisibilityMask@NativeSceneManager@Ogre@@UAEIXZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   }
+  ],
+  "provenance": "native-header / recovered subclass context"
+ },
+ {
+  "unit": "roc_native_scene_callbacks_9975fd58eb7f0dbb.cpp",
+  "error": null,
+  "requested": 3,
+  "kept": 3,
+  "checks": [
+   {
+    "address": "00565ff0",
+    "score": 100,
+    "symbol": "?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAUWorldFragment@SceneQuery@3@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0069c5f0",
+    "score": 100,
+    "symbol": "?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAVMovableObject@3@@Z",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   },
+   {
+    "address": "0068b690",
+    "score": 100,
+    "symbol": "??1SceneMgrQueuedRenderableVisitor@RbxSceneManager@Ogre@@UAE@XZ",
+    "reason": "exact",
+    "cause": "exact",
+    "dll_twin": null
+   }
+  ],
+  "provenance": "native-header / recovered subclass context"
+ },
+ {
+  "unit": "roc_native_sphere_cache_storage_6d8b5b766c240faa.cpp",
+  "error": null,
+  "requested": 0,
+  "kept": 0,
+  "checks": [],
+  "provenance": "native-header / recovered subclass context"
+ }
+]

@@ -1,0 +1,7 @@
+{
+ "dll": "rgmain.dll",
+ "named_exports": 7465,
+ "independent_pefile_name_offsets_crosscheck": true,
+ "pefile_default_symbol_name_limit": 512,
+ "names_over_default_limit": 3
+}

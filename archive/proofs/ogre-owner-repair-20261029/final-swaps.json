@@ -1,0 +1,1463 @@
+{
+ "swaps": [
+  {
+   "obj": "g3d-context-texture-bounds-vector.obj",
+   "recipe": "ogre-1.4.5-g3d-refcount",
+   "file": "roc_g3d_texture_bounds_vector_context_c35a9cb275530619.cpp",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "cl": "21022",
+   "keep": {
+    "?f@S@@QAE?AVRect2D@G3D@@V?$ReferenceCountedPointer@UImage@@@3@@Z": "00670210"
+   },
+   "provenance": "Outer S/Image interfaces remain codegen analog; Image inherits real G3D base, return value and ownership use genuine G3D headers."
+  },
+  {
+   "obj": "g3d-context-texture-proxy.obj",
+   "recipe": "ogre-1.4.5-g3d-refcount",
+   "file": "roc_g3d_texture_proxy_context_2c0b3c7d469c1d40.cpp",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "cl": "21022",
+   "keep": {
+    "??1TextureProxy@@UAE@XZ": "007ae3b0"
+   },
+   "provenance": "Existing outer layout and interface remain codegen analog; ownership uses genuine G3D types and no invented release helpers."
+  },
+  {
+   "obj": "g3d-context-material-level.obj",
+   "recipe": "ogre-1.4.5-g3d-refcount",
+   "file": "roc_g3d_materiallevel_context_d9a3d6c7ffbfabc3.cpp",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "cl": "21022",
+   "keep": {
+    "??1Level@@UAE@XZ": "007ad310"
+   },
+   "provenance": "Existing outer Level layout remains codegen analog; only ownership type replaced by genuine G3D header."
+  },
+  {
+   "obj": "native-subentity-contracts.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_subentity_contracts_3c134af6ce3f7619.cpp",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "cl": "21022",
+   "keep": {
+    "??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@@Z": "00685660",
+    "??1RbxSubEntity@Ogre@@UAE@XZ": "00685910",
+    "?getCastShadows@RbxSubEntity@Ogre@@UBE_NXZ": "00685700",
+    "?getEdgeList@RbxSubEntity@Ogre@@UAEPAVEdgeData@2@XZ": "00685170",
+    "?hasEdgeList@RbxSubEntity@Ogre@@UAE_NXZ": "006851a0"
+   }
+  },
+  {
+   "obj": "native-shadow-delegation.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_shadow_delegation_5a9fe7bdf9d3d332.cpp",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "cl": "21022",
+   "keep": {
+    "?getWorldTransforms@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEXPAVMatrix4@3@@Z": "00685450",
+    "?getWorldOrientation@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ": "00685460",
+    "?getWorldPosition@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVVector3@3@XZ": "00685470",
+    "??0RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@QAE@PAVEntity@2@PAVHardwareIndexBufferSharedPtr@2@PBVVertexData@2@_NPAVSubEntity@2@3@Z": "006851d0",
+    "??1RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAE@XZ": "006853a0"
+   }
+  },
+  {
+   "obj": "native-hardware-sharedptr.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_hardware_sharedptr_16493fe4099d30fc.cpp",
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "keep": {
+    "??1?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@UAE@XZ": "004d73c0"
+   }
+  },
+  {
+   "obj": "native-resource-templates.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_resource_templates_f9febbef6239dc27.cpp",
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "keep": {
+    "?destroy@?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@MAEXXZ": "0068d030",
+    "??$_Fill@PAVVector3@Ogre@@V12@@std@@YAXPAVVector3@Ogre@@0ABV12@@Z": "0067f7c0",
+    "??1?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAE@XZ": "004d7380",
+    "??_G?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAEPAXI@Z": "004d73e0",
+    "??$_Copy_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0067f170",
+    "??$_Uninit_copy@PBVVector3@Ogre@@PAV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAPAVVector3@Ogre@@PBV12@0PAV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "004dc670",
+    "??$_Copy_backward_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0067f1d0",
+    "??$_Uninit_fill_n@PAVVector3@Ogre@@IV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAXPAVVector3@Ogre@@IABV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "004dca70",
+    "?_Insert_n@?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@2@IABVVector3@Ogre@@@Z": "004ddbc0",
+    "?_Insert_n@?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@2@IABVPlane@Ogre@@@Z": "0067d600"
+   }
+  },
+  {
+   "obj": "0000.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_claudeL_a8c771929549b29e.cpp",
+   "keep": {
+    "?updateSkybox@NativeView@RBX@@QAEXPAVNativeVisualEngine@2@@Z": "004d9e00"
+   }
+  },
+  {
+   "obj": "0001.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_espeon_renderprimitive6529969e3c0e9a10.cpp",
+   "keep": {
+    "?rectangle@Renderer@@QAEXHMMMMABUColor@@@Z": "00683000"
+   }
+  },
+  {
+   "obj": "0002.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_espeon_renderrectangle6060094c19a0a0f2.cpp",
+   "keep": {
+    "?rectangle@Renderer@@QAEXMMMMABUColor@@@Z": "006830b0"
+   }
+  },
+  {
+   "obj": "0003.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_observed_3db354efc99e4c09.cpp",
+   "keep": {
+    "?_update@RbxSceneNode@Ogre@@UAEX_N0@Z": "00681190"
+   }
+  },
+  {
+   "obj": "0004.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_observed_53d74a95e1732a0f.cpp",
+   "keep": {
+    "?_findVisibleObjects@RbxSceneNode@Ogre@@UAEXPAVCamera@2@PAVRenderQueue@2@PAUVisibleObjectsBoundsInfo@2@_N33@Z": "00681560"
+   }
+  },
+  {
+   "obj": "0005.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbxscene_ctor_0606b79b7c96ed1a.cpp",
+   "keep": {
+    "?destroyCamera@RbxSceneManager@Ogre@@UAEXPAVCamera@2@@Z": "006985e0"
+   }
+  },
+  {
+   "obj": "0006.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbxscene_ctor_252e30df9e8b13f7.cpp",
+   "keep": {
+    "??1RbxSceneManager@Ogre@@UAE@XZ": "0069e220"
+   }
+  },
+  {
+   "obj": "0007.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbxscene_ctor_e0d00b9d50dc0b49.cpp",
+   "keep": {
+    "??0RbxSceneManager@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0068e7c0"
+   }
+  },
+  {
+   "obj": "0008.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbxscene_ctor_e74067c8b9e1763d.cpp",
+   "keep": {
+    "?destroyCamera@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00698710"
+   }
+  },
+  {
+   "obj": "0009.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbxscene_destroyall_stock_7a06ef240f3628d2.cpp",
+   "keep": {
+    "?destroyAllCameras@RbxSceneManager@Ogre@@UAEXXZ": "006987c0"
+   }
+  },
+  {
+   "obj": "0010.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbxscene_fpfast_63a615e0f16e56ce.cpp",
+   "keep": {
+    "?_setPass@RbxSceneManager@Ogre@@UAEPBVPass@2@PBV32@_N1@Z": "00694680"
+   }
+  },
+  {
+   "obj": "0011.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_shadow_query_mix_4e65ef0ea0a4a2ee.cpp",
+   "keep": {
+    "?queryResult@ShadowCasterSceneQueryListener@SceneManager@Ogre@@UAE_NPAVMovableObject@3@@Z": "0069c5f0"
+   }
+  },
+  {
+   "obj": "0012.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "OgreAnimationState.cpp",
+   "keep": {
+    "??DMatrix4@Ogre@@QBE?AV01@ABV01@@Z": "00541ed0",
+    "??0Quaternion@Ogre@@QAE@ABVRadian@1@ABVVector3@1@@Z": "005426f0",
+    "?_notifyTypeFlags@MovableObjectFactory@Ogre@@QAEXK@Z": "00546d60",
+    "?getWeight@AnimationState@Ogre@@QBEMXZ": "00551cd0",
+    "??4MemoryManager@Ogre@@QAEAAV01@ABV01@@Z": "00553220"
+   }
+  },
+  {
+   "obj": "0013.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "OgreConvexBody.cpp",
+   "keep": {
+    "?getPolygonCount@ConvexBody@Ogre@@QBEIXZ": "00546320"
+   }
+  },
+  {
+   "obj": "0014.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "OgreGpuProgram.cpp",
+   "keep": {
+    "??1AutoConstantDefinition@GpuProgramParameters@Ogre@@QAE@XZ": "0054c490"
+   }
+  },
+  {
+   "obj": "0015.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "OgreHighLevelGpuProgramManager.cpp",
+   "keep": {
+    "??__FsNullLang@Ogre@@YAXXZ": "007fc6f0"
+   }
+  },
+  {
+   "obj": "0016.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "OgreParticleSystem.cpp",
+   "keep": {
+    "?doSet@CmdRenderer@ParticleSystem@Ogre@@UAEXPAXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00541d70"
+   }
+  },
+  {
+   "obj": "0017.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "OgreSceneManager.cpp",
+   "keep": {
+    "?destroyLight@SceneManager@Ogre@@UAEXPAVLight@2@@Z": "0068bc80",
+    "?destroyParticleSystem@SceneManager@Ogre@@UAEXPAVParticleSystem@2@@Z": "0068bd20",
+    "?_findVisibleObjects@SceneManager@Ogre@@UAEXPAVCamera@2@PAUVisibleObjectsBoundsInfo@2@_N@Z": "0068bef0",
+    "?setShadowTextureConfig@SceneManager@Ogre@@UAEXIGGW4PixelFormat@2@@Z": "0068ca00",
+    "?destroyMovableObject@SceneManager@Ogre@@UAEXPAVMovableObject@2@@Z": "0068ce50",
+    "?extractMovableObject@SceneManager@Ogre@@UAEXPAVMovableObject@2@@Z": "0068ce80",
+    "?_injectRenderWithPass@SceneManager@Ogre@@UAEXPAVPass@2@PAVRenderable@2@_N@Z": "0068ceb0",
+    "?visit@SceneMgrQueuedRenderableVisitor@SceneManager@Ogre@@UAEXPBVRenderable@3@@Z": "0068d690",
+    "?visit@SceneMgrQueuedRenderableVisitor@SceneManager@Ogre@@UAE_NPBVPass@3@@Z": "0068d6d0",
+    "?visit@SceneMgrQueuedRenderableVisitor@SceneManager@Ogre@@UAEXPBURenderablePass@3@@Z": "0068d710",
+    "?setShadowTextureSettings@SceneManager@Ogre@@UAEXGGW4PixelFormat@2@@Z": "00693780",
+    "?destroyAllAnimations@SceneManager@Ogre@@UAEXXZ": "006993f0"
+   }
+  },
+  {
+   "obj": "0018.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "OgreSceneManager.cpp",
+   "keep": {
+    "??$_Copy_backward_opt@PAPAVLight@Ogre@@PAPAV12@Urandom_access_iterator_tag@std@@@std@@YAPAPAVLight@Ogre@@PAPAV12@00Urandom_access_iterator_tag@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "00547200",
+    "??$_Uninit_copy@PBQAVLight@Ogre@@PAPAV12@V?$allocator@PAVLight@Ogre@@@std@@@std@@YAPAPAVLight@Ogre@@PBQAV12@0PAPAV12@AAV?$allocator@PAVLight@Ogre@@@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "005473f0"
+   }
+  },
+  {
+   "obj": "0019.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "OgreSceneManagerEnumerator.cpp",
+   "keep": {
+    "?destroyInstance@DefaultSceneManagerFactory@Ogre@@UAEXPAVSceneManager@2@@Z": "0068cf30"
+   }
+  },
+  {
+   "obj": "0020.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "OgreString.cpp",
+   "keep": {
+    "??__E?BLANK@StringUtil@Ogre@@2V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@B@@YAXXZ": "007f27e0"
+   }
+  },
+  {
+   "obj": "0021.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_claudeC_rbxsubentitypool_2457577142b8f41d.cpp",
+   "keep": {
+    "?acquire@Pool@@QAEPAVRbxSubEntity@Ogre@@XZ": "00671d60"
+   }
+  },
+  {
+   "obj": "0022.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_client_large_methods_fe8e0ed61a73b8e9.cpp",
+   "keep": {
+    "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightLess@SceneManager@2@0@Z": "006903a0",
+    "??$_Merge@PAPAVLight@Ogre@@PAPAV12@V?$_Temp_iterator@PAVLight@Ogre@@@std@@UlightLess@SceneManager@2@Uforward_iterator_tag@4@@std@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@0@PAPAVLight@Ogre@@000V10@UlightLess@SceneManager@3@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "00692770",
+    "?recover_renderModulativeStencilShadowedQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z": "00694f60",
+    "?recover_renderTextureShadowCasterQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z": "00695260",
+    "?recover_renderAdditiveStencilShadowedQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z": "0069b2e0",
+    "?recover_renderAdditiveTextureShadowedQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z": "0069b6d0",
+    "?recover_ensureShadowTexturesCreated@HeaderRecovery@@QAEXXZ": "0069d110"
+   }
+  },
+  {
+   "obj": "0023.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_client_light_templates.cpp",
+   "keep": {
+    "??$_Copy_opt@PAULightInfo@SceneManager@Ogre@@PAU123@@std@@YAPAULightInfo@SceneManager@Ogre@@PAU123@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0068e100",
+    "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@std@@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "00690620",
+    "?_Insert_n@?$vector@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@2@IABULightInfo@SceneManager@Ogre@@@Z": "00697960",
+    "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z": "00697e40"
+   }
+  },
+  {
+   "obj": "0024.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_client_light_templates.cpp",
+   "keep": {
+    "??$_Copy_backward_opt@PAULightInfo@SceneManager@Ogre@@PAU123@@std@@YAPAULightInfo@SceneManager@Ogre@@PAU123@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0068e200",
+    "??$_Merge_backward@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z": "0068e390",
+    "??$_Lower_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z": "0068e440"
+   }
+  },
+  {
+   "obj": "0025.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_client_medium_methods_9dcc4c18d140c047.cpp",
+   "keep": {
+    "?recover_initRenderQueue@HeaderRecovery@@QAEXXZ": "0068b6f0",
+    "?recover__renderVisibleObjects@HeaderRecovery@@QAEXXZ": "0068bf40",
+    "?recover__renderQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z": "0068c0b0",
+    "?recover_updateRenderQueueSplitOptions@HeaderRecovery@@QAEXXZ": "0068c570",
+    "?recover_updateRenderQueueGroupSplitOptions@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@_N1@Z": "0068c650",
+    "?recover_setShadowColour@HeaderRecovery@@QAEXABVColourValue@Ogre@@@Z": "0068c8a0",
+    "?recover_setShadowIndexBufferSize@HeaderRecovery@@QAEXI@Z": "0068c950",
+    "?recover_setShadowTechnique@HeaderRecovery@@QAEXW4ShadowTechnique@Ogre@@@Z": "0068d980",
+    "?recover_renderTextureShadowReceiverQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z": "00695960",
+    "?recover_clearScene@HeaderRecovery@@QAEXXZ": "00698890",
+    "?recover_destroyAllMovableObjects@HeaderRecovery@@QAEXXZ": "00699740",
+    "?recover_prepareRenderQueue@HeaderRecovery@@QAEXXZ": "0069a470",
+    "?recover_destroyShadowTextures@HeaderRecovery@@QAEXXZ": "0069a950"
+   }
+  },
+  {
+   "obj": "0026.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_client_remaining_methods_04658f2fb3f66782.cpp",
+   "keep": {
+    "?recover_createAnimationState@HeaderRecovery@@QAEPAVAnimationState@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0068c2e0",
+    "?recover_deriveShadowCasterPass@HeaderRecovery@@QAEPBVPass@Ogre@@PBV23@@Z": "0068f750",
+    "?recover_deriveShadowReceiverPass@HeaderRecovery@@QAEPBVPass@Ogre@@PBV23@@Z": "0068fa10",
+    "?recover_createParticleSystem@HeaderRecovery@@QAEPAVParticleSystem@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": "0069da20",
+    "?recover_createParticleSystem@HeaderRecovery@@QAEPAVParticleSystem@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I0@Z": "0069daf0",
+    "?recover_createBillboardSet@HeaderRecovery@@QAEPAVBillboardSet@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z": "0069dc10"
+   }
+  },
+  {
+   "obj": "0027.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_client_remaining_methods_04658f2fb3f66782.cpp",
+   "keep": {
+    "?recover_getParticleSystem@HeaderRecovery@@QBEPAVParticleSystem@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0068bcd0",
+    "?recover_getSuggestedViewpoint@HeaderRecovery@@QAE?AUViewPoint@Ogre@@_N@Z": "0068d780"
+   }
+  },
+  {
+   "obj": "0028.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_client_rtti_a364433a605f6e52.cpp",
+   "keep": {
+    "?destroy@?$SharedPtr@VGpuProgramParameters@Ogre@@@Ogre@@MAEXXZ": "0068dd90"
+   }
+  },
+  {
+   "obj": "0029.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_client_scene_update.cpp",
+   "keep": {
+    "?recoverUpdate@HeaderRecovery@@QAEXPAVCamera@Ogre@@@Z": "0068bec0"
+   }
+  },
+  {
+   "obj": "0030.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_client_short_methods_5b192b39c746b09e.cpp",
+   "keep": {
+    "?recover_setShadowTextureSelfShadow@HeaderRecovery@@QAEX_N@Z": "0068ca40",
+    "?recover_createEntity@HeaderRecovery@@QAEPAVEntity@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": "0069d960"
+   }
+  },
+  {
+   "obj": "0031.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_client_short_methods_5b192b39c746b09e.cpp",
+   "keep": {
+    "?recover_createLight@HeaderRecovery@@QAEPAVLight@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0068b800"
+   }
+  },
+  {
+   "obj": "0032.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_client_texture_copy.cpp",
+   "keep": {
+    "??$_Copy_opt@PAVTexturePtr@Ogre@@PAV12@@std@@YAPAVTexturePtr@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0068e0b0"
+   }
+  },
+  {
+   "obj": "0033.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_espclaude_3a38bc51a49d03ed.cpp",
+   "keep": {
+    "?collect@RbxEntity@Ogre@@QAEXPAVCamera@2@PAVLight@2@AAV?$vector@PAVShadowCaster@Ogre@@V?$allocator@PAVShadowCaster@Ogre@@@std@@@std@@@Z": "0067e2f0"
+   }
+  },
+  {
+   "obj": "0034.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_espclaude_610f7f834b7be5f0.cpp",
+   "keep": {
+    "?draw@TwoDManager@@QAEXXZ": "006832b0"
+   }
+  },
+  {
+   "obj": "0035.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_espclaude_66d95e9814d0fd44.cpp",
+   "keep": {
+    "?initialize@RbxOgreView@@QAEXHPAUHWND__@@HHHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0067a7e0"
+   }
+  },
+  {
+   "obj": "0036.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_espclaude_9260ba432ec6e8a6.cpp",
+   "keep": {
+    "?findLightsAffectingFrustum@RbxSceneManager@Ogre@@UAEXPBVCamera@2@@Z": "0069e630"
+   }
+  },
+  {
+   "obj": "0037.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_espclaude_be1af347978f4727.cpp",
+   "keep": {
+    "?f@RbxSceneManager@Ogre@@QAEXPAVCamera@2@@Z": "0068d7d0"
+   }
+  },
+  {
+   "obj": "0039.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_espeon_renderqueueauthenticb965e834ae5cb4f5.cpp",
+   "keep": {
+    "?f@RbxSceneManager@Ogre@@QAEXPAVRenderQueueGroup@2@W4OrganisationMode@QueuedRenderableCollection@2@@Z": "00695aa0"
+   }
+  },
+  {
+   "obj": "0040.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_espeon_subentitydistance81be14ca97c968f3.cpp",
+   "keep": {
+    "?getSquaredViewDepth@RbxSubEntity@Ogre@@UBEMPBVCamera@2@@Z": "00685010"
+   }
+  },
+  {
+   "obj": "0043.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_fork_97dc8a390b2b28e8.cpp",
+   "keep": {
+    "?renderVisibleObjectsCustomSequence@RbxSceneManager@Ogre@@UAEXPAVRenderQueueInvocationSequence@2@@Z": "00694e40"
+   }
+  },
+  {
+   "obj": "0044.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_fork_ea71c50b47f88007.cpp",
+   "keep": {
+    "?setWorldGeometry@RbxSceneManager@Ogre@@UAEXAAV?$SharedPtr@VDataStream@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0068bda0",
+    "?setShadowTextureConfig@RbxSceneManager@Ogre@@UAEXIABUShadowTextureConfig@2@@Z": "0068db40",
+    "?setSkyDome@RbxSceneManager@Ogre@@UAEX_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@MMM0ABVQuaternion@2@HHH1@Z": "006907b0",
+    "?setShadowTextureCasterMaterial@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00691900",
+    "?setShadowTextureReceiverMaterial@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00691af0",
+    "?getCamera@RbxSceneManager@Ogre@@UBEPAVCamera@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "006943c0",
+    "?getSceneNode@RbxSceneManager@Ogre@@UBEPAVSceneNode@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00694510",
+    "?getAnimation@RbxSceneManager@Ogre@@UBEPAVAnimation@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00695bd0",
+    "?getStaticGeometry@RbxSceneManager@Ogre@@UBEPAVStaticGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "006966d0",
+    "?getInstancedGeometry@RbxSceneManager@Ogre@@UBEPAVInstancedGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00696840",
+    "?destroySceneNode@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00698a10",
+    "?destroyAnimation@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "006992c0",
+    "?createCamera@RbxSceneManager@Ogre@@UAEPAVCamera@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0069a000",
+    "?createSceneNode@RbxSceneManager@Ogre@@UAEPAVSceneNode@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0069a300",
+    "?createAnimation@RbxSceneManager@Ogre@@UAEPAVAnimation@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M@Z": "0069a7d0",
+    "?createStaticGeometry@RbxSceneManager@Ogre@@UAEPAVStaticGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0069ac50",
+    "?createInstancedGeometry@RbxSceneManager@Ogre@@UAEPAVInstancedGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0069add0"
+   }
+  },
+  {
+   "obj": "0045.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_fork_fe0538e1034a8d62.cpp",
+   "keep": {
+    "?createSkyboxPlane@RbxSceneManager@Ogre@@QAE?AVMeshPtr@2@W4BoxPlane@SceneManager@2@MABVQuaternion@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0068efd0",
+    "?createSkydomePlane@RbxSceneManager@Ogre@@QAE?AVMeshPtr@2@W4BoxPlane@SceneManager@2@MMMABVQuaternion@2@HHHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0068f360",
+    "?prepareShadowTextures@RbxSceneManager@Ogre@@UAEXPAVCamera@2@PAVViewport@2@@Z": "00696290",
+    "?renderShadowVolumesToStencil@RbxSceneManager@Ogre@@UAEXPBVLight@2@PBVCamera@2@@Z": "0069c800"
+   }
+  },
+  {
+   "obj": "0046.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_large_shadow_02e53319fe5284dd.cpp",
+   "keep": {
+    "?recover_initShadowVolumeMaterials@HeaderRecovery@@QAEXXZ": "00690b20"
+   }
+  },
+  {
+   "obj": "0047.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_large_skybox_8f6d8e40516e2b8d.cpp",
+   "keep": {
+    "?setSkyBox@RecoveredSkySceneManager@Ogre@@UAEX_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M0ABVQuaternion@2@1@Z": "00692a10"
+   }
+  },
+  {
+   "obj": "0048.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_listener_vertex_buffer_28806614eb3a450c.cpp",
+   "keep": {
+    "?initializeVertexBuffer@Listener@Ogre@@QAEXI@Z": "006829a0"
+   }
+  },
+  {
+   "obj": "0050.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_ogre_resume_0dfdb9b464d9c5b7.cpp",
+   "keep": {
+    "?getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z": "00685490"
+   }
+  },
+  {
+   "obj": "0051.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_ogre_resume_17f9ce717551bd70.cpp",
+   "keep": {
+    "?_updateBounds@RbxSceneNode@Ogre@@UAEXXZ": "006817e0"
+   }
+  },
+  {
+   "obj": "0052.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_ogre_resume_1fd759b92d78c525.cpp",
+   "keep": {
+    "?getOrientation@RbxSubEntity@Ogre@@QBEABVQuaternion@2@XZ": "00685730"
+   }
+  },
+  {
+   "obj": "0053.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_ogre_resume_252207500829304d.cpp",
+   "keep": {
+    "?getRenderOperation@RbxSubEntity@Ogre@@UAEXAAVRenderOperation@2@@Z": "00684fd0"
+   }
+  },
+  {
+   "obj": "0054.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_ogre_resume_9c23d949851390da.cpp",
+   "keep": {
+    "?getSphere@RbxSceneNode@Ogre@@QBEABVSphere@2@K@Z": "00682040"
+   }
+  },
+  {
+   "obj": "0055.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_ogre_resume_a514c3bb7ed458e9.cpp",
+   "keep": {
+    "?getDarkCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z": "00685590"
+   }
+  },
+  {
+   "obj": "0056.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_ogre_resume_b2126d94dfadd044.cpp",
+   "keep": {
+    "?prepareEdges@RbxSubMesh@Ogre@@QAEXXZ": "00682430",
+    "??1RbxSubMesh@Ogre@@QAE@XZ": "006824e0"
+   }
+  },
+  {
+   "obj": "0057.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbx_adorn_state_ctor_5b7c48b8c5421fef.cpp",
+   "keep": {
+    "??0RbxAdornState@Ogre@@QAE@XZ": "00685e30"
+   }
+  },
+  {
+   "obj": "0058.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbx_create_indices_0cb0c310d58dd691.cpp",
+   "keep": {
+    "?createIndices@@YGPAVSubMesh@Ogre@@ABVMeshPtr@2@PBX1I@Z": "0067c020"
+   }
+  },
+  {
+   "obj": "0059.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbx_scenemgr_create_movable_e87cf5c167b0c1ab.cpp",
+   "keep": {
+    "?createMovableObject@RbxSceneManager@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0PBV?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@5@@Z": "0069ddf0"
+   }
+  },
+  {
+   "obj": "0060.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbx_scenemgr_destroy_movable_1b3520fec339c1aa.cpp",
+   "keep": {
+    "?destroyMovableObject@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": "0069df80"
+   }
+  },
+  {
+   "obj": "0061.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbx_scenemgr_shadowcasters_44af38d731495640.cpp",
+   "keep": {
+    "?findShadowCastersForLight@RbxSceneManager@Ogre@@UAEABV?$vector@PAVShadowCaster@Ogre@@V?$allocator@PAVShadowCaster@Ogre@@@std@@@std@@PBVLight@2@PBVCamera@2@@Z": "006960e0"
+   }
+  },
+  {
+   "obj": "0062.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbx_subentity_shadow_volume_f6cac9c91aa4e5c1.cpp",
+   "keep": {
+    "?getShadowVolumeRenderableIterator@RbxSubEntity@Ogre@@UAE?AV?$VectorIterator@V?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@@2@W4ShadowTechnique@2@PBVLight@2@PAVHardwareIndexBufferSharedPtr@2@_NMK@Z": "00685a40"
+   }
+  },
+  {
+   "obj": "0063.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbxscene_apply_animations_a7ba41ac8adad042.cpp",
+   "keep": {
+    "?_applySceneAnimations@RbxSceneManager@Ogre@@UAEXXZ": "00695d20"
+   }
+  },
+  {
+   "obj": "0064.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbxscene_modulative_no_custom_proj_50e542f3fe79853d.cpp",
+   "keep": {
+    "?renderModulativeTextureShadowedQueueGroupObjects@RbxSceneManager@Ogre@@UAEXPAVRenderQueueGroup@2@W4OrganisationMode@QueuedRenderableCollection@2@@Z": "00695420"
+   }
+  },
+  {
+   "obj": "0065.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbxscene_populate_shadow_count_989700d72290bd34.cpp",
+   "keep": {
+    "?_populateLightList@RbxSceneManager@Ogre@@UAEXABVVector3@2@MAAV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@Z": "0069e390"
+   }
+  },
+  {
+   "obj": "0066.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbxscene_sky_plane_line_234565f8e0d3b9ea.cpp",
+   "keep": {
+    "?setSkyPlane@RbxSceneManager@Ogre@@UAEX_NABVPlane@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@MM0MHH2@Z": "0068eac0"
+   }
+  },
+  {
+   "obj": "0067.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rbxscene_timed_no_viewport_8cefb7f930351b4e.cpp",
+   "keep": {
+    "?_renderScene@RbxSceneManager@Ogre@@UAEXPAVCamera@2@PAVViewport@2@_N@Z": "00698cc0"
+   }
+  },
+  {
+   "obj": "0068.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_resource_release_4709ef25b50fc1eb.cpp",
+   "keep": {
+    "?releaseUnusedResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@4@@Z": "006792b0"
+   }
+  },
+  {
+   "obj": "0069.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_rtti_d56a903776f2b6ff.cpp",
+   "keep": {
+    "?getStartBackgroundThread@ResourceBackgroundQueue@Ogre@@QAE_NXZ": "00552690"
+   }
+  },
+  {
+   "obj": "0070.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_sparkle_native_context_accessord3483aed579e6edb.cpp",
+   "keep": {
+    "?sparkle@ParticleAdornRecovery@@QAEXXZ": "00674790"
+   }
+  },
+  {
+   "obj": "0071.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_sub_transform_2a4870813417745d.cpp",
+   "keep": {
+    "?getWorldTransforms@RbxSubEntity@Ogre@@UBEXPAVMatrix4@2@@Z": "00685710"
+   }
+  },
+  {
+   "obj": "0072.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_texture_collect_1f43ed84bc91727c.cpp",
+   "keep": {
+    "?collectUnusedTextures@RenderNew@RBX@@YAXXZ": "007aea60"
+   }
+  },
+  {
+   "obj": "0073.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_tpl_map_string_meshptr_ec8e332780074925.cpp",
+   "keep": {
+    "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "00670a50",
+    "??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@@std@@@2@@std@@QAEAAVMeshPtr@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "006719f0"
+   }
+  },
+  {
+   "obj": "0074.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_15110fb6a0b86d4e.cpp",
+   "keep": {
+    "??$_Sort_heap@PAUEntry@@@std@@YAXPAUEntry@@0@Z": "0067d1a0"
+   }
+  },
+  {
+   "obj": "0075.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_16107800e0b0542a.cpp",
+   "keep": {
+    "?removeSubEntity@RbxEntity@Ogre@@QAEXPAVRbxSubEntity@2@@Z": "0067d2d0"
+   }
+  },
+  {
+   "obj": "0076.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_34708910126535a9.cpp",
+   "keep": {
+    "?getTransform@RbxSceneNode@Ogre@@QBEABVMatrix4@2@K@Z": "006818e0"
+   }
+  },
+  {
+   "obj": "0077.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_3de506635a8ad8a6.cpp",
+   "keep": {
+    "?has@RbxSceneNode@Ogre@@QAE_NI@Z": "00681a00"
+   }
+  },
+  {
+   "obj": "0078.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_454d27b422690bab.cpp",
+   "keep": {
+    "??0Listener@Ogre@@QAE@XZ": "006831d0",
+    "??1Listener@Ogre@@UAE@XZ": "00683240"
+   }
+  },
+  {
+   "obj": "0079.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_5230e5fcf10842ad.cpp",
+   "keep": {
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVLight@Ogre@@VVector4@2@U?$less@PBVLight@Ogre@@@std@@V?$allocator@U?$pair@QBVLight@Ogre@@VVector4@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVLight@Ogre@@VVector4@2@U?$less@PBVLight@Ogre@@@std@@V?$allocator@U?$pair@QBVLight@Ogre@@VVector4@2@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QBVLight@Ogre@@VVector4@2@@2@D@Z": "00681300"
+   }
+  },
+  {
+   "obj": "0080.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_5a636a8fbb4dd2a2.cpp",
+   "keep": {
+    "?createEntity@RbxSceneManager@Ogre@@UAEPAVEntity@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4PrefabType@SceneManager@2@@Z": "0068b8b0"
+   }
+  },
+  {
+   "obj": "0081.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_5d751f703f5eddd8.cpp",
+   "keep": {
+    "?configure@Listener@Ogre@@QAEXPAVSceneManager@2@PAX_N22@Z": "00682560"
+   }
+  },
+  {
+   "obj": "0082.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_71ada4ca117b263f.cpp",
+   "keep": {
+    "?getCurrentSubMesh@RbxSubEntity@Ogre@@QAEPAVSubMesh@2@XZ": "00685140"
+   }
+  },
+  {
+   "obj": "0083.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_7d4794109b155f59.cpp",
+   "keep": {
+    "??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@PAVSubMesh@1@I@Z": "00685850"
+   }
+  },
+  {
+   "obj": "0084.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_88a75b4c54bbca54.cpp",
+   "keep": {
+    "?_Buynode@?$list@UQuad@@V?$allocator@UQuad@@@std@@@std@@IAEPAU_Node@?$_List_nod@UQuad@@V?$allocator@UQuad@@@std@@@2@PAU342@0ABUQuad@@@Z": "00682b90"
+   }
+  },
+  {
+   "obj": "0085.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_8e6003da0d343385.cpp",
+   "keep": {
+    "??0RbxEntity@Ogre@@QAE@XZ": "0067d1f0",
+    "??1RbxEntity@Ogre@@UAE@XZ": "0067d420",
+    "?createSubEntity@RbxEntity@Ogre@@QAEPAVSubEntity@2@PAVSubMesh@2@I@Z": "0067d9b0"
+   }
+  },
+  {
+   "obj": "0087.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_91a54940186435af.cpp",
+   "keep": {
+    "?setVisible@RbxEntity@Ogre@@UAEX_N@Z": "0067c6a0",
+    "?_updateRenderQueue@RbxEntity@Ogre@@UAEXPAVRenderQueue@2@@Z": "0067d010"
+   }
+  },
+  {
+   "obj": "0088.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_a1d8d26af91f29e3.cpp",
+   "keep": {
+    "??$_Adjust_heap@PAUEntry@@HU1@@std@@YAXPAUEntry@@HHU1@@Z": "0067c780"
+   }
+  },
+  {
+   "obj": "0089.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_a7cca1af0b493e35.cpp",
+   "keep": {
+    "??1RbxSceneNode@Ogre@@UAE@XZ": "006821c0",
+    "?initializeSpheres@Ogre@@YAXXZ": "006822e0"
+   }
+  },
+  {
+   "obj": "0090.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_b0a3250dc05458b4.cpp",
+   "keep": {
+    "?getSubMesh@RbxSubEntity@Ogre@@QAEPAVSubMesh@2@I@Z": "006850d0"
+   }
+  },
+  {
+   "obj": "0091.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_b894a2da96c86c7e.cpp",
+   "keep": {
+    "?setMesh@VisualEngine@Ogre@@QAEXVMeshPtr@2@@Z": "0067c520"
+   }
+  },
+  {
+   "obj": "0093.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_e30ba7cfa3240599.cpp",
+   "keep": {
+    "??$_Push_heap@PAU?$pair@PAXM@std@@HU12@ULess@@@std@@YAXPAU?$pair@PAXM@0@HHU10@ULess@@@Z": "0067c640"
+   }
+  },
+  {
+   "obj": "0094.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_ebdcbd65a010751e.cpp",
+   "keep": {
+    "??$_Med3@PAUEntry@@@std@@YAXPAUEntry@@00@Z": "0067c800",
+    "??$_Insertion_sort1@PAUEntry@@U1@@std@@YAXPAUEntry@@00@Z": "0067cb30",
+    "??$_Unguarded_partition@PAUEntry@@@std@@YA?AU?$pair@PAUEntry@@PAU1@@0@PAUEntry@@0@Z": "0067cc00"
+   }
+  },
+  {
+   "obj": "0095.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_try_ffd5d9229ca1a018.cpp",
+   "keep": {
+    "?forgetLightPosition@@YA_NPBVLight@Ogre@@@Z": "00682150"
+   }
+  },
+  {
+   "obj": "0096.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_twod_add_quad_color_fork_f8f01467d94dfda6.cpp",
+   "keep": {
+    "?addQuad@QuadList@Ogre@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@MMMMMMMM@Z": "00682d60"
+   }
+  },
+  {
+   "obj": "0097.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_unit_afab3054ff45be52.cpp",
+   "keep": {
+    "?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z": "007adfb0"
+   }
+  },
+  {
+   "obj": "0098.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_visual_engine_d4ce797c6a771e8f.cpp",
+   "keep": {
+    "?getNext@?$MapIterator@V?$map@KV?$SharedPtr@VResource@Ogre@@@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKV?$SharedPtr@VResource@Ogre@@@Ogre@@@std@@@4@@std@@@Ogre@@QAE?AV?$SharedPtr@VResource@Ogre@@@2@XZ": "00678dc0",
+    "?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00678e20"
+   }
+  },
+  {
+   "obj": "0099.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreAlignedAllocator.cpp",
+   "keep": {
+    "??4?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@QAEAAV01@ABV01@@Z": "00670670",
+    "??0?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@QAE@ABV01@@Z": "0068cf50",
+    "?swap@?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@MAEXAAV12@@Z": "0068ddc0"
+   },
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0100.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreAutoParamDataSource.cpp",
+   "keep": {
+    "?setShowDebugShadows@SceneManager@Ogre@@UAEX_N@Z": "0068e940",
+    "?setShadowUseInfiniteFarPlane@SceneManager@Ogre@@UAEX_N@Z": "0068e9f0",
+    "?isShadowTechniqueStencilBased@SceneManager@Ogre@@UBE_NXZ": "0068ea00",
+    "?isShadowTechniqueTextureBased@SceneManager@Ogre@@UBE_NXZ": "0068ea10",
+    "?isShadowTechniqueModulative@SceneManager@Ogre@@UBE_NXZ": "0068ea20",
+    "?isShadowTechniqueAdditive@SceneManager@Ogre@@UBE_NXZ": "0068ea30",
+    "?isShadowTechniqueIntegrated@SceneManager@Ogre@@UBE_NXZ": "0068ea40",
+    "?isShadowTechniqueInUse@SceneManager@Ogre@@UBE_NXZ": "0068ea50",
+    "?setFindVisibleObjects@SceneManager@Ogre@@UAEX_N@Z": "0068ea80"
+   },
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0101.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreAutoParamDataSource.cpp",
+   "keep": {
+    "??$_Uninit_copy@PBULightInfo@SceneManager@Ogre@@PAU123@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@YAPAULightInfo@SceneManager@Ogre@@PBU123@0PAU123@AAV?$allocator@ULightInfo@SceneManager@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0068e1a0"
+   },
+   "cl": "50727",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0102.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreMeshSerializerImpl.cpp",
+   "keep": {},
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0103.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreSceneManager.cpp",
+   "keep": {
+    "?destroy@?$SharedPtr@VMaterial@Ogre@@@Ogre@@MAEXXZ": "004d73a0",
+    "?setShadowVolumeStencilState@SceneManager@Ogre@@MAEX_N00@Z": "0068c7b0",
+    "?setShadowFarDistance@SceneManager@Ogre@@UAEXM@Z": "0068c910",
+    "?setShadowDirectionalLightExtrusionDistance@SceneManager@Ogre@@UAEXM@Z": "0068c930",
+    "?setShadowDirLightTextureOffset@SceneManager@Ogre@@UAEXM@Z": "0068e980",
+    "?setShadowTextureFadeStart@SceneManager@Ogre@@UAEXM@Z": "0068e9a0",
+    "?setShadowTextureFadeEnd@SceneManager@Ogre@@UAEXM@Z": "0068e9b0",
+    "?setShadowCasterRenderBackFaces@SceneManager@Ogre@@UAEX_N@Z": "0068e9d0",
+    "??$_Uninit_fill_n@PAULightInfo@SceneManager@Ogre@@IU123@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@YAXPAULightInfo@SceneManager@Ogre@@IABU123@AAV?$allocator@ULightInfo@SceneManager@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "00690250",
+    "?clearSpecialCaseRenderQueues@SceneManager@Ogre@@UAEXXZ": "006929d0",
+    "?addSpecialCaseRenderQueue@SceneManager@Ogre@@UAEXE@Z": "00698520",
+    "?removeSpecialCaseRenderQueue@SceneManager@Ogre@@UAEXE@Z": "00698540",
+    "?_notifyAutotrackingSceneNode@SceneManager@Ogre@@UAEXPAVSceneNode@2@_N@Z": "006994b0",
+    "?addRenderQueueListener@SceneManager@Ogre@@UAEXPAVRenderQueueListener@2@@Z": "0069c5b0",
+    "?setShadowTextureCount@SceneManager@Ogre@@UAEXI@Z": "0069d7e0",
+    "?getMovableObjectIterator@SceneManager@Ogre@@UAE?AV?$MapIterator@V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0069e110",
+    "?extractAllMovableObjectsByType@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0069e1e0"
+   },
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0104.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreSceneManager.cpp",
+   "keep": {
+    "??RlightsForShadowTextureLess@SceneManager@Ogre@@QBE_NPBVLight@2@0@Z": "0068c740",
+    "??$_Lower_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z": "0068e5f0",
+    "??$_Upper_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z": "0068e6a0",
+    "??$_Merge@PAPAVLight@Ogre@@PAPAV12@V?$_Temp_iterator@PAVLight@Ogre@@@std@@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@4@@std@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@0@PAPAVLight@Ogre@@000V10@UlightsForShadowTextureLess@SceneManager@3@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "00692880"
+   },
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+  },
+  {
+   "obj": "0105.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreSceneManager.cpp",
+   "keep": {
+    "?getRenderQueue@SceneManager@Ogre@@UAEPAVRenderQueue@2@XZ": "0068b6d0"
+   },
+   "cl": "50727",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0106.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreAlignedAllocator.cpp",
+   "keep": {
+    "??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@std@@QAE@ABU01@@Z": "006517d0",
+    "??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@1@@Z": "00651ae0",
+    "?erase@?$vector@VParameterDef@Ogre@@V?$allocator@VParameterDef@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@VParameterDef@Ogre@@V?$allocator@VParameterDef@Ogre@@@std@@@2@V?$_Vector_const_iterator@VParameterDef@Ogre@@V?$allocator@VParameterDef@Ogre@@@std@@@2@0@Z": "00652de0",
+    "?find@?$_Tree@V?$_Tmap_traits@IVVector4@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIVVector4@Ogre@@@std@@@4@$0A@@std@@@std@@QBE?AVconst_iterator@12@ABI@Z": "00681f00"
+   }
+  },
+  {
+   "obj": "0107.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreArchiveManager.cpp",
+   "keep": {
+    "?erase@?$list@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$SharedPtr@VResource@Ogre@@@Ogre@@@std@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$SharedPtr@VResource@Ogre@@@Ogre@@@std@@@2@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z": "004986d0"
+   }
+  },
+  {
+   "obj": "0108.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreAutoParamDataSource.cpp",
+   "keep": {
+    "?erase@?$list@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$SharedPtr@VResource@Ogre@@@Ogre@@@std@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$SharedPtr@VResource@Ogre@@@Ogre@@@std@@@2@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z": "00498870",
+    "?_Xlen@?$deque@KV?$allocator@K@std@@@std@@KAXXZ": "00516a10",
+    "?erase@?$vector@VTexturePtr@Ogre@@V?$allocator@VTexturePtr@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@VTexturePtr@Ogre@@V?$allocator@VTexturePtr@Ogre@@@std@@@2@V?$_Vector_const_iterator@VTexturePtr@Ogre@@V?$allocator@VTexturePtr@Ogre@@@std@@@2@0@Z": "00697630"
+   }
+  },
+  {
+   "obj": "0109.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreBillboardChain.cpp",
+   "keep": {
+    "?_Buynode@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@2@PAU342@00ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@D@Z": "004a1f90"
+   }
+  },
+  {
+   "obj": "0110.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreCompiler2Pass.cpp",
+   "keep": {
+    "?_Xran@?$vector@ULexemeTokenDef@Compiler2Pass@Ogre@@V?$allocator@ULexemeTokenDef@Compiler2Pass@Ogre@@@std@@@std@@KAXXZ": "0046dfc0",
+    "??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UTokenState@Compiler2Pass@Ogre@@@std@@QAE@XZ": "006516d0"
+   }
+  },
+  {
+   "obj": "0111.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreCompositionTechnique.cpp",
+   "keep": {
+    "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VTexturePtr@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VTexturePtr@Ogre@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "005b9a30"
+   }
+  },
+  {
+   "obj": "0112.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreDefaultSceneQueries.cpp",
+   "keep": {
+    "??E?$_Vector_const_iterator@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@std@@QAEAAV01@XZ": "0067c5a0"
+   }
+  },
+  {
+   "obj": "0113.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreFontManager.cpp",
+   "keep": {
+    "?find@?$_Tree@V?$_Tmap_traits@IUGlyphInfo@Font@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGlyphInfo@Font@Ogre@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABI@Z": "0043a320"
+   }
+  },
+  {
+   "obj": "0114.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreGpuProgramUsage.cpp",
+   "keep": {
+    "?insert@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@_N@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": "004a2eb0"
+   }
+  },
+  {
+   "obj": "0115.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreMesh.cpp",
+   "keep": {
+    "??$_Advance@V?$_Vector_iterator@PAVPose@Ogre@@V?$allocator@PAVPose@Ogre@@@std@@@std@@G@std@@YAXAAV?$_Vector_iterator@PAVPose@Ogre@@V?$allocator@PAVPose@Ogre@@@std@@@0@GUrandom_access_iterator_tag@0@@Z": "0068e060"
+   }
+  },
+  {
+   "obj": "0116.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreOverlayManager.cpp",
+   "keep": {
+    "?_Lbound@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": "004a1a40"
+   }
+  },
+  {
+   "obj": "0117.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreProfiler.cpp",
+   "keep": {
+    "?_Incsize@?$list@UProfileHistory@Profiler@Ogre@@V?$allocator@UProfileHistory@Profiler@Ogre@@@std@@@std@@IAEXI@Z": "0055d330"
+   }
+  },
+  {
+   "obj": "0118.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreRenderQueueInvocation.cpp",
+   "keep": {
+    "??0RenderQueueInvocationSequence@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0046f630"
+   }
+  },
+  {
+   "obj": "0119.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreRenderSystemCapabilities.cpp",
+   "keep": {
+    "??1RenderSystemCapabilities@Ogre@@QAE@XZ": "0064f8c0"
+   }
+  },
+  {
+   "obj": "0120.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreResourceGroupManager.cpp",
+   "keep": {
+    "?getResourceGroup@ResourceGroupManager@Ogre@@IAEPAUResourceGroup@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0046d0a0"
+   }
+  },
+  {
+   "obj": "0121.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreSceneManager.cpp",
+   "keep": {
+    "??$get_temporary_buffer@PAVLight@Ogre@@@std@@YA?AU?$pair@PAPAVLight@Ogre@@H@0@H@Z": "0068e2b0",
+    "??4?$_Temp_iterator@PAVLight@Ogre@@@std@@QAEAAV01@ABQAVLight@Ogre@@@Z": "0068e750",
+    "??$_Equal@PBULightInfo@SceneManager@Ogre@@V?$_Vector_const_iterator@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@@std@@YA_NPBULightInfo@SceneManager@Ogre@@0V?$_Vector_const_iterator@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@0@Urandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "00690340",
+    "??$_Copy_opt@PAPAVLight@Ogre@@V?$_Temp_iterator@PAVLight@Ogre@@@std@@Uforward_iterator_tag@4@@std@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@0@PAPAVLight@Ogre@@0V10@Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "00690580",
+    "??$_Buffered_rotate@PAPAVLight@Ogre@@HPAV12@@std@@YAPAPAVLight@Ogre@@PAPAV12@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@@Z": "006925c0",
+    "?fireRenderQueueStarted@SceneManager@Ogre@@MAE_NEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00693060",
+    "?fireRenderQueueEnded@SceneManager@Ogre@@MAE_NEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00693130",
+    "?fireShadowTexturesUpdated@SceneManager@Ogre@@MAEXI@Z": "00693200",
+    "?fireShadowTexturesPreCaster@SceneManager@Ogre@@MAEXPAVLight@2@PAVCamera@2@@Z": "006932a0",
+    "?fireShadowTexturesPreReceiver@SceneManager@Ogre@@MAEXPAVLight@2@PAVFrustum@2@@Z": "00693360",
+    "?setShadowTextureSize@SceneManager@Ogre@@UAEXG@Z": "006935b0",
+    "?setShadowTexturePixelFormat@SceneManager@Ogre@@UAEXW4PixelFormat@2@@Z": "006936c0",
+    "?find@?$_Tree@V?$_Tmap_traits@W4TextureEffectType@TextureUnitState@Ogre@@UTextureEffect@23@U?$less@W4TextureEffectType@TextureUnitState@Ogre@@@std@@V?$allocator@U?$pair@$$CBW4TextureEffectType@TextureUnitState@Ogre@@UTextureEffect@23@@std@@@6@$00@std@@@std@@QBE?AVconst_iterator@12@ABW4TextureEffectType@TextureUnitState@Ogre@@@Z": "006938e0",
+    "??$?8ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@YA_NABV?$vector@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@0@0@Z": "00693f20",
+    "??$_Chunked_merge@PAPAVLight@Ogre@@PAPAV12@HUlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHUlightLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z": "006940e0",
+    "?hasCamera@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "006944c0",
+    "?hasSceneNode@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00694630",
+    "?hasAnimation@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00695cd0",
+    "?removeRenderQueueListener@SceneManager@Ogre@@UAEXPAVRenderQueueListener@2@@Z": "00695ee0",
+    "?removeShadowListener@SceneManager@Ogre@@UAEXPAVShadowListener@2@@Z": "00695fe0",
+    "?hasStaticGeometry@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "006967f0",
+    "?insert@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@_N@2@ABE@Z": "00696fb0",
+    "?find@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@QAE?AViterator@12@ABE@Z": "00697110",
+    "?find@?$_Tree@V?$_Tmap_traits@PBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@U?$less@PBVCamera@Ogre@@@std@@V?$allocator@U?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@std@@@5@$0A@@std@@@std@@QBE?AVconst_iterator@12@ABQBVCamera@Ogre@@@Z": "00697480",
+    "??$_Insert@V?$_Vector_const_iterator@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@QAEXV?$_Vector_const_iterator@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@1@00Uforward_iterator_tag@1@@Z": "00697cd0",
+    "?isRenderQueueToBeProcessed@SceneManager@Ogre@@UAE_NE@Z": "00698560",
+    "?destroyStaticGeometry@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "006994e0",
+    "?destroyAllStaticGeometry@SceneManager@Ogre@@UAEXXZ": "00699560",
+    "?destroyInstancedGeometry@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00699610",
+    "?destroyAllInstancedGeometry@SceneManager@Ogre@@UAEXXZ": "00699690",
+    "?hasMovableObject@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": "00699930",
+    "?getMovableObjectCollection@SceneManager@Ogre@@IAEPAUMovableObjectCollection@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0069dd00",
+    "?extractMovableObject@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": "0069e180"
+   }
+  },
+  {
+   "obj": "0122.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "OgreSceneManager.cpp",
+   "keep": {
+    "??$_Merge_backward@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z": "0068e500",
+    "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightsForShadowTextureLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightsForShadowTextureLess@SceneManager@2@0@Z": "00690460"
+   },
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast"
+  },
+  {
+   "obj": "0123.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "roc_client_map_bounds.cpp",
+   "keep": {
+    "??A?$map@PBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@U?$less@PBVCamera@Ogre@@@std@@V?$allocator@U?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@std@@@5@@std@@QAEAAUVisibleObjectsBoundsInfo@Ogre@@ABQBVCamera@3@@Z": "006999f0"
+   }
+  },
+  {
+   "obj": "0124.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "roc_client_map_bounds.cpp",
+   "keep": {
+    "??0_Node@?$_Tree_nod@V?$_Tmap_traits@PBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@U?$less@PBVCamera@Ogre@@@std@@V?$allocator@U?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@std@@@5@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@2@D@Z": "0068e010"
+   }
+  },
+  {
+   "obj": "0125.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "roc_fork_ccf250026627378f.cpp",
+   "keep": {
+    "?setWorldGeometry@RbxSceneManager@Ogre@@UAEXAAV?$SharedPtr@VDataStream@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0068be30",
+    "?getMovableObjectCollection@RbxSceneManager@Ogre@@IBEPBUMovableObjectCollection@SceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00696960",
+    "?getMovableObject@RbxSceneManager@Ogre@@UBEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": "00696a80",
+    "?destroyAllMovableObjectsByType@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0069e020"
+   }
+  },
+  {
+   "obj": "0126.obj",
+   "recipe": "ogre-1.4.9-dll",
+   "file": "roc_ogre_map_string_value84_300b0b85e3ca9437.cpp",
+   "keep": {
+    "?_Lbound@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": "00678830"
+   }
+  },
+  {
+   "obj": "0127.obj",
+   "recipe": "ogre-1.6.4-dll",
+   "file": "OgreAlignedAllocator.cpp",
+   "keep": {
+    "?_Copy@?$_Tree@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@0@Z": "00588190",
+    "?_Copy@?$_Tree@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXABV12@@Z": "00588cf0",
+    "??0?$_Tree@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@std@@QAE@ABV01@@Z": "00589210"
+   },
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0128.obj",
+   "recipe": "ogre-1.6.4-dll",
+   "file": "OgreAlignedAllocator.cpp",
+   "keep": {
+    "?setMaximumZ@AxisAlignedBox@Ogre@@QAEXM@Z": "004e5b60"
+   },
+   "cl": "50727",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0129.obj",
+   "recipe": "ogre-1.6.4-dll",
+   "file": "OgreConvexBody.cpp",
+   "keep": {
+    "??__E?msFreePolygons@ConvexBody@Ogre@@1V?$vector@PAVPolygon@Ogre@@V?$allocator@PAVPolygon@Ogre@@@std@@@std@@A@@YAXXZ": "007ef8c0"
+   },
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0130.obj",
+   "recipe": "ogre-1.6.4-dll",
+   "file": "OgreMovableObject.cpp",
+   "keep": {
+    "?getLightCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@XZ": "00685100"
+   },
+   "cl": "50727",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0131.obj",
+   "recipe": "ogre-1.6.4-dll",
+   "file": "OgreRenderQueueSortingGrouping.cpp",
+   "keep": {
+    "?_Maxlen@?$_Temp_iterator@URenderablePass@Ogre@@@std@@QAEHXZ": "006902d0",
+    "??$unchecked_copy@PAURenderablePass@Ogre@@V?$_Temp_iterator@URenderablePass@Ogre@@@std@@@stdext@@YA?AV?$_Temp_iterator@URenderablePass@Ogre@@@std@@PAURenderablePass@Ogre@@0V12@@Z": "00692550",
+    "??$unchecked_merge@PAURenderablePass@Ogre@@PAU12@V?$_Temp_iterator@URenderablePass@Ogre@@@std@@UDepthSortDescendingLess@QueuedRenderableCollection@2@@stdext@@YA?AV?$_Temp_iterator@URenderablePass@Ogre@@@std@@PAURenderablePass@Ogre@@000V12@UDepthSortDescendingLess@QueuedRenderableCollection@4@@Z": "00694280",
+    "??$_Unchecked_chunked_merge@PAURenderablePass@Ogre@@V?$_Temp_iterator@URenderablePass@Ogre@@@std@@HUDepthSortDescendingLess@QueuedRenderableCollection@2@@stdext@@YAXPAURenderablePass@Ogre@@0V?$_Temp_iterator@URenderablePass@Ogre@@@std@@HHUDepthSortDescendingLess@QueuedRenderableCollection@2@@Z": "00699ee0"
+   },
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0132.obj",
+   "recipe": "ogre-1.6.4-dll",
+   "file": "OgreResourceGroupManager.cpp",
+   "keep": {
+    "?_Buynode@?$list@UResourceDeclaration@ResourceGroupManager@Ogre@@V?$allocator@UResourceDeclaration@ResourceGroupManager@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UResourceDeclaration@ResourceGroupManager@Ogre@@V?$allocator@UResourceDeclaration@ResourceGroupManager@Ogre@@@std@@@2@XZ": "00496ed0"
+   },
+   "cl": "50727",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0133.obj",
+   "recipe": "ogre-1.6.4-dll",
+   "file": "OgreSceneManager.cpp",
+   "keep": {
+    "??$_Rotate@PAPAVLight@Ogre@@HPAV12@@std@@YAXPAPAVLight@Ogre@@00PAH0@Z": "0068d580",
+    "?_Eqrange@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@IAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@V123@@2@ABE@Z": "00692260",
+    "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z": "00698070",
+    "??$_Chunked_merge@PAPAVLight@Ogre@@V?$_Temp_iterator@PAVLight@Ogre@@@std@@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0V?$_Temp_iterator@PAVLight@Ogre@@@0@HHUlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z": "006982a0",
+    "??$_Buffered_merge_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z": "0069b140",
+    "?addRenderQueueListener@SceneManager@Ogre@@UAEXPAVRenderQueueListener@2@@Z": "0069c5d0",
+    "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z": "0069d660",
+    "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0PAH0UlightLess@SceneManager@2@@Z": "0069d840"
+   },
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0134.obj",
+   "recipe": "ogre-1.6.4-dll",
+   "file": "OgreSceneManager.cpp",
+   "keep": {
+    "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightLess@SceneManager@2@Urandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "00694020",
+    "?injectMovableObject@SceneManager@Ogre@@UAEXPAVMovableObject@2@@Z": "0069e140"
+   },
+   "cl": "50727",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0135.obj",
+   "recipe": "ogre-1.6.4-dll",
+   "file": "OgreTextureUnitState.cpp",
+   "keep": {
+    "??__FnullTexPtr@?9??_getTexturePtr@TextureUnitState@Ogre@@QBEABVTexturePtr@2@I@Z@YAXXZ": "008014e0"
+   },
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "obj": "0136.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreAnimationState.cpp",
+   "keep": {
+    "?create@ExceptionFactory@Ogre@@SA?AVItemIdentityException@2@U?$ExceptionCodeType@$04@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1PBDJ@Z": "0068b610",
+    "?create@ExceptionFactory@Ogre@@SA?AVItemIdentityException@2@U?$ExceptionCodeType@$03@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1PBDJ@Z": "0068b650"
+   }
+  },
+  {
+   "obj": "0137.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreAnimationTrack.cpp",
+   "keep": {}
+  },
+  {
+   "obj": "0138.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreAnimationTrack.cpp",
+   "keep": {
+    "?create@ExceptionFactory@Ogre@@SA?AVInvalidParametersException@2@U?$ExceptionCodeType@$01@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1PBDJ@Z": "0067c4d0"
+   }
+  },
+  {
+   "obj": "0139.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreEdgeListBuilder.cpp",
+   "keep": {
+    "??$_Copy_backward_opt@PAVVector4@Ogre@@PAV12@@std@@YAPAVVector4@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0067c720",
+    "??$fill@PAVVector4@Ogre@@V12@@std@@YAXPAVVector4@Ogre@@0ABV12@@Z": "0067c960"
+   }
+  },
+  {
+   "obj": "0140.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreMesh.cpp",
+   "keep": {}
+  },
+  {
+   "obj": "0141.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreMeshSerializerImpl.cpp",
+   "keep": {}
+  },
+  {
+   "obj": "0142.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreOptimisedUtilGeneral.cpp",
+   "keep": {
+    "??_GOptimisedUtilGeneral@Ogre@@UAEPAXI@Z": "0068d670"
+   }
+  },
+  {
+   "obj": "0143.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreRenderSystem.cpp",
+   "keep": {}
+  },
+  {
+   "obj": "0144.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreScriptLexer.cpp",
+   "keep": {
+    "?destroy@?$allocator@V?$SharedPtr@UScriptToken@Ogre@@@Ogre@@@std@@QAEXPAV?$SharedPtr@UScriptToken@Ogre@@@Ogre@@@Z": "004332f0"
+   }
+  },
+  {
+   "obj": "0146.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreScriptTranslator.cpp",
+   "keep": {
+    "?_Buynode@?$list@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@V?$allocator@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@std@@IAEPAU_Node@?$_List_nod@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@V?$allocator@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@2@XZ": "0055d1f0"
+   }
+  },
+  {
+   "obj": "0147.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreShadowCaster.cpp",
+   "keep": {
+    "__ehhandler$?getLights@ShadowRenderable@Ogre@@UBEABV?$HashedVector@PAVLight@Ogre@@@2@XZ": "007df0ce"
+   }
+  },
+  {
+   "obj": "0148.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreShadowCaster.cpp",
+   "keep": {
+    "__ehhandler$?getLights@ShadowRenderable@Ogre@@UBEABV?$HashedVector@PAVLight@Ogre@@@2@XZ": "007e5a2c"
+   }
+  },
+  {
+   "obj": "0149.obj",
+   "recipe": "ogre-1.7.0-dll",
+   "file": "OgreTangentSpaceCalc.cpp",
+   "keep": {
+    "??$_Copy_backward_opt@PAUVertexInfo@TangentSpaceCalc@Ogre@@PAU123@@std@@YAPAUVertexInfo@TangentSpaceCalc@Ogre@@PAU123@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0046e130",
+    "?_Buynode@?$list@UIndexRemap@TangentSpaceCalc@Ogre@@V?$allocator@UIndexRemap@TangentSpaceCalc@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UIndexRemap@TangentSpaceCalc@Ogre@@V?$allocator@UIndexRemap@TangentSpaceCalc@Ogre@@@std@@@2@PAU342@0ABUIndexRemap@TangentSpaceCalc@Ogre@@@Z": "00682c70"
+   }
+  },
+  {
+   "obj": "native-header-accessors.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_header_accessors_f042f32e3705715a.cpp",
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "keep": {
+    "?getShadowTechnique@NativeSceneManager@Ogre@@UBE?AW4ShadowTechnique@2@XZ": "0068e930",
+    "?getShadowFarDistance@NativeSceneManager@Ogre@@UBEMXZ": "0068e960",
+    "?getShadowIndexBufferSize@NativeSceneManager@Ogre@@UBEIXZ": "0068e970",
+    "?getShadowDirLightTextureOffset@NativeSceneManager@Ogre@@UBEMXZ": "0068e990",
+    "?getShadowTextureSelfShadow@NativeSceneManager@Ogre@@UBE_NXZ": "0068e9c0",
+    "?getShadowCasterRenderBackFaces@NativeSceneManager@Ogre@@UBE_NXZ": "0068e9e0",
+    "?getDisplaySceneNodes@NativeSceneManager@Ogre@@UBE_NXZ": "0068e920",
+    "?setVisibilityMask@NativeSceneManager@Ogre@@UAEXI@Z": "0068ea60",
+    "?getVisibilityMask@NativeSceneManager@Ogre@@UAEIXZ": "0068ea70"
+   }
+  },
+  {
+   "obj": "native-scene-callbacks.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_scene_callbacks_9975fd58eb7f0dbb.cpp",
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "keep": {
+    "?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAUWorldFragment@SceneQuery@3@@Z": "00565ff0",
+    "?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAVMovableObject@3@@Z": "0069c5f0",
+    "??1SceneMgrQueuedRenderableVisitor@RbxSceneManager@Ogre@@UAE@XZ": "0068b690"
+   }
+  },
+  {
+   "obj": "native-sphere-cache-storage.obj",
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_sphere_cache_storage_6d8b5b766c240faa.cpp",
+   "cl": "21022",
+   "flags": "/O2 /GS- /EHsc /MD",
+   "keep": {}
+  }
+ ],
+ "failed": []
+}

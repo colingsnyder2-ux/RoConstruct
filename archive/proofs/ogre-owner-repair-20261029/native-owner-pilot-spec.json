@@ -1,0 +1,28 @@
+{
+ "name": "OgreOwnerPilot",
+ "description": "Ogre code the 2008-06 exe links statically (Roblox's Ogre forks such as RbxSceneManager/RbxEntity, and header templates); OgreMain itself is rgmain.dll. No upstream layer: only exact mined ogre-* sources, swapped in by swap_build.py (verified layer).",
+ "layers": [],
+ "test": "ogre_native_templates",
+ "verified": true,
+ "test_includes": [
+  "rebuild/2008-06/out/OgreOwnerPilot/force",
+  "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+ ],
+ "import_dlls": [
+  "rgmain.dll"
+ ],
+ "force_verified": true,
+ "prune_unselected_sections": true,
+ "external_helpers": [
+  "??0exception@std@@QAE@ABQBD@Z",
+  "??0exception@std@@QAE@ABV01@@Z",
+  "??0exception@std@@QAE@XZ",
+  "??1exception@std@@UAE@XZ",
+  "?getMovableObjectCollection@SceneManager@Ogre@@IAEPAUMovableObjectCollection@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+  "?getMovableObjectCollection@SceneManager@Ogre@@IBEPBUMovableObjectCollection@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+  "?terminate@@YAXXZ",
+  "?validatePassForRendering@SceneManager@Ogre@@IAE_NPBVPass@2@@Z",
+  "?validateRenderableForRendering@SceneManager@Ogre@@IAE_NPBVPass@2@PBVRenderable@2@@Z",
+  "?what@exception@std@@UBEPBDXZ"
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "name": "XTP",
+ "description": "Codejock Xtreme Toolkit Pro 11.2.2 as the 2008 exe links it statically against shared MFC 9.0 RTM (recipe xtp-11.2.2-lib-strlen: XTPDLLExports.h prelude, _LIB, noinline CString accessors). Exacts from the other XTP configs swap in through the verified layer.",
+ "mfc_import": true,
+ "layers": [
+  {
+   "name": "upstream",
+   "mode": "recipe",
+   "recipe": "xtp-11.2.2-lib-strlen",
+   "files": "recipe",
+   "direct": true,
+   "flags": "/O2 /MD /GS /EHsc /Ob1"
+  },
+  {
+   "name": "internals",
+   "mode": "recipe",
+   "recipe": "xtp-11.2.2-shared-mfc-internals-rtm",
+   "files": "Source/Controls/XTComboBoxEx.cpp Source/Controls/XTDateTimeCtrl.cpp Source/Controls/XTExcelTabCtrl.cpp Source/CommandBars/XTPCommandBar.cpp Source/CommandBars/XTPCustomizeSheet.cpp Source/Common/XTPDrawHelpers.cpp Source/PropertyGrid/XTPPropertyGridInplaceEdit.cpp Source/PropertyGrid/XTPPropertyGridItemExt.cpp Source/Controls/XTPPropertyPage.cpp Source/SkinFramework/XTPSkinObjectTab.cpp Source/CommandBars/XTPStatusBar.cpp Source/Controls/XTSplitterWnd.cpp",
+   "direct": true,
+   "flags": "/O2 /MD /GS /EHsc /Ob1"
+  }
+ ],
+ "test": "xtp_colors",
+ "test_includes": [
+  "tools/libs/xtp-11.2.2/Source",
+  "tools/libs/mfc-9.0-rtm/atlmfc/include"
+ ],
+ "test_defines": "WIN32 NDEBUG _MBCS _AFXDLL _XTP_STATICLINK _DLL _XTPLIB_NOAUTOLINK",
+ "verified": true
+}

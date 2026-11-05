@@ -1,0 +1,1 @@
+268 native per-layer compiler trials yielded2 unique candidate gains,zero accepted credit yet:Players::onEvent00496cf0 assertion profile;Peer::onEvent004add50 scoped fp-fast. Queued4dddca112ca54a5796c684a2c6e7e94f behind XML290919f07e694e5195771abe8c0d76cc.4 ambiguous ownership proposals deferred. Preserve accepted baseline and wait independent gates.

@@ -1,0 +1,1 @@
+Deployed validated4-way base/size probes and size header-text cache to primary while queue idle after network job accepted. No restart. Same85 sizes/119 base offsets and known error headers proved privately. Primary digest test corrected to current native-credit/accepted-only resend contract;production notifier untouched.

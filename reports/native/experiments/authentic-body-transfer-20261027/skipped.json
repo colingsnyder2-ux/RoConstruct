@@ -1,0 +1,7 @@
+[
+  {
+    "file": "App/v8xml/XmlElement.cpp",
+    "method": "XmlNameValuePair::toString",
+    "reason": "stale accepted source anchor or forbidden/stub construct"
+  }
+]

@@ -1,0 +1,1221 @@
+[
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "AABox.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??$min@M@std@@YAABMABM0@Z",
+  "address": "004452f0",
+  "object": "AABox.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z",
+  "address": "004a6100",
+  "object": "AABox.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?halfSpaceContains@Plane@G3D@@QBE_NVVector3@2@@Z",
+  "address": "00518f20",
+  "object": "AABox.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z",
+  "address": "005096b0",
+  "object": "BinaryInput.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00007fb0       ?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z 00408fb0 f i linked:BinaryInput.obj"
+  ]
+ },
+ {
+  "symbol": "?resize@?$Array@G@G3D@@QAEXH_N@Z",
+  "address": "00478bd0",
+  "object": "BinaryInput.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?resize@?$Array@F@G3D@@QAEXH_N@Z",
+  "address": "00478bd0",
+  "object": "BinaryInput.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z",
+  "address": "005096b0",
+  "object": "BinaryOutput.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00007fb0       ?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z 00408fb0 f i linked:BinaryInput.obj"
+  ]
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "Box.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?magnitude@Vector3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "Box.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "Box.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z",
+  "address": "00476580",
+  "object": "Box.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??$min@M@std@@YAABMABM0@Z",
+  "address": "004452f0",
+  "object": "Box.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z",
+  "address": "004a6100",
+  "object": "Box.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?halfSpaceContains@Plane@G3D@@QBE_NVVector3@2@@Z",
+  "address": "00518f20",
+  "object": "Box.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?min@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e00",
+  "object": "Box.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?max@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e60",
+  "object": "Box.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?magnitude@Vector3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?fromTwoPoints@LineSegment@G3D@@SA?AV12@ABVVector3@2@0@Z",
+  "address": "00525ed0",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:0000ae20       ?fromTwoPoints@LineSegment@G3D@@SA?AV12@ABVVector3@2@0@Z 0040be20 f i linked:Capsule.obj"
+  ]
+ },
+ {
+  "symbol": "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z",
+  "address": "00476580",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+  "address": "004766a0",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??0Line@G3D@@IAE@ABVVector3@1@0@Z",
+  "address": "00525f40",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:0000ae90       ??0Line@G3D@@IAE@ABVVector3@1@0@Z 0040be90 f i linked:Capsule.obj"
+  ]
+ },
+ {
+  "symbol": "?getRadius@Capsule@G3D@@QBEMXZ",
+  "address": "00526040",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:0000af60       ?getRadius@Capsule@G3D@@QBEMXZ 0040bf60 f   linked:Capsule.obj"
+  ]
+ },
+ {
+  "symbol": "??$min@M@std@@YAABMABM0@Z",
+  "address": "004452f0",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?min@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e00",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?max@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e60",
+  "object": "Capsule.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??8Vector3@G3D@@QBE_NABV01@@Z",
+  "address": "0043afb0",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?magnitude@Vector3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z",
+  "address": "00476580",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+  "address": "004766a0",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?pointToObjectSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+  "address": "00501ca0",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??0Line@G3D@@IAE@ABVVector3@1@0@Z",
+  "address": "00525f40",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:0000ae90       ??0Line@G3D@@IAE@ABVVector3@1@0@Z 0040be90 f i linked:Capsule.obj"
+  ]
+ },
+ {
+  "symbol": "?fromTwoPoints@LineSegment@G3D@@SA?AV12@ABVVector3@2@0@Z",
+  "address": "00525ed0",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:0000ae20       ?fromTwoPoints@LineSegment@G3D@@SA?AV12@ABVVector3@2@0@Z 0040be20 f i linked:Capsule.obj"
+  ]
+ },
+ {
+  "symbol": "??$min@M@std@@YAABMABM0@Z",
+  "address": "004452f0",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+  "address": "00510960",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:000097e0       ?inf@Vector3@G3D@@SAABV12@XZ 0040a7e0 f i linked:GCamera.obj"
+  ]
+ },
+ {
+  "symbol": "?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z",
+  "address": "005025c0",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00009fa0       ?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z 0040afa0 f i linked:CoordinateFrame.obj"
+  ]
+ },
+ {
+  "symbol": "?max@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e60",
+  "object": "CollisionDetection.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?length@Color3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "Color3.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??$min@M@std@@YAABMABM0@Z",
+  "address": "004452f0",
+  "object": "Color3.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??_0Color4@G3D@@QAEAAV01@M@Z",
+  "address": "007baf50",
+  "object": "Color4.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "Cone.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "Cone.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "Cone.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?magnitude@Vector3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "ConvexPolyhedron.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "ConvexPolyhedron.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "ConvexPolyhedron.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "ConvexPolyhedron.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??0Line@G3D@@IAE@ABVVector3@1@0@Z",
+  "address": "00525f40",
+  "object": "ConvexPolyhedron.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:0000ae90       ??0Line@G3D@@IAE@ABVVector3@1@0@Z 0040be90 f i linked:Capsule.obj"
+  ]
+ },
+ {
+  "symbol": "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z",
+  "address": "004a6100",
+  "object": "ConvexPolyhedron.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?halfSpaceContains@Plane@G3D@@QBE_NVVector3@2@@Z",
+  "address": "00518f20",
+  "object": "ConvexPolyhedron.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z",
+  "address": "005025c0",
+  "object": "ConvexPolyhedron.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00009fa0       ?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z 0040afa0 f i linked:CoordinateFrame.obj"
+  ]
+ },
+ {
+  "symbol": "??8Vector3@G3D@@QBE_NABV01@@Z",
+  "address": "0043afb0",
+  "object": "CoordinateFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "CoordinateFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "CoordinateFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "CoordinateFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "CoordinateFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z",
+  "address": "00476580",
+  "object": "CoordinateFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+  "address": "004766a0",
+  "object": "CoordinateFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?pointToObjectSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+  "address": "00501ca0",
+  "object": "CoordinateFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVRay@2@ABV32@@Z",
+  "address": "00518970",
+  "object": "CoordinateFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ",
+  "address": "00478330",
+  "object": "CoordinateFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z",
+  "address": "005025c0",
+  "object": "CoordinateFrame.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00009fa0       ?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z 0040afa0 f i linked:CoordinateFrame.obj"
+  ]
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?magnitude@Vector3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?fromTwoPoints@LineSegment@G3D@@SA?AV12@ABVVector3@2@0@Z",
+  "address": "00525ed0",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:0000ae20       ?fromTwoPoints@LineSegment@G3D@@SA?AV12@ABVVector3@2@0@Z 0040be20 f i linked:Capsule.obj"
+  ]
+ },
+ {
+  "symbol": "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z",
+  "address": "00476580",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+  "address": "004766a0",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??0Line@G3D@@IAE@ABVVector3@1@0@Z",
+  "address": "00525f40",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:0000ae90       ??0Line@G3D@@IAE@ABVVector3@1@0@Z 0040be90 f i linked:Capsule.obj"
+  ]
+ },
+ {
+  "symbol": "??$min@M@std@@YAABMABM0@Z",
+  "address": "004452f0",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?min@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e00",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?max@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e60",
+  "object": "Cylinder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z",
+  "address": "005096b0",
+  "object": "fileutils.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00007fb0       ?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z 00408fb0 f i linked:BinaryInput.obj"
+  ]
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "GCamera.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "GCamera.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "GCamera.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z",
+  "address": "00476580",
+  "object": "GCamera.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?toWorldSpace@CoordinateFrame@G3D@@QBE?AVVector4@2@ABV32@@Z",
+  "address": "00485390",
+  "object": "GCamera.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:000095f0       ?toWorldSpace@CoordinateFrame@G3D@@QBE?AVVector4@2@ABV32@@Z 0040a5f0 f i linked:GCamera.obj"
+  ]
+ },
+ {
+  "symbol": "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+  "address": "004766a0",
+  "object": "GCamera.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?pointToObjectSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+  "address": "00501ca0",
+  "object": "GCamera.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+  "address": "00510960",
+  "object": "GCamera.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:000097e0       ?inf@Vector3@G3D@@SAABV12@XZ 0040a7e0 f i linked:GCamera.obj"
+  ]
+ },
+ {
+  "symbol": "?resize@?$Array@VVector4@G3D@@@G3D@@QAEXH_N@Z",
+  "address": "00510e50",
+  "object": "GCamera.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00009970       ?resize@?$Array@VVector4@G3D@@@G3D@@QAEXH_N@Z 0040a970 f i linked:GCamera.obj"
+  ]
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "GImage.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "GImage.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??8Vector3@G3D@@QBE_NABV01@@Z",
+  "address": "0043afb0",
+  "object": "GLight.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "GLight.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??8Color3@G3D@@QBE_NABV01@@Z",
+  "address": "0043afb0",
+  "object": "GLight.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:0000a3c0       ??8Color3@G3D@@QBE_NABV01@@Z 0040b3c0 f i linked:GLight.obj"
+  ]
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "Line.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "Line.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+  "address": "00510960",
+  "object": "Line.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:000097e0       ?inf@Vector3@G3D@@SAABV12@XZ 0040a7e0 f i linked:GCamera.obj"
+  ]
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "LineSegment.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "LineSegment.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z",
+  "address": "005096b0",
+  "object": "Log.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00007fb0       ?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z 00408fb0 f i linked:BinaryInput.obj"
+  ]
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "Matrix3.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "Matrix3.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "MeshAlg.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?magnitude@Vector3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "MeshAlg.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "MeshAlg.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "MeshAlg.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "MeshAlg.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??$swap@VVector3@G3D@@@std@@YAXAAVVector3@G3D@@0@Z",
+  "address": "00645d60",
+  "object": "MeshAlg.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z",
+  "address": "005025c0",
+  "object": "MeshAlg.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00009fa0       ?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z 0040afa0 f i linked:CoordinateFrame.obj"
+  ]
+ },
+ {
+  "symbol": "?directionOrZero@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "007b9450",
+  "object": "MeshAlg.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:0000b2e0       ?directionOrZero@Vector3@G3D@@QBE?AV12@XZ 0040c2e0 f i linked:MeshAlg.obj"
+  ]
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "MeshAlgAdjacency.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?magnitude@Vector3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "MeshAlgAdjacency.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "MeshAlgAdjacency.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "MeshAlgAdjacency.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z",
+  "address": "005025c0",
+  "object": "MeshAlgAdjacency.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00009fa0       ?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z 0040afa0 f i linked:CoordinateFrame.obj"
+  ]
+ },
+ {
+  "symbol": "?directionOrZero@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "007b9450",
+  "object": "MeshAlgAdjacency.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:0000b2e0       ?directionOrZero@Vector3@G3D@@QBE?AV12@XZ 0040c2e0 f i linked:MeshAlg.obj"
+  ]
+ },
+ {
+  "symbol": "?resize@?$Array@V?$Array@H@G3D@@@G3D@@QAEXH_N@Z",
+  "address": "00474520",
+  "object": "MeshAlgAdjacency.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "MeshAlgWeld.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??$min@M@std@@YAABMABM0@Z",
+  "address": "004452f0",
+  "object": "MeshAlgWeld.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+  "address": "00510960",
+  "object": "MeshAlgWeld.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:000097e0       ?inf@Vector3@G3D@@SAABV12@XZ 0040a7e0 f i linked:GCamera.obj"
+  ]
+ },
+ {
+  "symbol": "?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z",
+  "address": "005025c0",
+  "object": "MeshAlgWeld.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00009fa0       ?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z 0040afa0 f i linked:CoordinateFrame.obj"
+  ]
+ },
+ {
+  "symbol": "?min@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e00",
+  "object": "MeshAlgWeld.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?max@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e60",
+  "object": "MeshAlgWeld.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??$min@M@std@@YAABMABM0@Z",
+  "address": "004452f0",
+  "object": "MeshBuilder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z",
+  "address": "005025c0",
+  "object": "MeshBuilder.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00009fa0       ?resize@?$Array@VVector3@G3D@@@G3D@@QAEXH_N@Z 0040afa0 f i linked:CoordinateFrame.obj"
+  ]
+ },
+ {
+  "symbol": "?min@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e00",
+  "object": "MeshBuilder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?max@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e60",
+  "object": "MeshBuilder.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "PhysicsFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?magnitude@Vector3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "PhysicsFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z",
+  "address": "00476580",
+  "object": "PhysicsFrame.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?magnitude@Vector3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "Plane.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "Plane.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "Plane.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "Plane.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "Quat.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "Quat.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "Quat.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "Quat.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DQuat@G3D@@QBE?AV01@ABV01@@Z",
+  "address": "00658a30",
+  "object": "Quat.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "Ray.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "Ray.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+  "address": "00510960",
+  "object": "Ray.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:000097e0       ?inf@Vector3@G3D@@SAABV12@XZ 0040a7e0 f i linked:GCamera.obj"
+  ]
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "Sphere.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "Sphere.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z",
+  "address": "004a6100",
+  "object": "Sphere.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?halfSpaceContains@Plane@G3D@@QBE_NVVector3@2@@Z",
+  "address": "00518f20",
+  "object": "Sphere.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z",
+  "address": "005096b0",
+  "object": "stringutils.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00007fb0       ?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z 00408fb0 f i linked:BinaryInput.obj"
+  ]
+ },
+ {
+  "symbol": "?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z",
+  "address": "005096b0",
+  "object": "System.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:00007fb0       ?resize@?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAEXH_N@Z 00408fb0 f i linked:BinaryInput.obj"
+  ]
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "Triangle.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?magnitude@Vector3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "Triangle.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "Triangle.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??$min@M@std@@YAABMABM0@Z",
+  "address": "004452f0",
+  "object": "Triangle.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?min@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e00",
+  "object": "Triangle.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?max@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00525e60",
+  "object": "Triangle.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?unitize@Vector2@G3D@@QAEMM@Z",
+  "address": "00509c80",
+  "object": "Vector2.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "??DVector3@G3D@@QBE?AV01@M@Z",
+  "address": "00485360",
+  "object": "Vector3.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?magnitude@Vector3@G3D@@QBEMXZ",
+  "address": "0045b310",
+  "object": "Vector3.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ",
+  "address": "004fab70",
+  "object": "Vector3.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z",
+  "address": "00510720",
+  "object": "Vector3.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z",
+  "address": "00513120",
+  "object": "Vector3.obj",
+  "data_exact": true,
+  "map_owner": []
+ },
+ {
+  "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+  "address": "00510960",
+  "object": "Vector3.obj",
+  "data_exact": true,
+  "map_owner": [
+   "0001:000097e0       ?inf@Vector3@G3D@@SAABV12@XZ 0040a7e0 f i linked:GCamera.obj"
+  ]
+ },
+ {
+  "symbol": "?random@Vector3@G3D@@SA?AV12@XZ",
+  "address": "00518650",
+  "object": "Vector3.obj",
+  "data_exact": true,
+  "map_owner": []
+ }
+]

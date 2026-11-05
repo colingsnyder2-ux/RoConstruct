@@ -1,0 +1,50 @@
+[
+ {
+  "label": "baseline",
+  "compiled": true,
+  "linked": false,
+  "ran": false,
+  "exit": null,
+  "output": "baseline.obj : fatal error LNK1236: corrupt or invalid COFF sections",
+  "unresolved": [],
+  "duplicates": [],
+  "referencers": [],
+  "map": "C:\\Users\\colin\\RoConstruct-codex-force-links\\rebuild\\2008-06\\out\\tests\\g3d_link_probe\\g3d_link_probe.map"
+ },
+ {
+  "label": "no-empty-sxdata",
+  "compiled": true,
+  "linked": true,
+  "ran": true,
+  "exit": 0,
+  "output": "",
+  "unresolved": [],
+  "duplicates": [],
+  "referencers": [],
+  "map": "C:\\Users\\colin\\RoConstruct-codex-force-links\\rebuild\\2008-06\\out\\tests\\g3d_link_probe\\g3d_link_probe.map"
+ },
+ {
+  "label": "no-debug-f",
+  "compiled": true,
+  "linked": false,
+  "ran": false,
+  "exit": null,
+  "output": "no-debug-f.obj : fatal error LNK1236: corrupt or invalid COFF sections",
+  "unresolved": [],
+  "duplicates": [],
+  "referencers": [],
+  "map": "C:\\Users\\colin\\RoConstruct-codex-force-links\\rebuild\\2008-06\\out\\tests\\g3d_link_probe\\g3d_link_probe.map"
+ },
+ {
+  "label": "no-both",
+  "compiled": true,
+  "linked": false,
+  "ran": false,
+  "exit": null,
+  "output": "no-both.obj : fatal error LNK1314: corrupt or invalid COFF symbol table (undefined static or label symbol)",
+  "unresolved": [],
+  "duplicates": [],
+  "referencers": [],
+  "map": "C:\\Users\\colin\\RoConstruct-codex-force-links\\rebuild\\2008-06\\out\\tests\\g3d_link_probe\\g3d_link_probe.map"
+ }
+]

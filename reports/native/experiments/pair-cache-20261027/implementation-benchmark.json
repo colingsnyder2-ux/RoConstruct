@@ -1,0 +1,9 @@
+{
+  "objects": 32,
+  "functions": 10994,
+  "identical": true,
+  "old_seconds": 6.753379500005394,
+  "new_seconds": 0.960871200019028,
+  "speedup": 7.0283920465840355,
+  "cache": "CacheInfo(hits=8732, misses=2262, maxsize=16384, currsize=2262)"
+}

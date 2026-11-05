@@ -1,0 +1,19 @@
+{
+  "file": "App/v8xml/XmlElement.cpp",
+  "mode": "double-api-branch-finalize",
+  "ok": true,
+  "seconds": 25.391,
+  "object": "C:\\Users\\colin\\.codex\\worktrees\\native-integration\\RoConstruct\\work\\native-xml-double-api-2008\\objects\\4e391bcf12c1fab155b7\\XmlElement.obj",
+  "source_sha256": "08e11b62dda4fa4310ad465f769c0f98eab8fae68f175340b3942816fa0f0078",
+  "object_sha256": "9773680f4e950adc967d69176b268561b9521e785efaec46b48726e6321795bd",
+  "error": null,
+  "double_functions": [
+    {
+      "symbol": "?getValue@XmlNameValuePair@@QBE_NAAN@Z",
+      "size": 102,
+      "score": 100,
+      "data_good": [],
+      "data_bad": []
+    }
+  ]
+}

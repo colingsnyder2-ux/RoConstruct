@@ -1,0 +1,14 @@
+{
+ "recipe": "native-layer-context-pilot-2008",
+ "client": "2008-06",
+ "op": "native-grid",
+ "tried": 3,
+ "proposed_files": 0,
+ "local_exact": 0,
+ "eligible_targets": 6141,
+ "starting_revision": "fb7f072cea5228cac5ca330b5ffbbb108ab4b7d357216ea977a44626e1727b19",
+ "deferred_ownership": 0,
+ "new_verified": 0,
+ "run_id": "062f96c5d6d7475c9b468ce9ec0bd819",
+ "state": "no-proposals"
+}

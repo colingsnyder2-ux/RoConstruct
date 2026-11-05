@@ -1,0 +1,17 @@
+{
+ "recipe": "ogre-1.4.5-g3d-refcount",
+ "unit": "roc_g3d_texture_proxy_context_2c0b3c7d469c1d40.cpp",
+ "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+ "cl": "21022",
+ "checks": [
+  {
+   "symbol": "??1TextureProxy@@UAE@XZ",
+   "address": "007ae3b0",
+   "size": 252,
+   "code_exact": true,
+   "data_exact": true,
+   "data_errors": []
+  }
+ ],
+ "provenance": "Existing outer layout and interface remain codegen analog; ownership uses genuine G3D types and no invented release helpers."
+}

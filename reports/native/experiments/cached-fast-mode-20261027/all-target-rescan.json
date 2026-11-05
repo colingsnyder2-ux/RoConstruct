@@ -1,0 +1,122 @@
+{
+ "proof_run": "3382f4b57b9c42f69af2df6689c6969c",
+ "new_compiles": 0,
+ "safe_variants_scanned": 135,
+ "unique_candidates": [
+  "00584620",
+  "0059aae0",
+  "0059b4d0",
+  "005a0530",
+  "005a0560",
+  "00613cb0"
+ ],
+ "additional_to_prior_candidates": [
+  "00613cb0"
+ ],
+ "seconds": 25.176170599996112,
+ "variants": [
+  {
+   "file": "App/v8datamodel/ModelInstance.cpp",
+   "change_group": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "object": "C:\\Users\\colin\\RoConstruct-native-api-pilots\\work\\research\\native-authentic-body-transfer-2008\\objects\\5cd9113b1ddd36731590\\ModelInstance.obj",
+   "object_sha256": "933b14906649f058357965b62b5218c8e7ddbe464d84dda4c49cc5b4e4893a26",
+   "source_sha256": "ba3a4b2b961d43abf79cd5d757763938f4236499194f0d61940a1636223104e4",
+   "lost_owned": [],
+   "hits": [
+    {
+     "addr": "00584620",
+     "symbol": "?onDescendentAdded@ModelInstance@RBX@@MAEXPAVInstance@2@@Z"
+    }
+   ]
+  },
+  {
+   "file": "App/v8datamodel/ModelInstance.cpp",
+   "change_group": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    6,
+    9
+   ],
+   "object": "C:\\Users\\colin\\RoConstruct-native-api-pilots\\work\\research\\native-authentic-body-transfer-2008\\objects\\2bfa43fd2722f9e946dd\\ModelInstance.obj",
+   "object_sha256": "5e0422f5a2210c944aa6703e9e147a7bf7b04c851478403fbaebbd37f28619ce",
+   "source_sha256": "4fb80d8522acbca8073143b79a875e5bf1f79725458d8367f4ba8f3fbb33f66d",
+   "lost_owned": [],
+   "hits": [
+    {
+     "addr": "00584620",
+     "symbol": "?onDescendentAdded@ModelInstance@RBX@@MAEXPAVInstance@2@@Z"
+    }
+   ]
+  },
+  {
+   "file": "App/v8datamodel/Workspace.cpp",
+   "change_group": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "object": "C:\\Users\\colin\\RoConstruct-native-api-pilots\\work\\research\\native-authentic-body-transfer-2008\\objects\\638425dfc0698235f13c\\Workspace.obj",
+   "object_sha256": "41d6d8d36c72223a8bde16fffd058581467242642be62b76349c5d8ea51e53b9",
+   "source_sha256": "ef8f9aac1adaaa256db165a61a2a43fef427d61cfc9d8cad74b78f01d8f34a43",
+   "lost_owned": [],
+   "hits": [
+    {
+     "addr": "005a0530",
+     "symbol": "?getMyWorkspaceFast@Workspace@RBX@@SAPAV12@PBVInstance@2@@Z"
+    },
+    {
+     "addr": "005a0560",
+     "symbol": "?getMyWorldFast@Workspace@RBX@@SAPAVWorld@2@PBVInstance@2@@Z"
+    }
+   ]
+  },
+  {
+   "file": "App/v8kernel/Link.cpp",
+   "change_group": [
+    0,
+    1
+   ],
+   "object": "C:\\Users\\colin\\RoConstruct-native-api-pilots\\work\\research\\native-authentic-body-transfer-2008\\objects\\879f2c7e94de32ad526c\\Link.obj",
+   "object_sha256": "05b42fa996c546e942c45c9a882c199c3bbe261c20b189ad719f4cef8fdd4a16",
+   "source_sha256": "d7a065c04a0bdf7b675d8bc4f73ceb9ebbd0817fda9e24515819a01ae9f583a7",
+   "lost_owned": [],
+   "hits": [
+    {
+     "addr": "00613cb0",
+     "symbol": "?dirty@Link@RBX@@IAEXXZ"
+    }
+   ]
+  },
+  {
+   "file": "App/v8datamodel/PartInstance.cpp",
+   "change_group": [
+    15,
+    16
+   ],
+   "object": "C:\\Users\\colin\\RoConstruct-native-api-pilots\\work\\research\\native-authentic-body-transfer-2008\\objects\\96dce43a25f271acd3fe\\PartInstance.obj",
+   "object_sha256": "c5fdb8d207a14ed62c6e8e095013f4c71511f4792fd5401ade9760c4257794fa",
+   "source_sha256": "1dca3efab54aeb93e5d0b05db414ae01a0cebe8dead0774d07f870475d1be355",
+   "lost_owned": [],
+   "hits": [
+    {
+     "addr": "0059aae0",
+     "symbol": "?onAncestorChanged@PartInstance@RBX@@UAEXABUAncestorChanged@2@@Z"
+    },
+    {
+     "addr": "0059b4d0",
+     "symbol": "?onCanAggregateChanged@PartInstance@RBX@@UAEX_N@Z"
+    }
+   ]
+  }
+ ]
+}

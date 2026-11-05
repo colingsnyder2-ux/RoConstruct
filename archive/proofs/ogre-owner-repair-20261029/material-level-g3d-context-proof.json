@@ -1,0 +1,17 @@
+{
+ "recipe": "ogre-1.4.5-g3d-refcount",
+ "unit": "roc_g3d_materiallevel_context_d9a3d6c7ffbfabc3.cpp",
+ "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+ "cl": "21022",
+ "checks": [
+  {
+   "symbol": "??1Level@@UAE@XZ",
+   "address": "007ad310",
+   "size": 319,
+   "code_exact": true,
+   "data_exact": true,
+   "data_errors": []
+  }
+ ],
+ "provenance": "Existing outer Level layout remains codegen analog; only ownership type replaced by genuine G3D header."
+}

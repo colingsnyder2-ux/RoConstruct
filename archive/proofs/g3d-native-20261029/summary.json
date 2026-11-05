@@ -1,0 +1,48 @@
+{
+ "new_server_credits": 0,
+ "g3d_force_roots": {
+  "core": 77,
+  "GL": 48,
+  "bundled_PNG": 21
+ },
+ "all_g3d_roots_code_data_exact_and_linker_owned": true,
+ "core_fp_fast_unique_candidates": {
+  "before": 707,
+  "after": 739,
+  "added": 32,
+  "lost": 0,
+  "all_added_data_exact": true
+ },
+ "whole_core_flag_sweep": {
+  "files": 63,
+  "safe_files": 63,
+  "address_candidates_before": 1545,
+  "address_candidates_after": 1652,
+  "twins_included": true
+ },
+ "source_owner_partition": {
+  "core_groups": 49,
+  "GL_groups": 35,
+  "PNG_groups": 14,
+  "address_representatives_preserved": 189
+ },
+ "runtime": {
+  "G3D": 0,
+  "G3D-GL": 0,
+  "G3D-PNG": 0,
+  "RbxApp": 0,
+  "RbxgsApp": 0,
+  "M2": 0,
+  "M4a": 0,
+  "M5": 0
+ },
+ "rbxapp_force_roots": 84,
+ "rbxgs_force_roots": 136,
+ "M4b_unresolved": 36,
+ "placement_distinct": 384,
+ "placement_limits": "fresh valid reports only; Ogre excluded12 unresolved, many other stale reports deferred",
+ "tooling_commit": "664041ad0",
+ "tests": "1080 full-suite passed before final archive-layer change; targeted28 passed afterward; frontend suites passed",
+ "legacy_dependency_replaced": "__Inf came from old verified_sinks.obj; now real function-free VS2008RTM libcpmt/xvalues.obj in RbxgsApp archive layer",
+ "original_checkout_untouched": true
+}

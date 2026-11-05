@@ -1,0 +1,78 @@
+{
+  "native-property-compare-order-pilot-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Genuine OpenRBX TypedPropertyDescriptor::equalValues compares getValue(a)==getValue(b),older native tree uses b==a. Check source operand-order family in four real native TUs before considering every dependent. No field,signature or ABI changes; candidate requires exact instructions/data and unique whole-client ownership.",
+    "native_sweep": {
+      "files": [
+        "App/v8datamodel/Camera.cpp",
+        "App/v8datamodel/PartInstance.cpp",
+        "Network/Players.cpp",
+        "App/reflection/property.cpp"
+      ],
+      "header_families": [
+        "App/include/reflection/property.h"
+      ],
+      "family_edits": {
+        "App/include/reflection/property.h": {
+          "edits": [
+            [
+              "return getValue(b) == getValue(a);",
+              "return getValue(a) == getValue(b);"
+            ]
+          ],
+          "evidence": "tools/openrbx/Client/App/include/reflection/property.h real TypedPropertyDescriptor::equalValues implementation has a==b evaluation order;rbxgs accepted declaration has b==a. Compiler experiment only;no blanket behavior claim. Exact code/data preservation and whole-client uniqueness required."
+        }
+      },
+      "source_kinds": [
+        "snippet",
+        "vendor-file",
+        "generated-unit"
+      ],
+      "new_coverage_only": true,
+      "max_family_trials": 1,
+      "apply": false,
+      "submit": false,
+      "model": "gpt-6.1-sol"
+    }
+  },
+  "native-property-compare-order-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Full native dependent sweep of genuine TypedPropertyDescriptor equalValues operand order. Four-file pilot selected3 real dependent TUs,all6 compile checks passed,3 locally unique new candidates,zero owned losses. Check every native dependent before applying;server gates mandatory.",
+    "native_sweep": {
+      "files": [
+        "App/*/*.cpp",
+        "Network/*.cpp",
+        "Rendering/AppDraw/*.cpp",
+        "Rendering/RenderLib/*.cpp",
+        "RbxView/*.cpp"
+      ],
+      "header_families": [
+        "App/include/reflection/property.h"
+      ],
+      "family_edits": {
+        "App/include/reflection/property.h": {
+          "edits": [
+            [
+              "return getValue(b) == getValue(a);",
+              "return getValue(a) == getValue(b);"
+            ]
+          ],
+          "evidence": "tools/openrbx/Client/App/include/reflection/property.h real TypedPropertyDescriptor::equalValues implementation has a==b evaluation order;rbxgs accepted declaration has b==a. Compiler experiment only;no blanket behavior claim. Exact code/data preservation and whole-client uniqueness required."
+        }
+      },
+      "source_kinds": [
+        "snippet",
+        "vendor-file",
+        "generated-unit"
+      ],
+      "new_coverage_only": true,
+      "max_family_trials": 1,
+      "apply": true,
+      "submit": true,
+      "model": "gpt-6.1-sol",
+      "wait": true
+    }
+  }
+}

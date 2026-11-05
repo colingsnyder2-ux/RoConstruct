@@ -1,0 +1,14 @@
+{
+ "recipe": "native-retention-all-2008",
+ "client": "2008-06",
+ "op": "native-grid",
+ "tried": 391,
+ "proposed_files": 0,
+ "local_exact": 0,
+ "eligible_targets": 6689,
+ "starting_revision": "fb7f072cea5228cac5ca330b5ffbbb108ab4b7d357216ea977a44626e1727b19",
+ "deferred_ownership": 23,
+ "new_verified": 0,
+ "run_id": "09680e4d1e7d4b0db1b0ca3444eeb51e",
+ "state": "no-proposals"
+}

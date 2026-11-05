@@ -1,0 +1,98 @@
+{
+ "recipe": "ogre-1.4.5-dll",
+ "unit": "roc_native_subentity_contracts_3c134af6ce3f7619.cpp",
+ "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+ "cl": "21022",
+ "checks": [
+  {
+   "address": "00685660",
+   "symbol": "??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@@Z",
+   "size": 156,
+   "code_exact": true,
+   "data_exact": true,
+   "data_spans": [
+    [
+     8710412,
+     72
+    ],
+    [
+     8710356,
+     48
+    ]
+   ],
+   "data_errors": []
+  },
+  {
+   "address": "00685910",
+   "symbol": "??1RbxSubEntity@Ogre@@UAE@XZ",
+   "size": 269,
+   "code_exact": true,
+   "data_exact": true,
+   "data_spans": [
+    [
+     8710412,
+     72
+    ],
+    [
+     8710356,
+     48
+    ]
+   ],
+   "data_errors": []
+  },
+  {
+   "address": "00685700",
+   "symbol": "?getCastShadows@RbxSubEntity@Ogre@@UBE_NXZ",
+   "size": 4,
+   "code_exact": true,
+   "data_exact": true,
+   "data_spans": [],
+   "data_errors": []
+  },
+  {
+   "address": "00685170",
+   "symbol": "?getEdgeList@RbxSubEntity@Ogre@@UAEPAVEdgeData@2@XZ",
+   "size": 40,
+   "code_exact": true,
+   "data_exact": true,
+   "data_spans": [
+    [
+     8710168,
+     54
+    ],
+    [
+     9279868,
+     16
+    ]
+   ],
+   "data_errors": []
+  },
+  {
+   "address": "006851a0",
+   "symbol": "?hasEdgeList@RbxSubEntity@Ogre@@UAE_NXZ",
+   "size": 40,
+   "code_exact": true,
+   "data_exact": true,
+   "data_spans": [
+    [
+     8710224,
+     54
+    ],
+    [
+     9279868,
+     16
+    ]
+   ],
+   "data_errors": []
+  }
+ ],
+ "rtti": [
+  {
+   "instruction": "0068569b",
+   "destination": "dword ptr [esi]",
+   "vtable": "0084e90c",
+   "type_descriptor": "0096301c",
+   "type": ".?AVRbxSubEntity@Ogre@@"
+  }
+ ]
+}

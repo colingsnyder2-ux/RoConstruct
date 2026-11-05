@@ -1,0 +1,11 @@
+Native source experiment: real methods and shared header/template bodies under recorded profiles.
+Every listed method passed exact instruction and referenced-data checks in the recorded native objects.
+Existing exact object bodies may be retained by inline settings; only independent linked gains earn credit.
+Per-TU previously owned matches preserved; independent linked/runtime/ABI gates still required.
+
+Claim RBX::Network::Players scheduling addresses: 00496020 00496110 004962f0. Factory/RTTI tags may differ; exact native proof follows.
+
+RBX::Network::Players: 00496cf0 ?onEvent@Players@Network@RBX@@EAEXPBVPlayer@23@UCharacterAdded@23@@Z; assertions; object C:\Users\colin\RoConstruct-native-mass\work\research\native-layer-family-profiles-2008\objects\80d25178770a305ee2b7\Players.obj
+RBX::Peer: 004add50 ?onEvent@Peer@Network@RBX@@MAEXPBVRunService@3@VHeartbeat@3@@Z; fp-fast; object C:\Users\colin\RoConstruct-native-mass\work\research\native-layer-family-profiles-2008\objects\d55df00282415c4f6364\Replicator.obj
+
+

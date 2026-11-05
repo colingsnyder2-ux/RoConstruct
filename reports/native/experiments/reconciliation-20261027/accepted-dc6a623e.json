@@ -1,0 +1,48 @@
+{
+  "accepted": true,
+  "gains": [
+    "005840a0",
+    "00584310",
+    "00584360",
+    "00599300",
+    "00599330",
+    "005e2900",
+    "005fc090",
+    "006090c0",
+    "0060a240",
+    "0060a250"
+  ],
+  "losses": [],
+  "new_distinct": [
+    "00584310",
+    "00584360",
+    "005e2900",
+    "005fc090",
+    "0060a240",
+    "0060a250"
+  ],
+  "owned_before": 3077,
+  "owned_after": 3087,
+  "distinct_before": 9746,
+  "distinct_after": 9752,
+  "baseline_revision": "fb7f072cea5228cac5ca330b5ffbbb108ab4b7d357216ea977a44626e1727b19",
+  "submitted_revision": "fb7f072cea5228cac5ca330b5ffbbb108ab4b7d357216ea977a44626e1727b19",
+  "rebased": false,
+  "input_hash": "b6ebbf836800d4277337bfddd67c7620b737980ef578c3f98a93d9a29bbc1b21",
+  "overlay_hash": "296a536e34ccdf71af3119c3f37d16a1b6730214c01cd9b7b8cf9c0a48535cf3",
+  "gates": "M2/M4a/M5, size, base, linked ownership passed",
+  "dropped_files": {},
+  "artifacts": "work/integration/jobs/dc6a623e5b89462da920034e0409c6ed",
+  "probe_errors": {
+    "size": {},
+    "base": {
+      "util/ContentProvider.h": "probe.cpp\nUnknown compiler version - please run the configure tests and report the results\nprobe.cpp(6) : error C2440: 'static_cast' : cannot convert from 'RBX::ContentProvider *' to 'RBX::Instance *'\n        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast",
+      "v8datamodel/Gyro.h": "23e5b89462da920034e0409c6ed\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\App\\include\\reflection/reflection.h(871) : while compiling class template member function 'void RBX::Reflection::RefPropDescriptor<Class,ReturnType>::assignIDREF(RBX::Reflection::DescribedBase *,const RBX::InstanceHandle &) const'\n        with\n        [\n            Class=RBX::Rocket,\n            ReturnType=RBX::PartInstance\n        ]"
+    }
+  },
+  "credits": 6,
+  "job": "dc6a623e5b89462da920034e0409c6ed",
+  "user": "colin",
+  "model": "gpt-6.1-sol",
+  "unit": "RBX::LocalBackpackItem, RBX::ModelInstance, RBX::RotatePJoint"
+}

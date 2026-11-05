@@ -1,0 +1,20 @@
+{
+ "compiled": true,
+ "linked": true,
+ "ran": true,
+ "exit": 0,
+ "output": "G3D native ownership: weak reference cleared, exactly one destruction",
+ "unresolved": [],
+ "duplicates": [],
+ "referencers": [],
+ "map": "C:\\Users\\colin\\RoConstruct-codex-force-links\\rebuild\\2008-06\\out\\tests\\ogre_refcount_contracts\\ogre_refcount_contracts.map",
+ "module_forced_roots": 306,
+ "native_weak_clear_library_providers": [
+  "verified_g3d-context-material-level.obj",
+  "verified_g3d-context-texture-bounds-vector.obj",
+  "verified_g3d-context-texture-proxy.obj"
+ ],
+ "native_weak_clear_map_owner": [
+  "0001:0000c140       ?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ 0040d140 f i linked:verified_g3d-context-material-level.obj"
+ ]
+}

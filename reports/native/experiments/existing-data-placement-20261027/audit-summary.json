@@ -1,0 +1,29 @@
+{
+  "accepted_job": "981c606609864414b2c608ce100c68ef",
+  "target_binary_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "function_map_sha256": "8930ae0edbec84dc0817de84a201f2802533cc4202f41171b645f3ecf73f64d9",
+  "instruction_unique_accepted": 9746,
+  "uniquely_data_placed_existing": 411,
+  "newly_recognized_existing": 411,
+  "verified_union": 10157,
+  "new_source_conversions": 0,
+  "new_native_credits": 0,
+  "objects_audited": 1614,
+  "report_sha256": {
+    "Boost": "9f846b028185a7a2b7b2225f5cbd964898710ad0fc55db9cf5d68d2f6f370818",
+    "G3D": "54e444fc0fdbbe69e56c0a66132d70a99a6ac26f3b5428ccc17d6175ab466630",
+    "G3D-GL": "1af0d4a80fc083a05fce6e9050caf2eddbe059ba7bf7392516f54fb957059330",
+    "jpeg": "3329e8fe70d8f79df24b196eb94163bcd183ec88bd8c370fc2534533dff01d9e",
+    "libpng": "5689f7db8476148f8cff9f69b33c41b545cfe8159e16adf3428f2cc1e537cd90",
+    "Lua": "bc699d653700b14484811229e9533bd36a6b5d61e20320521e3a608f80e6cdf5",
+    "RakNet": "a435244f2853d041ede7de6489e4ff92b6eb742007b2bc2a73436395da93f13d",
+    "RbxApp": "ec4c6b490d4927200ed720b48720872fc49a6dc89d38e3552befae2491e05bb6",
+    "RbxgsApp": "bc78d1689cfd7f60aa4d5f9a718df2f3b541d7dc53115f7dfe5a8b8564b13554",
+    "RbxUtil": "4f3f0cd627ffcae7e1f5e1aaff96e8fcd17208e5efedd43f8654ad64ba20b3e5",
+    "Scintilla": "aafa42b335d5be1e5914707cf8a27adab4d027bfaa85593b6cc9de1d22bed240",
+    "XTP": "c4e037ee0e30d3a4aca6d7f90c073e3da1a966554fda7d51b4eb8abe9d2e27c7",
+    "zlib": "9ef1a3676b8f7b183c5dc55a7417af67233b07c5b95e296cb93b82946806301e",
+    "zlib-winapi": "41411d92ae44367b56b4b9e816bda23790f8dcd7e6ec18bc8c52ca97f40608e9"
+  },
+  "policy": "Existing placed algorithm: >=16-byte bodies,2..64 instruction twins, all initialized in-function references must match. No source/ABI/gate/ledger changes."
+}

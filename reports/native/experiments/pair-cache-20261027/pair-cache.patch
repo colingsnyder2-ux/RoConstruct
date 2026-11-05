@@ -1,0 +1,30 @@
+--- a/roc/rebuild.py
++++ b/roc/rebuild.py
+@@ -362,6 +362,7 @@
+ def size_index(client):
+     """{size: [(addr, code, relocs)]} over every code function of the client (built once per process)."""
+     if client not in _INDEX:
++        _paired_addresses.cache_clear()
+         idx = {}
+         for addr, f in match._functions(client).items():
+             if f.get("kind", "code") == "code":
+@@ -371,10 +372,17 @@
+     return _INDEX[client]
+ 
+ 
++@functools.lru_cache(maxsize=16384)
++def _paired_addresses(client, body, relocs):
++    """Template bodies recur across TUs; cache immutable matches, including twins."""
++    return tuple(a for a, code, trel in _INDEX[client].get(len(body), ())
++                 if match.exact_match(code, trel, body, relocs))
++
++
+ def pair(client, funcs):
+     """[(symbol, size, [2008 addrs whose masked bytes equal it])] against the whole binary."""
+-    idx = size_index(client)
+-    return [(name, len(body), [a for a, code, trel in idx.get(len(body), ()) if match.exact_match(code, trel, body, relocs)])
++    size_index(client)
++    return [(name, len(body), list(_paired_addresses(client, body, tuple(relocs))))
+             for name, body, relocs in funcs]
+ 
+ 

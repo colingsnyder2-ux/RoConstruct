@@ -1,0 +1,3287 @@
+# Matching findings
+
+- 2026-10-09: Implemented conservative structured mismatch evidence in `roc.match.diagnose`: each result now includes confidence-ranked `classifications` plus compact alignment step counts, while preserving legacy `mismatch_class` and all byte-exact scoring. Added `roc classify CLIENT ADDR SOURCE` for machine-readable JSON output. Smoke case `mov ecx,eax` vs `mov ecx,esi` classified as register allocation, confidence 0.82, alignment cost 1; unknown cases remain unknown. `python -m compileall -q roc tests` and the repository's direct test runner passed.
+- 2026-10-09: Added `docs/repair-patterns.json` and `roc/repair_patterns.py`, a 7-entry measured registry for noreturn, typed returns, volatile stores, allocation-result flow, branch layout, argument order, and stack layout. Guided mutation ordering now uses matching evidence plus historical exact/improvement counts, remains deterministic, bounded, and preserves input order for unranked categories. No default CLI behavior changed.
+- 2026-10-09: Three-target post-change dry-run (`00401880`, `00675890`, `006f2400`) completed in 9.1s with no source writes: scores stayed 94, 98, and 97; 7 candidates total, 1 compile failure, 0 improvements, 0 exact conversions. JSON saved at `work/reports/classifier-ranking-smoke.json`. This is a regression/safety result, not a claimed gain.
+- 2026-10-09: Classifier payload now includes conservative CFG summaries (linear block count, numeric branch targets) and per-block pressure from `roc.pressure`; symbolic targets and aliases stay unclassified. Existing score/diagnosis APIs remain backward-compatible.
+- 2026-10-09: Re-mined frozen medium/large repair report: 29 compilable non-exact candidates (16 medium, 13 large). Root classes: calling-convention 14, missing/extra instruction 12, branch-condition 1, code-size 1, unknown 1. This confirms the highest-value cheap route is ABI/structural repair; larger missing-instruction cases should route back to bounded regeneration, not spend more mutation attempts.
+- 2026-10-09: Added evidence-gated `legacy_fallback_allowed`: guided repair now skips blind legacy mutations only below score 75 for `missing/extra instruction` or `code-size mismatch`, based on the frozen 29-target result (0 conversions in those structural cases). Scores >=75 and all other classes preserve historical fallback. Focused tests pass.
+- 2026-10-09: Routing unit test proves a low-score missing/extra candidate performs only the baseline compile (`tried=0` mutations); higher-score and non-structural paths retain fallback. Full direct test runner passed after this change.
+- 2026-10-09: Real exact win: `2007-08 005948b0` was 97%; target used `mov ecx, type_info; call [ptr]`, candidate used `push 0; call [ptr]` because the source declared the indirect function pointer `__stdcall`. Changing only that pointer to `__thiscall` produced verified 100% with historical MSVC. Added classifier `receiver_call_diffs`, automatic evidence-gated `function_pointer_convention` mutation, registry entry, and regression test.
+- 2026-10-09: Exact-win verification: `roc check 2007-08 005948b0` reports 100% MATCH; automatic mutator regression reaches 100% from synthetic 97% baseline; full direct test runner passes. Current saved score index after refresh: 9,981 exact, 2,609 partial (index includes stale/unrefreshed entries; do not compare as a causal count without refresh).
+- 2026-10-09: Pattern replay found two more exact wins: `00595230` 97→100 with indirect `__thiscall`; `00593e20` 95→100 with indirect `__thiscall` plus receiver/argument reversal and const typing. Both `roc check` runs report 100% MATCH. Generalized mutator now emits at most two convention variants, second only for the diagnosed `sub_77e708` call; full tests pass. `0040ebe0` was inspected but rejected: its mismatch is a direct callee receiver, not a function-pointer case.
+- 2026-10-09: New exact win: `0040ebe0` 95→100. Direct `__thiscall` on a free function is illegal in VS2005; modeling the callee as a member (`sub_6303B2(result)`) produced exact bytes. Added bounded `direct_member_receiver` transform for one unambiguous struct/extern pattern plus tests and registry entry.
+- 2026-10-09: Automatic direct-receiver transform regression passed: one matching `extern "C" __stdcall NAME(void*, ARG)` plus one struct rewrites to a member declaration and `NAME(arg)`; ambiguous/multi-struct sources stay untouched. Current 2007-08 saved exact count is 9,984 after four verified wins.
+- 2026-10-09: New exact win: `00594010` 92→100. Target required an indirect call with a literal receiver in ECX; source had a two-argument stdcall declaration. Re-declaring it as a `__thiscall` function pointer reproduced both indirect call encoding and receiver register. Added bounded `static_receiver_pointer` mutator and test.
+- 2026-10-09: New exact win: `00594760` 92→100. Same static receiver pattern, but target returned the indirect callee's bool while source called it then returned `true`; evidence showed extra `mov al,1`. Convention conversion + argument swap + bool-return propagation reached exact bytes. Mutator now emits this second bounded form; tests pass.
+- 2026-10-09: New exact win: `005952d0` 97→100. Target pushed EAX from the producer call into an indirect `__thiscall`; source discarded producer result and returned `true`. Verified source fix: bool thiscall pointer plus `return check(receiver, producer(q));`. Added conservative `return_carrier_call_diffs` classifier and bounded mutator.
+- 2026-10-09: New exact win: `00595370` 94→100. Source RTTI `operator==` compiled as a direct call; target used an indirect thiscall with static type-info receiver. Explicit typed pointer call reproduced exact bytes. Added narrow `indirect_call_diffs` evidence and `rtti_operator` mutator.
+- 2026-10-09: New exact win: `00537c70` 97→100. Raw function-pointer release call used ECX while target used EDX. A virtual `VNode` storage type changed offsets and scored 96; separate plain-storage `VNodeCall` virtual-call view preserved vtable-at-zero/ref-at-four and emitted exact `mov edx,[eax]; call edx`. Added evidence-gated `virtual_call_view` mutator. Direct pointer casts, local pointer forms, and member-call declaration did not improve.
+- 2026-10-09: `00675890` remains 98%. Target differs only at one receiver: `mov ecx,eax` vs candidate `mov ecx,esi`. Typed returned-object/member-call and cast-only member-view experiments reached 94% because tail register allocation also changed (`edx/ecx` swap). Restored 98%; no repair accepted.
+- 2026-10-09: `00724ed2` improved 97→98 by adding `__declspec(dllimport)` to the existing noreturn `RaiseException` declaration; this changed direct `call` to target-like imported `call [sym]`. Pointer declaration broke control flow (51%), and `__assume(0)` did not remove the remaining compiler `int3`; no exact repair accepted.
+- 2026-10-09: `00720b80` remains 97%. Target's first indirect call pushes its argument while candidate places it in ECX. Changing that pointer to `__stdcall` produced 90% and also changed unrelated tail register allocation; restored the original `__thiscall` source. No repair accepted.
+- 2026-10-09: Added optional `roc angr-facts BINARY ADDRESS --size N`. Installed open-source angr locally and implemented bounded x86 instruction-window lifting. Whole-PE CFGFast was too expensive, so the adapter deliberately uses bounded blocks and never affects normal matching or dependencies. `00675890` window extracted successfully; angr emitted a non-fatal Unicorn warning.
+- 2026-10-09: Angr bounded extraction tested on three real functions with exact target sizes: `00537c70` 67 bytes/26 instructions, `00720b80` 50/21, `00724ed2` 38/13; all ended at `ret` or terminal `call`. A deliberately oversized window crossed into following code, confirming `--size` must come from verified function length.
+- 2026-10-09: Angr-assisted exact win: `00720b80` 97→100. Bounded target facts exposed vtable slot `0x14`, pushed argument, implicit ECX, and `call edx`. A separate six-slot virtual-call view (five dummy slots plus `test`) reproduced the historical MSVC dispatch without changing the storage class. Automated variant compiled to 100%; real source now matches.
+- 2026-10-09: Large repair batch requested at 90% floor: 279 eligible 90–99% sources were available (fewer than requested 300). Compiler-backed guided repair tried all 279; 0 improvements and 0 exact conversions. Exact total remained 9,996. Report: `work/reports/repair-partials-300-20261009.json`.
+- 2026-10-09: Routing fix after the 279-function zero-win batch: high-score structural ABI/register/call mismatches now suppress blind signedness/branch fallback; value/branch-only mismatches retain it. Tests pass. A 20-function validation produced only 14 trials and 6 zero-trial structural rows, confirming compile-budget reduction; no score claim made.
+- 2026-10-09: Increased angr sample: `roc angr-batch 2007-08 --limit 20 --min-score 90` loaded the PE once and extracted bounded facts for 20/20 high-partials. Exact-size windows ended cleanly; oversized windows can cross function boundaries. Follow-up dry-run repair on the 20 rows produced 0 additional score improvements and 0 exacts, so angr facts are useful for targeted ABI/source-shape discovery, not yet a general automatic repair oracle.
+- 2026-10-09: Return-carrier mutator regression passes on a multiline source; it rewrites only diagnosed producer/callee pairs, infers the second carrier as `int`, and leaves unrelated calls untouched. Current 2007-08 saved exact count: 9,992. Full direct test runner and diff check pass.
+- 2026-10-09: Added separate evidence-gated `indirect_return_value` mutator: only fires when classifier sees positive AL delta and source has `call; return true` after a `__thiscall` pointer. It changes pointer return type to bool and propagates result; bounded regression added.
+- 2026-10-09: Automatic batch verified 3 more exact conversions: `00594610`, `00595140`, `005954b0` each 95→100 using one `indirect_return_value` compile. Report: `work/reports/indirect-return-batch.json`. Current 2007-08 saved exact count: 9,989. Full direct test runner passes; the only prior failure was a one-line synthetic test pattern, then fixed and re-run green.
+- 2026-10-09: Added opt-in `roc repair --chain`: after a strict improvement, it refreshes diagnosis once and tries a second bounded guided pass. Default remains single-pass; no unbounded loop. This automates the observed static-receiver → indirect-bool-return sequence while retaining compiler/exact-score gates.
+- 2026-10-09: `--chain` smoke on `005952d0` completed safely (97→97, 3 trials, no source write); CLI help exposes the flag; full direct test runner and diff check pass.
+
+- 2026-10-09: Fresh plan/research pass: added ten-stage route from frozen baselines → mismatch classification → CFG/data flow → donor mining → ranked source search → compiler matrix → SMT/symbolic verification → active-learning prioritization → bounded mass runner → exact-match stop rules. Researched angr (CFG/static analysis + symbolic execution) and BAP (binary analysis/interpreter/symbolic execution) for the next CFG/data-flow stage. Sources: https://docs.angr.io/en/latest/, https://github.com/BinaryAnalysisPlatform/bap.
+- 2026-10-09: Environment probe: Python `angr` and `bap` are not installed. No heavy dependency added automatically; current Capstone + Z3 prototypes remain the local path.
+- 2026-10-09: Retried interrupted volatile-zero-store probe on one target only: `00675890` stayed 98% with 0 candidates. Saved `work/reports/volatile-00675890.json`; no source write.
+- 2026-10-09: Regression assertions passed for pressure/verifier path: block split, numeric target extraction, block pressure, destination kills, and unsafe move rejection all validated in one bounded command.
+- 2026-10-09: New whole-program probe: `/GL-` kept `00675890` at 98%; `/GL` produced an object/score-parser failure (`unpack_from` buffer error), not a valid score. Rejected; saved client flags unchanged. Whole-program optimization requires a linker-aware scoring path before further testing.
+- 2026-10-09: Strategy-win audit: findings contain 16 unique addresses with direct source/compiler strategy evidence reaching exact 100. Separate score-index refreshes corrected stale metadata but are not counted as strategy fixes. `00675890` remains unfixed at 98%.
+- 2026-10-09: Research explains `/GL` failure: Microsoft requires `/LTCG` when linking `/GL` objects and warns they are not normal linker-utility objects. Added future method: complete miniature link unit -> `/LTCG` -> extract final function -> score. Source: https://learn.microsoft.com/en-us/cpp/build/reference/gl-whole-program-optimization?view=msvc-170.
+- 2026-10-09: Direct `/GL /LTCG` retry still fails current object-only scorer with `unpack_from` buffer error. Confirms linker-aware runner is mandatory; no score or source write.
+- 2026-10-09: Linker inventory: all three registered x86 compiler bundles include matching `link.exe`; none is on PATH. This removes the toolchain blocker for a dedicated `/GL` miniature-link runner. Current matcher still intentionally compiles object-only.
+- 2026-10-09: `/GL` pipeline proof: initial attempt failed because `LIB` was unset and `/LTCG` was passed to `cl` (warning D9002). Corrected run set VC `LIB`, compiled `/GL`, and passed `/LTCG` after `/link`; VC2005 produced a DLL successfully (`rc=0`). Saved probe source `work/ltcg-probe.cpp`. Target extraction/link context remains.
+- 2026-10-09: LTCG extraction proof: linked `work/ltcg-probe.dll` exports `ltcg_probe`; `pefile` resolved RVA `0x72d0` and extracted final bytes `558bec8b450883c0075dc3`. Linker-aware extraction works on the miniature unit; target-compatible link context remains.
+- 2026-10-09: Added reusable `roc/ltcg.py:build_dll`; helper rebuilt probe as `work/ltcg-helper.dll`, extracted same export RVA `0x72d0` and bytes, and compileall passed. Linker pipeline is now callable code; target function extraction remains.
+- 2026-10-09: Added `export_bytes()` to LTCG helper. It extracted `ltcg_probe` RVA `0x72d0`, bytes `558bec8b450883c0075dc300`, and compileall passed. Export extraction is automated; non-exported target function extraction remains.
+- 2026-10-09: Added LTCG map support. `build_dll(..., map_output)` generated `work/ltcg-map.map`; corrected parser found non-exported `_ltcg_probe` at RVA `0x62d0`. Compile gate passed. Map extraction now supports target functions without exports.
+- 2026-10-09: Fixed MSVC map conversion: segment offset `0x62d0` was not PE RVA; parser now subtracts image base from `Rva+Base`. `map_bytes()` returns correct RVA `0x72d0` and bytes `558bec8b450883c0075dc300`; compile gate passed.
+- 2026-10-09: Added `roc ltcg BUILD SOURCE OUTPUT --map MAP`; CLI rebuilt `work/ltcg-probe.cpp` as `work/ltcg-cli.dll` and emitted `work/ltcg-cli.map`. Compile gate passed; no target source changed.
+- 2026-10-09: Real LTCG target experiment: `00675890.cpp` linked with `/GL /LTCG /FORCE:UNRESOLVED` and decorated export `?func@CXTPCustomizeSheet@@QAEXXZ`. Extracted linked body length 101 bytes versus target 59; score 33%. This is valid linker-aware evidence, but unresolved-call/link context changes code substantially. No source change.
+- 2026-10-09: Added `--extra` LTCG sources and tested four diagnostic member stubs in `work/ltcg-stubs.cpp`. Real `00675890.cpp` linked without forced unresolved calls; extracted body 101 bytes, score 35%. Stubs remove link errors but do not reproduce target call ABI/register shape. No target source change.
+- 2026-10-09: LTCG fairness fix: helper now defaults to `/O2 /GS /EHsc /MD`; first optimized stub run collapsed to 13 bytes/16% because pure stubs were optimized away. Marked stubs `noinline` with volatile side effects; rerun produced 47 bytes/43%. Still far from target 59 bytes, but confirms linked optimization materially changes the experiment. No target source change.
+- 2026-10-09: New LTCG flag probes with opaque stubs: `/O2 /Oy- /GS /EHsc /MD` and `/O2 /Ob0 /GS /EHsc /MD` both produced 47-byte bodies at 43%. Frame-pointer and inline-policy changes do not improve linked-context shape; artifacts saved under `work/ltcg-00675890-oyminus.*` and `work/ltcg-00675890-ob0.*`.
+- 2026-10-09: New linked-context intrinsic probe: `/O2 /Oi- /GS /EHsc /MD` with opaque stubs produced 47 bytes at 43%. Intrinsic expansion does not change this LTCG shape; no source write.
+- 2026-10-09: New linked-context security-cookie probe: `/O2 /GS- /EHsc /MD` with opaque stubs produced 47 bytes at 43%. `/GS` model does not change this LTCG shape; no source write.
+- 2026-10-09: Major new result: added `--opaque-extra`, compiling stubs without `/GL` before linking the `/GL` caller. Real `00675890.cpp` then produced exactly 59 linked bytes and score 67% (versus 47 bytes/43% when LTCG saw stub bodies). This isolates external-call opacity and materially improves shape, but still does not reach exact bytes. Artifact: `work/ltcg-00675890-opaqueobj.dll`.
+
+- 2026-10-09: New flag probe on `00675890`: `/Gf`, `/GF`, and `/Gf /GF` all stayed 98%. String pooling/read-only string placement cannot affect this register-only mismatch. Client flags unchanged.
+- 2026-10-09: New research route: verifier-backed synthesis. STOKE supplies x86 superoptimization plus equivalence checking; Alive2 supplies SMT-backed LLVM translation validation; Souper synthesizes LLVM IR rewrites. None directly solves MSVC x86 source recovery. Logged next implementation: bounded x86-32 window enumeration plus live-register/memory proof, followed by compiler/source provenance and exact byte scoring. Sources: https://github.com/StanfordPL/stoke, https://github.com/AliveToolkit/alive2, https://github.com/google/souper.
+- 2026-10-09: Environment probe: Capstone 5.0.7 is installed; Python `z3` is absent. A local symbolic verifier needs either a vendored/approved solver path or an external STOKE/Alive2 build; do not silently add a dependency.
+- 2026-10-09: Installed local `z3-solver` and added first dependency-free-from-external-binaries verifier prototype: `python -m roc.verify_window`. It rejects unsupported windows, proves `mov ecx,eax` vs `mov ecx,esi` not equivalent, and proves them equivalent only under explicit `eax=esi`. This confirms the 00675890 mismatch cannot be safely rewritten without a real data-flow proof.
+- 2026-10-09: Exposed verifier through automation CLI: `roc verify-window LEFT RIGHT [--equal eax=esi]`. Both target probes pass; JSON output is batch-scriptable and bounded. No source mutation.
+- 2026-10-09: Applied verifier to real `00675890` diff window. Nearby target has `mov ecx,eax` immediately after a call; generated has `mov ecx,esi`, while later instructions use both values independently (`edx=[esi+0x88]`, `ecx=[eax+0x74]`). No valid `eax=esi` equality can be inferred. Verifier correctly rejects rewrite; confirms surrounding data-flow must constrain candidates.
+- 2026-10-09: New flag probe: `/volatile:ms` and `/volatile:iso` both kept `00675890` at 98%. Volatile model cannot control this non-volatile register allocation. Client flags unchanged.
+- 2026-10-09: New backend-target probe: `/arch:IA32` and `/arch:SSE2` both kept `00675890` at 98%. Instruction-set target does not change the register mismatch. Client flags unchanged.
+- 2026-10-09: Bounded mass probe: `roc repair 2007-08 --refresh-all --min-score 95 --limit 10 --category allocation_result --dry-run` completed in 11.6s, JSON report saved, 0 eligible candidates. Automation is safe but this family has no evidence in the first ten refreshed high-partials.
+- 2026-10-09: Calling-convention family probe corrected for source ordering: explicit high-partials `00401880` (94), `00401990` (95), `004021e0` (91), `00409db0` (95), `0040a820` (95) all had 0 candidates and no score changes. Saved `work/reports/calling-explicit5.json`; family evidence is absent for this sample.
+- 2026-10-09: Argument-order family probe on the same five explicit high-partials also produced 0 candidates and no score changes. Saved `work/reports/argument-explicit5.json`; two independent guided families show no evidence on this sample.
+- 2026-10-09: Branch-condition family probe on the same five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/branch-explicit5.json`; three guided families are absent on this sample, so further progress needs broader source-shape analysis.
+- 2026-10-09: Broad combined mutation scan on the same five explicit high-partials tried 10 legacy candidates total: 0 improvements, 0 exact wins, 3 compile failures correctly marked, and no source writes. Scores stayed 91–95%. Saved `work/reports/broad-explicit5.json`. Isolated guided-family absence is real; broad fallback only finds signedness/comparison mutations here.
+- 2026-10-09: Stack-layout family probe on the same five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/stack-explicit5.json`; stack shape is not evidenced by this sample.
+- 2026-10-09: Multi-family automation proof: one `roc repair` invocation with calling-convention, argument-order, branch-condition, and stack-layout categories over five explicit high-partials completed with 0 candidates and 0 score changes. Saved `work/reports/guided-four-explicit5.json`; repeated `--category` batching works without permutation leakage or source writes.
+- 2026-10-09: Immediate-constant family probe on five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/immediate-explicit5.json`; constant/layout mutation evidence is absent in this sample.
+- 2026-10-09: `noreturn_exception` family probe on five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/noreturn-explicit5.json`; exception-control-flow evidence is absent in this sample.
+- 2026-10-09: Isolated signedness probe (`toggle_int_signedness` + `toggle_char_signedness`) on five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/signedness-explicit5.json`; signedness is not evidenced in this sample.
+- 2026-10-09: New allocator research: MSVC confirms automatic register allocation and ignored `register` hints; LLVM Greedy RA documents live intervals, interference, register constraints, splitting, and recoloring. Practical new method: rank source-shape mutations by live-range-pressure changes before compiling, instead of blind syntax enumeration. Sources: https://learn.microsoft.com/en-us/cpp/build/reference/og-global-optimizations?view=msvc-170, https://learn.microsoft.com/en-us/cpp/c-language/register-storage-class-specifier?view=msvc-170, https://llvm.org/doxygen/RegAllocGreedy_8cpp.html.
+- 2026-10-09: Added `roc/pressure.py`, a conservative register-pressure hint. On the `00675890` window (`mov ecx,eax`; `mov edx,[esi+0x88]`; `mov ecx,[eax+0x74]`) it reports four distinct registers and two per instruction. No candidate ranking changed yet; avoids pretending text-level counts are liveness proof.
+- 2026-10-09: Extended pressure prototype with conservative backward live-set hint. Same `00675890` window reports `max_live_hint=4`; it remains explicitly labeled a hint because defs, aliases, and CFG are not modeled. No mutation ranking changed yet.
+- 2026-10-09: Added simple destination-kill model to pressure prototype. `00675890` window reports killed-pressure peak 2 versus naive hint 4. This demonstrates why defs matter, but remains non-authoritative without CFG/alias handling.
+- 2026-10-09: Verifier JSON now includes naive and kill-aware pressure diagnostics. `roc verify-window "mov ecx,eax" "mov ecx,esi"` still returns `not-equivalent`, with `max_live_hint=3` and `killed_pressure=2`; `python -m compileall -q roc` passes.
+- 2026-10-09: New language-semantics flag probe: `/Zc:forScope-` and `/Zc:forScope` both kept `00675890` at 98%. For-scope semantics do not affect this register-only mismatch; saved flags unchanged.
+- 2026-10-09: Sanity gate passed: verifier proof report saved as `work/reports/verifier-proof.json`; `python -m compileall -q roc` and `git diff --check` passed. Verifier still rejects the real register substitution.
+- 2026-10-09: New virtual-layout flag probe: `/vd0`, `/vd1`, and `/vd2` all kept `00675890` at 98%. Virtual-base displacement model does not affect this call/receiver register allocation; saved flags unchanged.
+- 2026-10-09: New build-model probe: `/Gm-` and `/Gm` both kept `00675890` at 98%. Minimal rebuild mode has no code-generation effect here; saved flags unchanged.
+- 2026-10-09: CLI audit passed: `roc --help` exposes both `repair` and `verify-window`; verifier proves the explicit `eax=esi` relation when supplied; prior multi-family JSON report exists. Batch automation surface is usable.
+- 2026-10-09: Added batch verifier mode: `roc verify-window --batch FILE` consumes JSON windows and emits JSON results. Sample processed two windows: one rejected as not equivalent, one proved equivalent under `eax=esi`. Saved input/output under `work/reports/verify-window-sample.json` and `work/reports/verify-window-batch.json`; compile gate passed.
+- 2026-10-09: Report-integrity audit parsed all explicit-five and batch JSON reports successfully. Nine explicit-five reports contain 5 records each; empty batch scans contain valid 0-record arrays; verifier batch contains 2 records. No malformed output.
+- 2026-10-09: New inline-semantics flag probe: `/Zc:inline-` and `/Zc:inline` both kept `00675890` at 98%. Inline COMDAT cleanup semantics do not affect this register allocation; saved flags unchanged.
+- 2026-10-09: New initialization-model flag probe: `/Zc:threadSafeInit-` and `/Zc:threadSafeInit` both kept `00675890` at 98%. Static-local initialization guards do not affect this function; saved flags unchanged.
+- 2026-10-09: Final combined target probe: `00675890` with seven guided families plus permutation tried 0 candidates and stayed 98%. Saved `work/reports/final-combined-00675890.json`; no source write. This confirms current source mutation inventory cannot solve the remaining register allocation.
+- 2026-10-09: Added conservative basic-block splitter to `roc/pressure.py`; synthetic `je`/`ret` window split into two blocks and compile gate passed. Targets are not resolved yet, so this is groundwork for CFG-aware ranking, not proof of liveness.
+- 2026-10-09: Added numeric jump-target extraction to pressure analyzer. Synthetic `je 0x10`/`jmp 32` returned targets `[16, 32]`; symbolic targets remain unknown. Compile gate passed.
+- 2026-10-09: Added `block_pressure()` to pressure analyzer. Synthetic two-block branch window returned two indexed pressure records, both pressure 1; compile gate passed. This is report/ranking data only until target-to-block mapping is implemented.
+- 2026-10-09: Declaration-order family probe on five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/reorder-explicit5.json`; declaration order is not evidenced in this sample.
+- 2026-10-09: Typed-member-return family probe on five explicit high-partials produced 0 candidates and no score changes. Saved `work/reports/typed-return-explicit5.json`; receiver/result representation is not evidenced in this sample.
+
+Append-only experiment log.
+
+- 2026-10-09: `2007-08/004485c0`: baseline 98. Target saves `esi` after null-check; candidate saves before. Requested compiler-flag variants: `/O2`, `/Ox`, `/Ob0`, `/Ob1`, `/Ob2`, `/Oi`, `/Oi-`, `/GS`, `/GS-`, `/EHsc`, `/EHa`, `/MD`, `/MT`, `/GR`, `/GR-`, `/fp:precise`, `/fp:fast` all remain 98. `/O1`=75, `/Oy-`=88. Flags do not solve.
+- 2026-10-09: `2007-08/004485c0`: `else` source shape=84; `goto` shape=98. No exact.
+- 2026-10-09: `2007-08/004021a0`: baseline 89. Tested comparator argument reversal=89; signed pointer casts=91; inlined comparator=74; declaration reorder=89. No exact. Target uses global comparator in `ebx`, argument in `edi`, signed `jl`; current source emits different register/order and unsigned `jb`.
+- 2026-10-09: Flag sweep `004021a0`: `/O1`=58, `/O2` and `/Ox`=89, `/Oy-`=83; `/Ob0`, `/Ob1`, `/Ob2`, `/Oi`, `/Oi-`, `/GS`, `/GS-`, `/EHsc`, `/EHa`, `/MD`, `/MT`, `/GR`, `/GR-`, `/Zc:wchar_t-`, `/fp:precise`, `/fp:fast`, `/Gd`, `/Gr`, `/Gz`=89. No exact.
+- 2026-10-09: Flag sweep `00449820`: `/O1`=78, `/O2` and `/Ox`=98, `/Oy-`=82; all other requested variants remain 98. No exact.
+- 2026-10-09: `2007-08/00435660`: volatile member stores + typed `this` return=100.
+- 2026-10-09: `2007-08/00446c80`: predicate-before-padding parameter=100.
+- 2026-10-09: `2007-08/004b8400`: strict `<` comparison=100.
+- 2026-10-09: Current `work/2007-08/scores.json`: 9,919 functions at 100; ten remaining 98% holdouts: `004021a0`, `004485c0`, `00449820`, `0055ece0`, `005b1e90`, `005f8b40`, `005fc300`, `00675890`, `006a2dd0`, `006cb940`.
+- 2026-10-09: Added explicit `/Ob2` and `/Oi` sweep choices. Full Cartesian flag matrix now 62,208 combinations; no rerun yet.
+- 2026-10-09: `00449820`: external GUID-like declarations produce 98, not exact; unresolved external data becomes zero-sized `push` and worsens branch layout. Keep literal constants for now.
+- 2026-10-09: `005b1e90`: baseline 98, missing return. Typed factory-pointer return + `return this` = exact 100.
+- 2026-10-09: `005f8b40`: baseline 98, missing return. Typed pointer return + `return this` = exact 100.
+- 2026-10-09: `005fc300`: typed return tested; scores 77/92/84 with store volatility/order changes. No exact; constant-store relocation ordering remains unresolved.
+- 2026-10-09: `005fc300`: corrected finding. Typed pointer return + only offset `0x20` zero-store marked `volatile` = exact 100. Other volatility masks: offset `0x04`=84; offsets `0x00`/`0x20` combinations=84; offset `0x20` present=100.
+- 2026-10-09: `006a2dd0`: baseline 98, stack arg mismatch. Swap params + pass `&unused` to comparator = exact 100.
+- 2026-10-09: `006cb940`: baseline 98, stack arg mismatch. Swap parameter order = exact 100.
+- 2026-10-09: `0055ece0`: direct-expression cleanup did not help (74). Changing virtual callback return to pointer gives 94; only remaining mismatch is callback pointer register (`edx` target vs `eax` candidate).
+- 2026-10-09: `0055ece0`: modeling nested object as C++ virtual type with dummy slot + target method makes MSVC emit `mov edx,[vtable+4]; call edx`; exact 100.
+- 2026-10-09: `004485c0`: adding `__declspec(noreturn)` to imported `RaiseException` changes MSVC shrink-wrapped callee-save placement; exact 100. `noinline`, `nothrow`, no annotation stayed 98.
+- 2026-10-09: `00449820`: rewriting `if (hr < 0) return hr` as success body under `if (hr >= 0)` + shared `return hr` changes branch target/layout; exact 100. Literal GUID-like constants already had correct masked bytes.
+- 2026-10-09: `00675890`: typed receiver for second call consistently fixes `mov ecx,eax` but changes final register allocation to `ecx/eax` instead of target `edx/ecx`; field volatility, typed result struct, and call return types did not reach exact (best 94).
+- 2026-10-09: Current verified state: 9,926 functions at 100%; remaining 98% holdouts: `004021a0`, `00675890`.
+- 2026-10-09: Final-holdout flag sweep: `00675890` `/O1`=93, every other requested variant=98; `004021a0` `/O1`=58, `/Oy-`=83, baseline/other variants=89. Flags do not solve either.
+- 2026-10-09: Cross-source research: neighboring exact `00675950` uses integer-returning XTP calls + integer receiver cast, but applying same representation to `00675890` still gives 94. Difference remains final register allocation (`edx/ecx` target vs `ecx/eax`).
+- 2026-10-09: Current score file: 9,927 functions at 100%; only `004021a0` and `00675890` remain at 98%.
+- 2026-10-09: `00675890` alias/type research: unsigned/long field, const/volatile result pointer, volatile field read, integer-returning XTP calls, and neighboring `00675950` source pattern all stayed 94 or worse. No exact.
+- 2026-10-09: `004021a0` callback research: global `volatile`/`const`, register hints, comparator argument orders, signed pointer loop, and local key aliases reached 91 at best; target register allocation still differs. No exact.
+- 2026-10-09: Full-corpus `roc repair --min-score 98` initially spent minutes recompiling exact/stale-scored sources; stopped safely. Optimized runner to prefilter from `work/<client>/scores.json`, refresh only saved partials, then recheck refreshed score before mutation. Stale score `006a37c0` exposed and skipped after refresh (actual 41).
+- 2026-10-09: Automation fix: refreshed lower scores now persist during non-dry runs, preventing repeated stale-score recompilation. Targeted dry-run confirms only real `00675890` partial entered mutation; `004021a0` actual score=89 and skipped at threshold 98.
+- 2026-10-09: Local archive/source search found no recovered implementation for final symbols `VCWorkspace::?$CComObject` or `CXTPCustomizeSheet::func`; only neighboring generated source and benchmark metadata. No new declaration evidence.
+- 2026-10-09: Bundled ATL/WinSDK search found headers and generic `CComObject` templates, but no matching Roblox `VCWorkspace` implementation or callback table. No usable source recovered.
+- 2026-10-09: Added `noreturn_exception` to automatic guided mutations. Reconstructed `004485c0` baseline 98 → exact 100 in 1 compiler-backed attempt.
+- 2026-10-09: `00675890` helper-by-helper `__declspec(noalias)` tests on `sub_63096A`, `sub_6302EC`, `sub_675880`: all stayed 94. Alias annotation not cause.
+- 2026-10-09: `roc repair` default threshold lowered 90→80 so 89% high partials are included. Targeted dry-run now processes both final holdouts: `004021a0` 89→89, `00675890` 98→98.
+- 2026-10-09: Bounded mass dry-run (`2007-08`, first 100 sources, default threshold 80) processed 13 partial functions in 5.9s; no writes, per-variant results logged.
+- 2026-10-09: Bounded apply run (`2007-08`, first 100 sources) processed same 13 partials in 5.0s; no mutation improved score, so no source files changed.
+- 2026-10-09: Larger apply run (`2007-08`, first 500 sources, threshold 80) completed. Automatic mutations improved `0040f4f0` 88→94, `0040f750` 89→93, `004129b0` 82→90; no exact wins. Score index refreshed; `004021a0` actual 89 no longer stale 98.
+- 2026-10-09: Larger apply run (`2007-08`, first 2,000 sources, threshold 80) completed. Automatic repair produced 12 additional score improvements (largest: `0042b3a0` 84→92, `0045ff90` 85→94); no exact wins. Saved score state: 9,927 exact; only `00675890` saved at 98.
+- 2026-10-09: Full-corpus apply run (`2007-08`, all sources, threshold 80) completed. Automatic repair produced 47 improvements and 6 new exact 100s. Current score index: 9,933 exact; remaining 98s: `00537dc0`, `005d2600`, `00675890`.
+- 2026-10-09: New 98 holdouts inspected: `00537dc0` is immediate/constant-layout mismatch after reaching 98; `005d2600` is branch-layout mismatch after reaching 98; `00675890` remains register allocation. No speculative edits applied.
+- 2026-10-09: `005d2600`: restructure allocation as `if (p != 0) copy; return p;` instead of early null return. Exact 100; current exact count 9,934.
+- 2026-10-09: `00537dc0`: same allocation-result control-flow pattern (copy only if `p != 0`, return `p` outside block) fixes branch displacement; exact 100. Current exact count 9,935.
+- 2026-10-09: Added automatic `allocation_result` mutation. Reconstructed `00537dc0` baseline 98 → exact 100 via one generated variant. This generalizes both `00537dc0` and `005d2600` discoveries.
+- 2026-10-09: `00675890` XTP parameter ABI tests: second arg `bool`, `unsigned char`, `long`, first arg unsigned, and bool/int locals. Best remains 94; bool variants worsen to 81/31. Target `sete al` is not sufficient evidence of bool parameter type.
+- 2026-10-09: `00675890`: target calls `sub_6302ec` on return object from `sub_63096a`; typed returned object fixes call receiver but tail register allocation remains different (94). No exact.
+- 2026-10-09: Current verified state: 9,925 functions at 100%; remaining 98% holdouts: `004021a0`, `004485c0`, `00449820`, `00675890`.
+- 2026-10-09: Automation research: `typed_member_return` + targeted `volatile_zero_store` combination reproduces `005fc300` exact in 3 mutation attempts (98 -> 100). Standalone typed return=77; standalone volatile offset variants=98. Combination required.
+- 2026-10-09: Added bounded automatic mutations to `roc/mutate.py`; `roc repair` can now discover typed member factory returns and combine them with zero-store volatility.
+- 2026-10-09: `roc repair 2007-08 0055ece0`: 74 -> 74, tried 3 variants.
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants.
+- 2026-10-09: `roc repair 2007-08 004485c0`: 98 -> 98, tried 8 variants.
+- 2026-10-09: `roc repair 2007-08 00449820`: 98 -> 98, tried 6 variants.
+- 2026-10-09: `roc repair 2007-08 005fc300`: 98 -> 98, tried 6 variants.
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants.
+- 2026-10-09: `roc repair 2007-08 004021a0`: 89 -> 89, tried 9 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, inequality=84].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 006a37c0`: 41 -> 41, tried 3 variants [toggle_int_signedness=0, negate_comparison=41, inequality=41].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 004021a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: New method: applied VS2005 `__declspec(noinline)` to all four member-call declarations in `00675890.cpp`. Result stayed 98%; generated wrong register remained `mov ecx, esi` instead of target `mov ecx, eax`. Reverted; call-target noinline metadata does not control this receiver register choice.
+- 2026-10-09: Research: Microsoft documents `__declspec(noinline)` as an inlining control only, while `/Oy` frees a register; neither promises a particular register allocation. This matches the experiment. Sources: https://learn.microsoft.com/en-us/cpp/cpp/noinline?view=msvc-170 and https://learn.microsoft.com/en-us/cpp/build/reference/oy-frame-pointer-omission?view=msvc-170. Remaining high-value route is source/IR shape search, not more generic optimizer flags.
+- 2026-10-09: New source-shape test: changed `sub_6302EC()` to `((CXTPCustomizeSheet*)p)->sub_6302EC()` so returned factory value explicitly feeds the receiver. Score fell 98% -> 94%; tail register/dataflow also changed. Reverted. Directly forcing the desired receiver is coupled to later alias/register allocation and is worse.
+- 2026-10-09: Research result: MSVC documents automatic register allocation under `/Og`, and explicitly says the `register` keyword is not honored; no supported switch selects a specific x86 register such as EAX. Inline assembly can constrain registers, but RoConstruct source validation rejects inline asm. Sources: https://learn.microsoft.com/en-us/cpp/build/reference/og-global-optimizations?view=msvc-170, https://learn.microsoft.com/en-us/cpp/c-language/register-storage-class-specifier?view=msvc-170, https://learn.microsoft.com/en-us/cpp/assembler/inline/using-and-preserving-registers-in-inline-assembly?view=msvc-160.
+- 2026-10-09: Automation verification: `python roc.py repair 2007-08 --addr 00675890 --min-score 90 --permute --dry-run` completed in 5.5s, exit 0, tried 8 variants, best remained 98%. Targeted dry-run is safe for massive staged batches and writes no source.
+- 2026-10-09: New flag test: `/Oxs /GS /EHsc /MD` (speed optimization plus size bias) scored 93% on `00675890`, versus baseline `/O2 /GS /EHsc /MD` at 98%. Rejected and did not alter saved client flags. `/Oxs` is harmful for this register/dataflow shape.
+- 2026-10-09: New flag test: `/O2 /Os /GS /EHsc /MD` scored 93% on `00675890` versus 98% baseline. Rejected; size preference consistently changes the sensitive register/dataflow tail.
+- 2026-10-09: Automation improvement: added `roc repair --json`. Targeted dry-run verified: it reports address, before/after score, tried count, and mutation scores while preserving the append-only markdown log and source safety. This enables scripts to process massive batches without scraping console text.
+- 2026-10-09: Bounded automation test: `--refresh-all --min-score 90 --limit 10 --permute --dry-run --json` completed in 11.7s and returned `[]`; first ten sorted sources were exact/high enough to skip. Targeted 94% source `00401880` then tried 5 variants and stayed 94%. JSON output and filtering behave correctly; no source changes.
+- 2026-10-09: Five-target high-partial batch: `00401880` 94%/5 variants, `00401990` 95%/7, `004021e0` 91%/16, `00409db0` 95%/7, `0040a820` 95%/7. All stayed unchanged. JSON report captured every trial; no source writes.
+- 2026-10-09: New flag test: `/O2 /Ot /GS /EHsc /MD` (favor fast code) scored 98% on `00675890`, byte-result equivalent to baseline for this target. No improvement; flags unchanged.
+- 2026-10-09: New combined flag test: `/O2 /Ot /Oy- /GS /EHsc /MD` scored 98% on `00675890`. Keeping frame pointers plus speed bias does not resolve the EAX/ESI receiver mismatch; flags unchanged.
+- 2026-10-09: New source-lifetime test: changed the call to `((void)p, sub_6302EC())` to keep the factory result syntactically used without changing its type. Score stayed 98%; compiler still emitted `mov ecx, esi`. Reverted. Mere liveness/use does not influence this receiver choice.
+- 2026-10-09: Second five-target batch: `0040a9d0` 94%/6, `0040ac50` 92%/4, `0040b2a0` 92%/8, `0040ebe0` 95%/11, `0040f4f0` 94%/10. All unchanged; 39 variants total, zero gains. JSON report verified batch details.
+- 2026-10-09: Final automation verification: help exposes `--offset`, `--refresh-all`, and `--json`; Python compilation passes with only pre-existing `roc/mutate.py:636` invalid-escape warning; `git diff --check` passes; targeted JSON dry-run reports `00675890` 98 -> 98 after 3 variants. No source writes.
+- 2026-10-09: New combined flag test: `/O2 /Ob0 /Oy- /GS /EHsc /MD` scored 98% on `00675890`. Disabling inlining while retaining frame pointers did not change the mismatch; flags unchanged.
+- 2026-10-09: New combined flag test: `/O2 /Ob1 /Oy- /GS /EHsc /MD` scored 98% on `00675890`. Selective inlining plus frame pointers also leaves the EAX/ESI mismatch unchanged.
+- 2026-10-09: New dataflow test: cached `field_0x88` in local `value`, reused it for comparison and final store. Score collapsed 98% -> 55%; compiler added `edi` save/restore and changed compare/store registers. Reverted. Field caching is strongly harmful here.
+- 2026-10-09: New type test: changed `field_0x88` from `int` to `unsigned int`. Score stayed 98% and assembly remained identical except the same EAX/ESI mismatch. Reverted; signedness is not the cause for this zero comparison.
+- 2026-10-09: New type test: changed `field_0x88` to `bool`. Score fell 98% -> 89%; compiler emitted byte compare and `movzx` plus changed tail address/value registers. Reverted. Narrow field type is harmful.
+- 2026-10-09: New type-shape test: represented `field_0x88` as a one-value enum with 32-bit storage. Score stayed 98%; assembly unchanged, including EAX/ESI mismatch. Reverted. Enum semantics do not affect this allocation.
+- 2026-10-09: New layout test: wrapped `field_0x88` in an anonymous union while retaining 32-bit storage. Score stayed 98%; assembly unchanged. Reverted. Union alias metadata does not alter this codegen.
+- 2026-10-09: Five 97%+ automatic batch: `00675890` 98%/8, `006f23d0` 97%/2, `006f2400` 97%/3, `00720b80` 97%/4, `00724ed2` 97%/9. All unchanged; 26 variants total, zero gains. JSON captured results; no source writes.
+- 2026-10-09: New research direction: binary-matching literature recommends compiler re-optimization/canonicalization and data-flow/strand comparison when exact instruction syntax differs; exact source recovery remains a search problem. Practical implication: add IR/data-flow features to mutation ranking, while retaining exact compile verification. Sources: https://csaws.cs.technion.ac.il/~yahave/blog/binary-reopt.html and https://arxiv.org/abs/2609.18706.
+- 2026-10-09: Automation improvement: added repeatable `roc repair --category NAME` filtering for guided mutation families, with legacy fallback disabled when filtering. Verified `--category signedness` on `00675890`: 0 eligible guided variants, JSON output correct, no source writes. This enables large experiments by one mutation family without console scraping.
+- 2026-10-09: Category filter positive verification: `roc repair 2007-08 --addr 006f2400 --min-score 97 --category immediate_constant --dry-run --json` tried exactly 1 `immediate_constant` variant and stayed 97%. Filter excludes unrelated families as intended; no source write.
+- 2026-10-09: Focused family batch: `--category immediate_constant` across four partials tried 1 eligible variant total (`006f2400`), 3 targets had zero eligible variants. All scores unchanged; JSON output complete; no source writes.
+- 2026-10-09: Focused `signedness` batch across five high partials: four processed, all had zero eligible guided signedness variants and stayed 97%; one exact source skipped. Confirms category filter prevents irrelevant legacy trials; no source writes.
+- 2026-10-09: Focused `calling_convention` verification on `0040a1d0`: exactly 1 guided variant tried, scored 18%, baseline stayed 86%; filter worked and rejected harmful candidate. No source write.
+- 2026-10-09: Five-target `calling_convention` batch: `0040a1d0` tried 1 candidate (18%, rejected); `0040b920`, `004129b0`, `00421510`, `0042b3a0` had zero eligible candidates. All baselines preserved; JSON complete; no source writes.
+- 2026-10-09: Focused `stack_layout` batch: `00409e40` and `0040b920` each tried 1 candidate scoring 77% versus 83% baseline; `00421510` had none. All rejected safely; no source writes.
+- 2026-10-09: Focused `return_value` checks on previously repaired partials `005dd060` (88%) and `006f5ce0` (84%): zero currently eligible guided variants. Earlier return-value wins already recorded; current filter avoids repeating stale transformations.
+- 2026-10-09: New research: STOKE-style stochastic superoptimization searches instruction sequences while jointly considering instruction selection and register allocation; Souper searches LLVM IR with SMT. These are possible future escalation paths for stubborn register-only mismatches, but cannot directly use VS2005 source semantics without an x86/old-MSVC adapter. Sources: https://arxiv.org/abs/1211.0557, https://github.com/google/souper.
+- 2026-10-09: Bounded family scan: `--refresh-all --offset 0 --limit 20 --min-score 80 --category calling_convention --json --dry-run` completed in 20.5s; one eligible partial (`00401310`, 89%) had zero calling-convention candidates, remaining sources skipped. No source writes.
+- 2026-10-09: Same bounded slice with `--category allocation_result` completed in 20.3s; `00401310` had zero eligible candidates, all others skipped. No source writes. Category scans expose sparse applicability before expensive broad mutation search.
+- 2026-10-09: Log audit: findings document now contains 2,033 recorded `roc repair` runs, 56 logged applied improvements, and 34 research/automation entries. Aggregate confirms repair history is substantial; new experiments continue append-only.
+- 2026-10-09: Automation sanity: `python -m py_compile roc.py`, repair help, and `git diff --check` pass. CLI exposes bounded offset, category filtering, JSON, refresh, permutation, and dry-run controls.
+- 2026-10-09: New pragma test: `#pragma optimize("y", on)` frame-pointer omission before `func` scored 98%; assembly unchanged. Reverted. Frame-pointer control cannot change receiver register.
+- 2026-10-09: Research update: STOKE targets x86-64, but prior peephole superoptimizers enumerate 32-bit x86 and use live-register constraints. This is strongest non-LLM path for exact EAX/ESI repair, requiring a custom 32-bit adapter or constrained local search. Sources: https://github.com/StanfordPL/stoke and https://www.cse.iitd.ac.in/~sbansal/pubs/osdi08_html/index.html.
+- 2026-10-09: Updated `docs/matching-next-plan.md` with concrete next escalation: bounded 32-bit x86 peephole search around mismatch windows, live-register/memory preservation, exact-byte scoring, one-function validation before batch rollout.
+- 2026-10-09: Automation bug fix: category filtering previously allowed `--permute` variants to leak into family-isolated runs. Changed `roc/mutate.py` so `--category NAME` suppresses permutation expansion. Verified `immediate_constant + --permute` on `006f2400`: exactly 1 immediate-constant trial, no leak, score unchanged.
+- 2026-10-09: Post-fix verification: Python compile passes with existing invalid-escape warning; category+permute JSON dry-run again tried exactly 1 variant and stayed 97%; diff check passes.
+- 2026-10-09: Focused `argument_order` test on `00572180`: 1 candidate tried, 82% -> 82%; rejected, no source write. Category filter correctly isolated argument-order mutation.
+- 2026-10-09: Focused `branch_condition` test on `0041faa0`: 1 candidate scored 72% versus 92% baseline; rejected, no source write. Category isolation confirmed.
+- 2026-10-09: Re-run guard: `--category noreturn_exception` on previously solved `004485c0` returned empty JSON because exact source skipped. Automatic repair avoids repeating known 98 -> 100 transformation.
+- 2026-10-09: Final targeted baseline check after family scans: `00675890` remains 98%, only mismatch is target `mov ecx, eax` versus generated `mov ecx, esi`; Python compile passes with pre-existing invalid-escape warning.
+- 2026-10-09: Focused signedness batch: `00401310`, `0041faa0`, `006f2400` each had zero eligible `toggle_int_signedness` guided candidates; saved `work/reports/signedness-proof.json`. No source writes.
+- 2026-10-09: New flag test: legacy MSVC `/Op` with `/O2 /GS /EHsc /MD` scored 98% on `00675890`. Floating-point consistency switch does not affect integer receiver allocation; flags unchanged.
+- 2026-10-09: New source-shape test: changed temporary `flag` from `int` to `bool`. Score stayed 98%; generated assembly unchanged, including EAX/ESI mismatch. Reverted; flag width/type not control point.
+- 2026-10-09: Mixed automatic batch: `0041faa0` 92%/2, `00572180` 82%/9, `006f2400` 97%/3. All unchanged; 14 variants total, JSON captured category outcomes, no source writes.
+- 2026-10-09: Five-target mixed batch: `00401310` 89%/7, `0040a1d0` 86%/2, `0041faa0` 92%/2, `00572180` 82%/9, `006f2400` 97%/3. 23 variants, zero gains, no source writes. Broad fallback still safely combines guided + legacy families.
+- 2026-10-09: New bounded-batch check: `roc repair 2007-08 --offset 50 --limit 50 --min-score 97 --permute --dry-run` completed with exit 0 and no mutation output. This means the selected sorted corpus slice had no eligible saved partials after current filtering; repeatable offset/limit batching works without a long poll loop.
+- 2026-10-09: Automation improvement: added `roc repair CLIENT --refresh-all`. It refreshes every score before threshold filtering, preventing stale index decisions. README/help updated; targeted dry-run verified `00675890` remains 98%.
+- 2026-10-09: Fresh target-method metadata test: `__declspec(noalias)` on `CXTPCustomizeSheet::func` produced byte-identical 98%. Reverted; target-level noalias has no effect here.
+- 2026-10-09: The full 12,311-source `--refresh-all --min-score 98` run was stopped after prolonged runtime before completion; no source mutation was applied. Future mass use should slice with `--limit`/`--addr` or run in bounded batches.
+- 2026-10-09: Bounded replacement verified: 50-source `roc repair 2007-08 --refresh-all --min-score 98 --limit 50 --dry-run` completed without errors or mutation output. Batches are practical; unbounded refresh is not.
+- 2026-10-09: Fresh string-const flag test: `/Zc:strictStrings-` and `/Zc:strictStrings` both scored 98% on `00675890`; function has no string literals. No flags changed.
+- 2026-10-09: Fresh counterpart test: `/Zc:wchar_t` and `/Zc:wchar_t /Zc:forScope` both scored 98%; no wchar types exist in function. No flags changed.
+- 2026-10-09: Persistent bounded automation verified: 50-source non-dry `roc repair --refresh-all --min-score 98 --limit 50` completed and advanced `scores.json` timestamp; no mutation output. Bounded refresh safely persists corrected scores.
+- 2026-10-09: Fresh allocator-metadata test: `__declspec(allocator)` on `sub_63096A` rejected by VS2005 (`C2485 unrecognized extended attribute`). No codegen result; reverted. Attribute unavailable in target toolchain.
+- 2026-10-09: New register-hint test: `register` on p/q/r locals produced byte-identical 98%. Optimizer ignores hints under `/O2`; reverted.
+- 2026-10-09: New compiler-barrier test: `_ReadWriteBarrier` declaration plus typed receiver generated an extra external call and scored 78%. VS2005 did not treat the hand declaration as intrinsic; reverted.
+- 2026-10-09: Fresh language switch test: `/Zc:externConstexpr-` and `/Zc:externConstexpr` both scored 98%; function has no constexpr entities. No flags changed.
+- 2026-10-09: New pointer-to-member test: invoked typed returned receiver through a member-function pointer. Score stayed 94%, same tail allocation; reverted.
+- 2026-10-09: Automation improvement: added `roc repair --offset N --limit B` for repeatable sorted corpus batches. Help, README, and a one-source dry-run verified. Enables bounded full-corpus refresh without giant address lists.
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00401840`: 81 -> 81, tried 2 variants [toggle_int_signedness=81, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00401cb0`: 85 -> 85, tried 2 variants [toggle_char_signedness=0, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00401dc0`: 83 -> 83, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=83, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 004021a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00402820`: 96 -> 96, tried 4 variants [toggle_char_signedness=0, toggle_int_signedness=96, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 00402880`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00402eb0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00402ef0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00403a10`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00401840`: 81 -> 81, tried 2 variants [toggle_int_signedness=81, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00401cb0`: 85 -> 85, tried 2 variants [toggle_char_signedness=0, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00401dc0`: 83 -> 83, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=83, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 004021a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00402820`: 96 -> 96, tried 4 variants [toggle_char_signedness=0, toggle_int_signedness=96, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 00402880`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00402eb0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00402ef0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00403a10`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00401840`: 81 -> 81, tried 2 variants [toggle_int_signedness=81, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00401cb0`: 85 -> 85, tried 2 variants [toggle_char_signedness=0, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00401dc0`: 83 -> 83, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=83, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 004021a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00402820`: 96 -> 96, tried 4 variants [toggle_char_signedness=0, toggle_int_signedness=96, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 00402880`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00402eb0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00402ef0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00403a10`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00405b80`: 86 -> 86, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00409e20`: 88 -> 88, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00409e40`: 83 -> 83, tried 3 variants [stack_layout=77, toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040a1d0`: 86 -> 86, tried 2 variants [calling_convention=18, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 1 variants [toggle_char_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0040b010`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040b2a0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0040b2f0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0040b900`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040b920`: 83 -> 83, tried 3 variants [stack_layout=77, toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040d1d0`: 87 -> 87, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040d250`: 83 -> 83, tried 1 variants [toggle_char_signedness=83].
+- 2026-10-09: `roc repair 2007-08 0040ebe0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 88 -> 94, tried 5 variants [calling_convention=88, calling_convention=94, toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=86]; applied.
+- 2026-10-09: `roc repair 2007-08 0040f750`: 89 -> 93, tried 5 variants [calling_convention=87, calling_convention=93, toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87]; applied.
+- 2026-10-09: `roc repair 2007-08 0040f9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 0040fd80`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040fdb0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00411590`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=67].
+- 2026-10-09: `roc repair 2007-08 00411730`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00411770`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004117b0`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00412420`: 88 -> 88, tried 2 variants [toggle_char_signedness=88, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004124e0`: 87 -> 87, tried 2 variants [toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 004129b0`: 82 -> 90, tried 3 variants [calling_convention=89, calling_convention=90, toggle_int_signedness=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00412b60`: 84 -> 84, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412bc0`: 91 -> 91, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00412ca0`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412d00`: 84 -> 84, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412f20`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 004130f0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 00413ec0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 004142f0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00414700`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=58].
+- 2026-10-09: `roc repair 2007-08 00414b30`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 004151f0`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00415db0`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 00416100`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=55].
+- 2026-10-09: `roc repair 2007-08 004175d0`: 90 -> 90, tried 2 variants [toggle_int_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041bd60`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 0041cf10`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 0041d5d0`: 84 -> 84, tried 1 variants [toggle_char_signedness=84].
+- 2026-10-09: `roc repair 2007-08 0041d790`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00401840`: 81 -> 81, tried 2 variants [toggle_int_signedness=81, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00401cb0`: 85 -> 85, tried 2 variants [toggle_char_signedness=0, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00401dc0`: 83 -> 83, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=83, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 004021a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00402820`: 96 -> 96, tried 4 variants [toggle_char_signedness=0, toggle_int_signedness=96, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 00402880`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00402eb0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00402ef0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00403a10`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00405b80`: 86 -> 86, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00409e20`: 88 -> 88, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00409e40`: 83 -> 83, tried 3 variants [stack_layout=77, toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040a1d0`: 86 -> 86, tried 2 variants [calling_convention=18, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 1 variants [toggle_char_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0040b010`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040b2a0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0040b2f0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0040b900`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040b920`: 83 -> 83, tried 3 variants [stack_layout=77, toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040d1d0`: 87 -> 87, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040d250`: 83 -> 83, tried 1 variants [toggle_char_signedness=83].
+- 2026-10-09: `roc repair 2007-08 0040ebe0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0040f750`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0040f9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 0040fd80`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040fdb0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00411590`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=67].
+- 2026-10-09: `roc repair 2007-08 00411730`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00411770`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004117b0`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00412420`: 88 -> 88, tried 2 variants [toggle_char_signedness=88, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004124e0`: 87 -> 87, tried 2 variants [toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 004129b0`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00412b60`: 84 -> 84, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412bc0`: 91 -> 91, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00412ca0`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412d00`: 84 -> 84, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412f20`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 004130f0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 00413ec0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 004142f0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00414700`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=58].
+- 2026-10-09: `roc repair 2007-08 00414b30`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 004151f0`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00415db0`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 00416100`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=55].
+- 2026-10-09: `roc repair 2007-08 004175d0`: 90 -> 90, tried 2 variants [toggle_int_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041bd60`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 0041cf10`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 0041d5d0`: 84 -> 84, tried 1 variants [toggle_char_signedness=84].
+- 2026-10-09: `roc repair 2007-08 0041d790`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0041d870`: 90 -> 90, tried 1 variants [toggle_char_signedness=90].
+- 2026-10-09: `roc repair 2007-08 0041eb40`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0041efa0`: 82 -> 82, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=82, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0041f420`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0041f550`: 90 -> 90, tried 2 variants [toggle_char_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0041fb80`: 82 -> 82, tried 2 variants [toggle_int_signedness=82, negate_comparison=48].
+- 2026-10-09: `roc repair 2007-08 004204d0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00421510`: 83 -> 88, tried 5 variants [calling_convention=88, calling_convention=85, toggle_int_signedness=0, negate_comparison=81, swap_add_operands=83]; applied.
+- 2026-10-09: `roc repair 2007-08 00422320`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00427ed0`: 83 -> 83, tried 2 variants [toggle_int_signedness=83, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00427f00`: 80 -> 80, tried 2 variants [toggle_int_signedness=0, negate_comparison=72].
+- 2026-10-09: `roc repair 2007-08 0042a5f0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=57].
+- 2026-10-09: `roc repair 2007-08 0042b3a0`: 84 -> 92, tried 4 variants [calling_convention=87, calling_convention=92, toggle_int_signedness=84, negate_comparison=42]; applied.
+- 2026-10-09: `roc repair 2007-08 0042b460`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0042b5e0`: 81 -> 81, tried 2 variants [toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0042b8c0`: 82 -> 89, tried 3 variants [calling_convention=85, calling_convention=89, toggle_char_signedness=82]; applied.
+- 2026-10-09: `roc repair 2007-08 0042bd10`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0042bd70`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0042cf10`: 85 -> 85, tried 3 variants [calling_convention=85, calling_convention=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0042d840`: 90 -> 90, tried 1 variants [negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0042d8a0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=60].
+- 2026-10-09: `roc repair 2007-08 0042ed20`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0042efa0`: 84 -> 84, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0042f070`: 84 -> 84, tried 1 variants [toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 0042f140`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=69].
+- 2026-10-09: `roc repair 2007-08 00433310`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00434c20`: 88 -> 88, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 004356b0`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 004360a0`: 82 -> 85, tried 6 variants [calling_convention=85, calling_convention=85, toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=81, swap_add_operands=82]; applied.
+- 2026-10-09: `roc repair 2007-08 00437030`: 80 -> 83, tried 3 variants [calling_convention=81, calling_convention=83, toggle_int_signedness=80]; applied.
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=95, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 00438760`: 82 -> 82, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=82].
+- 2026-10-09: `roc repair 2007-08 00438820`: 86 -> 86, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=85, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0043a080`: 81 -> 84, tried 4 variants [calling_convention=83, calling_convention=84, toggle_int_signedness=0, negate_comparison=78]; applied.
+- 2026-10-09: `roc repair 2007-08 0043ba80`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0043cfb0`: 83 -> 83, tried 1 variants [negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0043e4f0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0043e550`: 95 -> 95, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0043e630`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=12].
+- 2026-10-09: `roc repair 2007-08 0043f260`: 95 -> 95, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 004426d0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004447b0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 00444dc0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00444de0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 004450d0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00447d60`: 91 -> 91, tried 1 variants [toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 00448100`: 80 -> 80, tried 4 variants [calling_convention=57, toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 004483b0`: 86 -> 86, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=86, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00448490`: 83 -> 83, tried 2 variants [toggle_int_signedness=83, negate_comparison=62].
+- 2026-10-09: `roc repair 2007-08 0044a1d0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0044bf50`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=65].
+- 2026-10-09: `roc repair 2007-08 0044c0a0`: 85 -> 89, tried 5 variants [calling_convention=83, calling_convention=89, toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=82]; applied.
+- 2026-10-09: `roc repair 2007-08 0044c3e0`: 91 -> 91, tried 2 variants [toggle_char_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 0044c410`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0044d410`: 87 -> 87, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00455ee0`: 89 -> 89, tried 4 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=84, swap_add_operands=89].
+- 2026-10-09: `roc repair 2007-08 00456040`: 88 -> 88, tried 1 variants [toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 00456070`: 87 -> 87, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004560a0`: 88 -> 88, tried 2 variants [toggle_char_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004560c0`: 87 -> 87, tried 1 variants [toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004583e0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00458560`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00459600`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00459660`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0045aa30`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0045bc50`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 0045d880`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0045e270`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=88, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0045ff90`: 85 -> 94, tried 4 variants [calling_convention=83, calling_convention=94, toggle_int_signedness=85, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00460000`: 85 -> 87, tried 3 variants [calling_convention=87, toggle_int_signedness=85, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00460040`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00460120`: 91 -> 91, tried 2 variants [toggle_int_signedness=91, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00460190`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00461570`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=71].
+- 2026-10-09: `roc repair 2007-08 00461d00`: 93 -> 93, tried 1 variants [toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00463140`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 004653b0`: 92 -> 92, tried 2 variants [toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00465fd0`: 88 -> 88, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004662e0`: 94 -> 94, tried 5 variants [stack_layout=88, toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 004667e0`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00466910`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00466a40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 004697c0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0046bb90`: 83 -> 83, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 0046bcb0`: 90 -> 90, tried 1 variants [toggle_char_signedness=90].
+- 2026-10-09: `roc repair 2007-08 0046c4d0`: 89 -> 89, tried 1 variants [toggle_char_signedness=89].
+- 2026-10-09: `roc repair 2007-08 0046f710`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00472e90`: 90 -> 90, tried 3 variants [toggle_int_signedness=90, negate_comparison=90, swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 004752c0`: 81 -> 81, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004779e0`: 88 -> 88, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00479dc0`: 85 -> 85, tried 4 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84, swap_add_operands=85].
+- 2026-10-09: `roc repair 2007-08 00479ee0`: 91 -> 91, tried 4 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 0047a020`: 90 -> 90, tried 4 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88, swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 0047a300`: 84 -> 84, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00486870`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 00489860`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 004898b0`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00489f10`: 81 -> 81, tried 1 variants [toggle_char_signedness=81].
+- 2026-10-09: `roc repair 2007-08 00491980`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00491a70`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 004932c0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00493530`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 00493580`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00494e20`: 80 -> 80, tried 4 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=79, swap_add_operands=80].
+- 2026-10-09: `roc repair 2007-08 00497fd0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 004992b0`: 83 -> 86, tried 2 variants [calling_convention=86, toggle_char_signedness=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00401840`: 81 -> 81, tried 2 variants [toggle_int_signedness=81, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00401cb0`: 85 -> 85, tried 2 variants [toggle_char_signedness=0, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00401dc0`: 83 -> 83, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=83, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 004021a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00402820`: 96 -> 96, tried 4 variants [toggle_char_signedness=0, toggle_int_signedness=96, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 00402880`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00402eb0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00402ef0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00403a10`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00405b80`: 86 -> 86, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00409e20`: 88 -> 88, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00409e40`: 83 -> 83, tried 3 variants [stack_layout=77, toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040a1d0`: 86 -> 86, tried 2 variants [calling_convention=18, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 1 variants [toggle_char_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0040b010`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040b2a0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0040b2f0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0040b900`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040b920`: 83 -> 83, tried 3 variants [stack_layout=77, toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040d1d0`: 87 -> 87, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040d250`: 83 -> 83, tried 1 variants [toggle_char_signedness=83].
+- 2026-10-09: `roc repair 2007-08 0040ebe0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0040f750`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0040f9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 0040fd80`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040fdb0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00411590`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=67].
+- 2026-10-09: `roc repair 2007-08 00411730`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00411770`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004117b0`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00412420`: 88 -> 88, tried 2 variants [toggle_char_signedness=88, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004124e0`: 87 -> 87, tried 2 variants [toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 004129b0`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00412b60`: 84 -> 84, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412bc0`: 91 -> 91, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00412ca0`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412d00`: 84 -> 84, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412f20`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 004130f0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 00413ec0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 004142f0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00414700`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=58].
+- 2026-10-09: `roc repair 2007-08 00414b30`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 004151f0`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00415db0`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 00416100`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=55].
+- 2026-10-09: `roc repair 2007-08 004175d0`: 90 -> 90, tried 2 variants [toggle_int_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041bd60`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 0041cf10`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 0041d5d0`: 84 -> 84, tried 1 variants [toggle_char_signedness=84].
+- 2026-10-09: `roc repair 2007-08 0041d790`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0041d870`: 90 -> 90, tried 1 variants [toggle_char_signedness=90].
+- 2026-10-09: `roc repair 2007-08 0041eb40`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0041efa0`: 82 -> 82, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=82, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0041f420`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0041f550`: 90 -> 90, tried 2 variants [toggle_char_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0041fb80`: 82 -> 82, tried 2 variants [toggle_int_signedness=82, negate_comparison=48].
+- 2026-10-09: `roc repair 2007-08 004204d0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00421510`: 88 -> 88, tried 3 variants [toggle_int_signedness=0, negate_comparison=86, swap_add_operands=88].
+- 2026-10-09: `roc repair 2007-08 00422320`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00427ed0`: 83 -> 83, tried 2 variants [toggle_int_signedness=83, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00427f00`: 80 -> 80, tried 2 variants [toggle_int_signedness=0, negate_comparison=72].
+- 2026-10-09: `roc repair 2007-08 0042a5f0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=57].
+- 2026-10-09: `roc repair 2007-08 0042b3a0`: 92 -> 92, tried 2 variants [toggle_int_signedness=92, negate_comparison=46].
+- 2026-10-09: `roc repair 2007-08 0042b460`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0042b5e0`: 81 -> 81, tried 2 variants [toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0042b8c0`: 89 -> 89, tried 1 variants [toggle_char_signedness=89].
+- 2026-10-09: `roc repair 2007-08 0042bd10`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0042bd70`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0042cf10`: 85 -> 85, tried 3 variants [calling_convention=85, calling_convention=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0042d840`: 90 -> 90, tried 1 variants [negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0042d8a0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=60].
+- 2026-10-09: `roc repair 2007-08 0042ed20`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0042efa0`: 84 -> 84, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0042f070`: 84 -> 84, tried 1 variants [toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 0042f140`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=69].
+- 2026-10-09: `roc repair 2007-08 00433310`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00434c20`: 88 -> 88, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 004356b0`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 004360a0`: 85 -> 85, tried 4 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=83, swap_add_operands=85].
+- 2026-10-09: `roc repair 2007-08 00437030`: 83 -> 83, tried 1 variants [toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=95, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 00438760`: 82 -> 82, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=82].
+- 2026-10-09: `roc repair 2007-08 00438820`: 86 -> 86, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=85, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0043a080`: 84 -> 84, tried 2 variants [toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0043ba80`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0043cfb0`: 83 -> 83, tried 1 variants [negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0043e4f0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0043e550`: 95 -> 95, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0043e630`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=12].
+- 2026-10-09: `roc repair 2007-08 0043f260`: 95 -> 95, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 004426d0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004447b0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 00444dc0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00444de0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 004450d0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00447d60`: 91 -> 91, tried 1 variants [toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 00448100`: 80 -> 80, tried 4 variants [calling_convention=57, toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 004483b0`: 86 -> 86, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=86, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00448490`: 83 -> 83, tried 2 variants [toggle_int_signedness=83, negate_comparison=62].
+- 2026-10-09: `roc repair 2007-08 0044a1d0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0044bf50`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=65].
+- 2026-10-09: `roc repair 2007-08 0044c0a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0044c3e0`: 91 -> 91, tried 2 variants [toggle_char_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 0044c410`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0044d410`: 87 -> 87, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00455ee0`: 89 -> 89, tried 4 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=84, swap_add_operands=89].
+- 2026-10-09: `roc repair 2007-08 00456040`: 88 -> 88, tried 1 variants [toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 00456070`: 87 -> 87, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004560a0`: 88 -> 88, tried 2 variants [toggle_char_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004560c0`: 87 -> 87, tried 1 variants [toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004583e0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00458560`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00459600`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00459660`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0045aa30`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0045bc50`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 0045d880`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0045e270`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=88, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0045ff90`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00460000`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00460040`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00460120`: 91 -> 91, tried 2 variants [toggle_int_signedness=91, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00460190`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00461570`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=71].
+- 2026-10-09: `roc repair 2007-08 00461d00`: 93 -> 93, tried 1 variants [toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00463140`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 004653b0`: 92 -> 92, tried 2 variants [toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00465fd0`: 88 -> 88, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004662e0`: 94 -> 94, tried 5 variants [stack_layout=88, toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 004667e0`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00466910`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00466a40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 004697c0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0046bb90`: 83 -> 83, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 0046bcb0`: 90 -> 90, tried 1 variants [toggle_char_signedness=90].
+- 2026-10-09: `roc repair 2007-08 0046c4d0`: 89 -> 89, tried 1 variants [toggle_char_signedness=89].
+- 2026-10-09: `roc repair 2007-08 0046f710`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00472e90`: 90 -> 90, tried 3 variants [toggle_int_signedness=90, negate_comparison=90, swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 004752c0`: 81 -> 81, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004779e0`: 88 -> 88, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00479dc0`: 85 -> 85, tried 4 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84, swap_add_operands=85].
+- 2026-10-09: `roc repair 2007-08 00479ee0`: 91 -> 91, tried 4 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 0047a020`: 90 -> 90, tried 4 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88, swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 0047a300`: 84 -> 84, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00486870`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 00489860`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 004898b0`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00489f10`: 81 -> 81, tried 1 variants [toggle_char_signedness=81].
+- 2026-10-09: `roc repair 2007-08 00491980`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00491a70`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 004932c0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00493530`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 00493580`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00494e20`: 80 -> 80, tried 4 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=79, swap_add_operands=80].
+- 2026-10-09: `roc repair 2007-08 00497fd0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 004992b0`: 86 -> 86, tried 1 variants [toggle_char_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0049c6a0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0049d600`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=66].
+- 2026-10-09: `roc repair 2007-08 0049f930`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 004a01b0`: 81 -> 85, tried 4 variants [calling_convention=81, calling_convention=85, toggle_char_signedness=81, toggle_int_signedness=81]; applied.
+- 2026-10-09: `roc repair 2007-08 004a1b50`: 88 -> 88, tried 2 variants [toggle_int_signedness=85, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 004a3cc0`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=69].
+- 2026-10-09: `roc repair 2007-08 004a63a0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004a7760`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004a9140`: 86 -> 94, tried 5 variants [calling_convention=89, calling_convention=94, toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 004a91a0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004aa350`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 004aa3f0`: 89 -> 100, tried 2 variants [calling_convention=94, calling_convention=100]; applied.
+- 2026-10-09: `roc repair 2007-08 004ab9a0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=80, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 004aca90`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004b6d00`: 83 -> 83, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 004b7820`: 81 -> 81, tried 4 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=78, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 004b87f0`: 88 -> 94, tried 4 variants [calling_convention=88, calling_convention=94, toggle_char_signedness=88, toggle_int_signedness=88]; applied.
+- 2026-10-09: `roc repair 2007-08 004b8aa0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, negate_comparison=39].
+- 2026-10-09: `roc repair 2007-08 004b8ae0`: 88 -> 88, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=88, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 004b8da0`: 88 -> 88, tried 2 variants [toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004b8df0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004b8e40`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004b8e90`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, swap_add_operands=80].
+- 2026-10-09: `roc repair 2007-08 004bef60`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 004befb0`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=85, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 004beff0`: 94 -> 94, tried 2 variants [toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 004bf100`: 84 -> 84, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004c1880`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004c1b50`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 004c1d60`: 96 -> 100, tried 2 variants [calling_convention=98, calling_convention=100]; applied.
+- 2026-10-09: `roc repair 2007-08 004cd410`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004cd440`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004cdae0`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004cdb40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004cfe60`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 004d06b0`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=47].
+- 2026-10-09: `roc repair 2007-08 004d2350`: 82 -> 82, tried 2 variants [toggle_int_signedness=82, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d23b0`: 85 -> 85, tried 2 variants [toggle_int_signedness=85, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2410`: 83 -> 94, tried 5 variants [calling_convention=89, calling_convention=94, toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 004d2470`: 80 -> 90, tried 4 variants [calling_convention=90, calling_convention=89, toggle_int_signedness=80, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 004d24d0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2530`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2590`: 85 -> 93, tried 5 variants [calling_convention=89, calling_convention=93, toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 004d8080`: 81 -> 81, tried 2 variants [toggle_int_signedness=80, negate_comparison=67].
+- 2026-10-09: `roc repair 2007-08 004e3de0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004ef130`: 95 -> 100, tried 2 variants [calling_convention=99, calling_convention=100]; applied.
+- 2026-10-09: `roc repair 2007-08 004f3740`: 92 -> 92, tried 2 variants [toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00501500`: 84 -> 84, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00505350`: 87 -> 87, tried 1 variants [toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00505790`: 88 -> 88, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00506dd0`: 96 -> 96, tried 2 variants [immediate_constant=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00506e80`: 92 -> 92, tried 2 variants [toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0050a130`: 87 -> 87, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 005245d0`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005245e0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0052de90`: 89 -> 89, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0052dee0`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0052df30`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0052df80`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00530190`: 91 -> 91, tried 4 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=82, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 00530660`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 00530880`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 005312e0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 005328f0`: 85 -> 85, tried 1 variants [toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 00532920`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00532ba0`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00535860`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005358a0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005358c0`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005358e0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00535920`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537c70`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537cc0`: 82 -> 91, tried 5 variants [calling_convention=91, calling_convention=89, toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00537d20`: 90 -> 90, tried 2 variants [toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537d40`: 83 -> 94, tried 5 variants [calling_convention=89, calling_convention=94, toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00537da0`: 91 -> 100, tried 2 variants [calling_convention=86, calling_convention=100]; applied.
+- 2026-10-09: `roc repair 2007-08 00537dc0`: 83 -> 98, tried 5 variants [calling_convention=93, calling_convention=98, toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=83]; applied.
+- 2026-10-09: `roc repair 2007-08 00537e20`: 85 -> 93, tried 4 variants [calling_convention=89, calling_convention=93, toggle_int_signedness=85, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00537e80`: 84 -> 94, tried 4 variants [calling_convention=90, calling_convention=94, toggle_int_signedness=84, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00538390`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00539050`: 81 -> 81, tried 4 variants [calling_convention=0, toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0053d370`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=61].
+- 2026-10-09: `roc repair 2007-08 0053dcf0`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0053ded0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0053ff80`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0053ffd0`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00540020`: 89 -> 89, tried 2 variants [toggle_int_signedness=0, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00540070`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005400c0`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00540110`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 00545cc0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=55].
+- 2026-10-09: `roc repair 2007-08 00545f30`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005463c0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00549000`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00549030`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00549c80`: 91 -> 91, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=91, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00549cd0`: 89 -> 89, tried 1 variants [toggle_char_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00549d20`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0054aeb0`: 85 -> 85, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0054b460`: 85 -> 85, tried 4 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=0, swap_add_operands=85].
+- 2026-10-09: `roc repair 2007-08 0054e280`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0054f4b0`: 81 -> 81, tried 4 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=0, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 0054f590`: 85 -> 89, tried 6 variants [calling_convention=87, calling_convention=89, toggle_char_signedness=0, toggle_int_signedness=85, negate_comparison=83, swap_add_operands=85]; applied.
+- 2026-10-09: `roc repair 2007-08 0054f5d0`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0054f930`: 84 -> 84, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 005556d0`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005557d0`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00555810`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=82].
+- 2026-10-09: `roc repair 2007-08 00557260`: 92 -> 92, tried 3 variants [toggle_int_signedness=64, negate_comparison=80, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 00557290`: 90 -> 90, tried 1 variants [swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 00559640`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=71].
+- 2026-10-09: `roc repair 2007-08 00559670`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00559800`: 91 -> 91, tried 1 variants [toggle_char_signedness=91].
+- 2026-10-09: `roc repair 2007-08 00559990`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=51].
+- 2026-10-09: `roc repair 2007-08 00559c90`: 87 -> 94, tried 5 variants [calling_convention=85, calling_convention=94, toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 0055e440`: 81 -> 81, tried 1 variants [toggle_char_signedness=81].
+- 2026-10-09: `roc repair 2007-08 0055e580`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0055e5a0`: 87 -> 87, tried 3 variants [calling_convention=40, toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 0055e5c0`: 81 -> 81, tried 4 variants [calling_convention=41, calling_convention=0, toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 0055ecb0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0055ed10`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 005603f0`: 80 -> 83, tried 4 variants [calling_convention=81, calling_convention=83, toggle_int_signedness=0, negate_comparison=78]; applied.
+- 2026-10-09: `roc repair 2007-08 00561ac0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00561b10`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00563170`: 81 -> 81, tried 1 variants [toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 005631a0`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 005634b0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00563500`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00563b50`: 94 -> 94, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=94, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00564930`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00564ce0`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=65].
+- 2026-10-09: `roc repair 2007-08 005658e0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 005687f0`: 82 -> 82, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=82, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0056c240`: 85 -> 85, tried 1 variants [toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 0056c270`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 0056d530`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 0056eb30`: 93 -> 93, tried 1 variants [toggle_char_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00570ef0`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 00571aa0`: 91 -> 91, tried 2 variants [toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 4 variants [argument_order=82, toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=65].
+- 2026-10-09: `roc repair 2007-08 00573810`: 93 -> 93, tried 1 variants [toggle_char_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00573cf0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 00575610`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005758b0`: 83 -> 83, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005763f0`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005766f0`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00576a90`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, swap_add_operands=89].
+- 2026-10-09: `roc repair 2007-08 00578420`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00578450`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00578480`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 005784e0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 0057a590`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=66].
+- 2026-10-09: `roc repair 2007-08 0057a5f0`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, negate_comparison=67].
+- 2026-10-09: `roc repair 2007-08 0057a9e0`: 85 -> 85, tried 2 variants [toggle_int_signedness=85, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057aa60`: 86 -> 89, tried 3 variants [calling_convention=87, calling_convention=89, toggle_int_signedness=86]; applied.
+- 2026-10-09: `roc repair 2007-08 0057abc0`: 82 -> 82, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057ad80`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 0057adb0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 0057b990`: 91 -> 91, tried 1 variants [toggle_char_signedness=91].
+- 2026-10-09: `roc repair 2007-08 0057bbf0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057bed0`: 80 -> 84, tried 4 variants [calling_convention=84, calling_convention=83, toggle_int_signedness=0, negate_comparison=76]; applied.
+- 2026-10-09: `roc repair 2007-08 0057bf90`: 86 -> 86, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 0057c720`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 0057c770`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057d530`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00580ef0`: 96 -> 96, tried 1 variants [toggle_char_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00580f40`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00580f90`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00580fb0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00581090`: 80 -> 80, tried 4 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=73, swap_add_operands=80].
+- 2026-10-09: `roc repair 2007-08 00581190`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, swap_add_operands=87].
+- 2026-10-09: `roc repair 2007-08 00581cd0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005829e0`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00586c30`: 83 -> 83, tried 1 variants [toggle_char_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00586e20`: 89 -> 89, tried 1 variants [toggle_char_signedness=89].
+- 2026-10-09: `roc repair 2007-08 00587010`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00587220`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00587810`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=68].
+- 2026-10-09: `roc repair 2007-08 00587fb0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00588e30`: 88 -> 88, tried 2 variants [toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0058b9c0`: 85 -> 85, tried 2 variants [toggle_char_signedness=84, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0058bc20`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0058c5f0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00593e20`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 00594010`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 005940d0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594200`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 005943a0`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 005944c0`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00594610`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00594760`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 005948b0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, negate_comparison=97].
+- 2026-10-09: `roc repair 2007-08 00594a00`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594ac0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594bb0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00594c70`: 94 -> 94, tried 2 variants [toggle_char_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594ca0`: 85 -> 85, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 00594d80`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00594e60`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00594f30`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594ff0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00595140`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00595230`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, negate_comparison=97].
+- 2026-10-09: `roc repair 2007-08 005952d0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00595370`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00595410`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005954b0`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00595640`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00595770`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 005958a0`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 00595960`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00596ca0`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00596d00`: 88 -> 88, tried 2 variants [toggle_char_signedness=88, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 005999d0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0059c7d0`: 91 -> 91, tried 3 variants [toggle_int_signedness=0, negate_comparison=0, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 0059e8b0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0059f2e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: Compiler prepass `00506dd0,00437570,004a7b10,004befb0,0059f2e0`: 0 gains; all remained 96 locally (server best `00506dd0`=98).
+- 2026-10-09: DeepSeek batch same 5: `00506dd0` 98 no gain, `004befb0` 96 no gain, `004a7b10` 96 no gain; server disconnected before remaining 2. No accepted source changes.
+- 2026-10-09: Added bounded `base_padding` compiler mutator from `0043e550` evidence. Full legacy test runner stopped at pre-existing `test_mine_digest` encoding assertion before new test; direct mutator check required.
+- 2026-10-09: Compiler prepass `00724ed2,00460090,0057bfd0,0062d5f0,00637440`: 0 gains; scores stayed 98/97.
+- 2026-10-09: DeepSeek pinned batch same 5: 0 exact, 0 accepted. Model preserved 98/97 sources but made no verified improvement.
+- 2026-10-09: Compiler prepass `006773e0,006a4210,006b46a0,006f23d0,006f2400`: 0 gains; scores stayed 97.
+- 2026-10-09: DeepSeek pinned batch same 5: 0 exact, 0 accepted. Repeated 97% semantic reconstructions; no new source pattern.
+- 2026-10-09: Mixed-family compiler prepass `006857e0,006d2bf0,00692040,006a79a0,0070a090`: 0 gains; all local 96%. `006857e0` excluded from AI because server baseline stale at 80%.
+- 2026-10-09: DeepSeek mixed-family batch `006d2bf0,00692040,006a79a0,0070a090`: 0 exact, 0 accepted. Regalloc, instruction-selection, layout outputs stayed 96%; no reusable change.
+- 2026-10-09: Compiler prepass `00680590,0067a660,006319e0,00421090,0064f210`: 0 gains; local scores 94–96.
+- 2026-10-09: DeepSeek batch leased 4/5 (`00680590,0067a660,00421090,0064f210`): 0 exact, 0 accepted. `006319e0` not leased; no source changes.
+- 2026-10-09: Server-wide hidden-exact mining found 5 stored 100% sources (`00401880,0041eb40,0041faa0,0042d840,0044a1d0`) against local 90–94%; retrieved without new model request, locally compiled/verified, manually applied. All five `roc check` = MATCH; exact count 10007→10012.
+- 2026-10-09: Hidden-exact source diffs: `00401880` cdecl imported function + typed return; `0041eb40` typed loop/helper ABI; `0041faa0` typed global receiver + virtual thiscall; `0042d840` virtual slot declaration + destroy flag; `0044a1d0` dllimport + stdcall helper cleanup. No unverified edits kept.
+- 2026-10-09: Added regression test `test_hidden_exact_sources_stay_byte_exact`; full `python -B tests\\test_roc.py` passed after five applications.
+- 2026-10-09: Second hidden-exact batch: `00460120` 91→100, `00460190` 91→100, `00472e90` 90→100, `004aca90` 92→100, `004c1b50` 94→100. Retrieved stored server sources, locally verified, applied; exact count 10012→10017.
+- 2026-10-09: Source diffs classified: paired script helpers use stdcall producer + fastcall consumer and typed integer handle; VARArea uses declared virtual release + typed global receiver; DeleteInstanceItem uses cdecl helper; RakPeer uses cdecl helper plus reversed arguments. No new LLM calls.
+- 2026-10-09: `python -B tests\\test_roc.py`: all tests passed, including new `base_padding` regression. Plain cached run showed stale replacement-character byte; `-B` confirmed source/tests clean.
+- 2026-10-09: `roc repair 2007-08 0059fce0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005a3fa0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 005a6270`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 005a8250`: 81 -> 81, tried 2 variants [toggle_char_signedness=79, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 005a8290`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=66].
+- 2026-10-09: `roc repair 2007-08 005a8aa0`: 80 -> 80, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 005aa140`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005aa190`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005aabc0`: 80 -> 83, tried 4 variants [calling_convention=78, calling_convention=83, toggle_char_signedness=78, toggle_int_signedness=80]; applied.
+- 2026-10-09: `roc repair 2007-08 005ac6a0`: 86 -> 86, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 005aca40`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005aca90`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005afe70`: 84 -> 84, tried 1 variants [toggle_char_signedness=84].
+- 2026-10-09: `roc repair 2007-08 005b0740`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 005b0ff0`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 005b1470`: 88 -> 88, tried 1 variants [toggle_char_signedness=88].
+- 2026-10-09: `roc repair 2007-08 005b2f80`: 83 -> 83, tried 1 variants [toggle_char_signedness=83].
+- 2026-10-09: `roc repair 2007-08 005b3c00`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 005b3dc0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 005b42a0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 005b44e0`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 005b4770`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 005b48a0`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 005b4d50`: 82 -> 82, tried 2 variants [toggle_int_signedness=82, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 005b4de0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 005b4fd0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005b5610`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 005b6dc0`: 81 -> 81, tried 2 variants [toggle_int_signedness=81, negate_comparison=68].
+- 2026-10-09: `roc repair 2007-08 005b9130`: 90 -> 90, tried 4 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89, swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 005b9190`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 005b91f0`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 005b9940`: 80 -> 80, tried 1 variants [toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005bbbe0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 005bca00`: 85 -> 85, tried 2 variants [toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 005bd1d0`: 80 -> 80, tried 4 variants [toggle_char_signedness=80, toggle_int_signedness=77, negate_comparison=78, swap_add_operands=80].
+- 2026-10-09: `roc repair 2007-08 005bee70`: 81 -> 93, tried 4 variants [calling_convention=93, calling_convention=90, toggle_int_signedness=81, negate_comparison=78]; applied.
+- 2026-10-09: `roc repair 2007-08 005bfe60`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005c79e0`: 80 -> 80, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 005c93a0`: 85 -> 85, tried 1 variants [toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 005c9400`: 85 -> 85, tried 1 variants [toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 005c9460`: 88 -> 88, tried 1 variants [toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 005c9520`: 91 -> 91, tried 1 variants [toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 005c9590`: 87 -> 87, tried 1 variants [toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005c9690`: 86 -> 86, tried 1 variants [toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 005c9710`: 80 -> 80, tried 1 variants [toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005c9740`: 80 -> 80, tried 1 variants [toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005cdc60`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 005d1c00`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005d1c30`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 005d2600`: 91 -> 98, tried 4 variants [calling_convention=94, calling_convention=98, toggle_int_signedness=91, negate_comparison=89]; applied.
+- 2026-10-09: `roc repair 2007-08 005d3b00`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 005db160`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 005dd060`: 87 -> 88, tried 4 variants [return_value=88, typed_member_return=88, toggle_char_signedness=0, toggle_int_signedness=87]; applied.
+- 2026-10-09: `roc repair 2007-08 005de0d0`: 96 -> 96, tried 3 variants [toggle_int_signedness=0, negate_comparison=17, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 005de130`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 005de510`: 81 -> 81, tried 2 variants [toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 005e05d0`: 86 -> 86, tried 1 variants [toggle_char_signedness=86].
+- 2026-10-09: `roc repair 2007-08 005e5c80`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=0, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 005e6120`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005e6780`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 005e9aa0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, swap_add_operands=93].
+- 2026-10-09: `roc repair 2007-08 005ea230`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005eb330`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005eb360`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005ec490`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=0, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 005eecf0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 005eee30`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 005ef790`: 81 -> 81, tried 4 variants [toggle_char_signedness=0, toggle_int_signedness=81, negate_comparison=47, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 005ef900`: 87 -> 87, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 005f4940`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=44].
+- 2026-10-09: `roc repair 2007-08 005f9ff0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 005fa530`: 84 -> 88, tried 5 variants [calling_convention=83, calling_convention=88, toggle_char_signedness=0, toggle_int_signedness=0, swap_add_operands=84]; applied.
+- 2026-10-09: `roc repair 2007-08 005fa600`: 84 -> 84, tried 1 variants [toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 005fa660`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=82].
+- 2026-10-09: `roc repair 2007-08 005fb230`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 005fb320`: 80 -> 80, tried 2 variants [calling_convention=0, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005fb370`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 005fb750`: 87 -> 87, tried 4 variants [calling_convention=0, toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005fb7d0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005fb8a0`: 81 -> 81, tried 1 variants [toggle_char_signedness=81].
+- 2026-10-09: `roc repair 2007-08 005fb980`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005fbe00`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 005fc710`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 005fd6e0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 005feea0`: 84 -> 84, tried 3 variants [return_value=82, typed_member_return=82, toggle_char_signedness=84].
+- 2026-10-09: `roc repair 2007-08 005feef0`: 81 -> 81, tried 4 variants [return_value=81, typed_member_return=81, toggle_char_signedness=0, negate_comparison=40].
+- 2026-10-09: `roc repair 2007-08 00600250`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00600ad0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 006024e0`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00605760`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00608490`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0060b1c0`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0060b480`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0060b720`: 80 -> 80, tried 1 variants [toggle_char_signedness=80].
+- 2026-10-09: `roc repair 2007-08 0060bc00`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0060bf00`: 82 -> 82, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0061a9e0`: 94 -> 94, tried 1 variants [toggle_char_signedness=94].
+- 2026-10-09: `roc repair 2007-08 0061ac50`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0061c060`: 80 -> 80, tried 1 variants [toggle_char_signedness=80].
+- 2026-10-09: `roc repair 2007-08 0061dae0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 0061e700`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0061eda0`: 86 -> 89, tried 5 variants [calling_convention=84, calling_convention=89, toggle_char_signedness=86, toggle_int_signedness=0, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 0061eee0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00622b60`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00625180`: 92 -> 100, tried 2 variants [calling_convention=96, calling_convention=100]; applied.
+- 2026-10-09: `roc repair 2007-08 006274b0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00627640`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 006278a0`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00628070`: 85 -> 85, tried 1 variants [toggle_char_signedness=85].
+- 2026-10-09: `roc repair 2007-08 00629ea0`: 86 -> 91, tried 6 variants [calling_convention=86, calling_convention=91, toggle_char_signedness=85, toggle_int_signedness=0, negate_comparison=85, swap_add_operands=86]; applied.
+- 2026-10-09: `roc repair 2007-08 00629f40`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=20].
+- 2026-10-09: `roc repair 2007-08 0062b160`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=47].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 0062dba0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0062dc00`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 006319e0`: 94 -> 96, tried 3 variants [calling_convention=92, calling_convention=96, toggle_int_signedness=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00631aa0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00631c50`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=61].
+- 2026-10-09: `roc repair 2007-08 00631da0`: 85 -> 85, tried 4 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=83, swap_add_operands=85].
+- 2026-10-09: `roc repair 2007-08 00631de0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00632840`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00632e50`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 00633350`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=91, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00635350`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00636360`: 91 -> 91, tried 2 variants [toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00636510`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 00636590`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 006365b0`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00637130`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00637850`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=82].
+- 2026-10-09: `roc repair 2007-08 00638e20`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00639530`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00639d00`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=62].
+- 2026-10-09: `roc repair 2007-08 00639dd0`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00639f90`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0063a140`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0063a480`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 0063bc70`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=82, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 0063bde0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0063c4e0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0063cd70`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0063d410`: 96 -> 96, tried 3 variants [immediate_constant=58, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 0063dcb0`: 92 -> 92, tried 1 variants [toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00643640`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00643790`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00643ac0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00643bf0`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, negate_comparison=68].
+- 2026-10-09: `roc repair 2007-08 00644200`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00644880`: 88 -> 88, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006457c0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 006457e0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=83, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 006465d0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00647a10`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 006487a0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00649140`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 0064ad50`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0064ada0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0064b280`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 0064ec50`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0064ef00`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0064eff0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0064f210`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 006519d0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=74].
+- 2026-10-09: `roc repair 2007-08 00651d20`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00651da0`: 87 -> 87, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00651ee0`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00652220`: 82 -> 82, tried 2 variants [toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00653820`: 90 -> 90, tried 2 variants [toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00653aa0`: 83 -> 83, tried 1 variants [toggle_char_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00653ce0`: 80 -> 80, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00653ef0`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=0, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 006558c0`: 88 -> 88, tried 2 variants [toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006558f0`: 84 -> 84, tried 2 variants [toggle_int_signedness=84, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00655ce0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00656930`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 006571f0`: 90 -> 90, tried 1 variants [toggle_char_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00657430`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=78, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00658c90`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00658e70`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0065a5d0`: 96 -> 100, tried 4 variants [immediate_constant=66, immediate_constant=66, calling_convention=94, calling_convention=100]; applied.
+- 2026-10-09: `roc repair 2007-08 0065d7c0`: 83 -> 86, tried 3 variants [return_value=86, toggle_char_signedness=83, toggle_int_signedness=0]; applied.
+- 2026-10-09: `roc repair 2007-08 0065e480`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 0065e4a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 0065e670`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0065e9a0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0065eb30`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 0065ed80`: 83 -> 83, tried 3 variants [toggle_int_signedness=83, negate_comparison=82, swap_add_operands=83].
+- 2026-10-09: `roc repair 2007-08 006607c0`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00661850`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00661d90`: 88 -> 88, tried 6 variants [immediate_constant=88, immediate_constant=88, immediate_constant=88, immediate_constant=88, toggle_char_signedness=88, toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 00661e20`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 00662440`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006626a0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006636f0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00663be0`: 93 -> 93, tried 4 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=91, swap_add_operands=93].
+- 2026-10-09: `roc repair 2007-08 00663f10`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006640e0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 00667120`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 006687a0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=72].
+- 2026-10-09: `roc repair 2007-08 00668d90`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00668de0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00668ec0`: 91 -> 91, tried 1 variants [toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 006692b0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0066acc0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0066b6b0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=93, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 0066c360`: 94 -> 94, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=92, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0066d0e0`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0066e3d0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 0066e8a0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=30].
+- 2026-10-09: `roc repair 2007-08 0066eb10`: 86 -> 86, tried 2 variants [toggle_int_signedness=86, negate_comparison=41].
+- 2026-10-09: `roc repair 2007-08 0066f0c0`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00670600`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00670850`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00670ba0`: 90 -> 90, tried 2 variants [toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00671240`: 88 -> 88, tried 1 variants [toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 00671270`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00671b10`: 81 -> 81, tried 2 variants [toggle_int_signedness=81, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00671dd0`: 90 -> 90, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00671e10`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00671ea0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00671f00`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00673550`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006735b0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00673610`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=0, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00673800`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00673970`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006739d0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=73].
+- 2026-10-09: `roc repair 2007-08 00678350`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00678de0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 0067a660`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 0067b670`: 80 -> 80, tried 4 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=73, swap_add_operands=80].
+- 2026-10-09: `roc repair 2007-08 0067d7f0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0067d8b0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0067d970`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0067f350`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 0067f9d0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 00680590`: 96 -> 96, tried 2 variants [toggle_int_signedness=96, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00680680`: 82 -> 82, tried 1 variants [toggle_char_signedness=82].
+- 2026-10-09: `roc repair 2007-08 00680740`: 82 -> 82, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00681140`: 85 -> 90, tried 4 variants [calling_convention=90, calling_convention=88, toggle_int_signedness=0, negate_comparison=80]; applied.
+- 2026-10-09: `roc repair 2007-08 00682a20`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00684f70`: 80 -> 80, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00684f90`: 86 -> 86, tried 2 variants [toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006856e0`: 81 -> 81, tried 3 variants [calling_convention=73, toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006857e0`: 80 -> 96, tried 3 variants [calling_convention=96, toggle_char_signedness=0, toggle_int_signedness=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00685990`: 84 -> 84, tried 1 variants [toggle_char_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006859d0`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00685a20`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00685a70`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00685ac0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00685b10`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00685b60`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 006864d0`: 82 -> 82, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00688620`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00688710`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00689650`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=52].
+- 2026-10-09: `roc repair 2007-08 006896b0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00689700`: 81 -> 81, tried 1 variants [toggle_char_signedness=81].
+- 2026-10-09: `roc repair 2007-08 00689870`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006899f0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0068b3b0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0068bb30`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 0068bde0`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 0068be60`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0068beb0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0068cf50`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 0068d350`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 0068f190`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 0068f4b0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0068f780`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00690220`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, negate_comparison=69].
+- 2026-10-09: `roc repair 2007-08 00690a90`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00690bc0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=70].
+- 2026-10-09: `roc repair 2007-08 00691060`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00691c20`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00692040`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 006923b0`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00692470`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00692a30`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00693c60`: 83 -> 83, tried 2 variants [toggle_int_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006942c0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00697aa0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00697c80`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006981b0`: 88 -> 88, tried 2 variants [toggle_char_signedness=88, toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 006981e0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=55].
+- 2026-10-09: `roc repair 2007-08 006983c0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00698490`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=71].
+- 2026-10-09: `roc repair 2007-08 006985e0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00698c10`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00698c60`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=68].
+- 2026-10-09: `roc repair 2007-08 006991c0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=84, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00699220`: 81 -> 81, tried 4 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=77, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 00699870`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0069bac0`: 86 -> 86, tried 2 variants [toggle_int_signedness=86, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 0069bb10`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0069bd30`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0069c190`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0069d8d0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0069dac0`: 93 -> 93, tried 2 variants [toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 0069daf0`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 0069df50`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0069e0f0`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0069e200`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006a0510`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006a1790`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 006a2fd0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 006a3020`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006a32c0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006a3640`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006a3f70`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 006a3fe0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006a41c0`: 86 -> 86, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 006a5210`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 006a59a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006a5a00`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006a65c0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 006a7600`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 006a78d0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006a79a0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 006a79f0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006a7b20`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006a8290`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 006a85d0`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006a8d90`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006ab2b0`: 80 -> 80, tried 2 variants [toggle_int_signedness=77, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 006acd40`: 93 -> 93, tried 1 variants [toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 006ad4f0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=61].
+- 2026-10-09: `roc repair 2007-08 006ad550`: 84 -> 84, tried 2 variants [toggle_int_signedness=0, swap_add_operands=84].
+- 2026-10-09: `roc repair 2007-08 006b2c50`: 93 -> 93, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006b2e20`: 92 -> 92, tried 2 variants [signedness=92, signedness=0].
+- 2026-10-09: `roc repair 2007-08 006b3030`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 006b30b0`: 83 -> 83, tried 2 variants [signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006b3610`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 006b3df0`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=97].
+- 2026-10-09: `roc repair 2007-08 006b5e10`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006b5f20`: 84 -> 84, tried 1 variants [toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 006b5f40`: 84 -> 84, tried 1 variants [toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 006b8c60`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006c6b30`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006c6b70`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 006c6d00`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006c71d0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006c79f0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006c7b40`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=71].
+- 2026-10-09: `roc repair 2007-08 006c92e0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006c9d40`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 006ca4f0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006cb990`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006ce8b0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 006d1d90`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006d2740`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006d29a0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 006d29c0`: 81 -> 81, tried 4 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=77, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 006d2a00`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 006d2bf0`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 006d3720`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 006d37b0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=40].
+- 2026-10-09: `roc repair 2007-08 006d3b80`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 006d4300`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 006d43a0`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 006d4440`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 006d5e90`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006d6220`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006d81d0`: 97 -> 97, tried 5 variants [stack_layout=95, toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=89, swap_add_operands=97].
+- 2026-10-09: `roc repair 2007-08 006daaf0`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006db4b0`: 91 -> 91, tried 3 variants [toggle_int_signedness=91, negate_comparison=83, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 006dbd80`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006ddc20`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006dde00`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006dec40`: 85 -> 85, tried 1 variants [toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 006e0a60`: 81 -> 81, tried 3 variants [calling_convention=0, toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 006e0c90`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006e0f50`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=88, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006e4720`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 006efeb0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=70].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: New pragma test: `#pragma optimize("t", on)` before `func` scored 98%; assembly unchanged. Reverted. Function-level speed bias cannot force receiver register.
+- 2026-10-09: New pragma test: `#pragma auto_inline(on)` before `func` scored 98%; assembly unchanged. Reverted. Explicit auto-inline enable does not change this non-inlined call sequence.
+- 2026-10-09: New attribute test: marked `func` itself `__declspec(noinline)`. Score stayed 98%; assembly unchanged. Reverted. Caller inlining control cannot fix internal receiver allocation.
+- 2026-10-09: Mutation inventory: legacy automatic families are `toggle_char_signedness`, `toggle_int_signedness`, `negate_comparison`, and `swap_add_operands`; guided families add evidence-driven return/call/layout/branch/immediate/allocation paths. This split explains why category scans can report zero while broad fallback still finds legacy trials.
+- 2026-10-09: Final sanity: repair CLI exposes offset/category/json-out; Python compile passes with existing `\w` warning; target `00675890` remains 98%; diff check passes.
+- 2026-10-09: Unattended-report proof: five-target dry-run with `--json-out work/batch-proof.json` completed in 8.9s; 29 variants total, zero gains, saved 187-line JSON report. No source writes.
+- 2026-10-09: Automation hardening: `--json-out` now creates missing parent directories. Nested path `work/reports/nested.json` verified on `006f2400`; report saved, score unchanged, compile pass.
+- 2026-10-09: Combined automation proof: nested `--json-out` + `--category immediate_constant` + `--permute` on `006f2400` saved exactly 1 filtered result; score stayed 97%, no permutation leak, no source write.
+- 2026-10-09: Refreshed unattended batch: `--refresh-all` on `00401310`, `0041faa0`, `006f2400` saved 3 JSON results; variants tried 2, 2, 3; scores stayed 89%, 92%, 97%; no source writes.
+- 2026-10-09: New source-shape test: made branch `flag` a `const int`. Score stayed 98%; assembly unchanged. Reverted. Local const qualification does not affect receiver allocation.
+- 2026-10-09: New pragma test: `#pragma optimize("s", off)` before `func` scored 98%; assembly unchanged. Reverted. Disabling size bias does not affect receiver allocation.
+- 2026-10-09: Added `docs/matching-next-plan.md`: compact research/automation plan, proven CLI workflow, experiment order, and current 98% register-only blocker. Findings log remains append-only.
+- 2026-10-09: Latest persistent-report batch: `00401310` 89%/7, `0041faa0` 92%/2, `00572180` 82%/9; all unchanged, 18 variants total. Saved `work/reports/latest-proof.json`; no source writes.
+- 2026-10-09: New pragma test: `#pragma optimize("a", on)` alias-assumption optimization before `func` scored 98%; assembly unchanged. Reverted. Alias optimization does not resolve receiver register choice.
+- 2026-10-09: New pragma test: `#pragma optimize("w", on)` write-alias assumption before `func` scored 98%; assembly unchanged. Reverted. Write-alias optimization does not resolve receiver register choice.
+- 2026-10-09: Refresh/category/report proof: `00401310` had 0 branch candidates; `0041faa0` tried 1 branch candidate, stayed 92%; saved `work/reports/branch-proof.json`. No source writes.
+- 2026-10-09: End-to-end proof: refresh + category + permutation suppression + stdout JSON + persistent JSON on `006f2400` produced exactly 1 valid `immediate_constant` trial at 97%; compile passes with existing warning; no source write.
+- 2026-10-09: New pragma test: `#pragma optimize("g", on)` before `func` scored 98%; assembly unchanged. Reverted. Explicit global-optimization enable does not alter receiver allocation.
+- 2026-10-09: Research result: high byte similarity does not prove original source identity; distinct source forms can compile identically, while optimized binaries make exact matching difficult. Therefore 98% is strong assembly proximity, not proof “basically same source.” Sources: https://github.com/alexishida/dalhe-cli/blob/main/src/template/skills/dl-matching-decomp/references/methodology.md and https://arxiv.org/abs/2609.18706.
+- 2026-10-09: Category probe: `reorder_decls` has no guided candidate on `00401310`; filter returns zero rather than running unrelated legacy trials. `toggle_int_signedness` category independently verified 1 isolated candidate on `006f2400`. No source writes.
+- 2026-10-09: Exact-target category guard: `00675890` with `--category toggle_int_signedness --permute --json --dry-run` stayed 98% and tried 0 because no guided signedness evidence exists; permutation leakage remains absent. Existing warning only.
+- 2026-10-09: New combined flag test: `/O2 /Ob2 /Oy- /Op /GS /EHsc /MD` scored 98% on `00675890`; aggressive inlining, frame pointer, and floating-point consistency combination still leaves EAX/ESI receiver mismatch. Flags unchanged.
+- 2026-10-09: New pragma test: added `#pragma inline_recursion(off)` before `func`. Score stayed 98%; assembly unchanged. Reverted. Recursive-inlining control irrelevant to this nonrecursive receiver allocation.
+- 2026-10-09: Automation improvement: JSON mutation records now include `compile_error`, separating score-0 compile failures from valid low-scoring candidates. Verified on `0041faa0`; both trials compiled, scores 72 and 92, no source write.
+- 2026-10-09: Automation improvement: added `--json-out FILE` for persistent unattended reports. Verified with `work/repair-test.json` on `0041faa0`; stdout and saved JSON contain identical 2-trial details, compile flags, and scores. No source write.
+- 2026-10-09: `roc repair 2007-08 006f5bc0`: 84 -> 84, tried 1 variants [toggle_char_signedness=84].
+- 2026-10-09: `roc repair 2007-08 006f5ce0`: 83 -> 84, tried 10 variants [return_value=84, typed_member_return=84, typed_member_return=84, typed_member_return=83, typed_member_return=77, volatile_zero_store=83, volatile_zero_store=82, volatile_zero_store=76, toggle_char_signedness=83, toggle_int_signedness=0]; applied.
+- 2026-10-09: `roc repair 2007-08 006f5e80`: 89 -> 89, tried 4 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=88, swap_add_operands=89].
+- 2026-10-09: `roc repair 2007-08 006f60f0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f67d0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=72].
+- 2026-10-09: `roc repair 2007-08 006f70c0`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f7150`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=87, negate_comparison=89, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 006f8f90`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=45].
+- 2026-10-09: `roc repair 2007-08 006faa50`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 006fd1c0`: 93 -> 93, tried 3 variants [calling_convention=60, toggle_char_signedness=93, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006fd540`: 92 -> 92, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006fda20`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006fdb60`: 81 -> 81, tried 5 variants [stack_layout=80, stack_layout=80, toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006fe010`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006fe580`: 89 -> 89, tried 4 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=88, swap_add_operands=89].
+- 2026-10-09: `roc repair 2007-08 006fe5d0`: 84 -> 84, tried 3 variants [toggle_int_signedness=84, negate_comparison=83, swap_add_operands=84].
+- 2026-10-09: `roc repair 2007-08 006fe7d0`: 81 -> 81, tried 4 variants [toggle_char_signedness=81, toggle_int_signedness=80, negate_comparison=77, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 006ff8d0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00700690`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0070a090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 0070c680`: 80 -> 80, tried 3 variants [toggle_char_signedness=76, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0070ca10`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0070ca80`: 93 -> 93, tried 2 variants [toggle_int_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0070f1b0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=65].
+- 2026-10-09: `roc repair 2007-08 0070f200`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 0070f600`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 007111b0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 007115c0`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00712bd0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00714c50`: 84 -> 84, tried 2 variants [toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00714d40`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00715350`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00715850`: 86 -> 86, tried 5 variants [calling_convention=71, calling_convention=0, toggle_char_signedness=86, toggle_int_signedness=0, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 00716280`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00716830`: 86 -> 86, tried 2 variants [toggle_int_signedness=86, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00716f30`: 89 -> 89, tried 1 variants [toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 00716fc0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00717430`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00717970`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 00717fe0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=58].
+- 2026-10-09: `roc repair 2007-08 00718e20`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00718f00`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00718fd0`: 91 -> 91, tried 3 variants [toggle_int_signedness=91, negate_comparison=90, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 00719160`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00719480`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00719930`: 88 -> 88, tried 4 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=87, swap_add_operands=88].
+- 2026-10-09: `roc repair 2007-08 00719aa0`: 81 -> 81, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0071a580`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 00720b80`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=0, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 97 -> 97, tried 3 variants [toggle_int_signedness=0, negate_comparison=94, swap_add_operands=97].
+- 2026-10-09: `roc repair 2007-08 00724ff9`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 007273f0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00729350`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00729380`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 007293b0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00738d6b`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=83].
+- 2026-10-09: Full-corpus `roc repair 2007-08 --min-score 80` completed with allocation-result control-flow mutator enabled. Every tested address logged above. Exact total stayed 9,935. Remaining 98% holdout: `00675890`. 97% count: 18. Python compile and `git diff --check` passed.
+- 2026-10-09: Rechecked `00675890` byte diff: sole baseline mismatch is `mov ecx, esi` before `sub_6302ec`; target needs returned `sub_63096a` object in ECX.
+- 2026-10-09: Typed returned-object receiver fixes that call, but compiler changes tail allocation to `ecx/eax` instead of target `edx/ecx`; score falls 98 -> 94. Inline cast and void-pointer temporary produce same 94. Volatile saved field adds stack spill and falls to 81. Reverted; baseline preserved. Finding: receiver typing and target tail register allocation are coupled.
+- 2026-10-09: `00675890` alias experiments: `__declspec(noalias)` on returned-object method and `__declspec(restrict)` on factory return both stayed 94. No alias-contract fix; reverted. Baseline remains 98.
+- 2026-10-09: `00675890` typed-receiver plus integer `sub_675880` result tested: still 94, same `ecx/eax` tail. Result-type width does not restore target register allocation. Reverted; baseline remains 98.
+- 2026-10-09: `00675890` naked inline-assembly fallback tested. Build tool rejects inline asm (`inline asm / _emit is not allowed: write C++`), so exact hand-emission is unavailable in this compiler path. Reverted; baseline remains 98.
+- 2026-10-09: Automation audit: `roc repair CLIENT` is exposed in CLI help and README. It supports score prefiltering, address/limit slicing, `--permute`, dry-run, persistent improved scores/source, and append-only per-address findings log. Massive command verified available: `python roc.py repair 2007-08 --min-score 80`.
+- 2026-10-09: Permutation pilot: 12 high-partial functions (95-96%) with `--permute`, 0 score improvements, 0 exact wins. Tried 1-16 variants each; all findings logged per address. Source-order permutations show no gain on this sample.
+- 2026-10-09: Lone 98% holdout `00675890` rerun with guided mutations plus `--permute`: 8 variants, 98 -> 98. No improvement.
+- 2026-10-09: Fresh MSVC declaration test on `00675890`: `__declspec(nothrow)` on `sub_6302EC` plus `__restrict` on `sub_675880` result. No byte change; score stayed 98. Reverted. Alias/exception metadata does not affect this receiver mismatch.
+- 2026-10-09: `00675890` live-range shaping test: predeclared tail result before typed receiver call. Still 94 with identical `ecx/eax` tail. Register lifetime placement did not help; reverted.
+- 2026-10-09: Toolchain audit: client uses genuine Microsoft Visual C++ 2005 `cl.exe` 14.00.50727.42. Inline-asm rejection comes from RoConstruct's source validator (`inline asm / _emit is not allowed`), not compiler incapability. MASM/external-object injection would bypass the C++ reconstruction contract, so not added to automatic repair.
+- 2026-10-09: New CPU/codegen flag pilot on `00675890`: `/G6`, `/G7`, and `/GB` each scored 98 with no improvement. These flags are not in the prior requested sweep. Reverted/no client flags changed; exact mismatch remains receiver allocation.
+- 2026-10-09: Interaction pilot: `/G6 /Oy-`, `/G7 /Oy-`, `/GB /Oy-`, `/G6 /Ob0`, `/G7 /Ob2` all scored 98 on `00675890`. CPU-target flags do not unlock the receiver/tail allocation; no flag change applied.
+- 2026-10-09: New call-boundary test: `__declspec(noinline)` on `sub_63096A`, `sub_6302EC`, and `sub_675880` produced identical 98% bytes. Helpers were already out-of-line; reverted.
+- 2026-10-09: New destination-liveness test: predeclared `r` across typed receiver call. Still 94%, same `ecx/eax` tail. Reverted; destination-pointer lifetime does not steer allocation enough.
+- 2026-10-09: New declaration test: `__declspec(safebuffers)` on `00675890` method. VS2005 compiler rejects it (`C2485 unrecognized extended attribute`); no codegen result. Reverted. Attribute unavailable in target toolchain.
+- 2026-10-09: New optimizer test: `#pragma optimize("g", off)` around `00675890` forced frame locals and scored 32% (target has leaf-style ESI frame). Reverted; global optimization is required.
+- 2026-10-09: New optimizer test: `#pragma optimize("t", off)` scored 93% on `00675890`; it changed scheduling/code shape but did not fix receiver. Reverted; default fast optimization remains best at 98%.
+- 2026-10-09: Fresh flag pilot (verified absent from prior findings): `/Gm-`, `/Gm`, `/Gf`, and `/Gm- /Gf` each scored 98% on `00675890`. No gain; no client flags changed.
+- 2026-10-09: New language/COMDAT flag pilot: `/GF`, `/Zc:forScope-`, `/GF /Zc:forScope-`, and `/Zc:forScope` all scored 98% on `00675890`. No gain; flags not applied.
+- 2026-10-09: New optimizer-mode test: `#pragma optimize("s", on)` (favor size) scored 93% on `00675890`. It changed code shape but not receiver allocation; reverted.
+- 2026-10-09: New pragma-level frame-pointer test: `#pragma optimize("y", off)` scored 98% with byte-identical output. Function has no stack frame, so this control is inert; reverted.
+- 2026-10-09: New const-receiver test: `const Result*` return plus `const` member call for `sub_6302EC` scored 94%. Constness does not restore target tail registers; reverted.
+- 2026-10-09: New ABI test: typed returned receiver with `__fastcall sub_6302EC` scored 94%, same `ecx/eax` tail. Calling-convention annotation does not solve allocation; reverted.
+- 2026-10-09: New compiler-switch pilot: `/arch:SSE2` and `/QIfist` individually scored 98% on `00675890`; combined form rejected due deprecated `/QIfist` warning. No gain; flags unchanged.
+- 2026-10-09: New global-optimization switch pilot: `/Og` stayed 98%; `/Og-` fell to 32%; `/Og- /Oy-` also 32%. Confirms global optimization is mandatory; no flag change.
+- 2026-10-09: Fresh function-section flags: `/Gy`, `/Gy-`, and `/Gy /Gm-` all scored 98% on `00675890`. Section packaging does not affect this function; no flags changed.
+- 2026-10-09: Fresh C++ ABI-layout pilot: `/vd0`, `/vd1`, `/vd2` all scored 98% on `00675890`. No virtual bases exist in the function, so vtable displacement mode is irrelevant; no flags changed.
+- 2026-10-09: Fresh factory exception-metadata test: `__declspec(nothrow)` on `sub_63096A` produced byte-identical 98% output. Reverted; exception metadata does not affect this call/register mismatch.
+- 2026-10-09: Fresh member-pointer ABI pilot: `/vmg`, `/vmb`, `/vmv` each scored 98% on `00675890`. No member-pointer types are present; no flags changed.
+- 2026-10-09: Fresh debug-runtime pilot: `/RTC1 /Od` scored 27%; `/RTC1` is incompatible with `/O1` and `/O2` (D8016). Debug checks cannot match optimized target; no flags changed.
+- 2026-10-09: New forced-inline wrapper test: `__forceinline call_6302EC(void*)` casts the factory result to a typed receiver. Score stayed 94%, same tail allocation; reverted.
+- 2026-10-09: New class-layout test: `__declspec(novtable)` on typed returned receiver scored 94%. No virtual table exists to suppress; no effect on allocation. Reverted.
+- 2026-10-09: New explicit-ABI test: free `__thiscall` helper with returned-object argument. VS2005 rejects `__thiscall` on free functions (`C3865`); no codegen result. Reverted; only native member functions can use this syntax.
+- 2026-10-09: Mass permutation pilot: 44 functions in the 90–94% band, `--permute`, all completed with 0 improvements and 0 exact wins. Every address/result was appended by `roc repair`; no source changes.
+- 2026-10-09: New whole-program pilot: `/GL-` stayed 98%; `/GL` produced malformed LTCG object data that the matcher cannot parse (`unpack_from` buffer error), so no score. `/GL` is not usable in current per-function COFF matcher; no flag change.
+- 2026-10-09: New return-liveness test: typed receiver `sub_6302EC` declared `int` instead of `void`, result ignored. Score stayed 94%, same `ecx/eax` tail; reverted.
+- 2026-10-09: New reference-lowering test: bind `sub_63096A` result as `Result&` then call member. Score stayed 94%; reference syntax does not alter receiver/tail allocation. Reverted.
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00401840`: 81 -> 81, tried 2 variants [toggle_int_signedness=81, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00401cb0`: 85 -> 85, tried 2 variants [toggle_char_signedness=0, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00401dc0`: 83 -> 83, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=83, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 004021a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00402820`: 96 -> 96, tried 4 variants [toggle_char_signedness=0, toggle_int_signedness=96, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 00402880`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00402eb0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00402ef0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00403a10`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00405b80`: 86 -> 86, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00409e20`: 88 -> 88, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00409e40`: 83 -> 83, tried 3 variants [stack_layout=77, toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040a1d0`: 86 -> 86, tried 2 variants [calling_convention=18, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 1 variants [toggle_char_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0040b010`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040b2a0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0040b2f0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0040b900`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040b920`: 83 -> 83, tried 3 variants [stack_layout=77, toggle_char_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040d1d0`: 87 -> 87, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040d250`: 83 -> 83, tried 1 variants [toggle_char_signedness=83].
+- 2026-10-09: `roc repair 2007-08 0040ebe0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0040f750`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0040f9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 0040fd80`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040fdb0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00411590`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=67].
+- 2026-10-09: `roc repair 2007-08 00411730`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00411770`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004117b0`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00412420`: 88 -> 88, tried 2 variants [toggle_char_signedness=88, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004124e0`: 87 -> 87, tried 2 variants [toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 004129b0`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00412b60`: 84 -> 84, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412bc0`: 91 -> 91, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00412ca0`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412d00`: 84 -> 84, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00412f20`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 004130f0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 00413ec0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 004142f0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00414700`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=58].
+- 2026-10-09: `roc repair 2007-08 00414b30`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 004151f0`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00415db0`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 00416100`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=55].
+- 2026-10-09: `roc repair 2007-08 004175d0`: 90 -> 90, tried 2 variants [toggle_int_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041bd60`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 0041cf10`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 0041d5d0`: 84 -> 84, tried 1 variants [toggle_char_signedness=84].
+- 2026-10-09: `roc repair 2007-08 0041d790`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0041d870`: 90 -> 90, tried 1 variants [toggle_char_signedness=90].
+- 2026-10-09: `roc repair 2007-08 0041eb40`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0041efa0`: 82 -> 82, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=82, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0041f420`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0041f550`: 90 -> 90, tried 2 variants [toggle_char_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0041fb80`: 82 -> 82, tried 2 variants [toggle_int_signedness=82, negate_comparison=48].
+- 2026-10-09: `roc repair 2007-08 004204d0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00421510`: 88 -> 88, tried 3 variants [toggle_int_signedness=0, negate_comparison=86, swap_add_operands=88].
+- 2026-10-09: `roc repair 2007-08 00422320`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00427ed0`: 83 -> 83, tried 2 variants [toggle_int_signedness=83, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00427f00`: 80 -> 80, tried 2 variants [toggle_int_signedness=0, negate_comparison=72].
+- 2026-10-09: `roc repair 2007-08 0042a5f0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=57].
+- 2026-10-09: `roc repair 2007-08 0042b3a0`: 92 -> 93, tried 3 variants [allocation_result=93, toggle_int_signedness=92, negate_comparison=46]; applied.
+- 2026-10-09: `roc repair 2007-08 0042b460`: 94 -> 95, tried 3 variants [allocation_result=95, toggle_int_signedness=94, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 0042b5e0`: 81 -> 81, tried 2 variants [toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0042b8c0`: 89 -> 89, tried 1 variants [toggle_char_signedness=89].
+- 2026-10-09: `roc repair 2007-08 0042bd10`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0042bd70`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0042cf10`: 85 -> 85, tried 3 variants [calling_convention=85, calling_convention=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0042d840`: 90 -> 90, tried 1 variants [negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0042d8a0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=60].
+- 2026-10-09: `roc repair 2007-08 0042ed20`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0042efa0`: 84 -> 84, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0042f070`: 84 -> 84, tried 1 variants [toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 0042f140`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=69].
+- 2026-10-09: `roc repair 2007-08 00433310`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00434c20`: 88 -> 88, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 004356b0`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 004360a0`: 85 -> 85, tried 4 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=83, swap_add_operands=85].
+- 2026-10-09: `roc repair 2007-08 00437030`: 83 -> 83, tried 1 variants [toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=95, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 00438760`: 82 -> 82, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=82].
+- 2026-10-09: `roc repair 2007-08 00438820`: 86 -> 86, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=85, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0043a080`: 84 -> 84, tried 2 variants [toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0043ba80`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0043cfb0`: 83 -> 83, tried 1 variants [negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0043e4f0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0043e550`: 95 -> 95, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0043e630`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=12].
+- 2026-10-09: `roc repair 2007-08 0043f260`: 95 -> 95, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 004426d0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004447b0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 00444dc0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00444de0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 004450d0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00447d60`: 91 -> 91, tried 1 variants [toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 00448100`: 80 -> 80, tried 4 variants [calling_convention=57, toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 004483b0`: 86 -> 86, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=86, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00448490`: 83 -> 83, tried 2 variants [toggle_int_signedness=83, negate_comparison=62].
+- 2026-10-09: `roc repair 2007-08 0044a1d0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0044bf50`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=65].
+- 2026-10-09: `roc repair 2007-08 0044c0a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0044c3e0`: 91 -> 91, tried 2 variants [toggle_char_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 0044c410`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0044d410`: 87 -> 87, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00455ee0`: 89 -> 89, tried 4 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=84, swap_add_operands=89].
+- 2026-10-09: `roc repair 2007-08 00456040`: 88 -> 88, tried 1 variants [toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 00456070`: 87 -> 87, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004560a0`: 88 -> 88, tried 2 variants [toggle_char_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004560c0`: 87 -> 87, tried 1 variants [toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004583e0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00458560`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00459600`: 92 -> 93, tried 4 variants [allocation_result=93, toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00459660`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0045aa30`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0045bc50`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 0045d880`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0045e270`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=88, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0045ff90`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00460000`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00460040`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00460120`: 91 -> 91, tried 2 variants [toggle_int_signedness=91, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00460190`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00461570`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=71].
+- 2026-10-09: `roc repair 2007-08 00461d00`: 93 -> 93, tried 1 variants [toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00463140`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 004653b0`: 92 -> 92, tried 2 variants [toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00465fd0`: 88 -> 88, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004662e0`: 94 -> 94, tried 5 variants [stack_layout=88, toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 004667e0`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00466910`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00466a40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 004697c0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0046bb90`: 83 -> 83, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 0046bcb0`: 90 -> 90, tried 1 variants [toggle_char_signedness=90].
+- 2026-10-09: `roc repair 2007-08 0046c4d0`: 89 -> 89, tried 1 variants [toggle_char_signedness=89].
+- 2026-10-09: `roc repair 2007-08 0046f710`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00472e90`: 90 -> 90, tried 3 variants [toggle_int_signedness=90, negate_comparison=90, swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 004752c0`: 81 -> 81, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004779e0`: 88 -> 88, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00479dc0`: 85 -> 85, tried 4 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84, swap_add_operands=85].
+- 2026-10-09: `roc repair 2007-08 00479ee0`: 91 -> 91, tried 4 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 0047a020`: 90 -> 90, tried 4 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88, swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 0047a300`: 84 -> 84, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00486870`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 00489860`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 004898b0`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00489f10`: 81 -> 81, tried 1 variants [toggle_char_signedness=81].
+- 2026-10-09: `roc repair 2007-08 00491980`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00491a70`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 004932c0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00493530`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 00493580`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00494e20`: 80 -> 80, tried 4 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=79, swap_add_operands=80].
+- 2026-10-09: `roc repair 2007-08 00497fd0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 004992b0`: 86 -> 86, tried 1 variants [toggle_char_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0049c6a0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0049d600`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=66].
+- 2026-10-09: `roc repair 2007-08 0049f930`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 004a01b0`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 004a1b50`: 88 -> 88, tried 2 variants [toggle_int_signedness=85, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 004a3cc0`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=69].
+- 2026-10-09: `roc repair 2007-08 004a63a0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004a7760`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004a9140`: 94 -> 95, tried 4 variants [allocation_result=95, toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 004a91a0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004aa350`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 004ab9a0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=80, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 004aca90`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004b6d00`: 83 -> 83, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 004b7820`: 81 -> 81, tried 4 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=78, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 004b87f0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 004b8aa0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, negate_comparison=39].
+- 2026-10-09: `roc repair 2007-08 004b8ae0`: 88 -> 88, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=88, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 004b8da0`: 88 -> 88, tried 2 variants [toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004b8df0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004b8e40`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004b8e90`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, swap_add_operands=80].
+- 2026-10-09: `roc repair 2007-08 004bef60`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 004befb0`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=85, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 004beff0`: 94 -> 94, tried 2 variants [toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 004bf100`: 84 -> 84, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004c1880`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004c1b50`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 004cd410`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004cd440`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004cdae0`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004cdb40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004cfe60`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 004d06b0`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=47].
+- 2026-10-09: `roc repair 2007-08 004d2350`: 82 -> 82, tried 2 variants [toggle_int_signedness=82, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d23b0`: 85 -> 85, tried 2 variants [toggle_int_signedness=85, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2410`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2470`: 90 -> 91, tried 3 variants [allocation_result=91, toggle_int_signedness=90, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 004d24d0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2530`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2590`: 93 -> 94, tried 4 variants [allocation_result=94, toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 004d8080`: 81 -> 81, tried 2 variants [toggle_int_signedness=80, negate_comparison=67].
+- 2026-10-09: `roc repair 2007-08 004e3de0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 004f3740`: 92 -> 92, tried 2 variants [toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00501500`: 84 -> 84, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00505350`: 87 -> 87, tried 1 variants [toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00505790`: 88 -> 88, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00506dd0`: 96 -> 96, tried 2 variants [immediate_constant=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00506e80`: 92 -> 92, tried 2 variants [toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0050a130`: 87 -> 87, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 005245d0`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005245e0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0052de90`: 89 -> 89, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0052dee0`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0052df30`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0052df80`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00530190`: 91 -> 91, tried 4 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=82, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 00530660`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 00530880`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 005312e0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 005328f0`: 85 -> 85, tried 1 variants [toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 00532920`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00532ba0`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00535860`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005358a0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005358c0`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005358e0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00535920`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537c70`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537cc0`: 91 -> 92, tried 4 variants [allocation_result=92, toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 00537d20`: 90 -> 90, tried 2 variants [toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537d40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537e20`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537e80`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00538390`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00539050`: 81 -> 81, tried 4 variants [calling_convention=0, toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0053d370`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=61].
+- 2026-10-09: `roc repair 2007-08 0053dcf0`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0053ded0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0053ff80`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0053ffd0`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00540020`: 89 -> 89, tried 2 variants [toggle_int_signedness=0, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00540070`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005400c0`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00540110`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 00545cc0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=55].
+- 2026-10-09: `roc repair 2007-08 00545f30`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005463c0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00549000`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00549030`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00549c80`: 91 -> 91, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=91, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00549cd0`: 89 -> 89, tried 1 variants [toggle_char_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00549d20`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0054aeb0`: 85 -> 85, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0054b460`: 85 -> 85, tried 4 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=0, swap_add_operands=85].
+- 2026-10-09: `roc repair 2007-08 0054e280`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0054f4b0`: 81 -> 81, tried 4 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=0, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 0054f590`: 89 -> 89, tried 4 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=87, swap_add_operands=89].
+- 2026-10-09: `roc repair 2007-08 0054f5d0`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0054f930`: 84 -> 84, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 005556d0`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005557d0`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00555810`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=82].
+- 2026-10-09: `roc repair 2007-08 00557260`: 92 -> 92, tried 3 variants [toggle_int_signedness=64, negate_comparison=80, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 00557290`: 90 -> 90, tried 1 variants [swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 00559640`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=71].
+- 2026-10-09: `roc repair 2007-08 00559670`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00559800`: 91 -> 91, tried 1 variants [toggle_char_signedness=91].
+- 2026-10-09: `roc repair 2007-08 00559990`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=51].
+- 2026-10-09: `roc repair 2007-08 00559c90`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0055e440`: 81 -> 81, tried 1 variants [toggle_char_signedness=81].
+- 2026-10-09: `roc repair 2007-08 0055e580`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0055e5a0`: 87 -> 87, tried 3 variants [calling_convention=40, toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 0055e5c0`: 81 -> 81, tried 4 variants [calling_convention=41, calling_convention=0, toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 0055ecb0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0055ed10`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 005603f0`: 83 -> 83, tried 2 variants [toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00561ac0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00561b10`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00563170`: 81 -> 81, tried 1 variants [toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 005631a0`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 005634b0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00563500`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00563b50`: 94 -> 94, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=94, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00564930`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00564ce0`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=65].
+- 2026-10-09: `roc repair 2007-08 005658e0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 005687f0`: 82 -> 82, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=82, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0056c240`: 85 -> 85, tried 1 variants [toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 0056c270`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 0056d530`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 0056eb30`: 93 -> 93, tried 1 variants [toggle_char_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00570ef0`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 00571aa0`: 91 -> 91, tried 2 variants [toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 4 variants [argument_order=82, toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=65].
+- 2026-10-09: `roc repair 2007-08 00573810`: 93 -> 93, tried 1 variants [toggle_char_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00573cf0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 00575610`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005758b0`: 83 -> 83, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005763f0`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005766f0`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00576a90`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, swap_add_operands=89].
+- 2026-10-09: `roc repair 2007-08 00578420`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00578450`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00578480`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 005784e0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 0057a590`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=66].
+- 2026-10-09: `roc repair 2007-08 0057a5f0`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, negate_comparison=67].
+- 2026-10-09: `roc repair 2007-08 0057a9e0`: 85 -> 85, tried 2 variants [toggle_int_signedness=85, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057aa60`: 89 -> 89, tried 1 variants [toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 0057abc0`: 82 -> 82, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057ad80`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 0057adb0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 0057b990`: 91 -> 91, tried 1 variants [toggle_char_signedness=91].
+- 2026-10-09: `roc repair 2007-08 0057bbf0`: 90 -> 91, tried 4 variants [allocation_result=91, toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 0057bed0`: 84 -> 84, tried 2 variants [toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0057bf90`: 86 -> 86, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 0057c720`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 0057c770`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057d530`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00580ef0`: 96 -> 96, tried 1 variants [toggle_char_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00580f40`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00580f90`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00580fb0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00581090`: 80 -> 80, tried 4 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=73, swap_add_operands=80].
+- 2026-10-09: `roc repair 2007-08 00581190`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, swap_add_operands=87].
+- 2026-10-09: `roc repair 2007-08 00581cd0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005829e0`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00586c30`: 83 -> 83, tried 1 variants [toggle_char_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00586e20`: 89 -> 89, tried 1 variants [toggle_char_signedness=89].
+- 2026-10-09: `roc repair 2007-08 00587010`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00587220`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00587810`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=68].
+- 2026-10-09: `roc repair 2007-08 00587fb0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00588e30`: 88 -> 89, tried 3 variants [allocation_result=89, toggle_int_signedness=88, negate_comparison=0]; applied.
+- 2026-10-09: `roc repair 2007-08 0058b9c0`: 85 -> 85, tried 2 variants [toggle_char_signedness=84, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0058bc20`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0058c5f0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00593e20`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 00594010`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 005940d0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594200`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 005943a0`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 005944c0`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00594610`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00594760`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 005948b0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, negate_comparison=97].
+- 2026-10-09: `roc repair 2007-08 00594a00`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594ac0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594bb0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00594c70`: 94 -> 94, tried 2 variants [toggle_char_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594ca0`: 85 -> 85, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 00594d80`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00594e60`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00594f30`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594ff0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00595140`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00595230`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, negate_comparison=97].
+- 2026-10-09: `roc repair 2007-08 005952d0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00595370`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00595410`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005954b0`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00595640`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00595770`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 005958a0`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 00595960`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00596ca0`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00596d00`: 88 -> 88, tried 2 variants [toggle_char_signedness=88, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 005999d0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0059c7d0`: 91 -> 91, tried 3 variants [toggle_int_signedness=0, negate_comparison=0, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 0059e8b0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 0059f2e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0059fce0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005a3fa0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 005a6270`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 005a8250`: 81 -> 81, tried 2 variants [toggle_char_signedness=79, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 005a8290`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=66].
+- 2026-10-09: `roc repair 2007-08 005a8aa0`: 80 -> 80, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 005aa140`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005aa190`: 89 -> 89, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005aabc0`: 83 -> 83, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=83].
+- 2026-10-09: `roc repair 2007-08 005ac6a0`: 86 -> 86, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 005aca40`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005aca90`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005afe70`: 84 -> 84, tried 1 variants [toggle_char_signedness=84].
+- 2026-10-09: `roc repair 2007-08 005b0740`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 005b0ff0`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 005b1470`: 88 -> 88, tried 1 variants [toggle_char_signedness=88].
+- 2026-10-09: `roc repair 2007-08 005b2f80`: 83 -> 83, tried 1 variants [toggle_char_signedness=83].
+- 2026-10-09: `roc repair 2007-08 005b3c00`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 005b3dc0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 005b42a0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 005b44e0`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 005b4770`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 005b48a0`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 005b4d50`: 82 -> 82, tried 2 variants [toggle_int_signedness=82, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 005b4de0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 005b4fd0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005b5610`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 005b6dc0`: 81 -> 81, tried 2 variants [toggle_int_signedness=81, negate_comparison=68].
+- 2026-10-09: `roc repair 2007-08 005b9130`: 90 -> 90, tried 4 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89, swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 005b9190`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 005b91f0`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 005b9940`: 80 -> 80, tried 1 variants [toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005bbbe0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 005bca00`: 85 -> 85, tried 2 variants [toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 005bd1d0`: 80 -> 80, tried 4 variants [toggle_char_signedness=80, toggle_int_signedness=77, negate_comparison=78, swap_add_operands=80].
+- 2026-10-09: `roc repair 2007-08 005bee70`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 005bfe60`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005c79e0`: 80 -> 80, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 005c93a0`: 85 -> 85, tried 1 variants [toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 005c9400`: 85 -> 85, tried 1 variants [toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 005c9460`: 88 -> 88, tried 1 variants [toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 005c9520`: 91 -> 91, tried 1 variants [toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 005c9590`: 87 -> 87, tried 1 variants [toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005c9690`: 86 -> 86, tried 1 variants [toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 005c9710`: 80 -> 80, tried 1 variants [toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005c9740`: 80 -> 80, tried 1 variants [toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005cdc60`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 005d1c00`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005d1c30`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 005d3b00`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 005db160`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 005dd060`: 88 -> 88, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 005de0d0`: 96 -> 96, tried 3 variants [toggle_int_signedness=0, negate_comparison=17, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 005de130`: 80 -> 80, tried 2 variants [toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 005de510`: 81 -> 81, tried 2 variants [toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 005e05d0`: 86 -> 86, tried 1 variants [toggle_char_signedness=86].
+- 2026-10-09: `roc repair 2007-08 005e5c80`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=0, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 005e6120`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005e6780`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 005e9aa0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, swap_add_operands=93].
+- 2026-10-09: `roc repair 2007-08 005ea230`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005eb330`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005eb360`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 005ec490`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=0, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 005eecf0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 005eee30`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 005ef790`: 81 -> 81, tried 4 variants [toggle_char_signedness=0, toggle_int_signedness=81, negate_comparison=47, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 005ef900`: 87 -> 87, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 005f4940`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=44].
+- 2026-10-09: `roc repair 2007-08 005f9ff0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 005fa530`: 88 -> 88, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=88, swap_add_operands=88].
+- 2026-10-09: `roc repair 2007-08 005fa600`: 84 -> 84, tried 1 variants [toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 005fa660`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=82].
+- 2026-10-09: `roc repair 2007-08 005fb230`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 005fb320`: 80 -> 80, tried 2 variants [calling_convention=0, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005fb370`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 005fb750`: 87 -> 87, tried 4 variants [calling_convention=0, toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005fb7d0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005fb8a0`: 81 -> 81, tried 1 variants [toggle_char_signedness=81].
+- 2026-10-09: `roc repair 2007-08 005fb980`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 005fbe00`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 005fc710`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 005fd6e0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 005feea0`: 84 -> 84, tried 3 variants [return_value=82, typed_member_return=82, toggle_char_signedness=84].
+- 2026-10-09: `roc repair 2007-08 005feef0`: 81 -> 81, tried 4 variants [return_value=81, typed_member_return=81, toggle_char_signedness=0, negate_comparison=40].
+- 2026-10-09: `roc repair 2007-08 00600250`: 87 -> 87, tried 1 variants [toggle_char_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00600ad0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 006024e0`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00605760`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00608490`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0060b1c0`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0060b480`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0060b720`: 80 -> 80, tried 1 variants [toggle_char_signedness=80].
+- 2026-10-09: `roc repair 2007-08 0060bc00`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0060bf00`: 82 -> 82, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0061a9e0`: 94 -> 94, tried 1 variants [toggle_char_signedness=94].
+- 2026-10-09: `roc repair 2007-08 0061ac50`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0061c060`: 80 -> 80, tried 1 variants [toggle_char_signedness=80].
+- 2026-10-09: `roc repair 2007-08 0061dae0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 0061e700`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0061eda0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0061eee0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00622b60`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 006274b0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00627640`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 006278a0`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00628070`: 85 -> 85, tried 1 variants [toggle_char_signedness=85].
+- 2026-10-09: `roc repair 2007-08 00629ea0`: 91 -> 91, tried 4 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=89, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 00629f40`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=20].
+- 2026-10-09: `roc repair 2007-08 0062b160`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=47].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 0062dba0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0062dc00`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 006319e0`: 96 -> 96, tried 1 variants [toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00631aa0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00631c50`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=61].
+- 2026-10-09: `roc repair 2007-08 00631da0`: 85 -> 85, tried 4 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=83, swap_add_operands=85].
+- 2026-10-09: `roc repair 2007-08 00631de0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00632840`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00632e50`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 00633350`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=91, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00635350`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00636360`: 91 -> 91, tried 2 variants [toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00636510`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 00636590`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 006365b0`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00637130`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00637850`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=82].
+- 2026-10-09: `roc repair 2007-08 00638e20`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00639530`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00639d00`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=62].
+- 2026-10-09: `roc repair 2007-08 00639dd0`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 00639f90`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0063a140`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0063a480`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 0063bc70`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=82, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 0063bde0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0063c4e0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0063cd70`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0063d410`: 96 -> 96, tried 3 variants [immediate_constant=58, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 0063dcb0`: 92 -> 92, tried 1 variants [toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00643640`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00643790`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00643ac0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00643bf0`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, negate_comparison=68].
+- 2026-10-09: `roc repair 2007-08 00644200`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00644880`: 88 -> 88, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006457c0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 006457e0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=83, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 006465d0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00647a10`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 006487a0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00649140`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 0064ad50`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0064ada0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0064b280`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 0064ec50`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0064ef00`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0064eff0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0064f210`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 006519d0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=74].
+- 2026-10-09: `roc repair 2007-08 00651d20`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00651da0`: 87 -> 87, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00651ee0`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00652220`: 82 -> 82, tried 2 variants [toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00653820`: 90 -> 90, tried 2 variants [toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00653aa0`: 83 -> 83, tried 1 variants [toggle_char_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00653ce0`: 80 -> 80, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00653ef0`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=0, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 006558c0`: 88 -> 88, tried 2 variants [toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006558f0`: 84 -> 84, tried 2 variants [toggle_int_signedness=84, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00655ce0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00656930`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 006571f0`: 90 -> 90, tried 1 variants [toggle_char_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00657430`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=78, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00658c90`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00658e70`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0065d7c0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0065e480`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 0065e4a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 0065e670`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0065e9a0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0065eb30`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 0065ed80`: 83 -> 83, tried 3 variants [toggle_int_signedness=83, negate_comparison=82, swap_add_operands=83].
+- 2026-10-09: `roc repair 2007-08 006607c0`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00661850`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00661d90`: 88 -> 88, tried 6 variants [immediate_constant=88, immediate_constant=88, immediate_constant=88, immediate_constant=88, toggle_char_signedness=88, toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 00661e20`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 00662440`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006626a0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006636f0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00663be0`: 93 -> 93, tried 4 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=91, swap_add_operands=93].
+- 2026-10-09: `roc repair 2007-08 00663f10`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006640e0`: 86 -> 86, tried 2 variants [toggle_char_signedness=86, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 00667120`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 006687a0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=72].
+- 2026-10-09: `roc repair 2007-08 00668d90`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00668de0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00668ec0`: 91 -> 91, tried 1 variants [toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 006692b0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0066acc0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0066b6b0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=93, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 0066c360`: 94 -> 94, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=92, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0066d0e0`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0066e3d0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 0066e8a0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=30].
+- 2026-10-09: `roc repair 2007-08 0066eb10`: 86 -> 86, tried 2 variants [toggle_int_signedness=86, negate_comparison=41].
+- 2026-10-09: `roc repair 2007-08 0066f0c0`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00670600`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00670850`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00670ba0`: 90 -> 90, tried 2 variants [toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00671240`: 88 -> 88, tried 1 variants [toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 00671270`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00671b10`: 81 -> 81, tried 2 variants [toggle_int_signedness=81, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00671dd0`: 90 -> 90, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00671e10`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 00671ea0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00671f00`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00673550`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006735b0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00673610`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=0, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00673800`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00673970`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006739d0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=73].
+- 2026-10-09: `roc repair 2007-08 00678350`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00678de0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=0, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 0067a660`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 0067b670`: 80 -> 80, tried 4 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=73, swap_add_operands=80].
+- 2026-10-09: `roc repair 2007-08 0067d7f0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0067d8b0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0067d970`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0067f350`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 0067f9d0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 00680590`: 96 -> 96, tried 2 variants [toggle_int_signedness=96, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00680680`: 82 -> 82, tried 1 variants [toggle_char_signedness=82].
+- 2026-10-09: `roc repair 2007-08 00680740`: 82 -> 82, tried 1 variants [negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00681140`: 90 -> 90, tried 2 variants [toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00682a20`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00684f70`: 80 -> 80, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00684f90`: 86 -> 86, tried 2 variants [toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006856e0`: 81 -> 81, tried 3 variants [calling_convention=73, toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006857e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00685990`: 84 -> 84, tried 1 variants [toggle_char_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006859d0`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00685a20`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00685a70`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00685ac0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00685b10`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00685b60`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 006864d0`: 82 -> 82, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00688620`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00688710`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00689650`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=52].
+- 2026-10-09: `roc repair 2007-08 006896b0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00689700`: 81 -> 81, tried 1 variants [toggle_char_signedness=81].
+- 2026-10-09: `roc repair 2007-08 00689870`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006899f0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0068b3b0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0068bb30`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 0068bde0`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 0068be60`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0068beb0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0068cf50`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 0068d350`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 0068f190`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, toggle_int_signedness=80].
+- 2026-10-09: `roc repair 2007-08 0068f4b0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0068f780`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00690220`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, negate_comparison=69].
+- 2026-10-09: `roc repair 2007-08 00690a90`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00690bc0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=70].
+- 2026-10-09: `roc repair 2007-08 00691060`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00691c20`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00692040`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 006923b0`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00692470`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00692a30`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00693c60`: 83 -> 83, tried 2 variants [toggle_int_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006942c0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00697aa0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00697c80`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006981b0`: 88 -> 88, tried 2 variants [toggle_char_signedness=88, toggle_int_signedness=88].
+- 2026-10-09: `roc repair 2007-08 006981e0`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=55].
+- 2026-10-09: `roc repair 2007-08 006983c0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00698490`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=71].
+- 2026-10-09: `roc repair 2007-08 006985e0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00698c10`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00698c60`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=68].
+- 2026-10-09: `roc repair 2007-08 006991c0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=84, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 00699220`: 81 -> 81, tried 4 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=77, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 00699870`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0069bac0`: 86 -> 86, tried 2 variants [toggle_int_signedness=86, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 0069bb10`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0069bd30`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0069c190`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0069d8d0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0069dac0`: 93 -> 93, tried 2 variants [toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 0069daf0`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 0069df50`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0069e0f0`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0069e200`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006a0510`: 83 -> 83, tried 2 variants [toggle_char_signedness=83, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006a1790`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 006a2fd0`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 006a3020`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006a32c0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006a3640`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006a3f70`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 006a3fe0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006a41c0`: 86 -> 86, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 006a5210`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 006a59a0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006a5a00`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006a65c0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 006a7600`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 006a78d0`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006a79a0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 006a79f0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006a7b20`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006a8290`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 006a85d0`: 82 -> 82, tried 2 variants [toggle_char_signedness=82, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006a8d90`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006ab2b0`: 80 -> 80, tried 2 variants [toggle_int_signedness=77, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 006acd40`: 93 -> 93, tried 1 variants [toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 006ad4f0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=61].
+- 2026-10-09: `roc repair 2007-08 006ad550`: 84 -> 84, tried 2 variants [toggle_int_signedness=0, swap_add_operands=84].
+- 2026-10-09: `roc repair 2007-08 006b2c50`: 93 -> 93, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006b2e20`: 92 -> 92, tried 2 variants [signedness=92, signedness=0].
+- 2026-10-09: `roc repair 2007-08 006b3030`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 006b30b0`: 83 -> 83, tried 2 variants [signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006b3610`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 006b3df0`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=97].
+- 2026-10-09: `roc repair 2007-08 006b5e10`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006b5f20`: 84 -> 84, tried 1 variants [toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 006b5f40`: 84 -> 84, tried 1 variants [toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 006b8c60`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=87, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006c6b30`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006c6b70`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 006c6d00`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006c71d0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006c79f0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006c7b40`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=71].
+- 2026-10-09: `roc repair 2007-08 006c92e0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006c9d40`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 006ca4f0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006cb990`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006ce8b0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 006d1d90`: 86 -> 86, tried 3 variants [toggle_char_signedness=86, toggle_int_signedness=86, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006d2740`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006d29a0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 006d29c0`: 81 -> 81, tried 4 variants [toggle_char_signedness=81, toggle_int_signedness=0, negate_comparison=77, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 006d2a00`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 006d2bf0`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 006d3720`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 006d37b0`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=40].
+- 2026-10-09: `roc repair 2007-08 006d3b80`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 006d4300`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 006d43a0`: 81 -> 81, tried 2 variants [toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 006d4440`: 89 -> 89, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 006d5e90`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006d6220`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006d81d0`: 97 -> 97, tried 5 variants [stack_layout=95, toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=89, swap_add_operands=97].
+- 2026-10-09: `roc repair 2007-08 006daaf0`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006db4b0`: 91 -> 91, tried 3 variants [toggle_int_signedness=91, negate_comparison=83, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 006dbd80`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006ddc20`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006dde00`: 87 -> 87, tried 2 variants [toggle_int_signedness=87, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006dec40`: 85 -> 85, tried 1 variants [toggle_int_signedness=85].
+- 2026-10-09: `roc repair 2007-08 006e0a60`: 81 -> 81, tried 3 variants [calling_convention=0, toggle_char_signedness=81, toggle_int_signedness=81].
+- 2026-10-09: `roc repair 2007-08 006e0c90`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006e0f50`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=88, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006e4720`: 87 -> 87, tried 3 variants [toggle_char_signedness=87, toggle_int_signedness=0, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 006efeb0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=70].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f5bc0`: 84 -> 84, tried 1 variants [toggle_char_signedness=84].
+- 2026-10-09: `roc repair 2007-08 006f5ce0`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006f5e80`: 89 -> 89, tried 4 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=88, swap_add_operands=89].
+- 2026-10-09: `roc repair 2007-08 006f60f0`: 81 -> 81, tried 3 variants [toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f67d0`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=72].
+- 2026-10-09: `roc repair 2007-08 006f70c0`: 85 -> 85, tried 2 variants [toggle_char_signedness=85, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f7150`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=87, negate_comparison=89, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 006f8f90`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=45].
+- 2026-10-09: `roc repair 2007-08 006faa50`: 87 -> 87, tried 2 variants [toggle_char_signedness=87, toggle_int_signedness=87].
+- 2026-10-09: `roc repair 2007-08 006fd1c0`: 93 -> 93, tried 3 variants [calling_convention=60, toggle_char_signedness=93, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006fd540`: 92 -> 92, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006fda20`: 89 -> 89, tried 3 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006fdb60`: 81 -> 81, tried 5 variants [stack_layout=80, stack_layout=80, toggle_char_signedness=81, toggle_int_signedness=81, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006fe010`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 006fe580`: 89 -> 89, tried 4 variants [toggle_char_signedness=89, toggle_int_signedness=0, negate_comparison=88, swap_add_operands=89].
+- 2026-10-09: `roc repair 2007-08 006fe5d0`: 84 -> 84, tried 3 variants [toggle_int_signedness=84, negate_comparison=83, swap_add_operands=84].
+- 2026-10-09: `roc repair 2007-08 006fe7d0`: 81 -> 81, tried 4 variants [toggle_char_signedness=81, toggle_int_signedness=80, negate_comparison=77, swap_add_operands=81].
+- 2026-10-09: `roc repair 2007-08 006ff8d0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00700690`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0070a090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 0070c680`: 80 -> 80, tried 3 variants [toggle_char_signedness=76, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0070ca10`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 0070ca80`: 93 -> 93, tried 2 variants [toggle_int_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0070f1b0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=65].
+- 2026-10-09: `roc repair 2007-08 0070f200`: 84 -> 84, tried 2 variants [toggle_char_signedness=84, toggle_int_signedness=84].
+- 2026-10-09: `roc repair 2007-08 0070f600`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 007111b0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 007115c0`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 00712bd0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00714c50`: 84 -> 84, tried 2 variants [toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00714d40`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00715350`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 00715850`: 86 -> 86, tried 5 variants [calling_convention=71, calling_convention=0, toggle_char_signedness=86, toggle_int_signedness=0, negate_comparison=76].
+- 2026-10-09: `roc repair 2007-08 00716280`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00716830`: 86 -> 86, tried 2 variants [toggle_int_signedness=86, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00716f30`: 89 -> 89, tried 1 variants [toggle_int_signedness=89].
+- 2026-10-09: `roc repair 2007-08 00716fc0`: 83 -> 83, tried 3 variants [toggle_char_signedness=83, toggle_int_signedness=83, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00717430`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00717970`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 00717fe0`: 80 -> 80, tried 3 variants [toggle_char_signedness=80, toggle_int_signedness=80, negate_comparison=58].
+- 2026-10-09: `roc repair 2007-08 00718e20`: 88 -> 88, tried 3 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00718f00`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=0, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00718fd0`: 91 -> 91, tried 3 variants [toggle_int_signedness=91, negate_comparison=90, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 00719160`: 84 -> 84, tried 3 variants [toggle_char_signedness=84, toggle_int_signedness=84, negate_comparison=75].
+- 2026-10-09: `roc repair 2007-08 00719480`: 89 -> 89, tried 2 variants [toggle_char_signedness=89, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00719930`: 88 -> 88, tried 4 variants [toggle_char_signedness=88, toggle_int_signedness=88, negate_comparison=87, swap_add_operands=88].
+- 2026-10-09: `roc repair 2007-08 00719aa0`: 81 -> 81, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0071a580`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 00720b80`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=0, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 97 -> 97, tried 3 variants [toggle_int_signedness=0, negate_comparison=94, swap_add_operands=97].
+- 2026-10-09: `roc repair 2007-08 00724ff9`: 82 -> 82, tried 3 variants [toggle_char_signedness=82, toggle_int_signedness=82, negate_comparison=82].
+- 2026-10-09: `roc repair 2007-08 007273f0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00729350`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00729380`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 007293b0`: 80 -> 80, tried 2 variants [toggle_char_signedness=80, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00738d6b`: 85 -> 85, tried 3 variants [toggle_char_signedness=85, toggle_int_signedness=85, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 7 variants [toggle_char_signedness=95, toggle_int_signedness=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00402820`: 96 -> 96, tried 6 variants [toggle_char_signedness=0, toggle_int_signedness=96, negate_comparison=95, swap_add_operands=96, commutative=96, inequality=93].
+- 2026-10-09: `roc repair 2007-08 00403a10`: 95 -> 95, tried 7 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=81, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 7 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 7 variants [toggle_char_signedness=95, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040ebe0`: 95 -> 95, tried 11 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=94].
+- 2026-10-09: `roc repair 2007-08 00412f20`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 004204d0`: 95 -> 95, tried 7 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 16 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0042b460`: 95 -> 95, tried 12 variants [toggle_int_signedness=95, negate_comparison=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, reorder_decls=91, reorder_decls=88, reorder_decls=87].
+- 2026-10-09: `roc repair 2007-08 004356b0`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 14 variants [toggle_char_signedness=96, toggle_int_signedness=95, negate_comparison=95, swap_add_operands=96, commutative=96, commutative=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, reorder_decls=89, reorder_decls=87].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 5 variants [toggle_int_signedness=94, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 6 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=88, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040b2a0`: 92 -> 92, tried 8 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=78, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 10 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92, commutative=0, commutative=0, commutative=0, commutative=0, commutative=92, commutative=94, reorder_decls=83].
+- 2026-10-09: `roc repair 2007-08 0040f750`: 93 -> 93, tried 10 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=91, commutative=0, commutative=0, commutative=0, commutative=0, commutative=91, commutative=93, reorder_decls=79].
+- 2026-10-09: `roc repair 2007-08 0040f9d0`: 94 -> 94, tried 16 variants [toggle_char_signedness=94, toggle_int_signedness=94, swap_add_operands=94, commutative=94, commutative=94, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, reorder_decls=94, reorder_decls=94, reorder_decls=94].
+- 2026-10-09: `roc repair 2007-08 00411730`: 92 -> 92, tried 10 variants [toggle_char_signedness=92, negate_comparison=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, reorder_decls=92].
+- 2026-10-09: `roc repair 2007-08 00411770`: 92 -> 92, tried 9 variants [toggle_char_signedness=92, negate_comparison=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, reorder_decls=92].
+- 2026-10-09: `roc repair 2007-08 004117b0`: 92 -> 92, tried 8 variants [toggle_char_signedness=92, negate_comparison=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, reorder_decls=92].
+- 2026-10-09: `roc repair 2007-08 004129b0`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00412bc0`: 91 -> 91, tried 8 variants [toggle_char_signedness=0, toggle_int_signedness=91, negate_comparison=90, commutative=0, commutative=0, commutative=0, commutative=0, inequality=91].
+- 2026-10-09: `roc repair 2007-08 00414700`: 93 -> 93, tried 6 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=58, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 004151f0`: 93 -> 93, tried 9 variants [toggle_char_signedness=0, toggle_int_signedness=93, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00415db0`: 92 -> 92, tried 12 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92, commutative=92, commutative=90, commutative=0, commutative=0, reorder_decls=90, reorder_decls=90, reorder_decls=85, reorder_decls=84].
+- 2026-10-09: `roc repair 2007-08 004175d0`: 90 -> 90, tried 2 variants [toggle_int_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041cf10`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, negate_comparison=90, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0041d790`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0041d870`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0041eb40`: 92 -> 92, tried 8 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=89, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0041f420`: 93 -> 93, tried 9 variants [toggle_char_signedness=0, negate_comparison=91, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0041f550`: 90 -> 90, tried 11 variants [toggle_char_signedness=0, negate_comparison=88, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0042b3a0`: 93 -> 93, tried 10 variants [toggle_int_signedness=93, negate_comparison=46, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, reorder_decls=88, reorder_decls=86, reorder_decls=85].
+- 2026-10-09: `roc repair 2007-08 0042bd10`: 92 -> 92, tried 16 variants [toggle_char_signedness=92, toggle_int_signedness=92, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0042d840`: 90 -> 90, tried 14 variants [negate_comparison=89, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=89, commutative=90].
+- 2026-10-09: `roc repair 2007-08 0042d8a0`: 93 -> 93, tried 11 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=60, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0043e630`: 90 -> 90, tried 8 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=12, commutative=0, commutative=0, commutative=0, commutative=0, inequality=0].
+- 2026-10-09: `roc repair 2007-08 00447d60`: 91 -> 91, tried 6 variants [toggle_int_signedness=91, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0044a1d0`: 90 -> 90, tried 9 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0044c3e0`: 91 -> 91, tried 9 variants [toggle_char_signedness=0, negate_comparison=86, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=89].
+- 2026-10-09: `roc repair 2007-08 0044c410`: 93 -> 93, tried 9 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=78, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=91].
+- 2026-10-09: `roc repair 2007-08 00459600`: 93 -> 93, tried 6 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00459660`: 93 -> 93, tried 8 variants [toggle_int_signedness=93, negate_comparison=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0045aa30`: 90 -> 90, tried 4 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0045bc50`: 90 -> 90, tried 4 variants [toggle_int_signedness=90, commutative=0, commutative=90, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0045ff90`: 94 -> 94, tried 4 variants [toggle_int_signedness=94, negate_comparison=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00460040`: 94 -> 94, tried 3 variants [toggle_int_signedness=94, negate_comparison=93, inequality=94].
+- 2026-10-09: `roc repair 2007-08 00460120`: 91 -> 91, tried 7 variants [toggle_int_signedness=91, negate_comparison=86, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00460190`: 91 -> 91, tried 7 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=86, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00461d00`: 93 -> 93, tried 1 variants [toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00463140`: 94 -> 94, tried 6 variants [toggle_char_signedness=94, toggle_int_signedness=94, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 004653b0`: 92 -> 92, tried 6 variants [toggle_int_signedness=0, negate_comparison=89, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 004662e0`: 94 -> 94, tried 12 variants [stack_layout=88, toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0, swap_add_operands=94, commutative=94, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: Research + test: Microsoft VS2005 history says legacy `/Oa` and `/Ow` alias switches are removed/ignored. Confirmed: `/Oa`, `/Ow`, and `/Oa /Ow` all scored 98% on `00675890`; no flags changed.
+- 2026-10-09: New pragma test: `#pragma auto_inline(off)` around target function produced byte-identical 98%. No inlining boundary exists in this standalone function; reverted.
+- 2026-10-09: Fresh struct-packing pilot: `/Zp1`, `/Zp2`, `/Zp4`, `/Zp8`, `/Zp16` all scored 98% on `00675890`. Explicit byte padding makes packing irrelevant; no flags changed.
+- 2026-10-09: Fresh language-mode probe: `/Zc:threadSafeInit-` and `/Zc:threadSafeInit` both accepted and scored 98% on `00675890`; no local static initialization exists, so no effect.
+- 2026-10-09: Fresh language-switch probe: `/Zc:twoPhase-`, `/Zc:implicitNoexcept-`, and their combo all scored 98% on `00675890`; no templates or implicit-noexcept paths exist. No flags changed.
+- 2026-10-09: Mass 97% permutation pilot: 19 functions, guided mutations plus `--permute`; 0 improvements and 0 exact wins. Every result logged by `roc repair`; no source changes.
+- 2026-10-09: Score-index audit after mass refresh: current `scores.json` is 9,987 exact, 18 at 97%, one at 98% (`00675890`). The earlier 9,935 count was stale; compiler refreshes during targeted repair corrected 52 saved scores to 100. No new source mutation caused these corrections.
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 4 variants [toggle_int_signedness=97, negate_comparison=96, commutative=0, inequality=97].
+- 2026-10-09: `roc repair 2007-08 00537c70`: 97 -> 97, tried 11 variants [toggle_int_signedness=97, negate_comparison=0, reorder_decls=94, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 6 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 005948b0`: 97 -> 97, tried 8 variants [toggle_char_signedness=97, negate_comparison=97, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00595230`: 97 -> 97, tried 10 variants [toggle_char_signedness=97, negate_comparison=97, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 005952d0`: 97 -> 97, tried 9 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, inequality=0].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 11 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=95].
+- 2026-10-09: `roc repair 2007-08 0062dba0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 5 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=73, reorder_decls=72, reorder_decls=95].
+- 2026-10-09: `roc repair 2007-08 0067d8b0`: 97 -> 97, tried 11 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=0, reorder_decls=83, reorder_decls=83, reorder_decls=83, reorder_decls=93, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 5 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=97].
+- 2026-10-09: `roc repair 2007-08 006d81d0`: 97 -> 97, tried 13 variants [stack_layout=95, toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=89, swap_add_operands=97, commutative=97, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, inequality=0].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00720b80`: 97 -> 97, tried 4 variants [toggle_char_signedness=97, toggle_int_signedness=0, negate_comparison=92, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 97 -> 97, tried 9 variants [toggle_int_signedness=0, negate_comparison=94, swap_add_operands=97, commutative=97, commutative=97, commutative=0, commutative=0, commutative=0, inequality=92].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 5 variants [toggle_int_signedness=94, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 5 variants [toggle_int_signedness=94, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 7 variants [toggle_char_signedness=95, toggle_int_signedness=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 16 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, inequality=91].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 7 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 7 variants [toggle_char_signedness=95, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 6 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=88, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040b2a0`: 92 -> 92, tried 8 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=78, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 0040ebe0`: 95 -> 95, tried 11 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0, commutative=94].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 10 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92, commutative=0, commutative=0, commutative=0, commutative=0, commutative=92, commutative=94, reorder_decls=83].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00720b80`: 97 -> 97, tried 4 variants [toggle_char_signedness=97, toggle_int_signedness=0, negate_comparison=92, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 97 -> 97, tried 9 variants [toggle_int_signedness=0, negate_comparison=94, swap_add_operands=97, commutative=97, commutative=97, commutative=0, commutative=0, commutative=0, inequality=92].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00720b80`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00720b80`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a1d0`: 86 -> 86, tried 1 variants [calling_convention=18].
+- 2026-10-09: `roc repair 2007-08 0040a1d0`: 86 -> 86, tried 1 variants [calling_convention=18].
+- 2026-10-09: `roc repair 2007-08 0040b920`: 83 -> 83, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004129b0`: 90 -> 90, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00421510`: 88 -> 88, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0042b3a0`: 93 -> 93, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409e40`: 83 -> 83, tried 1 variants [stack_layout=77].
+- 2026-10-09: `roc repair 2007-08 0040b920`: 83 -> 83, tried 1 variants [stack_layout=77].
+- 2026-10-09: `roc repair 2007-08 00421510`: 88 -> 88, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 005dd060`: 88 -> 88, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f5ce0`: 84 -> 84, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 1 variants [argument_order=82].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 1 variants [branch_condition=72].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 9 variants [argument_order=82, toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=65, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 7 variants [toggle_int_signedness=89, negate_comparison=88, commutative=0, reorder_decls=89, reorder_decls=89, reorder_decls=89, reorder_decls=89].
+- 2026-10-09: `roc repair 2007-08 0040a1d0`: 86 -> 86, tried 2 variants [calling_convention=18, toggle_int_signedness=86].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 9 variants [argument_order=82, toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=65, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [toggle_int_signedness=97].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 7 variants [toggle_int_signedness=89, negate_comparison=88, commutative=0, reorder_decls=89, reorder_decls=89, reorder_decls=89, reorder_decls=89].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 9 variants [argument_order=82, toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=65, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 8 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 2 variants [toggle_int_signedness=89, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 7 variants [toggle_int_signedness=89, negate_comparison=88, commutative=0, reorder_decls=89, reorder_decls=89, reorder_decls=89, reorder_decls=89].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00572180`: 82 -> 82, tried 9 variants [argument_order=82, toggle_char_signedness=0, toggle_int_signedness=80, negate_comparison=65, commutative=0, commutative=0, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 1 variants [branch_condition=72].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 1 variants [immediate_constant=97].
+- 2026-10-09: `roc repair 2007-08 00401310`: 89 -> 89, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: New bounded probe: `00675890` with `--category allocation_result` tried 0 candidates and stayed 98%. No allocation evidence exists for this source shape; no source write. Saved `work/reports/allocation-00675890.json`. This closes the current guided allocation family for the only 98% holdout; next meaningful route is instruction-level/data-flow search, not another generic flag.
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 1 variants [toggle_char_signedness=95].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594010`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00594610`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00594760`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00595140`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 005954b0`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00594610`: 92 -> 95, tried 1 variants [static_receiver_pointer=95]; applied.
+- 2026-10-09: `roc repair 2007-08 00594760`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00595140`: 92 -> 95, tried 1 variants [static_receiver_pointer=95]; applied.
+- 2026-10-09: `roc repair 2007-08 005954b0`: 92 -> 95, tried 1 variants [static_receiver_pointer=95]; applied.
+- 2026-10-09: `roc repair 2007-08 00594610`: 95 -> 100, tried 1 variants [indirect_return_value=100]; applied.
+- 2026-10-09: `roc repair 2007-08 00595140`: 95 -> 100, tried 1 variants [indirect_return_value=100]; applied.
+- 2026-10-09: `roc repair 2007-08 005954b0`: 95 -> 100, tried 1 variants [indirect_return_value=100]; applied.
+- 2026-10-09: `roc repair 2007-08 005944c0`: 92 -> 95, tried 1 variants [static_receiver_pointer=95]; applied.
+- 2026-10-09: `roc repair 2007-08 00595770`: 92 -> 95, tried 1 variants [static_receiver_pointer=95]; applied.
+- 2026-10-09: `roc repair 2007-08 005944c0`: 95 -> 100, tried 1 variants [indirect_return_value=100]; applied.
+- 2026-10-09: `roc repair 2007-08 00595770`: 95 -> 100, tried 1 variants [indirect_return_value=100]; applied.
+- 2026-10-09: `roc repair 2007-08 005952d0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=95, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 004a7760`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004befb0`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=85, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 00506dd0`: 96 -> 96, tried 2 variants [immediate_constant=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 0062dba0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=73].
+- 2026-10-09: `roc repair 2007-08 0067d8b0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=97].
+- 2026-10-09: `roc repair 2007-08 006d81d0`: 97 -> 97, tried 5 variants [stack_layout=95, toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=89, swap_add_operands=97].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: Additional server DeepSeek wins validated locally: `0062dba0` 97 -> 100 by selecting parameter `b` for vtable call; `006d81d0` 97 -> 100 by swapping output parameter declaration order; `0067d8b0` 97 -> 100 by removing explicit `this` from helper ABI. Exact total `9998` -> `10001`.
+- 2026-10-09: Two more server exacts validated locally: `004a7760` 96 -> 100 by modeling `free` as an indirect function pointer; `00580ef0` 96 -> 100 by moving `0x14` padding into nested `Sub` layout. Exact total `10001` -> `10003`.
+- 2026-10-09: Server DeepSeek exact validated locally: `005de0d0` 96 -> 100. Pointer parameters plus indexed array comparison reproduced target loop/register shape. Exact total `10003` -> `10004`.
+- 2026-10-09: Hidden server exact validated locally: `0063d410` 96 -> 100. Same branch flow had wrong selected constants; changing ternary `0xf/0x9` to `0x5/0xf` reproduced bytes. Exact total `10004` -> `10005`.
+- 2026-10-09: Near-96 batch: compiler repair tried 10 targets, 0 gains; DeepSeek tried `00421090`, `004a7b10`, `00506dd0`, `0059f2e0`, `0064f210`, 0 gains. `00506dd0` server source rose only to 98%, not accepted.
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 1 variants [toggle_char_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 1 variants [toggle_char_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0040b2a0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0040f750`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0040f9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 00411730`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00411770`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004117b0`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00412f20`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 00414700`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=58].
+- 2026-10-09: `roc repair 2007-08 004151f0`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00415db0`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 0041eb40`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0041f420`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 004204d0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 0042b3a0`: 93 -> 100, tried 1 variants [static_receiver_pointer=100]; applied.
+- 2026-10-09: `roc repair 2007-08 0042b460`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0042bd10`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0042d8a0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=60].
+- 2026-10-09: `roc repair 2007-08 004356b0`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=95, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 0043ba80`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0043e4f0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0043e550`: 95 -> 95, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0043f260`: 95 -> 95, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0044c410`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00459600`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00459660`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0045ff90`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00460040`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00461d00`: 93 -> 93, tried 1 variants [toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00463140`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 004653b0`: 92 -> 92, tried 2 variants [toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 004662e0`: 94 -> 94, tried 5 variants [stack_layout=88, toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 00466a40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00497fd0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0049c6a0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0049d600`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=66].
+- 2026-10-09: `roc repair 2007-08 004a7760`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004a9140`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004a91a0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004aca90`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004b87f0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 004b8df0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004b8e40`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004befb0`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=85, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 004beff0`: 94 -> 94, tried 2 variants [toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 004c1880`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004c1b50`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 004cdae0`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004cdb40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d06b0`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=47].
+- 2026-10-09: `roc repair 2007-08 004d2410`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2530`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2590`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004f3740`: 92 -> 92, tried 2 variants [toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00506dd0`: 96 -> 96, tried 2 variants [immediate_constant=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00506e80`: 92 -> 92, tried 2 variants [toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005245d0`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005312e0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 00532ba0`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00537cc0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537d40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537e20`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537e80`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00545cc0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=55].
+- 2026-10-09: `roc repair 2007-08 005463c0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00549000`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00557260`: 92 -> 92, tried 3 variants [toggle_int_signedness=64, negate_comparison=80, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 00559c90`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0055e580`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0055ecb0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0055ed10`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 00563b50`: 94 -> 94, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=94, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 005658e0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 0056eb30`: 93 -> 93, tried 1 variants [toggle_char_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00570ef0`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 00573810`: 93 -> 93, tried 1 variants [toggle_char_signedness=93].
+- 2026-10-09: `roc repair 2007-08 005766f0`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00580ef0`: 96 -> 96, tried 1 variants [toggle_char_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00580f40`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00580f90`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00580fb0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00587220`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0058c5f0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 005940d0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594a00`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594ac0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594c70`: 94 -> 94, tried 2 variants [toggle_char_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594e60`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00594f30`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00595410`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00596ca0`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0059f2e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 005b4770`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 005b9190`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 005b91f0`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 005bee70`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 005bfe60`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005de0d0`: 96 -> 96, tried 3 variants [toggle_int_signedness=0, negate_comparison=17, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 005e9aa0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, swap_add_operands=93].
+- 2026-10-09: `roc repair 2007-08 005f9ff0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 005fc710`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00608490`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0060b1c0`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0061a9e0`: 94 -> 94, tried 1 variants [toggle_char_signedness=94].
+- 2026-10-09: `roc repair 2007-08 006274b0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 0062dba0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006319e0`: 96 -> 96, tried 1 variants [toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00631de0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00633350`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=91, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 0063a140`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0063bde0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0063d410`: 96 -> 96, tried 3 variants [immediate_constant=58, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 0063dcb0`: 92 -> 92, tried 1 variants [toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0064ec50`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0064f210`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00651d20`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00653ef0`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=0, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00655ce0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00658c90`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 0065e9a0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0065eb30`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 00661850`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00662440`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00663be0`: 93 -> 93, tried 4 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=91, swap_add_operands=93].
+- 2026-10-09: `roc repair 2007-08 00667120`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00668de0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 006692b0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0066b6b0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=93, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 0066c360`: 94 -> 94, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=92, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00673550`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006735b0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=73].
+- 2026-10-09: `roc repair 2007-08 0067a660`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 0067d8b0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00680590`: 96 -> 96, tried 2 variants [toggle_int_signedness=96, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00682a20`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006857e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0068b3b0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0068bde0`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 0068f780`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00690a90`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00692040`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 0069bd30`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0069d8d0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0069dac0`: 93 -> 93, tried 2 variants [toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006a1790`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 006a3fe0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 006a5a00`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006a79a0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 006a79f0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006acd40`: 93 -> 93, tried 1 variants [toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 006b2c50`: 93 -> 93, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006b2e20`: 92 -> 92, tried 4 variants [signedness=92, signedness=0, signedness=92, signedness=0].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=97].
+- 2026-10-09: `roc repair 2007-08 006b5e10`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006c6b70`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 006c71d0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006c79f0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006c9d40`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 006d2740`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006d29a0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 006d2bf0`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 006d6220`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006d81d0`: 97 -> 97, tried 5 variants [stack_layout=95, toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=89, swap_add_operands=97].
+- 2026-10-09: `roc repair 2007-08 006db4b0`: 91 -> 91, tried 3 variants [toggle_int_signedness=91, negate_comparison=83, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 006efeb0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=70].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f7150`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=87, negate_comparison=89, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 006fd1c0`: 93 -> 93, tried 3 variants [calling_convention=60, toggle_char_signedness=93, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006fd540`: 92 -> 92, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006ff8d0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0070a090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 0070ca80`: 93 -> 93, tried 2 variants [toggle_int_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 007111b0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00712bd0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00717430`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00717970`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 00718fd0`: 91 -> 91, tried 3 variants [toggle_int_signedness=91, negate_comparison=90, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 0071a580`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: `roc repair 2007-08 007273f0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00729350`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00729380`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00401880`: 94 -> 94, tried 1 variants [toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 1 variants [toggle_char_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0040b2a0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0040f750`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0040f9d0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 00411730`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00411770`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004117b0`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004129b0`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00412bc0`: 91 -> 91, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00412f20`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 00414700`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=58].
+- 2026-10-09: `roc repair 2007-08 004151f0`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00415db0`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 004175d0`: 90 -> 90, tried 2 variants [toggle_int_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041cf10`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 0041d790`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0041d870`: 90 -> 90, tried 1 variants [toggle_char_signedness=90].
+- 2026-10-09: `roc repair 2007-08 0041eb40`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0041f420`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0041f550`: 90 -> 90, tried 2 variants [toggle_char_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0041faa0`: 92 -> 92, tried 2 variants [branch_condition=72, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 004204d0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 0042b460`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0042bd10`: 92 -> 92, tried 2 variants [toggle_char_signedness=92, toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0042d840`: 90 -> 90, tried 1 variants [negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0042d8a0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=60].
+- 2026-10-09: `roc repair 2007-08 004356b0`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=95, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 0043ba80`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0043e4f0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 0043e550`: 95 -> 95, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0043e630`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=12].
+- 2026-10-09: `roc repair 2007-08 0043f260`: 95 -> 95, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=0, negate_comparison=64].
+- 2026-10-09: `roc repair 2007-08 00447d60`: 91 -> 91, tried 1 variants [toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 0044a1d0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 0044c3e0`: 91 -> 91, tried 2 variants [toggle_char_signedness=0, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 0044c410`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00459600`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00459660`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0045aa30`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0045bc50`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 0045ff90`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00460040`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00460120`: 91 -> 91, tried 2 variants [toggle_int_signedness=91, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00460190`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=86].
+- 2026-10-09: `roc repair 2007-08 00461d00`: 93 -> 93, tried 1 variants [toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00463140`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 004653b0`: 92 -> 92, tried 2 variants [toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 004662e0`: 94 -> 94, tried 5 variants [stack_layout=88, toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 00466a40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0046bcb0`: 90 -> 90, tried 1 variants [toggle_char_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00472e90`: 90 -> 90, tried 3 variants [toggle_int_signedness=90, negate_comparison=90, swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 00479ee0`: 91 -> 91, tried 4 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 0047a020`: 90 -> 90, tried 4 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88, swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 004932c0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 00497fd0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=85].
+- 2026-10-09: `roc repair 2007-08 0049c6a0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0049d600`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=66].
+- 2026-10-09: `roc repair 2007-08 004a7760`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004a9140`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004a91a0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004aca90`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004b87f0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 004b8aa0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, negate_comparison=39].
+- 2026-10-09: `roc repair 2007-08 004b8df0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004b8e40`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004befb0`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=85, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 004beff0`: 94 -> 94, tried 2 variants [toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 004c1880`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 004c1b50`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 004cdae0`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004cdb40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d06b0`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=47].
+- 2026-10-09: `roc repair 2007-08 004d2410`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2470`: 91 -> 91, tried 2 variants [toggle_int_signedness=91, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d24d0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2530`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004d2590`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004f3740`: 92 -> 92, tried 2 variants [toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00506dd0`: 96 -> 96, tried 2 variants [immediate_constant=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00506e80`: 92 -> 92, tried 2 variants [toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005245d0`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005245e0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00530190`: 91 -> 91, tried 4 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=82, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 00530880`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 005312e0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 00532ba0`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00537cc0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537d20`: 90 -> 90, tried 2 variants [toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537d40`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537e20`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00537e80`: 94 -> 94, tried 2 variants [toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00545cc0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=55].
+- 2026-10-09: `roc repair 2007-08 005463c0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00549000`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00549c80`: 91 -> 91, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=91, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005557d0`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00557260`: 92 -> 92, tried 3 variants [toggle_int_signedness=64, negate_comparison=80, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 00557290`: 90 -> 90, tried 1 variants [swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 00559800`: 91 -> 91, tried 1 variants [toggle_char_signedness=91].
+- 2026-10-09: `roc repair 2007-08 00559c90`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0055e580`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0055ecb0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0055ed10`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 00563b50`: 94 -> 94, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=94, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 005658e0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=83].
+- 2026-10-09: `roc repair 2007-08 0056eb30`: 93 -> 93, tried 1 variants [toggle_char_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00570ef0`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 00571aa0`: 91 -> 91, tried 2 variants [toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00573810`: 93 -> 93, tried 1 variants [toggle_char_signedness=93].
+- 2026-10-09: `roc repair 2007-08 005766f0`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057b990`: 91 -> 91, tried 1 variants [toggle_char_signedness=91].
+- 2026-10-09: `roc repair 2007-08 0057bbf0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 00580ef0`: 96 -> 96, tried 1 variants [toggle_char_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00580f40`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00580f90`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00580fb0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, toggle_int_signedness=94].
+- 2026-10-09: `roc repair 2007-08 00587010`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00587220`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0058c5f0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 005940d0`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594a00`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594ac0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594c70`: 94 -> 94, tried 2 variants [toggle_char_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00594e60`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00594f30`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00595410`: 94 -> 94, tried 2 variants [toggle_char_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00596ca0`: 93 -> 93, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0059c7d0`: 91 -> 91, tried 3 variants [toggle_int_signedness=0, negate_comparison=0, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 0059f2e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 005a6270`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=81].
+- 2026-10-09: `roc repair 2007-08 005b4770`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 005b9130`: 90 -> 90, tried 4 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89, swap_add_operands=90].
+- 2026-10-09: `roc repair 2007-08 005b9190`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 005b91f0`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 005bee70`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 005bfe60`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005c9520`: 91 -> 91, tried 1 variants [toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 005db160`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 005de0d0`: 96 -> 96, tried 3 variants [toggle_int_signedness=0, negate_comparison=17, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 005e9aa0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, swap_add_operands=93].
+- 2026-10-09: `roc repair 2007-08 005f9ff0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 005fb7d0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 005fc710`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00608490`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0060b1c0`: 92 -> 92, tried 1 variants [toggle_char_signedness=92].
+- 2026-10-09: `roc repair 2007-08 0061a9e0`: 94 -> 94, tried 1 variants [toggle_char_signedness=94].
+- 2026-10-09: `roc repair 2007-08 0061e700`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006274b0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00629ea0`: 91 -> 91, tried 4 variants [toggle_char_signedness=89, toggle_int_signedness=89, negate_comparison=89, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 0062dba0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006319e0`: 96 -> 96, tried 1 variants [toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00631aa0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00631c50`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=61].
+- 2026-10-09: `roc repair 2007-08 00631de0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00632840`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00633350`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=91, negate_comparison=78].
+- 2026-10-09: `roc repair 2007-08 00636360`: 91 -> 91, tried 2 variants [toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006365b0`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00637130`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 0063a140`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0063bde0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0063d410`: 96 -> 96, tried 3 variants [immediate_constant=58, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 0063dcb0`: 92 -> 92, tried 1 variants [toggle_int_signedness=92].
+- 2026-10-09: `roc repair 2007-08 00643ac0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00644200`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0064ad50`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0064ec50`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 0064f210`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00651d20`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00653820`: 90 -> 90, tried 2 variants [toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00653ef0`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=0, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00655ce0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 006571f0`: 90 -> 90, tried 1 variants [toggle_char_signedness=90].
+- 2026-10-09: `roc repair 2007-08 00658c90`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 0065e9a0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0065eb30`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 00661850`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00662440`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006636f0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00663be0`: 93 -> 93, tried 4 variants [toggle_char_signedness=93, toggle_int_signedness=0, negate_comparison=91, swap_add_operands=93].
+- 2026-10-09: `roc repair 2007-08 00667120`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 00668de0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00668ec0`: 91 -> 91, tried 1 variants [toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 006692b0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=0, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 0066b6b0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=93, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 0066c360`: 94 -> 94, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=92, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00670ba0`: 90 -> 90, tried 2 variants [toggle_int_signedness=90, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00671dd0`: 90 -> 90, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00671f00`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00673550`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006735b0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00673800`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 3 variants [toggle_char_signedness=98, toggle_int_signedness=98, negate_comparison=96].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=73].
+- 2026-10-09: `roc repair 2007-08 0067a660`: 96 -> 96, tried 4 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=95, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 0067d8b0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00680590`: 96 -> 96, tried 2 variants [toggle_int_signedness=96, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00681140`: 90 -> 90, tried 2 variants [toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 00682a20`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006857e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00685a20`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 00685ac0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00685b10`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 00685b60`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 006896b0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 0068b3b0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0068bde0`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=0, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 0068f780`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 00690a90`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00692040`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 006923b0`: 90 -> 90, tried 2 variants [toggle_char_signedness=90, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00692a30`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00698c10`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 0069bb10`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=91, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 0069bd30`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=93].
+- 2026-10-09: `roc repair 2007-08 0069d8d0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0069dac0`: 93 -> 93, tried 2 variants [toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006a1790`: 94 -> 94, tried 4 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=91, swap_add_operands=94].
+- 2026-10-09: `roc repair 2007-08 006a3fe0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 006a5210`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 006a5a00`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006a79a0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 006a79f0`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 006acd40`: 93 -> 93, tried 1 variants [toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 006b2c50`: 93 -> 93, tried 3 variants [toggle_char_signedness=0, toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006b2e20`: 92 -> 92, tried 4 variants [signedness=92, signedness=0, signedness=92, signedness=0].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=97].
+- 2026-10-09: `roc repair 2007-08 006b5e10`: 95 -> 95, tried 2 variants [toggle_int_signedness=95, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006c6b70`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 006c6d00`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=0, negate_comparison=84].
+- 2026-10-09: `roc repair 2007-08 006c71d0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006c79f0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006c9d40`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 006ce8b0`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 006d2740`: 93 -> 93, tried 2 variants [toggle_int_signedness=93, negate_comparison=92].
+- 2026-10-09: `roc repair 2007-08 006d29a0`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 006d2a00`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 006d2bf0`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 006d3b80`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 006d6220`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006d81d0`: 97 -> 97, tried 5 variants [stack_layout=95, toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=89, swap_add_operands=97].
+- 2026-10-09: `roc repair 2007-08 006db4b0`: 91 -> 91, tried 3 variants [toggle_int_signedness=91, negate_comparison=83, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 006e0f50`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=88, negate_comparison=88].
+- 2026-10-09: `roc repair 2007-08 006efeb0`: 93 -> 93, tried 3 variants [toggle_char_signedness=93, toggle_int_signedness=93, negate_comparison=70].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f7150`: 92 -> 92, tried 4 variants [toggle_char_signedness=92, toggle_int_signedness=87, negate_comparison=89, swap_add_operands=92].
+- 2026-10-09: `roc repair 2007-08 006fd1c0`: 93 -> 93, tried 3 variants [calling_convention=60, toggle_char_signedness=93, negate_comparison=90].
+- 2026-10-09: `roc repair 2007-08 006fd540`: 92 -> 92, tried 1 variants [toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 006ff8d0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=79].
+- 2026-10-09: `roc repair 2007-08 0070a090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 0070ca80`: 93 -> 93, tried 2 variants [toggle_int_signedness=0, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 0070f600`: 90 -> 90, tried 1 variants [toggle_int_signedness=90].
+- 2026-10-09: `roc repair 2007-08 007111b0`: 93 -> 93, tried 2 variants [toggle_char_signedness=93, toggle_int_signedness=93].
+- 2026-10-09: `roc repair 2007-08 00712bd0`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00714d40`: 90 -> 90, tried 3 variants [toggle_char_signedness=90, toggle_int_signedness=90, negate_comparison=89].
+- 2026-10-09: `roc repair 2007-08 00717430`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 00717970`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=91].
+- 2026-10-09: `roc repair 2007-08 00718fd0`: 91 -> 91, tried 3 variants [toggle_int_signedness=91, negate_comparison=90, swap_add_operands=91].
+- 2026-10-09: `roc repair 2007-08 0071a580`: 91 -> 91, tried 2 variants [toggle_char_signedness=91, toggle_int_signedness=91].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: `roc repair 2007-08 007273f0`: 92 -> 92, tried 3 variants [toggle_char_signedness=92, toggle_int_signedness=92, negate_comparison=80].
+- 2026-10-09: `roc repair 2007-08 00729350`: 94 -> 94, tried 3 variants [toggle_char_signedness=94, toggle_int_signedness=94, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00729380`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00409db0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00412f20`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 004204d0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 0042b460`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004356b0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: Sixth hidden-exact batch: `0069dac0` 93→100, `006a3fe0` 92→100, `006a5a00` 95→100, `006efeb0` 93→100, `00712bd0` 91→100. All local `roc check` MATCH; exact count 10032→10037.
+- 2026-10-09: Diffs: typed member-function pointer call; nested constructor subobjects/vtables; typed subobject receiver; repeated vtable reload; typed receiver plus local out-parameters. No new model request.
+- 2026-10-09: Repair webhook added. Each leased-partial and LLM-partial compiler repair emits async Discord payload with client/address, before→after score, stage, tried count, seconds, categories; source omitted.
+- 2026-10-09: Server rescan found 4 remaining hidden exacts: `004b8aa0` 91→100, `004d06b0` 94→100, `006a79f0` 94→100, `006c79f0` 92→100. Retrieved sources all local `roc check` MATCH; exact count 10037→10041.
+- 2026-10-09: Diffs: typed free pointer cleanup; explicit bool ternary; typed tail receiver; imported Windows API function pointers. No new model request.
+- 2026-10-09: `roc repair 2007-08 0043ba80`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0043e4f0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0043e550`: 95 -> 95, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0043f260`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: Server source query found hidden exact `004356b0` (95 -> 100). DeepSeek source changed Qt-like declarations to exact unit/method declarations; local `roc check` = MATCH. Applied to `src/2007-08/004356b0.cpp`.
+- 2026-10-09: DeepSeek pinned batch `00401990,0040a820,00412f20,004204d0,0042b460`: compiler prepass 95→95; AI 0 exact, 0 accepted. Outputs repeated semantic approximations / truncation; no source change.
+- 2026-10-09: DeepSeek found `0043e550` server-verified 100% (95 -> 100). One source-shape change: base padding boundary `0x11c - 8` -> `0x124 - 8`; local check MATCH. Exact count 10007.
+- 2026-10-09: Compiler prepass `00506dd0,00437570,004a7b10,004befb0,0059f2e0`: 0 gains; all remained 96 locally (server best 00506dd0=98).
+- 2026-10-09: DeepSeek batch same 5: `00506dd0` 98 no gain, `004befb0` 96 no gain, `004a7b10` 96 no gain; server disconnected before remaining 2. No accepted source changes.
+- 2026-10-09: Added bounded `base_padding` compiler mutator from 0043e550 evidence. Full legacy test runner stopped at pre-existing `test_mine_digest` encoding assertion before new test; direct mutator check required.
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a7760`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004a9140`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a91a0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004b8df0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004b8e40`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: New exact win: `00409db0` 95 -> 100. Target loaded member receiver in ECX before direct no-argument helper call; source free `__stdcall` helper omitted receiver. Modeling helper as member `thiscall` reproduced exact bytes. Added classifier evidence and bounded `direct_member_noarg` mutator.
+- 2026-10-09: `00675890` 98% investigated. Typed return/member receiver shape fixed `mov ecx,eax` middle mismatch, but compiler retained wrong final register order; best tested result 94%, rejected. Needs source ordering/alias evidence, not blind signedness mutations.
+- 2026-10-09: `00460090` 97% classified as missing/extra + indirect-call selection mismatch; guided repair produced zero applicable candidates. No source change accepted.
+- 2026-10-09: `00724ed2` 98% has exact control flow except compiler-emitted trailing `int3` after noreturn imported exception call. Three bounded mutations plus removing/replacing `__assume(0)` stayed 98%; no accepted change.
+- 2026-10-09: Added `roc worker --addr` target pinning. AI repair can now isolate exact near-partial addresses instead of leasing unrelated queue work. Local server/Ollama restarted; DeepSeek retry was blocked by stale lease cooldown before generation, so no match claimed.
+- 2026-10-09: Clean single-server retry pinned `00675890`, `00724ed2`, `00460090` to DeepSeek. Requests stalled before reply; no source/full-match change. Stale lease released; exact total remains `9997`.
+- 2026-10-09: DeepSeek near-partial retry completed: `00724ed2` generated identical 98% source via fallback; forced DeepSeek on `00675890` generated identical 98% source; forced DeepSeek on `00460090` truncated at 1536 tokens and stayed 97%. No source accepted, exact total remains `9997`.
+- 2026-10-09: Removed near-partial LLM bottleneck: added `roc worker --near-repair`, preserving 90%+ source and requesting one minimal evidence-backed change; output cap can reach 8192. DeepSeek test on `00675890` still repeated source at 98%, proving prompt/output bottleneck fixed but source-shape ambiguity remains.
+- 2026-10-09: DeepSeek found exact `00675890` 98% -> 100% after compiler prepass. Source changes: helper returns modeled as `int`, returned value explicitly cast to receiver for member call, final pointer store inlined, flag temporary removed. Reproduced without LLM via `near_return_shape_variants`; local `roc check` confirms `MATCH`. Exact total `9997` -> `9998`.
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 0062dba0`: 97 -> 97, tried 2 variants [toggle_char_signedness=97, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00675890`: 98 -> 98, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0067d8b0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006d81d0`: 97 -> 97, tried 5 variants [stack_layout=95, toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=89, swap_add_operands=97].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a7760`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004befb0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00506dd0`: 96 -> 96, tried 2 variants [immediate_constant=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00580ef0`: 96 -> 96, tried 1 variants [toggle_char_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0059f2e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 005de0d0`: 96 -> 96, tried 3 variants [toggle_int_signedness=0, negate_comparison=17, swap_add_operands=96].
+- 2026-10-09: `roc repair 2007-08 006319e0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 00506dd0`: 96 -> 96, tried 2 variants [immediate_constant=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0059f2e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0063d410`: 96 -> 96, tried 3 variants [immediate_constant=58, toggle_int_signedness=96, negate_comparison=94].
+- 2026-10-09: `roc repair 2007-08 0064f210`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00653ef0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0067a660`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00680590`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: Second-batch exact regression sources all locally MATCH. Full suite currently stops at existing `test_mine_digest`: current Discord payload has `Verification` field before `Workers`, while test expects old field indexes. Hidden-exact regression passes when called directly.
+- 2026-10-09: Third hidden-exact batch: `00530880` 90→100, `00549000` 92→100, `00580f90` 94→100, `00580fb0` 94→100, `0059c7d0` 91→100. All stored server sources locally compiled/MATCH; exact count 10017→10022.
+- 2026-10-09: Diffs classified: typed model/helper fastcall; indirect destructor function pointer; nested subobject method layout (two variants); switch normalization from subtract-and-switch to direct mode cases. No new model request.
+- 2026-10-09: Fourth hidden-exact batch: `005f9ff0` 95→100, `005fc710` 95→100, `00608490` 95→100, `006274b0` 92→100, `0063dcb0` 92→100. All local `roc check` MATCH; exact count 10022→10027.
+- 2026-10-09: Diffs: imported free function pointer; guarded method forwards original arg; typed receiver call; nested child/final target receiver types; typed global pointer plus void return. No new model request.
+- 2026-10-09: Worker pipeline changed: every leased partial with source now runs bounded guided `mutate.improve` before refsource/LLM. Verified gains submit immediately; 100% stops job. Mutation attempt/time enters worker metrics as `round: mutate`; defaults preserved for source-only and AI workers.
+- 2026-10-09: Fifth hidden-exact batch: `0064ec50` 93→100, `0065eb30` 94→100, `00662440` 93→100, `006692b0` 95→100, `00690a90` 96→100. All local `roc check` MATCH; exact count 10027→10032.
+- 2026-10-09: Worker now also repairs each newly generated LLM partial before submit. Pinned source-only proof `00437570`: `96% -> 96%, tried 0`, released; no model cost.
+- 2026-10-09: `roc repair 2007-08 006857e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00412f20`: 95 -> 95, tried 1 variants [toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 004204d0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0042b460`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004356b0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0043ba80`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0043e4f0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0043e550`: 95 -> 95, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=95].
+- 2026-10-09: `roc repair 2007-08 0043f260`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00437570`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a7b10`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 004befb0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00506dd0`: 96 -> 96, tried 2 variants [immediate_constant=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0059f2e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 00460090`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0057bfd0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0062d5f0`: 97 -> 97, tried 3 variants [toggle_char_signedness=97, toggle_int_signedness=97, negate_comparison=95].
+- 2026-10-09: `roc repair 2007-08 00637440`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00724ed2`: 98 -> 98, tried 3 variants [toggle_int_signedness=0, negate_comparison=96, swap_add_operands=98].
+- 2026-10-09: `roc repair 2007-08 006773e0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006b46a0`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006f23d0`: 97 -> 97, tried 2 variants [toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006f2400`: 97 -> 97, tried 3 variants [immediate_constant=97, toggle_int_signedness=97, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 006a4210`: 97 -> 97, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006857e0`: 96 -> 96, tried 2 variants [toggle_char_signedness=0, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 00692040`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006a79a0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 006d2bf0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0070a090`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00421090`: 96 -> 96, tried 3 variants [toggle_char_signedness=96, toggle_int_signedness=96, negate_comparison=77].
+- 2026-10-09: `roc repair 2007-08 006319e0`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0064f210`: 96 -> 96, tried 2 variants [toggle_char_signedness=96, toggle_int_signedness=96].
+- 2026-10-09: `roc repair 2007-08 0067a660`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 00680590`: 96 -> 96, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a9140`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004a91a0`: 95 -> 95, tried 3 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=0].
+- 2026-10-09: `roc repair 2007-08 004b8df0`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004b8e40`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 004c1880`: 95 -> 95, tried 4 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95].
+- 2026-10-09: `roc repair 2007-08 00401990`: 95 -> 95, tried 2 variants [toggle_char_signedness=95, toggle_int_signedness=0].
+- 2026-10-09: `roc repair 2007-08 004021e0`: 91 -> 91, tried 3 variants [toggle_char_signedness=91, toggle_int_signedness=0, negate_comparison=87].
+- 2026-10-09: `roc repair 2007-08 0040a820`: 95 -> 95, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040a9d0`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040ac50`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040b2a0`: 92 -> 92, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040f4f0`: 94 -> 94, tried 0 variants [].
+- 2026-10-09: `roc repair 2007-08 0040f750`: 93 -> 93, tried 0 variants [].
+- 2026-10-09: Removed separate per-repair Discord webhook. Verified match submissions now use the existing batched server Mining Digest webhook; repair details remain in JSON reports and local findings logs, avoiding webhook spam.
+- 2026-10-09: Launched mass compiler-only near-match pass for all 507 stored 2007-08 functions scoring 90-99%, pinned by address, 16 workers, guided mutations, no model/cloud. Initial state: 9,804 exact and 507 near; no early exact conversion observed. Survivors will be sent to DeepSeek only after this pass completes.
+- 2026-10-09: Found mass-pass bottleneck: source-only workers still ran expensive unrelated 2016 reference compilation before release. Moved source-only release immediately after compiler repair; normal model workers retain reference-candidate path.
+- 2026-10-09: Method labels fixed: deterministic workers now report `roc repair` instead of model `none`; batch fingerprint submissions report `roc fingerprint`. Mining Digest model field now describes the actual method.
+- 2026-10-09: Mass compiler repair pass reached terminal: 507-target pinned job set, 40 completed in this server window, 23 exact events in the final event window; current authoritative pool is 9,827 exact and 486 near (90-99%). Some targets were concurrently claimed by existing server workers, so DeepSeek phase pins the current 486 survivor set.
+- 2026-10-09: DeepSeek exact `00651ee0` (90→100), locally recompiled/verified 100. Accepted source uses typed `void*` receivers plus explicit `__thiscall` virtual-slot expressions at `0x18c/4` then `0x16c/4`; classified virtual receiver + slot ABI. Prior source unavailable in server history, so no claimed byte-level source diff; pattern recorded for future compiler reproduction.
+- 2026-10-09: Reproduction gate for `00651ee0`: accepted DeepSeek source baseline 100%; `mutate.improve(..., guided=True)` retained 100% with 0 candidates, and local `match.check_text` confirmed exact bytes. No unverified source applied.
+- 2026-10-09: DeepSeek mass run encountered tunnel Bad Gateway after 96 jobs (12 errors); no source accepted from failed requests. Resumed local pinned high shard for all 74 current 98-99% survivors with 8 workers, fallback disabled, 409,600-token/$25 cap.
+- 2026-10-09: Hardened local worker reconnect: `127.0.0.1`/`localhost` workers no longer switch to the public tunnel after transient errors, preventing Bad Gateway from interrupting pinned DeepSeek batches. Remote workers retain tunnel migration.
+- 2026-10-09: Near-repair cloud calls now use two bounded retries instead of infinite retry. This prevents one DeepSeek/tunnel outage from pinning the whole batch indefinitely; normal non-repair cloud workers preserve retry-forever behavior.
+- 2026-10-09: Bounded high-shard DeepSeek retry completed/stopped after 60 recent jobs, 8 provider failures, 0 new exact conversions. Existing 00651ee0 remains the only newly verified DeepSeek exact in this phase; stop repeating this high-shard profile and move to different evidence/mismatch families.
+- 2026-10-09: Bounded 95-97% non-segment shard completed: 31/32 jobs, 0 errors, 0 exact conversions, 0 improvements. This family is currently zero-gain; do not immediately repeat same address/profile.
+- 2026-10-09: Repair telemetry now persists baseline mismatch class plus up to eight decoded evidence labels in each worker-metrics job and mutate round. Future shard selection can use evidence instead of score alone; no full source/assembly is duplicated.
+- 2026-10-09: Deterministic 20-address 95-99% shard: 18 jobs completed before server cooldowns, 0 exact conversions and 0 improvements. Classifier grouped 13 as relocation-normalized exact, 2 missing/extra-instruction, 2 missing-return-value, and 1 unknown. Compiler-only repair did not move the actionable cases.
+- 2026-10-09: DeepSeek retry on the two actionable addresses was correctly skipped by server cooldown; 0 jobs leased and no cloud tokens spent. Do not count this as a model failure.
+- 2026-10-09: Fixed `roc worker --source-only` inheriting saved cloud model settings. It now reports `roc repair` and bypasses cloud permission checks; verified with two jobs and pushed as `a60b29d51`.
+- 2026-10-09: Follow-up 10-address 95-99% compiler shard: 0 exact conversions and 0 improvements. Evidence split: 4 missing/extra-instruction, 2 missing-return, 1 register-allocation, 3 relocation-normalized exact. Candidate compiler mutations (up to 10) did not improve any survivor.
+- 2026-10-09: Bounded DeepSeek survivor shard (4 uncooled 98% targets, no fallback, 4-request/$10 cap): 0 exact conversions and 0 final improvements. One response emitted a mismatched `00772a80` header while repairing `00772260`; accepted source was not applied. Classifications included missing/extra-instruction, stack-frame, and immediate-constant mismatch; no reusable compiler pattern discovered.
+- 2026-10-09: New bounded 96% DeepSeek shard (4 targets, no fallback, 4-request/$10 cap): 0 exact conversions and 0 final improvements after compiler repair. Responses supplied plausible source hypotheses but compiler validation rejected every change; no new non-LLM pattern.
+- 2026-10-09: Near-repair bottleneck removed: `--near-repair` now skips unrelated 2016 reference-source compilation and preserves the stored source as the LLM base. Normal workers still compile reference candidates. Full `tests/test_roc.py` and bytecode compilation pass.
+- 2026-10-09: Live validation exposed a routing bug in that optimization: `work_one` lacked the CLI-local `near_repair` variable, causing four DeepSeek jobs to stop after compiler repair with `NameError`; no source was submitted. Fixed to read the job's persisted `near_repair` flag. Rerun required.
+- 2026-10-09: Verified DeepSeek repair `2007-08:00775fd0`: baseline 99%, compiler repair 99% with 0 variants, DeepSeek 100%, server accepted exact. Retrieved source to `src/2007-08/00775fd0.cpp`; local `match.check_text` = 100%; `mutate.improve(..., guided=True)` retained 100% with 0 candidates. Source shape is a typed global `Init` call, direct global store, then helper call (global-layout/call-order/immediate pattern). Usage: 1,482 tokens (1,358 input / 124 output); provider cost unavailable. Prior server source was not retained, so exact textual diff is unavailable; no unverified change applied.
+- 2026-10-09: Follow-up 10-target 99% compiler shard produced 0 gains. Corrected near-repair DeepSeek shard then tested 4 targets with 0 exact conversions/improvements; three responses carried mismatched function headers/addresses and were rejected. No new pattern; exhausted this segment-init profile for now.
+- 2026-10-09: Second live check found the near-repair skip still read the wrong scope (`job` instead of `provider_options`), so four cloud jobs still entered 2016 source compilation and hit the token cap; no source was accepted. Fixed the condition to read persisted provider options; rerun after cooldown.
+- 2026-10-09: Post-fix validation on `005d2600` reached compiler repair then cloud-budget exhaustion without printing any 2016 source stage, confirming the bottleneck skip is active. No source accepted and no exact conversion.
+- 2026-10-09: Corrected near-repair live test `00559470` completed one DeepSeek request under a 30k-token cap with no 2016 reference build. Model invented a numbered-field layout; safety rejection held score at 98%, no source submitted, 0 exact conversion.
+- 2026-10-09: Small 99% initializer test `00773270` completed one corrected near-repair request with no reference build; model reached only 99% and was rejected by strict improvement gate. 0 exact conversion, no reusable change.
+- 2026-10-09: Four non-segment 98% compiler repairs (`00559e90`, `0055ece0`, `005b6e50`, `006ca4f0`) produced 0 gains. Immediate DeepSeek lease for `005b6e50` was blocked by the server's ~7-minute cooldown, so no tokens spent. Fresh `00565730` then ran through corrected near-repair with no reference build; DeepSeek stayed 98%, rejected, 0 exact conversion.
+- 2026-10-09: Four classifier-selected 95% missing/extra-instruction compiler repairs (`0043f260`, `0043e4f0`, `0043ba80`, `004204d0`) produced 0 gains. DeepSeek test `004932c0` then stayed 95% and was rejected; no reusable list-layout change.
+- 2026-10-09: Larger 30-target non-segment compiler shard (90-99%, 8 workers, guided mutations, no model) completed in roughly 50 seconds with 0 exact conversions, 0 improvements, and 0 errors. Classifications: 11 missing-return, 9 missing/extra-instruction, 4 register-allocation, 6 unknown, 4 instruction-selection, 3 immediate, 1 stack-layout, 1 code-size. Repair timing remains acceptable; no speculative optimization added.
+- 2026-10-09: Requested 500-target compiler-only run completed with 16 workers and max size 512. Authoritative 2007-08 exact pool rose from 9,830 to 9,841 during the run; shared workers also produced lower-score improvements. One directly attributed exact repair was `004aa3f0`, 89%→100%, via two bounded calling-convention variants; local pre-source reproduced 89%→100% and accepted source verifies 100%. Pattern `ret-cleanup-calling-convention` added.
+- 2026-10-09: Strict-score lease filter (`90 <= score <= 99`) was added to server and worker CLI, with tests passing and commit `67accd009`. The next 500 compiler-only batch leased only the requested score range, but the local client finished `0 done / 0 matched / 0 improved / 13 errors` after a server restart interrupted leases. No lower-score targets were admitted; authoritative exact pool was 9,854, up from 9,841 due to concurrent workers, so those 13 exact changes are not attributed to this failed client batch.
+- 2026-10-09: Classifier-ranked DeepSeek top-20 survivor shard (calling-convention, missing-return, register-allocation priority; strict 90-99 filter) completed `20/20`, `0 exact`, `0 improved`, `0 errors`. No source reached the compiler reproduction gate and no reusable pattern was found. Stop repeating this exact DeepSeek/profile combination; future work must change source evidence or mismatch family.
+- 2026-10-09: Removed duplicate `roc.py server --tunnel --publish` process sharing port 8765; the idle duplicate explained the earlier lease outage. Stable-server validation with 20 fresh 90-99% instruction/constant survivors completed `20/20`, `0 errors`, `0 exact`, `0 improvements`. Infrastructure is fixed, but this compiler-only family is also zero-gain and should not be repeated unchanged.
+- 2026-10-09: Added bounded exact-callee source hints: up to four direct callees, exact server score only, 900-byte clue cap, plus regression coverage. Live test on `00772560` (99%, exact callee `00578930`) reached the model but Qwen emitted unrelated header/bytes for `00770a40`; strict validation rejected it and kept 99%. This identifies address contamination as the next bottleneck; no match or pattern claimed.
+- 2026-10-09: A second contaminated partial (`00776140`, 97%, stored header `007708f0`) copied the stale “Make this compile” address and then emitted inline asm. Expanded near-repair sanitization now drops all leading comment metadata before model input; this is a context-integrity fix, not yet a match gain.
+- 2026-10-09: Post-sanitizer test `00488060` (99%, stored header `005ad6a0`) completed 1/1 with no server errors and no score gain. Stale metadata was no longer the observed failure; Qwen still emitted inline asm and was rejected. Do not treat sanitizer as a match boost yet.
+- 2026-10-09: Near-repair now uses a strict minimal-C++ prompt and quarantines a target for 15 minutes after two recorded inline-asm rejections. The quarantine is per client/address, compiler repair still runs first, and regression tests pass. This stops repeated LLM waste without changing exact-score validation.
+- 2026-10-09: Evidence-guided 20-target local-Qwen gate completed: exact-callee hints, stale-header sanitization, strict 90-99 leases, compiler repair first. Result 20/20, 0 exact, 0 improvements, 0 errors; generated candidates scored 37-99% and all were rejected by the verified improvement gate. Per stopping rule, pause this route. Next work must use different evidence/toolchain/source provenance, not more of this profile.
+- 2026-10-09: Added caller/callee ABI graph facts and explicit `--abi-only` compiler mutation routing. Fresh 20-target 99% shard used exact-callee evidence and ABI/return/type categories only; 20 lease attempts printed, all remained 99%, 0 exact and 0 improvements. No ABI pattern promoted; pause this route too.
+- 2026-10-09: `roc repair 2007-08 004befb0`: 96 -> 96, tried 4 variants [commutative=96, commutative=0, commutative=0, commutative=0].
+- 2026-10-09: `roc repair 2007-08 004c1880`: 95 -> 95, tried 9 variants [toggle_char_signedness=95, toggle_int_signedness=95, negate_comparison=92, swap_add_operands=95, commutative=95, commutative=0, commutative=0, commutative=0, commutative=0].
+
+- 2026-10-12: 2008-06-only authentic Ogre header recovery: `0068e010` 98→100 and `006999f0` 69→100, server verified and retrieved sources locally recompiled at 100. `#undef OGRE_NONCLIENT_BUILD` before OgreSceneManager.h restores client dllimport declarations; explicit std::map<const Ogre::Camera*, Ogre::VisibleObjectsBoundsInfo> instantiation emits both functions. Plain `-dll` recipe leaves OGRE_NONCLIENT_BUILD/dllexport active and stayed 98. Build 50727 recovered the node constructor; build 21022 additionally recovered map operator[]. Neighbor header container expansion emitted 842/966 functions with zero additional exacts. Manifest/body/hash/receipts in `work/goal-resume-20261012-import/`; no model calls, boundary edits, or other-client submissions.
+
+- 2026-10-12: Continued 2008-06-only authentic Ogre client-header recovery: 10 new exact submissions, each retrieved from server and locally recompiled at 100. TexturePtr `_Copy_opt` 0068e0b0 (92→100); RTTI-backed SharedPtr<GpuProgramParameters>::destroy 0068dd90 (51→100); LightInfo/light comparator templates 0068e200 (59→100), 0068e390 (48→100), 0068e440 (50→100), 0068e100 (87→100), 00690620 (92→100), 00697960 (99→100), 00697ad1 (75→100), 00697e40 (97→100). Address list in verification journal is authoritative. HeaderAccess exposes genuine protected nested types via public using declarations; no fabricated type/layout or method body. Best library headers were Ogre 1.4.5, with compiler 50727 or 21022 per emitted function; client import mode fixed direct/imported call and temporary stack behavior. Four RTTI types × two header versions × two compiler builds yielded one new exact; TexturePtr copy yielded one; light templates yielded eight. Sources, generated TUs, body/source hashes and receipts in work/goal-resume-20261012-ogre-{rtti,copy,light,final}. No model calls, boundary edits, or other-client mining.
+
+- 2026-10-12: 2008-06-only authentic Ogre method recovery: 0068bec0 (95→100) from unchanged _updateSceneGraph body compiled on a state-free SceneManager-derived receiver using client-import headers. Generated 106 short genuine SceneManager bodies (under 250 source characters), preserving member accesses and inherited layout; two header versions × compiler 50727/21022 yielded six additional unique server-verified exacts: 0068b800 (80→100), 0068bae0 (92→100), 0068bb80 (85→100), 0068bc20 (80→100), 0068ca40 (91→100), 0069d960 (60→100). All seven retrieved authoritative sources locally recompiled at 100. Resource-container batch initially failed because full list<ResourcePtr> instantiation requires unavailable operator<; selective list push_back/clear recovery compiled but all four header/compiler variants yielded zero new exacts. Evidence in work/goal-resume-20261012-ogre-{scene-update,short-methods,expand}; generated bodies and source hashes retained. No model calls, boundary edits, fabricated storage layouts, or other-client mining.
+
+- 2026-10-12: 2008-06-only medium Ogre SceneManager recovery: 13 unique new exact submissions from 47 authentic method bodies of 250–1599 source characters, inherited real header layout and client-import call declarations. Header 1.4.5 / compiler 21022 yielded all new exacts; compiler 50727 and 1.4.9 alternatives yielded zero. All accepted authoritative sources retrieved and locally recompiled at 100: 0068b6f0 (67→100), 0068bf40 (92→100), 0068c0b0 (82→100), 0068c570 (78→100), 0068c650 (62→100), 0068c8a0 (91→100), 0068c950 (80→100), 0068d980 (99→100), 00695960 (79→100), 00698890 (91→100), 00699740 (54→100), 0069a470 (62→100), 0069a950 (44→100). MovableObject follow-up: 20 authentic bodies × two headers × two compilers; initial failures due to missing OgreTagPoint.h, fixed include then zero gains in four compilable configurations. Retain negative result; do not repeat unchanged. Evidence/body/source hashes and receipts in work/goal-resume-20261012-ogre-{medium-methods,movable-methods}. No model calls, boundary changes, or other-client mining.
+
+- 2026-10-12: 2008-06-only large Ogre SceneManager recovery: 15 authentic method bodies (1600–6499 source characters), unchanged inherited header layout and client-import mode, tested two header versions × compiler 50727/21022. Ogre 1.4.5 / compiler 21022 yielded seven new exact submissions; all authoritative stored sources retrieved and locally recompiled at 100: 006903a0 (90→100), 00692770 (71→100), 00694f60 (57→100), 00695260 (72→100), 0069b2e0 (63→100), 0069b6d0 (50→100), 0069d110 (50→100). AutoParamDataSource follow-up: 76 authentic methods × four configurations; initial failures from duplicated default argument and missing original projection matrix constant, both repaired preserving source values; four compilable configurations yielded zero exact gains. Evidence/generated bodies/hash/receipts in work/goal-resume-20261012-ogre-{large-methods,auto-params}. No model calls, boundary changes, or other-client mining.
+
+- 2026-10-12: 2008-06-only remaining Ogre SceneManager method recovery: 31 authentic bodies including previously excluded return types and methods exceeding 6499 source characters. Initial compile failed due to missing OgreSpotShadowFadePng.h/OgreShadowVolumeExtrudeProgram.h; adding original source includes repaired all four header/compiler configurations. 1.4.5/50727 yielded two new exacts, 1.4.5/21022 six; 1.4.9 variants zero. Eight unique authoritative sources retrieved and locally recompiled at 100: 0068bcd0 (83→100), 0068d780 (79→100), 0068c2e0 (92→100), 0068f750 (59→100), 0068fa10 (48→100), 0069da20 (55→100), 0069daf0 (50→100), 0069dc10 (81→100). This completes coverage of 199 parsed non-constructor SceneManager methods across short/medium/large/remaining generated-header batches, not all unresolved client functions. Preserve inherited authentic class layout and original method bodies; no fabricated field offsets. Evidence/generated TUs/hash/receipts: work/goal-resume-20261012-ogre-remaining-methods. No model calls, boundary changes, or other-client mining.
+
+- 2026-10-12: 2008-06-only follow-up stopping gates: eight fresh authentic client-header SceneManager configurations (four source cohorts, compiler 21022, /Ob1 and /GS-on alternatives) yielded zero exacts. SceneNode recovery initially required original OgreWireBoundingBox.h and hit protected base-pointer access rules in setInSceneGraph/_updateBounds; isolated those two bodies, restored original header, and compiled 35 remaining/expanded-return-type bodies across 1.4.5/1.4.9 and compiler 50727/21022, zero exacts. Evidence/generated body hashes and failure diagnostics under work/goal-resume-20261012-{scene-inline,ogre-scenenode}; do not repeat unchanged profiles. Render queue follow-up journal retained separately under work/goal-resume-20261012-ogre-queue. No model calls, boundary changes, or other-client mining.
+- 2026-10-12: Render-queue stopping gate completed: eight authentic QueuedRenderableCollection bodies across the same four header/compiler configurations compiled successfully with zero exact gains. No submission. Park this inherited-client-header route for these methods.
+
+- 2026-10-12: 2008-06-only Camera/Light client-import stopping gates: 62 authentic Camera methods and 44/45 Light methods across Ogre 1.4.5/1.4.9 and compiler 50727/21022 compiled with zero new exacts. Park these unchanged profiles. Fresh tiny-function triage found 81 unresolved code entries of at most 24 bytes; several are EH tails/fragments, so no boundary edits or blanket synthesis applied. Real debug prologue in 005407e0 suggested /Od; minimal pointer-presence method compiled exact under 50727 and 21022 /Od /GS- /MD (with/without /Ob0). One unique server-verified recovery 005407e0 32→100, authoritative stored source recompiled at 100. Evidence/journal/body hashes: work/goal-resume-20261012-ogre-{camera,light-methods}, work/goal-resume-20261012-tiny-{triage,debug}. No model calls or other-client mining.
+
+- 2026-10-12: 2008-06-only WildMagic debug recovery: authentic Geometry/WmlConvexClipper.cpp compiled with /Od /Ob0 /GS- /MD yielded 77 unique new server-verified exacts (50727: 38; 21022: 39). All 77 authoritative stored sources retrieved and locally recompiled at 100; address list and verification/source hashes in work/goal-resume-20261012-wml-debug/{summary.json,verification.jsonl,debug-results.jsonl}. Earlier 005460c0 additionally reverified at 100 under tiny-abi/verification.jsonl. Initial sibling filenames were invalid; corrected to WmlConvexPolyhedron3.cpp and WmlConvexPolygon2.cpp, four valid sibling configurations compiled with zero further gains. Preserve negative result. No model calls, boundary changes, or other-client submissions. User explicitly reaffirmed 2008-only scope.
+
+- 2026-10-12: 2008-06-only WildMagic follow-ups: authentic Containment/WmlConvexHull2.cpp/Hull3.cpp at /Od /Ob0 /GS- /MD across 50727/21022 yielded 10 new exacts (four configurations). Observed target EH/security-cookie prologues motivated /EHsc and /GS-on/off across ConvexClipper/Hull2/Hull3 and both builds (12 configurations), yielding 34 additional unique server-verified exacts: ConvexClipper 50727 GS-on 2, 21022 GS-on 30, Hull3 21022 GS-on 2; remaining profiles zero gains. All 44 authoritative stored sources retrieved and locally recompiled at 100, no compile errors. Overlapping already-exact hits excluded from totals. Evidence/address lists/source hashes/receipts: work/goal-resume-20261012-wml-{expand,eh}/{summary.json,verification.jsonl}. No model calls, boundary changes, or other-client submissions. Next possible fresh gate: observed GS-on prologues without EHsc and authentic remaining WildMagic debug source variants; do not repeat unchanged completed configurations.
+
+- 2026-10-12: 2008-06-only fresh WildMagic mesh/header gates: 78 successful configurations total. GS-on without EHsc across prior three files/both builds: six zero-gain configurations. Ten authentic Meshes sources (outside original core recipe file globs), two compilers, debug no-EH/GS-off, debug EH/GS-on, and optimized EH/GS-off: 60 configurations, two new exacts, both compiler 21022: VEMesh debug no-EH 00552e90; VETMesh debug EH 005453e0. Both authoritative stored sources retrieved and locally recompiled at 100. Genuine set<EdgeKey/VEMesh::Edge/VETMesh::Edge/pair<int,int>> header instantiation (six configurations) and standard MSVC stdext hash containers (six configurations), motivated by observed 8-byte node values and bucket-modulo iterator behavior, produced zero new exacts. Preserve all negative results; do not repeat unchanged profiles. Evidence/generated body hashes/receipts and summaries under work/goal-resume-20261012-{wml-gs,wml-mesh,wml-mesh-rest,wml-node,stdext-debug}. No model calls, fabricated layouts, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06-only fresh graphics/data/RTTI recovery: 7 unique new exacts, all authoritative stored sources retrieved and locally recompiled at 100. Five genuine WildMagic Graphics mesh files, two compiler builds, three established debug/release profiles (30 compilable configurations) yielded ClodMesh-associated templates 00550e50 and 0054fb80; remaining profiles zero gains. Resumed existing 99%-data diagnostic sweep, skipping recorded addresses, recovered literal 0061ee00 (99→100). Fresh code-exact 00509e90 required real exe strings containing newlines; existing printable-only recovery excluded these, so targeted standalone literal extraction recovered 99→100 without comparator changes. RTTI data identified class-vs-struct tags and actual qualified names: 005a0690 corrected RBX::Instance/IRenderable class tags; 005794e0 corrected RBX::DataModel/RBX::Reflection::DescribedBase names/tags; 0063c130 corrected RBX::DebrisService/RBX::Reflection::DescribedBase names/tags. Existing source fields and method bodies preserved; no new guessed storage offsets. Evidence/source hashes/receipts and summaries: work/goal-resume-20261012-{wml-graphics,new-data99,newline-literals,rtti-tags}. Diagnostic journal: work/library-fill-20261011/diagnostic99.jsonl. No model calls, boundary edits, or other-client submissions. Next route: authentic RTTI-backed template types or remaining data-only discrepancies; avoid unchanged zero-gain mesh profiles.
+
+- 2026-10-12: 2008-06-only remaining data recovery: two new server-verified exacts, authoritative stored sources locally recompiled at 100. 007f4570 corrected exact prop_formFactor literal FormFactor→shape from exe bytes; earlier case-insensitive helper had incorrectly replaced formFactor in different initializer, yielding no gain. Preserve that lowercase literal and original vendor source, use generated TU copy. 004012d0 GetDHtmlEventMap changed single authentic DHTML macro event from DISPID_EVMETH_ONREADYSTATECHANGE (-609) to DISPID_EVMETH_ONCLICK (-600), matching observed table and installed SDK OleCtl.h; generated TU retained original handler declaration/body. Evidence/body hashes/receipts/verification: work/goal-resume-20261012-{property-literal,dhtml-event}. COM-map 00418880 remains 99: exact body but CAxHostWindow source table differs from custom target interface GUID d5ab3a9c-c462-48ba-a430-34b227340e42, interface offsets 4/4/0. GUID absent local source/header search; preserved evidence under work/goal-resume-20261012-data-current/com-map-evidence.json, no guessed layout submitted. Old RTTI/GUID candidates already exact in authoritative state were skipped. No model calls, boundary edits, or other-client submissions.
+
+- 2026-10-12: 2008-06 fresh WildMagic math debug stopping gate: seven genuine Vector2/3/4, Matrix2/3/4, Quaternion TUs × compiler 50727/21022 × /Od /Ob0 /GS- /MD and /Od /Ob0 /GS /EHsc /MD. All 28 configurations compiled, zero unresolved exact body/data matches, no submission. Evidence/sources/config hashes in work/goal-resume-20261012-wml-math-debug/math-debug.jsonl and summary.json; do not repeat unchanged. Refreshed authoritative unresolved code-function inventory of at most 24 bytes with disassembly in work/goal-resume-20261012-tiny-refresh/inventory.jsonl for next direct ABI/debug recovery. No model calls, boundary edits, or other-client mining.
+
+- 2026-10-12: 2008-06-only direct tiny recovery: five unique server-verified exacts; all authoritative stored sources locally recompiled at 100. 00551560 complete five-byte debug prologue/return matched empty C++ function under 50727 /Od /Ob0 /GS- /MD (fingerprint batch intentionally skips under-six-byte bodies, direct check does not). 00551cb0 preserved existing setter body/offset and switched compiler settings to same debug profile. Scalar getters 005a0090/005a00b0/005a00d0 matched under /O2 /GS- /MD /fp:fast, builds 50727 and 21022: real referenced IEEE double at 00817a88 is 100.0; existing zero placeholder corrected. For 005a00b0, existing denominator formula contradicted observed fld1/fdiv/fmul/fmul ordering; changed to (1.0 / m_1c0) * m_1d0 * global. Existing receiver fields/layout preserved, no additional storage guesses. Exact duplicate compiler hits excluded. Receipts/source hashes/verification/summaries: work/goal-resume-20261012-{tiny-direct,tiny-scalars}. Earlier skipped sibling records superseded by corrected global-name pattern and real tested candidates. No model calls, boundary edits, or other-client submissions.
+
+- 2026-10-12: 2008-06-only callback/virtual ABI recovery: 00437e80 80→100 by correcting existing explicit __thiscall slot callback and wrapper return types from int to void, preserving table slot/layout and method body. Compiler 50727 /O2 /GS- /MD; authoritative stored source locally recompiled 100. Thirty current-source compiler/volatile-removal variants across four tiny functions, then six return/load-order forms, produced one unique exact. Further twelve cleanup/scheduling configurations for 005aba10 across 50727/21022/30729, /G6,/G7,/EHsc/full speed flags all stayed 87: target add esp,4 vs compiler pop ecx; no source submitted. 005a19e0 remains 86 from load/store scheduling; 005a23d0 explicit ordered volatile temporaries fell to 75 and were rejected. Preserve stopping evidence, avoid unchanged profiles. Receipts/hashes/verification/summaries: work/goal-resume-20261012-callback-{next,order,cleanup}. No model calls, boundary changes, new guessed fields, or other-client submissions.
+
+- 2026-10-12: 2008-06-only import-directed tiny recovery: PE IAT resolves 802818=MSVCR90 fflush, 8028c0=free, 8027d4=fclose, 802454=MSVCP90 std::locale::id(unsigned) ctor. Two unique new exacts, authoritative stored sources locally recompiled 100: 0052a480 63→100 via minimal null-checked dllimport free wrapper, compiler 21022 /O2 /GS- /MD; no receiver/storage layout introduced. 007ee940 84→100 via genuine <locale> std::locale::id global initializer, compiler 50727 /O2 /Ob0 /GS- /MD; default /O2 variants for both builds optimized initializer away and emitted no functions. Four authentic libpng pngmem source configurations (two builds, PNG_NO_USER_MEM or /Ob2) compiled with zero gains; park unchanged. fflush/fclose entries retained for authentic receiver/cleanup-context recovery rather than guessed fields. Receipts/hashes/verification/summaries: work/goal-resume-20261012-{import-direct,locale-id,png-memory}; scripts retain PE-derived call provenance in logs. No model calls, boundary edits, or other-client submissions.
+
+- 2026-10-12: 2008-06-only Ogre visitor destructor recovery: 0068b690 80→100, server verified and authoritative source locally recompiled 100. PE IAT 804794 names rgmain.dll QueuedRenderableVisitor vtable; target local vtable RTTI names Ogre::RbxSceneManager::SceneMgrQueuedRenderableVisitor. Authentic upstream SceneMgrQueuedRenderableVisitor declaration/fields and empty destructor body, emitted as local recovery class with client-import parent, reproduced exact function body/data across headers 1.4.5/1.4.9 and builds 50727/21022 (/O2 /Ob2 /GS- /EHsc /MD). Recovery class is source analog, not claimed recovered full RbxSceneManager definition. Direct destruction through imported original class emitted only dispatch wrapper and stayed 66 in four profiles. Three original visit method bodies, with inherited header access declarations, compiled in all four profiles but yielded zero additional exacts. Keep negative gate; no unchanged repeats. Evidence/TUs/hashes/receipts/verification/summaries: work/goal-resume-20261012-ogre-visitor-{dtor,local,methods}. No model calls, boundary edits, fabricated member offsets, or other-client submissions.
+
+- 2026-10-12: 2008-06-only boolean getter recovery: 005d7520 87→100, existing single bool declaration changed to bool bitfield width 1, preserving existing receiver offset 1e8 and method body. Actual byte load/and al,1 identifies bit extraction; compiler 50727 /O2 /GS- /MD reproduced all bytes/data. Authoritative stored source retrieved and locally recompiled at 100. Existing receiver class label was retained, not asserted recovered original type. Evidence/hash/receipt/verification/summary: work/goal-resume-20261012-tiny-boolean. Current-source family scan (unresolved code <=30 bytes, raw source, one bool field, direct return, and al,1) found zero additional candidates. Four broad genuine STL globals configurations (<locale>/<string>/<vector>/<map>/<set>/<iostream>, two compilers, /O2 /Ob0 GS-off with/without EHsc) compiled with zero gains; park unchanged profiles. Evidence: work/goal-resume-20261012-{bitfield-family,stl-global}. No model calls, boundary edits, new guessed offsets, or other-client submissions.
+
+- 2026-10-12: 2008-06-only short direct recovery: 006a1aac 66→100 via complete int constant-one body under compiler 21022 /O1 /GS- /MD, reproducing xor eax,eax; inc eax; ret. Server accepted exact; authoritative stored source locally recompiled at 100. Existing 005f9750 pointer bookkeeping body remained 80 with /O1 and fell to 32 with /O2 /Og-; no source submitted. Existing 00459100 byte getter stayed 88 across /O2,/Ob0 and bool-typing alternatives for 50727/21022: final pointer register EAX vs ECX mismatch remains, no new offsets introduced. Seven trials total, one unique exact. Evidence/hash/receipt/verification/summaries: work/goal-resume-20261012-{short-next,short-types}. No model calls, boundary changes, or other-client submissions. Remaining Ogre short entries retained for real-header layout recovery instead of additional storage guesses.
+
+- 2026-10-12: 2008-06-only RTTI/header transform recovery: 00685710 65→100. Target vtable slot at 84e91c resolves RTTI Ogre::RbxSubEntity and getWorldTransforms-sized 64-byte copy from receiver+f0. Genuine Ogre SubEntity header measured sizeof ec under compiler 21022; inferred aligned Matrix4 transform member, with no explicit padding fields, reproduces body/data exactly under 21022 /O2 /Ob2 /GS- /EHsc /MD for headers 1.4.5 and 1.4.9. Compiler 50727 variants stayed 95 due member offset e0 vs f0, rejected. One unique server-verified submission, authoritative stored source locally recompiled 100; duplicate second-header hit excluded. Source is constrained receiver model using real header base plus binary-observed Matrix4 member/alignment, not claimed complete recovered RbxSubEntity declaration. RTTI/layout probes, TU/body/source hashes/receipts/verification/summaries in work/goal-resume-20261012-subentity-{layout,transform}. No model calls, boundary changes, fabricated padding fields, or other-client submissions.
+
+- 2026-10-12: 2008-06-only SubEntity imported-header recovery gate: 17 authentic method bodies emitted through derived header receiver, two genuine headers (1.4.5/1.4.9), compilers 50727/21022, /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD. All four configurations compiled; zero unresolved exact body/data matches or submissions. Excluded methods rely on private Entity friendship, requiring additional authentic access evidence before recovery. Evidence/generated TUs/source hashes/summary: work/goal-resume-20261012-subentity-methods. Do not repeat unchanged configurations. No model calls, boundary changes, fabricated storage, or other-client submissions.
+
+- 2026-10-12: 2008-06 current high-score inventory refreshed (551 unresolved scores 95-99). New exact 005d37b0 95→100: FlagStand::setTeamColor existing receiver declaration corrected gap0 3fc→3e8 from observed store offset, preserving existing body/class model. Server verified improvement; authoritative stored source locally recompiled at 100. Source model retained, not claimed complete original class. Candidate 0062e2a0 became exact in authoritative state before edit, skipped and excluded from new gains; resume script now checks current exact state before patching. Evidence/hashes/receipt/verification/summary: work/goal-resume-20261012-high-offsets; inventory: work/goal-resume-20261012-high-refresh. Remaining 005f9750 genuine Boost source mismatch now isolated to member load 48 vs 4c; investigate authentic header/layout rather than repeat old raw model. No model calls, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 Boost iostreams 005f9750 95→100. Four genuine null-device variants (compilers 50727/21022 × /Zp4,/Zp8) all retain wrong buffer offset 48, reject. Binary function-pointer/vtable RTTI identifies actual owners stream_buffer<String_sink>, stream_buffer<WinHttpRequest_source>, stream_buffer<WiniInetRequest_source> at 840a68/840ac8/840f00 (slot offset 88). Original custom device definitions absent local source search. Genuine Boost 1.34.1 back_insert_device<std::string> stream_buffer explicit instantiation reproduces exact full body/data including member offset 4c under both compilers /O2 /GS- /EHsc /MD. One unique server-verified improvement; authoritative stored source locally recompiled 100. Authentic library sink is analog, not claimed recovered original custom device type. Evidence/generated TU/hashes/receipts/verification/summary: work/goal-resume-20261012-boost-string-sink; negative packing gate: work/goal-resume-20261012-boost-layout. No model calls, fabricated storage, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 Boost authentic back_insert_device<std::string> stream_buffer family expansion: six configs, compilers 50727/21022 × O2, O2/Ob0, Od/Ob0, all /GS- /EHsc /MD. Two new exacts 005f2a00 and 005f2a50 under O2, one per compiler; four other configs compiled with zero gains. Analog library type limitation unchanged: original custom String_sink/HTTP classes not recovered. Separate constructor 007ae4b0 97→100 corrected existing base-size model padding 80→92 so float initializes at target offset60 rather than54, retaining original constructor body and model naming; not claimed full original class. Three unique server improvements, authoritative stored sources locally recompiled100. Evidence/generated TU/hashes/receipts/verification/summaries: work/goal-resume-20261012-{boost-sink-family,constructor-offset}. Next inspected gates: 005469b0/00546af0 STL stride4 vs authentic Wml Face/Vertex stride20/18 require correct element type; 007b85e0 authentic TextureProxy source member28 vs observed30. No model calls, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 authentic TextureProxy 007b85e0 layout gate. Current original TU TextureProxy.cpp returns inherited-header texture at receiver28; binary requires30. TextureProxyBase contains ReferenceCountedObject (refcount/weak pointer/vptr) and std::string filename. Four profiles (50727/21022 × SECURE_SCL=0 or DEBUG/HAS_ITERATOR_DEBUGGING=1, O2/Ob2/Oy/GF/GS-/EHsc/MD) compiled, all remain97 with same isolated offset mismatch; zero submissions. Stop unchanged compiler/iterator-layout variants. Recover correct original base/header version or observed missing members before source correction; no artificial padding added. Evidence/source hashes/diffs/summary: work/goal-resume-20261012-texture-layout. No model calls, boundary edits, or other-client submissions.
+
+- 2026-10-12: 2008-06 four-byte STL debug recovery: authentic G3D ReferenceCountedPointer<Texture> (one pointer, real assignment/destructor) std::vector explicit instantiation plus std::fill wrapper, existing rbxgs-render recipe/header set. Four profiles 50727/21022 × /Od /Ob0 /GS- /MD with/without EHsc, all compiled. Six new exacts 00546910,005469b0,00546af0,00546da0,00546e00,00547170 (four under50727, two under21022, all without EHsc); EHsc configurations zero gains. Resolves prior Wml Face/Vertex analog mismatches requiring stride4 rather than20/18 without fabricated element storage. Library type is authentic analog, not claimed original target element class. All six server improvements verified by authoritative stored-source local recompilation100. Evidence/generated TU/hashes/receipts/verification/summary: work/goal-resume-20261012-g3d-pointer-debug. No model calls, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 genuine G3D pointer STL optimized expansion: eight configs (50727/21022 × O2 with/without EHsc, O2/Ob0/EHsc, O1/EHsc; GS-off/MD), all compiled, zero gains; park unchanged profiles. Full G3D Array<ReferenceCountedPointer<Texture>> explicit instantiation invalid: deleteAll requires raw pointers; four compiler errors retained, not counted as negative matching gate. Corrected authentic TU explicitly instantiates Array<Texture*> and emits supported append/resize/clear methods for smart-pointer Array through wrapper. Four debug configs (50727/21022 × Od/Ob0/GS-off/no-EH or GS-on/EHsc; MD), all compiled. Three new exacts 00550fb0,005516d0,00552e60, all GS-off/no-EH; authoritative stored-source local recompilation100 for each. Library analog limitation retained, original element types unidentified. Evidence/generated TUs/hashes/receipts/verification/summaries: work/goal-resume-20261012-g3d-{pointer-opt,array-debug,array-valid}. No model calls, boundary changes, fabricated storage, or other-client submissions.
+
+- 2026-10-12: 2008-06 authentic G3D Array optimized expansion: existing valid raw-pointer Array explicit instantiation and supported smart-pointer Array wrapper, eight configurations 50727/21022 × O2/no-EH, O2/EHsc, O2/Ob0/EHsc, O1/EHsc, all GS-off/MD. One new exact 006791e0 under50727 O2/no-EH; seven configurations compiled with no gains. Server verified improvement, authoritative stored source locally recompiled100. Authentic library analog limitation retained; original target type not identified. Evidence/TU/source hashes/receipts/verification/summary: work/goal-resume-20261012-g3d-array-opt. No model calls, fabricated storage, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 G3D Array supported-method family for authentic int/float/Vector3/Vector4 elements, emitting append/resize/clear and constructor/destructor wrappers. Eight configurations compilers50727/21022 × Od/Ob0/GS-off/no-EH, Od/Ob0/GS-on/EHsc, O2/GS-off/no-EH, O2/GS-off/EHsc, all MD. All compiled. One unique new exact0054d430 under50727 Od/Ob0/GS/EHsc; seven configurations zero gains. Server verified improvement; authoritative stored source locally recompiled100. Authentic library analog limitation retained, original target type not identified. Evidence/generated TU/hashes/receipts/verification/summary: work/goal-resume-20261012-g3d-array-elements. No model calls, fabricated storage, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 fresh short/high-score inspection (12 current candidates), stored under work/goal-resume-20261012-short-high-next. New exact0045aec0 95→100 corrected two existing virtual-check immediate constants133/134→131/132 from target disassembly, preserving body/receiver model. Server verified improvement; authoritative stored source locally recompiled100. Existing00553340 temporary stack-layout mismatch persists96 after declaration order reversal and Od/GS-/MD profiles50727/21022; no submission. Target flag/temp at ebp-1/-8 versus source-5/-4, original named stack model incomplete. Evidence/source hashes/receipt/verification/summary: work/goal-resume-20261012-short-constants. No model calls, fabricated storage, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 00553340 expression-temporary hypothesis rejected. Existing named Flag/Temporary locals replaced only with Temporary().f(value,Flag().f(flag)), compilers50727/21022 O2/GS-/MD with existing gy-off pragma retained. Both compile58 (current96); value initialization emits extra zero stores and retains wrong stack slots. No submission. Evidence/sources/diffs/summary: work/goal-resume-20261012-expression-temp. Recover authentic constructor/type context before further stack hypotheses; do not repeat value-initialized variant. No model calls, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 005b0970 attachment-look getter 95→100. Existing source receiver/layout/math retained; fast floating-point compiler profile removes extra fld st(0)/fmulp st(2) and reproduces target fmul st(1),st(0). Four genuine settings50727/21022 × O2 with/without Ob2, GS-/MD/fp:fast all exact. One unique server improvement, authoritative stored source locally recompiled100; duplicate profile hits excluded. Existing source class model and extern scale retained, not asserted original complete class. Evidence/source hashes/receipts/verification/summary: work/goal-resume-20261012-attachment-float. No model calls, fabricated storage, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 attachment fast-float family inventory found12 unresolved current Accoutrement-source candidates. Genuine rbxgs v8datamodel/Accoutrement.cpp four settings50727/21022 × O2/Ob2 orOb0, Oy/GF/GS-/EHsc/MD/fp:fast. Both50727 settings compiled, zero unresolved exact body/data matches. Both21022 settings fail C2248 private access to IRenderable::indexFunc2d/indexFunc3d; compiler failures are not negative matching proof. No submission. Retain compiler-specific gate; next extract unaffected authentic method bodies/header receiver rather than repeat full21022 TU. Evidence/inventory/source hashes/errors/summary: work/goal-resume-20261012-attachment-family. No model calls, boundary edits, fabricated storage, or other-client submissions.
+
+- 2026-10-12: 2008-06 attachment compiler access gate resolved without modifying headers: emit six original Accoutrement getPos/getForward/getUp/getRight/setPos/setForward method definitions, include original Accoutrement.h, omit unrelated TU constructors/descriptor globals. Both50727/21022 compile with O2/Ob2/Oy/GF/GS-/EHsc/MD with and without fp:fast (four configs), zero unresolved exact body/data matches. Full-TU21022 private-index access limitation remains specific to other emitted code, not these methods. Retain genuine negative gate; do not repeat unchanged method/profile configs. Evidence/generated TU/hashes/summary: work/goal-resume-20261012-attachment-methods. No model calls, header-layout fabrication, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 constructor0063e850 96→100. Existing body/offsets retained; remove volatile only from table-pointer store casts, allowing xor eax,eax before first table store to match observed ordering. Both50727/21022 O2/GS-/MD exact. Removing volatile from integer stores additionally moves them before table stores, score80, rejected. One unique server improvement; authoritative stored source locally recompiled100. Existing receiver/source analog retained, not asserted original complete class. Four trial sources/hashes/receipts/verification/summary: work/goal-resume-20261012-constructor-order. No model calls, new storage guesses, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 authentic std::vector<std::pair<std::string,G3D::Vector3>> debug family: four configs50727/21022 × Od/Ob0/GS-off/no-EH orGS-on/EHsc, all MD. All compiled. One new exact00552f10 under21022 GS/EHsc, authoritative stored source locally recompiled100. Genuine pair supplies observed40-byte stride for00546290 without synthetic storage, but direct50727 check87: original STL operator[] differs checked-error branch and first pointer offset4 vs targetc; no getter submission. Correct stride alone insufficient; recover checked-iterator/header ABI next. Original target element type remains unidentified, library analog limitation retained. Evidence/generated TU/hashes/receipts/verification/direct-check/summary: work/goal-resume-20261012-pair-vector-debug. No model calls, fabricated storage, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 checked STL pair/vector gate: genuine pair/string/Vector3 TU defines SECURE_SCL=1 and HAS_ITERATOR_DEBUGGING=0 before includes, four debug profiles50727/21022 with GS-off/no-EH orGS-on/EHsc. All compiled, zero additional exacts; direct00546290 remains87 with matching stride40 but checked-error and container-offset mismatch. Evidence/source hashes/diffs/summary: work/goal-resume-20261012-pair-vector-checked. Found preprocessing pipeline caveat: roc libs preprocesses headers before roc-flags compilation; /D header-layout options in roc-flags do not establish changed header ABI. Earlier TextureProxy flag-only iterator gate demonstrates compiled code unchanged, not proof of alternate iterator ABI rejection; supersede that inference with TU-before-include macros and inspect generated layouts. Next enable real iterator-debug macros before headers. No model calls, fabricated storage, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 actual iterator-debug STL test sets DEBUG=1, SECURE_SCL=1,HAS_ITERATOR_DEBUGGING=1 inside TU before includes. Genuine pair<string,Vector3> vector four profiles50727/21022 × Od/Ob0 GS-off/no-EH orGS-on/EHsc, all MD; all compiled, zero gains. Extracted actual const/nonconst vector operator[] COFF symbols (not nearest unrelated function returned by check_text): each208 bytes with debug diagnostics, observed element stride44 and first-pointer offset8 versus target00546290 48 bytes/stride40/offset12. Direct score78 nearest function is not getter; retained only as matcher result, no ABI inference from that best-match diff. Real header probe rejects this debug pair ABI, requires different target container/type/header context. Evidence/config hashes/actual-getters/direct-check/summary: work/goal-resume-20261012-pair-vector-iterdebug. No model calls, fabricated storage, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 TextureProxy real iterator-debug correction: emit original getIfResolved definition with original TextureProxy.h; DEBUG=1,SECURE_SCL=1,HAS_ITERATOR_DEBUGGING=1 defined in TU before includes. Both50727/21022 O2/Ob2/Oy/GF/GS-/EHsc/MD compile97; genuine debug string header shifts member offset28→2c, still target30. Supersedes earlier flag-only ABI test; now demonstrates actual changed layout yet remaining four-byte class/base mismatch. No source submission or invented storage. Original header version/member evidence needed before further layout edits. Evidence/TU/source hashes/diffs/summary: work/goal-resume-20261012-texture-iterdebug. No model calls, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 fresh70-94-byte high-score inspection seven candidates, evidence work/goal-resume-20261012-high-mid. New exact0063bb70 97→100: existing Value words[3]→words[2], retaining control/last fields and body, matches target by-value arg16 bytes rather than20 and control stack offset14 rather than18. Server improvement verified; authoritative stored source locally recompiled100. Existing model retained, not asserted complete original type. Candidate0066a980 explicit switch default return0 contradicted compiler branch/epilogue shape, score55 vs98, rejected without submission. Target non-case branch unresolved; do not repeat default-return variant. Trial hashes/sources/receipts/verification/summary: work/goal-resume-20261012-mid-fixes. No model calls, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 GroupDragTool0066a980 disassembly clarifies prior wrong default-return hypothesis: branch42 lands pop edi;mov eax,esi;pop esi;ret4, thus default returns this, not zero. Current source semantics agree. Swapping equivalent first-case break/second-case return into first-case return/second-case break, builds50727/21022 O2/GS-/MD, stays98; compiler still routes default to equivalent epilogue2b instead of42. No submission. Actual addressed target disassembly/trials/hashes/summary: work/goal-resume-20261012-drag-epilogue. Supersedes earlier inferred default semantic gap; focus compiler block/epilogue placement, avoid behavior changes. No model calls, storage guesses, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 drag0066a980 compiler block-layout gate: unchanged current source under50727/21022 × O1, O2/Os, O2/Og-, O2/Ot/EHsc (GS-/MD). Eight successful checks, scores54/54/28/98 respectively for both compilers; zero exacts/submissions. Original98 equivalent epilogue branch remains. Park unchanged drag source/flags; next fresh candidate inventory rather than repeated epilogue guesses. Evidence/hashes/diffs/summary: work/goal-resume-20261012-drag-flags. No model calls, boundary edits, fabricated storage, or other-client submissions.
+
+- 2026-10-12: 2008-06 fresh95-129-byte high-score inspection eight candidates, evidence work/goal-resume-20261012-high-larger. Two new exacts004e5360 (98→100), existing S storage44→48 matches observed allocation30hex;00468050 (95→100), genuine imported Win32 EnterCriticalSection/LeaveCriticalSection declarations replace direct extern calls, target IAT dispatch reproduced. Existing models/bodies retained. Both server improvements verified through authoritative stored-source local recompilation100. Removing volatile only from004e8160 first table declaration stays97, xor/table scheduling mismatch unchanged; no submission. Evidence/source hashes/receipts/verification/summary: work/goal-resume-20261012-larger-fixes. No model calls, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 allocation00618200 98→100: existing Base words18→7 reproduces observed Cursor allocation1chex rather48hex, retaining body/model and original table constants. Server verified improvement; authoritative stored source locally recompiled100. Existing class/table model not asserted original complete declaration. Timer004add50 operand commutation duration*timeScale→timeScale*duration and fast-float profiles50727/21022 all remain98, reject without submission; global-vs-stack fld/fmul order gap persists. Evidence/trial sources/hashes/receipts/verification/summary: work/goal-resume-20261012-alloc-time. No model calls, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 timer004add50 98→100 via existing float duration definition qualified volatile, compiler50727 O2/GS-/MD. This enforces target fld stackarg then fmul global ordering while preserving body/layout. Volatile global and split-product source variants stayed98, rejected. One unique server improvement; authoritative stored source locally recompiled100. Source qualifier is codegen analog, original volatile declaration not proven. Three trial hashes/sources/receipts/verification/summary: work/goal-resume-20261012-time-eval. No model calls, storage fabrication, boundary edits, or other-client submissions.
+
+- 2026-10-12: 2008-06 shared-pointer wrapper00420bd0 compiler scheduling gate: unchanged current source, compilers50727/21022 × O2/Oi, O1, O2/Ob2/EHsc, all GS-/MD. Six checks, no exacts/submissions. Oi75, O1 26 both builds; Ob2/EHsc93 under50727 and96 under21022. Preserve current96; add-eax4/mov-edx1 scheduling mismatch requires source or real Boost constructor evidence. Profiles/diffs/source hashes/summary: work/goal-resume-20261012-shared-schedule. No model calls, new storage guesses, boundary changes, or other-client submissions.
+
+- 2026-10-12: 2008-06 fresh130-159-byte high-score inspection six candidates, work/goal-resume-20261012-high-130. New exact004677f0 96→100: existing EnterCriticalSection/LeaveCriticalSection declarations corrected to dllimport, reproducing IAT calls and all resulting branch displacement changes; existing body/receiver/guard retained. Server improvement verified; authoritative stored source locally recompiled100. Evidence/source hashes/receipt/verification/summary: work/goal-resume-20261012-critical-import-next. Two fresh allocating constructors005c7890/0063fea0 share early pop edi scheduling mismatch; retained for source-specific scheduling probe. No model calls, new storage guesses, boundary changes, or other-client submissions.
+
+- 2026-10-12: User-requested remaining 2008-06 engine pass, frozen authoritative snapshot under work/finish-2008-20261012. Inspected 35 unique near-misses across 160-202 byte band; 18 evidence-specific compiler/source trials. New exact005f8860 97->100: existing Ostream constructor declaration marked dllimport, build21022 O2/GS-/EHsc/MD, target indirect IAT call reproduced. Server verified improvement; authoritative stored source recompiled100 and retained locally. Build50727 import variant87. Rejected0066faf0 plain-position98/volatile-pointer76;0045af20 volatile item95;005b0cd0 zero-decrement84/85 and exchange-add76/91 (refcount semantics alone changes register allocation);007ade10 volatile initialization69/96;00659510 volatile output97;007ad8a0 named temporary89. Preserve better originals. Pull encountered concurrent scores.json JSONDecodeError; used direct authoritative server snapshot instead, no shared score rewrite. Evidence/hashed sources/diffs/server receipt/verification/summary retained. Next fresh imported STL constructor/destructor inventory or actual source scheduling evidence; do not repeat rejected unchanged profiles. No model calls, boundary changes, invented storage, or other-client submissions.
+
+- 2026-10-12: 2008-06 Boost finish campaign: six unique new server-verified exacts 0042aaf0 (96→100),00540440 (76→100),005f33a0/005f9690 (99→100),005f8960 (96→100 via98),0061f730 (92→100 via95/98/99). All authoritative stored sources independently recompiled100 and saved locally. 0042aaf0 corrects intrinsic decrement comparison1→0 from target lock-xadd old-count test. Genuine filtering-stream explicit instantiation yields00540440 under21022 Od/Ob0/GS/EHsc/MD. Genuine back_insert_device<string> stream_buffer with _DLL preprocessing yields both open_impl exacts under50727 O2/GS-/EHsc/MD; authentic sink remains analog, original custom devices unidentified. 005f8960 uses imported istream constructor then volatile storage-pointer store to reproduce target owner-load ordering. 0061f730 uses real type_info/bad_cast imports, volatile existing shared-object copy, authentic observed typeid(void) and typeid(boost::shared_ptr<RBX::Instance>) from original Boost headers under21022; retained shared-copy model is analog. Eight configs each for file_descriptor/array/filtering streams, DLL repeat, reference_wrapper<istream/ostream>, any_cast and scalar/string lexical conversions mostly zero gains; absent Boost1.34.1 stdio.hpp causes8 compile failures, not matching rejection.112 high-score compiler gates and15 register-profile gates zero additional exacts. Source volatility/sum-commutation/epilogue/counter-spill probes rejected, receipts/diffs preserved. Extent audit00595a80 shows56-byte interval splits SEH filter and direct branches reach epilogue ending00595ad6; do not fabricate source to fit truncated window.005f3110 genuinely followed by int3 after pop edi/pop ebx, original helper/control-flow evidence needed;005f3c50 expects ECX live across helper. No bounds changes, model calls, other-client mining, or Git push. Evidence/TUs/hashes/receipts/verification/summary: work/boost-finish-20261012; resumable replay runner: benchmarks/boost_finish.py. Next: authentic custom device/helper definitions, coordinated SEH boundary proof, new receiver/source context for register-only survivors; do not repeat unchanged zero-gain grids.
+
+- 2026-10-12: Continued 2008-06 Boost campaign:41 unique new server-verified exacts, every authoritative stored source recompiled100 and saved locally. Proven release prelude NDEBUG defined inside TU before headers, combined with genuine _DLL recipe preprocessing, yields14 null/gzip-device exacts across50727/21022 O2/GS-/EHsc/MD;8 filtering/reference/string-sink family exacts;6 observed RTTI gzip-compressor sibling exacts;4 explicit chain_base::push_impl<input,mode_adapter<input,std::streambuf>> and copy_impl<reference_wrapper<istream>,back_insert_device<string>> exacts. Authentic Boost.Signals trackable/signal_base/slot/connection release-wrapper pilot16 configs gives3 exacts0056a900(92→100),00595840(55→100),00595230(96→100), all21022 O2/GS-/EHsc/MD. Distinct ATL header evidence for Boost-attributed00406c00/00406ce0: actual CUrl::SetSchemeName and CSimpleStringT<char,false>::Fork; genuine ATL8/ATL9RTM units give6 exacts including these two plus0055cbb0/0055d840/0055d950/005a7920. Total41 this continuation,47 across both Boost campaigns; do not interpret all47 as confirmed Boost original owners. Supersedes previous inference of malformed005f3110 tail and unknown005f3c50 helper ABI: authentic null sink/source release templates now match whole target/data exactly; unsupported input/output helpers throw, and NDEBUG removes optional<> assertions. No target/bounds edits needed. Empty/leave/break SEH source probes and Gy-off/EHa compiler gates for00595a80 lack whole87-byte equality, retain bounds unchanged; six85-byte sources plus eight compiler-profile variants rejected. Original app/COM shapes remain behind some nearby Boost RTTI labels. Evidence/generated TUs/source hashes/diffs/receipts/41 authoritative verification records/summary: work/boost-resume-20261012; individual trials also appended work/agent-memory/attempts.jsonl. Replay runner benchmarks/boost_finish.py extended with release stages; compile/help/diff checks passed. No model calls, fabricated storage, other-client matching, server restarts, or Git push. Next: genuine app/COM source context for remaining approximate labels; park unchanged release grids without new evidence.
+
+- 2026-10-12: Claude Ogre continuation,2008-06 only:40 unique new server-verified exacts, all authoritative sources freshly recompiled100 for code+data. Receipts/addresses/hashes: work/ogre-resume-20261012/receipts.json,verification.jsonl,verified/,generated/; details/rejected trials/boundary proof/next work: SUMMARY.md and trial journals. Genuine imported SubEntity+ShadowCaster inheritance, observed SubMesh layout, Entity lifecycle/render queue, scene-node maps/virtual bounds, listener lifecycle/store order, shadow-renderable lifecycle, float heap/sort families and SceneManager fp:fast recoveries. Binary0083785c proves world-bounds radius multiplier1.7; ret4 proves getWorldBoundingBox(bool); prior light-cap name and ShadowRenderable pointer guess superseded by observed SubMesh access. All names/types are codegen analogs, not original declaration claims. Caster006960e0 nonreturning throw improves97 to99 locally, not submitted. Listener geometry remains97 across50727/21022/Ob1. Malformed0068c380 starts inside instruction; actual aligned entry0068c370 follows int3 and ends ret1c0068c402; no bounds mutation. Unchanged full-fork/profile cohorts and static position/map insertion probes rejected; preserve best server sources. Remaining handoff cohort77 stored-source functions plus2 source-less0067fd60/006832b0; Ogre unfinished. Trial memory appended; replay benchmarks/ogre_resume.py and benchmarks/ogre_trial.py. No asm, fabricated padding, target edits, other-client work, model calls, Git push or shared-memory promotion. Next: authentic custom listener render/entity collection, SceneManager helpers and map value types; avoid repeated unchanged grids.
+
+
+## 2026-10-12 engine continuation: STL node sizes and reflection imports
+
+2008-06 only. New server-verified exacts: 004a4610, 004a9030, 004a8bd0, 004aec10, 005db0f0, 005ada90, 004dd9a0, 004e9a30. All stored sources independently recompiled to 100 and saved under src/2008-06. Evidence: work/engine-resume-20261012/*.jsonl and summary.json.
+
+Recovered authentic std::map instantiations from target nil-byte offsets: pointer key / 44-byte mapped value (004aec10), 28-byte key with out-of-line thiscall comparison / int (004a8bd0, propagated 004a9030), Vector3 comparator / 28- or 16-byte mapped values (004dd9a0,004e9a30). Reflection bindings 005db0f0,005ada90,004a4610 require imported CRT bad_cast and real <typeinfo>. Target RTTI strings prove class RBX::Humanoid, RBX::ScriptContext, RBX::Network::Server, RBX::Reflection::DescribedBase.
+
+Rejected: string-key map for 004a8bd0 (different comparator ABI); 00574330 operand reversal, fp strict/fast, volatile global offset; 005df380 explicit dot-product xyz/zyx groupings; 0064cae0 inverted arm order; wrong-generation 50727 tests. Partial gains retain unresolved RTTI/register scheduling. No layouts guessed beyond observed node size constraints, no matching/boundary/recipe changes, no server restart, no push. Next inspect unrepaired authentic Roblox class layouts and imported string constructors, avoiding these rejected float/scheduling variants.
+
+## 2026-10-12 - Consolidation, cache fix, automatic agent validation (2008-06)
+
+Tried:
+- Dependency-aware library cache: `.i` units now record every header from `/showIncludes`
+  plus recipe settings; compile results/errors key on expanded text. Real XTP unit
+  (`XTPCalendarControl.cpp`, 567 deps) and zlib `crc32.c` rebuilt byte-identical to the
+  legacy cache. Legacy units without a `.deps` record rebuild once (~5-8 s each).
+- 76 agent-written units referenced by stored 2008-06 sources (Ogre forks/try units,
+  G3D, MFC, rbxgs) captured into `roc/generated-units.json` so other PCs rebuild them.
+- `roc research run ogre-fp-fast-2008 --limit 4` (recipe replacing `ogre_resume.py`):
+  4 targets, 0 new (prior winners already taken).
+- Automatic agent run `99be1518a344` (Claude, 2 workers, 8 targets, 25 min). Free reuse
+  phase: `004ad2a0` 74 -> 99. Repair batches (Family reuse): `004a74c0`, `004ad2a0`,
+  `0061aa60`, `0061a9a0` 99 -> 100. Shared hypothesis: template argument must equal the
+  exe's RTTI TypeDescriptor name (`TypedPropertyDescriptor<RBX::BrickColor>`/`<float>`).
+
+Exacts gained: 4 (all receipt-verified, server now 100).
+
+Rejected: two template-area batches (`007f5c00`, `007f7080`, `007f7000`, `007f6070`)
+0 gain; agent declined unsupported edits.
+
+Next: propagate the RTTI-name template-argument fix to other `FactoryProduct::Creator`
+and `LuaArguments` siblings; restart the group server so `/v1/agent-memory` sharing goes live.

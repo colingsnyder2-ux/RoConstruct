@@ -1,0 +1,60 @@
+{
+ "full_forced_link": {
+  "roots": 306,
+  "linked": true,
+  "runtime_exit": 0,
+  "unresolved": [],
+  "all_roots_code_data_exact_and_library_owned": true
+ },
+ "native_only_pilot": {
+  "roots": 29,
+  "linked": true,
+  "runtime_exit": 0,
+  "scope": "header/recovered-subclass methods; does not execute renderer"
+ },
+ "source_address_representatives": {
+  "before": 329,
+  "after": 335,
+  "gained": [
+   "00685170",
+   "006851a0",
+   "00685450",
+   "00685460",
+   "00685470",
+   "00685700"
+  ],
+  "lost": []
+ },
+ "unresolved_before": 12,
+ "unresolved_after": 0,
+ "original_scene_visitor_owner_proved_by_rtti": true,
+ "opaque_outer_layouts_still_analogs": [
+  "Material Level destructor007ad310",
+  "TextureProxy destructor007ae3b0",
+  "Adorn texture bounds00670210"
+ ],
+ "native_refcount_runtime": "genuine G3D weak-clear function called from verified library; weak pointer cleared and exactly one destruction",
+ "placement": {
+  "distinct": 386,
+  "by_module": {
+   "RbxApp": 76,
+   "RbxgsApp": 300,
+   "Ogre": 3,
+   "G3D-GL": 2,
+   "G3D": 3,
+   "G3D-PNG": 2
+  },
+  "Ogre_added_to_fresh_scan": true,
+  "stale_modules_deferred": true,
+  "server_credits": 0
+ },
+ "replay_safety": "Explicit symbol bindings prevent identical-byte methods from swapping owners; successful registered replays supersede legacy aliases by target address. Failed replays retain legacy fallback. Analog provenance preserved.",
+ "tests": {
+  "full_suite_before_final_priority_change": 1085,
+  "full_suite_skipped": 3,
+  "latest_targeted_tests": 33
+ },
+ "new_server_credits": 0,
+ "original_checkout_untouched": true,
+ "public_tooling_commit": "b653ac4eca587c43d8752c544a72c410729e815b"
+}

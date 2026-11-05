@@ -1,0 +1,205 @@
+{
+ "name": "Ogre",
+ "description": "Ogre code the 2008-06 exe links statically (Roblox's Ogre forks such as RbxSceneManager/RbxEntity, and header templates); OgreMain itself is rgmain.dll. No upstream layer: only exact mined ogre-* sources, swapped in by swap_build.py (verified layer).",
+ "layers": [],
+ "test": "ogre_link",
+ "verified": true,
+ "test_includes": [
+  "rebuild/2008-06/out/Ogre/force"
+ ],
+ "import_dlls": [
+  "rgmain.dll"
+ ],
+ "force_verified": true,
+ "prune_unselected_sections": true,
+ "external_helpers": [
+  "??0exception@std@@QAE@ABQBD@Z",
+  "??0exception@std@@QAE@ABV01@@Z",
+  "??0exception@std@@QAE@XZ",
+  "??1exception@std@@UAE@XZ",
+  "?getMovableObjectCollection@SceneManager@Ogre@@IAEPAUMovableObjectCollection@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+  "?getMovableObjectCollection@SceneManager@Ogre@@IBEPBUMovableObjectCollection@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+  "?terminate@@YAXXZ",
+  "?validatePassForRendering@SceneManager@Ogre@@IAE_NPBVPass@2@@Z",
+  "?validateRenderableForRendering@SceneManager@Ogre@@IAE_NPBVPass@2@PBVRenderable@2@@Z",
+  "?what@exception@std@@UBEPBDXZ"
+ ],
+ "native_units": [
+  {
+   "recipe": "ogre-1.4.5-g3d-refcount",
+   "file": "roc_g3d_texture_bounds_vector_context_c35a9cb275530619.cpp",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "cl": "21022",
+   "addrs": [
+    "00670210"
+   ],
+   "provenance": "Outer S/Image interfaces remain codegen analog; Image inherits real G3D base, return value and ownership use genuine G3D headers.",
+   "symbols": {
+    "00670210": "?f@S@@QAE?AVRect2D@G3D@@V?$ReferenceCountedPointer@UImage@@@3@@Z"
+   }
+  },
+  {
+   "recipe": "ogre-1.4.5-g3d-refcount",
+   "file": "roc_g3d_texture_proxy_context_2c0b3c7d469c1d40.cpp",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "cl": "21022",
+   "addrs": [
+    "007ae3b0"
+   ],
+   "provenance": "Existing outer layout and interface remain codegen analog; ownership uses genuine G3D types and no invented release helpers.",
+   "symbols": {
+    "007ae3b0": "??1TextureProxy@@UAE@XZ"
+   }
+  },
+  {
+   "recipe": "ogre-1.4.5-g3d-refcount",
+   "file": "roc_g3d_materiallevel_context_d9a3d6c7ffbfabc3.cpp",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "cl": "21022",
+   "addrs": [
+    "007ad310"
+   ],
+   "provenance": "Existing outer Level layout remains codegen analog; only ownership type replaced by genuine G3D header.",
+   "symbols": {
+    "007ad310": "??1Level@@UAE@XZ"
+   }
+  },
+  {
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_subentity_contracts_3c134af6ce3f7619.cpp",
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "addrs": [
+    "00685660",
+    "00685910",
+    "00685700",
+    "00685170",
+    "006851a0"
+   ],
+   "symbols": {
+    "00685660": "??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@@Z",
+    "00685910": "??1RbxSubEntity@Ogre@@UAE@XZ",
+    "00685700": "?getCastShadows@RbxSubEntity@Ogre@@UBE_NXZ",
+    "00685170": "?getEdgeList@RbxSubEntity@Ogre@@UAEPAVEdgeData@2@XZ",
+    "006851a0": "?hasEdgeList@RbxSubEntity@Ogre@@UAE_NXZ"
+   }
+  },
+  {
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_shadow_delegation_5a9fe7bdf9d3d332.cpp",
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "addrs": [
+    "00685450",
+    "00685460",
+    "00685470",
+    "006851d0",
+    "006853a0"
+   ],
+   "symbols": {
+    "00685450": "?getWorldTransforms@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEXPAVMatrix4@3@@Z",
+    "00685460": "?getWorldOrientation@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ",
+    "00685470": "?getWorldPosition@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVVector3@3@XZ",
+    "006851d0": "??0RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@QAE@PAVEntity@2@PAVHardwareIndexBufferSharedPtr@2@PBVVertexData@2@_NPAVSubEntity@2@3@Z",
+    "006853a0": "??1RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAE@XZ"
+   }
+  },
+  {
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_hardware_sharedptr_16493fe4099d30fc.cpp",
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "addrs": [
+    "004d73c0"
+   ],
+   "symbols": {
+    "004d73c0": "??1?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@UAE@XZ"
+   }
+  },
+  {
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_resource_templates_f9febbef6239dc27.cpp",
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "addrs": [
+    "004d7380",
+    "004d73e0",
+    "004dc670",
+    "004dca70",
+    "004ddbc0",
+    "0067d600",
+    "0067f170",
+    "0067f1d0",
+    "0067f7c0",
+    "0068d030"
+   ],
+   "symbols": {
+    "0068d030": "?destroy@?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@MAEXXZ",
+    "0067f7c0": "??$_Fill@PAVVector3@Ogre@@V12@@std@@YAXPAVVector3@Ogre@@0ABV12@@Z",
+    "004d7380": "??1?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAE@XZ",
+    "004d73e0": "??_G?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAEPAXI@Z",
+    "0067f170": "??$_Copy_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "004dc670": "??$_Uninit_copy@PBVVector3@Ogre@@PAV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAPAVVector3@Ogre@@PBV12@0PAV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "0067f1d0": "??$_Copy_backward_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "004dca70": "??$_Uninit_fill_n@PAVVector3@Ogre@@IV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAXPAVVector3@Ogre@@IABV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "004ddbc0": "?_Insert_n@?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@2@IABVVector3@Ogre@@@Z",
+    "0067d600": "?_Insert_n@?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@2@IABVPlane@Ogre@@@Z"
+   }
+  },
+  {
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_header_accessors_f042f32e3705715a.cpp",
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+   "addrs": [
+    "0068e920",
+    "0068e930",
+    "0068e960",
+    "0068e970",
+    "0068e990",
+    "0068e9c0",
+    "0068e9e0",
+    "0068ea60",
+    "0068ea70"
+   ],
+   "symbols": {
+    "0068e930": "?getShadowTechnique@NativeSceneManager@Ogre@@UBE?AW4ShadowTechnique@2@XZ",
+    "0068e960": "?getShadowFarDistance@NativeSceneManager@Ogre@@UBEMXZ",
+    "0068e970": "?getShadowIndexBufferSize@NativeSceneManager@Ogre@@UBEIXZ",
+    "0068e990": "?getShadowDirLightTextureOffset@NativeSceneManager@Ogre@@UBEMXZ",
+    "0068e9c0": "?getShadowTextureSelfShadow@NativeSceneManager@Ogre@@UBE_NXZ",
+    "0068e9e0": "?getShadowCasterRenderBackFaces@NativeSceneManager@Ogre@@UBE_NXZ",
+    "0068e920": "?getDisplaySceneNodes@NativeSceneManager@Ogre@@UBE_NXZ",
+    "0068ea60": "?setVisibilityMask@NativeSceneManager@Ogre@@UAEXI@Z",
+    "0068ea70": "?getVisibilityMask@NativeSceneManager@Ogre@@UAEIXZ"
+   }
+  },
+  {
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_scene_callbacks_9975fd58eb7f0dbb.cpp",
+   "cl": "21022",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "addrs": [
+    "00565ff0",
+    "0069c5f0",
+    "0068b690"
+   ],
+   "symbols": {
+    "00565ff0": "?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAUWorldFragment@SceneQuery@3@@Z",
+    "0069c5f0": "?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAVMovableObject@3@@Z",
+    "0068b690": "??1SceneMgrQueuedRenderableVisitor@RbxSceneManager@Ogre@@UAE@XZ"
+   }
+  },
+  {
+   "recipe": "ogre-1.4.5-dll",
+   "file": "roc_native_sphere_cache_storage_6d8b5b766c240faa.cpp",
+   "cl": "21022",
+   "flags": "/O2 /GS- /EHsc /MD",
+   "addrs": [],
+   "helper_symbols": [
+    "?spheres@Ogre@@3PAV?$map@KVSphere@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVSphere@Ogre@@@std@@@4@@std@@A"
+   ],
+   "symbols": {}
+  }
+ ]
+}

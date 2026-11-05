@@ -1,0 +1,58 @@
+{
+  "op": "grid",
+  "client": "2008-06",
+  "hypothesis": "Native XML double getter at0057c670:102B exact code/data and unique whole-client ownership. Genuine OpenRBX DOUBLE9 declaration plus2008 qword field stores prove setter API. Keep serializer DOUBLE case and getter CPP atomically coupled; no layout change. Compile every native dependent before proposal; independent server still required.",
+  "native_sweep": {
+    "files": [
+      "App/*/*.cpp",
+      "Network/*.cpp",
+      "Rendering/AppDraw/*.cpp",
+      "Rendering/RenderLib/*.cpp",
+      "RbxView/*.cpp"
+    ],
+    "header_families": [
+      "App/include/v8xml/XmlElement.h"
+    ],
+    "family_edits": {
+      "App/include/v8xml/XmlElement.h": {
+        "edits": [
+          [
+            "\t\tHANDLE = 8\n",
+            "\t\tHANDLE = 8,\n\t\tDOUBLE = 9\n"
+          ],
+          [
+            "\tbool getValue(float&) const;",
+            "\tbool getValue(float&) const;\n\tbool getValue(double&) const;"
+          ],
+          [
+            "\tvoid setValue(float value)\n",
+            "\tvoid setValue(double value)\n\t{\n\t\tclearValue();\n\t\tdoubleValue = value;\n\t\tvalueType = DOUBLE;\n\t}\n\tvoid setValue(float value)\n"
+          ]
+        ],
+        "related_edits": {
+          "App/v8xml/XmlElement.cpp": [
+            [
+              "bool XmlNameValuePair::getValue(float& value) const\n",
+              "bool XmlNameValuePair::getValue(double& value) const\n{\n\tif (valueType == DOUBLE)\n\t{\n\t\tvalue = doubleValue;\n\t\treturn true;\n\t}\n\tif (valueType == FLOAT)\n\t{\n\t\tvalue = floatValue;\n\t\tclearValue();\n\t\tdoubleValue = value;\n\t\tvalueType = DOUBLE;\n\t\treturn true;\n\t}\n\telse if (valueType == STRING)\n\t{\n\t\tif (!RBX::StringConverter<double>::convertToValue(*stringValue, value))\n\t\t\treturn false;\n\t}\n\telse\n\t\treturn false;\n\tclearValue();\n\tdoubleValue = value;\n\tvalueType = DOUBLE;\n\treturn true;\n}\n\nbool XmlNameValuePair::getValue(float& value) const\n"
+            ],
+            [
+              "\tcase FLOAT:\n\t\treturn RBX::StringConverter<float>::convertToString(floatValue);",
+              "\tcase FLOAT:\n\t\treturn RBX::StringConverter<float>::convertToString(floatValue);\n\tcase DOUBLE:\n\t\treturn RBX::StringConverter<double>::convertToString(doubleValue);"
+            ]
+          ]
+        },
+        "evidence": "Binary0057c670 getter102B exact in pilot;0056e720 reflection writer58B proves DOUBLE9/qword setter; actual uniondouble already accepted. Genuine OpenRBX XmlElement.h DOUBLE9/double getter declaration; toString case handles new scalar tag. Getter string conversion uses real existing StringConverter<double>."
+      }
+    },
+    "source_kinds": [
+      "snippet",
+      "vendor-file",
+      "generated-unit"
+    ],
+    "new_coverage_only": true,
+    "max_family_trials": 1,
+    "apply": false,
+    "submit": false,
+    "model": "gpt-6.1-sol"
+  }
+}

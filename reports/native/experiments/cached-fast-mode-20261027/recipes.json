@@ -1,0 +1,65 @@
+{
+  "native-authentic-body-transfer-submit-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Resume immutable saved native body proof on latest accepted baseline. Recheck3 COFF source/object hashes,current exact instructions/data,whole-client uniqueness and current declarative source anchors. Include all native code targets regardless of mined score or attribution. No recompilation here;server independently rebuilds and runs full linked/runtime/ABI/ownership gates. Split rejected file groups while preserving successful halves.",
+    "native_sweep": {
+      "files": [
+        "App/v8datamodel/PartInstance.cpp",
+        "App/v8datamodel/Workspace.cpp",
+        "App/v8datamodel/ModelInstance.cpp"
+      ],
+      "header_families": [
+        "App/v8datamodel/PartInstance.cpp",
+        "App/v8datamodel/Workspace.cpp",
+        "App/v8datamodel/ModelInstance.cpp"
+      ],
+      "source_kinds": [
+        "snippet",
+        "vendor-file",
+        "generated-unit"
+      ],
+      "new_coverage_only": true,
+      "reuse_proposals": {
+        "output": "C:\\Users\\colin\\RoConstruct-native-api-pilots\\work\\research\\native-authentic-body-transfer-2008",
+        "run_id": "3382f4b57b9c42f69af2df6689c6969c"
+      },
+      "apply": true,
+      "submit": true,
+      "model": "gpt-6.1-sol",
+      "all_native_targets": true,
+      "wait": true,
+      "split_rejected": true,
+      "settle_jobs": [
+        "739d5c3680d14c189fe8dca739b1d4c5"
+      ]
+    }
+  },
+  "native-link-cached-submit-2008": {
+    "op": "grid",
+    "client": "2008-06",
+    "hypothesis": "Cached genuine Link::dirty source variant found by all-native target rescan. Verify hashes,current source anchors,exact instructions/data/global uniqueness;wait prior same-checkout campaign before staging. No new compiler trials;server rebuild/gates mandatory.",
+    "native_sweep": {
+      "files": [
+        "App/v8kernel/Link.cpp"
+      ],
+      "header_families": [
+        "App/v8kernel/Link.cpp"
+      ],
+      "all_native_targets": true,
+      "new_coverage_only": true,
+      "reuse_proposals": {
+        "output": "C:\\Users\\colin\\RoConstruct-native-api-pilots\\work\\research\\native-link-cached-proof-2008",
+        "run_id": "a450087294f247d68ebabb0ae086a5d6"
+      },
+      "after_campaign": {
+        "summary": "C:\\Users\\colin\\RoConstruct-native-api-pilots\\work\\research\\native-authentic-body-transfer-submit-2008\\summary.json",
+        "run_id": "3a49fcbabb4d4d50976c56b3834e731b"
+      },
+      "apply": true,
+      "submit": true,
+      "wait": true,
+      "model": "gpt-6.1-sol"
+    }
+  }
+}

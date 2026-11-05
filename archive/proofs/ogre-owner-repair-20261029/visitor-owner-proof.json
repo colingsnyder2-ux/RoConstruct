@@ -1,0 +1,18 @@
+{
+ "address": "0068b690",
+ "native_symbol": "??1SceneMgrQueuedRenderableVisitor@RbxSceneManager@Ogre@@UAE@XZ",
+ "rtti": [
+  {
+   "instruction": "0068b690",
+   "destination": "dword ptr [ecx]",
+   "vtable": "0084e9a4",
+   "type_descriptor": "009657e8",
+   "type": ".?AVSceneMgrQueuedRenderableVisitor@RbxSceneManager@Ogre@@"
+  }
+ ],
+ "source_addresses_before": 329,
+ "source_addresses_after": 329,
+ "code_exact": true,
+ "data_exact": true,
+ "object_sha256": "68897da17cd72629bfe210de810f58ba77dcdbb78c4681ad99352b2f4f792d6e"
+}

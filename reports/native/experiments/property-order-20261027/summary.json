@@ -1,0 +1,20 @@
+{
+ "recipe": "native-property-compare-order-2008",
+ "state": "queued",
+ "run_id": "0b9ad69f415c4defa3e26d9c61e3361f",
+ "new_verified": 0,
+ "starting_revision": "6023a106e73b6e2d12553f4325b26e992aa578a428d9bc8b323d47a17a1ac4d9",
+ "tried": 214,
+ "proposed_files": 1,
+ "local_exact": 3,
+ "job": "739d5c3680d14c189fe8dca739b1d4c5",
+ "applied_files": 1,
+ "submission_revision": "e96783333e225fe76d0c7d9e4968067c4804e5a80a96a848e7208120644cc2af",
+ "rebase_changed_files": [
+  "App/include/v8xml/XmlElement.h",
+  "App/v8xml/XmlElement.cpp",
+  "Network/Players.cpp",
+  "Network/Replicator.cpp"
+ ],
+ "evidence": "C:\\Users\\colin\\RoConstruct-native-isolated\\work\\research\\native-property-compare-order-2008\\batch-notes.txt"
+}

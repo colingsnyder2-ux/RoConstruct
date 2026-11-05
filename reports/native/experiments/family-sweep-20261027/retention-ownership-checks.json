@@ -1,0 +1,163 @@
+[
+ {
+  "addr": "005cbf20",
+  "symbol": "?askSetParent@Camera@RBX@@EBE_NPBVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/Camera.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "005d7640",
+  "symbol": "?askSetParent@CharacterAppearance@RBX@@MBE_NPBVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/CharacterAppearance.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "00575240",
+  "symbol": "?askAddChild@DataModel@RBX@@MBE_NPBVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/DataModel.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "00565dd0",
+  "symbol": "?setErrorReporting@DebugSettings@RBX@@QAEXW4ErrorReporting@12@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/DebugSettings.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "0062e190",
+  "symbol": "?askSetParent@FaceInstance@RBX@@MBE_NPBVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/FaceInstance.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "0062e190",
+  "symbol": "?askSetParent@BodyMover@RBX@@UBE_NPBVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/Gyro.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "005cf1c0",
+  "symbol": "?askAddChild@Hopper@RBX@@MBE_NPBVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/Hopper.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "005df530",
+  "symbol": "?askAddChild@Lighting@RBX@@MBE_NPBVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/Lighting.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "005d7640",
+  "symbol": "?askSetParent@ModelInstance@RBX@@MBE_NPBVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/ModelInstance.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "00615780",
+  "symbol": "??1MouseCommand@RBX@@UAE@XZ",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/MouseCommand.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "0060cb10",
+  "symbol": "?onDescendentAdded@PVInstance@RBX@@MAEXPAVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/PVInstance.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "005d5f20",
+  "symbol": "?teamExists@Teams@RBX@@QAE_NVBrickColor@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/Teams.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "005a01e0",
+  "symbol": "?askAddChild@Workspace@RBX@@EBE_NPBVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/Workspace.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "0062e190",
+  "symbol": "?askSetParent@SpecialShape@RBX@@MBE_NPBVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8datamodel/custommesh.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "0063e420",
+  "symbol": "?worldStepsPerUiStep@Constants@RBX@@SA?BHXZ",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8kernel/Constants.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "006492c0",
+  "symbol": "?uiStepsPerSec@Constants@RBX@@SA?BHXZ",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8kernel/Constants.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "006492d0",
+  "symbol": "?kernelStepsPerWorldStep@Constants@RBX@@SA?BHXZ",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8kernel/Constants.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "006492e0",
+  "symbol": "?worldStepsPerSec@Constants@RBX@@SA?BHXZ",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8kernel/Constants.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "00575240",
+  "symbol": "?askAddChild@ServiceProvider@RBX@@MBE_NPBVInstance@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8tree/Service.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "0064cad0",
+  "symbol": "?calcShouldSleep@Assembly@RBX@@QAE_NXZ",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8world/Assembly.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "0060cb10",
+  "symbol": "?putInKernel@Contact@RBX@@EAEXPAVKernel@2@@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8world/Contact.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "00645560",
+  "symbol": "?canBuildJointTight@Joint@RBX@@KA_NPAVPrimitive@2@0W4NormalId@2@1@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8world/Joint.cpp",
+  "mode": "scoped-noautoinline"
+ },
+ {
+  "addr": "00645590",
+  "symbol": "?canBuildJointLoose@Joint@RBX@@KA_NPAVPrimitive@2@0W4NormalId@2@1@Z",
+  "reason": "Not uniquely owned across the whole client",
+  "file": "App/v8world/Joint.cpp",
+  "mode": "scoped-noautoinline"
+ }
+]

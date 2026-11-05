@@ -1,0 +1,3371 @@
+{
+ "forced_roots": 306,
+ "checks": [
+  {
+   "symbol": "?f@S@@QAE?AVRect2D@G3D@@V?$ReferenceCountedPointer@UImage@@@3@@Z",
+   "address": "00670210",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016680       ?f@S@@QAE?AVRect2D@G3D@@V?$ReferenceCountedPointer@UImage@@@3@@Z 00417680 f   linked:verified_g3d-context-texture-bounds-vector.obj"
+   ],
+   "provenance": "Outer S/Image interfaces remain codegen analog; Image inherits real G3D base, return value and ownership use genuine G3D headers."
+  },
+  {
+   "symbol": "??1TextureProxy@@UAE@XZ",
+   "address": "007ae3b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000c650       ??1TextureProxy@@UAE@XZ    0040d650 f   linked:verified_g3d-context-texture-proxy.obj"
+   ],
+   "provenance": "Existing outer layout and interface remain codegen analog; ownership uses genuine G3D types and no invented release helpers."
+  },
+  {
+   "symbol": "??1Level@@UAE@XZ",
+   "address": "007ad310",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000b7a0       ??1Level@@UAE@XZ           0040c7a0 f   linked:verified_g3d-context-material-level.obj"
+   ],
+   "provenance": "Existing outer Level layout remains codegen analog; only ownership type replaced by genuine G3D header."
+  },
+  {
+   "symbol": "??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@@Z",
+   "address": "00685660",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000acc0       ??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@@Z 0040bcc0 f   linked:verified_native-subentity-contracts.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1RbxSubEntity@Ogre@@UAE@XZ",
+   "address": "00685910",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000ad70       ??1RbxSubEntity@Ogre@@UAE@XZ 0040bd70 f   linked:verified_native-subentity-contracts.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getCastShadows@RbxSubEntity@Ogre@@UBE_NXZ",
+   "address": "00685700",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000ac50       ?getCastShadows@RbxSubEntity@Ogre@@UBE_NXZ 0040bc50 f   linked:verified_native-subentity-contracts.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getEdgeList@RbxSubEntity@Ogre@@UAEPAVEdgeData@2@XZ",
+   "address": "00685170",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000ac60       ?getEdgeList@RbxSubEntity@Ogre@@UAEPAVEdgeData@2@XZ 0040bc60 f   linked:verified_native-subentity-contracts.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?hasEdgeList@RbxSubEntity@Ogre@@UAE_NXZ",
+   "address": "006851a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000ac90       ?hasEdgeList@RbxSubEntity@Ogre@@UAE_NXZ 0040bc90 f   linked:verified_native-subentity-contracts.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getWorldTransforms@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEXPAVMatrix4@3@@Z",
+   "address": "00685450",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000b200       ?getWorldTransforms@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEXPAVMatrix4@3@@Z 0040c200 f   linked:verified_native-shadow-delegation.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getWorldOrientation@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ",
+   "address": "00685460",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000b210       ?getWorldOrientation@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ 0040c210 f   linked:verified_native-shadow-delegation.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getWorldPosition@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVVector3@3@XZ",
+   "address": "00685470",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000b220       ?getWorldPosition@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVVector3@3@XZ 0040c220 f   linked:verified_native-shadow-delegation.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@QAE@PAVEntity@2@PAVHardwareIndexBufferSharedPtr@2@PBVVertexData@2@_NPAVSubEntity@2@3@Z",
+   "address": "006851d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000af60       ??0RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@QAE@PAVEntity@2@PAVHardwareIndexBufferSharedPtr@2@PBVVertexData@2@_NPAVSubEntity@2@3@Z 0040bf60 f   linked:verified_native-shadow-delegation.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAE@XZ",
+   "address": "006853a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000b130       ??1RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAE@XZ 0040c130 f   linked:verified_native-shadow-delegation.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@UAE@XZ",
+   "address": "004d73c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000b4e0       ??1?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@UAE@XZ 0040c4e0 f i linked:verified_native-hardware-sharedptr.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@MAEXXZ",
+   "address": "0068d030",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003a90       ?destroy@?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@MAEXXZ 00404a90 f i linked:verified_native-resource-templates.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Fill@PAVVector3@Ogre@@V12@@std@@YAXPAVVector3@Ogre@@0ABV12@@Z",
+   "address": "0067f7c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003b20       ??$_Fill@PAVVector3@Ogre@@V12@@std@@YAXPAVVector3@Ogre@@0ABV12@@Z 00404b20 f i linked:verified_native-resource-templates.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAE@XZ",
+   "address": "004d7380",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003b50       ??1?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAE@XZ 00404b50 f i linked:verified_native-resource-templates.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??_G?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "004d73e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003b70       ??_G?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAEPAXI@Z 00404b70 f i linked:verified_native-resource-templates.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Copy_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067f170",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003bb0       ??$_Copy_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00404bb0 f i linked:verified_native-resource-templates.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Uninit_copy@PBVVector3@Ogre@@PAV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAPAVVector3@Ogre@@PBV12@0PAV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "004dc670",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003c10       ??$_Uninit_copy@PBVVector3@Ogre@@PAV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAPAVVector3@Ogre@@PBV12@0PAV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00404c10 f i linked:verified_native-resource-templates.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Copy_backward_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067f1d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003c40       ??$_Copy_backward_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00404c40 f i linked:verified_native-resource-templates.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Uninit_fill_n@PAVVector3@Ogre@@IV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAXPAVVector3@Ogre@@IABV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "004dca70",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003d80       ??$_Uninit_fill_n@PAVVector3@Ogre@@IV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAXPAVVector3@Ogre@@IABV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00404d80 f i linked:verified_native-resource-templates.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Insert_n@?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@2@IABVVector3@Ogre@@@Z",
+   "address": "004ddbc0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003f70       ?_Insert_n@?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@2@IABVVector3@Ogre@@@Z 00404f70 f i linked:verified_native-resource-templates.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Insert_n@?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@2@IABVPlane@Ogre@@@Z",
+   "address": "0067d600",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000041e0       ?_Insert_n@?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@2@IABVPlane@Ogre@@@Z 004051e0 f i linked:verified_native-resource-templates.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?rectangle@Renderer@@QAEXHMMMMABUColor@@@Z",
+   "address": "00683000",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001bb70       ?rectangle@Renderer@@QAEXHMMMMABUColor@@@Z 0041cb70 f   linked:verified_0001.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?rectangle@Renderer@@QAEXMMMMABUColor@@@Z",
+   "address": "006830b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001bc20       ?rectangle@Renderer@@QAEXMMMMABUColor@@@Z 0041cc20 f   linked:verified_0002.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_update@RbxSceneNode@Ogre@@UAEX_N0@Z",
+   "address": "00681190",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000f8a0       ?_update@RbxSceneNode@Ogre@@UAEX_N0@Z 004108a0 f   linked:verified_0003.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyCamera@RbxSceneManager@Ogre@@UAEXPAVCamera@2@@Z",
+   "address": "006985e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00015610       ?destroyCamera@RbxSceneManager@Ogre@@UAEXPAVCamera@2@@Z 00416610 f   linked:verified_0005.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1RbxSceneManager@Ogre@@UAE@XZ",
+   "address": "0069e220",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000ba50       ??1RbxSceneManager@Ogre@@UAE@XZ 0040ca50 f   linked:verified_0006.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0RbxSceneManager@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0068e7c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000ab70       ??0RbxSceneManager@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 0040bb70 f   linked:verified_0007.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyCamera@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00698710",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00015200       ?destroyCamera@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00416200 f   linked:verified_0008.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyAllCameras@RbxSceneManager@Ogre@@UAEXXZ",
+   "address": "006987c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00014940       ?destroyAllCameras@RbxSceneManager@Ogre@@UAEXXZ 00415940 f   linked:verified_0009.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_setPass@RbxSceneManager@Ogre@@UAEPBVPass@2@PBV32@_N1@Z",
+   "address": "00694680",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000f0e0       ?_setPass@RbxSceneManager@Ogre@@UAEPBVPass@2@PBV32@_N1@Z 004100e0 f   linked:verified_0010.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?queryResult@ShadowCasterSceneQueryListener@SceneManager@Ogre@@UAE_NPAVMovableObject@3@@Z",
+   "address": "0069c5f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017e70       ?queryResult@ShadowCasterSceneQueryListener@SceneManager@Ogre@@UAE_NPAVMovableObject@3@@Z 00418e70 f   linked:verified_0011.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??DMatrix4@Ogre@@QBE?AV01@ABV01@@Z",
+   "address": "00541ed0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000a6b0       ??DMatrix4@Ogre@@QBE?AV01@ABV01@@Z 0040b6b0 f i linked:verified_0012.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0Quaternion@Ogre@@QAE@ABVRadian@1@ABVVector3@1@@Z",
+   "address": "005426f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000a2e0       ??0Quaternion@Ogre@@QAE@ABVRadian@1@ABVVector3@1@@Z 0040b2e0 f i linked:verified_0012.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_notifyTypeFlags@MovableObjectFactory@Ogre@@QAEXK@Z",
+   "address": "00546d60",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000a6d0       ?_notifyTypeFlags@MovableObjectFactory@Ogre@@QAEXK@Z 0040b6d0 f i linked:verified_0012.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??4MemoryManager@Ogre@@QAEAAV01@ABV01@@Z",
+   "address": "00553220",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000a2d0       ??4MemoryManager@Ogre@@QAEAAV01@ABV01@@Z 0040b2d0 f i linked:verified_0012.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getPolygonCount@ConvexBody@Ogre@@QBEIXZ",
+   "address": "00546320",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016c10       ?getPolygonCount@ConvexBody@Ogre@@QBEIXZ 00417c10 f   linked:verified_0013.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1AutoConstantDefinition@GpuProgramParameters@Ogre@@QAE@XZ",
+   "address": "0054c490",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000b720       ??1AutoConstantDefinition@GpuProgramParameters@Ogre@@QAE@XZ 0040c720 f i linked:verified_0014.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?doSet@CmdRenderer@ParticleSystem@Ogre@@UAEXPAXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00541d70",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000158e0       ?doSet@CmdRenderer@ParticleSystem@Ogre@@UAEXPAXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004168e0 f   linked:verified_0016.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyLight@SceneManager@Ogre@@UAEXPAVLight@2@@Z",
+   "address": "0068bc80",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e290       ?destroyLight@SceneManager@Ogre@@UAEXPAVLight@2@@Z 0040f290 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyParticleSystem@SceneManager@Ogre@@UAEXPAVParticleSystem@2@@Z",
+   "address": "0068bd20",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e2a0       ?destroyParticleSystem@SceneManager@Ogre@@UAEXPAVParticleSystem@2@@Z 0040f2a0 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_findVisibleObjects@SceneManager@Ogre@@UAEXPAVCamera@2@PAUVisibleObjectsBoundsInfo@2@_N@Z",
+   "address": "0068bef0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e2c0       ?_findVisibleObjects@SceneManager@Ogre@@UAEXPAVCamera@2@PAUVisibleObjectsBoundsInfo@2@_N@Z 0040f2c0 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowTextureConfig@SceneManager@Ogre@@UAEXIGGW4PixelFormat@2@@Z",
+   "address": "0068ca00",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e310       ?setShadowTextureConfig@SceneManager@Ogre@@UAEXIGGW4PixelFormat@2@@Z 0040f310 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyMovableObject@SceneManager@Ogre@@UAEXPAVMovableObject@2@@Z",
+   "address": "0068ce50",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e350       ?destroyMovableObject@SceneManager@Ogre@@UAEXPAVMovableObject@2@@Z 0040f350 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?extractMovableObject@SceneManager@Ogre@@UAEXPAVMovableObject@2@@Z",
+   "address": "0068ce80",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e380       ?extractMovableObject@SceneManager@Ogre@@UAEXPAVMovableObject@2@@Z 0040f380 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_injectRenderWithPass@SceneManager@Ogre@@UAEXPAVPass@2@PAVRenderable@2@_N@Z",
+   "address": "0068ceb0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e3b0       ?_injectRenderWithPass@SceneManager@Ogre@@UAEXPAVPass@2@PAVRenderable@2@_N@Z 0040f3b0 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?visit@SceneMgrQueuedRenderableVisitor@SceneManager@Ogre@@UAEXPBVRenderable@3@@Z",
+   "address": "0068d690",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e3f0       ?visit@SceneMgrQueuedRenderableVisitor@SceneManager@Ogre@@UAEXPBVRenderable@3@@Z 0040f3f0 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?visit@SceneMgrQueuedRenderableVisitor@SceneManager@Ogre@@UAE_NPBVPass@3@@Z",
+   "address": "0068d6d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e430       ?visit@SceneMgrQueuedRenderableVisitor@SceneManager@Ogre@@UAE_NPBVPass@3@@Z 0040f430 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?visit@SceneMgrQueuedRenderableVisitor@SceneManager@Ogre@@UAEXPBURenderablePass@3@@Z",
+   "address": "0068d710",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e470       ?visit@SceneMgrQueuedRenderableVisitor@SceneManager@Ogre@@UAEXPBURenderablePass@3@@Z 0040f470 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowTextureSettings@SceneManager@Ogre@@UAEXGGW4PixelFormat@2@@Z",
+   "address": "00693780",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e4e0       ?setShadowTextureSettings@SceneManager@Ogre@@UAEXGGW4PixelFormat@2@@Z 0040f4e0 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyAllAnimations@SceneManager@Ogre@@UAEXXZ",
+   "address": "006993f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e640       ?destroyAllAnimations@SceneManager@Ogre@@UAEXXZ 0040f640 f   linked:verified_0017.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Copy_backward_opt@PAPAVLight@Ogre@@PAPAV12@Urandom_access_iterator_tag@std@@@std@@YAPAPAVLight@Ogre@@PAPAV12@00Urandom_access_iterator_tag@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00547200",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003760       ??$_Copy_backward_opt@PAPAVLight@Ogre@@PAPAV12@Urandom_access_iterator_tag@std@@@std@@YAPAPAVLight@Ogre@@PAPAV12@00Urandom_access_iterator_tag@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00404760 f i linked:verified_0018.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Uninit_copy@PBQAVLight@Ogre@@PAPAV12@V?$allocator@PAVLight@Ogre@@@std@@@std@@YAPAPAVLight@Ogre@@PBQAV12@0PAPAV12@AAV?$allocator@PAVLight@Ogre@@@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "005473f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003710       ??$_Uninit_copy@PBQAVLight@Ogre@@PAPAV12@V?$allocator@PAVLight@Ogre@@@std@@@std@@YAPAPAVLight@Ogre@@PBQAV12@0PAPAV12@AAV?$allocator@PAVLight@Ogre@@@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00404710 f i linked:verified_0018.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyInstance@DefaultSceneManagerFactory@Ogre@@UAEXPAVSceneManager@2@@Z",
+   "address": "0068cf30",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00015740       ?destroyInstance@DefaultSceneManagerFactory@Ogre@@UAEXPAVSceneManager@2@@Z 00416740 f   linked:verified_0019.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?acquire@Pool@@QAEPAVRbxSubEntity@Ogre@@XZ",
+   "address": "00671d60",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000ffb0       ?acquire@Pool@@QAEPAVRbxSubEntity@Ogre@@XZ 00410fb0 f   linked:verified_0021.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightLess@SceneManager@2@0@Z",
+   "address": "006903a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00004670       ??$_Insertion_sort1@PAPAVLight@Ogre@@UlightLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightLess@SceneManager@2@0@Z 00405670 f i linked:verified_0022.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@V?$_Temp_iterator@PAVLight@Ogre@@@std@@UlightLess@SceneManager@2@Uforward_iterator_tag@4@@std@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@0@PAPAVLight@Ogre@@000V10@UlightLess@SceneManager@3@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00692770",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000049c0       ??$_Merge@PAPAVLight@Ogre@@PAPAV12@V?$_Temp_iterator@PAVLight@Ogre@@@std@@UlightLess@SceneManager@2@Uforward_iterator_tag@4@@std@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@0@PAPAVLight@Ogre@@000V10@UlightLess@SceneManager@3@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 004059c0 f i linked:verified_0022.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_renderModulativeStencilShadowedQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z",
+   "address": "00694f60",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00004bc0       ?recover_renderModulativeStencilShadowedQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z 00405bc0 f   linked:verified_0022.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_renderTextureShadowCasterQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z",
+   "address": "00695260",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00004ec0       ?recover_renderTextureShadowCasterQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z 00405ec0 f   linked:verified_0022.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_renderAdditiveStencilShadowedQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z",
+   "address": "0069b2e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00005310       ?recover_renderAdditiveStencilShadowedQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z 00406310 f   linked:verified_0022.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_renderAdditiveTextureShadowedQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z",
+   "address": "0069b6d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00005700       ?recover_renderAdditiveTextureShadowedQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z 00406700 f   linked:verified_0022.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_ensureShadowTexturesCreated@HeaderRecovery@@QAEXXZ",
+   "address": "0069d110",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00005c80       ?recover_ensureShadowTexturesCreated@HeaderRecovery@@QAEXXZ 00406c80 f   linked:verified_0022.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Copy_opt@PAULightInfo@SceneManager@Ogre@@PAU123@@std@@YAPAULightInfo@SceneManager@Ogre@@PAU123@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0068e100",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000022a0       ??$_Copy_opt@PAULightInfo@SceneManager@Ogre@@PAU123@@std@@YAPAULightInfo@SceneManager@Ogre@@PAU123@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 004032a0 f i linked:verified_0023.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@std@@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00690620",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00002350       ??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@std@@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00403350 f i linked:verified_0023.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Insert_n@?$vector@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@2@IABULightInfo@SceneManager@Ogre@@@Z",
+   "address": "00697960",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00002760       ?_Insert_n@?$vector@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@2@IABULightInfo@SceneManager@Ogre@@@Z 00403760 f i linked:verified_0023.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z",
+   "address": "00697e40",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00002500       ??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z 00403500 f i linked:verified_0023.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Copy_backward_opt@PAULightInfo@SceneManager@Ogre@@PAU123@@std@@YAPAULightInfo@SceneManager@Ogre@@PAU123@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0068e200",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003810       ??$_Copy_backward_opt@PAULightInfo@SceneManager@Ogre@@PAU123@@std@@YAPAULightInfo@SceneManager@Ogre@@PAU123@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00404810 f i linked:verified_0024.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Merge_backward@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0068e390",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003860       ??$_Merge_backward@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z 00404860 f i linked:verified_0024.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Lower_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z",
+   "address": "0068e440",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000037b0       ??$_Lower_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z 004047b0 f i linked:verified_0024.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_initRenderQueue@HeaderRecovery@@QAEXXZ",
+   "address": "0068b6f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000180b0       ?recover_initRenderQueue@HeaderRecovery@@QAEXXZ 004190b0 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover__renderVisibleObjects@HeaderRecovery@@QAEXXZ",
+   "address": "0068bf40",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00018160       ?recover__renderVisibleObjects@HeaderRecovery@@QAEXXZ 00419160 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover__renderQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z",
+   "address": "0068c0b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000181a0       ?recover__renderQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z 004191a0 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_updateRenderQueueSplitOptions@HeaderRecovery@@QAEXXZ",
+   "address": "0068c570",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000182d0       ?recover_updateRenderQueueSplitOptions@HeaderRecovery@@QAEXXZ 004192d0 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_updateRenderQueueGroupSplitOptions@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@_N1@Z",
+   "address": "0068c650",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000183b0       ?recover_updateRenderQueueGroupSplitOptions@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@_N1@Z 004193b0 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_setShadowColour@HeaderRecovery@@QAEXABVColourValue@Ogre@@@Z",
+   "address": "0068c8a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00018490       ?recover_setShadowColour@HeaderRecovery@@QAEXABVColourValue@Ogre@@@Z 00419490 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_setShadowIndexBufferSize@HeaderRecovery@@QAEXI@Z",
+   "address": "0068c950",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000184f0       ?recover_setShadowIndexBufferSize@HeaderRecovery@@QAEXI@Z 004194f0 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_setShadowTechnique@HeaderRecovery@@QAEXW4ShadowTechnique@Ogre@@@Z",
+   "address": "0068d980",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000185a0       ?recover_setShadowTechnique@HeaderRecovery@@QAEXW4ShadowTechnique@Ogre@@@Z 004195a0 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_renderTextureShadowReceiverQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z",
+   "address": "00695960",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000188e0       ?recover_renderTextureShadowReceiverQueueGroupObjects@HeaderRecovery@@QAEXPAVRenderQueueGroup@Ogre@@W4OrganisationMode@QueuedRenderableCollection@3@@Z 004198e0 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_clearScene@HeaderRecovery@@QAEXXZ",
+   "address": "00698890",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00018760       ?recover_clearScene@HeaderRecovery@@QAEXXZ 00419760 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_destroyAllMovableObjects@HeaderRecovery@@QAEXXZ",
+   "address": "00699740",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00018f60       ?recover_destroyAllMovableObjects@HeaderRecovery@@QAEXXZ 00419f60 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_prepareRenderQueue@HeaderRecovery@@QAEXXZ",
+   "address": "0069a470",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00018a20       ?recover_prepareRenderQueue@HeaderRecovery@@QAEXXZ 00419a20 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_destroyShadowTextures@HeaderRecovery@@QAEXXZ",
+   "address": "0069a950",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00018c60       ?recover_destroyShadowTextures@HeaderRecovery@@QAEXXZ 00419c60 f   linked:verified_0025.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_createAnimationState@HeaderRecovery@@QAEPAVAnimationState@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0068c2e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00019150       ?recover_createAnimationState@HeaderRecovery@@QAEPAVAnimationState@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 0041a150 f   linked:verified_0026.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_deriveShadowCasterPass@HeaderRecovery@@QAEPBVPass@Ogre@@PBV23@@Z",
+   "address": "0068f750",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000194f0       ?recover_deriveShadowCasterPass@HeaderRecovery@@QAEPBVPass@Ogre@@PBV23@@Z 0041a4f0 f   linked:verified_0026.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_deriveShadowReceiverPass@HeaderRecovery@@QAEPBVPass@Ogre@@PBV23@@Z",
+   "address": "0068fa10",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000197b0       ?recover_deriveShadowReceiverPass@HeaderRecovery@@QAEPBVPass@Ogre@@PBV23@@Z 0041a7b0 f   linked:verified_0026.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_createParticleSystem@HeaderRecovery@@QAEPAVParticleSystem@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+   "address": "0069da20",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001a7f0       ?recover_createParticleSystem@HeaderRecovery@@QAEPAVParticleSystem@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z 0041b7f0 f   linked:verified_0026.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_createParticleSystem@HeaderRecovery@@QAEPAVParticleSystem@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I0@Z",
+   "address": "0069daf0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001a8c0       ?recover_createParticleSystem@HeaderRecovery@@QAEPAVParticleSystem@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I0@Z 0041b8c0 f   linked:verified_0026.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_createBillboardSet@HeaderRecovery@@QAEPAVBillboardSet@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z",
+   "address": "0069dc10",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001a9e0       ?recover_createBillboardSet@HeaderRecovery@@QAEPAVBillboardSet@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z 0041b9e0 f   linked:verified_0026.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_getParticleSystem@HeaderRecovery@@QBEPAVParticleSystem@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0068bcd0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001abf0       ?recover_getParticleSystem@HeaderRecovery@@QBEPAVParticleSystem@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 0041bbf0 f   linked:verified_0027.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_getSuggestedViewpoint@HeaderRecovery@@QAE?AUViewPoint@Ogre@@_N@Z",
+   "address": "0068d780",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001ac20       ?recover_getSuggestedViewpoint@HeaderRecovery@@QAE?AUViewPoint@Ogre@@_N@Z 0041bc20 f   linked:verified_0027.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VGpuProgramParameters@Ogre@@@Ogre@@MAEXXZ",
+   "address": "0068dd90",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000148f0       ?destroy@?$SharedPtr@VGpuProgramParameters@Ogre@@@Ogre@@MAEXXZ 004158f0 f i linked:verified_0028.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recoverUpdate@HeaderRecovery@@QAEXPAVCamera@Ogre@@@Z",
+   "address": "0068bec0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00018080       ?recoverUpdate@HeaderRecovery@@QAEXPAVCamera@Ogre@@@Z 00419080 f   linked:verified_0029.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_setShadowTextureSelfShadow@HeaderRecovery@@QAEX_N@Z",
+   "address": "0068ca40",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001aad0       ?recover_setShadowTextureSelfShadow@HeaderRecovery@@QAEX_N@Z 0041bad0 f   linked:verified_0030.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_createEntity@HeaderRecovery@@QAEPAVEntity@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+   "address": "0069d960",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001ab10       ?recover_createEntity@HeaderRecovery@@QAEPAVEntity@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z 0041bb10 f   linked:verified_0030.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_createLight@HeaderRecovery@@QAEPAVLight@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0068b800",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001abd0       ?recover_createLight@HeaderRecovery@@QAEPAVLight@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 0041bbd0 f   linked:verified_0031.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Copy_opt@PAVTexturePtr@Ogre@@PAV12@@std@@YAPAVTexturePtr@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0068e0b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00004440       ??$_Copy_opt@PAVTexturePtr@Ogre@@PAV12@@std@@YAPAVTexturePtr@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00405440 f i linked:verified_0032.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?f@RbxSceneManager@Ogre@@QAEXPAVRenderQueueGroup@2@W4OrganisationMode@QueuedRenderableCollection@2@@Z",
+   "address": "00695aa0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016510       ?f@RbxSceneManager@Ogre@@QAEXPAVRenderQueueGroup@2@W4OrganisationMode@QueuedRenderableCollection@2@@Z 00417510 f   linked:verified_0039.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getSquaredViewDepth@RbxSubEntity@Ogre@@UBEMPBVCamera@2@@Z",
+   "address": "00685010",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017400       ?getSquaredViewDepth@RbxSubEntity@Ogre@@UBEMPBVCamera@2@@Z 00418400 f   linked:verified_0040.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?renderVisibleObjectsCustomSequence@RbxSceneManager@Ogre@@UAEXPAVRenderQueueInvocationSequence@2@@Z",
+   "address": "00694e40",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001c9e0       ?renderVisibleObjectsCustomSequence@RbxSceneManager@Ogre@@UAEXPAVRenderQueueInvocationSequence@2@@Z 0041d9e0 f   linked:verified_0043.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setWorldGeometry@RbxSceneManager@Ogre@@UAEXAAV?$SharedPtr@VDataStream@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0068bda0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00010e50       ?setWorldGeometry@RbxSceneManager@Ogre@@UAEXAAV?$SharedPtr@VDataStream@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00411e50 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowTextureConfig@RbxSceneManager@Ogre@@UAEXIABUShadowTextureConfig@2@@Z",
+   "address": "0068db40",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00011010       ?setShadowTextureConfig@RbxSceneManager@Ogre@@UAEXIABUShadowTextureConfig@2@@Z 00412010 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setSkyDome@RbxSceneManager@Ogre@@UAEX_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@MMM0ABVQuaternion@2@HHH1@Z",
+   "address": "006907b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00011360       ?setSkyDome@RbxSceneManager@Ogre@@UAEX_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@MMM0ABVQuaternion@2@HHH1@Z 00412360 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowTextureCasterMaterial@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00691900",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000116d0       ?setShadowTextureCasterMaterial@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004126d0 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowTextureReceiverMaterial@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00691af0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000118c0       ?setShadowTextureReceiverMaterial@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004128c0 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getCamera@RbxSceneManager@Ogre@@UBEPAVCamera@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "006943c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00011b50       ?getCamera@RbxSceneManager@Ogre@@UBEPAVCamera@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00412b50 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getSceneNode@RbxSceneManager@Ogre@@UBEPAVSceneNode@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00694510",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00011c50       ?getSceneNode@RbxSceneManager@Ogre@@UBEPAVSceneNode@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00412c50 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getAnimation@RbxSceneManager@Ogre@@UBEPAVAnimation@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00695bd0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00011d70       ?getAnimation@RbxSceneManager@Ogre@@UBEPAVAnimation@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00412d70 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getStaticGeometry@RbxSceneManager@Ogre@@UBEPAVStaticGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "006966d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00011e70       ?getStaticGeometry@RbxSceneManager@Ogre@@UBEPAVStaticGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00412e70 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getInstancedGeometry@RbxSceneManager@Ogre@@UBEPAVInstancedGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00696840",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00011f90       ?getInstancedGeometry@RbxSceneManager@Ogre@@UBEPAVInstancedGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00412f90 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroySceneNode@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00698a10",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000122f0       ?destroySceneNode@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004132f0 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyAnimation@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "006992c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000125a0       ?destroyAnimation@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004135a0 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?createCamera@RbxSceneManager@Ogre@@UAEPAVCamera@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0069a000",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000127b0       ?createCamera@RbxSceneManager@Ogre@@UAEPAVCamera@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004137b0 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?createSceneNode@RbxSceneManager@Ogre@@UAEPAVSceneNode@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0069a300",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00012a30       ?createSceneNode@RbxSceneManager@Ogre@@UAEPAVSceneNode@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00413a30 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?createAnimation@RbxSceneManager@Ogre@@UAEPAVAnimation@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M@Z",
+   "address": "0069a7d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00012ba0       ?createAnimation@RbxSceneManager@Ogre@@UAEPAVAnimation@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M@Z 00413ba0 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?createStaticGeometry@RbxSceneManager@Ogre@@UAEPAVStaticGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0069ac50",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00012d20       ?createStaticGeometry@RbxSceneManager@Ogre@@UAEPAVStaticGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00413d20 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?createInstancedGeometry@RbxSceneManager@Ogre@@UAEPAVInstancedGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0069add0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00012ea0       ?createInstancedGeometry@RbxSceneManager@Ogre@@UAEPAVInstancedGeometry@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00413ea0 f   linked:verified_0044.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?createSkyboxPlane@RbxSceneManager@Ogre@@QAE?AVMeshPtr@2@W4BoxPlane@SceneManager@2@MABVQuaternion@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0068efd0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000131e0       ?createSkyboxPlane@RbxSceneManager@Ogre@@QAE?AVMeshPtr@2@W4BoxPlane@SceneManager@2@MABVQuaternion@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004141e0 f   linked:verified_0045.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?createSkydomePlane@RbxSceneManager@Ogre@@QAE?AVMeshPtr@2@W4BoxPlane@SceneManager@2@MMMABVQuaternion@2@HHHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0068f360",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00013570       ?createSkydomePlane@RbxSceneManager@Ogre@@QAE?AVMeshPtr@2@W4BoxPlane@SceneManager@2@MMMABVQuaternion@2@HHHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00414570 f   linked:verified_0045.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?prepareShadowTextures@RbxSceneManager@Ogre@@UAEXPAVCamera@2@PAVViewport@2@@Z",
+   "address": "00696290",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00013ba0       ?prepareShadowTextures@RbxSceneManager@Ogre@@UAEXPAVCamera@2@PAVViewport@2@@Z 00414ba0 f   linked:verified_0045.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?renderShadowVolumesToStencil@RbxSceneManager@Ogre@@UAEXPBVLight@2@PBVCamera@2@@Z",
+   "address": "0069c800",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00013fe0       ?renderShadowVolumesToStencil@RbxSceneManager@Ogre@@UAEXPBVLight@2@PBVCamera@2@@Z 00414fe0 f   linked:verified_0045.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?recover_initShadowVolumeMaterials@HeaderRecovery@@QAEXXZ",
+   "address": "00690b20",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001acd0       ?recover_initShadowVolumeMaterials@HeaderRecovery@@QAEXXZ 0041bcd0 f   linked:verified_0046.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?initializeVertexBuffer@Listener@Ogre@@QAEXI@Z",
+   "address": "006829a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017880       ?initializeVertexBuffer@Listener@Ogre@@QAEXI@Z 00418880 f   linked:verified_0048.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z",
+   "address": "00685490",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017680       ?getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z 00418680 f   linked:verified_0050.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_updateBounds@RbxSceneNode@Ogre@@UAEXXZ",
+   "address": "006817e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000f960       ?_updateBounds@RbxSceneNode@Ogre@@UAEXXZ 00410960 f   linked:verified_0051.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getOrientation@RbxSubEntity@Ogre@@QBEABVQuaternion@2@XZ",
+   "address": "00685730",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016b60       ?getOrientation@RbxSubEntity@Ogre@@QBEABVQuaternion@2@XZ 00417b60 f   linked:verified_0052.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getRenderOperation@RbxSubEntity@Ogre@@UAEXAAVRenderOperation@2@@Z",
+   "address": "00684fd0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016c30       ?getRenderOperation@RbxSubEntity@Ogre@@UAEXAAVRenderOperation@2@@Z 00417c30 f   linked:verified_0053.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getSphere@RbxSceneNode@Ogre@@QBEABVSphere@2@K@Z",
+   "address": "00682040",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017340       ?getSphere@RbxSceneNode@Ogre@@QBEABVSphere@2@K@Z 00418340 f   linked:verified_0054.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getDarkCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z",
+   "address": "00685590",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000168b0       ?getDarkCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z 004178b0 f   linked:verified_0055.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?prepareEdges@RbxSubMesh@Ogre@@QAEXXZ",
+   "address": "00682430",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000c2a0       ?prepareEdges@RbxSubMesh@Ogre@@QAEXXZ 0040d2a0 f   linked:verified_0056.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1RbxSubMesh@Ogre@@QAE@XZ",
+   "address": "006824e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000c350       ??1RbxSubMesh@Ogre@@QAE@XZ 0040d350 f   linked:verified_0056.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0RbxAdornState@Ogre@@QAE@XZ",
+   "address": "00685e30",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000a6f0       ??0RbxAdornState@Ogre@@QAE@XZ 0040b6f0 f   linked:verified_0057.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getShadowVolumeRenderableIterator@RbxSubEntity@Ogre@@UAE?AV?$VectorIterator@V?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@@2@W4ShadowTechnique@2@PBVLight@2@PAVHardwareIndexBufferSharedPtr@2@_NMK@Z",
+   "address": "00685a40",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016e60       ?getShadowVolumeRenderableIterator@RbxSubEntity@Ogre@@UAE?AV?$VectorIterator@V?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@@2@W4ShadowTechnique@2@PBVLight@2@PAVHardwareIndexBufferSharedPtr@2@_NMK@Z 00417e60 f   linked:verified_0062.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_applySceneAnimations@RbxSceneManager@Ogre@@UAEXXZ",
+   "address": "00695d20",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e0d0       ?_applySceneAnimations@RbxSceneManager@Ogre@@UAEXXZ 0040f0d0 f   linked:verified_0063.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?renderModulativeTextureShadowedQueueGroupObjects@RbxSceneManager@Ogre@@UAEXPAVRenderQueueGroup@2@W4OrganisationMode@QueuedRenderableCollection@2@@Z",
+   "address": "00695420",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001c4a0       ?renderModulativeTextureShadowedQueueGroupObjects@RbxSceneManager@Ogre@@UAEXPAVRenderQueueGroup@2@W4OrganisationMode@QueuedRenderableCollection@2@@Z 0041d4a0 f   linked:verified_0064.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_populateLightList@RbxSceneManager@Ogre@@UAEXABVVector3@2@MAAV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@Z",
+   "address": "0069e390",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000e7b0       ?_populateLightList@RbxSceneManager@Ogre@@UAEXABVVector3@2@MAAV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@Z 0040f7b0 f   linked:verified_0065.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setSkyPlane@RbxSceneManager@Ogre@@UAEX_NABVPlane@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@MM0MHH2@Z",
+   "address": "0068eac0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001cb60       ?setSkyPlane@RbxSceneManager@Ogre@@UAEX_NABVPlane@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@MM0MHH2@Z 0041db60 f   linked:verified_0066.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_renderScene@RbxSceneManager@Ogre@@UAEXPAVCamera@2@PAVViewport@2@_N@Z",
+   "address": "00698cc0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000eae0       ?_renderScene@RbxSceneManager@Ogre@@UAEXPAVCamera@2@PAVViewport@2@_N@Z 0040fae0 f   linked:verified_0067.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?releaseUnusedResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@4@@Z",
+   "address": "006792b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001bce0       ?releaseUnusedResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@4@@Z 0041cce0 f   linked:verified_0068.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getStartBackgroundThread@ResourceBackgroundQueue@Ogre@@QAE_NXZ",
+   "address": "00552690",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017490       ?getStartBackgroundThread@ResourceBackgroundQueue@Ogre@@QAE_NXZ 00418490 f i linked:verified_0069.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getWorldTransforms@RbxSubEntity@Ogre@@UBEXPAVMatrix4@2@@Z",
+   "address": "00685710",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017780       ?getWorldTransforms@RbxSubEntity@Ogre@@UBEXPAVMatrix4@2@@Z 00418780 f   linked:verified_0071.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?collectUnusedTextures@RenderNew@RBX@@YAXXZ",
+   "address": "007aea60",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00010b30       ?collectUnusedTextures@RenderNew@RBX@@YAXXZ 00411b30 f   linked:verified_0072.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+   "address": "00670a50",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000d5d0       ?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z 0040e5d0 f i linked:verified_0073.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@@std@@@2@@std@@QAEAAVMeshPtr@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+   "address": "006719f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000db10       ??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@@std@@@2@@std@@QAEAAVMeshPtr@Ogre@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z 0040eb10 f i linked:verified_0073.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Sort_heap@PAUEntry@@@std@@YAXPAUEntry@@0@Z",
+   "address": "0067d1a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000071c0       ??$_Sort_heap@PAUEntry@@@std@@YAXPAUEntry@@0@Z 004081c0 f i linked:verified_0074.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?removeSubEntity@RbxEntity@Ogre@@QAEXPAVRbxSubEntity@2@@Z",
+   "address": "0067d2d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001c2e0       ?removeSubEntity@RbxEntity@Ogre@@QAEXPAVRbxSubEntity@2@@Z 0041d2e0 f   linked:verified_0075.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getTransform@RbxSceneNode@Ogre@@QBEABVMatrix4@2@K@Z",
+   "address": "006818e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017560       ?getTransform@RbxSceneNode@Ogre@@QBEABVMatrix4@2@K@Z 00418560 f   linked:verified_0076.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?has@RbxSceneNode@Ogre@@QAE_NI@Z",
+   "address": "00681a00",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017830       ?has@RbxSceneNode@Ogre@@QAE_NI@Z 00418830 f   linked:verified_0077.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0Listener@Ogre@@QAE@XZ",
+   "address": "006831d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000a1d0       ??0Listener@Ogre@@QAE@XZ   0040b1d0 f   linked:verified_0078.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1Listener@Ogre@@UAE@XZ",
+   "address": "00683240",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000a240       ??1Listener@Ogre@@UAE@XZ   0040b240 f   linked:verified_0078.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVLight@Ogre@@VVector4@2@U?$less@PBVLight@Ogre@@@std@@V?$allocator@U?$pair@QBVLight@Ogre@@VVector4@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVLight@Ogre@@VVector4@2@U?$less@PBVLight@Ogre@@@std@@V?$allocator@U?$pair@QBVLight@Ogre@@VVector4@2@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QBVLight@Ogre@@VVector4@2@@2@D@Z",
+   "address": "00681300",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000dc60       ?_Buynode@?$_Tree@V?$_Tmap_traits@PBVLight@Ogre@@VVector4@2@U?$less@PBVLight@Ogre@@@std@@V?$allocator@U?$pair@QBVLight@Ogre@@VVector4@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVLight@Ogre@@VVector4@2@U?$less@PBVLight@Ogre@@@std@@V?$allocator@U?$pair@QBVLight@Ogre@@VVector4@2@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QBVLight@Ogre@@VVector4@2@@2@D@Z 0040ec60 f i linked:verified_0079.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?createEntity@RbxSceneManager@Ogre@@UAEPAVEntity@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4PrefabType@SceneManager@2@@Z",
+   "address": "0068b8b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00013020       ?createEntity@RbxSceneManager@Ogre@@UAEPAVEntity@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4PrefabType@SceneManager@2@@Z 00414020 f   linked:verified_0080.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?configure@Listener@Ogre@@QAEXPAVSceneManager@2@PAX_N22@Z",
+   "address": "00682560",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00010d40       ?configure@Listener@Ogre@@QAEXPAVSceneManager@2@PAX_N22@Z 00411d40 f   linked:verified_0081.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getCurrentSubMesh@RbxSubEntity@Ogre@@QAEPAVSubMesh@2@XZ",
+   "address": "00685140",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016880       ?getCurrentSubMesh@RbxSubEntity@Ogre@@QAEPAVSubMesh@2@XZ 00417880 f   linked:verified_0082.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@PAVSubMesh@1@I@Z",
+   "address": "00685850",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000aea0       ??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@PAVSubMesh@1@I@Z 0040bea0 f   linked:verified_0083.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Buynode@?$list@UQuad@@V?$allocator@UQuad@@@std@@@std@@IAEPAU_Node@?$_List_nod@UQuad@@V?$allocator@UQuad@@@std@@@2@PAU342@0ABUQuad@@@Z",
+   "address": "00682b90",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000dd80       ?_Buynode@?$list@UQuad@@V?$allocator@UQuad@@@std@@@std@@IAEPAU_Node@?$_List_nod@UQuad@@V?$allocator@UQuad@@@std@@@2@PAU342@0ABUQuad@@@Z 0040ed80 f i linked:verified_0084.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0RbxEntity@Ogre@@QAE@XZ",
+   "address": "0067d1f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000a7a0       ??0RbxEntity@Ogre@@QAE@XZ  0040b7a0 f   linked:verified_0085.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1RbxEntity@Ogre@@UAE@XZ",
+   "address": "0067d420",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000a880       ??1RbxEntity@Ogre@@UAE@XZ  0040b880 f   linked:verified_0085.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?createSubEntity@RbxEntity@Ogre@@QAEPAVSubEntity@2@PAVSubMesh@2@I@Z",
+   "address": "0067d9b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000aa00       ?createSubEntity@RbxEntity@Ogre@@QAEPAVSubEntity@2@PAVSubMesh@2@I@Z 0040ba00 f   linked:verified_0085.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setVisible@RbxEntity@Ogre@@UAEX_N@Z",
+   "address": "0067c6a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000fa60       ?setVisible@RbxEntity@Ogre@@UAEX_N@Z 00410a60 f   linked:verified_0087.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_updateRenderQueue@RbxEntity@Ogre@@UAEXPAVRenderQueue@2@@Z",
+   "address": "0067d010",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000fae0       ?_updateRenderQueue@RbxEntity@Ogre@@UAEXPAVRenderQueue@2@@Z 00410ae0 f   linked:verified_0087.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Adjust_heap@PAUEntry@@HU1@@std@@YAXPAUEntry@@HHU1@@Z",
+   "address": "0067c780",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000020f0       ??$_Adjust_heap@PAUEntry@@HU1@@std@@YAXPAUEntry@@HHU1@@Z 004030f0 f i linked:verified_0088.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1RbxSceneNode@Ogre@@UAE@XZ",
+   "address": "006821c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000c0f0       ??1RbxSceneNode@Ogre@@UAE@XZ 0040d0f0 f   linked:verified_0089.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?initializeSpheres@Ogre@@YAXXZ",
+   "address": "006822e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000c230       ?initializeSpheres@Ogre@@YAXXZ 0040d230 f   linked:verified_0089.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getSubMesh@RbxSubEntity@Ogre@@QAEPAVSubMesh@2@I@Z",
+   "address": "006850d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000174b0       ?getSubMesh@RbxSubEntity@Ogre@@QAEPAVSubMesh@2@I@Z 004184b0 f   linked:verified_0090.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setMesh@VisualEngine@Ogre@@QAEXVMeshPtr@2@@Z",
+   "address": "0067c520",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001cb10       ?setMesh@VisualEngine@Ogre@@QAEXVMeshPtr@2@@Z 0041db10 f   linked:verified_0091.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Push_heap@PAU?$pair@PAXM@std@@HU12@ULess@@@std@@YAXPAU?$pair@PAXM@0@HHU10@ULess@@@Z",
+   "address": "0067c640",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00002090       ??$_Push_heap@PAU?$pair@PAXM@std@@HU12@ULess@@@std@@YAXPAU?$pair@PAXM@0@HHU10@ULess@@@Z 00403090 f i linked:verified_0093.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Med3@PAUEntry@@@std@@YAXPAUEntry@@00@Z",
+   "address": "0067c800",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000062f0       ??$_Med3@PAUEntry@@@std@@YAXPAUEntry@@00@Z 004072f0 f i linked:verified_0094.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Insertion_sort1@PAUEntry@@U1@@std@@YAXPAUEntry@@00@Z",
+   "address": "0067cb30",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00006820       ??$_Insertion_sort1@PAUEntry@@U1@@std@@YAXPAUEntry@@00@Z 00407820 f i linked:verified_0094.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Unguarded_partition@PAUEntry@@@std@@YA?AU?$pair@PAUEntry@@PAU1@@0@PAUEntry@@0@Z",
+   "address": "0067cc00",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00006410       ??$_Unguarded_partition@PAUEntry@@@std@@YA?AU?$pair@PAUEntry@@PAU1@@0@PAUEntry@@0@Z 00407410 f i linked:verified_0094.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?addQuad@QuadList@Ogre@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@MMMMMMMM@Z",
+   "address": "00682d60",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00010070       ?addQuad@QuadList@Ogre@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@MMMMMMMM@Z 00411070 f   linked:verified_0096.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getNext@?$MapIterator@V?$map@KV?$SharedPtr@VResource@Ogre@@@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKV?$SharedPtr@VResource@Ogre@@@Ogre@@@std@@@4@@std@@@Ogre@@QAE?AV?$SharedPtr@VResource@Ogre@@@2@XZ",
+   "address": "00678dc0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00015c30       ?getNext@?$MapIterator@V?$map@KV?$SharedPtr@VResource@Ogre@@@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKV?$SharedPtr@VResource@Ogre@@@Ogre@@@std@@@4@@std@@@Ogre@@QAE?AV?$SharedPtr@VResource@Ogre@@@2@XZ 00416c30 f i linked:verified_0098.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00678e20",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00015c90       ?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00416c90 f   linked:verified_0098.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??4?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@QAEAAV01@ABV01@@Z",
+   "address": "00670670",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000092d0       ??4?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@QAEAAV01@ABV01@@Z 0040a2d0 f i linked:verified_0099.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@QAE@ABV01@@Z",
+   "address": "0068cf50",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00009200       ??0?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@QAE@ABV01@@Z 0040a200 f i linked:verified_0099.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?swap@?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@MAEXAAV12@@Z",
+   "address": "0068ddc0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00011150       ?swap@?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@MAEXAAV12@@Z 00412150 f i linked:verified_0099.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShowDebugShadows@SceneManager@Ogre@@UAEX_N@Z",
+   "address": "0068e940",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017de0       ?setShowDebugShadows@SceneManager@Ogre@@UAEX_N@Z 00418de0 f i linked:verified_0100.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowUseInfiniteFarPlane@SceneManager@Ogre@@UAEX_N@Z",
+   "address": "0068e9f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017df0       ?setShadowUseInfiniteFarPlane@SceneManager@Ogre@@UAEX_N@Z 00418df0 f i linked:verified_0100.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?isShadowTechniqueStencilBased@SceneManager@Ogre@@UBE_NXZ",
+   "address": "0068ea00",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017e00       ?isShadowTechniqueStencilBased@SceneManager@Ogre@@UBE_NXZ 00418e00 f i linked:verified_0100.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?isShadowTechniqueTextureBased@SceneManager@Ogre@@UBE_NXZ",
+   "address": "0068ea10",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017e10       ?isShadowTechniqueTextureBased@SceneManager@Ogre@@UBE_NXZ 00418e10 f i linked:verified_0100.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?isShadowTechniqueModulative@SceneManager@Ogre@@UBE_NXZ",
+   "address": "0068ea20",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017e20       ?isShadowTechniqueModulative@SceneManager@Ogre@@UBE_NXZ 00418e20 f i linked:verified_0100.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?isShadowTechniqueAdditive@SceneManager@Ogre@@UBE_NXZ",
+   "address": "0068ea30",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017e30       ?isShadowTechniqueAdditive@SceneManager@Ogre@@UBE_NXZ 00418e30 f i linked:verified_0100.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?isShadowTechniqueIntegrated@SceneManager@Ogre@@UBE_NXZ",
+   "address": "0068ea40",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017e40       ?isShadowTechniqueIntegrated@SceneManager@Ogre@@UBE_NXZ 00418e40 f i linked:verified_0100.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?isShadowTechniqueInUse@SceneManager@Ogre@@UBE_NXZ",
+   "address": "0068ea50",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017e50       ?isShadowTechniqueInUse@SceneManager@Ogre@@UBE_NXZ 00418e50 f i linked:verified_0100.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setFindVisibleObjects@SceneManager@Ogre@@UAEX_N@Z",
+   "address": "0068ea80",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017e60       ?setFindVisibleObjects@SceneManager@Ogre@@UAEX_N@Z 00418e60 f i linked:verified_0100.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Uninit_copy@PBULightInfo@SceneManager@Ogre@@PAU123@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@YAPAULightInfo@SceneManager@Ogre@@PBU123@0PAU123@AAV?$allocator@ULightInfo@SceneManager@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0068e1a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000022f0       ??$_Uninit_copy@PBULightInfo@SceneManager@Ogre@@PAU123@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@YAPAULightInfo@SceneManager@Ogre@@PBU123@0PAU123@AAV?$allocator@ULightInfo@SceneManager@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 004032f0 f i linked:verified_0101.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VMaterial@Ogre@@@Ogre@@MAEXXZ",
+   "address": "004d73a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00015f20       ?destroy@?$SharedPtr@VMaterial@Ogre@@@Ogre@@MAEXXZ 00416f20 f i linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowVolumeStencilState@SceneManager@Ogre@@MAEX_N00@Z",
+   "address": "0068c7b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000078d0       ?setShadowVolumeStencilState@SceneManager@Ogre@@MAEX_N00@Z 004088d0 f   linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowFarDistance@SceneManager@Ogre@@UAEXM@Z",
+   "address": "0068c910",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000079c0       ?setShadowFarDistance@SceneManager@Ogre@@UAEXM@Z 004089c0 f   linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowDirectionalLightExtrusionDistance@SceneManager@Ogre@@UAEXM@Z",
+   "address": "0068c930",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000079e0       ?setShadowDirectionalLightExtrusionDistance@SceneManager@Ogre@@UAEXM@Z 004089e0 f   linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowDirLightTextureOffset@SceneManager@Ogre@@UAEXM@Z",
+   "address": "0068e980",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00007890       ?setShadowDirLightTextureOffset@SceneManager@Ogre@@UAEXM@Z 00408890 f i linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowTextureFadeStart@SceneManager@Ogre@@UAEXM@Z",
+   "address": "0068e9a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000078a0       ?setShadowTextureFadeStart@SceneManager@Ogre@@UAEXM@Z 004088a0 f i linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowTextureFadeEnd@SceneManager@Ogre@@UAEXM@Z",
+   "address": "0068e9b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000078b0       ?setShadowTextureFadeEnd@SceneManager@Ogre@@UAEXM@Z 004088b0 f i linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowCasterRenderBackFaces@SceneManager@Ogre@@UAEX_N@Z",
+   "address": "0068e9d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000078c0       ?setShadowCasterRenderBackFaces@SceneManager@Ogre@@UAEX_N@Z 004088c0 f i linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Uninit_fill_n@PAULightInfo@SceneManager@Ogre@@IU123@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@YAXPAULightInfo@SceneManager@Ogre@@IABU123@AAV?$allocator@ULightInfo@SceneManager@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00690250",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00008030       ??$_Uninit_fill_n@PAULightInfo@SceneManager@Ogre@@IU123@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@YAXPAULightInfo@SceneManager@Ogre@@IABU123@AAV?$allocator@ULightInfo@SceneManager@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00409030 f i linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?clearSpecialCaseRenderQueues@SceneManager@Ogre@@UAEXXZ",
+   "address": "006929d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000085b0       ?clearSpecialCaseRenderQueues@SceneManager@Ogre@@UAEXXZ 004095b0 f   linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?addSpecialCaseRenderQueue@SceneManager@Ogre@@UAEXE@Z",
+   "address": "00698520",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00008fd0       ?addSpecialCaseRenderQueue@SceneManager@Ogre@@UAEXE@Z 00409fd0 f   linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?removeSpecialCaseRenderQueue@SceneManager@Ogre@@UAEXE@Z",
+   "address": "00698540",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00008ff0       ?removeSpecialCaseRenderQueue@SceneManager@Ogre@@UAEXE@Z 00409ff0 f   linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_notifyAutotrackingSceneNode@SceneManager@Ogre@@UAEXPAVSceneNode@2@_N@Z",
+   "address": "006994b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00009010       ?_notifyAutotrackingSceneNode@SceneManager@Ogre@@UAEXPAVSceneNode@2@_N@Z 0040a010 f   linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?addRenderQueueListener@SceneManager@Ogre@@UAEXPAVRenderQueueListener@2@@Z",
+   "address": "0069c5b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00009110       ?addRenderQueueListener@SceneManager@Ogre@@UAEXPAVRenderQueueListener@2@@Z 0040a110 f   linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowTextureCount@SceneManager@Ogre@@UAEXI@Z",
+   "address": "0069d7e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00009130       ?setShadowTextureCount@SceneManager@Ogre@@UAEXI@Z 0040a130 f   linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getMovableObjectIterator@SceneManager@Ogre@@UAE?AV?$MapIterator@V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0069e110",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00009190       ?getMovableObjectIterator@SceneManager@Ogre@@UAE?AV?$MapIterator@V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 0040a190 f   linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?extractAllMovableObjectsByType@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0069e1e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000091c0       ?extractAllMovableObjectsByType@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 0040a1c0 f   linked:verified_0103.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Upper_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z",
+   "address": "0068e6a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00006fc0       ??$_Upper_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z 00407fc0 f i linked:verified_0104.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@V?$_Temp_iterator@PAVLight@Ogre@@@std@@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@4@@std@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@0@PAPAVLight@Ogre@@000V10@UlightsForShadowTextureLess@SceneManager@3@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00692880",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00007070       ??$_Merge@PAPAVLight@Ogre@@PAPAV12@V?$_Temp_iterator@PAVLight@Ogre@@@std@@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@4@@std@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@0@PAPAVLight@Ogre@@000V10@UlightsForShadowTextureLess@SceneManager@3@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00408070 f i linked:verified_0104.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getRenderQueue@SceneManager@Ogre@@UAEPAVRenderQueue@2@XZ",
+   "address": "0068b6d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016c70       ?getRenderQueue@SceneManager@Ogre@@UAEPAVRenderQueue@2@XZ 00417c70 f   linked:verified_0105.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@std@@QAE@ABU01@@Z",
+   "address": "006517d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000a0a0       ??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@std@@QAE@ABU01@@Z 0040b0a0 f i linked:verified_0106.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@1@@Z",
+   "address": "00651ae0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000a040       ??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@1@@Z 0040b040 f i linked:verified_0106.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?erase@?$vector@VParameterDef@Ogre@@V?$allocator@VParameterDef@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@VParameterDef@Ogre@@V?$allocator@VParameterDef@Ogre@@@std@@@2@V?$_Vector_const_iterator@VParameterDef@Ogre@@V?$allocator@VParameterDef@Ogre@@@std@@@2@0@Z",
+   "address": "00652de0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00009eb0       ?erase@?$vector@VParameterDef@Ogre@@V?$allocator@VParameterDef@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@VParameterDef@Ogre@@V?$allocator@VParameterDef@Ogre@@@std@@@2@V?$_Vector_const_iterator@VParameterDef@Ogre@@V?$allocator@VParameterDef@Ogre@@@std@@@2@0@Z 0040aeb0 f i linked:verified_0106.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?find@?$_Tree@V?$_Tmap_traits@IVVector4@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIVVector4@Ogre@@@std@@@4@$0A@@std@@@std@@QBE?AVconst_iterator@12@ABI@Z",
+   "address": "00681f00",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00009dd0       ?find@?$_Tree@V?$_Tmap_traits@IVVector4@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIVVector4@Ogre@@@std@@@4@$0A@@std@@@std@@QBE?AVconst_iterator@12@ABI@Z 0040add0 f i linked:verified_0106.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?erase@?$list@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$SharedPtr@VResource@Ogre@@@Ogre@@@std@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$SharedPtr@VResource@Ogre@@@Ogre@@@std@@@2@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z",
+   "address": "004986d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016480       ?erase@?$list@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$SharedPtr@VResource@Ogre@@@Ogre@@@std@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$SharedPtr@VResource@Ogre@@@Ogre@@@std@@@2@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z 00417480 f i linked:verified_0107.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Xlen@?$deque@KV?$allocator@K@std@@@std@@KAXXZ",
+   "address": "00516a10",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000df20       ?_Xlen@?$deque@KV?$allocator@K@std@@@std@@KAXXZ 0040ef20 f i linked:verified_0108.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?erase@?$vector@VTexturePtr@Ogre@@V?$allocator@VTexturePtr@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@VTexturePtr@Ogre@@V?$allocator@VTexturePtr@Ogre@@@std@@@2@V?$_Vector_const_iterator@VTexturePtr@Ogre@@V?$allocator@VTexturePtr@Ogre@@@std@@@2@0@Z",
+   "address": "00697630",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000dfa0       ?erase@?$vector@VTexturePtr@Ogre@@V?$allocator@VTexturePtr@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@VTexturePtr@Ogre@@V?$allocator@VTexturePtr@Ogre@@@std@@@2@V?$_Vector_const_iterator@VTexturePtr@Ogre@@V?$allocator@VTexturePtr@Ogre@@@std@@@2@0@Z 0040efa0 f i linked:verified_0108.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Buynode@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@2@PAU342@00ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@D@Z",
+   "address": "004a1f90",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000dcc0       ?_Buynode@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@2@PAU342@00ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@D@Z 0040ecc0 f i linked:verified_0109.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Xran@?$vector@ULexemeTokenDef@Compiler2Pass@Ogre@@V?$allocator@ULexemeTokenDef@Compiler2Pass@Ogre@@@std@@@std@@KAXXZ",
+   "address": "0046dfc0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000b500       ?_Xran@?$vector@ULexemeTokenDef@Compiler2Pass@Ogre@@V?$allocator@ULexemeTokenDef@Compiler2Pass@Ogre@@@std@@@std@@KAXXZ 0040c500 f i linked:verified_0110.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UTokenState@Compiler2Pass@Ogre@@@std@@QAE@XZ",
+   "address": "006516d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000b6d0       ??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UTokenState@Compiler2Pass@Ogre@@@std@@QAE@XZ 0040c6d0 f i linked:verified_0110.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VTexturePtr@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VTexturePtr@Ogre@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+   "address": "005b9a30",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016130       ?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VTexturePtr@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VTexturePtr@Ogre@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z 00417130 f i linked:verified_0111.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??E?$_Vector_const_iterator@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@std@@QAEAAV01@XZ",
+   "address": "0067c5a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000dc00       ??E?$_Vector_const_iterator@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@std@@QAEAAV01@XZ 0040ec00 f i linked:verified_0112.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?find@?$_Tree@V?$_Tmap_traits@IUGlyphInfo@Font@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGlyphInfo@Font@Ogre@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABI@Z",
+   "address": "0043a320",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000167f0       ?find@?$_Tree@V?$_Tmap_traits@IUGlyphInfo@Font@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGlyphInfo@Font@Ogre@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABI@Z 004177f0 f i linked:verified_0113.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?insert@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@_N@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+   "address": "004a2eb0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017cf0       ?insert@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@_N@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z 00418cf0 f i linked:verified_0114.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Advance@V?$_Vector_iterator@PAVPose@Ogre@@V?$allocator@PAVPose@Ogre@@@std@@@std@@G@std@@YAXAAV?$_Vector_iterator@PAVPose@Ogre@@V?$allocator@PAVPose@Ogre@@@std@@@0@GUrandom_access_iterator_tag@0@@Z",
+   "address": "0068e060",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00002170       ??$_Advance@V?$_Vector_iterator@PAVPose@Ogre@@V?$allocator@PAVPose@Ogre@@@std@@@std@@G@std@@YAXAAV?$_Vector_iterator@PAVPose@Ogre@@V?$allocator@PAVPose@Ogre@@@std@@@0@GUrandom_access_iterator_tag@0@@Z 00403170 f i linked:verified_0115.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Lbound@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+   "address": "004a1a40",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000ded0       ?_Lbound@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z 0040eed0 f i linked:verified_0116.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Incsize@?$list@UProfileHistory@Profiler@Ogre@@V?$allocator@UProfileHistory@Profiler@Ogre@@@std@@@std@@IAEXI@Z",
+   "address": "0055d330",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000dde0       ?_Incsize@?$list@UProfileHistory@Profiler@Ogre@@V?$allocator@UProfileHistory@Profiler@Ogre@@@std@@@std@@IAEXI@Z 0040ede0 f i linked:verified_0117.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0RenderQueueInvocationSequence@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0046f630",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000b260       ??0RenderQueueInvocationSequence@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 0040c260 f   linked:verified_0118.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1RenderSystemCapabilities@Ogre@@QAE@XZ",
+   "address": "0064f8c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000c3d0       ??1RenderSystemCapabilities@Ogre@@QAE@XZ 0040d3d0 f   linked:verified_0119.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getResourceGroup@ResourceGroupManager@Ogre@@IAEPAUResourceGroup@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0046d0a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016c90       ?getResourceGroup@ResourceGroupManager@Ogre@@IAEPAUResourceGroup@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00417c90 f   linked:verified_0120.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$get_temporary_buffer@PAVLight@Ogre@@@std@@YA?AU?$pair@PAPAVLight@Ogre@@H@0@H@Z",
+   "address": "0068e2b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000004b0       ??$get_temporary_buffer@PAVLight@Ogre@@@std@@YA?AU?$pair@PAPAVLight@Ogre@@H@0@H@Z 004014b0 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??4?$_Temp_iterator@PAVLight@Ogre@@@std@@QAEAAV01@ABQAVLight@Ogre@@@Z",
+   "address": "0068e750",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00000550       ??4?$_Temp_iterator@PAVLight@Ogre@@@std@@QAEAAV01@ABQAVLight@Ogre@@@Z 00401550 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Equal@PBULightInfo@SceneManager@Ogre@@V?$_Vector_const_iterator@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@@std@@YA_NPBULightInfo@SceneManager@Ogre@@0V?$_Vector_const_iterator@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@0@Urandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00690340",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00000670       ??$_Equal@PBULightInfo@SceneManager@Ogre@@V?$_Vector_const_iterator@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@@std@@YA_NPBULightInfo@SceneManager@Ogre@@0V?$_Vector_const_iterator@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@0@Urandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00401670 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Copy_opt@PAPAVLight@Ogre@@V?$_Temp_iterator@PAVLight@Ogre@@@std@@Uforward_iterator_tag@4@@std@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@0@PAPAVLight@Ogre@@0V10@Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00690580",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000006d0       ??$_Copy_opt@PAPAVLight@Ogre@@V?$_Temp_iterator@PAVLight@Ogre@@@std@@Uforward_iterator_tag@4@@std@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@0@PAPAVLight@Ogre@@0V10@Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 004016d0 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Buffered_rotate@PAPAVLight@Ogre@@HPAV12@@std@@YAPAPAVLight@Ogre@@PAPAV12@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@@Z",
+   "address": "006925c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00000880       ??$_Buffered_rotate@PAPAVLight@Ogre@@HPAV12@@std@@YAPAPAVLight@Ogre@@PAPAV12@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@@Z 00401880 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?fireRenderQueueStarted@SceneManager@Ogre@@MAE_NEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00693060",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00000a30       ?fireRenderQueueStarted@SceneManager@Ogre@@MAE_NEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00401a30 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?fireRenderQueueEnded@SceneManager@Ogre@@MAE_NEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00693130",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00000b00       ?fireRenderQueueEnded@SceneManager@Ogre@@MAE_NEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00401b00 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?fireShadowTexturesUpdated@SceneManager@Ogre@@MAEXI@Z",
+   "address": "00693200",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00013960       ?fireShadowTexturesUpdated@SceneManager@Ogre@@MAEXI@Z 00414960 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?fireShadowTexturesPreCaster@SceneManager@Ogre@@MAEXPAVLight@2@PAVCamera@2@@Z",
+   "address": "006932a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00000bd0       ?fireShadowTexturesPreCaster@SceneManager@Ogre@@MAEXPAVLight@2@PAVCamera@2@@Z 00401bd0 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?fireShadowTexturesPreReceiver@SceneManager@Ogre@@MAEXPAVLight@2@PAVFrustum@2@@Z",
+   "address": "00693360",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001c3e0       ?fireShadowTexturesPreReceiver@SceneManager@Ogre@@MAEXPAVLight@2@PAVFrustum@2@@Z 0041d3e0 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowTextureSize@SceneManager@Ogre@@UAEXG@Z",
+   "address": "006935b0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00000c90       ?setShadowTextureSize@SceneManager@Ogre@@UAEXG@Z 00401c90 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setShadowTexturePixelFormat@SceneManager@Ogre@@UAEXW4PixelFormat@2@@Z",
+   "address": "006936c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00000da0       ?setShadowTexturePixelFormat@SceneManager@Ogre@@UAEXW4PixelFormat@2@@Z 00401da0 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?find@?$_Tree@V?$_Tmap_traits@W4TextureEffectType@TextureUnitState@Ogre@@UTextureEffect@23@U?$less@W4TextureEffectType@TextureUnitState@Ogre@@@std@@V?$allocator@U?$pair@$$CBW4TextureEffectType@TextureUnitState@Ogre@@UTextureEffect@23@@std@@@6@$00@std@@@std@@QBE?AVconst_iterator@12@ABW4TextureEffectType@TextureUnitState@Ogre@@@Z",
+   "address": "006938e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00000e60       ?find@?$_Tree@V?$_Tmap_traits@W4TextureEffectType@TextureUnitState@Ogre@@UTextureEffect@23@U?$less@W4TextureEffectType@TextureUnitState@Ogre@@@std@@V?$allocator@U?$pair@$$CBW4TextureEffectType@TextureUnitState@Ogre@@UTextureEffect@23@@std@@@6@$00@std@@@std@@QBE?AVconst_iterator@12@ABW4TextureEffectType@TextureUnitState@Ogre@@@Z 00401e60 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$?8ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@YA_NABV?$vector@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@0@0@Z",
+   "address": "00693f20",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001360       ??$?8ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@YA_NABV?$vector@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@0@0@Z 00402360 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Chunked_merge@PAPAVLight@Ogre@@PAPAV12@HUlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHUlightLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z",
+   "address": "006940e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001420       ??$_Chunked_merge@PAPAVLight@Ogre@@PAPAV12@HUlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHUlightLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z 00402420 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?hasCamera@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "006944c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000014f0       ?hasCamera@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004024f0 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?hasSceneNode@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00694630",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001540       ?hasSceneNode@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00402540 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?hasAnimation@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00695cd0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001590       ?hasAnimation@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00402590 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?removeRenderQueueListener@SceneManager@Ogre@@UAEXPAVRenderQueueListener@2@@Z",
+   "address": "00695ee0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000015e0       ?removeRenderQueueListener@SceneManager@Ogre@@UAEXPAVRenderQueueListener@2@@Z 004025e0 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?removeShadowListener@SceneManager@Ogre@@UAEXPAVShadowListener@2@@Z",
+   "address": "00695fe0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000016e0       ?removeShadowListener@SceneManager@Ogre@@UAEXPAVShadowListener@2@@Z 004026e0 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?hasStaticGeometry@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "006967f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000017e0       ?hasStaticGeometry@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004027e0 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?insert@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@_N@2@ABE@Z",
+   "address": "00696fb0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001830       ?insert@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@_N@2@ABE@Z 00402830 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?find@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@QAE?AViterator@12@ABE@Z",
+   "address": "00697110",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001920       ?find@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@QAE?AViterator@12@ABE@Z 00402920 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?find@?$_Tree@V?$_Tmap_traits@PBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@U?$less@PBVCamera@Ogre@@@std@@V?$allocator@U?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@std@@@5@$0A@@std@@@std@@QBE?AVconst_iterator@12@ABQBVCamera@Ogre@@@Z",
+   "address": "00697480",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000ea50       ?find@?$_Tree@V?$_Tmap_traits@PBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@U?$less@PBVCamera@Ogre@@@std@@V?$allocator@U?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@std@@@5@$0A@@std@@@std@@QBE?AVconst_iterator@12@ABQBVCamera@Ogre@@@Z 0040fa50 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Insert@V?$_Vector_const_iterator@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@QAEXV?$_Vector_const_iterator@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@1@00Uforward_iterator_tag@1@@Z",
+   "address": "00697cd0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000011f0       ??$_Insert@V?$_Vector_const_iterator@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@QAEXV?$_Vector_const_iterator@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@1@00Uforward_iterator_tag@1@@Z 004021f0 f i linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?isRenderQueueToBeProcessed@SceneManager@Ogre@@UAE_NE@Z",
+   "address": "00698560",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001c90       ?isRenderQueueToBeProcessed@SceneManager@Ogre@@UAE_NE@Z 00402c90 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyStaticGeometry@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "006994e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001d10       ?destroyStaticGeometry@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00402d10 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyAllStaticGeometry@SceneManager@Ogre@@UAEXXZ",
+   "address": "00699560",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001d90       ?destroyAllStaticGeometry@SceneManager@Ogre@@UAEXXZ 00402d90 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyInstancedGeometry@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00699610",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001e40       ?destroyInstancedGeometry@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00402e40 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyAllInstancedGeometry@SceneManager@Ogre@@UAEXXZ",
+   "address": "00699690",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001ec0       ?destroyAllInstancedGeometry@SceneManager@Ogre@@UAEXXZ 00402ec0 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?hasMovableObject@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+   "address": "00699930",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00001f70       ?hasMovableObject@SceneManager@Ogre@@UBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z 00402f70 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?extractMovableObject@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+   "address": "0069e180",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00002030       ?extractMovableObject@SceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z 00403030 f   linked:verified_0121.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightsForShadowTextureLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightsForShadowTextureLess@SceneManager@2@0@Z",
+   "address": "00690460",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000061d0       ??$_Insertion_sort1@PAPAVLight@Ogre@@UlightsForShadowTextureLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightsForShadowTextureLess@SceneManager@2@0@Z 004071d0 f i linked:verified_0122.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??A?$map@PBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@U?$less@PBVCamera@Ogre@@@std@@V?$allocator@U?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@std@@@5@@std@@QAEAAUVisibleObjectsBoundsInfo@Ogre@@ABQBVCamera@3@@Z",
+   "address": "006999f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000cea0       ??A?$map@PBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@U?$less@PBVCamera@Ogre@@@std@@V?$allocator@U?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@std@@@5@@std@@QAEAAUVisibleObjectsBoundsInfo@Ogre@@ABQBVCamera@3@@Z 0040dea0 f i linked:verified_0123.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0_Node@?$_Tree_nod@V?$_Tmap_traits@PBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@U?$less@PBVCamera@Ogre@@@std@@V?$allocator@U?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@std@@@5@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@2@D@Z",
+   "address": "0068e010",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000b490       ??0_Node@?$_Tree_nod@V?$_Tmap_traits@PBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@U?$less@PBVCamera@Ogre@@@std@@V?$allocator@U?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@std@@@5@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@QBVCamera@Ogre@@UVisibleObjectsBoundsInfo@2@@2@D@Z 0040c490 f i linked:verified_0124.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getMovableObjectCollection@RbxSceneManager@Ogre@@IBEPBUMovableObjectCollection@SceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00696960",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00014d40       ?getMovableObjectCollection@RbxSceneManager@Ogre@@IBEPBUMovableObjectCollection@SceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00415d40 f   linked:verified_0125.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getMovableObject@RbxSceneManager@Ogre@@UBEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+   "address": "00696a80",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00014e60       ?getMovableObject@RbxSceneManager@Ogre@@UBEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z 00415e60 f   linked:verified_0125.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroyAllMovableObjectsByType@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0069e020",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000150f0       ?destroyAllMovableObjectsByType@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004160f0 f   linked:verified_0125.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Lbound@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+   "address": "00678830",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000de80       ?_Lbound@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UOgreMapValue84@@@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z 0040ee80 f i linked:verified_0126.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Copy@?$_Tree@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@0@Z",
+   "address": "00588190",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000095a0       ?_Copy@?$_Tree@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@0@Z 0040a5a0 f i linked:verified_0127.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Copy@?$_Tree@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXABV12@@Z",
+   "address": "00588cf0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00009650       ?_Copy@?$_Tree@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXABV12@@Z 0040a650 f i linked:verified_0127.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??0?$_Tree@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@std@@QAE@ABV01@@Z",
+   "address": "00589210",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00009ac0       ??0?$_Tree@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@std@@QAE@ABV01@@Z 0040aac0 f i linked:verified_0127.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setMaximumZ@AxisAlignedBox@Ogre@@QAEXM@Z",
+   "address": "004e5b60",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0001cb00       ?setMaximumZ@AxisAlignedBox@Ogre@@QAEXM@Z 0041db00 f i linked:verified_0128.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getLightCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+   "address": "00685100",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016b50       ?getLightCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@XZ 00417b50 f   linked:verified_0130.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Maxlen@?$_Temp_iterator@URenderablePass@Ogre@@@std@@QAEHXZ",
+   "address": "006902d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00007440       ?_Maxlen@?$_Temp_iterator@URenderablePass@Ogre@@@std@@QAEHXZ 00408440 f i linked:verified_0131.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$unchecked_copy@PAURenderablePass@Ogre@@V?$_Temp_iterator@URenderablePass@Ogre@@@std@@@stdext@@YA?AV?$_Temp_iterator@URenderablePass@Ogre@@@std@@PAURenderablePass@Ogre@@0V12@@Z",
+   "address": "00692550",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000074b0       ??$unchecked_copy@PAURenderablePass@Ogre@@V?$_Temp_iterator@URenderablePass@Ogre@@@std@@@stdext@@YA?AV?$_Temp_iterator@URenderablePass@Ogre@@@std@@PAURenderablePass@Ogre@@0V12@@Z 004084b0 f i linked:verified_0131.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$unchecked_merge@PAURenderablePass@Ogre@@PAU12@V?$_Temp_iterator@URenderablePass@Ogre@@@std@@UDepthSortDescendingLess@QueuedRenderableCollection@2@@stdext@@YA?AV?$_Temp_iterator@URenderablePass@Ogre@@@std@@PAURenderablePass@Ogre@@000V12@UDepthSortDescendingLess@QueuedRenderableCollection@4@@Z",
+   "address": "00694280",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00007620       ??$unchecked_merge@PAURenderablePass@Ogre@@PAU12@V?$_Temp_iterator@URenderablePass@Ogre@@@std@@UDepthSortDescendingLess@QueuedRenderableCollection@2@@stdext@@YA?AV?$_Temp_iterator@URenderablePass@Ogre@@@std@@PAURenderablePass@Ogre@@000V12@UDepthSortDescendingLess@QueuedRenderableCollection@4@@Z 00408620 f i linked:verified_0131.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Unchecked_chunked_merge@PAURenderablePass@Ogre@@V?$_Temp_iterator@URenderablePass@Ogre@@@std@@HUDepthSortDescendingLess@QueuedRenderableCollection@2@@stdext@@YAXPAURenderablePass@Ogre@@0V?$_Temp_iterator@URenderablePass@Ogre@@@std@@HHUDepthSortDescendingLess@QueuedRenderableCollection@2@@Z",
+   "address": "00699ee0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00007800       ??$_Unchecked_chunked_merge@PAURenderablePass@Ogre@@V?$_Temp_iterator@URenderablePass@Ogre@@@std@@HUDepthSortDescendingLess@QueuedRenderableCollection@2@@stdext@@YAXPAURenderablePass@Ogre@@0V?$_Temp_iterator@URenderablePass@Ogre@@@std@@HHUDepthSortDescendingLess@QueuedRenderableCollection@2@@Z 00408800 f i linked:verified_0131.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Buynode@?$list@UResourceDeclaration@ResourceGroupManager@Ogre@@V?$allocator@UResourceDeclaration@ResourceGroupManager@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UResourceDeclaration@ResourceGroupManager@Ogre@@V?$allocator@UResourceDeclaration@ResourceGroupManager@Ogre@@@std@@@2@XZ",
+   "address": "00496ed0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000ddc0       ?_Buynode@?$list@UResourceDeclaration@ResourceGroupManager@Ogre@@V?$allocator@UResourceDeclaration@ResourceGroupManager@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UResourceDeclaration@ResourceGroupManager@Ogre@@V?$allocator@UResourceDeclaration@ResourceGroupManager@Ogre@@@std@@@2@XZ 0040edc0 f i linked:verified_0132.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Rotate@PAPAVLight@Ogre@@HPAV12@@std@@YAXPAPAVLight@Ogre@@00PAH0@Z",
+   "address": "0068d580",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00002a10       ??$_Rotate@PAPAVLight@Ogre@@HPAV12@@std@@YAXPAPAVLight@Ogre@@00PAH0@Z 00403a10 f i linked:verified_0133.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Eqrange@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@IAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@V123@@2@ABE@Z",
+   "address": "00692260",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00002c20       ?_Eqrange@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@IAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@EU?$less@E@std@@V?$allocator@E@2@$0A@@std@@@std@@V123@@2@ABE@Z 00403c20 f i linked:verified_0133.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Chunked_merge@PAPAVLight@Ogre@@V?$_Temp_iterator@PAVLight@Ogre@@@std@@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0V?$_Temp_iterator@PAVLight@Ogre@@@0@HHUlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z",
+   "address": "006982a0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003240       ??$_Chunked_merge@PAPAVLight@Ogre@@V?$_Temp_iterator@PAVLight@Ogre@@@std@@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0V?$_Temp_iterator@PAVLight@Ogre@@@0@HHUlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z 00404240 f i linked:verified_0133.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Buffered_merge_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z",
+   "address": "0069b140",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000034f0       ??$_Buffered_merge_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z 004044f0 f i linked:verified_0133.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z",
+   "address": "0069d660",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000035c0       ??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z 004045c0 f i linked:verified_0133.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0PAH0UlightLess@SceneManager@2@@Z",
+   "address": "0069d840",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003680       ??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0PAH0UlightLess@SceneManager@2@@Z 00404680 f i linked:verified_0133.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightLess@SceneManager@2@Urandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00694020",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00002cb0       ??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightLess@SceneManager@2@Urandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00403cb0 f i linked:verified_0134.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?injectMovableObject@SceneManager@Ogre@@UAEXPAVMovableObject@2@@Z",
+   "address": "0069e140",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00006f80       ?injectMovableObject@SceneManager@Ogre@@UAEXPAVMovableObject@2@@Z 00407f80 f   linked:verified_0134.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?create@ExceptionFactory@Ogre@@SA?AVItemIdentityException@2@U?$ExceptionCodeType@$04@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1PBDJ@Z",
+   "address": "0068b610",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00010dd0       ?create@ExceptionFactory@Ogre@@SA?AVItemIdentityException@2@U?$ExceptionCodeType@$04@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1PBDJ@Z 00411dd0 f i linked:verified_0136.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?create@ExceptionFactory@Ogre@@SA?AVItemIdentityException@2@U?$ExceptionCodeType@$03@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1PBDJ@Z",
+   "address": "0068b650",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00010e10       ?create@ExceptionFactory@Ogre@@SA?AVItemIdentityException@2@U?$ExceptionCodeType@$03@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1PBDJ@Z 00411e10 f i linked:verified_0136.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?create@ExceptionFactory@Ogre@@SA?AVInvalidParametersException@2@U?$ExceptionCodeType@$01@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1PBDJ@Z",
+   "address": "0067c4d0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00010d90       ?create@ExceptionFactory@Ogre@@SA?AVInvalidParametersException@2@U?$ExceptionCodeType@$01@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1PBDJ@Z 00411d90 f i linked:verified_0138.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Copy_backward_opt@PAVVector4@Ogre@@PAV12@@std@@YAPAVVector4@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067c720",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003d20       ??$_Copy_backward_opt@PAVVector4@Ogre@@PAV12@@std@@YAPAVVector4@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00404d20 f i linked:verified_0139.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$fill@PAVVector4@Ogre@@V12@@std@@YAXPAVVector4@Ogre@@0ABV12@@Z",
+   "address": "0067c960",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00004400       ??$fill@PAVVector4@Ogre@@V12@@std@@YAXPAVVector4@Ogre@@0ABV12@@Z 00405400 f i linked:verified_0139.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??_GOptimisedUtilGeneral@Ogre@@UAEPAXI@Z",
+   "address": "0068d670",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000dc40       ??_GOptimisedUtilGeneral@Ogre@@UAEPAXI@Z 0040ec40 f i linked:verified_0142.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?destroy@?$allocator@V?$SharedPtr@UScriptToken@Ogre@@@Ogre@@@std@@QAEXPAV?$SharedPtr@UScriptToken@Ogre@@@Ogre@@@Z",
+   "address": "004332f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00014920       ?destroy@?$allocator@V?$SharedPtr@UScriptToken@Ogre@@@Ogre@@@std@@QAEXPAV?$SharedPtr@UScriptToken@Ogre@@@Ogre@@@Z 00415920 f i linked:verified_0144.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Buynode@?$list@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@V?$allocator@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@std@@IAEPAU_Node@?$_List_nod@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@V?$allocator@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@2@XZ",
+   "address": "0055d1f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000dd60       ?_Buynode@?$list@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@V?$allocator@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@std@@IAEPAU_Node@?$_List_nod@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@V?$allocator@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@2@XZ 0040ed60 f i linked:verified_0146.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??$_Copy_backward_opt@PAUVertexInfo@TangentSpaceCalc@Ogre@@PAU123@@std@@YAPAUVertexInfo@TangentSpaceCalc@Ogre@@PAU123@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0046e130",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:000039b0       ??$_Copy_backward_opt@PAUVertexInfo@TangentSpaceCalc@Ogre@@PAU123@@std@@YAPAUVertexInfo@TangentSpaceCalc@Ogre@@PAU123@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 004049b0 f i linked:verified_0149.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?_Buynode@?$list@UIndexRemap@TangentSpaceCalc@Ogre@@V?$allocator@UIndexRemap@TangentSpaceCalc@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UIndexRemap@TangentSpaceCalc@Ogre@@V?$allocator@UIndexRemap@TangentSpaceCalc@Ogre@@@std@@@2@PAU342@0ABUIndexRemap@TangentSpaceCalc@Ogre@@@Z",
+   "address": "00682c70",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00003a00       ?_Buynode@?$list@UIndexRemap@TangentSpaceCalc@Ogre@@V?$allocator@UIndexRemap@TangentSpaceCalc@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UIndexRemap@TangentSpaceCalc@Ogre@@V?$allocator@UIndexRemap@TangentSpaceCalc@Ogre@@@std@@@2@PAU342@0ABUIndexRemap@TangentSpaceCalc@Ogre@@@Z 00404a00 f i linked:verified_0149.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getShadowTechnique@NativeSceneManager@Ogre@@UBE?AW4ShadowTechnique@2@XZ",
+   "address": "0068e930",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016ac0       ?getShadowTechnique@NativeSceneManager@Ogre@@UBE?AW4ShadowTechnique@2@XZ 00417ac0 f   linked:verified_native-header-accessors.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getShadowFarDistance@NativeSceneManager@Ogre@@UBEMXZ",
+   "address": "0068e960",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016ad0       ?getShadowFarDistance@NativeSceneManager@Ogre@@UBEMXZ 00417ad0 f   linked:verified_native-header-accessors.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getShadowIndexBufferSize@NativeSceneManager@Ogre@@UBEIXZ",
+   "address": "0068e970",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016ae0       ?getShadowIndexBufferSize@NativeSceneManager@Ogre@@UBEIXZ 00417ae0 f   linked:verified_native-header-accessors.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getShadowDirLightTextureOffset@NativeSceneManager@Ogre@@UBEMXZ",
+   "address": "0068e990",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016af0       ?getShadowDirLightTextureOffset@NativeSceneManager@Ogre@@UBEMXZ 00417af0 f   linked:verified_native-header-accessors.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getShadowTextureSelfShadow@NativeSceneManager@Ogre@@UBE_NXZ",
+   "address": "0068e9c0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016b00       ?getShadowTextureSelfShadow@NativeSceneManager@Ogre@@UBE_NXZ 00417b00 f   linked:verified_native-header-accessors.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getShadowCasterRenderBackFaces@NativeSceneManager@Ogre@@UBE_NXZ",
+   "address": "0068e9e0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016b10       ?getShadowCasterRenderBackFaces@NativeSceneManager@Ogre@@UBE_NXZ 00417b10 f   linked:verified_native-header-accessors.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getDisplaySceneNodes@NativeSceneManager@Ogre@@UBE_NXZ",
+   "address": "0068e920",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016b20       ?getDisplaySceneNodes@NativeSceneManager@Ogre@@UBE_NXZ 00417b20 f   linked:verified_native-header-accessors.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?setVisibilityMask@NativeSceneManager@Ogre@@UAEXI@Z",
+   "address": "0068ea60",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016b30       ?setVisibilityMask@NativeSceneManager@Ogre@@UAEXI@Z 00417b30 f   linked:verified_native-header-accessors.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?getVisibilityMask@NativeSceneManager@Ogre@@UAEIXZ",
+   "address": "0068ea70",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00016b40       ?getVisibilityMask@NativeSceneManager@Ogre@@UAEIXZ 00417b40 f   linked:verified_native-header-accessors.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAUWorldFragment@SceneQuery@3@@Z",
+   "address": "00565ff0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000c520       ?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAUWorldFragment@SceneQuery@3@@Z 0040d520 f   linked:verified_native-scene-callbacks.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAVMovableObject@3@@Z",
+   "address": "0069c5f0",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:00017e70       ?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAVMovableObject@3@@Z 00418e70 f   linked:verified_native-scene-callbacks.obj"
+   ],
+   "provenance": null
+  },
+  {
+   "symbol": "??1SceneMgrQueuedRenderableVisitor@RbxSceneManager@Ogre@@UAE@XZ",
+   "address": "0068b690",
+   "code_exact": true,
+   "data_exact": true,
+   "library_owner": true,
+   "map": [
+    "0001:0000c420       ??1SceneMgrQueuedRenderableVisitor@RbxSceneManager@Ogre@@UAE@XZ 0040d420 f i linked:verified_native-scene-callbacks.obj"
+   ],
+   "provenance": null
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "recipe": "ogre-1.4.5-g3d-refcount",
+ "unit": "roc_g3d_texture_bounds_vector_context_c35a9cb275530619.cpp",
+ "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
+ "cl": "21022",
+ "checks": [
+  {
+   "symbol": "?f@S@@QAE?AVRect2D@G3D@@V?$ReferenceCountedPointer@UImage@@@3@@Z",
+   "address": "00670210",
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "size": 360,
+   "code_exact": true,
+   "data_exact": true
+  }
+ ],
+ "provenance": "Outer S/Image interfaces remain codegen analog; Image inherits real G3D base, return value and ownership use genuine G3D headers."
+}

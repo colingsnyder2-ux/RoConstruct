@@ -1,0 +1,108 @@
+{
+  "job": "4deaf2734e1a4170b95d218e5c551658",
+  "accepted": false,
+  "reason": "No new unique linked ownership; both target bodies have 21 global twins",
+  "proof": [
+    {
+      "file": "App/v8datamodel/Camera.cpp",
+      "witnesses": [
+        {
+          "addr": "005cbf20",
+          "symbol": "?askSetParent@Camera@RBX@@EBE_NPBVInstance@2@@Z",
+          "claim_unit": "RBX::Camera"
+        }
+      ],
+      "global_ownership": [
+        [
+          "?askSetParent@Camera@RBX@@EBE_NPBVInstance@2@@Z",
+          36,
+          [
+            "00409e60",
+            "004117c0",
+            "00416e60",
+            "00442f90",
+            "00442fc0",
+            "00442ff0",
+            "00443020",
+            "0045ec80",
+            "00495f30",
+            "0049ee20",
+            "004a3640",
+            "004afb30",
+            "00565e00",
+            "00575240",
+            "005a01e0",
+            "005cbf20",
+            "005cf1c0",
+            "005d5d60",
+            "005d7640",
+            "005df530",
+            "0062e190"
+          ]
+        ]
+      ],
+      "preflight": [
+        [],
+        [
+          {
+            "addr": "005cbf20",
+            "symbol": "?askSetParent@Camera@RBX@@EBE_NPBVInstance@2@@Z",
+            "claim_unit": "RBX::Camera",
+            "reason": "Not uniquely owned across the whole client"
+          }
+        ]
+      ]
+    },
+    {
+      "file": "App/v8datamodel/ModelInstance.cpp",
+      "witnesses": [
+        {
+          "addr": "005d7640",
+          "symbol": "?askSetParent@ModelInstance@RBX@@MBE_NPBVInstance@2@@Z",
+          "claim_unit": "RBX::Humanoid"
+        }
+      ],
+      "global_ownership": [
+        [
+          "?askSetParent@ModelInstance@RBX@@MBE_NPBVInstance@2@@Z",
+          36,
+          [
+            "00409e60",
+            "004117c0",
+            "00416e60",
+            "00442f90",
+            "00442fc0",
+            "00442ff0",
+            "00443020",
+            "0045ec80",
+            "00495f30",
+            "0049ee20",
+            "004a3640",
+            "004afb30",
+            "00565e00",
+            "00575240",
+            "005a01e0",
+            "005cbf20",
+            "005cf1c0",
+            "005d5d60",
+            "005d7640",
+            "005df530",
+            "0062e190"
+          ]
+        ]
+      ],
+      "preflight": [
+        [],
+        [
+          {
+            "addr": "005d7640",
+            "symbol": "?askSetParent@ModelInstance@RBX@@MBE_NPBVInstance@2@@Z",
+            "claim_unit": "RBX::Humanoid",
+            "reason": "Not uniquely owned across the whole client"
+          }
+        ]
+      ]
+    }
+  ],
+  "tests": "100 passed"
+}

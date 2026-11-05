@@ -1,0 +1,22 @@
+{
+ "recipe": "native-xml-double-api-2008",
+ "client": "2008-06",
+ "op": "native-grid",
+ "tried": 220,
+ "proposed_files": 1,
+ "local_exact": 1,
+ "eligible_targets": 6141,
+ "starting_revision": "fb7f072cea5228cac5ca330b5ffbbb108ab4b7d357216ea977a44626e1727b19",
+ "deferred_ownership": 0,
+ "reconciled_addresses": 0,
+ "new_verified": 0,
+ "run_id": "9f338af8b4614c67af9debe5263b5c9b",
+ "state": "queued",
+ "job": "290919f07e694e5195771abe8c0d76cc",
+ "applied_files": 2,
+ "evidence": "C:\\Users\\colin\\RoConstruct-native-xml-api\\work\\research\\native-xml-double-api-2008\\batch-notes.txt",
+ "submission_revision": "6023a106e73b6e2d12553f4325b26e992aa578a428d9bc8b323d47a17a1ac4d9",
+ "rebase_changed_files": [
+  "App/include/util/Debug.h"
+ ]
+}

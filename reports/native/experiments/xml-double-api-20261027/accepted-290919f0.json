@@ -1,0 +1,34 @@
+{
+  "accepted": true,
+  "gains": [
+    "0057c670"
+  ],
+  "losses": [],
+  "new_distinct": [
+    "0057c670"
+  ],
+  "owned_before": 3087,
+  "owned_after": 3088,
+  "distinct_before": 9752,
+  "distinct_after": 9753,
+  "baseline_revision": "6023a106e73b6e2d12553f4325b26e992aa578a428d9bc8b323d47a17a1ac4d9",
+  "submitted_revision": "6023a106e73b6e2d12553f4325b26e992aa578a428d9bc8b323d47a17a1ac4d9",
+  "rebased": false,
+  "input_hash": "e9f2e75babbe0c8ce48a038a421c247e7711b14f36c39b565f2030198a09b22e",
+  "overlay_hash": "fb0020fb3bb8f2e22c03790b96fd0c324ea4b6795ce6c5aaed025965384bb84d",
+  "gates": "M2/M4a/M5, size, base, linked ownership passed",
+  "dropped_files": {},
+  "artifacts": "work/integration/jobs/290919f07e694e5195771abe8c0d76cc",
+  "probe_errors": {
+    "size": {},
+    "base": {
+      "util/ContentProvider.h": "probe.cpp\nUnknown compiler version - please run the configure tests and report the results\nprobe.cpp(6) : error C2440: 'static_cast' : cannot convert from 'RBX::ContentProvider *' to 'RBX::Instance *'\n        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast",
+      "v8datamodel/Gyro.h": "9f07e694e5195771abe8c0d76cc\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\App\\include\\reflection/reflection.h(871) : while compiling class template member function 'void RBX::Reflection::RefPropDescriptor<Class,ReturnType>::assignIDREF(RBX::Reflection::DescribedBase *,const RBX::InstanceHandle &) const'\n        with\n        [\n            Class=RBX::Rocket,\n            ReturnType=RBX::PartInstance\n        ]"
+    }
+  },
+  "credits": 1,
+  "job": "290919f07e694e5195771abe8c0d76cc",
+  "user": "colin",
+  "model": "gpt-6.1-sol",
+  "unit": "RBX::PartInstance"
+}

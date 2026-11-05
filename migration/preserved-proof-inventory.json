@@ -1,0 +1,1586 @@
+[
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/core-forced-baseline-report.json",
+    "target": "archive/proofs/g3d-native-20261029/core-forced-baseline-report.json",
+    "blob": "649d35897b9cfed9533da6462bc906440413a3f9"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/core-forced-fast-delta.json",
+    "target": "archive/proofs/g3d-native-20261029/core-forced-fast-delta.json",
+    "blob": "5d0219043ee3c40958bfcad1222ffed77bb1d7a7"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/crt-inf-provider.json",
+    "target": "archive/proofs/g3d-native-20261029/crt-inf-provider.json",
+    "blob": "ae86da92dcfcaeff46d1a7c74b36d1b99570f44f"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/fast-unique-candidate-audit.json",
+    "target": "archive/proofs/g3d-native-20261029/fast-unique-candidate-audit.json",
+    "blob": "fdaf59c2188343a453870762ab9dcf2b469482f7"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/final-module-receipts.json",
+    "target": "archive/proofs/g3d-native-20261029/final-module-receipts.json",
+    "blob": "0c43bcef5c952d9cde338c2f10ec13d3b7365bc8"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/final_audit.py",
+    "target": "archive/proofs/g3d-native-20261029/final_audit.py",
+    "blob": "55c2a7e36f54f9223c187686a51e3045408980d3"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/flag-union.json",
+    "target": "archive/proofs/g3d-native-20261029/flag-union.json",
+    "blob": "6f18acafb9abd4d87e708728dc159d711101233d"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/forced-root-audit.json",
+    "target": "archive/proofs/g3d-native-20261029/forced-root-audit.json",
+    "blob": "5992ab1cab69354f992950d71582370a0b4267d6"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/invalid-coff-sections-trials.json",
+    "target": "archive/proofs/g3d-native-20261029/invalid-coff-sections-trials.json",
+    "blob": "be04b29324b4021f099c3af4c3b922e71b3bbe7a"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/milestones.json",
+    "target": "archive/proofs/g3d-native-20261029/milestones.json",
+    "blob": "c02da0254c95df09e13389eb323656ff92c5ba41"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/placed.json",
+    "target": "archive/proofs/g3d-native-20261029/placed.json",
+    "blob": "ffe5fad8d57d250827cf52dc2fc337258cb2fab4"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/placement-receipt.json",
+    "target": "archive/proofs/g3d-native-20261029/placement-receipt.json",
+    "blob": "465005152fb1bf34da926ce1da11b4830d9e350f"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/rbxapp-regression.json",
+    "target": "archive/proofs/g3d-native-20261029/rbxapp-regression.json",
+    "blob": "a21d10323fbd02a0a621d802e96bafcc199ce3b6"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/source-owner-partition.json",
+    "target": "archive/proofs/g3d-native-20261029/source-owner-partition.json",
+    "blob": "d3632fa5de19f6088d2c25dcf0d7a5b9b65fd0a0"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/summary.json",
+    "target": "archive/proofs/g3d-native-20261029/summary.json",
+    "blob": "57a6c30cb5748f530fcf5716778ded4fbce8be40"
+  },
+  {
+    "source_commit": "6a547b76b9de16724897a4c980dcfe24a9d6d8a3",
+    "source": "2008-06/verification/g3d-native-20261029/tu-flag-comparison.json",
+    "target": "archive/proofs/g3d-native-20261029/tu-flag-comparison.json",
+    "blob": "842d315a404d8bdc0dc0217a5fdb462059df91db"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/README.md",
+    "target": "archive/proofs/ogre-owner-repair-20261029/README.md",
+    "blob": "cc67f913a1246600d93beaf3f1572591632c3b49"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/dll-exports-check.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/dll-exports-check.json",
+    "blob": "c804454369cfeda877b9291f255c7860d602e073"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/final-module-spec.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/final-module-spec.json",
+    "blob": "a7753cd8597402abc8aebce8f8676890a1e0ae61"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/final-swaps.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/final-swaps.json",
+    "blob": "fe7b3cb67324e0f34c31ec15ad439e737c872795"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/full-final-receipt.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/full-final-receipt.json",
+    "blob": "97a5aaf3f976b7145d4c0b197d192e0f2acc1897"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/full-forced-root-audit.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/full-forced-root-audit.json",
+    "blob": "e7b014d85e20b3ea796352a9ffc9e5c2ad1d1495"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/g3d-refcount-runtime.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/g3d-refcount-runtime.json",
+    "blob": "f08ba3d2f64f067350eacafe862e14a9e805443e"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/g3d_ownership_bridge.cpp",
+    "target": "archive/proofs/ogre-owner-repair-20261029/g3d_ownership_bridge.cpp",
+    "blob": "9622e661afb8007f81bfc705852ab56d06a3b037"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/material-level-g3d-context-proof.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/material-level-g3d-context-proof.json",
+    "blob": "f5e71eca87972612963ab62727f8c7ea8b33c4b1"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/native-owner-pilot-spec.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/native-owner-pilot-spec.json",
+    "blob": "1f7ff49471b5012f342516e7f3c5cd9a36baf32e"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/native-owner-pilot.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/native-owner-pilot.json",
+    "blob": "ce1dc94eaafc26b7ee9db4fbcc0247c306434fcf"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/native-pilot-linked-owners.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/native-pilot-linked-owners.json",
+    "blob": "fac3fe9542919f6268b5f204ccc56ae6489d7103"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/ogre_refcount_contracts.cpp",
+    "target": "archive/proofs/ogre-owner-repair-20261029/ogre_refcount_contracts.cpp",
+    "blob": "268c1f6071425dccc1157faff9aa88223a0330e9"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/placed.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/placed.json",
+    "blob": "87cba6ef7f5df03117f6993828dcd99f747242a6"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/registry-replay-proof.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/registry-replay-proof.json",
+    "blob": "04c594c7a8b85399e5e8221f0ca284e9e52e7a54"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/shadow-delegation-proof.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/shadow-delegation-proof.json",
+    "blob": "edc5ab67db512ef8bb994e4ba81a14ab14ebef3c"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/subentity-contracts-proof.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/subentity-contracts-proof.json",
+    "blob": "a085403cea06b81beded76733ce58b29ff5d9b01"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/summary.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/summary.json",
+    "blob": "2b7cb19c0727ef30e91ae8e28583a6b454bcddb1"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/texture-bounds-profile-trials.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/texture-bounds-profile-trials.json",
+    "blob": "c28e4150fe8719efa65a8f5c0fa94528c47e78aa"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/texture-bounds-vector-g3d-context-proof.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/texture-bounds-vector-g3d-context-proof.json",
+    "blob": "8e52da9e0be6e4eb82d3ecec8d1ba08e03176d8f"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/texture-proxy-g3d-context-proof.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/texture-proxy-g3d-context-proof.json",
+    "blob": "7ebbe79f1aea320ee2da6fb372f792a88b4fa01c"
+  },
+  {
+    "source_commit": "d07024980b7cfe789ba48ca22bfce2ce0b9d6abe",
+    "source": "2008-06/verification/ogre-owner-repair-20261029/visitor-owner-proof.json",
+    "target": "archive/proofs/ogre-owner-repair-20261029/visitor-owner-proof.json",
+    "blob": "a70b7363f7efd8fa8f55c8c5794575b90a70e8f7"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/AI_WORKER_GUIDE.md",
+    "target": "reports/AI_WORKER_GUIDE.md",
+    "blob": "2bda747e28f87594d3e85863cfcb7b4da0db49f3"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/EXPERIMENTS.md",
+    "target": "reports/EXPERIMENTS.md",
+    "blob": "0d31fd79cbfb2e7db7f0c5de1d845678d814bde3"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/EXPERIMENT_SUMMARY_REPORT.md",
+    "target": "reports/EXPERIMENT_SUMMARY_REPORT.md",
+    "blob": "12d28ede4d27cf48f52ff403706eaf7a47e842ed"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/NEXT_EXPERIMENTS.md",
+    "target": "reports/NEXT_EXPERIMENTS.md",
+    "blob": "793e7a8358df19a40af3d15f3c5b5e95aa7ea347"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/agent-auto-audit-20261012.md",
+    "target": "reports/agent-auto-audit-20261012.md",
+    "blob": "38ea58fdbd0f69e4a39d3282fe4d68f8ae50bb93"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/archive-index.md",
+    "target": "reports/archive-index.md",
+    "blob": "3e05a5bf01cd0e24e434b05d7589aa1ece331efb"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/class-layout-20261010.md",
+    "target": "reports/class-layout-20261010.md",
+    "blob": "8505c43fea3b40d9c04cd223746e1218b590c051"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/claude-continuation-20261011.md",
+    "target": "reports/claude-continuation-20261011.md",
+    "blob": "9d9149fff0fee5ac9bad3160e32febed3d14160b"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/cloud-and-worker-plan.md",
+    "target": "reports/cloud-and-worker-plan.md",
+    "blob": "8afd2e4dc6c925cff08b7aa8838c8e35524e1933"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/control-flow-research.md",
+    "target": "reports/control-flow-research.md",
+    "blob": "3d987bb3dca2d04f4b92387985e6d663e686e2e7"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/decentralized-server-plan.md",
+    "target": "reports/decentralized-server-plan.md",
+    "blob": "88169e089e22cc9fe6ba89f759d4ae24e7778dfd"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/decompilation-research.md",
+    "target": "reports/decompilation-research.md",
+    "blob": "2bdb7dbe0f3bf55c409a19a1c1699dba72878e35"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/deep-fingerprint.md",
+    "target": "reports/deep-fingerprint.md",
+    "blob": "32088627deee9f59139d87737a98938014056b98"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/family-reconstruction-results.md",
+    "target": "reports/family-reconstruction-results.md",
+    "blob": "b0184089fc43af276558bcb010233c110ddf6bcd"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/family-worker-plan.md",
+    "target": "reports/family-worker-plan.md",
+    "blob": "e858b41e42fd616d222659b1c7ac9606782d1c05"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/followup-pilots-20261010.md",
+    "target": "reports/followup-pilots-20261010.md",
+    "blob": "591a01a32c8ca190ddf235639899416d649be95f"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/g3d-x87-2008-20261011.md",
+    "target": "reports/g3d-x87-2008-20261011.md",
+    "blob": "3566c66698697595eff79eb8aa74a2ff2dae3c78"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/instruction-aware-repair-results.md",
+    "target": "reports/instruction-aware-repair-results.md",
+    "blob": "4494fc29587a191bf953db43c91af9b6be103732"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/layout-config-pilot-results.md",
+    "target": "reports/layout-config-pilot-results.md",
+    "blob": "34726926643efe0052ceb320c45fab2df9bfff9d"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/library-branch-loop-20261010.md",
+    "target": "reports/library-branch-loop-20261010.md",
+    "blob": "a0c73e73fff95086a5e539a07632ca402edc479a"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/library-fill-20261011.md",
+    "target": "reports/library-fill-20261011.md",
+    "blob": "e683818de68bd50c015fc015d9dd4b9c188af32d"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/local-inventory.json",
+    "target": "reports/local-inventory.json",
+    "blob": "07d96bdf23e4e8ee6a5cff06a4049f1861f7e3aa"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/mass-search-20261009.md",
+    "target": "reports/mass-search-20261009.md",
+    "blob": "24091594e931fe81a1f0796092f97b5e2af3ddb9"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/matching-findings-20261012.md",
+    "target": "reports/matching-findings-20261012.md",
+    "blob": "6f23b917db0314ec8069fe1adb52cd9454ef3e75"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/matching-next-plan.md",
+    "target": "reports/matching-next-plan.md",
+    "blob": "8443f2b66c94c67d29043d4c98955b926bec3c71"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/README.md",
+    "target": "reports/native/README.md",
+    "blob": "4f0741c5bfa723367370fd50450fdf9fd875003d"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/accepted-integrations.json",
+    "target": "reports/native/accepted-integrations.json",
+    "blob": "0fbd7c0bca95be20defc6f29f35ffa62ffb00736"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/abi-probe-parallel-20261027/DEPLOYED.txt",
+    "target": "reports/native/experiments/abi-probe-parallel-20261027/DEPLOYED.txt",
+    "blob": "8d6fe15e15d6ee06dab2de040cea1fc59dec43a9"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/abi-probe-parallel-20261027/README.md",
+    "target": "reports/native/experiments/abi-probe-parallel-20261027/README.md",
+    "blob": "8f5d753385c0ae07102e6a7c2e3313f269683172"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/abi-probe-parallel-20261027/base_check.py",
+    "target": "reports/native/experiments/abi-probe-parallel-20261027/base_check.py",
+    "blob": "1489cbfd3f433719d273b0a8dda9d0b0c02f171e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/abi-probe-parallel-20261027/comparison.json",
+    "target": "reports/native/experiments/abi-probe-parallel-20261027/comparison.json",
+    "blob": "2c788463593910cb11488e292ecfe86c1ee3599b"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/abi-probe-parallel-20261027/header-lookup-comparison.json",
+    "target": "reports/native/experiments/abi-probe-parallel-20261027/header-lookup-comparison.json",
+    "blob": "c35d8f1e35ce1b6bfb281a497978a6ef92a0de0b"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/abi-probe-parallel-20261027/parallel-abi-probes.patch",
+    "target": "reports/native/experiments/abi-probe-parallel-20261027/parallel-abi-probes.patch",
+    "blob": "9c584808b460c53196f8277744d9b580625517ac"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/abi-probe-parallel-20261027/size_check.py",
+    "target": "reports/native/experiments/abi-probe-parallel-20261027/size_check.py",
+    "blob": "9c13766d005793e327713e0482e521133eab7ed5"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/abi-probe-parallel-20261027/test_abi_probe_parallel.py",
+    "target": "reports/native/experiments/abi-probe-parallel-20261027/test_abi_probe_parallel.py",
+    "blob": "07335442f5c847ba60eea57788394ddbb170c996"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/authentic-body-transfer-20261027/README.md",
+    "target": "reports/native/experiments/authentic-body-transfer-20261027/README.md",
+    "blob": "ea3261b95079ef5053606be7a128cf47dbbcd825"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/authentic-body-transfer-20261027/accepted-candidates.json",
+    "target": "reports/native/experiments/authentic-body-transfer-20261027/accepted-candidates.json",
+    "blob": "06b883765864f8c4ad0cb28537db629d817d0862"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/authentic-body-transfer-20261027/native_sweep.py",
+    "target": "reports/native/experiments/authentic-body-transfer-20261027/native_sweep.py",
+    "blob": "6f9e01cb9ba82fe56836c8eda6e6407555101afd"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/authentic-body-transfer-20261027/proposals-in-progress.json",
+    "target": "reports/native/experiments/authentic-body-transfer-20261027/proposals-in-progress.json",
+    "blob": "8330495661af55c2db9895e5fc00c6eacbae3bd8"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/authentic-body-transfer-20261027/recipe.json",
+    "target": "reports/native/experiments/authentic-body-transfer-20261027/recipe.json",
+    "blob": "51b53cda84a7225e1732a6213da759a7ec065bcf"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/authentic-body-transfer-20261027/skipped.json",
+    "target": "reports/native/experiments/authentic-body-transfer-20261027/skipped.json",
+    "blob": "6e5b379e2b28883e57944a9a10289e62b6145892"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/authentic-body-transfer-20261027/test_native_sweep.py",
+    "target": "reports/native/experiments/authentic-body-transfer-20261027/test_native_sweep.py",
+    "blob": "a610818ca304aa02ef0083a5e2110de5d16aac51"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/cached-fast-mode-20261027/README.md",
+    "target": "reports/native/experiments/cached-fast-mode-20261027/README.md",
+    "blob": "0dce8440514d107e1334d5565fe72ba64b7c4391"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/cached-fast-mode-20261027/all-target-rescan.json",
+    "target": "reports/native/experiments/cached-fast-mode-20261027/all-target-rescan.json",
+    "blob": "63a45a48e0757f1b81ace326dc98f9d2a1ab6d91"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/cached-fast-mode-20261027/native_sweep.py",
+    "target": "reports/native/experiments/cached-fast-mode-20261027/native_sweep.py",
+    "blob": "cbeceb7acd0822739d227825cf6bccddd924443f"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/cached-fast-mode-20261027/recipes.json",
+    "target": "reports/native/experiments/cached-fast-mode-20261027/recipes.json",
+    "blob": "1e32f2c10e7b509c30b1d2d155de13b8e6613676"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/cached-fast-mode-20261027/test_native_sweep.py",
+    "target": "reports/native/experiments/cached-fast-mode-20261027/test_native_sweep.py",
+    "blob": "196ad79d377cb217b8679f44fb995818831d2b58"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/existing-data-placement-20261027/README.md",
+    "target": "reports/native/experiments/existing-data-placement-20261027/README.md",
+    "blob": "6d73cb5b5efad51b120d136c42f6b987caa28181"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/existing-data-placement-20261027/audit-summary.json",
+    "target": "reports/native/experiments/existing-data-placement-20261027/audit-summary.json",
+    "blob": "a464dc37fbba4ffd7496affd4ddc8a709f1b0c0e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/existing-data-placement-20261027/existing-data-placements.json",
+    "target": "reports/native/experiments/existing-data-placement-20261027/existing-data-placements.json",
+    "blob": "2ca3198f5e590e2f797962dd8aa6c9551778caf8"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/existing-data-placement-20261027/two-method-proof.json",
+    "target": "reports/native/experiments/existing-data-placement-20261027/two-method-proof.json",
+    "blob": "5ad284d64335101306d791005626b19a4470f7e8"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/README.md",
+    "target": "reports/native/experiments/family-sweep-20261027/README.md",
+    "blob": "be2ff7a604daf474b35f3648c5464c5d69a2f471"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/authentic-family-evidence.json",
+    "target": "reports/native/experiments/family-sweep-20261027/authentic-family-evidence.json",
+    "blob": "5b5bad63a95a4604457dbc06fadd0020b7b6bcf9"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/coff-cache-benchmark.json",
+    "target": "reports/native/experiments/family-sweep-20261027/coff-cache-benchmark.json",
+    "blob": "e86912fe70125f6647af6b5e807537e9555f4fb9"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/layer-context-pilot-summary.json",
+    "target": "reports/native/experiments/family-sweep-20261027/layer-context-pilot-summary.json",
+    "blob": "d56e106c5832638812c5ae08e4aade7081fe4cf2"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/match.py",
+    "target": "reports/native/experiments/family-sweep-20261027/match.py",
+    "blob": "d352130c09d1ca98038bf3496589c1c7709bc1e6"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/matcher-index-benchmark.json",
+    "target": "reports/native/experiments/family-sweep-20261027/matcher-index-benchmark.json",
+    "blob": "95cf38bbf90e17c9ad4ba69fa138d11eb0759717"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/matcher-reuse-benchmark.json",
+    "target": "reports/native/experiments/family-sweep-20261027/matcher-reuse-benchmark.json",
+    "blob": "6ecb63afecbb0dd273ce5c67df47fee4247a4d9e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/native_sweep.py",
+    "target": "reports/native/experiments/family-sweep-20261027/native_sweep.py",
+    "blob": "8342a23822b99db4129cb5f732ef133916141ffc"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/preflight-family-ranking.json",
+    "target": "reports/native/experiments/family-sweep-20261027/preflight-family-ranking.json",
+    "blob": "ccb30fcfe8880deedf6c091626d1548fea5e6f84"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/recipes.json",
+    "target": "reports/native/experiments/family-sweep-20261027/recipes.json",
+    "blob": "789686697275edba152f71999f1d918fbc66a3ff"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/relocation-range-benchmark.json",
+    "target": "reports/native/experiments/family-sweep-20261027/relocation-range-benchmark.json",
+    "blob": "0d46ba5c39a1866eddb907985d0525dcd0df6aa9"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/retention-ownership-checks.json",
+    "target": "reports/native/experiments/family-sweep-20261027/retention-ownership-checks.json",
+    "blob": "055cb61ffbd9d4a18ab5daecdcec49153dbf217e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/retention-summary.json",
+    "target": "reports/native/experiments/family-sweep-20261027/retention-summary.json",
+    "blob": "7db9061b0d788130e1c16395a28e42fc2dc433e7"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/test_lib_fidelity.py",
+    "target": "reports/native/experiments/family-sweep-20261027/test_lib_fidelity.py",
+    "blob": "d3b0cfd04fe66d9fbe01ba64ebca14365fa39414"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/family-sweep-20261027/test_native_sweep.py",
+    "target": "reports/native/experiments/family-sweep-20261027/test_native_sweep.py",
+    "blob": "8c026d55f21932a14a5d42fcd44245b747757041"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/immediate-audit-20261027/README.md",
+    "target": "reports/native/experiments/immediate-audit-20261027/README.md",
+    "blob": "16f4504c49209ace9071be81e1399e5920f4f4d0"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/immediate-audit-20261027/candidates.json",
+    "target": "reports/native/experiments/immediate-audit-20261027/candidates.json",
+    "blob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/layer-family-profiles-20261027/README.md",
+    "target": "reports/native/experiments/layer-family-profiles-20261027/README.md",
+    "blob": "ed95b6d64e0a4b25ea3990d4dd8a9d00bdd6359e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/layer-family-profiles-20261027/accepted-4dddca11.json",
+    "target": "reports/native/experiments/layer-family-profiles-20261027/accepted-4dddca11.json",
+    "blob": "93453bdbbf5436805c83cf04c49a48883b509901"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/layer-family-profiles-20261027/batch-notes.txt",
+    "target": "reports/native/experiments/layer-family-profiles-20261027/batch-notes.txt",
+    "blob": "6a9fcb47e43450e7dc91273bf5f3e8d42e8e38ad"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/layer-family-profiles-20261027/proposals.json",
+    "target": "reports/native/experiments/layer-family-profiles-20261027/proposals.json",
+    "blob": "beb0bb3fbb12d22588e3887ce189c6e351a43578"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/layer-family-profiles-20261027/summary.json",
+    "target": "reports/native/experiments/layer-family-profiles-20261027/summary.json",
+    "blob": "49ae0c21042a4ae6302cfb1d3b06eab21ea3537e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/method-profiles-20261027/README.md",
+    "target": "reports/native/experiments/method-profiles-20261027/README.md",
+    "blob": "d361c1f800789ac1c4a8fd4b44df9c69cb017c29"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/method-profiles-20261027/native_sweep.py",
+    "target": "reports/native/experiments/method-profiles-20261027/native_sweep.py",
+    "blob": "c030954489cb8e100d3e5395783e795d59b434d8"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/method-profiles-20261027/recipes.json",
+    "target": "reports/native/experiments/method-profiles-20261027/recipes.json",
+    "blob": "6ef1d9e2edbfb625fcfcbb558203e05f6d114dd1"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/method-profiles-20261027/results.json",
+    "target": "reports/native/experiments/method-profiles-20261027/results.json",
+    "blob": "8fa1cf1f0484a1541b42e9b144dbb0eceaa96d47"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/method-profiles-20261027/retention-rejection-proof.json",
+    "target": "reports/native/experiments/method-profiles-20261027/retention-rejection-proof.json",
+    "blob": "efb955443947ca6b667f2070ae9090f0713ca7e0"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/method-profiles-20261027/test_native_sweep.py",
+    "target": "reports/native/experiments/method-profiles-20261027/test_native_sweep.py",
+    "blob": "cb38c9f6d2baf9ee1ce13d023351d07b45eaf0a0"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/pair-cache-20261027/DEPLOYED.txt",
+    "target": "reports/native/experiments/pair-cache-20261027/DEPLOYED.txt",
+    "blob": "55caa805bd54487e7a6d8dc99819a56baa1056e5"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/pair-cache-20261027/README.md",
+    "target": "reports/native/experiments/pair-cache-20261027/README.md",
+    "blob": "7f21b337819f27ecac8786bfe09d5b6e22978d9b"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/pair-cache-20261027/benchmark.json",
+    "target": "reports/native/experiments/pair-cache-20261027/benchmark.json",
+    "blob": "3921a32857fcdc8cef7e03534bf4faf4756b4f74"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/pair-cache-20261027/implementation-benchmark.json",
+    "target": "reports/native/experiments/pair-cache-20261027/implementation-benchmark.json",
+    "blob": "fc17ea3fb04a9ca2407a95a1c37ab75794b835c5"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/pair-cache-20261027/pair-cache.patch",
+    "target": "reports/native/experiments/pair-cache-20261027/pair-cache.patch",
+    "blob": "c1c801128eb9f1cfc88c2789259cf77367333f00"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/property-order-20261027/README.md",
+    "target": "reports/native/experiments/property-order-20261027/README.md",
+    "blob": "18180468871a5da0d7c5759a423633ca52abc52a"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/property-order-20261027/accepted-739d5c36.json",
+    "target": "reports/native/experiments/property-order-20261027/accepted-739d5c36.json",
+    "blob": "f6167dd821560400c649b70bc66efb75a2dc4e6f"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/property-order-20261027/batch-notes.txt",
+    "target": "reports/native/experiments/property-order-20261027/batch-notes.txt",
+    "blob": "80640c4d1a5428a70dacbf70e36339947c2184f5"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/property-order-20261027/input-baseline-proof.json",
+    "target": "reports/native/experiments/property-order-20261027/input-baseline-proof.json",
+    "blob": "5722d8029fefeea5ab8988283926b00e70b5e251"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/property-order-20261027/proposals.json",
+    "target": "reports/native/experiments/property-order-20261027/proposals.json",
+    "blob": "83954bfa2cca0d38fcc104041570c27d34b5f8b3"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/property-order-20261027/recipes.json",
+    "target": "reports/native/experiments/property-order-20261027/recipes.json",
+    "blob": "e349f3749f531f27a96d18b473a7d3fa194f67a7"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/property-order-20261027/summary.json",
+    "target": "reports/native/experiments/property-order-20261027/summary.json",
+    "blob": "5f74fae5928acb9f0b620b8eb83b761edb428a17"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/reconciliation-20261027/README.md",
+    "target": "reports/native/experiments/reconciliation-20261027/README.md",
+    "blob": "264e5f1f61f9b5c42713b0654812607c0c86477f"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/reconciliation-20261027/accepted-dc6a623e.json",
+    "target": "reports/native/experiments/reconciliation-20261027/accepted-dc6a623e.json",
+    "blob": "875efbb64f6e83aa9a0bde760bfb399edcb92f91"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/reconciliation-20261027/native_sweep.py",
+    "target": "reports/native/experiments/reconciliation-20261027/native_sweep.py",
+    "blob": "c7002492eb4b8c9f6c942619539c5868d87fbe60"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/reconciliation-20261027/shared-ownership-proof.json",
+    "target": "reports/native/experiments/reconciliation-20261027/shared-ownership-proof.json",
+    "blob": "e14b09af468f12fe24cd705c93c009ea4efd3b3d"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/reconciliation-20261027/test_native_sweep.py",
+    "target": "reports/native/experiments/reconciliation-20261027/test_native_sweep.py",
+    "blob": "fdb99e33ef6beaf52fdb4a79edb9d837a8398acc"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/xml-double-api-20261027/README.md",
+    "target": "reports/native/experiments/xml-double-api-20261027/README.md",
+    "blob": "d65aa7fdbd3340b09586af60438253768a9e093b"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/xml-double-api-20261027/accepted-290919f0.json",
+    "target": "reports/native/experiments/xml-double-api-20261027/accepted-290919f0.json",
+    "blob": "6b6232ff7fa3514fb818df49019c8d36aeb1dff0"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/xml-double-api-20261027/batch-notes.txt",
+    "target": "reports/native/experiments/xml-double-api-20261027/batch-notes.txt",
+    "blob": "d6b72f895027a06133928ddf1f923d7fdbce9056"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/xml-double-api-20261027/dependency-proof-summary.json",
+    "target": "reports/native/experiments/xml-double-api-20261027/dependency-proof-summary.json",
+    "blob": "079087fa592ba11c09e78b6060e16fc5c369759a"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/xml-double-api-20261027/native_sweep.py",
+    "target": "reports/native/experiments/xml-double-api-20261027/native_sweep.py",
+    "blob": "174aad62c518e56fb08ada4076640f858f136329"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/xml-double-api-20261027/patches-branch.json",
+    "target": "reports/native/experiments/xml-double-api-20261027/patches-branch.json",
+    "blob": "2964c9f6ddbbd945f4e70ce89502f6a4a6c5e285"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/xml-double-api-20261027/pilot-branch-result.json",
+    "target": "reports/native/experiments/xml-double-api-20261027/pilot-branch-result.json",
+    "blob": "1dbf39b942854e9f3276cca5d91cb0984bda0645"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/xml-double-api-20261027/pilot-nested-result.json",
+    "target": "reports/native/experiments/xml-double-api-20261027/pilot-nested-result.json",
+    "blob": "3064ba057315c66318fe39bd08334c6967b7eab6"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/xml-double-api-20261027/recipe.json",
+    "target": "reports/native/experiments/xml-double-api-20261027/recipe.json",
+    "blob": "857ceb4707a4ff21a8fd90f411aa586d29551789"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/xml-double-api-20261027/summary.json",
+    "target": "reports/native/experiments/xml-double-api-20261027/summary.json",
+    "blob": "b4313ffdb62145184cc08916cc54246484fe8845"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/experiments/xml-double-api-20261027/test_native_sweep.py",
+    "target": "reports/native/experiments/xml-double-api-20261027/test_native_sweep.py",
+    "blob": "ec0edd67ba443a785c90f251f0ed335496ee6431"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/integration-jobs.json",
+    "target": "reports/native/integration-jobs.json",
+    "blob": "d4f40f8261be69bd34d8e3ac8330fef7faf5a2d6"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/inventory.json",
+    "target": "reports/native/inventory.json",
+    "blob": "3349e88ce2ba0b231f4199afa5482c74ea9a3f5e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/layout-migration-20261027/runtime-tests.json",
+    "target": "reports/native/layout-migration-20261027/runtime-tests.json",
+    "blob": "c3376d23ef69beee10f7fea6c9d5b1db6e1d9a2c"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/native-credit.json",
+    "target": "reports/native/native-credit.json",
+    "blob": "eb2b76e535dfa17b95dee4bfe114e04ea698954e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/POLICY.md",
+    "target": "reports/native/working-tree/rebuild/2008-06/POLICY.md",
+    "blob": "8066fef6e227863c6bfd7a9ef284f7dfac18fa31"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/base_check.py",
+    "target": "reports/native/working-tree/rebuild/2008-06/base_check.py",
+    "blob": "1489cbfd3f433719d273b0a8dda9d0b0c02f171e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/compile_test.py",
+    "target": "reports/native/working-tree/rebuild/2008-06/compile_test.py",
+    "blob": "5233d03e8f462c8551cdac1f0ba693da33f16e53"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/openrbx/glue_link_stubs.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/openrbx/glue_link_stubs.cpp",
+    "blob": "f18eeb323748b83a900d466190fc8dc07cd6fe2c"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_anchor_registry.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_anchor_registry.cpp",
+    "blob": "efbf8bc01f6e6e0debfc6937172ae6619244c623"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_camera.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_camera.cpp",
+    "blob": "c24c45ec87974ba4335967e13d39c968c7f1d6ed"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_class_names.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_class_names.cpp",
+    "blob": "4b8bce0cacdd304bcbf8768b0ffd1c2efb308458"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_content_provider.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_content_provider.cpp",
+    "blob": "f2dff108caf8eba52693931c3dc17c17a7dc7673"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_enum_descs.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_enum_descs.cpp",
+    "blob": "cd52bce8fe5127eb1bb008b32428e5ec7d50a3c8"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_equipables.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_equipables.cpp",
+    "blob": "4504d8172b0220cd79df0fc6b398984f8ca8dd87"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_explosion.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_explosion.cpp",
+    "blob": "05d867fbe707f23f1bff281c344bcb2620242ab3"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_gameplay.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_gameplay.cpp",
+    "blob": "9490f433067f01c2de9408751d64c97bcdb74ff2"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_gui.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_gui.cpp",
+    "blob": "56ed722e3a2868d2a997c5d28922e9f97e07df40"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_guid_registry.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_guid_registry.cpp",
+    "blob": "b24d9ba19834669d58fe93730c7015cc8c5d4429"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_humanoid.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_humanoid.cpp",
+    "blob": "2222aa1197098891a0005116636c34eb9afba048"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_humanoid_states.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_humanoid_states.cpp",
+    "blob": "a9c13fd5d28bced053cf319c57ad040caf189db1"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_input.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_input.cpp",
+    "blob": "25df3eb13c21eea75e5aabcf39e4c1b9312e962a"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_instance_core.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_instance_core.cpp",
+    "blob": "56b61f1108996a213e5854e7e2da4cae295bb7dc"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_link_stubs.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_link_stubs.cpp",
+    "blob": "875e499ea5233f1c876aa5d390e47d8ec3673eb4"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_lua_bridge_names.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_lua_bridge_names.cpp",
+    "blob": "2232c6462107b8da5f9f252f9a1300ac4759ad8e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_message.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_message.cpp",
+    "blob": "9167b36701cc88d4c4e3c953f4a523188d0a36ef"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_misc.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_misc.cpp",
+    "blob": "47eab6f81daab2c723e67ebba2ddfd0f8a24f6a4"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_mouse.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_mouse.cpp",
+    "blob": "48efad9451e9b34d40f24ffcfd23888a758513eb"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_network_player.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_network_player.cpp",
+    "blob": "4db2e9e2cff0a824fcb4f389a90dac1e349f767b"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_part_instance.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_part_instance.cpp",
+    "blob": "dd94c7be94fd9b2111359ad89d8b30d98a41b155"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_player_controller.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_player_controller.cpp",
+    "blob": "5fbab41bd9a8487d1d8add55d1d28477a1fd774a"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_property_strings.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_property_strings.cpp",
+    "blob": "9e9af78a869493bd1c9ea5681b1f4776d41cc55f"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_reflection_refs.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_reflection_refs.cpp",
+    "blob": "c44a1adb31cf256a04eb8705a216e84045f4e264"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_reflection_types.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_reflection_types.cpp",
+    "blob": "5e3811fbe01abfc291df9a053b195b6284e1c930"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_replication.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_replication.cpp",
+    "blob": "3df8fd00de518e4403e0412072a691acf22ef0d6"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_replicator.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_replicator.cpp",
+    "blob": "31905301cd5003cca430099e7bc0f4d2fe091569"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_runtime.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_runtime.cpp",
+    "blob": "34e5db7d8210f102f1d3151827e3190dac36ea81"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_serializer.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_serializer.cpp",
+    "blob": "ab32bc3134a6f349a58d63d4966181d403c1e167"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_server.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_server.cpp",
+    "blob": "2f13757219eacc3818c0bc5dcb193cd142d5229c"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_statics.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_statics.cpp",
+    "blob": "eb784f7ee0d0fc61ca36907d17bf4346f3fa3c3c"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_stats_items.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_stats_items.cpp",
+    "blob": "df6e4f51286a1fea1516e19a2eff50d74b1e3e13"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_string_converters.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_string_converters.cpp",
+    "blob": "299aed43a2444157ce7d1c6480cb0128f57e00ae"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_surfaces.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_surfaces.cpp",
+    "blob": "c8f8d91609fbb442f844c9aebfed8fd5ad9ad6a3"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_texture.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_texture.cpp",
+    "blob": "7650e0d3b188543e3ff49baeb0a72e01affcf4f4"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_timestate_registry.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/glue/rbxgs/glue_timestate_registry.cpp",
+    "blob": "9e94e4fdd6c5757958b49729744045e888cfdb99"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/header_catalog.py",
+    "target": "reports/native/working-tree/rebuild/2008-06/header_catalog.py",
+    "blob": "e9d0713919ea8d23f2349cd848b2834df35dae7d"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/layout_map.py",
+    "target": "reports/native/working-tree/rebuild/2008-06/layout_map.py",
+    "blob": "fc5a8a0605880793cc01f4eb3eb0dc955e82eed5"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/boost.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/boost.json",
+    "blob": "bcc979878d23640a5b6df4c1d040ac5ef7273e52"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/g3d-gl.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/g3d-gl.json",
+    "blob": "d3638da68f2eaacd306da104d5867582ed2b4867"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/g3d.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/g3d.json",
+    "blob": "2c2db41b7904a25ee8016c507ceba688361453a3"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/jpeg.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/jpeg.json",
+    "blob": "e234641fbb1432c23a312a8119063513eaf2e20c"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/libpng.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/libpng.json",
+    "blob": "bd9a5667e94c87883f6e85af00f88e1d9128bbd5"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/lua.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/lua.json",
+    "blob": "fdc9fdd8528115e5d0f53812256732fc9c47fc2c"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/raknet.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/raknet.json",
+    "blob": "97fd876307f76e7581cb138b8df171d6f511935d"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/rbx-app.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/rbx-app.json",
+    "blob": "c196acf40e35c1b8727e4d8ea86f796c82d39740"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/rbx-util.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/rbx-util.json",
+    "blob": "5127bfed2dc7b6683adae54c002091420730816a"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/rbxgs-app.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/rbxgs-app.json",
+    "blob": "07a0a55773fa8938d2714abd8325a299f021ef39"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/scintilla.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/scintilla.json",
+    "blob": "af60c32d449339a317dcc4c664d07476e1cfc5f4"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/xtp.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/xtp.json",
+    "blob": "6a1db4f19a5ac954732883ab2cded75141571a7c"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/zlib-winapi.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/zlib-winapi.json",
+    "blob": "e6d786d5b2aa5691aefd3ab6c92f808df0c79c33"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/modules/zlib.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/modules/zlib.json",
+    "blob": "baaaedc72e6d3d53221281def5421b66244d4d21"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/patches/make_rbxgs_client.py",
+    "target": "reports/native/working-tree/rebuild/2008-06/patches/make_rbxgs_client.py",
+    "blob": "00de4e750a5d2ff060744033611fe7bbcbbbe707"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/patches/native-promotions.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/patches/native-promotions.json",
+    "blob": "4dec03258648b8e1e83a7dbcdc4e11eaa8abdf61"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/patches/openrbx-client.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/patches/openrbx-client.json",
+    "blob": "8e31189e87a6acdf314bbb745bc9352d71304d0d"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/patches/rbxgs-client.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/patches/rbxgs-client.json",
+    "blob": "abbc4d3d832ad030a7a672d4ae4095638e765e46"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/patches/rbxgs_template_defs.h",
+    "target": "reports/native/working-tree/rebuild/2008-06/patches/rbxgs_template_defs.h",
+    "blob": "89c4944527b75af06b6d0f8d2349c1f887e090c3"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/patches/zlib-deflate-copyright.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/patches/zlib-deflate-copyright.json",
+    "blob": "36f81edca59c6fc915d96d2e719881b9b5baa284"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/patches/zlib-winapi-deflate-copyright.json",
+    "target": "reports/native/working-tree/rebuild/2008-06/patches/zlib-winapi-deflate-copyright.json",
+    "blob": "36f81edca59c6fc915d96d2e719881b9b5baa284"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/size_check.py",
+    "target": "reports/native/working-tree/rebuild/2008-06/size_check.py",
+    "blob": "9c13766d005793e327713e0482e521133eab7ed5"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/swap_build.py",
+    "target": "reports/native/working-tree/rebuild/2008-06/swap_build.py",
+    "blob": "25a219ccf628b1ddedfe0ae4cb4e131497c5efd4"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/swap_plan.py",
+    "target": "reports/native/working-tree/rebuild/2008-06/swap_plan.py",
+    "blob": "ed52e45ff9a8d83a962601b7e033df0a222bed33"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/boost_core.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/boost_core.cpp",
+    "blob": "49746a37974797fa3a7b63e5b3926fbf918a2956"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/crash_entry.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/crash_entry.cpp",
+    "blob": "d6954fe839553c3d6ecd31fa2600d7f794954cad"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/crash_entry2.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/crash_entry2.cpp",
+    "blob": "1a9928adde4580aa88db25854cb511c59ca3dde4"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/crash_filter.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/crash_filter.cpp",
+    "blob": "dfe2280f6d42d55715ca6fcdcbfc647474bb1578"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/empty_main.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/empty_main.cpp",
+    "blob": "2c99a52776c2084e7b8d5852aa13429985db5d16"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/g3d_core.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/g3d_core.cpp",
+    "blob": "02bb96baaa26b8640a00a036ab065b7988cb856f"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/g3d_gl.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/g3d_gl.cpp",
+    "blob": "ca680f19672354b417c0b0248b4276e386b6892b"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/jpeg_roundtrip.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/jpeg_roundtrip.cpp",
+    "blob": "3c6f3f67059802e67c621eedb5e362f68f0ccfbd"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/lua_script.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/lua_script.cpp",
+    "blob": "b468c9433d7066f1d157441b8e71cff83f81d5aa"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/m2_window.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/m2_window.cpp",
+    "blob": "62be790571b6a32c64078c18ee53c96c600653c1"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/m4_datamodel.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/m4_datamodel.cpp",
+    "blob": "0b9e1409400c55e068b8a1605eb6e060f284186e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/m4_render.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/m4_render.cpp",
+    "blob": "d563ec7bd6c41e95e9ff59b2a6642a83d5e6762e"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/m5_place.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/m5_place.cpp",
+    "blob": "c73f1a8aacaeaf4da6b3a80703188efb54155171"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/png_roundtrip.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/png_roundtrip.cpp",
+    "blob": "b541b93c8da9fed7101a0e65fc944b433d5acf87"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/probe_layout.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/probe_layout.cpp",
+    "blob": "c0ff6e2592b8e3aebe343245c71f56f2fcf3862c"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/probe_services.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/probe_services.cpp",
+    "blob": "28dece871425d636b6a09d081c2812f8374bd0dd"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/raknet_loopback.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/raknet_loopback.cpp",
+    "blob": "23b2c6d336d9612b57d62ed0e8ae614c1736e4d3"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/rbx_app.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/rbx_app.cpp",
+    "blob": "96eb5ba21be00083c727a6075ad15c8db2d71669"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/rbx_util.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/rbx_util.cpp",
+    "blob": "37d13960c195aaca2e49673d38ddbef9b1a85602"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/rbxgs_app.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/rbxgs_app.cpp",
+    "blob": "48047bc209ad50124a15ad1e10d9238612cf5967"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/scintilla_ctrl.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/scintilla_ctrl.cpp",
+    "blob": "2108d38930d613aae48e915baaf6002db7a24d15"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/test_strip_symbols.py",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/test_strip_symbols.py",
+    "blob": "097592c5b917ca3ae3bc6a1bac32a1413e27eff9"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/xtp_colors.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/xtp_colors.cpp",
+    "blob": "4024c971f86e1f8da14f68435b691b6d168d81bd"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/rebuild/2008-06/tests/zlib_roundtrip.cpp",
+    "target": "reports/native/working-tree/rebuild/2008-06/tests/zlib_roundtrip.cpp",
+    "blob": "4ecb42de38cd8bd7c94286032779f87d09191e88"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/roc/findings_publish.py",
+    "target": "reports/native/working-tree/roc/findings_publish.py",
+    "blob": "d1cbb015aa9bb1491418f0ac9ca27710c847b213"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/roc/integration.py",
+    "target": "reports/native/working-tree/roc/integration.py",
+    "blob": "5c5948bd2a69afea2bf7d7e8e9a957b7dc4c3da3"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/roc/integration_verify.py",
+    "target": "reports/native/working-tree/roc/integration_verify.py",
+    "blob": "7e2eb6ea140a13333a9d15a312aaa4dbf9a43e29"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/roc/native_sweep.py",
+    "target": "reports/native/working-tree/roc/native_sweep.py",
+    "blob": "76ee05f2e97e52cc8d1616300110650e7f93c731"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/native/working-tree/roc/rebuild.py",
+    "target": "reports/native/working-tree/roc/rebuild.py",
+    "blob": "dfab7f08821bfaaf2baa9ccc650b7e89ae98fa81"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/new-matching-research-plan.md",
+    "target": "reports/new-matching-research-plan.md",
+    "blob": "106283d979e7df000f5e22908dbf05e740fc9b0d"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/output-budget-results.md",
+    "target": "reports/output-budget-results.md",
+    "blob": "c93344b2eb5c6c549c774f5bdf4d014529951ee2"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/permutation-repair-results.md",
+    "target": "reports/permutation-repair-results.md",
+    "blob": "d3cec5ace8607e5046d423b385230c0ba3b6e1f7"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/re-pilot-20261010.md",
+    "target": "reports/re-pilot-20261010.md",
+    "blob": "7f1d7c972068e2fd6d7c352f97d23499c65f416b"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/re-recovery-workflow.md",
+    "target": "reports/re-recovery-workflow.md",
+    "blob": "f878dd5f5f6184d31607f62b43b5e1662ffa6f56"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/repair-guided-results.md",
+    "target": "reports/repair-guided-results.md",
+    "blob": "fe276d4eb8f27c908b65509cdb316154f89b2763"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/repository-maintenance.md",
+    "target": "reports/repository-maintenance.md",
+    "blob": "b262ff63f610d3840073efb0f9922991fea7a7ae"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/scaled-campaign-20261010.md",
+    "target": "reports/scaled-campaign-20261010.md",
+    "blob": "99200d64c423618c69a4cf96eb14ac54ba77ed1a"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/source2016-pilot-20261011.md",
+    "target": "reports/source2016-pilot-20261011.md",
+    "blob": "7e4a33998acafe4c3bdc5014508ad709f3459582"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/worker-auto-20261010.md",
+    "target": "reports/worker-auto-20261010.md",
+    "blob": "9fe7961e453e4eb12658c998ca9ca542c7957624"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/worker-automatic-review.md",
+    "target": "reports/worker-automatic-review.md",
+    "blob": "f629d61bff3fb01e597371640e8fd49289fc49fb"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/worker-checklist.md",
+    "target": "reports/worker-checklist.md",
+    "blob": "e7a292c8f7aca37a4f0de8fc49d0780e945459d4"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/worker-efficiency-results.md",
+    "target": "reports/worker-efficiency-results.md",
+    "blob": "1507b2c7d4c16854150ddb65911183609ed262d4"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/worker-full-plan-checklist.md",
+    "target": "reports/worker-full-plan-checklist.md",
+    "blob": "26cdbf6b067bd88050326709136d8165bd30310f"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/worker-history-20261010.md",
+    "target": "reports/worker-history-20261010.md",
+    "blob": "5e81fd1d958291f5a0318262665104e890d032a9"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/worker-improvement-plan.md",
+    "target": "reports/worker-improvement-plan.md",
+    "blob": "ada080e7f20bfcd6d566c7c6f59f4e943498fa81"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/worker-reuse-20261010.md",
+    "target": "reports/worker-reuse-20261010.md",
+    "blob": "b2680b8f18e8dc9dbef3ab3abcd370cf9123d6e1"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/worker-runtime-review.md",
+    "target": "reports/worker-runtime-review.md",
+    "blob": "4c3d7de61ff96f5f6e5c56464a0f696720a99385"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/worker-speed-checklist.md",
+    "target": "reports/worker-speed-checklist.md",
+    "blob": "2d36a7d3b04b6ad3449a7f6e30a86307ba205295"
+  },
+  {
+    "source_commit": "2c23ecd9605d1db07bc61e5ff72a55ab41628d27",
+    "source": "reports/xtp-2008-coverage-20261011.md",
+    "target": "reports/xtp-2008-coverage-20261011.md",
+    "blob": "b90c1b0f37478eb3cc695ef02daf401684a1ac71"
+  }
+]

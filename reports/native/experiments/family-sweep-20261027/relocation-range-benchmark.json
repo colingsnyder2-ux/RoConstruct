@@ -1,0 +1,9 @@
+{
+  "object": "Camera.obj",
+  "target_addresses": 9742,
+  "exact_code_and_data_hits": 746,
+  "old_seconds": 26.58227509999415,
+  "range_lookup_seconds": 0.323869999992894,
+  "speedup": 82.07699107844934,
+  "identical_results": true
+}

@@ -1,0 +1,117 @@
+{
+ "name": "RbxgsApp",
+ "description": "Complete rbxgs Client/App tree (util, v8kernel, reflection, v8tree, v8world, v8datamodel, script, humanoid, tool, v8xml, gui, security) compiled against its own headers: one consistent ABI. Remaining gaps are filled by rebuild glue; empty-bodied stubs are listed in glue_link_stubs.cpp.",
+ "depends": [
+  "g3d",
+  "g3d-gl",
+  "libpng",
+  "boost",
+  "raknet"
+ ],
+ "layers": [
+  {
+   "name": "rbxgs",
+   "mode": "recipe",
+   "recipe": "rbxgs",
+   "direct": true,
+   "files": "util/*.cpp v8kernel/*.cpp reflection/*.cpp v8tree/*.cpp v8world/*.cpp v8datamodel/*.cpp script/*.cpp humanoid/*.cpp tool/*.cpp v8xml/*.cpp gui/*.cpp security/*.cpp",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "exclude": [
+    "util/Utilities.cpp",
+    "v8tree/Property.cpp"
+   ]
+  },
+  {
+   "name": "net",
+   "mode": "recipe",
+   "recipe": "rbxgs-net",
+   "direct": true,
+   "files": "recipe",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "appdraw",
+   "mode": "recipe",
+   "recipe": "rbxgs-appdraw",
+   "direct": true,
+   "files": "recipe",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "renderlib",
+   "mode": "recipe",
+   "recipe": "rbxgs-render",
+   "direct": true,
+   "files": "*.cpp",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "view",
+   "mode": "recipe",
+   "recipe": "rbxgs-view",
+   "direct": true,
+   "files": "*.cpp",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "lua",
+   "mode": "direct",
+   "dir": "tools/rbxgs/Client/App/lua-5.1.1/src",
+   "files": "*.c",
+   "exclude": [
+    "lua.c",
+    "luac.c",
+    "print.c"
+   ],
+   "includes_from_recipe": "rbxgs",
+   "defines_from_recipe": "rbxgs",
+   "extra_includes": [
+    "tools/rbxgs/Client/App/lua-5.1.1/src"
+   ],
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /TP"
+  },
+  {
+   "name": "glue",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/glue/rbxgs",
+   "files": "*.cpp",
+   "includes_from_recipe": "rbxgs-net",
+   "defines_from_recipe": "rbxgs",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "extra_includes": [
+    "tools/rbxgs/Client/Network",
+    "tools/rbxgs/Client/RbxView/include"
+   ]
+  }
+ ],
+ "test": "rbxgs_app",
+ "test_includes": [
+  "tools/rbxgs/Client/App/include",
+  "tools/rbxgs/Client/RbxGraphics/include",
+  "tools/rbxgs/Client/Network/include",
+  "tools/rbxgs/Client/RbxView/include",
+  "tools/rbxgs/Client/Rendering/png",
+  "tools/rbxgs/Client/Rendering/g3d/include",
+  "tools/rbxgs/Client/Rendering/g3d/zlib",
+  "tools/rbxgs/Client/Rendering/RenderLib/include",
+  "tools/rbxgs/Client/Rendering/AppDraw/include",
+  "tools/rbxgs/Client/boost_1_34_1/src",
+  "tools/rbxgs/Client/App/lua-5.1.1/src",
+  "tools/rbxgs/Client/Rendering/SDL-1.2.6/include",
+  "tools/rbxgs/Client/RbxViewBase",
+  "tools/rbxgs/Client/RbxView"
+ ],
+ "test_defines": "WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT BOOST_ALL_NO_LIB",
+ "overlay": {
+  "root": "tools/rbxgs/Client",
+  "patches": "rebuild/2008-06/patches/rbxgs-client.json"
+ },
+ "verified": true
+}

@@ -1,0 +1,19 @@
+{
+ "recipe": "native-layer-family-profiles-2008",
+ "client": "2008-06",
+ "op": "native-grid",
+ "tried": 268,
+ "proposed_files": 2,
+ "local_exact": 2,
+ "eligible_targets": 6135,
+ "starting_revision": "6023a106e73b6e2d12553f4325b26e992aa578a428d9bc8b323d47a17a1ac4d9",
+ "deferred_ownership": 4,
+ "reconciled_addresses": 0,
+ "new_verified": 0,
+ "applied_files": 2,
+ "batch": "C:\\Users\\colin\\RoConstruct-native-mass\\work\\research\\native-layer-family-profiles-2008\\batch.json",
+ "evidence": "C:\\Users\\colin\\RoConstruct-native-mass\\work\\research\\native-layer-family-profiles-2008\\batch-notes.txt",
+ "job": "4dddca112ca54a5796c684a2c6e7e94f",
+ "run_id": "4cf435bca08549c185b40b0f1bf85c9e",
+ "state": "queued"
+}

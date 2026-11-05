@@ -1,0 +1,89 @@
+{
+ "?getWorldPosition@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVVector3@3@XZ": [
+  "0001:000017a0       ?getWorldPosition@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVVector3@3@XZ 004027a0 f   linked:verified_native-shadow-delegation.obj"
+ ],
+ "?_Insert_n@?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@2@IABVVector3@Ogre@@@Z": [
+  "0001:000008c0       ?_Insert_n@?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@2@IABVVector3@Ogre@@@Z 004018c0 f i linked:verified_native-resource-templates.obj"
+ ],
+ "?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAVMovableObject@3@@Z": [
+  "0001:00001470       ?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAVMovableObject@3@@Z 00402470 f   linked:verified_native-scene-callbacks.obj"
+ ],
+ "??1SceneMgrQueuedRenderableVisitor@RbxSceneManager@Ogre@@UAE@XZ": [
+  "0001:00000e50       ??1SceneMgrQueuedRenderableVisitor@RbxSceneManager@Ogre@@UAE@XZ 00401e50 f i linked:verified_native-scene-callbacks.obj"
+ ],
+ "?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAUWorldFragment@SceneQuery@3@@Z": [
+  "0001:00000f80       ?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAUWorldFragment@SceneQuery@3@@Z 00401f80 f   linked:verified_native-scene-callbacks.obj"
+ ],
+ "??$_Fill@PAVVector3@Ogre@@V12@@std@@YAXPAVVector3@Ogre@@0ABV12@@Z": [
+  "0001:00000430       ??$_Fill@PAVVector3@Ogre@@V12@@std@@YAXPAVVector3@Ogre@@0ABV12@@Z 00401430 f i linked:verified_native-resource-templates.obj"
+ ],
+ "?setVisibilityMask@NativeSceneManager@Ogre@@UAEXI@Z": [
+  "0001:00001760       ?setVisibilityMask@NativeSceneManager@Ogre@@UAEXI@Z 00402760 f   linked:verified_native-header-accessors.obj"
+ ],
+ "??1?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAE@XZ": [
+  "0001:00000460       ??1?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAE@XZ 00401460 f i linked:verified_native-resource-templates.obj"
+ ],
+ "??$_Copy_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": [
+  "0001:000004c0       ??$_Copy_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 004014c0 f i linked:verified_native-resource-templates.obj"
+ ],
+ "??1?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@UAE@XZ": [
+  "0001:00000d80       ??1?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@UAE@XZ 00401d80 f i linked:verified_native-hardware-sharedptr.obj"
+ ],
+ "?getWorldOrientation@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ": [
+  "0001:00001790       ?getWorldOrientation@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ 00402790 f   linked:verified_native-shadow-delegation.obj"
+ ],
+ "?getCastShadows@RbxSubEntity@Ogre@@UBE_NXZ": [
+  "0001:00001680       ?getCastShadows@RbxSubEntity@Ogre@@UBE_NXZ 00402680 f   linked:verified_native-subentity-contracts.obj"
+ ],
+ "?getEdgeList@RbxSubEntity@Ogre@@UAEPAVEdgeData@2@XZ": [
+  "0001:00001690       ?getEdgeList@RbxSubEntity@Ogre@@UAEPAVEdgeData@2@XZ 00402690 f   linked:verified_native-subentity-contracts.obj"
+ ],
+ "?_Insert_n@?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@2@IABVPlane@Ogre@@@Z": [
+  "0001:00000b30       ?_Insert_n@?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@2@IABVPlane@Ogre@@@Z 00401b30 f i linked:verified_native-resource-templates.obj"
+ ],
+ "?getWorldTransforms@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEXPAVMatrix4@3@@Z": [
+  "0001:00001780       ?getWorldTransforms@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEXPAVMatrix4@3@@Z 00402780 f   linked:verified_native-shadow-delegation.obj"
+ ],
+ "??$_Uninit_copy@PBVVector3@Ogre@@PAV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAPAVVector3@Ogre@@PBV12@0PAV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": [
+  "0001:00000520       ??$_Uninit_copy@PBVVector3@Ogre@@PAV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAPAVVector3@Ogre@@PBV12@0PAV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00401520 f i linked:verified_native-resource-templates.obj"
+ ],
+ "?getDisplaySceneNodes@NativeSceneManager@Ogre@@UBE_NXZ": [
+  "0001:00001750       ?getDisplaySceneNodes@NativeSceneManager@Ogre@@UBE_NXZ 00402750 f   linked:verified_native-header-accessors.obj"
+ ],
+ "??_G?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAEPAXI@Z": [
+  "0001:00000480       ??_G?$SharedPtr@VAnimableValue@Ogre@@@Ogre@@UAEPAXI@Z 00401480 f i linked:verified_native-resource-templates.obj"
+ ],
+ "?getShadowDirLightTextureOffset@NativeSceneManager@Ogre@@UBEMXZ": [
+  "0001:00001720       ?getShadowDirLightTextureOffset@NativeSceneManager@Ogre@@UBEMXZ 00402720 f   linked:verified_native-header-accessors.obj"
+ ],
+ "?hasEdgeList@RbxSubEntity@Ogre@@UAE_NXZ": [
+  "0001:000016c0       ?hasEdgeList@RbxSubEntity@Ogre@@UAE_NXZ 004026c0 f   linked:verified_native-subentity-contracts.obj"
+ ],
+ "?getShadowFarDistance@NativeSceneManager@Ogre@@UBEMXZ": [
+  "0001:00001700       ?getShadowFarDistance@NativeSceneManager@Ogre@@UBEMXZ 00402700 f   linked:verified_native-header-accessors.obj"
+ ],
+ "?getShadowTextureSelfShadow@NativeSceneManager@Ogre@@UBE_NXZ": [
+  "0001:00001730       ?getShadowTextureSelfShadow@NativeSceneManager@Ogre@@UBE_NXZ 00402730 f   linked:verified_native-header-accessors.obj"
+ ],
+ "?getShadowIndexBufferSize@NativeSceneManager@Ogre@@UBEIXZ": [
+  "0001:00001710       ?getShadowIndexBufferSize@NativeSceneManager@Ogre@@UBEIXZ 00402710 f   linked:verified_native-header-accessors.obj"
+ ],
+ "?destroy@?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@MAEXXZ": [
+  "0001:00000340       ?destroy@?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@MAEXXZ 00401340 f i linked:verified_native-resource-templates.obj"
+ ],
+ "?getShadowCasterRenderBackFaces@NativeSceneManager@Ogre@@UBE_NXZ": [
+  "0001:00001740       ?getShadowCasterRenderBackFaces@NativeSceneManager@Ogre@@UBE_NXZ 00402740 f   linked:verified_native-header-accessors.obj"
+ ],
+ "??$_Copy_backward_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": [
+  "0001:00000550       ??$_Copy_backward_opt@PAVVector3@Ogre@@PAV12@@std@@YAPAVVector3@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00401550 f i linked:verified_native-resource-templates.obj"
+ ],
+ "?getShadowTechnique@NativeSceneManager@Ogre@@UBE?AW4ShadowTechnique@2@XZ": [
+  "0001:000016f0       ?getShadowTechnique@NativeSceneManager@Ogre@@UBE?AW4ShadowTechnique@2@XZ 004026f0 f   linked:verified_native-header-accessors.obj"
+ ],
+ "??$_Uninit_fill_n@PAVVector3@Ogre@@IV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAXPAVVector3@Ogre@@IABV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": [
+  "0001:000006d0       ??$_Uninit_fill_n@PAVVector3@Ogre@@IV12@V?$allocator@VVector3@Ogre@@@std@@@std@@YAXPAVVector3@Ogre@@IABV12@AAV?$allocator@VVector3@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 004016d0 f i linked:verified_native-resource-templates.obj"
+ ],
+ "?getVisibilityMask@NativeSceneManager@Ogre@@UAEIXZ": [
+  "0001:00001770       ?getVisibilityMask@NativeSceneManager@Ogre@@UAEIXZ 00402770 f   linked:verified_native-header-accessors.obj"
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "name": "G3D-GL",
+ "description": "G3D 6.09 GLG3D (RenderDevice, GFont, Draw, textures) with the 2008 Roblox patches (recipe g3d-6.09-rbx2008).",
+ "depends": [
+  "g3d"
+ ],
+ "layers": [
+  {
+   "name": "upstream",
+   "mode": "recipe",
+   "recipe": "g3d-6.09-rbx2008",
+   "files": "GLG3Dcpp/*.cpp",
+   "direct": true,
+   "flags": "/O2 /GS- /EHsc /MD"
+  },
+  {
+   "name": "tonemap",
+   "mode": "recipe",
+   "recipe": "g3d-6.09-rbx2008",
+   "files": "contrib/ArticulatedModel/ToneMap.cpp",
+   "direct": true,
+   "flags": "/O2 /GS- /EHsc /MD"
+  }
+ ],
+ "test": "g3d_gl",
+ "test_includes": [
+  "tree:g3d-6.09-rbx2008/include",
+  "tools/libs/SDL-1.2.11/include"
+ ]
+}

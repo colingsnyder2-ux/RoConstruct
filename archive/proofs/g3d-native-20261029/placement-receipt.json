@@ -1,0 +1,28 @@
+{
+ "distinct": 384,
+ "by_module": {
+  "RbxApp": 76,
+  "RbxgsApp": 301,
+  "G3D-GL": 2,
+  "G3D": 3,
+  "G3D-PNG": 2
+ },
+ "excluded": [
+  "Ogre (12 unresolved)",
+  "MfcAtl (no valid private completion)"
+ ],
+ "deferred_stale_modules": [
+  "Boost",
+  "CodegenAnalogs",
+  "jpeg",
+  "libpng",
+  "Lua",
+  "RakNet",
+  "RbxUtil",
+  "Scintilla",
+  "XTP",
+  "zlib-winapi",
+  "zlib"
+ ],
+ "server_credit": 0
+}

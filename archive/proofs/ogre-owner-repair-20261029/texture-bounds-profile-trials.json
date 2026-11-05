@@ -1,0 +1,8 @@
+[
+ {
+  "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
+  "size": 360,
+  "code_exact": true,
+  "data_exact": true
+ }
+]

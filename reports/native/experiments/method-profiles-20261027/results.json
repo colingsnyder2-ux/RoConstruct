@@ -1,0 +1,50 @@
+{
+  "native-scoped-profiles-all-2008": {
+    "recipe": "native-scoped-profiles-all-2008",
+    "client": "2008-06",
+    "op": "native-grid",
+    "tried": 767,
+    "proposed_files": 5,
+    "local_exact": 8,
+    "new_verified": 0,
+    "run_id": "38bd9b4a4a454eafb795a8da89d23dcf",
+    "state": "proposals"
+  },
+  "native-depth-precise-pilot-2008": {
+    "recipe": "native-depth-precise-pilot-2008",
+    "client": "2008-06",
+    "op": "native-grid",
+    "tried": 25,
+    "proposed_files": 0,
+    "local_exact": 0,
+    "new_verified": 0,
+    "run_id": "a5e509ae0db94cc0a928a27e22112d86",
+    "state": "no-proposals"
+  },
+  "native-retention-pilot-2008": {
+    "recipe": "native-retention-pilot-2008",
+    "client": "2008-06",
+    "op": "native-grid",
+    "tried": 12,
+    "proposed_files": 2,
+    "local_exact": 2,
+    "new_verified": 0,
+    "run_id": "5ef73334212648c6aeb561c4fa4be545",
+    "state": "proposals"
+  },
+  "native-retention-submit-2008": {
+    "recipe": "native-retention-submit-2008",
+    "client": "2008-06",
+    "op": "native-grid",
+    "tried": 4,
+    "proposed_files": 2,
+    "local_exact": 2,
+    "new_verified": 0,
+    "applied_files": 2,
+    "batch": "C:\\Users\\colin\\RoConstruct-native-isolated\\work\\research\\native-retention-submit-2008\\batch.json",
+    "evidence": "C:\\Users\\colin\\RoConstruct-native-isolated\\work\\research\\native-retention-submit-2008\\batch-notes.txt",
+    "job": "4deaf2734e1a4170b95d218e5c551658",
+    "run_id": "e736df9b468a46ff9215d59a8c5be7af",
+    "state": "queued"
+  }
+}

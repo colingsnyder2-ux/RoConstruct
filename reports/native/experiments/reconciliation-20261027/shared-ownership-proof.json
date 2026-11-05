@@ -1,0 +1,11 @@
+{
+  "address": "007762d0",
+  "owners": [
+    {
+      "module": "XTP",
+      "report": "rebuild/2008-06/out/XTP/report.json",
+      "sha256": "c4e037ee0e30d3a4aca6d7f90c073e3da1a966554fda7d51b4eb8abe9d2e27c7"
+    }
+  ],
+  "status": "Ownership hint revalidated before submit; independent server gates remain authority"
+}

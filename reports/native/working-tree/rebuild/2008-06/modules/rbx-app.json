@@ -1,0 +1,57 @@
+{
+ "name": "RbxApp",
+ "description": "Roblox App engine (reflection, v8tree, v8world, v8datamodel, script, humanoid, tool, v8xml, gui, security). Layer 1: 2008-verified OpenRBX files (partial). Layer 2: complete rbxgs files against the OpenRBX headers, rbxgs headers only where OpenRBX has none.",
+ "depends": [
+  "rbx-util",
+  "lua",
+  "raknet"
+ ],
+ "layers": [
+  {
+   "name": "openrbx",
+   "mode": "recipe",
+   "recipe": "openrbx-client",
+   "direct": true,
+   "files": "App/reflection/*.cpp App/v8tree/*.cpp App/v8world/*.cpp App/v8datamodel/*.cpp App/script/*.cpp App/humanoid/*.cpp App/tool/*.cpp App/v8xml/*.cpp App/gui/*.cpp App/security/*.cpp",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "upstream",
+   "mode": "direct",
+   "dir": "tools/rbxgs/Client/App",
+   "files": "reflection/*.cpp v8tree/*.cpp v8world/*.cpp v8datamodel/*.cpp script/*.cpp humanoid/*.cpp tool/*.cpp v8xml/*.cpp gui/*.cpp security/*.cpp",
+   "includes_from_recipe": "openrbx-client",
+   "defines_from_recipe": "openrbx-client",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "extra_includes": [
+    "tools/rbxgs/Client/App/include",
+    "tools/rbxgs/Client/Network/include",
+    "tools/rbxgs/Client/RbxGraphics/include"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "glue",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/glue/openrbx",
+   "files": "*.cpp",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  }
+ ],
+ "test": "rbx_app",
+ "test_includes": [
+  "tools/openrbx/Client/App/include",
+  "tools/openrbx/util",
+  "tools/openrbx/3rdparty/boost_1_34_1",
+  "tools/openrbx/3rdparty/g3d/source/include",
+  "tools/openrbx/3rdparty/lua-5.1.1/src",
+  "tools/openrbx/3rdparty/RakNet30/Source"
+ ],
+ "test_defines": "WIN32 NDEBUG _LIB _MBCS BOOST_ALL_NO_LIB",
+ "overlay": {
+  "root": "tools/openrbx/Client",
+  "patches": "rebuild/2008-06/patches/openrbx-client.json"
+ },
+ "verified": true
+}

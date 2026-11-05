@@ -1,0 +1,52 @@
+{
+ "recipe": "ogre-1.4.5-dll",
+ "unit": "roc_native_shadow_delegation_5a9fe7bdf9d3d332.cpp",
+ "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD",
+ "cl": "21022",
+ "checks": [
+  {
+   "address": "00685450",
+   "symbol": "?getWorldTransforms@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEXPAVMatrix4@3@@Z",
+   "size": 10,
+   "code_exact": true,
+   "data_exact": true
+  },
+  {
+   "address": "00685460",
+   "symbol": "?getWorldOrientation@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ",
+   "size": 10,
+   "code_exact": true,
+   "data_exact": true
+  },
+  {
+   "address": "00685470",
+   "symbol": "?getWorldPosition@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVVector3@3@XZ",
+   "size": 10,
+   "code_exact": true,
+   "data_exact": true
+  },
+  {
+   "address": "006851d0",
+   "symbol": "??0RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@QAE@PAVEntity@2@PAVHardwareIndexBufferSharedPtr@2@PBVVertexData@2@_NPAVSubEntity@2@3@Z",
+   "size": 460,
+   "code_exact": true,
+   "data_exact": true
+  },
+  {
+   "address": "006853a0",
+   "symbol": "??1RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAE@XZ",
+   "size": 167,
+   "code_exact": true,
+   "data_exact": true
+  }
+ ],
+ "rtti": [
+  {
+   "instruction": "006853be",
+   "destination": "dword ptr [esi]",
+   "vtable": "0084e88c",
+   "type_descriptor": "00963108",
+   "type": ".?AVRbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@"
+  }
+ ]
+}

@@ -1,0 +1,1 @@
+Accepted-object audit: 411 existing data-linked mappings, zero new source conversions and zero native credits. Exact instructions plus all initialized in-function data references resolve these existing instruction twins. Raw instruction-unique accepted count remains 9746. Proof JSON only; no compiled objects exported.
