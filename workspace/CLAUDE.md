@@ -84,10 +84,8 @@ remote setup is needed. A branch seen for the first time is only recorded, so no
 
 - `roc.cmd native-files scan --dry-run` previews what would be posted (nothing sent, nothing saved);
   `--backfill` also lists what first-seen branches already have beyond `main`; `--no-forks` skips forks.
-- Fork work is merged automatically onto the bot branch `auto-merge/native` (never your working branch):
-  clean merges become merge commits; conflicts, unrelated histories or merges that would delete native files
-  are copied to `merge/<fork>/<branch>/` there, with a `MERGE_NEEDED.md`. Fast-forward or cherry-pick from it
-  when you want the work. `roc.cmd native-files merge --dry-run` runs it without pushing.
+- Legacy bot merges are retired. The two-hour draft integration reviews explicit
+  source paths and commits directly to `work`; it never recreates retired branches.
 - The partial / recovery / header / site rows on that webhook are off by default; set
   `"integration_digest_extra_rows": true` in `roconstruct-settings.json` to bring them back.
 

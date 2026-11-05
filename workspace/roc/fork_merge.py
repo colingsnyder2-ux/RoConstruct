@@ -126,6 +126,8 @@ def park(clone, owner, branch, ref, sha, reason):
 
 
 def run(push=True, log=print, repo=ROOT, clone=CLONE, mine=None, days=14, state_file=STATE):
+    if (Path(repo) / 'work/draft-workflow-enabled.json').exists():
+        return log('Legacy bot merges retired; use reviewed draft integration on work.')
     state = {'parked': {}, 'merged': {}}
     try:
         state = json.loads(Path(state_file).read_text())

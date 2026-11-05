@@ -1334,7 +1334,6 @@ def _publish_once(store, public_url, log=print):
         sync_findings(store)
         progress.build(public_server=public_url, remote=export(store))
         return log("git not found, so site and findings were not published. docs/ is updated locally.")
-    git = lambda *a: subprocess.run([git_exe, *a], cwd=ROOT, capture_output=True, text=True)
     # Workers need the new address before the potentially slow findings export.
     address_file = ROOT / "docs" / "progress.json"
     if address_file.exists():
@@ -1342,15 +1341,7 @@ def _publish_once(store, public_url, log=print):
         if snapshot.get("server") != public_url:
             snapshot["server"] = public_url
             address_file.write_text(json.dumps(snapshot, indent=1) + "\n")
-            # Pathspec commits: never sweep a maintainer's other staged changes into a push.
-            for args in (("add", "docs/progress.json"),
-                         ("commit", "-m", "Update server address", "--", "docs/progress.json")):
-                result = git(*args)
-                if result.returncode:
-                    raise RuntimeError("Address publish failed: " + result.stderr.strip()[-300:])
-    pushed = git("push", "origin", "HEAD")
-    if pushed.returncode:
-        log("Source push deferred; publishing findings and website independently: " + pushed.stderr.strip()[-300:])
+    # Source commits belong to the reviewed work integration, never the host's current branch.
     sync_findings(store)
     publish_findings(git_exe, log)
     progress.build(public_server=public_url, remote=export(store))
@@ -1366,19 +1357,6 @@ def _publish_once(store, public_url, log=print):
     except Exception as error:  # reporting only; never fail a publish
         log("Integration site update failed: %s" % error)
     publish_pages(git_exe, log)
-    # main keeps only the small progress files, so its history still shows progress over
-    # time; per-function data lives only in the history-free gh-pages commit.
-    site = ("docs/progress.json", "docs/history.json", "docs/source-links.json",
-            "docs/rebuild-progress.json")
-    site = tuple(path for path in site if (ROOT / path).exists())
-    if not site:
-        return log("No progress files to publish.")
-    git("add", *site)
-    if git("diff", "--cached", "--quiet", "--", *site).returncode == 0:
-        return log("Progress unchanged.")
-    git("commit", "-m", "Update progress", "--", *site)
-    push = git("push", "origin", "HEAD")
-    log("Progress published." if push.returncode == 0 else "Progress push failed: %s" % push.stderr.strip()[-300:])
 
 
 
