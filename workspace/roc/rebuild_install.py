@@ -11,7 +11,7 @@ def ensure_abi(root, client='2008-06'):
     """Use published binary evidence, never candidate-derived expected layouts."""
     path = Path(root) / 'rebuild' / client / 'manifests/abi-evidence.json'
     if not path.exists():
-        base = 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/' + client + '/'
+        base = 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/' + client + '/'
         with urllib.request.urlopen(base + 'package.json', timeout=60) as response:
             expected = json.load(response)['files']['verification/manifests/abi-evidence.json']
         with urllib.request.urlopen(base + 'verification/manifests/abi-evidence.json', timeout=60) as response:
@@ -72,7 +72,7 @@ def install(root, client='2008-06', package=None):
         cache.parent.mkdir(parents=True, exist_ok=True)
         if not (cache / '.git').exists():
             subprocess.run(['git', 'clone', '--filter=blob:none', '--no-checkout', '--depth=1',
-                            '--branch', 'main', 'https://github.com/colingsnyder2-ux/RoConstruct-findings.git',
+                            '--branch', 'work', 'https://github.com/colingsnyder2-ux/RoConstruct.git',
                             str(cache)], check=True, stdin=subprocess.DEVNULL)
         subprocess.run(['git', '-C', str(cache), 'sparse-checkout', 'set', '--cone',
                         *[client + '/' + folder for folder in

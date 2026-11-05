@@ -24,7 +24,7 @@ PREFIXES = ('rebuild/', 'roc/', 'tests/', 'docs/', 'research/', 'benchmarks/',
 ROOT_FILES = ('roc.py','roc.cmd','roc.sh','install.cmd','install.sh','CLAUDE.md','AGENTS.md')
 SUFFIXES = ('.cpp', '.c', '.cc', '.cxx', '.h', '.hpp', '.inl', '.inc', '.ipp', '.def', '.rc',
             '.py', '.json', '.jsonl', '.md', '.txt', '.ps1', '.sh', '.cmd', '.bat', '.cmake',
-            '.yml', '.yaml', '.toml')
+            '.yml', '.yaml', '.toml', '.js', '.html', '.css', '.svg')
 
 
 def encoded(value):
@@ -154,7 +154,7 @@ def initialize(root, scopes, user, model, server, baseline=None):
         raise ValueError('Draft server must use HTTPS (loopback HTTP allowed for tests)')
     current = files(root, scopes)
     marker = root / 'roconstruct-package.json'
-    if not marker.exists() or json.loads(marker.read_text()).get('authority') != 'RoConstruct-findings/main/workspace':
+    if not marker.exists() or json.loads(marker.read_text()).get('authority') != 'RoConstruct/work/workspace':
         raise ValueError('Use a verified findings Worker workspace; preserve this checkout and download the current package')
     revision = json.loads(marker.read_text()).get('revision')
     if not revision:

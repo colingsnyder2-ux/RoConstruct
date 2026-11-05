@@ -136,14 +136,14 @@ def test_publisher_stages_sources_and_portable_findings_files(tmp_path):
         pytest.skip("git not installed")
     run = lambda cwd, *a: subprocess.run([git, *a], cwd=cwd, check=True, capture_output=True, text=True).stdout
     remote = tmp_path / "remote.git"
-    run(tmp_path, "init", "-q", "--bare", "-b", "main", str(remote))
+    run(tmp_path, "init", "-q", "--bare", "-b", "work", str(remote))
     seed = tmp_path / "seed"
-    run(tmp_path, "init", "-q", "-b", "main", str(seed))
+    run(tmp_path, "init", "-q", "-b", "work", str(seed))
     (seed / "README.md").write_text("old")
     (seed / "roc.py").write_text("other publisher content")  # unrelated namespaces survive publication
     run(seed, "add", ".")
     run(seed, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "seed")
-    run(seed, "push", "-q", str(remote), "main")
+    run(seed, "push", "-q", str(remote), "work")
     root = tmp_path / "root"
     run(tmp_path, "init", "-q", str(root))
     run(root, "remote", "add", "findings", str(remote))
@@ -170,14 +170,14 @@ def test_publisher_stages_sources_and_portable_findings_files(tmp_path):
                                     "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}):
         server.publish_findings(git, logs.append)
     assert logs == ["Prepared 1 readable library sources.", "Findings published."]
-    files = set(run(tmp_path, "--git-dir", str(remote), "ls-tree", "-r", "--name-only", "main").split())
+    files = set(run(tmp_path, "--git-dir", str(remote), "ls-tree", "-r", "--name-only", "work").split())
     assert files == {"roc.py", "README.md", ".gitignore", ".github/workflows/package.yml", "data/lessons.json",
                      "src/2008-06/00401000.cpp", "src/2008-06/007ab0a0.cpp"}
-    published = run(tmp_path, "--git-dir", str(remote), "show", "main:src/2008-06/007ab0a0.cpp")
+    published = run(tmp_path, "--git-dir", str(remote), "show", "work:src/2008-06/007ab0a0.cpp")
     assert "41% by colin" in published
     assert "int candidate() { return 2; }" in published
     assert candidate.read_text() == wrapper
-    assert run(tmp_path, "--git-dir", str(remote), "show", "main:README.md") == "# RoConstruct findings\n"
+    assert run(tmp_path, "--git-dir", str(remote), "show", "work:README.md") == "# RoConstruct findings\n"
     assert not list((root / "work").glob("findings-index-*"))
 
 
@@ -189,7 +189,7 @@ def test_site_publish_commits_only_site_files(tmp_path):
         import pytest
         pytest.skip("git not installed")
     run = lambda *a: subprocess.run([git, *a], cwd=tmp_path, check=True, capture_output=True, text=True).stdout
-    run("init", "-q", "-b", "main")
+    run("init", "-q", "-b", "work")
     (tmp_path / "docs" / "data").mkdir(parents=True)
     (tmp_path / "docs" / "progress.json").write_text("{}")
     for name in ("data/2008-06.json", "source-links.json"):
@@ -229,7 +229,7 @@ def test_pages_publish_is_one_parentless_commit_and_skips_guides(tmp_path):
         pytest.skip("git not installed")
     run = lambda cwd, *a: subprocess.run([git, *a], cwd=cwd, check=True, capture_output=True, text=True).stdout
     remote = tmp_path / "remote.git"
-    run(tmp_path, "init", "-q", "--bare", "-b", "main", str(remote))
+    run(tmp_path, "init", "-q", "--bare", "-b", "work", str(remote))
     root = tmp_path / "root"
     run(tmp_path, "init", "-q", str(root))
     run(root, "remote", "add", "origin", str(remote))

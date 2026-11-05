@@ -118,7 +118,7 @@ Automatic passes that need no C++: `roc mass` (all matchers), `roc auto`, `roc l
 | `roc.py`, `roc/` | the CLI and library |
 | `research/` | `recipes.json` experiments, `lessons.json` (ranked lessons), `reports.json` (old report index), `retired.json` (old runners), `repair-patterns.json`, `scout_sources.py` + `artifact-search-log.json` |
 | `docs/` | guides and the website |
-| `src/` | recovered sources (RoConstruct-findings checkout; ignored here) |
+| `src/` | recovered sources (RoConstruct work branch checkout; ignored here) |
 | `work/`, `tools/` | analysis, journals, server DB, compilers, libraries (ignored) |
 | `local/` | this PC only: `config/` (settings, providers, worker config), `findings/`, `packages/`, `archive/` |
 

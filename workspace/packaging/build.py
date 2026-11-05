@@ -24,7 +24,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 DIST = ROOT / "local" / "packages"
-NATIVE_WORKFLOW_VERSION = 51
+NATIVE_WORKFLOW_VERSION = 52
 
 # Every module a working cloud worker needs (transitive closure of worker, link,
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).
@@ -389,7 +389,7 @@ def prepare_downloads(package):
     folder.mkdir(parents=True, exist_ok=True)
     manifest = folder / "native-worker.json"
     data = json.loads(manifest.read_text(encoding="utf-8")) if manifest.exists() else {}
-    base = "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/"
+    base = "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/"
     archive = folder / "native-worker.zip"
     shutil.copy2(package, archive)
     for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):

@@ -33,10 +33,10 @@ Do not ask the user to locate or attach a Worker ZIP. If `roc.py`, `roc/packet.p
 `roc work --help` / `roc check-batch --help` is unavailable, or a package marker
 reports `matching_workflow_version` below 4, download the current Worker package yourself:
 
-- Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
-- Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
-- Matching guide: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/MATCHING_AGENT.md
-- Native integration guide: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/NATIVE_AGENT.md
+- Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.json
+- Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.zip
+- Matching guide: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/MATCHING_AGENT.md
+- Native integration guide: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/NATIVE_AGENT.md
 
 Use the chat's current authorized workspace, never an assumed Desktop or owner-specific path.
 On Windows the following grouped PowerShell bootstrap downloads and verifies the archive, then extracts
@@ -45,10 +45,10 @@ into a new folder without overwriting the user's existing checkout or edits:
 ```powershell
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
-$matchingManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
+$matchingManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
 if ($matchingManifest.workflow_version -lt 9 -or
     $matchingManifest.matching_workflow_version -lt 4 -or
-    $matchingManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
+    $matchingManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.zip' -or
     $matchingManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $matchingFolder = Join-Path (Get-Location) ('RoConstruct-Matching-' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $matchingFolder -ErrorAction Stop | Out-Null

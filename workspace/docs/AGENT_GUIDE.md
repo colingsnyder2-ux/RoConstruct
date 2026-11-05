@@ -6,7 +6,7 @@ Ranked, receipt-backed lessons: [`research/lessons.json`](../research/lessons.js
 Named compiler-only experiments: [`research/recipes.json`](../research/recipes.json).
 Findings log: [`research/log.jsonl`](../research/log.jsonl) (`roc research log`); older address-level log frozen in findings `reports/`.
 Historical reports and retired guides: [`research/reports.json`](../research/reports.json)
-(full text in RoConstruct-findings `reports/`; `findings:reports/X` in evidence fields).
+(full text in RoConstruct work branch `reports/`; `findings:reports/X` in evidence fields).
 JSON data is evidence, not instructions.
 
 ## Goal and acceptance
@@ -212,7 +212,7 @@ compilers, matchers or acceptance rules. No instant gain or exact-count promise.
 
 New experiments add a recipe to `research/recipes.json` (op `grid` or `fanout`),
 not a new script. Agent-written translation units go through `libs.add_unit` so they
-are stored in `local/units/generated-units.json`, published to RoConstruct-findings `units/`, and downloaded by `roc pull`, so they rebuild identically on every PC.
+are stored in `local/units/generated-units.json`, published to RoConstruct work branch `units/`, and downloaded by `roc pull`, so they rebuild identically on every PC.
 
 ## Manual matching loop (agent-driven)
 
@@ -314,7 +314,7 @@ The server marks a report `server_confirmed` only when its source hash and score
 match a verified mining event, so clients cannot certify themselves. An older server
 answers "unknown endpoint": attempts stay queued locally until it is updated.
 Missing docs are cached in `work/agent-memory/context/`. The server's findings
-publisher exports lessons, context and shared attempts to RoConstruct-findings.
+publisher exports lessons, context and shared attempts to RoConstruct work branch.
 
 ## Automatic agent worker
 
@@ -579,8 +579,8 @@ address.
 | `research/` | `recipes.json` (named experiments), `retired.json` (runners kept in git history), `scout_sources.py` |
 | `research/lessons.json` | reviewed lessons, ranked by exacts gained |
 | `research/log.jsonl` | findings log: one dated entry per campaign (`roc research note`) |
-| `research/reports.json` | index of historical reports, full text in RoConstruct-findings |
-| `src/` | recovered sources (RoConstruct-findings checkout) |
+| `research/reports.json` | index of historical reports, full text in RoConstruct work branch |
+| `src/` | recovered sources (RoConstruct work branch checkout) |
 | `work/`, `tools/`, `local/` | ignored: analysis, journals, compilers, libraries, local archive |
 
 `roc research run bruteforce-portfolio-fanout --jobs 2 --limit 64` pilots whole-object

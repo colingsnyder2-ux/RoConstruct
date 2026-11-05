@@ -1054,7 +1054,7 @@ def _fetch(name):
 # so their text is kept in the findings repository (units/generated-units.json), downloaded
 # by `roc pull` into local/units/ and written into the vendor tree by `fetch`.
 UNITS_FILE = ROOT / "local" / "units" / "generated-units.json"
-UNITS_URL = "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/units/generated-units.json"
+UNITS_URL = "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/units/generated-units.json"
 
 
 def fetch_units(log=print, url=UNITS_URL):

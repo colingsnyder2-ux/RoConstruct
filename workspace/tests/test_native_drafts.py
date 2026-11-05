@@ -26,7 +26,7 @@ def workspace(tmp_path):
     root = tmp_path / 'contributor'
     (root / 'docs').mkdir(parents=True)
     (root / 'docs/Native.cpp').write_text('int value() { return 1; }\n')
-    (root / 'roconstruct-package.json').write_text(json.dumps({'revision': 'abc123','authority':'RoConstruct-findings/main/workspace'}))
+    (root / 'roconstruct-package.json').write_text(json.dumps({'revision': 'abc123','authority':'RoConstruct/work/workspace'}))
     return root
 
 

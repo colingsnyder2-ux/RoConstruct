@@ -22,7 +22,7 @@ Each hourly check (with `--publish`):
 1. commits only website data (`docs/data`, `progress.json`, `history.json`,
    `source-links.json`) to this repo, never other staged files;
 2. exports all stored sources and portable evidence to
-   [RoConstruct-findings](https://github.com/colingsnyder2-ux/RoConstruct-findings):
+   [RoConstruct work branch](https://github.com/colingsnyder2-ux/RoConstruct work branch):
    `src/`, `agent-memory/` (lessons, shared attempts, context), `reports/` (historical
    research reports), and that repo's README and workflow. It reads them from the local
    checkout at `local/findings/`. A findings push rebuilds its release ZIPs.

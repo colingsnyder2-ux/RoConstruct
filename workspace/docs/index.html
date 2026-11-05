@@ -342,13 +342,13 @@ footer img { height: 30px; }
 <script src="library-coverage.js" defer></script>
 <script>
 const REPO = "https://github.com/colingsnyder2-ux/RoConstruct";
-const FINDINGS = "https://github.com/colingsnyder2-ux/RoConstruct-findings";
+const FINDINGS = "https://github.com/colingsnyder2-ux/RoConstruct";
 const app = document.getElementById("app");
 const fmt = n => n.toLocaleString("en-US");
 const pct = (a, b) => b ? (100 * a / b).toFixed(2) + "%" : "0.00%";
 const mb = n => (n / 1048576).toFixed(2) + " MB";
 const hex = n => n.toString(16).padStart(8, "0");
-const sourceUrl = (client, address) => `${FINDINGS}/blob/main/src/${encodeURIComponent(client)}/${hex(address)}.cpp`;
+const sourceUrl = (client, address) => `${FINDINGS}/blob/work/src/${encodeURIComponent(client)}/${hex(address)}.cpp`;
 let sourceCatalog = {};
 const libraryUrl = meta => {
   if (!meta) return "";
@@ -359,7 +359,7 @@ const libraryUrl = meta => {
 const sourceLinks = (client, f, short = false) => {
   const indexed = integrationData?.client === client && integrationData.sources?.[hex(f[0])];
   const links = [];
-  if (indexed) links.push(`<a href="${FINDINGS}/blob/main/${indexed.path.split('/').map(encodeURIComponent).join('/')}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
+  if (indexed) links.push(`<a href="${FINDINGS}/blob/work/${indexed.path.split('/').map(encodeURIComponent).join('/')}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
   if (f[4]) links.push(`<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] === 100 ? "Mined" : "Candidate"}${short ? "" : " source"} ↗</a>`);
   else {
     const file = f[2] === 100 && f[5] && sourceCatalog[f[5][0]]?.kind !== "archive" ? libraryUrl(f[5]) : "";
@@ -645,8 +645,8 @@ function joinHelp() {
     exact compiler bundles and registers <code>roconstruct://</code>. It installs no Ollama, Docker or model.
     Then click "Help out": the worker starts in a console window, fetching the client exe and its compiler
     the first time. Running install.cmd again never reinstalls anything or touches your work.</p>
-    <p>Use your coding agent: <a href="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/MATCHING_AGENT.md">Matching workflow</a>
-    · <a href="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/NATIVE_AGENT.md">Native integration workflow</a>.</p></div>`;
+    <p>Use your coding agent: <a href="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/MATCHING_AGENT.md">Matching workflow</a>
+    · <a href="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/NATIVE_AGENT.md">Native integration workflow</a>.</p></div>`;
 }
 
 function commitPanel() {

@@ -16,7 +16,7 @@ def test_download_publication_preserves_remote_sources_and_local_edits(tmp_path)
         return subprocess.check_output(['git', *args], cwd=folder, text=True).strip()
     seed = tmp_path / 'seed'
     seed.mkdir()
-    git(seed, 'init', '-b', 'main')
+    git(seed, 'init', '-b', 'work')
     git(seed, 'config', 'user.email', 'test@example.invalid')
     git(seed, 'config', 'user.name', 'Test')
     (seed / 'keep.cpp').write_text('existing remote source')
@@ -50,14 +50,14 @@ def test_download_publication_preserves_remote_sources_and_local_edits(tmp_path)
     logs = []
     publish_downloads(root, shutil.which('git'), logs.append)
     assert 'published' in logs[-1]
-    assert git(remote, 'show', 'main:keep.cpp') == 'existing remote source'
-    assert git(remote, 'show', 'main:data/NATIVE_AGENT.md') == 'Which client do you want to run?'
-    assert git(remote, 'show', 'main:data/MATCHING_AGENT.md') == 'Matching agent workflow'
+    assert git(remote, 'show', 'work:keep.cpp') == 'existing remote source'
+    assert git(remote, 'show', 'work:data/NATIVE_AGENT.md') == 'Which client do you want to run?'
+    assert git(remote, 'show', 'work:data/MATCHING_AGENT.md') == 'Matching agent workflow'
     assert (root / 'keep.cpp').read_text() == 'unsent local edits'
     assert git(root, 'status', '--porcelain') == before
-    version = git(remote, 'rev-parse', 'main')
+    version = git(remote, 'rev-parse', 'work')
     publish_downloads(root, shutil.which('git'), logs.append)
-    assert git(remote, 'rev-parse', 'main') == version
+    assert git(remote, 'rev-parse', 'work') == version
     assert 'already current' in logs[-1]
     editor = tmp_path / 'other-agent'
     git(tmp_path, 'clone', str(remote), str(editor))
@@ -66,11 +66,11 @@ def test_download_publication_preserves_remote_sources_and_local_edits(tmp_path)
     (editor / 'data/NATIVE_AGENT.md').write_text('New concurrent guide instructions')
     git(editor, 'add', 'data/NATIVE_AGENT.md')
     git(editor, 'commit', '-m', 'Advance native guide')
-    git(editor, 'push', 'origin', 'main')
-    advanced = git(remote, 'rev-parse', 'main')
+    git(editor, 'push', 'origin', 'work')
+    advanced = git(remote, 'rev-parse', 'work')
     with pytest.raises(ValueError, match='guide advanced'):
         publish_downloads(root, shutil.which('git'), logs.append, guide_base=version)
-    assert git(remote, 'rev-parse', 'main') == advanced
+    assert git(remote, 'rev-parse', 'work') == advanced
     assert git(root, 'status', '--porcelain') == before
     package = root / 'local/findings/2008-06'
     native = package / 'src/Client/App/Widget.cpp'
@@ -78,12 +78,12 @@ def test_download_publication_preserves_remote_sources_and_local_edits(tmp_path)
     native.write_text('native source')
     (package / 'package.json').write_text(json.dumps({'files': {'src/Client/App/Widget.cpp': native_hash}}))
     publish_package(root, shutil.which('git'), logs.append)
-    assert git(remote, 'show', 'main:2008-06/src/Client/App/Widget.cpp') == 'native source'
-    assert not git(remote, 'ls-tree', '-r', 'main', '--', '2008-06/src/rbxgs')
+    assert git(remote, 'show', 'work:2008-06/src/Client/App/Widget.cpp') == 'native source'
+    assert not git(remote, 'ls-tree', '-r', 'work', '--', '2008-06/src/rbxgs')
     assert git(root, 'status', '--porcelain') == before
-    version = git(remote, 'rev-parse', 'main')
+    version = git(remote, 'rev-parse', 'work')
     publish_package(root, shutil.which('git'), logs.append)
-    assert git(remote, 'rev-parse', 'main') == version
+    assert git(remote, 'rev-parse', 'work') == version
     assert 'already current' in logs[-1]
 
 

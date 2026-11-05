@@ -16,7 +16,7 @@ def test_publication_repairs_filtered_blob_with_unchanged_manifest(tmp_path):
         return subprocess.check_output([git, *args], cwd=root)
 
     run('init', '--bare', str(remote))
-    run('init', '-b', 'main')
+    run('init', '-b', 'work')
     run('config', 'user.name', 'Package test')
     run('config', 'user.email', 'package@example.invalid')
     run('config', 'core.autocrlf', 'false')
@@ -29,12 +29,12 @@ def test_publication_repairs_filtered_blob_with_unchanged_manifest(tmp_path):
     (tracked / 'package.json').write_text(json.dumps(manifest))
     run('add', '2008-06')
     run('commit', '-m', 'Prior export with filtered fixture')
-    run('push', 'findings', 'main')
+    run('push', 'findings', 'work')
     package = root / 'local/findings/2008-06'
     (package / 'tests').mkdir(parents=True)
     (package / 'tests/falling.rbxl').write_bytes(original)
     (package / 'package.json').write_text(json.dumps(manifest))
     run('config', 'core.autocrlf', 'true')
     publish_package(root, git, log=lambda message: None)
-    run('fetch', 'findings', 'main')
+    run('fetch', 'findings', 'work')
     assert run('show', 'FETCH_HEAD:2008-06/tests/falling.rbxl') == original

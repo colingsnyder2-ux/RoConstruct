@@ -1,4 +1,4 @@
-"""Findings main/workspace is the native source authority; publish downloads and drafts."""
+"""RoConstruct work/workspace is the native source authority; publish downloads and drafts."""
 import argparse
 import hashlib
 import io
@@ -10,8 +10,8 @@ import zipfile
 
 from roc.native_drafts import ROOT, Inbox, atomic, digest, encoded, lock, safe_path
 
-BASE_URL = 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/'
-AUTHORITY = 'RoConstruct-findings/main/workspace'
+BASE_URL = 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/'
+AUTHORITY = 'RoConstruct/work/workspace'
 
 
 def git(root, *args):
@@ -20,8 +20,8 @@ def git(root, *args):
 
 def fetch(root):
     subprocess.run(['git','fetch','--no-write-fetch-head','findings',
-                    'refs/heads/main:refs/remotes/findings/main'],cwd=root,capture_output=True,check=True,timeout=120)
-    return git(root,'rev-parse','refs/remotes/findings/main')
+                    'refs/heads/work:refs/remotes/findings/work'],cwd=root,capture_output=True,check=True,timeout=120)
+    return git(root,'rev-parse','refs/remotes/findings/work')
 
 
 def committed_files(root, ref, prefix=''):
@@ -70,7 +70,7 @@ def export(root, ref):
     files=source_files(root,ref)
     revision=source_revision(files)
     files['roconstruct-package.json']=encoded(dict(package='worker',revision=revision,authority=AUTHORITY,
-        native_workflow=True,native_workflow_version=51,matching_workflow_version=4,draft_workflow_version=1))
+        native_workflow=True,native_workflow_version=52,matching_workflow_version=4,draft_workflow_version=1))
     inventory={name:hashlib.sha256(data).hexdigest() for name,data in files.items()}
     provenance=dict(schema=1,authority=AUTHORITY,source_revision=revision,files=inventory,
                     draft_workflow_version=1,baseline='reviewed findings source; incomplete candidates stay inactive')
@@ -81,7 +81,7 @@ def export(root, ref):
             info=zipfile.ZipInfo(name,(2026,1,1,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED
             archive.writestr(info,data)
     archive_bytes=output.getvalue()
-    manifest=dict(schema=1,authority=AUTHORITY,workflow_version=51,matching_workflow_version=4,
+    manifest=dict(schema=1,authority=AUTHORITY,workflow_version=52,matching_workflow_version=4,
                   draft_workflow_version=1,source_revision=revision,url=BASE_URL+'native-worker.zip',
                   sha256=hashlib.sha256(archive_bytes).hexdigest(),size=len(archive_bytes),
                   guide=BASE_URL+'NATIVE_AGENT.md',matching_guide=BASE_URL+'MATCHING_AGENT.md',

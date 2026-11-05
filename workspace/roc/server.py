@@ -1610,7 +1610,7 @@ def run_publisher(every=3600, parent_pid=None, log=print):
                         log(message)
                         if 'failed' in message.lower():
                             raise RuntimeError(message)
-                    revision = subprocess.run(['git', 'ls-remote', 'findings', 'refs/heads/main'],
+                    revision = subprocess.run(['git', 'ls-remote', 'findings', 'refs/heads/work'],
                         cwd=ROOT, capture_output=True, text=True, timeout=60, check=True).stdout.split()[0]
                     state.update(state='idle', last_published=time.time(), findings_revision=revision)
                     next_publish = time.monotonic() + every

@@ -1,7 +1,7 @@
-# Native integration: findings is authoritative
+# Native integration: work branch is authoritative
 
 Canonical native source, headers, world files, probes, tests, recipes and tooling
-live in `RoConstruct-findings`, branch `main`, under `workspace/` with their normal
+live in `RoConstruct`, branch `work`, under `workspace/` with their normal
 repo-relative paths. Commit reviewed native updates directly there. Do not use
 an origin feature branch as a native destination or publication source. Keep the
 existing checkout and every active worker's edits intact; no checkout/reset/stash.
@@ -60,7 +60,7 @@ Unrelated remote advances are preserved and push retries never force.
    This checks real native paths, rather than silently ignoring the `workspace/`
    prefix. Require zero deleted, emptied or non-regular native/proof entries. The
    integration command automatically repeats this against its exact tree and exact
-   final commit immediately before normal findings push, including retries.
+   final commit immediately before normal work push, including retries.
 6. Preserve all files recovered by 318da49dcc after snapshot 138d3a09c8 deleted 77:
    Team/Teams, HumanoidState(s), Clothing, Message/Sky/Sparkles, CObjectBrowser,
    CChildFrame, CScriptDoc, CPropertyGridItemBrickColor and all other native proofs.
@@ -69,14 +69,14 @@ Unrelated remote advances are preserved and push retries never force.
    move needs reviewed replacement evidence and fresh affected proofs; otherwise
    keep old paths and park it. Never delete branches/history as migration cleanup.
 7. Record reviewed tips, bundle IDs, source/proof inventory, excluded snapshots,
-   accepted/skipped paths, fresh verification receipts, findings commits and push
+   accepted/skipped paths, fresh verification receipts, work commits and push
    results. States: reviewing, parked, integrated-inactive, verified, pushed,
    published, duplicate, rejected. Keep partial/parked bundles visible; do not close
    superseded checkpoints without exact content evidence. Retry only when relevant
    blocker inputs change. Preserve existing fork Integration Digest identities;
    never send test or duplicate posts.
 8. Run the findings publisher after integration. It builds deterministic Worker
-   downloads from committed findings source, never from an origin branch or dirty
+   downloads from committed work source, never from an origin branch or dirty
    local tree. Mark pushed before package publication, published after verifying
    source revision and findings/download hashes. Retry packaging without importing
    again. `work/findings-workspace-status.json` records publication results.
