@@ -1,5 +1,6 @@
 // 2008-06 native RBX::ViewNew::HeadBuilder / HeadMesh (inactive): the unit 004fdaf0..0050068f.
 #include "ViewNew/HeadMesh.h"
+#include "ViewNew/QuadVolumeFace.h"
 #include <algorithm>
 #include <math.h>
 

@@ -15,6 +15,11 @@ ViewNew/ directory):
   * native-classes/ViewNewTorsoMesh.cpp  TorsoBuilder / TorsoMesh (004fa050..004fab2f) and the builder dtor 004fab30;
   * native-classes/ViewNewPBBMesh.cpp    PBBBuilder / PBBMesh (004f1eb0, 004f2030, 004f4790..004f4caf; the surface
                                          ctor 004f4cb0 needs the unnamed shadow helper 004e3570 and is not built).
+  * the per-face grid templates of native-headers/ViewNew/QuadVolumeFace.h (included by the Sphere / Cylinder / Head /
+    Wedge / Torso / PBB units): every outer instance buildFace<id, F>(F, Vector2int16, Purpose), the strips
+    buildFace<id, F>(F, Rect2D, ..) of the plain vertex function and of EndcapTransform / CylinderTransform, and the
+    COMDATs LevelBuilder::offset 004f1ff0 and Rect2D::xyxy 004f35d0. The strips that inline an unrecovered functor
+    body (Deform*, PBB Face / Side) or differ in EH-frame stack layout (Wedge / Torso builder) are non-exact rows.
 
 Every exact row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, constants by bytes, type descriptors and
@@ -277,6 +282,99 @@ PBB_ROWS = [
     (0x4f4b20, '??0PBBMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z'),
     (0x4e54c0, '??_GPBBMesh@ViewNew@RBX@@UAEPAXI@Z'),
 ]
+# ---- the per-face grid templates (native-headers/ViewNew/QuadVolumeFace.h, included by the builder units) -----------
+# Outer grid instances buildFace<id, F>(F, Vector2int16, Purpose) are the BUILD_FACE / GRID_FACE addresses above (the
+# call sites of the face slots); each outer calls its strip buildFace<id, F>(F, Rect2D, depth, origin, extent, axis,
+# divisions) right after Rect2D::xyxy 004f35d0 (read from the original below, STRIP_OF). Rows are attributed to the unit
+# whose face slots use them (the plain vertex-function instances, shared by Sphere and Cylinder, to 'sphere').
+FACE_IDS = {'$0A@': 0, '$00': 1, '$01': 2, '$02': 3, '$03': 4, '$04': 5}
+STRIP_FN = '@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZVRect2D@4@MV54@6HV64@@Z'
+
+
+def strip(n, functor):
+    return ('??$buildFace@%sV%s@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXV%s@12@VRect2D@G3D@@MVVector2@5@2HVVector2int16@5@@Z'
+            % (n, functor, functor))
+
+
+def call_after_xyxy(address):
+    body, _, _ = match.target('2008-06', '%08x' % address)
+    calls = [(address + i + 5 + struct.unpack_from('<i', body, i + 1)[0]) & 0xffffffff
+             for i in range(len(body) - 5) if body[i] == 0xe8]
+    k = calls.index(0x4f35d0)
+    return next(c for c in calls[k + 1:] if 0x4f0000 <= c < 0x500000)
+
+
+OUTER_ROWS = {'sphere': [
+    # COMDATs every grid instance calls: the header-inline LevelBuilder::offset (jump table 004f2018) and G3D's
+    # Rect2D::xyxy(const Vector2&, const Vector2&) (evidence name)
+    (0x4f1ff0, '?offset@LevelBuilder@ViewNew@RBX@@KAMW4RenderSurfaceType@23@@Z'),
+    (0x4f35d0, '?xyxy@Rect2D@G3D@@SA?AV12@ABVVector2@2@0@Z'),
+], 'head': [], 'wedge': [], 'torso': [], 'pbb': []}
+STRIP_ROWS = {'sphere': [], 'head': [], 'wedge': [], 'torso': [], 'pbb': []}
+STRIP_OF = {}
+for n in FACE_IDS:
+    outer = BUILD_FACE['??$buildFace@' + n + FN + FACE]
+    OUTER_ROWS['sphere'].append((outer, '??$buildFace@' + n + FN + FACE))
+    STRIP_OF['??$buildFace@' + n + FN + STRIP_FN] = call_after_xyxy(outer)
+    STRIP_ROWS['sphere'].append((STRIP_OF['??$buildFace@' + n + FN + STRIP_FN], '??$buildFace@' + n + FN + STRIP_FN))
+HEAD_CYLINDER = {'$02': 0x4ff4b0, '$0A@': 0x4ff790, '$04': 0x4ffa60, '$01': 0x4ffd40}   # HeadBuilder side slots
+for n, outer in HEAD_CYLINDER.items():
+    EXTERNAL[grid(n, 'CylinderTransform')] = outer       # call sites 00500080 / 005000c0 / 00500100 / 00500140
+for n in ('$00', '$03'):
+    OUTER_ROWS['head'].append((BUILD_FACE['??$buildFace@' + n + ENDCAP], '??$buildFace@' + n + ENDCAP))
+    STRIP_OF[strip(n, 'EndcapTransform')] = call_after_xyxy(BUILD_FACE['??$buildFace@' + n + ENDCAP])
+for n, outer in HEAD_CYLINDER.items():
+    OUTER_ROWS['head'].append((outer, grid(n, 'CylinderTransform')))
+    STRIP_OF[strip(n, 'CylinderTransform')] = call_after_xyxy(outer)
+for key in [k for k in STRIP_OF if 'EndcapTransform' in k or 'CylinderTransform' in k]:
+    STRIP_ROWS['head'].append((STRIP_OF[key], key))
+UNIT_OF = {'DeformSide3': 'wedge', 'DeformTop3': 'wedge', 'DeformFront': 'wedge', 'WedgeBuilder': 'wedge',
+           'DeformSide': 'torso', 'DeformTop': 'torso', 'DeformFrontBack': 'torso', 'TorsoBuilder': 'torso',
+           'Face': 'pbb', 'Side': 'pbb'}
+for symbol, outer in GRID_FACE.items():
+    n, functor = symbol[len('??$buildFace@'):].split('V', 1)
+    functor = functor.split('@', 1)[0]
+    OUTER_ROWS[UNIT_OF[functor]].append((outer, symbol))
+    STRIP_OF[strip(n, functor)] = call_after_xyxy(outer)
+# Strips whose functor is inlined into them (Deform*, Face, Side: their operator() bodies are not recovered, so the
+# compiled strip calls them) or whose stack layout differs (the builder-as-functor strips carry an EH frame): bound to
+# the address the outer's call uses and recorded as non-exact.
+STRIP_NON_EXACT = {
+    'DeformSide3': 'the original inlines DeformSide3::operator() into the strip; its body is not recovered',
+    'DeformTop3': 'the original inlines DeformTop3::operator() into the strip; its body is not recovered',
+    'DeformFront': 'the original inlines DeformFront::operator() into the strip; its body is not recovered',
+    'DeformSide': 'the original inlines DeformSide::operator() into the strip; its body is not recovered',
+    'DeformTop': 'the original inlines DeformTop::operator() into the strip; its body is not recovered',
+    'DeformFrontBack': 'the original inlines DeformFrontBack::operator() into the strip; its body is not recovered',
+    'Face': 'the original inlines PBB Face::operator() into the strip; its body is not recovered',
+    'Side': 'the original inlines PBB Side::operator() into the strip; its body is not recovered',
+    'WedgeBuilder': 'same instructions and size; the EH frame of the by-value builder places the locals 8 bytes '
+                    'differently (stack layout only)',
+    'TorsoBuilder': 'same instructions and size; the EH frame of the by-value builder places the locals 8 bytes '
+                    'differently (stack layout only)',
+}
+STRIP_NON = []
+for symbol, address in STRIP_OF.items():
+    functor = symbol[len('??$buildFace@'):].split('V', 1)[1].split('@', 1)[0] if 'P6AX' not in symbol else None
+    if functor in STRIP_NON_EXACT:
+        EXTERNAL[symbol] = address
+        STRIP_NON.append((address, symbol, STRIP_NON_EXACT[functor], UNIT_OF[functor]))
+    elif functor in UNIT_OF:
+        STRIP_ROWS[UNIT_OF[functor]].append((address, symbol))
+EXTERNAL.update({
+    # face-space transforms uvwToObject<id> (cdecl, hidden result; util/NormalId.h declares the template, the 2008 image
+    # has one out-of-line body per face; NORM_Z is the identity, folded with another identity copy at 006784d0)
+    '??$uvwToObject@$0A@@RBX@@YA?AVVector3@G3D@@ABV12@@Z': 0x5ec1a0,
+    '??$uvwToObject@$00@RBX@@YA?AVVector3@G3D@@ABV12@@Z': 0x5ec1c0,
+    '??$uvwToObject@$01@RBX@@YA?AVVector3@G3D@@ABV12@@Z': 0x6784d0,
+    '??$uvwToObject@$02@RBX@@YA?AVVector3@G3D@@ABV12@@Z': 0x5ec1e0,
+    '??$uvwToObject@$03@RBX@@YA?AVVector3@G3D@@ABV12@@Z': 0x5ec200,
+    '??$uvwToObject@$04@RBX@@YA?AVVector3@G3D@@ABV12@@Z': 0x5ec220,
+    '?zero@Vector2@G3D@@SAABV12@XZ': 0x509ba0,                 # function-local static (0, 0) (guard 009735bc)
+    '?allocVertex@Mesh@RenderBase@RBX@@SAIABVVector3@G3D@@0ABVVector2@5@_N@Z': 0x548000,
+    '?freeVertex@Mesh@RenderBase@RBX@@SAXI@Z': 0x548640,
+    '??_U@YAPAXI@Z': 0x6a0956, '??_V@YAXPAX@Z': 0x6a094a,       # operator new[] / delete[] (MFC thunks)
+})
 NON_EXACT_ROWS = [
     (0x4fd110, '??0SphereMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z',
      'EH state numbering only: the original FuncInfo 008e597c has seven states, 1->0 / 2->0 / 3->2 with no unwind '
@@ -295,12 +393,19 @@ NON_EXACT_ROWS = [
      'register allocation around the null check of new Level (edi preset to 0 in the original)', 'head'),
     (0x5004d0, '??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z', 'same as 00500350', 'head'),
 ]
-UNPROVEN = {}
+UNPROVEN = {
+    # EndcapTransform::operator() (a non-exact row of this recorder) is called by the EndcapTransform strips 004fdd90 /
+    # 004fe070 (call 004fdeef)
+    '??REndcapTransform@ViewNew@RBX@@QAEXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z': 0x4fdcc0,
+}
 # Vtable slots whose bodies are not built here (bound to the address the original vtable holds).
 SLOT_EXTERNAL = {}
 
 ROWS = {'quad': QUAD_ROWS, 'bevel': BEVEL_ROWS, 'sphere': SPHERE_ROWS, 'cylinder': CYLINDER_ROWS, 'head': HEAD_ROWS,
         'wedge': WEDGE_ROWS, 'torso': TORSO_ROWS, 'pbb': PBB_ROWS}
+for _k in OUTER_ROWS:
+    ROWS[_k] = ROWS[_k] + OUTER_ROWS[_k] + STRIP_ROWS[_k]
+NON_EXACT_ROWS += STRIP_NON
 
 
 def target_of(address):
@@ -463,6 +568,28 @@ for symbol, address in GRID_FACE.items():
     if FUNCTIONS is not None:
         assert address in FUNCTIONS and FUNCTIONS[address] > 600, (symbol, hex(address))
 assert original.data(0x826e3c, 4) == struct.pack('<f', 0.05), 'normalPerturbation'
+# Vector2::zero 00509ba0: a guarded function-local static (0, 0) whose address is returned.
+_zero, _, _ = match.target('2008-06', '00509ba0')
+assert _zero[-6:-5] == b'\xb8' and _zero[-1:] == b'\xc3' and b'\xd9\xee' in _zero and len(_zero) == 39, _zero.hex()
+# uvwToObject<id> bodies (cdecl: [esp+4] result, [esp+8] source): decode fld [ecx+s] / fchs / fstp [eax+d] triples and
+# compare with the face mapping of util/NormalId.cpp uvwToObject(v, id) (NORM_Z: the identity copy at 006784d0).
+UVW = {0x5ec1a0: ((8, 0), (4, 0), (0, 1)), 0x5ec1c0: ((0, 1), (8, 0), (4, 0)), 0x6784d0: ((0, 0), (4, 0), (8, 0)),
+       0x5ec1e0: ((8, 1), (4, 0), (0, 0)), 0x5ec200: ((0, 0), (8, 1), (4, 0)), 0x5ec220: ((0, 1), (4, 0), (8, 1))}
+for address, expect in UVW.items():
+    body, _, _ = match.target('2008-06', '%08x' % address)
+    got, i, pending = {}, 0, None
+    while i < len(body) and body[i] != 0xc3:
+        if body[i] == 0xd9 and body[i + 1] in (0x01, 0x41):
+            pending = [0 if body[i + 1] == 0x01 else body[i + 2], 0]; i += 2 + (body[i + 1] == 0x41)
+        elif body[i:i + 2] == b'\xd9\xe0':
+            pending[1] = 1; i += 2
+        elif body[i] == 0xd9 and body[i + 1] in (0x18, 0x58):
+            got[0 if body[i + 1] == 0x18 else body[i + 2]] = tuple(pending); i += 2 + (body[i + 1] == 0x58)
+        elif body[i] == 0x8b:
+            i += 4
+        else:
+            raise AssertionError(('uvwToObject body', hex(address), i, body.hex()))
+    assert tuple(got[k] for k in (0, 4, 8)) == expect, (hex(address), got)
 assert original.vtable_class(0x82d028) == ('.?AVMesh@RenderBase@RBX@@', 0)
 assert original.vtable_class(0x826e4c) == ('.?AVLevel@Mesh@RenderBase@RBX@@', 0)
 

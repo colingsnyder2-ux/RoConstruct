@@ -94,6 +94,9 @@ namespace RBX
 			virtual ~Mesh();                                          // 00548a90
 
 			static unsigned int allocVertex(unsigned int i, unsigned int count);   // 00547fc0
+			// cdecl statics the LevelBuilder grid template calls (004fac10..: push 4 arguments, add esp 0x10 / 4)
+			static unsigned int allocVertex(const G3D::Vector3& vertex, const G3D::Vector3& normal, const G3D::Vector2& tex, bool share); // 00548000
+			static void freeVertex(unsigned int index);                               // 00548640
 		};
 	}
 }

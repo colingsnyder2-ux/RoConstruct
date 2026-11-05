@@ -14,6 +14,7 @@
 #include "ViewNew/RenderBaseMesh.h"
 #include "util/NormalId.h"
 #include <G3D/Vector2int16.h>
+#include <G3D/Rect2D.h>
 
 namespace RBX
 {
@@ -69,10 +70,15 @@ namespace RBX
 			virtual void buildFront(Purpose purpose) = 0;
 			virtual void buildBack(Purpose purpose) = 0;
 		protected:
-			// Per-face grid builder (template instances 004fbdb0.., one per face and vertex function; not recovered
-			// here: the face builders call them, bound to the addresses their call sites use).
+			// Per-face grid builder (template instances 004fbdb0.., one per face and vertex function). The bodies of
+			// this and the strip overload below are in ViewNew/QuadVolumeFace.h, which the builder units include.
 			template<NormalId id, class Function>
 			void buildFace(Function function, G3D::Vector2int16 divisions, Purpose purpose);
+
+			// One strip of the grid (inner instances 004fac10.., ret 0x30 plus the functor size): one vertex per grid
+			// point through the vertex function, then a quad per cell, then the vertex references are released.
+			template<NormalId id, class Function>
+			void buildFace(Function function, G3D::Rect2D rect, const float depth, G3D::Vector2 textureOrigin, G3D::Vector2 textureExtent, const int axis, G3D::Vector2int16 divisions);
 
 			// Builder-as-functor overload (instances 004f7bd0 / 004f7c80 WedgeBuilder, 004faa30 TorsoBuilder): copies
 			// the builder argument, narrows the two counts to a Vector2int16 in the first count's slot and calls the
@@ -81,6 +87,25 @@ namespace RBX
 			void buildFace(Builder builder, const unsigned int x, const unsigned int y, Purpose purpose)
 			{
 				buildFace<id>(builder, G3D::Vector2int16(x, y), purpose);
+			}
+
+			// 004f1ff0: one out-of-line copy (jump table 004f2018: STUDS 0, INLET 0.5, WELD 1, GLUE 1.5, default 0),
+			// called by every per-face grid instance of every builder unit, so a header-inline static (COMDAT).
+			static float offset(RenderSurfaceType surfaceType)
+			{
+				switch (surfaceType)
+				{
+				case STUDS:
+					return 0.0f;
+				case INLET:
+					return 0.5f;
+				case WELD:
+					return 1.0f;
+				case GLUE:
+					return 1.5f;
+				default:
+					return 0.0f;
+				}
 			}
 
 			void appendQuadFromIndexArray(int a, int b, int c, int d);               // 00501000

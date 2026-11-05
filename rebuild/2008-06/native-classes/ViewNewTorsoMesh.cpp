@@ -1,6 +1,7 @@
 // 2008-06 native RBX::ViewNew::TorsoBuilder / TorsoMesh (inactive): the unit 004fa050..004fab2f.
-// The per-face grid instances (004f7d90..004fa04f, 004fa190) are not recovered here; the face slots call them.
+// The per-face grid instances (004f7d90..004fa04f, 004fa190) come from ViewNew/QuadVolumeFace.h.
 #include "ViewNew/TorsoMesh.h"
+#include "ViewNew/QuadVolumeFace.h"
 
 namespace RBX
 {

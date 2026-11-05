@@ -28,6 +28,21 @@ namespace RBX
 				}
 			public:
 				virtual void build(Purpose purpose); // 00501040
+
+				// The builder as its own vertex function (the builder-as-functor grid instances 004f6fa0 / 004f7390 /
+				// 004fa190 pass a copy of it): inline, no out-of-line copy in the image (the strips 004f66d0.. compare
+				// x and y with 0 and step them towards the centre by bevel).
+				void operator()(G3D::Vector3& vertex, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&)
+				{
+					if (vertex.x > 0)
+						vertex.x -= bevel;
+					else
+						vertex.x += bevel;
+					if (vertex.y > 0)
+						vertex.y -= bevel;
+					else
+						vertex.y += bevel;
+				}
 			};
 		};
 	}

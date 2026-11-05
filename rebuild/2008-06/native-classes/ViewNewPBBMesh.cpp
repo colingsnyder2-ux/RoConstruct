@@ -1,6 +1,7 @@
 // 2008-06 native RBX::ViewNew::PBBBuilder / PBBMesh (inactive): the unit 004f1eb0..004f4e3f.
 // The per-face grid instances (004f2110..004f44b0) and the surface ctor 004f4cb0 are not recovered here.
 #include "ViewNew/PBBMesh.h"
+#include "ViewNew/QuadVolumeFace.h"
 #include "ViewNew/BrickMesh.h"
 #include <G3D/g3dmath.h>
 #include <algorithm>

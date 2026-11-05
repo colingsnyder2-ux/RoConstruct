@@ -1,5 +1,6 @@
 // 2008-06 native RBX::ViewNew::SphereBuilder / SphereMesh (inactive): the unit 004fce90..004fd40f.
 #include "ViewNew/SphereMesh.h"
+#include "ViewNew/QuadVolumeFace.h"
 
 namespace RBX
 {

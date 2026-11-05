@@ -1,5 +1,6 @@
 // 2008-06 native RBX::ViewNew::CylinderBuilder / CylinderAlongXMesh (inactive): the unit 004fd430..004fdaef.
 #include "ViewNew/CylinderMesh.h"
+#include "ViewNew/QuadVolumeFace.h"
 #include <algorithm>
 #include <math.h>
 

@@ -1,6 +1,7 @@
 // 2008-06 native RBX::ViewNew::WedgeBuilder / WedgeMesh (inactive): the unit 004f6e30..004f7d8f.
 // The per-face grid instances (004f5b80.., 004f6fa0, 004f7390) are not recovered here; the face slots call them.
 #include "ViewNew/WedgeMesh.h"
+#include "ViewNew/QuadVolumeFace.h"
 
 namespace RBX
 {
