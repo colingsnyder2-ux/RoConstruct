@@ -1,0 +1,443 @@
+{
+  "family": "AppLeaves2008 (CRbxDocTemplate, CRbxPlayDocTemplate, RobloxCrashReporter, EventHandler)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "profile": "document-swap flags; CrashReporter unit with native-headers/mfc-noinline-pcxstr first (CRobloxApp profile)",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_leaves2008.py": "9e1cdf921e8288d502b2f38f104913a2546b7fc0d6f2e0f8321c0da55aefcbd4",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/tests/NativeAppLeaves2008Layout.cpp": "3c8829e23ebb2ae436aa2a4adaa0dc7e5b2ba6c2c9fd7778f35da10b2e2a9141",
+    "rebuild/2008-06/native-headers/AppLeaves2008/RbxDocTemplates2008.h": "080abb4bbae884541aa84230924b99c8f3955914c244796ca1b2a3db883e6a17",
+    "rebuild/2008-06/native-headers/AppLeaves2008/RobloxCrashReporter2008.h": "61d3a82ab00f460a8c2d8d342f78b6a974f21729e113ffdb0345962ccd948c15",
+    "rebuild/2008-06/native-headers/AppLeaves2008/EventHandler2008.h": "5625b06653d5c4782ad103ddd7608ddbcc90d2ab6b2106a8d00b9d81529e4356",
+    "rebuild/2008-06/native-classes/AppLeaves2008DocTemplates.cpp": "2fec990b8112e0528147293be028c89afc506eaa8bc1637b411c928bf5b02378",
+    "rebuild/2008-06/native-classes/AppLeaves2008CrashReporter.cpp": "bc1af4a110f9acf4a082a72e44f4988ad55520abf3c81e806b9d4fa2681f6597",
+    "rebuild/2008-06/native-classes/AppLeaves2008EventHandler.cpp": "4a5a5824e96acc4e620ba9c69962f5d567db587da9d511d90c06289752494c4b",
+    "rebuild/2008-06/native-headers/CRobloxApp.h": "34cb4a184a83072f147df38a0c07ee6190e278613566f817e9f651f5214219ba",
+    "tools/rbxgs/Client/Network/include/Network/CrashReporter.h": "a1b75d92d9cd9eab8071c1e4c92b1231cfb55dd0b3f78aff6066f7bed8cdea8c",
+    "rebuild/2008-06/native-headers/VersionInfo.h": "8eadb78360e07bd2ea0406703702cb0b505eca932df99db57131e675c4ac1402"
+  },
+  "objects": {
+    "layout": "3c33791c86dec404ba695fc61d74cc752787aa3f2f295e919804667591350129",
+    "doc": "8e4ae4a87ba7284e4fea5504d534057ce31b163cb51a8745ff1cf3fb2d4c9298",
+    "crash": "ad960fc3d6a16d99d9024898bd3556acf94929a23e0bfd8d2aac31ad260bb680",
+    "eh": "53af36a1ffeb742890d3282038d84286270f15cfabbf8f11fc58786c9eb26ab5",
+    "doc_pending": "4a74297c713c62302d7499f7e526d38b96a65da5f9dcf3cf0b5e679f72a03677",
+    "crash_pending": "9578e2e6a10dde22764dc869b08fea1b80bddcaac9590e42a3e798a781e4a15a"
+  },
+  "layout": {
+    "CRbxDocTemplate": "0x90 == sizeof(CMultiDocTemplate); 00449910 news 0x90, inline ctor stores vptr 00816684 only",
+    "CRbxPlayDocTemplate": "0x98; 00449910 news 0x98: playDocument +0x90 (= 0), CString lastError +0x94 (mfc90 #316 / #601)",
+    "EventHandler": "0x30 (0042c12a news 0x30): IDispatch vptr +0, boost::function0<bool> handler +8, refCount +0x28",
+    "RobloxCrashReporter": "0x7d0 (00428180 news 0x7d0) == donor CrashReporter (vptr + CrashReportControls, minidumpType +0x7cc)"
+  },
+  "methods": {
+    "layout": [
+      {
+        "address": "0044a1a0",
+        "symbol": "??_GCRbxDocTemplate@@UAEPAXI@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1CMultiDocTemplate@@UAE@XZ": "0x6a1232 (mfc90.dll!??1CMultiDocTemplate@@UAE@XZ)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0044a1c0",
+        "symbol": "??_GCRbxPlayDocTemplate@@UAEPAXI@Z",
+        "size": 44,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f14 (mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ)",
+          "??1CMultiDocTemplate@@UAE@XZ": "0x6a1232 (mfc90.dll!??1CMultiDocTemplate@@UAE@XZ)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "doc": [
+      {
+        "address": "004496f0",
+        "symbol": "?RemoveDocument@CRbxPlayDocTemplate@@UAEXPAVCDocument@@@Z",
+        "size": 37,
+        "exact": true,
+        "verified_targets": {
+          "?RemoveDocument@CMultiDocTemplate@@UAEXPAVCDocument@@@Z": "0x6a11f6 (mfc90.dll!?RemoveDocument@CMultiDocTemplate@@UAEXPAVCDocument@@@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00449720",
+        "symbol": "?openDocumentFile@CRbxPlayDocTemplate@@QAEPAVCDocument@@PBDH@Z",
+        "size": 481,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (literal '')",
+          "__imp_??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@PBD@Z": "0x803eb8 (mfc90.dll!??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@PBD@Z)",
+          "??_C@_0CO@JJOHMEHO@CDocTemplate?3?3CreateNewDocument?5@": "0x816828 (literal 'CDocTemplate::CreateNewDocument returned NULL')",
+          "?AfxMessageBox@@YGHIII@Z": "0x6a1160 (mfc90.dll!?AfxMessageBox@@YGHIII@Z)",
+          "??_C@_0BN@PGHNAMEE@CreateNewFrame?5returned?5NULL?$AA@": "0x816808 (literal 'CreateNewFrame returned NULL')",
+          "??_C@_0CI@JOHJKFDK@CDocument?3?3OnNewDocument?5returne@": "0x8167e0 (literal 'CDocument::OnNewDocument returned FALSE')",
+          "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "0x6a0926 (mfc90.dll!?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ)",
+          "?BeginWaitCursor@CCmdTarget@@QAEXXZ": "0x6a114e (mfc90.dll!?BeginWaitCursor@CCmdTarget@@QAEXXZ)",
+          "??_C@_0CN@POCGINPN@CDocument?3?3OnNewDocument?5returne@": "0x8167b0 (literal 'CDocument::OnNewDocument returned FALSE (v2)')",
+          "??1CWaitCursor@@QAE@XZ": "0x449460 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?openDocumentFile@CRbxPlayDocTemplate@@QAEPAVCDocument@@PBDH@Z"
+        ]
+      }
+    ],
+    "crash": [
+      {
+        "address": "00427b00",
+        "symbol": "?ProcessException@RobloxCrashReporter@@UAEJPAU_EXCEPTION_POINTERS@@@Z",
+        "size": 84,
+        "exact": true,
+        "verified_targets": {
+          "?ProcessException@CrashReporter@@UAEJPAU_EXCEPTION_POINTERS@@@Z": "0x49e290 (external)",
+          "?$S1@?1??ProcessException@RobloxCrashReporter@@UAEJPAU_EXCEPTION_POINTERS@@@Z@4IA": "0x96d108 (data)",
+          "?silentCrashReport@@3_NA": "0x96d0f4 (data)",
+          "?messageShown@?1??ProcessException@RobloxCrashReporter@@UAEJPAU_EXCEPTION_POINTERS@@@Z@4_NA": "0x96d104 (data)",
+          "??_C@_0N@OLIKCFFC@ROBLOX?5Crash?$AA@": "0x810370 (literal 'ROBLOX Crash')",
+          "??_C@_0EF@IIPENFGJ@An?5unexpected?5error?5occurred?5and@": "0x810328 (literal \"An unexpected error occurred and ROBLOX needs to quit.  We're sorry!\")",
+          "__imp__MessageBoxA@16": "0x802d78 (user32.dll!MessageBoxA)"
+        },
+        "local_eh": []
+      }
+    ],
+    "eh": [
+      {
+        "address": "0042acb0",
+        "symbol": "??0EventHandler@@QAE@V?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z",
+        "size": 138,
+        "exact": true,
+        "verified_targets": {
+          "??_7EventHandler@@6B@": "0x810598 (vtable RTTI .?AVEventHandler@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??0EventHandler@@QAE@V?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "0042adb0",
+        "symbol": "?QueryInterface@EventHandler@@UAGJABU_GUID@@PAPAX@Z",
+        "size": 84,
+        "exact": true,
+        "verified_targets": {
+          "_IID_IUnknown": "0x8501cc (GUID {00000000-0000-0000-c000-000000000046})",
+          "_IsEqualGUID": "0x42ad40 (own row)",
+          "_IID_IDispatch": "0x85021c (GUID {00020400-0000-0000-c000-000000000046})"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0042ae10",
+        "symbol": "?AddRef@EventHandler@@UAGKXZ",
+        "size": 13,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0042b350",
+        "symbol": "?Release@EventHandler@@UAGKXZ",
+        "size": 61,
+        "exact": true,
+        "verified_targets": {
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0042ae20",
+        "symbol": "?GetTypeInfoCount@EventHandler@@UAGJPAI@Z",
+        "size": 15,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0042ae30",
+        "symbol": "?GetTypeInfo@EventHandler@@UAGJIKPAPAUITypeInfo@@@Z",
+        "size": 8,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0042ae40",
+        "symbol": "?GetIDsOfNames@EventHandler@@UAGJABU_GUID@@PAPA_WIKPAJ@Z",
+        "size": 8,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0042b130",
+        "symbol": "?Invoke@EventHandler@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z [0x0:0x61]",
+        "size": 97,
+        "exact": true,
+        "verified_targets": {
+          "??R?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBE_NXZ": "0x42afc0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?Invoke@EventHandler@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z"
+        ]
+      },
+      {
+        "address": "0042b191",
+        "symbol": "?Invoke@EventHandler@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z [0x61:0xaa]",
+        "size": 73,
+        "exact": true,
+        "verified_targets": {
+          "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 (external)",
+          "?print@StandardOut@RBX@@QAEXW4MessageType@2@ABVexception@std@@@Z": "0x416e10 (external)",
+          "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660 (external)"
+        },
+        "local_eh": [
+          "$LN8"
+        ]
+      }
+    ],
+    "doc_pending": [
+      {
+        "address": "0044a170",
+        "symbol": "?CreateNewFrame@CRbxDocTemplate@@UAEPAVCFrameWnd@@PAVCDocument@@PAV2@@Z",
+        "size": 36,
+        "exact": false,
+        "verified_targets": {
+          "?theApp@@3VCRobloxApp@@A": "0x96dbe0 (data)",
+          "?initializeFramework@CRobloxApp@@QAEH_N@Z": "0x449bf0 (external)",
+          "?CreateNewFrame@CDocTemplate@@UAEPAVCFrameWnd@@PAVCDocument@@PAV2@@Z": "0x6a123e (mfc90.dll!?CreateNewFrame@CDocTemplate@@UAEPAVCFrameWnd@@PAVCDocument@@PAV2@@Z)"
+        },
+        "local_eh": [],
+        "status": "pending-build-only"
+      }
+    ],
+    "crash_pending": [
+      {
+        "address": "00427a20",
+        "symbol": "??0RobloxCrashReporter@@QAE@PBD0W4_MINIDUMP_TYPE@@@Z",
+        "size": 217,
+        "exact": false,
+        "verified_targets": {
+          "?singleton@CrashReporter@@2PAV1@A": "0x9706c0 (data)",
+          "??_7RobloxCrashReporter@@6B@": "0x810320 (vtable RTTI .?AVRobloxCrashReporter@@ offset 0x0)",
+          "??0CVersionInfo@@QAE@XZ": "0x46a200 (external)",
+          "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A": "0x97f2a8 (data)",
+          "?Load@CVersionInfo@@QAEHPAUHINSTANCE__@@@Z": "0x46a4f0 (external)",
+          "?GetFileVersionAsString@CVersionInfo@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x46a440 (external)",
+          "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "0x803ee0 (mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ)",
+          "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f14 (mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ)",
+          "??1CVersionInfo@@QAE@XZ": "0x46a4b0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??0RobloxCrashReporter@@QAE@PBD0W4_MINIDUMP_TYPE@@@Z"
+        ],
+        "status": "pending-build-only"
+      }
+    ]
+  },
+  "helpers": {
+    "eh": [
+      {
+        "address": "0042ad40",
+        "symbol": "_IsEqualGUID",
+        "size": 110,
+        "exact": false,
+        "verified_targets": {},
+        "local_eh": [],
+        "status": "helper instance (SDK/boost inline), verified, not counted"
+      },
+      {
+        "address": "0042afc0",
+        "symbol": "??R?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBE_NXZ",
+        "size": 79,
+        "exact": false,
+        "verified_targets": {
+          "??0bad_function_call@boost@@QAE@XZ": "0x409ef0 (external)",
+          "??$throw_exception@Vbad_function_call@boost@@@boost@@YAXABVbad_function_call@0@@Z": "0x40a500 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??R?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBE_NXZ"
+        ],
+        "status": "helper instance (SDK/boost inline), verified, not counted"
+      }
+    ]
+  },
+  "exact": [
+    "00427b00",
+    "0042acb0",
+    "0042adb0",
+    "0042ae10",
+    "0042ae20",
+    "0042ae30",
+    "0042ae40",
+    "0042b130",
+    "0042b350",
+    "004496f0",
+    "00449720",
+    "0044a1a0",
+    "0044a1c0"
+  ],
+  "exact_count": 13,
+  "pending_build_only": [
+    "00427a20",
+    "0044a170"
+  ],
+  "not_counted": {
+    "00449460": "MFC inline ~CWaitCursor instance (not an app-class body); prefix bytes checked only"
+  },
+  "vtables": {
+    "??_7CRbxDocTemplate@@6B@": {
+      "address": "0x816684",
+      "rtti": ".?AVCRbxDocTemplate@@",
+      "slots": {
+        "0": "?GetRuntimeClass@CMultiDocTemplate@@UBEPAUCRuntimeClass@@XZ = 0x6a11d2 (mfc90.dll!?GetRuntimeClass@CMultiDocTemplate@@UBEPAUCRuntimeClass@@XZ)",
+        "1": "??_ECRbxDocTemplate@@UAEPAXI@Z = 0x44a1a0 (own row (??_G))",
+        "2": "?Serialize@CObject@@UAEXAAVCArchive@@@Z = 0x70bdf0 (inline body, bytes equal (ICF-shared copy))",
+        "3": "?AssertValid@CObject@@UBEXXZ = 0x47d410 (inline body, bytes equal (ICF-shared copy))",
+        "4": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z = 0x70bdf0 (inline body, bytes equal (ICF-shared copy))",
+        "5": "?OnCmdMsg@CDocTemplate@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z = 0x6a11d8 (mfc90.dll!?OnCmdMsg@CDocTemplate@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z)",
+        "6": "?OnFinalRelease@CCmdTarget@@UAEXXZ = 0x6a0ef6 (mfc90.dll!?OnFinalRelease@CCmdTarget@@UAEXXZ)",
+        "7": "?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z = 0x6a069e (mfc90.dll!?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z)",
+        "8": "?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z = 0x6a06a4 (mfc90.dll!?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z)",
+        "9": "?GetTypeInfoCount@CCmdTarget@@UAEIXZ = 0x6a06aa (mfc90.dll!?GetTypeInfoCount@CCmdTarget@@UAEIXZ)",
+        "10": "?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ = 0x6a06b0 (mfc90.dll!?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ)",
+        "11": "?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z = 0x6a06b6 (mfc90.dll!?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z)",
+        "12": "?GetMessageMap@CCmdTarget@@MBEPBUAFX_MSGMAP@@XZ = 0x6a0efc (mfc90.dll!?GetMessageMap@CCmdTarget@@MBEPBUAFX_MSGMAP@@XZ)",
+        "13": "?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ = 0x6a06bc (mfc90.dll!?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ)",
+        "14": "?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ = 0x6a06c2 (mfc90.dll!?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ)",
+        "15": "?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ = 0x6a06c8 (mfc90.dll!?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ)",
+        "16": "?GetInterfaceMap@CCmdTarget@@MBEPBUAFX_INTERFACEMAP@@XZ = 0x6a0992 (mfc90.dll!?GetInterfaceMap@CCmdTarget@@MBEPBUAFX_INTERFACEMAP@@XZ)",
+        "17": "?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ = 0x6a0998 (mfc90.dll!?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ)",
+        "18": "?OnCreateAggregates@CCmdTarget@@UAEHXZ = 0x6a06d4 (mfc90.dll!?OnCreateAggregates@CCmdTarget@@UAEHXZ)",
+        "19": "?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z = 0x6a06da (mfc90.dll!?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z)",
+        "20": "?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z = 0x6a06e0 (mfc90.dll!?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z)",
+        "21": "?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z = 0x6a06e6 (mfc90.dll!?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z)",
+        "22": "?LoadTemplate@CMultiDocTemplate@@UAEXXZ = 0x6a11de (mfc90.dll!?LoadTemplate@CMultiDocTemplate@@UAEXXZ)",
+        "23": "?GetFirstDocPosition@CMultiDocTemplate@@UBEPAU__POSITION@@XZ = 0x6a11e4 (mfc90.dll!?GetFirstDocPosition@CMultiDocTemplate@@UBEPAU__POSITION@@XZ)",
+        "24": "?GetNextDoc@CMultiDocTemplate@@UBEPAVCDocument@@AAPAU__POSITION@@@Z = 0x6a11ea (mfc90.dll!?GetNextDoc@CMultiDocTemplate@@UBEPAVCDocument@@AAPAU__POSITION@@@Z)",
+        "25": "?AddDocument@CMultiDocTemplate@@UAEXPAVCDocument@@@Z = 0x6a11f0 (mfc90.dll!?AddDocument@CMultiDocTemplate@@UAEXPAVCDocument@@@Z)",
+        "26": "?RemoveDocument@CMultiDocTemplate@@UAEXPAVCDocument@@@Z = 0x6a11f6 (mfc90.dll!?RemoveDocument@CMultiDocTemplate@@UAEXPAVCDocument@@@Z)",
+        "27": "?GetDocString@CDocTemplate@@UBEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@W4DocStringIndex@1@@Z = 0x6a11fc (mfc90.dll!?GetDocString@CDocTemplate@@UBEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@W4DocStringIndex@1@@Z)",
+        "28": "?MatchDocType@CDocTemplate@@UAE?AW4Confidence@1@PBDAAPAVCDocument@@@Z = 0x6a1202 (mfc90.dll!?MatchDocType@CDocTemplate@@UAE?AW4Confidence@1@PBDAAPAVCDocument@@@Z)",
+        "29": "?CreateNewDocument@CDocTemplate@@UAEPAVCDocument@@XZ = 0x6a1208 (mfc90.dll!?CreateNewDocument@CDocTemplate@@UAEPAVCDocument@@XZ)",
+        "30": "?CreateNewFrame@CRbxDocTemplate@@UAEPAVCFrameWnd@@PAVCDocument@@PAV2@@Z = 0x44a170 (pending-build-only row)",
+        "31": "?InitialUpdateFrame@CDocTemplate@@UAEXPAVCFrameWnd@@PAVCDocument@@H@Z = 0x6a120e (mfc90.dll!?InitialUpdateFrame@CDocTemplate@@UAEXPAVCFrameWnd@@PAVCDocument@@H@Z)",
+        "32": "?SaveAllModified@CDocTemplate@@UAEHXZ = 0x6a1214 (mfc90.dll!?SaveAllModified@CDocTemplate@@UAEHXZ)",
+        "33": "?CloseAllDocuments@CDocTemplate@@UAEXH@Z = 0x6a121a (mfc90.dll!?CloseAllDocuments@CDocTemplate@@UAEXH@Z)",
+        "34": "?OpenDocumentFile@CMultiDocTemplate@@UAEPAVCDocument@@PBDH@Z = 0x6a1220 (mfc90.dll!?OpenDocumentFile@CMultiDocTemplate@@UAEPAVCDocument@@PBDH@Z)",
+        "35": "?SetDefaultTitle@CMultiDocTemplate@@UAEXPAVCDocument@@@Z = 0x6a1226 (mfc90.dll!?SetDefaultTitle@CMultiDocTemplate@@UAEXPAVCDocument@@@Z)",
+        "36": "?OnIdle@CDocTemplate@@UAEXXZ = 0x6a122c (mfc90.dll!?OnIdle@CDocTemplate@@UAEXXZ)"
+      }
+    },
+    "??_7CRbxPlayDocTemplate@@6B@": {
+      "address": "0x81671c",
+      "rtti": ".?AVCRbxPlayDocTemplate@@",
+      "slots": {
+        "0": "?GetRuntimeClass@CMultiDocTemplate@@UBEPAUCRuntimeClass@@XZ = 0x6a11d2 (mfc90.dll!?GetRuntimeClass@CMultiDocTemplate@@UBEPAUCRuntimeClass@@XZ)",
+        "1": "??_ECRbxPlayDocTemplate@@UAEPAXI@Z = 0x44a1c0 (own row (??_G))",
+        "2": "?Serialize@CObject@@UAEXAAVCArchive@@@Z = 0x70bdf0 (inline body, bytes equal (ICF-shared copy))",
+        "3": "?AssertValid@CObject@@UBEXXZ = 0x47d410 (inline body, bytes equal (ICF-shared copy))",
+        "4": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z = 0x70bdf0 (inline body, bytes equal (ICF-shared copy))",
+        "5": "?OnCmdMsg@CDocTemplate@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z = 0x6a11d8 (mfc90.dll!?OnCmdMsg@CDocTemplate@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z)",
+        "6": "?OnFinalRelease@CCmdTarget@@UAEXXZ = 0x6a0ef6 (mfc90.dll!?OnFinalRelease@CCmdTarget@@UAEXXZ)",
+        "7": "?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z = 0x6a069e (mfc90.dll!?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z)",
+        "8": "?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z = 0x6a06a4 (mfc90.dll!?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z)",
+        "9": "?GetTypeInfoCount@CCmdTarget@@UAEIXZ = 0x6a06aa (mfc90.dll!?GetTypeInfoCount@CCmdTarget@@UAEIXZ)",
+        "10": "?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ = 0x6a06b0 (mfc90.dll!?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ)",
+        "11": "?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z = 0x6a06b6 (mfc90.dll!?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z)",
+        "12": "?GetMessageMap@CCmdTarget@@MBEPBUAFX_MSGMAP@@XZ = 0x6a0efc (mfc90.dll!?GetMessageMap@CCmdTarget@@MBEPBUAFX_MSGMAP@@XZ)",
+        "13": "?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ = 0x6a06bc (mfc90.dll!?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ)",
+        "14": "?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ = 0x6a06c2 (mfc90.dll!?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ)",
+        "15": "?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ = 0x6a06c8 (mfc90.dll!?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ)",
+        "16": "?GetInterfaceMap@CCmdTarget@@MBEPBUAFX_INTERFACEMAP@@XZ = 0x6a0992 (mfc90.dll!?GetInterfaceMap@CCmdTarget@@MBEPBUAFX_INTERFACEMAP@@XZ)",
+        "17": "?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ = 0x6a0998 (mfc90.dll!?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ)",
+        "18": "?OnCreateAggregates@CCmdTarget@@UAEHXZ = 0x6a06d4 (mfc90.dll!?OnCreateAggregates@CCmdTarget@@UAEHXZ)",
+        "19": "?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z = 0x6a06da (mfc90.dll!?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z)",
+        "20": "?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z = 0x6a06e0 (mfc90.dll!?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z)",
+        "21": "?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z = 0x6a06e6 (mfc90.dll!?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z)",
+        "22": "?LoadTemplate@CMultiDocTemplate@@UAEXXZ = 0x6a11de (mfc90.dll!?LoadTemplate@CMultiDocTemplate@@UAEXXZ)",
+        "23": "?GetFirstDocPosition@CMultiDocTemplate@@UBEPAU__POSITION@@XZ = 0x6a11e4 (mfc90.dll!?GetFirstDocPosition@CMultiDocTemplate@@UBEPAU__POSITION@@XZ)",
+        "24": "?GetNextDoc@CMultiDocTemplate@@UBEPAVCDocument@@AAPAU__POSITION@@@Z = 0x6a11ea (mfc90.dll!?GetNextDoc@CMultiDocTemplate@@UBEPAVCDocument@@AAPAU__POSITION@@@Z)",
+        "25": "?AddDocument@CMultiDocTemplate@@UAEXPAVCDocument@@@Z = 0x6a11f0 (mfc90.dll!?AddDocument@CMultiDocTemplate@@UAEXPAVCDocument@@@Z)",
+        "26": "?RemoveDocument@CRbxPlayDocTemplate@@UAEXPAVCDocument@@@Z = 0x4496f0 (own row)",
+        "27": "?GetDocString@CDocTemplate@@UBEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@W4DocStringIndex@1@@Z = 0x6a11fc (mfc90.dll!?GetDocString@CDocTemplate@@UBEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@W4DocStringIndex@1@@Z)",
+        "28": "?MatchDocType@CDocTemplate@@UAE?AW4Confidence@1@PBDAAPAVCDocument@@@Z = 0x6a1202 (mfc90.dll!?MatchDocType@CDocTemplate@@UAE?AW4Confidence@1@PBDAAPAVCDocument@@@Z)",
+        "29": "?CreateNewDocument@CDocTemplate@@UAEPAVCDocument@@XZ = 0x6a1208 (mfc90.dll!?CreateNewDocument@CDocTemplate@@UAEPAVCDocument@@XZ)",
+        "30": "?CreateNewFrame@CRbxDocTemplate@@UAEPAVCFrameWnd@@PAVCDocument@@PAV2@@Z = 0x44a170 (pending-build-only row)",
+        "31": "?InitialUpdateFrame@CDocTemplate@@UAEXPAVCFrameWnd@@PAVCDocument@@H@Z = 0x6a120e (mfc90.dll!?InitialUpdateFrame@CDocTemplate@@UAEXPAVCFrameWnd@@PAVCDocument@@H@Z)",
+        "32": "?SaveAllModified@CDocTemplate@@UAEHXZ = 0x6a1214 (mfc90.dll!?SaveAllModified@CDocTemplate@@UAEHXZ)",
+        "33": "?CloseAllDocuments@CDocTemplate@@UAEXH@Z = 0x6a121a (mfc90.dll!?CloseAllDocuments@CDocTemplate@@UAEXH@Z)",
+        "34": "?OpenDocumentFile@CMultiDocTemplate@@UAEPAVCDocument@@PBDH@Z = 0x6a1220 (mfc90.dll!?OpenDocumentFile@CMultiDocTemplate@@UAEPAVCDocument@@PBDH@Z)",
+        "35": "?SetDefaultTitle@CMultiDocTemplate@@UAEXPAVCDocument@@@Z = 0x6a1226 (mfc90.dll!?SetDefaultTitle@CMultiDocTemplate@@UAEXPAVCDocument@@@Z)",
+        "36": "?OnIdle@CDocTemplate@@UAEXXZ = 0x6a122c (mfc90.dll!?OnIdle@CDocTemplate@@UAEXXZ)"
+      }
+    },
+    "??_7EventHandler@@6B@": {
+      "address": "0x810598",
+      "rtti": ".?AVEventHandler@@",
+      "slots": {
+        "0": "?QueryInterface@EventHandler@@UAGJABU_GUID@@PAPAX@Z = 0x42adb0 (own row)",
+        "1": "?AddRef@EventHandler@@UAGKXZ = 0x42ae10 (own row)",
+        "2": "?Release@EventHandler@@UAGKXZ = 0x42b350 (own row)",
+        "3": "?GetTypeInfoCount@EventHandler@@UAGJPAI@Z = 0x42ae20 (own row)",
+        "4": "?GetTypeInfo@EventHandler@@UAGJIKPAPAUITypeInfo@@@Z = 0x42ae30 (own row)",
+        "5": "?GetIDsOfNames@EventHandler@@UAGJABU_GUID@@PAPA_WIKPAJ@Z = 0x42ae40 (own row)",
+        "6": "?Invoke@EventHandler@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z = 0x42b130 (own row)"
+      }
+    },
+    "RobloxCrashReporter (original only)": {
+      "address": "0x810320",
+      "rtti": ".?AVRobloxCrashReporter@@",
+      "slots": {
+        "0": "ProcessException = 0x427b00 (own row)"
+      }
+    }
+  },
+  "proposals": [
+    "native-headers/CRobloxApp.h: `BOOL initializeFramework(bool);` instead of `(void*)` (00449bf0 tests the argument as a byte at [esp+0x1c]; CRbxDocTemplate::CreateNewFrame 0044a170 pushes 1). Unlocks 0044a170.",
+    "owner of a native Network/CrashReporter.h: inline `CrashReporter() { singleton = this; }` (00427a20 inlines it: only the store to CrashReporter::singleton 009706c0, no call). Unlocks 00427a20."
+  ],
+  "scope": "Inactive. Exact rows with verified targets; pending rows excluded from counts. No active build, swap or credit."
+}
