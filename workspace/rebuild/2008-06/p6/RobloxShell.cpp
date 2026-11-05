@@ -44,12 +44,14 @@ public:
     bool visible;
     bool play;
     bool pickTest;
+    bool checkNativeMD5;
     CString* expecting;
     CString holdDelay, capture, script, saveAs, post, runFile, select, setProperty, editScript;
-    CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), pickTest(false), expecting(NULL) {}
+    CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), pickTest(false), checkNativeMD5(false), expecting(NULL) {}
     virtual void ParseParam(const char* param, BOOL flag, BOOL last) {
         if (expecting) { *expecting = param; expecting = NULL; return; }
         if (flag && !lstrcmpiA(param, "p6-autoclose")) { autoClose = true; return; }
+        if (flag && !lstrcmpiA(param, "p6-check-md5")) { checkNativeMD5 = true; return; }
         if (flag && !lstrcmpiA(param, "p6-visible")) { autoClose = visible = true; return; }
         if (flag && !lstrcmpiA(param, "p6-play")) { play = true; return; }
         if (flag && !lstrcmpiA(param, "p6-holdw")) { expecting = &holdDelay; return; }
@@ -761,6 +763,12 @@ public:
         Stage("AfxOleInit", "OLE ready");
         CRobloxCommandLineInfo command;
         ParseCommandLine(command);
+#ifdef ROC_NATIVE_MD5
+        if (command.checkNativeMD5) {
+            extern int nativeMD5RuntimeSelfTest();
+            if (nativeMD5RuntimeSelfTest() != 0) { g_openFailed = true; return FALSE; }
+        }
+#endif
         if (command.m_nShellCommand == CCommandLineInfo::AppUnregister || command.m_nShellCommand == CCommandLineInfo::AppRegister) {
             Stage("0044da96", "COM registration requested; not implemented, exiting like original");
             return FALSE;

@@ -16,6 +16,7 @@ vector::_Insert_n is compared against its current full 638-byte extent, includin
 current-header objects; the RTTI base lists and the allocation size new(0x28) are asserted from the original bytes.
 Writes work/2008-06/shared-layouts/misc-leaves-working.json.
 """
+import argparse
 import json
 import re
 import struct
@@ -30,7 +31,10 @@ from roc import match, rebuild  # noqa: E402
 import native_bind as nb  # noqa: E402
 
 R = ROOT / 'rebuild/2008-06'
-OUT = R / 'out/native-misc-leaves'
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--out', type=Path, help='isolated output directory; receipt.json is stored here')
+args = parser.parse_args()
+OUT = args.out.resolve() if args.out else R / 'out/native-misc-leaves'
 OUT.mkdir(parents=True, exist_ok=True)
 MD5_UNIT = R / 'native-classes/MD5Hasher.cpp'
 MB_UNIT = R / 'native-classes/MetadataMergeBinderConstructor.cpp'
@@ -336,6 +340,6 @@ receipt = {
     'exact_distinct_addresses': exact_addresses,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
-(ROOT / 'work/2008-06/shared-layouts/misc-leaves-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
+(OUT / 'receipt.json' if args.out else ROOT / 'work/2008-06/shared-layouts/misc-leaves-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS native MD5HasherImpl/MergeBinder: %d exact rows (%d distinct addresses), %d not-exact; %d vtables; '
       'targets verified' % (len(rows), len(exact_addresses), len(NOT_EXACT), len(vtables)))

@@ -10,13 +10,30 @@ sys.path.insert(0, str(HERE))
 from roc import rebuild
 import gen_res
 
-subprocess.run([sys.executable, str(HERE / "build_native_icons.py")], cwd=ROOT, check=True)
-subprocess.run([sys.executable, str(HERE / "build_native_about.py")], cwd=ROOT, check=True)
-
 client = "2008-06"
 NATIVE_DOC = '--native-doc' in sys.argv
 NATIVE_DOC_CACHE = '--native-doc-cache' in sys.argv
 args = sys.argv[1:]
+runtime_out = None
+native_md5_proof = None
+native_assets = None
+for option in ('--out', '--native-md5', '--assets'):
+    if option in args:
+        index = args.index(option)
+        if index + 1 == len(args):
+            raise SystemExit(option + ' needs a directory')
+        value = Path(args[index + 1]).resolve()
+        if option == '--out':
+            runtime_out = value
+        elif option == '--native-md5':
+            native_md5_proof = value
+        else:
+            native_assets = value
+        del args[index:index + 2]
+if native_md5_proof and NATIVE_DOC:
+    raise SystemExit('--native-md5 currently requires the normal client profile')
+if native_md5_proof and not runtime_out:
+    raise SystemExit('--native-md5 requires a separate --out directory until runtime gates pass')
 NATIVE_DOC_OUT = None
 if '--native-doc-out' in args:
     out_index = args.index('--native-doc-out')
@@ -28,10 +45,29 @@ inputs = [arg for arg in args if arg not in ('--native-doc', '--native-doc-cache
 SNAPSHOT = Path(inputs[0]) if inputs else rebuild.workspace(client) / "out"
 if NATIVE_DOC_OUT and not NATIVE_DOC:
     raise SystemExit('--native-doc-out requires --native-doc')
-out = NATIVE_DOC_OUT or (rebuild.workspace(client) / "out" / "p6")
+if runtime_out and NATIVE_DOC_OUT:
+    raise SystemExit('choose --out or --native-doc-out')
+out = runtime_out or NATIVE_DOC_OUT or (rebuild.workspace(client) / "out" / "p6")
 if not out.is_absolute():
     out = ROOT / out
 out.mkdir(parents=True, exist_ok=True)
+asset_names = ('NativeFrameIconsFresh.obj', 'NativeFrameIconWidth.obj', 'NativeDHtmlDialog.obj',
+               'NativeAboutDialog.obj', 'NativeAboutDialogData.obj', 'NativeFileVersionInfo.obj', 'NativeGLCaps.obj')
+if native_assets is None:
+    shared_assets = ROOT / 'rebuild/2008-06/out/native-layouts'
+    if runtime_out:
+        missing = [name for name in asset_names if not (shared_assets / name).is_file()]
+        if missing:
+            raise RuntimeError('build missing UI prerequisites in an owned batch first: ' + ', '.join(missing))
+        native_assets = out / 'ui-assets'
+        native_assets.mkdir()
+        for name in asset_names:
+            shutil.copyfile(shared_assets / name, native_assets / name)
+    else:
+        subprocess.run([sys.executable, str(HERE / "build_native_icons.py")], cwd=ROOT, check=True)
+        subprocess.run([sys.executable, str(HERE / "build_native_about.py")], cwd=ROOT, check=True)
+        native_assets = shared_assets
+asset_hashes = {str(native_assets / name): hashlib.sha256((native_assets / name).read_bytes()).hexdigest() for name in asset_names}
 runtime = SNAPSHOT / "tests" / "P2RecoveredPlayer"
 for folder in ("Content", "Places"):
     shutil.copytree(runtime / folder, out / folder, dirs_exist_ok=True)
@@ -68,6 +104,10 @@ libs += [rebuild.dll_import_lib(client, dll) for dll in spec["import_dlls"]]
 
 # Same overlay-first include order the player test compiles with.
 overlay = SNAPSHOT / spec["name"] / "overlay"
+if runtime_out:
+    private_overlay = out / 'engine-overlay'
+    shutil.copytree(overlay, private_overlay)
+    overlay = private_overlay
 tree = ROOT / "tools" / "rbxgs" / "Client"
 includes = []
 for item in spec["test_includes"]:
@@ -82,6 +122,8 @@ mfc_flags = ["/nologo", "/c", "/O2", "/GS-", "/EHsc", "/MD", "/DWIN32", "/DNDEBU
 shell_source = HERE / "RobloxShell.cpp"
 shell_object = "RobloxShell.obj"
 shell_flags = mfc_flags + ["/I" + str(HERE)]
+if native_md5_proof:
+    shell_flags += ['/DROC_NATIVE_MD5']
 if NATIVE_DOC:
     shell_text = shell_source.read_text()
     start = shell_text.index('class CRobloxDoc : public CDocument {')
@@ -95,6 +137,10 @@ units = [(shell_object, shell_source, shell_flags),
          ("appmodul.obj", mfc.parent / "src" / "mfc" / "appmodul.cpp", mfc_flags + ["/I" + str(mfc.parent / "src" / "mfc")]),  # WinMain, AfxInitialize
          ("P6Engine.obj", HERE / "P6Engine.cpp", ["/nologo", "/c", "/O2", "/GS-", "/EHsc", "/MD"] + ["/D" + d for d in spec["test_defines"].split()]
           + ["/I" + str(HERE)] + ["/I" + str(i) for i in includes])]
+if native_md5_proof:
+    units.append(('NativeMD5Runtime.obj', ROOT / 'rebuild/2008-06/tests/NativeMD5Runtime.cpp',
+                  mfc_flags + ['/DBOOST_ALL_NO_LIB', '/I' + str(ROOT / 'rebuild/2008-06/native-headers')]
+                  + ['/I' + str(path) for path in includes]))
 # P6Data.cpp shares the player engine layer's headers, defines and overlay.
 from roc import libs as recipes
 engine = spec["layers"][0]
@@ -102,7 +148,7 @@ recipe = recipes.RECIPES[engine["includes_from_recipe"]]
 data_includes = [(recipes.LIBS / i).resolve() for i in recipe["include"] if i != "WINSDK"] + [(ROOT / i).resolve() for i in engine["extra_includes"]]
 data_includes.append(HERE)
 data_defines = (recipes.RECIPES[engine["defines_from_recipe"]]["defines"] + " " + engine["extra_defines"]).strip()
-data_overlay = rebuild.build_overlay(client, spec["name"], spec["overlay"])
+data_overlay = ((ROOT / spec['overlay']['root']).resolve(), overlay) if runtime_out else rebuild.build_overlay(client, spec["name"], spec["overlay"])
 cache_dir = rebuild.workspace(client) / 'out' / 'p6' / 'native-doc-cache'
 overlay_path = data_overlay[1] if data_overlay else None
 # The generated overlay is recreated every run even when byte-identical; its
@@ -609,7 +655,7 @@ if NATIVE_DOC:
 native_doc_aliases = ['/alternatename:?createNativeWorkspace@@YGJPAPAVCWorkspace@@@Z=?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z'] if NATIVE_DOC else []
 native_doc_verbose = (['/VERBOSE'] if os.environ.get('ROC_NATIVE_DOC_VERBOSE_LIB') == 'full' else ['/VERBOSE:LIB']) if NATIVE_DOC and os.environ.get('ROC_NATIVE_DOC_VERBOSE_LIB') else []
 link_args = (["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE:X86", "/MAP:" + output_name + ".map", "/OUT:" + output_name + ".exe",
-                                      "/NODEFAULTLIB:mfcs90.lib", "/MANIFEST:NO"] + native_doc_aliases + native_doc_verbose + [u[0] for u in units] + [str(ROOT / "rebuild/2008-06/out/native-layouts" / name) for name in ("NativeFrameIconsFresh.obj", "NativeFrameIconWidth.obj", "NativeDHtmlDialog.obj", "NativeAboutDialog.obj", "NativeAboutDialogData.obj", "NativeFileVersionInfo.obj", "NativeGLCaps.obj")] + ["P6Data.obj", "roblox.res", "mfc90.lib"]
+                                      "/NODEFAULTLIB:mfcs90.lib", "/MANIFEST:NO"] + native_doc_aliases + native_doc_verbose + [u[0] for u in units] + [str(native_assets / name) for name in asset_names] + ["P6Data.obj", "roblox.res", "mfc90.lib"]
                          + native_doc_objects
                          + [str(l) for l in libs] + [s + ".lib" for s in system]
                          + ["/NODEFAULTLIB:" + l for l in rebuild.VENDOR_AUTOLINK])
@@ -621,7 +667,29 @@ if NATIVE_DOC:
         'cwd': str(out), 'arguments': link_args,
         'scope': 'Diagnostic link replay only; never executes client.'
     }, indent=2) + "\n")
+if native_md5_proof:
+    import md5_owner
+    original_archive = SNAPSHOT / 'RbxgsApp/linked/linked.lib'
+    if link_args.count(str(original_archive)) != 1:
+        raise RuntimeError('expected one ordinary App archive for MD5 ownership')
+    replacement, native_object = md5_owner.build(SNAPSHOT, out, tc, original_archive, native_md5_proof)
+    link_args = [str(replacement) if arg == str(original_archive) else arg for arg in link_args]
+    link_args.insert(0, str(native_object))
+    (out / 'native-md5-link-command.json').write_text(json.dumps(dict(cwd=str(out), arguments=link_args), indent=2))
 code, text = rebuild.run(tc, "link", link_args, out)
+if native_md5_proof:
+    (out / 'native-md5-link.log').write_text(text)
+    if code == 0:
+        if any(hashlib.sha256(Path(path).read_bytes()).hexdigest() != expected for path, expected in asset_hashes.items()):
+            raise RuntimeError('frozen UI asset inputs changed during client build')
+        proof = json.loads((out / 'md5-owner/receipt.json').read_text())
+        link_map = (out / (output_name + '.map')).read_text()
+        for row in proof['original_checks']:
+            lines = [line for line in link_map.splitlines() if row['symbol'] in line.split()]
+            if len(lines) != 1 or 'NativeMD5Hasher.obj' not in lines[0]:
+                raise RuntimeError('MD5 final provider selection differs: ' + row['symbol'])
+        (out / 'native-md5-selection.json').write_text(json.dumps(dict(executable_sha256=hashlib.sha256((out / (output_name + '.exe')).read_bytes()).hexdigest(),
+            selected=proof['original_checks'], scope='Seven native MD5 methods selected in normal client. Runtime gates recorded separately; main-class swaps unchanged.'), indent=2))
 if NATIVE_DOC:
     (out/'native-doc-link.log').write_text(text)
     unresolved = sorted(set(re.findall(r'unresolved external symbol "([^"]+)"', text)))

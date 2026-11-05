@@ -1,0 +1,141 @@
+{
+  "schema": 1,
+  "authority": "RoConstruct/work/workspace",
+  "scope": "Native MD5 implementation actually selected/executed in separate ordinary P6 client. Main App/Frame/Doc/View swaps and full interactive P5/P6 remain incomplete; no new server credit.",
+  "runtime": {
+    "executable": "C:\\Users\\colin\\RoConstruct\\work\\runnable-native-and-digest-20261105\\client-reviewed\\Roblox.exe",
+    "exe_sha256": "98533e742a27efb391ffaf7ad78646db46190c8036728050008c9269b46e9403",
+    "map_sha256": "c0dddacb3d67d0a5408e2956407aabcb8840ef65e9c88711118003d4a6141ca0",
+    "source_sha256": "7b15ea65933168b8077c90b08755406cc42af6e926b407de04bb59ba4770b4ae",
+    "runs": [
+      {
+        "name": "reviewed-edit-save",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "reviewed-reopen",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "reviewed-bad-path",
+        "exit": 1,
+        "passed": true
+      },
+      {
+        "name": "wrong-vector-negative-control",
+        "exit": 1,
+        "passed": true
+      }
+    ],
+    "selected_methods": 7,
+    "unique_vectors": 15,
+    "scope": "Native MD5 provider in the existing runnable P6 shell. Native main-class swaps/full interactive P5/P6/server credit are not claimed."
+  },
+  "owner": {
+    "retained_bodies": 765,
+    "retained_named_data": 1065,
+    "unchanged_other_members": 317,
+    "native_object_sha256": "756639b16a763e4bf3695fad15652bd5894166d07ff07fb0ea1947e686b35b6d",
+    "archive_sha256": "3e75c08ed9fea58e5828bf2effb9a4677fa8fce7bcc6bc4480037ee52a8221e2",
+    "layout_size": 40,
+    "selected": [
+      {
+        "address": "0055c540",
+        "symbol": "??0MD5HasherImpl@RBX@@QAE@XZ"
+      },
+      {
+        "address": "0055c800",
+        "symbol": "?addData@MD5HasherImpl@RBX@@UAEXPBDI@Z"
+      },
+      {
+        "address": "0055c740",
+        "symbol": "?addData@MD5HasherImpl@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      },
+      {
+        "address": "0055c6a0",
+        "symbol": "?addData@MD5HasherImpl@RBX@@UAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@@Z"
+      },
+      {
+        "address": "0055c710",
+        "symbol": "?toString@MD5HasherImpl@RBX@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+      },
+      {
+        "address": "0055e320",
+        "symbol": "?c_str@MD5HasherImpl@RBX@@UAEPBDXZ"
+      },
+      {
+        "address": "0055c8b0",
+        "symbol": "?create@MD5Hasher@RBX@@SAPAV12@XZ"
+      }
+    ]
+  },
+  "matching": {
+    "rows": 44,
+    "scope": "MD5 and existing MergeBinder recorder; only seven MD5 methods selected in this client.",
+    "eh": [
+      {
+        "address": "0055c540",
+        "nodes": 8,
+        "sha256": "10e219d3090dd42df829100f0432818c8711e2bfa28e80c7d52ed8259608ecac"
+      },
+      {
+        "address": "0055c800",
+        "nodes": 5,
+        "sha256": "cd77801170914e10450792e1a10e536dfafbc3f0db7102059991ba9c50b395a9"
+      },
+      {
+        "address": "0055c740",
+        "nodes": 5,
+        "sha256": "8796266fdc1573a59555308b12ae0b86de02222f9566577b7148b5d4c144ae9c"
+      },
+      {
+        "address": "0055e320",
+        "nodes": 8,
+        "sha256": "d44f08930070234100c909697742563003d785d6974f348cf921bdc0ac99965e"
+      },
+      {
+        "address": "0055c8b0",
+        "nodes": 4,
+        "sha256": "7d2e3593cc9c20fece20a63f73dc7aa3b9458e7caf03d40dc5432d5574c8dff1"
+      }
+    ]
+  },
+  "sources": {
+    "roc/native_files_notify.py": "fefbc5fabbf08a9cc9ef170a848291126c4e70e030eef9b179348f3c11722f97",
+    "tests/test_native_files.py": "e8f6b725f690afe4892fdc4be4b6ccf01eed9303c6a5e1d8aa4e68bdf1ff4b4f",
+    "rebuild/2008-06/p6/build_client.py": "150fe643ffc61af61e75484d90555386d5fc631ceeaa724b66b9f444ec90d956",
+    "rebuild/2008-06/p6/RobloxShell.cpp": "25197118c1909335d53fc74258405c06e81ca7073093a559bda171a4dfe341eb",
+    "rebuild/2008-06/tests/record_native_misc_leaves.py": "41b53218700373d04914673a6faf8cda2c7d1a8224c709a93bbd9573f08e071f",
+    "rebuild/2008-06/p6/md5_owner.py": "7e53e235181a2809bb375845b12a6fdf6ec160a7dbcef86d42623b022f3b8f4b",
+    "rebuild/2008-06/p6/captured_inputs.py": "caf3281dba8400bcee9734162a9c8fc2b1219bb7b9cc4d9ecc83fa929a05a9ee",
+    "rebuild/2008-06/tests/NativeMD5Runtime.cpp": "7b15ea65933168b8077c90b08755406cc42af6e926b407de04bb59ba4770b4ae",
+    "tests/test_captured_inputs.py": "2ac26b28c7a1fe23c9e03d265747fc09a23e7eb9db3def679d2eb169a775f9c2",
+    "docs/NATIVE_RUNTIME_INTEGRATION.md": "a961b9c096760046fe4cd7abab7b7a6417e8a952a565fd1a4542573c743ea487"
+  },
+  "webhook": {
+    "missed_native_drafts_delivered": 3,
+    "messages": 1,
+    "pending_after": [],
+    "last_two_path_labels": true,
+    "partial_delivery_receipts": true,
+    "overflow_tail_preserved": true,
+    "noninteractive_fetch_timeout_seconds": 120
+  },
+  "tests": {
+    "focused_pytest": 11,
+    "negative_runtime_vector_rejected": true,
+    "canonical_eh_auditor_compatible": true
+  },
+  "fork_coverage": {
+    "fork": "mewpokemons/RoConstruct",
+    "branch": "claude/optimistic-shannon-0xccuy",
+    "tip": "e7cf0b2a08306b1f8ee72dc1f633b081bdfa5e59",
+    "uses_old_prompt": true,
+    "included_directly": true,
+    "policy": "Original provider methods can be integrated without adopting the new prompt; review and runtime gates still apply. This run activates the already recovered MD5 provider; newer Ogre/physics families are not selected by this client profile."
+  },
+  "main_blocker": "CWorkspace::write 0046b860 still needs exact lifetime/EH closure; no fabricated state or weakened gate was used.",
+  "local_head": "6ab993a3c2cc673a0d6b7211c186a129d46a1733"
+}

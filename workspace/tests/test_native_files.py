@@ -113,6 +113,98 @@ def test_fork_merge():
         assert not any('merged' in l or 'parked' in l for l in again), again   # idempotent
 
 
+
+
+def test_draft_paths_and_complete_payload_delivery():
+    path = N + 'A.cpp'
+    draft = 'drafts/files/' + 'a' * 64 + '/' + path
+    assert nf.is_native(draft)
+    description = nf.build_payloads([('o/r', 'work', 'a' * 40, draft, 'new')])[0]['embeds'][0]['description']
+    assert '[native-classes/A.cpp](' in description
+    assert '[drafts/' not in description and '/drafts/files/' in description
+    assert nf.native_path(draft) == nf.native_path('workspace/' + path) == path
+    rows = [('o/r', 'work', 'b' * 40, 'drafts/files/' + 'a' * 64 + '/' + N + 'A%d.cpp' % i, 'new') for i in range(161)]
+    payloads = nf.build_payloads(rows)
+    assert sum(p['embeds'][0]['description'].count('](https://') for p in payloads) == 161
+    assert all('Inactive draft upload' in p['embeds'][0]['description'] for p in payloads)
+
+
+def setup_delivery_scan(monkeypatch, tmp_path, count):
+    import json
+    monkeypatch.setattr(nf, 'STATE', tmp_path / 'state.json')
+    nf.STATE.write_text(json.dumps({'tips': {'o/r@feature': 'a' * 40}, 'announced': []}))
+    monkeypatch.setattr(nf, 'github_token', lambda: None)
+    monkeypatch.setattr(nf, 'upstream_slug', lambda: 'o/r')
+    monkeypatch.setattr(nf, 'discover', lambda *a: {'o/r': 'origin'})
+    monkeypatch.setattr(nf, 'fetch_refs', lambda *a: {'feature': 'b' * 40})
+    monkeypatch.setattr(nf, 'upstream_main_tip', lambda *a: None)
+    monkeypatch.setattr(nf, 'changed_files', lambda *a: [('new', N + 'A%d.cpp' % i) for i in range(count)])
+    monkeypatch.setattr(nf, 'git', lambda *a, **kw: 'commit' if a[0] == 'cat-file' else 'blob-' + a[-1])
+
+
+def test_partial_delivery_retries_only_unsent_files(monkeypatch, tmp_path):
+    setup_delivery_scan(monkeypatch, tmp_path, 24)
+    delivered = []
+    def partial(rows, log, on_sent):
+        delivered.extend(rows[:8]); on_sent(rows[:8]); return False
+    monkeypatch.setattr(nf, 'post_files', partial)
+    nf.scan()
+    state = nf.load_state()
+    assert len(state['announced']) == 8 and len(state['pending']) == 16
+    def finish(rows, log, on_sent):
+        assert not set(delivered).intersection(rows)
+        delivered.extend(rows); on_sent(rows); return True
+    monkeypatch.setattr(nf, 'post_files', finish)
+    nf.scan()
+    assert len(delivered) == 24 and not nf.load_state()['pending']
+    assert nf.scan() == []
+
+
+def test_delivery_cap_keeps_durable_tail(monkeypatch, tmp_path):
+    setup_delivery_scan(monkeypatch, tmp_path, 161)
+    batches = []
+    def deliver(rows, log, on_sent):
+        batches.append(len(rows)); on_sent(rows); return True
+    monkeypatch.setattr(nf, 'post_files', deliver)
+    nf.scan()
+    assert batches == [150] and len(nf.load_state()['pending']) == 11
+    nf.scan()
+    assert batches == [150, 11] and len(nf.load_state()['announced']) == 161
+    assert not nf.load_state()['pending']
+
+
+
+
+def test_post_acknowledges_successful_message_before_failure(monkeypatch):
+    from roc import reports
+    monkeypatch.setattr(reports, 'server_mines_webhook', lambda: 'https://example.invalid/webhook')
+    monkeypatch.setattr(nf.time, 'sleep', lambda seconds: None)
+    rows = [('o/r', 'work', 'a' * 40, N + 'A%d.cpp' % i, 'new') for i in range(16)]
+    class Response:
+        def read(self): return b''
+    calls = []
+    def request(*args, **kwargs):
+        calls.append(args)
+        if len(calls) == 2: raise OSError('delivery failed')
+        return Response()
+    monkeypatch.setattr(nf.urllib.request, 'urlopen', request)
+    acknowledged = []
+    assert not nf.post_files(rows, log=lambda text: None, on_sent=acknowledged.extend)
+    assert acknowledged == rows[:8]
+
+
+def test_git_fetch_is_noninteractive_and_bounded(monkeypatch):
+    def timeout(command, **kwargs):
+        assert kwargs['timeout'] == 120
+        assert kwargs['env']['GIT_TERMINAL_PROMPT'] == '0'
+        assert kwargs['env']['GCM_INTERACTIVE'] == 'never'
+        raise subprocess.TimeoutExpired(command, 120)
+    monkeypatch.setattr(nf.subprocess, 'run', timeout)
+    import pytest
+    with pytest.raises(RuntimeError, match='git fetch timed out'):
+        nf.git('fetch', 'https://example.invalid/repo.git')
+
+
 if __name__ == '__main__':
     test_payload_links()
     test_changed_files()

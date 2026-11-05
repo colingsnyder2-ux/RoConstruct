@@ -7,6 +7,7 @@ has beyond upstream main. Forks are read with plain `git fetch` into refs/forks/
 config changes.
 """
 import json
+import os
 import re
 import subprocess
 import threading
@@ -26,14 +27,25 @@ BOT_BRANCH = 'auto-merge/native'   # written by fork_merge; never announced
 
 
 def git(*args, cwd=None, check=True):
-    r = subprocess.run(["git", *args], cwd=cwd or ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    try:
+        r = subprocess.run(["git", *args], cwd=cwd or ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace",
+                           timeout=120, env={**os.environ, 'GIT_TERMINAL_PROMPT': '0', 'GCM_INTERACTIVE': 'never'})
+    except subprocess.TimeoutExpired as error:
+        raise RuntimeError('git %s timed out' % args[0]) from error
     if check and r.returncode:
         raise RuntimeError('git %s: %s' % (' '.join(args[:3]), r.stderr.strip()[:300]))
     return r.stdout.strip()
 
 
+def native_path(path):
+    if path.startswith('workspace/'):
+        path = path[len('workspace/'):]
+    path = re.sub(r'^drafts/files/[0-9a-f]{64}/', '', path)
+    return path
+
+
 def is_native(path):
-    return path.startswith(NATIVE_DIRS) and path.endswith(EXTENSIONS)
+    return native_path(path).startswith(NATIVE_DIRS[:3]) and path.endswith(EXTENSIONS)
 
 
 def load_state():
@@ -45,8 +57,8 @@ def load_state():
 
 def save_state(state):
     STATE.parent.mkdir(parents=True, exist_ok=True)
-    state['announced'] = state['announced'][-5000:]
-    STATE.write_text(json.dumps(state, indent=1))
+    from roc.native_drafts import atomic
+    atomic(STATE, state)
 
 
 def repo_slug(url):
@@ -129,6 +141,13 @@ def upstream_main_tip(repos):
 
 
 def scan(include_forks=True, backfill=False, post=True, save=True, log=print):
+    from roc.native_drafts import lock
+    STATE.parent.mkdir(parents=True, exist_ok=True)
+    with lock(STATE.with_suffix('.lock')):
+        return _scan(include_forks, backfill, post, save, log)
+
+
+def _scan(include_forks=True, backfill=False, post=True, save=True, log=print):
     """Detect new native files across branches; returns [(slug, branch, sha, path)] and posts them."""
     state = load_state()
     token = github_token() if include_forks else None
@@ -140,7 +159,11 @@ def scan(include_forks=True, backfill=False, post=True, save=True, log=print):
         except RuntimeError as error:
             log('fetch failed for %s: %s' % (slug, error))
     main_tip = upstream_main_tip(repos)
-    new = []
+    state['announced'] = list(dict.fromkeys(native_path(p) for p in state['announced']))
+    new = [tuple(row) for row in state.get('pending', [])]
+    queued = set()
+    for slug, branch, sha, path, kind in new:
+        queued.add(native_path(path) + ':' + git('rev-parse', sha + ':' + path))
     for slug, tips in tips_by_repo.items():
         for branch, sha in tips.items():
             if branch == BOT_BRANCH:
@@ -148,9 +171,11 @@ def scan(include_forks=True, backfill=False, post=True, save=True, log=print):
             key = '%s@%s' % (slug, branch)
             old = state['tips'].get(key)
             state['tips'][key] = sha
-            if old == sha:
+            if old == sha and branch != 'work':
                 continue
-            if old is None:
+            if old == sha:
+                files = []
+            elif old is None:
                 if not backfill:
                     continue                                   # first sight: record only
                 base = git('merge-base', sha, main_tip, check=False) if main_tip else ''
@@ -160,15 +185,31 @@ def scan(include_forks=True, backfill=False, post=True, save=True, log=print):
                 continue                                       # history rewritten; re-baselined
             else:
                 files = changed_files(old, sha)
+            # Existing uploads predate this watcher fix. Enumerate immutable draft
+            # blobs on work too; logical path/content identities prevent floods.
+            if branch == 'work' and slug == upstream_slug():
+                files += [('new', p) for p in git('ls-tree', '-r', '--name-only', sha, '--', 'drafts/files/', check=False).splitlines() if is_native(p)]
             for kind, path in files:
                 blob = git('rev-parse', '%s:%s' % (sha, path), check=False)
-                announce = '%s:%s' % (path, blob)               # content-based: a merge of the same edit is not re-announced
-                if announce not in state['announced']:
-                    state['announced'].append(announce)
+                announce = '%s:%s' % (native_path(path), blob)
+                if announce not in state['announced'] and announce not in queued:
+                    queued.add(announce)
                     new.append((slug, branch, sha, path, kind))
-    if new and post and not post_files(new, log=log):
-        return new                                              # leave state untouched so the next poll retries
-    if save and (post or not new):
+    state['pending'] = new
+    if save and post:
+        save_state(state)  # Persist discovery before delivery; never lose a tail.
+    def acknowledged(rows):
+        for slug, branch, sha, path, kind in rows:
+            identity = native_path(path) + ':' + git('rev-parse', sha + ':' + path)
+            if identity not in state['announced']:
+                state['announced'].append(identity)
+        sent = set(rows)
+        state['pending'] = [row for row in state['pending'] if tuple(row) not in sent]
+        if save:
+            save_state(state)
+    if new and post:
+        post_files(new[:150], log=log, on_sent=acknowledged)
+    elif save and not new:
         save_state(state)
     return new
 
@@ -181,20 +222,22 @@ LINKS_PER_MESSAGE = 8   # small messages: 8 links stay far under Discord's 4096-
 DESCRIPTION_LIMIT = 3900
 
 
-def build_payloads(new, cap=150):
+def build_payloads(new, cap=None):
     """One small Integration Digest message per chunk of LINKS_PER_MESSAGE files of one (kind, repo, branch).
     Links go in the embed description (4096 limit) as whole lines; nothing is ever cut mid-link."""
-    shown, extra = new[:cap], max(0, len(new) - cap)
+    shown = new if cap is None else new[:cap]
     groups = {}
     for slug, branch, sha, path, kind in shown:
-        groups.setdefault((kind != 'new', slug, branch, sha), []).append(path)
+        groups.setdefault((kind != 'new', slug, branch, sha, path.startswith('drafts/files/')), []).append(path)
     bodies = []
-    for (changed, slug, branch, sha), paths in sorted(groups.items()):
+    for (changed, slug, branch, sha, draft), paths in sorted(groups.items()):
         title = '✏️ Changed native files' if changed else '\U0001F4C4 New native files'
         header = '**2008-06 Client**\n%s · `%s` · `%s`' % (title, slug, branch)
+        if draft:
+            header += '\nInactive draft upload · unverified; no runtime activation or credit'
         chunk = []
         for p in paths:
-            line = '[%s](%s)' % (p.replace('rebuild/2008-06/', ''), link(slug, sha, p))
+            line = '[%s](%s)' % ('/'.join(p.split('/')[-2:]), link(slug, sha, p))
             text = '\n'.join([header] + chunk + [line])
             if chunk and (len(chunk) >= LINKS_PER_MESSAGE or len(text) > DESCRIPTION_LIMIT):
                 bodies.append('\n'.join([header] + chunk))
@@ -202,8 +245,6 @@ def build_payloads(new, cap=150):
             chunk.append(line)
         if chunk:
             bodies.append('\n'.join([header] + chunk))
-    if extra:
-        bodies.append('**2008-06 Client**\n➕ +%d more new or changed native files (see the branches)' % extra)
     total = len(bodies)
     return [{'allowed_mentions': {'parse': []}, 'embeds': [{
         'title': '⛏️ RoConstruct Integration Digest', 'color': 0xA855F7, 'description': body,
@@ -211,7 +252,7 @@ def build_payloads(new, cap=150):
         'timestamp': datetime.now(timezone.utc).isoformat()}]} for i, body in enumerate(bodies)]
 
 
-def post_files(new, log=print):
+def post_files(new, log=print, on_sent=None):
     from roc.reports import server_mines_webhook
     url = server_mines_webhook()
     payloads = build_payloads(new)
@@ -226,6 +267,9 @@ def post_files(new, log=print):
         except OSError as error:
             log('webhook post failed: %s' % error)
             return False
+        if on_sent:
+            description = body['embeds'][0]['description']
+            on_sent([row for row in new if link(row[0], row[2], row[3]) in description])
         time.sleep(1)
     log('posted %d new or changed native file(s) in %d message(s)' % (len(new), len(payloads)))
     return True
