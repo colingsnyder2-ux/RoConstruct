@@ -2,6 +2,7 @@
 import hashlib
 import json
 import struct
+import subprocess
 import sys
 from pathlib import Path
 
@@ -68,12 +69,20 @@ for i in range(section[7]):
         api.append(imports[value])
 assert set(found) == set(expected) and len(api) == 3, (found, api)
 assert pe.get_string_at_rva(0x817ee8-pe.OPTIONAL_HEADER.ImageBase) == b'Doc script'
+eh_path = root/'work/2008-06/document-load-string-eh-audit.json'
+eh = subprocess.run([sys.executable, str(root/'rebuild/2008-06/tests/audit_native_eh_graph.py'),
+                     str(obj), '00454ac0', '?loadFromString@CRobloxDoc@@', '--output', str(eh_path)],
+                    cwd=root, capture_output=True, text=True, check=True)
+eh_receipt = json.loads(eh_path.read_text())
+assert not eh_receipt['errors'] and eh_receipt['primary_body_exact']
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 paths = [source, root/'rebuild/2008-06/native-headers/CRobloxDoc.h', root/'rebuild/2008-06/native-headers/v8datamodel/DataModel.h',
-         root/'rebuild/2008-06/native-headers/script/ScriptContext.h', Path(__file__)]
+         root/'rebuild/2008-06/native-headers/script/ScriptContext.h',
+         root/'rebuild/2008-06/tests/audit_native_eh_graph.py', Path(__file__)]
 receipt = {'inputs': {str(p.relative_to(root)): sha(p) for p in paths}, 'object_sha256': sha(obj),
            'preprocess_flags': pre_flags, 'flags': flags, 'address': '00454ac0', 'analyzed_size': len(target),
            'observed_body_and_catch_size': len(body), 'targets': found, 'imports': api,
-           'scope': 'Inactive diagnostic. Original adjacent catch continuation verified; exception metadata, script service ownership and runtime ABI remain unproven.'}
+           'eh_audit_sha256': sha(eh_path), 'eh_audit_nodes': len(eh_receipt['events']),
+           'scope': 'Inactive diagnostic. Original body, adjacent catch continuation and local EH graph verified; linked exception metadata, script service ownership and runtime ABI remain unproven.'}
 (root/'work/2008-06/shared-layouts/document-load-string-working.json').write_text(json.dumps(receipt, indent=2)+'\n')
-print('PASS Doc loadFromString and adjacent catch continuation')
+print('PASS Doc loadFromString, adjacent catch continuation and local EH graph')

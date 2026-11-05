@@ -12,11 +12,8 @@ pre.mkdir(exist_ok=True)
 code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags, pre)
 assert code == 0, log
 body = (pre / 'NativeDocumentLayout.i').read_text(errors='replace')
-# Bind Doc's provisional names to the existing recovered 00405aa0 implementation.
-assert body.count('setCurrentDocument(int, CRobloxDoc*)') == 1
-body = body.replace('setCurrentDocument(int, CRobloxDoc*)', 'setActiveDocument(bool, CRobloxDoc*)')
-body = body.replace('setCurrentDocument(1, this)', 'setActiveDocument(true, this)')
-body = body.replace('currentDocument', 'activeRobloxDoc')
+assert 'setActiveDocument(bool, CRobloxDoc*)' in body
+assert 'activeRobloxDoc' in body
 profile = ('const _Elem * c_str() const', 'operator PCXSTR() const throw()\n\t{\n\t\treturn( m_pszData );')
 for needle in profile:
     assert body.count(needle) == 1

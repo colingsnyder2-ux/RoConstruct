@@ -50,8 +50,12 @@ for prefix, (address, edges) in expected.items():
     assert set(found) == set(edges), (address, found)
     rows.append({'address': address, 'symbol': name, 'size': len(body), 'targets': found})
 transition_target, transition_refs, _ = match.target('2008-06', '00405aa0')
+transition_source = root / 'rebuild/2008-06/native-classes/ActiveDocument.cpp'
+transition_obj = out / 'NativeActiveDocument.obj'
+code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags[:-2] + ['/Fo' + str(transition_obj), str(transition_source)], out)
+assert code == 0, log
 transition_name, transition_body, transition_candidate_refs = next(
-    row for row in match.coff_functions(raw) if row[0].startswith('?setCurrentDocument@@'))
+    row for row in match.coff_functions(transition_obj.read_bytes()) if row[0].startswith('?setActiveDocument@@'))
 assert match.exact_match(transition_target, transition_refs, transition_body, transition_candidate_refs)
 transition = {'address': '00405aa0', 'symbol': transition_name, 'size': len(transition_body),
               'relocation_normalized_exact': True}

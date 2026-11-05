@@ -47,9 +47,9 @@ for i in range(section[7]):
         edges.setdefault(symbols[symbol][0], []).append(hex(value))
 for prefix, wanted in [('?getDataModel@CWorkspace@@',0x46a940), ('?getDataModel@CRobloxDoc@@',0x403040),
                        ('??0Lock@DataModel@RBX@@',0x411b40), ('??1Lock@DataModel@RBX@@',0x5773c0),
-                       ('??$find@VRunService@RBX@@',0x4530f0), ('??$find@VVisit@RBX@@',0x452b40),
+                       ('??$create@VRunService@RBX@@',0x4530f0), ('??$find@VVisit@RBX@@',0x452b40),
                        ('?setRunState@RunService@RBX@@',0x554da0), ('?getUploadUrl@Visit@RBX@@',0x44f1b0),
-                       ('?SaveModified@CDocument@@',0x6a13a6), ('??0CPublishAsPlaceDialog@@',0x44f5c0),
+                       ('?SaveModified@CDocument@@',0x6a13a6), ('??0CUploadPlaceDialog@@',0x44f5c0),
                        ('?DoModal@CDialog@@',0x6a084e)]:
     assert any(k.startswith(prefix) and hex(wanted) in values for k,values in edges.items()), (prefix,edges)
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
