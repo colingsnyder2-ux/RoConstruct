@@ -15,6 +15,45 @@ from roc import rebuild
 # Compile/check each selected provider once. Checker's exit status alone does not
 # reject nonexact bodies, so require its complete per-method exact summary too.
 checks = [
+    ('native-classes/CMainFrameMemoryLabels.cpp', ['0042ed20=?handle_42ed20@CMainFrame',
+     '0042edd0=?handle_42edd0@CMainFrame']),
+    ('native-classes/CChatPrompt.cpp', ['00411be0=??0CChatPrompt', '00412800=?bind@CChatPrompt']),
+    ('native-classes/CInstanceExplorer.cpp', ['00421a50=?setRoot@CInstanceExplorer',
+     '00466b80=?GetRuntimeClass@CSettingsExplorer', '00466b90=?CreateObject@CSettingsExplorer',
+     '00466d40=?onEvent@CSettingsExplorer', '00421d00=?OnReportSelChanged@CInstanceExplorer',
+     '00420d20=??$setSelection@', '00420db0=??0CInstanceRecord', '00420790=?GetCaption@CNameItem']),
+    ('native-classes/CMainFrameSettingsCommand.cpp', ['0042ee80=?handle_42ee80@CMainFrame']),
+    ('native-classes/SettingsDialogShow.cpp', ['00466eb0=?showSettingsDialog']),
+    ('native-classes/CSettingsDialog.cpp', ['00466e10=??0CSettingsDialog', '00466ca0=??1CSettingsDialog',
+     '00467030=?OnInitDialog@CSettingsDialog', '00466c00=?OnResetSettings@CSettingsDialog']),
+    ('native-classes/CMainFrameNewDocument.cpp', ['0042ecf0=?handle_42ecf0@CMainFrame']),
+    ('native-classes/ViewCommandRouting.cpp', ['004598f0=?OnCmdMsg@?$VerbBinder@VCRobloxView']),
+    ('native-classes/ChangeHistoryBase.cpp', ['0058c5e0=?initializeBase@ChangeHistoryService']),
+    ('native-classes/ChangeHistoryCommit.cpp', ['0058c2c0=?commit@ChangeHistoryService',
+     '0058bf80=?mergeFirst@ChangeHistoryService', '0058c0f0=?prepare@ChangeHistoryService']),
+    ('native-classes/ViewVerbs.cpp', ['00459150=?doIt@HelpCommand', '00459100=?isChecked@ToggleFullscreenVerb',
+     '00459120=?doIt@ToggleFullscreenVerb', '004590d0=?doIt@LockPlayModeVerb', '00458fd0=??0ToggleIDEModeVerb',
+     '00459040=?isEnabled@ToggleIDEModeVerb', '00459080=?isChecked@ToggleIDEModeVerb', '004590a0=?doIt@ToggleIDEModeVerb']),
+    ('native-classes/InsertModelFromRobloxVerb.cpp', ['00458ec0=??0InsertModelFromRobloxVerb',
+     '00458f50=?isEnabled@InsertModelFromRobloxVerb', '00458f90=?isChecked@InsertModelFromRobloxVerb',
+     '00458fb0=?doIt@InsertModelFromRobloxVerb']),
+    ('native-classes/CRobloxViewInit.cpp', ['0045a4a0=?OnInitialUpdate@CRobloxView']),
+    ('native-classes/SelectionGroup.cpp', ['00442350=?add@SelectionGroup', '00439660=?remove@SelectionGroup']),
+    ('native-classes/CSelectionPropGridEvents.cpp', ['00442490=?onEvent@CSelectionPropGrid']),
+    ('native-classes/CPropGridEvents.cpp', ['00439370=?onEvent@CPropGrid']),
+    ('native-classes/CPropGridInstances.cpp', ['00439cd0=?removeInstance@CPropGrid', '004423f0=?addInstance@CPropGrid']),
+    ('native-classes/CSelectionPropGrid.cpp', ['00430700=??1CSelectionPropGrid', '00437830=?GetRuntimeClass@CSelectionPropGrid']),
+    ('native-classes/CRobloxWndActive.cpp', ['0070bdf0=?setActive@CRobloxWnd']),
+    ('native-classes/CSelectionPropGridSelection.cpp', ['00442650=?setSelection@CSelectionPropGrid']),
+    ('native-classes/AppOpenFile.cpp', ['0044a1f0=?openFile@CRobloxApp']),
+    ('native-classes/AppOpenFiles.cpp', ['0044d1b0=?openFiles@CRobloxApp',
+     '0044a950=?openFileFailed@CRobloxApp', '0044c0d0=??$_Find_if@PAV']),
+    ('native-classes/CMultiPlayerPane.cpp', ['00432e30=??0CMultiPlayerPane', '00432e50=??1CMultiPlayerPane',
+     '00432e60=?initialize@CMultiPlayerPane', '00432f20=?OnSize@CMultiPlayerPane',
+     '00432f60=?OnDestroy@CMultiPlayerPane']),
+    ('native-classes/CRobloxView.cpp', ['00459eb0=??0CRobloxView', '00459ba0=??1CRobloxView',
+     '00459270=?getDataModel@CRobloxView', '00459250=?OnUpdateToolboxCheck@CRobloxView']),
+    ('native-classes/CMainFrameToolbars.cpp', ['004307e0=?initializeToolbars@CMainFrame']),
     ('native-classes/ActiveDocViewRefresh.cpp', ['00420bd0=?refresh@ActiveDocView']),
     ('native-classes/CDataModelPropGridUpdate.cpp', ['00442900=?update@CDataModelPropGrid']),
     ('native-classes/CSelectionCaptionUpdate.cpp', ['00466940=?update@CSelectionCaption', '00466510=??1CSelectionCaption']),
@@ -91,7 +130,7 @@ def verify_provider(check):
     summary = '%d/%d exact' % (len(methods), len(methods))
     if run.returncode or summary not in run.stdout.splitlines():
         raise SystemExit('Provider verification failed: ' + source + '\n' + run.stdout + run.stderr)
-    return dict(source=source, output=run.stdout, errors=run.stderr, exit=run.returncode,
+    return dict(source=source, checked_methods=len(methods), output=run.stdout, errors=run.stderr, exit=run.returncode,
                 seconds=round(time.monotonic() - started, 2))
 
 # Each source has a distinct Check<stem>.obj. Never run two probe instances at
@@ -100,7 +139,7 @@ assert len({Path(source).stem for source, _ in checks}) == len(checks)
 started = time.monotonic()
 with ThreadPoolExecutor(max_workers=3) as pool:
     verification = list(pool.map(verify_provider, checks))
-print('providers:', len(checks), 'verified in', round(time.monotonic() - started, 2), 'seconds', flush=True)
+print('sources:', len(checks), 'checked in', round(time.monotonic() - started, 2), 'seconds', flush=True)
 
 base = ROOT / 'rebuild/2008-06/out/native-current-audit'
 spec = json.loads((base / 'native-doc-link-command.json').read_text())
@@ -128,6 +167,13 @@ for name in ('CObjectBrowser', 'CRobloxReportSubViews'):
 args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckBrowserPopup.obj'))
 args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckActiveDocument.obj'))
 args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckActiveDocView.obj'))
+for name in ('CRobloxView', 'CMainFrameToolbars', 'CMultiPlayerPane', 'AppOpenFiles', 'AppOpenFile',
+             'CRobloxWndActive', 'CSelectionPropGridSelection', 'CSelectionPropGridEvents',
+             'CPropGridEvents', 'CPropGridInstances', 'CSelectionPropGrid', 'CRobloxViewInit', 'SelectionGroup',
+             'ViewVerbs', 'InsertModelFromRobloxVerb', 'ChangeHistoryBase', 'ViewCommandRouting',
+             'CMainFrameNewDocument', 'CMainFrameSettingsCommand', 'SettingsDialogShow', 'CSettingsDialog',
+             'CInstanceExplorer', 'CChatPrompt', 'CMainFrameMemoryLabels'):
+    args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
 for name in ('ActiveDocViewRefresh', 'CDataModelPropGridUpdate', 'CSelectionCaptionUpdate'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
 for name in ('CChildFrame', 'CScriptDoc', 'CRobloxViewMethods'):
@@ -156,6 +202,11 @@ for name in ('AppFramework', 'CMainFrameShow'):
 for name in ('AppDocumentStartup', 'ApplicationExceptionLog', 'ErrorUploaderState',
              'ErrorUploaderConstructor', 'ErrorUploaderLifetime', 'ErrorUploaderCallback'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+object_names = {Path(arg).name.lower() for arg in args if arg.lower().endswith('.obj')}
+for item in verification:
+    item['object_on_link_command'] = ('Check' + Path(item['source']).stem + '.obj').lower() in object_names
+print('checked source objects on link command:', sum(item['object_on_link_command'] for item in verification),
+      'of', len(verification), flush=True)
 response.write_text('\n'.join(subprocess.list2cmdline([a]) for a in args) + '\n')
 code, log = rebuild.run(rebuild.toolchain(), 'link', ['@' + str(response)], base)
 (base / 'native-app-closure.log').write_text(log)

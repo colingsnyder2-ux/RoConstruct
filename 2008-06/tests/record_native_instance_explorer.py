@@ -3,10 +3,8 @@ layout test, exact bodies with every call/data target, the six explorer vtables,
 message map. Profile: document-swap flags + XTP 11.2.2 headers (/UNOMINMAX /D_XTP_STATICLINK) compiled through the
 noinline profile for the imported std::string::c_str (CInstanceRecord 00420db0 and CNameItem::GetCaption 00420790
 call MSVCP90 c_str through the IAT). The other bodies are also exact without the needle.
-OnReportSelChanged 00421d00 and Selection::setSelection<vector<Instance*>::iterator> 00420d20 are compiled with
-NATIVE_INSTANCE_EXPLORER_SELCHANGED and, for this verification only, the proposed shared-header change
-(v8datamodel/Selection.h: addToSelection(first->get()) -> addToSelection(boost::get_pointer(*first))) applied to the
-preprocessed text; they are reported separately as exact-pending-header.
+OnReportSelChanged 00421d00 and Selection::setSelection<vector<Instance*>::iterator> 00420d20 use the current
+Selection.h and are verified in a separate compilation.
 Scratch location: writes out/instance-explorer-working.json next to this script.
 """
 import json
@@ -58,8 +56,7 @@ def profile(name, defines=(), replace=()):
     return obj
 
 obj = profile('NativeInstanceExplorerProfile')
-selobj = profile('NativeInstanceExplorerSelChanged', ['/DNATIVE_INSTANCE_EXPLORER_SELCHANGED'],
-                 [])  # Selection.h now uses boost::get_pointer(*first) itself
+selobj = profile('NativeInstanceExplorerSelChanged')
 
 # 3. XTP library bodies (recipe style of record_native_roblox_report_view.py)
 XTP_SRC = ROOT / 'tools/libs/xtp-11.2.2/Source'
@@ -276,9 +273,9 @@ receipt = {
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
     'flags': FLAGS + XTP_FLAGS, 'profile': 'noinline std::string::c_str (imported)',
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths}, 'object_sha256': sha(obj),
-    'methods': rows, 'pending_shared_header': sel_rows, 'vtables': vtables, 'xtp_proof': xtp_proof,
+    'methods': rows, 'selection_methods': sel_rows, 'vtables': vtables, 'xtp_proof': xtp_proof,
 }
 (ROOT / 'work/2008-06/shared-layouts/instance-explorer-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS native CInstanceExplorer: %d exact rows, %d more exact pending the Selection.h change; vtables %s'
+print('PASS native CInstanceExplorer: %d exact rows, %d selection rows; vtables %s'
       % (len(rows), len(sel_rows), {k: (v['verified'], v['slots'], len(v['unverified'])) for k, v in vtables.items()}))
 print({k: v for k, v in xtp_proof.items()})
