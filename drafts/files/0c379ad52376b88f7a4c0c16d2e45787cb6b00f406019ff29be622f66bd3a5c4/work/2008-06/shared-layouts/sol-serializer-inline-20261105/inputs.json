@@ -1,0 +1,42 @@
+{
+  "profile": {
+    "scope": "Inactive second loader hypothesis. Only c_str noinline attribute is removed relative to old code tokens; size noinline retained. All VC9 fields, method bodies, constructors/destructor and other declarations are genuine and unchanged.",
+    "genuine_header": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xstring",
+    "genuine_sha256": "09f2e47e92ca601817cea05d8e08a2045b0c079f912fbe9125a40117348e29be",
+    "old_layer": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-headers\\std-noinline-string\\xstring",
+    "old_layer_sha256": "abed1fd7598c0041a3ee2dfae5095d43464789877c22452215c0015d981e8bee",
+    "uploadable_template": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-inline-cstr\\xstring.h",
+    "template_sha256": "3d81fcda880faba35d28139dece8b4ef454e351ade81823526e31a01e8c57245",
+    "materialized_header": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-inline-cstr\\xstring",
+    "materialized_sha256": "3d81fcda880faba35d28139dece8b4ef454e351ade81823526e31a01e8c57245",
+    "private_instance_header": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-context\\v8tree\\Instance.h",
+    "private_instance_sha256": "56f4f32cfc1aa2c35bd98727ccc3b95f1ac0579ed45019e0fadefa0df2ccd1fd",
+    "native_flags_environment": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /IG:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-context /I{headers}/metadata-load /I{headers}/writer-2008 /IG:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-inline-cstr",
+    "base_profile": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-context.json",
+    "diff_vs_genuine": [
+      "--- ",
+      "+++ ",
+      "@@ -1,2 +1,3 @@",
+      "+// Inactive per-TU VC9 RTM profile: genuine inline c_str; size remains out of line.",
+      " // xstring internal header (from <string>)",
+      " #pragma once",
+      "@@ -1662,5 +1663,5 @@",
+      " \t\t}",
+      " ",
+      "-\tsize_type __CLR_OR_THIS_CALL size() const",
+      "+\t__declspec(noinline) size_type __CLR_OR_THIS_CALL size() const",
+      " \t\t{\t// return length of sequence",
+      " \t\treturn (_Mysize);"
+    ],
+    "parent_lease": "SolSerializerStringContext20261105",
+    "canonical_edits": 0,
+    "compiles": 0
+  },
+  "verified_hashes": {
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-inline-cstr\\xstring.h": "3d81fcda880faba35d28139dece8b4ef454e351ade81823526e31a01e8c57245",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-inline-cstr\\xstring": "3d81fcda880faba35d28139dece8b4ef454e351ade81823526e31a01e8c57245",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-context\\v8tree\\Instance.h": "56f4f32cfc1aa2c35bd98727ccc3b95f1ac0579ed45019e0fadefa0df2ccd1fd",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\SerializerLoadInstances.cpp": "26505e49d92d3c380181162634480fa40834d829e3bde86ae046fceb2466c605"
+  },
+  "prior_rejected": 1
+}

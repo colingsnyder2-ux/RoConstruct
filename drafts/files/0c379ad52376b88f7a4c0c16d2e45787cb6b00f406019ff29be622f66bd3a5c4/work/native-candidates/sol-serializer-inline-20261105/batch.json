@@ -1,0 +1,15 @@
+{
+  "jobs": [
+    {
+      "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\SerializerLoadInstances.cpp",
+      "checks": [
+        {
+          "addr": "00593250",
+          "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z"
+        }
+      ],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

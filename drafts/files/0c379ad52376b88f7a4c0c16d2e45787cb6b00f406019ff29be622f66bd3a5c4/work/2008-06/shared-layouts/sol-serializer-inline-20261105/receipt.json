@@ -1,0 +1,16 @@
+{
+  "status": "550-byte body and referenced data exact; strict proof fails four indirect calls as designed",
+  "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-151943-cff659c3\\unit-000\\candidate.obj",
+  "object_sha256": "e5508d0afe443b7195efdce28703b97e7c634e15d85a84a97b4ba28d5fc88767",
+  "compiles": 1,
+  "prior_rejections": 1,
+  "new_rejections": 0,
+  "changed_inputs": [],
+  "direct_bindings_verified": 17,
+  "indirect_sites": 4,
+  "dependencies": 707,
+  "functions": 338,
+  "draft_session": "91a6757a4ddd4513abda0906ff8820fd",
+  "leases": "No source or shared files edited; no worker lease taken. Parent frozen header leases respected.",
+  "next_action": "Parent review provider inventory and frozen private profile; compose archive and serial link under parent ownership. ResolveRefs epilogue and selected factory/transitive ABI/EH remain separate gates. No further worker compilation authorized."
+}

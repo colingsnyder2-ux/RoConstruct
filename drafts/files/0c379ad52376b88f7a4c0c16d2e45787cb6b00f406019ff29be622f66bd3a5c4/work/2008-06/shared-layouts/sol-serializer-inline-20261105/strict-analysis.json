@@ -1,0 +1,172 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\SerializerLoadInstances.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-151943-cff659c3\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00593250",
+        "requested_symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "status": "exact",
+        "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "score": 100,
+        "target_size": 550,
+        "object_size": 550,
+        "target_sha256": "143b3504d6576aca1393c2278f7c706a98db584235e72aed88834d4353599e77",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8435478,
+            1
+          ],
+          [
+            8593204,
+            44
+          ],
+          [
+            8593120,
+            83
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 64,
+              "target": "0057c2b0",
+              "symbol": "?findAttribute@XmlElement@@QAEPAVXmlAttribute@@ABVName@RBX@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 83,
+              "target": "0057c4f0",
+              "symbol": "?getValue@XmlNameValuePair@@QBE_NAAH@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 109,
+              "target": "00592940",
+              "symbol": "??0ArchiveBinder@@QAE@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 130,
+              "target": "0057c230",
+              "symbol": "?findFirstChildByTag@XmlElement@@QBEPBV1@ABVName@RBX@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 158,
+              "target": "0057c2b0",
+              "symbol": "?findAttribute@XmlElement@@QBEPBVXmlAttribute@@ABVName@RBX@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 179,
+              "target": "0057c360",
+              "symbol": "?getValue@XmlNameValuePair@@QBE_NAAPBVName@RBX@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 202,
+              "target": "00420190",
+              "symbol": "?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 232,
+              "target": "0055b6f0",
+              "symbol": "?read@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 245,
+              "target": "00420110",
+              "symbol": "?push_back@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 286,
+              "target": "00569620",
+              "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 310,
+              "target": "005693a0",
+              "symbol": "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 330,
+              "target": "00600660",
+              "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 369,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 390,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 396,
+              "target": "0057c250",
+              "symbol": "?findNextChildWithSameTag@XmlElement@@QBEPBV1@PBV1@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 415,
+              "target": "00592720",
+              "symbol": "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 435,
+              "target": "005931e0",
+              "symbol": "??1ArchiveBinder@@QAE@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 472,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 494,
+              "target": "00509db0",
+              "symbol": "?common@Log@G3D@@SAPAV12@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 501,
+              "target": "00509ef0",
+              "symbol": "?println@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 521,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 2.246257
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

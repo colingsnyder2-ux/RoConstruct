@@ -1,0 +1,61 @@
+{
+  "target": "00592720",
+  "swap_target": "serializer dependency closure",
+  "baseline_receipt": "sol-serializer-callees-20261105",
+  "status": "parked pending parent guidance; one authorized compile consumed",
+  "rejected_hypotheses": 1,
+  "source_sha256": "c49296ed0b3948ae2cbabe988031fcc4f24c0109c04b5de0cb16d1290d3d2c0b",
+  "object_sha256": "a44d8b67034665f74e8ed8a813c272510c1a3f2be730fe17f38c167f3121886d",
+  "target_size": 96,
+  "candidate_size": 96,
+  "first_difference": 79,
+  "difference": "candidate mov eax,1 before pop edi/esi/ebp; original after",
+  "relocations": [
+    {
+      "body_offset": 17,
+      "symbol": [
+        "?resolveIDREF@ArchiveBinder@@QAE_NUIDREFBinding@1@@Z",
+        0,
+        0,
+        32
+      ],
+      "kind": 6
+    },
+    {
+      "body_offset": 54,
+      "symbol": [
+        "??$_Count_if@V?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YAHV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@0V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z",
+        0,
+        471,
+        32
+      ],
+      "kind": 20
+    },
+    {
+      "body_offset": 66,
+      "symbol": [
+        "?resolveRefs@MergeBinder@RBX@@UAE_NXZ",
+        0,
+        489,
+        32
+      ],
+      "kind": 20
+    }
+  ],
+  "runner": "work\\2008-06\\native-check-runs\\20261105-151941-b983051c",
+  "profile": "profile.json",
+  "direct_binding_proof": false,
+  "missing_inputs": [
+    "parent authorization/evidence for second source hypothesis",
+    "strict exact body before binding acceptance",
+    "count_if helper and resolveIDREF transitive ABI/EH identity",
+    "linked provider selection and runtime gates"
+  ],
+  "next_bounded_action": "parent review saved object and scheduling evidence; no unchanged recompile",
+  "metrics": {
+    "inactive_exact": 0,
+    "selected_exact": null,
+    "fully_gated_swaps": 0,
+    "server_credit": 0
+  }
+}

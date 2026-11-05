@@ -1,0 +1,13 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/ArchiveBinderResolve.cpp",
+      "checks": [
+        {
+          "addr": "00592720",
+          "symbol": "?resolveRefs@ArchiveBinder@@UAE_NXZ"
+        }
+      ]
+    }
+  ]
+}
