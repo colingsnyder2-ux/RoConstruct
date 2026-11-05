@@ -1,0 +1,43 @@
+{
+  "scope": "CWorkspace::write 0046b860 candidate; exact bytes, referenced data and reviewed direct-call bindings only. No link, selection, runtime or class-swap claim.",
+  "jobs": [
+    {
+      "source": "native-classes/WorkspaceXmlWriter.cpp",
+      "checks": [
+        {
+          "addr": "0046b860",
+          "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "calls": [
+            {
+              "offset": 31,
+              "target": "0041eea0",
+              "symbol": "??$create@VContentProvider@RBX@@@ServiceProvider@RBX@@QBEPAVContentProvider@1@XZ"
+            },
+            {
+              "offset": 50,
+              "target": "0046b550",
+              "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+            },
+            {
+              "offset": 72,
+              "target": "0058e810",
+              "symbol": "?serialize@TextXmlWriter@@UAEXPBVXmlElement@@@Z"
+            },
+            {
+              "offset": 88,
+              "target": "0046b1e0",
+              "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ"
+            }
+          ]
+        }
+      ],
+      "layouts": [
+        {
+          "addr": "0046b860",
+          "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "thiscall": true
+        }
+      ]
+    }
+  ]
+}
