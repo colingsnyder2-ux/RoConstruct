@@ -32,13 +32,11 @@ def progress_description(data):
     return ('**Integrated code · %.2f%%** · %s / %s target bytes\n%s\n'
             '🟪 %s integrated · 🟧 %s inactive exact · 🩷 %s draft functions\n'
             '%s exact waiting · %s functions remaining unintegrated\n'
-            'Coverage = integrated + inactive exact, once per address; drafts excluded. '
-            'Inactive/draft work adds no runtime activation or server credit.\nSnapshot: %s') % (
+            'Inactive/draft work adds no runtime activation or server credit.') % (
                 100 * covered / total if total else 0, format(covered, ','), format(total, ','), bar,
                 format(integrated['functions'], ','), format(inactive['functions'], ','),
                 format(draft['functions'], ','), format(groups.get('exact_waiting', {}).get('functions', 0), ','),
-                format(sum(g['functions'] for g in groups.values()) - integrated['functions'], ','),
-                data.get('updated', 'unknown'))
+                format(sum(g['functions'] for g in groups.values()) - integrated['functions'], ','))
 
 
 def readable(symbol):
