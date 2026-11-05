@@ -54,8 +54,7 @@ checks = [
     ('native-classes/HttpTrustCheck.cpp', ['0056a2e0=?trustCheck@Http@RBX']),
     ('native-classes/HttpTrustInitialize.cpp', ['00569bf0=?initializeTrustCheck@RBX']),
     ('native-classes/HttpTrustState.cpp', []),
-    ('native-classes/HttpLifetime.cpp', ['00409750=??0Http@RBX', '005df620=??1Http@RBX']),
-    ('native-classes/SecureHtmlAdSyndicator.cpp', []),
+    ('native-classes/SecureHtmlAdSyndicator.cpp', ['00409750=??0Http@RBX', '005df620=??1Http@RBX']),
     ('native-classes/HttpTransport.cpp', ['00569a40=?post@Http@RBX', '00569ae0=?get@Http@RBX']),
     ('native-classes/HttpTransportState.cpp', ['00569910=?setHttpTransportMode@RBX']),
     ('native-classes/HttpResultCheck.cpp', ['00569920=?checkHttpResult@Http@RBX']),
@@ -211,7 +210,7 @@ print('sources:', len(checks), 'checked in', round(time.monotonic() - started, 2
 
 base = ROOT / 'rebuild/2008-06/out/native-current-audit'
 spec = json.loads((base / 'native-doc-link-command.json').read_text())
-args = [str(ROOT / "rebuild/2008-06/out/native-layouts/CheckCRobloxViewHelp.obj"), str(ROOT / "rebuild/2008-06/out/native-layouts/CheckInstanceChildAcceptance.obj")]
+args = [str(ROOT / "rebuild/2008-06/out/native-layouts/CheckCRobloxViewHelp.obj"), str(ROOT / "rebuild/2008-06/out/native-layouts/CheckInstanceChildAcceptance.obj"), str(ROOT / "rebuild/2008-06/out/native-layouts/CheckSecureHtmlAdSyndicator.obj")]
 for arg in spec['arguments']:
     if arg == 'RobloxShellNativeDoc.obj':
         args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckNativeAppEntryLinkProbe.obj'))
@@ -239,7 +238,7 @@ for name in ('CRobloxView', 'CMainFrameToolbars', 'CMultiPlayerPane', 'AppOpenFi
              'CRobloxWndActive', 'CSelectionPropGridSelection', 'CSelectionPropGridEvents',
              'CPropGridEvents', 'CPropGridInstances', 'CSelectionPropGrid', 'CRobloxViewInit', 'SelectionGroup',
              'ViewVerbs', 'InsertModelFromRobloxVerb', 'ChangeHistoryBase', 'ViewCommandRouting',
-             'CMainFrameNewDocument', 'CMainFrameSettingsCommand', 'CRenderSettingsFullscreen', 'CWebToolboxPage', 'CWebToolbox', 'CSecureHtmlView', 'CBrowserView', 'BrowserViewExternalFactory', 'BrowserViewExternalMethods', 'BrowserViewExternalGetApp', 'HttpRobloxSite', 'HttpScriptCheck', 'HttpTrustCheck', 'HttpTrustInitialize', 'HttpTrustState', 'HttpLifetime', 'SecureHtmlAdSyndicator', 'HttpTransport', 'HttpTransportState', 'HttpResultCheck', 'HttpWinInet', 'HttpWinHttp', 'MetadataExplorerOrder', 'PlayersSuperSafe', 'SelectionIterators', 'BrickColorConversions', 'SettingsDialogShow', 'CSettingsDialog',
+             'CMainFrameNewDocument', 'CMainFrameSettingsCommand', 'CRenderSettingsFullscreen', 'CWebToolboxPage', 'CWebToolbox', 'CSecureHtmlView', 'CBrowserView', 'BrowserViewExternalFactory', 'BrowserViewExternalMethods', 'BrowserViewExternalGetApp', 'HttpRobloxSite', 'HttpScriptCheck', 'HttpTrustCheck', 'HttpTrustInitialize', 'HttpTrustState', 'HttpTransport', 'HttpTransportState', 'HttpResultCheck', 'HttpWinInet', 'HttpWinHttp', 'MetadataExplorerOrder', 'PlayersSuperSafe', 'SelectionIterators', 'BrickColorConversions', 'SettingsDialogShow', 'CSettingsDialog',
              'CInstanceExplorer', 'CChatPrompt', 'CMainFrameMemoryLabels', 'CRobloxReportView',
              'LogLifetime', 'LogWriteEntry', 'LogFormatTime', 'LogFormatMemory', 'MainLogProvider', 'LogManagerGet',
              'LogManagerState', 'LogManagerDestructor', 'ThreadLogFactory', 'ThreadLogPath', 'MainLogManagerState',

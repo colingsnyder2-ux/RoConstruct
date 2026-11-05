@@ -6,7 +6,9 @@ by compiling the XTP 11.2.2 library units (xtp-11.2.2-shared-mfc style) and matc
 Writes work/2008-06/shared-layouts/class-tree-view-working.json.
 """
 import json
+import os
 import struct
+import subprocess
 import sys
 from pathlib import Path
 
@@ -65,7 +67,7 @@ for symbol, address in XTP_TARGETS.items():
     xtp_proof[symbol] = 'XTP recipe body exact' if hit and match.exact_match(t, tr, hit[0], hit[1]) else 'bound by call site only'
 
 original = Original()
-AUTH_SINGLETON = '?singleton@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@SAAAVAuthoringSettings@@XZ'
+AUTH_SINGLETON = '?singleton@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PADA@RBX@@SAAAVAuthoringSettings@@XZ'
 INTERNAL = dict(XTP_TARGETS)
 INTERNAL.update({
     AUTH_SINGLETON: 0x41fcf0,
@@ -160,11 +162,20 @@ for name, address in DEPENDENCIES:
     r[0].update(role='dependency body (binding proof; owned by another unit)',
                 call_site_only={k: hex(v) for k, v in site_only.items()})
     dependency_rows += r
-# AuthoringSettings singleton 0041fcf0: exact with verified targets in the committed CInsertObjectDialog receipt
+# Recompile singleton with current char-array template name and verify old call/data targets.
 committed = json.loads((ROOT / 'work/2008-06/shared-layouts/insert-object-dialog-working.json').read_text())
-auth_rows = [dict(r, role='proven by committed receipt work/2008-06/shared-layouts/insert-object-dialog-working.json')
-             for r in committed['methods'] if r['address'] == '0041fcf0' and r['symbol'] == AUTH_SINGLETON and r['exact']]
-assert len(auth_rows) == 1
+old = [r for r in committed['methods'] if r['address'] == '0041fcf0' and r['exact']]
+assert len(old) == 1
+auth_out = OUT / 'authoring-current'
+env = dict(os.environ, NATIVE_CHECK_OUT=str(auth_out))
+check = subprocess.run([sys.executable, str(HERE / 'check_native_class.py'),
+                        'native-classes/AuthoringSettings.cpp', '0041fcf0=' + AUTH_SINGLETON],
+                       cwd=ROOT, env=env, capture_output=True, text=True, check=True)
+assert '1/1 exact' in check.stdout, check.stdout
+auth_bindings = {key.replace('sAuthoringSettings@@3PBDB', 'sAuthoringSettings@@3PADA'): int(value, 16)
+                 for key, value in old[0]['verified_targets'].items()}
+auth_rows = verify(original, auth_out / 'CheckAuthoringSettings.obj', [(AUTH_SINGLETON, 0x41fcf0)], auth_bindings)
+auth_rows[0]['role'] = 'current char-array singleton and original call/data targets reverified'
 
 # 5. vtables: same slot count; every slot this object defines binds to the original slot value (own bodies by the exact
 # rows above, imports by name, XTP bodies by the recipe proof).
@@ -224,7 +235,8 @@ assert OWN[handlers[0]] == 0x433e30 and OWN[handlers[1]] == 0x435fa0, handlers
 
 H = ROOT / 'rebuild/2008-06/native-headers'
 paths = [Path(__file__), HERE / 'class_tree_view_profile.py', ROOT / 'rebuild/2008-06/native-classes/CClassTreeView.cpp', H / 'CClassTreeView.h', H / 'CReflectionTreeView.h',
-         HERE / 'NativeClassTreeViewLayout.cpp']
+         HERE / 'NativeClassTreeViewLayout.cpp', HERE / 'check_native_class.py',
+         ROOT / 'rebuild/2008-06/native-classes/AuthoringSettings.cpp', H / 'AuthoringSettings.h']
 receipt = {
     'class': 'CClassTreeView',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',

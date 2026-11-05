@@ -15,8 +15,8 @@ namespace RBX
 		{
 		}
 
-		Http(const char* url);
-		~Http();
+		__declspec(noinline) Http(const char* value) : url(value) {}
+		__declspec(noinline) ~Http() {}
 	public:
 		void post(std::istream&, bool, std::string&);
 		void get(std::string&);

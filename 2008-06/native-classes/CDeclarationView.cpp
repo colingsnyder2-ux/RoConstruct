@@ -153,7 +153,7 @@ void CDeclarationView::showDescriptor(const RBX::Reflection::Descriptor* descrip
         ownerClass = &signal->owner;
         item = RBX::Metadata::Reflection::singleton()->lookup(*signal);
     } else if (const EnumDescriptor::Item* enumItem = dynamic_cast<const EnumDescriptor::Item*>(descriptor)) {
-        text = G3D::format("%d: %s", enumItem->index, enumItem->name.c_str());  // +0xc (donor layout: index)
+        text = G3D::format("%d: %s", enumItem->value, enumItem->name.c_str());
     } else if (const ClassDescriptor* classDescriptor = dynamic_cast<const ClassDescriptor*>(descriptor)) {
         text = classDescriptor->name.toString();
         item = RBX::Metadata::Reflection::singleton()->lookup(*classDescriptor, false);

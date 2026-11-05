@@ -69,11 +69,11 @@ for symbol, address in XTP_TARGETS.items():
     xtp_proof[symbol] = 'XTP recipe body exact' if hit and match.exact_match(t, tr, hit[0], hit[1]) else 'bound by call site only'
 
 original = Original()
-AUTH_SINGLETON = '?singleton@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@SAAAVAuthoringSettings@@XZ'
+AUTH_SINGLETON = '?singleton@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PADA@RBX@@SAAAVAuthoringSettings@@XZ'
 SET_ITEM_STYLE = '?setItemStyle@CReflectionTreeView@@IAEXPAU_TREEITEM@@PBVItem@Metadata@Reflection@RBX@@@Z'
 INTERNAL = dict(XTP_TARGETS)
 INTERNAL.update({
-    # Not exact here (see 'open'); bound by their call sites in showClass.
+    # addProperty remains open; addFunction is checked below.
     '?addProperty@CMemberTreeView@@QAEXPBVPropertyDescriptor@Reflection@RBX@@@Z': 0x4352a0,
     '?addFunction@CMemberTreeView@@QAEXPBVFunctionDescriptor@Reflection@RBX@@@Z': 0x435680,
     AUTH_SINGLETON: 0x41fcf0,
@@ -114,6 +114,7 @@ METHODS = [
     ('?showEnum@CMemberTreeView@@QAEXPBVEnumDescriptor@Reflection@RBX@@@Z', 0x435180),
     ('?showClass@CMemberTreeView@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z', 0x435c80),
     ('?addSignal@CMemberTreeView@@QAEXPBVSignalDescriptor@Reflection@RBX@@@Z', 0x4353e0),
+    ('?addFunction@CMemberTreeView@@QAEXPBVFunctionDescriptor@Reflection@RBX@@@Z', 0x435680),
     ('?appendArgument@@YAXAAHAAV?$basic_string', 0x435510),
     ('??$for_each@V?$_Const_iterator@$00@?$list@UItem@SignatureDescriptor', 0x435630),
     ('?sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ', 0x433860),
@@ -165,8 +166,10 @@ for name, address in DEPENDENCIES:
             site_only[symbol] = int(value, 16)
     r[0].update(role='dependency body (binding proof; owned by another unit)', call_site_only={k: hex(v) for k, v in site_only.items()})
     dependency_rows += r
-auth = json.loads((ROOT / 'work/2008-06/shared-layouts/insert-object-dialog-working.json').read_text())
-assert any(r['address'] == '0041fcf0' and r['symbol'] == AUTH_SINGLETON and r['exact'] for r in auth['methods'])
+auth = json.loads((ROOT / 'work/2008-06/shared-layouts/class-tree-view-working.json').read_text())
+for path, expected in auth['sources'].items():
+    assert sha(ROOT / path) == expected, path
+assert any(r['address'] == '0041fcf0' and r['symbol'] == AUTH_SINGLETON and r['exact'] for r in auth['dependencies'])
 
 # 4. vtables
 raw = obj.read_bytes()
@@ -243,11 +246,12 @@ assert all(class_rows.values()), class_rows
 H = ROOT / 'rebuild/2008-06/native-headers'
 paths = [Path(__file__), HERE / 'class_tree_view_profile.py', ROOT / 'rebuild/2008-06/native-classes/CMemberTreeView.cpp', H / 'CMemberTreeView.h', H / 'CClassTreeView.h',
          H / 'CReflectionTreeView.h', H / 'reflection/Metadata.h', HERE / 'NativeMemberTreeViewLayout.cpp']
+paths += [H / 'reflection/function.h', H / 'reflection/signal.h']
 receipt = {
     'class': 'CMemberTreeView',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
     'profile': 'document-swap flags + XTP 11.2.2 headers (/UNOMINMAX /D_XTP_STATICLINK); noinline: CString operator PCXSTR; std::string::c_str; EnumDescriptor enumsBegin/enumsEnd (shared class_tree_view_profile)',
-    'open': ['addProperty 004352a0 and addFunction 00435680: the original reads PropertyDescriptor::bIsPublic and FunctionDescriptor::signature inline; the donor reflection/property.h and function.h declare isPublic()/getSignature() out of line, and inline copies would shadow the donor headers for every native unit (needs maintainer sign-off)'],
+    'open': ['addProperty 004352a0 still needs the original inline PropertyDescriptor::isPublic path.'],
     'original_sha256': sha(ROOT / 'work/2008-06/original-p4-reference/Roblox.exe'),
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
     'object_sha256': sha(obj),

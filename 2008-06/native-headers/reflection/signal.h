@@ -131,7 +131,7 @@ namespace RBX
 
 		public:
 			boost::shared_ptr<SignalInstance> getSignalInstance(SignalSource& source) const;
-			const SignatureDescriptor& getSignature() const;
+			const SignatureDescriptor& getSignature() const { return signature; }
 		};
 
 		class Signal

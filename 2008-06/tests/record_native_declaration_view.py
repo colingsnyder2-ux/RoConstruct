@@ -39,8 +39,14 @@ INTERNAL = {
     '__GUID_3050f1ff_98b5_11cf_bb82_00aa00bdce0b': 0x812b54,  # IID_IHTMLElement (bytes checked below)
     # Value::get<std::string> instance, declared only in reflection/type.h; bound by appendArgument's call site.
     '??$get@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ': 0x434f20,
-    # Not exact here (see 'open'); bound by the call sites in its body under the experiment profile.
     '?showDescriptor@CDeclarationView@@QAEXPBVDescriptor@Reflection@RBX@@@Z': 0x435860,
+    '?singleton@Reflection@Metadata@RBX@@SA?AV?$shared_ptr@VReflection@Metadata@RBX@@@boost@@XZ': 0x445020,
+    '?lookup@Reflection@Metadata@RBX@@QBEPAVMember@213@ABVPropertyDescriptor@13@@Z': 0x443ab0,
+    '?lookup@Reflection@Metadata@RBX@@QBEPAVMember@213@ABVFunctionDescriptor@13@@Z': 0x443b00,
+    '?lookup@Reflection@Metadata@RBX@@QBEPAVMember@213@ABVSignalDescriptor@13@@Z': 0x443b50,
+    '?lookup@Reflection@Metadata@RBX@@QBEPAVClass@213@ABVClassDescriptor@13@_N@Z': 0x443210,
+    '?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ': 0x509b10,
+    '??1?$shared_ptr@VReflection@Metadata@RBX@@@boost@@QAE@XZ': 0x600660,
 }
 METHODS = [
     ('??0CDeclarationView@@QAE@XZ', 0x434500),
@@ -53,6 +59,7 @@ METHODS = [
     ('?OnInitialUpdate@CDeclarationView@@UAEXXZ', 0x434550),
     ('?OnDocumentComplete@CDeclarationView@@UAEXPBD@Z', 0x4346b0),
     ('?setContent@CDeclarationView@@QAEXPBVItem@Metadata@Reflection@RBX@@PBD1@Z', 0x434020),
+    ('?showDescriptor@CDeclarationView@@QAEXPBVDescriptor@Reflection@RBX@@@Z', 0x435860),
     ('?appendArgument@@YAXAAHAAV?$basic_string', 0x435550),
     ('??$for_each@V?$_Const_iterator@$00@?$list@UItem@SignatureDescriptor', 0x435630),
 ]
@@ -135,7 +142,10 @@ start, section = definitions['?_messageEntries@?1??GetThisMessageMap@CDeclaratio
 assert struct.unpack_from('<6I', raw, sections[section][4] + start) == (0,) * 6
 
 paths = [Path(__file__), HERE / 'declaration_view_profile.py', ROOT / 'rebuild/2008-06/native-classes/CDeclarationView.cpp',
-         ROOT / 'rebuild/2008-06/native-headers/CDeclarationView.h', HERE / 'NativeDeclarationViewLayout.cpp']
+         ROOT / 'rebuild/2008-06/native-headers/CDeclarationView.h', HERE / 'NativeDeclarationViewLayout.cpp',
+         ROOT / 'rebuild/2008-06/native-headers/reflection/function.h',
+         ROOT / 'rebuild/2008-06/native-headers/reflection/signal.h',
+         ROOT / 'rebuild/2008-06/native-headers/reflection/enumconverter.h']
 result = {'class': 'CDeclarationView', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'original_sha256': sha(original.path),
           'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
           'layout_obj': sha(layout), 'unit_obj': sha(obj), 'methods': rows, 'dependencies': dependency_rows,
@@ -143,9 +153,7 @@ result = {'class': 'CDeclarationView', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM
           'layout': {'sizeof': '0x114', 'base': 'CHtmlView (0xf4)', 'document': '0xf4 (CComQIPtr<IHTMLDocument2>)',
                      'declaration': '0xf8', 'ownerDiv': '0xfc', 'owner': '0x100', 'summaryDiv': '0x104', 'summary': '0x108',
                      'deprecatedElement': '0x10c', 'preliminaryElement': '0x110 (CComQIPtr<IHTMLElement>)'},
-          'open': ['showDescriptor 00435860: the original reads FunctionDescriptor::signature and SignalDescriptor::signature '
-                   'inline; the donor reflection/function.h and signal.h declare getSignature() out of line (shared blocker with '
-                   'CMemberTreeView::addFunction). Exact under the inline-getSignature experiment (exp_probe.py).']}
+          'open': ['Metadata lookup providers and Value::get<std::string> remain unresolved in the diagnostic link.']}
 (ROOT / 'work/2008-06/shared-layouts/declaration-view-working.json').write_text(json.dumps(result, indent=1) + '\n')
 print('PASS native CDeclarationView: %d exact bodies, targets verified' % len(rows))
 print(json.dumps({'exact': [r['address'] for r in rows], 'dependencies': [(r['address'], r['exact']) for r in dependency_rows],
