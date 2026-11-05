@@ -17,6 +17,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import struct
 import sys
 import time
 import uuid
@@ -82,6 +83,48 @@ def compiler_flags(source):
     return flags + ['/D_XTP_STATICLINK', '/D_XTPLIB_NOAUTOLINK', '/I' + str(ROOT / 'tools/libs/xtp-11.2.2/Source')]
 
 
+def check_calls(raw, symbol, body, target, address, expected):
+    """Assert reviewed direct-call bindings; indirect calls remain explicit blockers.
+
+    Expected rows are {offset: instruction offset, target: original hex VA,
+    symbol: exact decorated COFF name}. This proves bindings, not callee ABI.
+    """
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_GRP_CALL
+    from capstone.x86 import X86_OP_IMM
+    sections, symbols, definitions, _ = match._coff_data_index(raw)
+    start, section = definitions[symbol]
+    table = sections[section]
+    refs = {}
+    for index in range(table[7]):
+        offset, name, kind = struct.unpack_from('<IIH', raw, table[5] + 10 * index)
+        if start <= offset < start + len(body):
+            refs[offset - start] = (symbols[name][0], kind)
+    decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+    decoder.detail = True
+    declarations = {row['offset']: row for row in expected}
+    if len(declarations) != len(expected):
+        raise ValueError('duplicate call expectation offset')
+    rows = []
+    for instruction in decoder.disasm(target, address):
+        if not instruction.group(CS_GRP_CALL):
+            continue
+        offset = instruction.address - address
+        direct = instruction.operands[0].type == X86_OP_IMM
+        destination = instruction.operands[0].imm if direct else None
+        binding = refs.get(offset + 1)
+        wanted = declarations.pop(offset, None)
+        ok = bool(direct and instruction.bytes[0] == 0xe8 and binding and binding[1] == 20
+                  and wanted and binding[0] == wanted['symbol']
+                  and destination == int(wanted['target'], 16)
+                  and body[offset + 1:offset + 5] == b'\0\0\0\0')
+        rows.append({'offset': offset, 'target': f'{destination:08x}' if direct else None,
+                     'symbol': binding[0] if binding else None,
+                     'status': 'verified_binding' if ok else 'unresolved_or_wrong_binding'})
+    return {'passed': not declarations and all(row['status'] == 'verified_binding' for row in rows),
+            'calls': rows, 'unused_expectations': list(declarations.values()),
+            'scope': 'Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof.'}
+
+
 def analyze_object(job, obj):
     raw = obj.read_bytes()
     bodies = match.coff_functions(raw)
@@ -99,9 +142,15 @@ def analyze_object(job, obj):
             exact = set(refs) <= set(relocs) and match.exact_match(target, refs, body, relocs)
             row.update(symbol=name, status='exact' if exact else 'different', score=match.score(target, refs, body, relocs),
                        target_size=len(target), object_size=len(body), target_sha256=hashlib.sha256(target).hexdigest())
+            masked = set(refs) | set(relocs)
+            row['first_byte_difference'] = next((i for i in range(min(len(target), len(body)))
+                if not any(r <= i < r + 4 for r in masked) and target[i] != body[i]),
+                min(len(target), len(body)) if len(target) != len(body) else None)
             if exact:
                 data_matches, data_errors = match.data_check('2008-06', addr, target, match.coff_data_refs(raw, name))
                 row.update(data_matches=data_matches, data_errors=data_errors)
+                if 'calls' in check:
+                    row['call_identity'] = check_calls(raw, name, body, target, int(addr, 16), check['calls'])
         row['check_seconds'] = round(time.monotonic() - check_started, 6)
         checks.append(row)
     if job['ranges']:
@@ -199,6 +248,8 @@ def compact(results):
             'exact_checks': sum(r['status'] == 'exact' for r in checks), 'checks': len(checks),
             'data_checked': sum('data_errors' in r for r in checks),
             'verified_checks': sum(r['status'] == 'exact' and 'data_errors' in r and not r['data_errors'] for r in checks),
+            'binding_verified_checks': sum(r['status'] == 'exact' and 'data_errors' in r and not r['data_errors']
+                                           and r.get('call_identity', {}).get('passed', False) for r in checks),
             'data_mismatches': [r for r in checks if r.get('data_errors')][:8],
             'issues': [{'source': r['source'], 'error': r['error']} for r in results if r.get('error')][:8],
             'mismatches': [r for r in checks if r['status'] != 'exact'][:8],
@@ -301,7 +352,10 @@ def main():
     parser.add_argument('input', type=Path, help='manifest for start/run; run directory otherwise')
     parser.add_argument('--manifest', type=Path, help='analyze: replacement comparisons against existing objects')
     parser.add_argument('--workers', type=int, choices=range(1, 9), default=3)
+    parser.add_argument('--require-proof', action='store_true', help='run/analyze: fail unless every explicit check has fresh exact bytes, data and reviewed call bindings')
     args = parser.parse_args()
+    if args.require_proof and args.action not in ('run', 'analyze'):
+        parser.error('--require-proof supports foreground run/analyze only')
     if args.action in ('start', 'run'):
         jobs = jobs_from(json.loads(args.input.read_text(encoding='utf-8-sig')))
         RUNS.mkdir(parents=True, exist_ok=True)
@@ -336,9 +390,18 @@ def main():
             results.append({'source': job['source'], 'object': str(obj), 'changed_inputs': changed,
                             'scope': 'recorded object analysis only; not a fresh build', **analyze_object(job, obj)})
             native_work.log_checks(run, job, results[-1], mode='analyze')
+        # Analysis can take seconds. Inputs must still match after the whole batch.
+        for result in results:
+            receipt = receipts[result['source'].casefold()]
+            expected = dict(receipt['dependencies'])
+            expected[receipt['object']] = receipt['object_sha256']
+            result['changed_inputs'] = sorted(set(result['changed_inputs']) | {
+                p for p, digest in expected.items() if not Path(p).exists() or sha(p) != digest})
         output = run / ('analysis-' + uuid.uuid4().hex[:8] + '.json')
         save(output, results)
         print(json.dumps({'state': 'analyzed', 'sources': len(results), 'changed_input_sources': sum(bool(r['changed_inputs']) for r in results), 'results': str(output)}))
+        if args.require_proof:
+            require_proof(results)
         return
     elif args.action == '_worker':
         execute(args.input.resolve(), args.workers)
@@ -347,6 +410,16 @@ def main():
         summary = display(args.input.resolve())
     if summary['state'] == 'failed':
         raise SystemExit(1)
+    if args.require_proof:
+        require_proof(json.loads((Path(summary['run']) / 'results.json').read_text()))
+
+
+def require_proof(results):
+    checks = [row for result in results for row in result.get('checks', [])]
+    if (not checks or any(result.get('status', 'complete') != 'complete' or result.get('changed_inputs') for result in results)
+            or any(row['status'] != 'exact' or 'data_errors' not in row or row['data_errors']
+                   or not row.get('call_identity', {}).get('passed', False) for row in checks)):
+        raise SystemExit('proof incomplete; inspect saved receipt (no ABI/runtime/server credit)')
 
 
 if __name__ == '__main__':

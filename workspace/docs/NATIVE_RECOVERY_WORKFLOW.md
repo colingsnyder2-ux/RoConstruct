@@ -1,5 +1,11 @@
 # Native recovery workflow
 
+Default campaign policy: `docs/NATIVE_SWAP_BATCH.md`. Name one runnable swap
+target, track its current blockers, compile evidence-backed variants once per
+isolated source, reuse objects for byte/data/call proof, then advance integration
+obligations. Stop after three rejected hypotheses. Existing clocks still apply;
+this does not authorize resetting budgets or activating unproven providers.
+
 Goal: recover real 2008-06 native code fast. Keep noise, tokens, compiles, and bad promotions low.
 
 ## Rules

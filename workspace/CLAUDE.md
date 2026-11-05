@@ -11,6 +11,13 @@ lists them all.
 
 ## Efficient native integration checks
 
+- Native recovery defaults to `docs/NATIVE_SWAP_BATCH.md`: choose one runnable
+  swap target and current blockers, batch evidence-backed variants in isolated
+  runner outputs, compile once and reuse objects for byte/data/call/diff checks.
+  After a match, advance provider/layout/ABI/selection proof. After three rejected
+  hypotheses, park with evidence and choose another required blocker. Report
+  inactive, selected, fully gated class swaps and server credit separately.
+
 - Use `roc.cmd native-asm 2008-06 ADDR [ADDR...]` for grouped disassembly and
   its `--obj`/`--sym` mode for object comparison. Check relocation targets too.
 - Run `python rebuild/2008-06/tests/verify_native_checkpoint.py` to batch the

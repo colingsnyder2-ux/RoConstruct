@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import struct
 from pathlib import Path
 import tempfile
 import sys
@@ -14,6 +15,66 @@ spec.loader.exec_module(runner)
 
 
 class RunnerTests(unittest.TestCase):
+    def call_fixture(self, symbol='?right@@', kind=20):
+        raw = struct.pack('<IIH', 1, 0, kind)
+        table = [0] * 8
+        table[7] = 1
+        index = ({1: table}, [(symbol,)], {'?caller@@': (0, 1)}, {})
+        return raw, index
+
+    def test_call_binding_rejects_wrong_symbol_target_and_addend(self):
+        raw, index = self.call_fixture()
+        target = b'\xe8\x0b\x00\x00\x00\xc3'  # 00500010
+        body = b'\xe8\x00\x00\x00\x00\xc3'
+        expected = [{'offset': 0, 'symbol': '?right@@', 'target': '00500010'}]
+        with patch.object(runner.match, '_coff_data_index', return_value=index):
+            def check(code=body, rows=expected):
+                return runner.check_calls(raw, '?caller@@', code, target, 0x500000, rows)
+            self.assertTrue(check()['passed'])
+            self.assertFalse(check(rows=[dict(expected[0], symbol='?wrong@@')])['passed'])
+            self.assertFalse(check(rows=[dict(expected[0], target='00500020')])['passed'])
+            self.assertFalse(check(code=target)['passed'])
+            self.assertFalse(check(rows=[])['passed'])
+            self.assertFalse(check(rows=expected + [{'offset': 5, 'target': '0', 'symbol': '?extra'}])['passed'])
+
+    def test_indirect_call_and_wrong_relocation_kind_are_not_proven(self):
+        raw, index = self.call_fixture(kind=6)
+        with patch.object(runner.match, '_coff_data_index', return_value=index):
+            result = runner.check_calls(raw, '?caller@@', b'\xe8\0\0\0\0', b'\xe8\0\0\0\0', 0x500000,
+                                        [{'offset': 0, 'symbol': '?right@@', 'target': '00500005'}])
+            self.assertFalse(result['passed'])
+            self.assertFalse(runner.check_calls(raw, '?caller@@', b'\xff\xd0', b'\xff\xd0', 0x500000, [])['passed'])
+            self.assertTrue(runner.check_calls(raw, '?caller@@', b'\xc3', b'\xc3', 0x500000, [])['passed'])
+
+    def test_strict_proof_rejects_missing_calls_data_and_stale_inputs(self):
+        row = {'status': 'exact', 'data_errors': [], 'call_identity': {'passed': True}}
+        runner.require_proof([{'status': 'complete', 'checks': [row]}])
+        for result in ({'checks': []}, {'checks': [dict(row, call_identity={})]},
+                       {'checks': [dict(row, data_errors=['wrong data'])]},
+                       {'checks': [row], 'changed_inputs': ['shared.h']},
+                       {'status': 'failed', 'checks': [row]}):
+            with self.assertRaises(SystemExit):
+                runner.require_proof([result])
+
+    def test_strict_reanalysis_rejects_dependency_changed_during_analysis(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source, obj = root / 'Foo.cpp', root / 'candidate.obj'
+            source.write_text('before')
+            obj.write_bytes(b'compiled')
+            runner.save(root / 'manifest.json', {'jobs': [{'source': str(source)}]})
+            runner.save(root / 'results.json', [{'source': str(source), 'object': str(obj),
+                'object_sha256': runner.sha(obj), 'status': 'complete',
+                'dependencies': {str(source): runner.sha(source)}}])
+            def analyze(*args):
+                source.write_text('after')
+                return {'checks': [{'status': 'exact', 'data_errors': [], 'call_identity': {'passed': True}}]}
+            with patch.object(sys, 'argv', [str(SCRIPT), 'analyze', str(root), '--require-proof']), \
+                 patch.object(runner, 'analyze_object', side_effect=analyze), \
+                 patch.object(runner.native_work, 'log_checks'), patch('builtins.print'):
+                with self.assertRaises(SystemExit):
+                    runner.main()
+
     def test_batch_header_drift_invalidates_prior_exact_rows(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

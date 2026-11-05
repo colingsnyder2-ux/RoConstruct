@@ -1,5 +1,12 @@
 # Native integration: work branch is authoritative
 
+Prioritize one explicit runnable swap and its current blocker list using
+`docs/NATIVE_SWAP_BATCH.md`. Batch reviewed experiments, compile once per source,
+reuse objects for byte/data/call assertions, park after three rejected hypotheses,
+and move exact bodies toward provider/ABI/selection gates. Track inactive matches,
+selected matches, gated swaps and independent server credit separately. Do not
+mistake another inactive exact for completed runnable integration.
+
 Canonical native source, headers, world files, probes, tests, recipes and tooling
 live in `RoConstruct`, branch `work`, under `workspace/` with their normal
 repo-relative paths. Commit reviewed native updates directly there. Do not use
