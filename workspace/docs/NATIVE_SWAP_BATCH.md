@@ -3,6 +3,22 @@
 Goal: reduce blockers for one named runnable class swap. An inactive exact body is
 useful evidence, not a completed integration. Preserve automatic draft sharing.
 
+## Keep recovery separate from mining
+
+Use the task contract in `docs/NATIVE_AGENT.md`. "Fast native exacts" means
+required native bodies/dependencies for the chosen runnable swap. It does not
+mean running `roc auto`, `roc xcopy`, `roc immediates` or `roc similar` to increase
+standalone `src/` mining totals. Those commands are outside this default loop.
+Read mined candidates as untrusted evidence when useful; preserve real native
+classes and prove their actual providers/call identities/ABI independently.
+
+Before each batch record: swap target, concrete blocker, required native path or
+provider, baseline proof and next gate. After a local exact, advance its missing
+integration obligation. Progress is a required blocker reduced or a new gate
+passed; an upload, compile, mined count or unrelated exact is not a runnable gain.
+Keep contributor recovery/upload separate from the owner's reviewed integration
+and gated runtime activation. A finished draft never grants server credit.
+
 ## Choose the next integration outcome
 
 Read CLAUDE.md, current closure/selection receipt, relevant source/header, newest
