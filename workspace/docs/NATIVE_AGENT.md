@@ -19,7 +19,9 @@ branch as the native initialization/update source.
 ## Automatic Worker download
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_drafts.py`, `research/native-units.json`,
-or `research/native-source-lock.json` is missing, `python -m roc.native_drafts --help` is unavailable, package authority differs from `RoConstruct/work/workspace`, or a package marker
+or `research/native-source-lock.json` is missing, `python -m roc.native_drafts --help` is unavailable,
+`python rebuild/2008-06/tests/native_check_runner.py --help` is unavailable or lacks
+`--require-proof`, package authority differs from `RoConstruct/work/workspace`, or a package marker
 reports `native_workflow_version` below 52, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.json
