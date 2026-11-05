@@ -2,7 +2,16 @@ name: tests
 
 on:
   push:
+    paths:
+      - "workspace/**"
+      - "!workspace/workspace-manifest.json"
+      - "!workspace/roconstruct-package.json"
+      - ".github/workflows/tests.yml"
   pull_request:
+
+concurrency:
+  group: source-tests-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   pytest:
@@ -17,6 +26,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
+          sparse-checkout: |
+            workspace
+            .github
           ref: ${{ (github.ref == 'refs/heads/main' || github.base_ref == 'main') && 'work' || github.sha }}
       - uses: actions/setup-python@v6
         with:
