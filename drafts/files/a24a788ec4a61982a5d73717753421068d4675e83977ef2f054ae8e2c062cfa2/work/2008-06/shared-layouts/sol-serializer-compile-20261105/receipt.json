@@ -1,0 +1,36 @@
+{
+  "status": "parked-awaiting-parent-guidance",
+  "compiles": 1,
+  "rejected_hypotheses": 1,
+  "source_edits": 0,
+  "run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-150534-efa70e52",
+  "object_sha256": "121f5dda9c2ae4f7b5860ddd8df911c8b6bf6487c59ee1d6f02ebfd46d09820f",
+  "source_sha256": "26505e49d92d3c380181162634480fa40834d829e3bde86ae046fceb2466c605",
+  "body": {
+    "addr": "00593250",
+    "requested_symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+    "status": "different",
+    "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+    "score": 89,
+    "target_size": 550,
+    "object_size": 547,
+    "target_sha256": "143b3504d6576aca1393c2278f7c706a98db584235e72aed88834d4353599e77",
+    "first_byte_difference": 52,
+    "check_seconds": 0.693113
+  },
+  "draft_session": "1a3d0fee6cdd4759a21646dd6131d59c",
+  "blocker": "Name::c_str inline SSO original versus imported c_str candidate; parent owns shared header/profile. No further compile authorized.",
+  "next_action": "Parent reviews Name/string profile and original SSO evidence; explicitly authorize bounded next hypothesis before another compile.",
+  "gates": [
+    "body mismatch",
+    "data diagnostic only until exact",
+    "direct calls diagnostic only until exact",
+    "indirect control-block/IAT sites retained",
+    "canonical compatibility/ODR",
+    "ArchiveBinder EH/layout",
+    "transitive callee ABI",
+    "provider selection",
+    "runtime"
+  ],
+  "renderer_writer_budget": 3
+}

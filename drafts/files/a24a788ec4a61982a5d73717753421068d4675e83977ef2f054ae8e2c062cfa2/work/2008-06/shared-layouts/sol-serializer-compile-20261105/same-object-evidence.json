@@ -1,0 +1,173 @@
+{
+  "data_diagnostic_only": [
+    [],
+    []
+  ],
+  "call_obligations_diagnostic_only": {
+    "code_shape_aligned": false,
+    "groups": [
+      {
+        "expected_original_destination": "0x57c2b0",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          64,
+          158
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x57c4f0",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          83
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x592940",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          109
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x57c230",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          130
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x57c360",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          179
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x420190",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          202
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x55b6f0",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          232
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x420110",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          245
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x569620",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          286
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x5693a0",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          310
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x600660",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          330
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": null,
+        "candidate_rel32_symbol": null,
+        "sites": [
+          369
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": null,
+        "candidate_rel32_symbol": null,
+        "sites": [
+          390
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x57c250",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          396
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x592720",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          415
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x5931e0",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          435
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": null,
+        "candidate_rel32_symbol": null,
+        "sites": [
+          472
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x509db0",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          494
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": "0x509ef0",
+        "candidate_rel32_symbol": null,
+        "sites": [
+          501
+        ],
+        "status": "callee_identity_unresolved"
+      },
+      {
+        "expected_original_destination": null,
+        "candidate_rel32_symbol": null,
+        "sites": [
+          521
+        ],
+        "status": "callee_identity_unresolved"
+      }
+    ],
+    "scope": "Direct relative call bindings only; original address is an expected binding, not proof of selected provider. Each indirect site remains separate."
+  }
+}

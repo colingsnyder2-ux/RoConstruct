@@ -1,0 +1,148 @@
+?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z 550 547
+     mov esi, ecx
+     cmp eax, dword ptr [<r>]
+  -  jne 0x1cf
+  +  jne 0x1cc
+     mov eax, dword ptr [<r>]
+     push eax
+  ...
+     xor ebx, ebx
+     cmp eax, ebx
+  -  je 0x1cf
+  +  je 0x1cc
+     push esi
+     lea ecx, [eax + 8]
+     call <r>
+     test al, al
+  -  je 0x1cf
+  +  je 0x1cc
+     cmp dword ptr [esi], 4
+  -  jl 0x1cf
+  +  jl 0x1cc
+     lea ecx, [esp + 0x40]
+     call <r>
+  ...
+     mov edi, eax
+     cmp edi, ebx
+  -  je 0x19b
+  +  je 0x198
+     mov edx, dword ptr [<r>]
+     push edx
+  ...
+     call <r>
+     cmp eax, ebx
+  -  je 0x188
+  +  je 0x185
+     lea ecx, [esp + 0x10]
+     push ecx
+  ...
+     call <r>
+     cmp al, bl
+  -  je 0x188
+  +  je 0x185
+     mov edx, dword ptr [esp + 0x10]
+     push edx
+  ...
+     push eax
+     call <r>
+  -  jmp 0x14f
+  +  jmp 0x14c
+     mov eax, dword ptr [esp + 0x10]
+     cmp eax, ebx
+  -  je 0x114
+  -  cmp dword ptr [eax + 0x1c], 0x10
+  -  jb <r>
+  -  mov esi, dword ptr [eax + 8]
+  -  jmp 0x119
+  -  lea esi, [eax + 8]
+  -  jmp <r>
+  +  je 0x111
+  +  lea ecx, [eax + 4]
+  +  call dword ptr [<r>]
+  +  mov esi, eax
+  +  jmp 0x116
+     mov esi, <r>
+  -  lea ecx, [esp + <r>]
+  +  lea ecx, [esp + 0x1c]
+     push ecx
+  -  call 0xfffd63d0
+  +  call <r>
+     mov eax, dword ptr [eax]
+     push esi
+  ...
+     push 2
+     push eax
+  -  mov byte ptr [esp + <r>], <r>
+  -  call 0xfffd6150
+  +  mov byte ptr [esp + 0xb8], 2
+  +  call <r>
+     add esp, 0x14
+     lea ecx, [esp + 0x1c]
+  -  mov byte ptr [esp + <r>], <r>
+  -  call 0x6d410
+  +  mov byte ptr [esp + 0xa4], 1
+  +  call <r>
+     mov esi, dword ptr [esp + 0x18]
+     mov byte ptr [esp + 0xa4], bl
+     cmp esi, ebx
+  -  je 0x188
+  +  je 0x185
+     lea edx, [esi + 4]
+     or eax, 0xffffffff
+     lock xadd dword ptr [edx], eax
+  -  jne 0x188
+  +  jne 0x185
+     mov edx, dword ptr [esi]
+     mov eax, dword ptr [edx + 4]
+  ...
+     or edx, 0xffffffff
+     lock xadd dword ptr [ecx], edx
+  -  jne 0x188
+  +  jne 0x185
+     mov eax, dword ptr [esi]
+     mov edx, dword ptr [eax + 8]
+     mov ecx, esi
+     call edx
+  -  mov ecx, dword ptr [ebp + <r>]
+  +  mov ecx, dword ptr [ebp + 8]
+     push edi
+  -  call 0xfffe9000
+  +  call <r>
+     mov edi, eax
+     cmp edi, ebx
+     jne 0x91
+  -  lea ecx, [esp + <r>]
+  -  call 0xfffff4d0
+     lea ecx, [esp + 0x40]
+  -  mov dword ptr [esp + <r>], <r>
+  -  call 0xffffff90
+  +  call <r>
+  +  lea ecx, [esp + 0x40]
+  +  mov dword ptr [esp + 0xa4], 0xffffffff
+  +  call <r>
+     mov ecx, dword ptr [esp + 0x9c]
+     mov dword ptr fs:[0], ecx
+  ...
+     mov esp, ebp
+     pop ebp
+  -  ret <r>
+  +  ret 8
+     push <r>
+  -  lea ecx, [esp + <r>]
+  +  lea ecx, [esp + 0x28]
+     call dword ptr [<r>]
+     lea eax, [esp + 0x24]
+     push eax
+  -  mov dword ptr [esp + <r>], <r>
+  -  call 0xfff76b60
+  +  mov dword ptr [esp + 0xa8], 3
+  +  call <r>
+     mov ecx, eax
+  -  call 0xfff76ca0
+  +  call <r>
+     lea ecx, [esp + 0x24]
+  -  mov dword ptr [esp + <r>], <r>
+  +  mov dword ptr [esp + 0xa4], 0xffffffff
+     call dword ptr [<r>]
+     mov ecx, dword ptr [esp + 0x9c]
+  ...
