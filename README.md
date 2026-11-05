@@ -8,7 +8,7 @@
   <b>Rebuilding classic Roblox clients (2007–2012) as real C++ source, together.</b><br>
   <a href="https://colingsnyder2-ux.github.io/RoConstruct/">Progress site</a> ·
   <a href="https://discord.gg/Tayg763nrG">Discord</a> ·
-  <a href="https://github.com/colingsnyder2-ux/RoConstruct-findings">Findings</a>
+  <a href="https://github.com/colingsnyder2-ux/RoConstruct/tree/work">Findings</a>
 </p>
 
 ---
@@ -57,17 +57,17 @@ fixes, ports (WebAssembly, Linux, macOS), bug fixes, modding and preservation.
 | [docs/SOURCES.md](https://github.com/colingsnyder2-ux/RoConstruct/blob/work/workspace/docs/SOURCES.md) | every source we compile, what is still missing ([live page](https://colingsnyder2-ux.github.io/RoConstruct/sources.html)) |
 
 Recovered sources, portable agent evidence and historical research reports are published
-in [RoConstruct-findings](https://github.com/colingsnyder2-ux/RoConstruct-findings)
-([latest source ZIP](https://github.com/colingsnyder2-ux/RoConstruct-findings/releases/download/findings-latest/roconstruct-findings-src.zip)).
+in [RoConstruct work branch](https://github.com/colingsnyder2-ux/RoConstruct/tree/work)
+([latest source ZIP](https://github.com/colingsnyder2-ux/RoConstruct/archive/refs/heads/work.zip)).
 
 ## Native rebuild
 
-The complete [2008-06 native rebuild](https://github.com/colingsnyder2-ux/RoConstruct-findings/tree/main/2008-06) lives in RoConstruct-findings: assembled C++, configs, patches, required runtime harnesses and verification metadata. Run its `compile_test.bat` with `ROC_ROOT` pointing to this configured tooling checkout.
+The complete [2008-06 native rebuild](https://github.com/colingsnyder2-ux/RoConstruct/tree/work/2008-06) lives in RoConstruct work branch: assembled C++, configs, patches, required runtime harnesses and verification metadata. Run its `compile_test.bat` with `ROC_ROOT` pointing to this configured tooling checkout.
 
 Existing local `rebuild/` files remain available but are not tracked here. `roc rebuild 2008-06 install` restores the small build inputs from findings for existing ROC commands; it does not download the large build artifacts. Missing build inputs are installed automatically by `roc rebuild`.
 
 ## Rules
 
-- Keep original client downloads out of this tooling repository. Native rebuild sources and required assets belong in RoConstruct-findings; generated output stays local.
+- Keep original client downloads out of this tooling repository. Native rebuild sources and required assets belong in RoConstruct work branch; generated output stays local.
 - Only server-verified byte matches count. No inline assembly or patched bytes.
 - Be friendly. Join us on [Discord](https://discord.gg/Tayg763nrG).
