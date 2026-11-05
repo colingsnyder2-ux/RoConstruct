@@ -113,7 +113,7 @@ SHA-256, and extract only a needed update into a fresh authorized folder.
 Capture the printed absolute checkout path and use it as the explicit working directory for every later
 tool call. `Set-Location` and process environment changes do not persist across separate terminal calls.
 Set `ROC_NONINTERACTIVE=1` again in the grouped setup call if needed.
-Read the extracted `AGENTS.md` and `CLAUDE.md`, then execute setup below. This native draft workflow overrides their older native submission instructions; ordinary matching rules remain unchanged. Use an existing working server
+Read the extracted `AGENTS.md` and `CLAUDE.md`, then execute setup below. For this native task, this workflow overrides matching-only setup, automatic mining passes, campaign priorities and submission steps in other guides. Do not follow `AGENT_GUIDE.md` or `MINING_WORKFLOW.md` as a native work plan. Shared preservation, ownership and verification rules still apply. Use an existing working server
 configuration when supplied, otherwise use the manifest's `server` URL. Never copy another contributor's
 credentials. Ask only for missing contributor identity. Native integration is public; no invitation required.
 If downloads fail, retry and report the actual URL/error; never invent a successful install.

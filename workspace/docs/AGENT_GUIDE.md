@@ -1,6 +1,11 @@
-# Agent guide
+# Function mining reference
 
-The one current guide for people and coding agents doing matching work.
+**Native recovery/class swap task? Stop here. Continue `NATIVE_AGENT.md` and
+`NATIVE_SWAP_BATCH.md`. Do not execute this guide's mining command table, order
+of work, automatic passes or submission loop.** A native task may consult a
+specific evidence/tool section read-only when needed.
+
+The steps below apply only to an explicit standalone function-mining assignment.
 
 Ranked, receipt-backed lessons: [`research/lessons.json`](../research/lessons.json).
 Named compiler-only experiments: [`research/recipes.json`](../research/recipes.json).
