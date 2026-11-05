@@ -1,0 +1,34 @@
+{
+  "hypothesis": 2,
+  "prior_rejected": 1,
+  "limit": 3,
+  "session": "e7b3fd890e7f430091af75afd4f562d2",
+  "approved_change": "ownership begins after write/addChild",
+  "prior_evidence": "work/2008-06/shared-layouts/sol-clone-wrapper-20261105/saved-object.json",
+  "profile": {
+    "scope": "Approved inactive declaration experiment. One genuine static member declaration; canonical ABI/layout/virtual order untouched. Full canonical compatibility/ODR and runtime gates remain separate.",
+    "canonical_header": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-headers\\v8tree\\Instance.h",
+    "canonical_sha256": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+    "genuine_donor_header": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\tools\\rbxgs\\Client\\App\\include\\v8tree\\Instance.h",
+    "genuine_donor_sha256": "f512959a4d23656ff5da69c22ac0dcabba250b16c3103e50af09ba4d6bba3d94",
+    "private_header": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\clone-context\\v8tree\\Instance.h",
+    "private_sha256": "2042dd44ebaf86e3bc559b6ebfb4374b6380f82734067b5e5597f30175abb0cd",
+    "addition": "    static boost::shared_ptr<Instance> fromXmlRoot(::XmlElement*);",
+    "native_flags_environment": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /IG:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\clone-context",
+    "diff": [
+      "--- frozen canonical",
+      "+++ private static declaration",
+      "@@ -136,6 +136,7 @@",
+      "     bool contains(const Instance*) const;",
+      "     void removeAllChildren();",
+      "     boost::shared_ptr<Instance> clone();  // ?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+      "+    static boost::shared_ptr<Instance> fromXmlRoot(::XmlElement*);",
+      "     void remove();  // ?remove@Instance@RBX@@QAEXXZ",
+      "     struct AnchorAction { bool value; };  // provisional layout: nested struct passed by value below",
+      "     void applyAnchoredToChildren(AnchorAction);  // ?applyAnchoredToChildren@Instance@RBX@@QAEXUAnchorAction@12@@Z"
+    ],
+    "parent_lease": "SolCloneContext20261105",
+    "canonical_edits": 0,
+    "compiles": 0
+  }
+}

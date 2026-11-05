@@ -1,0 +1,239 @@
+{
+  "scope": "Conditional actual-provider EH continuation and authentic import identity; no selected PE or loaded runtime claim",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "axis_sha256": "e9f53666cd11d3c15c7985b8b24c11821d448840c2df2d3d66f28dda6bdbac7c",
+  "preserved_generic_failure_sha256": "3257ed3c403876bc92ed50a2ebcca8c19ca9689940b51d0ec7b083ca7ffbbff0",
+  "supplied_external_bindings": [
+    {
+      "symbol": "??1MouseCommand@RBX@@UAE@XZ",
+      "address": "0x615780",
+      "evidence": "original NamedArrowBase tailjmp at 617dd0; actual provider below"
+    }
+  ],
+  "continuation_nodes": [
+    {
+      "path": "work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeMouseCommandFull.obj",
+      "sha256": "b3f271ca190c956215c6b7d4b60e2a76eeb1e7b638bfcc0007ce06cdfdf24307",
+      "symbol": "??1MouseCommand@RBX@@UAE@XZ",
+      "address": "0x615780",
+      "body_hex": "c7010000000083c104c70100000000e900000000",
+      "original_hex": "c701fc39840083c104c701e0398400e97c7ce6ff",
+      "normalized_exact": true,
+      "edges": [
+        {
+          "offset": 2,
+          "symbol": "??_7MouseCommand@RBX@@6BINamed@1@@",
+          "kind": 6,
+          "addend": 0,
+          "original_anchor": "0x8439fc"
+        },
+        {
+          "offset": 11,
+          "symbol": "??_7MouseCommand@RBX@@6BIRenderable@1@@",
+          "kind": 6,
+          "addend": 0,
+          "original_anchor": "0x8439e0"
+        },
+        {
+          "offset": 16,
+          "symbol": "??1IRenderable@RBX@@QAE@XZ",
+          "kind": 20,
+          "addend": 0,
+          "original_anchor": "0x47d410"
+        }
+      ]
+    },
+    {
+      "path": "work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\run\\unit-000\\candidate.obj",
+      "sha256": "42444b399d06567d75cbed1cbde50660d8d672753602d84959cc7b3e1957dbe7",
+      "symbol": "??1IRenderable@RBX@@QAE@XZ",
+      "address": "0x47d410",
+      "body_hex": "c3",
+      "original_hex": "c3",
+      "normalized_exact": true,
+      "edges": []
+    }
+  ],
+  "original_imports_before_coff_binding": [
+    {
+      "original_first_thunk": "0x402354",
+      "original_name_rva": "0x525ad0",
+      "dll": "MSVCP90.dll",
+      "iat": "0x802458",
+      "hint_name_rva": "0x522b3e",
+      "name": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "coff_binding": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "descriptor_file_offset": "0x50e6bc",
+      "descriptor_rva": "0x50f6bc"
+    },
+    {
+      "original_first_thunk": "0x402354",
+      "original_name_rva": "0x525ad0",
+      "dll": "MSVCP90.dll",
+      "iat": "0x802468",
+      "hint_name_rva": "0x522a0a",
+      "name": "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+      "coff_binding": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+      "descriptor_file_offset": "0x50e6bc",
+      "descriptor_rva": "0x50f6bc"
+    }
+  ],
+  "installed_headers": [
+    {
+      "path": "tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xstring",
+      "sha256": "09f2e47e92ca601817cea05d8e08a2045b0c079f912fbe9125a40117348e29be",
+      "excerpts": [
+        {
+          "line": 649,
+          "text": "\n\t__CLR_OR_THIS_CALL basic_string(const _Elem *_Ptr)\n\t\t: _Mybase()\n\t\t{\t// construct from [_Ptr, <null>)\n\t\t_Tidy();\n\t\tassign(_Ptr);\n\t\t}\n"
+        },
+        {
+          "line": 904,
+          "text": "\n\t__CLR_OR_THIS_CALL ~basic_string()\n\t\t{\t// destroy the string\n\t\t_Tidy(true);\n\t\t}\n\n\ttypedef _Traits traits_type;\n\ttypedef _Alloc allocator_type;"
+        }
+      ]
+    },
+    {
+      "path": "tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\yvals.h",
+      "sha256": "f2cf5625d2a60310032d8a6f130bf037811f87ad4a6026089e784d611d8ed6ca",
+      "excerpts": [
+        {
+          "line": 35,
+          "text": "#if defined(MRTDLL) || defined(_M_CEE_PURE)\n#define __CLR_OR_THIS_CALL  __clrcall\n#else\n#define __CLR_OR_THIS_CALL\n#endif\n#endif\n\n#ifndef __CLRCALL_OR_CDECL"
+        },
+        {
+          "line": 37,
+          "text": "#else\n#define __CLR_OR_THIS_CALL\n#endif\n#endif\n\n#ifndef __CLRCALL_OR_CDECL\n#if defined(MRTDLL) || defined(_M_CEE_PURE)\n#define __CLRCALL_OR_CDECL __clrcall"
+        }
+      ]
+    }
+  ],
+  "unknown_nodes": [
+    "MegaDragger destructor0060e700 actual provider binding beyond auto_ptr cleanup; operator delete and EH helper6a14c0 transitive ABI",
+    "Selected PE provider and weak LIBRARY fallback selection",
+    "Loaded SxS MSVCP90/MSVCR90 identity and implementation",
+    "Imported constructor/destructor runtime behavior",
+    "Full transitive ABI/EH outside bounded graph"
+  ],
+  "strict_indirect_failure": "Axis constructor call offset 78 remains strict proof failure; sidecar does not change it",
+  "next_gate": "Parent-selected PE evidence for actual provider and import/weak resolution; then loaded SxS runtime evidence. No link/run authorized.",
+  "original_disassembly": {
+    "0x640560": [
+      "00640560 push -1",
+      "00640562 push 0x7daa23",
+      "00640567 mov eax, dword ptr fs:[0]",
+      "0064056d push eax",
+      "0064056e mov dword ptr fs:[0], esp",
+      "00640575 push ecx",
+      "00640576 mov eax, dword ptr [esp + 0x14]",
+      "0064057a push ebx",
+      "0064057b push esi",
+      "0064057c mov esi, ecx",
+      "0064057e push eax",
+      "0064057f mov dword ptr [esp + 0xc], esi",
+      "00640583 call 0x6159f0",
+      "00640588 xor ebx, ebx",
+      "0064058a mov byte ptr [esi + 0x1c], bl",
+      "0064058d mov dword ptr [esi], 0x84a5ac",
+      "00640593 mov dword ptr [esi + 4], 0x84a594",
+      "0064059a mov dword ptr [esp + 0x14], ebx",
+      "0064059e mov dword ptr [esi + 0x20], ebx",
+      "006405a1 push 0x833850",
+      "006405a6 lea ecx, [esi + 0x24]",
+      "006405a9 mov byte ptr [esp + 0x18], 1",
+      "006405ae call dword ptr [0x802458]",
+      "006405b4 xor ecx, ecx",
+      "006405b6 mov byte ptr [esi + 0x40], bl",
+      "006405b9 mov word ptr [esi + 0x42], cx",
+      "006405bd xor edx, edx",
+      "006405bf lea ecx, [esi + 0x48]",
+      "006405c2 mov word ptr [esi + 0x44], dx",
+      "006405c6 call 0x510a30",
+      "006405cb fldz ",
+      "006405cd mov ecx, dword ptr [esp + 0xc]",
+      "006405d1 fst dword ptr [esi + 0x68]",
+      "006405d4 fst dword ptr [esi + 0x6c]",
+      "006405d7 mov eax, esi",
+      "006405d9 fstp dword ptr [esi + 0x70]",
+      "006405dc pop esi",
+      "006405dd pop ebx",
+      "006405de mov dword ptr fs:[0], ecx",
+      "006405e5 add esp, 0x10",
+      "006405e8 ret 4"
+    ],
+    "0x7daa10": [
+      "007daa10 mov ecx, dword ptr [ebp - 0x10]",
+      "007daa13 jmp 0x617dd0",
+      "007daa18 mov ecx, dword ptr [ebp - 0x10]",
+      "007daa1b add ecx, 0x20",
+      "007daa1e jmp 0x640540",
+      "007daa23 mov eax, 0x8fb954",
+      "007daa28 jmp 0x6a14c0"
+    ],
+    "0x640540": [
+      "00640540 push esi",
+      "00640541 mov esi, dword ptr [ecx]",
+      "00640543 test esi, esi",
+      "00640545 je 0x640557",
+      "00640547 mov ecx, esi",
+      "00640549 call 0x60e700",
+      "0064054e push esi",
+      "0064054f call 0x6a067a",
+      "00640554 add esp, 4",
+      "00640557 pop esi",
+      "00640558 ret "
+    ],
+    "0x640620": [
+      "00640620 push -1",
+      "00640622 push 0x7daa23",
+      "00640627 mov eax, dword ptr fs:[0]",
+      "0064062d push eax",
+      "0064062e mov dword ptr fs:[0], esp",
+      "00640635 push ecx",
+      "00640636 push esi",
+      "00640637 mov esi, ecx",
+      "00640639 push edi",
+      "0064063a mov dword ptr [esp + 8], esi",
+      "0064063e lea ecx, [esi + 0x24]",
+      "00640641 mov dword ptr [esp + 0x14], 1",
+      "00640649 mov dword ptr [esi + 0x48], 0x8282c4",
+      "00640650 call dword ptr [0x802468]",
+      "00640656 mov edi, dword ptr [esi + 0x20]",
+      "00640659 mov byte ptr [esp + 0x14], 0",
+      "0064065e test edi, edi",
+      "00640660 je 0x640672",
+      "00640662 mov ecx, edi",
+      "00640664 call 0x60e700",
+      "00640669 push edi",
+      "0064066a call 0x6a067a",
+      "0064066f add esp, 4",
+      "00640672 mov ecx, esi",
+      "00640674 mov dword ptr [esp + 0x14], 0xffffffff",
+      "0064067c call 0x615780",
+      "00640681 mov ecx, dword ptr [esp + 0xc]",
+      "00640685 pop edi",
+      "00640686 pop esi",
+      "00640687 mov dword ptr fs:[0], ecx",
+      "0064068e add esp, 0x10",
+      "00640691 ret ",
+      "00640692 int3 "
+    ]
+  },
+  "abi_evidence": {
+    "string_constructor": "Original 6405a1 pushes ArrowCursor address833850 (NUL terminated), 6405a6 sets ECX=this+24h, 6405ae calls [802458]. MSVCP90 named import QAE@PBD@Z encodes public x86 thiscall constructor(const char*); installed RTM xstring constructor calls _Tidy then assign. Caller consumes no constructor return; no loaded implementation or hidden behavior inferred.",
+    "string_destructor": "Original Axis destructor640620 sets ECX=this+24h at64063e then calls [802468] at640650, no explicit stack argument, QAE@XZ names x86 thiscall destructor(). Installed xstring destructor calls _Tidy(true). No return value consumed.",
+    "cleanup_states": "FuncInfo8fb954 magic19930522 maxState2 unwindMap8fb944; state0 -> -1/7daa10 NamedArrowBase; state1 -> 0/7daa18 auto_ptr member+20h. No string cleanup entry; do not infer string destructor EH coverage.",
+    "mouse_continuation": "Original NamedArrowBase617dd0 jmp615780; Mouse stores canonical vptr anchors8439fc and8439e0 then ECX adjustment+4 tailjmp47d410, actual IRenderable body c3. All recorded COFF operands have zero addends. Mouse vtable/RTTI full closure not re-proven here."
+  },
+  "weak_selection": "No E->G ALIAS inference. Existing Axis/Mouse weak search characteristic2 is LIBRARY; final fallback selection unknown until selected PE.",
+  "graph_status": "7 relocation-normalized EH nodes exact conditional on explicit Mouse binding; unresolved MegaDragger external stops traversal. Not fullsafe.",
+  "metrics": {
+    "compiles": 0,
+    "links": 0,
+    "diagnostic_executions": 0,
+    "source_edits": 0,
+    "hypotheses_rejected_this_task": 0,
+    "prior_budget_reset": false
+  },
+  "required_flags": "Parent-provided IRenderable object requires /U_RELEASEASSERT /U_DEBUG; flags recorded, not source-pinned."
+}

@@ -1,0 +1,58 @@
+{
+  "target": "00593250",
+  "size": 550,
+  "status": "parked-awaiting-parent-header-proposal",
+  "compiles": 0,
+  "rejected_hypotheses": 0,
+  "draft_session": "0ae69108c32c44f49d11690d8e196986",
+  "source": "rebuild/2008-06/native-classes/SerializerLoadInstances.cpp",
+  "hashes": {
+    "clients/2008-06/Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+    "rebuild/2008-06/native-classes/SerializerLoadInstances.cpp": "26505e49d92d3c380181162634480fa40834d829e3bde86ae046fceb2466c605",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+    "rebuild/2008-06/native-headers/v8xml/XmlElement.h": "9fb2186f9cd2a7b71cc2e213244b480d674fa9997d2199e8df5fc3108406e76a",
+    "rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h": "9f44b778d6e32a26a510a9ec37bc8762338db04460625bccc7322e6ce266600f",
+    "tools/rbxgs/Client/App/include/v8tree/Instance.h": "f512959a4d23656ff5da69c22ac0dcabba250b16c3103e50af09ba4d6bba3d94",
+    "tools/rbxgs/Client/App/v8xml/SerializerV2.cpp": "2e753d24233e586dfab51820401b5e0f898614ce32b74af89d91c293851fe80f",
+    "tools/rbxgs/Client/App/roc_serializer_loadinstances_native_890d0f4bc41911b9.cpp": "890d0f4bc41911b9b27aac6c465ae8845e8b2773b0e702818612b3259f53a9b6"
+  },
+  "blocker": "Frozen canonical and private Instance headers lack public nonvirtual void read(const XmlElement*, IReferenceBinder&). No private header copy or canonical edit made.",
+  "proposal": {
+    "owner": "parent",
+    "authentic_declaration": "tools/rbxgs/Client/App/include/v8tree/Instance.h:356",
+    "original_call": "00593338 -> 0055b6f0; this ECX, two pushed args, callee ret 8",
+    "addition": "void read(const ::XmlElement*, IReferenceBinder&);"
+  },
+  "profile_proposal": "Existing MetadataReflectionLoad native-flags profile: metadata-load, writer-2008, std-noinline-string; requires parent-approved Instance declaration profile before compiler. Not yet proven for target.",
+  "hypothesis": "Reviewed contributor body without include_alias: roblox tag/version >=4; ArchiveBinder; Item loop; class attribute Name pointer; factory create; Instance::read; vector push; warning; resolveRefs; unsupported-version G3D Log. Genuine upstream SerializerV2.cpp lacks loadInstances body but header declares API. Body remains unverified hypothesis.",
+  "original_direct_targets": {
+    "00592940": "ArchiveBinder constructor",
+    "00592720": "ArchiveBinder resolveRefs",
+    "005931e0": "ArchiveBinder destructor",
+    "00420190": "AbstractFactoryProduct<Instance>::create candidate identity",
+    "0055b6f0": "Instance::read"
+  },
+  "provider_status": "Original destinations observed. Current archive selected provider availability/identity not independently audited; no link authorized.",
+  "indirect_blockers": [
+    "005933c1 shared-count dispose",
+    "005933d6 shared-count destroy",
+    "00593428 and 00593459 imported string construction/destruction"
+  ],
+  "separate_gates": [
+    "body and data",
+    "independent direct-call bindings",
+    "ArchiveBinder layout/EH/providers",
+    "factory create and Instance read transitive providers/ABI",
+    "shared-count indirect virtual dispatch",
+    "selection",
+    "runtime"
+  ],
+  "next_action": "Parent approves/provides frozen genuine Instance::read declaration profile; compile this source once via native_check_runner original21022 isolated output; same-object body/data/calls/diff; stop on failure.",
+  "unchanged": [
+    "shared headers",
+    "current archive",
+    "glue",
+    "tools/client sources",
+    "renderer/writer budgets"
+  ]
+}

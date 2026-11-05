@@ -1,0 +1,101 @@
+{
+  "archive_sha256": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c",
+  "providers": [
+    {
+      "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "member": "/216",
+      "sha256": "242d36b8806d7843d65eb3c37dbea60e40e288cca3549a3255fe6d4920d4418b",
+      "size": 302,
+      "original": "00593250",
+      "normalized_exact": false
+    },
+    {
+      "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "member": "/532",
+      "sha256": "6b90d0272fc5e4ce238a23bcd487c2f9c29846c505057a3d3beb67d649a05aeb",
+      "size": 111,
+      "original": "005a2fe0",
+      "normalized_exact": true
+    },
+    {
+      "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "member": "Workspace.obj/",
+      "sha256": "1e7c7525c19a96b405aaf6e90bc3064a9d5ec424d11b12638b443cf90b390548",
+      "size": 111,
+      "original": "005a2fe0",
+      "normalized_exact": true
+    },
+    {
+      "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "member": "Teams.obj/",
+      "sha256": "473f4d239703d1dac102ca630a981bf48174c35b672842c9c58f95cd627d49ff",
+      "size": 111,
+      "original": "005a2fe0",
+      "normalized_exact": true
+    },
+    {
+      "symbol": "?isolateHandles@SerializerV2@@SAXPAVXmlElement@@@Z",
+      "member": "/903",
+      "sha256": "c6f555a65d89f48ff15b4d01fdb45b81698c63eb24031c547aa0dd8d231f35f0",
+      "size": 114,
+      "original": "00593480",
+      "normalized_exact": true
+    },
+    {
+      "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "member": "Selection.obj/",
+      "sha256": "5af652ca136b6c4fbb0caa1155ce1d958fc744c8618c31b186a414f2edc56e1c",
+      "size": 111,
+      "original": "005a2fe0",
+      "normalized_exact": true
+    },
+    {
+      "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "member": "/1000",
+      "sha256": "4604a9823beacd3c793e241c311e6915ed6fdafbba8c646f44c8955d40c136dd",
+      "size": 111,
+      "original": "005a2fe0",
+      "normalized_exact": true
+    },
+    {
+      "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "member": "Players.obj/",
+      "sha256": "2329fa2cb380f68c7d37ec44418c0917a961fb9e6899aed5a911fc740b429b24",
+      "size": 111,
+      "original": "005a2fe0",
+      "normalized_exact": true
+    },
+    {
+      "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "member": "Player.obj/",
+      "sha256": "481e9c241c32add2356c7ef0883cffe5c7d01984bf5c33f46e9da427d6d370a6",
+      "size": 111,
+      "original": "005a2fe0",
+      "normalized_exact": true
+    },
+    {
+      "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "member": "Instance.obj/",
+      "sha256": "947583b50f1108dae75be8368843c52c5cd6be382a1ce88a99ae13b6b5f49460",
+      "size": 111,
+      "original": "005a2fe0",
+      "normalized_exact": true
+    },
+    {
+      "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "member": "/1318",
+      "sha256": "37c8db53d1937831dbf74d69ecefc8eb5e8f7d0c61f049dde60ea8e565ee767e",
+      "size": 111,
+      "original": "005a2fe0",
+      "normalized_exact": true
+    },
+    {
+      "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "member": "DataModel.obj/",
+      "sha256": "b151171eb04575f142c5d1b9dcc32bab5cf90e89a014f77b2b84e674b559e662",
+      "size": 111,
+      "original": "005a2fe0",
+      "normalized_exact": true
+    }
+  ]
+}

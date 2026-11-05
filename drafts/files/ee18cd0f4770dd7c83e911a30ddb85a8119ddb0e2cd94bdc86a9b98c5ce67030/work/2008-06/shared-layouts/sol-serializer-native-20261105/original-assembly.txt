@@ -1,0 +1,410 @@
+== 00593250 550 bytes unit=ArchiveBinder
+00593250  push ebp
+00593251  mov ebp, esp
+00593253  and esp, 0xfffffff8
+00593256  mov eax, dword ptr fs:[0]
+0059325c  push -1
+0059325e  push 0x7d1dba  ; fn_007d1dba [unit? seg_007d0000]
+00593263  push eax
+00593264  mov dword ptr fs:[0], esp
+0059326b  sub esp, 0x90
+00593271  push ebx
+00593272  push esi
+00593273  push edi
+00593274  mov edi, dword ptr [ebp + 8]
+00593277  mov eax, dword ptr [edi + 0x10]
+0059327a  mov esi, ecx
+0059327c  cmp eax, dword ptr [0x975374]
+00593282  jne 0x59341f
+00593288  mov eax, dword ptr [0x975360]
+0059328d  push eax
+0059328e  mov ecx, edi
+00593290  call 0x57c2b0  ; fn_0057c2b0 [unit? RBX::VInstance::?$SignalDesc]
+00593295  xor ebx, ebx
+00593297  cmp eax, ebx
+00593299  je 0x59341f
+0059329f  push esi
+005932a0  lea ecx, [eax + 8]
+005932a3  call 0x57c4f0  ; fn_0057c4f0 [unit? RBX::VInstance::?$SignalDesc]
+005932a8  test al, al
+005932aa  je 0x59341f
+005932b0  cmp dword ptr [esi], 4
+005932b3  jl 0x59341f
+005932b9  lea ecx, [esp + 0x40]
+005932bd  call 0x592940  ; fn_00592940 [unit? ArchiveBinder]
+005932c2  mov ecx, dword ptr [0x97535c]
+005932c8  push ecx
+005932c9  mov ecx, edi
+005932cb  mov dword ptr [esp + 0xa8], ebx
+005932d2  call 0x57c230  ; fn_0057c230 [unit? RBX::VInstance::?$SignalDesc]
+005932d7  mov edi, eax
+005932d9  cmp edi, ebx
+005932db  je 0x5933eb
+005932e1  mov edx, dword ptr [0x975378]
+005932e7  push edx
+005932e8  mov ecx, edi
+005932ea  mov dword ptr [esp + 0x14], ebx
+005932ee  call 0x57c2b0  ; fn_0057c2b0 [unit? RBX::VInstance::?$SignalDesc]
+005932f3  cmp eax, ebx
+005932f5  je 0x5933d8
+005932fb  lea ecx, [esp + 0x10]
+005932ff  push ecx
+00593300  lea ecx, [eax + 8]
+00593303  call 0x57c360  ; fn_0057c360 [unit? RBX::VInstance::?$SignalDesc]
+00593308  cmp al, bl
+0059330a  je 0x5933d8
+00593310  mov edx, dword ptr [esp + 0x10]
+00593314  push edx
+00593315  lea eax, [esp + 0x18]
+00593319  push eax
+0059331a  call 0x420190  ; fn_00420190 [unit? CInsertObjectDialog]
+0059331f  add esp, 8
+00593322  mov ecx, dword ptr [esp + 0x14]
+00593326  mov byte ptr [esp + 0xa4], 1
+0059332e  cmp ecx, ebx
+00593330  je 0x59334c
+00593332  lea edx, [esp + 0x40]
+00593336  push edx
+00593337  push edi
+00593338  call 0x55b6f0  ; fn_0055b6f0 [unit? RBX::VInstance::?$SignalDesc]
+0059333d  mov ecx, dword ptr [ebp + 0xc]
+00593340  lea eax, [esp + 0x14]
+00593344  push eax
+00593345  call 0x420110  ; fn_00420110 [unit? CInsertObjectDialog]
+0059334a  jmp 0x59339f
+0059334c  mov eax, dword ptr [esp + 0x10]
+00593350  cmp eax, ebx
+00593352  je 0x593364
+00593354  cmp dword ptr [eax + 0x1c], 0x10
+00593358  jb 0x59335f
+0059335a  mov esi, dword ptr [eax + 8]
+0059335d  jmp 0x593369
+0059335f  lea esi, [eax + 8]
+00593362  jmp 0x593369
+00593364  mov esi, 0x80b716
+00593369  lea ecx, [esp + 0x1c]
+0059336d  push ecx
+0059336e  call 0x569620  ; fn_00569620 [unit? RBX::ServiceProvider]
+00593373  mov eax, dword ptr [eax]
+00593375  push esi
+00593376  push 0x831f34
+0059337b  push 2
+0059337d  push eax
+0059337e  mov byte ptr [esp + 0xb8], 2
+00593386  call 0x5693a0  ; fn_005693a0 [unit? RBX::ServiceProvider]
+0059338b  add esp, 0x14
+0059338e  lea ecx, [esp + 0x1c]
+00593392  mov byte ptr [esp + 0xa4], 1
+0059339a  call 0x600660  ; fn_00600660 [unit? RBX::VTool::?$BoundPropGetSet]
+0059339f  mov esi, dword ptr [esp + 0x18]
+005933a3  mov byte ptr [esp + 0xa4], bl
+005933aa  cmp esi, ebx
+005933ac  je 0x5933d8
+005933ae  lea edx, [esi + 4]
+005933b1  or eax, 0xffffffff
+005933b4  lock xadd dword ptr [edx], eax
+005933b8  jne 0x5933d8
+005933ba  mov edx, dword ptr [esi]
+005933bc  mov eax, dword ptr [edx + 4]
+005933bf  mov ecx, esi
+005933c1  call eax
+005933c3  lea ecx, [esi + 8]
+005933c6  or edx, 0xffffffff
+005933c9  lock xadd dword ptr [ecx], edx
+005933cd  jne 0x5933d8
+005933cf  mov eax, dword ptr [esi]
+005933d1  mov edx, dword ptr [eax + 8]
+005933d4  mov ecx, esi
+005933d6  call edx
+005933d8  mov ecx, dword ptr [ebp + 8]
+005933db  push edi
+005933dc  call 0x57c250  ; fn_0057c250 [unit? RBX::VInstance::?$SignalDesc]
+005933e1  mov edi, eax
+005933e3  cmp edi, ebx
+005933e5  jne 0x5932e1
+005933eb  lea ecx, [esp + 0x40]
+005933ef  call 0x592720  ; fn_00592720 [unit? ArchiveBinder]
+005933f4  lea ecx, [esp + 0x40]
+005933f8  mov dword ptr [esp + 0xa4], 0xffffffff
+00593403  call 0x5931e0  ; fn_005931e0 [unit? ArchiveBinder]
+00593408  mov ecx, dword ptr [esp + 0x9c]
+0059340f  mov dword ptr fs:[0], ecx
+00593416  pop edi
+00593417  pop esi
+00593418  pop ebx
+00593419  mov esp, ebp
+0059341b  pop ebp
+0059341c  ret 8
+0059341f  push 0x831ee0
+00593424  lea ecx, [esp + 0x28]
+00593428  call dword ptr [0x802458]  ; MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z
+0059342e  lea eax, [esp + 0x24]
+00593432  push eax
+00593433  mov dword ptr [esp + 0xa8], 3
+0059343e  call 0x509db0  ; fn_00509db0 [unit? G3D::Shader]
+00593443  mov ecx, eax
+00593445  call 0x509ef0  ; fn_00509ef0 [unit? G3D::Shader]
+0059344a  lea ecx, [esp + 0x24]
+0059344e  mov dword ptr [esp + 0xa4], 0xffffffff
+00593459  call dword ptr [0x802468]  ; MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+0059345f  mov ecx, dword ptr [esp + 0x9c]
+00593466  pop edi
+00593467  pop esi
+00593468  mov dword ptr fs:[0], ecx
+0059346f  pop ebx
+00593470  mov esp, ebp
+00593472  pop ebp
+00593473  ret 8
+== 0055b6f0 113 bytes unit=RBX::VInstance::?$SignalDesc
+0055b6f0  mov eax, dword ptr [0x975310]
+0055b6f5  push ebx
+0055b6f6  mov ebx, dword ptr [esp + 8]
+0055b6fa  push esi
+0055b6fb  push edi
+0055b6fc  mov esi, ecx
+0055b6fe  push eax
+0055b6ff  mov ecx, ebx
+0055b701  call 0x57c2b0  ; fn_0057c2b0 [unit? RBX::VInstance::?$SignalDesc]
+0055b706  mov edi, dword ptr [esp + 0x14]
+0055b70a  test eax, eax
+0055b70c  je 0x55b71b
+0055b70e  mov edx, dword ptr [edi]
+0055b710  add eax, 8
+0055b713  push esi
+0055b714  push eax
+0055b715  mov eax, dword ptr [edx]
+0055b717  mov ecx, edi
+0055b719  call eax
+0055b71b  mov ecx, dword ptr [ebx + 0x10]
+0055b71e  cmp ecx, dword ptr [0x97535c]
+0055b724  jne 0x55b750
+0055b726  mov edx, dword ptr [0x97530c]
+0055b72c  push edx
+0055b72d  mov ecx, ebx
+0055b72f  call 0x57c230  ; fn_0057c230 [unit? RBX::VInstance::?$SignalDesc]
+0055b734  test eax, eax
+0055b736  je 0x55b741
+0055b738  push edi
+0055b739  push eax
+0055b73a  mov ecx, esi
+0055b73c  call 0x557920  ; fn_00557920 [unit? RBX::VInstance::?$NonFactoryProduct]
+0055b741  push edi
+0055b742  push ebx
+0055b743  mov ecx, esi
+0055b745  call 0x55b6a0  ; fn_0055b6a0 [unit? RBX::VInstance::?$SignalDesc]
+0055b74a  pop edi
+0055b74b  pop esi
+0055b74c  pop ebx
+0055b74d  ret 8
+0055b750  mov eax, dword ptr [esi]
+0055b752  mov edx, dword ptr [eax + 0x2c]
+0055b755  push edi
+0055b756  push ebx
+0055b757  mov ecx, esi
+0055b759  call edx
+0055b75b  pop edi
+0055b75c  pop esi
+0055b75d  pop ebx
+0055b75e  ret 8
+== 00592940 99 bytes unit=ArchiveBinder
+00592940  push -1
+00592942  push 0x7d1d03  ; fn_007d1d03 [unit? seg_007d0000]
+00592947  mov eax, dword ptr fs:[0]
+0059294d  push eax
+0059294e  mov dword ptr fs:[0], esp
+00592955  sub esp, 8
+00592958  push esi
+00592959  mov esi, ecx
+0059295b  mov dword ptr [esp + 8], esi
+0059295f  call 0x443e50  ; fn_00443e50 [unit? RBX::MergeBinder]
+00592964  lea eax, [esp + 7]
+00592968  push eax
+00592969  lea edx, [esp + 0xb]
+0059296d  lea ecx, [esi + 0x1c]
+00592970  push edx
+00592971  mov dword ptr [esp + 0x1c], 0
+00592979  mov dword ptr [esi], 0x831ecc
+0059297f  call 0x5922d0  ; fn_005922d0 [unit? RBX::RootInstance]
+00592984  lea ecx, [esi + 0x3c]
+00592987  mov byte ptr [esp + 0x14], 1
+0059298c  call 0x591e00  ; fn_00591e00 [unit? RBX::RootInstance]
+00592991  mov ecx, dword ptr [esp + 0xc]
+00592995  mov eax, esi
+00592997  pop esi
+00592998  mov dword ptr fs:[0], ecx
+0059299f  add esp, 0x14
+005929a2  ret 
+== 00592720 96 bytes unit=ArchiveBinder
+00592720  push ebx
+00592721  push ebp
+00592722  push esi
+00592723  mov esi, ecx
+00592725  mov ebx, dword ptr [esi + 0x50]
+00592728  mov eax, dword ptr [esi + 0x3c]
+0059272b  mov ecx, ebx
+0059272d  mov ebp, dword ptr [ecx]
+0059272f  push edi
+00592730  mov edi, 0x592180  ; fn_00592180 [unit? RBX::RootInstance]
+00592735  mov ecx, eax
+00592737  test eax, eax
+00592739  je 0x59273f
+0059273b  mov eax, dword ptr [eax]
+0059273d  jmp 0x592741
+0059273f  xor eax, eax
+00592741  mov edx, dword ptr [eax]
+00592743  test ecx, ecx
+00592745  je 0x59274b
+00592747  mov eax, dword ptr [ecx]
+00592749  jmp 0x59274d
+0059274b  xor eax, eax
+0059274d  mov eax, dword ptr [eax]
+0059274f  push esi
+00592750  push edi
+00592751  push ebx
+00592752  push edx
+00592753  push ebp
+00592754  push eax
+00592755  call 0x5919f0  ; fn_005919f0 [unit? RBX::RootInstance]
+0059275a  add esp, 0x18
+0059275d  mov ecx, esi
+0059275f  mov edi, eax
+00592761  call 0x443d60  ; fn_00443d60 [unit? RBX::MergeBinder]
+00592766  test al, al
+00592768  je 0x592779
+0059276a  cmp edi, dword ptr [esi + 0x54]
+0059276d  jne 0x592779
+0059276f  pop edi
+00592770  pop esi
+00592771  pop ebp
+00592772  mov eax, 1
+00592777  pop ebx
+00592778  ret 
+00592779  pop edi
+0059277a  pop esi
+0059277b  pop ebp
+0059277c  xor eax, eax
+0059277e  pop ebx
+0059277f  ret 
+== 005931e0 100 bytes unit=ArchiveBinder
+005931e0  push -1
+005931e2  push 0x7d1d78  ; fn_007d1d78 [unit? seg_007d0000]
+005931e7  mov eax, dword ptr fs:[0]
+005931ed  push eax
+005931ee  mov dword ptr fs:[0], esp
+005931f5  push ecx
+005931f6  push esi
+005931f7  mov esi, ecx
+005931f9  push edi
+005931fa  mov dword ptr [esp + 8], esi
+005931fe  lea edi, [esi + 0x3c]
+00593201  mov ecx, edi
+00593203  mov dword ptr [esp + 0x14], 0
+0059320b  call 0x682b40  ; fn_00682b40 [unit? Ogre::RbxSceneNode]
+00593210  mov edi, dword ptr [edi]
+00593212  push edi
+00593213  call 0x6a067a  ; MFC ??3@YAXPAX@Z
+00593218  add esp, 4
+0059321b  lea ecx, [esi + 0x1c]
+0059321e  call 0x5928c0  ; fn_005928c0 [unit? ArchiveBinder]
+00593223  lea ecx, [esi + 4]
+00593226  mov dword ptr [esp + 0x14], 0xffffffff
+0059322e  call 0x443cf0  ; fn_00443cf0 [unit? RBX::Reflection::H::?$TypedPropertyDescriptor]
+00593233  mov ecx, dword ptr [esp + 0xc]
+00593237  pop edi
+00593238  pop esi
+00593239  mov dword ptr fs:[0], ecx
+00593240  add esp, 0x10
+00593243  ret 
+== 00420190 286 bytes unit=CInsertObjectDialog
+00420190  push -1
+00420192  push 0x7be7a1  ; fn_007be7a1 [unit? CSpinButtonCtrl]
+00420197  mov eax, dword ptr fs:[0]
+0042019d  push eax
+0042019e  mov dword ptr fs:[0], esp
+004201a5  sub esp, 0xc
+004201a8  push ebp
+004201a9  push esi
+004201aa  push edi
+004201ab  lea ecx, [esp + 0x2c]
+004201af  mov dword ptr [esp + 0xc], 0
+004201b7  mov eax, dword ptr [esp + 0x2c]
+004201bb  push ecx
+004201bc  lea edx, [esp + 0x14]
+004201c0  push edx
+004201c1  mov dword ptr [esp + 0x34], eax
+004201c5  call 0x405da0  ; fn_00405da0 [unit? VCWorkspace::?$CComObject]
+004201ca  mov ecx, eax
+004201cc  call 0x451600  ; fn_00451600 [unit? VCRobloxDoc::?$VerbBinder]
+004201d1  call 0x405da0  ; fn_00405da0 [unit? VCWorkspace::?$CComObject]
+004201d6  mov esi, dword ptr [esp + 0x10]
+004201da  mov ebp, dword ptr [eax + 0x18]
+004201dd  mov eax, dword ptr [eax]
+004201df  test esi, esi
+004201e1  je 0x4201e7
+004201e3  cmp esi, eax
+004201e5  je 0x4201ed
+004201e7  call dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+004201ed  mov edi, dword ptr [esp + 0x14]
+004201f1  cmp edi, ebp
+004201f3  jne 0x420218
+004201f5  mov eax, dword ptr [esp + 0x28]
+004201f9  mov dword ptr [eax], 0
+004201ff  mov dword ptr [eax + 4], 0
+00420206  pop edi
+00420207  pop esi
+00420208  pop ebp
+00420209  mov ecx, dword ptr [esp + 0xc]
+0042020d  mov dword ptr fs:[0], ecx
+00420214  add esp, 0x18
+00420217  ret 
+00420218  test esi, esi
+0042021a  jne 0x4202a7
+00420220  call dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+00420226  cmp edi, dword ptr [esi + 0x18]
+00420229  jne 0x420231
+0042022b  call dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+00420231  mov ecx, dword ptr [edi + 0x10]
+00420234  mov eax, dword ptr [ecx]
+00420236  mov eax, dword ptr [eax]
+00420238  lea edx, [esp + 0x10]
+0042023c  push edx
+0042023d  call eax
+0042023f  mov edi, dword ptr [esp + 0x28]
+00420243  push eax
+00420244  mov esi, 1
+00420249  push edi
+0042024a  mov dword ptr [esp + 0x28], esi
+0042024e  call 0x41fcc0  ; fn_0041fcc0 [unit? CInsertObjectDialog]
+00420253  mov eax, dword ptr [esp + 0x1c]
+00420257  add esp, 8
+0042025a  mov dword ptr [esp + 0xc], esi
+0042025e  mov byte ptr [esp + 0x20], 0
+00420263  test eax, eax
+00420265  je 0x420293
+00420267  mov esi, eax
+00420269  add eax, 4
+0042026c  or ecx, 0xffffffff
+0042026f  lock xadd dword ptr [eax], ecx
+00420273  jne 0x420293
+00420275  mov edx, dword ptr [esi]
+00420277  mov eax, dword ptr [edx + 4]
+0042027a  mov ecx, esi
+0042027c  call eax
+0042027e  lea ecx, [esi + 8]
+00420281  or edx, 0xffffffff
+00420284  lock xadd dword ptr [ecx], edx
+00420288  jne 0x420293
+0042028a  mov eax, dword ptr [esi]
+0042028c  mov edx, dword ptr [eax + 8]
+0042028f  mov ecx, esi
+00420291  call edx
+00420293  mov ecx, dword ptr [esp + 0x18]
+00420297  mov eax, edi
+00420299  pop edi
+0042029a  pop esi
+0042029b  pop ebp
+0042029c  mov dword ptr fs:[0], ecx
+004202a3  add esp, 0x18
+004202a6  ret 
+004202a7  mov esi, dword ptr [esi]
+004202a9  jmp 0x420226

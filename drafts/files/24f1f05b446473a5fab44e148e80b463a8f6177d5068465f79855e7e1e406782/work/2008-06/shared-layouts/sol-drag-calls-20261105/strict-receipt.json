@@ -1,0 +1,189 @@
+{
+  "provenance": "Direct use of existing runner analyze_object + require_proof on extracted immutable archive member; no synthetic compile-run provenance and no compile. CLI analyze requires a prior compiler results.json, unavailable for this archive member.",
+  "inputs": {
+    "work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\linked.lib": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c",
+    "clients/2008-06/Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+    "DragUtilities.obj": "400206004ed3d01dfa715c8cc9f9aef7dd2d0f1b70ae05530f4bdd12890aa62a"
+  },
+  "manifest": {
+    "checks": [
+      {
+        "addr": "0060ead0",
+        "symbol": "?anyPartAlive@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "calls": [
+          {
+            "offset": 50,
+            "target": "005cab00",
+            "symbol": "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ"
+          },
+          {
+            "offset": 55,
+            "target": "005995f0",
+            "symbol": "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z"
+          }
+        ]
+      },
+      {
+        "addr": "0060eb30",
+        "symbol": "?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+        "calls": [
+          {
+            "offset": 78,
+            "target": "005cab00",
+            "symbol": "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ"
+          },
+          {
+            "offset": 129,
+            "target": "005995f0",
+            "symbol": "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z"
+          },
+          {
+            "offset": 160,
+            "target": "0059a190",
+            "symbol": "?append@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXABQAVPrimitive@RBX@@@Z"
+          },
+          {
+            "offset": 173,
+            "target": "005a0560",
+            "symbol": "?getMyWorldFast@Workspace@RBX@@SAPAVWorld@2@PBVInstance@2@@Z"
+          }
+        ]
+      }
+    ],
+    "ranges": [],
+    "layouts": []
+  },
+  "diagnostic": {
+    "checks": [
+      {
+        "addr": "0060ead0",
+        "requested_symbol": "?anyPartAlive@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "status": "exact",
+        "symbol": "?anyPartAlive@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "score": 100,
+        "target_size": 93,
+        "object_size": 93,
+        "target_sha256": "029e43f27de320277aa6deefe747ec817c0bf4b1333e9873229b48f2c3747e2c",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 32,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 50,
+              "target": "005cab00",
+              "symbol": "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 55,
+              "target": "005995f0",
+              "symbol": "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 1.506664
+      },
+      {
+        "addr": "0060eb30",
+        "requested_symbol": "?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+        "status": "exact",
+        "symbol": "?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+        "score": 100,
+        "target_size": 301,
+        "object_size": 301,
+        "target_sha256": "dad3b7f1c258d407f5cfc51380930ad01375e79585e32ea49dc6fb2772dcb041",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 61,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 78,
+              "target": "005cab00",
+              "symbol": "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 129,
+              "target": "005995f0",
+              "symbol": "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 160,
+              "target": "0059a190",
+              "symbol": "?append@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXABQAVPrimitive@RBX@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 173,
+              "target": "005a0560",
+              "symbol": "?getMyWorldFast@Workspace@RBX@@SAPAVWorld@2@PBVInstance@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 216,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 237,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.011556
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  "require_proof": "FAIL: proof incomplete; inspect saved receipt (no ABI/runtime/server credit)",
+  "original_eh": {
+    "handler": "007d9168",
+    "funcinfo_address": "008f93dc",
+    "funcinfo_words": [
+      429065506,
+      1,
+      9409492,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "unwind_address": "0x8f93d4",
+    "unwind_words": [
+      4294967295,
+      8229216
+    ],
+    "cleanup_asm": [
+      "007d9160 lea ecx, [ebp - 0x14]",
+      "007d9163 jmp 0x600660"
+    ]
+  }
+}

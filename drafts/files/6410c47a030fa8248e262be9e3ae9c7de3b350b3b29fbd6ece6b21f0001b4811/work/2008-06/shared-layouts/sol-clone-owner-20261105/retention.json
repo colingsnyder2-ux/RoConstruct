@@ -1,0 +1,2565 @@
+{
+  "old_sha256": "6b90d0272fc5e4ce238a23bcd487c2f9c29846c505057a3d3beb67d649a05aeb",
+  "new_sha256": "31a86c7a2bba8a69b23f86baf18b50cece77882ae2a0d87032b62e222c916b13",
+  "removed": [
+    "$LN12",
+    "$LN15",
+    "$LN7",
+    "$LN8",
+    ".rdata$r",
+    "??$?0V?$shared_ptr@VInstance@RBX@@@boost@@@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@1@@Z",
+    "??$_Allocate@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@YAPAV?$shared_ptr@VInstance@RBX@@@boost@@IPAV12@@Z",
+    "??$_Allocate@V_Aux_cont@std@@@std@@YAPAV_Aux_cont@0@IPAV10@@Z",
+    "??$_Destroy@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@YAXPAV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+    "??$_Destroy_range@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$shared_ptr@VInstance@RBX@@@boost@@0AAV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@0@@Z",
+    "??$_Destroy_range@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$shared_ptr@VInstance@RBX@@@boost@@0AAV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+    "??$_Ptr_cat@PAV?$shared_ptr@VInstance@RBX@@@boost@@PAV12@@std@@YA?AU_Nonscalar_ptr_iterator_tag@0@AAPAV?$shared_ptr@VInstance@RBX@@@boost@@0@Z",
+    "??0?$_Container_base_aux_alloc_real@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAE@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@1@@Z",
+    "??0?$_Vector_val@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAE@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@1@@Z",
+    "??0?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QAE@ABV01@@Z",
+    "??0?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QAE@XZ",
+    "??0?$auto_ptr@VXmlElement@@@std@@QAE@PAVXmlElement@@@Z",
+    "??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ",
+    "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+    "??0_Aux_cont@std@@QAE@QBV_Container_base_aux@1@@Z",
+    "??0_Container_base_aux@std@@QAE@XZ",
+    "??0bad_alloc@std@@QAE@ABV01@@Z",
+    "??0bad_alloc@std@@QAE@PBD@Z",
+    "??0length_error@std@@QAE@ABV01@@Z",
+    "??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+    "??0logic_error@std@@QAE@ABV01@@Z",
+    "??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+    "??1?$_Container_base_aux_alloc_real@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAE@XZ",
+    "??1?$_Vector_val@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+    "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+    "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+    "??1XmlAttribute@@QAE@XZ",
+    "??1XmlElement@@QAE@XZ",
+    "??1XmlNameValuePair@@QAE@XZ",
+    "??1_Container_base_aux@std@@QAE@XZ",
+    "??1bad_alloc@std@@UAE@XZ",
+    "??1length_error@std@@UAE@XZ",
+    "??1logic_error@std@@UAE@XZ",
+    "??2@YAPAXIPAX@Z",
+    "??3@YAXPAX0@Z",
+    "??A?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEAAV?$shared_ptr@VInstance@RBX@@@boost@@I@Z",
+    "??_7bad_alloc@std@@6B@",
+    "??_7length_error@std@@6B@",
+    "??_7logic_error@std@@6B@",
+    "??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@",
+    "??_G?$shared_ptr@VInstance@RBX@@@boost@@QAEPAXI@Z",
+    "??_GXmlAttribute@@QAEPAXI@Z",
+    "??_GXmlElement@@QAEPAXI@Z",
+    "??_Gbad_alloc@std@@UAEPAXI@Z",
+    "??_Glength_error@std@@UAEPAXI@Z",
+    "??_Glogic_error@std@@UAEPAXI@Z",
+    "??_R0?AVbad_alloc@std@@@8",
+    "??_R0?AVexception@std@@@8",
+    "??_R0?AVlength_error@std@@@8",
+    "??_R0?AVlogic_error@std@@@8",
+    "??_R1A@?0A@EA@bad_alloc@std@@8",
+    "??_R1A@?0A@EA@exception@std@@8",
+    "??_R1A@?0A@EA@length_error@std@@8",
+    "??_R1A@?0A@EA@logic_error@std@@8",
+    "??_R2bad_alloc@std@@8",
+    "??_R2exception@std@@8",
+    "??_R2length_error@std@@8",
+    "??_R2logic_error@std@@8",
+    "??_R3bad_alloc@std@@8",
+    "??_R3exception@std@@8",
+    "??_R3length_error@std@@8",
+    "??_R3logic_error@std@@8",
+    "??_R4bad_alloc@std@@6B@",
+    "??_R4length_error@std@@6B@",
+    "??_R4logic_error@std@@6B@",
+    "?_Buy@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAE_NI@Z",
+    "?_Destroy@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAEXPAV?$shared_ptr@VInstance@RBX@@@boost@@0@Z",
+    "?_Tidy@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAEXXZ",
+    "?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+    "?allocate@?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QAEPAV?$shared_ptr@VInstance@RBX@@@boost@@I@Z",
+    "?allocate@?$allocator@V_Aux_cont@std@@@std@@QAEPAV_Aux_cont@2@I@Z",
+    "?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+    "?deallocate@?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QAEXPAV?$shared_ptr@VInstance@RBX@@@boost@@I@Z",
+    "?deallocate@?$allocator@V_Aux_cont@std@@@std@@QAEXPAV_Aux_cont@2@I@Z",
+    "?destroy@?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QAEXPAV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+    "?empty@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QBE_NXZ",
+    "?firstChild@?$Parent@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+    "?firstChild@?$Parent@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+    "?get@?$auto_ptr@VXmlElement@@@std@@QBEPAVXmlElement@@XZ",
+    "?max_size@?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QBEIXZ",
+    "?max_size@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QBEIXZ",
+    "?nextSibling@?$Sibling@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+    "?nextSibling@?$Sibling@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+    "?what@logic_error@std@@UBEPBDXZ",
+    "__CT??_R0?AVbad_alloc@std@@@8??0bad_alloc@std@@QAE@ABV01@@Z12",
+    "__CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12",
+    "__CT??_R0?AVlength_error@std@@@8??0length_error@std@@QAE@ABV01@@Z40",
+    "__CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z40",
+    "__CTA2?AVbad_alloc@std@@",
+    "__CTA3?AVlength_error@std@@",
+    "__TI2?AVbad_alloc@std@@",
+    "__TI3?AVlength_error@std@@",
+    "__ehfuncinfo$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+    "__ehfuncinfo$??0logic_error@std@@QAE@ABV01@@Z",
+    "__ehfuncinfo$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+    "__ehfuncinfo$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+    "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+    "__ehfuncinfo$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+    "__ehfuncinfo$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+    "__ehhandler$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+    "__ehhandler$??0logic_error@std@@QAE@ABV01@@Z",
+    "__ehhandler$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+    "__ehhandler$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+    "__ehhandler$??1XmlElement@@QAE@XZ",
+    "__ehhandler$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+    "__ehhandler$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+    "__unwindfunclet$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ$0",
+    "__unwindfunclet$??0logic_error@std@@QAE@ABV01@@Z$0",
+    "__unwindfunclet$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z$0",
+    "__unwindfunclet$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ$0",
+    "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+    "__unwindfunclet$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ$0",
+    "__unwindfunclet$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ$2",
+    "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0",
+    "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$1",
+    "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$2",
+    "__unwindtable$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+    "__unwindtable$??0logic_error@std@@QAE@ABV01@@Z",
+    "__unwindtable$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+    "__unwindtable$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+    "__unwindtable$??1XmlElement@@QAE@XZ",
+    "__unwindtable$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+    "__unwindtable$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ"
+  ],
+  "changed": [
+    ".bss",
+    ".debug$F",
+    ".debug$S",
+    ".sxdata",
+    ".text",
+    ".text$x",
+    ".xdata$x",
+    "?id@?$date_facet@Vdate@gregorian@boost@@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@date_time@boost@@2V0locale@std@@A"
+  ],
+  "added": [],
+  "unchanged": 501,
+  "removed_identity": {
+    "$LN12": {
+      "value": 112,
+      "bytes": "6aff680000000064a100000000506489250000000083ec4468000000008d4c2404ff15000000008d4c241cc744244c00000000ff15000000008d0424508d4c242cc644245001c744242000000000ff150000000068000000008d4c242051c644245400c744242400000000e800000000cc",
+      "relocations": [
+        [
+          3,
+          "__ehhandler$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+          6
+        ],
+        [
+          25,
+          "??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@",
+          6
+        ],
+        [
+          35,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          6
+        ],
+        [
+          53,
+          "__imp_??0exception@std@@QAE@XZ",
+          6
+        ],
+        [
+          74,
+          "??_7logic_error@std@@6B@",
+          6
+        ],
+        [
+          80,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+          6
+        ],
+        [
+          85,
+          "__TI3?AVlength_error@std@@",
+          6
+        ],
+        [
+          103,
+          "??_7length_error@std@@6B@",
+          6
+        ],
+        [
+          108,
+          "__CxxThrowException@8",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "$LN15": {
+      "value": 72,
+      "bytes": "5633c0578b7c240c8bf189460c8946108946143bf875075f32c05ec2040081ffffffff1f7605e8000000005057e80000000089460c89461083c4088d04f88946145fb0015ec20400",
+      "relocations": [
+        [
+          39,
+          "?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+          20
+        ],
+        [
+          46,
+          "??$_Allocate@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@YAPAV?$shared_ptr@VInstance@RBX@@@boost@@IPAV12@@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "$LN7": {
+      "value": 24,
+      "bytes": "8b45cc83e0010f840c0000008365ccfe8b4d04e900000000c38d4dd0e9000000008d4ddce900000000b800000000e900000000",
+      "relocations": [
+        [
+          20,
+          "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ",
+          20
+        ],
+        [
+          29,
+          "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          37,
+          "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          42,
+          "__ehfuncinfo$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+          6
+        ],
+        [
+          47,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "$LN8": {
+      "value": 91,
+      "bytes": "8b4c240483ec0c85c9771633c98d14cd0000000052e80000000083c40483c40cc383c8ff33d2f7f183f80873e08d442410508d4c2404c744241400000000ff150000000068000000008d4c240451c744240800000000e800000000cc",
+      "relocations": [
+        [
+          22,
+          "??2@YAPAXI@Z",
+          20
+        ],
+        [
+          64,
+          "__imp_??0exception@std@@QAE@ABQBD@Z",
+          6
+        ],
+        [
+          69,
+          "__TI2?AVbad_alloc@std@@",
+          6
+        ],
+        [
+          82,
+          "??_7bad_alloc@std@@6B@",
+          6
+        ],
+        [
+          87,
+          "__CxxThrowException@8",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    ".rdata$r": {
+      "value": 0,
+      "bytes": "0000000000000000000000000000000000000000",
+      "relocations": [
+        [
+          12,
+          "??_R0?AVbad_alloc@std@@@8",
+          6
+        ],
+        [
+          16,
+          "??_R3bad_alloc@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??$?0V?$shared_ptr@VInstance@RBX@@@boost@@@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@1@@Z": {
+      "value": 0,
+      "bytes": "8bc1c20400",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??$_Allocate@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@YAPAV?$shared_ptr@VInstance@RBX@@@boost@@IPAV12@@Z": {
+      "value": 0,
+      "bytes": "8b4c240483ec0c85c9771633c98d14cd0000000052e80000000083c40483c40cc383c8ff33d2f7f183f80873e08d442410508d4c2404c744241400000000ff150000000068000000008d4c240451c744240800000000e800000000cc",
+      "relocations": [
+        [
+          22,
+          "??2@YAPAXI@Z",
+          20
+        ],
+        [
+          64,
+          "__imp_??0exception@std@@QAE@ABQBD@Z",
+          6
+        ],
+        [
+          69,
+          "__TI2?AVbad_alloc@std@@",
+          6
+        ],
+        [
+          82,
+          "??_7bad_alloc@std@@6B@",
+          6
+        ],
+        [
+          87,
+          "__CxxThrowException@8",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??$_Allocate@V_Aux_cont@std@@@std@@YAPAV_Aux_cont@0@IPAV10@@Z": {
+      "value": 0,
+      "bytes": "8b4c240483ec0c85c9771633c98d148d0000000052e80000000083c40483c40cc383c8ff33d2f7f183f80473e08d442410508d4c2404c744241400000000ff150000000068000000008d4c240451c744240800000000e800000000cc",
+      "relocations": [
+        [
+          22,
+          "??2@YAPAXI@Z",
+          20
+        ],
+        [
+          64,
+          "__imp_??0exception@std@@QAE@ABQBD@Z",
+          6
+        ],
+        [
+          69,
+          "__TI2?AVbad_alloc@std@@",
+          6
+        ],
+        [
+          82,
+          "??_7bad_alloc@std@@6B@",
+          6
+        ],
+        [
+          87,
+          "__CxxThrowException@8",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??$_Destroy@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@YAXPAV?$shared_ptr@VInstance@RBX@@@boost@@@Z": {
+      "value": 0,
+      "bytes": "8b442404568b700485f6742b8d4e0483cafff00fc111751f8b068b50048bceffd28d460883c9fff00fc108750a8b168b42088bce5effe05ec3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??$_Destroy_range@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$shared_ptr@VInstance@RBX@@@boost@@0AAV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@0@@Z": {
+      "value": 0,
+      "bytes": "518b04248b4c24108b54240c508b44240c515250e80000000083c414c3",
+      "relocations": [
+        [
+          21,
+          "??$_Destroy_range@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$shared_ptr@VInstance@RBX@@@boost@@0AAV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??$_Destroy_range@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$shared_ptr@VInstance@RBX@@@boost@@0AAV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": {
+      "value": 0,
+      "bytes": "538b5c240c578b7c240c3bfb743b56908b770485f6742a8d460483c9fff00fc108751e8b168b42048bceffd08d4e0883cafff00fc11175098b068b50088bceffd283c7083bfb75c85e5f5bc3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??$_Ptr_cat@PAV?$shared_ptr@VInstance@RBX@@@boost@@PAV12@@std@@YA?AU_Nonscalar_ptr_iterator_tag@0@AAPAV?$shared_ptr@VInstance@RBX@@@boost@@0@Z": {
+      "value": 0,
+      "bytes": "518a44240359c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??0?$_Container_base_aux_alloc_real@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAE@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@1@@Z": {
+      "value": 0,
+      "bytes": "566a048bf1e80000000083c40485c0740a893089068bc65ec2040033c089068bc65ec20400",
+      "relocations": [
+        [
+          6,
+          "??2@YAPAXI@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??0?$_Vector_val@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAE@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@1@@Z": {
+      "value": 0,
+      "bytes": "566a048bf1e80000000083c40485c0740a893089068bc65ec2040033c089068bc65ec20400",
+      "relocations": [
+        [
+          6,
+          "??2@YAPAXI@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??0?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QAE@ABV01@@Z": {
+      "value": 0,
+      "bytes": "8bc1c20400",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??0?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QAE@XZ": {
+      "value": 0,
+      "bytes": "8bc1c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??0?$auto_ptr@VXmlElement@@@std@@QAE@PAVXmlElement@@@Z": {
+      "value": 0,
+      "bytes": "8bc18b4c24048908c20400",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": {
+      "value": 0,
+      "bytes": "8bc1c70000000000c7400400000000c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": {
+      "value": 0,
+      "bytes": "6aff680000000064a100000000506489250000000051566a048bf1e80000000033c983c4043bc174048930eb0233c08906894e0c894e10894e148b4c24088bc65e64890d0000000083c410c3",
+      "relocations": [
+        [
+          3,
+          "__ehhandler$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          6
+        ],
+        [
+          28,
+          "??2@YAPAXI@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??0_Aux_cont@std@@QAE@QBV_Container_base_aux@1@@Z": {
+      "value": 0,
+      "bytes": "8bc18b4c24048908c20400",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??0_Container_base_aux@std@@QAE@XZ": {
+      "value": 0,
+      "bytes": "8bc1c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??0bad_alloc@std@@QAE@ABV01@@Z": {
+      "value": 0,
+      "bytes": "8b44240456508bf1ff1500000000c706000000008bc65ec20400",
+      "relocations": [
+        [
+          10,
+          "__imp_??0exception@std@@QAE@ABV01@@Z",
+          6
+        ],
+        [
+          16,
+          "??_7bad_alloc@std@@6B@",
+          6
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??0bad_alloc@std@@QAE@PBD@Z": {
+      "value": 0,
+      "bytes": "568d442408508bf1ff1500000000c706000000008bc65ec20400",
+      "relocations": [
+        [
+          10,
+          "__imp_??0exception@std@@QAE@ABQBD@Z",
+          6
+        ],
+        [
+          16,
+          "??_7bad_alloc@std@@6B@",
+          6
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??0length_error@std@@QAE@ABV01@@Z": {
+      "value": 0,
+      "bytes": "8b44240456508bf1e800000000c706000000008bc65ec20400",
+      "relocations": [
+        [
+          9,
+          "??0logic_error@std@@QAE@ABV01@@Z",
+          20
+        ],
+        [
+          15,
+          "??_7length_error@std@@6B@",
+          6
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": {
+      "value": 0,
+      "bytes": "8b44240456508bf1e800000000c706000000008bc65ec20400",
+      "relocations": [
+        [
+          9,
+          "??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+          20
+        ],
+        [
+          15,
+          "??_7length_error@std@@6B@",
+          6
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??0logic_error@std@@QAE@ABV01@@Z": {
+      "value": 0,
+      "bytes": "6aff680000000064a10000000050648925000000005156578b7c241c8bf1578974240cff150000000083c70c578d4e0cc744241800000000c70600000000ff15000000008b4c240c5f8bc65e64890d0000000083c410c20400",
+      "relocations": [
+        [
+          3,
+          "__ehhandler$??0logic_error@std@@QAE@ABV01@@Z",
+          6
+        ],
+        [
+          37,
+          "__imp_??0exception@std@@QAE@ABV01@@Z",
+          6
+        ],
+        [
+          58,
+          "??_7logic_error@std@@6B@",
+          6
+        ],
+        [
+          64,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+          6
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": {
+      "value": 0,
+      "bytes": "6aff680000000064a100000000506489250000000051568bf189742404ff15000000008b442418508d4e0cc744241400000000c70600000000ff15000000008b4c24088bc65e64890d0000000083c410c20400",
+      "relocations": [
+        [
+          3,
+          "__ehhandler$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+          6
+        ],
+        [
+          31,
+          "__imp_??0exception@std@@QAE@XZ",
+          6
+        ],
+        [
+          53,
+          "??_7logic_error@std@@6B@",
+          6
+        ],
+        [
+          59,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+          6
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??1?$_Container_base_aux_alloc_real@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAE@XZ": {
+      "value": 0,
+      "bytes": "8b0150e80000000059c3",
+      "relocations": [
+        [
+          4,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??1?$_Vector_val@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": {
+      "value": 0,
+      "bytes": "8b0150e80000000059c3",
+      "relocations": [
+        [
+          4,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ": {
+      "value": 0,
+      "bytes": "568b3185f674108bcee80000000056e80000000083c4045ec3",
+      "relocations": [
+        [
+          10,
+          "??1XmlElement@@QAE@XZ",
+          20
+        ],
+        [
+          16,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": {
+      "value": 0,
+      "bytes": "6aff680000000064a100000000506489250000000051568bf157897424088b460c33ff897c24143bc7741f8b4c2408518b4e108d5608525150e8000000008b560c52e80000000083c4148b0650897e0c897e10897e14e8000000008b4c241083c4045f5e64890d0000000083c410c3",
+      "relocations": [
+        [
+          3,
+          "__ehhandler$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          6
+        ],
+        [
+          58,
+          "??$_Destroy_range@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$shared_ptr@VInstance@RBX@@@boost@@0AAV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+          20
+        ],
+        [
+          67,
+          "??3@YAXPAX@Z",
+          20
+        ],
+        [
+          87,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??1XmlAttribute@@QAE@XZ": {
+      "value": 0,
+      "bytes": "83c108e900000000",
+      "relocations": [
+        [
+          4,
+          "?clearValue@XmlNameValuePair@@ABEXXZ",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??1XmlElement@@QAE@XZ": {
+      "value": 0,
+      "bytes": "6aff680000000064a10000000050648925000000005153568bd957895c240c8b7320c74424180000000085f6741b8bff8bfe8b368d4f08e80000000057e80000000083c40485f675e78b730485f674188bfe8b368bcfe80000000057e80000000083c40485f675e88d4b10c7442418ffffffffe8000000008b4c24105f5e5b64890d0000000083c410c3",
+      "relocations": [
+        [
+          3,
+          "__ehhandler$??1XmlElement@@QAE@XZ",
+          6
+        ],
+        [
+          56,
+          "?clearValue@XmlNameValuePair@@ABEXXZ",
+          20
+        ],
+        [
+          62,
+          "??3@YAXPAX@Z",
+          20
+        ],
+        [
+          87,
+          "??1XmlElement@@QAE@XZ",
+          20
+        ],
+        [
+          93,
+          "??3@YAXPAX@Z",
+          20
+        ],
+        [
+          116,
+          "?clearValue@XmlNameValuePair@@ABEXXZ",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??1XmlNameValuePair@@QAE@XZ": {
+      "value": 0,
+      "bytes": "e900000000",
+      "relocations": [
+        [
+          1,
+          "?clearValue@XmlNameValuePair@@ABEXXZ",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??1_Container_base_aux@std@@QAE@XZ": {
+      "value": 0,
+      "bytes": "c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??1bad_alloc@std@@UAE@XZ": {
+      "value": 0,
+      "bytes": "c70100000000ff2500000000",
+      "relocations": [
+        [
+          2,
+          "??_7bad_alloc@std@@6B@",
+          6
+        ],
+        [
+          8,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??1length_error@std@@UAE@XZ": {
+      "value": 0,
+      "bytes": "568bf18d4e0cc70600000000ff15000000008bce5eff2500000000",
+      "relocations": [
+        [
+          8,
+          "??_7logic_error@std@@6B@",
+          6
+        ],
+        [
+          14,
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          6
+        ],
+        [
+          23,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??1logic_error@std@@UAE@XZ": {
+      "value": 0,
+      "bytes": "568bf18d4e0cc70600000000ff15000000008bce5eff2500000000",
+      "relocations": [
+        [
+          8,
+          "??_7logic_error@std@@6B@",
+          6
+        ],
+        [
+          14,
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          6
+        ],
+        [
+          23,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??2@YAPAXIPAX@Z": {
+      "value": 0,
+      "bytes": "8b442408c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??3@YAXPAX0@Z": {
+      "value": 0,
+      "bytes": "c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "??A?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEAAV?$shared_ptr@VInstance@RBX@@@boost@@I@Z": {
+      "value": 0,
+      "bytes": "568bf18b46102b460c578b7c240cc1f8033bf87206ff15000000008b4e0c8d04f95f5ec20400",
+      "relocations": [
+        [
+          23,
+          "__imp___invalid_parameter_noinfo",
+          6
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??_7bad_alloc@std@@6B@": {
+      "value": 4,
+      "bytes": "000000000000000000000000",
+      "relocations": [
+        [
+          0,
+          "??_R4bad_alloc@std@@6B@",
+          6
+        ],
+        [
+          4,
+          "??_Ebad_alloc@std@@UAEPAXI@Z",
+          6
+        ],
+        [
+          8,
+          "?what@exception@std@@UBEPBDXZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_7length_error@std@@6B@": {
+      "value": 4,
+      "bytes": "000000000000000000000000",
+      "relocations": [
+        [
+          0,
+          "??_R4length_error@std@@6B@",
+          6
+        ],
+        [
+          4,
+          "??_Elength_error@std@@UAEPAXI@Z",
+          6
+        ],
+        [
+          8,
+          "?what@logic_error@std@@UBEPBDXZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_7logic_error@std@@6B@": {
+      "value": 4,
+      "bytes": "000000000000000000000000",
+      "relocations": [
+        [
+          0,
+          "??_R4logic_error@std@@6B@",
+          6
+        ],
+        [
+          4,
+          "??_Elogic_error@std@@UAEPAXI@Z",
+          6
+        ],
+        [
+          8,
+          "?what@logic_error@std@@UBEPBDXZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@": {
+      "value": 0,
+      "bytes": "766563746f723c543e20746f6f206c6f6e6700",
+      "relocations": [],
+      "characteristics": 1076891712
+    },
+    "??_G?$shared_ptr@VInstance@RBX@@@boost@@QAEPAXI@Z": {
+      "value": 0,
+      "bytes": "56578bf98b770485f6742a8d460483c9fff00fc108751e8b168b42048bceffd08d4e0883cafff00fc11175098b068b50088bceffd2f644240c01740957e80000000083c4048bc75f5ec20400",
+      "relocations": [
+        [
+          62,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??_GXmlAttribute@@QAEPAXI@Z": {
+      "value": 0,
+      "bytes": "568bf18d4e08e800000000f644240801740956e80000000083c4048bc65ec20400",
+      "relocations": [
+        [
+          7,
+          "?clearValue@XmlNameValuePair@@ABEXXZ",
+          20
+        ],
+        [
+          20,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??_GXmlElement@@QAEPAXI@Z": {
+      "value": 0,
+      "bytes": "568bf1e800000000f644240801740956e80000000083c4048bc65ec20400",
+      "relocations": [
+        [
+          4,
+          "??1XmlElement@@QAE@XZ",
+          20
+        ],
+        [
+          17,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??_Gbad_alloc@std@@UAEPAXI@Z": {
+      "value": 0,
+      "bytes": "568bf1c70600000000ff1500000000f644240801740956e80000000083c4048bc65ec20400",
+      "relocations": [
+        [
+          5,
+          "??_7bad_alloc@std@@6B@",
+          6
+        ],
+        [
+          11,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ],
+        [
+          24,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??_Glength_error@std@@UAEPAXI@Z": {
+      "value": 0,
+      "bytes": "568bf18d4e0cc70600000000ff15000000008bceff1500000000f644240801740956e80000000083c4048bc65ec20400",
+      "relocations": [
+        [
+          8,
+          "??_7logic_error@std@@6B@",
+          6
+        ],
+        [
+          14,
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          6
+        ],
+        [
+          22,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ],
+        [
+          35,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??_Glogic_error@std@@UAEPAXI@Z": {
+      "value": 0,
+      "bytes": "568bf18d4e0cc70600000000ff15000000008bceff1500000000f644240801740956e80000000083c4048bc65ec20400",
+      "relocations": [
+        [
+          8,
+          "??_7logic_error@std@@6B@",
+          6
+        ],
+        [
+          14,
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          6
+        ],
+        [
+          22,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ],
+        [
+          35,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "??_R0?AVbad_alloc@std@@@8": {
+      "value": 0,
+      "bytes": "00000000000000002e3f41566261645f616c6c6f6340737464404000",
+      "relocations": [
+        [
+          0,
+          "??_7type_info@@6B@",
+          6
+        ]
+      ],
+      "characteristics": 3224375360
+    },
+    "??_R0?AVexception@std@@@8": {
+      "value": 0,
+      "bytes": "00000000000000002e3f4156657863657074696f6e40737464404000",
+      "relocations": [
+        [
+          0,
+          "??_7type_info@@6B@",
+          6
+        ]
+      ],
+      "characteristics": 3224375360
+    },
+    "??_R0?AVlength_error@std@@@8": {
+      "value": 0,
+      "bytes": "00000000000000002e3f41566c656e6774685f6572726f7240737464404000",
+      "relocations": [
+        [
+          0,
+          "??_7type_info@@6B@",
+          6
+        ]
+      ],
+      "characteristics": 3224375360
+    },
+    "??_R0?AVlogic_error@std@@@8": {
+      "value": 0,
+      "bytes": "00000000000000002e3f41566c6f6769635f6572726f7240737464404000",
+      "relocations": [
+        [
+          0,
+          "??_7type_info@@6B@",
+          6
+        ]
+      ],
+      "characteristics": 3224375360
+    },
+    "??_R1A@?0A@EA@bad_alloc@std@@8": {
+      "value": 0,
+      "bytes": "000000000100000000000000ffffffff000000004000000000000000",
+      "relocations": [
+        [
+          0,
+          "??_R0?AVbad_alloc@std@@@8",
+          6
+        ],
+        [
+          24,
+          "??_R3bad_alloc@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R1A@?0A@EA@exception@std@@8": {
+      "value": 0,
+      "bytes": "000000000000000000000000ffffffff000000004000000000000000",
+      "relocations": [
+        [
+          0,
+          "??_R0?AVexception@std@@@8",
+          6
+        ],
+        [
+          24,
+          "??_R3exception@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R1A@?0A@EA@length_error@std@@8": {
+      "value": 0,
+      "bytes": "000000000200000000000000ffffffff000000004000000000000000",
+      "relocations": [
+        [
+          0,
+          "??_R0?AVlength_error@std@@@8",
+          6
+        ],
+        [
+          24,
+          "??_R3length_error@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R1A@?0A@EA@logic_error@std@@8": {
+      "value": 0,
+      "bytes": "000000000100000000000000ffffffff000000004000000000000000",
+      "relocations": [
+        [
+          0,
+          "??_R0?AVlogic_error@std@@@8",
+          6
+        ],
+        [
+          24,
+          "??_R3logic_error@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R2bad_alloc@std@@8": {
+      "value": 0,
+      "bytes": "000000000000000000",
+      "relocations": [
+        [
+          0,
+          "??_R1A@?0A@EA@bad_alloc@std@@8",
+          6
+        ],
+        [
+          4,
+          "??_R1A@?0A@EA@exception@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R2exception@std@@8": {
+      "value": 0,
+      "bytes": "0000000000",
+      "relocations": [
+        [
+          0,
+          "??_R1A@?0A@EA@exception@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R2length_error@std@@8": {
+      "value": 0,
+      "bytes": "00000000000000000000000000",
+      "relocations": [
+        [
+          0,
+          "??_R1A@?0A@EA@length_error@std@@8",
+          6
+        ],
+        [
+          4,
+          "??_R1A@?0A@EA@logic_error@std@@8",
+          6
+        ],
+        [
+          8,
+          "??_R1A@?0A@EA@exception@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R2logic_error@std@@8": {
+      "value": 0,
+      "bytes": "000000000000000000",
+      "relocations": [
+        [
+          0,
+          "??_R1A@?0A@EA@logic_error@std@@8",
+          6
+        ],
+        [
+          4,
+          "??_R1A@?0A@EA@exception@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R3bad_alloc@std@@8": {
+      "value": 0,
+      "bytes": "00000000000000000200000000000000",
+      "relocations": [
+        [
+          12,
+          "??_R2bad_alloc@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R3exception@std@@8": {
+      "value": 0,
+      "bytes": "00000000000000000100000000000000",
+      "relocations": [
+        [
+          12,
+          "??_R2exception@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R3length_error@std@@8": {
+      "value": 0,
+      "bytes": "00000000000000000300000000000000",
+      "relocations": [
+        [
+          12,
+          "??_R2length_error@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R3logic_error@std@@8": {
+      "value": 0,
+      "bytes": "00000000000000000200000000000000",
+      "relocations": [
+        [
+          12,
+          "??_R2logic_error@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R4bad_alloc@std@@6B@": {
+      "value": 0,
+      "bytes": "0000000000000000000000000000000000000000",
+      "relocations": [
+        [
+          12,
+          "??_R0?AVbad_alloc@std@@@8",
+          6
+        ],
+        [
+          16,
+          "??_R3bad_alloc@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R4length_error@std@@6B@": {
+      "value": 0,
+      "bytes": "0000000000000000000000000000000000000000",
+      "relocations": [
+        [
+          12,
+          "??_R0?AVlength_error@std@@@8",
+          6
+        ],
+        [
+          16,
+          "??_R3length_error@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "??_R4logic_error@std@@6B@": {
+      "value": 0,
+      "bytes": "0000000000000000000000000000000000000000",
+      "relocations": [
+        [
+          12,
+          "??_R0?AVlogic_error@std@@@8",
+          6
+        ],
+        [
+          16,
+          "??_R3logic_error@std@@8",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "?_Buy@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAE_NI@Z": {
+      "value": 0,
+      "bytes": "5633c0578b7c240c8bf189460c8946108946143bf875075f32c05ec2040081ffffffff1f7605e8000000005057e80000000089460c89461083c4088d04f88946145fb0015ec20400",
+      "relocations": [
+        [
+          39,
+          "?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+          20
+        ],
+        [
+          46,
+          "??$_Allocate@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@YAPAV?$shared_ptr@VInstance@RBX@@@boost@@IPAV12@@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "?_Destroy@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAEXPAV?$shared_ptr@VInstance@RBX@@@boost@@0@Z": {
+      "value": 0,
+      "bytes": "8b4424088b5424045083c108518b4c24105152e80000000083c410c20800",
+      "relocations": [
+        [
+          20,
+          "??$_Destroy_range@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$shared_ptr@VInstance@RBX@@@boost@@0AAV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "?_Tidy@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAEXXZ": {
+      "value": 0,
+      "bytes": "51568bf18b460c85c0741f8b4c2404518b4e108d5608525150e8000000008b560c52e80000000083c414c7460c00000000c7461000000000c74614000000005e59c3",
+      "relocations": [
+        [
+          26,
+          "??$_Destroy_range@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$shared_ptr@VInstance@RBX@@@boost@@0AAV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+          20
+        ],
+        [
+          35,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ": {
+      "value": 0,
+      "bytes": "6aff680000000064a100000000506489250000000083ec4468000000008d4c2404ff15000000008d4c241cc744244c00000000ff15000000008d0424508d4c242cc644245001c744242000000000ff150000000068000000008d4c242051c644245400c744242400000000e800000000cc",
+      "relocations": [
+        [
+          3,
+          "__ehhandler$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+          6
+        ],
+        [
+          25,
+          "??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@",
+          6
+        ],
+        [
+          35,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          6
+        ],
+        [
+          53,
+          "__imp_??0exception@std@@QAE@XZ",
+          6
+        ],
+        [
+          74,
+          "??_7logic_error@std@@6B@",
+          6
+        ],
+        [
+          80,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+          6
+        ],
+        [
+          85,
+          "__TI3?AVlength_error@std@@",
+          6
+        ],
+        [
+          103,
+          "??_7length_error@std@@6B@",
+          6
+        ],
+        [
+          108,
+          "__CxxThrowException@8",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "?allocate@?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QAEPAV?$shared_ptr@VInstance@RBX@@@boost@@I@Z": {
+      "value": 0,
+      "bytes": "8b4424046a0050e80000000083c408c20400",
+      "relocations": [
+        [
+          8,
+          "??$_Allocate@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@YAPAV?$shared_ptr@VInstance@RBX@@@boost@@IPAV12@@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "?allocate@?$allocator@V_Aux_cont@std@@@std@@QAEPAV_Aux_cont@2@I@Z": {
+      "value": 0,
+      "bytes": "8b4424046a0050e80000000083c408c20400",
+      "relocations": [
+        [
+          8,
+          "??$_Allocate@V_Aux_cont@std@@@std@@YAPAV_Aux_cont@0@IPAV10@@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ": {
+      "value": 0,
+      "bytes": "6aff680000000064a100000000506489250000000083ec285333db5633f6895c240838992c010000751c8b44244089308970045e5b8b4c242864890d0000000083c434c20400555751e8000000008bf883c404897c24148d4c2420c744244001000000e8000000008d44242050578d4c2420c644244802e8000000008b4424302b44242cc1f8033bc67513897424188974241c8d442418bb02000000eb107706ff15000000008b44242c8b74241c8b088b6c2448894d008b400489450485c0740c83c004ba01000000f00fc11083cb01895c2410f6c302743583e3fd895c241085f6742a8d460483c9fff00fc108751e8b168b42048bceffd08d4e0883cafff00fc11175098b068b50088bceffd28d4c2420c644244001e800000000c64424400085ff74108bcfe80000000057e80000000083c4048b4c24385f8bc55d5e5b64890d0000000083c434c20400",
+      "relocations": [
+        [
+          3,
+          "__ehhandler$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+          6
+        ],
+        [
+          74,
+          "?toNewXmlRoot@Instance@RBX@@SAPAVXmlElement@@PAV12@@Z",
+          20
+        ],
+        [
+          100,
+          "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          120,
+          "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+          20
+        ],
+        [
+          162,
+          "__imp___invalid_parameter_noinfo",
+          6
+        ],
+        [
+          280,
+          "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          296,
+          "??1XmlElement@@QAE@XZ",
+          20
+        ],
+        [
+          302,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "?deallocate@?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QAEXPAV?$shared_ptr@VInstance@RBX@@@boost@@I@Z": {
+      "value": 0,
+      "bytes": "8b44240450e80000000059c20800",
+      "relocations": [
+        [
+          6,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "?deallocate@?$allocator@V_Aux_cont@std@@@std@@QAEXPAV_Aux_cont@2@I@Z": {
+      "value": 0,
+      "bytes": "8b44240450e80000000059c20800",
+      "relocations": [
+        [
+          6,
+          "??3@YAXPAX@Z",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "?destroy@?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QAEXPAV?$shared_ptr@VInstance@RBX@@@boost@@@Z": {
+      "value": 0,
+      "bytes": "8b442404568b700485f6742a8d4e0483cafff00fc111751e8b068b50048bceffd28d460883c9fff00fc10875098b168b42088bceffd05ec20400",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "?empty@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QBE_NXZ": {
+      "value": 0,
+      "bytes": "8b41102b410c83e0f8f7d81bc040c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "?firstChild@?$Parent@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ": {
+      "value": 0,
+      "bytes": "8b01c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "?firstChild@?$Parent@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ": {
+      "value": 0,
+      "bytes": "8b01c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "?get@?$auto_ptr@VXmlElement@@@std@@QBEPAVXmlElement@@XZ": {
+      "value": 0,
+      "bytes": "8b01c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "?max_size@?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@QBEIXZ": {
+      "value": 0,
+      "bytes": "b8ffffff1fc3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "?max_size@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QBEIXZ": {
+      "value": 0,
+      "bytes": "b8ffffff1fc3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "?nextSibling@?$Sibling@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ": {
+      "value": 0,
+      "bytes": "8b01c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "?nextSibling@?$Sibling@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ": {
+      "value": 0,
+      "bytes": "8b01c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "?what@logic_error@std@@UBEPBDXZ": {
+      "value": 0,
+      "bytes": "8379241072048b4110c38d4110c3",
+      "relocations": [],
+      "characteristics": 1615859744
+    },
+    "__CT??_R0?AVbad_alloc@std@@@8??0bad_alloc@std@@QAE@ABV01@@Z12": {
+      "value": 0,
+      "bytes": "000000000000000000000000ffffffff000000000c00000000000000",
+      "relocations": [
+        [
+          4,
+          "??_R0?AVbad_alloc@std@@@8",
+          6
+        ],
+        [
+          24,
+          "??0bad_alloc@std@@QAE@ABV01@@Z",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12": {
+      "value": 0,
+      "bytes": "000000000000000000000000ffffffff000000000c00000000000000",
+      "relocations": [
+        [
+          4,
+          "??_R0?AVexception@std@@@8",
+          6
+        ],
+        [
+          24,
+          "??0exception@std@@QAE@ABV01@@Z",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__CT??_R0?AVlength_error@std@@@8??0length_error@std@@QAE@ABV01@@Z40": {
+      "value": 0,
+      "bytes": "000000000000000000000000ffffffff000000002800000000000000",
+      "relocations": [
+        [
+          4,
+          "??_R0?AVlength_error@std@@@8",
+          6
+        ],
+        [
+          24,
+          "??0length_error@std@@QAE@ABV01@@Z",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z40": {
+      "value": 0,
+      "bytes": "000000000000000000000000ffffffff000000002800000000000000",
+      "relocations": [
+        [
+          4,
+          "??_R0?AVlogic_error@std@@@8",
+          6
+        ],
+        [
+          24,
+          "??0logic_error@std@@QAE@ABV01@@Z",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__CTA2?AVbad_alloc@std@@": {
+      "value": 0,
+      "bytes": "020000000000000000000000",
+      "relocations": [
+        [
+          4,
+          "__CT??_R0?AVbad_alloc@std@@@8??0bad_alloc@std@@QAE@ABV01@@Z12",
+          6
+        ],
+        [
+          8,
+          "__CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__CTA3?AVlength_error@std@@": {
+      "value": 0,
+      "bytes": "03000000000000000000000000000000",
+      "relocations": [
+        [
+          4,
+          "__CT??_R0?AVlength_error@std@@@8??0length_error@std@@QAE@ABV01@@Z40",
+          6
+        ],
+        [
+          8,
+          "__CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z40",
+          6
+        ],
+        [
+          12,
+          "__CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__TI2?AVbad_alloc@std@@": {
+      "value": 0,
+      "bytes": "00000000000000000000000000000000",
+      "relocations": [
+        [
+          4,
+          "??1bad_alloc@std@@UAE@XZ",
+          6
+        ],
+        [
+          12,
+          "__CTA2?AVbad_alloc@std@@",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__TI3?AVlength_error@std@@": {
+      "value": 0,
+      "bytes": "00000000000000000000000000000000",
+      "relocations": [
+        [
+          4,
+          "??1length_error@std@@UAE@XZ",
+          6
+        ],
+        [
+          12,
+          "__CTA3?AVlength_error@std@@",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__ehfuncinfo$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": {
+      "value": 8,
+      "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ$0",
+          6
+        ],
+        [
+          16,
+          "__unwindtable$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__ehfuncinfo$??0logic_error@std@@QAE@ABV01@@Z": {
+      "value": 8,
+      "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$??0logic_error@std@@QAE@ABV01@@Z$0",
+          6
+        ],
+        [
+          16,
+          "__unwindtable$??0logic_error@std@@QAE@ABV01@@Z",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__ehfuncinfo$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": {
+      "value": 8,
+      "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z$0",
+          6
+        ],
+        [
+          16,
+          "__unwindtable$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__ehfuncinfo$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": {
+      "value": 8,
+      "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ$0",
+          6
+        ],
+        [
+          16,
+          "__unwindtable$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__ehfuncinfo$??1XmlElement@@QAE@XZ": {
+      "value": 8,
+      "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+          6
+        ],
+        [
+          16,
+          "__unwindtable$??1XmlElement@@QAE@XZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__ehfuncinfo$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ": {
+      "value": 16,
+      "bytes": "ffffffff000000000000000000000000220593190200000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ$0",
+          6
+        ],
+        [
+          12,
+          "__unwindfunclet$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ$2",
+          6
+        ],
+        [
+          24,
+          "__unwindtable$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__ehfuncinfo$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ": {
+      "value": 24,
+      "bytes": "ffffffff0000000000000000000000000100000000000000220593190300000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0",
+          6
+        ],
+        [
+          12,
+          "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$1",
+          6
+        ],
+        [
+          20,
+          "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$2",
+          6
+        ],
+        [
+          32,
+          "__unwindtable$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__ehhandler$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": {
+      "value": 8,
+      "bytes": "8b4df0e900000000b800000000e900000000",
+      "relocations": [
+        [
+          4,
+          "??1?$_Vector_val@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          9,
+          "__ehfuncinfo$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          6
+        ],
+        [
+          14,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__ehhandler$??0logic_error@std@@QAE@ABV01@@Z": {
+      "value": 9,
+      "bytes": "8b4df0ff2500000000b800000000e900000000",
+      "relocations": [
+        [
+          5,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ],
+        [
+          10,
+          "__ehfuncinfo$??0logic_error@std@@QAE@ABV01@@Z",
+          6
+        ],
+        [
+          15,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__ehhandler$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": {
+      "value": 9,
+      "bytes": "8b4df0ff2500000000b800000000e900000000",
+      "relocations": [
+        [
+          5,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ],
+        [
+          10,
+          "__ehfuncinfo$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+          6
+        ],
+        [
+          15,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__ehhandler$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": {
+      "value": 8,
+      "bytes": "8b4df0e900000000b800000000e900000000",
+      "relocations": [
+        [
+          4,
+          "??1?$_Vector_val@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          9,
+          "__ehfuncinfo$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          6
+        ],
+        [
+          14,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__ehhandler$??1XmlElement@@QAE@XZ": {
+      "value": 11,
+      "bytes": "8b4df083c110e900000000b800000000e900000000",
+      "relocations": [
+        [
+          7,
+          "??1XmlNameValuePair@@QAE@XZ",
+          20
+        ],
+        [
+          12,
+          "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+          6
+        ],
+        [
+          17,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__ehhandler$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ": {
+      "value": 18,
+      "bytes": "8d4db0ff25000000008d4dccff2500000000b800000000e900000000",
+      "relocations": [
+        [
+          5,
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          6
+        ],
+        [
+          14,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ],
+        [
+          19,
+          "__ehfuncinfo$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+          6
+        ],
+        [
+          24,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__ehhandler$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ": {
+      "value": 41,
+      "bytes": "8b45cc83e0010f840c0000008365ccfe8b4d04e900000000c38d4dd0e9000000008d4ddce900000000b800000000e900000000",
+      "relocations": [
+        [
+          20,
+          "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ",
+          20
+        ],
+        [
+          29,
+          "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          37,
+          "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          42,
+          "__ehfuncinfo$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+          6
+        ],
+        [
+          47,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__unwindfunclet$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ$0": {
+      "value": 0,
+      "bytes": "8b4df0e900000000b800000000e900000000",
+      "relocations": [
+        [
+          4,
+          "??1?$_Vector_val@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          9,
+          "__ehfuncinfo$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          6
+        ],
+        [
+          14,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__unwindfunclet$??0logic_error@std@@QAE@ABV01@@Z$0": {
+      "value": 0,
+      "bytes": "8b4df0ff2500000000b800000000e900000000",
+      "relocations": [
+        [
+          5,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ],
+        [
+          10,
+          "__ehfuncinfo$??0logic_error@std@@QAE@ABV01@@Z",
+          6
+        ],
+        [
+          15,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__unwindfunclet$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z$0": {
+      "value": 0,
+      "bytes": "8b4df0ff2500000000b800000000e900000000",
+      "relocations": [
+        [
+          5,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ],
+        [
+          10,
+          "__ehfuncinfo$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+          6
+        ],
+        [
+          15,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__unwindfunclet$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ$0": {
+      "value": 0,
+      "bytes": "8b4df0e900000000b800000000e900000000",
+      "relocations": [
+        [
+          4,
+          "??1?$_Vector_val@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          9,
+          "__ehfuncinfo$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          6
+        ],
+        [
+          14,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__unwindfunclet$??1XmlElement@@QAE@XZ$0": {
+      "value": 0,
+      "bytes": "8b4df083c110e900000000b800000000e900000000",
+      "relocations": [
+        [
+          7,
+          "??1XmlNameValuePair@@QAE@XZ",
+          20
+        ],
+        [
+          12,
+          "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+          6
+        ],
+        [
+          17,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__unwindfunclet$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ$0": {
+      "value": 0,
+      "bytes": "8d4db0ff25000000008d4dccff2500000000b800000000e900000000",
+      "relocations": [
+        [
+          5,
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          6
+        ],
+        [
+          14,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ],
+        [
+          19,
+          "__ehfuncinfo$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+          6
+        ],
+        [
+          24,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__unwindfunclet$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ$2": {
+      "value": 9,
+      "bytes": "8d4db0ff25000000008d4dccff2500000000b800000000e900000000",
+      "relocations": [
+        [
+          5,
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          6
+        ],
+        [
+          14,
+          "__imp_??1exception@std@@UAE@XZ",
+          6
+        ],
+        [
+          19,
+          "__ehfuncinfo$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+          6
+        ],
+        [
+          24,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0": {
+      "value": 0,
+      "bytes": "8b45cc83e0010f840c0000008365ccfe8b4d04e900000000c38d4dd0e9000000008d4ddce900000000b800000000e900000000",
+      "relocations": [
+        [
+          20,
+          "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ",
+          20
+        ],
+        [
+          29,
+          "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          37,
+          "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          42,
+          "__ehfuncinfo$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+          6
+        ],
+        [
+          47,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$1": {
+      "value": 25,
+      "bytes": "8b45cc83e0010f840c0000008365ccfe8b4d04e900000000c38d4dd0e9000000008d4ddce900000000b800000000e900000000",
+      "relocations": [
+        [
+          20,
+          "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ",
+          20
+        ],
+        [
+          29,
+          "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          37,
+          "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          42,
+          "__ehfuncinfo$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+          6
+        ],
+        [
+          47,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$2": {
+      "value": 33,
+      "bytes": "8b45cc83e0010f840c0000008365ccfe8b4d04e900000000c38d4dd0e9000000008d4ddce900000000b800000000e900000000",
+      "relocations": [
+        [
+          20,
+          "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ",
+          20
+        ],
+        [
+          29,
+          "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          37,
+          "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          20
+        ],
+        [
+          42,
+          "__ehfuncinfo$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+          6
+        ],
+        [
+          47,
+          "___CxxFrameHandler3",
+          20
+        ]
+      ],
+      "characteristics": 1615859744
+    },
+    "__unwindtable$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": {
+      "value": 0,
+      "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ$0",
+          6
+        ],
+        [
+          16,
+          "__unwindtable$??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__unwindtable$??0logic_error@std@@QAE@ABV01@@Z": {
+      "value": 0,
+      "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$??0logic_error@std@@QAE@ABV01@@Z$0",
+          6
+        ],
+        [
+          16,
+          "__unwindtable$??0logic_error@std@@QAE@ABV01@@Z",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__unwindtable$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": {
+      "value": 0,
+      "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z$0",
+          6
+        ],
+        [
+          16,
+          "__unwindtable$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__unwindtable$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": {
+      "value": 0,
+      "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ$0",
+          6
+        ],
+        [
+          16,
+          "__unwindtable$??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__unwindtable$??1XmlElement@@QAE@XZ": {
+      "value": 0,
+      "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+          6
+        ],
+        [
+          16,
+          "__unwindtable$??1XmlElement@@QAE@XZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__unwindtable$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ": {
+      "value": 0,
+      "bytes": "ffffffff000000000000000000000000220593190200000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ$0",
+          6
+        ],
+        [
+          12,
+          "__unwindfunclet$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ$2",
+          6
+        ],
+        [
+          24,
+          "__unwindtable$?_Xlen@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@KAXXZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    },
+    "__unwindtable$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ": {
+      "value": 0,
+      "bytes": "ffffffff0000000000000000000000000100000000000000220593190300000000000000000000000000000000000000000000000000000001000000",
+      "relocations": [
+        [
+          4,
+          "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0",
+          6
+        ],
+        [
+          12,
+          "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$1",
+          6
+        ],
+        [
+          20,
+          "__unwindfunclet$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$2",
+          6
+        ],
+        [
+          32,
+          "__unwindtable$?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+          6
+        ]
+      ],
+      "characteristics": 1076891712
+    }
+  },
+  "changed_identity": {
+    ".bss": {
+      "old": {
+        "value": 0,
+        "bytes": "4c01d102",
+        "relocations": [],
+        "characteristics": 3224375424
+      },
+      "new": {
+        "value": 0,
+        "bytes": "4c012a02",
+        "relocations": [],
+        "characteristics": 3224375424
+      }
+    },
+    ".debug$F": {
+      "old": {
+        "value": 0,
+        "bytes": "000000000b0000000000000001000200",
+        "relocations": [
+          [
+            0,
+            "??0_Aux_cont@std@@QAE@QBV_Container_base_aux@1@@Z",
+            7
+          ]
+        ],
+        "characteristics": 1108348992
+      },
+      "new": {
+        "value": 0,
+        "bytes": "00000000030000000000000000000000",
+        "relocations": [
+          [
+            0,
+            "?_Getcont@_Aux_cont@std@@QBEPBV_Container_base_aux@2@XZ",
+            7
+          ]
+        ],
+        "characteristics": 1108348992
+      }
+    },
+    ".debug$S": {
+      "old": {
+        "value": 0,
+        "bytes": "04000000f1000000c00000008200011100000000473a5c50726f6a656374735c526f436f6e7374727563745c526f436f6e7374727563742d4e61746976652d32303236313130352d61313266303166645c72656275696c645c323030382d30365c6f75745c52627867734170705c6c617965722d676c75655c676c75655f696e7374616e63655f636f72652e6f626a003a003c110102000007000f0000001e5208000f0000001e5208004d6963726f736f667420285229204f7074696d697a696e6720436f6d70696c657200",
+        "relocations": [],
+        "characteristics": 1108344896
+      },
+      "new": {
+        "value": 0,
+        "bytes": "04000000f1000000cd0000008f00011100000000473a5c50726f6a656374735c526f436f6e7374727563745c526f436f6e7374727563742d4e61746976652d32303236313130352d61313266303166645c776f726b5c323030382d30365c7368617265642d6c61796f7574735c736f6c2d636c6f6e652d6f776e65722d32303236313130355c756e69742d3030305c63616e6469646174652e6f626a003a003c110102000007000f0000001e5208000f0000001e5208004d6963726f736f667420285229204f7074696d697a696e6720436f6d70696c657200000000",
+        "relocations": [],
+        "characteristics": 1108344896
+      }
+    },
+    ".sxdata": {
+      "old": {
+        "value": 0,
+        "bytes": "af05000099060000b506000078070000d1070000e80700000f08000021080000",
+        "relocations": [],
+        "characteristics": 3146240
+      },
+      "new": {
+        "value": 0,
+        "bytes": "27060000",
+        "relocations": [],
+        "characteristics": 3146240
+      }
+    },
+    ".text": {
+      "old": {
+        "value": 0,
+        "bytes": "8bc18b4c24048908c20400",
+        "relocations": [],
+        "characteristics": 1615859744
+      },
+      "new": {
+        "value": 0,
+        "bytes": "8b01c3",
+        "relocations": [],
+        "characteristics": 1615859744
+      }
+    },
+    ".text$x": {
+      "old": {
+        "value": 0,
+        "bytes": "8b4df0ff2500000000b800000000e900000000",
+        "relocations": [
+          [
+            5,
+            "__imp_??1exception@std@@UAE@XZ",
+            6
+          ],
+          [
+            10,
+            "__ehfuncinfo$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+            6
+          ],
+          [
+            15,
+            "___CxxFrameHandler3",
+            20
+          ]
+        ],
+        "characteristics": 1615859744
+      },
+      "new": {
+        "value": 0,
+        "bytes": "8d4de4e900000000b800000000e900000000",
+        "relocations": [
+          [
+            4,
+            "??1?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@QAE@XZ",
+            20
+          ],
+          [
+            9,
+            "__ehfuncinfo$?predelete@Instance@RBX@@AAEXXZ",
+            6
+          ],
+          [
+            14,
+            "___CxxFrameHandler3",
+            20
+          ]
+        ],
+        "characteristics": 1615859744
+      }
+    },
+    ".xdata$x": {
+      "old": {
+        "value": 0,
+        "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+        "relocations": [
+          [
+            4,
+            "__unwindfunclet$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z$0",
+            6
+          ],
+          [
+            16,
+            "__unwindtable$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+            6
+          ]
+        ],
+        "characteristics": 1076891712
+      },
+      "new": {
+        "value": 0,
+        "bytes": "ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000",
+        "relocations": [
+          [
+            4,
+            "__unwindfunclet$?predelete@Instance@RBX@@AAEXXZ$0",
+            6
+          ],
+          [
+            16,
+            "__unwindtable$?predelete@Instance@RBX@@AAEXXZ",
+            6
+          ]
+        ],
+        "characteristics": 1076891712
+      }
+    },
+    "?id@?$date_facet@Vdate@gregorian@boost@@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@date_time@boost@@2V0locale@std@@A": {
+      "old": {
+        "value": 0,
+        "bytes": "4c01d102",
+        "relocations": [],
+        "characteristics": 3224375424
+      },
+      "new": {
+        "value": 0,
+        "bytes": "4c012a02",
+        "relocations": [],
+        "characteristics": 3224375424
+      }
+    }
+  }
+}

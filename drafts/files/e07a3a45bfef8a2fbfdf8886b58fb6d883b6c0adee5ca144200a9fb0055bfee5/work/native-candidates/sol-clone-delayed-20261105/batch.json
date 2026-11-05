@@ -1,0 +1,35 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/InstanceClone.cpp",
+      "checks": [
+        {
+          "addr": "00559350",
+          "symbol": "?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+          "calls": [
+            {
+              "offset": 36,
+              "target": "00591a30",
+              "symbol": "?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ"
+            },
+            {
+              "offset": 87,
+              "target": "00559250",
+              "symbol": "?fromXmlRoot@Instance@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVXmlElement@@@Z"
+            },
+            {
+              "offset": 114,
+              "target": "00413a70",
+              "symbol": "??1XmlElement@@QAE@XZ"
+            },
+            {
+              "offset": 120,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

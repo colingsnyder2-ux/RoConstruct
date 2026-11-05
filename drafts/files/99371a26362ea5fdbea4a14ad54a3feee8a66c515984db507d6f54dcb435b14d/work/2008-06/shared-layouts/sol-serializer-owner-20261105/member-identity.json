@@ -1,0 +1,10 @@
+{
+  "token": "/216",
+  "header_offset": 20798990,
+  "data_offset": 20799050,
+  "size": 304778,
+  "sha256": "242d36b8806d7843d65eb3c37dbea60e40e288cca3549a3255fe6d4920d4418b",
+  "member_name": "glue_serializer.obj",
+  "archive_members": 267,
+  "archive_sha256": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c"
+}

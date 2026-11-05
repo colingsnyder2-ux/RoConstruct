@@ -1,0 +1,34 @@
+{
+  "status": "inactive donor remainder; clone availability conditional",
+  "base_sha256": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c",
+  "proposal_sha256": "3a0490de7239801417a5ae524ed5e54fd5301cf77a7b5cd88d170e8431a1fcbe",
+  "actual_member_name": "glue_instance_core.obj",
+  "actual_member_offset": 25596558,
+  "actual_member_token": "/532",
+  "old_member_sha256": "6b90d0272fc5e4ce238a23bcd487c2f9c29846c505057a3d3beb67d649a05aeb",
+  "new_member_sha256": "31a86c7a2bba8a69b23f86baf18b50cece77882ae2a0d87032b62e222c916b13",
+  "unchanged_other_members": 266,
+  "retained_named_definitions": 497,
+  "removed_named_definitions": 123,
+  "audit_inputs": 329,
+  "audit_coff_objects": 1433,
+  "audit_errors": [],
+  "input_drift": [],
+  "missing_inputs": [
+    "Exact native clone object and reviewed provider/dependency closure from independent owner",
+    "Parent serialized composition and selected provider proof; ABI/EH/runtime separate gates"
+  ],
+  "compile_count": 1,
+  "source_delta": "prefix only Instance::clone definition with inline",
+  "original_source_sha256": "38ae11a185ef3a9b3f7882c12ba551798359da329152ed8262a3d5ddc18c32f7",
+  "candidate_source_sha256": "991d30caf80781623823432b8db0834db02559e60e4aa52e6ce44ce992c6b468",
+  "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+  "librarian_command": [
+    "/nologo",
+    "/OUT:G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\linked.lib",
+    "glue_instance_core.obj"
+  ],
+  "next_bounded_action": "Parent inspect consumer-audit identities and compose only after exact native clone is available; no link performed",
+  "boundaries": "No source/shared header/current archive/cache edits; no link, execution, activation, commit, push or submission."
+}

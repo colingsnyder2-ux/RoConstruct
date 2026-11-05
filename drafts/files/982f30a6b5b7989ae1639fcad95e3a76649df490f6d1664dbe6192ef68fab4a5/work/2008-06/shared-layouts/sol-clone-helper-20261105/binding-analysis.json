@@ -1,0 +1,75 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\InstanceFromXmlRoot.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-144726-344e0b26\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00559250",
+        "requested_symbol": "?fromXmlRoot@Instance@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVXmlElement@@@Z",
+        "status": "exact",
+        "symbol": "?fromXmlRoot@Instance@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVXmlElement@@@Z",
+        "score": 100,
+        "target_size": 245,
+        "object_size": 245,
+        "target_sha256": "8cfd2bd9066469b54b0ead64cb34f3ce3679c276e309651855af3910ba0fbe42",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 37,
+              "target": "00593480",
+              "symbol": "?isolateHandles@SerializerV2@@SAXPAVXmlElement@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 44,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 100,
+              "target": "00593250",
+              "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 149,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 159,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 168,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 217,
+              "target": "005a2fe0",
+              "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 2.027475
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "origin": "donor",
+    "symbol": "??1VistaAPIs@RBX@@QAE@XZ",
+    "section": 211,
+    "selection": 2
+  },
+  {
+    "origin": "donor",
+    "symbol": "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+    "section": 213,
+    "selection": 2
+  },
+  {
+    "origin": "donor",
+    "symbol": "??0VistaAPIs@RBX@@QAE@XZ",
+    "section": 215,
+    "selection": 2
+  },
+  {
+    "origin": "donor",
+    "symbol": "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z",
+    "section": 219,
+    "selection": 2
+  },
+  {
+    "origin": "native",
+    "symbol": "??1VistaAPIs@RBX@@QAE@XZ",
+    "section": 211,
+    "selection": 1
+  },
+  {
+    "origin": "native",
+    "symbol": "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+    "section": 213,
+    "selection": 1
+  },
+  {
+    "origin": "native",
+    "symbol": "??0VistaAPIs@RBX@@QAE@XZ",
+    "section": 215,
+    "selection": 1
+  },
+  {
+    "origin": "native",
+    "symbol": "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z",
+    "section": 219,
+    "selection": 1
+  }
+]

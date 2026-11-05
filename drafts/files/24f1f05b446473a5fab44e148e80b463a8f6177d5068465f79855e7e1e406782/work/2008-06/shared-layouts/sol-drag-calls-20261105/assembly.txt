@@ -1,0 +1,567 @@
+{
+  "archive": "work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\linked.lib",
+  "archive_sha256": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c",
+  "member_header_offset": 67861986,
+  "member_sha256": "400206004ed3d01dfa715c8cc9f9aef7dd2d0f1b70ae05530f4bdd12890aa62a",
+  "functions": {
+    "0060ead0": {
+      "symbol": "?anyPartAlive@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "relocations": [
+        {
+          "offset": 24,
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "kind": 6,
+          "addend": "00000000"
+        },
+        {
+          "offset": 51,
+          "symbol": "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ",
+          "kind": 20,
+          "addend": "00000000"
+        },
+        {
+          "offset": 56,
+          "symbol": "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+          "kind": 20,
+          "addend": "00000000"
+        }
+      ],
+      "original": [
+        "0060ead0 push ebx",
+        "0060ead1 push esi",
+        "0060ead2 push edi",
+        "0060ead3 mov edi, dword ptr [esp + 0x10]",
+        "0060ead7 mov eax, dword ptr [edi + 0x10]",
+        "0060eada sub eax, dword ptr [edi + 0xc]",
+        "0060eadd xor esi, esi",
+        "0060eadf sar eax, 3",
+        "0060eae2 test eax, eax",
+        "0060eae4 jbe 0x60eb21",
+        "0060eae6 mov ebx, dword ptr [0x802890]",
+        "0060eaec cmp esi, eax",
+        "0060eaee jb 0x60eaf2",
+        "0060eaf0 call ebx",
+        "0060eaf2 mov eax, dword ptr [edi + 0xc]",
+        "0060eaf5 sub esp, 8",
+        "0060eaf8 mov edx, esp",
+        "0060eafa mov dword ptr [esp + 0x18], esp",
+        "0060eafe lea ecx, [eax + esi*8]",
+        "0060eb01 push edx",
+        "0060eb02 call 0x5cab00",
+        "0060eb07 call 0x5995f0",
+        "0060eb0c add esp, 8",
+        "0060eb0f test al, al",
+        "0060eb11 jne 0x60eb27",
+        "0060eb13 mov eax, dword ptr [edi + 0x10]",
+        "0060eb16 sub eax, dword ptr [edi + 0xc]",
+        "0060eb19 inc esi",
+        "0060eb1a sar eax, 3",
+        "0060eb1d cmp esi, eax",
+        "0060eb1f jb 0x60eaf2",
+        "0060eb21 xor al, al",
+        "0060eb23 pop edi",
+        "0060eb24 pop esi",
+        "0060eb25 pop ebx",
+        "0060eb26 ret ",
+        "0060eb27 pop edi",
+        "0060eb28 pop esi",
+        "0060eb29 mov al, 1",
+        "0060eb2b pop ebx",
+        "0060eb2c ret "
+      ]
+    },
+    "0060eb30": {
+      "symbol": "?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+      "relocations": [
+        {
+          "offset": 3,
+          "symbol": "__ehhandler$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+          "kind": 6,
+          "addend": "00000000"
+        },
+        {
+          "offset": 63,
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "kind": 6,
+          "addend": "00000000"
+        },
+        {
+          "offset": 79,
+          "symbol": "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ",
+          "kind": 20,
+          "addend": "00000000"
+        },
+        {
+          "offset": 130,
+          "symbol": "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+          "kind": 20,
+          "addend": "00000000"
+        },
+        {
+          "offset": 161,
+          "symbol": "?append@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXABQAVPrimitive@RBX@@@Z",
+          "kind": 20,
+          "addend": "00000000"
+        },
+        {
+          "offset": 174,
+          "symbol": "?getMyWorldFast@Workspace@RBX@@SAPAVWorld@2@PBVInstance@2@@Z",
+          "kind": 20,
+          "addend": "00000000"
+        }
+      ],
+      "original": [
+        "0060eb30 push -1",
+        "0060eb32 push 0x7d9168",
+        "0060eb37 mov eax, dword ptr fs:[0]",
+        "0060eb3d push eax",
+        "0060eb3e mov dword ptr fs:[0], esp",
+        "0060eb45 sub esp, 0xc",
+        "0060eb48 push ebx",
+        "0060eb49 mov ebx, dword ptr [esp + 0x20]",
+        "0060eb4d mov eax, dword ptr [ebx + 0x10]",
+        "0060eb50 sub eax, dword ptr [ebx + 0xc]",
+        "0060eb53 push ebp",
+        "0060eb54 xor ecx, ecx",
+        "0060eb56 sar eax, 3",
+        "0060eb59 push esi",
+        "0060eb5a xor ebp, ebp",
+        "0060eb5c push edi",
+        "0060eb5d mov dword ptr [esp + 0x10], ecx",
+        "0060eb61 test eax, eax",
+        "0060eb63 jbe 0x60ec48",
+        "0060eb69 cmp ebp, eax",
+        "0060eb6b jb 0x60eb73",
+        "0060eb6d call dword ptr [0x802890]",
+        "0060eb73 mov eax, dword ptr [ebx + 0xc]",
+        "0060eb76 lea edx, [esp + 0x14]",
+        "0060eb7a lea ecx, [eax + ebp*8]",
+        "0060eb7d push edx",
+        "0060eb7e call 0x5cab00",
+        "0060eb83 mov esi, dword ptr [esp + 0x18]",
+        "0060eb87 mov edi, dword ptr [esp + 0x14]",
+        "0060eb8b sub esp, 8",
+        "0060eb8e mov eax, esp",
+        "0060eb90 mov dword ptr [eax], edi",
+        "0060eb92 mov dword ptr [esp + 0x2c], 0",
+        "0060eb9a mov dword ptr [esp + 0x34], esp",
+        "0060eb9e mov dword ptr [eax + 4], esi",
+        "0060eba1 test esi, esi",
+        "0060eba3 je 0x60ebb1",
+        "0060eba5 lea eax, [esi + 4]",
+        "0060eba8 mov ecx, 1",
+        "0060ebad lock xadd dword ptr [eax], ecx",
+        "0060ebb1 call 0x5995f0",
+        "0060ebb6 add esp, 8",
+        "0060ebb9 test al, al",
+        "0060ebbb je 0x60ebe9",
+        "0060ebbd mov ecx, dword ptr [esp + 0x30]",
+        "0060ebc1 lea eax, [esp + 0x2c]",
+        "0060ebc5 lea edx, [edi + 0x228]",
+        "0060ebcb push eax",
+        "0060ebcc mov dword ptr [esp + 0x30], edx",
+        "0060ebd0 call 0x59a190",
+        "0060ebd5 cmp dword ptr [esp + 0x10], 0",
+        "0060ebda jne 0x60ebe9",
+        "0060ebdc push edi",
+        "0060ebdd call 0x5a0560",
+        "0060ebe2 add esp, 4",
+        "0060ebe5 mov dword ptr [esp + 0x10], eax",
+        "0060ebe9 mov dword ptr [esp + 0x24], 0xffffffff",
+        "0060ebf1 test esi, esi",
+        "0060ebf3 je 0x60ec1f",
+        "0060ebf5 lea ecx, [esi + 4]",
+        "0060ebf8 or edx, 0xffffffff",
+        "0060ebfb lock xadd dword ptr [ecx], edx",
+        "0060ebff jne 0x60ec1f",
+        "0060ec01 mov eax, dword ptr [esi]",
+        "0060ec03 mov edx, dword ptr [eax + 4]",
+        "0060ec06 mov ecx, esi",
+        "0060ec08 call edx",
+        "0060ec0a lea eax, [esi + 8]",
+        "0060ec0d or ecx, 0xffffffff",
+        "0060ec10 lock xadd dword ptr [eax], ecx",
+        "0060ec14 jne 0x60ec1f",
+        "0060ec16 mov edx, dword ptr [esi]",
+        "0060ec18 mov eax, dword ptr [edx + 8]",
+        "0060ec1b mov ecx, esi",
+        "0060ec1d call eax",
+        "0060ec1f mov eax, dword ptr [ebx + 0x10]",
+        "0060ec22 sub eax, dword ptr [ebx + 0xc]",
+        "0060ec25 inc ebp",
+        "0060ec26 sar eax, 3",
+        "0060ec29 cmp ebp, eax",
+        "0060ec2b jb 0x60eb73",
+        "0060ec31 mov eax, dword ptr [esp + 0x10]",
+        "0060ec35 mov ecx, dword ptr [esp + 0x1c]",
+        "0060ec39 mov dword ptr fs:[0], ecx",
+        "0060ec40 pop edi",
+        "0060ec41 pop esi",
+        "0060ec42 pop ebp",
+        "0060ec43 pop ebx",
+        "0060ec44 add esp, 0x18",
+        "0060ec47 ret ",
+        "0060ec48 pop edi",
+        "0060ec49 pop esi",
+        "0060ec4a mov eax, ecx",
+        "0060ec4c mov ecx, dword ptr [esp + 0x14]",
+        "0060ec50 pop ebp",
+        "0060ec51 mov dword ptr fs:[0], ecx",
+        "0060ec58 pop ebx",
+        "0060ec59 add esp, 0x18",
+        "0060ec5c ret "
+      ]
+    }
+  }
+}
+0x5cab00
+005cab00 push ebp
+005cab01 mov ebp, esp
+005cab03 push -1
+005cab05 push 0x7d5270
+005cab0a mov eax, dword ptr fs:[0]
+005cab10 push eax
+005cab11 mov dword ptr fs:[0], esp
+005cab18 sub esp, 8
+005cab1b push ebx
+005cab1c push esi
+005cab1d push edi
+005cab1e mov edi, ecx
+005cab20 mov eax, dword ptr [edi + 4]
+005cab23 lea ecx, [edi + 4]
+005cab26 xor edx, edx
+005cab28 mov dword ptr [ebp - 0x10], esp
+005cab2b mov dword ptr [ebp - 0x14], edx
+005cab2e cmp eax, edx
+005cab30 je 0x5cab37
+005cab32 cmp dword ptr [eax + 4], edx
+005cab35 jne 0x5cab52
+005cab37 mov eax, dword ptr [ebp + 8]
+005cab3a mov dword ptr [eax], edx
+005cab3c mov dword ptr [eax + 4], edx
+005cab3f mov ecx, dword ptr [ebp - 0xc]
+005cab42 mov dword ptr fs:[0], ecx
+005cab49 pop edi
+005cab4a pop esi
+005cab4b pop ebx
+005cab4c mov esp, ebp
+005cab4e pop ebp
+005cab4f ret 4
+005cab52 mov esi, dword ptr [ebp + 8]
+005cab55 push ecx
+005cab56 lea ecx, [esi + 4]
+005cab59 mov dword ptr [ebp - 4], edx
+005cab5c call 0x411ad0
+005cab61 mov eax, dword ptr [edi]
+005cab63 mov dword ptr [esi], eax
+005cab65 mov eax, esi
+005cab67 mov ecx, dword ptr [ebp - 0xc]
+005cab6a mov dword ptr fs:[0], ecx
+005cab71 pop edi
+005cab72 pop esi
+005cab73 pop ebx
+005cab74 mov esp, ebp
+005cab76 pop ebp
+005cab77 ret 4
+005cab7a mov eax, dword ptr [ebp + 8]
+005cab7d xor edx, edx
+005cab7f mov dword ptr [eax], edx
+005cab81 mov dword ptr [eax + 4], edx
+005cab84 mov eax, 0x5cab8a
+005cab89 ret 
+005cab8a mov ecx, dword ptr [ebp - 0xc]
+005cab8d mov eax, dword ptr [ebp + 8]
+005cab90 pop edi
+005cab91 pop esi
+005cab92 mov dword ptr fs:[0], ecx
+005cab99 pop ebx
+005cab9a mov esp, ebp
+005cab9c pop ebp
+005cab9d ret 4
+0x5995f0
+005995f0 mov eax, dword ptr [esp + 4]
+005995f4 push ebx
+005995f5 push esi
+005995f6 test eax, eax
+005995f8 je 0x599607
+005995fa cmp dword ptr [eax + 0x324], 0
+00599601 je 0x599607
+00599603 mov bl, 1
+00599605 jmp 0x599609
+00599607 xor bl, bl
+00599609 mov esi, dword ptr [esp + 0x10]
+0059960d test esi, esi
+0059960f je 0x59963b
+00599611 lea eax, [esi + 4]
+00599614 or ecx, 0xffffffff
+00599617 lock xadd dword ptr [eax], ecx
+0059961b jne 0x59963b
+0059961d mov edx, dword ptr [esi]
+0059961f mov eax, dword ptr [edx + 4]
+00599622 mov ecx, esi
+00599624 call eax
+00599626 lea ecx, [esi + 8]
+00599629 or edx, 0xffffffff
+0059962c lock xadd dword ptr [ecx], edx
+00599630 jne 0x59963b
+00599632 mov eax, dword ptr [esi]
+00599634 mov edx, dword ptr [eax + 8]
+00599637 mov ecx, esi
+00599639 call edx
+0059963b pop esi
+0059963c mov al, bl
+0059963e pop ebx
+0059963f ret 
+00599640 push ebx
+00599641 push esi
+00599642 push edi
+00599643 xor edi, edi
+00599645 lea ebx, [ecx + 0x1f4]
+0059964b jmp 0x599650
+0059964d lea ecx, [ecx]
+00599650 push edi
+00599651 mov ecx, ebx
+00599653 call 0x5ecc00
+00599658 mov esi, eax
+0059965a mov ecx, esi
+0059965c call 0x5f1290
+00599661 cmp eax, 6
+00599664 je 0x59968a
+00599666 mov ecx, esi
+00599668 call 0x5f1290
+0059966d cmp eax, 8
+00599670 je 0x59968a
+00599672 mov ecx, esi
+00599674 call 0x5f1290
+00599679 cmp eax, 7
+0059967c je 0x59968a
+0059967e inc edi
+0059967f cmp edi, 6
+00599682 jl 0x599650
+00599684 pop edi
+00599685 pop esi
+00599686 xor al, al
+00599688 pop ebx
+00599689 ret 
+0059968a pop edi
+0059968b pop esi
+0059968c mov al, 1
+0059968e pop ebx
+0059968f ret 
+00599690 sub esp, 0x2c
+00599693 push esi
+00599694 mov esi, ecx
+00599696 push edi
+00599697 lea ecx, [esi + 0x228]
+0059969d call 0x5e82c0
+005996a2 fld1 
+0x59a190
+0059a190 push esi
+0059a191 mov esi, ecx
+0059a193 mov eax, dword ptr [esi + 4]
+0059a196 cmp eax, dword ptr [esi + 8]
+0059a199 mov ecx, dword ptr [esi]
+0059a19b jge 0x59a1b3
+0059a19d lea eax, [ecx + eax*4]
+0059a1a0 test eax, eax
+0059a1a2 je 0x59a1ac
+0059a1a4 mov edx, dword ptr [esp + 8]
+0059a1a8 mov ecx, dword ptr [edx]
+0059a1aa mov dword ptr [eax], ecx
+0059a1ac inc dword ptr [esi + 4]
+0059a1af pop esi
+0059a1b0 ret 4
+0059a1b3 push edi
+0059a1b4 mov edi, dword ptr [esp + 0xc]
+0059a1b8 cmp edi, ecx
+0059a1ba jb 0x59a1da
+0059a1bc lea edx, [ecx + eax*4]
+0059a1bf cmp edi, edx
+0059a1c1 jae 0x59a1da
+0059a1c3 mov eax, dword ptr [edi]
+0059a1c5 lea ecx, [esp + 0xc]
+0059a1c9 push ecx
+0059a1ca mov ecx, esi
+0059a1cc mov dword ptr [esp + 0x10], eax
+0059a1d0 call 0x59a190
+0059a1d5 pop edi
+0059a1d6 pop esi
+0059a1d7 ret 4
+0059a1da push 0
+0059a1dc inc eax
+0059a1dd push eax
+0059a1de mov ecx, esi
+0059a1e0 call 0x599a70
+0059a1e5 mov ecx, dword ptr [edi]
+0059a1e7 mov edx, dword ptr [esi + 4]
+0059a1ea mov eax, dword ptr [esi]
+0059a1ec pop edi
+0059a1ed mov dword ptr [eax + edx*4 - 4], ecx
+0059a1f1 pop esi
+0x5a0560
+005a0560 mov eax, dword ptr [esp + 4]
+005a0564 mov edx, dword ptr [eax + 0x104]
+005a056a mov eax, dword ptr [edx + 0x104]
+005a0570 mov ecx, dword ptr [eax + 0x104]
+005a0576 test ecx, ecx
+005a0578 je 0x5a058e
+005a057a lea ebx, [ebx]
+005a0580 mov edx, eax
+005a0582 mov eax, ecx
+005a0584 mov ecx, dword ptr [eax + 0x104]
+005a058a test ecx, ecx
+005a058c jne 0x5a0580
+005a058e mov eax, dword ptr [edx + 0x2e4]
+005a0594 ret 
+005a0595 int3 
+005a0596 int3 
+005a0597 int3 
+005a0598 int3 
+005a0599 int3 
+005a059a int3 
+005a059b int3 
+005a059c int3 
+005a059d int3 
+005a059e int3 
+005a059f int3 
+005a05a0 mov eax, dword ptr [ecx + 0x174]
+005a05a6 test eax, eax
+005a05a8 jne 0x5a05b0
+005a05aa mov eax, dword ptr [ecx + 0x17c]
+0x7d9168
+007d9168 mov eax, 0x8f93dc
+007d916d jmp 0x6a14c0
+007d9172 int3 
+007d9173 int3 
+007d9174 int3 
+007d9175 int3 
+007d9176 int3 
+007d9177 int3 
+EH COFF
+__unwindfunclet$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z$0 section 868 offset 0 size 18 hex 8d4dece900000000b800000000e900000000
+4 20 ??1?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@XZ
+9 6 __ehfuncinfo$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z
+14 20 ___CxxFrameHandler3
+__ehhandler$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z section 868 offset 8 size 18 hex 8d4dece900000000b800000000e900000000
+4 20 ??1?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@XZ
+9 6 __ehfuncinfo$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z
+14 20 ___CxxFrameHandler3
+__ehfuncinfo$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z section 869 offset 8 size 44 hex ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000
+4 6 __unwindfunclet$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z$0
+16 6 __unwindtable$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z
+__unwindtable$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z section 869 offset 0 size 44 hex ffffffff00000000220593190100000000000000000000000000000000000000000000000000000001000000
+4 6 __unwindfunclet$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z$0
+16 6 __unwindtable$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z
+original funcinfo (429065506, 1, 9409492, 0, 0, 0, 0, 0, 1)
+original unwind 0x8f93d4 (4294967295, 8229216)
+original cleanup 007d9160 lea ecx, [ebp - 0x14]
+007d9163 jmp 0x600660
+{
+  "checks": [
+    {
+      "addr": "0060ead0",
+      "requested_symbol": "?anyPartAlive@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "status": "exact",
+      "symbol": "?anyPartAlive@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "score": 100,
+      "target_size": 93,
+      "object_size": 93,
+      "target_sha256": "029e43f27de320277aa6deefe747ec817c0bf4b1333e9873229b48f2c3747e2c",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "call_identity": {
+        "passed": false,
+        "calls": [
+          {
+            "offset": 32,
+            "target": null,
+            "symbol": null,
+            "status": "unresolved_or_wrong_binding"
+          },
+          {
+            "offset": 50,
+            "target": "005cab00",
+            "symbol": "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 55,
+            "target": "005995f0",
+            "symbol": "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+            "status": "verified_binding"
+          }
+        ],
+        "unused_expectations": [],
+        "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+      },
+      "check_seconds": 1.506664
+    },
+    {
+      "addr": "0060eb30",
+      "requested_symbol": "?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+      "status": "exact",
+      "symbol": "?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+      "score": 100,
+      "target_size": 301,
+      "object_size": 301,
+      "target_sha256": "dad3b7f1c258d407f5cfc51380930ad01375e79585e32ea49dc6fb2772dcb041",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "call_identity": {
+        "passed": false,
+        "calls": [
+          {
+            "offset": 61,
+            "target": null,
+            "symbol": null,
+            "status": "unresolved_or_wrong_binding"
+          },
+          {
+            "offset": 78,
+            "target": "005cab00",
+            "symbol": "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 129,
+            "target": "005995f0",
+            "symbol": "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 160,
+            "target": "0059a190",
+            "symbol": "?append@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXABQAVPrimitive@RBX@@@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 173,
+            "target": "005a0560",
+            "symbol": "?getMyWorldFast@Workspace@RBX@@SAPAVWorld@2@PBVInstance@2@@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 216,
+            "target": null,
+            "symbol": null,
+            "status": "unresolved_or_wrong_binding"
+          },
+          {
+            "offset": 237,
+            "target": null,
+            "symbol": null,
+            "status": "unresolved_or_wrong_binding"
+          }
+        ],
+        "unused_expectations": [],
+        "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+      },
+      "check_seconds": 0.011556
+    }
+  ],
+  "coverage": [],
+  "layouts": []
+}
+FAIL: proof incomplete; inspect saved receipt (no ABI/runtime/server credit)

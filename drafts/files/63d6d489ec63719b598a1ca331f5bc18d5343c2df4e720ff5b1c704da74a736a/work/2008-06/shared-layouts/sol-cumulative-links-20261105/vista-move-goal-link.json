@@ -1,0 +1,35 @@
+{
+  "run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-135622-0161a2a8",
+  "outcome": "link_failed",
+  "unresolved": 3,
+  "duplicates": 0,
+  "changed_inputs": 0,
+  "source_compiles": 0,
+  "executed": false,
+  "baseline_comparison": {
+    "blockers": {
+      "added": [],
+      "removed": [
+        "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z"
+      ]
+    },
+    "duplicates": {
+      "added": [],
+      "removed": [
+        "??0VistaAPIs@RBX@@QAE@XZ",
+        "??1VistaAPIs@RBX@@QAE@XZ",
+        "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+        "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z"
+      ]
+    }
+  },
+  "explicit_input_delta": {
+    "removed": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeFileSystemFull.obj"
+    ],
+    "added": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-135158-96093b38\\unit-000\\candidate.obj",
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-135237-9f79a3ac\\unit-000\\candidate.obj"
+    ]
+  }
+}

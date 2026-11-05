@@ -1,0 +1,32 @@
+{
+  "status": "parked pending parent guidance; replacement NOT approved",
+  "compile_count": 1,
+  "identity": {
+    "token": "/216",
+    "header_offset": 20798990,
+    "data_offset": 20799050,
+    "size": 304778,
+    "sha256": "242d36b8806d7843d65eb3c37dbea60e40e288cca3549a3255fe6d4920d4418b",
+    "member_name": "glue_serializer.obj",
+    "archive_members": 267,
+    "archive_sha256": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c"
+  },
+  "new_object_sha256": "410f7416ff2ab4dd10ca8c608affa2637efcfbad04cee7ac8c7e160f6e0ec58f",
+  "source_sha256": "997a7d0b3aee78a395b254bc6ae3e1ddf3365756b3d645a001a8c90c515b93fc",
+  "dependencies_verified": 744,
+  "removed_symbol_entries": 588,
+  "changed_symbol_entries": [
+    ".bss",
+    ".debug$S",
+    "?id@?$date_facet@Vdate@gregorian@boost@@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@date_time@boost@@2V0locale@std@@A"
+  ],
+  "unchanged_symbol_entries": 436,
+  "limits": [
+    "Preliminary section-level audit only; full actual329 consumer closure not established.",
+    "Copied adapter omitted diagnostic /showIncludes; correction failed before sole compile. No recompilation.",
+    "Initial member long-name parser used slash-newline terminator; corrected MS archive NUL termination in member-identity.json.",
+    "Section entries and local symbols in preliminary audit must not be interpreted as individual external provider losses.",
+    "No archive edits, links, execution, activation, credit or replacement approval."
+  ],
+  "next_action": "Parent review saved-object audit applicability and authorize bounded full329 closure analysis, or provide guidance before any variant."
+}
