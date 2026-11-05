@@ -256,6 +256,15 @@ def post_files(new, log=print, on_sent=None):
     from roc.reports import server_mines_webhook
     url = server_mines_webhook()
     payloads = build_payloads(new)
+    try:
+        from roc.integration_site import progress_description
+        snapshot = json.loads((ROOT / 'docs/integration.json').read_text(encoding='utf-8'))
+        summary = progress_description(snapshot)
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        log('native progress unavailable: %s' % error)
+        summary = 'Native progress snapshot unavailable; file uploads remain unverified.'
+    for body in payloads:
+        body['embeds'][0]['fields'] = [{'name': 'Native integration progress', 'value': summary, 'inline': False}]
     if not url:
         log('no server_mines_webhook configured; %d new native file(s) not posted' % len(new))
         return False

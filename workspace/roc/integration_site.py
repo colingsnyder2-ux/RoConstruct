@@ -9,6 +9,36 @@ from zoneinfo import ZoneInfo
 
 from roc.integration import CLIENT, ROOT, atomic_json
 
+def progress_description(data):
+    """Shared byte coverage; exact inactive work never grants runtime credit."""
+    groups = data['groups']
+    native = data.get('native_code', {})
+    integrated = groups['integrated']
+    inactive = native.get('inactive', {'functions': 0, 'bytes': 0})
+    draft = native.get('draft', {'functions': 0, 'bytes': 0})
+    total = sum(g['bytes'] for g in groups.values())
+    covered = integrated['bytes'] + inactive['bytes']
+    sizes = [integrated['bytes'], inactive['bytes'], draft['bytes'], total - covered - draft['bytes']]
+    cells = [value * 23 // total if total else 0 for value in sizes]
+    if total:
+        order = sorted(range(4), key=lambda i: sizes[i] * 23 % total, reverse=True)
+        for i in order[:23 - sum(cells)]:
+            cells[i] += 1
+    if not total:
+        cells[-1] = 23
+    bar = ''.join(color * n for color, n in zip(('🟪', '🟧', '🩷', '⬜'), cells))
+    return ('**Integrated code · %.2f%%** · %s / %s target bytes\n%s\n'
+            '🟪 %s integrated · 🟧 %s inactive exact · 🩷 %s draft functions\n'
+            '%s exact waiting · %s functions remaining unintegrated\n'
+            'Coverage = integrated + inactive exact, once per address; drafts excluded. '
+            'Inactive/draft work adds no runtime activation or server credit.\nSnapshot: %s') % (
+                100 * covered / total if total else 0, format(covered, ','), format(total, ','), bar,
+                format(integrated['functions'], ','), format(inactive['functions'], ','),
+                format(draft['functions'], ','), format(groups.get('exact_waiting', {}).get('functions', 0), ','),
+                format(sum(g['functions'] for g in groups.values()) - integrated['functions'], ','),
+                data.get('updated', 'unknown'))
+
+
 def readable(symbol):
     """MSVC decorated name -> Namespace::Class::method (enough for labels; full name stays in 'symbol')."""
     m = re.match(r"\?\?([01])([A-Za-z_]\w*)@((?:[A-Za-z_]\w*@)*)@", symbol)

@@ -8,7 +8,7 @@
   <b>Rebuilding classic Roblox clients (2007–2012) as real C++ source, together.</b><br>
   <a href="https://colingsnyder2-ux.github.io/RoConstruct/">Progress site</a> ·
   <a href="https://discord.gg/Tayg763nrG">Discord</a> ·
-  <a href="https://github.com/colingsnyder2-ux/RoConstruct-findings">Findings</a>
+  <a href="https://github.com/colingsnyder2-ux/RoConstruct/tree/work">Findings</a>
 </p>
 
 ---
@@ -57,19 +57,19 @@ fixes, ports (WebAssembly, Linux, macOS), bug fixes, modding and preservation.
 | [docs/SOURCES.md](docs/SOURCES.md) | every source we compile, what is still missing ([live page](https://colingsnyder2-ux.github.io/RoConstruct/sources.html)) |
 
 Recovered sources, portable agent evidence and historical research reports are published
-in [RoConstruct-findings](https://github.com/colingsnyder2-ux/RoConstruct-findings)
-([latest source ZIP](https://github.com/colingsnyder2-ux/RoConstruct-findings/releases/download/findings-latest/roconstruct-findings-src.zip)).
+in [RoConstruct work branch](https://github.com/colingsnyder2-ux/RoConstruct/tree/work)
+([latest source ZIP](https://github.com/colingsnyder2-ux/RoConstruct/archive/refs/heads/work.zip)).
 
 ## Native rebuild
 
 Work locally in `rebuild/2008-06/`. Its `Source/App`, `Source/Network`, `Source/RbxView`, and `Source/Rendering` views expose the shared Roblox source tree; `native-headers/` and `native-classes/` hold recovered declarations and implementations. See `rebuild/2008-06/SOURCE_LAYOUT.txt` for build inputs and audit locations.
 
-The [findings source package](https://github.com/colingsnyder2-ux/RoConstruct-findings/tree/main/2008-06) exports assembled C++, configs, patches, runtime harnesses and verification metadata. Native runtime integration remains partial. Run its `compile_test.bat` with `ROC_ROOT` pointing to this configured tooling checkout.
+The [findings source package](https://github.com/colingsnyder2-ux/RoConstruct/tree/work/2008-06) exports assembled C++, configs, patches, runtime harnesses and verification metadata. Native runtime integration remains partial. Run its `compile_test.bat` with `ROC_ROOT` pointing to this configured tooling checkout.
 
 Keep current native work under `rebuild/2008-06/`; source exports are maintained in findings. `integration-status.json` distinguishes source-only recovery, inactive compiler probes, linked code, and scoped runtime evidence. `roc rebuild 2008-06 install` restores missing build inputs from findings while preserving existing files; generated build artifacts remain local.
 
 ## Rules
 
-- Keep original client downloads out of this tooling repository. Native rebuild sources and required assets belong in RoConstruct-findings; generated output stays local.
+- Keep original client downloads out of this tooling repository. Native rebuild sources and required assets belong in RoConstruct work branch; generated output stays local.
 - Only server-verified byte matches count. No inline assembly or patched bytes.
 - Be friendly. Join us on [Discord](https://discord.gg/Tayg763nrG).
