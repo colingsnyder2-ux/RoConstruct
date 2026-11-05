@@ -1,5 +1,5 @@
 """Verify the inactive native 2008-06 RBX leaves: Log, IndexBox, StandardOut, Point, Link/RevoluteLink, NullController,
-GuiTarget (BlockBlockContact is reported as blocked).
+GuiTarget, BlockBlockContact.
 
 Builds (document-swap flags plus /fp:fast /U_RELEASEASSERT, VS2008 RTM 21022):
   * tests/NativeLeaves2008Layout.cpp        offset / size probes (mov eax, imm32; ret) and the two emitters for the
@@ -10,10 +10,15 @@ Builds (document-swap flags plus /fp:fast /U_RELEASEASSERT, VS2008 RTM 21022):
                                             atexit 007fd110;
   * native-classes/Leaves2008Point.cpp      donor v8kernel/Point.h: Point(Body*) 0064dc00, ??_G 0064dc50;
   * native-classes/Leaves2008RevoluteLink.cpp  donor v8kernel/Link.h: Link() 00613d20, Link::reset 00613da0;
+  * native-classes/Leaves2008BlockBlockContact.cpp  RBX::BlockBlockContact (leaves2008/BlockBlockContact2008.h on the
+                                            committed v8world/Contact2008.h): 0060d500, 0060d5a0, 0060d610, 00607c60,
+                                            0060d580, 0060d590 and the vtable 00843714;
   * Leaves2008StandardOut.cpp again with NATIVE_STANDARDOUT_PENDING against out/native-layouts/leaves2008-pending/
-    (generated copies, no shared header is edited): util/Events.h with `hasListeners() { return listeners.size() > 0; }`
-    and the donor util/standardout.h without the user-declared `virtual ~StandardOut();`. Rows exact only in this
-    build are recorded exact=false (pending-build-only) and are not counted.
+    (generated copies, no shared header is edited): the donor util/standardout.h without the user-declared
+    `virtual ~StandardOut();` (util/Events.h is copied unchanged now that `listeners.size() > 0` is adopted);
+  * Leaves2008BlockBlockContact.cpp again with NATIVE_BLOCKBLOCKCONTACT_PENDING against
+    out/native-layouts/leaves2008-pending-stages/v8kernel/IStage.h (2008 StageType values, KERNEL_STAGE 7).
+    Rows exact only in a pending build are recorded exact=false (pending-build-only) and are not counted.
 
 Every row must be relocation-masked exact against the original, and every REL32/DIR32 target is bound to the
 address the original instruction uses and verified: imports by DLL export name, string literals by bytes,
@@ -40,7 +45,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 HDRS = sorted((R / 'native-headers/leaves2008').glob('*.h'))
 LAYOUT = R / 'tests/NativeLeaves2008Layout.cpp'
 SOURCES = {name: R / ('native-classes/Leaves2008%s.cpp' % name)
-           for name in ('Log', 'IndexBox', 'StandardOut', 'Point', 'RevoluteLink')}
+           for name in ('Log', 'IndexBox', 'StandardOut', 'Point', 'RevoluteLink', 'BlockBlockContact')}
 UNIT_FLAGS = ['/fp:fast',            # IndexBox() 007bbed0 chains the corner stores without spills
               '/U_RELEASEASSERT']    # ~KernelIndex (Point ??_G 0064dc50) asserts nothing in the original
 
@@ -56,6 +61,18 @@ STDOUT_OLD = '\t\tvirtual ~StandardOut();\n'
 text = (ROOT / 'tools/rbxgs/Client/App/include/util/standardout.h').read_text()
 assert text.count(STDOUT_OLD) == 1
 (PENDING / 'util/standardout.h').write_text(text.replace(STDOUT_OLD, ''))
+# BlockBlockContact pending build: the 2008 StageType values (getStageType bodies return CLEAN 0 .. SIMJOB 6, KERNEL 7,
+# see tests/record_native_kernel_stages.py); the donor v8kernel/IStage.h numbers JOINT 0 .. KERNEL 8. Separate directory
+# so that the StandardOut pending build keeps its own generated headers only.
+PENDING_STAGES = OUT / 'leaves2008-pending-stages'
+(PENDING_STAGES / 'v8kernel').mkdir(parents=True, exist_ok=True)
+text = (ROOT / 'tools/rbxgs/Client/App/include/v8kernel/IStage.h').read_text()
+DONOR_ENUM = text[text.index('JOINT_STAGE = 0x0,'):text.index('KERNEL_STAGE = 0x8,') + len('KERNEL_STAGE = 0x8,')]
+STAGES_2008 = ['CLEAN_STAGE', 'JOINT_STAGE', 'CLUMP_STAGE', 'TREE_STAGE', 'ASSEMBLY_STAGE', 'SLEEP_STAGE',
+               'SIMJOB_STAGE', 'KERNEL_STAGE']
+assert text.count(DONOR_ENUM) == 1
+(PENDING_STAGES / 'v8kernel/IStage.h').write_text(text.replace(
+    DONOR_ENUM, '\n\t\t\t\t'.join('%s = 0x%x,' % (n, i) for i, n in enumerate(STAGES_2008))))
 
 
 def build(name, src, extra=(), pre=()):
@@ -74,13 +91,19 @@ for name, src in SOURCES.items():
     objs[name], unit_flags[name] = build('NativeLeaves2008' + name, src, UNIT_FLAGS)
 pend_obj, pend_flags = build('NativeLeaves2008StandardOutPending', SOURCES['StandardOut'],
                              UNIT_FLAGS + ['/DNATIVE_STANDARDOUT_PENDING'], ['/I' + str(PENDING)])
+bbc_pend_obj, bbc_pend_flags = build('NativeLeaves2008BlockBlockContactPending', SOURCES['BlockBlockContact'],
+                                     UNIT_FLAGS + ['/DNATIVE_BLOCKBLOCKCONTACT_PENDING'], ['/I' + str(PENDING_STAGES)])
 
 # ---- layout ---------------------------------------------------------------------------------------
 raw = layout_obj.read_bytes()
 PROBES = (('?nativeLogNameOffset@@', 0x4), ('?nativeLogWorstSeverityOffset@@', 0x20), ('?nativeLogFileOffset@@', 0x24),
           ('?nativeLogStreamOffset@@', 0x40), ('?nativeIndexBoxCornerOffset@@', 0x4), ('?nativeIndexBoxSize@@', 0x64),
           ('?nativeNullControllerSize@@', 0xc), ('?nativeGuiResponseSize@@', 0x8), ('?nativePointSize@@', 0x34),
-          ('?nativeRevoluteLinkSize@@', 0xd0))
+          ('?nativeRevoluteLinkSize@@', 0xd0), ('?nativeBlockBlockContactSize@@', 0x7c),
+          ('?nativeBlockBlockContactConnectorsOffset@@', 0x34), ('?nativeBlockBlockContactMatchedOffset@@', 0x40),
+          ('?nativeBlockBlockContactAxisIdOffset@@', 0x4c), ('?nativeBlockBlockContactSeparationOffset@@', 0x54),
+          ('?nativeBlockBlockContactPlaneContactOffset@@', 0x5c), ('?nativeBlockBlockContactFeatureOffset@@', 0x64),
+          ('?nativeBlockBlockContactOtherPlaneOffset@@', 0x78))
 for prefix, value in PROBES:
     name, body, refs = next(x for x in match.coff_functions(raw) if x[0].startswith(prefix))
     assert body == b'\xb8' + struct.pack('<I', value) + b'\xc3', (prefix, body.hex())
@@ -108,6 +131,22 @@ EXTERNAL = {
     '??1mutex@boost@@QAE@XZ': 0x594cb0,                                   # ~StandardOut 005695b8
     '??R?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBEXXZ': 0x42afc0,  # print_exception 0056971b
     '??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ': 0x600660,         # print_exception catch 00569759 (ICF)
+    # BlockBlockContact (call sites in the original rows):
+    '??0Contact@RBX@@QAE@PAVPrimitive@1@0@Z': 0x606c20,                   # 0060d525 (exact in record_native_world_shapes.py)
+    '?getKernel@IPipelined@RBX@@QBEPAVKernel@2@XZ': 0x645850,             # deleteAllConnectors 00607c7c
+    '?removeConnector@Kernel@RBX@@QAEXPAVConnector@2@@Z': 0x5fb1f0,       # 00607c83
+    '?alignedFree@System@G3D@@SAXPAX@Z': 0x507d20,                        # ~Array, 0060d5c8 / 0060d5e2
+    '__ftol2_sse': 0x6a17f0,                                              # Array::resize 00607996 (statically linked CRT)
+    '?deleteUnmatchedConnectors@BlockBlockContact@RBX@@AAEXXZ': 0x607e00,  # 006087f3 / 00608812 (pending row)
+    '?loadGeoPairEdgeEdge@BlockBlockContact@RBX@@AAEXHHHH@Z': 0x607ea0,    # 0060880a (pending row)
+    '?computePlaneContact@BlockBlockContact@RBX@@AAEHXZ': 0x608580,        # 006087eb (pending row)
+    # vtable 00843714 slots whose bodies are not built here (Contact slots are exact in record_native_world_shapes.py)
+    '?putInKernel@Contact@RBX@@EAEXPAVKernel@2@@Z': 0x60cb10,
+    '?removeFromKernel@Contact@RBX@@EAEXXZ': 0x60cb30,
+    '?getEdgeType@Contact@RBX@@EBE?AW4EdgeType@Edge@2@XZ': 0x7286a0,
+    '?setPrimitive@Edge@RBX@@UAEXHPAVPrimitive@2@@Z': 0x659290,
+    '?stepContact@BlockBlockContact@RBX@@EAE_NXZ': 0x608830,
+    '?computeIsColliding@BlockBlockContact@RBX@@EAE_NM@Z': 0x607c20,
     '??2@YAPAXI@Z': 0x6a0920, '??3@YAXPAX@Z': 0x6a067a, '_atexit': 0x6a17af,
 }
 # Statics and tables: address the original instruction uses; tables and string pointers are byte-checked below.
@@ -115,6 +154,11 @@ DATA = {
     '?provider@Log@RBX@@0PAVILogProvider@2@A': 0x976b4c,
     '_information': 0x94c420, '_warning': 0x94c424, '_error': 0x94c428,   # file-local `static const char*` (.data)
     '?INDEXBOX_FACE_TO_VERTEX@IndexBox@RBX@@2QAY03$$CBHA': 0x875de8,
+    # G3D::Array<T>::resize function-local `static const int minSize` and its init guard (guard = minSize + 4)
+    '?minSize@?3??resize@?$Array@PAVContactConnector@RBX@@@G3D@@QAEXH_N@Z@4HB': 0x97b898,
+    '??_B?3??resize@?$Array@PAVContactConnector@RBX@@@G3D@@QAEXH_N@Z@53': 0x97b89c,
+    '?minSize@?3??resize@?$Array@_N@G3D@@QAEXH_N@Z@4HB': 0x96f79c,
+    '??_B?3??resize@?$Array@_N@G3D@@QAEXH_N@Z@53': 0x96f7a0,
 }
 TABLES = {   # IndexBox tables defined in Leaves2008IndexBox.cpp, compared byte for byte with the original .rdata
     '?INDEXBOX_FACE_TO_NORMAL@IndexBox@RBX@@2QAY02$$CBMA': (0x875da0, 0x48),
@@ -131,6 +175,13 @@ FOLDED = {
     '?onAddListener@' + NTF + 'MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z': 0x70bdf0,
     '?onRemoveListener@' + NTF + 'MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z': 0x70bdf0,
 }
+# G3D::Array<T>::realloc has no statics, so pointer / byte instantiations fold: 00502080 and 00473740 are called by
+# many resize copies (xref), so they are byte-checked folds of the BlockBlockContact unit's COMDATs, never counted.
+BBC_FOLDED = {
+    '?realloc@?$Array@PAVContactConnector@RBX@@@G3D@@AAEXH@Z': 0x502080,
+    '?realloc@?$Array@_N@G3D@@AAEXH@Z': 0x473740,
+}
+FOLDED.update(BBC_FOLDED)
 
 # (address | contiguous address tuple | ('slice', row, lo, hi), symbol or unique symbol prefix)
 ROWS = {
@@ -162,6 +213,7 @@ ROWS = {
         ((0x569780, 0x5697de, 0x569801), '?raise@' + NTF + 'IBEXUStandardOutMessage@2@PAV'),
         (0x5691b0, '?raise@' + NTF + 'IBEXUStandardOutMessage@2@@Z'),
         (0x416e10, '?print@' + SO + 'QAEXW4MessageType@2@ABVexception@std@@@Z'),
+        (0x5693a0, '?print@' + SO + 'QAAXW4MessageType@2@PBDZZ'),   # exact since Events.h hasListeners is size() > 0
         (0x5e9ec0, '??0' + NTF + 'IAE@XZ'),
         (0x7fd110, '??__FstandardOut@?1??singleton@' + SO),
     ],
@@ -172,6 +224,18 @@ ROWS = {
     'RevoluteLink': [
         (0x613d20, '??0Link@RBX@@QAE@XZ'),
         (0x613da0, '?reset@Link@RBX@@QAEXABVCoordinateFrame@G3D@@0@Z'),
+    ],
+    'BlockBlockContact': [
+        (0x60d500, '??0BlockBlockContact@RBX@@QAE@PAVPrimitive@1@0@Z'),
+        (0x60d5a0, '??1BlockBlockContact@RBX@@UAE@XZ'),
+        (0x60d610, '??_GBlockBlockContact@RBX@@UAEPAXI@Z'),
+        (0x607c60, '?deleteAllConnectors@BlockBlockContact@RBX@@EAEXXZ'),
+        (0x60d580, '?numConnectors@BlockBlockContact@RBX@@EBEHXZ'),
+        (0x60d590, '?getConnector@BlockBlockContact@RBX@@EAEPAVContactConnector@2@H@Z'),
+        # G3D::Array<T>::resize(int, bool) instantiations of the donor G3D/Array.h, called by deleteAllConnectors
+        # 00607caa / 00607cb6 (fastClear) and 006087ca; emitted as COMDATs by this unit.
+        (0x6078f0, '?resize@?$Array@PAVContactConnector@RBX@@@G3D@@QAEXH_N@Z'),
+        (0x47ff20, '?resize@?$Array@_N@G3D@@QAEXH_N@Z'),
     ],
 }
 # Inline-only bodies emitted by NativeLeaves2008Layout.cpp (the original copies are COMDATs of other units).
@@ -195,18 +259,16 @@ STANDARDOUT_FOLD_ROWS = [
 # Rows exact only in the NATIVE_STANDARDOUT_PENDING build (generated headers); recorded exact=false, not counted.
 PENDING_ROWS = [
     (0x569590, '??1' + SO + 'UAE@XZ'),
-    (0x5693a0, '?print@' + SO + 'QAAXW4MessageType@2@PBDZZ'),
+]
+BBC_PENDING_ROWS = [
+    (0x6087a0, '?updateConnectors@BlockBlockContact@RBX@@AAEXXZ'),
 ]
 PENDING_REASON = {
     '00569590': '~StandardOut: implicit in 2008 (no StandardOut vtable store); the donor declares virtual ~StandardOut()',
-    '005693a0': 'print(type, format, ...): Notifier::hasListeners is `listeners.size() > 0` in 2008 (native Events.h '
-                'has !listeners.empty())',
+    '006087a0': 'BlockBlockContact::updateConnectors (analog name): inKernel() compares getStageType() with 7, the 2008 '
+                'KERNEL_STAGE; the donor v8kernel/IStage.h has KERNEL_STAGE = 8 (generated copy with the 2008 values)',
 }
 PROPOSALS = [
-    'native-headers/util/Events.h (shared core header, not edited): Notifier::hasListeners() should read '
-    '`return listeners.size() > 0;` (StandardOut::print 005693a0 `mov eax, [edi+0x14]; sub eax, [edi+0x10]; sar eax, 2; '
-    'test eax, eax; jbe`, twice). Exact with a generated copy (out/native-layouts/leaves2008-pending/util/Events.h). '
-    'Re-run every recorder that compiles a Notifier::hasListeners caller after the change.',
     'util/standardout.h (donor path, reached through native-headers/util/Events.h by nearly every unit; no native header '
     'is created at that path): the 2008 StandardOut has no user-declared destructor (~StandardOut 00569590 never stores '
     'the StandardOut vtable 0082f510). The owner of util/* should take this into a native override when one exists; '
@@ -218,15 +280,22 @@ PROPOSALS = [
     'cdecl helper 005989d0 (const CoordinateFrame& a, const CoordinateFrame& b, CoordinateFrame& out), called by '
     'RevoluteLink::computeChildInParent 00613cc0 and 005991c0: no declaration in any native or donor header; its owner '
     '(PV / Math) should declare it, then 00613cc0 can be attempted.',
+    'v8kernel/IStage.h (donor; the kernel-stages owner already proposes it in tests/record_native_kernel_stages.py): the '
+    '2008 StageType values are CLEAN 0 .. SIMJOB 6, KERNEL 7. With that enum BlockBlockContact::updateConnectors 006087a0 '
+    '(`cmp eax, 7` after currentStage->getStageType()) is exact (generated copy out/native-layouts/'
+    'leaves2008-pending-stages/v8kernel/IStage.h).',
+    'v8world/Primitive.h 2008 (world owner): BlockBlockContact::stepContact 00608830 and computeIsColliding 00607c20 call '
+    'Extents::overlapsOrTouches 00606b60 on Primitive +0x80 of both edge primitives (`sub ecx, -0x80`); the only native '
+    'Primitive declaration (native-headers/part-embedded/v8world/Primitive.h) includes the donor v8world/Contact.h and '
+    'cannot share a unit with v8world/Contact2008.h. A 2008 Primitive header without the donor Contact.h (fuzzy extents '
+    'at +0x80, readable inline) would unlock both rows; 00607280 (the separating-axis test they call) is also needed.',
 ]
 BLOCKED = {
-    'RBX::BlockBlockContact': 'ctor 0060d500 (Contact(p0, p1) 00606c20, vtable 00843714; Array<ContactConnector*> +0x34 '
-                              'and a byte array +0x40 (dtor 0060d5a0 frees both, deleteAllConnectors 00607c60, '
-                              'numConnectors 0060d580 / getConnector 0060d590 read +0x38 / +0x34); +0x4c, +0x50, +0x58, '
-                              '+0x60 = 0, +0x54 = float 0082d030, +0x64 / +0x68 = -1 (used as NormalId + 6 by 006087a0), '
-                              'byte +0x5c read by 006087a0); +0x6c..+0x7b are never written by the constructor and '
-                              'their types are not derived yet (stepContact / computeIsColliding 00607ea0..00608580). '
-                              'Not declared: no field may be invented (also Contact2008.h is colin-leased).',
+    'RBX::BlockBlockContact::stepContact/computeIsColliding': '00608830 / 00607c20 need Primitive +0x80 fuzzy extents '
+                                                              '(2008 Primitive layout, see proposals) and 00607280',
+    'RBX::BlockBlockContact geometry helpers': '00607280 (separating axis test, 1634 bytes), 00607cc0, 00607e00, 00607ea0, '
+                                               '00607f90, 00608030, 00608160, 00608580 need the 2008 Primitive / Body / '
+                                               'Block geometry and ContactConnector layouts',
     'RBX::Point::step/forceToBody/setWorldPos': '2008 Body layout (see proposals)',
     'RBX::Link::getChildInParent': '2008 Body layout (see proposals)',
     'RBX::RevoluteLink::computeChildInParent': 'undeclared helper 005989d0 (see proposals)',
@@ -370,8 +439,9 @@ layout_rows = resolve(layout_obj, LAYOUT_ROWS)
 fold_rows = resolve(layout_obj, LAYOUT_FOLD_ROWS)
 so_fold_rows = resolve(objs['StandardOut'], STANDARDOUT_FOLD_ROWS)
 pend_rows = resolve(pend_obj, PENDING_ROWS)
+bbc_pend_rows = resolve(bbc_pend_obj, BBC_PENDING_ROWS)
 own = {}
-for rows in list(resolved.values()) + [layout_rows, fold_rows, so_fold_rows, pend_rows]:
+for rows in list(resolved.values()) + [layout_rows, fold_rows, so_fold_rows, pend_rows, bbc_pend_rows]:
     for address, name in rows:
         own.setdefault(name, first(address))
 methods = {cls: verify(objs[cls], rows, own) for cls, rows in resolved.items()}
@@ -379,7 +449,7 @@ methods['NullController/GuiTarget (layout emitters)'] = verify(layout_obj, layou
 folds = verify(layout_obj, fold_rows, own) + verify(objs['StandardOut'], so_fold_rows, own)
 for row in folds:
     row['folded'] = True
-pend_out = verify(pend_obj, pend_rows, own)
+pend_out = verify(pend_obj, pend_rows, own) + verify(bbc_pend_obj, bbc_pend_rows, own)
 for row in pend_out:  # exact only against the generated header copies: not counted as exact
     row['exact'] = False
     row['exact_pending_build_only'] = True
@@ -388,6 +458,8 @@ assert not UNBOUND, '\n'.join(UNBOUND)
 
 # FOLDED targets: the body this unit emits is byte-identical (relocation-masked) to the shared original copy.
 so_bodies = {n: (b, r) for n, b, r in match.coff_functions(objs['StandardOut'].read_bytes())}
+so_bodies.update({n: (b, r) for n, b, r in match.coff_functions(objs['BlockBlockContact'].read_bytes())
+                  if n in BBC_FOLDED})
 for symbol, address in FOLDED.items():
     body, refs = so_bodies[symbol]
     target, target_refs = target_of(address)
@@ -419,6 +491,7 @@ VTABLES = {   # vtable symbol -> (object, original vtable, RTTI, slot count)
     '??_7Point@RBX@@6B@': ('Point', 0x84b24c, '.?AVPoint@RBX@@', 1),
     '??_7NullController@RBX@@6B@': (None, 0x832a04, '.?AVNullController@RBX@@', 5),
     '??_7GuiTarget@RBX@@6B@': (None, 0x82f848, '.?AVGuiTarget@RBX@@', 1),
+    '??_7BlockBlockContact@RBX@@6B@': ('BlockBlockContact', 0x843714, '.?AVBlockBlockContact@RBX@@', 10),
 }
 vtables = {}
 for symbol, (cls, vt, rtti_name, count) in VTABLES.items():
@@ -464,6 +537,8 @@ def bases(vt):
 assert bases(0x8341b8) == [('.?AVLog@RBX@@', 0)]
 assert bases(0x84d1cc) == [('.?AVIndexBox@RBX@@', 0)]
 assert bases(0x82f848) == [('.?AVGuiTarget@RBX@@', 0)]
+assert bases(0x843714) == [('.?AVBlockBlockContact@RBX@@', 0), ('.?AVContact@RBX@@', 0), ('.?AVEdge@RBX@@', 0),
+                           ('.?AVIPipelined@RBX@@', 0)]
 assert bases(0x84b24c) == [('.?AVPoint@RBX@@', 0), ('.?AVKernelIndex@RBX@@', 4)]
 assert bases(0x83f75c) == [('.?AVRevoluteLink@RBX@@', 0), ('.?AVLink@RBX@@', 0)]
 assert bases(0x832a04) == [('.?AVNullController@RBX@@', 0), ('.?AVController@RBX@@', 0),
@@ -482,6 +557,7 @@ def pushes_before(row, size, callee):
 
 pushes_before(0x569620, 0x30, 0x569530)      # singleton: new(0x30) StandardOut()
 pushes_before(0x5e5bf0, 0xd0, 0x613d20)      # MotorJoint(): new(0xd0) RevoluteLink -> Link()
+pushes_before(0x60d770, 0x7c, 0x60d500)      # ContactManager::createContact: new(0x7c) BlockBlockContact
 body, _, _ = match.target('2008-06', '00599e50')   # static NullController at 00976384, 0x0c bytes (+ guard 00976390)
 for at in (0x976384, 0x976388, 0x97638c, 0x976390):
     assert struct.pack('<I', at) in body, hex(at)
@@ -491,11 +567,11 @@ sha = nb.sha
 paths = [Path(__file__).resolve(), LAYOUT] + HDRS + list(SOURCES.values())
 receipt = {
     'classes': ['RBX::Log', 'RBX::IndexBox', 'RBX::StandardOut', 'RBX::Point', 'RBX::Link / RBX::RevoluteLink',
-                'RBX::NullController', 'RBX::GuiTarget'],
+                'RBX::NullController', 'RBX::GuiTarget', 'RBX::BlockBlockContact'],
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'layout': layout_flags, 'units': unit_flags, 'pending': pend_flags},
+    'flags': {'layout': layout_flags, 'units': unit_flags, 'pending': pend_flags, 'pending_stages': bbc_pend_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
-    'objects': {p.name: sha(p) for p in [layout_obj, pend_obj] + list(objs.values())},
+    'objects': {p.name: sha(p) for p in [layout_obj, pend_obj, bbc_pend_obj] + list(objs.values())},
     'layout': {
         'Log': 'vtable; std::string name +0x04; worstSeverity +0x20; const std::string logFile +0x24; std::ofstream +0x40 '
                '(ctor 005a6da0)',
@@ -506,15 +582,22 @@ receipt = {
                         'stateIndex +0xc8; jointAngle +0xcc',
         'NullController': '0x0c (ReferenceCountedObject only)',
         'GuiTarget': 'vtable only; GuiResponse 8 bytes',
+        'BlockBlockContact': '0x7c (createContact news 0x7c): Contact 0x34; Array<ContactConnector*> connectors +0x34; '
+                             'Array<bool> matched +0x40; int +0x4c / +0x50 (zeroed, no reader); float separation +0x54; '
+                             'int +0x58; bool planeContact +0x5c; int +0x60; int feature[2] +0x64; int bPlane +0x6c / '
+                             'bOther +0x70; NormalId planeID +0x74 / otherPlaneID +0x78 (ctor 0060d500, implicit dtor '
+                             '0060d5a0)',
     },
     'methods': methods,
     'folded_rows': folds,
+    'folded_bodies': {k: hex(v) for k, v in FOLDED.items()},   # byte-compared with the shared original copy
     'exact_count': sum(len(v) for v in methods.values()), 'exact_unique_addresses': len(exact),
     'exact_addresses': exact,
     'pending_methods': pend_out,
-    'pending_note': 'Pending rows are exact only with NATIVE_STANDARDOUT_PENDING against the generated headers under '
-                    'out/native-layouts/leaves2008-pending/ (Events.h hasListeners size() > 0, standardout.h without the '
-                    'user-declared destructor); not counted as exact.',
+    'pending_note': 'Pending rows are exact only against generated header copies and are not counted as exact: '
+                    '00569590 with NATIVE_STANDARDOUT_PENDING (out/native-layouts/leaves2008-pending/util/standardout.h '
+                    'without the user-declared destructor), 006087a0 with NATIVE_BLOCKBLOCKCONTACT_PENDING '
+                    '(out/native-layouts/leaves2008-pending-stages/v8kernel/IStage.h with the 2008 StageType values).',
     'non_exact': {},
     'blocked': BLOCKED,
     'proposals': PROPOSALS,

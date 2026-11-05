@@ -4,9 +4,9 @@
 // singleton 00569620 (with shared_ptr / shared_count constructors 005692f0 / 00569260), ??_G 005696d0,
 // print_exception 005696f0 and print(type, exception) 00416e10. Verified by tests/record_native_leaves2008.py.
 //
-// NATIVE_STANDARDOUT_PENDING (generated header copies under out/, see the recorder): the 2008 StandardOut has no
-// user-declared destructor (00569590 stores no StandardOut vtable) and Notifier::hasListeners is `size() > 0`
-// (005693a0 `sar eax, 2; test eax, eax; jbe`).
+// NATIVE_STANDARDOUT_PENDING (generated donor util/standardout.h copy under out/, see the recorder): the 2008
+// StandardOut has no user-declared destructor (00569590 stores no StandardOut vtable). print 005693a0 needs
+// Notifier::hasListeners as `size() > 0` (`sar eax, 2; test eax, eax; jbe`), now in native-headers/util/Events.h.
 #include "leaves2008/StandardOut2008.h"
 #include "leaves2008/Log2008.h"
 #include <G3D/format.h>

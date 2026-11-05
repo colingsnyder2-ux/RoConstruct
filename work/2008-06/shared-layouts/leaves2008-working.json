@@ -6,7 +6,8 @@
     "RBX::Point",
     "RBX::Link / RBX::RevoluteLink",
     "RBX::NullController",
-    "RBX::GuiTarget"
+    "RBX::GuiTarget",
+    "RBX::BlockBlockContact"
   ],
   "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
   "flags": {
@@ -250,6 +251,46 @@
         "/U_RELEASEASSERT",
         "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008RevoluteLink.obj",
         "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008RevoluteLink.cpp"
+      ],
+      "BlockBlockContact": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/fp:fast",
+        "/U_RELEASEASSERT",
+        "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008BlockBlockContact.obj",
+        "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp"
       ]
     },
     "pending": [
@@ -293,11 +334,54 @@
       "/DNATIVE_STANDARDOUT_PENDING",
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008StandardOutPending.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp"
+    ],
+    "pending_stages": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/leaves2008-pending-stages",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/DNATIVE_BLOCKBLOCKCONTACT_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeLeaves2008BlockBlockContactPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_leaves2008.py": "8937061493dd9b378d42476784aadc379b00164dfdf83a2f7e468a15d66e9553",
-    "rebuild/2008-06/tests/NativeLeaves2008Layout.cpp": "1c5feba9cc42724602feef7e5ce1bcb6a93bd8b55c2f33b93b9805931b68801e",
+    "rebuild/2008-06/tests/record_native_leaves2008.py": "872a8f6d822d4826a0243a54381a0194af4571da4f1b84117c3c1b8b9301dcd8",
+    "rebuild/2008-06/tests/NativeLeaves2008Layout.cpp": "5551b7789ef7c146f22a11b518d1f75bd9b6625b3335a9945264464bfb3711eb",
+    "rebuild/2008-06/native-headers/leaves2008/BlockBlockContact2008.h": "2129500e60923c6d37d6171a225c921657bca089f4ffec91fb351c4b9554eaaa",
     "rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h": "d7c6a6ac6076f235100f248e3359b2f283a1dd0f5acd3209545176df58e72979",
     "rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h": "ef5cee2b58a120b368cdea7ef76a8fb48288d4c78aec7525451334e3b8800f22",
     "rebuild/2008-06/native-headers/leaves2008/Log2008.h": "6a8308cd8c0cffa8383b5a7f540752110670434d916e2b713b580ad00dab9d65",
@@ -307,18 +391,21 @@
     "rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h": "9a17692d0d0f7ad43fc8666bdcb49d7428db9b3b08be76fa8a53ad9dcda2cc4e",
     "rebuild/2008-06/native-classes/Leaves2008Log.cpp": "18e410977778f6bde54a733bb4fe37e1aa10ebc2fe172691b9884629d6afb56c",
     "rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp": "1320b9af74c8e70173ca57b2b34ebcc121afc62db97dfa4d0bb22351de29a158",
-    "rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp": "afee06489b060c43b5b81fb33e438069ff7bf1d840dd7f1b2b35253b7e1101f3",
+    "rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp": "630775de15677ed5f1b13818a9c5dbcdff9a3faa8f7acf176d40fd7c8e119546",
     "rebuild/2008-06/native-classes/Leaves2008Point.cpp": "2ace8eae7a36b2a33d3ada741710a6fa7a770feb0e08ee60714da306a027fb52",
-    "rebuild/2008-06/native-classes/Leaves2008RevoluteLink.cpp": "2dab0315e82f5adc991c0a93695a8245182ff4fc7ba609d57b5fd3972b291766"
+    "rebuild/2008-06/native-classes/Leaves2008RevoluteLink.cpp": "2dab0315e82f5adc991c0a93695a8245182ff4fc7ba609d57b5fd3972b291766",
+    "rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp": "8e8639c6f45f83e32fa3e321e9cfd2a14fad52a082bd9d339b737f710e9b5275"
   },
   "objects": {
-    "NativeLeaves2008Layout.obj": "8134a57a183f3b693d3bcbf66df4478ee8eff0fbebc9d33763b325939fa5397c",
-    "NativeLeaves2008StandardOutPending.obj": "6057716928c81f66bc7e37b8388112fc484442843377a39225a07b73ab7956c0",
-    "NativeLeaves2008Log.obj": "a8e88261cfdd64de116e2698f0ff3ea13102fb868f5a7807764a3349c0f81220",
-    "NativeLeaves2008IndexBox.obj": "ddbafccac47a9afd007a57fb42f7959f900ecc53be580e4195fac324a053e190",
-    "NativeLeaves2008StandardOut.obj": "8cfa0249432e1c6f03e1960372417d6955ee66c7d21ff1ff480250c38d528a7e",
-    "NativeLeaves2008Point.obj": "ae38a07af12faab1383982a7ea0eaf97ba49eef9961c451736ec6e8759cf6af3",
-    "NativeLeaves2008RevoluteLink.obj": "52138e8747f74605a0f940e99913be798d2f706f548bf26705d18c04f00ff0be"
+    "NativeLeaves2008Layout.obj": "011bc1a4fda9ea0fdb62c0f858555ac74fb22aa461ed66b32e8bbdb5bef8b2d2",
+    "NativeLeaves2008StandardOutPending.obj": "55a70511f9f1c60cd2da25570c4bfc4e2b9a3f932451d3f797f7f273036d8c30",
+    "NativeLeaves2008BlockBlockContactPending.obj": "6c7360fb18b8a553a92fb37c4a7019aaaf8c545993f531967e2baeb949e934c2",
+    "NativeLeaves2008Log.obj": "1b5dfdf0958df6f2b8a9c57d7fa6104aaf4f8c657d648135cae69b81a4a7e7bc",
+    "NativeLeaves2008IndexBox.obj": "2ec746a3aa28fd78f761b7e607912d990673aa404a7f0021a7aff4c35f1c20be",
+    "NativeLeaves2008StandardOut.obj": "7a662b8327eb619600ea3d19ab2bdeceeab7e05bf3254d255cf09edf7e4986df",
+    "NativeLeaves2008Point.obj": "cdd915e895308cee580066cc6322bd3dc95afeab0b20aef2421d6538b0041ba9",
+    "NativeLeaves2008RevoluteLink.obj": "c11316e9ebfc3cdc834e93f3d77df8b297e16c7059182daaad0110bfefe02501",
+    "NativeLeaves2008BlockBlockContact.obj": "0b29526dd95bf06473bf8dd23b0002be60af0898c2acc131ee5813c510b859fd"
   },
   "layout": {
     "Log": "vtable; std::string name +0x04; worstSeverity +0x20; const std::string logFile +0x24; std::ofstream +0x40 (ctor 005a6da0)",
@@ -327,7 +414,8 @@
     "Point": "0x34: vtable; KernelIndex +0x04; numOwners +0x08; body +0x0c; localPos/worldPos/force +0x10/+0x1c/+0x28",
     "RevoluteLink": "0xd0 (MotorJoint() news 0xd0): Link (novtable) body +0x04, four CoordinateFrames +0x08..+0xc7, stateIndex +0xc8; jointAngle +0xcc",
     "NullController": "0x0c (ReferenceCountedObject only)",
-    "GuiTarget": "vtable only; GuiResponse 8 bytes"
+    "GuiTarget": "vtable only; GuiResponse 8 bytes",
+    "BlockBlockContact": "0x7c (createContact news 0x7c): Contact 0x34; Array<ContactConnector*> connectors +0x34; Array<bool> matched +0x40; int +0x4c / +0x50 (zeroed, no reader); float separation +0x54; int +0x58; bool planeContact +0x5c; int +0x60; int feature[2] +0x64; int bPlane +0x6c / bOther +0x70; NormalId planeID +0x74 / otherPlaneID +0x78 (ctor 0060d500, implicit dtor 0060d5a0)"
   },
   "methods": {
     "Log": [
@@ -627,6 +715,26 @@
         "local_eh": []
       },
       {
+        "address": "005693a0",
+        "symbol": "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ",
+        "size": 398,
+        "exact": true,
+        "verified_targets": {
+          "?vformat@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDPAD@Z": "0x5099f0 (external)",
+          "?provider@Log@RBX@@0PAVILogProvider@2@A": "0x976b4c (data)",
+          "?writeEntry@Log@RBX@@QAEXW4Severity@12@PBD@Z": "0x5a6ef0 (own row)",
+          "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0 (external)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp___time64": "0x802808 (msvcr90.dll!_time64)",
+          "?raise@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IBEXUStandardOutMessage@2@@Z": "0x5691b0 (own row)",
+          "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00 (external)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ"
+        ]
+      },
+      {
         "address": "005e9ec0",
         "symbol": "??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ",
         "size": 84,
@@ -692,6 +800,106 @@
         "exact": true,
         "verified_targets": {
           "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ": "0x478330 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ],
+    "BlockBlockContact": [
+      {
+        "address": "0060d500",
+        "symbol": "??0BlockBlockContact@RBX@@QAE@PAVPrimitive@1@0@Z",
+        "size": 118,
+        "exact": true,
+        "verified_targets": {
+          "??0Contact@RBX@@QAE@PAVPrimitive@1@0@Z": "0x606c20 (external (evidence name))",
+          "??_7BlockBlockContact@RBX@@6B@": "0x843714 (vtable RTTI .?AVBlockBlockContact@RBX@@ offset 0x0)",
+          "__real@4e6e6b28": "0x82d030 (float constant 1000000000.0)"
+        },
+        "local_eh": [
+          "__ehhandler$??0BlockBlockContact@RBX@@QAE@PAVPrimitive@1@0@Z"
+        ]
+      },
+      {
+        "address": "0060d5a0",
+        "symbol": "??1BlockBlockContact@RBX@@UAE@XZ",
+        "size": 100,
+        "exact": true,
+        "verified_targets": {
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1BlockBlockContact@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "0060d610",
+        "symbol": "??_GBlockBlockContact@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1BlockBlockContact@RBX@@UAE@XZ": "0x60d5a0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00607c60",
+        "symbol": "?deleteAllConnectors@BlockBlockContact@RBX@@EAEXXZ",
+        "size": 94,
+        "exact": true,
+        "verified_targets": {
+          "?getKernel@IPipelined@RBX@@QBEPAVKernel@2@XZ": "0x645850 (external)",
+          "?removeConnector@Kernel@RBX@@QAEXPAVConnector@2@@Z": "0x5fb1f0 (external)",
+          "?resize@?$Array@PAVContactConnector@RBX@@@G3D@@QAEXH_N@Z": "0x6078f0 (own row)",
+          "?resize@?$Array@_N@G3D@@QAEXH_N@Z": "0x47ff20 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060d580",
+        "symbol": "?numConnectors@BlockBlockContact@RBX@@EBEHXZ",
+        "size": 4,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0060d590",
+        "symbol": "?getConnector@BlockBlockContact@RBX@@EAEPAVContactConnector@2@H@Z",
+        "size": 13,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "006078f0",
+        "symbol": "?resize@?$Array@PAVContactConnector@RBX@@@G3D@@QAEXH_N@Z",
+        "size": 256,
+        "exact": true,
+        "verified_targets": {
+          "??_B?3??resize@?$Array@PAVContactConnector@RBX@@@G3D@@QAEXH_N@Z@53": "0x97b89c (data)",
+          "?minSize@?3??resize@?$Array@PAVContactConnector@RBX@@@G3D@@QAEXH_N@Z@4HB": "0x97b898 (data)",
+          "?realloc@?$Array@PAVContactConnector@RBX@@@G3D@@AAEXH@Z": "0x502080 (folded)",
+          "__real@40400000": "0x81e380 (float constant 3.0)",
+          "__real@3fc00000": "0x81e37c (float constant 1.5)",
+          "__real@40000000": "0x81c434 (float constant 2.0)",
+          "__ftol2_sse": "0x6a17f0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0047ff20",
+        "symbol": "?resize@?$Array@_N@G3D@@QAEXH_N@Z",
+        "size": 252,
+        "exact": true,
+        "verified_targets": {
+          "??_B?3??resize@?$Array@_N@G3D@@QAEXH_N@Z@53": "0x96f7a0 (data)",
+          "?minSize@?3??resize@?$Array@_N@G3D@@QAEXH_N@Z@4HB": "0x96f79c (data)",
+          "?realloc@?$Array@_N@G3D@@AAEXH@Z": "0x473740 (folded)",
+          "__real@40400000": "0x81e380 (float constant 3.0)",
+          "__real@3fc00000": "0x81e37c (float constant 1.5)",
+          "__real@40000000": "0x81c434 (float constant 2.0)",
+          "__ftol2_sse": "0x6a17f0 (external)"
         },
         "local_eh": []
       }
@@ -792,13 +1000,21 @@
       "folded": true
     }
   ],
-  "exact_count": 30,
-  "exact_unique_addresses": 30,
+  "folded_bodies": {
+    "?onAddListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z": "0x70bdf0",
+    "?onRemoveListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z": "0x70bdf0",
+    "?realloc@?$Array@PAVContactConnector@RBX@@@G3D@@AAEXH@Z": "0x502080",
+    "?realloc@?$Array@_N@G3D@@AAEXH@Z": "0x473740"
+  },
+  "exact_count": 39,
+  "exact_unique_addresses": 39,
   "exact_addresses": [
     "00416e10",
+    "0047ff20",
     "005691b0",
     "00569260+005692ce",
     "005692f0",
+    "005693a0",
     "00569530",
     "00569620",
     "005696d0",
@@ -815,6 +1031,13 @@
     "005a6ef0",
     "005a6fb0",
     "005e9ec0",
+    "006078f0",
+    "00607c60",
+    "0060d500",
+    "0060d580",
+    "0060d590",
+    "0060d5a0",
+    "0060d610",
     "00613d20",
     "00613da0",
     "0064dc00",
@@ -843,41 +1066,36 @@
       "what": "~StandardOut: implicit in 2008 (no StandardOut vtable store); the donor declares virtual ~StandardOut()"
     },
     {
-      "address": "005693a0",
-      "symbol": "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ",
-      "size": 398,
+      "address": "006087a0",
+      "symbol": "?updateConnectors@BlockBlockContact@RBX@@AAEXXZ",
+      "size": 137,
       "exact": false,
       "verified_targets": {
-        "?vformat@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDPAD@Z": "0x5099f0 (external)",
-        "?provider@Log@RBX@@0PAVILogProvider@2@A": "0x976b4c (data)",
-        "?writeEntry@Log@RBX@@QAEXW4Severity@12@PBD@Z": "0x5a6ef0 (own row)",
-        "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0 (external)",
-        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
-        "__imp___time64": "0x802808 (msvcr90.dll!_time64)",
-        "?raise@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IBEXUStandardOutMessage@2@@Z": "0x5691b0 (own row)",
-        "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00 (external)",
-        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        "?resize@?$Array@_N@G3D@@QAEXH_N@Z": "0x47ff20 (own row)",
+        "?computePlaneContact@BlockBlockContact@RBX@@AAEHXZ": "0x608580 (external)",
+        "?deleteUnmatchedConnectors@BlockBlockContact@RBX@@AAEXXZ": "0x607e00 (external)",
+        "?loadGeoPairEdgeEdge@BlockBlockContact@RBX@@AAEXHHHH@Z": "0x607ea0 (external)"
       },
-      "local_eh": [
-        "__ehhandler$?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ"
-      ],
+      "local_eh": [],
       "exact_pending_build_only": true,
-      "what": "print(type, format, ...): Notifier::hasListeners is `listeners.size() > 0` in 2008 (native Events.h has !listeners.empty())"
+      "what": "BlockBlockContact::updateConnectors (analog name): inKernel() compares getStageType() with 7, the 2008 KERNEL_STAGE; the donor v8kernel/IStage.h has KERNEL_STAGE = 8 (generated copy with the 2008 values)"
     }
   ],
-  "pending_note": "Pending rows are exact only with NATIVE_STANDARDOUT_PENDING against the generated headers under out/native-layouts/leaves2008-pending/ (Events.h hasListeners size() > 0, standardout.h without the user-declared destructor); not counted as exact.",
+  "pending_note": "Pending rows are exact only against generated header copies and are not counted as exact: 00569590 with NATIVE_STANDARDOUT_PENDING (out/native-layouts/leaves2008-pending/util/standardout.h without the user-declared destructor), 006087a0 with NATIVE_BLOCKBLOCKCONTACT_PENDING (out/native-layouts/leaves2008-pending-stages/v8kernel/IStage.h with the 2008 StageType values).",
   "non_exact": {},
   "blocked": {
-    "RBX::BlockBlockContact": "ctor 0060d500 (Contact(p0, p1) 00606c20, vtable 00843714; Array<ContactConnector*> +0x34 and a byte array +0x40 (dtor 0060d5a0 frees both, deleteAllConnectors 00607c60, numConnectors 0060d580 / getConnector 0060d590 read +0x38 / +0x34); +0x4c, +0x50, +0x58, +0x60 = 0, +0x54 = float 0082d030, +0x64 / +0x68 = -1 (used as NormalId + 6 by 006087a0), byte +0x5c read by 006087a0); +0x6c..+0x7b are never written by the constructor and their types are not derived yet (stepContact / computeIsColliding 00607ea0..00608580). Not declared: no field may be invented (also Contact2008.h is colin-leased).",
+    "RBX::BlockBlockContact::stepContact/computeIsColliding": "00608830 / 00607c20 need Primitive +0x80 fuzzy extents (2008 Primitive layout, see proposals) and 00607280",
+    "RBX::BlockBlockContact geometry helpers": "00607280 (separating axis test, 1634 bytes), 00607cc0, 00607e00, 00607ea0, 00607f90, 00608030, 00608160, 00608580 need the 2008 Primitive / Body / Block geometry and ContactConnector layouts",
     "RBX::Point::step/forceToBody/setWorldPos": "2008 Body layout (see proposals)",
     "RBX::Link::getChildInParent": "2008 Body layout (see proposals)",
     "RBX::RevoluteLink::computeChildInParent": "undeclared helper 005989d0 (see proposals)"
   },
   "proposals": [
-    "native-headers/util/Events.h (shared core header, not edited): Notifier::hasListeners() should read `return listeners.size() > 0;` (StandardOut::print 005693a0 `mov eax, [edi+0x14]; sub eax, [edi+0x10]; sar eax, 2; test eax, eax; jbe`, twice). Exact with a generated copy (out/native-layouts/leaves2008-pending/util/Events.h). Re-run every recorder that compiles a Notifier::hasListeners caller after the change.",
     "util/standardout.h (donor path, reached through native-headers/util/Events.h by nearly every unit; no native header is created at that path): the 2008 StandardOut has no user-declared destructor (~StandardOut 00569590 never stores the StandardOut vtable 0082f510). The owner of util/* should take this into a native override when one exists; with the line removed in a generated copy 00569590 is exact and ??_G 005696d0 stays exact.",
     "v8kernel/Body.h (donor; no native header; world/kernel owner): Point::step 0064dc90 / setWorldPos 0064dd40 read the PV position at Body +0x94..+0xc0 after updatePV 00599360, forceToBody 0064dc70 reads root +0x10 -> +0x2c, and Link::getChildInParent 00613d60 reads parent +0x14 and stateIndex +0x90; the donor Body has pv +0x88, parent +0x08, stateIndex +0x84. A native 2008 Body layout would unlock these four rows.",
-    "cdecl helper 005989d0 (const CoordinateFrame& a, const CoordinateFrame& b, CoordinateFrame& out), called by RevoluteLink::computeChildInParent 00613cc0 and 005991c0: no declaration in any native or donor header; its owner (PV / Math) should declare it, then 00613cc0 can be attempted."
+    "cdecl helper 005989d0 (const CoordinateFrame& a, const CoordinateFrame& b, CoordinateFrame& out), called by RevoluteLink::computeChildInParent 00613cc0 and 005991c0: no declaration in any native or donor header; its owner (PV / Math) should declare it, then 00613cc0 can be attempted.",
+    "v8kernel/IStage.h (donor; the kernel-stages owner already proposes it in tests/record_native_kernel_stages.py): the 2008 StageType values are CLEAN 0 .. SIMJOB 6, KERNEL 7. With that enum BlockBlockContact::updateConnectors 006087a0 (`cmp eax, 7` after currentStage->getStageType()) is exact (generated copy out/native-layouts/leaves2008-pending-stages/v8kernel/IStage.h).",
+    "v8world/Primitive.h 2008 (world owner): BlockBlockContact::stepContact 00608830 and computeIsColliding 00607c20 call Extents::overlapsOrTouches 00606b60 on Primitive +0x80 of both edge primitives (`sub ecx, -0x80`); the only native Primitive declaration (native-headers/part-embedded/v8world/Primitive.h) includes the donor v8world/Contact.h and cannot share a unit with v8world/Contact2008.h. A 2008 Primitive header without the donor Contact.h (fuzzy extents at +0x80, readable inline) would unlock both rows; 00607280 (the separating-axis test they call) is also needed."
   ],
   "vtables": {
     "??_7Log@RBX@@6B@": {
@@ -926,6 +1144,22 @@
       "rtti": ".?AVGuiTarget@RBX@@",
       "slots": {
         "0": "?process@GuiTarget@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z = 0x5732d0 (own row)"
+      }
+    },
+    "??_7BlockBlockContact@RBX@@6B@": {
+      "address": "0x843714",
+      "rtti": ".?AVBlockBlockContact@RBX@@",
+      "slots": {
+        "0": "??_EBlockBlockContact@RBX@@UAEPAXI@Z = 0x60d610 (own row (??_G))",
+        "1": "?putInKernel@Contact@RBX@@EAEXPAVKernel@2@@Z = 0x60cb10 (external)",
+        "2": "?removeFromKernel@Contact@RBX@@EAEXXZ = 0x60cb30 (external)",
+        "3": "?getEdgeType@Contact@RBX@@EBE?AW4EdgeType@Edge@2@XZ = 0x7286a0 (external)",
+        "4": "?setPrimitive@Edge@RBX@@UAEXHPAVPrimitive@2@@Z = 0x659290 (external)",
+        "5": "?deleteAllConnectors@BlockBlockContact@RBX@@EAEXXZ = 0x607c60 (own row)",
+        "6": "?stepContact@BlockBlockContact@RBX@@EAE_NXZ = 0x608830 (external)",
+        "7": "?computeIsColliding@BlockBlockContact@RBX@@EAE_NM@Z = 0x607c20 (external)",
+        "8": "?numConnectors@BlockBlockContact@RBX@@EBEHXZ = 0x60d580 (own row)",
+        "9": "?getConnector@BlockBlockContact@RBX@@EAEPAVContactConnector@2@H@Z = 0x60d590 (own row)"
       }
     }
   },
