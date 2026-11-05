@@ -54,9 +54,12 @@ public:
     static Reflection::BoundProp<bool, 1> propArchivable;
     static const Reflection::RefPropDescriptor<Instance, Instance> propParent;
     static const Reflection::PropDescriptor<Instance, std::string> desc_Name;
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childAdded;
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childRemoved;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentAdded;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentRemoving;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_ancestryChanged;
+    static Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> event_propertyChanged;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>, const Reflection::PropertyDescriptor*)> event_itemChanged;
     Instance();
     explicit Instance(const char*);
@@ -78,12 +81,13 @@ public:
     virtual boost::shared_ptr<Instance> createChild(const Name&);
     const std::string& getName() const { return name; }
     Instance* getParent() const { return parent; }
-    __declspec(noinline) bool isAncestorOf(const Instance* descendent) const {
-        while (descendent) {
-            if (descendent == this) return true;
-            descendent = descendent->getParent();
-        }
-        return false;
+    const Instance* getRootAncestor() const { return parent ? parent->getRootAncestor() : this; }
+    Instance* getRootAncestor() { return parent ? parent->getRootAncestor() : this; }
+    bool isAncestorOf(const Instance* descendent) const {
+        if (!descendent) return false;
+        Instance* ancestor = descendent->parent;
+        if (ancestor == this) return true;
+        return isAncestorOf(ancestor);
     }
     bool isDescendentOf(const Instance*) const; // 00422ae0
     // 00423700; name provisional
@@ -140,7 +144,10 @@ public:
     template<class T> T* queryTypedParent() { return dynamic_cast<T*>(parent); }
     bool canAddChild(const Instance*) const;
     void setParent(Instance*);
-    bool contains(const Instance*) const;
+    __declspec(noinline) bool contains(const Instance*) const;
+    std::string getFullName() const;
+    static void signalDescendentRemoving(const boost::shared_ptr<Instance>&, Instance*, Instance*);
+    static void signalDescendentAdded(Instance*, Instance*, Instance*);
     void removeAllChildren();
     boost::shared_ptr<Instance> clone();  // ?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ
     void remove();  // ?remove@Instance@RBX@@QAEXXZ

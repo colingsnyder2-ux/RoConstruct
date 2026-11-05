@@ -7,6 +7,7 @@
 
 namespace RBX {
 class __declspec(novtable) ISelectionBase {
+    friend class Selection;
     virtual void onSelectionChanged(const SelectionChanged&) = 0;
 };
 extern char sSelection[];
@@ -18,6 +19,9 @@ class Selection : public DescribedCreatable<Selection, Instance, sSelection>,
                   public Service,
                   public Listener<Instance, AncestorChanged> {
 public:
+    Selection();
+    virtual ~Selection();
+    virtual void onEvent(const Instance*, AncestorChanged);
     CopyOnWrite<std::vector<boost::shared_ptr<Instance> > > selection;
     std::vector<ISelectionBase*> filteredSelections;
     size_t size() const { return selection->size(); }
@@ -26,7 +30,9 @@ public:
     void clearSelection();
     void addToSelection(Instance*);
     bool isSelected(const Instance*) const;                     // 00424eb0
-    void removeFromSelection(const Instance*);                  // 00567c10
+    void removeFromSelection(const Instance*);
+    void raiseAdded(boost::shared_ptr<Instance>);
+    void raiseRemoved(boost::shared_ptr<Instance>);                  // 00567c10
     void setSelection(Instance*);                               // 00567770
     std::vector<boost::shared_ptr<Instance> >::const_iterator begin() const; // 00413d10
     std::vector<boost::shared_ptr<Instance> >::const_iterator end() const;   // 00413d40

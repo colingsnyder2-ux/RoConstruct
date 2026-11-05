@@ -8,14 +8,6 @@
 namespace RBX {
 class DataModel;
 namespace Stats { class Item; }
-
-// Event payloads proven by the listener thunks: onEvent 00457150 forwards an 8-byte by-value event
-// (ret 0xc with the source pointer) and copies it with the shared_ptr<Instance> copy constructor
-// 004116f0; onMarshaledEvent 00456250 compares the first word with the record's item pointer.
-struct ChildRemoved {
-    boost::shared_ptr<Instance> child;
-    ChildRemoved(const ChildRemoved&);  // out of line: 004116f0 (identical-COMDAT fold)
-};
 }
 
 // Inactive layout recovery from CRuntimeClass 00818348 (size 0x3d4, abstract: CreateObject 0, base

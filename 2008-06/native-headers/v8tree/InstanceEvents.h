@@ -7,6 +7,11 @@ struct ChildAdded {
     ChildAdded(Instance* value) : child(shared_from(value)) {}
     ChildAdded(const ChildAdded&); // 004116f0
 };
+struct ChildRemoved {
+    boost::shared_ptr<Instance> child;
+    ChildRemoved(Instance* value) : child(shared_from(value)) {}
+    ChildRemoved(const ChildRemoved&); // 004116f0
+};
 struct DescendantAdded {
     const boost::shared_ptr<Instance> instance;
     const boost::shared_ptr<Instance> parent;

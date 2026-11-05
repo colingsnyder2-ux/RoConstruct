@@ -1,25 +1,23 @@
-// from server: 77% by colin
-struct VCLuaFunction {
-    long __stdcall QueryInterface(void* ppvObject, void* riid, void* unused);
-};
+// from server: 79% by Intel
+extern "C" void __stdcall sub_4055F0(void*);
 
-extern "C" void __cdecl sub_4055F0(void*);
+int* g_pGlobal = 0;
 
-extern void* dword_883164;
-extern char byte_883158;
-
-long __stdcall VCLuaFunction::QueryInterface(void* ppvObject, void* riid, void* unused) {
-    if (ppvObject == 0) {
+int __stdcall sub_416470(int, int, int, int** ppvObject) {
+    if (!ppvObject) {
         return 0x80004003;
     }
-    if (dword_883164 == 0) {
-        sub_4055F0(&byte_883158);
+
+    if (!g_pGlobal) {
+        int arg = 0;
+        sub_4055F0(&arg);
     }
-    *(void**)ppvObject = dword_883164;
-    if (dword_883164 != 0) {
-        void** vtbl = *(void***)dword_883164;
-        void* fn = vtbl[1];
-        ((void (__stdcall*)(void*))fn)(dword_883164);
+
+    *ppvObject = g_pGlobal;
+
+    if (g_pGlobal) {
+        (*(void (__stdcall**)(int*))(*g_pGlobal + 4))(g_pGlobal);
     }
+
     return 0;
 }

@@ -36,7 +36,17 @@ def sha(path):
 def save(path, value):
     temporary = path.with_name(path.name + '.' + uuid.uuid4().hex + '.tmp')
     temporary.write_text(json.dumps(value, indent=2) + '\n', encoding='utf-8')
-    os.replace(temporary, path)
+    try:
+        for attempt in range(21):
+            try:
+                os.replace(temporary, path)
+                break
+            except PermissionError:
+                if attempt == 20:
+                    raise
+                time.sleep(0.1)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def jobs_from(data):

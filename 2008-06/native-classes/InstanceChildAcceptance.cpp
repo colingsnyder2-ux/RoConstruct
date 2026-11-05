@@ -5,7 +5,7 @@ bool RBX::Instance::canAcceptChildren(std::vector<boost::shared_ptr<Instance> >:
 {
     for (; first != last; ++first) {
         Instance* child = first->get();
-        if (!child || child->isAncestorOf(this) || child->getParent() == this ||
+        if (!child || child->contains(this) || child->getParent() == this ||
             (!askAddChild(child) && !child->askSetParent(this)))
             return false;
     }
