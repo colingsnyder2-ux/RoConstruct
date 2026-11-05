@@ -1,5 +1,7 @@
+> Native source, research, benchmarks and docs moved to [work/workspace](https://github.com/colingsnyder2-ux/RoConstruct/tree/work/workspace). [Native agent prompt](https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/NATIVE_AGENT.md) · [Worker ZIP](https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.zip). Main launchers download a verified Worker and preserve existing work.
+
 <p align="center">
-  <img src="docs/logo.png" alt="RoConstruct" width="560">
+  <img src="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/workspace/docs/logo.png" alt="RoConstruct" width="560">
 </p>
 
 <p align="center">
@@ -41,7 +43,7 @@ fixes, ports (WebAssembly, Linux, macOS), bug fixes, modding and preservation.
 |---|---|
 | A PC | `roc launch`: a cloud worker (API key or ChatGPT plan) keeps your PC mostly idle |
 | A GPU | `roc local-ai`, then `roc launch` with a local model |
-| OpenCode, Claude Code or Codex | `roc gui` → **Workers → Worker / Integrator**, or use [Matching agent](docs/MATCHING_AGENT.md) / [Native agent](docs/NATIVE_AGENT.md) |
+| OpenCode, Claude Code or Codex | `roc gui` → **Workers → Worker / Integrator**, or use [Matching agent](https://github.com/colingsnyder2-ux/RoConstruct/blob/work/workspace/docs/MATCHING_AGENT.md) / [Native agent](https://github.com/colingsnyder2-ux/RoConstruct/blob/work/workspace/docs/NATIVE_AGENT.md) |
 | C++ knowledge | `roc next`, `roc claim`, `roc check`, `roc submit` |
 | An always-on PC | `roc host` (maintainers) |
 
@@ -49,10 +51,10 @@ fixes, ports (WebAssembly, Linux, macOS), bug fixes, modding and preservation.
 
 | Document | For |
 |---|---|
-| [docs/SETUP.md](docs/SETUP.md) | install, Linux, models and ChatGPT plan, dashboard, matching by hand, troubleshooting |
-| [docs/AGENT_GUIDE.md](docs/AGENT_GUIDE.md) | matching workflow, tool routing, experiment memory, automatic agent workers |
-| [docs/SERVER.md](docs/SERVER.md) | hosting, publishing, Discord, private cluster, clients, packages |
-| [docs/SOURCES.md](docs/SOURCES.md) | every source we compile, what is still missing ([live page](https://colingsnyder2-ux.github.io/RoConstruct/sources.html)) |
+| [docs/SETUP.md](https://github.com/colingsnyder2-ux/RoConstruct/blob/work/workspace/docs/SETUP.md) | install, Linux, models and ChatGPT plan, dashboard, matching by hand, troubleshooting |
+| [docs/AGENT_GUIDE.md](https://github.com/colingsnyder2-ux/RoConstruct/blob/work/workspace/docs/AGENT_GUIDE.md) | matching workflow, tool routing, experiment memory, automatic agent workers |
+| [docs/SERVER.md](https://github.com/colingsnyder2-ux/RoConstruct/blob/work/workspace/docs/SERVER.md) | hosting, publishing, Discord, private cluster, clients, packages |
+| [docs/SOURCES.md](https://github.com/colingsnyder2-ux/RoConstruct/blob/work/workspace/docs/SOURCES.md) | every source we compile, what is still missing ([live page](https://colingsnyder2-ux.github.io/RoConstruct/sources.html)) |
 
 Recovered sources, portable agent evidence and historical research reports are published
 in [RoConstruct-findings](https://github.com/colingsnyder2-ux/RoConstruct-findings)

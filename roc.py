@@ -11,6 +11,10 @@ from pathlib import Path
 
 if sys.version_info < (3, 8):
     sys.exit("RoConstruct needs Python 3.8 or newer. Run install.cmd.")
+if not (Path(__file__).resolve().parent / "research/recipes.json").is_file():
+    from bootstrap import launch
+    raise SystemExit(launch(sys.argv[1:], Path(__file__).resolve().parent))
+
 try:
     from roc import clients
 except ImportError as error:

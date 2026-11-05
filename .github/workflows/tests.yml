@@ -11,8 +11,13 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: workspace
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ (github.ref == 'refs/heads/main' || github.base_ref == 'main') && 'work' || github.sha }}
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
