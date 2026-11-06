@@ -4,7 +4,8 @@
 
 **Native task** (`NATIVE_AGENT.md`, native recovery, class swaps, runnable integration):
 follow `docs/NATIVE_AGENT.md` and `docs/NATIVE_SWAP_BATCH.md`. Work on real native
-C++ and the chosen swap's blockers. Do not run bulk mining passes or `roc submit`.
+classes, implemented methods and authentic headers. Blocker repair is secondary.
+Do not run bulk mining passes or `roc submit`.
 Local exacts are inactive evidence; the owner handles reviewed integration and gates.
 Contributor priority: substantial native class/header batches using the class-batch
 policy in `docs/NATIVE_SWAP_BATCH.md`. Handoff exhausted or owner-blocked proofs;
@@ -27,8 +28,8 @@ lists them all.
 
 ## Efficient native integration checks
 
-- Native recovery defaults to `docs/NATIVE_SWAP_BATCH.md`: choose one runnable
-  swap target and current blockers, batch evidence-backed variants in isolated
+- Native recovery defaults to `docs/NATIVE_SWAP_BATCH.md`: choose one native
+  class/header family and its source gaps, batch evidence-backed variants in isolated
   runner outputs, compile once per distinct candidate/build configuration and reuse
   that exact object for byte/data/call/diff checks; rebuild after relevant input changes.
   After a match, advance provider/layout/ABI/selection proof. After three substantive
@@ -158,7 +159,7 @@ Mining: use `docs/MINING_WORKFLOW.md`. Do not switch workflows during setup.
 
 Setup, bulk automatic passes, near-miss campaigns, propagation and `roc submit`
 live in `docs/MINING_WORKFLOW.md`. Open that workflow only for an explicit mining
-assignment. Native recovery continues with its current swap/blocker queue.
+assignment. Native recovery continues with its current class/header queue.
 
 ## Known 2008-06 findings (don't rediscover these)
 

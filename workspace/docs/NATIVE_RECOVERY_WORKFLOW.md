@@ -6,11 +6,11 @@ methods, and rotate to another authorized family when its function budget or
 owner-only gate blocks progress. Source/header recovery and owner activation
 are separate outcomes; repeated audit receipts are not recovered classes.
 
-Default campaign policy: `docs/NATIVE_SWAP_BATCH.md`. Name one runnable swap
-target, track its current blockers, compile evidence-backed variants once per
-isolated source, reuse objects for byte/data/call proof, then advance integration
-obligations. Stop after three rejected hypotheses. Existing clocks still apply;
-this does not authorize resetting budgets or activating unproven providers.
+Default campaign policy: new native classes, substantial implementations and
+authentic headers, using `docs/NATIVE_SWAP_BATCH.md`. Blocker repair is secondary;
+keep quick local fixes within existing function budgets and hand off hard owner
+integration gates. Continue another class rather than spinning on the same blocker.
+Retain all proof requirements before selection or activation.
 
 Goal: recover real 2008-06 native code fast. Keep noise, tokens, compiles, and bad promotions low.
 
@@ -39,13 +39,13 @@ Park it with the specific missing proof rather than resetting the clock. Start a
 new session only for a genuinely new hypothesis or new evidence.
 
 1. Read `CLAUDE.md`, newest research notes, leases, and current closure receipt.
-2. Pick one blocker with many requesters or one near-exact body. Prefer real layouts/factories over isolated helpers.
+2. Pick an unleased missing/partial native class and its authentic headers. Recover several real methods per batch; small local blocker fixes are secondary.
 3. Inspect target once with grouped `roc.cmd native-asm 2008-06 ADDR [ADDR...]`.
 4. Search existing native sources, headers, trial evidence, and provider queue before writing code.
 5. Make one evidence-backed change. One hypothesis per trial.
 6. Compile independent sources once with `native_check_runner.py`; batch up to three unrelated sources.
 7. Promote only exact native-header sources. Park near misses with address, score, diff cause, and next proof needed.
-8. After a provider-family gain, run one isolated P6 probe. Use absolute extra-source paths and unique output folder.
+8. Upload the class/header batch and continue another family. P6 closure is owner integration work unless explicitly assigned; use isolated outputs when assigned.
 9. Record only changed evidence with `roc research note`.
 10. Commit/push one coherent batch when requested or session ends.
 

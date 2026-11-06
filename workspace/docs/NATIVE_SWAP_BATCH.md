@@ -1,8 +1,17 @@
-# Swap-first native recovery
+# Native class/header recovery
 
-Goal: recover coherent native class/header families for authorized runnable swaps.
-Owner integration closes dependency and runtime gates. An inactive exact body is
-useful evidence, not a completed integration. Preserve automatic draft sharing.
+Default assignment: recover new native classes, implemented methods and authentic
+associated headers across the client. Spend most effort on these source batches.
+A class does not need to unblock the current runnable swap to be a valid target.
+Reuse existing files, preserve recovered bodies, and choose unleased classes with
+strong original evidence. Extend partial classes when that adds real methods.
+
+Blocker repair is secondary: attempt a small evidence-backed fix when it directly
+prevents the current class/header batch from compiling or being checked, within
+the existing function budget. Save harder dependency/EH/selection/runtime issues
+for owner integration, then continue another class. Do not turn source recovery
+into a prolonged Workspace writer, linker or audit campaign. An explicit owner
+integration assignment may prioritize those blockers separately.
 
 ## Contributor class/header batches
 
@@ -13,12 +22,11 @@ original declarations/layouts and enough evidence to implement several methods,
 including relevant constructors/destructors. Do not create empty classes, guessed
 fields, declaration-only headers or extra files just to increase a count.
 
-Keep a short ranked list of independent authorized class/family targets in the
-existing campaign blocker list. Lease only the current batch, not the waiting
-list. Connect each target to an authorized swap/dependency campaign; a general
-native-class recovery assignment may span several such campaigns. If one is
-blocked, move to another authorized unleased family instead of waiting for the
-same swap's hardest gate. A narrowly assigned task does not grant wider scope.
+Keep a short ranked list of missing or partial class/header families in the
+existing task campaign. Rank by useful source recovery and available original
+evidence, not solely by the owner's current swap blocker. Lease only the active
+batch. When stuck or awaiting an owner decision, preserve the partial work and
+pick another unleased native class/family. Never widen an explicitly narrow task.
 
 Use the existing function clock/budget in `docs/NATIVE_RECOVERY_WORKFLOW.md`.
 Do not reset it to prolong one hard method. After three substantive hypotheses
@@ -46,39 +54,30 @@ receipt-only upload is not source recovery or runnable integration.
 
 ## Keep recovery separate from mining
 
-Use the task contract in `docs/NATIVE_AGENT.md`. "Fast native exacts" means
-required native bodies/dependencies for the chosen runnable swap. It does not
-mean running `roc auto`, `roc xcopy`, `roc immediates` or `roc similar` to increase
-standalone `src/` mining totals. Those commands are outside this default loop.
-Read mined candidates as untrusted evidence when useful; preserve real native
-classes and prove their actual providers/call identities/ABI independently.
+Use the task contract in `docs/NATIVE_AGENT.md`. Native recovery produces real
+class/member C++ and authentic headers. `roc auto`, `roc xcopy`, `roc immediates`,
+`roc similar` and standalone `src/` matching remain a separate mining assignment.
+Read mined candidates as untrusted evidence; prove native declarations/providers.
 
-Before each batch record: swap target, concrete blocker, required native path or
-provider, baseline proof and next gate. After a local exact, advance available source/class proofs or hand off
-owner-only obligations and continue another authorized class/family. Progress is a required blocker reduced or a new gate
-passed; an upload, compile, mined count or unrelated exact is not a runnable gain.
-Keep contributor recovery/upload separate from the owner's reviewed integration
-and gated runtime activation. A finished draft never grants server credit.
+## Choose the next source batch
 
-## Choose the next integration outcome
+Read current source/header inventory, original evidence, research and leases.
+Choose a missing class or a partial class with several recoverable methods and
+its associated headers. Record the class/family, source gaps, baseline evidence
+and next implementation/check in the existing task campaign. No runnable swap
+assignment or unresolved-linker dependency is required to start class recovery.
+Check existing work before creating files; do not duplicate recovered providers.
 
-Read CLAUDE.md, current closure/selection receipt, relevant source/header, newest
-findings and rejected trials. Check dirty paths and leases before editing. Name
-one intended executable/class swap and its required entrypoints/dependency chain;
-do not assume the four main classes are complete from helper counts. Reuse the
-latest verified blocker list; refresh it only when its inputs change.
-
-Keep a task-owned campaign JSON with `swap_target`, `baseline_commit`,
-`baseline_receipt`, `blockers`, `hypotheses`, `next_gate` and `metrics`. Each blocker
-needs address/symbol or provider, evidence, owner, status and next proof. Order
-work by reduction in that swap's unresolved providers, call identities, layout,
-lifetimes, vtables or ABI obligations. After a body matches, advance its next
-missing obligation; avoid collecting unrelated easy matches indefinitely.
+For secondary blocker work or an explicit owner integration assignment, retain:
+**swap target -> current concrete blocker -> required source/provider -> next proof**.
+Track that side work separately; it must not consume the default source campaign.
+Keep unknown layout/call/ABI facts unknown. Saved drafts and exact bodies remain
+inactive until owner integration passes its required proofs and runtime gates.
 
 ## One command per evidence-backed batch
 
 Read grouped original assembly with `roc native-asm`. Prepare a bounded batch of
-substantive hypotheses for one required blocker. Keep real native declarations and
+substantive hypotheses for the current class method or a bounded local blocker. Keep real native declarations and
 relationships; no invented fields, addresses, stubs or byte/assembly patches.
 Lease actual files; shared headers have one owner and remain frozen for a batch.
 Use separate task-owned source variants with explicit include profiles. A scoped
@@ -142,10 +141,11 @@ covers their ABI. Analyze never recompiles; changed-input objects remain histori
 diagnostics. Background `start/status` retains diagnostic semantics: complete means
 finished, not passing. Inspect saved results before accepting any evidence.
 
-## Stop experiments and advance integration
+## Finish the source batch and move on
 
 Exact bytes → check calls/data using that object → close the next ABI/provider
-obligation. Retain verified bodies while inputs and evidence remain valid.
+obligation when locally available; hand off owner-only gates and continue source
+recovery. Retain verified bodies while inputs and evidence remain valid.
 After three substantive hypotheses fail to reduce a blocker using the same
 evidence, park it and continue an independent authorized blocker. Syntax
 corrections and multiple checks of one object are not separate hypotheses.
@@ -158,7 +158,8 @@ to another authorized unleased blocker while those gates await owner review.
 A handoff is not executable activation or an integrated swap. Use the concrete
 queue/graph/log paths and scoped milestone/shutdown commands in `NATIVE_AGENT.md`.
 
-After a meaningful provider/header/ABI milestone, perform one isolated closure
+For explicit owner integration work after a meaningful provider/header/ABI
+milestone, perform one isolated closure
 probe, inspect exact selected providers and remaining blockers, then run affected
 regressions and relevant P5/P6/runtime gates before activation. Never run a
 diagnostic executable. Keep one shared-header version per verification batch.
@@ -174,13 +175,13 @@ count is not a class swap; a successful link is not runtime proof.
 ## Persistent loop: repeat until explicitly stopped
 
 Repeat the recovery loop indefinitely within the user's authorized scope:
-read current state and leases -> choose the next required swap blocker -> form
+read current state and leases -> choose the next missing/partial class family -> form
 an evidence-backed hypothesis batch -> lease/edit -> compile each distinct configuration -> inspect
 bytes/data/call identities on the same object -> save evidence and upload drafts
--> advance the next integration obligation -> update the blocker queue -> repeat
+-> hand off unavailable owner gates -> update the class/family queue -> repeat
 from current state immediately. Do not end the task after one batch, one exact
 match, one upload, one report, one commit, or one completed swap. After a completed
-swap, choose the next authorized swap/dependency target and continue. Progress
+swap, choose the next missing/partial native class family and continue. Progress
 updates are checkpoints, not requests for permission to keep working.
 
 The substantive-hypothesis rule above parks that blocker, not the overall loop.
