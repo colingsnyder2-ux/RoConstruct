@@ -11,16 +11,16 @@
 //
 // Declarations: the generic Bridge<T, isComparable> / SharedPtrBridge<T> templates are the read-only
 // lua/LuaBridge.h that native script/ScriptContext.h already reaches through script/ThreadRef.h (it may not be
-// redeclared here). The bridge classes are the read-only donor declarations below; every body this recovery
-// counts is byte-exact against the 2008-06 image with every call/data target verified, which is what binds
-// these declarations to 2008-06 (no field of a bridge class is declared: the bridges are static-only classes).
+// redeclared here). ObjectBridge comes from LuaBridge2008/LuaInstanceBridge2008.h and the signal bridge / script slots
+// from LuaBridge2008/LuaSignalBridge2008.h (non-colliding copies of the donor shapes with the 2008 differences the
+// target bytes prove); the atomic bridges are the read-only donor script/LuaAtomicClasses.h. Every body this recovery
+// counts is byte-exact against the 2008-06 image with every call/data target verified.
 //
 // Userdata layout (sizeof(T) pushed to lua_newuserdata in the target bytes, recorded under 'layout' in the receipt):
 //   G3D::Vector3 0xc (newVector3 0061ce80), G3D::Color3 0xc (newColor3 0061caf0), RBX::BrickColor 4 (push* 0061d230..
 //   0061d3f0) (CoordinateFrame pushes go through pushNewObject 005a8c50),
 //   boost::signals::connection 0x10 (pushNewObject<connection> 0061f180), boost::shared_ptr<T> 8.
-//   (FunctionScriptSlot: the 2008 copy constructor 0061f960 also copies a dword at +0x50 that the donor declaration
-//   lacks; its rows are not counted.)
+//   FunctionScriptSlot 2008 layout: see LuaSignalBridge2008.h (+0x50 callDepth).
 // Metatable names are the constant-initialized Bridge<T>::className statics (data, not code):
 //   Bridge<shared_ptr<DescribedBase>>::className 0095af74 -> "Object", Bridge<EnumItem>::className 0095b1dc ->
 //   "EnumItem", ... (the recorder reads each pointer and its string from the image).
@@ -28,4 +28,17 @@
 #include "lauxlib.h"
 #include "lua/LuaBridge.h"
 #include "script/LuaAtomicClasses.h"
-#include "script/LuaInstanceBridge.h"
+#include "LuaBridge2008/LuaInstanceBridge2008.h"
+
+namespace RBX { namespace Lua {
+// 0061c830 (atomic bridge unit, also called from the instance bridge 0061b255 / 0061b29c): lapi lua_tonumber 00611f60
+// clamped into float range (+-inf -> float infinities via the MSVCP90 _Inf/_FInf imports, NaN passes, +-FLT_MAX clamp).
+// The 2008 name is not in the image; the declaration is a codegen analog.
+float tonumberClamped(lua_State* L, int index);
+// 0061c790 / 0061c7b0 (atomic unit, called from the instance bridge and ScriptContext): lua_tostring returning "" (the
+// pointer variable emptyString2008 0095b1cc) or throwing std::runtime_error("String expected") for a non-string.
+// Names are codegen analogs.
+extern const char* emptyString2008;
+const char* tostringOrEmpty(lua_State* L, int index);
+const char* tostringChecked(lua_State* L, int index);
+}}

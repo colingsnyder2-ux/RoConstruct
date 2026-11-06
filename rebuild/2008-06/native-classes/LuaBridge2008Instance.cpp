@@ -38,7 +38,7 @@ const luaL_Reg ObjectBridge::classLibrary[] =
 
 int ObjectBridge::newInstance(lua_State* thread)
 {
-    const Name& name = Name::lookup(lua_tostring(thread, 1));
+    const Name& name = Name::lookup(tostringChecked(thread, 1));
     boost::shared_ptr<Instance> instance = AbstractFactoryProduct<Instance>::create(name);
 
     if (lua_gettop(thread) >= 2)

@@ -3,9 +3,54 @@
 #include "LuaBridge2008/LuaBridge2008.h"
 #include "G3D/Quat.h"
 #include "lua.h"
+#include <float.h>
+#include <limits>
 
 using namespace RBX;
 using namespace RBX::Lua;
+
+// 0095b1cc: a constant-initialized pointer to "" in this unit's data block (after the className statics), read by
+// tostringOrEmpty 0061c790 (mov eax, [0095b1cc]).
+const char* RBX::Lua::emptyString2008 = "";
+
+// 0061c790: lua_tostring, or "" for a non-string (called by ScriptContext 005aec88 / 005afb7f / 005b02ff).
+const char* RBX::Lua::tostringOrEmpty(lua_State* L, int index)
+{
+    const char* s = lua_tostring(L, index);
+    if (!s)
+        return emptyString2008;
+    return s;
+}
+
+// 0061c7b0: lua_tostring that throws "String expected" (called by ObjectBridge::newInstance 0061bb91, the property
+// assignment 0061b190 and ScriptContext 005ade74).
+const char* RBX::Lua::tostringChecked(lua_State* L, int index)
+{
+    const char* s = lua_tostring(L, index);
+    if (!s)
+        throw std::runtime_error("String expected");
+    return s;
+}
+
+// 0061c830: lapi lua_tonumber (00611f60) clamped into float range: +-inf map to the float infinities (the MSVCP90 _Inf /
+// _FInf imports), NaN passes through, finite values beyond FLT_MAX clamp to +-FLT_MAX (double compare constants, float
+// results). Called by this unit's constructors / operators and by the instance bridge (0061b255, 0061b29c). It
+// returns float without a rounding store, so this unit is compiled with /fp:fast (the recorder's atomic profile).
+float RBX::Lua::tonumberClamped(lua_State* L, int index)
+{
+    double value = lua_tonumber(L, index);
+    if (value == std::numeric_limits<double>::infinity())
+        return std::numeric_limits<float>::infinity();
+    if (value == -std::numeric_limits<double>::infinity())
+        return -std::numeric_limits<float>::infinity();
+    if (!(value < 0.0) && !(value >= 0.0))
+        return value;
+    if (value > FLT_MAX)
+        return FLT_MAX;
+    if (value < -FLT_MAX)
+        return -FLT_MAX;
+    return value;
+}
 
 const luaL_Reg Color3Bridge::classLibrary[] = 
 {
@@ -19,7 +64,7 @@ int Color3Bridge::newColor3(lua_State* L)
     int nargs = std::min(3, lua_gettop(L));
 
     for (int i = 0; i < nargs; i++)
-        color[i] = lua_tonumber(L, i+1);
+        color[i] = tonumberClamped(L, i+1);
 
     for (int i = nargs; i < 3; i++)
         color[i] = 0;
@@ -87,7 +132,7 @@ int Vector3Bridge::on_mul(lua_State* L)
         }
         else
         {
-            float x = lua_tonumber(L, 2);
+            float x = tonumberClamped(L, 2);
             pushVector3(L, a*x);
             return 1;
         }
@@ -95,7 +140,7 @@ int Vector3Bridge::on_mul(lua_State* L)
     else
     {
         a = getObject(L, 2);
-        float x = lua_tonumber(L, 1);
+        float x = tonumberClamped(L, 1);
         pushVector3(L, a*x);
         return 1;
     }
@@ -114,7 +159,7 @@ int Vector3Bridge::on_div(lua_State* L)
         }
         else
         {
-            float x = lua_tonumber(L, 2);
+            float x = tonumberClamped(L, 2);
             pushVector3(L, a/x);
             return 1;
         }
@@ -122,7 +167,7 @@ int Vector3Bridge::on_div(lua_State* L)
     else
     {
         a = getObject(L, 2);
-        float x = lua_tonumber(L, 1);
+        float x = tonumberClamped(L, 1);
         G3D::Vector3 xVec(x,x,x);
         pushVector3(L, xVec/a);
         return 1;
@@ -142,7 +187,7 @@ int Vector3Bridge::newVector3(lua_State* L)
     int nargs = std::min(3, lua_gettop(L));
 
     for (int i = 0; i < nargs; i++)
-        vector[i] = lua_tonumber(L, i+1);
+        vector[i] = tonumberClamped(L, i+1);
 
     for (int i = nargs; i < 3; i++)
         vector[i] = 0;
@@ -155,11 +200,11 @@ static int lerp(lua_State* L)
 {
     G3D::Vector3& a = Vector3Bridge::getObject(L, 1);
     G3D::Vector3& b = Vector3Bridge::getObject(L, 2);
-    float c = lua_tonumber(L, 3);
+    float c = tonumberClamped(L, 3);
 
     G3D::Vector3 result = (b-a)*c + a;
     
-    Vector3Bridge::pushVector3(L, result);
+    Vector3Bridge::pushNewObject(L, result);
     return 1;
 }
 
@@ -305,7 +350,7 @@ int BrickColorBridge::newBrickColor(lua_State* L)
     G3D::Color4 color(0, 0, 0);
 
     for (int i = 0; i < nargs; i++)
-        color[i] = lua_tonumber(L, i+1);
+        color[i] = tonumberClamped(L, i+1);
 
     pushNewObject(L, BrickColor::closest(color));
     return 1;
@@ -401,19 +446,19 @@ int CoordinateFrameBridge::newCoordinateFrame(lua_State* L)
 
     case 3:
         for (int i = 0; i < 3; i++)
-            cf.translation[i] = lua_tonumber(L, i+1);
+            cf.translation[i] = tonumberClamped(L, i+1);
         break;
 
-    case 4:
+    case 7:     // the switch byte table at 0061dbe0 maps 7 (not 4) to the quaternion case
     {
         for (int i = 0; i < 3; i++)
-            cf.translation[i] = lua_tonumber(L, i+1);
+            cf.translation[i] = tonumberClamped(L, i+1);
 
         G3D::Quat q;
-        q.x = lua_tonumber(L, 4);
-        q.y = lua_tonumber(L, 5);
-        q.z = lua_tonumber(L, 6);
-        q.w = lua_tonumber(L, 7);
+        q.x = tonumberClamped(L, 4);
+        q.y = tonumberClamped(L, 5);
+        q.z = tonumberClamped(L, 6);
+        q.w = tonumberClamped(L, 7);
 
         cf.rotation = q;
         break;
@@ -422,19 +467,19 @@ int CoordinateFrameBridge::newCoordinateFrame(lua_State* L)
     case 12:
     {
         for (int i = 0; i < 3; i++)
-            cf.translation[i] = lua_tonumber(L, i+1);
+            cf.translation[i] = tonumberClamped(L, i+1);
 
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
-                cf.rotation[i][j] = lua_tonumber(L, 4 + i*3 + j);
+                cf.rotation[i][j] = tonumberClamped(L, 4 + i*3 + j);
         }
 
         break;
     }
         
     default:
-        throw std::runtime_error(G3D::format("invalid number of arguments"));
+        throw std::runtime_error(G3D::format("Invalid number of arguments: %d", nargs));
     }
     
     pushNewObject(L, cf);

@@ -2,6 +2,7 @@
 // Body shapes follow the donor reconstruction; counted rows are proven by tests/record_native_lua_bridge2008.py.
 #include "LuaBridge2008/LuaSignalBridge2008.h"
 #include "G3D/format.h"
+#include "util/standardout.h"
 
 using namespace RBX;
 using namespace RBX::Lua;
@@ -87,9 +88,10 @@ static size_t pushArgs(lua_State* L, const Arguments& arguments)
         }
         else
         {
-            // ¯\_(ツ)_/¯
-            // maybe they meant to print it? lol
+            // 2008: the unknown argument type's name is taken (unused) and nil is pushed in its place
+            // (lua_pushnil 006121e0 at 0061fe48).
             argType.name();
+            lua_pushnil(L);
         }
     }
 
@@ -99,13 +101,23 @@ static size_t pushArgs(lua_State* L, const Arguments& arguments)
 FunctionScriptSlot::FunctionScriptSlot(lua_State* thread, int functionIndex)
     : context(ScriptContext::getContext(thread)),
       function(FunctionRef(thread, functionIndex)),
-      cachedSlotThread(ThreadRef())
+      cachedSlotThread(ThreadRef()),
+      callDepth(0)
 {
 }
 
-// TODO: 99.09% (functional match - registers swapped in codegen)
 void FunctionScriptSlot::operator()(const Arguments& arguments)
 {
+    bool reentrant = callDepth > 0;
+    const int depth = callDepth + 1;
+    ScopedAssign2008 depthScope(callDepth, depth);
+
+    if (callDepth > 6)
+    {
+        StandardOut::singleton()->print(MESSAGE_ERROR, "maximum event re-entrancy depth exceeded");
+        return;
+    }
+
     lua_State* mainThread = function.thread();
 
     if (!mainThread)
@@ -114,15 +126,17 @@ void FunctionScriptSlot::operator()(const Arguments& arguments)
         return;
     }
 
-    lua_State* newThread = cachedSlotThread.thread();
-    bool createdThread = false;
+    lua_State* newThread = reentrant ? NULL : cachedSlotThread.thread();
+    bool createdThread;
 
-    if (!newThread)
+    if (newThread)
+        createdThread = false;
+    else
     {
         newThread = lua_newthread(mainThread);
 
         if (!newThread)
-            throw std::runtime_error("lua_newthread failed");
+            throw std::runtime_error("Unable to create a new event handler thread");
 
         createdThread = true;
     }
@@ -135,11 +149,13 @@ void FunctionScriptSlot::operator()(const Arguments& arguments)
     switch (resumeResult)
     {
     case ScriptContext::Yield:
-        cachedSlotThread.reset();
+        if (!reentrant)
+            cachedSlotThread.reset();
         break;
 
     case ScriptContext::Error:
-        cachedSlotThread.reset();
+        if (!reentrant)
+            cachedSlotThread.reset();
         cnction->disconnect();
         break;
     }
@@ -149,7 +165,7 @@ void FunctionScriptSlot::operator()(const Arguments& arguments)
 
     if (createdThread)
     {
-        if (resumeResult == ScriptContext::Success && function.thread())
+        if (!reentrant && resumeResult == ScriptContext::Success && function.thread())
             cachedSlotThread = ThreadRef(newThread);
 
         lua_pop(mainThread, 1);

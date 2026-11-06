@@ -11,9 +11,13 @@ Step 1 (boundary proof, recorded in the receipt under 'boundary'): the bridge ra
     0095b1bc..0095b1c8 "Color3" "Vector3" "BrickColor" "CFrame" (atomic classes); 0095b1d4..0095b1dc "Enums"
     "Enum" "EnumItem" (enum bridges); 0095b1e4/0095b1e8 "RBXScriptSignal" "RBXScriptConnection" (signal bridge).
     The recorder re-reads all of them from the image.
-Step 2: three inactive units built with the document-swap flags (VS2008 RTM 21022):
+Step 2: three inactive units built with the document-swap flags (VS2008 RTM 21022; the atomic unit adds /fp:fast,
+  proven by tonumberClamped 0061c830):
   native-classes/LuaBridge2008Instance.cpp, LuaBridge2008Atomic.cpp, LuaBridge2008Signal.cpp
-  (declarations: native-headers/LuaBridge2008/LuaBridge2008.h, LuaSignalBridge2008.h).
+  (declarations: native-headers/LuaBridge2008/LuaBridge2008.h, LuaInstanceBridge2008.h, LuaSignalBridge2008.h).
+  Pass 2 (2026-11-06): the Roblox lua_tonumber clamp 0061c830 and the lua_tostring wrappers 0061c790 / 0061c7b0 are
+  own rows, so lapi lua_tonumber 00611f60 is bound by its evidence name once own rows are excluded; FunctionScriptSlot
+  is redeclared with the 2008 +0x50 re-entrancy depth; G3D library targets are server-verified library matches.
 Every relocation of an exact row is bound to the address the original instruction uses and verified: imports by
 DLL name / ordinal, literals by bytes, RTTI and vtables by original RTTI names, Bridge<T>::className statics by the
 string their constant pointer names, Lua library functions and other externals by the offline evidence name at that
@@ -35,6 +39,7 @@ HDR = ROOT / 'rebuild/2008-06/native-headers'
 SRC = ROOT / 'rebuild/2008-06/native-classes'
 BRIDGE_H = HDR / 'LuaBridge2008/LuaBridge2008.h'
 SIGNAL_H = HDR / 'LuaBridge2008/LuaSignalBridge2008.h'
+INSTANCE_H = HDR / 'LuaBridge2008/LuaInstanceBridge2008.h'
 UNITS = {'instance': SRC / 'LuaBridge2008Instance.cpp', 'atomic': SRC / 'LuaBridge2008Atomic.cpp',
          'signal': SRC / 'LuaBridge2008Signal.cpp'}
 original = Original()
@@ -52,7 +57,10 @@ def build(source, name, extra=()):
     return obj
 
 
-OBJ = {k: build(v, 'NativeLuaBridge2008' + k.capitalize()) for k, v in UNITS.items()}
+# The atomic unit needs /fp:fast: tonumberClamped 0061c830 returns its double as float with no rounding store, which
+# /fp:precise emits (162 bytes against 142); every other atomic row is byte-identical under both profiles.
+UNIT_FLAGS = {'instance': [], 'atomic': ['/fp:fast'], 'signal': []}
+OBJ = {k: build(v, 'NativeLuaBridge2008' + k.capitalize(), UNIT_FLAGS[k]) for k, v in UNITS.items()}
 LIBS = []
 ATLS_INDEX = {}
 
@@ -60,21 +68,36 @@ ATLS_INDEX = {}
 CF = 'CoordinateFrame@G3D@@'
 CFB = '@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z'
 TGSW = 'TGenericSlotWrapper@'
+V3B = '@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z'
 ROWS = {
     'instance': [
         (0x0061a420, '?newweaktable@Lua@RBX@@YAXPAUlua_State@@PBD@Z'),
         (0x0061a4f0, '?getPtr@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SA?AV?$shared_ptr@VDescribedBase'
                      '@Reflection@RBX@@@boost@@PAUlua_State@@I@Z'),
+        (0x0061aac0, '?getInstance@ObjectBridge@Lua@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAUlua_State@@I@Z'),
         (0x0061bb00, '?signals_end@DescribedBase@Reflection@RBX@@QAE?AVIterator@?$MemberDescriptorContainer@VSignalDescriptor'
                      '@Reflection@RBX@@@23@XZ'),
         (0x0061bb30, '?findSignal@DescribedBase@Reflection@RBX@@QAE?AVIterator@?$MemberDescriptorContainer@VSignalDescriptor'
                      '@Reflection@RBX@@@23@ABVName@3@@Z'),
+        (0x0061bb70, '?newInstance@ObjectBridge@Lua@RBX@@SAHPAUlua_State@@@Z'),
     ],
     'atomic': [
         (0x0061c6f0, '??H' + CF + 'QBE?AV01@ABVVector3@1@@Z'),
         (0x0061c740, '??G' + CF + 'QBE?AV01@ABVVector3@1@@Z'),
+        (0x0061c790, '?tostringOrEmpty@Lua@RBX@@YAPBDPAUlua_State@@H@Z'),
+        (0x0061c7b0, '?tostringChecked@Lua@RBX@@YAPBDPAUlua_State@@H@Z'),
+        (0x0061c830, '?tonumberClamped@Lua@RBX@@YAMPAUlua_State@@H@Z'),
         (0x0061c8c0, '?on_index@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHABVColor3@G3D@@PBDPAUlua_State@@@Z'),
         (0x0061ca60, '??$getValue@VVector3@G3D@@@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVVector3@G3D@@@Z'),
+        (0x0061caf0, '?newColor3@Color3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z'),
+        (0x0061cba0, '?on_add' + V3B),
+        (0x0061cc00, '?on_sub' + V3B),
+        (0x0061cc60, '?on_mul' + V3B),
+        (0x0061cd40, '?on_div' + V3B),
+        (0x0061ce40, '?on_unm' + V3B),
+        (0x0061ce80, '?newVector3' + V3B),
+        (0x0061cf30, '?lerp@@YAHPAUlua_State@@@Z'),
+        (0x0061cfe0, '?on_index@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHABVVector3@G3D@@PBDPAUlua_State@@@Z'),
         (0x0061d230, '?pushRed@@YAHPAUlua_State@@@Z'),
         (0x0061d270, '?pushWhite@@YAHPAUlua_State@@@Z'),
         (0x0061d2b0, '?pushGray@@YAHPAUlua_State@@@Z'),
@@ -83,15 +106,24 @@ ROWS = {
         (0x0061d370, '?pushYellow@@YAHPAUlua_State@@@Z'),
         (0x0061d3b0, '?pushGreen@@YAHPAUlua_State@@@Z'),
         (0x0061d3f0, '?pushBlue@@YAHPAUlua_State@@@Z'),
+        (0x0061d430, '?newBrickColor@BrickColorBridge@Lua@RBX@@CAHPAUlua_State@@@Z'),
         (0x0061d5f0, '?randomBrickColor@BrickColorBridge@Lua@RBX@@CAHPAUlua_State@@@Z'),
         (0x0061d640, '?on_index@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHABVBrickColor@3@PBDPAUlua_State@@@Z'),
+        (0x0061d990, '?newCoordinateFrame' + CFB),
         (0x0061dbf0, '?on_add' + CFB),
         (0x0061dc70, '?on_sub' + CFB),
         (0x0061dcf0, '?on_inverse' + CFB),
         (0x0061dd60, '?on_toWorldSpace' + CFB),
         (0x0061de60, '?on_toObjectSpace' + CFB),
+        (0x0061df50, '?on_pointToWorldSpace' + CFB),
+        (0x0061e050, '?on_pointToObjectSpace' + CFB),
+        (0x0061e150, '?on_vectorToWorldSpace' + CFB),
         (0x0061e2b0, '?on_components' + CFB),
         (0x0061e340, '?on_toEulerAnglesXYZ' + CFB),
+        (0x0061e3b0, '?on_vectorToObjectSpace' + CFB),
+        (0x0061e550, '?fromEulerAnglesXYZ' + CFB),
+        (0x0061e5f0, '?fromAxisAngle' + CFB),
+        (0x0061e690, '?on_index@?$Bridge@V' + CF + '$00@Lua@RBX@@KAHABV' + CF + 'PBDPAUlua_State@@@Z'),
         (0x0061ec30, '??$getValue@V' + CF + '@?$Bridge@V' + CF + '$00@Lua@RBX@@SA_NPAUlua_State@@IAAV' + CF + '@Z'),
         (0x0061ecc0, '?on_mul' + CFB),
     ],
@@ -112,13 +144,32 @@ ROWS = {
         (0x0061f650, '??0?$' + TGSW + 'VWaitScriptSlot@@@Reflection@RBX@@AAE@ABVWaitScriptSlot@@@Z'),
         (0x0061f6a0, '??$any_cast@I@boost@@YAIABVany@0@@Z'),
         (0x0061f730, '??$any_cast@V?$shared_ptr@VInstance@RBX@@@boost@@@boost@@YA?AV?$shared_ptr@VInstance@RBX@@@0@ABVany@0@@Z'),
+        (0x0061f960, '??0FunctionScriptSlot@@QAE@ABV0@@Z'),
+        (0x0061f7e0, '??$any_cast@PBVPropertyDescriptor@Reflection@RBX@@@boost@@YAPBVPropertyDescriptor@Reflection@RBX@@ABVany@0@@Z'),
+        (0x0061f870, '??$any_cast@PBD@boost@@YAPBDABVany@0@@Z'),
         (0x0061f900, '??_G?$' + TGSW + 'VWaitScriptSlot@@@Reflection@RBX@@UAEPAXI@Z'),
         (0x0061f9f0, '??$create@VWaitScriptSlot@@@GenericSlotWrapper@Reflection@RBX@@SAPAV012@VWaitScriptSlot@@@Z'),
+        (0x0061fa60, '??0?$' + TGSW + 'VFunctionScriptSlot@@@Reflection@RBX@@AAE@ABVFunctionScriptSlot@@@Z'),
+        (0x0061fab0, '??1ScopedAssign2008@Lua@RBX@@QAE@XZ'),   # out-of-line for the unwind funclet of 0061ff70
         (0x0061fac0, '??_G?$' + TGSW + 'VFunctionScriptSlot@@@Reflection@RBX@@UAEPAXI@Z'),
+        (0x0061fb20, '?pushArgs@@YAIPAUlua_State@@ABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z'),
+        (0x0061fea0, '??0FunctionScriptSlot@@QAE@PAUlua_State@@H@Z'),
+        (0x0061ff70, '??RFunctionScriptSlot@@QAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z'),
         (0x00620190, '??0WaitScriptSlot@@QAE@PAUlua_State@@@Z'),
         (0x00620210, '??$connectGeneric@VWaitScriptSlot@@@SignalInstance@Reflection@RBX@@QAE?AVconnection@signals@boost@@'
                      'VWaitScriptSlot@@W4connect_position@45@@Z'),
+        # TGenericSlotWrapper<T>::execute (native reflection/signal.h): the function list cuts each at its catch funclet
+        # (00620344 / 00620357 and 00620422); the emitted body runs through the funclet, so the whole body is compared
+        # with the image bytes (BOUNDS evidence, bounds.json untouched).
+        ((0x00620310, 0, 134, 'raw'), '?execute@?$' + TGSW + 'VFunctionScriptSlot@@@Reflection@RBX@@UAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z'),
+        ((0x006203a0, 0, 193, 'raw'), '?execute@?$' + TGSW + 'VWaitScriptSlot@@@Reflection@RBX@@UAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z'),
+        (0x006202a0, '??$create@VFunctionScriptSlot@@@GenericSlotWrapper@Reflection@RBX@@SAPAV012@VFunctionScriptSlot@@@Z'),
         (0x00620470, '?wait@SignalBridge@Lua@RBX@@SAHPAUlua_State@@@Z'),
+        (0x00620590, '??$connectGeneric@VFunctionScriptSlot@@@SignalInstance@Reflection@RBX@@QAE?AVconnection@signals@boost@@'
+                     'VFunctionScriptSlot@@W4connect_position@45@@Z'),
+        (0x00620620, '?connect@SignalBridge@Lua@RBX@@SAHPAUlua_State@@@Z'),
+        (0x00620760, '?on_index@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHABV?$shared_ptr'
+                     '@VSignalInstance@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z'),
     ],
 }
 PENDING_ROWS = {}
@@ -153,9 +204,71 @@ EXTERNAL = {
     # ??_G rows call the one-byte `ret` 0047d410 that every empty function folds to (record_native_adorn.py); its
     # byte is checked below.
     '??1GenericSlotWrapper@Reflection@RBX@@UAE@XZ': 0x0047d410,
+    # G3D 6.09 Vector3::operator/(float) 00518740 (server-verified library match g3d-6.09 G3Dcpp/Vector3.cpp).
+    '??KVector3@G3D@@QBE?AV01@M@Z': 0x00518740,
+    # StandardOut::singleton 00569620 / StandardOut::print(MessageType, const char*, ...) 005693a0: exact rows of
+    # record_native_leaves2008.py.
+    '?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ': 0x00569620,
+    '?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ': 0x005693a0,
+    # G3D 6.09 Matrix3::transpose 00513510 (server-verified library match g3d-6.09 G3Dcpp/Matrix3.cpp).
+    '?transpose@Matrix3@G3D@@QBE?AV12@XZ': 0x00513510,
+    # G3D 6.09 Matrix3::fromEulerAnglesXYZ 00513bc0 (server-verified library match g3d-6.09 G3Dcpp/Matrix3.cpp).
+    '?fromEulerAnglesXYZ@Matrix3@G3D@@SA?AV12@MMM@Z': 0x00513bc0,
+    # G3D 6.09 Matrix3::fromAxisAngle 00513680 (server-verified library match g3d-6.09 G3Dcpp/Matrix3.cpp).
+    '?fromAxisAngle@Matrix3@G3D@@SA?AV12@ABVVector3@2@M@Z': 0x00513680,
+    # G3D 6.09 CoordinateFrame::lookAt 00518e20 (server-verified library match g3d-6.09 G3Dcpp/CoordinateFrame.cpp;
+    # record_native_mouse.py binds the same address).
+    '?lookAt@CoordinateFrame@G3D@@QAEXABVVector3@2@@Z': 0x00518e20,
+    # G3D Matrix3(const Quat&) 00513aa0 (server-verified library match g3d-6.09-rbx2008 G3Dcpp/Matrix3.cpp).
+    '??0Matrix3@G3D@@QAE@ABVQuat@1@@Z': 0x00513aa0,
 }
 assert original.data(0x0047d410, 1) == b'\xc3'
-DATA = {}
+DATA = {
+    # G3D::Vector3::zero() function-local static and its init guard (record_native_world_shapes.py /
+    # record_native_world_joints.py / record_native_humanoid2008.py bind the same addresses).
+    '?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A': 0x0096f044,
+    '??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51': 0x0096f050,
+    # msvcrt.lib's __type_info_root_node: type_info::name() is inline `_name_internal_method(&__type_info_root_node)`
+    # (MSVCR90 import 00802654). Checked below: every direct call of that import in .text pushes this one .data
+    # address (record_native_debugable_dump.py binds the same value).
+    '?__type_info_root_node@@3U__type_info_node@@A': 0x0097dce8,
+    # ThreadRef::syncSingleton (boost::shared_ptr<boost::mutex>): its dynamic initializer 007f4110 (evidence name
+    # ??__E?syncSingleton@ThreadRef@Lua@RBX@@..., unique) stores the new mutex pointer to 00975c6c and builds the count
+    # at +4 (checked below from the initializer's bytes).
+    '?syncSingleton@ThreadRef@Lua@RBX@@0V?$shared_ptr@Vmutex@boost@@@boost@@A': 0x00975c6c,
+}
+_init = '??__E?syncSingleton@ThreadRef@Lua@RBX@@0V?$shared_ptr@Vmutex@boost@@@boost@@A@@YAXXZ'
+_body = match.target('2008-06', '007f4110')[0]
+assert b'\x89\x35' + struct.pack('<I', 0x00975c6c) in _body and b'\xb9' + struct.pack('<I', 0x00975c70) in _body
+
+
+# VS2008 RTM msvcrt.lib resolves type_info::name to the MSVCR90 export type_info::_name_internal_method: the library
+# member that carries the two names pairs them as weak-external alias and target (checked from the library bytes).
+IMPORT_ALIAS = {'?name@type_info@@QBEPBDPAU__type_info_node@@@Z':
+                '?_name_internal_method@type_info@@QBEPBDPAU__type_info_node@@@Z'}
+_MSVCRT = ROOT / 'tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/lib/msvcrt.lib'
+for _alias, _target in IMPORT_ALIAS.items():
+    _lib = _MSVCRT.read_bytes()
+    assert (_target + '\0' + _alias + '\0').encode() in _lib, _alias
+    assert ('__imp_' + _target + '\0__imp_' + _alias + '\0').encode() in _lib, _alias
+
+
+def _type_info_root():
+    import re
+    pe = original.pe
+    text = pe.sections[0]
+    raw = text.get_data()
+    seen = set()
+    for m in re.finditer(re.escape(b'\xff\x15' + struct.pack('<I', 0x00802654)), raw):
+        window = raw[max(0, m.start() - 12):m.start()]
+        j = window.rfind(b'\x68')
+        seen.add(struct.unpack('<I', window[j + 1:j + 5])[0])
+    data = next(s for s in pe.sections if s.Name.rstrip(b'\0') == b'.data')
+    lo = pe.OPTIONAL_HEADER.ImageBase + data.VirtualAddress
+    assert seen == {0x0097dce8} and lo <= 0x0097dce8 < lo + data.Misc_VirtualSize, (seen, hex(lo))
+
+
+_type_info_root()
 for key, (address, text) in CLASSNAMES.items():
     assert original.string(d(address)) == text, (key, hex(address), original.string(d(address)))
 
@@ -184,11 +297,15 @@ for addr, sym in all_rows:
     own[sym] = first(addr)
 pending_addrs = set()
 binding = {}
+OWN_ADDRS = {first(a) for k in ROWS for a, _ in ROWS[k]}
 
 
 def classify(symbol, value, raw, sections, definitions, where):
     hit = original.imported(value)
     if hit is not None:
+        if nb.plain(symbol) in IMPORT_ALIAS:
+            assert hit[1] == IMPORT_ALIAS[nb.plain(symbol)], (where, symbol, hex(value), hit)
+            return '%s!%s (msvcrt.lib alias of %s)' % (hit + (nb.plain(symbol),))
         assert hit[1] == nb.plain(symbol), (where, symbol, hex(value), hit)
         return '%s!%s' % hit
     if symbol.startswith('??_C@_1'):   # wide literal: up to the first aligned L'\0'
@@ -241,8 +358,14 @@ def classify(symbol, value, raw, sections, definitions, where):
         # an evidence name proves the target only when no other address carries the same symbol: e.g.
         # ?lua_tonumber@@YAN... names both the lapi.c function 00611f60 (score 100) and 0061c830 (score 30), a Roblox
         # clamping wrapper that itself calls 00611f60, so a call bound to either by name alone is not proven.
-        assert EVIDENCE_ADDRS[symbol] == ['%08x' % value], ('ambiguous evidence name', where, symbol, hex(value),
-                                                              EVIDENCE_ADDRS[symbol])
+        # An address this receipt proves to be a different function (an own exact row under another symbol) drops out:
+        # 0061c830 is the own row tonumberClamped, so lapi lua_tonumber is left unique at 00611f60.
+        others = sorted(a for a in EVIDENCE_ADDRS[symbol] if int(a, 16) not in OWN_ADDRS)
+        assert others == ['%08x' % value], ('ambiguous evidence name', where, symbol, hex(value),
+                                            EVIDENCE_ADDRS[symbol])
+        if others != EVIDENCE_ADDRS[symbol]:
+            return 'evidence name (unique once own rows %s are excluded)' % ', '.join(
+                sorted(set(EVIDENCE_ADDRS[symbol]) - set(others)))
         return 'evidence name'
     return instance(symbol, value, where)
 
@@ -251,6 +374,7 @@ EVIDENCE = json.loads((ROOT / 'rebuild/2008-06/offline/evidence.json').read_text
 EVIDENCE_ADDRS = {}
 for _a, _v in sorted(EVIDENCE.items()):
     EVIDENCE_ADDRS.setdefault(_v.get('symbol'), []).append(_a)
+assert EVIDENCE_ADDRS[_init] == ['007f4110'], EVIDENCE_ADDRS.get(_init)
 LENIENT = []          # inside a library body: unprovable library-internal targets are listed, not asserted
 CURRENT = []          # object whose relocations are being bound (instances are looked up there first)
 INSTANCES = {}        # symbol -> verified instance record
@@ -462,20 +586,23 @@ for symbol, (vobj, vt, rtti_name) in VTABLES.items():
 
 # ---- layout: userdata sizes pushed to lua_newuserdata (00612c40) by exact rows ---------------------------------
 NEWUSERDATA = 0x00612c40
-# Target bytes only (a layout fact, not a match claim): the exact rows plus newColor3 0061caf0 / newVector3 0061ce80 /
-# newBrickColor 0061d430, which are not counted (they call the 0061c830 lua_tonumber wrapper, see NOT_EXACT).
-BYTE_ONLY = [0x0061caf0, 0x0061ce80, 0x0061d430]
-USERDATA = {0x0061caf0: [0xc], 0x0061ce80: [0xc], 0x0061d230: [4], 0x0061d270: [4], 0x0061d2b0: [4], 0x0061d2f0: [4],
+from capstone import CS_ARCH_X86, CS_MODE_32, Cs  # noqa: E402
+CS = Cs(CS_ARCH_X86, CS_MODE_32)
+BYTE_ONLY = []   # every userdata push is now an exact row
+USERDATA = {0x0061caf0: [0xc], 0x0061ce80: [0xc], 0x0061cf30: [0xc], 0x0061d230: [4], 0x0061d270: [4], 0x0061d2b0: [4], 0x0061d2f0: [4],
             0x0061d330: [4], 0x0061d370: [4], 0x0061d3b0: [4], 0x0061d3f0: [4], 0x0061d430: [4, 4], 0x0061d5f0: [4],
             0x0061f180: [0x10]}
 userdata = {}
 for address in [first(a) for k in ROWS for a, _ in ROWS[k]] + BYTE_ONLY:
     body = match.target('2008-06', '%08x' % address)[0]
-    sizes = []
-    for i in range(len(body) - 4):
-        if body[i] == 0xe8 and (address + i + 5 + struct.unpack_from('<i', body, i + 1)[0]) & 0xffffffff == NEWUSERDATA:
-            j = body.rfind(b'\x6a', max(0, i - 16), i)   # push imm8 (size), then push L
-            sizes.append(body[j + 1])
+    sizes, pushed = [], []
+    for insn in CS.disasm(body, address):
+        if insn.mnemonic == 'push':
+            pushed.append(insn.op_str)
+        elif insn.mnemonic == 'call':
+            if insn.op_str == hex(NEWUSERDATA):   # lua_newuserdata(L, size): size is the last immediate pushed
+                sizes.append(int(next(x for x in reversed(pushed) if x.startswith('0x') or x.isdigit()), 0))
+            pushed = []
     if sizes:
         userdata['%08x' % address] = sizes
 assert userdata == {'%08x' % a: v for a, v in USERDATA.items()}, userdata
@@ -488,29 +615,35 @@ in_range = sorted(a for a in listed if LO <= int(a, 16) < HI)
 exact = sorted({r['address'] for k in ROWS for r in results[k]})
 instances_in_range = sorted({v['address'] for v in INSTANCES.values() if LO <= int(v['address'], 16) < HI} - set(exact))
 NOT_EXACT = {
-    '0061e690': 'Bridge<CoordinateFrame>::on_index: bytes exact, but it pushes the not-yet-exact cfunctions '
-                'on_pointToWorldSpace 0061df50 / on_pointToObjectSpace 0061e050 / on_vectorToWorldSpace 0061e150 / '
-                'on_vectorToObjectSpace 0061e3b0, so not every target is verified (not counted)',
-    '0061caf0 / 0061ce80 / 0061d430': 'newColor3 / newVector3 / newBrickColor: bytes exact, but each calls 0061c830 (a '
-                'Roblox clamping wrapper around lua_tonumber 00611f60, evidence-named ?lua_tonumber at score 30) where this '
-                'unit calls lua_tonumber itself, so the call target is not verified (not counted)',
-    '00620760': 'SignalBridge::on_index: bytes exact, but it pushes SignalBridge::connect 00620620, not exact yet '
-                '(not counted)',
-    '0061fa60': 'TGenericSlotWrapper<FunctionScriptSlot> constructor: bytes exact, but it calls the FunctionScriptSlot '
-                'copy constructor 0061f960, which is not exact: the 2008 FunctionScriptSlot has one more dword at +0x50 '
-                '(0061f960 copies [src+0x50]) than the donor declaration (not counted)',
-    '0061f960': 'FunctionScriptSlot copy constructor: 124/130 bytes; the 2008 layout has a dword at +0x50 the donor '
-                'declaration lacks (FunctionScriptSlot is declared in the read-only donor script/LuaSignalBridge.h)',
+    '0061f220': 'Bridge<shared_ptr<SignalInstance>>::on_newindex(T&, name, L) (evidence name, score 100): the explicit '
+                'specialization in LuaBridge2008Signal.cpp is not emitted by this build (the generic member is defined '
+                'in the class body of the read-only lua/LuaBridge.h); 2008 emits it here (not counted)',
+    '0061ca00': 'Bridge<T>::on_newindex(T&, name, L) generic body (ICF-folded across T, called from ScriptContext '
+                '005a9543..): not instantiated by this unit (not counted)',
+    '0061edb0..0061f0f0': 'enum bridges (Enums / Enum / EnumItem, classNames 0095b1d4..0095b1dc): a separate unit '
+                          'with no donor source; not built in this pass',
+    '0061a470..0061a9a0 / 0061abe0 / 0061b190 / 0061ba10 / 0061bcd0..0061c2c0': 'instance-bridge property push / set '
+                'paths and their Reflection getValue/setValue instances: need NATIVE_LUABRIDGE_PENDING (Instances '
+                'typedef / setParent2 in v8tree/Instance.h); 0061bcd0 is 201 B against 202 B from the read-only '
+                'MemberDescriptorContainer::findDescriptor',
+    '00620970 / 006209d0': 'checked_delete<ThreadRef> / shared_count<ThreadRef*> instances referenced from the '
+                           'ThreadRef/YieldingThreads unit (00620a42, 00620d21), not from the signal bridge',
+    '00620990': 'copy of a {shared_ptr, double, double} value called from 0062120e / 006212b4 (YieldingThreads unit)',
+    '00620a60..006217d0': 'ThreadRef/YieldingThreads unit (YieldingThreads ctor 00621330): not built in this pass',
     '00620910': 'std::_Allocate<map<const Name*, const ICreator*> node>: counted by scorehud-leaderboard-working.json',
     '0061f60e': 'catch funclet of shared_count<connection> 0061f5a0, compared as part of that row (not counted separately)',
-    '00620357 / 00620422 / 00620a3e': 'catch funclets (EH-table pieces of execute / shared_count bodies not exact yet)',
+    '00620344 / 00620357 / 00620422': 'pieces of TGenericSlotWrapper<FunctionScriptSlot / WaitScriptSlot>::execute '
+                                      '00620310 / 006203a0, compared as part of those rows (not counted separately)',
+    '00620a3e': 'catch funclet of the shared_count<ThreadRef*> instance 006209d0',
 }
 receipt = {
     'family': 'LuaBridge2008 (RBX::Lua instance / atomic / signal bridges, 2008-06)',
-    'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'flags': flags(), 'profile': 'document-swap flags',
+    'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'flags': flags(), 'unit_flags': UNIT_FLAGS,
+    'profile': 'document-swap flags (atomic unit + /fp:fast)',
     'original_sha256': sha(original.path),
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in
-                [Path(__file__).resolve(), ROOT / 'rebuild/2008-06/tests/native_bind.py', BRIDGE_H, SIGNAL_H] +
+                [Path(__file__).resolve(), ROOT / 'rebuild/2008-06/tests/native_bind.py', BRIDGE_H, SIGNAL_H,
+                 INSTANCE_H] +
                 list(UNITS.values())},
     'objects': {k: sha(v) for k, v in OBJ.items()},
     'boundary': {
@@ -535,17 +668,32 @@ receipt = {
     },
     'layout': {
         'userdata_sizes_pushed_to_lua_newuserdata': userdata,
-        'note': 'Color3 / Vector3 0xc (target bytes of 0061caf0 / 0061ce80, not counted rows), BrickColor 4, boost::signals::connection 0x10 (pushNewObject<connection> '
-                '0061f180), metatables named by the Bridge<T>::className statics above. The bridges are static-only '
-                'classes (no fields). FunctionScriptSlot 2008 layout has a dword at +0x50 beyond the donor declaration.',
+        'note': 'Color3 / Vector3 0xc (newColor3 0061caf0 / newVector3 0061ce80 / lerp 0061cf30), BrickColor 4, '
+                'boost::signals::connection 0x10 (pushNewObject<connection> 0061f180), metatables named by the '
+                'Bridge<T>::className statics above. The bridges are static-only classes (no fields).',
+        'FunctionScriptSlot': {
+            'size_evidence': 'ctor 0061fea0 writes +0x00..+0x50; copy ctor 0061f960 copies +0x50 last',
+            'fields': {'+0x00': 'Script::Slot (shared_ptr<connection> cnction)',
+                       '+0x08': 'ScriptContext& context (ScriptContext::getContext 005a86e0)',
+                       '+0x0c': 'FunctionRef function (ctor 00594400, copy 005944e0)',
+                       '+0x30': 'ThreadRef cachedSlotThread (vtable 0080ebc8, copy 00593f70)',
+                       '+0x50': 'int callDepth: zeroed by the ctor (0061ff55), copied by the copy ctor (0061f9c7); '
+                                'operator() 0061ff70 saves it, stores old+1, prints "maximum event re-entrancy depth '
+                                'exceeded" above 6, skips the cached thread when re-entrant (old > 0), and restores '
+                                'the saved value on every exit (ScopedAssign2008, out-of-line dtor 0061fab0)'},
+        },
     },
     'methods': results, 'instances': INSTANCES, 'exact': exact, 'exact_count': len(exact),
     'instances_in_range_not_counted': instances_in_range,
     'pending_build_only': [],
     'not_exact': NOT_EXACT,
-    'left': sorted(set(in_range) - set(exact) - set(instances_in_range) - {'0061f60e'}),
+    'left': sorted(set(in_range) - set(exact) - set(instances_in_range) - {'0061f60e', '00620344', '00620357', '00620422'}),
     'bounds_evidence': ['0061f5a0 shared_count<boost::signals::connection> ctor: 131 bytes (listed 110) including its catch '
-                        'funclet 0061f60e, which only the EH tables reference; whole body byte-exact against the image'],
+                        'funclet 0061f60e, which only the EH tables reference; whole body byte-exact against the image',
+                        '00620310 TGenericSlotWrapper<FunctionScriptSlot>::execute: 134 bytes (listed 52 + 00620344 19 + '
+                        'catch funclet 00620357 63); whole body byte-exact against the image',
+                        '006203a0 TGenericSlotWrapper<WaitScriptSlot>::execute: 193 bytes (listed 130 + catch funclet '
+                        '00620422 63); whole body byte-exact against the image'],
     'vtables': vtables,
     'proposals': [
         'native-headers/v8tree/Instance.h (owner): `typedef std::vector<boost::shared_ptr<Instance> > Instances;` in '
