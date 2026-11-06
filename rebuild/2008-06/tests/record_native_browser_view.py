@@ -214,7 +214,11 @@ assert handlers == expected, handlers
 
 open_items = {
     '0040fff0': 'OnGetExternal: 2-instruction scheduling difference (object pointer reloaded after the isIDE store; '
-                'original converts to IBrowserViewExternal before the store without a null check)',
+                'original converts to IBrowserViewExternal before the store without a null check). Rejected 2026-11-06: '
+                'CBrowserViewExternal& / IBrowserViewExternal& ext = *object before the store (the reference conversion '
+                'keeps a null test, 181 / 183 B); external = (IDispatch*)object->GetUnknown() after the store (no null '
+                'test, object reloaded, 173 B) or before it (hoisted above the dynamic_cast, 173 B); dynamic_cast into a '
+                'local first, then GetUnknown, then the store (169 B vs 171: only object / cast result swap eax / ecx)',
     '0040e470': 'CXTPControlComboBox::DeleteItem (XTP inline, emitted here): first 64 bytes exact; the target extent '
                 '(81) runs into the next function 0040e4b0 (bounds evidence)',
 }

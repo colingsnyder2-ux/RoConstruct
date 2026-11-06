@@ -38,7 +38,7 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderMaterialLayout.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-render-material/NativeRenderMaterialLayout.obj",
       "/home/user/roconstruct/rebuild/2008-06/tests/NativeRenderMaterialLayout.cpp"
     ],
     "base": [
@@ -80,7 +80,7 @@
       "/Od",
       "/Ob0",
       "/GS",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderMaterial_base.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-render-material/NativeRenderMaterial_base.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/TextureProxyBase2008.cpp"
     ],
     "render_proxy": [
@@ -119,7 +119,7 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderMaterial_render_proxy.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-render-material/NativeRenderMaterial_render_proxy.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/TextureProxyRender.cpp"
     ],
     "new_proxy": [
@@ -158,7 +158,7 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderMaterial_new_proxy.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-render-material/NativeRenderMaterial_new_proxy.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp"
     ],
     "render_material": [
@@ -198,7 +198,7 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderMaterial_render_material.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-render-material/NativeRenderMaterial_render_material.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/RenderMaterial.cpp"
     ],
     "new_material": [
@@ -238,29 +238,29 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderMaterial_new_material.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-render-material/NativeRenderMaterial_new_material.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/RenderMaterialNew.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_render_material.py": "8f66574db3802bb6166463571d3733ee38f501ef8916d6cd2f1a8a659ec5a639",
+    "rebuild/2008-06/tests/record_native_render_material.py": "fb9364d6715d71df9a6be748f29148105e10f1cd137f99cefab7037770bc566e",
     "rebuild/2008-06/tests/NativeRenderMaterialLayout.cpp": "b8060d087f6c1532f11b034ecbc4be686c389651401061a73d676c399d91d485",
     "rebuild/2008-06/native-classes/TextureProxyBase2008.cpp": "036cd7117ba5d18fad5ce662021865b07737b24e40c31b1e81665d64198d62e9",
     "rebuild/2008-06/native-classes/TextureProxyRender.cpp": "58c15739ccbdcc204a6412fd82380f04825a8d4cd5431f7e0f1b427613e138a7",
-    "rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp": "bae98b0ba73cfcac2792ef4164a7831799bbc1d87ac394b119bdaf015c3ac5a0",
+    "rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp": "a4420bb5ef1c70066d332748b1ac18a250759bbfd2a2070b9d2476bac8e1143a",
     "rebuild/2008-06/native-classes/RenderMaterial.cpp": "f583785a1083c46e2072f0f2af433cd5fbbca01040f4e138f5fbf5d7d9f2165b",
     "rebuild/2008-06/native-classes/RenderMaterialNew.cpp": "e7a06aec425960337acb876d94c4181f84cd137b4387ebf60216c6cb8cc2c3a8",
     "rebuild/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h": "d2bbd67d1331a697c143b0e820a2a1c67f6377f3200ca087c9a6b6361c267002",
-    "rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h": "32d428c14a594c8198d235f2cf67e3ec3af483de9330e14c45061d4c0a2b16b6",
+    "rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h": "3ea0ee86fb1d08cab37453e39285c051c00473cbb8fbdc2211385dce4a28de22",
     "rebuild/2008-06/native-headers/RenderLib/Material2008.h": "5c8afd630a0f9c62c45f9c4aae094cadef68d26f5bfca65401517f349d640a88"
   },
   "objects": {
-    "NativeRenderMaterialLayout.obj": "0ad069510be64252dbb7664e183387378e34c3f67e6ae9362aaac14edb133c0c",
-    "NativeRenderMaterial_base.obj": "6c0bb456b779d24e3bef421a37e493cb537a1917fa9955115e44ffa9de81df36",
-    "NativeRenderMaterial_render_proxy.obj": "b6f9c1906470ab08d230e56283d79429f2794f8f2dbb709fb63a8e8b7a660be8",
-    "NativeRenderMaterial_new_proxy.obj": "429c25586987f5bf4880de558e692ff72e1cf1738684744ad41c906d099ac7e9",
-    "NativeRenderMaterial_render_material.obj": "ea1877a0e1541908a571b7870b57933765a129cd010fb15dd71cd35a27312e34",
-    "NativeRenderMaterial_new_material.obj": "651f6c3f50a75cadca2d52b94c7b7feb492050807501f0654ea25d62f169dc94"
+    "NativeRenderMaterialLayout.obj": "92cd051877d82758b1fec59aa383c4557d9d1f977b23b1841ae99feec5ce339f",
+    "NativeRenderMaterial_base.obj": "e47d951de957dd24be7c8cd757d45f18ee2c3ad324f91bbadc4bd7d9c664c136",
+    "NativeRenderMaterial_render_proxy.obj": "dca627495d3cbca39e882792d23a8044faa3955bd14f543cdf1405c8467b9db0",
+    "NativeRenderMaterial_new_proxy.obj": "2014a452f5a697c6764ab331c8aa2771124fcab6c39dd01ec6c44ea79bec5629",
+    "NativeRenderMaterial_render_material.obj": "a796338b5cde3d344a538db727ea897a062f973305e4b354e88e358ef61ac0ee",
+    "NativeRenderMaterial_new_material.obj": "71b478280e67e72ba81d13bd2ec76e30a4ea0585b89428e72fc3bb871d68b332"
   },
   "layout": {
     "proxyBaseSize": "0x30",
@@ -640,6 +640,22 @@
         },
         "local": [
           "__ehhandler$??0TextureProxy@RenderNew@RBX@@IAE@V?$ReferenceCountedPointer@VTextureProxy@RenderNew@RBX@@@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "0066ffb0",
+        "symbol": "??0TextureProxy@RenderNew@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 111,
+        "target_size": 111,
+        "exact": true,
+        "verified_targets": {
+          "??0TextureProxyBase@RBX@@QAE@XZ": "0x551bf0 (own row)",
+          "??_7TextureProxy@RenderNew@RBX@@6B@": "0x82d18c (vtable RTTI .?AVTextureProxy@RenderNew@RBX@@ offset 0x0)",
+          "__imp_??0TexturePtr@Ogre@@QAE@XZ": "0x804c88 (rgmain.dll!??0TexturePtr@Ogre@@QAE@XZ)",
+          "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)"
+        },
+        "local": [
+          "__ehhandler$??0TextureProxy@RenderNew@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
         ]
       },
       {
@@ -1665,6 +1681,7 @@
     "00551db0",
     "00551e30",
     "00551f00",
+    "0066ffb0",
     "007accc0",
     "007accd0",
     "007acd00",

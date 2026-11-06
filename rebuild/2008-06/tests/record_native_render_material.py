@@ -12,7 +12,7 @@ the current native headers. No donor header is shadowed: the new headers use nam
                                               implicit Render::TextureProxy destructor 00551db0 and both ??_G;
   * native-classes/TextureProxyRender.cpp     Render::TextureProxy / MegaTextureProxy (007b8450..007b936f);
   * native-classes/TextureProxyRenderNew.cpp  RenderNew::TextureProxy / MegaTextureProxy, stringify / BadConversion
-                                              (007adb70..007aea5f);
+                                              (007adb70..007aea5f), TextureProxy(const std::string&) 0066ffb0;
   * native-classes/RenderMaterial.cpp         /fp:fast: Render::Material / Level (007b7540..007b80ef);
   * native-classes/RenderMaterialNew.cpp      /fp:fast: RenderNew::Material / Level, MaterialBase::Level defaults
                                               (007accc0..007ad9af).
@@ -169,6 +169,9 @@ NEW_PROXY_ROWS = [
     (0x7adbe0, '?stringify@RenderNew@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@N@Z'),
     (0x7adcf0, '??0BadConversion@RenderNew@RBX@@QAE@ABV012@@Z'),     # implicit copy ctor (thrown-object copy)
     (0x7ade10, '??0TextureProxy@RenderNew@RBX@@IAE@V?$ReferenceCountedPointer@VTextureProxy@RenderNew@RBX@@@G3D@@@Z'),
+    # TextureProxy(const std::string&): emitted in the AdornRbxGfx image block (its only caller, createTextureProxy
+    # 00670380, news 0x60 first; record_native_adorn.py binds the call to this address).
+    (0x66ffb0, '??0TextureProxy@RenderNew@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z'),
     (0x7aded0, '?shade@TextureProxy@RenderNew@RBX@@UAE?AV' + PROXY_BASE_REF),
     (0x7ae3b0, '??1TextureProxy@RenderNew@RBX@@UAE@XZ'),
     (0x7ae4b0, '??0MegaTextureProxy@RenderNew@RBX@@QAE@AAVTextureManager@G3D@@'),

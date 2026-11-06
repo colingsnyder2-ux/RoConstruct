@@ -126,18 +126,19 @@
   ]
  },
  "sources": {
-  "rebuild/2008-06/tests/record_native_ogre_scene_manager.py": "c6143c2288c1e8f9ca61a1449d81d31a60deec41b9d22da15e212b8fe677578f",
+  "rebuild/2008-06/tests/record_native_ogre_scene_manager.py": "6df8fc3c9e55c698bc830d434295ca3a38ad5ad48e10e14ade30f3bdd53ef8f4",
   "rebuild/2008-06/tests/NativeOgreRbxSceneManagerLayout.cpp": "40cdcacec3e93f33a9ebb06c3deadfc70dcf4394dbbc5cc30874c885cea5ec96",
-  "rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp": "dec0c04ea9397b27cd2c1059bdda51930dd18c8fd72f8c38b859859a5549cb99",
-  "rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h": "b8b7b900832d5605465f9903d7e22ef3a6214ae3a957180b9603787239ff52ba"
+  "rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp": "7075679ab83a139887bd434807c0d8dd35db113d0d44130051743fc5740b270a",
+  "rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h": "ad347c719a1db5319fdca989ca8f9b440189cc34cd2b30c92649fad8b85ae393",
+  "rebuild/2008-06/native-headers/OgreRbx/RbxSky2008.h": "3626c0505dd70bf784cb889db3fe293ef088570b8a8dc1f4de1699f1decf58ad"
  },
  "pending_headers": {
-  "RbxSceneManagerPendingDecls.h": "78d72d3e19b1630e2903406d69afa58ed9aea7fafaaa400552ace1222a06c250"
+  "RbxSceneManagerPendingDecls.h": "1fba3b9b5a4bbdea310d547d9b1b84fb8a00d53e8c50760ec6697d092bceb353"
  },
  "objects": {
-  "NativeOgreRbxSceneManagerLayout.obj": "c1d03529020901e14d34964c801293fc733502e58aa4ac5d52bbc55d351197bc",
-  "NativeOgreRbxSceneManager.obj": "1977f1869f7e34f974cfc0efaa5b8ad7e07793e788821a1037ef60733bd2e7d5",
-  "NativeOgreRbxSceneManager_pending.obj": "4a9cf56ad4b1ab529dc34cfafedf7ae34a4912ef207faf8806a6cc9b9022488b"
+  "NativeOgreRbxSceneManagerLayout.obj": "caf5a9d15e196452da7ba3d4e7558caa5c3bb55f73ea196d19e5c9b35e5362ab",
+  "NativeOgreRbxSceneManager.obj": "99dc909de95e0e948588483cb15eca6673b955c67d6ef2d20d401f99646e60a4",
+  "NativeOgreRbxSceneManager_pending.obj": "98f384d4ceca32199043f99461ffb0e0388e5a20b369a11e57127671b58d3fbb"
  },
  "layout": {
   "size": "0x8c04",
@@ -282,10 +283,13 @@
   "0068d6d0",
   "0068d710",
   "0068d780",
+  "0068d7d0",
   "0068d980",
   "0068db40",
   "0068dc60",
   "0068dd70",
+  "0068ddc0",
+  "0068dec0",
   "0068df00",
   "0068df50",
   "0068dfa0",
@@ -2182,6 +2186,20 @@
    "local": []
   },
   {
+   "address": "0068d7d0",
+   "symbol": "?_queueSkiesForRendering@RbxSceneManager@Ogre@@UAEXPAVCamera@2@@Z",
+   "size": 420,
+   "target_size": 420,
+   "exact": true,
+   "verified_targets": {
+    "__imp_?getDerivedPosition@Camera@Ogre@@QBEABVVector3@2@XZ": "0x804490 (rgmain.dll!?getDerivedPosition@Camera@Ogre@@QBEABVVector3@2@XZ)",
+    "__imp_?addRenderable@RenderQueue@Ogre@@QAEXPAVRenderable@2@EG@Z": "0x8048d4 (rgmain.dll!?addRenderable@RenderQueue@Ogre@@QAEXPAVRenderable@2@EG@Z)",
+    "__imp_?getSubEntity@Entity@Ogre@@QBEPAVSubEntity@2@I@Z": "0x8048d0 (rgmain.dll!?getSubEntity@Entity@Ogre@@QBEPAVSubEntity@2@I@Z)",
+    "?update@RbxSky@Ogre@@QAEXPAVCamera@2@PAVRenderQueue@2@W4RenderQueueGroupID@2@@Z": "0x67f850 (external)"
+   },
+   "local": []
+  },
+  {
    "address": "0068d980",
    "symbol": "?setShadowTechnique@RbxSceneManager@Ogre@@UAEXW4ShadowTechnique@2@@Z",
    "size": 436,
@@ -2253,6 +2271,27 @@
    "exact": true,
    "verified_targets": {
     "??_7?$SharedPtr@VGpuProgramParameters@Ogre@@@Ogre@@6B@": "0x84ec2c (vtable RTTI .?AV?$SharedPtr@VGpuProgramParameters@Ogre@@@Ogre@@ offset 0x0)"
+   },
+   "local": []
+  },
+  {
+   "address": "0068ddc0",
+   "symbol": "?swap@?$SharedPtr@VRbxSky@Ogre@@@Ogre@@MAEXAAV12@@Z",
+   "size": 49,
+   "target_size": 49,
+   "exact": true,
+   "verified_targets": {},
+   "local": []
+  },
+  {
+   "address": "0068dec0",
+   "symbol": "??_G?$SharedPtr@VRbxSky@Ogre@@@Ogre@@UAEPAXI@Z",
+   "size": 55,
+   "target_size": 55,
+   "exact": true,
+   "verified_targets": {
+    "??_7?$SharedPtr@VRbxSky@Ogre@@@Ogre@@6B@": "0x84ec3c (vtable RTTI .?AV?$SharedPtr@VRbxSky@Ogre@@@Ogre@@ offset 0x0)",
+    "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
    },
    "local": []
   },
@@ -8379,6 +8418,14 @@
    "exact": false
   },
   {
+   "address": "004d73a0",
+   "symbol": "?destroy@?$SharedPtr@VRbxSky@Ogre@@@Ogre@@MAEXXZ",
+   "size": 32,
+   "target_size": 63,
+   "exact": false,
+   "reason": "folded onto 004d73a0 outside the block (not counted); analysed extent 63 runs into 004d73c0, the 32-byte body is exact as a prefix"
+  },
+  {
    "address": "0058d860",
    "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@2@D@Z",
    "size": 147,
@@ -8491,22 +8538,6 @@
    "exact": false
   },
   {
-   "address": "0068d7d0",
-   "symbol": "?_queueSkiesForRendering@RbxSceneManager@Ogre@@UAEXPAVCamera@2@@Z",
-   "size": 420,
-   "target_size": 420,
-   "exact": false,
-   "verified_targets": {
-    "__imp_?getDerivedPosition@Camera@Ogre@@QBEABVVector3@2@XZ": "0x804490 (rgmain.dll!?getDerivedPosition@Camera@Ogre@@QBEABVVector3@2@XZ)",
-    "__imp_?addRenderable@RenderQueue@Ogre@@QAEXPAVRenderable@2@EG@Z": "0x8048d4 (rgmain.dll!?addRenderable@RenderQueue@Ogre@@QAEXPAVRenderable@2@EG@Z)",
-    "__imp_?getSubEntity@Entity@Ogre@@QBEPAVSubEntity@2@I@Z": "0x8048d0 (rgmain.dll!?getSubEntity@Entity@Ogre@@QBEPAVSubEntity@2@I@Z)",
-    "?update@RbxSky@Ogre@@QAEXPAVCamera@2@PAVRenderQueue@2@W4RenderQueueGroupID@2@@Z": "0x67f850 (pending external (call site))"
-   },
-   "local": [],
-   "pending_build_exact": true,
-   "reason": "pending-build-only: needs declarations of the exe-local Ogre::RbxSky::update / Ogre::RbxEntity::collect (no native header); compiled only with /DNATIVE_OGRE_RBXSCENEMANAGER_PENDING against the generated proposal header"
-  },
-  {
    "address": "006960e0",
    "symbol": "?findShadowCastersForLight@RbxSceneManager@Ogre@@MAEABV?$vector@PAVShadowCaster@Ogre@@V?$allocator@PAVShadowCaster@Ogre@@@std@@@std@@PBVLight@2@PBVCamera@2@@Z",
    "size": 420,
@@ -8537,7 +8568,7 @@
     "__ehhandler$?findShadowCastersForLight@RbxSceneManager@Ogre@@MAEABV?$vector@PAVShadowCaster@Ogre@@V?$allocator@PAVShadowCaster@Ogre@@@std@@@std@@PBVLight@2@PBVCamera@2@@Z"
    ],
    "pending_build_exact": true,
-   "reason": "pending-build-only: needs declarations of the exe-local Ogre::RbxSky::update / Ogre::RbxEntity::collect (no native header); compiled only with /DNATIVE_OGRE_RBXSCENEMANAGER_PENDING against the generated proposal header"
+   "reason": "pending-build-only: needs a declaration of the exe-local Ogre::RbxEntity::collect (no native header); compiled only with /DNATIVE_OGRE_RBXSCENEMANAGER_PENDING against the generated proposal header"
   }
  ],
  "vtables": {
@@ -9219,7 +9250,7 @@
     "symbol": "?_queueSkiesForRendering@RbxSceneManager@Ogre@@UAEXPAVCamera@2@@Z",
     "original": "0068d7d0",
     "ok": true,
-    "how": "declared, body not built here (identity only)"
+    "how": "row"
    },
    {
     "slot": 97,
@@ -10235,10 +10266,33 @@
     "ok": true,
     "how": "row"
    }
+  ],
+  ".?AV?$SharedPtr@VRbxSky@Ogre@@@Ogre@@": [
+   {
+    "slot": 0,
+    "symbol": "??_E?$SharedPtr@VRbxSky@Ogre@@@Ogre@@UAEPAXI@Z",
+    "original": "0068dec0",
+    "ok": true,
+    "how": "row"
+   },
+   {
+    "slot": 1,
+    "symbol": "?destroy@?$SharedPtr@VRbxSky@Ogre@@@Ogre@@MAEXXZ",
+    "original": "004d73a0",
+    "ok": true,
+    "how": "row"
+   },
+   {
+    "slot": 2,
+    "symbol": "?swap@?$SharedPtr@VRbxSky@Ogre@@@Ogre@@MAEXAAV12@@Z",
+    "original": "0068ddc0",
+    "ok": true,
+    "how": "row"
+   }
   ]
  },
  "proposals": {
-  "Ogre::RbxSky (exe-local, unowned)": "Declare class RbxSky (size 0xd4: new(0xd4) in setSkyBox 00692a10; ctor 0067fd60 RbxSky(SceneManager*, const String& name, bool)) with update(Camera*, RenderQueue*, RenderQueueGroupID) called by _queueSkiesForRendering 0068d7d0 (exact against the generated proposal header). The ctor plus a derived layout would unblock setSkyBox.",
+  "Ogre::RbxSky (exe-local; RbxSky group)": "OgreRbx/RbxSky2008.h declares only the virtual destructor and update (no layout). A full declaration (size 0xd4: new(0xd4) in setSkyBox 00692a10; ctor 0067fd60 RbxSky(SceneManager*, const String& name, bool)) needs the type of the underived +0x50 member (record_native_ogre_rbx_sky.py); it would unblock setSkyBox.",
   "Ogre::RbxEntity (exe-local, owner of RbxEntity / ogre_scene group)": "Declare RbxEntity : public Entity with collect(const Camera*, const Light*, std::vector<ShadowCaster*>&): findShadowCastersForLight 006960e0 dynamic_casts the first object attached to the \"rbxroot\" node to RbxEntity and calls it (exact against the generated proposal header).",
   "Ogre::RbxSubEntity / Ogre::RbxSceneNode (exe-local, ogre_scene group)": "renderSingleObject 0069bc50 dynamic_casts the renderable to RbxSubEntity and its parent node (slot +0x48) to RbxSceneNode, then copies 0x40 bytes from the sub-entity +0xf0 into mTempXform (+0x1d8); it needs those members declared before it can be built."
  },

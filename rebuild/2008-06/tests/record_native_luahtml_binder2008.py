@@ -11,11 +11,10 @@ Builds (document-swap flags, VS2008 RTM 21022), with three profile header direct
     out/native-layouts/luahtml-binder2008-pending/ (no shared header is edited):
       v8tree/Instance.h with `static Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)>
       event_propertyChanged;` (00973f48, the descriptor the PropBinding constructor 0042c630 connects through;
-      record_native_instance_property_worker.py binds the same name to 00973f48 from raisePropertyChanged 0040db00),
-      and AppLeaves2008/EventHandler2008.h with EventHandler::handler public (the Binder destructor 0042c3c0 assigns
-      it directly: function0<bool>::operator= 0042c320 with ecx = handler + 8).
-    Rows exact only there are recorded exact=false (pending-build-only) and are not counted; so is ??_G 0042c4e0,
-    whose only call target is the pending-only destructor.
+      record_native_instance_property_worker.py binds the same name to 00973f48 from raisePropertyChanged 0040db00).
+    Rows exact only there are recorded exact=false (pending-build-only) and are not counted; so is bind 0042c760,
+    whose PropBinding constructor call target is pending-only. (EventHandler::handler is public in
+    AppLeaves2008/EventHandler2008.h since 2026-11-06, so ~Binder 0042c3c0 and its ??_G 0042c4e0 build and count here.)
 Inline/library instances a row calls (ATL, boost, STL, SecurityContext) are bound by bytes: the instance this build
 emits must equal the function at the called address, with every one of its own targets verified the same way
 (recursively); they are listed under 'instances' and not counted.
@@ -61,7 +60,9 @@ def build(source, name, pre=(), extra=()):
 
 # ---- generated pending header copies ------------------------------------------------------------------------
 (PENDING / 'v8tree').mkdir(parents=True, exist_ok=True)
-(PENDING / 'AppLeaves2008').mkdir(parents=True, exist_ok=True)
+# The EventHandler proposal is applied in the native header: drop the copy older runs generated here (it would shadow it).
+if (PENDING / 'AppLeaves2008/EventHandler2008.h').exists():
+    (PENDING / 'AppLeaves2008/EventHandler2008.h').unlink()
 inst = INSTANCE_H.read_text()
 ANCHOR = ('    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>, const Reflection::PropertyDescriptor*)>'
           ' event_itemChanged;\n')
@@ -69,9 +70,8 @@ PROPOSED = '    static Reflection::SignalDesc<Instance, void(const Reflection::P
 assert inst.count(ANCHOR) == 1 and 'event_propertyChanged' not in inst
 (PENDING / 'v8tree/Instance.h').write_text(inst.replace(ANCHOR, ANCHOR + PROPOSED))
 eh = EH_H.read_text()
-EH_OLD = '\nprotected:\n    boost::function0<bool> handler;'
-assert eh.count(EH_OLD) == 1
-(PENDING / 'AppLeaves2008/EventHandler2008.h').write_text(eh.replace(EH_OLD, '\npublic:\n    boost::function0<bool> handler;'))
+assert eh.count('\n    boost::function0<bool> handler;') == 1 and \
+    eh.index('\npublic:') < eh.index('boost::function0<bool> handler;') < eh.index('\nprotected:')
 
 layout_obj = build(LAYOUT, 'NativeLuaHtmlBinder2008Layout')
 binder_obj = build(BINDER_CPP, 'NativeLuaHtmlBinder2008')
@@ -131,16 +131,15 @@ ROWS = {   # object -> [(address, symbol)]
                (0x0042c0d0, '??0Binder@CLuaHtmlView@@QAE@PAUIHTMLInputElement@@@Z'),
                (0x0042c500, '?requestUpdate@Binder@CLuaHtmlView@@AAEXXZ'),
                (0x0042c570, '?onPropertyChanged@Binder@CLuaHtmlView@@CAXPBVPropertyDescriptor@Reflection@RBX@@'
-                            'ABV345@PAV12@@Z')],
+                            'ABV345@PAV12@@Z'),
+               (0x0042c3c0, '??1Binder@CLuaHtmlView@@UAE@XZ'),
+               (0x0042c4e0, '??_GBinder@CLuaHtmlView@@UAEPAXI@Z')],
 }
 PENDING_ROWS = {
     'pending': [(0x0042c630, '??0PropBinding@Binder@CLuaHtmlView@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@'
-                             'ABVPropertyDescriptor@Reflection@RBX@@PAV12@@Z'),
-                (0x0042c3c0, '??1Binder@CLuaHtmlView@@UAE@XZ')],
-    # Byte-exact in the current build too, but each calls a pending-only row: ??_G the destructor, bind the
-    # PropBinding constructor.
-    'pending_gated': [(0x0042c4e0, '??_GBinder@CLuaHtmlView@@UAEPAXI@Z'),
-                      (0x0042c760, '?bind@Binder@CLuaHtmlView@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@'
+                             'ABVPropertyDescriptor@Reflection@RBX@@PAV12@@Z')],
+    # Byte-exact in the current build too, but it calls a pending-only row (the PropBinding constructor).
+    'pending_gated': [(0x0042c760, '?bind@Binder@CLuaHtmlView@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@'
                                    'ABVPropertyDescriptor@Reflection@RBX@@@Z')],
 }
 HELPERS = {}
@@ -499,11 +498,11 @@ receipt = {
     'proposals': [
         'native-headers/v8tree/Instance.h (owner): `static Reflection::SignalDesc<Instance, void(const '
         'Reflection::PropertyDescriptor*)> event_propertyChanged;` (00973f48: PropBinding::PropBinding 0042c630 '
-        'connects through it, group 10, via 0042b680; raisePropertyChanged 0040db00 raises it). Unlocks 0042c630.',
-        'native-headers/AppLeaves2008/EventHandler2008.h (owner): make `boost::function0<bool> handler` public (or '
-        'befriend CLuaHtmlView::Binder): ~Binder 0042c3c0 assigns it directly (function0<bool>::operator= 0042c320 '
-        'on handler + 8). Unlocks 0042c3c0 and, with it, ??_G 0042c4e0.',
+        'connects through it, group 10, via 0042b680; raisePropertyChanged 0040db00 raises it). Unlocks 0042c630 '
+        'and, with it, bind 0042c760.',
     ],
+    'applied': ['2026-11-06: native-headers/AppLeaves2008/EventHandler2008.h makes `boost::function0<bool> handler` '
+                'public (~Binder 0042c3c0 assigns it directly); ~Binder and ??_G 0042c4e0 count.'],
     'scope': 'Inactive. Exact rows with verified targets; pending rows excluded from counts. No active build, swap or credit.',
 }
 (ROOT / 'work/2008-06/shared-layouts/luahtml-binder2008-working.json').write_text(json.dumps(receipt, indent=2) + '\n')

@@ -8,14 +8,17 @@
 #include <GLG3D/DXCaps.h>
 
 #ifndef NATIVE_RENDERSTATSITEM_PENDING
-// Without the proposed Item::createBoundChildItem<T> the bound-item instances are requested explicitly; in the
-// pending build they are implicit instances of createBoundChildItem<G3D::Stopwatch> / <int>.
+// Without the RenderStatsItem constructor (it needs CRobloxWnd::RenderStatsItem in CRobloxView.h) the bound-item
+// instances it uses are requested explicitly; in the pending build they are implicit instances of the constructor's
+// createBoundChildItem<G3D::Stopwatch> / <int> calls.
 namespace RBX
 {
 	namespace Stats
 	{
 		template class TypedStatsItem<G3D::Stopwatch>; // vtable 0081a08c, ctor 0045ecc0, update 0045ee30
 		template class TypedStatsItem<int>;            // vtable 0081a154, ctor 0045eef0, update 0045eff0
+		template Item* Item::createBoundChildItem<G3D::Stopwatch>(const char*, const G3D::Stopwatch&); // 0045f120
+		template Item* Item::createBoundChildItem<int>(const char*, const int&);                       // 0045f230
 	}
 	template boost::shared_ptr<Stats::TypedStatsItem<G3D::Stopwatch> >
 		Creatable<Instance>::create<Stats::TypedStatsItem<G3D::Stopwatch>, const G3D::Stopwatch*>(const G3D::Stopwatch*); // 0045f020

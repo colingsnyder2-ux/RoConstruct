@@ -23,7 +23,10 @@ public:
     STDMETHOD(Invoke)(DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags, DISPPARAMS* pDispParams,
                       VARIANT* pVarResult, EXCEPINFO* pExcepInfo, UINT* puArgErr);
 
-protected:
+    // Public: CLuaHtmlView::Binder::~Binder 0042c3c0 assigns it directly (function0<bool>::operator= 0042c320 on
+    // this + 8). Access does not change the layout or any mangled name.
     boost::function0<bool> handler;   // +0x08
+
+protected:
     ULONG refCount;                   // +0x28
 };

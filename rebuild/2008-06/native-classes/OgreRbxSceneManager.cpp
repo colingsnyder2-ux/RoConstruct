@@ -14,9 +14,9 @@
 //     "fork bodies" marker (cameras, light list, animations, manualRender, the Ogre::Timer-instrumented basic queue
 //     group and _renderScene, the findingShadowCasters guard) follow the fork's versions.
 // Not built (blocked): setSkyBox 00692a10 (constructs RbxSky, new(0xd4), ctor 0067fd60) and renderSingleObject
-// 0069bc50 (dynamic_cast to RbxSubEntity / RbxSceneNode and their cached transforms). _queueSkiesForRendering 0068d7d0
-// and findShadowCastersForLight 006960e0 are compiled only with NATIVE_OGRE_RBXSCENEMANAGER_PENDING (they need
-// declarations of RbxSky::update and RbxEntity::collect).
+// 0069bc50 (dynamic_cast to RbxSubEntity / RbxSceneNode and their cached transforms). findShadowCastersForLight
+// 006960e0 is compiled only with NATIVE_OGRE_RBXSCENEMANAGER_PENDING (it needs a declaration of RbxEntity::collect).
+// _queueSkiesForRendering 0068d7d0 calls RbxSky::update through the minimal OgreRbx/RbxSky2008.h.
 #include "OgreSceneManager.h"
 #include "OgreCamera.h"
 #include "OgreRenderSystem.h"
@@ -4912,10 +4912,7 @@ void RbxSceneManager::_renderScene(Camera* camera, Viewport* vp, bool includeOve
     camera->_notifyRenderedBatches(mDestRenderSystem->_getBatchCount());
 }
 
-#ifdef NATIVE_OGRE_RBXSCENEMANAGER_PENDING
-// Pending-build-only bodies: they need declarations of the exe-local Ogre::RbxSky (update, 0067fd60 family) and
-// Ogre::RbxEntity (collect) that no native header provides yet (see the recorder's proposal header).
-
+// RbxSky::update 0067f850 is declared in OgreRbx/RbxSky2008.h (minimal interface, no layout claimed).
 void RbxSceneManager::_queueSkiesForRendering(Camera* cam)
 {
 	if (mSkyPlaneNode)
@@ -4966,6 +4963,10 @@ void RbxSceneManager::_queueSkiesForRendering(Camera* cam)
 		}
 	}
 }
+
+#ifdef NATIVE_OGRE_RBXSCENEMANAGER_PENDING
+// Pending-build-only body: it needs a declaration of the exe-local Ogre::RbxEntity (collect) that no native header
+// provides yet (see the recorder's proposal header).
 
 const SceneManager::ShadowCasterList& RbxSceneManager::findShadowCastersForLight(
 	const Light* light, const Camera* camera)

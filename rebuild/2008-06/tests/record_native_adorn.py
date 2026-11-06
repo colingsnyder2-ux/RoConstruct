@@ -12,10 +12,12 @@ shadowed for any other unit):
   * native-classes/AdornRbxGfx.cpp     AdornRbxGfx bodies that need only its own layout, and the container COMDATs of
                                        its image block (0066fc30..00671d5f).
 
-A second, pending-only build of AdornRbxGfx.cpp (/DNATIVE_ADORNRBXGFX_PENDING plus a generated copy of
-RenderLib/TextureProxy2008.h with the proposed RenderNew::TextureProxy(const std::string&) constructor, under
-out/native-layouts/adornrbxgfx-pending/, ahead of native-headers for that build only) compiles createTextureProxy. Its
-row is recorded exact=false (pending-build-only) and is not counted; vtable checks use current-header objects only.
+A second, pending-only build of AdornRbxGfx.cpp (/DNATIVE_ADORNRBXGFX_PENDING plus generated header copies under
+out/native-layouts/adornrbxgfx-pending/, ahead of native-headers for that build only) holds bodies that need proposed
+declarations; its rows would be recorded exact=false (pending-build-only) and not counted; vtable checks use
+current-header objects only. It is empty since 2026-11-06: RenderLib/TextureProxy2008.h declares the
+RenderNew::TextureProxy(const std::string&) constructor 0066ffb0 (counted by record_native_render_material.py), so
+createTextureProxy 00670380 is built and counted in the current build.
 
 Every exact row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, constants by bytes, vtables by original RTTI
@@ -46,22 +48,19 @@ UNIT = R / 'native-classes/AdornG3D.cpp'
 GFX_LAYOUT = R / 'tests/NativeAdornRbxGfxLayout.cpp'
 GFX_UNIT = R / 'native-classes/AdornRbxGfx.cpp'
 HEADERS = [R / 'native-headers/RbxGraphics/Adorn2008.h', R / 'native-headers/AppDraw/AdornG3D2008.h',
-           R / 'native-headers/RbxGraphics/AdornRbxGfx2008.h']
+           R / 'native-headers/RbxGraphics/AdornRbxGfx2008.h', R / 'native-headers/RenderLib/TextureProxy2008.h']
 DISCOVER = bool(os.environ.get('NATIVE_ADORN_DISCOVER'))
 
-# ---- pending proposal header (generated, build-local; not part of the native tree) ----------------------------------
-# A copy of the committed RenderLib/TextureProxy2008.h with one added declaration: the out-of-line
-# RenderNew::TextureProxy(const std::string&) constructor 0066ffb0 (TextureProxyBase() 00551bf0, vptr 0082d18c,
-# +0x30 / +0x40 / +0x44 = 0, +0x34 = false, TexturePtr() at +0x54, filename = name; +0x38 / +0x3c / +0x48 untouched),
-# which AdornRbxGfx::createTextureProxy 00670380 calls after new(0x60).
+# ---- pending proposal headers (generated, build-local; not part of the native tree) ---------------------------------
+# None since 2026-11-06: the RenderNew::TextureProxy(const std::string&) constructor 0066ffb0 that the former copy of
+# RenderLib/TextureProxy2008.h added is declared in the native header (checked here); the stale copy is removed.
 PENDING_DIR = OUT / 'adornrbxgfx-pending'
-PENDING_ANCHOR = ('\t\t\tTextureProxy(G3D::TextureManager& textureManager, const std::string& filename, bool tiled);   '
-                  '// 00551e30')
-PENDING_LINE = ('\n\t\t\tTextureProxy(const std::string& filename);'
-                '                                                    // 0066ffb0 (PROPOSAL)')
 _proxy = (R / 'native-headers/RenderLib/TextureProxy2008.h').read_text()
-assert _proxy.count(PENDING_ANCHOR) == 1, 'TextureProxy2008.h anchor moved'
-PENDING_HEADERS = {'RenderLib/TextureProxy2008.h': _proxy.replace(PENDING_ANCHOR, PENDING_ANCHOR + PENDING_LINE)}
+assert _proxy.count('\t\t\tTextureProxy(const std::string& name);') == 1, 'TextureProxy2008.h: 0066ffb0 declaration'
+if (PENDING_DIR / 'RenderLib/TextureProxy2008.h').exists():
+    (PENDING_DIR / 'RenderLib/TextureProxy2008.h').unlink()
+PENDING_HEADERS = {}
+PENDING_DIR.mkdir(parents=True, exist_ok=True)
 for rel, text in PENDING_HEADERS.items():
     path = PENDING_DIR / rel
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -166,7 +165,8 @@ EXTERNAL = {
     # recorded extents (target 126 / 135 bytes, compiled 147 / 156), so they are bound by call site, not compared.
     pick(gfx_obj, '?_Buynode@?$_Tree@', 'VMeshPtr@Ogre@@U?$less', suffix='@D@Z'): 0x670780,          # _Insert 00670850
     pick(gfx_obj, '?_Buynode@?$_Tree@', 'PAVSceneNode@Ogre@@U?$less', suffix='@D@Z'): 0x690030,      # _Insert 00691d90
-    # pending-build-only target: RenderNew::TextureProxy(const std::string&) 0066ffb0 (structure checked below)
+    # RenderNew::TextureProxy(const std::string&) 0066ffb0: exact row of record_native_render_material.py
+    # (native-classes/TextureProxyRenderNew.cpp); structure checked below
     '??0TextureProxy@RenderNew@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 0x66ffb0,   # 006703be
 }
 # Bodies folded by the linker with other identical bodies: verified by their bytes below.
@@ -236,6 +236,8 @@ RBXGFX_ROWS = [
     (0x66fba0, '?getObjectToWorld@AdornRbxGfx@RBX@@AAEXAAVMatrix4@Ogre@@@Z'),
     (0x66fc00, '?uniqueName@AdornRbxGfx@RBX@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ'),
     (0x671e20, '?releaseSubEntities@AdornRbxGfx@RBX@@AAEXXZ'),
+    (0x670380, '?createTextureProxy@AdornRbxGfx@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@'
+               'ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z'),
     (0x66fc30, '??1' + PAIR + 'QAE@XZ'),
     (0x66fc80, pick(G, '??0' + PAIR, 'QAE@ABV?$basic_string', suffix='ABVMeshPtr@Ogre@@@Z')),
     (0x66fce0, '??0' + PAIR + 'QAE@ABU01@@Z'),
@@ -287,13 +289,8 @@ RBXGFX_FOLDED_ROWS = [
     (0x6ad2a0, '?lineSegment@AdornRbxGfx@RBX@@UAEXABVLineSegment@G3D@@ABVColor4@4@M@Z'),
     (0x4e83a0, '?axes@AdornRbxGfx@RBX@@UAEXABVColor4@G3D@@00M@Z'),
 ]
-PENDING_ROWS = [
-    (0x670380, '?createTextureProxy@AdornRbxGfx@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@'
-               'ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z'),
-]
-PENDING_REASON = ('pending-build-only: needs the out-of-line RenderNew::TextureProxy(const std::string&) constructor 0066ffb0, '
-                  'which RenderLib/TextureProxy2008.h does not declare; compiled only with /DNATIVE_ADORNRBXGFX_PENDING '
-                  'against a generated copy of that header')
+PENDING_ROWS = []
+PENDING_REASON = 'pending-build-only: needs a proposed declaration (generated header copy, /DNATIVE_ADORNRBXGFX_PENDING)'
 ROWS = {'layout': LAYOUT_ROWS, 'g3d': G3D_ROWS, 'rbxgfx': RBXGFX_ROWS}
 
 
@@ -548,7 +545,7 @@ assert rbxgfx_slots[19] == '00674790' and body(0x674790)[-1:] == b'\xc3'   # spa
 # Slot identities of the AdornRbxGfx rows (no vtable is emitted here: the constructor / destructor are not built).
 assert rbxgfx_slots[0] == '006741f0' and rbxgfx_slots[14] == '0066fac0'   # ??_G, setObjectToWorldMatrix row
 assert (rbxgfx_slots[1], rbxgfx_slots[15], rbxgfx_slots[22], rbxgfx_slots[23]) == \
-    ('00670380', '0070bdf0', '006ad2a0', '004e83a0')                   # createTextureProxy (pending), folded empties
+    ('00670380', '0070bdf0', '006ad2a0', '004e83a0')                   # createTextureProxy row, folded empties
 
 sha = nb.sha
 paths = [Path(__file__).resolve(), LAYOUT, UNIT, GFX_LAYOUT, GFX_UNIT] + HEADERS
@@ -556,12 +553,6 @@ exact = sorted({r['address'] for g in groups.values() for r in g if r['exact']})
 groups['not_exact'] = pending_out
 groups['folded_not_counted'] = folded_out
 PROPOSALS = {
-    'RenderLib/TextureProxy2008.h (owner: texture proxies)':
-        'Add the out-of-line RenderNew::TextureProxy(const std::string& filename) constructor at 0066ffb0: '
-        'TextureProxyBase() 00551bf0, vptr 0082d18c, +0x30 texture = 0, +0x34 loaded = false, +0x40 root = 0, '
-        '+0x44 shadeTexture = 0, Ogre::TexturePtr() at +0x54, then filename = name (basic_string::operator= import); '
-        '+0x38 / +0x3c / +0x48 are left untouched. AdornRbxGfx::createTextureProxy 00670380 calls it after new(0x60) and '
-        'is exact against the generated copy (PENDING_HEADERS in this recorder).',
     'Ogre::VisualEngine (exe-local, unowned; whoever recovers RbxSceneManagerFactory / VisualEngine)':
         'AdornRbxGfx +0x4 is the window\'s Ogre::VisualEngine (new(0x808) in 0045cc9c, ctor 006786c0, vtable 0084df2c, '
         'RTTI .?AVVisualEngine@Ogre@@; dtor 0067a130). Observed members: +0x4 Ogre::SceneManager* (destroySceneManager '
@@ -600,7 +591,7 @@ receipt = {
     'adorn_rbxgfx_vtable_0084d2a4': rbxgfx_slots,
     'adorn_rbxgfx_layout': {k: hex(v) for k, v in GFX_SIZES.items()},
     'adorn_rbxgfx_open': 'Built: setObjectToWorldMatrix, the two getObjectToWorld transform helpers, uniqueName, '
-        'releaseSubEntities and the container COMDATs of the block; createTextureProxy is pending-build-only. Not built: '
+        'releaseSubEntities, createTextureProxy and the container COMDATs of the block. Not built: '
         'ctor 00674210 (+ try/catch continuation 006743eb), dtor 00673a90 / ??_G 006741f0, getViewport / getWidth / '
         'getHeight / the 2D draws / get2DStringBounds / drawFont2D / prepareRenderPass / finishRenderPass (VisualEngine), '
         'setTexture / getTextureSize (resolve argument), box / sphere / explosion / sparkle / cylinderAlongX / ray / quad '
@@ -609,6 +600,9 @@ receipt = {
         '00670780 / 00690030 (catch funclet outside the recorded extents) and 006740e0 / 0066fd40 (8-byte element '
         'vector of an RbxEntity type).',
     'proposals': PROPOSALS,
+    'applied': ['2026-11-06: RenderLib/TextureProxy2008.h declares RenderNew::TextureProxy(const std::string&) 0066ffb0 '
+                '(body in TextureProxyRenderNew.cpp, counted by render-material-working.json); createTextureProxy '
+                '00670380 is counted here.'],
     'scope': 'Inactive. Exact bodies with verified call/data targets; pending-build-only rows not counted; no active '
              'build, swap or credit.',
 }

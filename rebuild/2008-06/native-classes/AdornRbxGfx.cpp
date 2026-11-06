@@ -12,9 +12,7 @@
 #include <OgreQuaternion.h>
 #include <OgreVector3.h>
 #include "util/Utilities.h"
-#ifdef NATIVE_ADORNRBXGFX_PENDING
 #include "RenderLib/TextureProxy2008.h"
-#endif
 
 // The AdornRbxGfx image block (0066fc30..00671d5f) holds the out-of-line members of its four containers. Explicit
 // instantiation emits the same COMDATs here: std::map<std::string, Ogre::MeshPtr> (+0x78), std::map<std::string,
@@ -85,12 +83,9 @@ namespace RBX
         usedSubEntities.clear();
     }
 
-#ifdef NATIVE_ADORNRBXGFX_PENDING
-    // Needs RenderNew::TextureProxy(const std::string&) (out of line at 0066ffb0), which RenderLib/TextureProxy2008.h
-    // does not declare yet (proposal for the texture proxy owner).
+    // RenderNew::TextureProxy(const std::string&) is out of line at 0066ffb0 (native-classes/TextureProxyRenderNew.cpp).
     TextureProxyBaseRef AdornRbxGfx::createTextureProxy(const std::string& filename)
     {
         return new RenderNew::TextureProxy(filename);
     }
-#endif
 }

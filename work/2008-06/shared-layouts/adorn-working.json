@@ -206,24 +206,23 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_adorn.py": "b54b21c7c71a16763fb6775671e06e8df2a57fdd6cf2a8bb8bdec4a8aa055ede",
+    "rebuild/2008-06/tests/record_native_adorn.py": "3cd3b4138bbe328df8448f7679f2bb7b15adddad7f2c994e416371674dc98629",
     "rebuild/2008-06/tests/NativeAdornLayout.cpp": "8d8f96cdb5744e4642777bed18f430e3cea596403c320cd7bb6e03fa5f03f82a",
     "rebuild/2008-06/native-classes/AdornG3D.cpp": "af16ed8f30a04e92d306e024ad674b33045f8f4538419c07bc921f11349fde9b",
     "rebuild/2008-06/tests/NativeAdornRbxGfxLayout.cpp": "f7e87b1125adfa50959a87994e69219f508c73c2ea0cfbd81f7eefb7068047a2",
-    "rebuild/2008-06/native-classes/AdornRbxGfx.cpp": "3fce0c9e54f08f4d1b232872a97b25170b90d06f491de37d4ea17387a1d88830",
+    "rebuild/2008-06/native-classes/AdornRbxGfx.cpp": "aa03cee176f494684f601f454c261031bb033b0f2bd2f74a5922a056dcb83d3b",
     "rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h": "be3147e36170fe9f12ec42cc9b9ea8b893dcf63c759792f649cbab177b0869a4",
     "rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h": "66a9a7ee25ac3011598346a64d47b390584b8147c02842e586602ae0de9c7d3e",
-    "rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h": "68b7739c3e2c4076d5db76fd62d83c3c922ab0b24afab55147cbc4da758a0822"
+    "rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h": "68b7739c3e2c4076d5db76fd62d83c3c922ab0b24afab55147cbc4da758a0822",
+    "rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h": "3ea0ee86fb1d08cab37453e39285c051c00473cbb8fbdc2211385dce4a28de22"
   },
-  "pending_headers": {
-    "RenderLib/TextureProxy2008.h": "e49b686afc6c0420e7a0ff0befbaf6db7e9e5c0cddf76711ddc853817b3628f6"
-  },
+  "pending_headers": {},
   "objects": {
-    "NativeAdornLayout.obj": "35869dc171423a88ac831237886d887a65843bbf22101887992ec7e43e8a46ed",
-    "NativeAdorn_g3d.obj": "2d576779dec10f631f161af301a97a4b91d1b42a19c1c178f9e6a589cb3ee7fa",
-    "NativeAdornRbxGfxLayout.obj": "102af8a1ce860b7bbdcf1f2951b2559f6014b87df4f4ede0ea39bc397322925f",
-    "NativeAdorn_rbxgfx.obj": "8efcd0a5a14581765619ce96206a83737af48f88a2b43325e7d41726aabc3acf",
-    "NativeAdorn_rbxgfx_pending.obj": "6a91430ed1d49a518c642bfbea518aff961ec96aeaf320a977e31d7484ce6e84"
+    "NativeAdornLayout.obj": "07dd05fcc6711537c7fded519798071bba968926d95810ab5afdd635dc08e1f6",
+    "NativeAdorn_g3d.obj": "cdc61de3fff52679c7ee7121913a9fe2c45f6b97a281032c17addc09215eab8d",
+    "NativeAdornRbxGfxLayout.obj": "a1037680f353262a09968a536a9517084c9f6c1c770a1f949beb68b04cd28d83",
+    "NativeAdorn_rbxgfx.obj": "ecfe3e8cec057bcb02823992c99262349a2dca223b9372e44395dbd69ef9d068",
+    "NativeAdorn_rbxgfx_pending.obj": "ad4af14f507330dcd4411be0a5724760009176b27fc989b3eb2474be5ecb753e"
   },
   "layout": {
     "adornSize": "0x4",
@@ -594,6 +593,21 @@
         "local": []
       },
       {
+        "address": "00670380",
+        "symbol": "?createTextureProxy@AdornRbxGfx@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 118,
+        "target_size": 118,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0TextureProxy@RenderNew@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x66ffb0 (external)",
+          "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z": "0x598fa0 (external)"
+        },
+        "local": [
+          "__ehhandler$?createTextureProxy@AdornRbxGfx@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        ]
+      },
+      {
         "address": "0066fc30",
         "symbol": "??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@@std@@QAE@XZ",
         "size": 78,
@@ -879,25 +893,7 @@
         ]
       }
     ],
-    "not_exact": [
-      {
-        "address": "00670380",
-        "symbol": "?createTextureProxy@AdornRbxGfx@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
-        "size": 118,
-        "target_size": 118,
-        "exact": false,
-        "verified_targets": {
-          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
-          "??0TextureProxy@RenderNew@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x66ffb0 (external)",
-          "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z": "0x598fa0 (external)"
-        },
-        "local": [
-          "__ehhandler$?createTextureProxy@AdornRbxGfx@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
-        ],
-        "pending_build_exact": true,
-        "reason": "pending-build-only: needs the out-of-line RenderNew::TextureProxy(const std::string&) constructor 0066ffb0, which RenderLib/TextureProxy2008.h does not declare; compiled only with /DNATIVE_ADORNRBXGFX_PENDING against a generated copy of that header"
-      }
-    ],
+    "not_exact": [],
     "folded_not_counted": [
       {
         "address": "00693970",
@@ -1297,6 +1293,7 @@
     "0066fce0",
     "0066fed0",
     "0066ff20",
+    "00670380",
     "00670740",
     "00670850",
     "00670a50",
@@ -1563,13 +1560,15 @@
     "meshMapSize": "0x20",
     "nodeVectorSize": "0x18"
   },
-  "adorn_rbxgfx_open": "Built: setObjectToWorldMatrix, the two getObjectToWorld transform helpers, uniqueName, releaseSubEntities and the container COMDATs of the block; createTextureProxy is pending-build-only. Not built: ctor 00674210 (+ try/catch continuation 006743eb), dtor 00673a90 / ??_G 006741f0, getViewport / getWidth / getHeight / the 2D draws / get2DStringBounds / drawFont2D / prepareRenderPass / finishRenderPass (VisualEngine), setTexture / getTextureSize (resolve argument), box / sphere / explosion / sparkle / cylinderAlongX / ray / quad / allocateSubEntity 00671d60 / addMesh 00671f00 (RbxEntity / RbxSubEntity / RbxSceneNode / RbxFont), the map destructor tail jump 00671d50 (emitted with the AdornRbxGfx destructor), the _Buynode(value) bodies 00670780 / 00690030 (catch funclet outside the recorded extents) and 006740e0 / 0066fd40 (8-byte element vector of an RbxEntity type).",
+  "adorn_rbxgfx_open": "Built: setObjectToWorldMatrix, the two getObjectToWorld transform helpers, uniqueName, releaseSubEntities, createTextureProxy and the container COMDATs of the block. Not built: ctor 00674210 (+ try/catch continuation 006743eb), dtor 00673a90 / ??_G 006741f0, getViewport / getWidth / getHeight / the 2D draws / get2DStringBounds / drawFont2D / prepareRenderPass / finishRenderPass (VisualEngine), setTexture / getTextureSize (resolve argument), box / sphere / explosion / sparkle / cylinderAlongX / ray / quad / allocateSubEntity 00671d60 / addMesh 00671f00 (RbxEntity / RbxSubEntity / RbxSceneNode / RbxFont), the map destructor tail jump 00671d50 (emitted with the AdornRbxGfx destructor), the _Buynode(value) bodies 00670780 / 00690030 (catch funclet outside the recorded extents) and 006740e0 / 0066fd40 (8-byte element vector of an RbxEntity type).",
   "proposals": {
-    "RenderLib/TextureProxy2008.h (owner: texture proxies)": "Add the out-of-line RenderNew::TextureProxy(const std::string& filename) constructor at 0066ffb0: TextureProxyBase() 00551bf0, vptr 0082d18c, +0x30 texture = 0, +0x34 loaded = false, +0x40 root = 0, +0x44 shadeTexture = 0, Ogre::TexturePtr() at +0x54, then filename = name (basic_string::operator= import); +0x38 / +0x3c / +0x48 are left untouched. AdornRbxGfx::createTextureProxy 00670380 calls it after new(0x60) and is exact against the generated copy (PENDING_HEADERS in this recorder).",
     "Ogre::VisualEngine (exe-local, unowned; whoever recovers RbxSceneManagerFactory / VisualEngine)": "AdornRbxGfx +0x4 is the window's Ogre::VisualEngine (new(0x808) in 0045cc9c, ctor 006786c0, vtable 0084df2c, RTTI .?AVVisualEngine@Ogre@@; dtor 0067a130). Observed members: +0x4 Ogre::SceneManager* (destroySceneManager in the dtor; createSceneNode slot +0xa8 / getRootSceneNode slot +0xb4 in 006743eb), +0xc Ogre::RenderTarget* (detachRenderTarget), +0x10 Ogre::Viewport* (getActualLeft/Top/Width/Height in 00670020 / 0066f900 / 0066f910), +0x14 an object deleted through slot 0 that AdornRbxGfx uses for 2D drawing (0066f920 / 0066f9c0 / 0066fa50 call 00682d60 / 00683000 / 006830b0 on it), +0x18 a sub-object (ctor 006785b0) passed to RbxEntity 0067c510, +0x7f8 = -1. +0x8 is not yet derived. A declaration would unblock getViewport, getWidth, getHeight, the 2D draws, finishRenderPass and the AdornRbxGfx constructor / destructor.",
     "Ogre::RbxSceneNode / RbxEntity / RbxSubEntity / RbxFont (exe-local Ogre subclasses, unowned)": "AdornRbxGfx holds RbxSceneNode* +0x34 (new(0x248), ctor 00674160, vtable 0084d30c), RbxEntity* +0x98 (new(0x2bc), ctor 0067d1f0, vtable 0084e45c) and vectors of RbxSubEntity* (new(0x15c), ctor 00685660, vtable 0084e90c); the font is a SharedPtr<RbxFont> global at 00962da8 (loaded in the ctor from \"Fonts\\comics.fnt\" through 00684eb0). Their methods (0067c510, 0067d3d0, 0067da50, 006850a0, 00685660, 0066fe70, 00670670) are needed for allocateSubEntity 00671d60, addMesh 00671f00, box / sphere / quad / ray / cylinderAlongX / explosion / sparkle and the constructor / destructor. AdornRbxGfx2008.h forward-declares them only.",
     "TextureProxyBase::resolve argument (owner: texture proxies)": "AdornRbxGfx::setTexture 006700e0 and getTextureSize 00670210 call resolve (slot 6, +0x18) with the VisualEngine* at +0x4, not a G3D::RenderDevice*; the 2008 resolve parameter type (or a conversion) is unknown, so these two rows are not attempted.",
     "RbxGraphics/Adorn.h (donor path, owner: rendering)": "2008 Adorn is __declspec(novtable) with 25 slots: an extra no-argument virtual after explosion() (slot 19, AdornRbxGfx 00674790) and non-pure empty prepareRenderPass / finishRenderPass; see RbxGraphics/Adorn2008.h."
   },
+  "applied": [
+    "2026-11-06: RenderLib/TextureProxy2008.h declares RenderNew::TextureProxy(const std::string&) 0066ffb0 (body in TextureProxyRenderNew.cpp, counted by render-material-working.json); createTextureProxy 00670380 is counted here."
+  ],
   "scope": "Inactive. Exact bodies with verified call/data targets; pending-build-only rows not counted; no active build, swap or credit."
 }

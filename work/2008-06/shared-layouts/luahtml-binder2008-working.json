@@ -43,13 +43,13 @@
   "profile": "document-swap flags with native-headers/mfc-noinline-pcxstr, std-noinline-string and boost-function-pod-vtable first",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
   "sources": {
-    "rebuild/2008-06/tests/record_native_luahtml_binder2008.py": "96784ec5d51ed7ba0bb60e833cb6470600e20821ac2569a23178daf405740b64",
+    "rebuild/2008-06/tests/record_native_luahtml_binder2008.py": "36382c751aa908579a2fb34e029c986437d89b26ab87669c9bb9d4e4e6a18a59",
     "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
     "rebuild/2008-06/tests/NativeLuaHtmlBinder2008Layout.cpp": "d98f113c52a93b1787e789f3b61a1e2a3d2c232efd5062d9bee7a90cf4f38e7d",
     "rebuild/2008-06/native-headers/LuaHtmlBinder2008/LuaHtmlBinder2008.h": "16c75a4f5d2b50b4ecd99e473639bb85cff380efa585e91ea8055ec7dc48518a",
-    "rebuild/2008-06/native-classes/LuaHtmlBinder2008.cpp": "258ce56d123cb400dfe4f16833e6be1526d79c6ffff3161a001bc8844d7828bb",
+    "rebuild/2008-06/native-classes/LuaHtmlBinder2008.cpp": "595abd96cec752d201e548c8cf00660c6992214356d03fce66628173d26e3d90",
     "rebuild/2008-06/native-headers/v8tree/Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
-    "rebuild/2008-06/native-headers/AppLeaves2008/EventHandler2008.h": "5625b06653d5c4782ad103ddd7608ddbcc90d2ab6b2106a8d00b9d81529e4356",
+    "rebuild/2008-06/native-headers/AppLeaves2008/EventHandler2008.h": "6396425d56b97b3b88fbe3c9e07578df6b84708e60c8f0e6dbde036eaa7f2e7d",
     "rebuild/2008-06/native-headers/AppLeaves2008/DHTMLWindowService2008.h": "df4bc9b98ec652f9d71232eea0e826bae5ad452500d41c6b448a9050d27bf8e6",
     "rebuild/2008-06/native-headers/AppLeaves2008/Marshaller2008.h": "5ce8a439f16df27e817b14ddfe4e0d6c28596867c9442fdfef1a6500e9b20a23",
     "rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h": "be601ae5510ccaae5209999c9da1c9fa86fe2ec0a72946fe1ace10a93414bc04",
@@ -58,10 +58,10 @@
     "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp": "9e6bb423072221a911c59ec6bee3c0e51433df20a8a585fd80ae1f93515083dc"
   },
   "objects": {
-    "layout": "21130361367760e1859c89866b9eb6abe64327c67c5ffdeefc87d44c6ad7fb3d",
-    "binder": "52f232e4568ce4ae287a5893db3471e1ecb38705bae8a3322f6088d24752b2d6",
-    "pending": "bd9cacbb8e668bdf969ef335b9c755d3a2ce7cc6c81b0f38134b8768d9027909",
-    "pending_gated": "52f232e4568ce4ae287a5893db3471e1ecb38705bae8a3322f6088d24752b2d6"
+    "layout": "777f3b7e6f3a9895796f4e61f1925efb57828bba41e08c9d08bbeb354732f3fa",
+    "binder": "b73c7d404d3bacd43895f538bb20d1b63e45376beef2778a314af6b8a1117fb7",
+    "pending": "00498b5eef56b96c0860c38f0e17954db97f9e845f0d8a7dfc67f46b627f15a0",
+    "pending_gated": "b73c7d404d3bacd43895f538bb20d1b63e45376beef2778a314af6b8a1117fb7"
   },
   "layout": {
     "CLuaHtmlView::Binder": "0x34 (0042c8c0 news 0x34): vptr 00810654 +0, enable_shared_from_this<Binder> +4 (weak_ptr +4/+8), list<shared_ptr<PropBinding>> +0xc (0x1c), updatePending +0x28, CComPtr<EventHandler> handler +0x2c, CComPtr<IHTMLInputElement> element +0x30",
@@ -203,6 +203,36 @@
           "?requestUpdate@Binder@CLuaHtmlView@@AAEXXZ": "0x42c500 (own row)"
         },
         "local_eh": []
+      },
+      {
+        "address": "0042c3c0",
+        "symbol": "??1Binder@CLuaHtmlView@@UAE@XZ",
+        "size": 276,
+        "exact": true,
+        "verified_targets": {
+          "??_7Binder@CLuaHtmlView@@6B@": "0x810654 (vtable RTTI .?AVBinder@CLuaHtmlView@@ offset 0x0)",
+          "?ignoreChange@?A0xe14b5284@@YA_NXZ": "0x565950 (instance (bytes equal, targets verified))",
+          "??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z": "0x42c320 (instance (bytes equal, targets verified))",
+          "__GUID_3050f434_98b5_11cf_bb82_00aa00bdce0b": "0x81055c (GUID {3050f434-98b5-11cf-bb82-00aa00bdce0b})",
+          "??_C@_08CLANFAGI@onchange?$AA@": "0x810644 (literal 'onchange')",
+          "??0CComBSTR@ATL@@QAE@PBD@Z": "0x401180 (instance (bytes equal, targets verified))",
+          "__imp__SysFreeString@4": "0x802944 (oleaut32.dll!SysFreeString)",
+          "??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ": "0x4b0a80 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "__ehhandler$??1Binder@CLuaHtmlView@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "0042c4e0",
+        "symbol": "??_GBinder@CLuaHtmlView@@UAEPAXI@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Binder@CLuaHtmlView@@UAE@XZ": "0x42c3c0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
       }
     ],
     "pending": [
@@ -224,41 +254,9 @@
           "__ehhandler$??0PropBinding@Binder@CLuaHtmlView@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@PAV12@@Z"
         ],
         "status": "pending-build-only"
-      },
-      {
-        "address": "0042c3c0",
-        "symbol": "??1Binder@CLuaHtmlView@@UAE@XZ",
-        "size": 276,
-        "exact": false,
-        "verified_targets": {
-          "??_7Binder@CLuaHtmlView@@6B@": "0x810654 (vtable RTTI .?AVBinder@CLuaHtmlView@@ offset 0x0)",
-          "?ignoreChange@?A0xe14b5284@@YA_NXZ": "0x565950 (instance (bytes equal, targets verified))",
-          "??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z": "0x42c320 (instance (bytes equal, targets verified))",
-          "__GUID_3050f434_98b5_11cf_bb82_00aa00bdce0b": "0x81055c (GUID {3050f434-98b5-11cf-bb82-00aa00bdce0b})",
-          "??_C@_08CLANFAGI@onchange?$AA@": "0x810644 (literal 'onchange')",
-          "??0CComBSTR@ATL@@QAE@PBD@Z": "0x401180 (instance (bytes equal, targets verified))",
-          "__imp__SysFreeString@4": "0x802944 (oleaut32.dll!SysFreeString)",
-          "??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ": "0x4b0a80 (instance (bytes equal, targets verified))"
-        },
-        "local_eh": [
-          "__ehhandler$??1Binder@CLuaHtmlView@@UAE@XZ"
-        ],
-        "status": "pending-build-only"
       }
     ],
     "pending_gated": [
-      {
-        "address": "0042c4e0",
-        "symbol": "??_GBinder@CLuaHtmlView@@UAEPAXI@Z",
-        "size": 30,
-        "exact": false,
-        "verified_targets": {
-          "??1Binder@CLuaHtmlView@@UAE@XZ": "0x42c3c0 (pending-build-only row)",
-          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
-        },
-        "local_eh": [],
-        "status": "pending-build-only (bytes exact in the current build; it calls a pending-only row)"
-      },
       {
         "address": "0042c760",
         "symbol": "?bind@Binder@CLuaHtmlView@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@@Z",
@@ -519,6 +517,86 @@
       "local_eh": [],
       "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
     },
+    "?ignoreChange@?A0xe14b5284@@YA_NXZ": {
+      "address": "00565950",
+      "symbol": "?ignoreChange@?A0xe14b5284@@YA_NXZ",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z": {
+      "address": "0042c320",
+      "symbol": "??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z",
+      "size": 158,
+      "exact": false,
+      "verified_targets": {
+        "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x810658 (instance (bytes equal, targets verified))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted; listed extent 0x71 != body 0x9e, whole body compared with the image bytes"
+    },
+    "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": {
+      "address": "00810658",
+      "symbol": "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 ?manage@?$functor_manager@P6A_NXZV?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": "0x42c2c0 (instance (bytes equal, targets verified))",
+        "+0x4 ?invoke@?$function_invoker0@P6A_NXZ_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z": "0x42c2b0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "?manage@?$functor_manager@P6A_NXZV?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": {
+      "address": "0042c2c0",
+      "symbol": "?manage@?$functor_manager@P6A_NXZV?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "size": 86,
+      "exact": false,
+      "verified_targets": {
+        "??_R0P6A_NXZ@8": "0x92eb08 (RTTI .P6A_NXZ)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?invoke@?$function_invoker0@P6A_NXZ_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z": {
+      "address": "0042c2b0",
+      "symbol": "?invoke@?$function_invoker0@P6A_NXZ_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z",
+      "size": 6,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ": {
+      "address": "004b0a80",
+      "symbol": "??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ",
+      "size": 85,
+      "exact": false,
+      "verified_targets": {
+        "?clear@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAEXXZ": "0x42b390 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?clear@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAEXXZ": {
+      "address": "0042b390",
+      "symbol": "?clear@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAEXXZ",
+      "size": 104,
+      "exact": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
     "??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@@Z": {
       "address": "0042b9a0",
       "symbol": "??$?0V?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@boost@@@?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XP6AXPBVPropertyDescriptor@Reflection@RBX@@ABV123@PAVBinder@CLuaHtmlView@@@ZV?$list3@V?$arg@$00@boost@@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@PAVBinder@CLuaHtmlView@@@_bi@2@@_bi@boost@@@_bi@1@@Z",
@@ -689,86 +767,6 @@
       ],
       "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
     },
-    "?ignoreChange@?A0xe14b5284@@YA_NXZ": {
-      "address": "00565950",
-      "symbol": "?ignoreChange@?A0xe14b5284@@YA_NXZ",
-      "size": 3,
-      "exact": false,
-      "verified_targets": {},
-      "local_eh": [],
-      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
-    },
-    "??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z": {
-      "address": "0042c320",
-      "symbol": "??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z",
-      "size": 158,
-      "exact": false,
-      "verified_targets": {
-        "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x810658 (instance (bytes equal, targets verified))",
-        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
-      },
-      "local_eh": [
-        "__ehhandler$??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z"
-      ],
-      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted; listed extent 0x71 != body 0x9e, whole body compared with the image bytes"
-    },
-    "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": {
-      "address": "00810658",
-      "symbol": "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B",
-      "size": 8,
-      "exact": false,
-      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
-      "verified_targets": {
-        "+0x0 ?manage@?$functor_manager@P6A_NXZV?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": "0x42c2c0 (instance (bytes equal, targets verified))",
-        "+0x4 ?invoke@?$function_invoker0@P6A_NXZ_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z": "0x42c2b0 (instance (bytes equal, targets verified))"
-      }
-    },
-    "?manage@?$functor_manager@P6A_NXZV?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": {
-      "address": "0042c2c0",
-      "symbol": "?manage@?$functor_manager@P6A_NXZV?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
-      "size": 86,
-      "exact": false,
-      "verified_targets": {
-        "??_R0P6A_NXZ@8": "0x92eb08 (RTTI .P6A_NXZ)",
-        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
-      },
-      "local_eh": [],
-      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
-    },
-    "?invoke@?$function_invoker0@P6A_NXZ_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z": {
-      "address": "0042c2b0",
-      "symbol": "?invoke@?$function_invoker0@P6A_NXZ_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z",
-      "size": 6,
-      "exact": false,
-      "verified_targets": {},
-      "local_eh": [],
-      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
-    },
-    "??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ": {
-      "address": "004b0a80",
-      "symbol": "??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ",
-      "size": 85,
-      "exact": false,
-      "verified_targets": {
-        "?clear@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAEXXZ": "0x42b390 (instance (bytes equal, targets verified))",
-        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
-      },
-      "local_eh": [
-        "__ehhandler$??1?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAE@XZ"
-      ],
-      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
-    },
-    "?clear@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAEXXZ": {
-      "address": "0042b390",
-      "symbol": "?clear@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@QAEXXZ",
-      "size": 104,
-      "exact": false,
-      "verified_targets": {
-        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
-      },
-      "local_eh": [],
-      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
-    },
     "??$?0VPropBinding@Binder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVPropBinding@Binder@CLuaHtmlView@@@Z": {
       "address": "0042b280",
       "symbol": "??$?0VPropBinding@Binder@CLuaHtmlView@@@shared_count@detail@boost@@QAE@PAVPropBinding@Binder@CLuaHtmlView@@@Z",
@@ -869,13 +867,13 @@
     "0042be20",
     "0042c000",
     "0042c0d0",
+    "0042c3c0",
+    "0042c4e0",
     "0042c500",
     "0042c570"
   ],
-  "exact_count": 8,
+  "exact_count": 10,
   "pending_build_only": [
-    "0042c3c0",
-    "0042c4e0",
     "0042c630",
     "0042c760"
   ],
@@ -906,8 +904,10 @@
     }
   },
   "proposals": [
-    "native-headers/v8tree/Instance.h (owner): `static Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> event_propertyChanged;` (00973f48: PropBinding::PropBinding 0042c630 connects through it, group 10, via 0042b680; raisePropertyChanged 0040db00 raises it). Unlocks 0042c630.",
-    "native-headers/AppLeaves2008/EventHandler2008.h (owner): make `boost::function0<bool> handler` public (or befriend CLuaHtmlView::Binder): ~Binder 0042c3c0 assigns it directly (function0<bool>::operator= 0042c320 on handler + 8). Unlocks 0042c3c0 and, with it, ??_G 0042c4e0."
+    "native-headers/v8tree/Instance.h (owner): `static Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> event_propertyChanged;` (00973f48: PropBinding::PropBinding 0042c630 connects through it, group 10, via 0042b680; raisePropertyChanged 0040db00 raises it). Unlocks 0042c630 and, with it, bind 0042c760."
+  ],
+  "applied": [
+    "2026-11-06: native-headers/AppLeaves2008/EventHandler2008.h makes `boost::function0<bool> handler` public (~Binder 0042c3c0 assigns it directly); ~Binder and ??_G 0042c4e0 count."
   ],
   "scope": "Inactive. Exact rows with verified targets; pending rows excluded from counts. No active build, swap or credit."
 }

@@ -43,12 +43,13 @@
 #include <OgreSceneQuery.h>
 #include <OgreRenderQueueSortingGrouping.h>
 #include <OgreShadowCameraSetup.h>
+#include "OgreRbx/RbxSky2008.h"   // minimal Ogre::RbxSky interface (virtual destructor, update); no layout claimed
 
 struct NativeOgreRbxSceneManagerLayout;
 
 namespace Ogre
 {
-	class RbxSky;   // exe-local (new(0xd4), constructor 0067fd60); SharedPtr<RbxSky> vtable 0084ec3c
+	// RbxSky (exe-local; new(0xd4), constructor 0067fd60; SharedPtr<RbxSky> vtable 0084ec3c): OgreRbx/RbxSky2008.h
 
 	class RbxSceneManager : public SceneManager
 	{

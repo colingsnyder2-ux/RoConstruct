@@ -1,7 +1,7 @@
 // Inactive native 2008-06 CLuaHtmlView::Binder / PropBinding (native-headers/LuaHtmlBinder2008/LuaHtmlBinder2008.h).
 // Profile (tests/record_native_luahtml_binder2008.py): document-swap flags with native-headers/mfc-noinline-pcxstr,
-// std-noinline-string and boost-function-pod-vtable put first. NATIVE_LUAHTMLBINDER2008_PENDING bodies need
-// Instance::event_propertyChanged and a public EventHandler::handler (proposals in the receipt).
+// std-noinline-string and boost-function-pod-vtable put first. The NATIVE_LUAHTMLBINDER2008_PENDING connect in the
+// PropBinding constructor needs Instance::event_propertyChanged (proposal in the receipt).
 #include "LuaHtmlBinder2008/LuaHtmlBinder2008.h"
 #include "AppLeaves2008/DHTMLWindowService2008.h"
 #include "security/SecurityContext.h"
@@ -51,14 +51,12 @@ CLuaHtmlView::Binder::Binder(IHTMLInputElement* element) : updatePending(false),
         throw std::runtime_error("attachEvent failed");
 }
 
-#ifdef NATIVE_LUAHTMLBINDER2008_PENDING
 CLuaHtmlView::Binder::~Binder()
 {
     handler->handler = &ignoreChange;
     CComQIPtr<IHTMLElement2> element2(element);
     element2->detachEvent(CComBSTR("onchange"), handler);
 }
-#endif
 
 void CLuaHtmlView::Binder::bind(boost::shared_ptr<RBX::Instance> instance,
                                 const RBX::Reflection::PropertyDescriptor& descriptor)

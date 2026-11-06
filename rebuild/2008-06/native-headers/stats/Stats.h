@@ -19,6 +19,8 @@
 //              formatValue(double, const char*, ...) 005c8f20 (__cdecl varargs), formatValue<double/float/int/
 //              unsigned int/bool> 005c90b0/005c90e0/005c9110/005c9140/005c9170, createChildItem 005c9c70,
 //              createBoundMemChildItem 005c9dc0, createBoundChildItem(const Profiler&) 005ca240.
+//              Member template createBoundChildItem<T>(const char*, const T&): instances 0045f120 (G3D::Stopwatch)
+//              and 0045f230 (int) in the CRobloxWnd unit (new TypedStatsItem<T>(&value), setName, setParent).
 //   service    StatsService size 0x130 (Creatable<Instance>::create<StatsService> 00458590); constructor 00458520
 //              passes the literal "Stats" (00818c5c) to Instance(const char*); askAddChild is ICF-shared with
 //              Item's (0045ec80), write returns 0 (00416690, ICF-shared).
@@ -79,6 +81,8 @@ namespace RBX
 			Item* createChildItem(const char* name);                                 // 005c9c70
 			Item* createBoundChildItem(const Profiling::Profiler& profiler);         // 005ca240
 			Item* createBoundMemChildItem(const char* name, const size_t& value);    // 005c9dc0
+			template<typename T>
+			Item* createBoundChildItem(const char* name, const T& value); // 0045f120 (G3D::Stopwatch), 0045f230 (int)
 
 		protected:
 			virtual bool askAddChild(const Instance* instance) const; // 0045ec80
@@ -116,6 +120,15 @@ namespace RBX
 				return *value;
 			}
 		};
+
+		template<typename T>
+		Item* Item::createBoundChildItem(const char* name, const T& value)
+		{
+			boost::shared_ptr<Item> item = Creatable<Instance>::create<TypedStatsItem<T> >(&value);
+			item->setName(name);
+			item->setParent(this);
+			return item.get();
+		}
 
 		class TypedMemItem : public TypedStatsItem<size_t>
 		{
