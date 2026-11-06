@@ -1,5 +1,11 @@
 # Native recovery workflow
 
+For contributor throughput, use the class/header batch policy in
+`docs/NATIVE_SWAP_BATCH.md`: implement a coherent class/family, preserve partial
+methods, and rotate to another authorized family when its function budget or
+owner-only gate blocks progress. Source/header recovery and owner activation
+are separate outcomes; repeated audit receipts are not recovered classes.
+
 Default campaign policy: `docs/NATIVE_SWAP_BATCH.md`. Name one runnable swap
 target, track its current blockers, compile evidence-backed variants once per
 isolated source, reuse objects for byte/data/call proof, then advance integration

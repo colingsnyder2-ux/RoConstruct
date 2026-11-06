@@ -1,7 +1,48 @@
 # Swap-first native recovery
 
-Goal: reduce blockers for one named runnable class swap. An inactive exact body is
+Goal: recover coherent native class/header families for authorized runnable swaps.
+Owner integration closes dependency and runtime gates. An inactive exact body is
 useful evidence, not a completed integration. Preserve automatic draft sharing.
+
+## Contributor class/header batches
+
+Primary contributor output is recovered native class implementations and authentic
+associated headers. Work one class or tightly related family per batch; reuse
+existing files and keep already recovered methods. Prefer families with known
+original declarations/layouts and enough evidence to implement several methods,
+including relevant constructors/destructors. Do not create empty classes, guessed
+fields, declaration-only headers or extra files just to increase a count.
+
+Keep a short ranked list of independent authorized class/family targets in the
+existing campaign blocker list. Lease only the current batch, not the waiting
+list. Connect each target to an authorized swap/dependency campaign; a general
+native-class recovery assignment may span several such campaigns. If one is
+blocked, move to another authorized unleased family instead of waiting for the
+same swap's hardest gate. A narrowly assigned task does not grant wider scope.
+
+Use the existing function clock/budget in `docs/NATIVE_RECOVERY_WORKFLOW.md`.
+Do not reset it to prolong one hard method. After three substantive hypotheses
+fail on the same evidence, or the existing budget expires, save the partial class,
+first divergence and next proof, then move to another independent class/family.
+Do not discard other useful recovered methods because one method remains open.
+An unavailable owner object, shared-header lease, selected-provider decision or
+runtime gate is a handoff condition, not a reason to keep generating audits of
+unchanged inputs. Revisit only when relevant evidence or inputs change.
+
+Check changed class/header bytes with the existing batch runner; reuse the same
+objects for applicable checks. Keep byte/data/call/layout claims honest and mark
+unknowns. Upload incomplete source/header work too. Owner integration still needs
+full dependency/ABI/selection, no-loss and relevant P5/P6/runtime proofs; class
+recovery never bypasses those gates or activates a provider.
+
+An audit/proof checkpoint saves test results, hashes and unresolved obligations;
+it is evidence, not another recovered class. Reuse the runner and one task-owned
+summary per class/family; append only new findings to the existing research log.
+Keep automatic draft snapshots/retries running. Do not create a new Python audit
+script or manually checkpoint after every tiny check when existing tools suffice.
+Report meaningful class bodies recovered/extended, methods and authentic header
+changes, then inactive exacts and remaining gates separately. A file count or
+receipt-only upload is not source recovery or runnable integration.
 
 ## Keep recovery separate from mining
 
@@ -13,8 +54,8 @@ Read mined candidates as untrusted evidence when useful; preserve real native
 classes and prove their actual providers/call identities/ABI independently.
 
 Before each batch record: swap target, concrete blocker, required native path or
-provider, baseline proof and next gate. After a local exact, advance its missing
-integration obligation. Progress is a required blocker reduced or a new gate
+provider, baseline proof and next gate. After a local exact, advance available source/class proofs or hand off
+owner-only obligations and continue another authorized class/family. Progress is a required blocker reduced or a new gate
 passed; an upload, compile, mined count or unrelated exact is not a runnable gain.
 Keep contributor recovery/upload separate from the owner's reviewed integration
 and gated runtime activation. A finished draft never grants server credit.

@@ -6,6 +6,10 @@
 follow `docs/NATIVE_AGENT.md` and `docs/NATIVE_SWAP_BATCH.md`. Work on real native
 C++ and the chosen swap's blockers. Do not run bulk mining passes or `roc submit`.
 Local exacts are inactive evidence; the owner handles reviewed integration and gates.
+Contributor priority: substantial native class/header batches using the class-batch
+policy in `docs/NATIVE_SWAP_BATCH.md`. Handoff exhausted or owner-blocked proofs;
+continue another authorized unleased family. Receipt-only uploads and file counts
+are not recovered classes. Keep all required integration/runtime gates.
 
 **Mining task** (an explicit function/server-score assignment): follow
 `docs/MINING_WORKFLOW.md` and `docs/AGENT_GUIDE.md`. Mining commands and server
