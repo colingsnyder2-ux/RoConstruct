@@ -1,10 +1,17 @@
 """Compare existing native x86 EH metadata graph to the original; never compile/run."""
 from pathlib import Path
-import argparse,hashlib,json,struct,sys
+import argparse,capstone,hashlib,json,struct,sys
 ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT))
 from roc import match,native_asm
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('object',type=Path);parser.add_argument('address',type=lambda x:int(x,16));parser.add_argument('symbol');parser.add_argument('--output',type=Path);args=parser.parse_args();path=args.object;raw=path.read_bytes();secs,syms,defs,starts=match._coff_data_index(raw);funcs={n:(b,r) for n,b,r in match.coff_functions(raw)};base,image=match._image('2008-06');address=args.address
 name=next(n for n in funcs if n.startswith(args.symbol));body,refs=funcs[name];fv,fs=defs[name];full=bytes(image[address-base:address-base+len(body)]);bindings={};events=[];seen=set();errors=[]
+# EH metadata cannot establish that the selected primary implementation matches.
+target,target_refs,_=match.target('2008-06','%08x'%address)
+# The function index may omit relative call fields; recognize them from original instructions.
+primary_disassembler=capstone.Cs(capstone.CS_ARCH_X86,capstone.CS_MODE_32)
+primary_refs=set(target_refs)|{i.address-address+1 for i in primary_disassembler.disasm(target,address) if i.size==5 and i.bytes[0] in (0xe8,0xe9)}
+if not set(refs)<=primary_refs or not match.exact_match(target,primary_refs,body,refs):
+ raise SystemExit('primary body is not original-exact; EH proof refused (indexed function boundaries may require separate review)')
 # Resolve only COFF-declared weak fallbacks; availability is not final PE selection.
 weak={};symbol_offset,symbol_count=struct.unpack_from('<II',raw,8);symbol_index=0
 while symbol_index<symbol_count:
