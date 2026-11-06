@@ -3,7 +3,9 @@
 Builds tests/NativeClothingLayout.cpp and native-classes/Clothing.cpp twice:
   * base: current shared headers (declaration-only Humanoid/Players overlays from tests/NativeClothing*.h);
   * pending: additionally NATIVE_CLOTHING_PENDING with generated copies of the shared headers carrying the
-    proposed declarations (PartInstance::outfitChanged, a second GetSet bool virtual), under out/.
+    proposed declarations (PartInstance::outfitChanged, a second GetSet bool virtual), under out/: only
+    Clothing::apply 005d3a30 now (the setters 005d40c0/005d4120, ShirtGraphic::apply 005d4240 and
+    findFirstChildOfType<Decal> 005d41a0 are base rows against the native Decal.h / Instance.h / reflection).
 Each listed COFF function must be byte-identical to the original (relocations masked), and every relocation
 target is bound to the address the original instruction uses: imports by name, string literals by bytes,
 RTTI and vtables by class name, listed externals by address, and every other symbol consistently (the same
@@ -152,7 +154,11 @@ BASE_ROWS = [
     ('006334f0', '?getValue@?$BoundPropGetSet@VSkin@'), ('0063b210', '?setValue@?$BoundPropGetSet@VSkin@'),
     ('005cf5d0', '?getValue@?$GetSetImpl@P8Shirt@'), ('005b7400', '?setValue@?$GetSetImpl@P8Shirt@'),
 ]
-PENDING_ROWS = [('005d3a30', '?apply@Clothing@'), ('005d40c0', '?setTemplate@Shirt@'), ('005d4120', '?setTemplate@Pants@')]
+# Former pending rows that compile against the current headers (native Decal.h, Instance::findFirstChildOfType,
+# the 2008 GetSet with isWriteOnly in the native reflection headers).
+BASE_ROWS += [('005d40c0', '?setTemplate@Shirt@'), ('005d4120', '?setTemplate@Pants@'),
+              ('005d4240', '?apply@ShirtGraphic@'), ('005d41a0', '??$findFirstChildOfType@VDecal@RBX@@@Instance@RBX@@')]
+PENDING_ROWS = [('005d3a30', '?apply@Clothing@')]
 
 
 class Binder:
@@ -249,15 +255,24 @@ pending_rows = rows_for(pend_obj, PENDING_ROWS)
 for row in pending_rows:   # NATIVE_CLOTHING_PENDING bodies: exact only with generated header copies
     row['exact'] = 'pending-build-only'
 
-# ShirtGraphic destructor and deleting destructor now have independent recorded extents (80 and 31 bytes).
+# ShirtGraphic destructor 005d5690 (80 bytes) and deleting destructor 005d56e0 (31 bytes; adjustor 005d5600
+# jumps to it). Some function lists record them as independent extents, others as one 111-byte extent at
+# 005d5690: compare each body against its own slice of whichever extent covers it.
 raw = base_obj.read_bytes()
 sections, symbols, definitions, _ = match._coff_data_index(raw)
 funcs = {n: (b, r) for n, b, r in match.coff_functions(raw)}
 split_rows = []
-for name, address in (('??1ShirtGraphic@RBX@@UAE@XZ', 0x5d5690), ('??_GShirtGraphic@RBX@@UAEPAXI@Z', 0x5d56e0)):
-    body, refs = funcs[name]
-    target, target_refs, _ = match.target('2008-06', '%08x' % address)
-    assert match.exact_match(target, target_refs, body, refs), name
+for name, address, size in (('??1ShirtGraphic@RBX@@UAE@XZ', 0x5d5690, 80), ('??_GShirtGraphic@RBX@@UAEPAXI@Z', 0x5d56e0, 31)):
+    body, refs = funcs[name]   # size: the target ret 005d56df / ret 4 005d56fc ends each body
+    try:
+        target, target_refs, _ = match.target('2008-06', '%08x' % address)
+    except SystemExit:   # no extent starts here: slice the merged 005d5690 extent
+        target, target_refs, _ = match.target('2008-06', '005d5690')
+        lo = address - 0x5d5690
+        target, target_refs = target[lo:], [o - lo for o in target_refs if o >= lo]
+    target_refs = [o for o in target_refs if o < size]
+    target = target[:size]
+    assert len(target) == len(body) == size and match.exact_match(target, target_refs, body, refs), name
     split_rows.append(check_relocs(raw, sections, symbols, definitions, name, body, address, target))
 
 # Template helpers reached only through bindings: callDoDeclare / doDeclare / static-descriptor atexit
@@ -334,9 +349,7 @@ receipt = {
     'base_rows': base_rows, 'pending_rows': pending_rows, 'split_rows': split_rows, 'helper_rows': extra_rows,
     'vtables': vtables, 'bindings': {k: hex(v) for k, v in sorted(binder.seen.items())},
     'pending': ['005d3a30 Clothing::apply: PartInstance::outfitChanged() 0059e3a0 declaration (PartInstance.h)',
-                '005d40c0/005d4120 setters: 2008 TypedPropertyDescriptor::GetSet has a second bool virtual at slot 1',
                 '005d7640 askSetParent (ICF fold with ModelInstance::askSetParent): native ModelInstance.h does not compile standalone',
-                '005d4240 ShirtGraphic::apply / 005d41a0 findFirstChildOfType<Decal>: Instance.h template + native Decal.h',
                 '005d4b00 Clothing::resetLimbs and limb finders 005d4510/4640/4770/48a0/49d0: not attempted'],
     'scope': 'Inactive diagnostic: layout, constructors, destructors, factory/reflection chain, descriptors, '
              'static initializers and methods listed are exact with bound targets; pending rows use generated '

@@ -13,11 +13,13 @@ Builds (document-swap flags, VS2008 RTM 21022), all from the current native head
                                             (rows in tests/record_native_debris_forcefield_rows.py). The 0062d310 row of
                                             the function list holds two functions; hasForceField is compared against its
                                             bytes 00..70 and recorded as a slice, not as the whole row;
-  * ForceField.cpp with NATIVE_FORCEFIELD_PENDING against out/native-layouts/debris-forcefield-pending/ (a copy of
-    native v8tree/Instance.h plus Instance::visitDescendents, PROPOSAL_INSTANCE, and the declaration-only Workspace of
-    tests/NativeDebrisForceFieldPendingWorkspace.h): askSetParent, the ancestor walk, isProtected, visitDescendents,
-    render3dAdorn and renderPart. Rows exact only in this build are recorded exact=false (pending-build-only) and
-    not counted; their symbols bind vtable slots only as UNPROVEN.
+  The former NATIVE_FORCEFIELD_PENDING rows (tests/record_native_debris_forcefield_rows.py FORCE_PENDING_ROWS) now
+    compile against the committed native Instance.h (visitDescendents) and Workspace.h, so there is no pending build:
+    askSetParent 0062d090, isProtected 0062d3d0, visitDescendents 0062d400 (its self-recursive call binds as its own
+    row) and render3dAdorn 0062d570 are counted from the main ForceField object. The ancestor walk
+    isProtectedRecursive (0062d380, the isProtected jmp target) is compared for that binding but not counted: in the
+    local analysis no function starts at 0062d380 (it is bytes 0x70..0xbc of the 0062d310 row). renderPart 0062d200
+    stays a non-exact row (2008 PartInstance float at +0x328); its symbol binds only as UNPROVEN.
 Trivial inline virtual bodies the original folds elsewhere (00565950, 0060a2f0, 0070bdf0, 00458e90) are compared so
 the IRenderable vtable slots are proven, but kept in their own group and not counted.
 
@@ -54,8 +56,11 @@ from record_native_debris_forcefield_rows import (FORCEFIELD_ROWS, FORCE_LAYOUT_
                                                  FORCE_EXTERNAL, FORCE_DATA, FORCE_FOLDED, PROPOSAL_INSTANCE,
                                                  FORCE_NON_EXACT_ROWS, FORCE_UNPROVEN, FORCE_TRIVIAL_ROWS, FORCE_PENDING_REASONS,
                                                  write_pending)
-PENDING = OUT / 'debris-forcefield-pending'
-write_pending(ROOT, PENDING)
+# Former pending rows: counted from the main build, except the ancestor walk (binding only) and renderPart.
+FORCE_COUNTED_FROM_PENDING = (0x62d090, 0x62d3d0, 0x62d400, 0x62d570)
+FORCE_ANCESTOR_WALK = 0x62d380
+FORCE_RENDER_PART = 0x62d200
+assert {a for a, _ in FORCE_PENDING_ROWS} == set(FORCE_COUNTED_FROM_PENDING) | {FORCE_ANCESTOR_WALK, FORCE_RENDER_PART}
 DISCOVER = bool(os.environ.get('NATIVE_DEBRIS_DISCOVER'))
 
 
@@ -73,8 +78,6 @@ layout_obj, layout_flags = build('NativeDebrisForceFieldLayout', LAYOUT)
 debris_obj, debris_flags = build('NativeDebrisService', DEBRIS_SRC)
 if HAVE_FORCE:
     force_obj, force_flags = build('NativeForceField', FORCE_SRC, ['/fp:fast'])
-    forcep_obj, forcep_flags = build('NativeForceFieldPending', FORCE_SRC,
-                                     ['/fp:fast', '/I' + str(PENDING), '/DNATIVE_FORCEFIELD_PENDING'])
 
 # ---- layout ---------------------------------------------------------------------------------------
 SIZES = [('?nativeDebrisServiceSize@@', 0x158)]
@@ -197,6 +200,10 @@ DEBRIS_ROWS = [
     (0x63b510, '??_G' + FPD + 'MAEPAXI@Z'),
     (0x63b560, '??1' + DSD + 'UAE@XZ'),
     (0x63b570, '??$getset@P8DebrisService@RBX@@BEHXZP812@AEXH@Z@' + PDD),
+    # cleanup(weak_ptr) is 228 bytes (00..e4, cc padding to 0063b6b0). Some analyses split it into 0063b5c0 (127),
+    # 0063b63f (52: the shared exit, reached only by its own je/jne at 0063b613/1f/34 and the catch funclet's
+    # continuation 'mov eax, 0063b63f') and the catch funclet 0063b673 (49: referenced only by its HandlerType
+    # 008fb41c+0xc); that proof backs the local 228-byte extent this row is compared over.
     (0x63b5c0, '?cleanup@@YAX' + WPI + '@Z'),
     (0x63b6b0, '?getClassName@' + FPD + 'UBEABVName@2@XZ'),
     (0x63b6d0, '?_Tidy@' + DEQ),
@@ -381,15 +388,28 @@ def verify(obj, rows, own, strict=True):
 
 layout_rows = resolve(layout_obj, LAYOUT_ROWS)
 debris_rows = resolve(debris_obj, DEBRIS_ROWS)
-force_rows = resolve(force_obj, FORCEFIELD_ROWS) if HAVE_FORCE else []
-forcep_rows = resolve(forcep_obj, FORCE_PENDING_ROWS)
+# hasForceField: the whole 0062d310 row where the analysis ends it at its ret 0062d37f (112 bytes), else (the row runs
+# on through the ancestor walk 0062d380, which calls 0062d310 and is the isProtected jmp target) bytes 0x00..0x70 as a
+# slice, recorded as one function of a two-function row and not counted as a whole row.
+FORCE_HAS_FF = 0x62d310
+if len(match.target('2008-06', '%08x' % FORCE_HAS_FF)[0]) != FORCE_ANCESTOR_WALK - FORCE_HAS_FF:
+    FORCEFIELD_ROWS = [(('slice', a, 0, FORCE_ANCESTOR_WALK - a) if a == FORCE_HAS_FF else a, k) for a, k in FORCEFIELD_ROWS]
+force_rows = resolve(force_obj, FORCEFIELD_ROWS + [r for r in FORCE_PENDING_ROWS if r[0] in FORCE_COUNTED_FROM_PENDING]) if HAVE_FORCE else []
+# isProtectedRecursive: its own extent where the analysis has one, else bytes 0x70..0xbc of the 0062d310 row.
+try:
+    match.target('2008-06', '%08x' % FORCE_ANCESTOR_WALK)
+    walk_address = FORCE_ANCESTOR_WALK
+except (Exception, SystemExit):   # match.target exits when no function starts there
+    walk_address = ('slice', 0x62d310, FORCE_ANCESTOR_WALK - 0x62d310, FORCE_ANCESTOR_WALK - 0x62d310 + 0x4c)
+walk_rows = resolve(force_obj, [(walk_address, k) for a, k in FORCE_PENDING_ROWS if a == FORCE_ANCESTOR_WALK])
+forcep_rows = resolve(force_obj, [r for r in FORCE_PENDING_ROWS if r[0] == FORCE_RENDER_PART])
 trivial_rows = resolve(force_obj, FORCE_TRIVIAL_ROWS)
 OBJ = {'layout': layout_obj, 'debris': debris_obj}
 non_rows = [(resolve(OBJ[w], [(a, k)])[0], w) for a, k, _, w in NON_EXACT_ROWS]
 own = {}
-for address, name in layout_rows + debris_rows + force_rows + trivial_rows:
+for address, name in layout_rows + debris_rows + force_rows + trivial_rows + walk_rows:
     own.setdefault(name, first(address))
-# Pending-build rows: their symbols bind (for call targets and vtable slots) only as UNPROVEN, never as proof.
+# renderPart (non-exact): its symbol binds (render3dAdorn's bind target) only as UNPROVEN, never as proof.
 for address, name in forcep_rows:
     UNPROVEN.setdefault(name, first(address))
 strict = not DISCOVER
@@ -397,13 +417,17 @@ layout_out = verify(layout_obj, layout_rows, own, strict)
 debris_out = verify(debris_obj, debris_rows, own, strict)
 force_out = verify(force_obj, force_rows, own, strict) if HAVE_FORCE else []
 trivial_out = verify(force_obj, trivial_rows, own, strict)
-pending_own = dict(own, **{n: first(a) for a, n in forcep_rows})
-forcep_out = verify(forcep_obj, forcep_rows, pending_own, strict=False)
-for row in forcep_out:  # exact only under NATIVE_FORCEFIELD_PENDING with generated shared-header copies: not counted
-    row['exact_pending_build_only'] = row['exact']
+walk_out = verify(force_obj, walk_rows, own, strict)
+for row in walk_out:   # proves the isProtected jmp target; not a counted function row
     row['exact'] = False
-    if row['address'] in FORCE_PENDING_REASONS:
-        row['reason'] = FORCE_PENDING_REASONS[row['address']]
+    row['bytes_exact'] = True
+    row['reason'] = 'isProtected 0062d3d0 jmp target; no analyzed function starts at 0062d380 locally, not counted'
+forcep_out = verify(force_obj, forcep_rows, own, strict=False)
+for row in forcep_out:  # renderPart: not exact from the current headers; not counted
+    row['exact_pending_build_only'] = False
+    assert not row['exact'] or DISCOVER, row['address']
+    row['exact'] = False
+    row['reason'] = FORCE_PENDING_REASONS['0062d200'].replace(' even in the pending build', '')
 non_out = [verify(OBJ[w], [r], own, strict=False)[0] for r, w in non_rows]
 for row, (_, _, why, _) in zip(non_out, NON_EXACT_ROWS):
     if row['exact'] and not DISCOVER:   # would need re-review
@@ -518,14 +542,13 @@ objects = [layout_obj, debris_obj]
 flags = {'layout': layout_flags, 'debris': debris_flags}
 if HAVE_FORCE:
     paths += [R / 'tests/record_native_debris_forcefield_rows.py', FORCE_H, FORCE_SRC]
-    paths.append(R / 'tests/NativeDebrisForceFieldPendingWorkspace.h')
-    objects += [force_obj, forcep_obj]
+    objects += [force_obj]
     flags['forcefield'] = force_flags
-    flags['forcefield_pending'] = forcep_flags
 groups = {'layout': layout_out, 'debris': debris_out, 'forcefield': force_out}
 exact = sorted({r['address'] for g in groups.values() for r in g if r['exact']})
 groups['not_exact'] = non_out
 groups['pending'] = forcep_out
+groups['ancestor_walk_not_counted'] = walk_out
 groups['folded_trivial_not_counted'] = trivial_out
 exact_rows = sorted({a for e in exact if '[' not in e for a in e.split('+')})
 exact_slices = sorted(e for e in exact if '[' in e)   # one function of a two-function row: not a whole row
@@ -545,10 +568,10 @@ if HAVE_FORCE:
     from record_native_debris_forcefield_rows import FORCE_LAYOUT_NOTE, FORCE_NOT_ATTEMPTED  # noqa: E402
     receipt['layout']['ForceField'] = FORCE_LAYOUT_NOTE
     receipt['not_attempted'] = FORCE_NOT_ATTEMPTED
-    receipt['proposal_instance_h'] = PROPOSAL_INSTANCE
-    receipt['pending_note'] = ('pending rows are exact only with a generated copy of native v8tree/Instance.h plus '
-                               'Instance::visitDescendents (PROPOSAL_INSTANCE) and a declaration-only RBX::Workspace '
-                               '(tests/NativeDebrisForceFieldPendingWorkspace.h) under out/native-layouts/debris-forcefield-pending.')
+    receipt['proposal_instance_h'] = 'adopted in native v8tree/Instance.h: ' + PROPOSAL_INSTANCE
+    receipt['pending_note'] = ('no pending build: the former pending rows compile against the committed native '
+                               'Instance.h (visitDescendents) and Workspace.h. renderPart 0062d200 (group pending) is '
+                               'not exact (PartInstance +0x328); isProtectedRecursive 0062d380 is bound, not counted.')
 (ROOT / 'work/2008-06/shared-layouts/debris-forcefield-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS native DebrisService/ForceField: %d distinct function addresses exact (layout %d, debris %d, forcefield %d); '
       '%d pending-build-only rows (%d exact there) and %d non-exact rows not counted; targets and %d vtables verified'

@@ -37,7 +37,7 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeMouseLayout.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-mouse/NativeMouseLayout.obj",
       "/home/user/roconstruct/rebuild/2008-06/tests/NativeMouseLayout.cpp"
     ],
     "mouse": [
@@ -76,61 +76,19 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeMouse.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Mouse.cpp"
-    ],
-    "mouse_pending": [
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/mouse-pending",
-      "/DNATIVE_MOUSE_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/fp:fast",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeMousePending.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-mouse/NativeMouse.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/Mouse.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_mouse.py": "db23a8d42069d414ed967e8c7bc423c66618407f89c75dfd01f5ab91deb30707",
+    "rebuild/2008-06/tests/record_native_mouse.py": "5a43965a9aa9faa40818f764e03a6ba62b32e6628941c484a6eebd1d4a3d9869",
     "rebuild/2008-06/tests/NativeMouseLayout.cpp": "b55dd2880b03e7f0e21bb1b72f33b514c2b1a42cd98e2edcd249307e7db0c47f",
     "rebuild/2008-06/native-classes/Mouse.cpp": "41002f5ffe174dc186c9f3f72027d508c02aeb32638e8eb582e9c54bd09ce476",
     "rebuild/2008-06/native-headers/v8datamodel/Mouse.h": "780e1ec8867ae1bf88769f48071b4011b2d842faa85f37bbf6a5f8f4a1e8bd54"
   },
   "objects": {
-    "NativeMouseLayout.obj": "ee11fdb5e596b38226ddc60a191e816dd63303816b2542dcf95e85bc229b2be0",
-    "NativeMouse.obj": "ab72ec97628fc37407961eed2e3d4487f8b995c377167b223ab31882b20d6821",
-    "NativeMousePending.obj": "b461622c3082ee8b6ba2d56e67bc180ff694e2a1b8b82aa8816f388f8936b683"
+    "NativeMouseLayout.obj": "1187b6002a3aaf0e0d89aa12435378e713bd17f4cd66d8f4f266d30cb3b36647",
+    "NativeMouse.obj": "3c5f9a9a36bab80289c06142fd9130267da7563f8ff99ce5b9ab8d397f873dee"
   },
   "layout": {
     "nativeMouseSize": "0x168",
@@ -146,7 +104,6 @@
     "005fd690",
     "005fd810",
     "005fd9a0",
-    "005fda0e",
     "005fde10",
     "005fe260",
     "005fe7f0",
@@ -178,6 +135,7 @@
     "0064e260",
     "0064e2a0",
     "0064e2f0",
+    "0064e390",
     "0064e440",
     "0064e4e0",
     "0064e590",
@@ -222,6 +180,7 @@
     "00405e10",
     "00409d40",
     "00409d50",
+    "00409dc0",
     "00409e90",
     "00409ef0",
     "00409f60",
@@ -236,12 +195,15 @@
     "0040ad80",
     "0040af30",
     "0040b050",
+    "00415000",
     "004171b0",
     "00417f00",
     "004187b0",
     "004199e0",
+    "0041a5d0",
     "0041b3f0",
     "0041b830",
+    "0041bdf0",
     "0042ac20",
     "0042b100",
     "0042c590",
@@ -264,17 +226,25 @@
     "004b5950",
     "004b5f40",
     "004c9c40",
+    "00510780",
     "00510a30",
+    "0055c390",
     "00565950",
     "00583f40",
     "00584440",
+    "00598310",
+    "0059a4a0",
     "005a0460",
     "005b73c0",
     "005cf5d0",
     "005cf660",
     "005e28b0",
+    "005eee00",
     "00609d90",
     "0060a2f0",
+    "00631180",
+    "00634730",
+    "006347a0",
     "00682cc0",
     "0070bdf0",
     "007fa2a0",
@@ -296,6 +266,26 @@
       },
       "local_eh": [
         "__ehhandler$??$create@VMouse@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VMouse@RBX@@@boost@@XZ"
+      ]
+    },
+    {
+      "address": "0064e390",
+      "symbol": "??$?0P8Mouse@RBX@@BEPAVPartInstance@1@XZH@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Mouse@2@BEPAVPartInstance@2@XZHW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 164,
+      "target_size": 164,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {
+        "??$singleton@PAVMouse@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ": "0x583f40 (own row)",
+        "?classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5fe7f0 (own row)",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
+        "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@": "0x84b2f8 (vtable RTTI .?AV?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@ offset 0x0)",
+        "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BIIDREF@2@@": "0x84b2f0 (vtable RTTI .?AV?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@ offset 0x18)",
+        "??$getset@P8Mouse@RBX@@BEPAVPartInstance@2@XZ@?$PropDescriptor@VMouse@RBX@@PAVPartInstance@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVPartInstance@RBX@@@Reflection@RBX@@@std@@P8Mouse@2@BEPAVPartInstance@2@XZH@Z": "0x64e220 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Mouse@RBX@@BEPAVPartInstance@1@XZH@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Mouse@2@BEPAVPartInstance@2@XZHW4Functionality@PropertyDescriptor@12@@Z"
       ]
     },
     {
@@ -873,6 +863,26 @@
       ]
     },
     {
+      "address": "005fe7f0",
+      "symbol": "?classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "target_size": 101,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x97b6b0 (own static)",
+        "?sMouse@RBX@@3QBDB": "0x84b260 (class name 'Mouse')",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (own row)",
+        "?foo@?1??classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x97b5f0 (own static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x800040 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
       "address": "0064df60",
       "symbol": "?cacheUIEvent@Mouse@RBX@@AAEXABVUIEvent@2@@Z",
       "size": 61,
@@ -910,26 +920,6 @@
       },
       "local_eh": [
         "__ehhandler$?fire@?$SignalDescImpl@$00$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
-      ]
-    },
-    {
-      "address": "005fe7f0",
-      "symbol": "?classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
-      "size": 101,
-      "target_size": 101,
-      "exact": true,
-      "counted_class": true,
-      "verified_targets": {
-        "??_B?1??classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x97b6b0 (own static)",
-        "?sMouse@RBX@@3QBDB": "0x84b260 (class name 'Mouse')",
-        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (own row)",
-        "?foo@?1??classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x97b5f0 (own static)",
-        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
-        "??__Ffoo@?1??classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x800040 (own row)",
-        "_atexit": "0x6a17af (external)"
-      },
-      "local_eh": [
-        "__ehhandler$?classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
       ]
     },
     {
@@ -1191,14 +1181,6 @@
       "local_eh": []
     },
     {
-      "address": "0064e390",
-      "symbol": "??$?0P8Mouse@RBX@@BEPAVPartInstance@1@XZH@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Mouse@2@BEPAVPartInstance@2@XZHW4Functionality@PropertyDescriptor@12@@Z",
-      "size": 171,
-      "target_size": 164,
-      "exact": false,
-      "counted_class": true
-    },
-    {
       "address": "008010c0",
       "symbol": "??__Fprop_Target@RBX@@YAXXZ",
       "size": 29,
@@ -1452,7 +1434,6 @@
       "target_size": 131,
       "exact": true,
       "counted_class": true,
-      "bounds_status": "two contiguous rows: 005fd9a0 + 005fda0e (catch funclet)",
       "verified_targets": {
         "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
         "??_7?$sp_counted_impl_pd@PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x8417c0 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
@@ -1462,6 +1443,62 @@
       "local_eh": [
         "__ehhandler$??$?0PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
       ]
+    },
+    {
+      "address": "0040ad80",
+      "symbol": "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "target_size": 101,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x96c528 (own static)",
+        "?sInstance@RBX@@3QBDB": "0x82d6a0 (class name 'Instance')",
+        "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ": "0x40ad20 (own row)",
+        "?foo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96c468 (own static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fa2a0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "00800040",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "target_size": 10,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x97b5f0 (own static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00631180",
+      "symbol": "??_G?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UAEPAXI@Z",
+      "size": 47,
+      "target_size": 47,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?hasStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE_NXZ",
+      "size": 3,
+      "target_size": 3,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {},
+      "local_eh": []
     },
     {
       "address": "004b5950",
@@ -1504,39 +1541,6 @@
       ]
     },
     {
-      "address": "0040ad80",
-      "symbol": "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
-      "size": 101,
-      "target_size": 101,
-      "exact": true,
-      "counted_class": false,
-      "verified_targets": {
-        "??_B?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x96c528 (own static)",
-        "?sInstance@RBX@@3QBDB": "0x82d6a0 (class name 'Instance')",
-        "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ": "0x40ad20 (own row)",
-        "?foo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96c468 (own static)",
-        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
-        "??__Ffoo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fa2a0 (own row)",
-        "_atexit": "0x6a17af (external)"
-      },
-      "local_eh": [
-        "__ehhandler$?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
-      ]
-    },
-    {
-      "address": "00800040",
-      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
-      "size": 10,
-      "target_size": 10,
-      "exact": true,
-      "counted_class": true,
-      "verified_targets": {
-        "?foo@?1??classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x97b5f0 (own static)",
-        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (own row)"
-      },
-      "local_eh": []
-    },
-    {
       "address": "004199e0",
       "symbol": "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ",
       "size": 85,
@@ -1549,6 +1553,22 @@
       },
       "local_eh": [
         "__ehhandler$??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0041bdf0",
+      "symbol": "??_G?$SignalDesc@VMouse@RBX@@$$A6AXXZ@Reflection@RBX@@UAEPAXI@Z",
+      "size": 87,
+      "target_size": 87,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (own row)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??_G?$SignalDesc@VMouse@RBX@@$$A6AXXZ@Reflection@RBX@@UAEPAXI@Z"
       ]
     },
     {
@@ -1717,6 +1737,31 @@
       "counted_class": false
     },
     {
+      "address": "0060a2f0",
+      "symbol": "?isWriteOnly@?$GetImpl@P8Mouse@RBX@@BEPAVPartInstance@2@XZ@?$PropDescriptor@VMouse@RBX@@PAVPartInstance@2@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "target_size": 3,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00409dc0",
+      "symbol": "??_Gruntime_error@std@@UAEPAXI@Z",
+      "size": 48,
+      "target_size": 48,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??_7runtime_error@std@@6B@": "0x80b7f8 (vtable RTTI .?AVruntime_error@std@@ offset 0x0)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??1exception@std@@UAE@XZ": "0x80289c (msvcr90.dll!??1exception@std@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
       "address": "00409db0",
       "symbol": "?what@runtime_error@std@@UBEPBDXZ",
       "size": 14,
@@ -1808,14 +1853,6 @@
       "local_eh": []
     },
     {
-      "address": "00558d90",
-      "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
-      "size": 3,
-      "target_size": 285,
-      "exact": false,
-      "counted_class": false
-    },
-    {
       "address": "0070bdf0",
       "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
       "size": 3,
@@ -1868,14 +1905,6 @@
         "??_EMouse@RBX@@UAEPAXI@Z": "0x5ff570 (own row (??_G))"
       },
       "local_eh": []
-    },
-    {
-      "address": "00559230",
-      "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
-      "size": 3,
-      "target_size": 17,
-      "exact": false,
-      "counted_class": false
     },
     {
       "address": "0070bdf0",
@@ -1984,6 +2013,53 @@
       "local_eh": []
     },
     {
+      "address": "0040ad20",
+      "symbol": "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ",
+      "size": 90,
+      "target_size": 90,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??_B?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@51": "0x96c460 (own static)",
+        "?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A": "0x96c3a0 (own static)",
+        "??0ClassDescriptor@Reflection@RBX@@AAE@XZ": "0x570820 (external (evidence name))",
+        "??__Froot@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@YAXXZ": "0x7fa300 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ"
+      ]
+    },
+    {
+      "address": "007fa2a0",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "target_size": 10,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96c468 (own static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040abc0",
+      "symbol": "??1ClassDescriptor@Reflection@RBX@@UAE@XZ",
+      "size": 99,
+      "target_size": 99,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??1?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30 (own row)",
+        "??1?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30 (own row)",
+        "??1?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30 (own row)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
       "address": "004908a0",
       "symbol": "??0?$slot_call_iterator@U?$caller@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@?$call_bound0@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAE@Vnamed_slot_map_iterator@123@0U?$caller@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@?$call_bound0@X@123@AAV?$optional@Uunusable@detail@signals@boost@@@3@@Z",
       "size": 328,
@@ -2041,53 +2117,6 @@
       "local_eh": []
     },
     {
-      "address": "0040ad20",
-      "symbol": "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ",
-      "size": 90,
-      "target_size": 90,
-      "exact": true,
-      "counted_class": false,
-      "verified_targets": {
-        "??_B?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@51": "0x96c460 (own static)",
-        "?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A": "0x96c3a0 (own static)",
-        "??0ClassDescriptor@Reflection@RBX@@AAE@XZ": "0x570820 (external (evidence name))",
-        "??__Froot@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@YAXXZ": "0x7fa300 (own row)",
-        "_atexit": "0x6a17af (external)"
-      },
-      "local_eh": [
-        "__ehhandler$?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ"
-      ]
-    },
-    {
-      "address": "007fa2a0",
-      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
-      "size": 10,
-      "target_size": 10,
-      "exact": true,
-      "counted_class": false,
-      "verified_targets": {
-        "?foo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96c468 (own static)",
-        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (own row)"
-      },
-      "local_eh": []
-    },
-    {
-      "address": "0040abc0",
-      "symbol": "??1ClassDescriptor@Reflection@RBX@@UAE@XZ",
-      "size": 99,
-      "target_size": 99,
-      "exact": true,
-      "counted_class": false,
-      "verified_targets": {
-        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
-        "??1?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30 (own row)",
-        "??1?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30 (own row)",
-        "??1?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30 (own row)",
-        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
-      },
-      "local_eh": []
-    },
-    {
       "address": "004187b0",
       "symbol": "?clear@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAEXXZ",
       "size": 69,
@@ -2095,6 +2124,19 @@
       "exact": true,
       "counted_class": false,
       "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005eee00",
+      "symbol": "??_GDescriptor@Reflection@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)",
         "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
       },
       "local_eh": []
@@ -2113,6 +2155,22 @@
       },
       "local_eh": [
         "__ehhandler$??0TSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "0041bdf0",
+      "symbol": "??_G?$SignalDesc@VMouse@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z",
+      "size": 87,
+      "target_size": 87,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (own row)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??_G?$SignalDesc@VMouse@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z"
       ]
     },
     {
@@ -2157,6 +2215,140 @@
       "local_eh": [
         "__ehhandler$??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z"
       ]
+    },
+    {
+      "address": "00598310",
+      "symbol": "??_G?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UAEPAXI@Z",
+      "size": 47,
+      "target_size": 47,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059a4a0",
+      "symbol": "?isReadOnly@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ",
+      "size": 9,
+      "target_size": 9,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005846d0",
+      "symbol": "?equalValues@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+      "size": 114,
+      "target_size": 114,
+      "exact": false,
+      "counted_class": false
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?hasStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "target_size": 3,
+      "exact": false,
+      "counted_class": false
+    },
+    {
+      "address": "00598310",
+      "symbol": "??_G?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@UAEPAXI@Z",
+      "size": 47,
+      "target_size": 47,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059a4a0",
+      "symbol": "?isReadOnly@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NXZ",
+      "size": 9,
+      "target_size": 9,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00443530",
+      "symbol": "?equalValues@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+      "size": 50,
+      "target_size": 50,
+      "exact": false,
+      "counted_class": false
+    },
+    {
+      "address": "00565950",
+      "symbol": "?hasStringValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "target_size": 3,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00598310",
+      "symbol": "??_G?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@UAEPAXI@Z",
+      "size": 47,
+      "target_size": 47,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059a4a0",
+      "symbol": "?isReadOnly@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NXZ",
+      "size": 9,
+      "target_size": 9,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005861f0",
+      "symbol": "?equalValues@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+      "size": 145,
+      "target_size": 145,
+      "exact": false,
+      "counted_class": false
+    },
+    {
+      "address": "00565950",
+      "symbol": "?hasStringValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "target_size": 3,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005eee00",
+      "symbol": "??_GType@Reflection@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
     },
     {
       "address": "00455f30",
@@ -2298,6 +2490,19 @@
       ]
     },
     {
+      "address": "00415000",
+      "symbol": "??_G?$sp_counted_impl_pd@PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {
+        "??_7sp_counted_base@detail@boost@@6B@": "0x80b2f0 (vtable RTTI .?AVsp_counted_base@detail@boost@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
       "address": "0048ee50",
       "symbol": "?dispose@?$sp_counted_impl_pd@PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ",
       "size": 13,
@@ -2325,6 +2530,55 @@
       "verified_targets": {
         "??_R0?AVDeleter@?$Creatable@VInstance@RBX@@@RBX@@@8": "0x9288a4 (RTTI .?AVDeleter@?$Creatable@VInstance@RBX@@@RBX@@)",
         "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fa300",
+      "symbol": "??__Froot@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@YAXXZ",
+      "size": 10,
+      "target_size": 10,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A": "0x96c3a0 (own static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ab30",
+      "symbol": "??1?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
+      "size": 82,
+      "target_size": 82,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ab30",
+      "symbol": "??1?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
+      "size": 82,
+      "target_size": 82,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ab30",
+      "symbol": "??1?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
+      "size": 82,
+      "target_size": 82,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
       },
       "local_eh": []
     },
@@ -2439,55 +2693,6 @@
       "local_eh": []
     },
     {
-      "address": "007fa300",
-      "symbol": "??__Froot@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@YAXXZ",
-      "size": 10,
-      "target_size": 10,
-      "exact": true,
-      "counted_class": false,
-      "verified_targets": {
-        "?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A": "0x96c3a0 (own static)",
-        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (own row)"
-      },
-      "local_eh": []
-    },
-    {
-      "address": "0040ab30",
-      "symbol": "??1?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
-      "size": 82,
-      "target_size": 82,
-      "exact": true,
-      "counted_class": false,
-      "verified_targets": {
-        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
-      },
-      "local_eh": []
-    },
-    {
-      "address": "0040ab30",
-      "symbol": "??1?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
-      "size": 82,
-      "target_size": 82,
-      "exact": true,
-      "counted_class": false,
-      "verified_targets": {
-        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
-      },
-      "local_eh": []
-    },
-    {
-      "address": "0040ab30",
-      "symbol": "??1?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
-      "size": 82,
-      "target_size": 82,
-      "exact": true,
-      "counted_class": false,
-      "verified_targets": {
-        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
-      },
-      "local_eh": []
-    },
-    {
       "address": "00499c00",
       "symbol": "??0?$signal0@XU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXXZV?$allocator@X@std@@@2@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z",
       "size": 201,
@@ -2512,12 +2717,111 @@
       ]
     },
     {
+      "address": "0055c390",
+      "symbol": "??_Glogic_error@std@@UAEPAXI@Z",
+      "size": 48,
+      "target_size": 48,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??1exception@std@@UAE@XZ": "0x80289c (msvcr90.dll!??1exception@std@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
       "address": "00409db0",
       "symbol": "?what@logic_error@std@@UBEPBDXZ",
       "size": 14,
       "target_size": 9,
       "exact": false,
       "counted_class": false
+    },
+    {
+      "address": "0055c390",
+      "symbol": "??_Glength_error@std@@UAEPAXI@Z",
+      "size": 48,
+      "target_size": 48,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??1exception@std@@UAE@XZ": "0x80289c (msvcr90.dll!??1exception@std@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isWriteOnly@?$GetImpl@P8Mouse@RBX@@BE?AVCoordinateFrame@G3D@@XZ@?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "target_size": 3,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00598310",
+      "symbol": "??_G?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UAEPAXI@Z",
+      "size": 47,
+      "target_size": 47,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00510780",
+      "symbol": "??_GRay@G3D@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??_7Ray@G3D@@6B@": "0x8282c4 (vtable RTTI .?AVRay@G3D@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isWriteOnly@?$GetImpl@P8Mouse@RBX@@BEHXZ@?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "target_size": 3,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00598310",
+      "symbol": "??_G?$TypedPropertyDescriptor@H@Reflection@RBX@@UAEPAXI@Z",
+      "size": 47,
+      "target_size": 47,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isWriteOnly@?$GetSetImpl@P8Mouse@RBX@@BE?AVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "target_size": 3,
+      "exact": true,
+      "counted_class": true,
+      "verified_targets": {},
+      "local_eh": []
     },
     {
       "address": "00455f30",
@@ -2717,6 +3021,32 @@
       ]
     },
     {
+      "address": "0041a5d0",
+      "symbol": "??_GSignalInstance@Reflection@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??1SignalInstance@Reflection@RBX@@UAE@XZ": "0x56b4f0 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "006347a0",
+      "symbol": "??_GTSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??1TSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@UAE@XZ": "0x634730 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
       "address": "00499c00",
       "symbol": "??0?$signal1@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@4@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z",
       "size": 201,
@@ -2734,6 +3064,19 @@
       "verified_targets": {
         "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)",
         "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00415000",
+      "symbol": "??_Gsp_counted_base@detail@boost@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??_7sp_counted_base@detail@boost@@6B@": "0x80b2f0 (vtable RTTI .?AVsp_counted_base@detail@boost@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
       },
       "local_eh": []
     },
@@ -2761,15 +3104,69 @@
         "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@Vstored_group@detail@signals@boost@@V?$list@Uconnection_slot_pair@detail@signals@boost@@V?$allocator@Uconnection_slot_pair@detail@signals@boost@@@std@@@std@@V?$function2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@4@V?$allocator@U?$pair@$$CBVstored_group@detail@signals@boost@@V?$list@Uconnection_slot_pair@detail@signals@boost@@V?$allocator@Uconnection_slot_pair@detail@signals@boost@@@std@@@std@@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x409f60 (own row)"
       },
       "local_eh": []
+    },
+    {
+      "address": "00409dc0",
+      "symbol": "??_Gbad_function_call@boost@@UAEPAXI@Z",
+      "size": 48,
+      "target_size": 48,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??_7runtime_error@std@@6B@": "0x80b7f8 (vtable RTTI .?AVruntime_error@std@@ offset 0x0)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??1exception@std@@UAE@XZ": "0x80289c (msvcr90.dll!??1exception@std@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00634730",
+      "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@UAE@XZ",
+      "size": 104,
+      "target_size": 104,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??1trackable@signals@boost@@IAE@XZ": "0x5950e0 (external)",
+        "??1signal_base@detail@signals@boost@@QAE@XZ": "0x600660 (external)",
+        "??1SignalInstance@Reflection@RBX@@UAE@XZ": "0x56b4f0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1TSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "006347a0",
+      "symbol": "??_GTSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??1TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAE@XZ": "0x634730 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00634730",
+      "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAE@XZ",
+      "size": 104,
+      "target_size": 104,
+      "exact": true,
+      "counted_class": false,
+      "verified_targets": {
+        "??1trackable@signals@boost@@IAE@XZ": "0x5950e0 (external)",
+        "??1signal_base@detail@signals@boost@@QAE@XZ": "0x600660 (external)",
+        "??1SignalInstance@Reflection@RBX@@UAE@XZ": "0x56b4f0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAE@XZ"
+      ]
     }
   ],
   "not_exact_rows": [
-    {
-      "address": "0064e390",
-      "symbol": "??$?0P8Mouse@RBX@@BEPAVPartInstance@1@XZH@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Mouse@2@BEPAVPartInstance@2@XZHW4Functionality@PropertyDescriptor@12@@Z",
-      "size": 171,
-      "target_size": 164
-    },
     {
       "address": "005978a0",
       "symbol": "??0?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
@@ -2783,16 +3180,28 @@
       "target_size": 9
     },
     {
-      "address": "00558d90",
-      "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
-      "size": 3,
-      "target_size": 285
+      "address": "005846d0",
+      "symbol": "?equalValues@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+      "size": 114,
+      "target_size": 114
     },
     {
-      "address": "00559230",
-      "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
+      "address": "0060a2f0",
+      "symbol": "?hasStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ",
       "size": 3,
-      "target_size": 17
+      "target_size": 3
+    },
+    {
+      "address": "00443530",
+      "symbol": "?equalValues@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+      "size": 50,
+      "target_size": 50
+    },
+    {
+      "address": "005861f0",
+      "symbol": "?equalValues@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+      "size": 145,
+      "target_size": 145
     },
     {
       "address": "005ff570",
@@ -2831,38 +3240,46 @@
       "target_size": 230
     }
   ],
-  "pending_rows": [
-    {
-      "address": "0064e390",
-      "symbol": "??$?0P8Mouse@RBX@@BEPAVPartInstance@1@XZH@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Mouse@2@BEPAVPartInstance@2@XZHW4Functionality@PropertyDescriptor@12@@Z",
-      "size": 164,
-      "target_size": 164,
-      "exact": false,
-      "counted_class": true,
-      "verified_targets": {
-        "??$singleton@PAVMouse@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ": "0x583f40 (own row)",
-        "?classDescriptor@?$Described@VMouse@RBX@@$1?sMouse@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5fe7f0 (own row)",
-        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
-        "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@": "0x84b2f8 (vtable RTTI .?AV?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@ offset 0x0)",
-        "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BIIDREF@2@@": "0x84b2f0 (vtable RTTI .?AV?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@ offset 0x18)",
-        "??$getset@P8Mouse@RBX@@BEPAVPartInstance@2@XZ@?$PropDescriptor@VMouse@RBX@@PAVPartInstance@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVPartInstance@RBX@@@Reflection@RBX@@@std@@P8Mouse@2@BEPAVPartInstance@2@XZH@Z": "0x64e220 (own row)",
-        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
-      },
-      "local_eh": [
-        "__ehhandler$??$?0P8Mouse@RBX@@BEPAVPartInstance@1@XZH@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Mouse@2@BEPAVPartInstance@2@XZHW4Functionality@PropertyDescriptor@12@@Z"
-      ],
-      "exact_pending_build_only": true,
-      "build": "mouse-pending"
-    }
-  ],
+  "pending_rows": [],
   "vtables": {
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@": {
+      "address": "0x84b2f8",
+      "rtti": ".?AV?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@",
+      "offset": "0x0",
+      "own_class": false,
+      "slots": {
+        "0": "??_E?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UAEPAXI@Z = 0x631180 (own row (??_G))",
+        "1": "?isReadOnly@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBE_NXZ = 0x59d490 (external slot)",
+        "2": "?isWriteOnly@RefPropertyDescriptor@Reflection@RBX@@UBE_NXZ = 0x565960 (external slot)",
+        "3": "?equalValues@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z = 0x5ee1d0 (external slot)",
+        "4": "?getVariant@RefPropertyDescriptor@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z = 0x585420 (external slot)",
+        "5": "?setVariant@RefPropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z = 0x5da5b0 (external slot)",
+        "6": "?hasStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE_NXZ = 0x60a2f0 (own row)",
+        "7": "?getStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z = 0x5eecf0 (external slot)",
+        "8": "?setStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x5eedf0 (external slot)",
+        "9": "?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x56be00 (external slot)",
+        "10": "?writeValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPBVDescribedBase@23@PAVXmlElement@@@Z = 0x491760 (external slot)",
+        "11": "?readValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x4914b0 (external slot)",
+        "12": "?getRefValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEPAVDescribedBase@23@PBV423@@Z = 0x585360 (external slot)",
+        "13": "?setRefValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@0@Z = 0x5e35f0 (external slot)"
+      }
+    },
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BIIDREF@2@@": {
+      "address": "0x84b2f0",
+      "rtti": ".?AV?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@",
+      "offset": "0x18",
+      "own_class": false,
+      "slots": {
+        "0": "?assignIDREF@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVInstanceHandle@3@@Z = 0x585380 (external slot)"
+      }
+    },
     "??_7?$SignalDesc@VMouse@RBX@@$$A6AXXZ@Reflection@RBX@@6B@": {
       "address": "0x84b39c",
       "rtti": ".?AV?$SignalDesc@VMouse@RBX@@$$A6AXXZ@Reflection@RBX@@",
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_E?$SignalDesc@VMouse@RBX@@$$A6AXXZ@Reflection@RBX@@UAEPAXI@Z = 0x41bdf0 (external slot)",
+        "0": "??_E?$SignalDesc@VMouse@RBX@@$$A6AXXZ@Reflection@RBX@@UAEPAXI@Z = 0x41bdf0 (own row (??_G))",
         "1": "?connectGeneric@?$SignalDescImpl@$0A@$$A6AXXZ@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z = 0x4b5f60 (external slot)",
         "2": "?newSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z = 0x4b1d50 (own row)"
       }
@@ -2872,8 +3289,12 @@
       "rtti": ".?AV?$GetImpl@P8Mouse@RBX@@BEPAVPartInstance@2@XZ@?$PropDescriptor@VMouse@RBX@@PAVPartInstance@2@@Reflection@RBX@@",
       "offset": "0x0",
       "own_class": false,
-      "next_dword_is_code": "slot 3 position holds 0x4a1b70 in the original",
-      "not_walked": "shared template vtable; length not proven"
+      "slots": {
+        "0": "?isReadOnly@?$GetImpl@P8Mouse@RBX@@BEPAVPartInstance@2@XZ@?$PropDescriptor@VMouse@RBX@@PAVPartInstance@2@@Reflection@RBX@@UBE_NXZ = 0x565950 (own row)",
+        "1": "?isWriteOnly@?$GetImpl@P8Mouse@RBX@@BEPAVPartInstance@2@XZ@?$PropDescriptor@VMouse@RBX@@PAVPartInstance@2@@Reflection@RBX@@UBE_NXZ = 0x60a2f0 (own row)",
+        "2": "?getValue@?$GetImpl@P8Mouse@RBX@@BEPAVPartInstance@2@XZ@?$PropDescriptor@VMouse@RBX@@PAVPartInstance@2@@Reflection@RBX@@UBEPAVPartInstance@4@PBVDescribedBase@34@@Z = 0x5cf660 (own row)",
+        "3": "?setValue@?$GetImpl@P8Mouse@RBX@@BEPAVPartInstance@2@XZ@?$PropDescriptor@VMouse@RBX@@PAVPartInstance@2@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABQAVPartInstance@4@@Z = 0x4a1b70 (own row)"
+      }
     },
     "??_7RefType@Reflection@RBX@@6B@": {
       "address": "0x82144c",
@@ -2889,7 +3310,7 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_Eruntime_error@std@@UAEPAXI@Z = 0x409dc0 (external slot)",
+        "0": "??_Eruntime_error@std@@UAEPAXI@Z = 0x409dc0 (own row (??_G))",
         "1": "?what@runtime_error@std@@UBEPBDXZ = 0x409db0 (own row)"
       }
     },
@@ -2952,7 +3373,7 @@
       "own_class": true,
       "slots": {
         "0": "??_EMouse@RBX@@WCE@AEPAXI@Z = 0x5ff4e0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (external slot)",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -2974,7 +3395,7 @@
       "own_class": true,
       "slots": {
         "0": "??_EMouse@RBX@@WGE@AEPAXI@Z = 0x5ff500 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (external slot)",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -3017,7 +3438,7 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_EDescriptor@Reflection@RBX@@UAEPAXI@Z = 0x5eee00 (external slot)"
+        "0": "??_EDescriptor@Reflection@RBX@@UAEPAXI@Z = 0x5eee00 (own row (??_G))"
       }
     },
     "??_7?$SignalDesc@VMouse@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@6B@": {
@@ -3026,7 +3447,7 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_E?$SignalDesc@VMouse@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z = 0x41bdf0 (external slot)",
+        "0": "??_E?$SignalDesc@VMouse@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z = 0x41bdf0 (own row (??_G))",
         "1": "?connectGeneric@?$SignalDescImpl@$00$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z = 0x41d3d0 (external slot)",
         "2": "?newSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z = 0x41b830 (own row)"
       }
@@ -3036,24 +3457,60 @@
       "rtti": ".?AV?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@",
       "offset": "0x0",
       "own_class": false,
-      "next_dword_is_code": "slot 9 position holds 0x56be00 in the original",
-      "not_walked": "shared template vtable; length not proven"
+      "slots": {
+        "0": "??_E?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UAEPAXI@Z = 0x598310 (own row (??_G))",
+        "1": "?isReadOnly@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ = 0x59a4a0 (own row)",
+        "2": "?isWriteOnly@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ = 0x443310 (external slot)",
+        "3": "?equalValues@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z = 0x5846d0 (own row)",
+        "4": "?getVariant@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z = 0x584c30 (external slot)",
+        "5": "?setVariant@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z = 0x584f70 (external slot)",
+        "6": "?hasStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ = 0x60a2f0 (own row)",
+        "7": "?getStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z = 0x5eecf0 (external slot)",
+        "8": "?setStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x5eedf0 (external slot)",
+        "9": "?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x56be00 (external slot)",
+        "10": "?writeValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z = 0x59aeb0 (external slot)",
+        "11": "?readValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x59acb0 (external slot)"
+      }
     },
     "??_7?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@6B@": {
       "address": "0x84b334",
       "rtti": ".?AV?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@",
       "offset": "0x0",
       "own_class": false,
-      "next_dword_is_code": "slot 9 position holds 0x56be00 in the original",
-      "not_walked": "shared template vtable; length not proven"
+      "slots": {
+        "0": "??_E?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@UAEPAXI@Z = 0x598310 (own row (??_G))",
+        "1": "?isReadOnly@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NXZ = 0x59a4a0 (own row)",
+        "2": "?isWriteOnly@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NXZ = 0x443310 (external slot)",
+        "3": "?equalValues@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z = 0x443530 (own row)",
+        "4": "?getVariant@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z = 0x443680 (external slot)",
+        "5": "?setVariant@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z = 0x443c10 (external slot)",
+        "6": "?hasStringValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NXZ = 0x565950 (own row)",
+        "7": "?getStringValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z = 0x56e290 (external slot)",
+        "8": "?setStringValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x56e2d0 (external slot)",
+        "9": "?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x56be00 (external slot)",
+        "10": "?writeValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z = 0x56e820 (external slot)",
+        "11": "?readValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x56e7e0 (external slot)"
+      }
     },
     "??_7?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@6B@": {
       "address": "0x84b368",
       "rtti": ".?AV?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@",
       "offset": "0x0",
       "own_class": false,
-      "next_dword_is_code": "slot 9 position holds 0x56be00 in the original",
-      "not_walked": "shared template vtable; length not proven"
+      "slots": {
+        "0": "??_E?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@UAEPAXI@Z = 0x598310 (own row (??_G))",
+        "1": "?isReadOnly@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NXZ = 0x59a4a0 (own row)",
+        "2": "?isWriteOnly@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NXZ = 0x443310 (external slot)",
+        "3": "?equalValues@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z = 0x5861f0 (own row)",
+        "4": "?getVariant@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z = 0x597c90 (external slot)",
+        "5": "?setVariant@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z = 0x597f30 (external slot)",
+        "6": "?hasStringValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NXZ = 0x565950 (own row)",
+        "7": "?getStringValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z = 0x597b50 (external slot)",
+        "8": "?setStringValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x597bd0 (external slot)",
+        "9": "?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x56be00 (external slot)",
+        "10": "?writeValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z = 0x615640 (external slot)",
+        "11": "?readValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x5b8150 (external slot)"
+      }
     },
     "??_7Type@Reflection@RBX@@6B@": {
       "address": "0x821444",
@@ -3061,7 +3518,7 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_EType@Reflection@RBX@@UAEPAXI@Z = 0x5eee00 (external slot)"
+        "0": "??_EType@Reflection@RBX@@UAEPAXI@Z = 0x5eee00 (own row (??_G))"
       }
     },
     "??_7?$DescribedNonCreatable@VMouse@RBX@@VInstance@2@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
@@ -3123,7 +3580,7 @@
       "own_class": true,
       "slots": {
         "0": "??_E?$DescribedNonCreatable@VMouse@RBX@@VInstance@2@$1?sMouse@2@3QBDB@RBX@@WCE@AEPAXI@Z = 0x5e28b0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (external slot)",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -3145,7 +3602,7 @@
       "own_class": true,
       "slots": {
         "0": "??_E?$DescribedNonCreatable@VMouse@RBX@@VInstance@2@$1?sMouse@2@3QBDB@RBX@@WGE@AEPAXI@Z = 0x4c9c40 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (external slot)",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -3188,7 +3645,7 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_E?$sp_counted_impl_pd@PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z = 0x415000 (external slot)",
+        "0": "??_E?$sp_counted_impl_pd@PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z = 0x415000 (own row (??_G))",
         "1": "?dispose@?$sp_counted_impl_pd@PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ = 0x48ee50 (own row)",
         "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10 (own row)",
         "3": "?get_deleter@?$sp_counted_impl_pd@PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z = 0x5a0460 (own row)"
@@ -3200,7 +3657,7 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_Elogic_error@std@@UAEPAXI@Z = 0x55c390 (external slot)",
+        "0": "??_Elogic_error@std@@UAEPAXI@Z = 0x55c390 (own row (??_G))",
         "1": "?what@logic_error@std@@UBEPBDXZ = 0x409db0 (own row)"
       }
     },
@@ -3210,7 +3667,7 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_Elength_error@std@@UAEPAXI@Z = 0x55c390 (external slot)",
+        "0": "??_Elength_error@std@@UAEPAXI@Z = 0x55c390 (own row (??_G))",
         "1": "?what@logic_error@std@@UBEPBDXZ = 0x409db0 (own row)"
       }
     },
@@ -3219,16 +3676,32 @@
       "rtti": ".?AV?$GetImpl@P8Mouse@RBX@@BE?AVCoordinateFrame@G3D@@XZ@?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@",
       "offset": "0x0",
       "own_class": false,
-      "next_dword_is_code": "slot 3 position holds 0x4a1b70 in the original",
-      "not_walked": "shared template vtable; length not proven"
+      "slots": {
+        "0": "?isReadOnly@?$GetImpl@P8Mouse@RBX@@BE?AVCoordinateFrame@G3D@@XZ@?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ = 0x565950 (own row)",
+        "1": "?isWriteOnly@?$GetImpl@P8Mouse@RBX@@BE?AVCoordinateFrame@G3D@@XZ@?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ = 0x60a2f0 (own row)",
+        "2": "?getValue@?$GetImpl@P8Mouse@RBX@@BE?AVCoordinateFrame@G3D@@XZ@?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE?AVCoordinateFrame@G3D@@PBVDescribedBase@34@@Z = 0x64e130 (own row)",
+        "3": "?setValue@?$GetImpl@P8Mouse@RBX@@BE?AVCoordinateFrame@G3D@@XZ@?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVCoordinateFrame@G3D@@@Z = 0x4a1b70 (own row)"
+      }
     },
     "??_7?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@": {
       "address": "0x830cc0",
       "rtti": ".?AV?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@",
       "offset": "0x0",
       "own_class": false,
-      "next_dword_is_code": "slot 9 position holds 0x56be00 in the original",
-      "not_walked": "shared template vtable; length not proven"
+      "slots": {
+        "0": "??_E?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UAEPAXI@Z = 0x598310 (own row (??_G))",
+        "1": "?isReadOnly@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ = 0x59a4a0 (own row)",
+        "2": "?isWriteOnly@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ = 0x443310 (external slot)",
+        "3": "?equalValues@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z = 0x5846d0 (own row)",
+        "4": "?getVariant@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z = 0x584c30 (external slot)",
+        "5": "?setVariant@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z = 0x584f70 (external slot)",
+        "6": "?hasStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ = 0x60a2f0 (own row)",
+        "7": "?getStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z = 0x5eecf0 (external slot)",
+        "8": "?setStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x5eedf0 (external slot)",
+        "9": "?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x56be00 (external slot)",
+        "10": "?writeValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z = 0x59aeb0 (external slot)",
+        "11": "?readValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x59acb0 (external slot)"
+      }
     },
     "??_7Ray@G3D@@6B@": {
       "address": "0x8282c4",
@@ -3236,7 +3709,7 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_ERay@G3D@@UAEPAXI@Z = 0x510780 (external slot)"
+        "0": "??_ERay@G3D@@UAEPAXI@Z = 0x510780 (own row (??_G))"
       }
     },
     "??_7?$GetImpl@P8Mouse@RBX@@BEHXZ@?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@6B@": {
@@ -3244,24 +3717,44 @@
       "rtti": ".?AV?$GetImpl@P8Mouse@RBX@@BEHXZ@?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@",
       "offset": "0x0",
       "own_class": false,
-      "next_dword_is_code": "slot 3 position holds 0x4a1b70 in the original",
-      "not_walked": "shared template vtable; length not proven"
+      "slots": {
+        "0": "?isReadOnly@?$GetImpl@P8Mouse@RBX@@BEHXZ@?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@UBE_NXZ = 0x565950 (own row)",
+        "1": "?isWriteOnly@?$GetImpl@P8Mouse@RBX@@BEHXZ@?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@UBE_NXZ = 0x60a2f0 (own row)",
+        "2": "?getValue@?$GetImpl@P8Mouse@RBX@@BEHXZ@?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@UBEHPBVDescribedBase@34@@Z = 0x5cf660 (own row)",
+        "3": "?setValue@?$GetImpl@P8Mouse@RBX@@BEHXZ@?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@UBEXPAVDescribedBase@34@ABH@Z = 0x4a1b70 (own row)"
+      }
     },
     "??_7?$TypedPropertyDescriptor@H@Reflection@RBX@@6B@": {
       "address": "0x815908",
       "rtti": ".?AV?$TypedPropertyDescriptor@H@Reflection@RBX@@",
       "offset": "0x0",
       "own_class": false,
-      "next_dword_is_code": "slot 9 position holds 0x56be00 in the original",
-      "not_walked": "shared template vtable; length not proven"
+      "slots": {
+        "0": "??_E?$TypedPropertyDescriptor@H@Reflection@RBX@@UAEPAXI@Z = 0x598310 (own row (??_G))",
+        "1": "?isReadOnly@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NXZ = 0x59a4a0 (own row)",
+        "2": "?isWriteOnly@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NXZ = 0x443310 (external slot)",
+        "3": "?equalValues@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z = 0x443530 (own row)",
+        "4": "?getVariant@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z = 0x443680 (external slot)",
+        "5": "?setVariant@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z = 0x443c10 (external slot)",
+        "6": "?hasStringValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NXZ = 0x565950 (own row)",
+        "7": "?getStringValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z = 0x56e290 (external slot)",
+        "8": "?setStringValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x56e2d0 (external slot)",
+        "9": "?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x56be00 (external slot)",
+        "10": "?writeValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z = 0x56e820 (external slot)",
+        "11": "?readValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z = 0x56e7e0 (external slot)"
+      }
     },
     "??_7?$GetSetImpl@P8Mouse@RBX@@BE?AVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@6B@": {
       "address": "0x84b2a8",
       "rtti": ".?AV?$GetSetImpl@P8Mouse@RBX@@BE?AVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@",
       "offset": "0x0",
       "own_class": false,
-      "next_dword_is_code": "slot 3 position holds 0x5b73c0 in the original",
-      "not_walked": "shared template vtable; length not proven"
+      "slots": {
+        "0": "?isReadOnly@?$GetSetImpl@P8Mouse@RBX@@BE?AVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@UBE_NXZ = 0x60a2f0 (own row)",
+        "1": "?isWriteOnly@?$GetSetImpl@P8Mouse@RBX@@BE?AVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@UBE_NXZ = 0x60a2f0 (own row)",
+        "2": "?getValue@?$GetSetImpl@P8Mouse@RBX@@BE?AVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@UBE?AVTextureId@4@PBVDescribedBase@34@@Z = 0x5cf5d0 (own row)",
+        "3": "?setValue@?$GetSetImpl@P8Mouse@RBX@@BE?AVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVTextureId@4@@Z = 0x5b73c0 (own row)"
+      }
     },
     "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
       "address": "0x84177c",
@@ -3322,7 +3815,7 @@
       "own_class": true,
       "slots": {
         "0": "??_E?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@RBX@@WCE@AEPAXI@Z = 0x5e28b0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (external slot)",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -3344,7 +3837,7 @@
       "own_class": true,
       "slots": {
         "0": "??_E?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@RBX@@WGE@AEPAXI@Z = 0x4c9c40 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (external slot)",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -3387,7 +3880,7 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_ESignalInstance@Reflection@RBX@@UAEPAXI@Z = 0x41a5d0 (external slot)"
+        "0": "??_ESignalInstance@Reflection@RBX@@UAEPAXI@Z = 0x41a5d0 (own row (??_G))"
       }
     },
     "??_7TSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@6B@": {
@@ -3396,7 +3889,19 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_ETSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@UAEPAXI@Z = 0x6347a0 (external slot)"
+        "0": "??_ETSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@UAEPAXI@Z = 0x6347a0 (own row (??_G))"
+      }
+    },
+    "??_7sp_counted_base@detail@boost@@6B@": {
+      "address": "0x80b2f0",
+      "rtti": ".?AVsp_counted_base@detail@boost@@",
+      "offset": "0x0",
+      "own_class": false,
+      "slots": {
+        "0": "??_Esp_counted_base@detail@boost@@UAEPAXI@Z = 0x415000 (own row (??_G))",
+        "1": "__purecall = 0x6a16be (external slot)",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10 (own row)",
+        "3": "__purecall = 0x6a16be (external slot)"
       }
     },
     "??_7bad_function_call@boost@@6B@": {
@@ -3405,7 +3910,7 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_Ebad_function_call@boost@@UAEPAXI@Z = 0x409dc0 (external slot)",
+        "0": "??_Ebad_function_call@boost@@UAEPAXI@Z = 0x409dc0 (own row (??_G))",
         "1": "?what@runtime_error@std@@UBEPBDXZ = 0x409db0 (own row)"
       }
     },
@@ -3415,14 +3920,25 @@
       "offset": "0x0",
       "own_class": false,
       "slots": {
-        "0": "??_ETSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z = 0x6347a0 (external slot)"
+        "0": "??_ETSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z = 0x6347a0 (own row (??_G))"
       }
     }
   },
   "external_slots": {
-    "??_7?$SignalDesc@VMouse@RBX@@$$A6AXXZ@Reflection@RBX@@6B@ slot 0 | ??_E?$SignalDesc@VMouse@RBX@@$$A6AXXZ@Reflection@RBX@@UAEPAXI@Z": "0x41bdf0 (external)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 1 | ?isReadOnly@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBE_NXZ": "0x59d490 (Mouse RefPropDescriptor RTTI vtable slot 1)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 2 | ?isWriteOnly@RefPropertyDescriptor@Reflection@RBX@@UBE_NXZ": "0x565960 (Mouse RefPropDescriptor RTTI vtable slot 2)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 3 | ?equalValues@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z": "0x5ee1d0 (Mouse RefPropDescriptor RTTI vtable slot 3)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 4 | ?getVariant@RefPropertyDescriptor@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z": "0x585420 (Mouse RefPropDescriptor RTTI vtable slot 4)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 5 | ?setVariant@RefPropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z": "0x5da5b0 (Mouse RefPropDescriptor RTTI vtable slot 5)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 7 | ?getStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z": "0x5eecf0 (Mouse RefPropDescriptor RTTI vtable slot 7)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 8 | ?setStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x5eedf0 (Mouse RefPropDescriptor RTTI vtable slot 8)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 9 | ?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x56be00 (same address at 6 places)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 10 | ?writeValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPBVDescribedBase@23@PAVXmlElement@@@Z": "0x491760 (Mouse RefPropDescriptor RTTI vtable slot 10)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 11 | ?readValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x4914b0 (Mouse RefPropDescriptor RTTI vtable slot 11)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 12 | ?getRefValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEPAVDescribedBase@23@PBV423@@Z": "0x585360 (Mouse RefPropDescriptor RTTI vtable slot 12)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@ slot 13 | ?setRefValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@0@Z": "0x5e35f0 (Mouse RefPropDescriptor RTTI vtable slot 13)",
+    "??_7?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@6BIIDREF@2@@ slot 0 | ?assignIDREF@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVInstanceHandle@3@@Z": "0x585380 (Mouse RefPropDescriptor RTTI vtable slot 0)",
     "??_7?$SignalDesc@VMouse@RBX@@$$A6AXXZ@Reflection@RBX@@6B@ slot 1 | ?connectGeneric@?$SignalDescImpl@$0A@$$A6AXXZ@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z": "0x4b5f60 (slot of another class vtable (bound by RTTI))",
-    "??_7runtime_error@std@@6B@ slot 0 | ??_Eruntime_error@std@@UAEPAXI@Z": "0x409dc0 (slot of another class vtable (bound by RTTI))",
     "??_7Mouse@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 1 | ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (evidence name)",
     "??_7Mouse@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 2 | ?askAddChild@Instance@RBX@@UBE_NPBV12@@Z": "0x68e880 (same address at 3 places)",
     "??_7Mouse@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 3 | ?askSetParent@Instance@RBX@@UBE_NPBV12@@Z": "0x68e880 (same address at 3 places)",
@@ -3439,10 +3955,33 @@
     "??_7Mouse@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 14 | ?write@Instance@RBX@@UAEPAVXmlElement@@XZ": "0x558c50 (evidence name)",
     "??_7Mouse@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 15 | ?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z": "0x557490 (same address at 3 places)",
     "??_7Mouse@RBX@@6BDebugable@1@@ slot 0 | ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x56a560 (evidence name)",
-    "??_7Descriptor@Reflection@RBX@@6B@ slot 0 | ??_EDescriptor@Reflection@RBX@@UAEPAXI@Z": "0x5eee00 (slot of another class vtable (bound by RTTI))",
-    "??_7?$SignalDesc@VMouse@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@6B@ slot 0 | ??_E?$SignalDesc@VMouse@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z": "0x41bdf0 (external)",
+    "??_7Mouse@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@ slot 1 | ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": "0x558d90 (same address at 3 places)",
+    "??_7Mouse@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@ slot 1 | ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z": "0x559230 (same address at 3 places)",
     "??_7?$SignalDesc@VMouse@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@6B@ slot 1 | ?connectGeneric@?$SignalDescImpl@$00$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z": "0x41d3d0 (slot of another class vtable (bound by RTTI))",
-    "??_7Type@Reflection@RBX@@6B@ slot 0 | ??_EType@Reflection@RBX@@UAEPAXI@Z": "0x5eee00 (slot of another class vtable (bound by RTTI))",
+    "??_7?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 2 | ?isWriteOnly@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ": "0x443310 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 4 | ?getVariant@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z": "0x584c30 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 5 | ?setVariant@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z": "0x584f70 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 7 | ?getStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z": "0x5eecf0 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 8 | ?setStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x5eedf0 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 9 | ?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x56be00 (same address at 6 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 10 | ?writeValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z": "0x59aeb0 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 11 | ?readValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x59acb0 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@6B@ slot 2 | ?isWriteOnly@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NXZ": "0x443310 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@6B@ slot 4 | ?getVariant@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z": "0x443680 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@6B@ slot 5 | ?setVariant@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z": "0x443c10 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@6B@ slot 7 | ?getStringValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z": "0x56e290 (evidence name)",
+    "??_7?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@6B@ slot 8 | ?setStringValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x56e2d0 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@6B@ slot 9 | ?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x56be00 (same address at 6 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@6B@ slot 10 | ?writeValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z": "0x56e820 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@H@Reflection@RBX@@6B@ slot 11 | ?readValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x56e7e0 (same address at 2 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@6B@ slot 2 | ?isWriteOnly@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NXZ": "0x443310 (matching RTTI-anchored TextureId descriptor slot 2)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@6B@ slot 4 | ?getVariant@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z": "0x597c90 (matching RTTI-anchored TextureId descriptor slot 4)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@6B@ slot 5 | ?setVariant@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z": "0x597f30 (matching RTTI-anchored TextureId descriptor slot 5)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@6B@ slot 7 | ?getStringValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z": "0x597b50 (matching RTTI-anchored TextureId descriptor slot 7)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@6B@ slot 8 | ?setStringValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x597bd0 (matching RTTI-anchored TextureId descriptor slot 8)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@6B@ slot 9 | ?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x56be00 (same address at 6 places)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@6B@ slot 10 | ?writeValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z": "0x615640 (matching RTTI-anchored TextureId descriptor slot 10)",
+    "??_7?$PropDescriptor@VMouse@RBX@@VTextureId@2@@Reflection@RBX@@6B@ slot 11 | ?readValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x5b8150 (matching RTTI-anchored TextureId descriptor slot 11)",
     "??_7?$DescribedNonCreatable@VMouse@RBX@@VInstance@2@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 1 | ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (evidence name)",
     "??_7?$DescribedNonCreatable@VMouse@RBX@@VInstance@2@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 2 | ?askAddChild@Instance@RBX@@UBE_NPBV12@@Z": "0x68e880 (same address at 3 places)",
     "??_7?$DescribedNonCreatable@VMouse@RBX@@VInstance@2@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 3 | ?askSetParent@Instance@RBX@@UBE_NPBV12@@Z": "0x68e880 (same address at 3 places)",
@@ -3459,10 +3998,24 @@
     "??_7?$DescribedNonCreatable@VMouse@RBX@@VInstance@2@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 14 | ?write@Instance@RBX@@UAEPAVXmlElement@@XZ": "0x558c50 (evidence name)",
     "??_7?$DescribedNonCreatable@VMouse@RBX@@VInstance@2@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 15 | ?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z": "0x557490 (same address at 3 places)",
     "??_7?$DescribedNonCreatable@VMouse@RBX@@VInstance@2@$1?sMouse@2@3QBDB@RBX@@6BDebugable@1@@ slot 0 | ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x56a560 (evidence name)",
-    "??_7?$sp_counted_impl_pd@PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@ slot 0 | ??_E?$sp_counted_impl_pd@PAVMouse@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z": "0x415000 (slot of another class vtable (bound by RTTI))",
-    "??_7logic_error@std@@6B@ slot 0 | ??_Elogic_error@std@@UAEPAXI@Z": "0x55c390 (slot of another class vtable (bound by RTTI))",
-    "??_7length_error@std@@6B@ slot 0 | ??_Elength_error@std@@UAEPAXI@Z": "0x55c390 (slot of another class vtable (bound by RTTI))",
-    "??_7Ray@G3D@@6B@ slot 0 | ??_ERay@G3D@@UAEPAXI@Z": "0x510780 (slot of another class vtable (bound by RTTI))",
+    "??_7?$DescribedNonCreatable@VMouse@RBX@@VInstance@2@$1?sMouse@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@ slot 1 | ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": "0x558d90 (same address at 3 places)",
+    "??_7?$DescribedNonCreatable@VMouse@RBX@@VInstance@2@$1?sMouse@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@ slot 1 | ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z": "0x559230 (same address at 3 places)",
+    "??_7?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 2 | ?isWriteOnly@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NXZ": "0x443310 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 4 | ?getVariant@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z": "0x584c30 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 5 | ?setVariant@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z": "0x584f70 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 7 | ?getStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z": "0x5eecf0 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 8 | ?setStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x5eedf0 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 9 | ?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x56be00 (same address at 6 places)",
+    "??_7?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 10 | ?writeValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z": "0x59aeb0 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@ slot 11 | ?readValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x59acb0 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@H@Reflection@RBX@@6B@ slot 2 | ?isWriteOnly@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NXZ": "0x443310 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@H@Reflection@RBX@@6B@ slot 4 | ?getVariant@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z": "0x443680 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@H@Reflection@RBX@@6B@ slot 5 | ?setVariant@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z": "0x443c10 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@H@Reflection@RBX@@6B@ slot 7 | ?getStringValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z": "0x56e290 (evidence name)",
+    "??_7?$TypedPropertyDescriptor@H@Reflection@RBX@@6B@ slot 8 | ?setStringValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x56e2d0 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@H@Reflection@RBX@@6B@ slot 9 | ?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x56be00 (same address at 6 places)",
+    "??_7?$TypedPropertyDescriptor@H@Reflection@RBX@@6B@ slot 10 | ?writeValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z": "0x56e820 (same address at 2 places)",
+    "??_7?$TypedPropertyDescriptor@H@Reflection@RBX@@6B@ slot 11 | ?readValue@?$TypedPropertyDescriptor@H@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z": "0x56e7e0 (same address at 2 places)",
     "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 1 | ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (evidence name)",
     "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 2 | ?askAddChild@Instance@RBX@@UBE_NPBV12@@Z": "0x68e880 (same address at 3 places)",
     "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 3 | ?askSetParent@Instance@RBX@@UBE_NPBV12@@Z": "0x68e880 (same address at 3 places)",
@@ -3479,10 +4032,10 @@
     "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 14 | ?write@Instance@RBX@@UAEPAVXmlElement@@XZ": "0x558c50 (evidence name)",
     "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 15 | ?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z": "0x557490 (same address at 3 places)",
     "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@RBX@@6BDebugable@1@@ slot 0 | ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x56a560 (evidence name)",
-    "??_7SignalInstance@Reflection@RBX@@6B@ slot 0 | ??_ESignalInstance@Reflection@RBX@@UAEPAXI@Z": "0x41a5d0 (slot of another class vtable (bound by RTTI))",
-    "??_7TSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@6B@ slot 0 | ??_ETSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@UAEPAXI@Z": "0x6347a0 (slot of another class vtable (bound by RTTI))",
-    "??_7bad_function_call@boost@@6B@ slot 0 | ??_Ebad_function_call@boost@@UAEPAXI@Z": "0x409dc0 (slot of another class vtable (bound by RTTI))",
-    "??_7TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@6B@ slot 0 | ??_ETSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z": "0x6347a0 (slot of another class vtable (bound by RTTI))"
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@ slot 1 | ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": "0x558d90 (same address at 3 places)",
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sMouse@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@ slot 1 | ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z": "0x559230 (same address at 3 places)",
+    "??_7sp_counted_base@detail@boost@@6B@ slot 1 | __purecall": "0x6a16be (same address at 2 places)",
+    "??_7sp_counted_base@detail@boost@@6B@ slot 3 | __purecall": "0x6a16be (same address at 2 places)"
   },
   "shared_header_gaps": [
     "native-headers/reflection/reflection.h GetSet has three virtuals; the 2008 GetSet vtables (0084b26c, 0084b280, 0084b294, 0084b2a8) have four (isReadOnly, a second bool virtual = 0060a2f0 return false, getValue, setValue). The GetImpl / GetSetImpl vtables are therefore not walked; their bodies are seeded from the original slots.",
@@ -3490,13 +4043,10 @@
   ],
   "non_exact_reasons": {
     "005ff520": "~Mouse: byte-exact with bound targets, but the analyzed extent (0x6f) also covers ??_GMouse 005ff570; boundary evidence, not counted.",
-    "005ff570": "??_GMouse: byte-exact with bound targets, but no analyzed function starts here (inside 005ff520).",
-    "0064e390": "RefPropDescriptor<Mouse, PartInstance> constructor: exact only with IIDREF __declspec(novtable) (pending build); the native reflection.h stores the IIDREF vtable first."
+    "005ff570": "??_GMouse: byte-exact with bound targets, but no analyzed function starts here (inside 005ff520)."
   },
-  "pending_note": "pending_rows are exact only with the generated reflection.h copy under out/native-layouts/mouse-pending (IIDREF __declspec(novtable)); not counted, vtables not walked.",
-  "proposals": [
-    "native-headers/reflection/reflection.h (reflection owner, not edited): declare `class __declspec(novtable) IIDREF`; RefPropDescriptor<Mouse, PartInstance> constructor 0064e390 stores only the final IIDREF vtable 0084b2f0 (same as Player 004913d0)."
-  ],
+  "pending_note": "no pending build: 0064e390 is built and counted in the main build.",
+  "proposals": [],
   "not_attempted": {
     "005ff680": "Tool::getMouse (Tool unit) lives in native-classes/Tool.cpp under NATIVE_TOOL_PENDING: exact there against a generated donor ToolMouseCommand.h with the 2008 class-name array (record_native_hopper.py, pending-build-only, not counted)."
   },

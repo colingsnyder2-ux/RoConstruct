@@ -337,3 +337,10 @@ namespace RBX
 		}
 	}
 }
+
+// VelocityMotor::setHole 0060c400 stays pending (2008 SignalDesc::connect with a group argument). The slot it builds
+// from boost::bind(&VelocityMotor::onEvent_HoleAncestorChanged, this) (0060b650) is instantiated here explicitly, so
+// this unit emits its boost::function manager / invoker rows (0060a300, 0060aac0, 0060abe0) against the current
+// headers too.
+typedef boost::_bi::bind_t<void, boost::_mfi::mf0<void, RBX::VelocityMotor>, boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*> > > VelocityMotorHoleBinder;
+template boost::slot<boost::function<void(boost::shared_ptr<RBX::Instance>)> >::slot(const VelocityMotorHoleBinder&);

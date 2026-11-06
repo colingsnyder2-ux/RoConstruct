@@ -157,24 +157,110 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeWorldShapesContact.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/Contact.cpp"
+    ],
+    "contact_dtors": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeWorldShapesContactDtors.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeWorldShapesContactDtors.cpp"
+    ],
+    "contact_dtors_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/world-shapes-contact-dtors-pending",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeWorldShapesContactDtorsPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeWorldShapesContactDtors.cpp"
     ]
   },
+  "proposal_contact2008_h": {
+    "BallBallContact": "\t\tvirtual ~BallBallContact() {}   // proposal: ??_G restores the leaf vtable (0060cb70 / 0060cbd0)\n",
+    "BallBlockContact": "\t\tvirtual ~BallBlockContact() {}   // proposal: ??_G restores the leaf vtable (0060cb70 / 0060cbd0)\n"
+  },
   "sources": {
-    "rebuild/2008-06/tests/record_native_world_shapes.py": "9254dba2f7a6d8618cde95b032870a1f85f8a4a8d9589d34ac4b72d6948e4b04",
+    "rebuild/2008-06/tests/record_native_world_shapes.py": "8f48f9fc6edcdcc863f7ef2bbdabe3be2b7e4786925920e9cca3aaefcb0db9ae",
     "rebuild/2008-06/tests/NativeWorldShapesLayout.cpp": "6cf7efd637777466498f584c142d9f421918bb499c8415de94396f6dbf4ab3e2",
     "rebuild/2008-06/native-classes/Block.cpp": "9a6ebc17fd86686cf910c0d3b126d567294445e0d6f35ade5bc13726a05e9962",
     "rebuild/2008-06/native-classes/Ball.cpp": "bfdf6b9e648418e3870973fab07e93ad6c2b83a072d86da0d8af1707ae0a82df",
     "rebuild/2008-06/native-classes/Contact.cpp": "4c385f9108e71d4157fd9230667d354153e16de55ec6add0910fedf2b334a7f8",
+    "rebuild/2008-06/tests/NativeWorldShapesContactDtors.cpp": "3c34c70b98083246bf31c68015d333da9a5fbff6001e3d07c1885967197796f3",
     "rebuild/2008-06/native-headers/v8world/Geometry2008.h": "8cce7fd5dca0aa4d30ae7b487b61fadcd4e4bb266c66727a407f7c433faae1b5",
     "rebuild/2008-06/native-headers/v8world/Block2008.h": "85c2c7b29c0d2092248e15e5d528303aefd0705a56beb89e23348600555f1fc0",
     "rebuild/2008-06/native-headers/v8world/Ball2008.h": "d12fc9abb8468f97a4fa1bea676d2fae0197e8910a23ae8655a9095b8407ae2d",
     "rebuild/2008-06/native-headers/v8world/Contact2008.h": "e83b7eceafa9fb8e296008e497c1eca30dc66ecb612788d57aa72581f1939c07"
   },
   "objects": {
-    "NativeWorldShapesLayout.obj": "58a0adc0c415e233c3733630f78705470bad7afe65bb9e6f6b585cb3cd624a07",
-    "NativeWorldShapesBlock.obj": "ad58c5b5f3d45b456c63941413a35aa3caa0119fa66abcdc98e7c270e403ee38",
-    "NativeWorldShapesBall.obj": "f13cf2dcb0393e2042fe4599b1d91aa8663c355a0c34296577c6bfc4144d586d",
-    "NativeWorldShapesContact.obj": "6f9f6e3b8ea235eb7f053ca0a386c3da48936ad183a3d2605ba3c99d10818170"
+    "NativeWorldShapesLayout.obj": "34e7c709897ebf5ea15bd3f5e43f7e9d536367df6009b06b93d0948717af530f",
+    "NativeWorldShapesBlock.obj": "ee65e0887e5f207f07a8eac28696ebe90572de6606ed431b2d203f13b4966355",
+    "NativeWorldShapesBall.obj": "ff7a8c31629466bcd2e422098ba24431f1dbd3759ef0a024934ffcb99a855515",
+    "NativeWorldShapesContact.obj": "f356591370f5cdfb35ec210f6f6d915ad86a9278ebe56abe06fe3e55a7f70178",
+    "NativeWorldShapesContactDtors.obj": "36acbddf3d19fcef8ac6c389d891adc6bf1718729099bc52321edd3291755585",
+    "NativeWorldShapesContactDtorsPending.obj": "4fb42c140fcb1606c657fbcae95547808ebeb52f892072cb2c4a662876a41438"
   },
   "layout": {
     "Geometry": "0x10: vptr, gridSize +0x4 (nullGeometry static 0097abd4)",
@@ -997,6 +1083,56 @@
         "exact": false,
         "reason": "same as 0060cb70 (donor ~IPipelined assertion)"
       }
+    ],
+    "contact_dtors_current_headers": [
+      {
+        "address": "0060cb70",
+        "symbol": "??_GBallBallContact@RBX@@UAEPAXI@Z",
+        "size": 25,
+        "target_size": 31,
+        "exact": false,
+        "reason": "no-_RELEASEASSERT unit, current Contact2008.h: the implicit leaf destructor drops the vtable store (25 bytes vs 31)"
+      },
+      {
+        "address": "0060cbd0",
+        "symbol": "??_GBallBlockContact@RBX@@UAEPAXI@Z",
+        "size": 25,
+        "target_size": 31,
+        "exact": false,
+        "reason": "no-_RELEASEASSERT unit, current Contact2008.h: the implicit leaf destructor drops the vtable store (25 bytes vs 31)"
+      }
+    ],
+    "contact_dtors_pending": [
+      {
+        "address": "0060cb70",
+        "symbol": "??_GBallBallContact@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": false,
+        "verified_targets": {
+          "??_7BallBallContact@RBX@@6B@": "0x8436bc (vtable RTTI .?AVBallBallContact@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [],
+        "exact_pending_build_only": true,
+        "status": "pending-build-only",
+        "reason": "exact without _RELEASEASSERT against a generated Contact2008.h copy declaring the inline leaf destructor (proposal_contact2008_h); not counted"
+      },
+      {
+        "address": "0060cbd0",
+        "symbol": "??_GBallBlockContact@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": false,
+        "verified_targets": {
+          "??_7BallBlockContact@RBX@@6B@": "0x8436e8 (vtable RTTI .?AVBallBlockContact@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [],
+        "exact_pending_build_only": true,
+        "status": "pending-build-only",
+        "reason": "exact without _RELEASEASSERT against a generated Contact2008.h copy declaring the inline leaf destructor (proposal_contact2008_h); not counted"
+      }
     ]
   },
   "exact_function_rows": [
@@ -1409,7 +1545,8 @@
   "proposals": {
     "v8world/Geometry.h, Block.h, Ball.h (original paths)": "promote Geometry2008.h / Block2008.h / Ball2008.h to the original include paths once the owners of the units that include Primitive.h / PartInstance.h have re-run their recorders against them (the declarations are ABI-identical to the donor ones: same 9 slots, same fields)",
     "v8world/Contact.h (original path)": "promote Contact2008.h together with a native Edge / IPipelined header",
-    "v8world/IPipelined.h (new native header, owner: v8world core)": "virtual ~IPipelined() {} without the RBXASSERT(currentStage == NULL): the 2008 deleting destructors 0060cb70 / 0060cbd0 contain no assertion; putInKernel 00645830 / removeFromKernel 00645860 / getKernel 00645850 out of line"
+    "v8world/IPipelined.h (new native header, owner: v8world core)": "virtual ~IPipelined() {} without the RBXASSERT(currentStage == NULL): the 2008 deleting destructors 0060cb70 / 0060cbd0 contain no assertion; putInKernel 00645830 / removeFromKernel 00645860 / getKernel 00645850 out of line",
+    "v8world/Contact2008.h (owner of the world-shapes headers)": "declare inline `virtual ~BallBallContact() {}` and `virtual ~BallBlockContact() {}`: with them (and a unit without _RELEASEASSERT, tests/NativeWorldShapesContactDtors.cpp) ??_G 0060cb70 / 0060cbd0 are exact, 31 bytes (`mov [esi], leaf vtable` before operator delete); the implicit destructor drops that store (25 bytes) and a declared `virtual ~Contact() {}` alone does not restore it (trial). Pending build: contact_dtors_pending."
   },
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
 }

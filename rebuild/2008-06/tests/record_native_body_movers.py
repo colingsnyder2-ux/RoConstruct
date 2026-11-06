@@ -5,9 +5,8 @@ the Name::declare COMDATs 005bfaa0..005c0030). Builds (document-swap flags, VS20
   * tests/NativeBodyMoverLayout.cpp     sizeof/offset/base probes (mov eax, imm32; ret);
   * native-classes/BodyMovers.cpp        BodyMover + BodyGyro/Position/Velocity/AngularVelocity/Force/Thrust;
   * native-classes/Rocket.cpp            Rocket (same original unit, split by the file leases);
-  * both again with NATIVE_BODYMOVER_PENDING / NATIVE_ROCKET_PENDING against generated headers under
-    out/native-layouts/native-body-movers-pending/: declaration-only Workspace.h / Network/Players.h (copies of
-    tests/NativeBodyMoverPending*.h) and a copy of native reflection/reflection.h with IIDREF declared novtable.
+  The former pending rows (onAncestorChanged 006308f0, Rocket::fire 0062e1c0, RefPropDescriptor ctor 006310d0) now
+  compile against the committed native Workspace.h / Network/Players.h / reflection.h (IIDREF novtable): no overlays.
 Unit profile: /fp:fast (Vector3 != in BoundPropGetSet::setValue 00633090 and preventBodySleep 00632370/00632720 is
 `fld value; fcomp member`, fucompp without it) and /U_RELEASEASSERT (no RBXASSERT code anywhere in the unit: the
 donor KernelIndex destructor assert would add 28 bytes to ~BodyMover 0062e460).
@@ -40,22 +39,10 @@ MOVERS_H = R / 'native-headers/v8datamodel/BodyMovers.h'
 ROCKET_H = R / 'native-headers/v8datamodel/Rocket.h'
 LAYOUT = R / 'tests/NativeBodyMoverLayout.cpp'
 ROWS = R / 'tests/NativeBodyMoverRows.json'
-WORKSPACE_OVERLAY = R / 'tests/NativeBodyMoverPendingWorkspace.h'
-PLAYERS_OVERLAY = R / 'tests/NativeBodyMoverPendingPlayers.h'
 UNIT = ['/fp:fast', '/U_RELEASEASSERT']
 
-# ---- generated pending headers (copies; shared/donor headers are not edited) -------------------------
-pending = OUT / 'native-body-movers-pending'
-for sub in ('v8datamodel', 'Network', 'reflection'):
-    (pending / sub).mkdir(parents=True, exist_ok=True)
-(pending / 'v8datamodel/Workspace.h').write_text(WORKSPACE_OVERLAY.read_text())
-(pending / 'Network/Players.h').write_text(PLAYERS_OVERLAY.read_text())
-IIDREF_ANCHOR = '\tclass IIDREF\n'
-PROPOSAL_IIDREF = '\tclass __declspec(novtable) IIDREF // 2008: RefPropDescriptor ctor 006310d0 stores only the derived IIDREF vptr\n'
-reflection = (R / 'native-headers/reflection/reflection.h').read_text()
-APPLIED_IIDREF = '\tclass __declspec(novtable) IIDREF\n'  # proposal adopted in the native reflection.h
-assert reflection.count(IIDREF_ANCHOR) + reflection.count(APPLIED_IIDREF) == 1
-(pending / 'reflection/reflection.h').write_text(reflection.replace(IIDREF_ANCHOR, PROPOSAL_IIDREF))
+APPLIED_IIDREF = '\tclass __declspec(novtable) IIDREF\n'  # RefPropDescriptor ctor 006310d0 needs it (adopted)
+assert (R / 'native-headers/reflection/reflection.h').read_text().count(APPLIED_IIDREF) == 1
 
 
 def build(name, src, extra=()):
@@ -68,12 +55,9 @@ def build(name, src, extra=()):
     return obj, flags
 
 
-PEND = ['/I' + str(pending)]
 layout_obj, layout_flags = build('NativeBodyMoverLayout', LAYOUT)
 mov_obj, mov_flags = build('NativeBodyMovers', MOVERS_SRC, UNIT)
-movp_obj, movp_flags = build('NativeBodyMoversPending', MOVERS_SRC, UNIT + PEND + ['/DNATIVE_BODYMOVER_PENDING'])
 rkt_obj, rkt_flags = build('NativeBodyMoverRocket', ROCKET_SRC, UNIT)
-rktp_obj, rktp_flags = build('NativeBodyMoverRocketPending', ROCKET_SRC, UNIT + PEND + ['/DNATIVE_ROCKET_PENDING'])
 
 # ---- layout ---------------------------------------------------------------------------------------
 raw = layout_obj.read_bytes()
@@ -110,7 +94,7 @@ TPD = '@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$Type
 EXTERNAL = {
     '??0Instance@RBX@@QAE@PBD@Z': 0x55b960,                     # BodyMover(const char*) 0062e320
     '??1Instance@RBX@@UAE@XZ': 0x55a540,                        # ~BodyMover 0062e460
-    '?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z': 0x55acc0,   # 006308f0 (pending)
+    '?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z': 0x55acc0,   # 006308f0
     '??0Matrix3@G3D@@QAE@ABV01@@Z': 0x513220,                   # copy ctor; evidence names the identical (ICF) operator= here
     '??9CoordinateFrame@G3D@@QBE_NABV01@@Z': 0x4765e0,          # BoundPropGetSet<CoordinateFrame>::setValue 0063b2b0
     '??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ': 0x4199e0,
@@ -127,7 +111,7 @@ EXTERNAL = {
     '??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z': 0x56c650,
     '??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ': 0x594a50,
     '??$singleton@VVector3@G3D@@@Type@Reflection@RBX@@SAABV012@XZ': 0x56ce60,
-    # RefPropDescriptor 006310d0 (pending): one RefType singleton shared by five RefPropDescriptor constructors (type
+    # RefPropDescriptor 006310d0: one RefType singleton shared by five RefPropDescriptor constructors (type
     # name "Object" 00821634); the native template instantiates it for the class, so the argument is unproven.
     '??$singleton@PAVRocket@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ': 0x583f40,
     '??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z': 0x618a40,  # ICF with shared_from<Instance> (evidence)
@@ -136,11 +120,11 @@ EXTERNAL = {
     '??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ': 0x4530f0,   # onServiceProvider 00632db0
     '?removeListener@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@VStepped@2@@2@@Z': 0x5e5a80,  # ICF (evidence names a ChildAdded copy)
     '?addListener@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@VStepped@2@@2@@Z': 0x4218a0,     # ICF (evidence names a DescendentAdded copy)
-    '?getWorldIfInWorkspace@Workspace@RBX@@SAPAVWorld@2@PBVInstance@2@@Z': 0x5a3390,       # 006308f0 (pending)
-    '?findWorkspace@Workspace@RBX@@SAPAV12@PBVInstance@2@@Z': 0x5a3380,                    # fire 0062e1c0 (pending)
-    '?clientIsPresent@Players@Network@RBX@@SA_NPBVInstance@3@_N@Z': 0x495e60,             # fire 0062e1c0 (pending)
-    '?getKernel@World@RBX@@QAEAAVKernel@2@XZ': 0x5e9150,                                   # 006308f0 (pending)
-    '?removeConnector2ndPass@Kernel@RBX@@QAEXPAVConnector@2@@Z': 0x5fad80,                 # donor names; 006308f0 (pending)
+    '?getWorldIfInWorkspace@Workspace@RBX@@SAPAVWorld@2@PBVInstance@2@@Z': 0x5a3390,       # 006308f0
+    '?findWorkspace@Workspace@RBX@@SAPAV12@PBVInstance@2@@Z': 0x5a3380,                    # fire 0062e1c0
+    '?clientIsPresent@Players@Network@RBX@@SA_NPBVInstance@3@_N@Z': 0x495e60,             # fire 0062e1c0
+    '?getKernel@World@RBX@@QAEAAVKernel@2@XZ': 0x5e9150,                                   # 006308f0
+    '?removeConnector2ndPass@Kernel@RBX@@QAEXPAVConnector@2@@Z': 0x5fad80,                 # donor names; 006308f0
     '?insertConnector2ndPass@Kernel@RBX@@QAEXPAVConnector@2@@Z': 0x5fad50,
     '??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z': 0x409d50,
     '??0CoordinateFrame@G3D@@QAE@XZ': 0x4782d0,                                            # BodyGyro 00632070
@@ -284,8 +268,9 @@ def verify(obj, rows, own):
 
 
 ROWSET = json.loads(ROWS.read_text())
-groups = [('movers', mov_obj, ROWSET['movers']), ('rocket', rkt_obj, ROWSET['rocket']),
-          ('movers_pending', movp_obj, ROWSET['movers_pending']), ('rocket_pending', rktp_obj, ROWSET['rocket_pending'])]
+# The former *_pending row lists (tests/NativeBodyMoverRows.json) are built by the main objects now.
+groups = [('movers', mov_obj, ROWSET['movers'] + ROWSET['movers_pending']),
+          ('rocket', rkt_obj, ROWSET['rocket'] + ROWSET['rocket_pending'])]
 resolved = [(g, obj, resolve(obj, rows)) for g, obj, rows in groups]
 own = {}
 for _, _, rows in resolved:
@@ -411,8 +396,8 @@ connector_note = ('current headers: %d Connector slots %s; binary 00846b54 has 6
                   'see proposal)' % (len(con), [con[i] for i in sorted(con)]))
 
 sha = nb.sha
-paths = [Path(__file__).resolve(), MOVERS_H, ROCKET_H, MOVERS_SRC, ROCKET_SRC, LAYOUT, ROWS, WORKSPACE_OVERLAY, PLAYERS_OVERLAY]
-objs = (layout_obj, mov_obj, movp_obj, rkt_obj, rktp_obj)
+paths = [Path(__file__).resolve(), MOVERS_H, ROCKET_H, MOVERS_SRC, ROCKET_SRC, LAYOUT, ROWS]
+objs = (layout_obj, mov_obj, rkt_obj)
 exact_addresses = sorted({r['address'] for v in results.values() for r in v if r['exact']})
 pending_addresses = sorted({r['address'] for v in results.values() for r in v if not r['exact']})
 NOT_RECOVERED = {
@@ -432,8 +417,7 @@ receipt = {
     'class': 'RBX::BodyMover, BodyGyro, BodyPosition, BodyVelocity, BodyAngularVelocity, BodyForce, BodyThrust, Rocket',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'unit_profile': UNIT,
     'original_sha256': nb.sha(original.path),
-    'flags': {'layout': layout_flags, 'movers': mov_flags, 'movers_pending': movp_flags, 'rocket': rkt_flags,
-              'rocket_pending': rktp_flags},
+    'flags': {'layout': layout_flags, 'movers': mov_flags, 'rocket': rkt_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
     'objects': {p.name: sha(p) for p in objs},
     'layout': {k: hex(v) for k, v in LAYOUT_VALUES.items()},
@@ -442,7 +426,6 @@ receipt = {
     'not_recovered': NOT_RECOVERED,
     'rows': results,
     'vtables': vtables, 'connector_vtable': connector_note,
-    'proposal_reflection_h': PROPOSAL_IIDREF,
     'proposals': [
         'native v8kernel/Connector.h (kernel owner): the 2008 Connector vtable 0083d1f4 has six slots: virtual ~Connector(); '
         'virtual void computeForce(const float dt, bool throttling) = 0; a bool virtual returning true (00565950, donor '
@@ -450,23 +433,19 @@ receipt = {
         'int and returning the part body (BodyMover 0062fa10: index 0 && part.lock() ? part->primitive.body (+0x228+0xa0) : 0; '
         'name provisional, e.g. Body* getBody(int)); virtual float potentialEnergy() {return 0;} (005e72c0). KernelIndex '
         'destructor without RBXASSERT. With it the BodyMover Connector vtable (00846b54) can be checked slot by slot.',
-        'reflection/reflection.h (reflection owner): declare IIDREF __declspec(novtable) (RefPropDescriptor constructor '
-        '006310d0 stores only the RefPropDescriptor IIDREF vptr 008473dc; exact against a generated copy). The RefType '
-        'singleton it calls (00583f40, type name "Object") is shared by five RefPropDescriptor constructors, so the 2008 '
-        'template does not instantiate RefType::singleton<Class*>; argument unproven.',
+        'reflection/reflection.h: IIDREF __declspec(novtable) is adopted (RefPropDescriptor constructor 006310d0 stores '
+        'only the RefPropDescriptor IIDREF vptr 008473dc). The RefType singleton it calls (00583f40, type name "Object") '
+        'is shared by five RefPropDescriptor constructors, so the 2008 template does not instantiate '
+        'RefType::singleton<Class*>; argument unproven.',
         'reflection/reflection.h: BoundFuncDesc<C, R(), 0>::execute for a Vector3 result (006328f0, 006329e0) keeps the '
         'bad_cast and the result temporaries in separate stack slots (frame 0x18; native template gives 0xc).',
-        'native v8datamodel/Workspace.h (findWorkspace 005a3380, getWorldIfInWorkspace 005a3390) and Network/Players.h '
-        '(clientIsPresent 00495e60): the donor headers fail with C2440 (&sName). Declaration-only overlays: '
-        'tests/NativeBodyMoverPendingWorkspace.h, tests/NativeBodyMoverPendingPlayers.h.',
         'v8tree/Instance.h now owns AncestorChanged (three pointers, 12 bytes); consumers share its definition.',
         'native v8datamodel/PartInstance.h: Primitive embedded at +0x228 (BodyMover::onEvent 0062fae0 passes part+0x228 to '
         'World::ticklePrimitive(Primitive*, bool) 005e9410), not boost::scoped_ptr; needed for onEvent, getBody and every '
         'computeForce.',
     ],
-    'pending_note': 'pending-build-only rows: BodyMover::onAncestorChanged 006308f0 (declaration-only Workspace.h), '
-                    'Rocket::fire 0062e1c0 (Workspace.h + Network/Players.h), RefPropDescriptor<Rocket, PartInstance> '
-                    'constructor 006310d0 (IIDREF novtable in a reflection.h copy). Not counted as exact.',
+    'pending_note': 'no pending build: 006308f0, 0062e1c0 and 006310d0 compile against the committed native '
+                    'Workspace.h, Network/Players.h and reflection.h.',
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
 (ROOT / 'work/2008-06/shared-layouts/body-movers-working.json').write_text(json.dumps(receipt, indent=2) + '\n')

@@ -162,7 +162,6 @@ FOLDED = {
     '__purecall': 0x6a16be,
 }
 UNPROVEN = {
-    '?updateBuffer@AIFleeController@RBX@@MAEXM@Z': 0x5cb0e0,   # vtable slot 5 of 0083a224; body not exact (x87 order)
     '?onEvent@PlayerController@RBX@@EAEXPBVRunService@2@VHeartbeat@2@@Z': 0x5cb530,  # not attempted
     '?getValue@KeyboardPrimaryController@RBX@@UBEMW4InputType@Controller@2@@Z': 0x5ca500,    # pending-build-only
     '?getValue@KeyboardSecondaryController@RBX@@UBEMW4InputType@Controller@2@@Z': 0x5ca760,  # pending-build-only
@@ -187,6 +186,7 @@ UNIT_ROWS = [
     (0x5cada0, '?getClassName@' + FP + 'UBEABVName@2@XZ'),
     (0x5cadc0, '?updateTarget@AIController@RBX@@IAEXW4ControllerType@Controller@2@M@Z'),
     (0x5cb080, '?updateBuffer@AIChaseController@RBX@@MAEXM@Z'),
+    (0x5cb0e0, '?updateBuffer@AIFleeController@RBX@@MAEXM@Z'),
     (0x5cb140, '??1SteppingController@RBX@@MAE@XZ'),
     (0x5cb200, '??_ESteppingController@RBX@@OM@AEPAXI@Z'),
     (0x5cb210, '??1AIController@RBX@@MAE@XZ'),
@@ -232,11 +232,7 @@ PENDING_ROWS = [
     (0x5ca500, '?getValue@KeyboardPrimaryController@RBX@@UBEMW4InputType@Controller@2@@Z'),
     (0x5ca760, '?getValue@KeyboardSecondaryController@RBX@@UBEMW4InputType@Controller@2@@Z'),
 ]
-NOT_EXACT = {
-    '005cb0e0': 'AIFleeController::updateBuffer: chaseTarget(-getLocalTargetPosition()); the original negates and '
-                'stores x, y, z in order, the compile loads y and z first (91 vs 93 bytes under /fp:fast; tried a named '
-                'local, *= -1, -1 * v, member-wise construction)',
-}
+NOT_EXACT = {}   # 005cb0e0 AIFleeController::updateBuffer is exact now under the unit's /fp:fast (row above)
 NOT_ATTEMPTED = {
     '005cb530': 'PlayerController::onEvent (748 bytes): needs native Workspace/Camera/Humanoid/Network::Players and the '
                 '2008 NavKeys input structure (UserInputBase::getNavKeys)',

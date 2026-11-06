@@ -1,17 +1,13 @@
 // 2008-06 native RBX::ClickDetector (inactive); evidence in native-headers/v8datamodel/ClickDetector.h.
 // Verified by tests/record_native_click_detector.py. Original unit 00629340..00629b9a, initializers
 // 007f7d20..007f7d90, atexit 00800330..00800370; classDescriptor 005c02b0, doDeclare 005bf800.
-// NATIVE_CLICKDETECTOR_PENDING bodies need declarations the shared headers do not have yet:
-// ServiceProvider::findServiceProvider (004898d0), Instance::findFirstChildOfType<T> (006294a0), a complete
-// RBX::Workspace for dynamic_cast and a native ModelInstance.h that compiles (donor Camera.h passes &sCamera);
-// the recorder checks them against generated header copies (proposals).
+// ServiceProvider::findServiceProvider (004898d0), Instance::findFirstChildOfType<T> (006294a0), RBX::Workspace and
+// RBX::ModelInstance come from the committed native headers.
 #include "v8datamodel/ClickDetector.h"
 #include "v8datamodel/PartInstance.h"
 #include "Network/Players.h"
-#ifdef NATIVE_CLICKDETECTOR_PENDING
 #include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/Workspace.h"
-#endif
 
 namespace RBX
 {
@@ -47,9 +43,6 @@ namespace RBX
 	{
 	}
 
-#ifdef NATIVE_CLICKDETECTOR_PENDING
-	// Needs a complete ModelInstance: the native ModelInstance.h pulls the donor v8datamodel/Camera.h, which still
-	// passes &sCamera to the 2008 const-char-array DescribedCreatable (C2440).
 	bool ClickDetector::askSetParent(const Instance* instance) const
 	{
 		return dynamic_cast<const PartInstance*>(instance) != 0 || dynamic_cast<const ModelInstance*>(instance) != 0;
@@ -60,7 +53,6 @@ namespace RBX
 		if (ServiceProvider::findServiceProvider(this) && Network::Players::backendProcessing(this, true))
 			event_MouseClick.fire(this);
 	}
-#endif
 
 	void ClickDetector::click(PartInstance* part, float distance)
 	{
@@ -73,7 +65,6 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_CLICKDETECTOR_PENDING
 	bool ClickDetector::isClickable(PartInstance* part, float distance, bool raiseClickedEvent)
 	{
 		if (part)
@@ -93,5 +84,4 @@ namespace RBX
 		}
 		return false;
 	}
-#endif
 }

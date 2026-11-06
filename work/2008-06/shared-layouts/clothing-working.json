@@ -1,22 +1,22 @@
 {
-  "revision": "a6555b31cd9d0bfe2e774758f12c4b8352de6354",
+  "revision": "90fb25e4a68ee99a8e6af33adce1b4d192e52a32",
   "sources": {
-    "work\\mew-shared-headers-20261104\\candidate\\rebuild\\2008-06\\tests\\record_native_clothing.py": "0b49e74860629feb73636c8ea3e4cccd1aba0c796b47bfefa91d4a0e3a945628",
-    "work\\mew-shared-headers-20261104\\candidate\\rebuild\\2008-06\\native-headers\\v8datamodel\\Clothing.h": "0f0ea1eb1b659fd868cdf43c45fbeb19fdff22e7031a6370206977bc0c70757a",
-    "work\\mew-shared-headers-20261104\\candidate\\rebuild\\2008-06\\native-classes\\Clothing.cpp": "1a8d31c946751e1cd3fb0ff992ec800caf6d715fc036e80f2b112657b7307e3c",
-    "work\\mew-shared-headers-20261104\\candidate\\rebuild\\2008-06\\tests\\NativeClothingLayout.cpp": "ce9dc0cee0d7053cc1686a3c647f30160a38b0287a5c9d8dfbc1f004177fab66",
-    "work\\mew-shared-headers-20261104\\candidate\\rebuild\\2008-06\\tests\\NativeClothingHumanoid.h": "dfd4c33335e9da1e62da6737511f91d92690ac9d7fa1ee55add5043572c449c3",
-    "work\\mew-shared-headers-20261104\\candidate\\rebuild\\2008-06\\tests\\NativeClothingPlayers.h": "ca5cb216ebfae96b835e744a80080e6b69ba6ce3f108312511ba3cf0ba5fff3c"
+    "rebuild/2008-06/tests/record_native_clothing.py": "8284fc628c4692da2b6ce9c3827a5c61d6e367c5f0fc82de45aa09c79608adfc",
+    "rebuild/2008-06/native-headers/v8datamodel/Clothing.h": "167ef86612e8d6493fd2c518ce50ba2b5e5b3738c5332264e2293109e0295a14",
+    "rebuild/2008-06/native-classes/Clothing.cpp": "b82afe26c8b7d3b1c666bc6ba134ff719caf2cd7f0530e08b4cee5ec2d1084db",
+    "rebuild/2008-06/tests/NativeClothingLayout.cpp": "ce9dc0cee0d7053cc1686a3c647f30160a38b0287a5c9d8dfbc1f004177fab66",
+    "rebuild/2008-06/tests/NativeClothingHumanoid.h": "dfd4c33335e9da1e62da6737511f91d92690ac9d7fa1ee55add5043572c449c3",
+    "rebuild/2008-06/tests/NativeClothingPlayers.h": "ca5cb216ebfae96b835e744a80080e6b69ba6ce3f108312511ba3cf0ba5fff3c"
   },
   "objects": {
-    "layout": "a2f4e2d5ff6e100b45ef8302158c083379a007e4fafa0467c684f2a9dfe407bd",
-    "base": "f8411ee38e1dc018bf4401df45402b94518acd3dcf0fcbb068d0326f7172f90d",
-    "pending": "0f8940fcd0dc05c3e557ccdc652fd4420f5debe1b3e482781206f8142475013a"
+    "layout": "18f485d3a78c2b0bf1a29d071298da9fbac9efffa40c1e01e5b984290bdfa228",
+    "base": "30a36a4fd10c8dc581eef00adb8df36e43e2ea2079d041c66f0cf287289af6ab",
+    "pending": "cc9d4e4165e419d1c558d5e9890ce1c59c6d5d3ee93f0b896e1722d1cdb82b1d"
   },
   "compiler_build": 21022,
   "flags": {
     "layout": [
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\clothing-overlay",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/clothing-overlay",
       "/nologo",
       "/c",
       "/O2",
@@ -51,11 +51,11 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeClothingLayout.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\mew-shared-headers-20261104\\candidate\\rebuild\\2008-06\\tests\\NativeClothingLayout.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeClothingLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeClothingLayout.cpp"
     ],
     "base": [
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\clothing-overlay",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/clothing-overlay",
       "/nologo",
       "/c",
       "/O2",
@@ -90,12 +90,12 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeClothing.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\mew-shared-headers-20261104\\candidate\\rebuild\\2008-06\\native-classes\\Clothing.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeClothing.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Clothing.cpp"
     ],
     "pending": [
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\clothing-pending-overlay",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\clothing-overlay",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/clothing-pending-overlay",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/clothing-overlay",
       "/DNATIVE_CLOTHING_PENDING",
       "/nologo",
       "/c",
@@ -131,8 +131,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeClothingPending.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\mew-shared-headers-20261104\\candidate\\rebuild\\2008-06\\native-classes\\Clothing.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeClothingPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Clothing.cpp"
     ]
   },
   "sizes": {
@@ -1163,6 +1163,58 @@
         "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
       },
       "local_eh": []
+    },
+    {
+      "address": "005d40c0",
+      "symbol": "?setTemplate@Shirt@RBX@@QAEXVTextureId@2@@Z",
+      "size": 88,
+      "exact": true,
+      "targets": {
+        "?prop_Outfit2@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x97a034",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?setTemplate@Shirt@RBX@@QAEXVTextureId@2@@Z"
+      ]
+    },
+    {
+      "address": "005d4120",
+      "symbol": "?setTemplate@Pants@RBX@@QAEXVTextureId@2@@Z",
+      "size": 88,
+      "exact": true,
+      "targets": {
+        "?prop_Outfit1@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x979ffc",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?setTemplate@Pants@RBX@@QAEXVTextureId@2@@Z"
+      ]
+    },
+    {
+      "address": "005d4240",
+      "symbol": "?apply@ShirtGraphic@RBX@@MAEXPAVHumanoid@2@@Z",
+      "size": 74,
+      "exact": true,
+      "targets": {
+        "?getTorso@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8b10",
+        "??$findFirstChildOfType@VDecal@RBX@@@Instance@RBX@@QBEPAVDecal@1@XZ": "bound 0x5d41a0",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+        "?setTexture@Decal@RBX@@QAEXVTextureId@2@@Z": "bound 0x598610"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d41a0",
+      "symbol": "??$findFirstChildOfType@VDecal@RBX@@@Instance@RBX@@QBEPAVDecal@1@XZ",
+      "size": 160,
+      "exact": true,
+      "targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "??_R0?AVDecal@RBX@@@8": "0x940dbc (.?AVDecal@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+        "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast"
+      },
+      "local_eh": []
     }
   ],
   "pending_rows": [
@@ -1180,32 +1232,6 @@
         "?getRightArm@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8f10"
       },
       "local_eh": []
-    },
-    {
-      "address": "005d40c0",
-      "symbol": "?setTemplate@Shirt@RBX@@QAEXVTextureId@2@@Z",
-      "size": 88,
-      "exact": "pending-build-only",
-      "targets": {
-        "?prop_Outfit2@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x97a034",
-        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
-      },
-      "local_eh": [
-        "__ehhandler$?setTemplate@Shirt@RBX@@QAEXVTextureId@2@@Z"
-      ]
-    },
-    {
-      "address": "005d4120",
-      "symbol": "?setTemplate@Pants@RBX@@QAEXVTextureId@2@@Z",
-      "size": 88,
-      "exact": "pending-build-only",
-      "targets": {
-        "?prop_Outfit1@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x979ffc",
-        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
-      },
-      "local_eh": [
-        "__ehhandler$?setTemplate@Pants@RBX@@QAEXVTextureId@2@@Z"
-      ]
     }
   ],
   "split_rows": [
@@ -1666,6 +1692,7 @@
     "??$doDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x48a090",
     "??$doDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x489f40",
     "??$doDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x48a170",
+    "??$findFirstChildOfType@VDecal@RBX@@@Instance@RBX@@QBEPAVDecal@1@XZ": "0x5d41a0",
     "??$getset@P8Pants@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8Pants@2@BE?AVTextureId@2@XZP852@AEXV62@@Z@Z": "0x5d4030",
     "??$getset@P8Shirt@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8Shirt@2@BE?AVTextureId@2@XZP852@AEXV62@@Z@Z": "0x5d3fe0",
     "??0?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@IAE@XZ": "0x5d5270",
@@ -1936,6 +1963,7 @@
     "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "0x559170",
     "?setTemplate@Pants@RBX@@QAEXVTextureId@2@@Z": "0x5d4120",
     "?setTemplate@Shirt@RBX@@QAEXVTextureId@2@@Z": "0x5d40c0",
+    "?setTexture@Decal@RBX@@QAEXVTextureId@2@@Z": "0x598610",
     "?write@Instance@RBX@@UAEPAVXmlElement@@XZ": "0x558c50",
     "_atexit": "0x6a17af",
     "_prop_PantsTemplate": "0x97a018",
@@ -1943,9 +1971,7 @@
   },
   "pending": [
     "005d3a30 Clothing::apply: PartInstance::outfitChanged() 0059e3a0 declaration (PartInstance.h)",
-    "005d40c0/005d4120 setters: 2008 TypedPropertyDescriptor::GetSet has a second bool virtual at slot 1",
     "005d7640 askSetParent (ICF fold with ModelInstance::askSetParent): native ModelInstance.h does not compile standalone",
-    "005d4240 ShirtGraphic::apply / 005d41a0 findFirstChildOfType<Decal>: Instance.h template + native Decal.h",
     "005d4b00 Clothing::resetLimbs and limb finders 005d4510/4640/4770/48a0/49d0: not attempted"
   ],
   "scope": "Inactive diagnostic: layout, constructors, destructors, factory/reflection chain, descriptors, static initializers and methods listed are exact with bound targets; pending rows use generated header copies under out/. Method and field names are analog names. No runtime swap."

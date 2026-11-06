@@ -13,7 +13,13 @@ Builds (document-swap flags, VS2008 RTM 21022, /fp:fast), all from the current n
                                         std::map<Vector3, BlockTemplate*, myLess> members) plus the blockTemplates
                                         dynamic initializer 007f8c10 and atexit destructor 008010b0;
   * native-classes/Ball.cpp             the unit 00649130..006492bc;
-  * native-classes/Contact.cpp          Contact constructor 00606c20 and deleteConnector 00606d10.
+  * native-classes/Contact.cpp          Contact constructor 00606c20 and deleteConnector 00606d10;
+  * tests/NativeWorldShapesContactDtors.cpp  (without _RELEASEASSERT, like ContactManagerLifetime.cpp) the ball
+                                        contact deleting destructors 0060cb70 / 0060cbd0, twice: against the current
+                                        headers (not exact: no vtable store at all) and against a generated copy of
+                                        Contact2008.h whose leaf classes declare `virtual ~BallBallContact() {}` /
+                                        `virtual ~BallBlockContact() {}` (proposal; exact there, recorded exact=false,
+                                        pending-build-only, not counted).
 
 The headers use non-colliding names (v8world/Geometry2008.h, Block2008.h, Ball2008.h, Contact2008.h): a header at the
 original path would shadow the donor for every unit that includes Primitive.h / PartInstance.h (see PROPOSALS).
@@ -63,6 +69,22 @@ layout_obj, layout_flags = build('NativeWorldShapesLayout', LAYOUT, ['/fp:fast']
 block_obj, block_flags = build('NativeWorldShapesBlock', BLOCK, ['/fp:fast'])
 ball_obj, ball_flags = build('NativeWorldShapesBall', BALL, ['/fp:fast'])
 contact_obj, contact_flags = build('NativeWorldShapesContact', CONTACT, ['/fp:fast'])
+# Ball contact deleting destructors 0060cb70 / 0060cbd0 (31 bytes): no donor ~IPipelined RBXASSERT (the unit undefines
+# _RELEASEASSERT) and a vtable store that only a user-declared inline leaf destructor keeps (generated header copy).
+DTORS = R / 'tests/NativeWorldShapesContactDtors.cpp'
+DTORS_PENDING = OUT / 'world-shapes-contact-dtors-pending'
+(DTORS_PENDING / 'v8world').mkdir(parents=True, exist_ok=True)
+_contact = (R / 'native-headers/v8world/Contact2008.h').read_text()
+PROPOSAL_LEAF_DTORS = {}
+for _cls, _ctor in (('BallBallContact', '0060cae0'), ('BallBlockContact', '0060cb90')):
+    _anchor = '\t\t%s(Primitive* p0, Primitive* p1)' % _cls
+    assert _contact.count(_anchor) == 1 and _contact.count('~%s' % _cls) == 0, _cls
+    _end = _contact.index('\t\t}\n', _contact.index(_anchor)) + 4
+    PROPOSAL_LEAF_DTORS[_cls] = '\t\tvirtual ~%s() {}   // proposal: ??_G restores the leaf vtable (0060cb70 / 0060cbd0)\n' % _cls
+    _contact = _contact[:_end] + PROPOSAL_LEAF_DTORS[_cls] + _contact[_end:]
+(DTORS_PENDING / 'v8world/Contact2008.h').write_text(_contact)
+dtors_obj, dtors_flags = build('NativeWorldShapesContactDtors', DTORS, ['/fp:fast'])
+dtorsp_obj, dtorsp_flags = build('NativeWorldShapesContactDtorsPending', DTORS, ['/I' + str(DTORS_PENDING), '/fp:fast'])
 
 # ---- layout ---------------------------------------------------------------------------------------
 raw = layout_obj.read_bytes()
@@ -356,6 +378,21 @@ for row, (_, _, why, _) in zip(non_out, NON_EXACT_ROWS):
     if row['exact'] and not DISCOVER:
         raise AssertionError('non-exact row unexpectedly exact: %s' % row['address'])
     row['exact'], row['reason'] = False, why
+# The no-RBXASSERT unit: still not exact from the current headers (trial record), exact against the generated
+# Contact2008.h copy with the leaf destructors (pending-build-only, not counted; targets kept out of the binding table).
+DTOR_ROWS = [(a, k) for a, k, _, _ in NON_EXACT_ROWS]
+dtors_out = verify(dtors_obj, resolve(dtors_obj, DTOR_ROWS), own, strict=False, record=False)
+for row in dtors_out:
+    assert not row['exact'] or DISCOVER, ('contact dtor unexpectedly exact from the current headers', row['address'])
+    row['exact'], row['reason'] = False, ('no-_RELEASEASSERT unit, current Contact2008.h: the implicit leaf destructor '
+                                          'drops the vtable store (25 bytes vs 31)')
+dtorsp_out = verify(dtorsp_obj, resolve(dtorsp_obj, DTOR_ROWS), own, strict=False, record=False)
+for row in dtorsp_out:
+    assert row['exact'] or DISCOVER, ('contact dtor not exact in the pending build', row['address'])
+    row['exact_pending_build_only'] = row['exact']
+    row['exact'], row['status'] = False, 'pending-build-only'
+    row['reason'] = ('exact without _RELEASEASSERT against a generated Contact2008.h copy declaring the inline leaf '
+                     'destructor (proposal_contact2008_h); not counted')
 if DISCOVER:
     print('\n'.join(sorted(set(UNBOUND))))
     for g in list(groups.values()) + [proof_out]:
@@ -454,11 +491,13 @@ alloc_before(0x60d770, 0x7c, callee=0x60d500)
 assert names.get(0x60d770, '').startswith('?createContact@ContactManager@RBX@@')
 
 sha = nb.sha
-paths = [Path(__file__).resolve(), LAYOUT, BLOCK, BALL, CONTACT] + HEADERS
-objects = [layout_obj, block_obj, ball_obj, contact_obj]
+paths = [Path(__file__).resolve(), LAYOUT, BLOCK, BALL, CONTACT, DTORS] + HEADERS
+objects = [layout_obj, block_obj, ball_obj, contact_obj, dtors_obj, dtorsp_obj]
 exact = sorted({r['address'] for g in groups.values() for r in g if r['exact']})
 groups['layout_proof'] = proof_out
 groups['not_exact'] = non_out
+groups['contact_dtors_current_headers'] = dtors_out
+groups['contact_dtors_pending'] = dtorsp_out
 PROPOSALS = {
     'v8world/Geometry.h, Block.h, Ball.h (original paths)': 'promote Geometry2008.h / Block2008.h / Ball2008.h to the '
         'original include paths once the owners of the units that include Primitive.h / PartInstance.h have re-run their '
@@ -467,11 +506,18 @@ PROPOSALS = {
     'v8world/IPipelined.h (new native header, owner: v8world core)': 'virtual ~IPipelined() {} without the '
         'RBXASSERT(currentStage == NULL): the 2008 deleting destructors 0060cb70 / 0060cbd0 contain no assertion; '
         'putInKernel 00645830 / removeFromKernel 00645860 / getKernel 00645850 out of line',
+    'v8world/Contact2008.h (owner of the world-shapes headers)': 'declare inline `virtual ~BallBallContact() {}` and '
+        '`virtual ~BallBlockContact() {}`: with them (and a unit without _RELEASEASSERT, '
+        'tests/NativeWorldShapesContactDtors.cpp) ??_G 0060cb70 / 0060cbd0 are exact, 31 bytes (`mov [esi], leaf vtable` '
+        'before operator delete); the implicit destructor drops that store (25 bytes) and a declared `virtual ~Contact() '
+        '{}` alone does not restore it (trial). Pending build: contact_dtors_pending.',
 }
 receipt = {
     'class': 'RBX::Geometry, RBX::Block, RBX::Ball, RBX::Contact, RBX::BallBallContact, RBX::BallBlockContact',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'layout': layout_flags, 'block': block_flags, 'ball': ball_flags, 'contact': contact_flags},
+    'flags': {'layout': layout_flags, 'block': block_flags, 'ball': ball_flags, 'contact': contact_flags,
+              'contact_dtors': dtors_flags, 'contact_dtors_pending': dtorsp_flags},
+    'proposal_contact2008_h': PROPOSAL_LEAF_DTORS,
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
     'objects': {p.name: sha(p) for p in objects},
     'layout': {

@@ -38,7 +38,7 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeGeometryServiceLayout.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-geometry-service/NativeGeometryServiceLayout.obj",
       "/home/user/roconstruct/rebuild/2008-06/tests/NativeGeometryServiceLayout.cpp"
     ],
     "unit": [
@@ -63,6 +63,7 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/engine-world",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
@@ -77,7 +78,7 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeGeometryService.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-geometry-service/NativeGeometryService.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/GeometryService.cpp"
     ],
     "pending": [
@@ -102,7 +103,7 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/geometry-service-pending",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-geometry-service/geometry-service-pending",
       "/I/home/user/roconstruct/rebuild/2008-06/native-headers/engine-world",
       "/DNATIVE_GEOMETRYSERVICE_PENDING",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
@@ -119,28 +120,44 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeGeometryServicePending.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-geometry-service/NativeGeometryServicePending.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/GeometryService.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_geometry_service.py": "95a097e00565602b40733588e659e52e6a898fc098a8c51a69850edcfc0bb024",
+    "rebuild/2008-06/tests/record_native_geometry_service.py": "4335e6d6b008442f5e63d369946456bb475c9ea61fbbfb6273ab08e88b93e150",
     "rebuild/2008-06/tests/NativeGeometryServiceLayout.cpp": "711d5b5767d2ad391fb57abb3a3d174d7e055c07d0cfd862d62dd06db60478bf",
     "rebuild/2008-06/native-headers/v8datamodel/GeometryService.h": "7190b78f04cb7445b153fbef10d15786b836324ec86297abee545321351eac2e",
-    "rebuild/2008-06/native-classes/GeometryService.cpp": "f1ef3c806d776e6140c005e404a3f0b4d487de4b0a8d369f54a467593743dca8",
+    "rebuild/2008-06/native-classes/GeometryService.cpp": "b6998e0f74fde16c87c0a537d61364f9583fa221d6eb24ab91dcb25045011b49",
     "rebuild/2008-06/tests/NativeGeometryServicePendingWorkspace.h": "5c7a6b97e9b0fb74523e21c528678ee378fbf4a625903a42cad13354ee8b364c",
     "rebuild/2008-06/native-headers/v8datamodel/Filters2008.h": "d016a379b1a29573a46a5a6ef53f1a2c51f22753eda0260cd7441d5a8451df5f"
   },
   "objects": {
-    "NativeGeometryServiceLayout.obj": "3fe2d49cd4775ba36568b2e48e6d9e74a3c4fc17762228209ef691c50fc267ca",
-    "NativeGeometryService.obj": "dd65f100e7fd5a0ca31d4d0d1e6a7eb0defa594f297ce36b5c1e0093dde64cc2",
-    "NativeGeometryServicePending.obj": "3eaf1df8cece6b25a69923c5d919424fffe6136ac7fc2079ac2cfecd1e1b31dd"
+    "NativeGeometryServiceLayout.obj": "8586236692158d497fd40d75278d8201fc32b12306cd4da89d26d643b517bf66",
+    "NativeGeometryService.obj": "1fc903f253609d9a1ccd9df01c0924f9a8aa16021c4070635bf3a56fff8052c8",
+    "NativeGeometryServicePending.obj": "a993eea10e323b11e0ccd48492111db6ad0c8f432802bad98f3f5e3d16077da4"
   },
   "layout": {
     "GeometryService": "0x140 (005c1790); Service empty base (mdisp 0x130), workspace +0x130, G3D::Array<Primitive*> primitives +0x134; class name \"Geometry\" (char[] 0095c530)"
   },
   "rows": {
     "layout": [
+      {
+        "address": "005c1650",
+        "symbol": "??$?0PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_pd@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x8388c0 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+          "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+        ]
+      },
       {
         "address": "005c1790",
         "symbol": "??$create@VGeometryService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGeometryService@RBX@@@boost@@XZ",
@@ -163,14 +180,14 @@
         "target_size": 171,
         "exact": true,
         "verified_targets": {
-          "??$?0PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5c1650 (call target of a non-exact row)"
+          "??$?0PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5c1650 (own row)"
         },
         "local_eh": [
           "__ehhandler$??$?0VGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGeometryService@RBX@@@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
         ]
       },
       {
-        "address": "0062d9e0[00:100]",
+        "address": "0062d9e0",
         "symbol": "?resize@?$Array@PAVPartInstance@RBX@@@G3D@@QAEXH_N@Z",
         "size": 256,
         "target_size": 256,
@@ -265,7 +282,7 @@
         "local_eh": []
       },
       {
-        "address": "0062d9e0[100:105]",
+        "address": "0062dae0",
         "symbol": "??1?$Described@VGeometryService@RBX@@$1?sGeometryService@2@3PADAV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@2@@Reflection@RBX@@UAE@XZ",
         "size": 5,
         "target_size": 5,
@@ -597,28 +614,24 @@
           "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
         },
         "local_eh": []
-      }
-    ],
-    "not_exact": [
-      {
-        "address": "005c1650",
-        "symbol": "??$?0PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
-        "size": 131,
-        "target_size": 110,
-        "exact": false,
-        "reason": "shared_count<GeometryService*, Deleter> constructor in the creating unit, not investigated (same shape as the DebrisService / ForceField ones)"
-      }
-    ],
-    "pending": [
+      },
       {
         "address": "0062db60",
         "symbol": "?getPartsTouchingExtents@GeometryService@RBX@@QAEXABVExtents@2@PBVPrimitive@2@AAV?$Array@PAVPartInstance@RBX@@@G3D@@@Z",
-        "size": 128,
+        "size": 129,
         "target_size": 129,
-        "exact": false,
-        "exact_pending_build_only": false,
-        "reason": "needs the native Workspace layout: the original loads World* inline from Workspace +0x2e4 (0062db6d); the pending overlay declares Workspace::getWorld() out of line (proposal), so this build calls it"
-      },
+        "exact": true,
+        "verified_targets": {
+          "?resize@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXH_N@Z": "0x599a70 (external (evidence name))",
+          "?getPrimitivesTouchingExtents@ContactManager@RBX@@QAEXABVExtents@2@PBVPrimitive@2@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z": "0x60d140 (external)",
+          "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z": "0x599f80 (external)",
+          "?append@?$Array@PAVPartInstance@RBX@@@G3D@@QAEXABQAVPartInstance@RBX@@@Z": "0x62daf0 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "not_exact": [],
+    "pending": [
       {
         "address": "0062dc10",
         "symbol": "?getHitLocationFilterStairs@GeometryService@RBX@@QAE?AVVector3@G3D@@PAVInstance@2@VRay@4@@Z",
@@ -634,13 +647,17 @@
     "005bfa30",
     "005bffc0",
     "005c0470",
+    "005c1650",
     "005c16e0",
     "005c1790",
     "0062d8f0",
     "0062d950",
     "0062d9c0",
     "0062d9d0",
+    "0062d9e0",
+    "0062dae0",
     "0062daf0",
+    "0062db60",
     "0062dbf0",
     "0062dda0",
     "0062ddc0",
@@ -664,10 +681,7 @@
     "0062e070",
     "007fe710"
   ],
-  "exact_row_slices": [
-    "0062d9e0[00:100]",
-    "0062d9e0[100:105]"
-  ],
+  "exact_row_slices": [],
   "vtables": {
     "GeometryService": [
       {

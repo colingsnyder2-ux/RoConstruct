@@ -3,10 +3,8 @@
 // tests/record_native_body_movers.py). Verified by tests/record_native_body_movers.py.
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"
-#ifdef NATIVE_ROCKET_PENDING
-#include "v8datamodel/Workspace.h" // native Workspace / Network::Players headers (declaration-only overlays in the recorder)
+#include "v8datamodel/Workspace.h"
 #include "Network/Players.h"
-#endif
 
 namespace RBX
 {
@@ -61,9 +59,7 @@ namespace RBX
 	{
 	}
 
-#ifdef NATIVE_ROCKET_PENDING
-	// Needs Workspace::findWorkspace (005a3380) and Network::Players::clientIsPresent (00495e60); the donor headers
-	// do not compile against the 2008 reflection.h. Verified against generated declaration-only headers.
+	// Workspace::findWorkspace 005a3380, Network::Players::clientIsPresent 00495e60 (native headers).
 	void Rocket::fire()
 	{
 		if (!Workspace::findWorkspace(this))
@@ -72,7 +68,6 @@ namespace RBX
 			throw std::runtime_error("Rocket:Fire may not be called from a client");
 		active = true;
 	}
-#endif
 
 	void Rocket::abort()
 	{

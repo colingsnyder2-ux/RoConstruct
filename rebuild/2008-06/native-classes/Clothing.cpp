@@ -4,6 +4,7 @@
 #include "v8datamodel/PartInstance.h"
 #include "humanoid/Humanoid.h"
 #include "Network/Players.h"
+#include "v8datamodel/Decal.h"   // native Decal (ShirtGraphic::apply 005d4240, findFirstChildOfType<Decal> 005d41a0)
 
 namespace RBX
 {
@@ -129,17 +130,13 @@ namespace RBX
 	// Shirt / Pants
 	Shirt::Shirt() {}
 	TextureId Shirt::getTemplate() const { return outfit2; }
-#ifdef NATIVE_CLOTHING_PENDING
 	// 005d40c0 calls GetSet::setValue through vtable slot 3: the 2008 TypedPropertyDescriptor::GetSet has two
 	// bool virtuals before getValue (every GetSet vtable here starts 0060a2f0, 0060a2f0 = `xor al,al; ret`).
 	void Shirt::setTemplate(TextureId value) { prop_Outfit2.setValue(this, value); }
-#endif
 
 	Pants::Pants() {}
 	TextureId Pants::getTemplate() const { return outfit1; }
-#ifdef NATIVE_CLOTHING_PENDING
 	void Pants::setTemplate(TextureId value) { prop_Outfit1.setValue(this, value); }   // 005d4120, as above
-#endif
 
 	// ShirtGraphic
 	ShirtGraphic::ShirtGraphic()
@@ -147,16 +144,13 @@ namespace RBX
 		setName("Shirt Graphic");   // literal 0083c8f8 has a space
 	}
 
-#ifdef NATIVE_CLOTHING_PENDING_DECAL
-	// 005d4240: needs Instance::findFirstChildOfType<T>() (instantiated for Decal at 005d41a0) in
-	// v8tree/Instance.h and a native Decal.h (the donor one still passes &sDecal). Not verified.
+	// 005d4240: Instance::findFirstChildOfType<Decal> (005d41a0) and the native Decal.h.
 	void ShirtGraphic::apply(Humanoid* humanoid)
 	{
 		if (PartInstance* torso = humanoid->getTorso())
 			if (Decal* decal = torso->findFirstChildOfType<Decal>())
 				decal->setTexture(graphic);
 	}
-#endif
 
 	// Skin
 	Skin::Skin() : skinColor(BrickColor::lego_226)

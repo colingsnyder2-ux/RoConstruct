@@ -304,7 +304,7 @@ namespace RBX
 		}
 	}
 
-	// 005cb0e0 is not exact: the original negates and stores x, y, z in order; this compiles y and z first.
+	// 005cb0e0 (exact under the unit profile /fp:fast; /fp:precise breaks chaseTarget 005ca430).
 	void AIFleeController::updateBuffer(float time)
 	{
 		updateTarget(Controller::AI_FLEE_CONTROLLER, time);

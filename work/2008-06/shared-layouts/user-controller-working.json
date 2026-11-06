@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\user_controller\\NativeUserControllerLayout.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeUserControllerLayout.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeUserControllerLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeUserControllerLayout.cpp"
     ],
     "unit": [
       "/nologo",
@@ -62,7 +62,7 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -76,8 +76,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\user_controller\\NativeUserController.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\UserController.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeUserController.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/UserController.cpp"
     ],
     "pending": [
       "/nologo",
@@ -101,9 +101,9 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\user_controller\\user-controller-pending",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/user-controller-pending",
       "/DNATIVE_USER_CONTROLLER_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -117,20 +117,20 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\user_controller\\NativeUserControllerPending.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\UserController.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeUserControllerPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/UserController.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_user_controller.py": "ce60c8eac03ed96798b577fd41edbd16fb0d087089594979a155fa5b317276e9",
+    "rebuild/2008-06/tests/record_native_user_controller.py": "5520b76718db7c1ca16c63381ab240a52d6a2d88ace631d2328a7088e06e8551",
     "rebuild/2008-06/tests/NativeUserControllerLayout.cpp": "0236bbf5847b11f79a66d64399d67022b6037e7031deb14c43355353185a798d",
     "rebuild/2008-06/native-headers/v8datamodel/UserController.h": "50d100ac1c8d51dad2f8e4aacfbdb17a0cb71d9009a771029722fe220a89d839",
-    "rebuild/2008-06/native-classes/UserController.cpp": "48cf0cc647c09b647ef7b7083ecd122843b725c8742b4761e0df9cc0a6409eef"
+    "rebuild/2008-06/native-classes/UserController.cpp": "fb1d32ae52ef265459ee859a3b5c92bc570b8ba459c5c957fc4b6bbf62e498ca"
   },
   "objects": {
-    "NativeUserControllerLayout.obj": "27133b3d04c66067483dd1fdd07972685deffe6b71d2e1075a9ede92ed455043",
-    "NativeUserController.obj": "9ad817b73a2c64c88338fbe2b831b591232b11e3f295179070575efd8e51b456",
-    "NativeUserControllerPending.obj": "b97e291d512deba18335d7aa7cd3a5db3e8e3339a772fad85873b55325b0b68c"
+    "NativeUserControllerLayout.obj": "ee031b23db8f3f1634b63611b77f98cd817f9164c1e2167b72ceeeab769ffe86",
+    "NativeUserController.obj": "61fc5c818d9160a61a015b59dc0adb4e1beb63ef973fa0fb01d0aeb57c019558",
+    "NativeUserControllerPending.obj": "b3bc10356d28df41680ba9dc245c55372cb8e35516ff25c8ba3e554786a03c17"
   },
   "layout": {
     "ControllerService": "0x144 (creator 0045c580); Service +0x130 (empty); hardwareDevice +0x130, playerController +0x134, keyboardPrimary +0x138, keyboardSecondary +0x13c, nullController +0x140; class name char[] \"ControllerService\" at 009510b4",
@@ -397,6 +397,19 @@
           "?getLocalTargetPosition@AIController@RBX@@IBE?AVVector3@G3D@@XZ": "0x5cac20 (own row)",
           "?chaseTarget@AIController@RBX@@IAEXABVVector3@G3D@@@Z": "0x5ca430 (own row)",
           "__real@bf800000": "0x81c3b8 (float constant)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005cb0e0",
+        "symbol": "?updateBuffer@AIFleeController@RBX@@MAEXM@Z",
+        "size": 91,
+        "target_size": 91,
+        "exact": true,
+        "verified_targets": {
+          "?updateTarget@AIController@RBX@@IAEXW4ControllerType@Controller@2@M@Z": "0x5cadc0 (own row)",
+          "?getLocalTargetPosition@AIController@RBX@@IBE?AVVector3@G3D@@XZ": "0x5cac20 (own row)",
+          "?chaseTarget@AIController@RBX@@IAEXABVVector3@G3D@@@Z": "0x5ca430 (own row)"
         },
         "local_eh": []
       },
@@ -1258,6 +1271,7 @@
     "005cada0",
     "005cadc0",
     "005cb080",
+    "005cb0e0",
     "005cb140",
     "005cb200",
     "005cb210",
@@ -1459,7 +1473,7 @@
       },
       {
         "slot": 1,
-        "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
+        "symbol": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
         "original": "00558d90",
         "ok": true,
         "how": "inherited (same slot of the base vtable 0082d858)"
@@ -1505,7 +1519,7 @@
       },
       {
         "slot": 1,
-        "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
+        "symbol": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
         "original": "00559230",
         "ok": true,
         "how": "inherited (same slot of the base vtable 0082d838)"
@@ -2214,9 +2228,7 @@
     ]
   },
   "pending_note": "pending rows are exact only with a generated copy of the donor util/UserInputBase.h that defines altKeyDown inline (PROPOSAL_INPUT) under out/native-layouts/user-controller-pending.",
-  "not_exact": {
-    "005cb0e0": "AIFleeController::updateBuffer: chaseTarget(-getLocalTargetPosition()); the original negates and stores x, y, z in order, the compile loads y and z first (91 vs 93 bytes under /fp:fast; tried a named local, *= -1, -1 * v, member-wise construction)"
-  },
+  "not_exact": {},
   "not_attempted": {
     "005cb530": "PlayerController::onEvent (748 bytes): needs native Workspace/Camera/Humanoid/Network::Players and the 2008 NavKeys input structure (UserInputBase::getNavKeys)",
     "005caba0": "weak_ptr<ControllerService>::lock instance used only by PlayerController::onEvent",

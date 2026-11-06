@@ -6,8 +6,8 @@ Builds (document-swap flags, VS2008 RTM 21022, native headers only):
                                   initializers 007f8c40..007f8f30 and atexit rows, plus the class-template instances the
                                   original emits in the Tool unit (constructor chain, classDescriptor, ~Mouse,
                                   create<Mouse>), here COMDATs of an explicit create<Mouse> instantiation.
-Comparison build uses the canonical native IIDREF declaration in an isolated include overlay. Pending-only rows
-remain excluded and vtables are not walked in that comparison build.
+The former comparison build (an IIDREF novtable reflection.h overlay for the RefPropDescriptor constructor 0064e390)
+is folded into the main build: the committed native reflection.h declares IIDREF novtable.
 
 Rows are found by closure from seeds (the constructor and factory, the dynamic initializers, update): every
 REL32/DIR32 relocation of an exact row is bound to the address the original instruction uses. A target defined in the
@@ -37,17 +37,8 @@ HDR = R / 'native-headers/v8datamodel/Mouse.h'
 LAYOUT = R / 'tests/NativeMouseLayout.cpp'
 VERBOSE = '--verbose' in sys.argv
 
-# ---- comparison overlay mirrors the canonical IIDREF declaration --------------------------------------------
-pending = OUT / 'mouse-pending'
-(pending / 'reflection').mkdir(parents=True, exist_ok=True)
-PROPOSAL_ANCHOR = '\tclass IIDREF\n'
-PROPOSAL = '\tclass __declspec(novtable) IIDREF\n'
-text = (R / 'native-headers/reflection/reflection.h').read_text()
-if text.count(PROPOSAL_ANCHOR) == 1:
-    text = text.replace(PROPOSAL_ANCHOR, PROPOSAL)
-else:
-    assert text.count(PROPOSAL) == 1, 'IIDREF declaration is neither canonical nor the known pre-proposal form'
-(pending / 'reflection/reflection.h').write_text(text)
+# RefPropDescriptor<Mouse, PartInstance> constructor 0064e390 stores only the derived IIDREF vptr.
+assert (R / 'native-headers/reflection/reflection.h').read_text().count('\tclass __declspec(novtable) IIDREF\n') == 1
 
 
 def build(name, src, extra=(), post=()):
@@ -63,7 +54,6 @@ def build(name, src, extra=(), post=()):
 UNIT_FLAGS = ['/fp:fast']   # getOrigin 0064e050 keeps ray.origin + ray.direction in x87 registers
 layout_obj, layout_flags = build('NativeMouseLayout', LAYOUT)
 main_obj, main_flags = build('NativeMouse', SRC, post=UNIT_FLAGS)
-pend_obj, pend_flags = build('NativeMousePending', SRC, ['/I' + str(pending), '/DNATIVE_MOUSE_PENDING'], UNIT_FLAGS)
 
 # ---- layout ---------------------------------------------------------------------------------------------------
 LAYOUT_VALUES = {'nativeMouseSize': 0x168, 'nativeMouseLastEvent': 0x130, 'nativeMouseIcon': 0x144,
@@ -207,7 +197,7 @@ for vt, cls in GETSET_VTABLES.items():
     assert original.vtable_class(vt) == ('.?AV' + cls, 0), (hex(vt), original.vtable_class(vt))
     assert d(vt + 4) == 0x60a2f0, hex(vt)   # second bool virtual: return false (ICF-shared)
     SEEDS += [(d(vt), '?isReadOnly@' + cls + 'UBE_NXZ'), (d(vt + 8), '?getValue@' + cls), (d(vt + 12), '?setValue@' + cls)]
-PENDING_SEEDS = [(0x64e390, '??$?0P8Mouse@RBX@@BEPAVPartInstance@1@XZH@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Mouse@2@BEPAVPartInstance@2@XZHW4Functionality@PropertyDescriptor@12@@Z')]
+SEEDS += [(0x64e390, '??$?0P8Mouse@RBX@@BEPAVPartInstance@1@XZH@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Mouse@2@BEPAVPartInstance@2@XZHW4Functionality@PropertyDescriptor@12@@Z')]
 OWN_CLASSES = 'Mouse'
 OWN = re.compile(r'Mouse@RBX@@|\?\?__[EF](event_|prop_)|sMouse')
 NOT_ATTEMPTED = {
@@ -476,7 +466,6 @@ class Build:
 
 
 mouse = Build('mouse', main_obj, True).run(SEEDS)
-pending_build = Build('mouse-pending', pend_obj, False).run(PENDING_SEEDS)
 occurrences = {}
 for symbol, (value, origin) in mouse.binding.items():
     occurrences.setdefault(symbol, set()).add((value, 'mouse: ' + origin))
@@ -518,22 +507,13 @@ if VERBOSE:
     for r in sorted(mouse.rows.values(), key=lambda r: r['address']):
         print('%s %s %4d/%4d %s %s' % (r['address'], 'EXACT' if r['exact'] else '-----', r['size'], r['target_size'],
                                        r['symbol'][:150], r.get('bounds_status', '')))
-    for r in pending_build.rows.values():
-        print('pending %s %s %s' % (r['address'], r['exact'], r['symbol'][:150]))
 assert not UNBOUND, '\n'.join(sorted(set(UNBOUND)))
 
-REQUIRED = [0x5ff3b0, 0x5ff600, 0x5fe7f0, 0x64e660, 0x64df60, 0x64e050, 0x64e1a0, 0x64e020, 0x7f8c40, 0x7f8f30]
+REQUIRED = [0x64e390, 0x5ff3b0, 0x5ff600, 0x5fe7f0, 0x64e660, 0x64df60, 0x64e050, 0x64e1a0, 0x64e020, 0x7f8c40, 0x7f8f30]
 for address in REQUIRED:
     hits = [r for k, r in mouse.rows.items() if (k if isinstance(k, int) else k[0]) == address]
     assert hits and all(r['exact'] for r in hits), (hex(address), hits)
-pending_rows = []
-for row in pending_build.rows.values():
-    main = [r for r in mouse.rows.values() if r['address'] == row['address'] and r['symbol'] == row['symbol'] and r['exact']]
-    if main:
-        continue   # also exact in the main build: counted there
-    row['exact_pending_build_only'] = row['exact']
-    row['exact'] = False
-    pending_rows.append(dict(row, build=pending_build.name))
+pending_rows = []   # no pending build
 
 main_rows = list(mouse.rows.values())
 # Counted: exact rows with a Mouse symbol inside the original Mouse stretch (bodies + descriptor instances), its
@@ -565,9 +545,9 @@ paths = [Path(__file__).resolve(), LAYOUT, SRC, HDR]
 receipt = {
     'class': 'RBX::Mouse',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'layout': layout_flags, 'mouse': main_flags, 'mouse_pending': pend_flags},
+    'flags': {'layout': layout_flags, 'mouse': main_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
-    'objects': {p.name: sha(p) for p in (layout_obj, main_obj, pend_obj)},
+    'objects': {p.name: sha(p) for p in (layout_obj, main_obj)},
     'layout': {k: hex(v) for k, v in LAYOUT_VALUES.items()},
     'exact_function_rows': counted,
     'exact_support_rows': support,
@@ -579,7 +559,7 @@ receipt = {
     'external_slots': SLOT_CHECK,
     'shared_header_gaps': HEADER_GAPS + HEADER_NOTES,
     'non_exact_reasons': NON_EXACT_REASONS,
-    'pending_note': 'comparison-build pending-only rows remain excluded; comparison-build vtables are not walked.',
+    'pending_note': 'no pending build: 0064e390 is built and counted in the main build.',
     'proposals': [],
     'not_attempted': NOT_ATTEMPTED,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',

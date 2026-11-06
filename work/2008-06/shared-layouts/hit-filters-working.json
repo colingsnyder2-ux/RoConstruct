@@ -38,7 +38,7 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHitTestFilterLayout.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-hit-filters/NativeHitTestFilterLayout.obj",
       "/home/user/roconstruct/rebuild/2008-06/tests/NativeHitTestFilterLayout.cpp"
     ],
     "unit": [
@@ -77,62 +77,20 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHitTestFilters.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Filters.cpp"
-    ],
-    "pending": [
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/fp:fast",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/hit-filters-pending",
-      "/DNATIVE_HIT_FILTERS_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHitTestFiltersPending.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-hit-filters/NativeHitTestFilters.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/Filters.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_hit_filters.py": "b4d05a4de39e4401d7cbb5842de6d7e32fdfdba8de4900721bad1f9669d1233b",
+    "rebuild/2008-06/tests/record_native_hit_filters.py": "6d26d5adab22307fb91c178e4e38cda105e5e5cafe19f32a8145c6d329b5eee8",
     "rebuild/2008-06/tests/NativeHitTestFilterLayout.cpp": "f74d8f7bdb9c3c834df7f3dc2842b69d781899be69bf05cb6eb0b7729149a059",
     "rebuild/2008-06/native-headers/v8datamodel/Filters2008.h": "d016a379b1a29573a46a5a6ef53f1a2c51f22753eda0260cd7441d5a8451df5f",
-    "rebuild/2008-06/native-classes/Filters.cpp": "8d72c9741614d67df5e816c9cfc56e6621643ca7bd55168d8a3d1cf6919281ab",
-    "rebuild/2008-06/tests/NativeHitTestFilterPendingHumanoid.h": "ce95027086e3dbb4f560472275affed7f43c28608b9d66a22b4c67fef0cc528f"
+    "rebuild/2008-06/native-classes/Filters.cpp": "4a903370763a7497f9123d43f2f19e1e7dfe550c5acd2c4e6b4fcd35b8f5359e",
+    "rebuild/2008-06/native-headers/humanoid/Humanoid.h": "888cf285f0469122a7fbeefcc1204dcbf2d0f2903d1b27b4bed4ece8c9239309"
   },
   "objects": {
-    "NativeHitTestFilterLayout.obj": "f98a92439ea088bf879973b1b32990568d9b77266fb21ebb67440c096906de23",
-    "NativeHitTestFilters.obj": "8c1605935c46283aff198bb710e312d0209b81cabcc37c5f41b8fe18eac8c6d3",
-    "NativeHitTestFiltersPending.obj": "3f761be962f399bc8094103c8ace5d5d322955034d73d643873e9bdbf4f98fc3"
+    "NativeHitTestFilterLayout.obj": "50f57400e2f701493477b27e51480d121e9e4efe83440ee1cb65f2f827a6e167",
+    "NativeHitTestFilters.obj": "c384c54c87eae1ab0cbbb6287b84540d83a71f6d9ade3a133a2095ef765d8eee"
   },
   "layout": {
     "PartByLocalCharacter": "0x14: character shared_ptr +0x04, head shared_ptr +0x0c (ctor 00660380)",
@@ -229,6 +187,24 @@
         "local_eh": [
           "__ehhandler$??0FilterStairs@RBX@@QAE@PAVInstance@1@@Z"
         ]
+      },
+      {
+        "address": "00660380",
+        "symbol": "??0PartByLocalCharacter@RBX@@QAE@PAVInstance@1@@Z",
+        "size": 287,
+        "target_size": 287,
+        "exact": true,
+        "verified_targets": {
+          "??_7PartByLocalCharacter@RBX@@6B@": "0x84c464 (vtable RTTI .?AVPartByLocalCharacter@RBX@@ offset 0x0)",
+          "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z": "0x49aca0 (external (evidence name))",
+          "??$shared_from@VModelInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VModelInstance@RBX@@@boost@@PAVModelInstance@0@@Z": "0x618a40 (external)",
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external (evidence name))",
+          "?getHeadFromCharacter@Humanoid@RBX@@SAPAVPartInstance@2@PBVModelInstance@2@@Z": "0x5d75a0 (external (evidence name))",
+          "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z": "0x618a40 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??0PartByLocalCharacter@RBX@@QAE@PAVInstance@1@@Z"
+        ]
       }
     ],
     "not_exact": [
@@ -257,28 +233,7 @@
         "reason": "inlines PartByLocalCharacter::filterResult in the original; here the inlined getIsTransparent makes it too large to inline (same cause as 00660260)"
       }
     ],
-    "pending": [
-      {
-        "address": "00660380",
-        "symbol": "??0PartByLocalCharacter@RBX@@QAE@PAVInstance@1@@Z",
-        "size": 287,
-        "target_size": 287,
-        "exact": false,
-        "verified_targets": {
-          "??_7PartByLocalCharacter@RBX@@6B@": "0x84c464 (vtable RTTI .?AVPartByLocalCharacter@RBX@@ offset 0x0)",
-          "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z": "0x49aca0 (external (evidence name))",
-          "??$shared_from@VModelInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VModelInstance@RBX@@@boost@@PAVModelInstance@0@@Z": "0x618a40 (external)",
-          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external (evidence name))",
-          "?getHeadFromCharacter@Humanoid@RBX@@SAPAVPartInstance@2@PBVModelInstance@2@@Z": "0x5d75a0 (external (evidence name))",
-          "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z": "0x618a40 (external)"
-        },
-        "local_eh": [
-          "__ehhandler$??0PartByLocalCharacter@RBX@@QAE@PAVInstance@1@@Z"
-        ],
-        "exact_pending_build_only": true,
-        "reason": "needs a Humanoid::getHeadFromCharacter(const ModelInstance*) declaration (005d75a0): no native humanoid/Humanoid.h; built against the declaration-only overlay tests/NativeHitTestFilterPendingHumanoid.h"
-      }
-    ]
+    "pending": []
   },
   "exact_function_rows": [
     "00615b60",
@@ -287,6 +242,7 @@
     "00660210",
     "00660220",
     "00660320",
+    "00660380",
     "006604a0"
   ],
   "vtables": {
@@ -334,6 +290,15 @@
         "ok": true,
         "how": "bound"
       }
+    ],
+    "PartByLocalCharacter": [
+      {
+        "slot": 0,
+        "symbol": "?filterResult@PartByLocalCharacter@RBX@@UBE?AW4Result@HitTestFilter@2@PBVPrimitive@2@@Z",
+        "original": "00660260",
+        "ok": true,
+        "how": "address of a non-exact row"
+      }
     ]
   },
   "rtti_bases": {
@@ -363,7 +328,6 @@
     }
   },
   "proposals": {
-    "humanoid/Humanoid.h (new native header, Humanoid owner)": "static PartInstance* getHeadFromCharacter(const ModelInstance* character); /*005d75a0*/ in class Humanoid : DescribedCreatable<Humanoid, Instance, sHumanoid> (extern char sHumanoid[]; RTTI 3PADA). With it, the PartByLocalCharacter constructor 00660380 is exact (pending build)",
     "v8datamodel/PartInstance.h (PartInstance owner)": "getTransparencyUi() { return 1.0f - (1.0f - transparency) * alphaModifier; } (getIsTransparent 006601c0: fld1; fld st0; fsub [+0x1e8]; fmul [+0x328]; fsubp; > 0.1f) with alphaModifier at +0x328, i.e. after the Primitive embedded at +0x228 (already proposed)"
   },
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."

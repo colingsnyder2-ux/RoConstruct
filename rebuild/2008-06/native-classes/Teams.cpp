@@ -3,12 +3,10 @@
 #include <algorithm>
 #include "Network/Players.h" // native Network::Players (ServiceProvider::find<Players>, 00491d50)
 #include "Network/Player.h"  // native Network::Player (getNeutral/getTeamColor, setTeamColor 00494600, setNeutral 00494620)
-#ifdef NATIVE_TEAMS_PENDING
-// getTeamColorForHumanoid needs Humanoid and Instance::findFirstChildOfType;
-// see the proposal in tests/record_native_team.py.
+// getTeamColorForHumanoid 005d6180: native ModelInstance, Instance::findFirstChildOfType<Humanoid> (005d5f40) and the
+// native 2008 Humanoid (humanoid/Humanoid2008.h only; never together with humanoid/Humanoid.h).
 #include "v8datamodel/ModelInstance.h"
-#include "humanoid/Humanoid.h"
-#endif
+#include "humanoid/Humanoid2008.h"
 
 namespace RBX
 {
@@ -128,7 +126,6 @@ namespace RBX
 		return getTeamFromTeamColor(player->getTeamColor());
 	}
 
-#ifdef NATIVE_TEAMS_PENDING
 	G3D::Color3 Teams::getTeamColorForHumanoid(Humanoid* humanoid)
 	{
 		Network::Players* players = ServiceProvider::find<Network::Players>(this);
@@ -151,7 +148,6 @@ namespace RBX
 
 		return G3D::Color3::white();
 	}
-#endif
 
 	void Teams::assignNewPlayerToTeam(Network::Player* player)
 	{

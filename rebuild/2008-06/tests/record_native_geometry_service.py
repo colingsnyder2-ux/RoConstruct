@@ -62,7 +62,10 @@ def build(name, src, extra=()):
 
 
 layout_obj, layout_flags = build('NativeGeometryServiceLayout', LAYOUT, ['/fp:fast'])
-unit_obj, unit_flags = build('NativeGeometryService', SRC, ['/fp:fast'])
+# getPartsTouchingExtents 0062db60: World::getContactManager from native-headers/engine-world (World +0x84), first on
+# the include path as in record_native_humanoid2008.py (ENGINE_WORLD).
+ENGINE_WORLD = ['/I' + str(R / 'native-headers/engine-world')]
+unit_obj, unit_flags = build('NativeGeometryService', SRC, ['/fp:fast'] + ENGINE_WORLD)
 pend_obj, pend_flags = build('NativeGeometryServicePending', SRC,
                              ['/fp:fast', '/I' + str(PENDING), '/I' + str(R / 'native-headers/engine-world'),
                               '/DNATIVE_GEOMETRYSERVICE_PENDING'])
@@ -153,21 +156,21 @@ UNIT_ROWS = [
     (0x7fe710, '??__Ffoo@?1??classDescriptor@' + DS),
 ]
 # Built with NATIVE_GEOMETRYSERVICE_PENDING against the generated overlays: never counted.
+UNIT_ROWS.append((0x62db60, '?getPartsTouchingExtents@GeometryService@RBX@@'))   # native Workspace.h + engine-world
 PENDING_ROWS = [
-    (0x62db60, '?getPartsTouchingExtents@GeometryService@RBX@@'),
     (0x62dc10, '?getHitLocationFilterStairs@GeometryService@RBX@@'),
 ]
 PENDING_REASONS = {
-    '0062db60': 'needs the native Workspace layout: the original loads World* inline from Workspace +0x2e4 (0062db6d); '
-                'the pending overlay declares Workspace::getWorld() out of line (proposal), so this build calls it',
     '0062dc10': 'needs the native Workspace layout (Workspace +0x2e4 at 0062dc81); the pending overlay declares '
                 'Workspace::getWorld() out of line. RBX::FilterStairs (constructor 006604a0) now comes from the native '
                 'v8datamodel/Filters2008.h',
 }
-PENDING_EXTERNAL = {
+EXTERNAL.update({   # getPartsTouchingExtents 0062db60 (counted)
     '?getPrimitivesTouchingExtents@ContactManager@RBX@@QAEXABVExtents@2@PBVPrimitive@2@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z': 0x60d140,  # 0062db99
     '?resize@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXH_N@Z': 0x599a70,         # 0062db87 (evidence name)
     '?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z': 0x599f80,   # 0062dbb9 (evidence fromPrimitiveConst, ICF)
+})
+PENDING_EXTERNAL = {
     '??0FilterStairs@RBX@@QAE@PAVInstance@1@@Z': 0x6604a0,                 # 0062dc74
     '??0?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@QAE@XZ': 0x4293d0,   # 0062dca2 (ICF)
     '?getHit@ContactManager@RBX@@QBEPAVPrimitive@2@ABVRay@G3D@@PBV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@PBVHitTestFilter@2@AAVVector3@5@AA_N@Z': 0x60db10,  # 0062dcc7
