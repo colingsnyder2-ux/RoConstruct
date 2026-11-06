@@ -1,26 +1,28 @@
-// from server: 42% by Intel
+// from server: 100% by tajop
+namespace Ogre {
 struct TexturePtr {
-    char _pad[0x18];
+    TexturePtr& operator=(const TexturePtr& r);
+    char pad[16];
+};
+}
+
+typedef Ogre::TexturePtr& (Ogre::TexturePtr::*TexAssignFn)(const Ogre::TexturePtr&);
+extern TexAssignFn g_TexturePtr_assign;
+
+struct Elem {
+    float a;
+    float b;
+    Ogre::TexturePtr tex;
 };
 
-extern "C" TexturePtr* __stdcall TexturePtr_Assign(TexturePtr* dst, const TexturePtr* src);
-
-void __cdecl VertexStreamer_CopyTextures(TexturePtr* first, TexturePtr* last, TexturePtr* destFirst, TexturePtr* destLast) {
-    if (first != last) {
-        return;
+Elem* copy_backward_elem(Elem* first, Elem* last, Elem* dest)
+{
+    while (first != last) {
+        --last;
+        --dest;
+        dest->a = last->a;
+        dest->b = last->b;
+        (dest->tex.*g_TexturePtr_assign)(last->tex);
     }
-
-    TexturePtr* src = last;
-    TexturePtr* dst = destLast;
-
-    do {
-        src = reinterpret_cast<TexturePtr*>(reinterpret_cast<char*>(src) - 0x18);
-        dst = reinterpret_cast<TexturePtr*>(reinterpret_cast<char*>(dst) - 0x18);
-
-        *reinterpret_cast<float*>(dst) = *reinterpret_cast<float*>(reinterpret_cast<char*>(src) + 0xE8);
-        *reinterpret_cast<float*>(reinterpret_cast<char*>(dst) + 4) = *reinterpret_cast<float*>(reinterpret_cast<char*>(src) + 4);
-
-        TexturePtr_Assign(reinterpret_cast<TexturePtr*>(reinterpret_cast<char*>(dst) + 8),
-                          reinterpret_cast<const TexturePtr*>(reinterpret_cast<char*>(src) + 8));
-    } while (src != first);
+    return dest;
 }

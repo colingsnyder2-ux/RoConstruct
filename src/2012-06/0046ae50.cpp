@@ -1,14 +1,28 @@
-// from server: 74% by atomic.potato
-extern "C" void __stdcall UpdateShadowMode(void *, int);
+// from server: 100% by tajop
+struct PropertyDescriptor;
 
-struct S {
-    void Set(unsigned char value);
+struct Notifier
+{
+	void raisePropertyChanged(const PropertyDescriptor* desc);
 };
 
-void S::Set(unsigned char value)
+extern const PropertyDescriptor desc_ShadowMode;
+
+struct CRenderSettings
 {
-    if (value != *((unsigned char *)this + 0xfc)) {
-        *((unsigned char *)this + 0xfc) = value;
-        UpdateShadowMode((char *)this + 0x144, 0xe19b34);
-    }
+	char pad0[0xfc];
+	unsigned char shadowMode;
+	char pad1[0x144 - 0xfd];
+	Notifier notifier;
+
+	void setShadowMode(unsigned char value);
+};
+
+void CRenderSettings::setShadowMode(unsigned char value)
+{
+	if (value != shadowMode)
+	{
+		shadowMode = value;
+		notifier.raisePropertyChanged(&desc_ShadowMode);
+	}
 }

@@ -1,22 +1,47 @@
-// from server: 25% by atomic.potato
-struct TweenService_008f5f70 {
-    char pad0[0x28];
-    int field28;
-    int ctor();
+// from server: 100% by tajop
+
+struct InstanceA {
+    virtual void a0();
 };
 
-extern "C" void __stdcall sub_006861b0();
-extern "C" int __stdcall sub_00781f30();
-extern int g_e48c1c;
+struct InstanceB {
+    virtual void b0();
+};
 
-int TweenService_008f5f70::ctor()
+struct InstanceBase : InstanceA, InstanceB {
+    InstanceBase();
+    char pad[0x10];
+};
+
+struct __declspec(novtable) HeartbeatInstance {
+    virtual void h0();
+};
+
+struct __declspec(novtable) IStepped {
+    virtual void s0();
+};
+
+struct Holder {
+    ~Holder();
+    int p;
+};
+
+int fetchTweenToken();
+extern int g_tweenServiceCount;
+
+struct TweenService : InstanceBase, HeartbeatInstance, IStepped {
+    int m20;
+    Holder m24;
+    int token;
+    TweenService();
+    virtual void a0();
+    virtual void b0();
+    virtual void h0();
+    virtual void s0();
+};
+
+TweenService::TweenService()
+    : token(fetchTweenToken())
 {
-    sub_006861b0();
-    *(int*)((char*)this + 0x00) = 0xbeffb4;
-    *(int*)((char*)this + 0x04) = 0xbeffac;
-    *(int*)((char*)this + 0x18) = 0xbeffa0;
-    *(int*)((char*)this + 0x1c) = 0xbeff94;
-    field28 = sub_00781f30();
-    g_e48c1c++;
-    return (int)this;
+    ++g_tweenServiceCount;
 }
