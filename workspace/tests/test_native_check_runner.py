@@ -15,6 +15,33 @@ spec.loader.exec_module(runner)
 
 
 class RunnerTests(unittest.TestCase):
+    def test_known_com_method_cannot_match_its_sibling(self):
+        name = '?SaveToFile@CWorkspace@@UAGJPA_W@Z'
+        with tempfile.TemporaryDirectory() as temporary:
+            obj = Path(temporary) / 'candidate.obj'
+            obj.write_bytes(b'object')
+            with patch.object(runner.match, 'coff_functions', return_value=[(name, b'\xc3', [])]), \
+                 patch.object(runner.match, 'target', return_value=(b'\xc3', [], None)), \
+                 patch.object(runner.match, 'score', return_value=100), \
+                 patch.object(runner.match, '_image', return_value=(0x80ae88, struct.pack('<I', 0x46c780))), \
+                 patch.object(runner.match, 'coff_data_refs', return_value=[]), \
+                 patch.object(runner.match, 'data_check', return_value=([], [])):
+                job = {'checks': [{'addr': '0046b8d0', 'symbol': name}], 'ranges': [], 'layouts': []}
+                wrong = runner.analyze_object(job, obj)['checks'][0]
+                self.assertEqual(wrong['status'], 'method_identity_mismatch')
+                self.assertEqual(wrong['score'], 0)
+                self.assertEqual(wrong['masked_byte_score'], 100)
+                self.assertFalse(wrong['method_identity']['passed'])
+                with self.assertRaises(SystemExit):
+                    runner.require_proof([{'status': 'complete', 'checks': [wrong]}])
+                job['checks'][0]['addr'] = '0046c780'
+                correct = runner.analyze_object(job, obj)['checks'][0]
+                self.assertEqual(correct['status'], 'exact')
+                self.assertTrue(correct['method_identity']['passed'])
+                with patch.object(runner.match, '_image', return_value=(0x80ae88, struct.pack('<I', 0x46b8d0))):
+                    changed_original = runner.analyze_object(job, obj)['checks'][0]
+                    self.assertEqual(changed_original['status'], 'method_identity_mismatch')
+
     def test_explicit_macro_profile_overrides_recipe_defines(self):
         with tempfile.TemporaryDirectory() as temporary:
             source = Path(temporary) / 'Foo.cpp'
