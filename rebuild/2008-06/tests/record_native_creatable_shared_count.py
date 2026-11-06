@@ -17,6 +17,10 @@ Builds (document-swap flags, VS2008 RTM 21022), all from the current committed n
   * native-classes/CreatableSharedCount2008Lighting.cpp  RBX::Lighting from the native v8datamodel/Lighting2008.h
                                                       (record_native_lighting2008.py), kept apart from the main
                                                       unit's header set.
+  * native-classes/CreatableSharedCount2008Network.cpp  RBX::Network::Client / Server from the native
+                                                      Network/Client2008.h / Server2008.h
+                                                      (record_native_network_client_server2008.py); RakNet
+                                                      raknet30/Source is appended after the document-swap includes.
 
 Per row: the compiled function (resolved through its ??_7sp_counted_impl_pd relocation, whose class must equal the
 RTTI name of the vtable the original stores) is relocation-masked exact against the original's complete 131-byte
@@ -53,18 +57,22 @@ UNITS = {
     'stats': R / 'native-classes/CreatableSharedCount2008Stats.cpp',
     'content': R / 'native-classes/CreatableSharedCount2008Content.cpp',
     'lighting': R / 'native-classes/CreatableSharedCount2008Lighting.cpp',
+    'network': R / 'native-classes/CreatableSharedCount2008Network.cpp',
 }
+# Include directories appended after the document-swap ones (never ahead of native-headers, whose RakPeer.h /
+# RakPeerInterface.h must win over the raknet30 copies).
+TAIL = {'network': ['/I' + str(ROOT / 'tools/rbxgs/Client/Network/raknet30/Source')]}
 RECEIPT = ROOT / 'work/2008-06/shared-layouts/creatable-shared-count-working.json'
 DISCOVER = bool(os.environ.get('NATIVE_SHARED_COUNT_DISCOVER'))
 DLR = 'VDeleter@?$Creatable@VInstance@RBX@@@'
 SCPD = '.?AV?$sp_counted_impl_pd@PAV'
 
 
-def build(name, src, extra=()):
+def build(name, src, extra=(), tail=()):
     obj = OUT / (name + '.obj')
     flags = nb.flags()
     i = next(k for k, x in enumerate(flags) if x.replace('\\', '/').endswith('rebuild/2008-06/native-headers'))
-    flags = flags[:i] + list(extra) + flags[i:] + ['/Fo' + str(obj), str(src)]
+    flags = flags[:i] + list(extra) + flags[i:] + list(tail) + ['/Fo' + str(obj), str(src)]
     code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags, OUT)
     assert code == 0, log
     return obj, flags
@@ -113,14 +121,14 @@ ROWS = {
     0x635fd0: '?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX',
     0x636210: '?$Value@VBrickColor@RBX@@$1?sBrickColorValue@2@3PADA@RBX',
     0x656c90: 'ImageWidget@RBX', 0x656d20: 'ArrowButton@RBX',
+    # CreatableSharedCount2008Network.cpp (native Network/Client2008.h / Server2008.h)
+    0x49a0a0: 'Client@Network@RBX', 0x49a310: 'Server@Network@RBX',
 }
 # Same family, no complete native 2008 declaration of T yet: not built, listed with the header each would need.
 BLOCKED = {
     0x40b1e0: ('Reflection@Metadata@1RBX', 'reflection/Metadata.h declares class Reflection in namespace RBX::Metadata; '
                'the 2008 RTTI .?AVReflection@Metadata@0RBX@@ (and this vtable 0080bc54) place it in '
                'RBX::Reflection::Metadata (header-owner proposal)'),
-    0x49a0a0: ('Client@Network@RBX', 'native Network/Client.h (RBX::Network::Client, Peer base) does not exist'),
-    0x49a310: ('Server@Network@RBX', 'native Network/Server.h (RBX::Network::Server, Peer base) does not exist'),
     0x49e590: ('Replicator@Network@RBX', 'native-headers/Replicator.h is the provisional donor layout (needs '
                'PluginInterface.h; record_native_client_proxy.py: Replicator 2008 layout +0x2b74..+0x2d68 still open)'),
     0x4a1be0: ('ClientProxy@Server@Network@RBX', 'needs the native 2008 Network::Replicator and Server '
@@ -181,7 +189,8 @@ for path in sorted((ROOT / 'work/2008-06/shared-layouts').glob('*.json')):
         if '%08x' % address in counted:
             others.setdefault(address, []).append(path.name)
 
-objects = {k: build('CreatableSharedCount2008' + ('' if k == 'main' else k.title()), src) for k, src in UNITS.items()}
+objects = {k: build('CreatableSharedCount2008' + ('' if k == 'main' else k.title()), src, tail=TAIL.get(k, ()))
+           for k, src in UNITS.items()}
 
 EXTERNAL = {
     # Creatable<Instance>::Deleter::operator(): the catch(...) funclet of every 131-byte shared_count extent; same
