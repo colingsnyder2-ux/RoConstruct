@@ -5,6 +5,7 @@ from roc.integration_site import progress_description
 
 
 def test_native_digest_uses_shared_progress_without_credit(monkeypatch, tmp_path):
+    from roc import integration_site
     snapshot = {'updated': '2026-11-05 12:00 UTC', 'groups': {
         'integrated': {'functions': 1, 'bytes': 20},
         'owned_waiting': {'functions': 2, 'bytes': 50},
@@ -15,6 +16,7 @@ def test_native_digest_uses_shared_progress_without_credit(monkeypatch, tmp_path
     folder.mkdir()
     (folder / 'integration.json').write_text(json.dumps(snapshot))
     monkeypatch.setattr(files, 'ROOT', tmp_path)
+    monkeypatch.setattr(integration_site, 'live_progress', lambda root: snapshot)
     monkeypatch.setattr(reports, 'server_mines_webhook', lambda: 'https://example.invalid/webhook')
     monkeypatch.setattr(files.time, 'sleep', lambda _: None)
     sent = []

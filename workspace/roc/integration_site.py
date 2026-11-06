@@ -5,6 +5,7 @@ import json
 import re
 import sqlite3
 import hashlib
+import io
 import subprocess
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
@@ -160,6 +161,13 @@ def inactive_code(root):
             addr = node.get("address") or node.get("original_address")
             symbol = node.get("symbol") or node.get("source_symbol")
             exact = node.get("relocation_normalized_exact", node.get("exact"))
+            # Native runner checks use addr/status, not address/exact. Byte-only
+            # equality is insufficient when the same check reports data errors.
+            if 'addr' in node and 'status' in node and 'target_size' in node:
+                addr = node['addr']
+                exact = (node['status'] == 'exact' and node.get('score') == 100
+                         and 'data_errors' in node and not node['data_errors']
+                         and node.get('object_size') == node['target_size'])
             if isinstance(addr, str) and isinstance(symbol, str) and isinstance(exact, bool):
                 addr = addr.lower().removeprefix("0x").zfill(8)
                 old = found.get(addr)
@@ -182,6 +190,41 @@ def inactive_code(root):
                                  [path.stem, False, path.name, 0])
         except (ValueError, OSError):
             continue
+    # Owner integrations land in work/workspace without touching this checkout.
+    # Read immutable committed receipts too; never extract over workers' files.
+    ref = None
+    for candidate in ('refs/remotes/findings/work', 'refs/forks/origin/work'):
+        result = subprocess.run(['git', 'rev-parse', '--verify', candidate + '^{commit}'],
+                                cwd=root, capture_output=True)
+        if result.returncode == 0:
+            tip = result.stdout.decode().strip()
+            if ref is None or subprocess.run(['git', 'merge-base', '--is-ancestor', ref, tip],
+                                            cwd=root, capture_output=True).returncode == 0:
+                ref = tip
+    if ref:
+        prefix = 'workspace/work/' + CLIENT + '/shared-layouts/'
+        rows = subprocess.check_output(['git', 'ls-tree', '-r', '-z', ref, '--', prefix], cwd=root).split(b'\0')
+        entries = []
+        for row in rows:
+            if row:
+                meta, path = row.split(b'\t')
+                mode, kind, blob = meta.split()
+                if mode in (b'100644', b'100755') and kind == b'blob' and path.endswith(b'.json'):
+                    entries.append((path.decode()[len(prefix):], blob))
+        result = subprocess.run(['git', 'cat-file', '--batch'], cwd=root,
+                                input=b'\n'.join(blob for _, blob in entries) + b'\n',
+                                capture_output=True, check=True)
+        stream = io.BytesIO(result.stdout)
+        stamp = int(subprocess.check_output(['git', 'show', '-s', '--format=%ct', ref], cwd=root))
+        for name, blob in entries:
+            header = stream.readline().split()
+            if len(header) != 3 or header[0] != blob or header[1] != b'blob':
+                raise ValueError('Committed native receipt identity mismatch')
+            content = stream.read(int(header[2])); stream.read(1)
+            try:
+                walk(json.loads(content), name, stamp)
+            except (ValueError, UnicodeError):
+                continue
     # native source with an address-named method but no receipt yet (e.g. CRobloxDoc::handle_453c30)
     for path in sorted((root / "rebuild" / CLIENT).glob("*/*.cpp")):
         text = path.read_text(encoding="utf-8", errors="replace")

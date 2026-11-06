@@ -131,3 +131,44 @@ def test_live_progress_reads_new_receipts_scores_and_selection(tmp_path):
     db.execute("UPDATE funcs SET score=50 WHERE addr='00400003'")
     db.commit(); db.close()
     assert integration_site.live_progress(tmp_path)['groups']['exact_waiting']['functions'] == 0
+
+
+def test_runner_receipts_from_work_refresh_without_checkout_changes(tmp_path):
+    import subprocess
+
+    def git(*args, **kwargs):
+        return subprocess.check_output(['git', *args], cwd=tmp_path, **kwargs).decode().strip()
+
+    git('init', '-q')
+    git('config', 'user.name', 'Test')
+    git('config', 'user.email', 'test@example.invalid')
+    folder = tmp_path / 'workspace/work/2008-06/shared-layouts'
+    folder.mkdir(parents=True)
+    row = dict(addr='00400000', symbol='Exact', status='exact', score=100,
+               target_size=10, object_size=10, data_errors=[])
+    path = folder / 'runner.json'
+    path.write_text(json.dumps({'build': {'checks': [row]}}))
+    git('add', '.')
+    git('commit', '-qm', 'First receipt')
+    first = git('rev-parse', 'HEAD')
+    git('update-ref', 'refs/remotes/findings/work', first)
+    git('update-ref', 'refs/forks/origin/work', first)
+    assert integration_site.inactive_code(tmp_path)['00400000'][1] is True
+
+    bad = dict(row, addr='00400001', data_errors=['wrong constant'])
+    draft = dict(row, addr='00400002', status='different', score=99)
+    path.write_text(json.dumps({'checks': [row, bad, draft]}))
+    git('add', '.')
+    git('commit', '-qm', 'New receipt')
+    git('update-ref', 'refs/forks/origin/work', git('rev-parse', 'HEAD'))
+    head = git('rev-parse', 'HEAD')
+    index = (tmp_path / '.git/index').read_bytes()
+    # Deliberately stale/dirty local file cannot hide the committed new receipt.
+    path.write_text('worker edits remain untouched')
+    result = integration_site.inactive_code(tmp_path)
+    assert result['00400000'][1] is True
+    assert result['00400001'][1] is False
+    assert result['00400002'][1] is False
+    assert path.read_text() == 'worker edits remain untouched'
+    assert git('rev-parse', 'HEAD') == head
+    assert (tmp_path / '.git/index').read_bytes() == index
