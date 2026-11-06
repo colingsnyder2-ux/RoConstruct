@@ -1,0 +1,1292 @@
+{
+  "class": "RBX::Value<double, sDoubleValue> (DoubleValue, \"NumberValue\")",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/value-double2008/NativeValueDouble2008Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/value-double2008/NativeValueDouble2008Layout.cpp"
+    ],
+    "main": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/value-double2008/NativeValueDouble2008.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ValueDouble2008.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_value_double2008.py": "ed816cf1294e72601424a5e6b10b33039beccd521a6cf950ed22a41ad2d1c4e7",
+    "rebuild/2008-06/native-headers/v8datamodel/Value.h": "bad7c00f8157ebb322d3241019b53702c9304871c4900d3e968e5b5fc0238868",
+    "rebuild/2008-06/native-classes/ValueDouble2008.cpp": "258aee0b6165f913d91f1c7c6251a106e46c971f4f674c9ad4964932967758d8"
+  },
+  "objects": {
+    "NativeValueDouble2008Layout.obj": "e1db53cd57a4ca90289e984c52c5df301836bf2620f3f8691c08ec54ac08b1b4",
+    "NativeValueDouble2008.obj": "7edb849ae1b6a4802c01b87a976af76f2380a17ad5da1c57ff44551cf24738b9"
+  },
+  "layout": {
+    "DoubleValue": "0x138 (create<DoubleValue> 00639800 allocates 0x138); Instance 0x130 at 0, double value +0x130 (ctor 00638380 fldz / fstp); RTTI 21 bases; the 2008 binary has Value<int, bool, double, Color3, Vector3, BrickColor, std::string, CoordinateFrame> RTTI and no Value<float>"
+  },
+  "methods": [
+    {
+      "address": "00635520",
+      "symbol": "??1?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAE@XZ",
+      "size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84866c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x84865c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x848654 (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6BDebugable@1@@": "0x84864c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x84863c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x84862c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x84861c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x84860c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8485fc (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8485ec (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0xc4)",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635580",
+      "symbol": "??0?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@IAE@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84866c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x84865c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x848654 (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6BDebugable@1@@": "0x84864c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x84863c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x84862c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x84861c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x84860c (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8485fc (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8485ec (vtable RTTI .?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0xc4)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "006355e0",
+      "symbol": "??_G?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAE@XZ": "0x635520 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "006355e0",
+      "symbol": "??_G?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAE@XZ": "0x635520 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "006355e0",
+      "symbol": "??_G?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAE@XZ": "0x635520 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635630",
+      "symbol": "??1?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UAE@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAE@XZ": "0x635520 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635630",
+      "symbol": "??1?$Described@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$1?sDoubleValue@2@3PADAV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@2@@Reflection@RBX@@UAE@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAE@XZ": "0x635520 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635630",
+      "symbol": "??1?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@UAE@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAE@XZ": "0x635520 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "006356d0",
+      "symbol": "??$?0V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@boost@@QAE@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+      "size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x635640 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@boost@@QAE@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+      ]
+    },
+    {
+      "address": "00635780",
+      "symbol": "?getClassName@?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sDoubleValue@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x97cb50 (local static)",
+        "??$callDoDeclare@$1?sDoubleValue@RBX@@3PADA@Name@RBX@@CAXXZ": "0x633540 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sDoubleValue@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x6331f0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "006331f0",
+      "symbol": "??$doDeclare@$1?sDoubleValue@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doDeclare@$1?sDoubleValue@RBX@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x97cb1c (local static)",
+        "?sDoubleValue@RBX@@3PADA": "0x95d9f0 (data)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?n@?1???$doDeclare@$1?sDoubleValue@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x97cb18 (local static)"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sDoubleValue@RBX@@3PADA@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "00633540",
+      "symbol": "??$callDoDeclare@$1?sDoubleValue@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doDeclare@$1?sDoubleValue@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x6331f0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00636b50",
+      "symbol": "?classDescriptor@?$Described@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$1?sDoubleValue@2@3PADAV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$1?sDoubleValue@2@3PADAV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x97cdd8 (local static)",
+        "?sDoubleValue@RBX@@3PADA": "0x95d9f0 (data)",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external)",
+        "?foo@?1??classDescriptor@?$Described@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$1?sDoubleValue@2@3PADAV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x97cd18 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$1?sDoubleValue@2@3PADAV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x800bf0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$1?sDoubleValue@2@3PADAV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "00636bc0",
+      "symbol": "??0?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@RBX@@QAE@PBD0@Z",
+      "size": 194,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$1?sDoubleValue@2@3PADAV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x636b50 (own row)",
+        "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z": "0x56bab0 (external (evidence name))",
+        "??_7?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@RBX@@6B@": "0x848b54 (vtable RTTI .?AV?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@RBX@@ offset 0x0)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "??$singleton@N@Type@Reflection@RBX@@SAABV012@XZ": "0x56cd10 (external (evidence name))",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "?_Buynode@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@2@PAU342@0ABUItem@SignatureDescriptor@Reflection@RBX@@@Z": "0x417f00 (external (evidence name))",
+        "?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z": "0x682cc0 (counted by humanoid2008-working.json)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@RBX@@QAE@PBD0@Z"
+      ]
+    },
+    {
+      "address": "00637470",
+      "symbol": "??$?0V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@QAE@PBD0PQ?$Value@N$1?sDoubleValue@RBX@@3PADA@2@NP832@AEXABVPropertyDescriptor@12@@ZW4Functionality@412@@Z",
+      "size": 204,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$1?sDoubleValue@2@3PADAV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x636b50 (own row)",
+        "??0?$TypedPropertyDescriptor@N@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@N@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x563c60 (counted by settings-items-working.json)",
+        "??_7?$BoundProp@N$00@Reflection@RBX@@6B@": "0x848bb4 (vtable RTTI .?AV?$BoundProp@N$00@Reflection@RBX@@ offset 0x0)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$BoundPropGetSet@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@6B@": "0x84830c (vtable RTTI .?AV?$BoundPropGetSet@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@QAE@PBD0PQ?$Value@N$1?sDoubleValue@RBX@@3PADA@2@NP832@AEXABVPropertyDescriptor@12@@ZW4Functionality@412@@Z"
+      ]
+    },
+    {
+      "address": "00637c90",
+      "symbol": "??0?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@IAE@XZ",
+      "size": 146,
+      "exact": true,
+      "verified_targets": {
+        "??0?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@IAE@XZ": "0x635580 (own row)",
+        "?classDescriptor@?$Described@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$1?sDoubleValue@2@3PADAV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x636b50 (own row)",
+        "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x848e5c (vtable RTTI .?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x848e50 (vtable RTTI .?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x848e48 (vtable RTTI .?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6BDebugable@1@@": "0x848e40 (vtable RTTI .?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x848e30 (vtable RTTI .?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x848e20 (vtable RTTI .?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x848e10 (vtable RTTI .?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x848e00 (vtable RTTI .?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x848df0 (vtable RTTI .?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x848de0 (vtable RTTI .?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@ offset 0xc4)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "00638380",
+      "symbol": "??0?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@QAE@XZ",
+      "size": 195,
+      "exact": true,
+      "verified_targets": {
+        "??0?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@IAE@XZ": "0x637c90 (own row)",
+        "??_C@_05LPIJGKJ@Value?$AA@": "0x818478 (literal 'Value')",
+        "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84948c (vtable RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ offset 0x0)",
+        "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x849480 (vtable RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ offset 0x10)",
+        "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x849478 (vtable RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ offset 0x14)",
+        "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6BDebugable@1@@": "0x849470 (vtable RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ offset 0x20)",
+        "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x849460 (vtable RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ offset 0x24)",
+        "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x849450 (vtable RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ offset 0x44)",
+        "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x849440 (vtable RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ offset 0x64)",
+        "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x849430 (vtable RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ offset 0x84)",
+        "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x849420 (vtable RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x849410 (vtable RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ offset 0xc4)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00639800",
+      "symbol": "??$create@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@boost@@XZ",
+      "size": 120,
+      "exact": true,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@QAE@XZ": "0x638380 (own row)",
+        "??$?0V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@boost@@QAE@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x6356d0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@boost@@XZ"
+      ]
+    },
+    {
+      "address": "0063ab70",
+      "symbol": "?onValueChanged@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@AAEXABVPropertyDescriptor@Reflection@2@@Z",
+      "size": 68,
+      "exact": true,
+      "verified_targets": {
+        "?desc_ValueChanged@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@2@A": "0x97d490 (data)",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+        "??R?$signal1@XNU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXN@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@N@Z": "0x6391d0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00633490",
+      "symbol": "?getValue@?$BoundPropGetSet@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@UBENPBVDescribedBase@34@@Z",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0063b260",
+      "symbol": "?setValue@?$BoundPropGetSet@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@UBEXPAVDescribedBase@34@ABN@Z",
+      "size": 78,
+      "exact": true,
+      "verified_targets": {
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00633f30",
+      "symbol": "?newSignalInstance@?$TSignalDesc@$$A6AXN@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z",
+      "size": 102,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0TSignalInstance@?$TSignalDesc@$$A6AXN@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z": "0x633ec0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?newSignalInstance@?$TSignalDesc@$$A6AXN@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z"
+      ]
+    },
+    {
+      "address": "006391d0",
+      "symbol": "??R?$signal1@XNU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXN@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@N@Z",
+      "size": 291,
+      "exact": true,
+      "verified_targets": {
+        "??0call_notification@detail@signals@boost@@QAE@ABV?$shared_ptr@Vsignal_base_impl@detail@signals@boost@@@3@@Z": "0x56a760 (external)",
+        "?end@named_slot_map@detail@signals@boost@@QAE?AVnamed_slot_map_iterator@234@XZ": "0x5713b0 (external)",
+        "??0?$slot_call_iterator@U?$caller@NV?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAE@Vnamed_slot_map_iterator@123@0U?$caller@NV?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@?$call_bound1@X@123@AAV?$optional@Uunusable@detail@signals@boost@@@3@@Z": "0x4908a0 (counted by humanoid2008-working.json)",
+        "?begin@named_slot_map@detail@signals@boost@@QAE?AVnamed_slot_map_iterator@234@XZ": "0x571380 (external)",
+        "??$?RV?$slot_call_iterator@U?$caller@NV?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@NV?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z": "0x638b10 (own row)",
+        "??1call_notification@detail@signals@boost@@QAE@XZ": "0x56a650 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??R?$signal1@XNU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXN@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@N@Z"
+      ]
+    },
+    {
+      "address": "007f8650",
+      "symbol": "??__E?desc_Value@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$BoundProp@N$00@Reflection@2@A@@YAXXZ",
+      "size": 48,
+      "exact": true,
+      "verified_targets": {
+        "?onValueChanged@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@AAEXABVPropertyDescriptor@Reflection@2@@Z": "0x63ab70 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_05LPIJGKJ@Value?$AA@": "0x818478 (literal 'Value')",
+        "?desc_Value@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$BoundProp@N$00@Reflection@2@A": "0x97d3f0 (data)",
+        "??$?0V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@QAE@PBD0PQ?$Value@N$1?sDoubleValue@RBX@@3PADA@2@NP832@AEXABVPropertyDescriptor@12@@ZW4Functionality@412@@Z": "0x637470 (own row)",
+        "??__F?desc_Value@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$BoundProp@N$00@Reflection@2@A@@YAXXZ": "0x800ae0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f8680",
+      "symbol": "??__E?desc_ValueChanged@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@2@A@@YAXXZ",
+      "size": 32,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_05MFEJDJP@value?$AA@": "0x822468 (literal 'value')",
+        "??_C@_07IJEAJKBL@Changed?$AA@": "0x82da38 (literal 'Changed')",
+        "?desc_ValueChanged@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@2@A": "0x97d490 (data)",
+        "??0?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@RBX@@QAE@PBD0@Z": "0x636bc0 (own row)",
+        "??__F?desc_ValueChanged@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@2@A@@YAXXZ": "0x800e60 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00800ae0",
+      "symbol": "??__F?desc_Value@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$BoundProp@N$00@Reflection@2@A@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "?desc_Value@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$BoundProp@N$00@Reflection@2@A": "0x97d3f0 (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00800e60",
+      "symbol": "??__F?desc_ValueChanged@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@2@A@@YAXXZ",
+      "size": 63,
+      "exact": true,
+      "verified_targets": {
+        "?desc_ValueChanged@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@2@A": "0x97d490 (data)",
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (external (evidence name))",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??__F?desc_ValueChanged@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@2V?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@2@A@@YAXXZ"
+      ]
+    },
+    {
+      "address": "00800bf0",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$1?sDoubleValue@2@3PADAV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$1?sDoubleValue@2@3PADAV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x97cd18 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0063abc0",
+      "symbol": "?connectGeneric@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z",
+      "size": 219,
+      "exact": true,
+      "verified_targets": {
+        "??$?0VGenericSlotWrapper@Reflection@RBX@@@shared_count@detail@boost@@QAE@PAVGenericSlotWrapper@Reflection@RBX@@@Z": "0x41a620 (external)",
+        "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (counted by humanoid2008-working.json, network-physics-working.json, stats-service-working.json, wrapper-view-working.json)",
+        "??$?0VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@@?$slot@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABVGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@@Z": "0x63a560 (own row)",
+        "?connect@?$signal1@XNU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXN@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z": "0x633d60 (own row)",
+        "??1?$slot@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ": "0x49f710 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?connectGeneric@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z"
+      ]
+    },
+    {
+      "address": "00633ec0",
+      "symbol": "??0TSignalInstance@?$TSignalDesc@$$A6AXN@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_7SignalInstance@Reflection@RBX@@6B@": "0x80ece0 (vtable RTTI .?AVSignalInstance@Reflection@RBX@@ offset 0x0)",
+        "??0?$signal1@XNU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXN@ZV?$allocator@X@std@@@2@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z": "0x499c00 (external)",
+        "??_7TSignalInstance@?$TSignalDesc@$$A6AXN@Z@Reflection@RBX@@6B@": "0x8483c0 (vtable RTTI .?AVTSignalInstance@?$TSignalDesc@$$A6AXN@Z@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0TSignalInstance@?$TSignalDesc@$$A6AXN@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "00633d60",
+      "symbol": "?connect@?$signal1@XNU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXN@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z",
+      "size": 275,
+      "exact": true,
+      "verified_targets": {
+        "??$?0V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXN@ZV?$allocator@X@std@@@1@@Z": "0x633d00 (own row)",
+        "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ": "0x4915b0 (counted by network-players-working.json)",
+        "?connect_slot@signal_base_impl@detail@signals@boost@@QAE?AVconnection@34@ABVany@4@ABVstored_group@234@V?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@W4connect_position@34@@Z": "0x56a900 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?connect@?$signal1@XNU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXN@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z"
+      ]
+    },
+    {
+      "address": "0063a560",
+      "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@@?$slot@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABVGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@@Z",
+      "size": 180,
+      "exact": true,
+      "verified_targets": {
+        "??$?0VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@@?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@H@Z": "0x639bb0 (own row)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0data_t@slot_base@detail@signals@boost@@QAE@XZ": "0x41ad40 (own row)",
+        "??$reset@Udata_t@slot_base@detail@signals@boost@@@?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@boost@@QAEXPAUdata_t@slot_base@detail@signals@1@@Z": "0x41b0f0 (own row)",
+        "?create_connection@slot_base@detail@signals@boost@@IAEXXZ": "0x595840 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@@?$slot@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABVGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "00638b10",
+      "symbol": "??$?RV?$slot_call_iterator@U?$caller@NV?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@NV?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z",
+      "size": 216,
+      "exact": true,
+      "verified_targets": {
+        "?equal@?$slot_call_iterator@U?$caller@NV?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QBE_NABV1234@@Z": "0x40b050 (counted by humanoid2008-working.json)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?increment@?$slot_call_iterator@U?$caller@NV?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAEXXZ": "0x499ed0 (counted by humanoid2008-working.json, network-players-working.json)",
+        "??0bad_function_call@boost@@QAE@XZ": "0x409ef0 (counted by humanoid2008-working.json)",
+        "??$throw_exception@Vbad_function_call@boost@@@boost@@YAXABVbad_function_call@0@@Z": "0x40a500 (counted by humanoid2008-working.json)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?RV?$slot_call_iterator@U?$caller@NV?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@NV?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z"
+      ]
+    },
+    {
+      "address": "00633d00",
+      "symbol": "??$?0V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXN@ZV?$allocator@X@std@@@1@@Z",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXN@ZV?$allocator@X@std@@@2@@Z": "0x633ba0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXN@ZV?$allocator@X@std@@@1@@Z"
+      ]
+    },
+    {
+      "address": "00639bb0",
+      "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@@?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@H@Z",
+      "size": 164,
+      "exact": true,
+      "verified_targets": {
+        "??$?0VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@@?$function1@XNV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@H@Z": "0x638dd0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@@?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@H@Z"
+      ]
+    },
+    {
+      "address": "00633ba0",
+      "symbol": "??0?$holder@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXN@ZV?$allocator@X@std@@@2@@Z",
+      "size": 95,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$holder@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@any@boost@@6B@": "0x8483b0 (vtable RTTI .?AV?$holder@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@any@boost@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$holder@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXN@ZV?$allocator@X@std@@@2@@Z"
+      ]
+    },
+    {
+      "address": "00635600",
+      "symbol": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635600",
+      "symbol": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635600",
+      "symbol": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635610",
+      "symbol": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635610",
+      "symbol": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635610",
+      "symbol": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635620",
+      "symbol": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635620",
+      "symbol": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00635620",
+      "symbol": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00637d30",
+      "symbol": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00637d30",
+      "symbol": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00637d30",
+      "symbol": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638450",
+      "symbol": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638450",
+      "symbol": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638450",
+      "symbol": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638460",
+      "symbol": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638460",
+      "symbol": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638460",
+      "symbol": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638470",
+      "symbol": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638470",
+      "symbol": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638470",
+      "symbol": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638480",
+      "symbol": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638480",
+      "symbol": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00638480",
+      "symbol": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@MAEPAXI@Z": "0x6355e0 (own row (??_G))"
+      },
+      "local_eh": []
+    }
+  ],
+  "support_rows": {
+    "note": "exact with verified targets but not counted here (ICF-shared / generic bodies, or counted by another receipt)",
+    "rows": [
+      {
+        "address": "0049f710",
+        "symbol": "??1?$slot@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ",
+        "size": 142,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [
+          "__ehhandler$??1?$slot@V?$function@$$A6AXN@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "0041b0f0",
+        "symbol": "??$reset@Udata_t@slot_base@detail@signals@boost@@@?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@boost@@QAEXPAUdata_t@slot_base@detail@signals@1@@Z",
+        "size": 118,
+        "exact": true,
+        "verified_targets": {
+          "??$?0Udata_t@slot_base@detail@signals@boost@@@shared_count@detail@boost@@QAE@PAUdata_t@slot_base@1signals@2@@Z": "0x41ae30 (external (evidence name))",
+          "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (counted by humanoid2008-working.json, network-physics-working.json, stats-service-working.json, wrapper-view-working.json)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041ad40",
+        "symbol": "??0data_t@slot_base@detail@signals@boost@@QAE@XZ",
+        "size": 85,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0data_t@slot_base@detail@signals@boost@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00635640",
+        "symbol": "??$?0PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+        "size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_pd@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x8486b0 (vtable RTTI .?AV?$sp_counted_impl_pd@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+          "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+        ]
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "006331f0",
+    "00633490",
+    "00633540",
+    "00633ba0",
+    "00633d00",
+    "00633d60",
+    "00633ec0",
+    "00633f30",
+    "00635520",
+    "00635580",
+    "006355e0",
+    "00635600",
+    "00635610",
+    "00635620",
+    "00635630",
+    "006356d0",
+    "00635780",
+    "00636b50",
+    "00636bc0",
+    "00637470",
+    "00637c90",
+    "00637d30",
+    "00638380",
+    "00638450",
+    "00638460",
+    "00638470",
+    "00638480",
+    "00638b10",
+    "006391d0",
+    "00639800",
+    "00639bb0",
+    "0063a560",
+    "0063ab70",
+    "0063abc0",
+    "0063b260",
+    "007f8650",
+    "007f8680",
+    "00800ae0",
+    "00800bf0",
+    "00800e60"
+  ],
+  "counted_by_other_receipts": {},
+  "non_exact": [],
+  "vtables": {
+    "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x8485ec",
+      "rtti": ".?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OME@AEPAXI@Z = 0x638480 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x8485fc",
+      "rtti": ".?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OKE@AEPAXI@Z = 0x638470 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x84860c",
+      "rtti": ".?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OIE@AEPAXI@Z = 0x635620 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x84861c",
+      "rtti": ".?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OGE@AEPAXI@Z = 0x637d30 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x84862c",
+      "rtti": ".?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OEE@AEPAXI@Z = 0x638460 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x84863c",
+      "rtti": ".?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OCE@AEPAXI@Z = 0x638450 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x84864c",
+      "rtti": ".?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    },
+    "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x848654",
+      "rtti": ".?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OBE@AEPAXI@Z = 0x635610 (own row)"
+      }
+    },
+    "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x84865c",
+      "rtti": ".?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@OBA@AEPAXI@Z = 0x635600 (own row)",
+        "1": "?getClassName@?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UBEABVName@2@XZ = 0x635780 (own row)"
+      }
+    },
+    "??_7?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x84866c",
+      "rtti": ".?AV?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7?$BoundPropGetSet@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@6B@": {
+      "address": "0x84830c",
+      "rtti": ".?AV?$BoundPropGetSet@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?isReadOnly@?$BoundPropGetSet@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@UBE_NXZ = 0x60a2f0 (ICF-shared trivial body)",
+        "1": "?isWriteOnly@?$BoundPropGetSet@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@UBE_NXZ = 0x60a2f0 (ICF-shared trivial body)",
+        "2": "?getValue@?$BoundPropGetSet@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@UBENPBVDescribedBase@34@@Z = 0x633490 (own row)",
+        "3": "?setValue@?$BoundPropGetSet@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@@?$BoundProp@N$00@Reflection@RBX@@UBEXPAVDescribedBase@34@ABN@Z = 0x63b260 (own row)"
+      }
+    },
+    "??_7?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@RBX@@6B@": {
+      "address": "0x848b54",
+      "rtti": ".?AV?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "??_E?$SignalDesc@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@$$A6AXN@Z@Reflection@RBX@@UAEPAXI@Z = 0x41bdf0 (counted by app-leaves2008-dhtml-working.json, body-movers-working.json, click-detector-working.json, flag-family-working.json, humanoid2008-working.json, stats-service-working.json)",
+        "1": "?connectGeneric@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z = 0x63abc0 (own row)",
+        "2": "?newSignalInstance@?$TSignalDesc@$$A6AXN@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z = 0x633f30 (own row)"
+      }
+    },
+    "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x848de0",
+      "rtti": ".?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WME@AEPAXI@Z = 0x638480 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x848df0",
+      "rtti": ".?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WKE@AEPAXI@Z = 0x638470 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x848e00",
+      "rtti": ".?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WIE@AEPAXI@Z = 0x635620 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x848e10",
+      "rtti": ".?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WGE@AEPAXI@Z = 0x637d30 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x848e20",
+      "rtti": ".?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WEE@AEPAXI@Z = 0x638460 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x848e30",
+      "rtti": ".?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WCE@AEPAXI@Z = 0x638450 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x848e40",
+      "rtti": ".?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    },
+    "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x848e48",
+      "rtti": ".?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WBE@AEPAXI@Z = 0x635610 (own row)"
+      }
+    },
+    "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x848e50",
+      "rtti": ".?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@WBA@AEPAXI@Z = 0x635600 (own row)",
+        "1": "?getClassName@?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UBEABVName@2@XZ = 0x635780 (own row)"
+      }
+    },
+    "??_7?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x848e5c",
+      "rtti": ".?AV?$DescribedCreatable@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x849410",
+      "rtti": ".?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WME@AEPAXI@Z = 0x638480 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x849420",
+      "rtti": ".?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WKE@AEPAXI@Z = 0x638470 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x849430",
+      "rtti": ".?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WIE@AEPAXI@Z = 0x635620 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x849440",
+      "rtti": ".?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WGE@AEPAXI@Z = 0x637d30 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x849450",
+      "rtti": ".?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WEE@AEPAXI@Z = 0x638460 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x849460",
+      "rtti": ".?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WCE@AEPAXI@Z = 0x638450 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x849470",
+      "rtti": ".?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    },
+    "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x849478",
+      "rtti": ".?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WBE@AEPAXI@Z = 0x635610 (own row)"
+      }
+    },
+    "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x849480",
+      "rtti": ".?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@WBA@AEPAXI@Z = 0x635600 (own row)",
+        "1": "?getClassName@?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UBEABVName@2@XZ = 0x635780 (own row)"
+      }
+    },
+    "??_7?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x84948c",
+      "rtti": ".?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@MBE_NPBVInstance@2@@Z = 0x565ff0 (folded)",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    }
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

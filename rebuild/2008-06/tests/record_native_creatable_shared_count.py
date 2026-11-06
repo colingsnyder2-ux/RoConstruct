@@ -13,7 +13,10 @@ Builds (document-swap flags, VS2008 RTM 21022), all from the current committed n
                                                       RBX::Stats::Item collides with v8datamodel/Stats.h, which the
                                                       main unit reaches through util/Sound.h);
   * native-classes/CreatableSharedCount2008Content.cpp  RBX::ContentProvider from util/NativeContentProvider.h
-                                                      (collides with the donor util/ContentProvider.h).
+                                                      (collides with the donor util/ContentProvider.h);
+  * native-classes/CreatableSharedCount2008Lighting.cpp  RBX::Lighting from the native v8datamodel/Lighting2008.h
+                                                      (record_native_lighting2008.py), kept apart from the main
+                                                      unit's header set.
 
 Per row: the compiled function (resolved through its ??_7sp_counted_impl_pd relocation, whose class must equal the
 RTTI name of the vtable the original stores) is relocation-masked exact against the original's complete 131-byte
@@ -49,6 +52,7 @@ UNITS = {
     'main': R / 'native-classes/CreatableSharedCount2008.cpp',
     'stats': R / 'native-classes/CreatableSharedCount2008Stats.cpp',
     'content': R / 'native-classes/CreatableSharedCount2008Content.cpp',
+    'lighting': R / 'native-classes/CreatableSharedCount2008Lighting.cpp',
 }
 RECEIPT = ROOT / 'work/2008-06/shared-layouts/creatable-shared-count-working.json'
 DISCOVER = bool(os.environ.get('NATIVE_SHARED_COUNT_DISCOVER'))
@@ -84,7 +88,7 @@ ROWS = {
     0x48f0e0: 'SpawnerService@RBX', 0x48f350: 'ShirtGraphic@RBX', 0x48f5c0: 'Clothing@RBX', 0x48f900: 'Pants@RBX',
     0x48fc00: 'Shirt@RBX', 0x48fe30: 'BodyColors@RBX', 0x4900a0: 'Skin@RBX', 0x490310: 'Teams@RBX',
     0x490630: 'Humanoid@RBX', 0x49e620: 'NetworkSettings@RBX', 0x4a3710: 'Message@RBX', 0x4a3a00: 'Hint@RBX',
-    0x4ac620: '?$TypedStatsItem@_N@Stats@RBX', 0x4ac710: 'JointsService@RBX', 0x4b2270: 'Snap@RBX',
+    0x4ac4c0: 'Lighting@RBX', 0x4ac620: '?$TypedStatsItem@_N@Stats@RBX', 0x4ac710: 'JointsService@RBX', 0x4b2270: 'Snap@RBX',
     0x4b24e0: 'Weld@RBX', 0x4b2750: 'Glue@RBX', 0x4b29c0: 'Rotate@RBX', 0x4b2c30: 'RotateP@RBX',
     0x4b2ea0: 'RotateV@RBX', 0x4b3110: 'Motor@RBX', 0x4d8b50: 'Sky@RBX', 0x568600: 'GlobalSettings@RBX',
     0x576630: 'DataModel@RBX', 0x5766c0: 'Workspace@RBX', 0x576750: 'GuiRoot@RBX', 0x576810: 'LocalBackpack@RBX',
@@ -102,6 +106,7 @@ ROWS = {
     0x600bb0: 'HealthHud@RBX', 0x600c40: 'TextDisplay@RBX', 0x600cd0: 'EquationDisplay@RBX', 0x600df0: 'ArrowPanel@RBX',
     0x600e80: 'MenuSpacer@RBX', 0x616410: '?$FilteredSelection@VInstance@RBX@@@RBX',
     0x635150: '?$Value@H$1?sIntValue@RBX@@3PADA@RBX', 0x6353c0: '?$Value@_N$1?sBoolValue@RBX@@3PADA@RBX',
+    0x635640: '?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX',
     0x6358a0: '?$Value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$1?sStringValue@RBX@@3PADA@RBX',
     0x635ae0: '?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX',
     0x635d70: '?$Value@VCoordinateFrame@G3D@@$1?sCFrameValue@RBX@@3PADA@RBX',
@@ -121,10 +126,6 @@ BLOCKED = {
     0x4a1be0: ('ClientProxy@Server@Network@RBX', 'needs the native 2008 Network::Replicator and Server '
                '(record_native_client_proxy.py: blocked)'),
     0x4ac3a0: ('ReplicatorStatsItem@Replicator@Network@RBX', 'nested in the provisional native-headers/Replicator.h'),
-    0x4ac4c0: ('Lighting@RBX', 'native v8datamodel/Lighting.h (RBX::Lighting) does not exist'),
-    0x635640: ('?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX', 'native v8datamodel/Value.h has no sDoubleValue / '
-               'Value<double, sDoubleValue> (it declares Value<float, sFloatValue>; RTTI of vtable 008486b0 is '
-               'Value<double, sDoubleValue>)'),
 }
 assert not set(ROWS) & set(BLOCKED)
 

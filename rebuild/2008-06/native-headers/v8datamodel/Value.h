@@ -15,6 +15,7 @@ namespace RBX
 	extern char sBrickColorValue[];
 	extern char sStringValue[];
 	extern char sCFrameValue[];
+	extern char sDoubleValue[];	// 0095d9f0 "NumberValue"; RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ (vtable 0084948c)
 
 	template<typename ValueType, const char* ClassName>
 	class Value : public DescribedCreatable<Value<ValueType, ClassName>, Instance, ClassName>
@@ -45,6 +46,7 @@ namespace RBX
 	typedef Value<BrickColor,	sBrickColorValue>	BrickColorValue;
 	typedef Value<std::string,	sStringValue>		StringValue;
 	typedef Value<G3D::CoordinateFrame, sCFrameValue> CFrameValue;
+	typedef Value<double,		sDoubleValue>		DoubleValue;	// 2008-06: the only Value<double>; no Value<float> RTTI exists
 
 	extern char sObjectValue[];
 	

@@ -171,6 +171,7 @@ template boost::detail::shared_count::shared_count(RBX::MenuSpacer*, CreatableIn
 template boost::detail::shared_count::shared_count(RBX::FilteredSelection<RBX::Instance>*, CreatableInstanceDeleter); // 00616410
 template boost::detail::shared_count::shared_count(RBX::IntValue*, CreatableInstanceDeleter); // 00635150
 template boost::detail::shared_count::shared_count(RBX::BoolValue*, CreatableInstanceDeleter); // 006353c0
+template boost::detail::shared_count::shared_count(RBX::DoubleValue*, CreatableInstanceDeleter); // 00635640
 template boost::detail::shared_count::shared_count(RBX::StringValue*, CreatableInstanceDeleter); // 006358a0
 template boost::detail::shared_count::shared_count(RBX::Vector3Value*, CreatableInstanceDeleter); // 00635ae0
 template boost::detail::shared_count::shared_count(RBX::CFrameValue*, CreatableInstanceDeleter); // 00635d70

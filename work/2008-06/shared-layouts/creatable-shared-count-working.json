@@ -115,18 +115,58 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/creatable-shared-count/CreatableSharedCount2008Content.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/CreatableSharedCount2008Content.cpp"
+    ],
+    "lighting": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/creatable-shared-count/CreatableSharedCount2008Lighting.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/CreatableSharedCount2008Lighting.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_creatable_shared_count.py": "0dd069beacf53752d2a922f3f33d7bfe6c4456a9ee1a6d1cd4518dfca4447ad2",
-    "rebuild/2008-06/native-classes/CreatableSharedCount2008.cpp": "1a8ca1da6fa7eabad40617f5ec860dc9b7ee747d69fbc256b65a8da4c90bacb0",
+    "rebuild/2008-06/tests/record_native_creatable_shared_count.py": "5c0361df23eb5f899da2b928b27aefba8fbdade25fc9166936823695dd787095",
+    "rebuild/2008-06/native-classes/CreatableSharedCount2008.cpp": "672bf1a4f00fa4e731decfd13d0d707146f7996704e5dd58cbb9a06ed78f761f",
     "rebuild/2008-06/native-classes/CreatableSharedCount2008Stats.cpp": "4b7cbbc2eecaaeb979a4510482fb04978227adb971b7bec5d1abd5ece68a56cd",
-    "rebuild/2008-06/native-classes/CreatableSharedCount2008Content.cpp": "2ad1ee69751492415eff73f0aea4525a5373b7f1389a2f53fc6b3c944ab78c46"
+    "rebuild/2008-06/native-classes/CreatableSharedCount2008Content.cpp": "2ad1ee69751492415eff73f0aea4525a5373b7f1389a2f53fc6b3c944ab78c46",
+    "rebuild/2008-06/native-classes/CreatableSharedCount2008Lighting.cpp": "f7f171860ababfc987cbff03d7ded28b7952c062db16999b0e249e87bc43065c"
   },
   "objects": {
-    "CreatableSharedCount2008.obj": "7d4847b86a6d74dcba385d9bb7bf732fca73604f9725f3fb1998bdc249060b41",
-    "CreatableSharedCount2008Stats.obj": "7b24765fdb424b836e6517f7d17a5263a79b05060544162678c0696cf3d8462c",
-    "CreatableSharedCount2008Content.obj": "7051d4f468ee387ab088522bf6dc218b122b670b98780ecd47f635de6faaad81"
+    "CreatableSharedCount2008.obj": "a0adc38102bde714a3cfada72965d2450320dd09238ac789ca89ace1a91b81d8",
+    "CreatableSharedCount2008Stats.obj": "807cdfc4a379a1b8a4df7770349a22ce6a077d3b84902fa77bfe08694c8d36c9",
+    "CreatableSharedCount2008Content.obj": "966757dcfd5b16f7ae2efa17f4aedfcb1a1c8941236818479b8a86828efd5e34",
+    "CreatableSharedCount2008Lighting.obj": "ea6fb8127ca528405122233121acb3fec809fd58dedb53226f0fdc3637f52130"
   },
   "rows": [
     {
@@ -1077,6 +1117,25 @@
       },
       "local_eh": [
         "__ehhandler$??$?0PAVHint@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVHint@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+      ]
+    },
+    {
+      "address": "004ac4c0",
+      "T": "Lighting@RBX",
+      "unit": "lighting",
+      "symbol": "??$?0PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+      "size": 131,
+      "target_size": 131,
+      "exact": true,
+      "vtable": "00824794",
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x824794 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+        "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
       ]
     },
     {
@@ -2226,6 +2285,25 @@
       ]
     },
     {
+      "address": "00635640",
+      "T": "?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX",
+      "unit": "main",
+      "symbol": "??$?0PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+      "size": 131,
+      "target_size": 131,
+      "exact": true,
+      "vtable": "008486b0",
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_pd@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x8486b0 (vtable RTTI .?AV?$sp_counted_impl_pd@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+        "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+      ]
+    },
+    {
       "address": "006358a0",
       "T": "?$Value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$1?sStringValue@RBX@@3PADA@RBX",
       "unit": "main",
@@ -2410,6 +2488,7 @@
     "0049e620",
     "004a3710",
     "004a3a00",
+    "004ac4c0",
     "004ac620",
     "004ac710",
     "004b24e0",
@@ -2468,6 +2547,7 @@
     "00616410",
     "00635150",
     "006353c0",
+    "00635640",
     "006358a0",
     "00635ae0",
     "00635d70",
@@ -2514,16 +2594,6 @@
       "T": "ReplicatorStatsItem@Replicator@Network@RBX",
       "vtable": "0082476c",
       "needs": "nested in the provisional native-headers/Replicator.h"
-    },
-    "004ac4c0": {
-      "T": "Lighting@RBX",
-      "vtable": "00824794",
-      "needs": "native v8datamodel/Lighting.h (RBX::Lighting) does not exist"
-    },
-    "00635640": {
-      "T": "?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX",
-      "vtable": "008486b0",
-      "needs": "native v8datamodel/Value.h has no sDoubleValue / Value<double, sDoubleValue> (it declares Value<float, sFloatValue>; RTTI of vtable 008486b0 is Value<double, sDoubleValue>)"
     }
   },
   "sp_counted_impl_pd_slots": {
@@ -5103,6 +5173,31 @@
           }
         ]
       },
+      "00635640": {
+        "vtable": "008486b0",
+        "slots": [
+          {
+            "slot": 0,
+            "symbol": "??_E?$sp_counted_impl_pd@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z",
+            "original": "00415000"
+          },
+          {
+            "slot": 1,
+            "symbol": "?dispose@?$sp_counted_impl_pd@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ",
+            "original": "0048ee50"
+          },
+          {
+            "slot": 2,
+            "symbol": "?destroy@sp_counted_base@detail@boost@@UAEXXZ",
+            "original": "00405e10"
+          },
+          {
+            "slot": 3,
+            "symbol": "?get_deleter@?$sp_counted_impl_pd@PAV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+            "original": "005a0460"
+          }
+        ]
+      },
       "006358a0": {
         "vtable": "00848790",
         "slots": [
@@ -5452,20 +5547,45 @@
             "original": "005a0460"
           }
         ]
+      },
+      "004ac4c0": {
+        "vtable": "00824794",
+        "slots": [
+          {
+            "slot": 0,
+            "symbol": "??_E?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z",
+            "original": "00415000"
+          },
+          {
+            "slot": 1,
+            "symbol": "?dispose@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ",
+            "original": "0048ee50"
+          },
+          {
+            "slot": 2,
+            "symbol": "?destroy@sp_counted_base@detail@boost@@UAEXXZ",
+            "original": "00405e10"
+          },
+          {
+            "slot": 3,
+            "symbol": "?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+            "original": "005a0460"
+          }
+        ]
       }
     },
     "folded_slot_bodies": [
       {
         "address": "00415000",
         "exact_for_every_T": true,
-        "instances": 117,
+        "instances": 119,
         "counted_here": false,
         "example_symbol": "??_G?$sp_counted_impl_pd@PAVRunService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z"
       },
       {
         "address": "0048ee50",
         "exact_for_every_T": false,
-        "instances": 117,
+        "instances": 119,
         "counted_here": false,
         "example_symbol": "?dispose@?$sp_counted_impl_pd@PAVRunService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ",
         "reason": "the original dispose inlines Deleter::operator() (31 bytes: Instance release then the virtual deleting call through +0x10); boost dispose here calls the out-of-line 00405e30 (13 bytes)"
@@ -5473,7 +5593,7 @@
       {
         "address": "005a0460",
         "exact_for_every_T": true,
-        "instances": 117,
+        "instances": 119,
         "counted_here": false,
         "example_symbol": "?get_deleter@?$sp_counted_impl_pd@PAVRunService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z"
       }
@@ -5481,9 +5601,10 @@
     "note": "slot bodies are counted by other receipts; evidence only"
   },
   "exact_per_unit": {
-    "main": 108,
+    "main": 109,
     "content": 1,
-    "stats": 6
+    "stats": 6,
+    "lighting": 1
   },
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
 }
