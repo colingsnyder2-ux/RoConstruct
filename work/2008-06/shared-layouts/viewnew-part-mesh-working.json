@@ -41,47 +41,6 @@
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewPartMesh.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewPartMesh2008.cpp"
     ],
-    "pending": [
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/fp:fast",
-      "/DNATIVE_VIEWNEW_PART_MESH_PENDING",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/viewnew-part-mesh-pending",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewPartMesh_pending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewPartMesh2008.cpp"
-    ],
     "layout": [
       "/nologo",
       "/c",
@@ -123,15 +82,15 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_viewnew_part_mesh.py": "1cfc3f4ca9af0e1ab912a622153e98d8612f1cc97c62f351e50ad455f1889fd6",
-    "rebuild/2008-06/native-classes/ViewNewPartMesh2008.cpp": "ecbd18e11b1001930fbb29270c66cca07aded0117edb30c957c3d4db27d2f597",
+    "rebuild/2008-06/tests/record_native_viewnew_part_mesh.py": "701052a76752d5c61620a89b7a3e401e20dfff486913290be627b18c5c1d9c63",
+    "rebuild/2008-06/native-classes/ViewNewPartMesh2008.cpp": "e0e7f2b05082348749740713b1fb7e75ad45c83f0dedd35dc6bc36e98aafa2f1",
     "rebuild/2008-06/native-headers/ViewNewPartMesh2008/MeshFactoryCache2008.h": "c57578ba6c821bc33220c64f3b75bef785281eafb5da6b52f26a28e75fcd62f3",
-    "rebuild/2008-06/native-headers/ViewNew/MeshFactory.h": "03b5415ba782890069386188d162af4a9adf62d1597d09edabe3f9960dbbf80a"
+    "rebuild/2008-06/native-headers/ViewNew/MeshFactory.h": "03b5415ba782890069386188d162af4a9adf62d1597d09edabe3f9960dbbf80a",
+    "rebuild/2008-06/native-headers/ViewNew/PBBMesh.h": "9f0fc319c4d387c8358a754b54a2a025f7449519649eb3d7e298a8717b7c19ff"
   },
   "objects": {
-    "NativeViewNewPartMesh.obj": "be4c0ac717f56589f587c054ff6ac678ce816fade943f69a254b8c71be3ffb71",
-    "NativeViewNewPartMesh_pending.obj": "abe69da87ba060650837e6de879e41ecb38d6f37bfb1ec23471d3cc62fd8c5b9",
-    "NativeViewNewPartMeshLayout.obj": "a8e8af8ee71b8bd1215019b98a44c14421c315edbd0bdc71f48571c8a21c6e5d"
+    "NativeViewNewPartMesh.obj": "a49cea23cebcf5e4a53511ed1a1e74c3e73998b648ac8b39bd886fbc0bb42878",
+    "NativeViewNewPartMeshLayout.obj": "ce2448346ae4f22eab65926dc0e647d31135a599d8a513711a8199e1eed6c2d3"
   },
   "layout": {
     "nativeCacheSize": "0x60",
@@ -274,6 +233,44 @@
       },
       "local": [
         "__ehhandler$?createTexture@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@W4NormalId@3@ABVVector2@6@@Z"
+      ]
+    },
+    {
+      "address": "004edb20",
+      "symbol": "?create@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@VRenderSurfaceTypes@23@@Z",
+      "size": 552,
+      "target_size": 552,
+      "exact": true,
+      "verified_targets": {
+        "?cacheFlag@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@0JA": "0x97273c (cache static (initCache / call_once evidence checked))",
+        "?initCache@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@CAXXZ": "0x4d9750 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "?cache@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@0PAUCache@123@A": "0x972724 (cache static (initCache / call_once evidence checked))",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+        "??_7?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@6B@": "0x826bf4 (vtable RTTI .?AV?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@ offset 0x0)",
+        "?alignedMalloc@System@G3D@@SAPAXII@Z": "0x508580 (external)",
+        "?memset@System@G3D@@SAXPAXEI@Z": "0x508a30 (external)",
+        "?set@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@QAEXABVRenderSurfaceTypes@ViewNew@RBX@@ABV?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@2@@Z": "0x4e9070 (template helper (body compared at the bound address))",
+        "?freeMemory@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXXZ": "0x4d7dc0 (template helper (body compared at the bound address))",
+        "?containsKey@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QBE_NABVVector3@2@@Z": "0x4e5c70 (template helper (body compared at the bound address))",
+        "??1?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (template helper (body compared at the bound address))",
+        "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x4f0810 (template helper (body compared at the bound address))",
+        "??_L@YGXPAXIHP6EX0@Z1@Z": "0x6a1598 (external)",
+        "?set@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAEXABVVector3@2@ABUVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@Z": "0x4e7450 (template helper (body compared at the bound address))",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "0x6a165b (external)",
+        "?get@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QBEAAUVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@ABVVector3@2@@Z": "0x4e5c10 (template helper (body compared at the bound address))",
+        "?iRandom@G3D@@YAHHH@Z": "0x515780 (external)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0PBBMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z": "0x4f4cb0 (external)",
+        "?setPointer@?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@AAEXPAVMesh@RenderBase@RBX@@@Z": "0x598fa0 (template helper (body compared at the bound address))",
+        "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)",
+        "?releaseUnused@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@CAXXZ": "0x4ec220 (own row)",
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)"
+      },
+      "local": [
+        "__ehhandler$?create@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@VRenderSurfaceTypes@23@@Z"
       ]
     },
     {
@@ -1118,9 +1115,7 @@
         "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
       },
       "local": [],
-      "counted_elsewhere": [
-        "scorehud-leaderboard-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAEXXZ",
         "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAEXXZ",
@@ -1140,9 +1135,7 @@
         "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
       },
       "local": [],
-      "counted_elsewhere": [
-        "scorehud-leaderboard-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAEXXZ",
         "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAEXXZ",
@@ -1160,9 +1153,7 @@
       "exact": true,
       "verified_targets": {},
       "local": [],
-      "counted_elsewhere": [
-        "scorehud-leaderboard-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "?_Rrotate@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@@Z",
         "?_Rrotate@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@@Z",
@@ -1182,9 +1173,7 @@
         "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
       },
       "local": [],
-      "counted_elsewhere": [
-        "ogre-rbx-node-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAEXXZ",
         "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAEXXZ",
@@ -1202,9 +1191,7 @@
       "exact": true,
       "verified_targets": {},
       "local": [],
-      "counted_elsewhere": [
-        "scorehud-leaderboard-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "?_Lrotate@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@@Z",
         "?_Lrotate@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@@Z",
@@ -1222,9 +1209,7 @@
       "exact": true,
       "verified_targets": {},
       "local": [],
-      "counted_elsewhere": [
-        "ogre-rbx-node-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "?_Lrotate@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@@Z",
         "?_Lrotate@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@@Z",
@@ -1244,9 +1229,7 @@
         "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
       },
       "local": [],
-      "counted_elsewhere": [
-        "scorehud-leaderboard-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "?_Buynode@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@XZ",
         "?_Buynode@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@XZ",
@@ -1338,6 +1321,23 @@
         "?_Erase@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@@Z",
         "?_Erase@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@@Z",
         "?_Erase@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@@Z"
+      ]
+    },
+    "004d8560": {
+      "address": "004d8560",
+      "symbol": "??_G?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@UAEPAXI@Z",
+      "size": 36,
+      "target_size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@6B@": "0x826bf4 (vtable RTTI .?AV?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@ offset 0x0)",
+        "?freeMemory@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXXZ": "0x4d7dc0 (template helper (body compared at the bound address))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "??_G?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@UAEPAXI@Z"
       ]
     },
     "004d8590": {
@@ -1438,9 +1438,7 @@
       "local": [
         "__ehhandler$??0?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z"
       ],
-      "counted_elsewhere": [
-        "scorehud-leaderboard-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "??0?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
         "??0?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
@@ -1660,6 +1658,36 @@
         "??_G?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@UAEPAXI@Z"
       ]
     },
+    "004e5c10": {
+      "address": "004e5c10",
+      "symbol": "?get@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QBEAAUVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@ABVVector3@2@@Z",
+      "size": 89,
+      "target_size": 89,
+      "exact": true,
+      "verified_targets": {
+        "?hashCode@Vector3@G3D@@QBEIXZ": "0x5183a0 (external)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?get@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QBEAAUVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@ABVVector3@2@@Z"
+      ]
+    },
+    "004e5c70": {
+      "address": "004e5c70",
+      "symbol": "?containsKey@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QBE_NABVVector3@2@@Z",
+      "size": 95,
+      "target_size": 95,
+      "exact": true,
+      "verified_targets": {
+        "?hashCode@Vector3@G3D@@QBEIXZ": "0x5183a0 (external)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?containsKey@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QBE_NABVVector3@2@@Z"
+      ]
+    },
     "004e5cd0": {
       "address": "004e5cd0",
       "symbol": "?containsKey@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QBE_NABVVector3@2@@Z",
@@ -1698,9 +1726,9 @@
         "?get@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QBEAAUVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@ABVVector3@2@@Z"
       ]
     },
-    "004e5e10": {
-      "address": "004e5e10",
-      "symbol": "?resize@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXH@Z",
+    "004e5d90": {
+      "address": "004e5d90",
+      "symbol": "?resize@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXH@Z",
       "size": 126,
       "target_size": 126,
       "exact": true,
@@ -1712,6 +1740,24 @@
       "local": [],
       "counted_elsewhere": [],
       "symbols": [
+        "?resize@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXH@Z"
+      ]
+    },
+    "004e5e10": {
+      "address": "004e5e10",
+      "symbol": "?resize@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@AAEXH@Z",
+      "size": 126,
+      "target_size": 126,
+      "exact": true,
+      "verified_targets": {
+        "?alignedMalloc@System@G3D@@SAPAXII@Z": "0x508580 (external)",
+        "?memset@System@G3D@@SAXPAXEI@Z": "0x508a30 (external)",
+        "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?resize@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@AAEXH@Z",
         "?resize@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXH@Z",
         "?resize@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXH@Z",
         "?resize@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXH@Z",
@@ -1738,6 +1784,23 @@
         "?resize@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@AAEXH@Z",
         "?resize@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@AAEXH@Z",
         "?resize@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@AAEXH@Z"
+      ]
+    },
+    "004e6050": {
+      "address": "004e6050",
+      "symbol": "??4Variations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@QAEAAU0123@ABU0123@@Z",
+      "size": 155,
+      "target_size": 155,
+      "exact": true,
+      "verified_targets": {
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "??4Variations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@QAEAAU0123@ABU0123@@Z"
       ]
     },
     "004e60f0": {
@@ -1843,9 +1906,7 @@
         "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
       },
       "local": [],
-      "counted_elsewhere": [
-        "ogre-rbx-node-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAEXXZ",
         "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAEXXZ",
@@ -1903,6 +1964,27 @@
         "??EIterator@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAE?AV012@H@Z"
       ]
     },
+    "004e6d50": {
+      "address": "004e6d50",
+      "symbol": "??0Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAE@VVector3@2@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@IPAV012@@Z",
+      "size": 170,
+      "target_size": 170,
+      "exact": true,
+      "verified_targets": {
+        "??1?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (template helper (body compared at the bound address))",
+        "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x4f0810 (template helper (body compared at the bound address))",
+        "??_L@YGXPAXIHP6EX0@Z1@Z": "0x6a1598 (external)",
+        "??4Variations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@QAEAAU0123@ABU0123@@Z": "0x4e6050 (template helper (body compared at the bound address))",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "0x6a165b (external)"
+      },
+      "local": [
+        "__ehhandler$??0Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAE@VVector3@2@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@IPAV012@@Z"
+      ],
+      "counted_elsewhere": [],
+      "symbols": [
+        "??0Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAE@VVector3@2@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@IPAV012@@Z"
+      ]
+    },
     "004e6e00": {
       "address": "004e6e00",
       "symbol": "??0Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAE@VVector3@2@UVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@IPAV012@@Z",
@@ -1926,6 +2008,28 @@
         "??0Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAE@VVector3@2@UVariations@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@IPAV012@@Z",
         "??0Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAE@VVector3@2@UVariations@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@IPAV012@@Z",
         "??0Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAE@VVector3@2@UVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@IPAV012@@Z"
+      ]
+    },
+    "004e6eb0": {
+      "address": "004e6eb0",
+      "symbol": "?clone@Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAEPAV123@XZ",
+      "size": 153,
+      "target_size": 153,
+      "exact": true,
+      "verified_targets": {
+        "?malloc@System@G3D@@SAPAXI@Z": "0x508530 (external)",
+        "?clone@Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAEPAV123@XZ": "0x4e6eb0 (template helper (body compared at the bound address))",
+        "??1?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (template helper (body compared at the bound address))",
+        "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@ABV01@@Z": "0x4f0820 (template helper (body compared at the bound address))",
+        "??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z": "0x6a1bb6 (external)",
+        "??0Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAE@VVector3@2@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@IPAV012@@Z": "0x4e6d50 (template helper (body compared at the bound address))"
+      },
+      "local": [
+        "__ehhandler$?clone@Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAEPAV123@XZ"
+      ],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?clone@Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAEPAV123@XZ"
       ]
     },
     "004e6f50": {
@@ -1954,6 +2058,30 @@
         "?clone@Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAEPAV123@XZ"
       ]
     },
+    "004e7450": {
+      "address": "004e7450",
+      "symbol": "?set@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAEXABVVector3@2@ABUVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@Z",
+      "size": 479,
+      "target_size": 479,
+      "exact": true,
+      "verified_targets": {
+        "?hashCode@Vector3@G3D@@QBEIXZ": "0x5183a0 (external)",
+        "?malloc@System@G3D@@SAPAXI@Z": "0x508530 (external)",
+        "??1?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (template helper (body compared at the bound address))",
+        "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@ABV01@@Z": "0x4f0820 (template helper (body compared at the bound address))",
+        "??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z": "0x6a1bb6 (external)",
+        "??0Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAE@VVector3@2@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@IPAV012@@Z": "0x4e6d50 (template helper (body compared at the bound address))",
+        "?resize@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXH@Z": "0x4e5d90 (template helper (body compared at the bound address))",
+        "??4Variations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@QAEAAU0123@ABU0123@@Z": "0x4e6050 (template helper (body compared at the bound address))"
+      },
+      "local": [
+        "__ehhandler$?set@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAEXABVVector3@2@ABUVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@Z"
+      ],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?set@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAEXABVVector3@2@ABUVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@Z"
+      ]
+    },
     "004e7630": {
       "address": "004e7630",
       "symbol": "?set@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAEXABVVector3@2@ABUVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@Z",
@@ -1980,6 +2108,23 @@
         "?set@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAEXABVVector3@2@ABUVariations@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@Z",
         "?set@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAEXABVVector3@2@ABUVariations@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@Z",
         "?set@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAEXABVVector3@2@ABUVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@Z"
+      ]
+    },
+    "004e7810": {
+      "address": "004e7810",
+      "symbol": "?copyFrom@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXABV12@@Z",
+      "size": 102,
+      "target_size": 102,
+      "exact": true,
+      "verified_targets": {
+        "?alignedMalloc@System@G3D@@SAPAXII@Z": "0x508580 (external)",
+        "?memset@System@G3D@@SAXPAXEI@Z": "0x508a30 (external)",
+        "?clone@Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAEPAV123@XZ": "0x4e6eb0 (template helper (body compared at the bound address))"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?copyFrom@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXABV12@@Z"
       ]
     },
     "004e7880": {
@@ -2107,6 +2252,27 @@
         "?find@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE?AViterator@12@ABVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@Z",
         "?find@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE?AViterator@12@ABVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@Z",
         "?find@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE?AViterator@12@ABVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@Z"
+      ]
+    },
+    "004e87c0": {
+      "address": "004e87c0",
+      "symbol": "??0Node@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@QAE@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@2@IPAV012@@Z",
+      "size": 187,
+      "target_size": 187,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@6B@": "0x826bf4 (vtable RTTI .?AV?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@ offset 0x0)",
+        "?alignedMalloc@System@G3D@@SAPAXII@Z": "0x508580 (external)",
+        "?memset@System@G3D@@SAXPAXEI@Z": "0x508a30 (external)",
+        "?freeMemory@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXXZ": "0x4d7dc0 (template helper (body compared at the bound address))",
+        "?copyFrom@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXABV12@@Z": "0x4e7810 (template helper (body compared at the bound address))"
+      },
+      "local": [
+        "__ehhandler$??0Node@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@QAE@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@2@IPAV012@@Z"
+      ],
+      "counted_elsewhere": [],
+      "symbols": [
+        "??0Node@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@QAE@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@2@IPAV012@@Z"
       ]
     },
     "004e8880": {
@@ -2256,6 +2422,28 @@
         "?insert@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@@Z",
         "?insert@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@@Z",
         "?insert@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@@Z"
+      ]
+    },
+    "004e9070": {
+      "address": "004e9070",
+      "symbol": "?set@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@QAEXABVRenderSurfaceTypes@ViewNew@RBX@@ABV?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@2@@Z",
+      "size": 403,
+      "target_size": 403,
+      "exact": true,
+      "verified_targets": {
+        "?malloc@System@G3D@@SAPAXI@Z": "0x508530 (external)",
+        "??_7?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@6B@": "0x826bf4 (vtable RTTI .?AV?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@ offset 0x0)",
+        "?copyFrom@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXABV12@@Z": "0x4e7810 (template helper (body compared at the bound address))",
+        "??0Node@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@QAE@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@2@IPAV012@@Z": "0x4e87c0 (template helper (body compared at the bound address))",
+        "?resize@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@AAEXH@Z": "0x4e5e10 (template helper (body compared at the bound address))",
+        "?freeMemory@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXXZ": "0x4d7dc0 (template helper (body compared at the bound address))"
+      },
+      "local": [
+        "__ehhandler$?set@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@QAEXABVRenderSurfaceTypes@ViewNew@RBX@@ABV?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@2@@Z"
+      ],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?set@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@QAEXABVRenderSurfaceTypes@ViewNew@RBX@@ABV?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@2@@Z"
       ]
     },
     "004e9210": {
@@ -2515,9 +2703,7 @@
       "local": [
         "__ehhandler$??0?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z"
       ],
-      "counted_elsewhere": [
-        "ogre-rbx-node-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "??0?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
         "??0?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
@@ -2568,9 +2754,7 @@
       "exact": true,
       "verified_targets": {},
       "local": [],
-      "counted_elsewhere": [
-        "ogre-rbx-node-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "?_Rrotate@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@@Z",
         "?_Rrotate@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@@Z",
@@ -2590,9 +2774,7 @@
         "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
       },
       "local": [],
-      "counted_elsewhere": [
-        "ogre-rbx-node-working.json"
-      ],
+      "counted_elsewhere": [],
       "symbols": [
         "?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@XZ",
         "?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@XZ",
@@ -2613,10 +2795,7 @@
       },
       "local": [],
       "counted_elsewhere": [
-        "adorn-working.json",
-        "app-leaves2008-services-working.json",
-        "ogre-scene-manager-working.json",
-        "scorehud-leaderboard-working.json"
+        "app-leaves2008-services-working.json"
       ],
       "symbols": [
         "??8const_iterator@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QBE_NABV012@@Z",
@@ -2671,47 +2850,8 @@
     }
   },
   "helpers_counted_elsewhere": {
-    "004f0fc0": [
-      "ogre-rbx-node-working.json"
-    ],
-    "004d8680": [
-      "scorehud-leaderboard-working.json"
-    ],
-    "004d7240": [
-      "ogre-rbx-node-working.json"
-    ],
-    "00438770": [
-      "scorehud-leaderboard-working.json"
-    ],
-    "005b3020": [
-      "ogre-rbx-node-working.json"
-    ],
-    "004d7770": [
-      "scorehud-leaderboard-working.json"
-    ],
-    "004e6270": [
-      "ogre-rbx-node-working.json"
-    ],
     "005ecca0": [
-      "adorn-working.json",
-      "app-leaves2008-services-working.json",
-      "ogre-scene-manager-working.json",
-      "scorehud-leaderboard-working.json"
-    ],
-    "004386e0": [
-      "scorehud-leaderboard-working.json"
-    ],
-    "004d75f0": [
-      "ogre-rbx-node-working.json"
-    ],
-    "005b2ec0": [
-      "ogre-rbx-node-working.json"
-    ],
-    "004d75a0": [
-      "scorehud-leaderboard-working.json"
-    ],
-    "004a1a90": [
-      "scorehud-leaderboard-working.json"
+      "app-leaves2008-services-working.json"
     ]
   },
   "vtables": {
@@ -2755,6 +2895,11 @@
       "slot0": "004d8620",
       "symbol": "??_G?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@UAEPAXI@Z"
     },
+    "??_7?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@6B@": {
+      "address": "00826bf4",
+      "slot0": "004d8560",
+      "symbol": "??_G?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@UAEPAXI@Z"
+    },
     "??_7?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@6B@": {
       "address": "00826bfc",
       "slot0": "004d8590",
@@ -2771,58 +2916,25 @@
       "symbol": "??_G?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@UAEPAXI@Z"
     }
   },
-  "pending_or_not_exact": [
-    {
-      "address": "004edb20",
-      "symbol": "?create@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@VRenderSurfaceTypes@23@@Z",
-      "size": 552,
-      "target_size": 552,
-      "exact": false,
-      "verified_targets": {
-        "?cacheFlag@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@0JA": "0x97273c (cache static (initCache / call_once evidence checked))",
-        "?initCache@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@CAXXZ": "0x4d9750 (own row)",
-        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
-        "?cache@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@0PAUCache@123@A": "0x972724 (cache static (initCache / call_once evidence checked))",
-        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
-        "??_7?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@6B@": "0x826bf4 (vtable RTTI .?AV?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@ offset 0x0)",
-        "?alignedMalloc@System@G3D@@SAPAXII@Z": "0x508580 (external)",
-        "?memset@System@G3D@@SAXPAXEI@Z": "0x508a30 (external)",
-        "?set@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@QAEXABVRenderSurfaceTypes@ViewNew@RBX@@ABV?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@2@@Z": "0x4e9070 (template helper (body compared at the bound address))",
-        "?freeMemory@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@AAEXXZ": "0x4d7dc0 (template helper (body compared at the bound address))",
-        "?containsKey@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QBE_NABVVector3@2@@Z": "0x4e5c70 (template helper (body compared at the bound address))",
-        "??1?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (template helper (body compared at the bound address))",
-        "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x4f0810 (template helper (body compared at the bound address))",
-        "??_L@YGXPAXIHP6EX0@Z1@Z": "0x6a1598 (external)",
-        "?set@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAEXABVVector3@2@ABUVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@Z": "0x4e7450 (template helper (body compared at the bound address))",
-        "??_M@YGXPAXIHP6EX0@Z@Z": "0x6a165b (external)",
-        "?get@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QBEAAUVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@ABVVector3@2@@Z": "0x4e5c10 (template helper (body compared at the bound address))",
-        "?iRandom@G3D@@YAHHH@Z": "0x515780 (external)",
-        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
-        "??0PBBMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z": "0x4f4cb0 (external)",
-        "?setPointer@?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@AAEXPAVMesh@RenderBase@RBX@@@Z": "0x598fa0 (template helper (body compared at the bound address))",
-        "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)",
-        "?releaseUnused@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@CAXXZ": "0x4ec220 (own row)",
-        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
-        "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
-        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)"
-      },
-      "local": [
-        "__ehhandler$?create@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@VRenderSurfaceTypes@23@@Z"
-      ],
-      "pending_build_only": true,
-      "reason": "compiled only with NATIVE_VIEWNEW_PART_MESH_PENDING against a generated ViewNew/PBBMesh.h copy that declares PBBMesh(const Vector3&, RenderSurfaceTypes) 004f4cb0; relocation-masked bytes match there"
-    }
-  ],
   "exact_function_rows": [
+    "004386e0",
+    "00438770",
+    "004a1a90",
+    "004d7240",
+    "004d75a0",
+    "004d75f0",
+    "004d7770",
     "004d7dc0",
     "004d7e30",
     "004d83e0",
     "004d8470",
+    "004d8560",
     "004d8590",
     "004d85c0",
     "004d85f0",
     "004d8620",
     "004d8650",
+    "004d8680",
     "004d8dc0",
     "004d8e30",
     "004d8ea0",
@@ -2853,26 +2965,36 @@
     "004db220",
     "004db310",
     "004db400",
+    "004e5c10",
+    "004e5c70",
     "004e5cd0",
     "004e5d30",
+    "004e5d90",
     "004e5e10",
     "004e5e90",
+    "004e6050",
     "004e60f0",
     "004e6170",
     "004e61a0",
     "004e61e0",
     "004e6220",
+    "004e6270",
     "004e6c30",
     "004e6c90",
     "004e6cf0",
+    "004e6d50",
     "004e6e00",
+    "004e6eb0",
     "004e6f50",
+    "004e7450",
     "004e7630",
+    "004e7810",
     "004e7880",
     "004e7ad0",
     "004e7cd0",
     "004e8690",
     "004e8720",
+    "004e87c0",
     "004e8880",
     "004e8940",
     "004e8a00",
@@ -2880,6 +3002,7 @@
     "004e8b80",
     "004e8c40",
     "004e8d50",
+    "004e9070",
     "004e9210",
     "004e93b0",
     "004e9550",
@@ -2895,6 +3018,7 @@
     "004ece90",
     "004ed2c0",
     "004ed6f0",
+    "004edb20",
     "004edd50",
     "004edeb0",
     "004ee030",
@@ -2914,16 +3038,18 @@
     "004ef7b0",
     "004f0810",
     "004f0820",
+    "004f0fc0",
     "00502a70",
-    "00598fa0"
+    "00598fa0",
+    "005b2ec0",
+    "005b3020"
   ],
   "proposals": {
-    "ViewNew/PBBMesh.h (ViewNew mesh owner)": "declare PBBMesh(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes) 004f4cb0 (create 004edb20 pushes surfaceTypes, then size, after new 0x8c). With it PBBMesh::create 004edb20, already exact in the pending build, becomes a counted row (the body of 004f4cb0 itself needs the unnamed shadow helper 004e3570).",
     "ViewNew/QuadVolume.h (ViewNew mesh owner)": "RenderSurfaceTypes is the G3D::Table key of the caches: the donor declares member hashCode() and operator==. MeshFactoryCache2008.h supplies them as a global inline ::hashCode(const RenderSurfaceTypes&) (G3D::Table calls ::hashCode) and a free operator== (bytes: the inline lookups compare node->hashCode and node->key with the same register, so hashCode is the data word). Moving them into QuadVolume.h is codegen-neutral."
   },
   "not_built": {
     "004ef930": "Part::updateMesh: reads PartInstance +0x1c8 / +0x1dc / +0x224 (PartInstance owner)",
-    "004f4cb0": "PBBMesh surface constructor (unnamed shadow helper 004e3570, BrickMesh globals)",
+    "004f4cb0": "PBBMesh surface constructor body (declared in ViewNew/PBBMesh.h; body needs the unnamed shadow helper 004e3570 and BrickMesh globals)",
     "004e5670": "BrickMesh cache flush (cache 00972754, once flag 00972870): BrickMesh unit, not attempted"
   },
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."

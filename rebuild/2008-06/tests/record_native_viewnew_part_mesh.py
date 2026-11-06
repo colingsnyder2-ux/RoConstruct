@@ -6,9 +6,8 @@ ViewNewPartMesh2008/ directory, so it shadows nothing) and explicitly instantiat
 CylinderAlongXMesh, HeadMesh, WedgeMesh, TorsoMesh (1) and PBBMesh (4). ViewNew/MeshFactory.h declares the statics.
 
 Rows per mesh: the Cache constructor, initCache, flushCache, releaseUnused (the `++count % 100` sweep), create,
-createDecal and createTexture. PBBMesh::create 004edb20 needs the PBBMesh surface constructor 004f4cb0, which
-ViewNew/PBBMesh.h does not declare: it is compiled only with NATIVE_VIEWNEW_PART_MESH_PENDING against a generated copy of
-ViewNew/PBBMesh.h under out/ (one added constructor declaration) and is recorded exact=false (pending-build-only).
+createDecal and createTexture. PBBMesh::create 004edb20 calls the PBBMesh surface constructor 004f4cb0, which
+ViewNew/PBBMesh.h declares (new 0x8c, push surfaceTypes, push size; pass 2). There is no pending build.
 
 Every counted row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, the G3D::Table vtables by original RTTI names,
@@ -39,7 +38,6 @@ HEADER = R / 'native-headers/ViewNewPartMesh2008/MeshFactoryCache2008.h'
 FACTORY = R / 'native-headers/ViewNew/MeshFactory.h'
 RECEIPT = ROOT / 'work/2008-06/shared-layouts/viewnew-part-mesh-working.json'
 DISCOVER = bool(os.environ.get('NATIVE_VIEWNEW_PART_MESH_DISCOVER'))
-PENDING_DIR = R / 'out/viewnew-part-mesh-pending'
 
 
 def build(name, src, extra=()):
@@ -51,14 +49,6 @@ def build(name, src, extra=()):
     assert code == 0, log
     return obj, flags
 
-
-# ---- generated pending header: ViewNew/PBBMesh.h plus the surface constructor 004f4cb0 ---------------------------
-pbb = (R / 'native-headers/ViewNew/PBBMesh.h').read_text()
-anchor = '\t\t\tPBBMesh(const G3D::Vector3& size, NormalId decalFace);'
-assert pbb.count(anchor) == 1
-(PENDING_DIR / 'ViewNew').mkdir(parents=True, exist_ok=True)
-(PENDING_DIR / 'ViewNew/PBBMesh.h').write_text(pbb.replace(
-    anchor, '\t\t\tPBBMesh(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes); // 004f4cb0 (pending)\n' + anchor))
 
 # ---- generated layout probe ----------------------------------------------------------------------------------------
 PROBE = OUT / 'NativeViewNewPartMeshLayout.cpp'
@@ -91,8 +81,6 @@ for fn, size in SIZES.items():
     assert hits and hits[0] == b'\xb8' + struct.pack('<I', size) + b'\xc3', (fn, hits and hits[0].hex())
 
 OBJ, FLAGS = build('NativeViewNewPartMesh', UNIT, ['/fp:fast'])
-PENDING_OBJ, PENDING_FLAGS = build('NativeViewNewPartMesh_pending', UNIT,
-                                   ['/fp:fast', '/DNATIVE_VIEWNEW_PART_MESH_PENDING', '/I' + str(PENDING_DIR)])
 
 original = nb.Original()
 names = {int(k, 16): v.get('symbol', '') for k, v in json.loads((R / 'offline/evidence.json').read_text())['names'].items()}
@@ -121,7 +109,7 @@ MESHES = [
      0x826bac, 0x826c1c, 0x4f7780, 0x4f78d0, 0x4f7a30),
 ]
 V3, V2, NID = 'ABVVector3@G3D@@', 'ABVVector2@G3D@@', 'W4NormalId@3@'
-ROWS, PENDING_ROWS, DATA, CTORS = [], [], {}, {}
+ROWS, DATA, CTORS = [], {}, {}
 for mesh, k, ctor, init, flush, release, create, decal, texture, cache, flag, vt_outer, vt_inner, c_surface, c_decal, c_texture in MESHES:
     mf = '?$MeshFactory@V%s@ViewNew@RBX@@$0%d@ViewNew@RBX@@' % (mesh, k)      # template argument n encoded as $0<n-1>
     rows = [
@@ -133,7 +121,7 @@ for mesh, k, ctor, init, flush, release, create, decal, texture, cache, flag, vt
         (texture, '?createTexture@%sSAPAV%s@23@%s%sABVVector2@6@@Z' % (mf, mesh, 'ABVVector3@G3D@@', 'W4NormalId@3@')),
     ]
     surface = (create, '?create@%sSAPAV%s@23@ABVVector3@G3D@@VRenderSurfaceTypes@23@@Z' % (mf, mesh))
-    (PENDING_ROWS if mesh == 'PBBMesh' else rows).append(surface)
+    rows.append(surface)
     ROWS += rows
     DATA['?cache@%s0PAUCache@123@A' % mf] = cache
     DATA['?cacheFlag@%s0JA' % mf] = flag
@@ -181,8 +169,22 @@ OTHERS = other_receipts_text()
 
 
 def counted_elsewhere(address):
-    key = '"%08x"' % address
-    return sorted(n for n, t in OTHERS.items() if key in t)
+    """Receipts that count the address: in their top-level exact_function_rows (receipts without that key: any
+    mention). Support / helper / evidence rows of a receipt are not counted by it."""
+    key = '%08x' % address
+    out = []
+    for n, t in OTHERS.items():
+        if '"%s"' % key not in t:
+            continue
+        try:
+            j = json.loads(t)
+        except ValueError:
+            out.append(n)
+            continue
+        rows = j.get('exact_function_rows') if isinstance(j, dict) else None
+        if rows is None or key in rows:
+            out.append(n)
+    return sorted(out)
 
 
 def coff_index(obj):
@@ -350,17 +352,6 @@ if DISCOVER:
     sys.exit(0)
 assert not UNBOUND, '\n'.join(UNBOUND)
 
-# Pending-build-only row (PBBMesh::create): verified the same way against the pending object, never counted.
-pending = []
-for address, name in resolve(PENDING_OBJ, PENDING_ROWS):
-    entry, _ = verify_row(PENDING_OBJ, address, name, own, record=False)
-    entry['exact'] = False
-    entry['pending_build_only'] = True
-    entry['reason'] = ('compiled only with NATIVE_VIEWNEW_PART_MESH_PENDING against a generated ViewNew/PBBMesh.h copy that '
-                       'declares PBBMesh(const Vector3&, RenderSurfaceTypes) 004f4cb0; relocation-masked bytes match there')
-    pending.append(entry)
-assert len(pending) == 1
-
 # ---- evidence for the statics, the externals and the layout ---------------------------------------------------------
 for mesh, k, ctor, init, flush, release, create, decal, texture, cache, flag, vt_outer, vt_inner, *_ in MESHES:
     b = body_of(init)
@@ -389,7 +380,7 @@ pushes_0_3 = b'\x6a\x03\x55\x8b\xf8\xe8'                                # PBBMes
 assert pushes_0_3 in body_of(0x4edb20)
 
 sha = nb.sha
-paths = [Path(__file__).resolve(), UNIT, HEADER, FACTORY]
+paths = [Path(__file__).resolve(), UNIT, HEADER, FACTORY, R / 'native-headers/ViewNew/PBBMesh.h']
 exact_rows = sorted({r['address'] for r in result if r['exact']})
 helper_rows = sorted(a for a, es in HELPERS.items() if not es[0]['counted_elsewhere'])
 helpers_elsewhere = {a: es[0]['counted_elsewhere'] for a, es in HELPERS.items() if es[0]['counted_elsewhere']}
@@ -397,10 +388,6 @@ counted = sorted(set(exact_rows) | set(helper_rows))
 for a in exact_rows:
     assert not counted_elsewhere(int(a, 16)), (a, counted_elsewhere(int(a, 16)))
 PROPOSALS = {
-    'ViewNew/PBBMesh.h (ViewNew mesh owner)':
-        'declare PBBMesh(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes) 004f4cb0 (create 004edb20 pushes '
-        'surfaceTypes, then size, after new 0x8c). With it PBBMesh::create 004edb20, already exact in the pending build, '
-        'becomes a counted row (the body of 004f4cb0 itself needs the unnamed shadow helper 004e3570).',
     'ViewNew/QuadVolume.h (ViewNew mesh owner)':
         'RenderSurfaceTypes is the G3D::Table key of the caches: the donor declares member hashCode() and operator==. '
         'MeshFactoryCache2008.h supplies them as a global inline ::hashCode(const RenderSurfaceTypes&) (G3D::Table '
@@ -410,26 +397,25 @@ PROPOSALS = {
 receipt = {
     'class': 'RBX::ViewNew::MeshFactory<Mesh, numMeshes> static caches (PBB / Sphere / CylinderAlongX / Torso / Head / Wedge)',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'unit': FLAGS, 'pending': PENDING_FLAGS, 'layout': layout_flags},
+    'flags': {'unit': FLAGS, 'layout': layout_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
-    'objects': {p.name: sha(p) for p in (OBJ, PENDING_OBJ, layout_obj)},
+    'objects': {p.name: sha(p) for p in (OBJ, layout_obj)},
     'layout': {k: hex(v) for k, v in SIZES.items()},
     'rows': result,
     'helper_rows': {a: dict(es[0], symbols=[e['symbol'] for e in es]) for a, es in sorted(HELPERS.items())},
     'helpers_not_exact': {a: dict(es[0], symbols=[e['symbol'] for e in es]) for a, es in sorted(NOT_EXACT_HELPERS.items())},
     'helpers_counted_elsewhere': helpers_elsewhere,
     'vtables': VTABLES,
-    'pending_or_not_exact': pending,
     'exact_function_rows': counted,
     'proposals': PROPOSALS,
     'not_built': {
         '004ef930': 'Part::updateMesh: reads PartInstance +0x1c8 / +0x1dc / +0x224 (PartInstance owner)',
-        '004f4cb0': 'PBBMesh surface constructor (unnamed shadow helper 004e3570, BrickMesh globals)',
+        '004f4cb0': 'PBBMesh surface constructor body (declared in ViewNew/PBBMesh.h; body needs the unnamed shadow helper '
+                    '004e3570 and BrickMesh globals)',
         '004e5670': 'BrickMesh cache flush (cache 00972754, once flag 00972870): BrickMesh unit, not attempted',
     },
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
 RECEIPT.write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS native ViewNew mesh caches: %d distinct function rows exact (%d factory rows, %d derived template helpers); '
-      '%d helpers already counted elsewhere and %d non-exact helpers not counted; 1 pending-build-only row (004edb20) '
-      'not counted' % (len(counted), len(exact_rows), len(helper_rows), len(helpers_elsewhere), len(NOT_EXACT_HELPERS)))
+      '%d helpers already counted elsewhere and %d non-exact helpers not counted' % (len(counted), len(exact_rows), len(helper_rows), len(helpers_elsewhere), len(NOT_EXACT_HELPERS)))
