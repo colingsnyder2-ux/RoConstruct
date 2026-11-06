@@ -1,0 +1,50 @@
+{
+  "workflow": 52,
+  "client": "2008-06",
+  "swap_target": "CRobloxDoc 30-handler batch (inactive exacts)",
+  "blocker": "453670/4538b0 indirect teardown via boost::shared_ptr<RBX::DataModel> control block",
+  "batch_open": {
+    "swap_target": "CRobloxDoc 30 handlers",
+    "blocker": "453670 (+170 call eax, +191 call edx) and 4538b0 (identical offsets): shared_ptr<RBX::DataModel> refcount teardown through control-block vtable",
+    "required_provider": "boost::detail::shared_count instantiation for RBX::DataModel (DataModel::Lock TU, ctor 00411b40)",
+    "next_proof": "control-block vtable/RTTI identity + link closure via document objects (missing archive/RSP)"
+  },
+  "evidence": {
+    "handler_453670_asm": "mov edx,[esi]; mov eax,[edx+4]; mov ecx,esi; call eax (+170); lea ecx,[esi+8]; lock xadd [ecx],-1; mov eax,[esi]; mov edx,[eax+8]; mov ecx,esi; call edx (+191); esi=[esp+0xc] is the control block copied from the incoming shared_ptr (disposable count at [esi+4], second count at [esi+8])",
+    "handler_4538b0_asm": "byte-identical pattern at identical offsets (209 bytes both)",
+    "provider_00411b40_asm": "RBX::DataModel::Lock ctor (152 bytes) contains the same teardown on the incoming shared_ptr (edi=[esp+0x20]): mov edx,[eax+4]; call edx (+0x6c); mov eax,[edx+8]; call eax (+0x81) -- ownership is the Lock/shared_count instantiation, not CRobloxDoc.cpp",
+    "source_453670": "boost::shared_ptr<RBX::DataModel> model = workspace->getDataModel(); RBX::DataModel::Lock lock(model); model->create<RBX::ChangeHistoryService>()->unplay(); -- already byte-exact; no edit can bind the indirect sites without regressing exactness"
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "text": "Edit CRobloxDoc.cpp to bind the two indirect sites as direct calls",
+      "status": "rejected",
+      "reason": "Sites dispatch through the control-block vtable at runtime; any direct-call rewrite changes bytes and regresses the exact match. Runner must keep flagging them (NATIVE_SWAP_BATCH: indirect needs separate evidence)."
+    },
+    {
+      "id": "H2",
+      "text": "X-to-Z full batch direct proof",
+      "status": "not_attempted",
+      "reason": "Control-block vtable targets are not derivable from assembly alone without RTTI; inventing slots would violate the no-invented-ABI rule."
+    }
+  ],
+  "parked": true,
+  "remaining": [
+    "control-block vtable/RTTI identity for boost::shared_ptr<RBX::DataModel>",
+    "document link archive/RSP for provider selection (blocked_on_missing_input)",
+    "453750/453990 std::string/MFC indirect sites remain separate blockers"
+  ],
+  "receipt_hashes": {
+    "run_manifest_sha256": "0574cfa2aa1b544210bd0450e97b72b08d308a34c33d460e568a89377f2ce9c8",
+    "analysis_sha256": "8f5b26fba6f531e4cfc4c4a3a69c84d0dd7f803ddaeb66b0632205a7772deb2f"
+  },
+  "metrics": {
+    "inactive_exacts": 30,
+    "selected_exacts": 0,
+    "gated_swaps": 0,
+    "server_credit_added": 0
+  },
+  "revision": 2,
+  "draft_note": "Parked with evidence; source edit rejected (would regress exactness); reuse this session for follow-up 453750/453990 std::string/MFC indirect-site evidence."
+}

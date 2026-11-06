@@ -1,0 +1,94 @@
+{
+ "bodies": [
+  {
+   "addr": "0057e330",
+   "byte_identical": true,
+   "candidate_sha256": "c239db6fda800f488b55c7e109a5266be33dfec991aaf867273fa89db1598dc1",
+   "candidate_size": 146,
+   "direct_sites": 1,
+   "indirect_sites": [
+    {
+     "argument_setup_bytes": "33db83ec1c8d4424388bcc8964245450",
+     "argument_setup_identical": true,
+     "candidate_argument_setup_bytes": "33db83ec1c8d4424388bcc8964245450",
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+     "candidate_relocation": {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+      "type": 6
+     },
+     "candidate_relocation_is_import_symbol": true,
+     "expected_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+     "iat_resolved_in_original_import_table": true,
+     "iat_slot": "0080245c",
+     "instruction_bytes": "ff155c248000",
+     "instruction_bytes_identical": true,
+     "offset": 66,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 68,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+     },
+     "verified_indirect_call_binding": true
+    },
+    {
+     "argument_setup_bytes": "897e0c897e10c74614000000008d4c241cc7461800000000c7442414ffffffff",
+     "argument_setup_identical": true,
+     "candidate_argument_setup_bytes": "897e0c897e10c74614000000008d4c241cc7461800000000c7442414ffffffff",
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+     "candidate_relocation": {
+      "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+      "type": 6
+     },
+     "candidate_relocation_is_import_symbol": true,
+     "expected_external": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+     "iat_resolved_in_original_import_table": true,
+     "iat_slot": "00802468",
+     "instruction_bytes": "ff1568248000",
+     "instruction_bytes_identical": true,
+     "offset": 118,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 120,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+     },
+     "verified_indirect_call_binding": true
+    }
+   ],
+   "relocated_windows": 20,
+   "symbol": "??0RunStateVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z",
+   "target_sha256": "5f37c5ae3f986b7cb675845bc5667819c057d0c0875f419dfdb73972770dbab9",
+   "target_size": 146,
+   "unclassified_sites": 0
+  }
+ ],
+ "client": "2008-06",
+ "demangle": {
+  "__available__": true,
+  "__tool__": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-4f7d46a43031423c966cd798b30be257\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\undname.exe",
+  "names": {
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)",
+   "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::~basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(void)",
+   "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "__imp_public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)",
+   "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "__imp_public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::~basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(void)"
+  }
+ },
+ "failures": [],
+ "indirect_call_bindings_verified": true,
+ "object": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-4f7d46a43031423c966cd798b30be257\\work\\2008-06\\native-check-runs\\20261106-122432-79a80ce8\\unit-000\\candidate.obj",
+ "object_sha256": "d8b2e75f7854e33fa0bdc938afba804a3c909f5713703a586464b1b600dfb733",
+ "schema": 1,
+ "scope": "Indirect-call ABI only: the same imported callee, reached through the same IAT slot with the same declared ABI and the same argument setup as the original client. Direct-call bindings, referenced data, provider selection, linked selection, EH/tail-jump identity and runtime gates are separate obligations and are asserted by the runner receipt, not here.",
+ "totals": {
+  "bodies": 1,
+  "byte_identical_bodies": 1,
+  "direct_sites": 1,
+  "indirect_sites": 2,
+  "unclassified_sites": 0,
+  "verified": 2
+ },
+ "workflow": 52
+}

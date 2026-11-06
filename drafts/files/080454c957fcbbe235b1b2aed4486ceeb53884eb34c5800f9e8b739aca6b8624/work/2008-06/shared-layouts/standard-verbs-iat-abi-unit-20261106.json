@@ -1,0 +1,162 @@
+{
+ "analysis": "work\\2008-06\\native-check-runs\\20261106-114631-31eff734\\analysis-643c9be1.json",
+ "baseline_commit": "unknown",
+ "blocker_reduced": "Indirect-call ABI for the MSVCP90 std::string/std::operator+ call sites in StandardVerbs::StandardVerbs 005c7ea0, which kept the body out of `native_check_runner analyze --require-proof` even though its bytes, referenced data and 112 reviewed direct-call bindings already passed.",
+ "checks": [
+  {
+   "addr": "005c7ea0",
+   "call_identity_passed": false,
+   "call_identity_scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof.",
+   "call_sites_total": 146,
+   "data_errors": [],
+   "data_references": 68,
+   "direct_call_bindings_verified": 112,
+   "first_byte_difference": null,
+   "indirect_call_sites": 34,
+   "object_size": 2676,
+   "status": "exact",
+   "symbol": "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z",
+   "target_sha256": "100a6228e8a15b9f718bb05f4cb7df7308a1df9a4743a8cd60e810ce950adf07",
+   "target_size": 2676
+  },
+  {
+   "addr": "00450450",
+   "call_identity_passed": true,
+   "call_identity_scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof.",
+   "call_sites_total": 60,
+   "data_errors": [],
+   "data_references": 0,
+   "direct_call_bindings_verified": 60,
+   "first_byte_difference": null,
+   "indirect_call_sites": 0,
+   "object_size": 998,
+   "status": "exact",
+   "symbol": "??1StandardVerbs@RBX@@QAE@XZ",
+   "target_sha256": "80028858a1362be355548126762026d5a7405fd5220667aad5ee744484d63014",
+   "target_size": 998
+  }
+ ],
+ "client": "2008-06",
+ "compiler": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-4f7d46a43031423c966cd798b30be257\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+ "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+ "indirect_call_abi": {
+  "bindings": "work/native-candidates/standard-verbs-iat-abi-20261106/bindings.json",
+  "bindings_sha256": "2a083499404774ddf0b782f4229b2ddfed697409e985c5d117ae49cfa9954954",
+  "demangle_tool": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-4f7d46a43031423c966cd798b30be257\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\undname.exe",
+  "iat_slots": {
+   "008023e4": {
+    "candidate_external": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+    "demangled": "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl std::operator+<char,struct std::char_traits<char>,class std::allocator<char> >(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,char const *)",
+    "original_import": {
+     "dll": "MSVCP90.dll",
+     "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z"
+    },
+    "sites": [
+     884,
+     954,
+     1024,
+     1094,
+     1164,
+     1234,
+     1304,
+     1374,
+     1444,
+     1514,
+     1584,
+     1654,
+     1724,
+     1794,
+     1864,
+     1934,
+     2004,
+     2074,
+     2144,
+     2214,
+     2284,
+     2354,
+     2424,
+     2494,
+     2564,
+     2634
+    ]
+   },
+   "00802458": {
+    "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+    "demangled": "public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(char const *)",
+    "original_import": {
+     "dll": "MSVCP90.dll",
+     "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+    },
+    "sites": [
+     50,
+     101,
+     144,
+     390,
+     435,
+     633,
+     678,
+     723
+    ]
+   }
+  },
+  "import_table_source": "original 2008-06 client import directory parsed with pefile",
+  "probe": "work/native-candidates/standard-verbs-iat-abi-20261106/probe_indirect_call_abi.py",
+  "probe_sha256": "c55370f525fe1cc09c74df995591245f0aba22ff9e127ea949f58c53ddc7c463",
+  "scope": "Same imported callee, same IAT slot, same declared ABI and same argument setup as the original client, for every indirect call site in the recovered body.",
+  "totals": {
+   "bodies": 2,
+   "byte_identical_bodies": 2,
+   "direct_sites": 172,
+   "indirect_sites": 34,
+   "unclassified_sites": 0,
+   "verified": 34
+  }
+ },
+ "manifest": "rebuild/2008-06/tests/standard-verbs-iat-abi-unit-20261106.json",
+ "manifest_sha256": "3f9ecb5b03eeae156377ddab65e5fabed97b21cc680833fcd3fb5915a42cd5cb",
+ "metrics": {
+  "gated_class_swaps": 0,
+  "inactive_exact_addresses": 2,
+  "selected_exact_addresses": 0,
+  "server_credit_added": 0
+ },
+ "non_claims": [
+  "No link was performed and no provider was selected.",
+  "No .lib, RSP, map or executable was created, copied or reconstructed.",
+  "No symbol alias, stub or synthetic mapping was introduced.",
+  "No server credit, runtime activation or executable selection change."
+ ],
+ "object": "work/2008-06/native-check-runs/20261106-114631-31eff734/unit-000/candidate.obj",
+ "object_sha256": "7dd934b0a3dbef0b61d734c5730e66ce5647135e68490ed7e7d3c23aced9f598",
+ "owner_checkout_queue_present": false,
+ "package_revision": "6a75107cef5c18ce5004b83e32ac32736c354a262f7257e7dfbe3192d7bcd00f",
+ "preserved": "Shared headers, vendor inputs, other leases and the active executable selection unchanged. RBX::MoveDown selection verb 2008 and RBX::CRobloxDoc message handlers 2008 are held by other active leases and were not touched.",
+ "proof": {
+  "direct_call_bindings": true,
+  "direct_call_bindings_scope": "Every direct e8 call site in both bodies carries a reviewed symbol/address binding verified on this object. The runner's own call_identity.passed flag additionally requires zero indirect sites, so it stays false for the ctor by design and is reported as recorded.",
+  "exact_bytes": true,
+  "indirect_call_bindings": true,
+  "referenced_data": true,
+  "require_proof_exit": 1,
+  "require_proof_reason": "native_check_runner analyze --require-proof still exits 1 by design: the runner proves direct-call bindings only. The indirect-call ABI obligation now has its own reviewed receipt (indirect_call_abi above).",
+  "scope": "Local isolated diagnostics. No link, no provider selection, no executable selection, no runtime activation, no server credit."
+ },
+ "provider_selection": {
+  "detail": "No filtered provider archive (b4d51e680296b50c2cfb57e93815e569519144aa19d25779dbd3c0d714db5798), no full archive (21e44d8cac6d3f14850180ccb2f8d5ed618fe129c9d5c1632186b78d52d03519), no link response file and no document-swap link object set exist in this workspace; provider selection for these symbols is unknown.",
+  "status": "blocked_on_missing_input"
+ },
+ "remaining": [
+  "Provider selection for StandardVerbs and its tool-verb factories in the document link (missing filtered archive / RSP / link object set)",
+  "Link closure for the StandardVerbs composition and its tool-verb providers",
+  "Relevant P5/P6/runtime gates before any activation"
+ ],
+ "run": "work\\2008-06\\native-check-runs\\20261106-114631-31eff734",
+ "schema": 1,
+ "source": "rebuild/2008-06/native-classes/StandardVerbs.cpp",
+ "source_sha256": "c601bf31f11fb3b2b567bb2e8eac0482088962ee79ee58a959da47ac95ae4d9d",
+ "swap_target": "Document/Workspace native class swap: CRobloxDoc/StandardVerbs composition and tool-verb mouse-command providers",
+ "task": "Native source recovery with automatic draft sharing",
+ "unit": "StandardVerbs.cpp",
+ "workflow": 52,
+ "workspace_manifest_source_revision": "6a75107cef5c18ce5004b83e32ac32736c354a262f7257e7dfbe3192d7bcd00f"
+}

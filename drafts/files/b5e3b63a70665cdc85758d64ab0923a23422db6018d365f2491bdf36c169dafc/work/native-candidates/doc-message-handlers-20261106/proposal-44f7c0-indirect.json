@@ -1,0 +1,104 @@
+{
+  "workflow": 52,
+  "client": "2008-06",
+  "swap_target": "CRobloxDoc 30-handler batch (inactive exacts)",
+  "blocker": "44f7c0: 8 indirect sites (CString x4, workspace virtual slot 8, SysFreeString, CString dtor x2)",
+  "batch_open": {
+    "swap_target": "CRobloxDoc 30 handlers",
+    "blocker": "44f7c0 (258 bytes, exact): +34 call [0x803f04], +60 call [0x8032c0], +76/+149 call [0x803ee0], +177/+230 call [0x803f14], +200 call edx (workspace vtable slot 8), +203 call [0x802944]",
+    "required_provider": "mfc90 CString #316/#4431/#910/#601 (7 of 8 sites); CWorkspace vtable slot 8; OLEAUT32 SysFreeString",
+    "next_proof": "validated mfc90 provider objects (IAT); workspace vtable slot identity from vtables.json; SysFreeString is COM OLE import (named, binary-proven)"
+  },
+  "evidence": {
+    "asm_map": [
+      {
+        "offset": 34,
+        "insn": "call [0x803f04]",
+        "provider": "mfc90 CString ctor #316 (on [esp+4] filter)",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 60,
+        "insn": "call [0x8032c0]",
+        "provider": "mfc90 #4431 with string id 184 (0xb8) -- CString::LoadString path",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 76,
+        "insn": "call [0x803ee0]",
+        "provider": "mfc90 #910 (CString helper for dialog filter arg)",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 149,
+        "insn": "call [0x803ee0]",
+        "provider": "mfc90 #910 (CString helper for filename arg)",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 177,
+        "insn": "call [0x803f14]",
+        "provider": "mfc90 #601 (CString dtor)",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 200,
+        "insn": "call edx",
+        "provider": "CWorkspace vtable slot 8 (mov ecx,[eax]; mov edx,[ecx+0x20]) -- derived as SaveSelectionToFile from CWorkspace.h:60 declaration sequence; NOT binary-proven",
+        "group": "virtual-inferred"
+      },
+      {
+        "offset": 203,
+        "insn": "call [0x802944]",
+        "provider": "OLEAUT32.dll SysFreeString (CComBSTR dtor path)",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 230,
+        "insn": "call [0x803f14]",
+        "provider": "mfc90 #601 (CString dtor)",
+        "group": "library-IAT"
+      }
+    ],
+    "source_note": "dialog(FALSE,...) = non-multi; 0 param maps to CFileDialog ctor BOOL arg; if the 0 were TRUE the ctor would need a different call shape, so FALSE is consistent.",
+    "source_snippet": "CString filter; filter.LoadString(184); CFileDialog dialog(FALSE, rbxm, NULL, 6, filter, NULL, 0, TRUE); if (DoModal()==IDOK) { CComBSTR filename(dialog.GetPathName()); workspace->SaveSelectionToFile(filename); } -- already byte-exact",
+    "direct_sites": "5 reviewed direct bindings verified (CFileDialog ctor 006a0e72, DoModal 006a0e6c, GetPathName 006a0e66, CComBSTR ctor 00401180, CFileDialog dtor 006a0e5a)"
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "text": "Edit source to bind IAT/virtual sites as direct",
+      "status": "rejected",
+      "reason": "Would regress byte-exactness; imports and slot-8 dispatch need separate provider proof."
+    },
+    {
+      "id": "H2",
+      "text": "EH-audit IAT group with validated mfc90/OLEAUT32 provider objects",
+      "status": "viable-but-blocked",
+      "reason": "Requires per-symbol COFF provider objects; vendor archives are not single-object inputs."
+    },
+    {
+      "id": "H3",
+      "text": "Workspace vtable slot-8 identity via vtables.json COM tables",
+      "status": "attempted-inconclusive",
+      "reason": "CWorkspace is a COM base (IDispatchImpl chain); slot 8 naming from header order is inference, not binary proof. Needs COM vtable map or RTTI."
+    }
+  ],
+  "parked": true,
+  "remaining": [
+    "validated mfc90 #316/#4431/#910/#601 provider objects (IAT group)",
+    "CWorkspace COM vtable slot-8 binary identity (not header-order inference)",
+    "OLEAUT32 SysFreeString provider selection (link)",
+    "document link archive/RSP for provider selection"
+  ],
+  "receipt_hashes": {
+    "run_manifest_sha256": "0574cfa2aa1b544210bd0450e97b72b08d308a34c33d460e568a89377f2ce9c8",
+    "analysis_sha256": "8f5b26fba6f531e4cfc4c4a3a69c84d0dd7f803ddaeb66b0632205a7772deb2f"
+  },
+  "metrics": {
+    "inactive_exacts": 30,
+    "selected_exacts": 0,
+    "gated_swaps": 0,
+    "server_credit_added": 0
+  }
+}

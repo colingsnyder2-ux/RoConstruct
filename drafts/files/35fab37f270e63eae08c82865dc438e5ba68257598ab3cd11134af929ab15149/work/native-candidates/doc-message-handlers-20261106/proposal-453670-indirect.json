@@ -1,0 +1,64 @@
+{
+  "workflow": 52,
+  "client": "2008-06",
+  "swap_target": "CRobloxDoc 30-handler batch (inactive exacts)",
+  "blocker": "453670/4538b0 indirect teardown via boost::shared_ptr<RBX::DataModel> control block",
+  "batch_open": {
+    "swap_target": "CRobloxDoc 30 handlers",
+    "blocker": "453670 (+170 call eax, +191 call edx) and 4538b0 (identical offsets): shared_ptr<RBX::DataModel> refcount teardown through control-block vtable",
+    "required_provider": "boost::detail::shared_count instantiation for RBX::DataModel (DataModel::Lock TU, ctor 00411b40)",
+    "next_proof": "vtable slot identity now pinned (slot1=dispose 0048ee50, slot2=destroy 00405e10 for DataModel); remaining is link selection via document archive/RSP"
+  },
+  "evidence": {
+    "handler_453670_asm": "mov edx,[esi]; mov eax,[edx+4]; mov ecx,esi; call eax (+170); lea ecx,[esi+8]; lock xadd [ecx],-1; mov eax,[esi]; mov edx,[eax+8]; mov ecx,esi; call edx (+191); esi=[esp+0xc] is the control block copied from the incoming shared_ptr (disposable count at [esi+4], second count at [esi+8])",
+    "handler_4538b0_asm": "byte-identical pattern at identical offsets (209 bytes both)",
+    "provider_00411b40_asm": "RBX::DataModel::Lock ctor (152 bytes) contains the same teardown on the incoming shared_ptr (edi=[esp+0x20]): mov edx,[eax+4]; call edx (+0x6c); mov eax,[edx+8]; call eax (+0x81) -- ownership is the Lock/shared_count instantiation, not CRobloxDoc.cpp",
+    "source_453670": "boost::shared_ptr<RBX::DataModel> model = workspace->getDataModel(); RBX::DataModel::Lock lock(model); model->create<RBX::ChangeHistoryService>()->unplay(); -- already byte-exact; no edit can bind the indirect sites without regressing exactness",
+    "vtable_evidence": {
+      "vtable": "0082fdc0 RBX::PAVDataModel::sp_counted_impl_pd (work/2008-06/vtables.json: 4 slots)",
+      "slot0": "00415000 sp_counted_base scalar deleting dtor (resets vptr to 0080b2f0, frees via operator delete 006a067a)",
+      "slot1_dispose": "0048ee50 (PAVDataModel dispose: destroys stored pointer at +0xC via owned signal/typedef) -- called at +170 in 453670/4538b0 via mov eax,[edx+4]",
+      "slot2_destroy": "00405e10 (sp_counted_base destroy: virtual slot-0 call on stored pointer) -- called at +191 via mov edx,[eax+8]",
+      "slot3_get_deleter": "005a0460 (type_info compare via MSVCR90)",
+      "static_cast_check": "all PAV* sp_counted_impl_pd vtables share slot pattern 00415000 / 0048ee50 / 00405e10 / 005a0460 -- DataModel matches"
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "text": "Edit CRobloxDoc.cpp to bind the two indirect sites as direct calls",
+      "status": "rejected",
+      "reason": "Sites dispatch through the control-block vtable at runtime; any direct-call rewrite changes bytes and regresses the exact match. Runner must keep flagging them (NATIVE_SWAP_BATCH: indirect needs separate evidence)."
+    },
+    {
+      "id": "H2",
+      "text": "X-to-Z full batch direct proof",
+      "status": "not_attempted",
+      "reason": "Control-block vtable targets are not derivable from assembly alone without RTTI; inventing slots would violate the no-invented-ABI rule."
+    },
+    {
+      "id": "H3",
+      "text": "Vtable+RTTI identification of the control block from binary tables",
+      "status": "done-identified",
+      "reason": "Target unknown resolved to named bodies: dispose 0048ee50 and destroy 00405e10 for DataModel. Link selection still needs document archive/RSP, so sites remain indirect blockers by design."
+    }
+  ],
+  "parked": true,
+  "remaining": [
+    "document link archive/RSP for provider selection of 0048ee50/00405e10 instantiations (blocked_on_missing_input)",
+    "453750/453990 std::string/MFC indirect sites remain separate blockers",
+    "44fd30 mfc90 provider objects remain separate blocker"
+  ],
+  "receipt_hashes": {
+    "run_manifest_sha256": "0574cfa2aa1b544210bd0450e97b72b08d308a34c33d460e568a89377f2ce9c8",
+    "analysis_sha256": "8f5b26fba6f531e4cfc4c4a3a69c84d0dd7f803ddaeb66b0632205a7772deb2f"
+  },
+  "metrics": {
+    "inactive_exacts": 30,
+    "selected_exacts": 0,
+    "gated_swaps": 0,
+    "server_credit_added": 0
+  },
+  "revision": 3,
+  "draft_note": "Parked with evidence; source edit rejected (would regress exactness); reuse this session for follow-up 453750/453990 std::string/MFC indirect-site evidence."
+}

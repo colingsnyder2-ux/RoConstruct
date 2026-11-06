@@ -1,0 +1,220 @@
+{
+ "bodies": [
+  {
+   "addr": "0057e330",
+   "byte_identical": true,
+   "candidate_sha256": "c239db6fda800f488b55c7e109a5266be33dfec991aaf867273fa89db1598dc1",
+   "candidate_size": 146,
+   "direct_sites": 1,
+   "indirect_sites": [
+    {
+     "argument_setup_bytes": "33db83ec1c8d4424388bcc8964245450",
+     "argument_setup_identical": true,
+     "candidate_argument_setup_bytes": "33db83ec1c8d4424388bcc8964245450",
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+     "candidate_relocation": {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+      "type": 6
+     },
+     "candidate_relocation_is_import_symbol": true,
+     "expected_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+     "iat_resolved_in_original_import_table": true,
+     "iat_slot": "0080245c",
+     "instruction_bytes": "ff155c248000",
+     "instruction_bytes_identical": true,
+     "offset": 66,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 68,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+     },
+     "verified_indirect_call_binding": true
+    },
+    {
+     "argument_setup_bytes": "897e0c897e10c74614000000008d4c241cc7461800000000c7442414ffffffff",
+     "argument_setup_identical": true,
+     "candidate_argument_setup_bytes": "897e0c897e10c74614000000008d4c241cc7461800000000c7442414ffffffff",
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+     "candidate_relocation": {
+      "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+      "type": 6
+     },
+     "candidate_relocation_is_import_symbol": true,
+     "expected_external": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+     "iat_resolved_in_original_import_table": true,
+     "iat_slot": "00802468",
+     "instruction_bytes": "ff1568248000",
+     "instruction_bytes_identical": true,
+     "offset": 118,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 120,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+     },
+     "verified_indirect_call_binding": true
+    }
+   ],
+   "relocated_windows": 20,
+   "symbol": "??0RunStateVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z",
+   "target_sha256": "5f37c5ae3f986b7cb675845bc5667819c057d0c0875f419dfdb73972770dbab9",
+   "target_size": 146,
+   "unclassified_sites": 0,
+   "unit": "unit-000",
+   "virtual_dispatch_offsets": [],
+   "virtual_dispatch_sites": 0
+  },
+  {
+   "addr": "005833e0",
+   "byte_identical": true,
+   "candidate_sha256": "13977e6612afb680b3f17b2361f3bd0031923092c3e98d447e23161cc176f923",
+   "candidate_size": 125,
+   "direct_sites": 2,
+   "indirect_sites": [
+    {
+     "argument_setup_bytes": "5083c104e86b10feff8d4c24188930c744240cffffffff",
+     "argument_setup_identical": true,
+     "candidate_argument_setup_bytes": "5083c104e8000000008d4c24188930c744240cffffffff",
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+     "candidate_relocation": {
+      "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+      "type": 6
+     },
+     "candidate_relocation_is_import_symbol": true,
+     "expected_external": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+     "iat_resolved_in_original_import_table": true,
+     "iat_slot": "00802468",
+     "instruction_bytes": "ff1568248000",
+     "instruction_bytes_identical": true,
+     "offset": 99,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 101,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+     },
+     "verified_indirect_call_binding": true
+    }
+   ],
+   "relocated_windows": 16,
+   "symbol": "??0Verb@RBX@@IAE@PAVVerbContainer@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "target_sha256": "8c6c9555fc485b7d6eb8dac6a5b4b85a0d04be6299ab910d729b65945882215a",
+   "target_size": 125,
+   "unclassified_sites": 0,
+   "unit": "unit-001",
+   "virtual_dispatch_offsets": [],
+   "virtual_dispatch_sites": 0
+  },
+  {
+   "addr": "005832c0",
+   "byte_identical": true,
+   "candidate_sha256": "f44201f79c353fe3c9858d9384c8f65303c75d0ca62cfce724b5480dbd9f93a2",
+   "candidate_size": 28,
+   "direct_sites": 1,
+   "indirect_sites": [],
+   "relocated_windows": 4,
+   "symbol": "??1Verb@RBX@@UAE@XZ",
+   "target_sha256": "1c5a1fc2e403a92a2f489d13ccfd18b4fd694466ecdd770f637accfdc9558988",
+   "target_size": 28,
+   "unclassified_sites": 0,
+   "unit": "unit-002",
+   "virtual_dispatch_offsets": [],
+   "virtual_dispatch_sites": 0
+  },
+  {
+   "addr": "0057e8d0",
+   "byte_identical": true,
+   "candidate_sha256": "04892de415d4a5ef19210542aa1d1361382f023096569fac881603ed193c0bc8",
+   "candidate_size": 115,
+   "direct_sites": 1,
+   "indirect_sites": [
+    {
+     "argument_setup_bytes": "83ec1c8d5424388bcc8964243452c744243000000000",
+     "argument_setup_identical": true,
+     "candidate_argument_setup_bytes": "83ec1c8d5424388bcc8964243452c744243000000000",
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+     "candidate_relocation": {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+      "type": 6
+     },
+     "candidate_relocation_is_import_symbol": true,
+     "expected_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+     "iat_resolved_in_original_import_table": true,
+     "iat_slot": "0080245c",
+     "instruction_bytes": "ff155c248000",
+     "instruction_bytes_identical": true,
+     "offset": 51,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 53,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+     },
+     "verified_indirect_call_binding": true
+    },
+    {
+     "argument_setup_bytes": "e820feffff8a4424348d4c2418c70618088300884624c744240cffffffff",
+     "argument_setup_identical": true,
+     "candidate_argument_setup_bytes": "e8000000008a4424348d4c2418c70600000000884624c744240cffffffff",
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+     "candidate_relocation": {
+      "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+      "type": 6
+     },
+     "candidate_relocation_is_import_symbol": true,
+     "expected_external": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+     "iat_resolved_in_original_import_table": true,
+     "iat_slot": "00802468",
+     "instruction_bytes": "ff1568248000",
+     "instruction_bytes_identical": true,
+     "offset": 89,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 91,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+     },
+     "verified_indirect_call_binding": true
+    }
+   ],
+   "relocated_windows": 20,
+   "symbol": "??0DeleteBase@RBX@@IAE@PAVDataModel@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "target_sha256": "122fc68e9efd1e7b2fa4d41d4eec8d8b86bdf5f43c2b8d1401a9c4d2b4a1b7aa",
+   "target_size": 115,
+   "unclassified_sites": 0,
+   "unit": "unit-003",
+   "virtual_dispatch_offsets": [],
+   "virtual_dispatch_sites": 0
+  }
+ ],
+ "client": "2008-06",
+ "demangle": {
+  "__available__": true,
+  "__tool__": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-4f7d46a43031423c966cd798b30be257\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\undname.exe",
+  "names": {
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)",
+   "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::~basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(void)",
+   "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "__imp_public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)",
+   "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "__imp_public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::~basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(void)"
+  }
+ },
+ "failures": [],
+ "indirect_call_bindings_verified": true,
+ "run": "work\\2008-06\\native-check-runs\\20261106-122432-79a80ce8",
+ "schema": 1,
+ "totals": {
+  "bodies": 4,
+  "byte_identical_bodies": 4,
+  "direct_sites": 5,
+  "indirect_sites": 5,
+  "unclassified_sites": 0,
+  "verified": 5,
+  "virtual_dispatch_sites": 0
+ }
+}

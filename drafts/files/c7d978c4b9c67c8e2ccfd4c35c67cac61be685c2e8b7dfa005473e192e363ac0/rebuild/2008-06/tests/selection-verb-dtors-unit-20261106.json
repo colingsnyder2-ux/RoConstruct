@@ -1,0 +1,7 @@
+{"jobs":[
+ {"source":"native-classes/VerbLifetime.cpp","checks":[
+   {"addr":"0057dfd0","symbol":"??1RunStateVerb@RBX@@UAE@XZ",
+    "calls":[{"offset":103,"target":"005832c0","symbol":"??1Verb@RBX@@UAE@XZ","known_address":true}]},
+   {"addr":"0057e050","symbol":"??1EditSelectionVerb@RBX@@UAE@XZ",
+    "calls":[{"offset":157,"target":"005832c0","symbol":"??1Verb@RBX@@UAE@XZ","known_address":true}]}]}
+]}

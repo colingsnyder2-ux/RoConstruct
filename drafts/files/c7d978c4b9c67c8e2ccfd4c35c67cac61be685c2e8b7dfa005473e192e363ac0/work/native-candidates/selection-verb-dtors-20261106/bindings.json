@@ -1,0 +1,60 @@
+{
+ "bodies": [
+  {
+   "addr": "0057dfd0",
+   "byte_identical": true,
+   "candidate_sha256": "d2d15868fab0c9edef560b9f8883237c76633912cdf6d93336ce05ff786d0af9",
+   "candidate_size": 125,
+   "direct_sites": 1,
+   "indirect_sites": [],
+   "relocated_windows": 12,
+   "symbol": "??1RunStateVerb@RBX@@UAE@XZ",
+   "target_sha256": "87327199c94fb8a2c39399157ceadb6b37e57389c4bdeb0c1b627f38b3046702",
+   "target_size": 125,
+   "unclassified_sites": 0,
+   "virtual_dispatch_offsets": [
+    70,
+    91
+   ],
+   "virtual_dispatch_sites": 2
+  },
+  {
+   "addr": "0057e050",
+   "byte_identical": true,
+   "candidate_sha256": "3ba0ef5898f644eda34b489b992db93a92227be7b5a82cd3c2d75f56a0ff1e3b",
+   "candidate_size": 179,
+   "direct_sites": 1,
+   "indirect_sites": [],
+   "relocated_windows": 12,
+   "symbol": "??1EditSelectionVerb@RBX@@UAE@XZ",
+   "target_sha256": "a28e7e848327ceae841de1da93616a27bbfdefd35c3a826443c23a8d012bc8c9",
+   "target_size": 179,
+   "unclassified_sites": 0,
+   "virtual_dispatch_offsets": [
+    70,
+    91,
+    124,
+    145
+   ],
+   "virtual_dispatch_sites": 4
+  }
+ ],
+ "client": "2008-06",
+ "demangle": {
+  "__tool__": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-4f7d46a43031423c966cd798b30be257\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\undname.exe",
+  "names": {}
+ },
+ "failures": [],
+ "indirect_call_bindings_verified": true,
+ "run": "work\\2008-06\\native-check-runs\\20261106-123742-b9c68558",
+ "schema": 1,
+ "totals": {
+  "bodies": 2,
+  "byte_identical_bodies": 2,
+  "direct_sites": 2,
+  "indirect_sites": 0,
+  "unclassified_sites": 0,
+  "verified": 0,
+  "virtual_dispatch_sites": 6
+ }
+}
