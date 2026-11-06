@@ -1,4 +1,4 @@
-// from server: 67% by colin
+// from server: 81% by Intel
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD
