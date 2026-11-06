@@ -1,0 +1,20 @@
+{
+ "bodies": [],
+ "client": "2008-06",
+ "demangle": {
+  "names": {}
+ },
+ "failures": [],
+ "indirect_call_bindings_verified": true,
+ "run": "work\\2008-06\\native-check-runs\\20261106-140554-cab011e3",
+ "schema": 1,
+ "totals": {
+  "bodies": 0,
+  "byte_identical_bodies": 0,
+  "direct_sites": 0,
+  "indirect_sites": 0,
+  "unclassified_sites": 0,
+  "verified": 0,
+  "virtual_dispatch_sites": 0
+ }
+}
