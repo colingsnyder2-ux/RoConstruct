@@ -1,0 +1,1 @@
+﻿{"jobs":[{"source":"native-classes/DataModelTiming.cpp","checks":[{"addr":"005757d0","symbol":"?getGameTime@DataModel@RBX@@"},{"addr":"005757e0","symbol":"?getFrameRate@DataModel@RBX@@"}]}]}

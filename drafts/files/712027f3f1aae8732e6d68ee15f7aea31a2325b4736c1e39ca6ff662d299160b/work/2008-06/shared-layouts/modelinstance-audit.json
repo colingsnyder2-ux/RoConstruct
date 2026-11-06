@@ -1,0 +1,9 @@
+{
+  "swap_target": "Instance runnable integration (ModelInstance descendant)",
+  "run": "work/2008-06/native-check-runs/20261105-191335-8b073a5d",
+  "checks": "2/2 exact bytes+data, score 100",
+  "added": {"addr": "00584620", "size": 73, "symbol": "?onDescendentAdded@ModelInstance@RBX@@MAEXPAVInstance@2@@Z", "target_sha256": "89b29ae73a6f145d50d2edaad1907d64922b95b753593bec2f4a17d0fab0e5ec", "source_sha256": "d0105b54d619edc7cb042b9e801f1805db17c251171c474981bd000b7c038fd0", "object_sha256": "04510f74bc1dc2601d81455a779646fd2935ddc02f48b760a30cb49a28131063"},
+  "removing": {"addr": "00584670", "size": 93, "symbol": "?onDescendentRemoving@ModelInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z", "target_sha256": "8edce0a43a46ad9225c10bdc3c2def1c84c6d53d1bd77edd65cef5c25c0bfe18", "source_sha256": "d0105b54d619edc7cb042b9e801f1805db17c251171c474981bd000b7c038fd0", "object_sha256": "04510f74bc1dc2601d81455a779646fd2935ddc02f48b760a30cb49a28131063"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Part provider, Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 49, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

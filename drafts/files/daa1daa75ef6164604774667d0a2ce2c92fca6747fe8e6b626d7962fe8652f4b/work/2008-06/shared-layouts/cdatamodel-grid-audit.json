@@ -1,0 +1,7 @@
+{
+  "swap_target": "Workspace/DataModel runnable integration (DataModel prop grid)",
+  "update": {"run": "work/2008-06/native-check-runs/20261105-185330-deab68d0", "addr": "00442900", "size": 292, "symbol": "?update@CDataModelPropGrid@@UAEXV?$shared_ptr@VDataModel@RBX@@@boost@@0@Z", "target_sha256": "66340a12f6e7a539d3ef7887faaa1b7342bc699cf4e2916b4f7ef05432f68f94", "source_sha256": "1254405ea689f1dfe2efb76a4693ff0a9b307f9638a1bf378c1826c7a8e20a78", "object_sha256": "5cf723c376373110698fd8b7dba930afaca4a1da416dbe95155746b27262b0b9", "result": "exact bytes+data 100%"},
+  "ctor": "CDataModelPropGrid ctor empty (MFC DECLARE_DYNAMIC only, no code function)",
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Part provider, Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 29, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

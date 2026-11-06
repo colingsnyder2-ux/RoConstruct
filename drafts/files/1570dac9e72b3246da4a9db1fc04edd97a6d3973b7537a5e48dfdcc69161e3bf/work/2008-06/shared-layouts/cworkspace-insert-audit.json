@@ -1,0 +1,10 @@
+{
+  "swap_target": "Workspace runnable integration (CWorkspace::insert 0046b9d0)",
+  "baseline": {"run": "work/2008-06/native-check-runs/20261105-183759-6a1a6ca3", "result": "different 86%, 693B vs 697B, first diff 79 (size shift)"},
+  "original": "697B, FuncInfo 0x8db7bc max_state 6, 1 TRY (states 2-4, catch 5), catch type std::exception flags 8 at 0x46bc2e, catch tail push ebx/push ebx/call _CxxThrowException (rethrow)",
+  "candidate": "693B, catch tail push ebx/push ebx/call EH handler (no _CxxThrowException); one insn fewer (239 vs 240)",
+  "hypotheses_rejected": 1,
+  "next_proof": "Need new evidence for catch rethrow codegen (e.g. /EHsc vs /EHa, catch by value vs ref, explicit rethrow type) without repeating blind sweeps.",
+  "status": "parked",
+  "metrics": {"inactive_exact": 16, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

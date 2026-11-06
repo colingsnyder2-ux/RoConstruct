@@ -1,0 +1,29 @@
+{
+  "swap_target": "Workspace runnable integration (CWorkspace Exec)",
+  "ExecScript": {
+    "run": "work/2008-06/native-check-runs/20261105-183352-26a85e54",
+    "addr": "0046c230",
+    "size": 511,
+    "symbol": "?ExecScript@CWorkspace@@UAGJPA_WUtagVARIANT@@111PAPAUtagSAFEARRAY@@@Z",
+    "target_sha256": "adeeef5168236d6468912410ea0d6c9720e313f891a4d45c293c22c1ee9d481c",
+    "source_sha256": "8d53b9d91753fd04216b57138387e344935c6ced650e14589ace0c47bb48ca8e",
+    "object_sha256": "cf3625c38eef8c8db5176193d6eb280b1baa9c9b0418c1495463f88b0a6a2563",
+    "result": "exact bytes+data 100%"
+  },
+  "next_gate": "execScript helper + ExecUrlScript (CWorkspaceExecScriptHelper) + write EH + Content closure + NullTool headers + Part provider",
+  "metrics": {
+    "inactive_exact": 16,
+    "selected_exact": "unknown",
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "execScript": {
+    "run": "work/2008-06/native-check-runs/20261105-183714-33289195",
+    "addr": "0046b230",
+    "size": 717,
+    "target_sha256": "7312b49c7882474f932e46b252879b952baebdbbf6b420b2b240898b3d854946",
+    "source_sha256": "92e18ba62ac087f8491bbe49307f9e22324c7134cf5e9e237c126c65999e7aeb",
+    "object_sha256": "ad80eefbe68bc11e5d64ebfc927caae17eaa46dcb2efa5e6cdc25ce6c5dc915c",
+    "result": "exact bytes+data 100%"
+  }
+}

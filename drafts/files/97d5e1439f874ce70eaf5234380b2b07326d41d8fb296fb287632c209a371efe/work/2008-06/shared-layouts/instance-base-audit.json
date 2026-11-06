@@ -1,0 +1,12 @@
+{
+  "swap_target": "Instance runnable integration (Instance base callbacks)",
+  "run": "work/2008-06/native-check-runs/20261105-190421-b757f908",
+  "checks": "3/3 exact bytes+data, score 100",
+  "setName": {"addr": "0055af90", "size": 57, "target_sha256": "c1636ea8bc4bf4cf2bae636c377734c10dd4a6dd74fc629aa6d6d9e687f560bd"},
+  "onChildChanged": {"addr": "00557490", "size": 20, "target_sha256": "6ece4443cda3e7b89c8fb2a67810b5bb38d8b30afb47be16a6981ed3957b65ba"},
+  "askAddChild": {"addr": "0068e880", "size": 5, "target_sha256": "cc0e3cb106eb0fdec984d44a563d98c3da80700bbb8d2be4e66ebd54a9919626"},
+  "source_sha256": "baa292c7cbfcddef9020cf64331a854b924635ea793c340ae7d87afb3de3ae0f",
+  "object_sha256": "3baa0a246f9109a23bb7664e202f89f95bf952ff8dca62acec804b1bd3d6349a",
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Part provider, Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 42, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

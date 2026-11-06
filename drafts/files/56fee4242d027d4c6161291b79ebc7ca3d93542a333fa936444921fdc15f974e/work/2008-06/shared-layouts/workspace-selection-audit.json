@@ -1,0 +1,8 @@
+{
+  "swap_target": "Workspace Save/Write runnable integration (CWorkspace family)",
+  "writeXmlSelection": {"run": "work/2008-06/native-check-runs/20261105-182941-d390fde3", "addr": "0046b750", "size": 261, "target_sha256": "08d89ac9f1d2d598d1cac5db8482eadbe7389d1edb9902c780591dafa63f84d6", "result": "exact bytes+data 100%"},
+  "writeXmlModel": {"run": "work/2008-06/native-check-runs/20261105-183012-87f21a09", "addr": "0046ab90", "size": 245, "target_sha256": "76473c85e7bcaab3785e2576522bd733e0a5b48b23a7bcfd7d94bc2221aedc02", "result": "exact bytes+data 100%"},
+  "note": "writeXmlSelection 0046b750 and writeXmlModel 0046ab90 are distinct addresses (not ICF). Range hit earlier was masked-byte analog (callee masked), explicit symbol checks prove distinct identities.",
+  "next_gate": "CWorkspace::write 0046b860 EH empty-state (parked, FuncInfo 0x8db774 2 states, 0 TRY) + Content closure + NullTool headers + Part provider",
+  "metrics": {"inactive_exact": 11, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

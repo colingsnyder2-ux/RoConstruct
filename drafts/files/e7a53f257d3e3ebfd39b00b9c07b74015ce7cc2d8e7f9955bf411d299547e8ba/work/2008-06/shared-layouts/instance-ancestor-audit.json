@@ -1,0 +1,6 @@
+{
+  "swap_target": "Instance runnable integration (Instance ancestor)",
+  "onAncestorChanged": {"run": "work/2008-06/native-check-runs/20261105-185603-1b8bb7a5", "addr": "0055acc0", "size": 348, "symbol": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z", "target_sha256": "e0a6e8abe6d4c4e5b0b7059572426214b5d5a511c8f70c9d38c5939d430307dc", "source_sha256": "758d2a7df30050bd6c4733e93beda273b0ca18a6c0586c8a0ac3f939604351a0", "object_sha256": "de1fbfe188f165e07b801f0a7283ee4e6448bd4a6395c5d3d2ee2bd1d23c5ba1", "result": "exact bytes+data 100%"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Part provider, Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 33, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}
