@@ -4,11 +4,9 @@ Builds (document-swap flags, VS2008 RTM 21022, native headers only):
   * tests/NativeHopperLayout.cpp   layout probes (mov eax, imm32; ret) against allocation sizes and constructor stores;
   * native-classes/Hopper.cpp      Hopper / StarterPackService / LegacyHopperService / BackpackItem / HopperBin
                                    (the original Hopper unit 005cf160..005d1670, initializers 007f5df0..007f5ef0), /fp:fast;
+  * native-classes/Backpack.cpp    Backpack (005d16d0..005d1b70; IScriptOwner from the native script/Script.h), /fp:fast;
   * native-classes/Tool.cpp        Tool (005fd3a0..006004d0, initializers 007f7640..007f7990), /fp:fast.
 Pending builds (rows recorded exact=false, pending-build-only, never counted, vtables never walked):
-  * Hopper.cpp with NATIVE_HOPPER_PENDING and Backpack.cpp with NATIVE_BACKPACK_PENDING against
-    out/native-layouts/hopper-pending: a generated copy of the donor script/Script.h with the 2008 const-char-array
-    class names (`extern const char sScript[]` / `sLocalScript[]`), which Backpack.h needs for IScriptOwner;
   * Tool.cpp with NATIVE_TOOL_PENDING against a generated copy of the native v8tree/Service.h plus the one declaration
     `static const ServiceProvider* findServiceProvider(const Instance* context);` (004898d0 in the original), and a
     generated copy of donor v8datamodel/ToolMouseCommand.h using the original const-char-array class-name ABI
@@ -42,17 +40,10 @@ OUT.mkdir(parents=True, exist_ok=True)
 HOPPER_SRC = R / 'native-classes/Hopper.cpp'
 TOOL_SRC = R / 'native-classes/Tool.cpp'
 BACKPACK_SRC = R / 'native-classes/Backpack.cpp'
-HEADERS = [R / 'native-headers/v8datamodel' / n for n in ('Hopper.h', 'Tool.h', 'Backpack.h')]
+HEADERS = [R / 'native-headers/v8datamodel' / n for n in ('Hopper.h', 'Tool.h', 'Backpack.h')] + [R / 'native-headers/script/Script.h']
 LAYOUT = R / 'tests/NativeHopperLayout.cpp'
 
 # ---- pending overlays ----------------------------------------------------------------------------------------
-pending = OUT / 'hopper-pending'
-(pending / 'script').mkdir(parents=True, exist_ok=True)
-text = (ROOT / 'tools/rbxgs/Client/App/include/script/Script.h').read_text()
-text, n1 = re.subn(r'extern const char\* (s\w+);', r'extern const char \1[];', text)
-text, n2 = re.subn(r'&(s[A-Z]\w*)>', r'\1>', text)
-assert n1 == n2 == 2, (n1, n2)
-(pending / 'script/Script.h').write_text(text)
 tool_pending = OUT / 'hopper-tool-pending'
 (tool_pending / 'v8tree').mkdir(parents=True, exist_ok=True)
 text = (R / 'native-headers/v8tree/Service.h').read_text()
@@ -82,8 +73,7 @@ def build(name, src, extra=(), post=()):
 layout_obj, layout_flags = build('NativeHopperLayout', LAYOUT)
 hopper_obj, hopper_flags = build('NativeHopper', HOPPER_SRC, post=['/fp:fast'])
 tool_obj, tool_flags = build('NativeTool', TOOL_SRC, post=['/fp:fast'])
-hopper_p_obj, hopper_p_flags = build('NativeHopperPending', HOPPER_SRC, ['/I' + str(pending), '/DNATIVE_HOPPER_PENDING'], ['/fp:fast'])
-backpack_p_obj, backpack_p_flags = build('NativeBackpackPending', BACKPACK_SRC, ['/I' + str(pending), '/DNATIVE_BACKPACK_PENDING'], ['/fp:fast'])
+backpack_obj, backpack_flags = build('NativeBackpack', BACKPACK_SRC, post=['/fp:fast'])
 tool_p_obj, tool_p_flags = build('NativeToolPending', TOOL_SRC, ['/I' + str(tool_pending), '/DNATIVE_TOOL_PENDING'], ['/fp:fast'])
 
 # ---- layout ---------------------------------------------------------------------------------------------------
@@ -159,6 +149,8 @@ assert '.?AV?$DescribedCreatable@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@RBX
 assert '.?AV?$DescribedNonCreatable@VBackpackItem@RBX@@VWidget@2@$1?sBackpackItem@2@3QBDB@RBX@@' in bases(0x83b2f4)
 assert '.?AVRelativePanel@RBX@@' in bases(0x83ac0c)
 assert bases(0x83b9bc)['.?AVIScriptOwner@RBX@@'] == 0x168
+assert [d(0x83b924 + 4 * i) for i in range(3)] == [0x5d18e0, 0x458e90, 0x70bdf0]
+assert original.data(0x458e90, 3) == b'\xc2\x08\x00' and original.data(0x70bdf0, 3) == b'\xc2\x04\x00'
 
 # ---- verification maps ----------------------------------------------------------------------------------------
 STR = '?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@'
@@ -173,6 +165,11 @@ EXTERNAL = {
     '_atexit': 0x6a17af,                                                                     # initializers 007f5df0, 007f7640
     '??1Instance@RBX@@UAE@XZ': 0x55a540,                                                     # ~GuiItem 00411540
     '??0Instance@RBX@@QAE@XZ': 0x55b7e0,                                                     # getMouse pending closure
+    # Inherited IScriptOwner virtuals (native script/Script.h declares them non-pure; Backpack does not override): slots
+    # 1/2 of the RTTI-anchored Backpack IScriptOwner vtable 0083b924 (the only IScriptOwner subobject vtable in the
+    # binary). Both are ICF-folded empty thiscall bodies, checked below: ret 8 (Script*, ScriptContext*) / ret 4.
+    '?runScript@IScriptOwner@RBX@@MAEXPAVScript@2@PAVScriptContext@2@@Z': 0x458e90,
+    '?releaseScript@IScriptOwner@RBX@@MAEXPAVScript@2@@Z': 0x70bdf0,
     '??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z': 0x405e30,              # exact Mouse creator gate
     '??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z': 0x5708f0,                         # classDescriptor 005c3810
     '?call_once@boost@@YAXP6AXXZAAJ@Z': 0x557330,                                            # getClassName 005cfdf0, 005fe420
@@ -225,6 +222,7 @@ HOPPER_SEEDS = [
     (0x7f5e90, '??__Edesc_Deselected@RBX@@YAXXZ'),
     (0x7f5ec0, '??__Edesc_legacyCommand@RBX@@YAXXZ'),
     (0x7f5ef0, '??__Edesc_legacyTextureName@RBX@@YAXXZ'),
+    (0x5cff30, '?isEnabled@BackpackItem@RBX@@MAE_NXZ'),
 ]
 TOOL_SEEDS = [
     (0x600240, '??0Tool@RBX@@QAE@XZ'),
@@ -246,8 +244,7 @@ TOOL_SEEDS = [
     (0x6004b0, '?activate@Tool@RBX@@QAEXXZ'),
     (0x6004d0, '?deactivate@Tool@RBX@@QAEXXZ'),
 ]
-HOPPER_PENDING_SEEDS = [(0x5cff30, '?isEnabled@BackpackItem@RBX@@MAE_NXZ')]
-BACKPACK_PENDING_SEEDS = [(0x5d1a80, '??0Backpack@RBX@@QAE@XZ')]
+BACKPACK_SEEDS = [(0x5d1a80, '??0Backpack@RBX@@QAE@XZ')]
 TOOL_PENDING_SEEDS = [(0x600420, '?setFrontendActivationState@Tool@RBX@@QAEXH@Z'),
                       (0x5ff680, '?getMouse@Tool@RBX@@AAE?AV?$shared_ptr@VMouse@RBX@@@boost@@XZ')]
 OWN_CLASSES = 'Hopper|StarterPackService|LegacyHopperService|BackpackItem|HopperBin|Backpack|Tool'
@@ -459,12 +456,12 @@ class Build:
 
 hopper = Build('hopper', hopper_obj, True).run(HOPPER_SEEDS)
 tool = Build('tool', tool_obj, True).run(TOOL_SEEDS)
-pending_builds = [Build('hopper-pending', hopper_p_obj, False).run(HOPPER_PENDING_SEEDS),
-                  Build('backpack-pending', backpack_p_obj, False).run(BACKPACK_PENDING_SEEDS),
-                  Build('tool-pending', tool_p_obj, False).run(TOOL_PENDING_SEEDS)]
+backpack = Build('backpack', backpack_obj, True).run(BACKPACK_SEEDS)
+MAIN = (hopper, tool, backpack)
+pending_builds = [Build('tool-pending', tool_p_obj, False).run(TOOL_PENDING_SEEDS)]
 # External vtable slots: one address per symbol across every vtable and relocation binding of the main builds.
 occurrences = {}
-for build in (hopper, tool):
+for build in MAIN:
     for symbol, (value, origin) in build.binding.items():
         occurrences.setdefault(symbol, set()).add((value, build.name + ': ' + origin))
 for build, own, symbol, value, where in SLOTS:
@@ -496,24 +493,28 @@ for build, own, symbol, value, where in SLOTS:
 assert not UNBOUND, '\n'.join(sorted(set(UNBOUND)))
 
 # The same symbol compiled in two main units (shared template instances) must bind to the same address.
-for symbol, (value, _) in hopper.binding.items():
-    if symbol in tool.binding:
-        assert tool.binding[symbol][0] == value, (symbol, hex(value), hex(tool.binding[symbol][0]))
+for a in MAIN:
+    for b in MAIN:
+        for symbol, (value, _) in a.binding.items():
+            if symbol in b.binding:
+                assert b.binding[symbol][0] == value, (symbol, hex(value), hex(b.binding[symbol][0]))
 
 # Key rows that must be exact in the main builds.
 REQUIRED = {
     'hopper': [0x5cf900, 0x5d0fc0, 0x5d10a0, 0x5d0c10, 0x5cfe50, 0x5d15a0, 0x5d0910, 0x5cf1c0, 0x5cf160, 0x5cf190,
                0x5d1340, 0x5d1670],
     'tool': [0x600240, 0x5fe4b0, 0x5fd770, 0x5c3810, 0x5ff8d0, 0x5ffc00, 0x6004b0, 0x6004d0, 0x5fd500, 0x5fd530],
+    'backpack': [0x5d1a80, 0x5d17e0, 0x5d1990, 0x5c0160, 0x7fe830],
 }
-for build in (hopper, tool):
+REQUIRED['hopper'].append(0x5cff30)
+for build in MAIN:
     for address in REQUIRED[build.name]:
         hits = [r for k, r in build.rows.items() if (k if isinstance(k, int) else k[0]) == address]
         assert hits and all(r['exact'] for r in hits), (build.name, hex(address), hits)
 pending_rows = []
 for build in pending_builds:
     for row in build.rows.values():
-        main = [r for r in list(hopper.rows.values()) + list(tool.rows.values())
+        main = [r for b in MAIN for r in b.rows.values()
                 if r['address'] == row['address'] and r['symbol'] == row['symbol'] and r['exact']]
         if main:
             continue   # also exact in a main build: counted there
@@ -525,7 +526,7 @@ GET_MOUSE_PENDING = [r for r in pending_rows if r['build'] == 'tool-pending' and
                      and r['symbol'] == '?getMouse@Tool@RBX@@AAE?AV?$shared_ptr@VMouse@RBX@@@boost@@XZ']
 assert len(GET_MOUSE_PENDING) == 1 and GET_MOUSE_PENDING[0]['exact_pending_build_only']
 
-main_rows = list(hopper.rows.values()) + list(tool.rows.values())
+main_rows = [r for b in MAIN for r in b.rows.values()]
 # Unit ranges of the original Hopper and Tool units (and their initializer / atexit stretches). Outside them only
 # class-specific template instances count (a class-name template argument of these classes); ICF-shared generic
 # bodies reached through these classes' vtables (`return true` 00565ff0, empty 0047d410, RelativePanel thunks) are
@@ -554,28 +555,27 @@ paths = [Path(__file__).resolve(), LAYOUT, HOPPER_SRC, TOOL_SRC, BACKPACK_SRC] +
 receipt = {
     'class': 'RBX::Hopper, StarterPackService, LegacyHopperService, BackpackItem, HopperBin, Backpack, Tool',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'layout': layout_flags, 'hopper': hopper_flags, 'tool': tool_flags, 'hopper_pending': hopper_p_flags,
-              'backpack_pending': backpack_p_flags, 'tool_pending': tool_p_flags},
+    'flags': {'layout': layout_flags, 'hopper': hopper_flags, 'tool': tool_flags, 'backpack': backpack_flags,
+              'tool_pending': tool_p_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
-    'objects': {p.name: sha(p) for p in (layout_obj, hopper_obj, tool_obj, hopper_p_obj, backpack_p_obj, tool_p_obj)},
+    'objects': {p.name: sha(p) for p in (layout_obj, hopper_obj, tool_obj, backpack_obj, tool_p_obj)},
     'pending_overlays': {
         str(p.relative_to(ROOT)).replace('\\', '/'): sha(p)
-        for p in (pending / 'script/Script.h', tool_pending / 'v8tree/Service.h',
-                  tool_pending / 'v8datamodel/ToolMouseCommand.h')},
+        for p in (tool_pending / 'v8tree/Service.h', tool_pending / 'v8datamodel/ToolMouseCommand.h')},
     'layout': {k: hex(v) for k, v in LAYOUT_VALUES.items()},
     'exact_function_rows': counted,
     'exact_support_rows': support,
-    'rows': {'hopper': list(hopper.rows.values()), 'tool': list(tool.rows.values())},
+    'rows': {b.name: list(b.rows.values()) for b in MAIN},
     'not_exact_rows': [{'address': r['address'], 'symbol': r['symbol'], 'size': r['size'],
                         'target_size': r['target_size']} for r in inexact],
     'pending_rows': pending_rows,
     'tool_get_mouse_pending_only': GET_MOUSE_PENDING[0],
-    'vtables': dict(hopper.vtables, **tool.vtables),
+    'vtables': dict(hopper.vtables, **dict(tool.vtables, **backpack.vtables)),
     'external_slots': SLOT_CHECK,
     'shared_header_gaps': HEADER_GAPS,
-    'pending_note': 'pending_rows are exact only against generated copies (out/native-layouts/hopper-pending: donor '
-                    'script/Script.h with const-char-array class names; hopper-tool-pending: native v8tree/Service.h + '
-                    'ServiceProvider::findServiceProvider). Not counted; their vtables are not walked.',
+    'pending_note': 'pending_rows are exact only against generated copies (out/native-layouts/hopper-tool-pending: '
+                    'native v8tree/Service.h + ServiceProvider::findServiceProvider, donor ToolMouseCommand.h with '
+                    'the char-array Named ABI). Not counted; their vtables are not walked.',
     'not_attempted': NOT_ATTEMPTED,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }

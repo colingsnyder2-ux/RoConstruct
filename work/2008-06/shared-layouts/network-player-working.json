@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\NativeNetworkPlayerLayout.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeNetworkPlayerLayout.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeNetworkPlayerLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeNetworkPlayerLayout.cpp"
     ],
     "base": [
       "/nologo",
@@ -61,8 +61,8 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\network-player-overlay",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/network-player-overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -77,63 +77,21 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\NativeNetworkPlayer.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayer.cpp"
-    ],
-    "pending": [
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\network-player-pending",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\network-player-overlay",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/fp:fast",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\NativeNetworkPlayerPending.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayer.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeNetworkPlayer.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/NetworkPlayer.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_network_player.py": "bde87e7cc8a6ed39fade919d0fe194a53e8fb6c68c5ee1740d149b91816a2eff",
-    "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
+    "rebuild/2008-06/tests/record_native_network_player.py": "cb9f98a0dc6392e08227f6fe04d067849c1e02d9ec210cffc922dbbcccb8fd81",
+    "rebuild/2008-06/native-headers/Network/Player.h": "c73c4520a66cc926c58eb6e2fb5c667216dcb45d8f6b72d9a2d3b7fa0fdf39c0",
     "rebuild/2008-06/native-classes/NetworkPlayer.cpp": "3ccdfe1faffa303e7a4c3abf88b4d8210c6d9b681ae5b1efe19f4fa06015d4bb",
     "rebuild/2008-06/tests/NativeNetworkPlayerLayout.cpp": "c4aa4320f139db39aa74dab6668f734c73012234abd69a384ee59cdcc76f9383",
     "rebuild/2008-06/tests/NativeNetworkPlayerPlayers.h": "8d2ac72891e78788c483a7ec83d6015f0f03c501434bf411c915c7d8a99de1fd",
-    "rebuild/2008-06/tests/NativeTeamPendingModel.h": "88164ed8537f5812afbd86fd869aba9235ecc6527414066562d68069c3978993"
+    "rebuild/2008-06/tests/NativeTeamPendingModel.h": "20e08a74388f6d4dcf8fae1547f314f2ab3291a73a330ff9f3b9a7a3c498796c"
   },
   "objects": {
-    "NativeNetworkPlayerLayout.obj": "3833a85b781f17e4f74e0f6e8f5e850a3ef7d6b156a20acb5712dba348115d0d",
-    "NativeNetworkPlayer.obj": "efe3cc6bc94fbe81a3a6bece52b1ecf704a38ff1716eca8307a5a1a81391aa52",
-    "NativeNetworkPlayerPending.obj": "54a60eecf0d2f78e3f240387468f8207e6b0b23f63bff7fefb6e2a2f9277ed6a"
+    "NativeNetworkPlayerLayout.obj": "cd8a3d7ca903672ad25694a9c728c514d664d6ca9ffa469dca2c95c54ee52665",
+    "NativeNetworkPlayer.obj": "008536107b2787116376c7fb49c5645e3520a870ba36488ef33ef43f5e279d99"
   },
   "layout": "Player 0x1d8 (Creatable<Instance>::create<Player> 004093b0); Notifiers 0x130/0x150; character +0x170, teamColor +0x178, neutral +0x17c, characterDiedConnection +0x180, characterAppearance +0x194, under13 +0x1b0, superSafeChat +0x1b1, userId +0x1b4, six Vector2int16 DPHYS regions +0x1b8..+0x1cc, lastActivityTime +0x1d0",
   "methods": [
@@ -1248,6 +1206,24 @@
       "local_eh": []
     },
     {
+      "address": "004913d0",
+      "symbol": "??$?0P8Player@Network@RBX@@BEPAVModelInstance@2@XZP8012@AEXPAV32@@Z@?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@QAE@PBD0P8Player@Network@2@BEPAVModelInstance@2@XZP8342@AEXPAV52@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 169,
+      "exact": true,
+      "verified_targets": {
+        "??$singleton@PAVPlayer@Network@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ": "0x48a910 (own row)",
+        "?classDescriptor@?$Described@VPlayer@Network@RBX@@$1?sPlayer@23@3PADAV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x491360 (own row)",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
+        "??_7?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@6BRefPropertyDescriptor@12@@": "0x821b54 (vtable RTTI .?AV?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@ offset 0x0)",
+        "??_7?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@6BIIDREF@2@@": "0x821b4c (vtable RTTI .?AV?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@ offset 0x18)",
+        "??$getset@P8Player@Network@RBX@@BEPAVModelInstance@3@XZP8123@AEXPAV43@@Z@?$PropDescriptor@VPlayer@Network@RBX@@PAVModelInstance@3@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVModelInstance@RBX@@@Reflection@RBX@@@std@@P8Player@Network@2@BEPAVModelInstance@2@XZP8562@AEXPAV72@@Z@Z": "0x48b3a0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Player@Network@RBX@@BEPAVModelInstance@2@XZP8012@AEXPAV32@@Z@?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@QAE@PBD0P8Player@Network@2@BEPAVModelInstance@2@XZP8342@AEXPAV52@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
       "address": "007fb760",
       "symbol": "??__FloadCharacterFunction@@YAXXZ",
       "size": 10,
@@ -1479,27 +1455,6 @@
       ]
     }
   ],
-  "pending_methods": [
-    {
-      "address": "004913d0",
-      "symbol": "??$?0P8Player@Network@RBX@@BEPAVModelInstance@2@XZP8012@AEXPAV32@@Z@?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@QAE@PBD0P8Player@Network@2@BEPAVModelInstance@2@XZP8342@AEXPAV52@@ZW4Functionality@PropertyDescriptor@12@@Z",
-      "size": 169,
-      "exact": false,
-      "verified_targets": {
-        "??$singleton@PAVPlayer@Network@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ": "0x48a910 (own row)",
-        "?classDescriptor@?$Described@VPlayer@Network@RBX@@$1?sPlayer@23@3PADAV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x491360 (own row)",
-        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
-        "??_7?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@6BRefPropertyDescriptor@12@@": "0x821b54 (vtable RTTI .?AV?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@ offset 0x0)",
-        "??_7?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@6BIIDREF@2@@": "0x821b4c (vtable RTTI .?AV?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@ offset 0x18)",
-        "??$getset@P8Player@Network@RBX@@BEPAVModelInstance@3@XZP8123@AEXPAV43@@Z@?$PropDescriptor@VPlayer@Network@RBX@@PAVModelInstance@3@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVModelInstance@RBX@@@Reflection@RBX@@@std@@P8Player@Network@2@BEPAVModelInstance@2@XZP8562@AEXPAV72@@Z@Z": "0x48b3a0 (own row)",
-        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
-      },
-      "local_eh": [
-        "__ehhandler$??$?0P8Player@Network@RBX@@BEPAVModelInstance@2@XZP8012@AEXPAV32@@Z@?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@QAE@PBD0P8Player@Network@2@BEPAVModelInstance@2@XZP8342@AEXPAV52@@ZW4Functionality@PropertyDescriptor@12@@Z"
-      ],
-      "exact_pending_build_only": true
-    }
-  ],
   "not_exact": [
     {
       "address": "00493da0",
@@ -1527,6 +1482,7 @@
     "0048b9a0",
     "0048ba70",
     "00491360",
+    "004913d0",
     "004918f0",
     "004919a0",
     "00491a50",
@@ -1609,8 +1565,7 @@
     "007fb760",
     "007fb770"
   ],
-  "pending_note": "pending rows are exact only with the generated reflection.h copy (IIDREF __declspec(novtable)); not counted.",
   "standins_note": "base build uses declaration-only stand-ins for Network/Players.h and v8datamodel/ModelInstance.h (other classes; donor/native headers do not compile with the 2008 DescribedCreatable).",
-  "proposal_reflection_h": "\tclass __declspec(novtable) IIDREF\n",
+  "reflection_h_note": "IIDREF __declspec(novtable) is canonical in native-headers/reflection/reflection.h; 004913d0 is a base row.",
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
 }

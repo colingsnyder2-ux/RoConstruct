@@ -162,65 +162,21 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHumanoid2008Pending.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/Humanoid2008.cpp"
-    ],
-    "pending_parts": [
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/fp:fast",
-      "/U_RELEASEASSERT",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/humanoid2008-pending",
-      "/DNATIVE_HUMANOID2008_PENDING",
-      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/engine-world",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHumanoid2008PartsPending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Humanoid2008Parts.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_humanoid2008.py": "aa5810b555c1e27665592f7e48906eb38897900764da82aca680e8f12fa6c4e6",
+    "rebuild/2008-06/tests/record_native_humanoid2008.py": "88677cfd928b5ab1b9884586fd6b5a5c4d832ee7a014a773916649769a506a88",
     "rebuild/2008-06/native-headers/humanoid/Humanoid2008.h": "89c1f7ee6f9aa1ab530bd2c938dbcb92fc686f367bbc62a28b961f34a8f55583",
     "rebuild/2008-06/native-classes/Humanoid2008.cpp": "1cd1fb52cd90f8455c6649c110f9750288f23da38e546d02b63f7387ae2735fd",
-    "rebuild/2008-06/native-classes/Humanoid2008Parts.cpp": "d2404500e81cb542f90fc9e0fcd675b1c1d065084ce6a56323520e257a2f3d99",
+    "rebuild/2008-06/native-classes/Humanoid2008Parts.cpp": "b77fa60d0023c4e723c5022c4182a5b115b8b8e81404d636d3a411adbf9b056a",
     "rebuild/2008-06/tests/NativeHumanoid2008Layout.cpp": "6cdb19ad79664cc7858753746efddf3afc0a5fd038a50b7154416e96f0dfc8d7",
-    "rebuild/2008-06/tests/NativeHumanoid2008PendingWorkspace.h": "d613fdef92b8642f2c9312edbc0bd42f36e5828d665f98b6dae31bda2b503196"
+    "rebuild/2008-06/native-headers/v8datamodel/Workspace.h": "5afc998f6d79228204df3165543daa9f840fd1b52932608164f74adb4513527a"
   },
   "objects": {
-    "NativeHumanoid2008Layout.obj": "a4be65729720969334d956bace6f803af17f8be3bd81ae35765e8dc6385c70a5",
-    "NativeHumanoid2008.obj": "7829f16e4995c9eeff2dad6ab1528df6fec99f5d40dcbd6ed1841eb9ddbbd6b9",
-    "NativeHumanoid2008Parts.obj": "1b3d778e0f94b80c17a4292a67061928bdc95efa031f27aaaf2bb66a74bcdea0",
-    "NativeHumanoid2008Pending.obj": "b2b61209c942b702695b7a687519f2faf742f3776a24d3fa39e429c8164059ca",
-    "NativeHumanoid2008PartsPending.obj": "0fcdce46bba7f2c0751b9f4a868091e70d8baa18ae6763850fccb7e28bab6334"
+    "NativeHumanoid2008Layout.obj": "0dce6abcbd4138a5d904486c87a0211cf73e7360d78c0024c49819e7f29c8071",
+    "NativeHumanoid2008.obj": "ee73415a0df41b3c921a621007cf811a36638d0a0643603e12437f867b51ffff",
+    "NativeHumanoid2008Parts.obj": "7c44373fe1d70e0c29401678e613b931187eab72a53b90e121edcc6fd832817e",
+    "NativeHumanoid2008Pending.obj": "851b7b11a77ed0d065e73dce3c7f8024e25111da94d0f478c6e85f0b68b07f76"
   },
   "layout": {
     "Humanoid": "0x22c (create<Humanoid> 00490770 mallocs 0x22c, constructor 005db280(1)); Connector +0x130, IControllable +0x138, IRenderable +0x13c, ICharacterSubject +0x14c (vbptr +0x150), IModelModifier +0x1a0, Listener<RunService, Stepped> +0x1a4, fields +0x1a8..+0x220, vtordisp +0x224, ILocation +0x228; RTTI 30 bases"
@@ -3336,6 +3292,19 @@
       "local_eh": []
     },
     {
+      "address": "005d79b0",
+      "symbol": "?hasWalkToPoint@Humanoid@RBX@@ABE_NAAVVector3@G3D@@@Z",
+      "size": 115,
+      "exact": true,
+      "verified_targets": {
+        "?findWorkspace@Workspace@RBX@@SAPAV12@PBVInstance@2@@Z": "0x5a3380 (external (evidence name))",
+        "?contextInWorkspace@Workspace@RBX@@SA_NPBVInstance@2@@Z": "0x5a33d0 (external (evidence name))",
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0 (external (evidence name))",
+        "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z": "0x4766a0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
       "address": "005d42f0",
       "symbol": "??$shared_from_dynamic_cast@VPartInstance@RBX@@VInstance@2@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAV?$enable_shared_from_this@VInstance@RBX@@@2@@Z",
       "size": 367,
@@ -3540,7 +3509,7 @@
       "size": 171,
       "exact": true,
       "verified_targets": {
-        "??$?0PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4b3110 (external (evidence name))"
+        "??$?0PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4b3110 (own row)"
       },
       "local_eh": [
         "__ehhandler$??$?0VMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VMotor@RBX@@@boost@@QAE@PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
@@ -3552,7 +3521,7 @@
       "size": 171,
       "exact": true,
       "verified_targets": {
-        "??$?0PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4b2270 (external (evidence name))"
+        "??$?0PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4b2270 (own row)"
       },
       "local_eh": [
         "__ehhandler$??$?0VSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VSnap@RBX@@@boost@@QAE@PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
@@ -3654,6 +3623,36 @@
       },
       "local_eh": [
         "__ehhandler$??$?0VInstance@RBX@@@?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@ABV?$shared_ptr@VInstance@RBX@@@1@Udynamic_cast_tag@detail@1@@Z"
+      ]
+    },
+    {
+      "address": "004b3110",
+      "symbol": "??$?0PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+      "size": 131,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_pd@PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x824c64 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+        "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+      ]
+    },
+    {
+      "address": "004b2270",
+      "symbol": "??$?0PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+      "size": 131,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_pd@PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x824bbc (vtable RTTI .?AV?$sp_counted_impl_pd@PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+        "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
       ]
     },
     {
@@ -3846,8 +3845,19 @@
       "local_eh": []
     }
   ],
-  "exact_count": 298,
-  "exact_unique_addresses": 236,
+  "exact_count": 301,
+  "exact_unique_addresses": 239,
+  "support_methods": [
+    {
+      "address": "004766a0",
+      "symbol": "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "not_counted": "G3D::CoordinateFrame::pointToWorldSpace (G3D library inline, called by hasWalkToPoint 005d79b0)"
+    }
+  ],
   "pending_methods": [
     {
       "address": "005d9a20",
@@ -3894,36 +3904,11 @@
       "local_eh": [],
       "exact_pending_build_only": true,
       "what": "ModelInstance::findModifierOfType<Humanoid> (proposed member template; callers 005d9a20, 005d9bb0, 005d9c30, 005db4c0, 005db960)"
-    },
-    {
-      "address": "005d79b0",
-      "symbol": "?hasWalkToPoint@Humanoid@RBX@@ABE_NAAVVector3@G3D@@@Z",
-      "size": 115,
-      "exact": false,
-      "verified_targets": {
-        "?findWorkspace@Workspace@RBX@@SAPAV12@PBVInstance@2@@Z": "0x5a3380 (external (evidence name))",
-        "?contextInWorkspace@Workspace@RBX@@SA_NPBVInstance@2@@Z": "0x5a33d0 (external (evidence name))",
-        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0 (external (evidence name))",
-        "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z": "0x4766a0 (own row)"
-      },
-      "local_eh": [],
-      "exact_pending_build_only": true,
-      "what": "hasWalkToPoint: Workspace::findWorkspace 005a3380 / contextInWorkspace 005a33d0 (no native Workspace.h; declaration-only overlay tests/NativeHumanoid2008PendingWorkspace.h)"
-    },
-    {
-      "address": "004766a0",
-      "symbol": "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
-      "size": 90,
-      "exact": false,
-      "verified_targets": {},
-      "local_eh": [],
-      "exact_pending_build_only": true,
-      "what": "callee of a pending-build-only row"
     }
   ],
-  "pending_note": "Pending rows are exact only with NATIVE_HUMANOID2008_PENDING against out/native-layouts/humanoid2008-pending/ (generated ModelInstance.h with findModifierOfType<T>, Workspace.h overlay from tests/NativeHumanoid2008PendingWorkspace.h); not counted.",
+  "pending_note": "Pending rows are exact only with NATIVE_HUMANOID2008_PENDING against out/native-layouts/humanoid2008-pending/ (generated ModelInstance.h with findModifierOfType<T>); not counted.",
   "near_miss": {
-    "005d9a50": "getIntendedMovementVector(bool): 337/337 bytes, only the x87 store order of the delta (x, z, then y = 0 around the (dy + 3) magnitude) differs; body not kept"
+    "005d9a50": "getIntendedMovementVector(bool): 337/337 bytes with worldPosition = worldPosition - torso translation, dist = sqrt(x*x + (y+3)*(y+3) + z*z) before y = 0 (static zero, state 3 early return, 004782a0 / 004fab70 tails all match); only the `fxch st(2); fst [esp+0x14]` z store is scheduled before the fadd [0x81e380] instead of after it. Rejected 2026-11-06: separate delta (331 bytes, own slot), worldPosition -= t (331), Vector3(x, y+3, z).length() before y = 0 (337, fldz/fstp early), (wp + (0,3,0)).length(), reordered sum z*z + x*x + (y+3)^2, named torsoPosition reference, float dy / height temporaries and G3D::square (339). Body not kept."
   },
   "slot_only": {
     "?onAncestorChanged@Humanoid@RBX@@EAEXABUAncestorChanged@2@@Z": "0x5db560",
@@ -3937,7 +3922,7 @@
   },
   "proposals": [
     "native v8datamodel/ModelInstance.h (other owner): add the member template `template<class T> T* findModifierOfType() const` walking the existing `modifiers` vector (same text as the appearance proposal, 005d4460 = <Skin>). 005d8690 is the <Humanoid> instantiation; with it modelIsCharacter 005d9a20 and getLocalHumanoidFromContext 005d9bb0 are exact (pending build), and render2d 005db960, render3dAdorn 005d9c30 and onLocalHumanoidEnteringWorkspace 005db4c0 call it.",
-    "v8datamodel/Workspace.h (no native header; the donor fails with C2440 on &sWorkspace; other owner): a 2008 Workspace declaring at least findWorkspace 005a3380, getWorldIfInWorkspace 005a3390 and contextInWorkspace 005a33d0. hasWalkToPoint 005d79b0 is exact against the declaration-only overlay tests/NativeHumanoid2008PendingWorkspace.h. render2d / onLocalHumanoidEnteringWorkspace also need its ICameraOwner subobject at Workspace+0x288 (getCamera slot 1, getGCamera slot 2) and Camera::getCameraType (+0x1d4), getCameraSubject 005cc420, setCameraSubject 005cde10.",
+    "native v8datamodel/Workspace.h (other owner): hasWalkToPoint 005d79b0 is exact against it (findWorkspace 005a3380, contextInWorkspace 005a33d0). render2d / onLocalHumanoidEnteringWorkspace also need its ICameraOwner subobject at Workspace+0x288 (getCamera slot 1, getGCamera slot 2) and Camera::getCameraType (+0x1d4), getCameraSubject 005cc420, setCameraSubject 005cde10.",
     "v8kernel/Connector2008.h vs the donor v8kernel/Connector.h (Connector2008.h owner): a shared 2008 Connector reachable from v8world/Primitive.h would let the Humanoid limb/part bodies share one translation unit with the constructor (today Humanoid2008Parts.cpp selects the donor Connector, see the header comment).",
     "Shared reflection.h RefPropDescriptor constructor template (other owner): the RefPropDescriptor<Humanoid, PartInstance> constructor 005da4e0 differs only in the order of the two vtable stores (+0 / +0x18) against the native template; not exact here.",
     "Donor reflection/property.h TypedPropertyDescriptor<T>::GetSet (reached through the native reflection.h; other owner): the 2008 GetSet vtables have four slots (isReadOnly, isWriteOnly, getValue, setValue), e.g. GetSetImpl<const Vector3& getter> 0083d308 = [0060a2f0, 0060a2f0, 005d7b60, 005d7bb0]; the donor class has three (no isWriteOnly). The getset factories here bind those vtables by RTTI only; the GetSetImpl getValue/setValue bodies 005d7b20/005d7b60/005d7bb0/005d7bf0/005d7c30 are not counted until the slot is added.",

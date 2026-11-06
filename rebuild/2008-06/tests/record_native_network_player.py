@@ -7,9 +7,8 @@ Builds (document-swap flags + /fp:fast, VS2008 RTM 21022):
                                           const-char-array DescribedCreatable (out/native-layouts/network-player-overlay/:
                                           Network/Players.h = tests/NativeNetworkPlayerPlayers.h,
                                           v8datamodel/ModelInstance.h = tests/NativeTeamPendingModel.h, read only);
-  * the same unit against a generated copy of native-headers/reflection/reflection.h with IIDREF declared
-    __declspec(novtable) when the shared header has not yet adopted that declaration. If the shared header is already
-    canonical, any newly exact constructor is credited from the base object, never as pending-only.
+The RefPropDescriptor constructor 004913d0 is a base row: the native reflection/reflection.h declares IIDREF
+__declspec(novtable) (the original constructor stores only the final vtable 00821b4c); the build asserts it.
 
 Every row must be relocation-masked exact against the original, and every REL32/DIR32 target is bound to the
 address the original instruction uses and verified: imports by DLL export / mfc ordinal name, string literals by
@@ -48,23 +47,8 @@ for sub in ('Network', 'v8datamodel'):
 shutil.copyfile(PLAYERS_STANDIN, overlay / 'Network/Players.h')
 shutil.copyfile(MODEL_STANDIN, overlay / 'v8datamodel/ModelInstance.h')
 
-# Proposal for native-headers/reflection/reflection.h (reflection owner): IIDREF has only a pure virtual and the
-# original RefPropDescriptor constructor 004913d0 never stores an IIDREF vtable (only the final one, 00821b4c),
-# so IIDREF is novtable in 2008.
-PROPOSAL_ANCHOR = '\tclass IIDREF\n'
-PROPOSAL = '\tclass __declspec(novtable) IIDREF\n'
-pending = OUT / 'network-player-pending'
-(pending / 'reflection').mkdir(parents=True, exist_ok=True)
-reflection_text = (R / 'native-headers/reflection/reflection.h').read_text()
-if reflection_text.count(PROPOSAL_ANCHOR) == 1:
-    pending_reflection_text = reflection_text.replace(PROPOSAL_ANCHOR, PROPOSAL)
-    reflection_pending_only = True
-else:
-    assert reflection_text.count(PROPOSAL) == 1
-    pending_reflection_text = reflection_text
-    reflection_pending_only = False
-(pending / 'reflection/reflection.h').write_text(pending_reflection_text)
-
+# IIDREF is novtable in the native reflection.h (canonical); 004913d0 relies on it.
+assert (R / 'native-headers/reflection/reflection.h').read_text().count('\tclass __declspec(novtable) IIDREF\n') == 1
 
 def build(name, src, extra=(), tail=()):
     obj = OUT / (name + '.obj')
@@ -78,7 +62,6 @@ def build(name, src, extra=(), tail=()):
 
 layout_obj, layout_flags = build('NativeNetworkPlayerLayout', LAYOUT)
 base_obj, base_flags = build('NativeNetworkPlayer', SRC, ['/I' + str(overlay)], ['/fp:fast'])
-pend_obj, pend_flags = build('NativeNetworkPlayerPending', SRC, ['/I' + str(pending), '/I' + str(overlay)], ['/fp:fast'])
 
 # ---- layout ---------------------------------------------------------------------------------------
 raw = layout_obj.read_bytes()
@@ -283,9 +266,7 @@ ATEXIT = {
     0x7f1240: '??__Fprop_teamColor@@YAXXZ', 0x7f1280: '??__Fprop_neutral@@YAXXZ',
     0x7f12c0: '??__Fevent_Chatted@@YAXXZ', 0x7f12f0: '??__Fevent_Idled@@YAXXZ',
 }
-PENDING_ROWS = [
-    (0x4913d0, '??$?0P8Player@Network@RBX@@BEPAVModelInstance@'),   # RefPropDescriptor ctor (IIDREF novtable)
-]
+ROWS.append((0x4913d0, '??$?0P8Player@Network@RBX@@BEPAVModelInstance@'))   # RefPropDescriptor ctor (IIDREF novtable)
 # Rows compiled but not exact (recorded with the reason).
 NOT_EXACT = {
     0x493da0: ('??0' + P + 'QAE@XZ', 'constructor: same 657 bytes but the x87 order of the four DPHYS region sums differs '
@@ -397,24 +378,10 @@ for init, key in ATEXIT.items():
     atexit_rows.append((struct.unpack_from('<I', body, push + 1)[0], key))
 
 base_rows = resolve(base_obj, ROWS + atexit_rows)
-pend_rows = resolve(pend_obj, PENDING_ROWS)
-base_funcs = {n: (b, r) for n, b, r in match.coff_functions(base_obj.read_bytes())}
-remaining_pending = []
-for address, name in pend_rows:
-    target, target_refs, _ = match.target('2008-06', '%08x' % address)
-    if name in base_funcs and match.exact_match(target, target_refs, *base_funcs[name]):
-        base_rows.append((address, name))
-    else:
-        remaining_pending.append((address, name))
-pend_rows = remaining_pending
 own = {}
-for address, name in base_rows + pend_rows:
+for address, name in base_rows:
     own.setdefault(name, address)
 base_out = verify(base_obj, base_rows, own)
-pend_out = verify(pend_obj, pend_rows, own)
-for row in pend_out:  # exact only with the generated reflection.h copy: not counted as exact
-    row['exact'] = False
-    row['exact_pending_build_only'] = True
 if DISCOVER:
     print('\n'.join(sorted(set(UNBOUND))))
     sys.exit(0)
@@ -470,21 +437,20 @@ paths = [Path(__file__).resolve(), HEADER, SRC, LAYOUT, PLAYERS_STANDIN, MODEL_S
 exact_addresses = sorted({r['address'] for r in base_out})
 receipt = {
     'class': 'RBX::Network::Player', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'layout': layout_flags, 'base': base_flags, 'pending': pend_flags},
+    'flags': {'layout': layout_flags, 'base': base_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
-    'objects': {p.name: sha(p) for p in (layout_obj, base_obj, pend_obj)},
+    'objects': {p.name: sha(p) for p in (layout_obj, base_obj)},
     'layout': 'Player 0x1d8 (Creatable<Instance>::create<Player> 004093b0); Notifiers 0x130/0x150; character +0x170, '
               'teamColor +0x178, neutral +0x17c, characterDiedConnection +0x180, characterAppearance +0x194, under13 +0x1b0, '
               'superSafeChat +0x1b1, userId +0x1b4, six Vector2int16 DPHYS regions +0x1b8..+0x1cc, lastActivityTime +0x1d0',
-    'methods': base_out, 'pending_methods': pend_out, 'not_exact': not_exact,
+    'methods': base_out, 'not_exact': not_exact,
     'exact_distinct_addresses': exact_addresses,
-    'pending_note': 'rows exact in the base build are credited there; only rows exact in the generated reflection.h build and not in base are pending-only.',
-    'reflection_h_pending_control': reflection_pending_only,
     'standins_note': 'base build uses declaration-only stand-ins for Network/Players.h and v8datamodel/ModelInstance.h '
                      '(other classes; donor/native headers do not compile with the 2008 DescribedCreatable).',
-    'proposal_reflection_h': PROPOSAL,
+    'reflection_h_note': 'IIDREF __declspec(novtable) is canonical in native-headers/reflection/reflection.h; '
+                         '004913d0 is a base row.',
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
 (ROOT / 'work/2008-06/shared-layouts/network-player-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS native Network::Player: %d exact rows (%d distinct addresses), %d pending-build-only, %d not exact; targets verified'
-      % (len(base_out), len(exact_addresses), len(pend_out), len(not_exact)))
+print('PASS native Network::Player: %d exact rows (%d distinct addresses), %d not exact; targets verified'
+      % (len(base_out), len(exact_addresses), len(not_exact)))

@@ -11,11 +11,11 @@ Builds (document-swap flags + /fp:fast /U_RELEASEASSERT, VS2008 RTM 21022):
                                          share a translation unit with v8kernel/Connector2008.h, so this unit selects
                                          the donor Connector (same Connector size; it defines no virtuals and no
                                          vtable of this unit is checked from it);
-  * both units again with NATIVE_HUMANOID2008_PENDING against out/native-layouts/humanoid2008-pending/: a generated
-    copy of the native v8datamodel/ModelInstance.h with the proposed member template findModifierOfType<T>, and
-    tests/NativeHumanoid2008PendingWorkspace.h copied as v8datamodel/Workspace.h (declaration-only overlay: the donor
-    Workspace.h fails with C2440 on &sWorkspace). Rows exact only in these builds are recorded exact=false
-    (pending-build-only) and are not counted.
+                                         It includes the native v8datamodel/Workspace.h (hasWalkToPoint 005d79b0);
+  * Humanoid2008.cpp again with NATIVE_HUMANOID2008_PENDING against out/native-layouts/humanoid2008-pending/: a
+    generated copy of the native v8datamodel/ModelInstance.h with the proposed member template findModifierOfType<T>.
+    Rows exact only in this build are recorded exact=false (pending-build-only) and are not counted.
+Verified rows of library inlines listed in NOT_COUNTED (G3D) are recorded as support rows and not counted.
 
 Every row must be relocation-masked exact against the original, and every REL32/DIR32 target is bound to the
 address the original instruction uses and verified: imports by DLL export name, string literals by bytes, float
@@ -73,9 +73,9 @@ text = (R / 'native-headers/v8datamodel/ModelInstance.h').read_text()
 anchor = '\t\tPartInstance* getPrimaryPartInternal() const;\n'
 assert text.count(anchor) == 1
 (PENDING / 'v8datamodel/ModelInstance.h').write_text(text.replace(anchor, MODEL_TEMPLATE + anchor))
-# (2) v8datamodel/Workspace.h: declaration-only overlay (findWorkspace 005a3380, contextInWorkspace 005a33d0).
-WORKSPACE_OVERLAY = R / 'tests/NativeHumanoid2008PendingWorkspace.h'
-(PENDING / 'v8datamodel/Workspace.h').write_text(WORKSPACE_OVERLAY.read_text())
+# The native v8datamodel/Workspace.h now exists: remove the declaration-only overlay an earlier run generated.
+if (PENDING / 'v8datamodel/Workspace.h').exists():
+    (PENDING / 'v8datamodel/Workspace.h').unlink()
 PENDING_FLAGS = ['/I' + str(PENDING), '/DNATIVE_HUMANOID2008_PENDING']
 
 
@@ -94,7 +94,6 @@ main_obj, main_flags = build('NativeHumanoid2008', SRC, UNIT_FLAGS)
 ENGINE_WORLD = ['/I' + str(R / 'native-headers/engine-world')]   # getContactManager 005d77b0: World +0x84
 parts_obj, parts_flags = build('NativeHumanoid2008Parts', PARTS, UNIT_FLAGS + ENGINE_WORLD)
 pend_obj, pend_flags = build('NativeHumanoid2008Pending', SRC, UNIT_FLAGS + PENDING_FLAGS)
-pend_parts_obj, pend_parts_flags = build('NativeHumanoid2008PartsPending', PARTS, UNIT_FLAGS + PENDING_FLAGS + ENGINE_WORLD)
 
 # ---- layout ---------------------------------------------------------------------------------------
 raw = layout_obj.read_bytes()
@@ -174,8 +173,10 @@ EXTERNAL = {
     # boost::detail::shared_count(T*, Creatable<Instance>::Deleter) (not exact here), bound at 004b32b1 / 004b2411
     '??$?0PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z': 0x4b3110,
     '??$?0PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z': 0x4b2270,
-    # pending rows only
-    '?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z': 0x49aca0,   # 005d9bb5
+    # Creatable<Instance>::Deleter::operator(): catch(...) funclet of the 131-byte shared_count ctors (bounds.json);
+    # same binding as tests/record_native_hopper.py / record_native_stats_service.py.
+    '??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z': 0x405e30,
+    '?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z': 0x49aca0,   # 005d9bb5 (pending)
     '?findWorkspace@Workspace@RBX@@SAPAV12@PBVInstance@2@@Z': 0x5a3380,                          # 005d79c0
     '?contextInWorkspace@Workspace@RBX@@SA_NPBVInstance@2@@Z': 0x5a33d0,                         # 005d79d3
     # Humanoid members declared here whose bodies are not recovered (bound at the listed call sites)
@@ -294,13 +295,15 @@ SEEDS_PARTS = [
     (0x7f6330, '??__EpropLeftLeg@RBX@@YAXXZ'),
     (0x7f6390, '??__EpropRightLeg@RBX@@YAXXZ'),
     (0x7f63f0, '??__EpropWalkToPart@RBX@@YAXXZ'),
+    (0x5d79b0, '?hasWalkToPoint@' + HU),
 ]
+# Exact, verified rows that are not counted: library inlines (support rows).
+NOT_COUNTED = {
+    '004766a0': 'G3D::CoordinateFrame::pointToWorldSpace (G3D library inline, called by hasWalkToPoint 005d79b0)',
+}
 PENDING_SEEDS_MAIN = [
     (0x5d9a20, '?modelIsCharacter@' + HU),
     (0x5d9bb0, '?getLocalHumanoidFromContext@' + HU),
-]
-PENDING_SEEDS_PARTS = [
-    (0x5d79b0, '?hasWalkToPoint@' + HU),
 ]
 PENDING_REASON = {
     '005d9a20': 'modelIsCharacter: dynamic_cast<const ModelInstance*> then ModelInstance::findModifierOfType<Humanoid> '
@@ -309,8 +312,6 @@ PENDING_REASON = {
                 '(same findModifierOfType proposal)',
     '005d8690': 'ModelInstance::findModifierOfType<Humanoid> (proposed member template; callers 005d9a20, 005d9bb0, '
                 '005d9c30, 005db4c0, 005db960)',
-    '005d79b0': 'hasWalkToPoint: Workspace::findWorkspace 005a3380 / contextInWorkspace 005a33d0 (no native '
-                'Workspace.h; declaration-only overlay tests/NativeHumanoid2008PendingWorkspace.h)',
 }
 PROPOSALS = [
     'native v8datamodel/ModelInstance.h (other owner): add the member template `template<class T> T* '
@@ -318,10 +319,8 @@ PROPOSALS = [
     '005d4460 = <Skin>). 005d8690 is the <Humanoid> instantiation; with it modelIsCharacter 005d9a20 and '
     'getLocalHumanoidFromContext 005d9bb0 are exact (pending build), and render2d 005db960, render3dAdorn 005d9c30 '
     'and onLocalHumanoidEnteringWorkspace 005db4c0 call it.',
-    'v8datamodel/Workspace.h (no native header; the donor fails with C2440 on &sWorkspace; other owner): a 2008 '
-    'Workspace declaring at least findWorkspace 005a3380, getWorldIfInWorkspace 005a3390 and contextInWorkspace '
-    '005a33d0. hasWalkToPoint 005d79b0 is exact against the declaration-only overlay '
-    'tests/NativeHumanoid2008PendingWorkspace.h. render2d / onLocalHumanoidEnteringWorkspace also need its '
+    'native v8datamodel/Workspace.h (other owner): hasWalkToPoint 005d79b0 is exact against it (findWorkspace '
+    '005a3380, contextInWorkspace 005a33d0). render2d / onLocalHumanoidEnteringWorkspace also need its '
     'ICameraOwner subobject at Workspace+0x288 (getCamera slot 1, getGCamera slot 2) and Camera::getCameraType '
     '(+0x1d4), getCameraSubject 005cc420, setCameraSubject 005cde10.',
     'v8kernel/Connector2008.h vs the donor v8kernel/Connector.h (Connector2008.h owner): a shared 2008 Connector '
@@ -549,7 +548,6 @@ def verify(obj, rows, own):
 main_rows = close(main_obj, resolve(main_obj, SEEDS_MAIN))
 parts_rows = close(parts_obj, resolve(parts_obj, SEEDS_PARTS))
 pend_rows = close(pend_obj, resolve(pend_obj, PENDING_SEEDS_MAIN))
-pend_parts_rows = close(pend_parts_obj, resolve(pend_parts_obj, PENDING_SEEDS_PARTS))
 
 # ---- vtables of the main build, slot by slot against the original vtable each one binds to -----------
 INSTANCE_VTABLES = {0x0: 0x82d884, 0x10: 0x82d878, 0x14: 0x82d870, 0x20: 0x82d868, 0x24: 0x82d858, 0x44: 0x82d848,
@@ -632,9 +630,9 @@ for address, name in main_rows:
 main_out = verify(main_obj, main_rows, own)
 parts_out = verify(parts_obj, parts_rows, own)
 own_pending = dict(own)
-for address, name in pend_rows + pend_parts_rows:
+for address, name in pend_rows:
     own_pending.setdefault(name, address)
-pend_out = verify(pend_obj, pend_rows, own_pending) + verify(pend_parts_obj, pend_parts_rows, own_pending)
+pend_out = verify(pend_obj, pend_rows, own_pending)
 for row in pend_out:
     row['exact'] = False
     row['exact_pending_build_only'] = True
@@ -704,27 +702,38 @@ for base, offset in (('.?AVConnector@RBX@@', 0x130), ('.?AVIControllable@RBX@@',
                      ('.?AV' + DC, 0)):
     assert bases.get(base) == offset, (base, bases.get(base))
 
+support_out = [r for r in main_out + parts_out if r['address'] in NOT_COUNTED]
+for row in support_out:
+    row['not_counted'] = NOT_COUNTED[row['address']]
+main_out = [r for r in main_out if r['address'] not in NOT_COUNTED]
+parts_out = [r for r in parts_out if r['address'] not in NOT_COUNTED]
 exact = [r['address'] for r in main_out + parts_out]
 sha = nb.sha
-paths = [Path(__file__).resolve(), HDR, SRC, PARTS, LAYOUT, WORKSPACE_OVERLAY]
+paths = [Path(__file__).resolve(), HDR, SRC, PARTS, LAYOUT, R / 'native-headers/v8datamodel/Workspace.h']
 receipt = {
     'class': 'RBX::Humanoid', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'layout': layout_flags, 'main': main_flags, 'parts': parts_flags, 'pending': pend_flags,
-              'pending_parts': pend_parts_flags},
+    'flags': {'layout': layout_flags, 'main': main_flags, 'parts': parts_flags, 'pending': pend_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
-    'objects': {p.name: sha(p) for p in (layout_obj, main_obj, parts_obj, pend_obj, pend_parts_obj)},
+    'objects': {p.name: sha(p) for p in (layout_obj, main_obj, parts_obj, pend_obj)},
     'layout': {'Humanoid': '0x22c (create<Humanoid> 00490770 mallocs 0x22c, constructor 005db280(1)); Connector '
                            '+0x130, IControllable +0x138, IRenderable +0x13c, ICharacterSubject +0x14c (vbptr +0x150), '
                            'IModelModifier +0x1a0, Listener<RunService, Stepped> +0x1a4, fields +0x1a8..+0x220, '
                            'vtordisp +0x224, ILocation +0x228; RTTI 30 bases'},
     'methods': main_out + parts_out,
     'exact_count': len(main_out) + len(parts_out), 'exact_unique_addresses': len(set(exact)),
+    'support_methods': support_out,
     'pending_methods': pend_out,
     'pending_note': 'Pending rows are exact only with NATIVE_HUMANOID2008_PENDING against '
-                    'out/native-layouts/humanoid2008-pending/ (generated ModelInstance.h with findModifierOfType<T>, '
-                    'Workspace.h overlay from tests/NativeHumanoid2008PendingWorkspace.h); not counted.',
-    'near_miss': {'005d9a50': 'getIntendedMovementVector(bool): 337/337 bytes, only the x87 store order of the '
-                              'delta (x, z, then y = 0 around the (dy + 3) magnitude) differs; body not kept',},
+                    'out/native-layouts/humanoid2008-pending/ (generated ModelInstance.h with findModifierOfType<T>); '
+                    'not counted.',
+    'near_miss': {'005d9a50': 'getIntendedMovementVector(bool): 337/337 bytes with worldPosition = worldPosition - '
+                              'torso translation, dist = sqrt(x*x + (y+3)*(y+3) + z*z) before y = 0 (static zero, '
+                              'state 3 early return, 004782a0 / 004fab70 tails all match); only the `fxch st(2); '
+                              'fst [esp+0x14]` z store is scheduled before the fadd [0x81e380] instead of after it. '
+                              'Rejected 2026-11-06: separate delta (331 bytes, own slot), worldPosition -= t (331), '
+                              'Vector3(x, y+3, z).length() before y = 0 (337, fldz/fstp early), (wp + (0,3,0)).length(), '
+                              'reordered sum z*z + x*x + (y+3)^2, named torsoPosition reference, float dy / height '
+                              'temporaries and G3D::square (339). Body not kept.',},
     'slot_only': slot_only,
     'proposals': PROPOSALS,
     'vtables': vtables,

@@ -2,9 +2,7 @@
 // original Hopper unit 005cf160..005d1770 (dynamic initializers 007f5df0..007f5ef0, atexit functions 007feed0..
 // 007fefb0). Evidence in native-headers/v8datamodel/Hopper.h.
 #include "v8datamodel/Hopper.h"
-#ifdef NATIVE_HOPPER_PENDING
 #include "v8datamodel/Backpack.h"
-#endif
 
 namespace RBX
 {
@@ -77,12 +75,10 @@ namespace RBX
 		yLocation = Rect::BOTTOM;
 	}
 
-#ifdef NATIVE_HOPPER_PENDING
 	bool BackpackItem::isEnabled()
 	{
 		return getParent() && dynamic_cast<Backpack*>(getParent()) != NULL;
 	}
-#endif
 
 	LegacyHopperService::~LegacyHopperService()
 	{

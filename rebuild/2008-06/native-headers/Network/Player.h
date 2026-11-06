@@ -144,6 +144,7 @@ namespace RBX
 			Backpack* getPlayerBackpack() const;                      // donor declaration (used by native ClearBackpack.cpp); 2008 body not located
 			void loadCharacter(bool inGame);                          // 004957a0
 			void removeCharacter();                                   // 004947b0
+			void rebuildBackpack();                                   // 004925c0
 		};
 	}
 }

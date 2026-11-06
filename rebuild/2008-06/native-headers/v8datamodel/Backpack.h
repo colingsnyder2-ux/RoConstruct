@@ -5,10 +5,7 @@
 //              IScriptOwner at +0x168 (vtable 0083b924, slot 0 scriptShouldRun 005d18e0).
 //   size       0x16c: factory 0048bc20 allocates 0x16c and calls the constructor 005d1a80 (setName("Backpack") with
 //              the literal 0083ba20; the class-name array is 0083b738).
-// IScriptOwner is declared by script/Script.h, which has no native copy yet: the donor Script.h still passes
-// &sScript / &sLocalScript and does not compile against the native reflection.h, so every unit including this header
-// needs a native script/Script.h first (tests/record_native_hopper.py builds Backpack.cpp only against a generated
-// copy, pending-build-only).
+// IScriptOwner is declared by the native script/Script.h (included read-only).
 #include "script/Script.h"
 #include "v8datamodel/Hopper.h"
 

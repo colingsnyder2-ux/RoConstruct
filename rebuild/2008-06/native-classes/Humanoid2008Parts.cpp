@@ -16,9 +16,7 @@
 #include <stdexcept>
 #include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/JointInstance.h"
-#ifdef NATIVE_HUMANOID2008_PENDING
-#include "v8datamodel/Workspace.h"   // pending build: declaration-only overlay tests/NativeHumanoid2008PendingWorkspace.h
-#endif
+#include "v8datamodel/Workspace.h"   // native (read only): findWorkspace 005a3380, contextInWorkspace 005a33d0
 
 namespace RBX
 {
@@ -170,9 +168,7 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_HUMANOID2008_PENDING
-	// Workspace::findWorkspace 005a3380 / contextInWorkspace 005a33d0: no native Workspace.h (the donor one fails
-	// with C2440 on &sWorkspace).
+	// 005d79b0: Workspace::findWorkspace 005a3380 / contextInWorkspace 005a33d0 (native v8datamodel/Workspace.h).
 	bool Humanoid::hasWalkToPoint(G3D::Vector3& worldPosition) const
 	{
 		if (walkToPart && Workspace::findWorkspace(this) && Workspace::contextInWorkspace(walkToPart.get()))
@@ -185,7 +181,6 @@ namespace RBX
 			return false;
 		}
 	}
-#endif
 
 	PartInstance* Humanoid::getHeadFromCharacter(const ModelInstance* character)
 	{
