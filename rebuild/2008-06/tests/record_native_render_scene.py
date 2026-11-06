@@ -19,11 +19,12 @@ SceneManager2008,RenderScene2008,ViewBase2008,ViewNew2008}.h; the *2008.h names 
   * native-classes/RenderSceneViewBase2008.cpp  document-swap flags + /fp:fast: ViewBase ctor / ??_G; built again with
                                            NATIVE_VIEWBASE_PENDING and a generated MaterialFactory header under
                                            out/render-scene-pending for the dtor (pending-build-only, never counted);
-  * native-classes/RenderSceneViewRbxGfx2008.cpp  document-swap flags + /fp:fast: ViewRbxGfx leaves;
+  * native-classes/RenderSceneViewRbxGfx2008.cpp  document-swap flags + /fp:fast: ViewRbxGfx leaves and getWorkspace
+                                           (committed native DataModel.h / Workspace.h);
   * native-classes/RenderSceneNew2008.cpp  document-swap flags + /fp:fast + Ogre 1.4.5 client headers:
                                            RenderNew::RenderScene ??_G / setThrottle / setLighting / presetLighting
-                                           (RenderLib/RenderSceneNew2008.h); its ctor is built but not exact (see
-                                           NON_EXACT_ROWS). RenderSceneBase2008.cpp also holds Render::RenderScene
+                                           (RenderLib/RenderSceneNew2008.h) and its ctor 007aae40 (exact since
+                                           2026-11-05). RenderSceneBase2008.cpp also holds Render::RenderScene
                                            (RenderLib/RenderSceneRender2008.h).
 
 Every exact row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
@@ -283,7 +284,9 @@ EXTERNAL = {
     # --- RenderNew::RenderScene (call sites in the original rows)
     '??1RenderScene@RenderNew@RBX@@UAE@XZ': 0x7aaa30,            # ??_G 007aae23 (dtor not built)
     '?update@EffectSettings@RenderNew@RBX@@QAE?AV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@MM_NMABV45@ABVLightingParameters@5@AAV65@@Z': 0x7afce0,
-    '??0Color4@G3D@@QAE@ABV01@@Z': 0x476550,                    # ctor 007ab068 (checked below: copies 4 floats, ret 4)
+    # G3D Color4(const Vector4&) is out of line (G3D Color4.cpp); ctor call 007ab068 (checked below: copies 4 floats,
+    # ret 4; ICF body also called by G3D 00511070)
+    '??0Color4@G3D@@QAE@ABVVector4@1@@Z': 0x476550,
     # --- Render::RenderScene (call sites in the original rows; G3D library code and the RCP setPointer ICF copy)
     '??0LightingParameters@G3D@@QAE@XZ': 0x7b6860,           # ctor 0050515e / 00505169 on +0x310 / +0x408
     '??4LightingParameters@G3D@@QAEAAV01@ABV01@@Z': 0x501d80, # evidence name (presetLighting 00503d06)
@@ -458,6 +461,7 @@ SCENENEW_ROWS = [
     (0x7aa8b0, '?setLighting@RenderScene@RenderNew@RBX@@QAEXABV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@@Z'),
     (0x7aacc0, '?presetLighting@RenderScene@RenderNew@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@'
                'VLightingParameters@5@VColor3@5@2@Z'),
+    (0x7aae40, '??0RenderScene@RenderNew@RBX@@QAE@XZ'),
 ]
 VIEWBASE_ROWS = [
     (0x4d8a20, '??0ViewBase@RBX@@IAE@V?$shared_ptr@VDataModel@RBX@@@boost@@@Z'),
@@ -468,6 +472,7 @@ VIEWRBXGFX_ROWS = [
     (0x4db660, '?updateSettings@ViewRbxGfx@ViewNew@RBX@@UAEXMM_NM@Z'),
     (0x4db6f0, '?getRenderStats@ViewRbxGfx@ViewNew@RBX@@UAEAAVRenderStats@@XZ'),
     (0x4d7180, '?invalidateLighting@ViewRbxGfx@ViewNew@RBX@@EAEX_N@Z'),
+    (0x4d7370, '?getWorkspace@ViewRbxGfx@ViewNew@RBX@@UAEPAVInstance@3@XZ'),
 ]
 # Exact bodies at addresses whose code is ICF-shared with functions other recorders count (or a generic `ret`):
 # verified with every target like a row, but not counted here. 00503cb0 / 007b76d0 are counted by
@@ -484,11 +489,9 @@ PENDING_REASON = ('pending-build-only: ~ViewBase destroys the auto_ptr<ViewNew::
                   'out/render-scene-pending (NATIVE_VIEWBASE_PENDING) and never counted')
 # Built and compared, never counted (the row must stay non-exact; if it becomes exact, move it to its ROWS list).
 NON_EXACT_ROWS = [
-    ('scenenew', 0x7aae40, '??0RenderScene@RenderNew@RBX@@QAE@XZ',
-     'RenderNew::RenderScene ctor: identical except the colorClearValue assignment at the end. The original copies the '
-     '(0.5, 0.5, 1, 1) Color4 through an out-of-line copy ctor call (007ab068 -> 00476550, the ICF copy also called by '
-     'G3D 00511070), so the 2008 G3D Color4 copy ctor was not inline; the donor G3D Color4.inl defines it inline and '
-     'this build inlines it (560 vs 606 bytes, frame 8 vs 0x28). Needs the 2008 G3D Color4 declaration (tools/, read-only).'),
+    # 007aae40 (RenderNew::RenderScene ctor) left this list on 2026-11-05: the clear colour goes through the out-of-line
+    # G3D Color4(const Vector4&) into a named local (rejected: Color4 copy ctor of a named Color4, which the donor
+    # Color4.inl inlines; Color4(Vector4) as an unnamed temporary, which copies from eax instead of the stack).
 ]
 UNPROVEN = {}
 # Vtable slots whose bodies are not built here (bound to the address the original vtable holds; see BLOCKED).
@@ -500,27 +503,39 @@ SLOT_EXTERNAL = {
 }
 BLOCKED = {
     '004d8920': 'ViewBase dtor: exact only in the NATIVE_VIEWBASE_PENDING build (2008 ViewNew::MaterialFactory missing)',
-    '004d9990': 'ViewRbxGfx ctor: MaterialFactory ctor (RenderNew::RenderScene is declared in RenderSceneNew2008.h, but its ctor '
-                '007aae40 is not exact), Lighting::event_LightingChanged and '
+    '004d9990': 'ViewRbxGfx ctor: MaterialFactory ctor (RenderNew::RenderScene and its exact ctor 007aae40 are here), Lighting::event_LightingChanged and '
                 'Instance::event_descendentAdded connections (DataModel / Workspace / Lighting owners)',
     '004db4f0': 'ViewRbxGfx dtor: ServiceProvider::create<Lighting> 004b3380 and the ViewNew mesh-cache flushes '
                 '004db130 / 004db040 / 004daf50 / 004e5670 / 004db310 / 004db220 / 004db400 (other owners); its ??_G '
                 '004db5d0 is emitted only with the vtable (ctor / dtor)',
-    '004daf10': 'ViewRbxGfx::render: Workspace +0x288 camera interface (Workspace owner) and 004dab50',
+    '004daf10': 'ViewRbxGfx::render: the workspace camera is reachable now (native DataModel.h / Workspace.h, as in ViewG3D '
+                'render 004db690), but its first call 004daf1a goes to the undeclared non-virtual ViewRbxGfx helper '
+                '004dab50(arg) (958 bytes: Lighting accessor 004b3870, dynamic_cast to RenderNew::RenderScene, skybox '
+                'via [arg+4] slot 0x198 = Ogre::SceneManager::setSkyBox, so the render argument is used as an object '
+                'whose +0x4 is an Ogre::SceneManager*, e.g. Ogre::VisualEngine). Its name and parameter type are not '
+                'derived',
     '004d9c90': 'ViewRbxGfx::suppressSkybox: Lighting service (owner) accessors',
-    '004d7370': 'ViewRbxGfx/ViewG3D::getWorkspace: Workspace* -> Instance* needs the complete Workspace (owner)',
     '004db7c0': 'ViewRbxGfx/ViewG3D::onWorkspaceDescendentAdded: PartInstance / Decal views (other owners)',
-    '004dbbe0': 'ViewG3D ctor: map member +0x4c key / value types not derived. Its tree ctor 00446110, head node 0056d3d0 '
-                '(new 0x18: 8-byte value) and erase 00553ca0 are ICF-shared bodies with no value dtor, so they fix only a '
-                'trivially destructible 8-byte value_type; +0x48 is a ReferenceCountedPointer<G3D::Sky> (updateLighting '
-                '004dc0eb). Also the Lighting / DataModel connections (other owners)',
-    '004dc270': 'ViewG3D dtor (and ??_G 004dc340): same map member, plus the Lighting / mesh-cache calls',
-    '004db610': 'ViewG3D::invalidateLighting: the ViewG3D class needs the +0x4c map type to be declared',
-    '004db690': 'ViewG3D::render: Workspace +0x288 camera interface (Workspace owner)',
-    '007aaa30': 'RenderNew::RenderScene dtor: deletes the Ogre::RbxSceneNode (+0x268, via its creator root node) and '
-                'Ogre::RbxEntity (+0x26c) forks, which are owned by the Ogre fork recoveries and not declared here',
+    '004dbbe0': 'ViewG3D ctor (also blocked in viewg3d2008-working.json): new 0x10 ViewNew::MaterialFactory (ctor 004f0920, '
+                'class not declared; see PROPOSALS), the Lighting accessor 004b3870 and the Lighting-changed / '
+                'descendant-added signal connections (Lighting / Instance / reflection owners). The +0x4c map type no '
+                'longer blocks it: its rows do not depend on the key / mapped types',
+    '004dc270': 'ViewG3D dtor (and ??_G 004dc340; also blocked in viewg3d2008-working.json): the ServiceProvider call '
+                '004b3380 and the seven ViewNew mesh-cache flushes it shares with ~ViewRbxGfx 004db4f0 (undeclared)',
+    '007aaa30': 'RenderNew::RenderScene dtor: rootNode->getCreator()->getRootSceneNode() (SceneManager slot 45) -> '
+                'removeChild(rootNode->getName()) (Node slot 56), then delete rootNode / delete entity through slot 0. '
+                'Ogre::RbxSceneNode is now declared (OgreRbxNode/RbxSceneNode2008.h), but Ogre::RbxEntity is not: '
+                'AggregateChunk2008.h only declares a non-polymorphic RbxEntity for removeSubEntity, so delete entity '
+                'would skip the virtual dtor. Needs RbxEntity : Entity (new 0x2bc vs sizeof(Entity) 0x274: 0x48 own '
+                'bytes not derived) from the Ogre fork owners',
     '007ab0a0': 'RenderNew::RenderScene::render (7199 bytes): Ogre camera / RbxSceneNode / RbxEntity calls (Ogre fork owners)',
     '00504bf0': 'Render::RenderScene::render: the G3D draw path (RenderDevice state, shadow volumes) is not built',
+}
+
+# Rows of these views counted by another receipt (asserted below; listed, never counted here).
+COUNTED_ELSEWHERE = {
+    '004db610': ('viewg3d2008-working.json', 'ViewG3D::invalidateLighting (tests/record_native_viewg3d2008.py)'),
+    '004db690': ('viewg3d2008-working.json', 'ViewG3D::render (tests/record_native_viewg3d2008.py)'),
 }
 
 ROWS = {'scene': SCENE_ROWS, 'aggregate': AGGREGATE_ROWS, 'aggregating': AGGREGATING_ROWS,
@@ -814,10 +829,11 @@ for vtable, cls in ((0x827454, 'RenderScene@Render@RBX'), (0x8749dc, 'RenderScen
     assert bases(vtable) == {'.?AV%s@@' % cls: 0, '.?AVRenderSceneBase@RenderBase@RBX@@': 0}, cls
 for vtable, cls in ((0x826c70, 'ViewRbxGfx@ViewNew@RBX'), (0x826e04, 'ViewG3D@ViewNew@RBX')):
     assert bases(vtable) == {'.?AV%s@@' % cls: 0, '.?AVViewBase@RBX@@': 0}, cls
-# ViewRbxGfx slots that are rows / folded rows here (both views share 3, 4, 7 through ICF)
-for slot, address in ((2, 0x64a390), (3, 0x4d76d0), (4, 0x4db660), (7, 0x4db6f0), (9, 0x47d410), (10, 0x4d7180)):
+# ViewRbxGfx slots that are rows / folded rows here (both views share 3, 4, 6, 7 through ICF)
+for slot, address in ((2, 0x64a390), (3, 0x4d76d0), (4, 0x4db660), (6, 0x4d7370), (7, 0x4db6f0), (9, 0x47d410),
+                      (10, 0x4d7180)):
     assert d(0x826c70 + 4 * slot) == address, (slot, hex(d(0x826c70 + 4 * slot)))
-for slot in (2, 3, 4, 7):
+for slot in (2, 3, 4, 6, 7):
     assert d(0x826e04 + 4 * slot) == d(0x826c70 + 4 * slot)
 alloc_before(0x4dbbe0, 0x68, 0x53f0d0)       # new AggregatingSceneManager (ViewG3D ctor; size recorded only)
 body, _, _ = match.target('2008-06', '004d9990')  # ViewRbxGfx ctor: new 8, inlined SimpleSceneManager ctor
@@ -829,6 +845,10 @@ paths = [Path(__file__).resolve(), LAYOUT] + [u[0] for u in UNITS.values()] + HE
 exact = sorted({r['address'] for g in groups.values() for r in g if r['exact']})
 groups['not_exact'] = non_out
 assert not set(exact) & {r['address'] for r in folded_rows}
+for address_, (receipt_, what_) in COUNTED_ELSEWHERE.items():
+    other_ = json.loads((ROOT / 'work/2008-06/shared-layouts' / receipt_).read_text())
+    assert address_ in other_['exact_function_rows'], (address_, receipt_)
+    assert address_ not in exact and address_ not in BLOCKED, address_
 PROPOSALS = {
     'ViewNew::MaterialFactory (owner: whoever recovers the ViewNew material factory; not declared anywhere yet)':
         '0x10 bytes (new 0x10 at 004d9ac1 before its ctor 004f0920(G3D::TextureManager*)), out-of-line dtor 004d7460 '
@@ -841,10 +861,16 @@ PROPOSALS = {
         '007ad960 when 00942ec4 == 0, Render::Material 007b80a0 when 1, else throws std::exception) is declared in '
         'AggregateChunk2008.h as RenderBase::createMaterial() (donor name) because the AggregateChunk ctor calls it; '
         'move it next to MaterialBase if you recover its body.',
-    'Workspace / Lighting / DataModel owners, FYI': 'ViewRbxGfx / ViewG3D render (004daf10 / 004db690) read '
-        'dataModel->workspace (+0x204) and call slot 2 of the Workspace subobject at +0x288 for the camera; '
-        'getWorkspace 004d7370 needs Workspace* -> Instance*; the ctors / dtors use Lighting::event_LightingChanged, '
-        'Instance::event_descendentAdded and ServiceProvider::create<Lighting> 004b3380.',
+    'Lighting / DataModel owners, FYI': 'getWorkspace 004d7370 is now exact here through the committed native '
+        'DataModel.h / Workspace.h, and ViewG3D render 004db690 is exact in viewg3d2008-working.json. The view ctors / '
+        'dtors still use Lighting::event_LightingChanged, Instance::event_descendentAdded and '
+        'ServiceProvider::create<Lighting> 004b3380, and suppressSkybox 004d9c90 reads Lighting fields (no native '
+        'Lighting header yet).',
+    'Ogre fork owners (Ogre::RbxEntity)': 'RenderNew::RenderScene dtor 007aaa30 deletes its +0x26c Ogre::RbxEntity '
+        'through the virtual dtor (slot 0, push 1). A committed RbxEntity : Ogre::Entity declaration (new 0x2bc at '
+        '007ab470 and AdornRbxGfx; ctor 0067d1f0; sizeof(Ogre::Entity) is 0x274 in the 1.4.5 client headers, so 0x48 '
+        'own bytes; removeSubEntity 0067d2d0 erases from the vector at +0xd8) would let AggregateChunk2008.h drop its '
+        'partial non-polymorphic RbxEntity and unblock the dtor.',
 }
 receipt = {
     'class': 'RBX::RenderBase::Chunk (base), SceneManager, SimpleSceneManager, AggregateChunk, AggregatingSceneManager, '
@@ -858,9 +884,15 @@ receipt = {
     'exact_function_rows': exact,
     'folded_rows_not_counted': folded_rows,
     'pending_build_rows': pending_rows,
-    'notes': ['RenderSceneBase +0x4 is not a member: MSVC pads the vfptr to the class alignment (8, from the doubles in '
+    'notes': ['RenderNew::RenderScene ctor 007aae40: the clear colour is built by the out-of-line G3D '
+              'Color4(const Vector4&) (00476550) into a named local and then assigned; the Color4 copy ctor is inline '
+              'in G3D Color4.inl, and an unnamed Color4(Vector4) temporary copies from eax instead of the stack.',
+              'ViewG3D invalidateLighting / render (004db610 / 004db690) are counted in viewg3d2008-working.json '
+              '(counted_elsewhere), not here.',
+              'RenderSceneBase +0x4 is not a member: MSVC pads the vfptr to the class alignment (8, from the doubles in '
               'G3D::Stopwatch), so chunkArray starts at +0x8 (layout probe sceneBaseChunkArray).'],
     'blocked': BLOCKED,
+    'counted_elsewhere': {k: '%s: %s' % v for k, v in COUNTED_ELSEWHERE.items()},
     'vtables': vt,
     'proposals': PROPOSALS,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',

@@ -1,9 +1,13 @@
 // 2008-06 native RBX::ViewNew::ViewRbxGfx leaves (inactive; document-swap flags, /O2). Rows: getMeshDetail 004d76d0,
 // updateSettings 004db660, getRenderStats 004db6f0 (all three shared with ViewG3D by ICF), invalidateLighting 004d7180;
-// getShadingQuality 0064a390 and updateLighting 0047d410 are ICF-folded with unrelated code and recorded as folded.
-// The ctor / dtor (Lighting and workspace connections, mesh-cache flushes) and render / suppressSkybox / getWorkspace /
-// onWorkspaceDescendentAdded need DataModel / Workspace / Lighting declarations owned elsewhere and are not built.
+// getWorkspace 004d7370 (shared with ViewG3D by ICF; dataModel->workspace +0x204 through the committed native
+// DataModel.h / Workspace.h). getShadingQuality 0064a390 and updateLighting 0047d410 are ICF-folded with unrelated
+// code and recorded as folded. The ctor / dtor (Lighting and workspace connections, mesh-cache flushes), render (its
+// 004dab50 lighting helper), suppressSkybox and onWorkspaceDescendentAdded need declarations owned elsewhere and are
+// not built.
 #include "RenderLib/ViewNew2008.h"
+#include "v8datamodel/DataModel.h"
+#include "v8datamodel/Workspace.h"
 
 namespace RBX
 {
@@ -22,6 +26,11 @@ namespace RBX
 		void ViewRbxGfx::updateSettings(float shadingQuality, float meshDetail, bool shadows, float cameraDistance)
 		{
 			renderLibScene->setThrottle(shadingQuality, meshDetail, shadows, cameraDistance);
+		}
+
+		Instance* ViewRbxGfx::getWorkspace()
+		{
+			return dataModel->getWorkspace();
 		}
 
 		RenderStats& ViewRbxGfx::getRenderStats()

@@ -1,8 +1,9 @@
 // 2008-06 native RBX::RenderNew::RenderScene (the Ogre render scene; inactive). Its own optimized unit (document-swap
 // flags, /O2, /fp:fast, Ogre 1.4.5 client headers), 007aa770 .. 007ab0a0: setThrottle 007aa770, setLighting 007aa8b0,
-// presetLighting 007aacc0, ??_G 007aae20 and the ctor 007aae40. The dtor 007aaa30 (deletes the Ogre::RbxSceneNode /
+// presetLighting 007aacc0, ??_G 007aae20 and the ctor 007aae40 (all exact). The dtor 007aaa30 (deletes the Ogre::RbxSceneNode /
 // RbxEntity forks) and render 007ab0a0 are not built. Declarations: RenderLib/RenderSceneNew2008.h.
 #include "RenderLib/RenderSceneNew2008.h"
+#include <G3D/Vector4.h>
 
 namespace RBX
 {
@@ -17,9 +18,11 @@ namespace RBX
 			desiredLighting = lighting = G3D::Lighting::create();
 			rootNode = NULL;
 
-			G3D::Color4 clearColor(0.5f, 0.5f, 1.0f, 1.0f);
-			G3D::Color4 copy(clearColor);                                // out-of-line Color4 copy ctor 00476550
-			colorClearValue = copy;
+			// The clear colour goes through the out-of-line G3D Color4(const Vector4&) (Color4.cpp; call 007ab068 ->
+			// 00476550, ret 4) into a named local, then the inline operator= copies it from the stack to +0x14.
+			// (A Color4 copy ctor would be inline: G3D Color4.inl.)
+			G3D::Color4 clearColor(G3D::Vector4(0.5f, 0.5f, 1.0f, 1.0f));
+			colorClearValue = clearColor;
 		}
 
 		void RenderScene::setThrottle(float t, float m, bool s, float c)

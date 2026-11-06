@@ -15,7 +15,7 @@
 //                  G3D::inf(), Array +0x318, bool +0x324 = false, fifteen floats +0x360 .. +0x398 = 0 (five zeroing
 //                  default ctors), LightingParameters ctors 007b6860 on +0x3a0 / +0x498; body: +0x30c =
 //                  G3D::Lighting::create() 00503960, +0x308 = +0x30c, +0x268 = NULL, then colorClearValue (+0x14) is
-//                  assigned from a G3D::Color4 copy (out-of-line copy ctor 00476550) of (0.5, 0.5, 1, 1).
+//                  assigned from a named G3D::Color4 built by the out-of-line Color4(const Vector4&) 00476550 from (0.5, 0.5, 1, 1).
 //                  +0x328 .. +0x35f is not touched by the ctor (G3D::Color4 / Color3 default ctors do not initialise).
 //                  dtor 007aaa30 (not built): +0x268 is removed from its creator's root node by name and deleted
 //                  (virtual), +0x26c deleted (virtual), then the members in reverse, then the inlined RenderSceneBase
