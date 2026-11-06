@@ -1,0 +1,309 @@
+{
+  "workflow": 52,
+  "client": "2008-06",
+  "unit": "MoveUpSelectionVerb/MoveDownSelectionVerb::doIt",
+  "scope": "Inactive exacts: MoveUpSelectionVerb::doIt 00581630 (285 bytes) and MoveDownSelectionVerb::doIt 00581750 (310 bytes) byte-identical to the original under VC2008 RTM /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast. Every direct call site carries a reviewed symbol/address binding; the IDataState virtual call remains indirect. No link, no provider selection, no runtime activation, no server credit.",
+  "run": "work\\2008-06\\native-check-runs\\20261106-110627-579e2c13",
+  "manifest": "rebuild\\2008-06\\tests\\move-down-selection-verb-unit-20261106.json",
+  "manifest_sha256": "617fc99281a5ea810099a148c3dd99b5aa607ab88b2b88696577f35cdfce482d",
+  "run_manifest": "work\\2008-06\\native-check-runs\\20261106-110627-579e2c13\\manifest.json",
+  "run_manifest_sha256": "daa1c221353eaaf92968f953b37c29bc8b987fd25d5756fa32c072c8f263ab4e",
+  "analysis": "work\\2008-06\\native-check-runs\\20261106-110627-579e2c13\\analysis-ca3d79e2.json",
+  "analysis_sha256": "cca88ee3ba5c924e3bb90f298d70e627ca1d5e21971afa2bbdf63850b8c387c7",
+  "sources_sha256": {
+    "rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp": "8a34306c59f1c1931a6f473bb13c1d0cebf60a3d8934f94fb47499f5e0e17e70",
+    "rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp": "1eb95e06e837f84d425d52e8a5a1fb3dad3f8dc27d2065f3c0d8c3f6ed37f8f2"
+  },
+  "compiler": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-45733ea87ea84c13bab960d183c8d3de\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+  "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+  "compiler_exit": 0,
+  "flags": [
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/fp:fast",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-45733ea87ea84c13bab960d183c8d3de\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-45733ea87ea84c13bab960d183c8d3de\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-06d178b30dae4b10b48bac4a94525840\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-45733ea87ea84c13bab960d183c8d3de\\tools\\libs\\xtp-11.2.2\\Source"
+  ],
+  "objects": [
+    "work\\2008-06\\native-check-runs\\20261106-110627-579e2c13\\unit-000\\candidate.obj",
+    "work\\2008-06\\native-check-runs\\20261106-110627-579e2c13\\unit-001\\candidate.obj"
+  ],
+  "object_sha256": [
+    "709fad3775e122854f99a874ffbeac830edc2a9fef3ae10f6ca69f9bcf74cb43",
+    "42833eacfdb7a550c17bb8636418eb497941c69cc4ea32970f65e3d29fe35d10"
+  ],
+  "checks": [
+    {
+      "addr": "00581630",
+      "symbol": "?doIt@MoveUpSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z",
+      "source": "rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp",
+      "source_sha256": "8a34306c59f1c1931a6f473bb13c1d0cebf60a3d8934f94fb47499f5e0e17e70",
+      "status": "exact",
+      "target_size": 285,
+      "object_size": 285,
+      "target_sha256": "55f900cc934e519979c37e35015ed6c2f6948f3fd77638abc3046bd36205278d",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "direct_call_sites": 11,
+      "direct_bindings_verified": 11,
+      "binding_verified": false,
+      "call_identity": [
+        {
+          "offset": 31,
+          "target": "0057d250",
+          "symbol": "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 43,
+          "target": "005805d0",
+          "symbol": "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 91,
+          "target": "0060e540",
+          "symbol": "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@PAVRootInstance@1@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 108,
+          "target": "0060de00",
+          "symbol": "?startDragging@MegaDragger@RBX@@QAEXXZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 144,
+          "target": "0060e180",
+          "symbol": "?safeMoveNoDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 153,
+          "target": "0060e780",
+          "symbol": "?finishDragging@MegaDragger@RBX@@QAEXXZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 165,
+          "target": "004531e0",
+          "symbol": "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 178,
+          "target": "005bd820",
+          "symbol": "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 202,
+          "target": "00576940",
+          "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 229,
+          "target": "0058c5c0",
+          "symbol": "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 247,
+          "target": null,
+          "symbol": null,
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 261,
+          "target": "0060e700",
+          "symbol": "??1MegaDragger@RBX@@QAE@XZ",
+          "status": "verified_binding"
+        }
+      ],
+      "indirect_call_sites": [
+        {
+          "offset": 247,
+          "instruction": "eax",
+          "register_indirect": "eax",
+          "source": "virtual call through the IDataState argument (state->setDirty(true))"
+        }
+      ]
+    },
+    {
+      "addr": "00581750",
+      "symbol": "?doIt@MoveDownSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z",
+      "source": "rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp",
+      "source_sha256": "1eb95e06e837f84d425d52e8a5a1fb3dad3f8dc27d2065f3c0d8c3f6ed37f8f2",
+      "status": "exact",
+      "target_size": 310,
+      "object_size": 310,
+      "target_sha256": "72aa5d8096430f8ae97087ac83996284f6c7ae7baf74146ddca9987309de89ec",
+      "first_byte_difference": null,
+      "data_matches": [
+        [
+          8588140,
+          4
+        ]
+      ],
+      "data_errors": [],
+      "direct_call_sites": 11,
+      "direct_bindings_verified": 11,
+      "binding_verified": false,
+      "call_identity": [
+        {
+          "offset": 31,
+          "target": "0057d250",
+          "symbol": "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 43,
+          "target": "005805d0",
+          "symbol": "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 91,
+          "target": "0060e540",
+          "symbol": "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@PAVRootInstance@1@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 108,
+          "target": "0060de00",
+          "symbol": "?startDragging@MegaDragger@RBX@@QAEXXZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 147,
+          "target": "0060e180",
+          "symbol": "?safeMoveNoDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 156,
+          "target": "0060e780",
+          "symbol": "?finishDragging@MegaDragger@RBX@@QAEXXZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 191,
+          "target": "004531e0",
+          "symbol": "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 203,
+          "target": "005bd820",
+          "symbol": "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 227,
+          "target": "00576940",
+          "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 254,
+          "target": "0058c5c0",
+          "symbol": "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 272,
+          "target": null,
+          "symbol": null,
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 286,
+          "target": "0060e700",
+          "symbol": "??1MegaDragger@RBX@@QAE@XZ",
+          "status": "verified_binding"
+        }
+      ],
+      "indirect_call_sites": [
+        {
+          "offset": 272,
+          "instruction": "eax",
+          "register_indirect": "eax",
+          "source": "virtual call through the IDataState argument (state->setDirty(true))"
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "checks": 2,
+    "exact": 2,
+    "data_checked": 2,
+    "direct_call_sites": 22,
+    "direct_bindings_verified": 22,
+    "indirect_call_sites": 2,
+    "binding_verified_checks": 0
+  },
+  "prior_trial": {
+    "receipt": "work\\2008-06\\shared-layouts\\move-down-trial.json",
+    "receipt_sha256": "64471c1d2c5b2773992d54cfba2e4034d0161923c2bbaa3dff9c56c16103d3bc",
+    "eh_contents_verified": true,
+    "eh_runtime_target_verified": false,
+    "note": "Earlier reference/EH-content trial; unchanged by this unit receipt."
+  },
+  "proof": {
+    "exact_bytes": true,
+    "referenced_data": true,
+    "direct_call_bindings": true,
+    "binding_verified_checks": 0,
+    "require_proof_exit": 1,
+    "require_proof_reason": "native_check_runner analyze --require-proof fails by design when a body has indirect call sites; both bodies dispatch state->setDirty(true) through the IDataState vtable slot and need separate ABI proof.",
+    "scope": "Exact bytes, referenced data and reviewed direct-call bindings only; indirect virtual dispatch, provider selection and callee ABI require separate proof."
+  },
+  "provider_selection": {
+    "status": "blocked_on_missing_input",
+    "reference": "work/native-candidates/tool-verb-factories-20261106/provider-selection-blocker.json",
+    "detail": "No document link object set, filtered archive or RSP exists in this workspace; provider selection for these symbols is unknown."
+  },
+  "remaining": [
+    "Indirect-call ABI: IDataState virtual setDirty dispatch in both bodies (register-indirect, bytes identical; not call-binding proof)",
+    "Provider selection for both doIt symbols in the document link (missing archive/RSP)",
+    "Link closure for StandardVerbs composition and its tool-verb providers",
+    "Relevant P5/P6/runtime gates before any activation"
+  ],
+  "preserved": "Shared headers, vendor inputs, other leases and the active executable selection unchanged.",
+  "baseline_metrics": {
+    "normal_client_selected_native_md5_methods": 7,
+    "gated_main_class_swaps": 0,
+    "server_credit_added": 0
+  }
+}

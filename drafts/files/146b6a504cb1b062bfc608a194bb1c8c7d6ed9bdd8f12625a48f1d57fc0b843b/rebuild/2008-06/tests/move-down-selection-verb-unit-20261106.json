@@ -1,0 +1,48 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/MoveUpSelectionVerb.cpp",
+      "checks": [
+        {
+          "addr": "00581630",
+          "symbol": "?doIt@MoveUpSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z",
+          "calls": [
+            {"offset": 31, "target": "0057d250", "symbol": "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z"},
+            {"offset": 43, "target": "005805d0", "symbol": "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ"},
+            {"offset": 91, "target": "0060e540", "symbol": "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@PAVRootInstance@1@@Z"},
+            {"offset": 108, "target": "0060de00", "symbol": "?startDragging@MegaDragger@RBX@@QAEXXZ"},
+            {"offset": 144, "target": "0060e180", "symbol": "?safeMoveNoDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z"},
+            {"offset": 153, "target": "0060e780", "symbol": "?finishDragging@MegaDragger@RBX@@QAEXXZ"},
+            {"offset": 165, "target": "004531e0", "symbol": "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ"},
+            {"offset": 178, "target": "005bd820", "symbol": "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z"},
+            {"offset": 202, "target": "00576940", "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z"},
+            {"offset": 229, "target": "0058c5c0", "symbol": "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z"},
+            {"offset": 261, "target": "0060e700", "symbol": "??1MegaDragger@RBX@@QAE@XZ"}
+          ]
+        }
+      ]
+    },
+    {
+      "source": "native-classes/MoveDownSelectionVerb.cpp",
+      "checks": [
+        {
+          "addr": "00581750",
+          "symbol": "?doIt@MoveDownSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z",
+          "calls": [
+            {"offset": 31, "target": "0057d250", "symbol": "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z"},
+            {"offset": 43, "target": "005805d0", "symbol": "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ"},
+            {"offset": 91, "target": "0060e540", "symbol": "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@PAVRootInstance@1@@Z"},
+            {"offset": 108, "target": "0060de00", "symbol": "?startDragging@MegaDragger@RBX@@QAEXXZ"},
+            {"offset": 147, "target": "0060e180", "symbol": "?safeMoveNoDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z"},
+            {"offset": 156, "target": "0060e780", "symbol": "?finishDragging@MegaDragger@RBX@@QAEXXZ"},
+            {"offset": 191, "target": "004531e0", "symbol": "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ"},
+            {"offset": 203, "target": "005bd820", "symbol": "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z"},
+            {"offset": 227, "target": "00576940", "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z"},
+            {"offset": 254, "target": "0058c5c0", "symbol": "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z"},
+            {"offset": 286, "target": "0060e700", "symbol": "??1MegaDragger@RBX@@QAE@XZ"}
+          ]
+        }
+      ]
+    }
+  ]
+}
