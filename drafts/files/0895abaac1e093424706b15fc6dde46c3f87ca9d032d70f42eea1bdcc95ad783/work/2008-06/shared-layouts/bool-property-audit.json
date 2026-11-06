@@ -1,0 +1,9 @@
+{
+  "swap_target": "Selection runnable integration (BoolPropertyVerb)",
+  "verbStates": [
+    {"run": "work/2008-06/native-check-runs/20261105-194832-9317d2a8", "addr": "00582180", "size": 170, "symbol": "?isChecked@BoolPropertyVerb@RBX@@MBE_NXZ", "target_sha256": "47a32f6139f2e723c9c3eb0c31dfd35391f52698f5b2fbb7320bc06e0de6a83f", "source_sha256": "2d63811acc1a945322d7d5ac3aad6111f2597ef83e5c3694100288409c3b3fab", "object_sha256": "166ccdc42558f6f9255cfed7952c580de7c054a41832f8773796e22f2682c661", "result": "exact bytes+data 100%"},
+    {"run": "work/2008-06/native-check-runs/20261105-194832-9317d2a8", "addr": "00582230", "size": 200, "symbol": "?doIt@BoolPropertyVerb@RBX@@MAEXPAVIDataState@2@@Z", "target_sha256": "deea25a0deb09f4dcb7c9d2052f5c91d044e5bfa5bf22645deba07581038c3d4", "source_sha256": "2d63811acc1a945322d7d5ac3aad6111f2597ef83e5c3694100288409c3b3fab", "object_sha256": "166ccdc42558f6f9255cfed7952c580de7c054a41832f8773796e22f2682c661", "result": "exact bytes+data 100%"}
+  ],
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked), updateCaption 00465e40 (86% parked)",
+  "metrics": {"inactive_exact": 73, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

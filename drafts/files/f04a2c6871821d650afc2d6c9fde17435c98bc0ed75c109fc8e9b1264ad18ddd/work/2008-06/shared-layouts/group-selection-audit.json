@@ -1,0 +1,6 @@
+{
+  "swap_target": "Selection runnable integration (GroupSelectionVerb)",
+  "doIt": {"run": "work/2008-06/native-check-runs/20261105-194042-76aaad9b", "addr": "00580c00", "size": 262, "symbol": "?doIt@GroupSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z", "target_sha256": "22cfeb0df07ae0ae7ab07b25ce7aa30b1d25ad0c1741ff5ffe7c866a76cdd8b0", "source_sha256": "e3bacb1392e3ede2f0f04e0f3995e3d01cc76c65740c4cb30ab80c8f5babe9d6", "object_sha256": "1589cedec7ec67ab38a4d1d780410cf2079e450edf8922852c7534dcc76d2d3c", "result": "exact bytes+data 100%"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked), updateCaption 00465e40 (86% parked)",
+  "metrics": {"inactive_exact": 63, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

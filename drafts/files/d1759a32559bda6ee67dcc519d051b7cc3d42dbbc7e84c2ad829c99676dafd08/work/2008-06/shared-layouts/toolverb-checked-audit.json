@@ -1,0 +1,6 @@
+{
+  "swap_target": "Selection runnable integration (ToolVerbChecked)",
+  "verbStates": [{"run": "work/2008-06/native-check-runs/20261105-200301-bea7cdda", "addr": "005c6240", "size": 44, "symbol": "TToolVerb isChecked (folded 26 instantiations)", "target_sha256": "folded; distinct addr per tool but shared body; cannot claim single exact (RTTI differs per type)", "result": "revoke/forgettable: folded template, per-type RTTI differs; did not claim as distinct exact"}],
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked), updateCaption 00465e40 (86% parked)",
+  "metrics": {"inactive_exact": 82, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

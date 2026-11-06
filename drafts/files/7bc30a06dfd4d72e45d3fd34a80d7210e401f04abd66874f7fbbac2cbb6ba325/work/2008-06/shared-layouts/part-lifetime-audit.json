@@ -1,0 +1,6 @@
+{
+  "swap_target": "Part runnable integration (PartInstance lifetime)",
+  "ctor": {"run": "work/2008-06/native-check-runs/20261105-192904-ba4a5da0", "addr": "0059d4d0", "size": 785, "symbol": "??0PartInstance@RBX@@QAE@XZ", "target_sha256": "ee513ccb736efdc6b79230089e421b301dcdf739b5af8e4e26140ed8f6234391", "source_sha256": "22e3bf711bd01c61bd0c9d7300719d99ff92b9726795732e53f6372e75cd1144", "object_sha256": "d4352590c28ef23e98876656e9d3e25a4adacbdc9cf2b08c537c5fcf28f151ef", "result": "exact bytes+data 100%"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 55, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

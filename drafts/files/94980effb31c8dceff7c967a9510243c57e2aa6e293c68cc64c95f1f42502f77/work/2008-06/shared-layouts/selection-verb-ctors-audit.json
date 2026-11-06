@@ -1,0 +1,6 @@
+{
+  "swap_target": "Selection runnable integration (SelectionVerbConstructors)",
+  "ctorFold": {"run": "work/2008-06/native-check-runs/20261105-194555-e51030d0", "addr": "00413530", "size": 47, "symbol": "??0GroupSelectionVerb@RBX@@QAE@PAVDataModel@1@@Z", "target_sha256": "9337d3addf5c6af0d30e6d98b4f2a7c992a7ad412772dbac8a764c9a5cdc0d06", "result": "bytes exact 100% but data mismatch: Group vs Copy (folded ctor shares body, string data differs per instantiation); cannot claim exact"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked), updateCaption 00465e40 (86% parked)",
+  "metrics": {"inactive_exact": 70, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

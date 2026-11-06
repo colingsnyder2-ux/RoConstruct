@@ -1,0 +1,6 @@
+{
+  "swap_target": "Selection runnable integration (RunStateVerb ctor)",
+  "verbStates": [{"run": "work/2008-06/native-check-runs/20261105-201225-d25bd1ba", "addr": "0057e330", "size": 146, "symbol": "??0RunStateVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z", "target_sha256": "5f37c5ae3f986b7cb675845bc5667819c057d0c0875f419dfdb73972770dbab9", "source_sha256": "90a7db4dd20f57ca721f1b7c65c388d103f0c113f73dee068f31767cc1ce6c5a", "object_sha256": "82fe82a2c01105d9b53603b5d522d2f0e725d9061105e4f3215f6e27cf92882e", "result": "exact bytes+data 100%"}],
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked), updateCaption 00465e40 (86% parked)",
+  "metrics": {"inactive_exact": 83, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}
