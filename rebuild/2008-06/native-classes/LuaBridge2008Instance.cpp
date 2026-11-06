@@ -3,6 +3,7 @@
 // NATIVE_LUABRIDGE_PENDING guards code that needs declarations the shared native headers lack
 // (RBX::Instances / Instance::setParent2 in v8tree/Instance.h, and the donor LuaArguments.h that needs Instances).
 #include "LuaBridge2008/LuaSignalBridge2008.h"
+#include "LuaBridge2008/LuaEnumBridge2008.h"
 #ifdef NATIVE_LUABRIDGE_PENDING
 #include "script/LuaArguments.h"
 #endif
@@ -445,3 +446,18 @@ int ObjectBridge::callMemberFunction(lua_State* L)
     return args.pushReturnValue();
 }
 #endif
+
+// Template instances of this unit whose callers are the pending property paths (0061abe0 / 0061b190 / 0061c0e0, guarded
+// by NATIVE_LUABRIDGE_PENDING above or not yet recovered): instantiated explicitly so that the unit emits them.
+//   0061a720 SharedPtrBridge<DescribedBase>::getPtr<shared_ptr<DescribedBase>> (called from 0061c152), which calls
+//   0061a560 Bridge<shared_ptr<DescribedBase>>::getValue<shared_ptr<DescribedBase>> (0061a78b);
+//   0061a470 Bridge<EnumItem>::getValue<const EnumDescriptor::Item*> (EnumItem className 0095b1dc; called from 0061b6db);
+//   0061a7b0 TypedPropertyDescriptor<ContentId>::getValue (ICF-folded getset forwarder; called from this unit's
+//   0061a834 / 0061a8a4 / 0061a914 / 0061a984 and from other units).
+namespace RBX { namespace Lua {
+template bool Bridge<EnumDescriptorItemPtr, false>::getValue<EnumDescriptorItemPtr>(lua_State*, size_t,
+    EnumDescriptorItemPtr&);
+template bool SharedPtrBridge<Reflection::DescribedBase>::getPtr<boost::shared_ptr<Reflection::DescribedBase> >(
+    lua_State*, size_t, boost::shared_ptr<Reflection::DescribedBase>&);
+}}
+template ContentId Reflection::TypedPropertyDescriptor<ContentId>::getValue(const Reflection::DescribedBase*) const;

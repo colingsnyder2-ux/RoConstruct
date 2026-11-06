@@ -41,6 +41,13 @@ void SignalBridge::on_newindex(boost::shared_ptr<Reflection::SignalInstance>& ob
     throw std::runtime_error(G3D::format("%s cannot be assigned to", name));
 }
 
+// The specialization above is of a member lua/LuaBridge.h defines inside the class body, which MSVC emits only when
+// referenced (it is treated as inline): the __newindex wrapper that calls it (ScriptContext unit) is instantiated here
+// so that 0061f220 is emitted. The wrapper instance itself is not a row.
+namespace RBX { namespace Lua {
+template int Bridge<boost::shared_ptr<Reflection::SignalInstance>, false>::on_newindex(lua_State*);
+}}
+
 static size_t pushArgs(lua_State* L, const Arguments& arguments)
 {
     Arguments::const_iterator iter = arguments.begin();

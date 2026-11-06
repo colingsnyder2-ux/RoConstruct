@@ -797,3 +797,12 @@ int CoordinateFrameBridge::on_index(const G3D::CoordinateFrame& object, const ch
 
     throw std::runtime_error(G3D::format("%s is not a valid member", name));
 }
+
+// 0061ca00: the generic Bridge<T>::on_newindex(T&, name, L) body ('%s cannot be assigned to'), defined inside the
+// class body of lua/LuaBridge.h. It is identical for every T and ICF-folded: the ScriptContext __newindex wrappers of
+// CFrame 005a9543, Vector3 005a9663, RBXScriptConnection 005a9783, ThreadRef::Node 005a9863, Color3 005a9903 and
+// BrickColor 005a9a13 all call 0061ca00, which lies in this unit (after Color3 on_index 0061c8c0). Instantiating the
+// Color3 wrapper emits it here; the symbol is a codegen analog of the folded body, the wrapper is not a row.
+namespace RBX { namespace Lua {
+template int Bridge<G3D::Color3, true>::on_newindex(lua_State*);
+}}

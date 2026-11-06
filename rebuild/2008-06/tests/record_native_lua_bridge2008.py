@@ -18,6 +18,13 @@ Step 2: three inactive units built with the document-swap flags (VS2008 RTM 2102
   Pass 2 (2026-11-06): the Roblox lua_tonumber clamp 0061c830 and the lua_tostring wrappers 0061c790 / 0061c7b0 are
   own rows, so lapi lua_tonumber 00611f60 is bound by its evidence name once own rows are excluded; FunctionScriptSlot
   is redeclared with the 2008 +0x50 re-entrancy depth; G3D library targets are server-verified library matches.
+  Pass 3 (2026-11-06): the enum unit native-classes/LuaBridge2008Enum.cpp (declarations LuaBridge2008/LuaEnumBridge2008.h)
+  and template instances emitted through explicit instantiation (the on_newindex(T&) specializations of members that the
+  read-only lua/LuaBridge.h defines in the class body are emitted only when referenced, so the __newindex wrappers are
+  instantiated; instances whose only callers are pending property paths are instantiated directly). A pending build of
+  the enum unit (NATIVE_LUABRIDGE_PENDING against a generated copy of reflection/enumconverter.h with the proposed
+  EnumDescriptor::lookupDescriptor, out/native-layouts/lua-bridge2008-pending/) records pending-build-only rows, never
+  counted; a counted row may not call one.
 Every relocation of an exact row is bound to the address the original instruction uses and verified: imports by
 DLL name / ordinal, literals by bytes, RTTI and vtables by original RTTI names, Bridge<T>::className statics by the
 string their constant pointer names, Lua library functions and other externals by the offline evidence name at that
@@ -40,8 +47,11 @@ SRC = ROOT / 'rebuild/2008-06/native-classes'
 BRIDGE_H = HDR / 'LuaBridge2008/LuaBridge2008.h'
 SIGNAL_H = HDR / 'LuaBridge2008/LuaSignalBridge2008.h'
 INSTANCE_H = HDR / 'LuaBridge2008/LuaInstanceBridge2008.h'
+ENUM_H = HDR / 'LuaBridge2008/LuaEnumBridge2008.h'
+ENUMCONVERTER_H = HDR / 'reflection/enumconverter.h'
 UNITS = {'instance': SRC / 'LuaBridge2008Instance.cpp', 'atomic': SRC / 'LuaBridge2008Atomic.cpp',
-         'signal': SRC / 'LuaBridge2008Signal.cpp'}
+         'signal': SRC / 'LuaBridge2008Signal.cpp', 'enum': SRC / 'LuaBridge2008Enum.cpp'}
+PENDING = OUT / 'lua-bridge2008-pending'
 original = Original()
 
 
@@ -49,18 +59,38 @@ def d(address):
     return struct.unpack('<I', original.data(address, 4))[0]
 
 
-def build(source, name, extra=()):
+def build(source, name, extra=(), pre=()):
     OUT.mkdir(parents=True, exist_ok=True)
     obj = OUT / (name + '.obj')
-    code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags() + list(extra) + ['/Fo' + str(obj), str(source)], OUT)
+    code, log = rebuild.run(rebuild.toolchain(21022), 'cl', list(pre) + flags() + list(extra) +
+                            ['/Fo' + str(obj), str(source)], OUT)
     assert code == 0, log
     return obj
 
 
 # The atomic unit needs /fp:fast: tonumberClamped 0061c830 returns its double as float with no rounding store, which
 # /fp:precise emits (162 bytes against 142); every other atomic row is byte-identical under both profiles.
-UNIT_FLAGS = {'instance': [], 'atomic': ['/fp:fast'], 'signal': []}
+UNIT_FLAGS = {'instance': [], 'atomic': ['/fp:fast'], 'signal': [], 'enum': []}
 OBJ = {k: build(v, 'NativeLuaBridge2008' + k.capitalize(), UNIT_FLAGS[k]) for k, v in UNITS.items()}
+
+# ---- pending build (enum unit only): a generated copy of the read-only native reflection/enumconverter.h with the
+# proposed public EnumDescriptor::lookupDescriptor(const Name&) (no shared header is edited). Rows exact only there are
+# recorded exact=false (pending-build-only) and are not counted; vtable slots are never read from this object.
+ENUM_ANCHOR = ('\t\tpublic:\n\t\t\tstatic std::vector<const EnumDescriptor*>::const_iterator enumsBegin()\n')
+ENUM_PROPOSED = ('\t\tpublic:\n'
+                 '\t\t\tstatic const EnumDescriptor* lookupDescriptor(const Name& name)\n'
+                 '\t\t\t{\n'
+                 '\t\t\t\tstd::map<const Name*, const EnumDescriptor*>::const_iterator iter = allEnumsByName().find(&name);\n'
+                 '\t\t\t\tif (iter != allEnumsByName().end())\n'
+                 '\t\t\t\t\treturn iter->second;\n'
+                 '\t\t\t\treturn NULL;\n'
+                 '\t\t\t}\n')
+_ec = ENUMCONVERTER_H.read_text()
+assert _ec.count(ENUM_ANCHOR) == 1 and 'lookupDescriptor' not in _ec
+(PENDING / 'reflection').mkdir(parents=True, exist_ok=True)
+(PENDING / 'reflection/enumconverter.h').write_text(_ec.replace(ENUM_ANCHOR, ENUM_PROPOSED + ENUM_ANCHOR))
+PENDING_OBJ = {'enum_pending': build(UNITS['enum'], 'NativeLuaBridge2008EnumPending', ['/DNATIVE_LUABRIDGE_PENDING'],
+                                     ['/I' + str(PENDING)])}
 LIBS = []
 ATLS_INDEX = {}
 
@@ -69,6 +99,9 @@ CF = 'CoordinateFrame@G3D@@'
 CFB = '@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z'
 TGSW = 'TGenericSlotWrapper@'
 V3B = '@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z'
+ENUMS = 'PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@'
+ENUMD = 'PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@'
+ENUMI = 'PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@'
 ROWS = {
     'instance': [
         (0x0061a420, '?newweaktable@Lua@RBX@@YAXPAUlua_State@@PBD@Z'),
@@ -80,6 +113,15 @@ ROWS = {
         (0x0061bb30, '?findSignal@DescribedBase@Reflection@RBX@@QAE?AVIterator@?$MemberDescriptorContainer@VSignalDescriptor'
                      '@Reflection@RBX@@@23@ABVName@3@@Z'),
         (0x0061bb70, '?newInstance@ObjectBridge@Lua@RBX@@SAHPAUlua_State@@@Z'),
+        # pass 3: template instances whose callers are the pending property paths, explicitly instantiated.
+        (0x0061a470, '??$getValue@PBVItem@EnumDescriptor@Reflection@RBX@@@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@'
+                     '$0A@@Lua@RBX@@SA_NPAUlua_State@@IAAPBVItem@EnumDescriptor@Reflection@2@@Z'),
+        (0x0061a560, '??$getValue@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VDescribedBase'
+                     '@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SA_NPAUlua_State@@IAAV?$shared_ptr@VDescribedBase@Reflection'
+                     '@RBX@@@boost@@@Z'),
+        (0x0061a720, '??$getPtr@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$SharedPtrBridge@VDescribedBase@Reflection'
+                     '@RBX@@@Lua@RBX@@SA_NPAUlua_State@@IAAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z'),
+        (0x0061a7b0, '?getValue@?$TypedPropertyDescriptor@VContentId@RBX@@@Reflection@RBX@@QBE?AVContentId@3@PBVDescribedBase@23@@Z'),
     ],
     'atomic': [
         (0x0061c6f0, '??H' + CF + 'QBE?AV01@ABVVector3@1@@Z'),
@@ -126,6 +168,9 @@ ROWS = {
         (0x0061e690, '?on_index@?$Bridge@V' + CF + '$00@Lua@RBX@@KAHABV' + CF + 'PBDPAUlua_State@@@Z'),
         (0x0061ec30, '??$getValue@V' + CF + '@?$Bridge@V' + CF + '$00@Lua@RBX@@SA_NPAUlua_State@@IAAV' + CF + '@Z'),
         (0x0061ecc0, '?on_mul' + CFB),
+        # pass 3: the generic on_newindex body, ICF-folded across T (emitted through the explicit Color3 wrapper
+        # instantiation; the symbol is a codegen analog of the folded body).
+        (0x0061ca00, '?on_newindex@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAXAAVColor3@G3D@@PBDPAUlua_State@@@Z'),
     ],
     'signal': [
         (0x0061f180, '??$pushNewObject@Vconnection@signals@boost@@@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@'
@@ -170,9 +215,26 @@ ROWS = {
         (0x00620620, '?connect@SignalBridge@Lua@RBX@@SAHPAUlua_State@@@Z'),
         (0x00620760, '?on_index@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHABV?$shared_ptr'
                      '@VSignalInstance@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z'),
+        # pass 3: emitted through the explicit __newindex wrapper instantiation (evidence name, score 100).
+        (0x0061f220, '?on_newindex@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAXAAV?$'
+                     'shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z'),
+    ],
+    'enum': [
+        (0x0061edb0, '?on_newindex@?$Bridge@' + ENUMS + 'KAXAAPBVAllEnumDescriptors@23@PBDPAUlua_State@@@Z'),
+        (0x0061ee00, '?on_newindex@?$Bridge@' + ENUMD + 'KAXAAPBVEnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z'),
+        (0x0061ee50, '?on_index@?$Bridge@' + ENUMI + 'KAHABQBVItem@EnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z'),
+        (0x0061ef70, '?on_newindex@?$Bridge@' + ENUMI + 'KAXAAPBVItem@EnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z'),
+        (0x0061efc0, '?on_index@?$Bridge@' + ENUMD + 'KAHABQBVEnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z'),
+        (0x0061f050, '?declareAllEnums@Enums@Lua@RBX@@SAXPAUlua_State@@@Z'),
     ],
 }
-PENDING_ROWS = {}
+PENDING_ROWS = {
+    # Byte-exact only against the generated enumconverter.h copy (EnumDescriptor::lookupDescriptor proposal).
+    'enum_pending': [
+        (0x0061f080, '?lookupDescriptor@EnumDescriptor@Reflection@RBX@@SAPBV123@ABVName@3@@Z'),
+        (0x0061f0f0, '?on_index@?$Bridge@' + ENUMS + 'KAHABQBVAllEnumDescriptors@23@PBDPAUlua_State@@@Z'),
+    ],
+}
 HELPERS = {}
 
 # Bridge<T>::className statics: constant-initialized pointers; the string each one names is read from the image.
@@ -182,6 +244,8 @@ CLASSNAMES = {
     'VBrickColor@RBX@@$00': (0x0095b1c4, 'BrickColor'), 'VCoordinateFrame@G3D@@$00': (0x0095b1c8, 'CFrame'),
     'V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@': (0x0095b1e4, 'RBXScriptSignal'),
     'Vconnection@signals@boost@@$00': (0x0095b1e8, 'RBXScriptConnection'),
+    'PBVAllEnumDescriptors@Lua@RBX@@$0A@': (0x0095b1d4, 'Enums'), 'PBVEnumDescriptor@Reflection@RBX@@$0A@': (0x0095b1d8, 'Enum'),
+    'PBVItem@EnumDescriptor@Reflection@RBX@@$0A@': (0x0095b1dc, 'EnumItem'),
 }
 EXTERNAL = {
     # G3D::format (record_native_network_player.py / record_native_lua_args.py bind it to 00509b10).
@@ -221,7 +285,15 @@ EXTERNAL = {
     '?lookAt@CoordinateFrame@G3D@@QAEXABVVector3@2@@Z': 0x00518e20,
     # G3D Matrix3(const Quat&) 00513aa0 (server-verified library match g3d-6.09-rbx2008 G3Dcpp/Matrix3.cpp).
     '??0Matrix3@G3D@@QAE@ABVQuat@1@@Z': 0x00513aa0,
+    # EnumDescriptor::allEnumsByName() 0056c520 (EnumDescriptor unit; used only by the pending-build rows 0061f080):
+    # returns its function-local static map 00974b34 (guard bit 00974b54, constructed in place, atexit 007fd200);
+    # its other caller 0056c621 is in the EnumDescriptor unit. The bytes are checked below; no other receipt binds it.
+    '?allEnumsByName@EnumDescriptor@Reflection@RBX@@CAAAV?$map@PBVName@RBX@@PBVEnumDescriptor@Reflection@2@U?$less@PBVName'
+    '@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVEnumDescriptor@Reflection@2@@std@@@6@@std@@XZ': 0x0056c520,
 }
+_aebn = match.target('2008-06', '0056c520')[0]
+assert b'\xb9' + struct.pack('<I', 0x00974b34) in _aebn and b'\xb8' + struct.pack('<I', 0x00974b34) in _aebn and \
+    struct.pack('<I', 0x00974b54) in _aebn
 assert original.data(0x0047d410, 1) == b'\xc3'
 DATA = {
     # G3D::Vector3::zero() function-local static and its init guard (record_native_world_shapes.py /
@@ -236,6 +308,10 @@ DATA = {
     # ??__E?syncSingleton@ThreadRef@Lua@RBX@@..., unique) stores the new mutex pointer to 00975c6c and builds the count
     # at +4 (checked below from the initializer's bytes).
     '?syncSingleton@ThreadRef@Lua@RBX@@0V?$shared_ptr@Vmutex@boost@@@boost@@A': 0x00975c6c,
+    # The file-static AllEnumDescriptors object of the enum unit (Lua's global "Enum"), pushed by declareAllEnums
+    # 0061f050: zero-initialized .data (beyond the section's raw size) whose only image reference is that push
+    # (operand 0061f061; checked below over .text, .rdata and .data).
+    '_allEnumDescriptors': 0x0097bf5c,
 }
 _init = '??__E?syncSingleton@ThreadRef@Lua@RBX@@0V?$shared_ptr@Vmutex@boost@@@boost@@A@@YAXXZ'
 _body = match.target('2008-06', '007f4110')[0]
@@ -269,6 +345,25 @@ def _type_info_root():
 
 
 _type_info_root()
+
+
+def _all_enum_descriptors():
+    pe = original.pe
+    hits = []
+    for sec in pe.sections:
+        if sec.Name.rstrip(b'\0') in (b'.text', b'.rdata', b'.data'):
+            raw, va = sec.get_data(), pe.OPTIONAL_HEADER.ImageBase + sec.VirtualAddress
+            at = raw.find(struct.pack('<I', 0x0097bf5c))
+            while at >= 0:
+                hits.append(va + at)
+                at = raw.find(struct.pack('<I', 0x0097bf5c), at + 1)
+        if sec.Name.rstrip(b'\0') == b'.data':
+            lo = pe.OPTIONAL_HEADER.ImageBase + sec.VirtualAddress
+            assert lo + sec.SizeOfRawData <= 0x0097bf5c < lo + sec.Misc_VirtualSize
+    assert hits == [0x0061f061], [hex(h) for h in hits]
+
+
+_all_enum_descriptors()
 for key, (address, text) in CLASSNAMES.items():
     assert original.string(d(address)) == text, (key, hex(address), original.string(d(address)))
 
@@ -295,7 +390,7 @@ own = {}
 for addr, sym in all_rows:
     assert sym not in own, ('one address per symbol', sym)
     own[sym] = first(addr)
-pending_addrs = set()
+pending_addrs = {first(a) for v in PENDING_ROWS.values() for a, _ in v}
 binding = {}
 OWN_ADDRS = {first(a) for k in ROWS for a, _ in ROWS[k]}
 
@@ -533,6 +628,11 @@ def verify_rows(obj, rows, exact_flag):
 
 
 results = {k: verify(OBJ[k], v, True) for k, v in ROWS.items()}
+results.update({k: verify(PENDING_OBJ[k], v, False) for k, v in PENDING_ROWS.items()})
+# A counted row may not depend on a pending-only row.
+for _k in ROWS:
+    for _r in results[_k]:
+        assert not any('pending-build-only' in v for v in _r['verified_targets'].values()), (_r['address'], _r['verified_targets'])
 
 
 # ---- vtables of the current-header objects ------------------------------------------------------------------
@@ -615,21 +715,28 @@ in_range = sorted(a for a in listed if LO <= int(a, 16) < HI)
 exact = sorted({r['address'] for k in ROWS for r in results[k]})
 instances_in_range = sorted({v['address'] for v in INSTANCES.values() if LO <= int(v['address'], 16) < HI} - set(exact))
 NOT_EXACT = {
-    '0061f220': 'Bridge<shared_ptr<SignalInstance>>::on_newindex(T&, name, L) (evidence name, score 100): the explicit '
-                'specialization in LuaBridge2008Signal.cpp is not emitted by this build (the generic member is defined '
-                'in the class body of the read-only lua/LuaBridge.h); 2008 emits it here (not counted)',
-    '0061ca00': 'Bridge<T>::on_newindex(T&, name, L) generic body (ICF-folded across T, called from ScriptContext '
-                '005a9543..): not instantiated by this unit (not counted)',
-    '0061edb0..0061f0f0': 'enum bridges (Enums / Enum / EnumItem, classNames 0095b1d4..0095b1dc): a separate unit '
-                          'with no donor source; not built in this pass',
-    '0061a470..0061a9a0 / 0061abe0 / 0061b190 / 0061ba10 / 0061bcd0..0061c2c0': 'instance-bridge property push / set '
-                'paths and their Reflection getValue/setValue instances: need NATIVE_LUABRIDGE_PENDING (Instances '
-                'typedef / setParent2 in v8tree/Instance.h); 0061bcd0 is 201 B against 202 B from the read-only '
-                'MemberDescriptorContainer::findDescriptor',
+    '0061f080 / 0061f0f0': 'EnumDescriptor::lookupDescriptor(const Name&) and Enums on_index: byte-exact only in the '
+                           'pending build (generated enumconverter.h copy; allEnumsByName() 0056c520 is private in the '
+                           'read-only native header): pending-build-only, not counted',
+    '0061a600..0061a6c0 / 0061a7e0..0061aa60': 'Reflection property getValue/setValue forwarders (dynamic_cast<Class&> '
+                'then the getset slot), called only from the pending property paths 0061abe0 / 0061b190; the class '
+                'type descriptors (e.g. 009303c0 / 0095af78) are not identified yet',
+    '0061abe0 / 0061b190 / 0061bcd0..0061c2c0': 'instance-bridge property push / set paths: need NATIVE_LUABRIDGE_PENDING '
+                '(Instances typedef / setParent2 in v8tree/Instance.h); 0061bcd0 is 201 B against 202 B from the '
+                'read-only MemberDescriptorContainer::findDescriptor',
+    '0061ba10': 'MemberDescriptorContainer<SignalDescriptor>::findDescriptor (ICF-folded, called from 9 sites in other '
+                'units): not emitted by this build',
+    '0061a5f0 / 0061bcb0': 'LuaArguments::size / get: 2008 layout offset +0xc, L +0x10, and get() calls the 4-argument '
+                           'static LuaArguments::get 005ad380 (ScriptContext unit, no evidence name); the donor '
+                           'script/LuaArguments.h needs Instances and differs (not built)',
     '00620970 / 006209d0': 'checked_delete<ThreadRef> / shared_count<ThreadRef*> instances referenced from the '
                            'ThreadRef/YieldingThreads unit (00620a42, 00620d21), not from the signal bridge',
     '00620990': 'copy of a {shared_ptr, double, double} value called from 0062120e / 006212b4 (YieldingThreads unit)',
-    '00620a60..006217d0': 'ThreadRef/YieldingThreads unit (YieldingThreads ctor 00621330): not built in this pass',
+    '00620a60..006217d0': 'ThreadRef/YieldingThreads unit (YieldingThreads ctor 00621330): blocked by the read-only donor '
+                          'script/ScriptEvent.h, which native script/ScriptContext.h includes: 2008 WaitingThread is '
+                          '{shared_ptr<ThreadRef>, double, double} (0x18 B: vector stride /24 in push_back 00621440, '
+                          'fld qword in queueWaiter 006214e0) and queueWaiter takes double (006217d0 pushes fldz as a '
+                          'qword) where the donor has float; see proposals',
     '00620910': 'std::_Allocate<map<const Name*, const ICreator*> node>: counted by scorehud-leaderboard-working.json',
     '0061f60e': 'catch funclet of shared_count<connection> 0061f5a0, compared as part of that row (not counted separately)',
     '00620344 / 00620357 / 00620422': 'pieces of TGenericSlotWrapper<FunctionScriptSlot / WaitScriptSlot>::execute '
@@ -637,15 +744,15 @@ NOT_EXACT = {
     '00620a3e': 'catch funclet of the shared_count<ThreadRef*> instance 006209d0',
 }
 receipt = {
-    'family': 'LuaBridge2008 (RBX::Lua instance / atomic / signal bridges, 2008-06)',
+    'family': 'LuaBridge2008 (RBX::Lua instance / atomic / enum / signal bridges, 2008-06)',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'flags': flags(), 'unit_flags': UNIT_FLAGS,
     'profile': 'document-swap flags (atomic unit + /fp:fast)',
     'original_sha256': sha(original.path),
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in
                 [Path(__file__).resolve(), ROOT / 'rebuild/2008-06/tests/native_bind.py', BRIDGE_H, SIGNAL_H,
-                 INSTANCE_H] +
+                 INSTANCE_H, ENUM_H, PENDING / 'reflection/enumconverter.h'] +
                 list(UNITS.values())},
-    'objects': {k: sha(v) for k, v in OBJ.items()},
+    'objects': dict([(k, sha(v)) for k, v in OBJ.items()] + [(k, sha(v)) for k, v in PENDING_OBJ.items()]),
     'boundary': {
         'range': '0061a420..006217e2 (functions listed 0061a420 <= addr < 006217f0: %d)' % len(in_range),
         'before': '0061a090..0061a3f0 boost thread tss_hooks unit (0061a3f0 TLS callback: DLL_PROCESS_DETACH -> '
@@ -685,7 +792,7 @@ receipt = {
     },
     'methods': results, 'instances': INSTANCES, 'exact': exact, 'exact_count': len(exact),
     'instances_in_range_not_counted': instances_in_range,
-    'pending_build_only': [],
+    'pending_build_only': sorted({r['address'] for k in PENDING_ROWS for r in results[k]}),
     'not_exact': NOT_EXACT,
     'left': sorted(set(in_range) - set(exact) - set(instances_in_range) - {'0061f60e', '00620344', '00620357', '00620422'}),
     'bounds_evidence': ['0061f5a0 shared_count<boost::signals::connection> ctor: 131 bytes (listed 110) including its catch '
@@ -700,11 +807,27 @@ receipt = {
         'namespace RBX and `void setParent2(boost::shared_ptr<Instance>)` (shape from the donor). Needed by the '
         'Instances branch of the property push 0061abe0 / LuaArguments::push and by ObjectBridge::on_newindex; '
         'guarded with NATIVE_LUABRIDGE_PENDING in native-classes/LuaBridge2008Instance.cpp; no row depends on it yet.',
+        'native-headers/reflection/enumconverter.h (owner): add to EnumDescriptor, public: `static const EnumDescriptor* '
+        'lookupDescriptor(const Name& name) { std::map<const Name*, const EnumDescriptor*>::const_iterator iter = '
+        'allEnumsByName().find(&name); if (iter != allEnumsByName().end()) return iter->second; return NULL; }` '
+        '(name provisional). Evidence: 0061f080 (110 B, called only from the Enums __index body 0061f0f0 after '
+        'Name::lookup 00554290) calls allEnumsByName 0056c520 twice and the ICF-folded map find 00451600, copying the '
+        'returned iterator before the end() compare (hence const_iterator); 0061f080 and 0061f0f0 are byte-exact against '
+        'the generated out/native-layouts/lua-bridge2008-pending/reflection/enumconverter.h (pending-build-only).',
+        'native-headers/script/ScriptContext.h (owner; it includes the donor script/ScriptEvent.h): a native 2008 '
+        'ScriptEvent.h (or YieldingThreads declaration) with `struct WaitingThread { boost::shared_ptr<ThreadRef> thread; '
+        'double requestedDelay; double elapsedTime; WaitingThread(lua_State*, double); }` and `void queueWaiter(lua_State*, '
+        'double)`. Evidence: element stride 0x18 (imul 0x2aaaaaab / sar 2 in push_back 00621440), queueWaiter 006214e0 '
+        'reads its delay with fld qword [esp+0x30] and stores yieldCaptured at RobloxExtraSpace+8 (L-0xc), '
+        'queueWaiter(L) 006217d0 pushes fldz as a qword, the WaitingThread ctor 00620cd0 news the ThreadRef (0x20, '
+        'ThreadRef(lua_State*) 00593e40). The YieldingThreads unit 00620a60..006217d0 cannot be built here until then.',
     ],
-    'scope': 'Inactive. Exact rows with every call/data target verified; no pending build, no active build, swap or '
+    'scope': 'Inactive. Exact rows with every call/data target verified; the enum-unit pending build (generated '
+             'enumconverter.h copy) only records pending-build-only rows, which are not counted; no active build, swap or '
              'credit. Lua library functions are external targets bound by address (offline evidence names).',
 }
 (ROOT / 'work/2008-06/shared-layouts/lua-bridge2008-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS native lua bridge2008: %d exact (%s), %d vtables checked, %d instances (%d in range, not counted), '
       '%d of %d range functions left' % (len(exact), ' '.join(exact), len(vtables), len(INSTANCES),
-                                         len(instances_in_range), len(receipt['left']), len(in_range)))
+                                         len(instances_in_range), len(receipt['left']), len(in_range)) +
+      '; %d pending-build-only (%s)' % (len(receipt['pending_build_only']), ' '.join(receipt['pending_build_only'])))
