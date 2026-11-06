@@ -1,16 +1,24 @@
-// from server: 31% by colin
-struct CRobloxReportPaneView
-{
-    char pad[0x318];
-    int field_318;
-    void sub_00455ab0();
-    ~CRobloxReportPaneView();
+// from server: 40% by Intel
+
+
+
+
+struct CRobloxReportPaneView;
+
+void __stdcall sub_4073F0(void* thisptr);
+void __stdcall sub_455AB0(void* thisptr);
+
+struct CRobloxReportPaneView {
+    void func_00455C80();
 };
 
-extern "C" void __stdcall sub_004073f0(int* p);
-
-CRobloxReportPaneView::~CRobloxReportPaneView()
+void CRobloxReportPaneView::func_00455C80()
 {
-    sub_004073f0(&field_318);
-    sub_00455ab0();
+    CRobloxReportPaneView* esi = this;
+    if (esi != 0) {
+        sub_4073F0(reinterpret_cast<char*>(esi) + 0x318);
+    } else {
+        sub_4073F0(0);
+    }
+    sub_455AB0(esi);
 }
