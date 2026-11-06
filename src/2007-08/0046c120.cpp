@@ -1,20 +1,19 @@
-// from server: 46% by colin
-struct RBX_LDrawParser {
-    int field0;
-    char pad[0x20];
+// from server: 53% by Intel
+struct LDrawParser {
+    void* vftable;
+    char gap4[32];
     int field24;
     int field28;
-    int field2c;
-    RBX_LDrawParser(const char*);
+    int field2C;
+    LDrawParser(const char* name);
 };
 
-extern "C" __declspec(dllimport) void* __stdcall MSVCP80_basic_string_ctor(void*, const char*);
+extern "C" void __stdcall std_string_ctor(void* thisptr, const char* str);
 
-RBX_LDrawParser::RBX_LDrawParser(const char* s)
-{
-    field0 = 0x796370;
-    MSVCP80_basic_string_ctor((char*)this + 4, s);
+LDrawParser::LDrawParser(const char* name) {
+    vftable = (void*)0x796370;
+    std_string_ctor(this + 4, name);
     field24 = 0;
     field28 = 0;
-    field2c = 0;
+    field2C = 0;
 }
