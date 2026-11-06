@@ -121,62 +121,19 @@
       "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewPart_part.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewPart.cpp"
-    ],
-    "pending": [
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/fp:fast",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/viewnew-part-pending",
-      "/DNATIVE_VIEWNEW_PART_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewPart_pending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewPart.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_viewnew_part.py": "476482637e7e102090a4fe7edf43bc923418bd2322a0c0ea8297098d30a2af4a",
+    "rebuild/2008-06/tests/record_native_viewnew_part.py": "49a997e8996f0c93776321a58ee97f02c29745d800119fceb67c343a8b043aca",
     "rebuild/2008-06/tests/NativeViewNewPartLayout.cpp": "de93f5edddf5e6309de0c500d2bb32a229c55378010acbde1c2d0d5b074765b5",
     "rebuild/2008-06/native-headers/ViewNew/PartChunk.h": "80fe20d84114cb06be66fd8dd3d3c2c67b537e34f166fbe0015eab932558c08d",
     "rebuild/2008-06/native-classes/ViewNewPartChunk.cpp": "3183b1720180e215e0bda4cac830f61da4ec51b44f96812c0e4e22dde5c7032f",
-    "rebuild/2008-06/native-classes/ViewNewPart.cpp": "58dac8572b22e94a861c26743f8210cb0e0d467509bbdf75a31f5fd462f7adbb"
+    "rebuild/2008-06/native-classes/ViewNewPart.cpp": "728c41aa0b2b3fb8a2b6676fb50a5d1bcf5cf70759f6184c80e9e61b1f074db3"
   },
   "objects": {
-    "NativeViewNewPartLayout.obj": "a6bfdb1929749e0ac96114d338dfbe41fd7f99bb078e97b54b70ec2fd7c30cca",
-    "NativeViewNewPart_chunk.obj": "3fe9e816423c446902eb4a62e0f3acf3efdeb2da293269d4844f8e618b655955",
-    "NativeViewNewPart_part.obj": "9ca88cf0cee1c5dc500c0ed4c6cb8159c01c256e291bc75e00ef7688897f1693",
-    "NativeViewNewPart_pending.obj": "be45ab34e498f44e198f95b8bff106939bddda42c329498a8ac5d89df18a7d4a"
+    "NativeViewNewPartLayout.obj": "5f23e75b6f7e98e0e813b9e21204de6f6241f72bb4b7b328dd462940f650f3e8",
+    "NativeViewNewPart_chunk.obj": "19886aa564a0587226f1cda27aebf69d68694ffece58845065dc6e581484b5a7",
+    "NativeViewNewPart_part.obj": "a2e6cbc743ec96fa474dd8a9a93c2f1703a56f2b966b586b5ae6418ff3bf1423"
   },
   "layout": {
     "partChunkSize": "0xd8",
@@ -522,15 +479,13 @@
           "?invalidateMesh@PartChunk@ViewNew@RBX@@IAEXXZ": "0x4e6740 (external)"
         },
         "local": []
-      }
-    ],
-    "pending_or_not_exact": [
+      },
       {
         "address": "004e6b90",
         "symbol": "?onDecalPropertyChanged@Decal@ViewNew@RBX@@IAEXPBVPropertyDescriptor@Reflection@3@@Z",
         "size": 48,
         "target_size": 48,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "?prop_Face@FaceInstance@RBX@@2V?$EnumPropDescriptor@VFaceInstance@RBX@@W4NormalId@2@@Reflection@2@B": "0x97b57c (descriptor (initializer checked))",
           "?invalidateMesh@PartChunk@ViewNew@RBX@@IAEXXZ": "0x4e6740 (external)",
@@ -539,18 +494,17 @@
           "?prop_Shiny@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B": "0x975f30 (descriptor (initializer checked))",
           "?invalidateMaterial@PartChunk@ViewNew@RBX@@IAEXXZ": "0x4e68b0 (external)"
         },
-        "local": [],
-        "exact_in_pending_build": true,
-        "reason": "pending-build-only: needs a native v8datamodel/Decal.h (char sDecal[] / sTexture[]); built with a generated copy under out/native-layouts/viewnew-part-pending"
-      },
+        "local": []
+      }
+    ],
+    "pending_or_not_exact": [
       {
         "address": "004e6bc0",
         "symbol": "?onTexturePropertyChanged@Texture@ViewNew@RBX@@IAEXPBVPropertyDescriptor@Reflection@3@@Z",
         "size": 62,
         "target_size": 62,
         "exact": false,
-        "exact_in_pending_build": false,
-        "reason": "block order: the original places the invalidateMaterial block before the StudsPerTileU/V compares (Face / StudsPerTile share the invalidateMesh tail); else-if chain, early returns, goto and a combined condition were tried"
+        "reason": "block order: the original places the invalidateMaterial block before the StudsPerTileU/V compares (Face / StudsPerTile share the invalidateMesh tail); else-if chain, early returns, goto, a combined condition and two separate StudsPerTileU / StudsPerTileV else-if statements were tried"
       }
     ]
   },
@@ -560,6 +514,7 @@
     "004e63a0",
     "004e6b00",
     "004e6b50",
+    "004e6b90",
     "004e70c0",
     "004e7100",
     "004e7160",
@@ -944,7 +899,6 @@
     ]
   },
   "proposals": {
-    "v8datamodel/Decal.h (native, owner: Decal/FaceInstance owner)": "declare `extern char sDecal[];` / `extern char sTexture[];` and derive from DescribedCreatable<Decal, FaceInstance, sDecal> / <Texture, Decal, sTexture> (RTTI $1?sDecal@2@3PADA / $1?sTexture@2@3PADA); the donor header passes &sDecal (const char*) and does not compile with the native reflection templates. With it, Decal::onDecalPropertyChanged 004e6b90 is exact (pending build).",
     "v8datamodel/PartInstance.h (native, owner: PartInstance)": "PartChunk::invalidateMesh 004e6740 / invalidateMaterial 004e68b0 / onPropertyChanged 004e6a30 and Part::onEvent / ctor read PartInstance +0x1c8 (int compared with 0: the aggregate / sleeping state passed to SceneManager::invalidateModel and setSleeping), +0x224 (float, slot 8 setSortValue argument) and +0x1dc (int == 1 in usesMegaTexture 004e5f80, presumably the part type). The Notifier<PartInstance, CanAggregateChanged> base is at +0x1a0 (~Part 004ea3e0), which the current header already yields.",
     "PartInstance.h include chain (owner: PartInstance / util)": "v8datamodel/PartInstance.h reaches the donor RbxGraphics/TextureProxyBase.h through util/IRenderable.h, so a unit cannot include both PartInstance.h and RenderLib/Material2008.h (TextureProxyBase2008.h). That is why ~PartChunk (needs the complete MaterialBase) and cframe / ~Part (need PartInstance) sit in two units.",
     "view type (owner: render scene views, RenderLib/View*2008.h)": "PartChunk stores the view at +0xd0 and calls view+4 -> SceneManager slot 1 addModel (ctor 004eaae0), slot 4 setSleeping (Part ctor 004ebcc0), slot 0 invalidateModel (004e6740) and slot 2 (Decal ancestor 004e83b0). ViewRbxGfx / ViewG3D (RTTI base RBX::ViewBase only) both pass `this` unadjusted and both store the scene manager at +4 (ViewRbxGfx ctor 004d9ac3). A 2008 declaration of that view member unblocks the four ctors."

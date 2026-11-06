@@ -1,14 +1,11 @@
 // 2008-06 native RBX::ViewNew::Part / PartChunk bodies that need the complete PartInstance (inactive): cframe,
-// ~Part and Part's invalidate slot. Bodies that read PartInstance fields (+0x1c8 / +0x1dc / +0x224) or the view's
+// ~Part, Part's invalidate slot and the Decal / Texture property handlers (Texture's 004e6bc0 is a block-order
+// near-miss: recorded, not counted). Bodies that read PartInstance fields (+0x1c8 / +0x1dc / +0x224) or the view's
 // scene manager are not built; see native-headers/ViewNew/PartChunk.h.
 #include "ViewNew/PartChunk.h"
 #include "v8datamodel/PartInstance.h"
-#ifdef NATIVE_VIEWNEW_PART_PENDING
-// Pending: the donor v8datamodel/Decal.h passes &sDecal / &sTexture (const char*) to DescribedCreatable, which does
-// not compile against the native reflection templates; the 2008 names are char arrays (RTTI $1?sDecal@2@3PADA).
-// The recorder verifies these bodies against a generated copy under out/ (see tests/record_native_viewnew_part.py).
+// Native v8datamodel/Decal.h: the 2008 class names are char arrays (RTTI $1?sDecal@2@3PADA / $1?sTexture@2@3PADA).
 #include "v8datamodel/Decal.h"
-#endif
 
 namespace RBX
 {
@@ -49,8 +46,7 @@ namespace RBX
 			invalidateMaterial();
 			invalidateMesh();
 		}
-	
-#ifdef NATIVE_VIEWNEW_PART_PENDING
+
 		// FaceInstance::prop_Face 0097b57c ("Face"), Decal::prop_Texture 00975f14 / prop_Specular 00975ef8 /
 		// prop_Shiny 00975f30, Texture::prop_StudsPerTileU 00975f68 / prop_StudsPerTileV 00975f4c (initializers
 		// 007f7600 and 007f4190..007f4290 name them).
@@ -71,6 +67,5 @@ namespace RBX
 			else if (*descriptor == RBX::Texture::prop_StudsPerTileU || *descriptor == RBX::Texture::prop_StudsPerTileV)
 				invalidateMesh();
 		}
-#endif
 	}
 }

@@ -7,18 +7,17 @@ counterpart, so it shadows nothing):
                                            boost::function managers / Decal invokers of the constructor slots
                                            (needs RenderLib/Material2008.h, hence the Ogre 1.4.5 include path);
   * native-classes/ViewNewPart.cpp         PartChunk::cframe, ~Part (+ ??_G, Listener thunk), Part::onPropertyChanged,
-                                           Part::invalidate (native v8datamodel/PartInstance.h);
-  * the same ViewNewPart.cpp with NATIVE_VIEWNEW_PART_PENDING and a generated v8datamodel/Decal.h under
-    out/native-layouts/viewnew-part-pending (the donor header passes &sDecal; 2008 mangles sDecal as char[]):
-    Decal::onDecalPropertyChanged / Texture::onTexturePropertyChanged. Rows of that build are recorded with
-    exact=false (pending-build-only) and are never counted.
+                                           Part::invalidate (native v8datamodel/PartInstance.h),
+                                           Decal::onDecalPropertyChanged and Texture::onTexturePropertyChanged
+                                           (native v8datamodel/Decal.h, char sDecal[] / sTexture[]). Texture's row is a
+                                           block-order near-miss: recorded exact=false, never counted.
 
 Every counted row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the
 address the original instruction uses and verified: imports by DLL export name, type descriptors and vtables by
 original RTTI names, own symbols by the row proven here, folded inline bodies by their bytes at the folded address,
 reflection descriptors by the initializer that constructs them with their name string, and the remaining externals by
 the explicit EXTERNAL map (call sites read in the original disassembly). A symbol binds to one address across rows.
-Vtables are compared slot by slot from the objects built with the current headers (never the pending build).
+Vtables are compared slot by slot from the objects built with the current headers.
 Writes work/2008-06/shared-layouts/viewnew-part-working.json. NATIVE_VIEWNEW_PART_DISCOVER=1 lists unbound targets.
 """
 import json
@@ -45,19 +44,6 @@ UNITS = {
 HEADER = R / 'native-headers/ViewNew/PartChunk.h'
 DISCOVER = bool(os.environ.get('NATIVE_VIEWNEW_PART_DISCOVER'))
 
-# Pending: a generated copy of the donor v8datamodel/Decal.h with the 2008 class-name arrays (RTTI
-# .?AVCreator@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ -> `char sDecal[]`).
-PENDING_DIR = OUT / 'viewnew-part-pending'
-DONOR_DECAL = ROOT / 'tools/rbxgs/Client/App/include/v8datamodel/Decal.h'
-text = DONOR_DECAL.read_text()
-for old, new in (('extern const char* sDecal;', 'extern char sDecal[];'), ('extern const char* sTexture;', 'extern char sTexture[];'),
-                 ('&sDecal>', 'sDecal>'), ('&sTexture>', 'sTexture>')):
-    assert old in text, old
-    text = text.replace(old, new)
-(PENDING_DIR / 'v8datamodel').mkdir(parents=True, exist_ok=True)
-(PENDING_DIR / 'v8datamodel/Decal.h').write_text(text)
-
-
 def build(name, src, extra=()):
     obj = OUT / (name + '.obj')
     flags = nb.flags()
@@ -72,8 +58,6 @@ layout_obj, layout_flags = build('NativeViewNewPartLayout', LAYOUT, ['/fp:fast']
 OBJ, FLAGS = {}, {'layout': layout_flags}
 for key, src in UNITS.items():
     OBJ[key], FLAGS[key] = build('NativeViewNewPart_' + key, src, ['/fp:fast'])
-OBJ['pending'], FLAGS['pending'] = build('NativeViewNewPart_pending', UNITS['part'],
-                                         ['/fp:fast', '/I' + str(PENDING_DIR), '/DNATIVE_VIEWNEW_PART_PENDING'])
 
 # ---- layout -------------------------------------------------------------------------------------------------------
 # Evidence: PartChunk ctor 004eaae0 (stores +0x28 .. +0xd4, see the header), Part ctor 004ebcc0 (+0xd8 vptr, +0xdc),
@@ -195,17 +179,16 @@ PART_ROWS = [
     (0x4ea460, '??_EPart@ViewNew@RBX@@WNI@AEPAXI@Z'),      # Listener-base thunk (sub ecx, 0xd8; jmp)
     (0x4e6b00, '?onPropertyChanged@Part@ViewNew@RBX@@MAEX' + PD + 'Z'),
     (0x4e73a0, '?invalidate@Part@ViewNew@RBX@@AAEXXZ'),
-]
-PENDING_ROWS = [
     (0x4e6b90, '?onDecalPropertyChanged@Decal@ViewNew@RBX@@IAEX' + PD + 'Z'),
+]
+# Built from the same part unit with the current headers; counted only when exact.
+NEAR_ROWS = [
     (0x4e6bc0, '?onTexturePropertyChanged@Texture@ViewNew@RBX@@IAEX' + PD + 'Z'),
 ]
-PENDING_REASON = ('pending-build-only: needs a native v8datamodel/Decal.h (char sDecal[] / sTexture[]); built with a '
-                  'generated copy under out/native-layouts/viewnew-part-pending')
 NON_EXACT_REASON = {
     '004e6bc0': 'block order: the original places the invalidateMaterial block before the StudsPerTileU/V compares '
-                '(Face / StudsPerTile share the invalidateMesh tail); else-if chain, early returns, goto and a combined '
-                'condition were tried',
+                '(Face / StudsPerTile share the invalidateMesh tail); else-if chain, early returns, goto, a combined '
+                'condition and two separate StudsPerTileU / StudsPerTileV else-if statements were tried',
 }
 ROWS = {'chunk': CHUNK_ROWS, 'part': PART_ROWS}
 
@@ -299,20 +282,17 @@ for rows in resolved.values():
     for address, name in rows:
         own.setdefault(name, address)
 groups = {k: verify(OBJ[k], rows, own, strict=not DISCOVER) for k, rows in resolved.items()}
-pending = verify(OBJ['pending'], resolve(OBJ['pending'], PENDING_ROWS), own, strict=False, record=False)
-for row in pending:
-    row['exact_in_pending_build'] = row['exact']
-    row['exact'] = False
-    row['reason'] = NON_EXACT_REASON.get(row['address'], PENDING_REASON)
+near = verify(OBJ['part'], resolve(OBJ['part'], NEAR_ROWS), own, strict=False)
+groups['part'] += [r for r in near if r['exact']]
+pending = [dict(r, reason=NON_EXACT_REASON[r['address']]) for r in near if not r['exact']]
 if DISCOVER:
     print('\n'.join(sorted(set(UNBOUND))))
     for g in list(groups.values()) + [pending]:
         for r in g:
             if not r['exact']:
-                print('NOT EXACT', r['address'], r['symbol'][:110], r['size'], r['target_size'], r.get('exact_in_pending_build'))
+                print('NOT EXACT', r['address'], r['symbol'][:110], r['size'], r['target_size'])
     sys.exit(0)
 assert not UNBOUND, '\n'.join(UNBOUND)
-assert [r['address'] for r in pending if r['exact_in_pending_build']] == ['004e6b90'], pending
 
 # ---- evidence for the named externals and descriptors ---------------------------------------------------------------
 
@@ -436,11 +416,6 @@ paths = [Path(__file__).resolve(), LAYOUT, HEADER] + list(UNITS.values())
 exact = sorted({r['address'] for g in groups.values() for r in g if r['exact']})
 groups['pending_or_not_exact'] = pending
 PROPOSALS = {
-    'v8datamodel/Decal.h (native, owner: Decal/FaceInstance owner)':
-        'declare `extern char sDecal[];` / `extern char sTexture[];` and derive from DescribedCreatable<Decal, '
-        'FaceInstance, sDecal> / <Texture, Decal, sTexture> (RTTI $1?sDecal@2@3PADA / $1?sTexture@2@3PADA); the '
-        'donor header passes &sDecal (const char*) and does not compile with the native reflection templates. With '
-        'it, Decal::onDecalPropertyChanged 004e6b90 is exact (pending build).',
     'v8datamodel/PartInstance.h (native, owner: PartInstance)':
         'PartChunk::invalidateMesh 004e6740 / invalidateMaterial 004e68b0 / onPropertyChanged 004e6a30 and '
         'Part::onEvent / ctor read PartInstance +0x1c8 (int compared with 0: the aggregate / sleeping state passed '
@@ -478,7 +453,7 @@ receipt = {
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
 (ROOT / 'work/2008-06/shared-layouts/viewnew-part-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS native ViewNew parts: %d distinct function rows exact (%s); %d pending-build/non-exact rows not counted; '
+print('PASS native ViewNew parts: %d distinct function rows exact (%s); %d non-exact rows not counted; '
       'targets and %d vtables verified' % (len(exact), ', '.join('%s %d' % (k, sum(r['exact'] for r in g))
                                                                 for k, g in groups.items() if k != 'pending_or_not_exact'),
                                           len(pending), len(vt)))

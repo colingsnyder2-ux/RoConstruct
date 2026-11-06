@@ -24,6 +24,7 @@
 #include "RenderLib/SceneManager2008.h"
 #include "RenderLib/RenderScene2008.h"
 #include "RenderLib/RenderStats.h"
+#include "ViewNew/MaterialFactory2008.h"
 #include <GLG3D/TextureManager.h>
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/connection.hpp>
@@ -36,13 +37,6 @@ namespace RBX
 	class Instance;
 	class DataModel;
 
-	namespace ViewNew
-	{
-		// 0x10 bytes (new 0x10 before its ctor 004f0920; out-of-line dtor 004d7460). Only owned through the auto_ptr
-		// below; its members are not declared here (see the recorder's pending note).
-		class MaterialFactory;
-	}
-
 	class ViewBase
 	{
 		friend struct ::NativeRenderSceneLayout;
@@ -50,7 +44,7 @@ namespace RBX
 		std::auto_ptr<RenderBase::SceneManager> sceneManager;           // +0x04
 		std::auto_ptr<RenderBase::RenderSceneBase> renderLibScene;      // +0x08
 		std::auto_ptr<G3D::TextureManager> textureManager;              // +0x0c
-		std::auto_ptr<ViewNew::MaterialFactory> materialFactory;        // +0x10
+		std::auto_ptr<ViewNew::MaterialFactory> materialFactory;        // +0x10 (ViewNew/MaterialFactory2008.h: dtor only)
 	protected:
 		boost::shared_ptr<DataModel> dataModel;                         // +0x14
 		boost::signals::scoped_connection lightingChangedConnection;    // +0x1c

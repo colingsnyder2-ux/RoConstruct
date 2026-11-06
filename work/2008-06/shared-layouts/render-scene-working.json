@@ -322,77 +322,36 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderScene_scenenew.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/RenderSceneNew2008.cpp"
-    ],
-    "viewbase_pending": [
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/fp:fast",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/render-scene-pending",
-      "/DNATIVE_VIEWBASE_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderScene_viewbase_pending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/RenderSceneViewBase2008.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_render_scene.py": "d3951b27b12176df6da3a97939a729081b29de7a72a176414e32cb331fe1cf34",
+    "rebuild/2008-06/tests/record_native_render_scene.py": "47f99aef16b9c463623d998ced3ce62d83ba1a470081f140908aed7139066bc7",
     "rebuild/2008-06/tests/NativeRenderSceneLayout.cpp": "443e0dc8e2ae730fadcfcfaa31431110062b806c6c605c86e21ba97cac9ba850",
     "rebuild/2008-06/native-classes/SceneManager2008.cpp": "76ae91858e1f0aae1f4f4d8a7701676914c321c7d4a8314734c56685e8a84162",
     "rebuild/2008-06/native-classes/AggregateChunk2008.cpp": "e0e09d1dc3e9142ad1a49e655c0480282a505f87c29d8522c4c1d8478aa5cf24",
     "rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp": "d39d2ddf6553d02e2ca588bc9f4af2e6ae791317177fc3113ce9a2a2e7eb94b3",
     "rebuild/2008-06/native-classes/RenderSceneBase2008.cpp": "619e623fa6686de95ba64620a55656d5d8cbc7218a849b8a4f8d4ad56978a3f5",
-    "rebuild/2008-06/native-classes/RenderSceneViewBase2008.cpp": "f2f0cbc1603b27ed237c7abdc061bc4c09e258aba436e3a6b7498bae0ac0d23f",
+    "rebuild/2008-06/native-classes/RenderSceneViewBase2008.cpp": "1b6781e2c3fa2475d7b6bff51341f22bf0d0320d1db22b95952e6627b24479c1",
     "rebuild/2008-06/native-classes/RenderSceneViewRbxGfx2008.cpp": "53777f83c24524557254604c975746b8d87b2c06000ab024990ae9e747273bbb",
     "rebuild/2008-06/native-classes/RenderSceneNew2008.cpp": "8ec5b941eb7110e378bcdcdcac4b850042c0e895ce085c7ce3ac0e2ef1f5d8c0",
     "rebuild/2008-06/native-headers/RenderLib/AggregateChunk2008.h": "2e4d036dbd1996fc6c7b29e1ec93ae819eeb3a7580ba9f7149f1fd1c3ff2cf68",
     "rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h": "dd1bdeec3ee58da6f291eac9d5ca7a1ede3863ee3aa9bbb7a489026ecdb98d6d",
     "rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h": "c7a3aaf9d4b99782c09925abb2c2cbd5135d2adb1e378a5aa152c1bb3f2c0561",
-    "rebuild/2008-06/native-headers/RenderLib/ViewBase2008.h": "0a03175b2d9046a97965d17384e3336b07287b6c020d99f88e07fc723537af10",
+    "rebuild/2008-06/native-headers/RenderLib/ViewBase2008.h": "9c8e51f8d08ce56c7cef8df6e8cd8001c982d6e702f2209eb051361a6c04f80a",
     "rebuild/2008-06/native-headers/RenderLib/ViewNew2008.h": "53cb079c857655b92edc3dc13e57dafe18be887ed86f0b918f23ee6d57aee5a0",
     "rebuild/2008-06/native-headers/RenderLib/RenderSceneRender2008.h": "78e36abbf89f9eb395b05555590710e3da65426b23f08a31ed7b245dbdd069a3",
-    "rebuild/2008-06/native-headers/RenderLib/RenderSceneNew2008.h": "cce2924b098b6740063fb6b75429c314a6448bee13a9c1be7fb68e5cddde8674"
+    "rebuild/2008-06/native-headers/RenderLib/RenderSceneNew2008.h": "cce2924b098b6740063fb6b75429c314a6448bee13a9c1be7fb68e5cddde8674",
+    "rebuild/2008-06/native-headers/ViewNew/MaterialFactory2008.h": "651b0345bc02a676cb5c148a2c5b7f4b8bdf2f6e3edc10db2ee4b7a127f96de0"
   },
   "objects": {
-    "NativeRenderSceneLayout.obj": "6edbe8d12f6a3db3d15fd4b60f895b58b32eb76eaec35c4ae660e7b02e02d3c7",
-    "NativeRenderScene_scene.obj": "1cedaec4b5bece12918d534021ea801398436d1b2becbfbf504c88fbf51c6840",
-    "NativeRenderScene_aggregate.obj": "2e05c06ff00318bad2cbe82220c26f3d490b7bc45e1f9391a4fa96dd32436396",
-    "NativeRenderScene_aggregating.obj": "4282818634ad225defdff3855468a715327e9192cf634abc9c179a7aeebffb55",
-    "NativeRenderScene_scenebase.obj": "d195f2698f7fc7ce6d1d10a8303bfe6c5751f44dbcbb839655aeda5d764ee0ed",
-    "NativeRenderScene_viewbase.obj": "7e3c03fc6e16706d89e0c3e4f755621120df3cd962b959fbcce46a8c702be0ac",
-    "NativeRenderScene_viewrbxgfx.obj": "472d8c76bf5a4f7306e02761d1f69b65f2b1cc0239469eefc2b7b73670844398",
-    "NativeRenderScene_scenenew.obj": "c1548fb0cd6faafe4ccc7599454bb87436f413d328172faae22d4c81ba1a9700",
-    "NativeRenderScene_viewbase_pending.obj": "be9a73ded1c2c411793a671766731952e02af6dcc84d439ad4d548f0a575ba31"
+    "NativeRenderSceneLayout.obj": "76a5286f290ccfb700257c9ee74a8d07dfaad4587271ac77e26418058d2bf83e",
+    "NativeRenderScene_scene.obj": "a6c41a1f6df38c72fc0610642eab25b10a6aae25242381c6512793b6aacbced9",
+    "NativeRenderScene_aggregate.obj": "77c82fd526d978681f4dcdae7d7783705267d4f8c07d629b554cd85dd6265232",
+    "NativeRenderScene_aggregating.obj": "4751900df9d68eec5014634ddcec5704caae5a5adbd9d717c77e4e6fcd705b67",
+    "NativeRenderScene_scenebase.obj": "04c9a24356bf1864dc96419b99a163163a4d2c5aed5b17d83285f30562fbc9aa",
+    "NativeRenderScene_viewbase.obj": "51e25c3117e53a0f9960961ee8b6fada74382f088f570f5d16c073ea260b707b",
+    "NativeRenderScene_viewrbxgfx.obj": "fcdf92eb1b665658e6b483e37ae1fb920475737dfb1f59ec28595b4887427e7f",
+    "NativeRenderScene_scenenew.obj": "9467e342cc2793a8bf33a12fae9b22717d5338dd529e9f387303489890f361b5"
   },
   "layout": {
     "chunkSize": "0x28",
@@ -1795,10 +1754,28 @@
         "target_size": 30,
         "exact": true,
         "verified_targets": {
-          "??1ViewBase@RBX@@UAE@XZ": "0x4d8920 (external)",
+          "??1ViewBase@RBX@@UAE@XZ": "0x4d8920 (own row)",
           "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
         },
         "local": []
+      },
+      {
+        "address": "004d8920",
+        "symbol": "??1ViewBase@RBX@@UAE@XZ",
+        "size": 242,
+        "target_size": 242,
+        "exact": true,
+        "verified_targets": {
+          "??_7ViewBase@RBX@@6B@": "0x826c24 (vtable RTTI .?AVViewBase@RBX@@ offset 0x0)",
+          "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0 (external)",
+          "??1MaterialFactory@ViewNew@RBX@@QAE@XZ": "0x4d7460 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??_7?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@6B@": "0x819cd8 (vtable RTTI .?AV?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@ offset 0x0)",
+          "?freeMemory@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@AAEXXZ": "0x45c680 (external)"
+        },
+        "local": [
+          "__ehhandler$??1ViewBase@RBX@@UAE@XZ"
+        ]
       }
     ],
     "viewrbxgfx": [
@@ -1960,6 +1937,7 @@
     "004d8310",
     "004d8320",
     "004d8380",
+    "004d8920",
     "004d8a20",
     "004d8ac0",
     "004db660",
@@ -2087,35 +2065,13 @@
       "local": []
     }
   ],
-  "pending_build_rows": [
-    {
-      "address": "004d8920",
-      "symbol": "??1ViewBase@RBX@@UAE@XZ",
-      "size": 242,
-      "target_size": 242,
-      "exact": false,
-      "verified_targets": {
-        "??_7ViewBase@RBX@@6B@": "0x826c24 (vtable RTTI .?AVViewBase@RBX@@ offset 0x0)",
-        "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0 (external)",
-        "??1MaterialFactory@ViewNew@RBX@@QAE@XZ": "0x4d7460 (external)",
-        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
-        "??_7?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@6B@": "0x819cd8 (vtable RTTI .?AV?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@ offset 0x0)",
-        "?freeMemory@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@AAEXXZ": "0x45c680 (external)"
-      },
-      "local": [
-        "__ehhandler$??1ViewBase@RBX@@UAE@XZ"
-      ],
-      "exact_in_pending_build": true,
-      "reason": "pending-build-only: ~ViewBase destroys the auto_ptr<ViewNew::MaterialFactory> member, whose 2008 class (0x10 bytes, dtor 004d7460, ctor 004f0920) is not declared; built with a generated header under out/render-scene-pending (NATIVE_VIEWBASE_PENDING) and never counted"
-    }
-  ],
+  "pending_build_rows": [],
   "notes": [
     "RenderNew::RenderScene ctor 007aae40: the clear colour is built by the out-of-line G3D Color4(const Vector4&) (00476550) into a named local and then assigned; the Color4 copy ctor is inline in G3D Color4.inl, and an unnamed Color4(Vector4) temporary copies from eax instead of the stack.",
     "ViewG3D invalidateLighting / render (004db610 / 004db690) are counted in viewg3d2008-working.json (counted_elsewhere), not here.",
     "RenderSceneBase +0x4 is not a member: MSVC pads the vfptr to the class alignment (8, from the doubles in G3D::Stopwatch), so chunkArray starts at +0x8 (layout probe sceneBaseChunkArray)."
   ],
   "blocked": {
-    "004d8920": "ViewBase dtor: exact only in the NATIVE_VIEWBASE_PENDING build (2008 ViewNew::MaterialFactory missing)",
     "004d9990": "ViewRbxGfx ctor: MaterialFactory ctor (RenderNew::RenderScene and its exact ctor 007aae40 are here), Lighting::event_LightingChanged and Instance::event_descendentAdded connections (DataModel / Workspace / Lighting owners)",
     "004db4f0": "ViewRbxGfx dtor: ServiceProvider::create<Lighting> 004b3380 and the ViewNew mesh-cache flushes 004db130 / 004db040 / 004daf50 / 004e5670 / 004db310 / 004db220 / 004db400 (other owners); its ??_G 004db5d0 is emitted only with the vtable (ctor / dtor)",
     "004daf10": "ViewRbxGfx::render: the workspace camera is reachable now (native DataModel.h / Workspace.h, as in ViewG3D render 004db690), but its first call 004daf1a goes to the undeclared non-virtual ViewRbxGfx helper 004dab50(arg) (958 bytes: Lighting accessor 004b3870, dynamic_cast to RenderNew::RenderScene, skybox via [arg+4] slot 0x198 = Ogre::SceneManager::setSkyBox, so the render argument is used as an object whose +0x4 is an Ogre::SceneManager*, e.g. Ogre::VisualEngine). Its name and parameter type are not derived",
@@ -2579,7 +2535,7 @@
     ]
   },
   "proposals": {
-    "ViewNew::MaterialFactory (owner: whoever recovers the ViewNew material factory; not declared anywhere yet)": "0x10 bytes (new 0x10 at 004d9ac1 before its ctor 004f0920(G3D::TextureManager*)), out-of-line dtor 004d7460 (releases four ReferenceCountedPointers at +0xc, +0x8, +0x4, +0x0). The ctor fills +0x4 / +0x8 from the texture-proxy factory 00551920(textureManager, name, true / false) and +0x0 from 00551a30; +0xc is released through slot 0 but its pointee type is not derived. Once a header declares the class (even with only its dtor), ViewBase2008.h can include it and the ViewBase dtor 004d8920 (exact in the NATIVE_VIEWBASE_PENDING build) becomes a counted row.",
+    "ViewNew::MaterialFactory (native-headers/ViewNew/MaterialFactory2008.h, dtor only)": "0x10 bytes (new 0x10 at 004d9ac1 before its ctor 004f0920(G3D::TextureManager*)), out-of-line dtor 004d7460 (releases four ReferenceCountedPointers at +0xc, +0x8, +0x4, +0x0). The ctor fills +0x4 / +0x8 from the texture-proxy factory 00551920(textureManager, name, true / false) and +0x0 from 00551a30; +0xc is released through slot 0 but its pointee type is not derived, so the header declares no members (never use it for new / sizeof). It makes the ViewBase dtor 004d8920 a counted row; the ViewRbxGfx / ViewG3D ctors stay blocked.",
     "Material owner (RenderLib/Material2008.h), FYI": "the unnamed factory 00551730 (new 0x18 RenderNew::Material 007ad960 when 00942ec4 == 0, Render::Material 007b80a0 when 1, else throws std::exception) is declared in AggregateChunk2008.h as RenderBase::createMaterial() (donor name) because the AggregateChunk ctor calls it; move it next to MaterialBase if you recover its body.",
     "Lighting / DataModel owners, FYI": "getWorkspace 004d7370 is now exact here through the committed native DataModel.h / Workspace.h, and ViewG3D render 004db690 is exact in viewg3d2008-working.json. The view ctors / dtors still use Lighting::event_LightingChanged, Instance::event_descendentAdded and ServiceProvider::create<Lighting> 004b3380, and suppressSkybox 004d9c90 reads Lighting fields (no native Lighting header yet).",
     "Ogre fork owners (Ogre::RbxEntity)": "RenderNew::RenderScene dtor 007aaa30 deletes its +0x26c Ogre::RbxEntity through the virtual dtor (slot 0, push 1). A committed RbxEntity : Ogre::Entity declaration (new 0x2bc at 007ab470 and AdornRbxGfx; ctor 0067d1f0; sizeof(Ogre::Entity) is 0x274 in the 1.4.5 client headers, so 0x48 own bytes; removeSubEntity 0067d2d0 erases from the vector at +0xd8) would let AggregateChunk2008.h drop its partial non-polymorphic RbxEntity and unblock the dtor."
