@@ -2,7 +2,7 @@
 from pathlib import Path
 import argparse,capstone,hashlib,json,struct,sys
 ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT))
-from roc import match,native_asm
+from roc import match,native_asm,rebuild
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('object',type=Path);parser.add_argument('address',type=lambda x:int(x,16));parser.add_argument('symbol');parser.add_argument('--output',type=Path);parser.add_argument('--provider',nargs=2,action='append',default=[],metavar=('SYMBOL','OBJECT'));args=parser.parse_args();path=args.object;raw=path.read_bytes();secs,syms,defs,starts=match._coff_data_index(raw);funcs={n:(b,r) for n,b,r in match.coff_functions(raw)};base,image=match._image('2008-06');address=args.address
 name=next(n for n in funcs if n.startswith(args.symbol));body,refs=funcs[name];fv,fs=defs[name];full=bytes(image[address-base:address-base+len(body)]);bindings={};events=[];seen=set();errors=[]
 # Candidate relocation fields must correspond to original absolute or direct-branch operands.
@@ -26,8 +26,8 @@ object_id=hashlib.sha256(raw).hexdigest()
 providers={};used_providers=set()
 for symbol,filename in args.provider:
  provider_path=Path(filename);provider_raw=provider_path.read_bytes()
- names={n for n,_,_ in match.coff_functions(provider_raw)}
- if symbol not in names:raise ValueError('exact provider symbol missing: '+symbol)
+ _,_,provider_defs,_=match._coff_data_index(provider_raw)
+ if symbol not in provider_defs:raise ValueError('exact provider symbol missing: '+symbol)
  if symbol in providers:raise ValueError('duplicate provider symbol: '+symbol)
  providers[symbol]=(provider_path,provider_raw,hashlib.sha256(provider_raw).hexdigest())
 
@@ -47,10 +47,10 @@ for off,idx,kind in relocs(fs):
 original_relocs=[x-address for x in match._base_relocs('2008-06') if address<=x<address+len(body)]
 assert set(original_relocs)<=set(refs) and match.exact_match(full,original_relocs,body,refs),'primary body must already match before EH graph audit'
 handler=next(n for n in bindings if n=='__ehhandler$'+name)
-import_aliases={}
-for library in ('msvcrt.lib','msvcprt.lib'):
- archive=ROOT/'tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/lib'/library
- blob=archive.read_bytes();assert blob[:8]==b'!<arch>\n';offset=8
+import_aliases={};import_inputs=[]
+crt_library=ROOT/'tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/lib'
+for archive in (crt_library/'msvcrt.lib',crt_library/'msvcprt.lib',rebuild.toolchain(21022)['sdk_lib']/'kernel32.lib'):
+ blob=archive.read_bytes();import_inputs.append((archive,hashlib.sha256(blob).hexdigest()));assert blob[:8]==b'!<arch>\n';offset=8
  while offset+60<=len(blob):
   size=int(blob[offset+48:offset+58]);member=blob[offset+60:offset+60+size];offset+=60+size+(size&1)
   if member[:4]!=b'\0\0\xff\xff':continue
@@ -132,7 +132,13 @@ def walk(symbol,va,addend=0):
     elif kind==6:
      bias=struct.unpack_from('<i',data,delta)[0];walk(dest,original,bias)
   return
- end=next((x for x in starts[sec+1] if x>value),s[3]);data=raw[s[4]+value:s[4]+end];other=bytes(image[va-base:va-base+len(data)]);rels=[(o-value,i,k) for o,i,k in relocs(sec) if value<=o<end];mask=[o for o,i,k in rels];ok=match.exact_match(other,mask,data,mask);events.append({'symbol':symbol,'original':hex(va),'kind':'EH data','size':len(data),'exact':ok,'original_bytes':other.hex(),'native_bytes':data.hex()});assert ok,events[-1]
+ end=next((x for x in starts[sec+1] if x>value),s[3]);assert 0<=value<end<=s[3],(symbol,'invalid data range',value,end,s[3])
+ rels=[(o-value,i,k) for o,i,k in relocs(sec) if value<=o<end];zero_initialized=bool(s[9]&0x80)
+ if zero_initialized:
+  assert not rels,(symbol,'relocations in uninitialized storage');data=bytes(end-value)
+ else:
+  assert s[4]>0 and s[4]+end<=len(raw),(symbol,'truncated initialized data');data=raw[s[4]+value:s[4]+end]
+ other=bytes(image[va-base:va-base+len(data)]);mask=[o for o,i,k in rels];ok=match.exact_match(other,mask,data,mask);events.append({'symbol':symbol,'original':hex(va),'kind':'EH data','size':len(data),'exact':ok,'zero_initialized':zero_initialized,'original_bytes':other.hex(),'native_bytes':data.hex()});assert ok,events[-1]
  for off,idx,kind in rels:
   assert kind==6;dest=syms[idx][0];pointer=u(va+off);assert base<=pointer<base+len(image),(symbol,off,pointer);bias=struct.unpack_from('<i',data,off)[0];walk(dest,pointer,bias)
 try:walk(handler,bindings[handler])
@@ -140,4 +146,6 @@ except AssertionError as error:errors.append(str(error))
 for provider_path,provider_raw,provider_id in providers.values():
  if hashlib.sha256(provider_path.read_bytes()).hexdigest()!=provider_id:errors.append('provider input changed: '+str(provider_path))
 if hashlib.sha256(path.read_bytes()).hexdigest()!=object_id:errors.append('primary object input changed')
-out=args.output or ROOT/('work/2008-06/eh-graph-%08x.json'%address);out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps({'scope':__doc__+' Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.','address':'%08x'%address,'primary_body_size':len(body),'primary_body_exact':True,'tool_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'original_sha256':hashlib.sha256((ROOT/'clients/2008-06/Roblox.exe').read_bytes()).hexdigest(),'object':str(path),'object_sha256':hashlib.sha256(raw).hexdigest(),'provider_inputs':[{'symbol':n,'object':str(v[0]),'sha256':v[2],'used':n in used_providers} for n,v in providers.items()],'events':events,'errors':errors},indent=2)+'\n');print('EH graph nodes',len(events),'errors',len(errors));print(errors[:1]);assert not errors
+for archive,digest in import_inputs:
+ if hashlib.sha256(archive.read_bytes()).hexdigest()!=digest:errors.append('import library input changed: '+str(archive))
+out=args.output or ROOT/('work/2008-06/eh-graph-%08x.json'%address);out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps({'scope':__doc__+' Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.','address':'%08x'%address,'primary_body_size':len(body),'primary_body_exact':True,'tool_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'original_sha256':hashlib.sha256((ROOT/'clients/2008-06/Roblox.exe').read_bytes()).hexdigest(),'object':str(path),'object_sha256':hashlib.sha256(raw).hexdigest(),'import_library_inputs':[{'library':str(p),'sha256':h} for p,h in import_inputs],'provider_inputs':[{'symbol':n,'object':str(v[0]),'sha256':v[2],'used':n in used_providers} for n,v in providers.items()],'events':events,'errors':errors},indent=2)+'\n');print('EH graph nodes',len(events),'errors',len(errors));print(errors[:1]);assert not errors
