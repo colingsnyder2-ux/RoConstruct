@@ -1,0 +1,565 @@
+{
+  "workflow": 52,
+  "client": "2008-06",
+  "unit": "StandardVerbs.cpp",
+  "scope": "Inactive exacts: StandardVerbs::StandardVerbs(DataModel*) 005c7ea0 (2676 bytes) and StandardVerbs::~StandardVerbs() 00450450 (998 bytes) byte-identical under VC2008 RTM. Every direct call site carries a reviewed symbol/address binding; std::string/operator+ IAT calls remain indirect. No link, no provider selection, no runtime activation, no server credit.",
+  "run": "work\\2008-06\\native-check-runs\\20261106-105526-bc49410f",
+  "seed_run": "work\\2008-06\\native-check-runs\\20261106-105118-b55ac1a5",
+  "analysis": "work\\2008-06\\native-check-runs\\20261106-105526-bc49410f\\analysis-286e1f91.json",
+  "manifest": "rebuild\\2008-06\\tests\\standard-verbs-ctor-unit-20261106.json",
+  "manifest_sha256": "2a162f500985d9f27fda806278c0acdd23b49ae01dd00d7401e5b8c7a5ee6ffd",
+  "bindings": "work\\native-candidates\\standard-verbs-ctor-20261106\\bindings.json",
+  "bindings_sha256": "ab890ddca69f7e69240a12f065f70a523badd0f0963eef93a7787f7777562f4b",
+  "source": "rebuild\\2008-06\\native-classes\\StandardVerbs.cpp",
+  "source_sha256": "c601bf31f11fb3b2b567bb2e8eac0482088962ee79ee58a959da47ac95ae4d9d",
+  "object": "work\\2008-06\\native-check-runs\\20261106-105526-bc49410f\\unit-000\\candidate.obj",
+  "object_sha256": "afa93f4796b0d0cdf4ef5efbeee716ca823adbaef7cbc4d01080c024494c0e85",
+  "compiler": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-45733ea87ea84c13bab960d183c8d3de\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+  "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+  "compiler_exit": 0,
+  "checks": [
+    {
+      "kind": "ctor",
+      "addr": "005c7ea0",
+      "symbol": "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z",
+      "status": "exact",
+      "target_size": 2676,
+      "object_size": 2676,
+      "target_sha256": "100a6228e8a15b9f718bb05f4cb7df7308a1df9a4743a8cd60e810ce950adf07",
+      "first_byte_difference": null,
+      "data_references": 68,
+      "data_errors": [],
+      "direct_call_sites": 112,
+      "direct_bindings_verified": 112,
+      "binding_verified": false,
+      "indirect_call_sites": [
+        {
+          "offset": 50,
+          "iat_slot": "00802458",
+          "dll": "MSVCP90.dll",
+          "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 101,
+          "iat_slot": "00802458",
+          "dll": "MSVCP90.dll",
+          "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 144,
+          "iat_slot": "00802458",
+          "dll": "MSVCP90.dll",
+          "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 390,
+          "iat_slot": "00802458",
+          "dll": "MSVCP90.dll",
+          "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 435,
+          "iat_slot": "00802458",
+          "dll": "MSVCP90.dll",
+          "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 633,
+          "iat_slot": "00802458",
+          "dll": "MSVCP90.dll",
+          "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 678,
+          "iat_slot": "00802458",
+          "dll": "MSVCP90.dll",
+          "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 723,
+          "iat_slot": "00802458",
+          "dll": "MSVCP90.dll",
+          "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 884,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 954,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1024,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1094,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1164,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1234,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1304,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1374,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1444,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1514,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1584,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1654,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1724,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1794,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1864,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 1934,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 2004,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 2074,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 2144,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 2214,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 2284,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 2354,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 2424,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 2494,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 2564,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        },
+        {
+          "offset": 2634,
+          "register_indirect": "ebx",
+          "loaded_iat_slot": "008023e4",
+          "dll": "MSVCP90.dll",
+          "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+          "status": "indirect_call_site_identical_bytes_not_call_binding_proof"
+        }
+      ]
+    },
+    {
+      "kind": "dtor",
+      "addr": "00450450",
+      "symbol": "??1StandardVerbs@RBX@@QAE@XZ",
+      "status": "exact",
+      "target_size": 998,
+      "object_size": 998,
+      "target_sha256": "80028858a1362be355548126762026d5a7405fd5220667aad5ee744484d63014",
+      "first_byte_difference": null,
+      "data_references": 0,
+      "data_errors": [],
+      "direct_call_sites": 60,
+      "direct_bindings_verified": 60,
+      "binding_verified": true,
+      "indirect_call_sites": []
+    }
+  ],
+  "totals": {
+    "direct_call_sites": 172,
+    "direct_bindings_verified": 172,
+    "indirect_call_sites": 34,
+    "binding_verified_checks": 1
+  },
+  "adapter_proof": {
+    "name_declare": "00553f90",
+    "checked": 26,
+    "matched": 26,
+    "scope": "each doDeclare callee lazily calls Name::declare(text) behind a boost::call_once flag; text equals the NativeToolText declaration",
+    "checks": [
+      {
+        "addr": "005a0390",
+        "symbol": "?doDeclare@?$NativeToolName@VArrowTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "ArrowTool",
+        "declared_text": "Arrow",
+        "original_string": "Arrow",
+        "match": true
+      },
+      {
+        "addr": "005c5c90",
+        "symbol": "?doDeclare@?$NativeToolName@VResizeTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "ResizeTool",
+        "declared_text": "Resize",
+        "original_string": "Resize",
+        "match": true
+      },
+      {
+        "addr": "005c5fa0",
+        "symbol": "?doDeclare@?$NativeToolName@VAxisMoveTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "AxisMoveTool",
+        "declared_text": "AxisMove",
+        "original_string": "AxisMove",
+        "match": true
+      },
+      {
+        "addr": "005c5670",
+        "symbol": "?doDeclare@?$NativeToolName@VFlatTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "FlatTool",
+        "declared_text": "Flat",
+        "original_string": "Flat",
+        "match": true
+      },
+      {
+        "addr": "005c56e0",
+        "symbol": "?doDeclare@?$NativeToolName@VGlueTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "GlueTool",
+        "declared_text": "Glue",
+        "original_string": "Glue",
+        "match": true
+      },
+      {
+        "addr": "005c5750",
+        "symbol": "?doDeclare@?$NativeToolName@VWeldTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "WeldTool",
+        "declared_text": "Weld",
+        "original_string": "Weld",
+        "match": true
+      },
+      {
+        "addr": "005c57c0",
+        "symbol": "?doDeclare@?$NativeToolName@VStudsTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "StudsTool",
+        "declared_text": "Studs",
+        "original_string": "Studs",
+        "match": true
+      },
+      {
+        "addr": "005c5830",
+        "symbol": "?doDeclare@?$NativeToolName@VInletTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "InletTool",
+        "declared_text": "Inlet",
+        "original_string": "Inlet",
+        "match": true
+      },
+      {
+        "addr": "005c58a0",
+        "symbol": "?doDeclare@?$NativeToolName@VHingeTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "HingeTool",
+        "declared_text": "Hinge",
+        "original_string": "Hinge",
+        "match": true
+      },
+      {
+        "addr": "005c5910",
+        "symbol": "?doDeclare@?$NativeToolName@VRightMotorTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "RightMotorTool",
+        "declared_text": "RightMotor",
+        "original_string": "RightMotor",
+        "match": true
+      },
+      {
+        "addr": "005c5980",
+        "symbol": "?doDeclare@?$NativeToolName@VLeftMotorTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "LeftMotorTool",
+        "declared_text": "LeftMotor",
+        "original_string": "LeftMotor",
+        "match": true
+      },
+      {
+        "addr": "005c59f0",
+        "symbol": "?doDeclare@?$NativeToolName@VOscillateMotorTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "OscillateMotorTool",
+        "declared_text": "OscillateMotor",
+        "original_string": "OscillateMotor",
+        "match": true
+      },
+      {
+        "addr": "005c5a60",
+        "symbol": "?doDeclare@?$NativeToolName@VModelSetFrontTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "ModelSetFrontTool",
+        "declared_text": "ModelSetFront",
+        "original_string": "ModelSetFront",
+        "match": true
+      },
+      {
+        "addr": "005c5600",
+        "symbol": "?doDeclare@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "ModelSetPrimaryPartTool",
+        "declared_text": "ModelSetPrimaryPart",
+        "original_string": "ModelSetPrimaryPart",
+        "match": true
+      },
+      {
+        "addr": "005c5ad0",
+        "symbol": "?doDeclare@?$NativeToolName@VAnchorTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "AnchorTool",
+        "declared_text": "Anchor",
+        "original_string": "Anchor",
+        "match": true
+      },
+      {
+        "addr": "005c5b40",
+        "symbol": "?doDeclare@?$NativeToolName@VLockTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "LockTool",
+        "declared_text": "Lock",
+        "original_string": "Lock",
+        "match": true
+      },
+      {
+        "addr": "005c5520",
+        "symbol": "?doDeclare@?$NativeToolName@VFillTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "FillTool",
+        "declared_text": "Fill",
+        "original_string": "Fill",
+        "match": true
+      },
+      {
+        "addr": "005c5590",
+        "symbol": "?doDeclare@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "DropperTool",
+        "declared_text": "Dropper",
+        "original_string": "Dropper",
+        "match": true
+      },
+      {
+        "addr": "005c5ec0",
+        "symbol": "?doDeclare@?$NativeToolName@VNullTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "NullTool",
+        "declared_text": "NullTool",
+        "original_string": "NullTool",
+        "match": true
+      },
+      {
+        "addr": "005c5f30",
+        "symbol": "?doDeclare@?$NativeToolName@VGameTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "GameTool",
+        "declared_text": "GameTool",
+        "original_string": "GameTool",
+        "match": true
+      },
+      {
+        "addr": "005c5de0",
+        "symbol": "?doDeclare@?$NativeToolName@VGrabTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "GrabTool",
+        "declared_text": "Grab",
+        "original_string": "Grab",
+        "match": true
+      },
+      {
+        "addr": "005c5e50",
+        "symbol": "?doDeclare@?$NativeToolName@VCloneTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "CloneTool",
+        "declared_text": "Clone",
+        "original_string": "Clone",
+        "match": true
+      },
+      {
+        "addr": "005c5d00",
+        "symbol": "?doDeclare@?$NativeToolName@VHammerTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "HammerTool",
+        "declared_text": "Hammer",
+        "original_string": "Hammer",
+        "match": true
+      },
+      {
+        "addr": "005c5bb0",
+        "symbol": "?doDeclare@?$NativeToolName@VSlingshotTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "SlingshotTool",
+        "declared_text": "Slingshot",
+        "original_string": "Slingshot",
+        "match": true
+      },
+      {
+        "addr": "005c5c20",
+        "symbol": "?doDeclare@?$NativeToolName@VRocketTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "RocketTool",
+        "declared_text": "Rocket",
+        "original_string": "Rocket",
+        "match": true
+      },
+      {
+        "addr": "005c5d70",
+        "symbol": "?doDeclare@?$NativeToolName@VLaserTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "tool": "LaserTool",
+        "declared_text": "Laser",
+        "original_string": "Laser",
+        "match": true
+      }
+    ]
+  },
+  "proof": {
+    "exact_bytes": true,
+    "referenced_data": true,
+    "direct_call_bindings": true,
+    "require_proof_exit": 1,
+    "require_proof_reason": "native_check_runner analyze --require-proof fails by design when a body has indirect call sites; the std::string and std::operator+ calls go through the MSVCP90 IAT and need separate import/ABI proof.",
+    "scope": "Exact bytes, referenced data and reviewed direct-call bindings only; indirect calls, provider selection and callee ABI require separate proof."
+  },
+  "provider_selection": {
+    "status": "blocked_on_missing_input",
+    "reference": "work/native-candidates/tool-verb-factories-20261106/provider-selection-blocker.json",
+    "detail": "No document link object set, filtered archive or RSP exists in this workspace; provider selection for StandardVerbs and the tool-verb factories is unknown."
+  },
+  "remaining": [
+    "Indirect-call ABI: MSVCP90 std::string/std::operator+ call sites in the ctor and dtor",
+    "Provider selection for StandardVerbs and its tool-verb factories in the document link",
+    "Relevant P5/P6/runtime gates before any activation"
+  ],
+  "preserved": "Shared headers, vendor inputs, other leases and the active executable selection unchanged.",
+  "baseline_metrics": {
+    "normal_client_selected_native_md5_methods": 7,
+    "gated_main_class_swaps": 0,
+    "server_credit_added": 0
+  }
+}
