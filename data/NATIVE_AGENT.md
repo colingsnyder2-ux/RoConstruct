@@ -1,5 +1,12 @@
 # Native source recovery with automatic draft sharing
 
+Contributor priority: recover substantial native class bodies and authentic
+associated headers in class/family batches. Follow the contributor class/header
+batch policy in `docs/NATIVE_SWAP_BATCH.md`: keep a short authorized target list,
+hand off exhausted or owner-blocked proof work, and continue another unleased
+family. Audit receipts document work; they are not the main deliverable. Preserve
+partial source and all proof/runtime boundaries; do not pad class/file counts.
+
 Current workflow: 52. Use `docs/NATIVE_WORKER_HISTORY.md` only as history.
 Native authority: **RoConstruct, branch `work`, subtree `workspace/`**. Local paths
 below that subtree retain their normal repository-relative names.

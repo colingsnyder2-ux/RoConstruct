@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "source": "../../work/native-candidates/boost-thread-exception-20261106/BoostThreadExceptionsNoinline.cpp",
+      "checks": [
+        {
+          "addr": "00406be0",
+          "symbol": "??_Gthread_resource_error@boost@@UAEPAXI@Z"
+        },
+        {
+          "addr": "00568410",
+          "symbol": "??1thread_exception@boost@@UAE@XZ"
+        }
+      ]
+    }
+  ]
+}
