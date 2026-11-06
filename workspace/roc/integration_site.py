@@ -40,6 +40,26 @@ def progress_description(data):
                 bar, 100 * covered / total if total else 0)
 
 
+def live_progress(root=ROOT):
+    """Read current proof, receipts and scores; never reuse the hourly site snapshot."""
+    native = set(json.loads((root / 'work/integration/progress-native.json').read_text())['addresses'])
+    db = sqlite3.connect((root / 'work/server.db').as_uri() + '?mode=ro', uri=True, timeout=30)
+    try:
+        scores = dict(db.execute('SELECT addr,score FROM funcs WHERE client=?', (CLIENT,)))
+    finally:
+        db.close()
+    inactive = inactive_code(root)
+    groups, functions = coverage(root, scores, native, set(inactive))
+    stats = {key: {'functions': 0, 'bytes': 0} for key in ('inactive', 'draft')}
+    for addr, row in inactive.items():
+        if addr not in native and addr in functions:
+            bucket = stats['inactive' if row[1] else 'draft']
+            bucket['functions'] += 1
+            bucket['bytes'] += functions[addr]['size']
+    return dict(groups=groups, native_code=stats,
+                updated=datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC'))
+
+
 def integration_rate(data, root=ROOT, now=None):
     """Integration-only deltas from distinct timestamped progress observations."""
     from roc.reports import fmt_duration

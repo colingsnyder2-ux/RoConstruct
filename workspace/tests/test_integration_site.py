@@ -99,3 +99,35 @@ def test_daily_history_exceeds_recent_jobs(tmp_path):
     data = integration_site.build(tmp_path, log=lambda _: None)
     assert len(data['jobs']) == 100
     assert data['daily'] == [{'day': '2026-10-27', 'gains': 105, 'jobs': 105, 'models': {'model': {'gains': 105, 'jobs': 105}}}]
+
+
+def test_live_progress_reads_new_receipts_scores_and_selection(tmp_path):
+    work = tmp_path / 'work'
+    (work / 'integration').mkdir(parents=True)
+    (work / '2008-06/shared-layouts').mkdir(parents=True)
+    proof = work / 'integration/progress-native.json'
+    proof.write_text(json.dumps({'addresses': ['00400000']}))
+    (work / '2008-06/functions.jsonl').write_text('\n'.join(
+        json.dumps({'addr': '%08x' % (0x400000 + n), 'size': 10}) for n in range(4)))
+    db = sqlite3.connect(work / 'server.db')
+    db.execute('CREATE TABLE funcs(client TEXT, addr TEXT, score INTEGER)')
+    db.executemany('INSERT INTO funcs VALUES (?,?,100)', [('2008-06', '%08x' % (0x400000+n)) for n in range(4)])
+    db.commit()
+    first = integration_site.live_progress(tmp_path)
+    assert first['groups']['integrated']['functions'] == 1
+    assert first['groups']['exact_waiting']['functions'] == 3
+    receipt = work / '2008-06/shared-layouts/new.json'
+    receipt.write_text(json.dumps([{'address':'00400001','symbol':'Exact','exact':True},
+                                   {'address':'00400002','symbol':'Draft','exact':False}]))
+    second = integration_site.live_progress(tmp_path)
+    assert second['native_code']['inactive']['functions'] == 1
+    assert second['native_code']['draft']['functions'] == 1
+    assert second['groups']['exact_waiting']['functions'] == 1
+    proof.write_text(json.dumps({'addresses':['00400000','00400001']}))
+    third = integration_site.live_progress(tmp_path)
+    assert third['groups']['integrated']['functions'] == 2
+    assert third['native_code']['inactive']['functions'] == 0
+    assert sum(g['functions'] for g in third['groups'].values()) - third['groups']['integrated']['functions'] == 2
+    db.execute("UPDATE funcs SET score=50 WHERE addr='00400003'")
+    db.commit(); db.close()
+    assert integration_site.live_progress(tmp_path)['groups']['exact_waiting']['functions'] == 0

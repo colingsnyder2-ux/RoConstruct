@@ -9,6 +9,7 @@ config changes.
 import json
 import os
 import re
+import sqlite3
 import subprocess
 import threading
 import time
@@ -325,11 +326,11 @@ def post_files(new, log=print, on_sent=None):
     url = server_mines_webhook()
     payloads = build_payloads(new)
     try:
-        from roc.integration_site import progress_description, integration_rate
-        snapshot = json.loads((ROOT / 'docs/integration.json').read_text(encoding='utf-8'))
+        from roc.integration_site import live_progress, progress_description, integration_rate
+        snapshot = live_progress(ROOT)
         summary = progress_description(snapshot)
         rate = integration_rate(snapshot, ROOT)
-    except (OSError, ValueError, KeyError, TypeError) as error:
+    except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as error:
         log('native progress unavailable: %s' % error)
         summary = 'Native progress unavailable.'
         rate = 'Building rate · progress unavailable'

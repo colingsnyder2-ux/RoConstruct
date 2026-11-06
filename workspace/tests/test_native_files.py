@@ -210,3 +210,29 @@ if __name__ == '__main__':
     test_changed_files()
     test_fork_merge()
     print('native files tests ok')
+
+
+def test_webhook_uses_fresh_progress_each_delivery(monkeypatch, tmp_path):
+    import json
+    from roc import integration_site, reports
+    monkeypatch.setattr(nf, 'ROOT', tmp_path)
+    (tmp_path/'docs').mkdir()
+    (tmp_path/'docs/integration.json').write_text('{}')  # Stale site data must be ignored.
+    monkeypatch.setattr(reports, 'server_mines_webhook', lambda: 'https://example.invalid/webhook')
+    monkeypatch.setattr(nf.time, 'sleep', lambda _: None)
+    monkeypatch.setattr(integration_site, 'integration_rate', lambda *a: 'rate')
+    current = {'count': 1}
+    monkeypatch.setattr(integration_site, 'live_progress', lambda root: dict(current))
+    monkeypatch.setattr(integration_site, 'progress_description', lambda data: 'fresh %d' % data['count'])
+    bodies = []
+    class Response:
+        def read(self): return b''
+    def request(req, **kwargs):
+        bodies.append(json.loads(req.data))
+        return Response()
+    monkeypatch.setattr(nf.urllib.request, 'urlopen', request)
+    row = ('owner/repo','work','a'*40,N+'Example.cpp','new')
+    assert nf.post_files([row], log=lambda _: None)
+    current['count'] = 2
+    assert nf.post_files([row], log=lambda _: None)
+    assert [body['embeds'][0]['description'] for body in bodies] == ['fresh 1','fresh 2']
