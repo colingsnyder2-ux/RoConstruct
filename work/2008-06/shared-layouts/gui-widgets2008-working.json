@@ -1,0 +1,814 @@
+{
+  "class": "RBX::ArrowPanel, ArrowButton, ChatButton, ChatWidget, MenuItem, EquationDisplay (gui widget units, pass 2)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "Arrow": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeGuiWidgets2008_Arrow.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/GuiWidgets2008Arrow.cpp"
+    ],
+    "Arrow-pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/gui-widgets2008-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/DNATIVE_GUIWIDGETS_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeGuiWidgets2008_ArrowPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/GuiWidgets2008Arrow.cpp"
+    ],
+    "Chat": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeGuiWidgets2008_Chat.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/GuiWidgets2008Chat.cpp"
+    ],
+    "Chat-pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/gui-widgets2008-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/DNATIVE_GUIWIDGETS_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeGuiWidgets2008_ChatPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/GuiWidgets2008Chat.cpp"
+    ],
+    "MenuItem": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeGuiWidgets2008_MenuItem.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/GuiWidgets2008MenuItem.cpp"
+    ],
+    "MenuItem-pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/gui-widgets2008-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/DNATIVE_GUIWIDGETS_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeGuiWidgets2008_MenuItemPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/GuiWidgets2008MenuItem.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_gui_widgets2008.py": "053178c02552a3f2ca067579c21aebc502eca8ff442e569c2a45ea60fd248640",
+    "rebuild/2008-06/native-classes/GuiWidgets2008Arrow.cpp": "8c1b7334264052bacda04306331138e0b30177e53d5a2745f3b4896186f0fc65",
+    "rebuild/2008-06/native-classes/GuiWidgets2008Chat.cpp": "5879582075421865ea9c82827ba181547b6d70ec466fe14e10bb35f44d5ca8dd",
+    "rebuild/2008-06/native-classes/GuiWidgets2008MenuItem.cpp": "01ed154ae61b8b88edc1a13cdbdb609c7c931ba1df6a96260a4879bfb17ba2db",
+    "rebuild/2008-06/native-headers/gui/ArrowPanel.h": "c8d05de173582a799395e87b080349bd9a15be8f3eff08306a68db69e5970767",
+    "rebuild/2008-06/native-headers/gui/WidgetChat.h": "ee28700a1b9cbe34efa6d882ad5f5cbed0db6e43be3501c137fdd0c8d516a11b",
+    "rebuild/2008-06/native-headers/gui/WidgetMenuItem.h": "fe2973051c6f23b5e7a9418d416de285f981634330c2586c1226cdbb21e22368",
+    "rebuild/2008-06/native-headers/gui/EquationDisplay.h": "8de48f9c2b2254acf28c296cb36688e1017b6b82d7ecbd1e6d9634270128dae9",
+    "rebuild/2008-06/native-headers/gui/Widget.h": "0c62fa5dca6d28f18596ba4db17db170047c3693c17f99897ce0998dc1ed5a83"
+  },
+  "objects": {
+    "NativeGuiWidgets2008_Arrow.obj": "91db6cd01976d6c3216bc21f2b36492946c4303b4dae098f0eeacb387160a2ea",
+    "NativeGuiWidgets2008_ArrowPending.obj": "b43697ec8871dcd64adfeb693439c8602aaca6fabefe301f156b8f76d4f3de35",
+    "NativeGuiWidgets2008_Chat.obj": "f2055870cf452c517ba8400d06602baa46ebc4e866b1dcbf50641c90bee523a1",
+    "NativeGuiWidgets2008_ChatPending.obj": "1509fb610ab712222aa08c51adc37d41970e72cce8e37de449a14b0d4af55550",
+    "NativeGuiWidgets2008_MenuItem.obj": "99fc29b8efa9c005d17befc74bfd7043dbccbc253e04f98d9dbcf326a818d743",
+    "NativeGuiWidgets2008_MenuItemPending.obj": "4edea1ab141bbeebc2923589698e937ad7751fc6d0373981d1fc031f7614c84d"
+  },
+  "exact_function_rows": [
+    "0064ea90",
+    "00656e00",
+    "00656f60",
+    "00657000",
+    "00657be0"
+  ],
+  "exact_support_rows": [
+    "00405e10",
+    "005a0460",
+    "00600850",
+    "00601490",
+    "00656c90"
+  ],
+  "counted_elsewhere_excluded": {
+    "005a0460": "stats-service-working.json",
+    "00600850": "creatable-shared-count-working.json",
+    "00656c90": "creatable-shared-count-working.json"
+  },
+  "receipts_checked": 40,
+  "exact_extent_split_rows": [],
+  "rows": {
+    "Arrow": [
+      {
+        "address": "00657be0",
+        "symbol": "?isEnabled@ArrowButton@RBX@@UAE_NXZ",
+        "size": 26,
+        "target_size": 26,
+        "exact": true,
+        "counted_class": true,
+        "verified_targets": {
+          "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": "0x4530f0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00656f60",
+        "symbol": "??$create@VImageWidget@RBX@@PAVAdorn@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VImageWidget@RBX@@@boost@@PAVAdorn@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 156,
+        "target_size": 156,
+        "exact": true,
+        "counted_class": false,
+        "verified_targets": {
+          "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+          "??0ImageWidget@RBX@@QAE@PAVAdorn@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x64f1c0 (external)",
+          "??$?0VImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VImageWidget@RBX@@@boost@@QAE@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x656e00 (own row)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VImageWidget@RBX@@PAVAdorn@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VImageWidget@RBX@@@boost@@PAVAdorn@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        ]
+      },
+      {
+        "address": "00657000",
+        "symbol": "??$create@VTopMenuBar@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTopMenuBar@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@1@@Z",
+        "size": 158,
+        "target_size": 158,
+        "exact": true,
+        "counted_class": false,
+        "verified_targets": {
+          "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+          "??0TopMenuBar@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@1@_N@Z": "0x573cb0 (external)",
+          "??$?0VTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VTopMenuBar@RBX@@@boost@@QAE@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x601490 (own row)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VTopMenuBar@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTopMenuBar@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@1@@Z"
+        ]
+      },
+      {
+        "address": "00656e00",
+        "symbol": "??$?0VImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VImageWidget@RBX@@@boost@@QAE@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+        "size": 171,
+        "target_size": 171,
+        "exact": true,
+        "counted_class": false,
+        "verified_targets": {
+          "??$?0PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x656c90 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VImageWidget@RBX@@@boost@@QAE@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+        ]
+      },
+      {
+        "address": "00601490",
+        "symbol": "??$?0VTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VTopMenuBar@RBX@@@boost@@QAE@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+        "size": 171,
+        "target_size": 171,
+        "exact": true,
+        "counted_class": false,
+        "verified_targets": {
+          "??$?0PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x600850 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VTopMenuBar@RBX@@@boost@@QAE@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+        ]
+      },
+      {
+        "address": "00656c90",
+        "symbol": "??$?0PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "counted_class": false,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x84bf4c (vtable RTTI .?AV?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+          "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+        ]
+      },
+      {
+        "address": "00600850",
+        "symbol": "??$?0PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "counted_class": false,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x841ee8 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+          "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+        ]
+      },
+      {
+        "address": "0048ee50",
+        "symbol": "?dispose@?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ",
+        "size": 13,
+        "target_size": 31,
+        "exact": false,
+        "counted_class": false
+      },
+      {
+        "address": "00405e10",
+        "symbol": "?destroy@sp_counted_base@detail@boost@@UAEXXZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "counted_class": false,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a0460",
+        "symbol": "?get_deleter@?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+        "size": 35,
+        "target_size": 35,
+        "exact": true,
+        "counted_class": false,
+        "verified_targets": {
+          "??_R0?AVDeleter@?$Creatable@VInstance@RBX@@@RBX@@@8": "0x9288a4 (RTTI .?AVDeleter@?$Creatable@VInstance@RBX@@@RBX@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0048ee50",
+        "symbol": "?dispose@?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ",
+        "size": 13,
+        "target_size": 31,
+        "exact": false,
+        "counted_class": false
+      },
+      {
+        "address": "005a0460",
+        "symbol": "?get_deleter@?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+        "size": 35,
+        "target_size": 35,
+        "exact": true,
+        "counted_class": false,
+        "verified_targets": {
+          "??_R0?AVDeleter@?$Creatable@VInstance@RBX@@@RBX@@@8": "0x9288a4 (RTTI .?AVDeleter@?$Creatable@VInstance@RBX@@@RBX@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "Chat": [
+      {
+        "address": "0064ea90",
+        "symbol": "?isVisible@ChatButton@RBX@@EBE_NXZ",
+        "size": 51,
+        "target_size": 51,
+        "exact": true,
+        "counted_class": true,
+        "verified_targets": {
+          "??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z": "0x491d50 (external)",
+          "?clientIsPresent@Players@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x495e60 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ],
+    "MenuItem": []
+  },
+  "not_exact_rows": [
+    {
+      "address": "0048ee50",
+      "symbol": "?dispose@?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ",
+      "size": 13,
+      "target_size": 31,
+      "bounds": null,
+      "exact_in_pending_build": false,
+      "evidence_name": null
+    },
+    {
+      "address": "0048ee50",
+      "symbol": "?dispose@?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ",
+      "size": 13,
+      "target_size": 31,
+      "bounds": null,
+      "exact_in_pending_build": false,
+      "evidence_name": null
+    }
+  ],
+  "pending_rows": [
+    {
+      "address": "00657780",
+      "symbol": "??0ArrowPanel@RBX@@QAE@PAVAdorn@1@PAVDataModel@1@W4ControllerType@Controller@1@@Z",
+      "size": 1109,
+      "target_size": 1109,
+      "exact": false,
+      "counted_class": true,
+      "verified_targets": {
+        "??_C@_0L@HLCCJBCC@ArrowPanel?$AA@": "0x84c1c8 (literal 'ArrowPanel')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0TopMenuBar@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@1@_N@Z": "0x573cb0 (external)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_7ArrowPanel@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84c164 (vtable RTTI .?AVArrowPanel@RBX@@ offset 0x0)",
+        "??_7ArrowPanel@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x84c154 (vtable RTTI .?AVArrowPanel@RBX@@ offset 0x10)",
+        "??_7ArrowPanel@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x84c14c (vtable RTTI .?AVArrowPanel@RBX@@ offset 0x14)",
+        "??_7ArrowPanel@RBX@@6BDebugable@1@@": "0x84c144 (vtable RTTI .?AVArrowPanel@RBX@@ offset 0x20)",
+        "??_7ArrowPanel@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x84c134 (vtable RTTI .?AVArrowPanel@RBX@@ offset 0x24)",
+        "??_7ArrowPanel@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x84c124 (vtable RTTI .?AVArrowPanel@RBX@@ offset 0x44)",
+        "??_7ArrowPanel@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x84c114 (vtable RTTI .?AVArrowPanel@RBX@@ offset 0x64)",
+        "??_7ArrowPanel@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x84c104 (vtable RTTI .?AVArrowPanel@RBX@@ offset 0x84)",
+        "??_7ArrowPanel@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x84c0f4 (vtable RTTI .?AVArrowPanel@RBX@@ offset 0xa4)",
+        "??_7ArrowPanel@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x84c0e4 (vtable RTTI .?AVArrowPanel@RBX@@ offset 0xc4)",
+        "??_7ArrowPanel@RBX@@6B@": "0x84c0dc (vtable RTTI .?AVArrowPanel@RBX@@ offset 0x130)",
+        "??_C@_05DMHBPFEK@D_key?$AA@": "0x84c0d0 (literal 'D_key')",
+        "??_C@_05GMLMGEPJ@A_key?$AA@": "0x84c0c8 (literal 'A_key')",
+        "??_C@_05CCKCMHGJ@S_key?$AA@": "0x84c0c0 (literal 'S_key')",
+        "??_C@_05LJDDIFHP@W_key?$AA@": "0x84c0b8 (literal 'W_key')",
+        "??_C@_09EDIHJNKH@Character?$AA@": "0x822484 (literal 'Character')",
+        "?init@ArrowPanel@RBX@@IAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1111W4SDLKey@@222@Z": "0x657240 (own row)",
+        "??_C@_0M@GEBIIIIG@Controller2?$AA@": "0x830b0c (literal 'Controller2')",
+        "??_C@_05MNCHEHJP@K_key?$AA@": "0x84c0b0 (literal 'K_key')",
+        "??_C@_05ELLDDFDB@H_key?$AA@": "0x84c0a8 (literal 'H_key')",
+        "??_C@_05GHLJEDK@J_key?$AA@": "0x84c0a0 (literal 'J_key')",
+        "??_C@_05PEPLCEHE@U_key?$AA@": "0x84c098 (literal 'U_key')",
+        "??_C@_0M@EPDFNLEF@Controller1?$AA@": "0x830ae8 (literal 'Controller1')"
+      },
+      "local_eh": [
+        "__ehhandler$??0ArrowPanel@RBX@@QAE@PAVAdorn@1@PAVDataModel@1@W4ControllerType@Controller@1@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "build": "Arrow-pending"
+    },
+    {
+      "address": "00657240",
+      "symbol": "?init@ArrowPanel@RBX@@IAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1111W4SDLKey@@222@Z",
+      "size": 1334,
+      "target_size": 1334,
+      "exact": false,
+      "counted_class": true,
+      "verified_targets": {
+        "??_C@_09HENFBCBC@LeftPanel?$AA@": "0x84c08c (literal 'LeftPanel')",
+        "??$create@VTopMenuBar@RBX@@PBDW4Style@Layout@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTopMenuBar@RBX@@@boost@@PBDW4Style@Layout@1@@Z": "0x601fd0 (own row)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??$create@VImageWidget@RBX@@PAVAdorn@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VImageWidget@RBX@@@boost@@PAVAdorn@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x656f60 (own row)",
+        "?addGuiItem@GuiItem@RBX@@QAEXV?$shared_ptr@VGuiItem@RBX@@@boost@@@Z": "0x600f10 (external)",
+        "??$create@VArrowButton@RBX@@PAVAdorn@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4SDLKey@@W4ControllerType@Controller@2@PAVDataModel@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VArrowButton@RBX@@@boost@@PAVAdorn@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4SDLKey@@W4ControllerType@Controller@1@PAVDataModel@1@@Z": "0x657190 (own row)",
+        "??_C@_0BB@FDFLLLNG@ForwardBackPanel?$AA@": "0x84c078 (literal 'ForwardBackPanel')",
+        "??$create@VTopMenuBar@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTopMenuBar@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@1@@Z": "0x657000 (own row)",
+        "__real@42000000": "0x833eac (constant 00000042)",
+        "??$create@VMenuSpacer@RBX@@MM@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VMenuSpacer@RBX@@@boost@@MM@Z": "0x6026e0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?init@ArrowPanel@RBX@@IAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1111W4SDLKey@@222@Z"
+      ],
+      "exact_pending_build_only": true,
+      "build": "Arrow-pending"
+    },
+    {
+      "address": "00601fd0",
+      "symbol": "??$create@VTopMenuBar@RBX@@PBDW4Style@Layout@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTopMenuBar@RBX@@@boost@@PBDW4Style@Layout@1@@Z",
+      "size": 197,
+      "target_size": 197,
+      "exact": false,
+      "counted_class": false,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0TopMenuBar@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@1@_N@Z": "0x573cb0 (external)",
+        "??$?0VTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VTopMenuBar@RBX@@@boost@@QAE@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x601490 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VTopMenuBar@RBX@@PBDW4Style@Layout@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTopMenuBar@RBX@@@boost@@PBDW4Style@Layout@1@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "build": "Arrow-pending"
+    },
+    {
+      "address": "00657190",
+      "symbol": "??$create@VArrowButton@RBX@@PAVAdorn@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4SDLKey@@W4ControllerType@Controller@2@PAVDataModel@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VArrowButton@RBX@@@boost@@PAVAdorn@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4SDLKey@@W4ControllerType@Controller@1@PAVDataModel@1@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": false,
+      "counted_class": false,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0ArrowButton@RBX@@QAE@PAVAdorn@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4SDLKey@@W4ControllerType@Controller@1@PAVDataModel@1@@Z": "0x6570a0 (external)",
+        "??$?0VArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VArrowButton@RBX@@@boost@@QAE@PAVArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x656eb0 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VArrowButton@RBX@@PAVAdorn@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4SDLKey@@W4ControllerType@Controller@2@PAVDataModel@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VArrowButton@RBX@@@boost@@PAVAdorn@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4SDLKey@@W4ControllerType@Controller@1@PAVDataModel@1@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "build": "Arrow-pending"
+    },
+    {
+      "address": "006026e0",
+      "symbol": "??$create@VMenuSpacer@RBX@@MM@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VMenuSpacer@RBX@@@boost@@MM@Z",
+      "size": 138,
+      "target_size": 138,
+      "exact": false,
+      "counted_class": false,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0MenuSpacer@RBX@@QAE@MM@Z": "0x6005e0 (external)",
+        "??$?0VMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VMenuSpacer@RBX@@@boost@@QAE@PAVMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x601ba0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VMenuSpacer@RBX@@MM@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VMenuSpacer@RBX@@@boost@@MM@Z"
+      ],
+      "exact_pending_build_only": true,
+      "build": "Arrow-pending"
+    },
+    {
+      "address": "00656eb0",
+      "symbol": "??$?0VArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VArrowButton@RBX@@@boost@@QAE@PAVArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": false,
+      "counted_class": false,
+      "verified_targets": {
+        "??$?0PAVArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x656d20 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VArrowButton@RBX@@@boost@@QAE@PAVArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "build": "Arrow-pending"
+    },
+    {
+      "address": "00601ba0",
+      "symbol": "??$?0VMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VMenuSpacer@RBX@@@boost@@QAE@PAVMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": false,
+      "counted_class": false,
+      "verified_targets": {
+        "??$?0PAVMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x600e80 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VMenuSpacer@RBX@@@boost@@QAE@PAVMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "build": "Arrow-pending"
+    },
+    {
+      "address": "00656d20",
+      "symbol": "??$?0PAVArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+      "size": 131,
+      "target_size": 131,
+      "exact": false,
+      "counted_class": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_pd@PAVArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x84bf60 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+        "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0PAVArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVArrowButton@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "build": "Arrow-pending"
+    },
+    {
+      "address": "00600e80",
+      "symbol": "??$?0PAVMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+      "size": 131,
+      "target_size": 131,
+      "exact": false,
+      "counted_class": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_pd@PAVMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x841fb0 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+        "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0PAVMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVMenuSpacer@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "build": "Arrow-pending"
+    },
+    {
+      "address": "0064ead0",
+      "symbol": "?process@ChatWidget@RBX@@EAE?AVGuiResponse@2@ABVGuiEvent@2@@Z",
+      "size": 284,
+      "target_size": 284,
+      "exact": false,
+      "counted_class": true,
+      "verified_targets": {
+        "?getMyRect@GuiItem@RBX@@IBE?AVRect@2@XZ": "0x573310 (external (evidence name))",
+        "?pointInRect@Rect@RBX@@QAE_NVVector2int16@G3D@@@Z": "0x573130 (external)",
+        "??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z": "0x491d50 (external)",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0 (external)",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820 (external)",
+        "??_C@_04NMNDOOJO@?1sc?5?$AA@": "0x84b558 (literal '/sc ')",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z": "0x802368 (msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "?chat@Players@Network@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x49cb30 (external)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?process@UnifiedWidget@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z": "0x574e70 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?process@ChatWidget@RBX@@EAE?AVGuiResponse@2@ABVGuiEvent@2@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "build": "Chat-pending"
+    },
+    {
+      "address": "00656940",
+      "symbol": "?getLabel@EquationDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 271,
+      "target_size": 271,
+      "exact": false,
+      "counted_class": true,
+      "verified_targets": {
+        "?getRootAncestor@Instance@RBX@@QAEPAV12@XZ": "0x42a5f0 (own row)",
+        "??_R0?AVEvaluator@RBX@@@8": "0x9479a4 (RTTI .?AVEvaluator@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_01CLKCMJKC@?5?$AA@": "0x812e58 (literal ' ')",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z": "0x8023e4 (msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z)",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z": "0x8024a8 (msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?getLabel@EquationDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+      ],
+      "exact_pending_build_only": true,
+      "build": "Chat-pending"
+    },
+    {
+      "address": "0042a5f0",
+      "symbol": "?getRootAncestor@Instance@RBX@@QAEPAV12@XZ",
+      "size": 18,
+      "target_size": 18,
+      "exact": false,
+      "counted_class": false,
+      "verified_targets": {
+        "?getRootAncestor@Instance@RBX@@QAEPAV12@XZ": "0x42a5f0 (own row)"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true,
+      "build": "Chat-pending"
+    },
+    {
+      "address": "0064edb0",
+      "symbol": "?render2d@MenuItem@RBX@@UAEXPAVAdorn@2@@Z",
+      "size": 473,
+      "target_size": 473,
+      "exact": false,
+      "counted_class": true,
+      "verified_targets": {
+        "?getMyRect@GuiItem@RBX@@IBE?AVRect@2@XZ": "0x573310 (external (evidence name))",
+        "?xyxy@Rect2D@G3D@@SA?AV12@ABVVector2@2@0@Z": "0x4f35d0 (own row)",
+        "?menuSelect@GuiItem@RBX@@SAABVColor4@G3D@@XZ": "0x573250 (external)",
+        "?menuEnabledFill@GuiItem@RBX@@SAABVColor4@G3D@@XZ": "0x5731d0 (external)",
+        "?menuDisabledFill@GuiItem@RBX@@SAABVColor4@G3D@@XZ": "0x573210 (external)",
+        "??_C@_02MPNIDLKH@x?5?$AA@": "0x84b670 (literal 'x ')",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z": "0x802368 (msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z)",
+        "?clear@Color4@G3D@@SAABV12@XZ": "0x7baf10 (external)",
+        "?label2d@GuiItem@RBX@@IBEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@2W4XAlign@32@@Z": "0x573360 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?render2d@MenuItem@RBX@@UAEXPAVAdorn@2@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "build": "MenuItem-pending"
+    },
+    {
+      "address": "004f35d0",
+      "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@ABVVector2@2@0@Z",
+      "size": 155,
+      "target_size": 117,
+      "exact": false,
+      "counted_class": false,
+      "exact_pending_build_only": false,
+      "build": "MenuItem-pending"
+    }
+  ],
+  "vtables": {
+    "??_7?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": {
+      "address": "0x84bf4c",
+      "rtti": ".?AV?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@",
+      "offset": "0x0",
+      "own_class": false,
+      "slots": {
+        "0": "??_E?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z = 0x415000 (external slot)",
+        "1": "?dispose@?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ = 0x48ee50 (own row)",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10 (own row)",
+        "3": "?get_deleter@?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z = 0x5a0460 (own row)"
+      }
+    },
+    "??_7?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": {
+      "address": "0x841ee8",
+      "rtti": ".?AV?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@",
+      "offset": "0x0",
+      "own_class": false,
+      "slots": {
+        "0": "??_E?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z = 0x415000 (external slot)",
+        "1": "?dispose@?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ = 0x48ee50 (own row)",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10 (own row)",
+        "3": "?get_deleter@?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z = 0x5a0460 (own row)"
+      }
+    }
+  },
+  "external_slots": {
+    "??_7?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@ slot 0 | ??_E?$sp_counted_impl_pd@PAVImageWidget@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z": "0x415000 (external)",
+    "??_7?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@ slot 0 | ??_E?$sp_counted_impl_pd@PAVTopMenuBar@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z": "0x415000 (external)"
+  },
+  "shared_header_gaps": [],
+  "pending_note": "pending_rows are exact only against out/native-layouts/gui-widgets2008-pending (gui/ArrowPanel.h with ArrowPanel::init; util/Object.h with a five-parameter Creatable::create; util/Rect.h with pointInRect(Vector2int16) out of line; v8tree/Instance.h with the inline getRootAncestor family; gui/Widget.h with VerbWidget::getVerb inline). Not counted; their vtables are not walked.",
+  "not_attempted": {
+    "00656db0 / 00656c30": "ArrowPanel::isVisible: dataModel->workspace (DataModel +0x204) +0x2a8 is a lazily cached 8-byte value read through a pointer to member (00656c30: dirty +8, object +0xc, member pointer +0x10..+0x18); its type is not derived, so no declaration exists",
+    "00656690 / 00656640": "HealthHud::render2d (678 bytes): Humanoid::getLocalHumanoidFromContext 005d9bb0 (pending in humanoid2008), health / maxHealth +0x1a8 / +0x1ac with no native declaration, unnamed colour statics 005d7560 / 00514910 / 005148b0 and the Adorn helper 005ceea0; 00656640 is ServiceProvider::find<Visit>(const Instance*) with the donor inline findServiceProvider loop (the native v8tree/Service.h declares findServiceProvider out of line)",
+    "00657c40..006588a0": "SafeChat unit (Fonts\\\\safechat.xml at 00657c40, ChatOption dtor 00658200, singleton 00658880): SafeChat / ChatOption are declared by GuiHud2008/GuiBuilder2008.h (another owner) with only the members GuiBuilder reads",
+    "0064f6b0..00650ef0 / 006510a0..00656430": "ChatOutput / ScoreHud units (owner: hud family, gui/ChatOutput.h, gui/ScoreHud.h); listed as not attempted in hud-family-working.json"
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
