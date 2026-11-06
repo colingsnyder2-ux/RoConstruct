@@ -14,7 +14,7 @@ repo-relative paths. Commit reviewed native updates directly there. Do not use
 an origin feature branch as a native destination or publication source. Keep the
 existing checkout and every active worker's edits intact; no checkout/reset/stash.
 
-The existing scheduled owner chat owns integration (currently every six hours). Contributors use `NATIVE_AGENT.md`.
+The existing scheduled owner chat owns integration (currently every four hours). Contributors use `NATIVE_AGENT.md`.
 The upload-only host serves HTTPS `/native-drafts`, backed by durable SQLite.
 Uploads never execute code, activate native providers, or grant credit. Usernames
 are contributor labels, not verified GitHub identities. Upload credentials grant

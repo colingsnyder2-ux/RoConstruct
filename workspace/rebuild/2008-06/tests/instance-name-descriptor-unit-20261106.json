@@ -1,0 +1,29 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/InstanceNameDescriptor.cpp",
+      "checks": [
+        {
+          "addr": "007f2a90",
+          "symbol": "??__E?desc_Name@Instance@RBX@@"
+        },
+        {
+          "addr": "007fc8e0",
+          "symbol": "??__F?desc_Name@Instance@RBX@@"
+        },
+        {
+          "addr": "00559870",
+          "symbol": "??$?0P8Instance@RBX@@"
+        },
+        {
+          "addr": "004117b0",
+          "symbol": "?getName@Instance@RBX@@"
+        },
+        {
+          "addr": "00557630",
+          "symbol": "??_9Instance@RBX@@"
+        }
+      ]
+    }
+  ]
+}
