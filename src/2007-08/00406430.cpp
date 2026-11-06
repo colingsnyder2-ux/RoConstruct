@@ -1,29 +1,29 @@
-// from server: 73% by colin
-struct VCWorkspace_ActiveDocView
+// from server: 75% by Intel
+struct IUnknown
 {
-    void* m_ptr;
+    virtual void __stdcall AddRef() = 0;
 };
 
-extern "C" void __stdcall sub_4055F0(void*);
+extern "C" int __stdcall sub_4055f0(int* a1, int a2);
 
-extern void* g_880DF0;
-extern char  g_880DE4;
-
-long __stdcall sub_406430(void* p1, void* p2, void* p3, void** ppOut)
+int __stdcall sub_406430(int a1, int a2, int a3, int* a4)
 {
-    if (ppOut == 0)
-        return (long)0x80004003;
-
-    if (g_880DF0 == 0)
-        sub_4055F0(&g_880DE4);
-
-    *ppOut = g_880DF0;
-
-    if (g_880DF0 != 0)
+    if (!a4)
     {
-        void** vtbl = *(void***)g_880DF0;
-        void (__stdcall *fn)(void*) = (void (__stdcall *)(void*))vtbl[1];
-        fn(g_880DF0);
+        return 0x80004003;
+    }
+
+    if (!*reinterpret_cast<int*>(0x880df0))
+    {
+        sub_4055f0(reinterpret_cast<int*>(0x880de4), a2);
+    }
+
+    int v5 = *reinterpret_cast<int*>(0x880df0);
+    *a4 = v5;
+
+    if (v5)
+    {
+        (*reinterpret_cast<IUnknown**>(v5))->AddRef();
     }
 
     return 0;

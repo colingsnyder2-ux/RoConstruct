@@ -1,24 +1,31 @@
-// from server: 40% by Intel
+// from server: 46% by Intel
 
 
 
 
-struct CRobloxReportPaneView;
-
-void __stdcall sub_4073F0(void* thisptr);
-void __stdcall sub_455AB0(void* thisptr);
-
-struct CRobloxReportPaneView {
-    void func_00455C80();
+struct S;
+struct Registry {
+    void remove(S* const* object);
 };
 
-void CRobloxReportPaneView::func_00455C80()
+struct CRobloxReportPaneView {
+    unsigned long vtable;
+    void func_00455c80();
+};
+
+void __cdecl sub_455ab0(CRobloxReportPaneView*);
+
+void CRobloxReportPaneView::func_00455c80()
 {
-    CRobloxReportPaneView* esi = this;
-    if (esi != 0) {
-        sub_4073F0(reinterpret_cast<char*>(esi) + 0x318);
-    } else {
-        sub_4073F0(0);
+    __try {
+        S* object = 0;
+        if (this == 0) {
+            object = reinterpret_cast<S*>(reinterpret_cast<char*>(this) + 0x318);
+        }
+        Registry registry;
+        registry.remove(&object);
     }
-    sub_455AB0(esi);
+    __finally {
+        sub_455ab0(this);
+    }
 }
