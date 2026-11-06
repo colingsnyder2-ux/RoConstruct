@@ -1,0 +1,79 @@
+{
+  "scope": "Inactive original-MSVC byte/data proof for one RunService notifier body; direct callee binding verified, indirect IAT call and runtime ABI remain unproven.",
+  "address": "00554ae0",
+  "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@@Z",
+  "size": 131,
+  "target_sha256": "768deaf99a183f719ac45a1cfefbfe3ff50232bddf0a4a15f1510f5f7e8d4784",
+  "object_sha256": "6f8cf7e4e810ca313116379d72f799f0267417e818f722fd65f9eb56449248f2",
+  "exact_masked_bytes": true,
+  "referenced_data_matches": [],
+  "referenced_data_errors": [],
+  "direct_calls": [
+    {
+      "offset": 83,
+      "target": "00554750",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@PAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z",
+      "status": "verified_binding"
+    }
+  ],
+  "indirect_calls": [
+    {
+      "offset": 71,
+      "target": "IAT 0x802890",
+      "symbol": "MSVCR90.dll!_invalid_parameter_noinfo",
+      "status": "separate proof required"
+    }
+  ],
+  "compiler_build": "21022",
+  "flags": [
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\RoConstruct-Native-adb3ff4d4c4c4e6fbfaf7ce6ac5b0e50\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\RoConstruct-Native-adb3ff4d4c4c4e6fbfaf7ce6ac5b0e50\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\student\\Downloads\\RoConstruct-main\\RoConstruct-main\\RoConstruct-Native-adb3ff4d4c4c4e6fbfaf7ce6ac5b0e50\\tools\\libs\\xtp-11.2.2\\Source"
+  ],
+  "source_sha256": "307a81712cc34dcef1359d02871b6c9b3b796ac1fb60355ba1b1b52b310e76bd",
+  "inputs": {
+    "rebuild\\2008-06\\native-classes\\RunService.cpp": "307a81712cc34dcef1359d02871b6c9b3b796ac1fb60355ba1b1b52b310e76bd",
+    "rebuild\\2008-06\\native-headers\\util\\RunStateOwner.h": "f6c39ef2034fcfd20b2edcae75355c71e5539a2be0db3ac80673911e67ad95e5",
+    "rebuild\\2008-06\\native-headers\\util\\Events.h": "39a843b3c01f563b19f81d44bf218ee2e9dfe6aed61212e43962617ab6bd82b3",
+    "rebuild\\2008-06\\native-headers\\util\\GuidItem.h": "c5b829195791077e08d9a3808f70557e840763fc0038c8011f7c2392f69fed78",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114"
+  },
+  "batch_sha256": "aceecae1fe1fdac342ba4e3441af6a8bb5f42176813e8c945cda9641b245a053",
+  "run": "work\\2008-06\\native-check-runs\\20261105-145712-c902c37a",
+  "results_sha256": "7feecdbfb4f2b4eaa0b521c5b778a905712dc9096c76e477546f0d8d142f984d",
+  "analysis_sha256": "c58ffd6bb61b1e5fe49ca22bd01e981010085b3d5bfe977cc6a61b97ebcb85bb",
+  "next_obligation": "Prove caller/provider selection and callee ABI for Notifier<RunService, RunState>::raise; no runtime or server claim."
+}
