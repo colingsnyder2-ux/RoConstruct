@@ -9,9 +9,9 @@ Builds (document-swap flags, VS2008 RTM 21022, native headers only):
                                       (onEvent 0064fe10 x87 compare order).
 Pending build (NATIVE_SCOREHUD_PENDING; rows recorded exact=false, pending-build-only, never counted, vtables never
 walked) against out/native-layouts/hud-pending, a generated copy of the native v8tree/Instance.h (owned by others) with
-one change: ChildAdded / ChildRemoved defined (a const-less boost::shared_ptr<Instance> child plus the out-of-line copy
-constructor, as native CRobloxReportView.h already states from 00457150 / 004116f0). With it both ScoreHud listener
-onEvent bodies compile to 00651210.
+one change: ChildRemoved defined (a const-less boost::shared_ptr<Instance> child plus the out-of-line copy constructor,
+the shape native v8tree/InstanceEvents.h gives ChildAdded from 004116f0). With it the ScoreHud ChildRemoved onEvent body
+compiles to 00651210 too. The ChildAdded body is in the main build (native v8tree/InstanceEvents.h, included only).
 
 Rows are found by closure from seeds (constructors named by the allocating call sites): every REL32/DIR32 relocation of
 an exact row is bound to the address the original instruction uses. A target defined in the compiled object becomes a
@@ -55,8 +55,7 @@ def overlay(source, relative, old, new):
 
 
 overlay(R / 'native-headers/v8tree/Instance.h', 'v8tree/Instance.h',
-        'struct ChildAdded;\nstruct ChildRemoved;\n',
-        'struct ChildAdded {\n    boost::shared_ptr<Instance> child;\n    ChildAdded(const ChildAdded&);\n};\n'
+        'struct ChildRemoved;\n',
         'struct ChildRemoved {\n    boost::shared_ptr<Instance> child;\n    ChildRemoved(const ChildRemoved&);\n};\n')
 
 
@@ -175,7 +174,8 @@ EXTERNAL = {
 EXTERNAL = {k: v for k, v in EXTERNAL.items() if v is not None}
 # Own functions that are not compiled in the main builds: bound by the original reference that uses them.
 UNPROVEN = {
-    '?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildAdded@2@@Z': 0x651210,                   # vtable 0084bc20 slot 0 (pending)
+    # ChildRemoved is only forward-declared in native v8tree/Instance.h: its body is pending, so its vtable slot binds
+    # by address to the ChildAdded body 00651210 (identical codegen; both slots hold it).
     '?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildRemoved@2@@Z': 0x651210,                 # vtable 0084bc14 slot 0 (pending)
     '?renderFFALeaderboard@ScoreHud@RBX@@IAEXPAVAdorn@2@@Z': 0x6551e0,                       # call at 0065646f
     '?renderTeamDeathmatchLeaderboard@ScoreHud@RBX@@IAEXPAVAdorn@2@W4BoardType@12@@Z': 0x655a20,  # call at 0065644d
@@ -194,18 +194,17 @@ SEEDS = {
     'ChatOutput': [(0x64fb60, '??0ChatOutput@RBX@@QAE@XZ')],
 }
 PENDING_SEEDS = {
-    'ScoreHud': [(0x651210, '?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildAdded@2@@Z'),
-                 (0x651210, '?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildRemoved@2@@Z')],
+    'ScoreHud': [(0x651210, '?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildRemoved@2@@Z')],
 }
 # Vtable-slot evidence for the pending seeds.
 assert d(0x84bc20) == 0x651210 and d(0x84bc14) == 0x651210
 OWN_CLASSES = 'ScoreHud|ChatOutput|ChatLine'
 OWN = re.compile(r'(?:^|[^A-Za-z]|\?\?_[EG])(%s)@RBX@@' % OWN_CLASSES)
 NOT_ATTEMPTED = {
-    '006551e0': 'ScoreHud::renderFFALeaderboard (1566 bytes; LeaderboardData, Adorn text)',
-    '00655a20': 'ScoreHud::renderTeamDeathmatchLeaderboard (2574 bytes; Teams, LeaderboardData)',
-    '006510a0..006512e0 / 00651420..006551e0': 'LeaderboardData / BoardData helpers and their std::map / vector '
-                                                'instances (no 2008 layout evidence for the donor classes)',
+    '006551e0 / 00655a20 / 00652640..00655a20': 'ScoreHud::renderFFALeaderboard, renderTeamDeathmatchLeaderboard, '
+                                                'BoardData / LeaderboardData and their std::map / vector instances: '
+                                                'native-classes/ScoreHudLeaderboard2008.cpp, verified by '
+                                                'tests/record_native_scorehud_leaderboard.py',
     '00650560': 'ChatLine(Player*, const std::string&, float): name colour through 00669f60 (string hash, unit '
                 'unknown) and 0064f830 (palette switch); no evidence names for either',
     '00650cc0': 'ChatOutput::onEvent(ChatMessage) (0044bee0 settings singleton, ProfanityFilter::ContainsProfanity '
@@ -534,7 +533,7 @@ receipt = {
     'external_slots': SLOT_CHECK,
     'shared_header_gaps': HEADER_GAPS,
     'pending_note': 'pending_rows are exact only against out/native-layouts/hud-pending (v8tree/Instance.h with '
-                    'ChildAdded / ChildRemoved defined). Not counted; their vtables are not walked.',
+                    'ChildRemoved defined). Not counted; their vtables are not walked.',
     'not_attempted': NOT_ATTEMPTED,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }

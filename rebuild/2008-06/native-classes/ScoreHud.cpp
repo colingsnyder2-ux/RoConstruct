@@ -2,6 +2,7 @@
 // Layout and addresses in native-headers/gui/ScoreHud.h; verified by tests/record_native_hud.py.
 #include "gui/ScoreHud.h"
 #include "v8tree/Service.h"
+#include "v8tree/InstanceEvents.h"
 #include "Network/Players.h"
 #include "Network/Player.h"
 
@@ -15,11 +16,11 @@ namespace RBX
 	void ScoreHud::onEvent(const Instance*, ChildRemoved)
 	{
 	}
+#endif
 
 	void ScoreHud::onEvent(const Instance*, ChildAdded)
 	{
 	}
-#endif
 
 	ScoreHud::ScoreHud(const ServiceProvider* serviceProvider)
 		: runService(NULL),

@@ -159,18 +159,18 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_hud.py": "cb13d4e73974fe660ad0dac7df71f62bcaa2b5e2c920639a11b1dc9bcf2376df",
+    "rebuild/2008-06/tests/record_native_hud.py": "4a7b75b69581c4f7b4b091e567cacf44cc684066c7e734c9585be10419e18d4a",
     "rebuild/2008-06/tests/NativeHudLayout.cpp": "cd07564a9aaab2f8c4cd16c4b5920e78d6b810e5e7c364ca807f11e09d4efa37",
-    "rebuild/2008-06/native-classes/ScoreHud.cpp": "0cb9a66eb759db9cd73f43f349cbf0603b65d25e110b6054b48879e91b7bc040",
+    "rebuild/2008-06/native-classes/ScoreHud.cpp": "957e3d1bba50ee326286fa26887892804d4a81b97a9d08aa96ef79860e35a88d",
     "rebuild/2008-06/native-classes/ChatOutput.cpp": "ce3e090bbe0f611b160188c3240c50c8a2c07c6c0401fb54bb55f0d534a758a2",
-    "rebuild/2008-06/native-headers/gui/ScoreHud.h": "324bff7619560c94002bddc757d6db31f47468370474f2887185bca18c5730bc",
+    "rebuild/2008-06/native-headers/gui/ScoreHud.h": "1bdad86ba6848ae34c0877d7effa2167e813bc8d6676cc5f312b4c6a7ee56244",
     "rebuild/2008-06/native-headers/gui/ChatOutput.h": "bea74b686656798436d41b840fd51516fefe9ee4764846f66326f3c0b82c346a"
   },
   "objects": {
-    "NativeHudLayout.obj": "ec15375fd931cfddc079ccd6f06e6dfe2822e6d61a073548a5591ad18cdce26c",
-    "NativeHud_ScoreHud.obj": "0ca68d988d0a3ee13bffe672c4758f3270d2e7c076f50a31ee0ba3cd497d8111",
-    "NativeHud_ScoreHudPending.obj": "a9196476c49a7561ece0d0ea6e5c40c1677b82adf6ca3573ddf29fcae2788388",
-    "NativeHud_ChatOutput.obj": "3ba5c5e9546a1758a1166a71ee00d36a0a727636ea26c1f61ec1174db2b97c62"
+    "NativeHudLayout.obj": "4548b7557902fb5dc1a9db59f1fba1803bf4274af324cdf534ccfd94e700200a",
+    "NativeHud_ScoreHud.obj": "23791627a535d777a9badc452f34207433ff4b6340dffc669024c3bd54761b45",
+    "NativeHud_ScoreHudPending.obj": "f200e7ee111d4dfa424eb3c62724719d5ea8cd1b64d1808e18cf1221407dfc32",
+    "NativeHud_ChatOutput.obj": "6bbc131b03db9790c4528b58b8c4b89b96c893c2fda3d10e38eea70ace873cb7"
   },
   "layout": {
     "nativeScoreHudRunService": "0x14c",
@@ -218,6 +218,7 @@
     "00651080",
     "00651090",
     "006511f0",
+    "00651210",
     "006512e0",
     "00652510",
     "00652600",
@@ -478,14 +479,6 @@
         "local_eh": []
       },
       {
-        "address": "00558d90",
-        "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
-        "size": 3,
-        "target_size": 285,
-        "exact": false,
-        "counted_class": false
-      },
-      {
         "address": "0070bdf0",
         "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
         "size": 3,
@@ -538,14 +531,6 @@
           "??_EScoreHud@RBX@@UAEPAXI@Z": "0x6511f0 (own row (??_G))"
         },
         "local_eh": []
-      },
-      {
-        "address": "00559230",
-        "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
-        "size": 3,
-        "target_size": 17,
-        "exact": false,
-        "counted_class": false
       },
       {
         "address": "0070bdf0",
@@ -650,6 +635,16 @@
         "target_size": 3,
         "exact": true,
         "counted_class": false,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00651210",
+        "symbol": "?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildAdded@2@@Z",
+        "size": 55,
+        "target_size": 55,
+        "exact": true,
+        "counted_class": true,
         "verified_targets": {},
         "local_eh": []
       },
@@ -1019,14 +1014,6 @@
         "local_eh": []
       },
       {
-        "address": "00558d90",
-        "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
-        "size": 3,
-        "target_size": 285,
-        "exact": false,
-        "counted_class": false
-      },
-      {
         "address": "0070bdf0",
         "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
         "size": 3,
@@ -1079,14 +1066,6 @@
           "??_EChatOutput@RBX@@UAEPAXI@Z": "0x650540 (own row (??_G))"
         },
         "local_eh": []
-      },
-      {
-        "address": "00559230",
-        "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
-        "size": 3,
-        "target_size": 17,
-        "exact": false,
-        "counted_class": false
       },
       {
         "address": "0070bdf0",
@@ -1685,22 +1664,6 @@
   },
   "not_exact_rows": [
     {
-      "address": "00558d90",
-      "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
-      "size": 3,
-      "target_size": 285,
-      "bounds": null,
-      "evidence_name": "?onAddListener@Instance@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z"
-    },
-    {
-      "address": "00559230",
-      "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
-      "size": 3,
-      "target_size": 17,
-      "bounds": null,
-      "evidence_name": "?onAddListener@Instance@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendentAdded@2@@2@@Z"
-    },
-    {
       "address": "00409db0",
       "symbol": "?what@logic_error@std@@UBEPBDXZ",
       "size": 14,
@@ -1710,18 +1673,6 @@
     }
   ],
   "pending_rows": [
-    {
-      "address": "00651210",
-      "symbol": "?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildAdded@2@@Z",
-      "size": 55,
-      "target_size": 55,
-      "exact": false,
-      "counted_class": true,
-      "verified_targets": {},
-      "local_eh": [],
-      "exact_pending_build_only": true,
-      "build": "ScoreHud-pending"
-    },
     {
       "address": "00651210",
       "symbol": "?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildRemoved@2@@Z",
@@ -1804,7 +1755,7 @@
       "own_class": true,
       "slots": {
         "0": "??_EScoreHud@RBX@@WCE@AEPAXI@Z = 0x651070 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (external slot)",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -1826,7 +1777,7 @@
       "own_class": true,
       "slots": {
         "0": "??_EScoreHud@RBX@@WGE@AEPAXI@Z = 0x651090 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (external slot)",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -1878,7 +1829,7 @@
       "offset": "0x144",
       "own_class": true,
       "slots": {
-        "0": "?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildAdded@2@@Z = 0x651210 (external slot)",
+        "0": "?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildAdded@2@@Z = 0x651210 (own row)",
         "1": "??_EScoreHud@RBX@@WBEE@AEPAXI@Z = 0x651030 (own row)"
       }
     },
@@ -1980,7 +1931,7 @@
       "own_class": true,
       "slots": {
         "0": "??_EChatOutput@RBX@@WCE@AEPAXI@Z = 0x64fcd0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (external slot)",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -2002,7 +1953,7 @@
       "own_class": true,
       "slots": {
         "0": "??_EChatOutput@RBX@@WGE@AEPAXI@Z = 0x64fcf0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (external slot)",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -2104,8 +2055,9 @@
     "??_7ScoreHud@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 14 | ?write@Instance@RBX@@UAEPAVXmlElement@@XZ": "0x558c50 (evidence name)",
     "??_7ScoreHud@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 15 | ?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z": "0x557490 (same address at 2 places)",
     "??_7ScoreHud@RBX@@6BDebugable@1@@ slot 0 | ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x56a560 (evidence name)",
+    "??_7ScoreHud@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@ slot 1 | ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": "0x558d90 (same address at 2 places)",
+    "??_7ScoreHud@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@ slot 1 | ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z": "0x559230 (same address at 2 places)",
     "??_7ScoreHud@RBX@@6BGuiItem@1@@ slot 0 | ?process@GuiItem@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z": "0x574b10 (evidence name)",
-    "??_7ScoreHud@RBX@@6B?$Listener@VInstance@RBX@@UChildAdded@2@@1@@ slot 0 | ?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildAdded@2@@Z": "0x651210 (own function not compiled here (bound by the original slot))",
     "??_7ScoreHud@RBX@@6B?$Listener@VInstance@RBX@@UChildRemoved@2@@1@@ slot 0 | ?onEvent@ScoreHud@RBX@@MAEXPBVInstance@2@UChildRemoved@2@@Z": "0x651210 (own function not compiled here (bound by the original slot))",
     "??_7logic_error@std@@6B@ slot 0 | ??_Elogic_error@std@@UAEPAXI@Z": "0x55c390 (same address at 2 places)",
     "??_7out_of_range@std@@6B@ slot 0 | ??_Eout_of_range@std@@UAEPAXI@Z": "0x55c390 (external)",
@@ -2124,6 +2076,8 @@
     "??_7ChatOutput@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 15 | ?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z": "0x557490 (same address at 2 places)",
     "??_7ChatOutput@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 24 | ?render2d@ChatOutput@RBX@@EAEXPAVAdorn@2@@Z": "0x64fe90 (own function not compiled here (bound by the original slot))",
     "??_7ChatOutput@RBX@@6BDebugable@1@@ slot 0 | ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x56a560 (evidence name)",
+    "??_7ChatOutput@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@ slot 1 | ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": "0x558d90 (same address at 2 places)",
+    "??_7ChatOutput@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@ slot 1 | ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z": "0x559230 (same address at 2 places)",
     "??_7ChatOutput@RBX@@6BGuiItem@1@@ slot 0 | ?process@GuiItem@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z": "0x574b10 (evidence name)",
     "??_7ChatOutput@RBX@@6B?$Listener@VPlayers@Network@RBX@@VChatMessage@23@@1@@ slot 0 | ?onEvent@ChatOutput@RBX@@EAEXPBVPlayers@Network@2@VChatMessage@42@@Z": "0x650cc0 (own function not compiled here (bound by the original slot))",
     "??_7length_error@std@@6B@ slot 0 | ??_Elength_error@std@@UAEPAXI@Z": "0x55c390 (external)",
@@ -2131,11 +2085,9 @@
     "??_7bad_alloc@std@@6B@ slot 1 | ?what@exception@std@@UBEPBDXZ": "0x6a154c (import msvcr90.dll!?what@exception@std@@UBEPBDXZ)"
   },
   "shared_header_gaps": [],
-  "pending_note": "pending_rows are exact only against out/native-layouts/hud-pending (v8tree/Instance.h with ChildAdded / ChildRemoved defined). Not counted; their vtables are not walked.",
+  "pending_note": "pending_rows are exact only against out/native-layouts/hud-pending (v8tree/Instance.h with ChildRemoved defined). Not counted; their vtables are not walked.",
   "not_attempted": {
-    "006551e0": "ScoreHud::renderFFALeaderboard (1566 bytes; LeaderboardData, Adorn text)",
-    "00655a20": "ScoreHud::renderTeamDeathmatchLeaderboard (2574 bytes; Teams, LeaderboardData)",
-    "006510a0..006512e0 / 00651420..006551e0": "LeaderboardData / BoardData helpers and their std::map / vector instances (no 2008 layout evidence for the donor classes)",
+    "006551e0 / 00655a20 / 00652640..00655a20": "ScoreHud::renderFFALeaderboard, renderTeamDeathmatchLeaderboard, BoardData / LeaderboardData and their std::map / vector instances: native-classes/ScoreHudLeaderboard2008.cpp, verified by tests/record_native_scorehud_leaderboard.py",
     "00650560": "ChatLine(Player*, const std::string&, float): name colour through 00669f60 (string hash, unit unknown) and 0064f830 (palette switch); no evidence names for either",
     "00650cc0": "ChatOutput::onEvent(ChatMessage) (0044bee0 settings singleton, ProfanityFilter::ContainsProfanity 0066a350, ParseCommand 00650660)",
     "00650660": "ChatOutput::ParseCommand (1439 bytes)",
