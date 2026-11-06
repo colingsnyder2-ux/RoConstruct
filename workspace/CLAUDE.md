@@ -25,10 +25,12 @@ lists them all.
 
 - Native recovery defaults to `docs/NATIVE_SWAP_BATCH.md`: choose one runnable
   swap target and current blockers, batch evidence-backed variants in isolated
-  runner outputs, compile once and reuse objects for byte/data/call/diff checks.
-  After a match, advance provider/layout/ABI/selection proof. After three rejected
-  hypotheses, park with evidence and choose another required blocker. Report
-  inactive, selected, fully gated class swaps and server credit separately.
+  runner outputs, compile once per distinct candidate/build configuration and reuse
+  that exact object for byte/data/call/diff checks; rebuild after relevant input changes.
+  After a match, advance provider/layout/ABI/selection proof. After three substantive
+  hypotheses fail to reduce a blocker using the same evidence, park it and continue an independent authorized blocker. Syntax fixes
+  and multiple checks of one object do not count; revisit on relevant input/evidence
+  changes. Report inactive, selected, fully gated class swaps and server credit separately.
 
 - Use `roc.cmd native-asm 2008-06 ADDR [ADDR...]` for grouped disassembly and
   its `--obj`/`--sym` mode for object comparison. Check relocation targets too.
@@ -103,7 +105,7 @@ remote setup is needed. A branch seen for the first time is only recorded, so no
 
 - `roc.cmd native-files scan --dry-run` previews what would be posted (nothing sent, nothing saved);
   `--backfill` also lists what first-seen branches already have beyond `main`; `--no-forks` skips forks.
-- Legacy bot merges are retired. The two-hour draft integration reviews explicit
+- Legacy bot merges are retired. The scheduled draft integration reviews explicit
   source paths and commits directly to `work`; it never recreates retired branches.
 - The partial / recovery / header / site rows on that webhook are off by default; set
   `"integration_digest_extra_rows": true` in `roconstruct-settings.json` to bring them back.

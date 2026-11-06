@@ -73,11 +73,11 @@ def jobs_from(data):
     return list(jobs.values())
 
 
-def compiler_flags(source):
+def compiler_flags(source, override=None):
     recipe = libs.RECIPES['rbxgs']
     headers = str(BASE / 'native-headers')
     pinned = re.search(r'^// native-flags: (.*)$', source.read_text(encoding='utf-8-sig'), re.M)
-    profile = os.environ.get('NATIVE_FLAGS') or (pinned[1] if pinned else '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS')
+    profile = override or os.environ.get('NATIVE_FLAGS') or (pinned[1] if pinned else '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS')
     flags = ['/nologo', '/c'] + profile.replace('{headers}', headers).split()
     # Runner owns output paths; reject overrides that could collide with other work.
     if any(flag.lower().startswith(('/fo', '/fd', '/yc', '/yu'))
@@ -206,6 +206,29 @@ def analyze_object(job, obj):
     return {'checks': checks, 'coverage': coverage, 'layouts': layouts}
 
 
+def build_inputs(tc):
+    compiler = Path(tc['cl']) if tc.get('cl') else None
+    paths = [compiler] + [compiler.with_name(name) for name in ('c1.dll', 'c1xx.dll', 'c2.dll')] if compiler else []
+    if tc.get('mspdb'):
+        paths.append(Path(tc['mspdb']))
+    return dict(compiler={str(p): sha(p) for p in paths if p.is_file()},
+                includes={k: str(tc[k]) if tc.get(k) else None for k in ('vc_include', 'atlmfc_include', 'sdk_include')})
+
+
+def build_changes(receipt, tc):
+    changed = []
+    if not receipt.get('build_inputs'):
+        changed.append('build configuration unrecorded; historical evidence only')
+    elif receipt['build_inputs'] != build_inputs(tc):
+        changed.append('compiler/toolchain inputs changed')
+    # An explicit current override selects a new configuration. Otherwise reuse
+    # the captured override, even after the original shell environment ended.
+    override = os.environ.get('NATIVE_FLAGS') or receipt.get('native_flags')
+    if compiler_flags(Path(receipt['source']), override) != receipt.get('flags'):
+        changed.append('compiler flags changed')
+    return changed
+
+
 def compile_job(job, folder, tc):
     folder.mkdir()
     started = time.time_ns()
@@ -219,6 +242,7 @@ def compile_job(job, folder, tc):
             return result
         before = sha(source)
         flags = compiler_flags(source)
+        result.update(build_inputs=build_inputs(tc), native_flags=os.environ.get('NATIVE_FLAGS'))
         compile_started = time.monotonic()
         code, log = rebuild.run(tc, 'cl', flags + ['/showIncludes', '/Fo' + result['object'], '/Fd' + str(folder / 'compiler.pdb'), str(source)], folder)
         result['compile_seconds'] = round(time.monotonic() - compile_started, 3)
@@ -235,6 +259,7 @@ def compile_job(job, folder, tc):
         result['dependencies'] = {str(p): sha(p) for p in sorted(dependencies)}
         # Fingerprints are evidence, not a cache key. No reuse of changed builds.
         changed = [str(p) for p in dependencies if p != source and p.stat().st_mtime_ns >= started]
+        changed += build_changes(result, tc)
         if sha(source) != before or changed:
             result.update(error='inputs changed during compile; rerun', changed_inputs=changed)
             return result
@@ -400,12 +425,14 @@ def main():
         jobs = jobs_from(json.loads((args.manifest or run / 'manifest.json').read_text(encoding='utf-8-sig')))
         receipts = {r['source'].casefold(): r for r in json.loads((run / 'results.json').read_text())}
         results = []
+        tc = rebuild.toolchain(21022)
         for job in jobs:
             receipt = receipts[job['source'].casefold()]
             obj = Path(receipt['object'])
             if receipt['status'] != 'complete' or sha(obj) != receipt['object_sha256']:
                 raise ValueError('recorded object failed or changed: ' + str(obj))
             changed = [p for p, digest in receipt['dependencies'].items() if not Path(p).exists() or sha(p) != digest]
+            changed += build_changes(receipt, tc)
             results.append({'source': job['source'], 'object': str(obj), 'changed_inputs': changed,
                             'scope': 'recorded object analysis only; not a fresh build', **analyze_object(job, obj)})
             native_work.log_checks(run, job, results[-1], mode='analyze')
@@ -414,7 +441,7 @@ def main():
             receipt = receipts[result['source'].casefold()]
             expected = dict(receipt['dependencies'])
             expected[receipt['object']] = receipt['object_sha256']
-            result['changed_inputs'] = sorted(set(result['changed_inputs']) | {
+            result['changed_inputs'] = sorted(set(result['changed_inputs']) | set(build_changes(receipt, tc)) | {
                 p for p, digest in expected.items() if not Path(p).exists() or sha(p) != digest})
         output = run / ('analysis-' + uuid.uuid4().hex[:8] + '.json')
         save(output, results)

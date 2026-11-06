@@ -5,6 +5,7 @@ from pathlib import Path
 import tempfile
 import sys
 import unittest
+import pytest
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -282,7 +283,7 @@ class RunnerTests(unittest.TestCase):
             runner.save(root / 'manifest.json', {'jobs': [{'source': str(source)}]})
             runner.save(root / 'results.json', [{'source': str(source), 'object': str(obj), 'object_sha256': runner.sha(obj),
                                                'status': 'complete', 'dependencies': {str(source): runner.sha(source)}}])
-            with patch.object(sys, 'argv', [str(SCRIPT), 'analyze', str(root)]), patch.object(runner.rebuild, 'run') as compile_call, patch.object(runner, 'analyze_object', return_value={}), patch('builtins.print'):
+            with patch.object(sys, 'argv', [str(SCRIPT), 'analyze', str(root)]), patch.object(runner.rebuild, 'toolchain', return_value={}), patch.object(runner.rebuild, 'run') as compile_call, patch.object(runner, 'analyze_object', return_value={}), patch('builtins.print'):
                 runner.main()
                 compile_call.assert_not_called()
                 obj.write_bytes(b'changed')
@@ -292,3 +293,47 @@ class RunnerTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+def test_build_configuration_freshness(tmp_path):
+    source, compiler, backend = tmp_path/'Foo.cpp', tmp_path/'cl.exe', tmp_path/'c2.dll'
+    source.write_text('void foo() {}')
+    compiler.write_bytes(b'compiler'); backend.write_bytes(b'backend')
+    tc = {'cl':compiler}
+    with patch.dict(runner.os.environ, {'NATIVE_FLAGS':'/O2'}):
+        receipt = {'source':str(source),'build_inputs':runner.build_inputs(tc),
+                   'native_flags':'/O2','flags':runner.compiler_flags(source)}
+        assert runner.build_changes(receipt,tc) == []
+    with patch.dict(runner.os.environ, {'NATIVE_FLAGS':''}):
+        assert runner.build_changes(receipt,tc) == []
+    with patch.dict(runner.os.environ, {'NATIVE_FLAGS':'/O1'}):
+        assert 'compiler flags changed' in runner.build_changes(receipt,tc)
+    with patch.dict(runner.os.environ, {'NATIVE_FLAGS':'/O2'}):
+        backend.write_bytes(b'changed backend')
+        assert 'compiler/toolchain inputs changed' in runner.build_changes(receipt,tc)
+        backend.write_bytes(b'backend');compiler.write_bytes(b'changed compiler')
+        assert 'compiler/toolchain inputs changed' in runner.build_changes(receipt,tc)
+
+
+
+@pytest.mark.parametrize('mutation',['compiler','backend','flags','header'])
+def test_analyze_require_proof_rejects_stale_build(tmp_path,mutation):
+    source,obj,compiler,backend,header=[tmp_path/n for n in ['Foo.cpp','candidate.obj','cl.exe','c2.dll','Foo.h']]
+    for path in [source,obj,compiler,backend,header]:path.write_bytes(b'original')
+    tc={'cl':compiler}
+    with patch.dict(runner.os.environ,{'NATIVE_FLAGS':'/O2'}):
+        receipt={'source':str(source),'object':str(obj),'object_sha256':runner.sha(obj),
+                 'status':'complete','dependencies':{str(p):runner.sha(p) for p in [source,header]},
+                 'build_inputs':runner.build_inputs(tc),'native_flags':'/O2','flags':runner.compiler_flags(source)}
+        runner.save(tmp_path/'manifest.json',{'jobs':[{'source':str(source)}]})
+        runner.save(tmp_path/'results.json',[receipt])
+        result={'checks':[{'status':'exact','data_errors':[],'call_identity':{'passed':True}}]}
+        with patch.object(sys,'argv',[str(SCRIPT),'analyze',str(tmp_path),'--require-proof']), patch.object(runner.rebuild,'toolchain',return_value=tc), patch.object(runner.rebuild,'run') as compile_call, patch.object(runner,'analyze_object',return_value=result), patch.object(runner.native_work,'log_checks'), patch('builtins.print'):
+            runner.main()
+            if mutation=='flags':
+                runner.os.environ['NATIVE_FLAGS']='/O1'
+            else:
+                {'compiler':compiler,'backend':backend,'header':header}[mutation].write_bytes(b'changed')
+            with pytest.raises(SystemExit,match='proof incomplete'):
+                runner.main()
+            compile_call.assert_not_called()

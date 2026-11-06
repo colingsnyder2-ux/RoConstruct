@@ -36,8 +36,8 @@ missing obligation; avoid collecting unrelated easy matches indefinitely.
 
 ## One command per evidence-backed batch
 
-Read grouped original assembly with `roc native-asm`. Prepare at most three
-specific hypotheses for one required blocker. Keep real native declarations and
+Read grouped original assembly with `roc native-asm`. Prepare a bounded batch of
+substantive hypotheses for one required blocker. Keep real native declarations and
 relationships; no invented fields, addresses, stubs or byte/assembly patches.
 Lease actual files; shared headers have one owner and remain frozen for a batch.
 Use separate task-owned source variants with explicit include profiles. A scoped
@@ -50,8 +50,10 @@ Use the existing isolated runner, not repeated `check_native_class.py` calls:
 python rebuild/2008-06/tests/native_check_runner.py run BATCH.json --workers 3
 ```
 
-Each distinct source compiles once into its own unit directory. Multiple checks
-for one source share that object. Receipts include source/dependency/object and
+Compile once per distinct candidate and build configuration. Reuse that exact
+object for all applicable byte, data and call-binding checks. Recompile whenever
+source, included headers, compiler, flags or other relevant build inputs change.
+Each build uses its own isolated unit directory. Receipts include source/dependency/object and
 compiler hashes, flags, timings, byte/data results, first byte divergence and
 reviewed call assertions. Independent isolated units may run concurrently;
 legacy shared-output scripts and P6 builds remain serial.
@@ -101,11 +103,19 @@ finished, not passing. Inspect saved results before accepting any evidence.
 
 ## Stop experiments and advance integration
 
-Exact bytes -> check calls/data using that object -> close next ABI/provider
-obligation. Stop rewriting a winner. Three rejected evidence-backed hypotheses
-without progress -> park with hashes, first divergence and missing proof, then
-choose another blocker needed by the same swap. Revisit only for new evidence or
-changed inputs. Do not reset budgets or recompile unchanged candidates to recount.
+Exact bytes → check calls/data using that object → close the next ABI/provider
+obligation. Retain verified bodies while inputs and evidence remain valid.
+After three substantive hypotheses fail to reduce a blocker using the same
+evidence, park it and continue an independent authorized blocker. Syntax
+corrections and multiple checks of one object are not separate hypotheses.
+Revisit parked work when relevant evidence or inputs change. Record hashes,
+first divergence and missing proof; do not reset budgets or recount unchanged work.
+
+Contributor completion is a candidate with its available source/dependency/ABI
+proofs uploaded and owner-only selection/runtime gates explicitly listed. Move
+to another authorized unleased blocker while those gates await owner review.
+A handoff is not executable activation or an integrated swap. Use the concrete
+queue/graph/log paths and scoped milestone/shutdown commands in `NATIVE_AGENT.md`.
 
 After a meaningful provider/header/ABI milestone, perform one isolated closure
 probe, inspect exact selected providers and remaining blockers, then run affected
@@ -124,7 +134,7 @@ count is not a class swap; a successful link is not runtime proof.
 
 Repeat the recovery loop indefinitely within the user's authorized scope:
 read current state and leases -> choose the next required swap blocker -> form
-an evidence-backed hypothesis batch -> lease/edit -> compile once -> inspect
+an evidence-backed hypothesis batch -> lease/edit -> compile each distinct configuration -> inspect
 bytes/data/call identities on the same object -> save evidence and upload drafts
 -> advance the next integration obligation -> update the blocker queue -> repeat
 from current state immediately. Do not end the task after one batch, one exact
@@ -132,7 +142,7 @@ match, one upload, one report, one commit, or one completed swap. After a comple
 swap, choose the next authorized swap/dependency target and continue. Progress
 updates are checkpoints, not requests for permission to keep working.
 
-The three-rejected-hypothesis rule parks that blocker, not the overall loop.
+The substantive-hypothesis rule above parks that blocker, not the overall loop.
 Continue another useful, independently owned blocker; revisit a parked item only
 when evidence or relevant inputs change. Renew leases and keep the automatic
 uploader healthy. Preserve all verification, ownership and runtime-activation
@@ -140,7 +150,9 @@ boundaries; repetition never authorizes weakening gates or expanding scope.
 
 Stop only when the user stops/pauses work, the platform forces a limit, or every
 remaining authorized useful action is blocked on unavailable input/ownership.
-For a global block, save the exact queue, hashes, receipts and next resume action,
+Near a platform/context limit, save the queue, next action and evidence, then
+flush drafts before cleanup becomes impossible. For a global block, save the
+exact queue, hashes, receipts and next resume action,
 flush drafts, release leases and report the concrete blocker. Do not spin,
 recompile unchanged work, poll repeatedly, fabricate progress or reserve files
 while waiting. On resume, read the saved queue and continue the same loop rather

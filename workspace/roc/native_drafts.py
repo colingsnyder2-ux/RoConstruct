@@ -166,6 +166,17 @@ def initialize(root, scopes, user, model, server, baseline=None):
     folder = session_path(root, session)
     state = dict(schema=1, user=user, model=model, session=session, server=server.rstrip('/'),
                  baseline=baseline or revision, scopes=scopes, base=current, last_files=None, parent=None)
+    # A package inventory identifies edits made before session initialization.
+    inventory_path = root / 'workspace-manifest.json'
+    if not (root / '.git').exists() and inventory_path.exists():
+        inventory = json.loads(inventory_path.read_text(encoding='utf-8'))['files']
+        expected = {name: value for name, value in inventory.items()
+                    if Path(name).suffix in SUFFIXES and any(name == scope or name.startswith(scope.rstrip('/') + '/') for scope in scopes)
+                    and not any(part.lower() in ('__pycache__', 'out', 'source') for part in Path(name).parts)}
+        dirty = sorted(name for name in current.keys() | expected.keys()
+                       if name not in current or hashlib.sha256(current[name].encode('utf-8')).hexdigest() != expected.get(name))
+        if dirty:
+            raise ValueError('Pre-existing package edits in watched paths; preserve the old session/outbox and initialize an untouched package before porting: ' + ', '.join(dirty))
     # Existing Git edits must remain drafts, not silently become the baseline.
     if (root / '.git').exists():
         tracked = subprocess.check_output(['git','ls-tree','-r','--name-only','HEAD','--',*scopes],cwd=root).decode().splitlines()
@@ -178,14 +189,25 @@ def initialize(root, scopes, user, model, server, baseline=None):
     return session
 
 
+def snapshot_changes(root, state, folder):
+    current = files(root, state['scopes'])
+    changes = {p: dict(base=state['base'].get(p), text=current.get(p))
+               for p in sorted(current.keys() | state['base'].keys())
+               if state['base'].get(p) != current.get(p)}
+    if state['parent']:
+        previous = json.loads((folder / 'outbox' / (state['parent'] + '.json')).read_text())
+        for name, row in previous['files'].items():
+            if name not in changes:
+                # A return to the immutable baseline must supersede the earlier edit.
+                changes[name] = row if row['text'] == current.get(name) else dict(base=row['text'], text=current.get(name))
+    return changes
+
+
 def checkpoint(root, session):
     folder = session_path(root, session)
     with lock(folder / 'checkpoint.lock'):
         state = json.loads((folder / 'session.json').read_text())
-        current = files(root, state['scopes'])
-        changes = {p: dict(base=state['base'].get(p), text=current.get(p))
-                   for p in sorted(current.keys() | state['base'].keys())
-                   if state['base'].get(p) != current.get(p)}
+        changes = snapshot_changes(root, state, folder)
         fingerprint = digest(changes)
         if not changes or state['last_files'] == fingerprint:
             return None
@@ -206,6 +228,31 @@ def request(server, action, body=None, token=None):
         return json.load(response)
 
 
+def durable_receipt(folder, identifier):
+    path = folder / 'receipts' / (identifier + '.json')
+    if not path.exists():
+        return None
+    try:
+        receipt = json.loads(path.read_text())
+    except ValueError:
+        return None
+    return receipt if isinstance(receipt, dict) and receipt.get('id') == identifier and receipt.get('durable') is True else None
+
+
+def status(root, session):
+    folder = session_path(root, session)
+    state = json.loads((folder / 'session.json').read_text())
+    health = folder / 'health.json'
+    outbox = list((folder / 'outbox').glob('*.json'))
+    acknowledged = sum(durable_receipt(folder, p.stem) is not None for p in outbox)
+    changes = snapshot_changes(root, state, folder)
+    latest = state['parent']
+    return dict(health=json.loads(health.read_text()) if health.exists() else None,
+                queued=len(outbox), acknowledged=acknowledged, pending=len(outbox)-acknowledged,
+                latest_packet=latest, latest_receipt=durable_receipt(folder, latest) if latest else None,
+                snapshot_current=(digest(changes) == state['last_files']) if latest else not changes)
+
+
 def flush(root, session):
     folder = session_path(root, session)
     with lock(folder / 'flush.lock'):
@@ -220,7 +267,7 @@ def flush(root, session):
         for path in sorted((folder / 'outbox').glob('*.json')):
             packet = json.loads(path.read_text())
             identifier = digest(packet)
-            if (folder / 'receipts' / (identifier + '.json')).exists():
+            if durable_receipt(folder, identifier):
                 continue
             receipt = request(state['server'], 'upload', packet, auth['token'])
             if receipt.get('id') != identifier or receipt.get('durable') is not True:
@@ -394,7 +441,6 @@ def handler(inbox):
 def watch(root, session, every=300):
     folder = session_path(root, session)
     with lock(folder / 'watch.lock'):
-        (folder / 'stop').unlink(missing_ok=True)
         while not (folder / 'stop').exists():
             state = dict(pid=os.getpid(), heartbeat=time.time())
             try:
@@ -406,17 +452,45 @@ def watch(root, session, every=300):
                 if (folder / 'stop').exists():
                     break
                 time.sleep(1)
-        checkpoint(root, session)
+        finish(root, session)
+
+
+def finish(root, session):
+    folder = session_path(root, session)
+    health = dict(pid=os.getpid(), heartbeat=time.time(), stopped=True)
+    try:
+        health.update(checkpoint=checkpoint(root, session), sent=flush(root, session), error=None)
+    except (OSError, ValueError, RuntimeError) as error:
+        health['error'] = str(error)
+        raise
+    finally:
+        atomic(folder / 'health.json', health)
+
+
+def stop(root, session, wait=False, timeout=60):
+    folder = session_path(root, session)
+    (folder / 'stop').touch()
+    if not wait:
+        return dict(stopping=True)
+    deadline = time.monotonic() + timeout
+    while True:
         try:
-            flush(root, session)
-        except (OSError, ValueError, RuntimeError) as error:
-            atomic(folder / 'health.json', dict(stopped=True, error=str(error)))
+            with lock(folder / 'watch.lock'):
+                # Also handles a dead/not-yet-started watcher, without losing stop.
+                finish(root, session)
+                return dict(stopping=False, **status(root, session))
+        except RuntimeError as error:
+            if not str(error).startswith('Already running:'):
+                raise
+            if time.monotonic() >= deadline:
+                raise RuntimeError('Watcher still stopping; retain session/outbox and retry stop --wait') from error
+            time.sleep(.1)
 
 
 def start(root, session, every=300):
     folder = session_path(root, session)
     with lock(folder / 'watch.lock'):
-        pass
+        (folder / 'stop').unlink(missing_ok=True)
     with (folder / 'watch.log').open('ab') as log:
         p = subprocess.Popen([sys.executable, '-m', 'roc.native_drafts', '--root', str(root), 'watch', session,
                               '--every', str(every)], cwd=root, stdin=subprocess.DEVNULL, stdout=log, stderr=log,
@@ -476,6 +550,9 @@ def main(argv=None):
         p.add_argument('session')
         if action in ('watch', 'start'):
             p.add_argument('--every', type=int, default=300)
+        if action == 'stop':
+            p.add_argument('--wait', action='store_true')
+            p.add_argument('--timeout', type=float, default=60)
     sub.add_parser('pending')
     notes=sub.add_parser('notes')
     notes.add_argument('--server')
@@ -510,14 +587,9 @@ def main(argv=None):
     elif args.action == 'watch':
         return watch(root, args.session, max(10, args.every))
     elif args.action == 'stop':
-        (session_path(root, args.session) / 'stop').touch()
-        result = dict(stopping=True)
+        result = stop(root, args.session, args.wait, max(0,args.timeout))
     elif args.action == 'status':
-        folder = session_path(root, args.session)
-        health = folder / 'health.json'
-        result = dict(health=json.loads(health.read_text()) if health.exists() else None,
-                      queued=len(list((folder / 'outbox').glob('*.json'))),
-                      acknowledged=len(list((folder / 'receipts').glob('*.json'))))
+        result = status(root, args.session)
     elif args.action == 'notes':
         result=request(args.server,'notes') if args.server else Inbox(root).notes()
     elif args.action == 'note':

@@ -1,8 +1,9 @@
 # Native integration: work branch is authoritative
 
 Prioritize one explicit runnable swap and its current blocker list using
-`docs/NATIVE_SWAP_BATCH.md`. Batch reviewed experiments, compile once per source,
-reuse objects for byte/data/call assertions, park after three rejected hypotheses,
+`docs/NATIVE_SWAP_BATCH.md`. Batch reviewed experiments, compile once per distinct candidate/build configuration,
+reuse objects for byte/data/call assertions, park after three substantive hypotheses fail to reduce a blocker using the same evidence
+(syntax corrections and repeated checks of one object do not count),
 and move exact bodies toward provider/ABI/selection gates. Track inactive matches,
 selected matches, gated swaps and independent server credit separately. Do not
 mistake another inactive exact for completed runnable integration.
@@ -13,7 +14,7 @@ repo-relative paths. Commit reviewed native updates directly there. Do not use
 an origin feature branch as a native destination or publication source. Keep the
 existing checkout and every active worker's edits intact; no checkout/reset/stash.
 
-The existing two-hour chat owns integration. Contributors use `NATIVE_AGENT.md`.
+The existing scheduled owner chat owns integration (currently every six hours). Contributors use `NATIVE_AGENT.md`.
 The upload-only host serves HTTPS `/native-drafts`, backed by durable SQLite.
 Uploads never execute code, activate native providers, or grant credit. Usernames
 are contributor labels, not verified GitHub identities. Upload credentials grant

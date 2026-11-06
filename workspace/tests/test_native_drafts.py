@@ -191,3 +191,105 @@ def test_sparse_notes_are_advisory_expire_and_cannot_replace_leases(tmp_path,rec
     with inbox.connect() as db:
         db.execute('UPDATE notes SET updated=0,expires=0')
     assert inbox.notes()==[]
+
+
+def test_package_preexisting_edits_not_absorbed(tmp_path, receiver):
+    import hashlib
+    _, server = receiver
+    root = workspace(tmp_path)
+    source = root / 'docs/Native.cpp'
+    original = source.read_bytes()
+    (root / 'workspace-manifest.json').write_text(json.dumps({'files': {'docs/Native.cpp': hashlib.sha256(original).hexdigest()}}))
+    source.write_text('pre-existing work from another contributor')
+    with pytest.raises(ValueError, match='Pre-existing package edits'):
+        d.initialize(root, ['docs/Native.cpp'], 'alice', 'model', server)
+    assert source.read_text() == 'pre-existing work from another contributor'
+    assert not (root / 'local/drafts/sessions').exists()
+
+
+def test_final_receipt_covers_latest_edit_and_reversion(tmp_path, receiver):
+    inbox, server = receiver
+    root = workspace(tmp_path)
+    source = root / 'docs/Native.cpp'
+    original = source.read_bytes().decode('utf-8')
+    session = d.initialize(root, ['docs/Native.cpp'], 'alice', 'model', server)
+    source.write_text('first saved change')
+    first = d.checkpoint(root, session)
+    d.flush(root, session)
+    source.write_text('last edit after milestone')
+    assert d.status(root, session)['snapshot_current'] is False
+    final = d.stop(root, session, wait=True)
+    assert final['snapshot_current'] and final['pending'] == 0
+    assert final['latest_packet'] != first
+    assert inbox.packet(final['latest_packet'])['files']['docs/Native.cpp']['text'] == 'last edit after milestone'
+    source.write_bytes(original.encode('utf-8'))
+    final = d.stop(root, session, wait=True)
+    packet = inbox.packet(final['latest_packet'])
+    assert packet['files']['docs/Native.cpp'] == {'base': 'last edit after milestone', 'text': original}
+    assert d.checkpoint(root, session) is None
+    assert final['latest_receipt']['durable'] and final['snapshot_current']
+    assert json.loads((d.session_path(root,session)/'session.json').read_text())['base']['docs/Native.cpp'] == original
+
+
+def test_watcher_stop_not_lost_and_final_transport_retry(tmp_path, receiver, monkeypatch):
+    _, server = receiver
+    root = workspace(tmp_path)
+    session = d.initialize(root, ['docs'], 'alice', 'model', server)
+    folder = d.session_path(root, session)
+    (folder / 'stop').touch()
+    (root / 'docs/Native.cpp').write_text('final offline draft')
+    with monkeypatch.context() as m:
+        m.setattr(d, 'request', lambda *args, **kwargs: (_ for _ in ()).throw(OSError('offline')))
+        with pytest.raises(OSError, match='offline'):
+            d.watch(root, session, every=1)
+    assert json.loads((folder / 'health.json').read_text())['stopped'] is True
+    assert d.status(root, session)['pending'] == 1
+    d.flush(root, session)
+    result = d.stop(root, session, wait=True)
+    assert result['snapshot_current'] and result['pending'] == 0
+    assert result['latest_receipt']['id'] == result['latest_packet']
+
+
+def test_invalid_local_receipt_is_retried(tmp_path, receiver):
+    _, server = receiver
+    root = workspace(tmp_path)
+    session = d.initialize(root, ['docs'], 'alice', 'model', server)
+    (root / 'docs/Native.cpp').write_text('new draft')
+    packet = d.checkpoint(root, session)
+    d.atomic(d.session_path(root,session)/'receipts'/(packet+'.json'), {'id':packet,'durable':False})
+    assert d.status(root,session)['pending'] == 1
+    assert d.flush(root,session) == [packet]
+    assert d.status(root,session)['latest_receipt']['durable'] is True
+
+
+def test_scoped_package_port_and_live_watcher_final_receipt(tmp_path, receiver):
+    import hashlib
+    import shutil
+    import time
+    _, server = receiver
+    root = workspace(tmp_path)
+    source = root / 'docs/Native.cpp'
+    original = source.read_bytes()
+    (root/'workspace-manifest.json').write_text(json.dumps({'files':{'docs/Native.cpp':hashlib.sha256(original).hexdigest()}}))
+    shutil.copytree(Path(d.__file__).parent,root/'roc',ignore=shutil.ignore_patterns('__pycache__'))
+    session = d.initialize(root,['docs/Native.cpp'],'alice','model',server)
+    source.write_text('ported task change')
+    process = d.start(root,session,every=10)
+    try:
+        deadline=time.monotonic()+10
+        while time.monotonic()<deadline:
+            result=d.status(root,session)
+            if result['latest_receipt']:
+                break
+            time.sleep(.05)
+        assert result['latest_receipt'] and result['health']['pid']==process['pid']
+        source.write_text('final edit after watcher milestone')
+        final=d.stop(root,session,wait=True,timeout=10)
+        assert final['snapshot_current'] and final['pending']==0
+        assert final['latest_receipt']['id']==final['latest_packet']
+        folder=d.session_path(root,session)
+        packet=json.loads((folder/'outbox'/(final['latest_packet']+'.json')).read_text())
+        assert packet['files']['docs/Native.cpp']['base']==original.decode()
+        assert packet['files']['docs/Native.cpp']['text']=='final edit after watcher milestone'
+    finally:
+        d.stop(root,session,wait=True,timeout=10)
