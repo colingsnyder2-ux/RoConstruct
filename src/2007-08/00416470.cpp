@@ -1,22 +1,29 @@
-// from server: 79% by Intel
-extern "C" void __stdcall sub_4055F0(void*);
+// from server: 81% by Intel
+struct IUnknown {
+    virtual void AddRef() = 0;
+    virtual void Release() = 0;
+};
 
-int* g_pGlobal = 0;
+extern "C" void __stdcall InitializeCriticalSectionAndSpinCount(void* cs, unsigned int count);
 
-int __stdcall sub_416470(int, int, int, int** ppvObject) {
-    if (!ppvObject) {
+unsigned int** g_ppGlobalPtr = (unsigned int**)0x883164;
+void* g_CriticalSection = (void*)0x883158;
+
+long __stdcall GetGlobalPointer(void* unused1, void* unused2, void* unused3, unsigned int** ppOut) {
+    if (!ppOut) {
         return 0x80004003;
     }
 
-    if (!g_pGlobal) {
-        int arg = 0;
-        sub_4055F0(&arg);
+    if (!*g_ppGlobalPtr) {
+        InitializeCriticalSectionAndSpinCount(g_CriticalSection, 0);
     }
 
-    *ppvObject = g_pGlobal;
+    unsigned int* pGlobal = *g_ppGlobalPtr;
+    *ppOut = pGlobal;
 
-    if (g_pGlobal) {
-        (*(void (__stdcall**)(int*))(*g_pGlobal + 4))(g_pGlobal);
+    if (pGlobal) {
+        IUnknown* pUnk = reinterpret_cast<IUnknown*>(pGlobal);
+        pUnk->AddRef();
     }
 
     return 0;
