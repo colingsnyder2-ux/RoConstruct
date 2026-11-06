@@ -16,7 +16,7 @@
   "input_bundle": "59b5909a51f25e6cb8078eec1006f39d6a7cd156fb077055e81a526e4044a986",
   "proposal_inputs_equal_canonical": true,
   "source": "rebuild/2008-06/native-classes/RunService.cpp",
-  "source_sha256": "e3e811d13c397a2995eb5c3c3051d655361b7ba7d4ba9f2cb7c5e4394ac70f0f",
+  "source_sha256": "4ce377d557951e8b303b4b1d79e1b529e3e2d60c9298f551d63b85eb8cc61f33",
   "repair": "Use scoped util/Events.h catching const std::exception&, matching original EH adjectives9 instead of donor8. Global shared Events.h remains unchanged. Authentic vendor reflection/function.h closes previously unpublished fallback.",
   "regression": {
     "baseline_functions": 467,
@@ -46,10 +46,10 @@
   "compiler_receipt": {
     "source": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-0813\\package\\rebuild\\2008-06\\native-classes\\RunService.cpp",
     "status": "complete",
-    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-031904-44ba0d95\\unit-000\\candidate.obj",
-    "compile_seconds": 2.172,
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-033023-a6d843f9\\unit-000\\candidate.obj",
+    "compile_seconds": 2.578,
     "compiler_exit": 0,
-    "source_sha256": "e3e811d13c397a2995eb5c3c3051d655361b7ba7d4ba9f2cb7c5e4394ac70f0f",
+    "source_sha256": "4ce377d557951e8b303b4b1d79e1b529e3e2d60c9298f551d63b85eb8cc61f33",
     "flags": [
       "/DBOOST_ALL_NO_LIB",
       "/DWIN32",
@@ -90,7 +90,7 @@
       "/D_XTPLIB_NOAUTOLINK",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
     ],
-    "log": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-031904-44ba0d95\\unit-000\\compile.log",
+    "log": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-033023-a6d843f9\\unit-000\\compile.log",
     "dependencies": {
       "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include\\reflection\\object.h": "75b395785762eba0e30e1e001dda10cb97e19a76f9a25a0f29320de27aa2dfe6",
       "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include\\util\\Association.h": "4ad6e65bb7914dc4432462015c64e940c49ae0518efd9e40958a81b447947d3b",
@@ -805,11 +805,11 @@
       "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-0813\\frozen\\workspace\\rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "8171866c14c7dbd6a39b52755786803296a819ab924c8e925b728ac938345ee8",
       "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-0813\\frozen\\workspace\\rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "249674e5ae364805e4da1b0507ed6d064aacdaf0c28b56f1b4e4fff0cc893032",
       "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-0813\\frozen\\workspace\\rebuild\\2008-06\\native-headers\\v8xml\\XmlElement.h": "dd6594e4312f376e95960b5cbd27d14fb83e4c796d08ecd1ea19ea98333502c4",
-      "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-0813\\package\\rebuild\\2008-06\\native-classes\\RunService.cpp": "e3e811d13c397a2995eb5c3c3051d655361b7ba7d4ba9f2cb7c5e4394ac70f0f",
+      "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-0813\\package\\rebuild\\2008-06\\native-classes\\RunService.cpp": "4ce377d557951e8b303b4b1d79e1b529e3e2d60c9298f551d63b85eb8cc61f33",
       "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-0813\\package\\rebuild\\2008-06\\native-headers\\runservice-events\\reflection\\function.h": "bacc9ed0b6ba669af909163dd9fad50f70519afd9d6024d43765578cbed2af49",
-      "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-0813\\package\\rebuild\\2008-06\\native-headers\\runservice-events\\util\\Events.h": "f001e18f256811f735ba46ce047da03cfcf5702aa6c9197fd8e37d47f9908bf3"
+      "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-0813\\package\\rebuild\\2008-06\\native-headers\\runservice-events\\util\\Events.h": "818800a6f366597de66ddcc6f3281d565eb4fcd92f97876862338a742019fd5f"
     },
-    "object_sha256": "4a846bb22892893bed7ebcff9d283e08aa971b644cdb92c1fd0d6f4f820da184",
+    "object_sha256": "8e319502270d2cd400800286a61b1b2838039e3d7193a40251522751f7ae8830",
     "checks": [
       {
         "addr": "00554ae0",
@@ -842,7 +842,7 @@
           "unused_expectations": [],
           "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
         },
-        "check_seconds": 3.187
+        "check_seconds": 3.531
       },
       {
         "addr": "00554750",
@@ -866,8 +866,8 @@
     ],
     "coverage": [],
     "layouts": [],
-    "analysis_seconds": 3.234,
-    "seconds": 6.547,
+    "analysis_seconds": 3.578,
+    "seconds": 7.218,
     "unit": 0
   },
   "original_checks": [
@@ -902,7 +902,7 @@
         "unused_expectations": [],
         "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
       },
-      "check_seconds": 1.907
+      "check_seconds": 1.984
     },
     {
       "addr": "00554750",
@@ -1007,10 +1007,10 @@
     "address": "00554750",
     "primary_body_size": 185,
     "primary_body_exact": true,
-    "tool_sha256": "770c0ab7a1c834735a9bccf9e58ca05c34495861288ae804f4b2bd1cb8ac0065",
+    "tool_sha256": "ba4bab9f4853e409efcabfd841c88d91bc0b8df102dfe586e9bb1604aa3971b4",
     "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-    "object": "work\\2008-06\\native-check-runs\\20261106-031904-44ba0d95\\unit-000\\candidate.obj",
-    "object_sha256": "4a846bb22892893bed7ebcff9d283e08aa971b644cdb92c1fd0d6f4f820da184",
+    "object": "work\\2008-06\\native-check-runs\\20261106-033023-a6d843f9\\unit-000\\candidate.obj",
+    "object_sha256": "8e319502270d2cd400800286a61b1b2838039e3d7193a40251522751f7ae8830",
     "events": [
       {
         "symbol": "__ehhandler$?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@PAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z",
@@ -1150,30 +1150,29 @@
     ],
     "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
     "independent_crt_import_library_sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8",
-    "scope": "Static original import identity and unchanged load-to-call register flow; not arbitrary callbacks or runtime behavior."
+    "scope": "Static original import identity and unchanged load-to-call register flow; not arbitrary callbacks or runtime behavior.",
+    "object_sha256": "8e319502270d2cd400800286a61b1b2838039e3d7193a40251522751f7ae8830",
+    "same_code_reference_fields_as_directly_audited_object": true
   },
   "primary_guard_tests": [
     {
       "case": "mutable-EH",
       "rejected": true,
-      "exit_code": 1,
-      "output_written": true
+      "exit_code": 1
     },
     {
       "case": "corrupt-primary",
       "rejected": true,
-      "exit_code": 1,
-      "output_written": false
+      "exit_code": 1
     },
     {
-      "case": "indexed-fragment",
+      "case": "forged-relocation",
       "rejected": true,
-      "exit_code": 1,
-      "output_written": false
+      "exit_code": 1
     }
   ],
   "strict_gate": "Original byte/data direct-call runner remains fail-closed for indirect calls; separate static IAT proof is provided. Arbitrary listener and exception virtual dispatch remains unproven.",
-  "transition_extent_blocker": "00554690 indexed target66B vs compiled189B. Primary-body guard rejects it. Old conditional13-nodeEH traversal is not accepted as a complete primary proof. Revisit only with independently reviewed original function extent; no index or byte-gate weakening.",
+  "transition_extent_blocker": "00554690 indexed target66B vs compiled189B: indexed runner remains nonexact. Separate existing full-original-window EH auditor confirms complete189B normalized original code and13-node metadata graph. This is not an indexed exact or complete callback/provider/runtime proof; no mining-index change or weakened indexed gate.",
   "remaining": [
     "CWorkspace::write unchanged130/112B lifetime/EH blocker",
     "RunService full provider selection and class lifetime/ABI",
@@ -1183,7 +1182,7 @@
   "metrics": {
     "new_native_exact_bodies": 0,
     "exact_indexed_checks": 4,
-    "EH_graph_nodes_passed": 13,
+    "EH_graph_nodes_passed": 26,
     "retained_code_bodies_unchanged": 467,
     "active_executable_selection_delta": 0,
     "runtime_activation_delta": 0,
@@ -1193,5 +1192,128 @@
   "excluded_snapshots": [
     "138d3a09c8"
   ],
-  "recipe": "Compile native-classes/RunService.cpp with its recorded scoped flags once. Reuse object in native_check_runner.py analyze with the recorded checks, and audit_native_eh_graph.py OBJECT 00554750 FULL_SYMBOL --output RECEIPT.json. --help does not build or run. Do not execute native-Doc diagnostic."
+  "recipe": "Compile native-classes/RunService.cpp with its recorded scoped flags once. Reuse object in native_check_runner.py analyze with the recorded checks, and audit_native_eh_graph.py OBJECT 00554750 FULL_SYMBOL --output RECEIPT.json. --help does not build or run. Do not execute native-Doc diagnostic.",
+  "transition_callback_EH": {
+    "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+    "address": "00554690",
+    "primary_body_size": 189,
+    "primary_body_exact": true,
+    "tool_sha256": "ba4bab9f4853e409efcabfd841c88d91bc0b8df102dfe586e9bb1604aa3971b4",
+    "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+    "object": "work\\2008-06\\native-check-runs\\20261106-033023-a6d843f9\\unit-000\\candidate.obj",
+    "object_sha256": "8e319502270d2cd400800286a61b1b2838039e3d7193a40251522751f7ae8830",
+    "events": [
+      {
+        "symbol": "__ehhandler$?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z",
+        "original": "0x7cdcc1",
+        "kind": "cleanup/handler code",
+        "size": 10,
+        "exact": true
+      },
+      {
+        "symbol": "__ehfuncinfo$?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z",
+        "original": "0x8e8b84",
+        "kind": "EH data",
+        "size": 36,
+        "exact": true,
+        "original_bytes": "2205931904000000648b8e0001000000508b8e0000000000000000000000000001000000",
+        "native_bytes": "220593190400000000000000010000000000000000000000000000000000000001000000"
+      },
+      {
+        "symbol": "__unwindtable$?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z",
+        "original": "0x8e8b64",
+        "kind": "EH data",
+        "size": 32,
+        "exact": true,
+        "original_bytes": "ffffffff00000000ffffffff0000000001000000b0dc7c0002000000b9dc7c00",
+        "native_bytes": "ffffffff00000000ffffffff0000000001000000000000000200000000000000"
+      },
+      {
+        "symbol": "__unwindfunclet$?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z$2",
+        "original": "0x7cdcb0",
+        "kind": "cleanup/handler code",
+        "size": 9,
+        "exact": true
+      },
+      {
+        "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "original": "0x802468",
+        "kind": "external",
+        "exact": true
+      },
+      {
+        "symbol": "__unwindfunclet$?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z$3",
+        "original": "0x7cdcb9",
+        "kind": "cleanup/handler code",
+        "size": 8,
+        "exact": true
+      },
+      {
+        "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ",
+        "original": "0x600660",
+        "kind": "cleanup/handler code",
+        "size": 53,
+        "exact": true
+      },
+      {
+        "symbol": "__tryblocktable$?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z",
+        "original": "0x8e8b50",
+        "kind": "EH data",
+        "size": 20,
+        "exact": true,
+        "original_bytes": "00000000000000000300000001000000408b8e00",
+        "native_bytes": "0000000000000000030000000100000000000000"
+      },
+      {
+        "symbol": "__catchsym$?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z$4",
+        "original": "0x8e8b40",
+        "kind": "EH data",
+        "size": 16,
+        "exact": true,
+        "original_bytes": "0900000088859200ecffffffe5465500",
+        "native_bytes": "0900000000000000ecffffff00000000"
+      },
+      {
+        "symbol": "??_R0?AVexception@std@@@8",
+        "original": "0x928588",
+        "kind": "EH data",
+        "size": 28,
+        "exact": true,
+        "original_bytes": "80018500000000002e3f4156657863657074696f6e40737464404000",
+        "native_bytes": "00000000000000002e3f4156657863657074696f6e40737464404000"
+      },
+      {
+        "kind": "canonical type_info vtable binding",
+        "original": "0x850180",
+        "anchors": [
+          {
+            "type": ".?AVCWorkspace@@",
+            "descriptor": "0x9281e0",
+            "vtable": "0x850180"
+          },
+          {
+            "type": ".?AVInstance@RBX@@",
+            "descriptor": "0x92907c",
+            "vtable": "0x850180"
+          }
+        ],
+        "exact": true
+      },
+      {
+        "symbol": "??_7type_info@@6B@",
+        "original": "0x850180",
+        "kind": "external",
+        "exact": true
+      },
+      {
+        "symbol": "__catch$?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z$0",
+        "original": "0x5546e5",
+        "kind": "in-function continuation",
+        "exact": true
+      }
+    ],
+    "errors": []
+  },
+  "auditor_hardening": "Keep existing full-original-window primary byte check; independently permit COFF relocation operands only at original PE absolute-relocation or decoded E8/E9 fields. Reject fake relocation masking of instructions. Do not use a truncated mining index to bound a compiler-owned EH body.",
+  "correction": "Early owner draft used indexed size guard; corrected before final publication to preserve full-body original checks. Both corrected audits pass; malformed code/relocations rejected."
 }

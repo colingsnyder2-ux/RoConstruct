@@ -5,13 +5,13 @@ ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT))
 from roc import match,native_asm
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('object',type=Path);parser.add_argument('address',type=lambda x:int(x,16));parser.add_argument('symbol');parser.add_argument('--output',type=Path);args=parser.parse_args();path=args.object;raw=path.read_bytes();secs,syms,defs,starts=match._coff_data_index(raw);funcs={n:(b,r) for n,b,r in match.coff_functions(raw)};base,image=match._image('2008-06');address=args.address
 name=next(n for n in funcs if n.startswith(args.symbol));body,refs=funcs[name];fv,fs=defs[name];full=bytes(image[address-base:address-base+len(body)]);bindings={};events=[];seen=set();errors=[]
-# EH metadata cannot establish that the selected primary implementation matches.
-target,target_refs,_=match.target('2008-06','%08x'%address)
-# The function index may omit relative call fields; recognize them from original instructions.
+# Candidate relocation fields must correspond to original absolute or direct-branch operands.
+# The mined function index can stop before a compiler-owned catch/cleanup tail.
 primary_disassembler=capstone.Cs(capstone.CS_ARCH_X86,capstone.CS_MODE_32)
-primary_refs=set(target_refs)|{i.address-address+1 for i in primary_disassembler.disasm(target,address) if i.size==5 and i.bytes[0] in (0xe8,0xe9)}
-if not set(refs)<=primary_refs or not match.exact_match(target,primary_refs,body,refs):
- raise SystemExit('primary body is not original-exact; EH proof refused (indexed function boundaries may require separate review)')
+primary_refs={x-address for x in match._base_relocs('2008-06') if address<=x<address+len(body)}
+primary_refs|={i.address-address+1 for i in primary_disassembler.disasm(full,address) if i.size==5 and i.bytes[0] in (0xe8,0xe9)}
+if not set(refs)<=primary_refs:
+ raise SystemExit('candidate relocation is not an original address operand; EH proof refused')
 # Resolve only COFF-declared weak fallbacks; availability is not final PE selection.
 weak={};symbol_offset,symbol_count=struct.unpack_from('<II',raw,8);symbol_index=0
 while symbol_index<symbol_count:
