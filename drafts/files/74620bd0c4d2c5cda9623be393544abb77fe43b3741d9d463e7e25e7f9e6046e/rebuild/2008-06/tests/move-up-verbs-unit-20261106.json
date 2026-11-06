@@ -1,0 +1,31 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/MoveUpVerbConstructors.cpp",
+      "checks": [
+        {
+          "addr": "005c5400",
+          "symbol": "??0MoveUpPlateVerb@RBX@@QAE@PAVDataModel@1@@Z",
+          "calls": [
+            {
+              "offset": 81,
+              "target": "0057e730",
+              "symbol": "??0EditSelectionVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z"
+            }
+          ]
+        },
+        {
+          "addr": "005c5490",
+          "symbol": "??0MoveUpBrickVerb@RBX@@QAE@PAVDataModel@1@@Z",
+          "calls": [
+            {
+              "offset": 81,
+              "target": "0057e730",
+              "symbol": "??0EditSelectionVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

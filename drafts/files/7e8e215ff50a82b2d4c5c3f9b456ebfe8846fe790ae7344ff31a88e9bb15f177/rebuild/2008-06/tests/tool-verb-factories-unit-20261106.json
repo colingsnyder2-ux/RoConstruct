@@ -1,0 +1,35 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/ToolVerbFactories.cpp",
+      "checks": [
+        {"addr": "005c7210", "symbol": "?newMouseCommand@?$TToolVerb@VAnchorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c6270", "symbol": "?newMouseCommand@?$TToolVerb@VArrowTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c6510", "symbol": "?newMouseCommand@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c77f0", "symbol": "?newMouseCommand@?$TToolVerb@VCloneTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c7530", "symbol": "?newMouseCommand@?$TToolVerb@VDropperTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c7460", "symbol": "?newMouseCommand@?$TToolVerb@VFillTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c6640", "symbol": "?newMouseCommand@?$TToolVerb@VFlatTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c76b0", "symbol": "?newMouseCommand@?$TToolVerb@VGameTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c67b0", "symbol": "?newMouseCommand@?$TToolVerb@VGlueTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c7750", "symbol": "?newMouseCommand@?$TToolVerb@VGrabTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c7920", "symbol": "?newMouseCommand@?$TToolVerb@VHammerTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c6cf0", "symbol": "?newMouseCommand@?$TToolVerb@VHingeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c6ba0", "symbol": "?newMouseCommand@?$TToolVerb@VInletTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c7de0", "symbol": "?newMouseCommand@?$TToolVerb@VLaserTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c6e70", "symbol": "?newMouseCommand@?$TToolVerb@VLeftMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c72f0", "symbol": "?newMouseCommand@?$TToolVerb@VLockTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c7090", "symbol": "?newMouseCommand@?$TToolVerb@VModelSetFrontTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c7150", "symbol": "?newMouseCommand@?$TToolVerb@VModelSetPrimaryPartTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c7610", "symbol": "?newMouseCommand@?$TToolVerb@VNullTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c6fa0", "symbol": "?newMouseCommand@?$TToolVerb@VOscillateMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c6450", "symbol": "?newMouseCommand@?$TToolVerb@VResizeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c6db0", "symbol": "?newMouseCommand@?$TToolVerb@VRightMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c7c40", "symbol": "?newMouseCommand@?$TToolVerb@VRocketTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c7b10", "symbol": "?newMouseCommand@?$TToolVerb@VSlingshotTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c6a50", "symbol": "?newMouseCommand@?$TToolVerb@VStudsTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"},
+        {"addr": "005c6900", "symbol": "?newMouseCommand@?$TToolVerb@VWeldTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"}
+      ]
+    }
+  ]
+}
