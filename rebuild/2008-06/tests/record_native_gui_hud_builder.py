@@ -7,26 +7,30 @@ Builds (document-swap flags, VS2008 RTM 21022, native headers only, unit profile
                                           ...), buildScoreHud, buildHealthHud, buildRightPalette, buildStatsHud1/2) and
                                           the Creatable<Instance>::create<...> / lexical_cast / shared_from_dynamic_cast
                                           template instances they use.
+native-headers/gui/Gui.h (leased with this unit, pass 2) declares TopMenuBar(const std::string&, Layout::Style,
+bool = false) (create<TopMenuBar>(const char*, Layout::Style) 00601fd0 pushes 0 as the third constructor argument at
+00602027) and TextDisplay setFontSize / setFontColor / setBorderColor inline (the stats hud loops store +0x160 /
++0x13c..+0x140, +0x164 and +0x174 directly: 00604dd8..00604e4e), so buildStatsHud1 / buildStatsHud2 006041d0 / 00604f30
+are main-build rows.
 Pending build (NATIVE_GUIHUD_PENDING; rows recorded exact=false, pending-build-only, never counted, vtables never
-walked) against out/native-layouts/gui-hud-builder-pending, generated copies of two headers owned by others:
+walked) against out/native-layouts/gui-hud-builder-pending, a generated copy of a core header owned by others:
   * util/Object.h (native): Creatable<T>::create with three parameters (create<ArrowPanel> 00602650,
-    create<PercentPanel> 006021e0, create<ImageButton> 00601f00 take three by-value arguments);
-  * gui/Gui.h (native): TopMenuBar(const std::string&, Layout::Style, bool = false) (create<TopMenuBar>(const char*,
-    Layout::Style) 00601fd0 pushes 0 as the third constructor argument at 00602027), and TextDisplay setFontSize /
-    setFontColor / setBorderColor inline (the stats hud loops store +0x160 / +0x13c..+0x140, +0x164 and +0x174
-    directly: 00604dd8..00604e4e). With them buildControlHud 00603c60, buildRightPaletteItems 00602cb0,
-    buildChatMenu(Adorn*) 00603730 and buildStatsHud1 / buildStatsHud2 006041d0 / 00604f30 compile exact too.
+    create<PercentPanel> 006021e0, create<ImageButton> 00601f00 take three by-value arguments). With it
+    buildControlHud 00603c60, buildRightPaletteItems 00602cb0 and buildChatMenu(Adorn*) 00603730 compile exact too.
 
 Rows are found by closure from seeds (buildGui named by its only caller DataModel 005756f4; buildChatMenu(ChatOption*,
-...) by its calls 00603867 / 00603668 and three template instances by their stats-hud call sites, because their main-build
-callers are pending or not exact): every REL32/DIR32 relocation of
+...) by its calls 00603867 / 00603668, three template instances by their stats-hud call sites, and the explicitly
+instantiated create<ChatButton / TopMenuBar / MenuSpacer> 00602280 / 00601fd0 / 006026e0 by their pending-body call sites
+006037c9 / 00602e66 / 00603da5): every REL32/DIR32 relocation of
 an exact row is bound to the address the original instruction uses. A target defined in the compiled object becomes a
 row at that address; a vtable target is checked by original RTTI (class name and subobject offset) and walked slot by
 slot (main builds only). Every other target is verified: imports by DLL export name, string literals by bytes, float
 constants (__real@) by bytes, type descriptors by RTTI name, external functions by the evidence name or the EXTERNAL map
-(call sites read in the original disassembly). A symbol binds to one address. Rows below 006023d0 (the create<...> /
-shared_ptr / lexical_cast instances 00601160..00602350, which this unit also uses) are exact support rows, never
-counted here. Writes work/2008-06/shared-layouts/gui-hud-builder-working.json.
+(call sites read in the original disassembly). A symbol binds to one address. Template instances below 006023d0 (the create<...> /
+shared_ptr / lexical_cast instances 00600d60..00602350) are counted here only when exact in the main build, not counted
+by creatable-shared-count-working.json, and every reference to them in the original (every E8/E9 call or jump and every
+absolute dword in any section) lies in a GuiBuilder body 006023d0..006060b0 or in another such counted instance; the
+proof is written to the receipt (template_reference_proof). Writes work/2008-06/shared-layouts/gui-hud-builder-working.json.
 """
 import json
 import re
@@ -76,8 +80,10 @@ size_t nativeWorkspaceVerbContainer()
 
 # ---- pending overlay ------------------------------------------------------------------------------------------
 pending = OUT / 'gui-hud-builder-pending'
-for sub in ('util', 'gui'):
-    (pending / sub).mkdir(parents=True, exist_ok=True)
+(pending / 'util').mkdir(parents=True, exist_ok=True)
+# Pass 1 generated a gui/Gui.h copy here; the declarations are in native-headers/gui/Gui.h now, so drop the stale copy.
+if (pending / 'gui/Gui.h').exists():
+    (pending / 'gui/Gui.h').unlink()
 
 
 def overlay(source, relative, changes):
@@ -94,14 +100,6 @@ overlay(R / 'native-headers/util/Object.h', 'util/Object.h', [(
     '\t\ttemplate<typename Class, typename Parameter1, typename Parameter2, typename Parameter3>\n'
     '\t\tstatic boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2, Parameter3 p3)\n\t\t{\n'
     '\t\t\treturn boost::shared_ptr<Class>(new Class(p1, p2, p3), Deleter());\n\t\t}\n')])
-overlay(R / 'native-headers/gui/Gui.h', 'gui/Gui.h', [
-    ('\t\tvoid setFontSize(int);\n\t\tvoid setFontColor(const G3D::Color4&);\n\t\tvoid setBorderColor(const G3D::Color4&);\n',
-     '\t\tvoid setFontSize(int fontSize)\n\t\t{\n\t\t\tthis->fontSize = fontSize;\n'
-     '\t\t\tsetGuiSize(G3D::Vector2(this->fontSize * 10.0f, this->fontSize * 2.0f));\n\t\t}\n'
-     '\t\tvoid setFontColor(const G3D::Color4& fontColor)\n\t\t{\n\t\t\tthis->fontColor = fontColor;\n\t\t}\n'
-     '\t\tvoid setBorderColor(const G3D::Color4& borderColor)\n\t\t{\n\t\t\tthis->borderColor = borderColor;\n\t\t}\n'),
-    ('\t\tTopMenuBar(const std::string&, Layout::Style, bool);\n',
-     '\t\tTopMenuBar(const std::string&, Layout::Style, bool = false);\n')])
 
 
 def build(name, src, extra=(), post=()):
@@ -237,6 +235,7 @@ FOLDED = {}
 
 # Seeds: (address, compiled symbol), each named by an original call site.
 assert call_target(0x603867) == 0x6034d0 and call_target(0x603668) == 0x6034d0
+assert call_target(0x6037c9) == 0x602280 and call_target(0x602e66) == 0x601fd0 and call_target(0x603da5) == 0x6026e0
 assert call_target(0x60429e) == 0x602450 and call_target(0x604317) == 0x602550 and call_target(0x604dc6) == 0x603f00
 SEEDS = {
     'GuiHudBuilder': [
@@ -244,6 +243,9 @@ SEEDS = {
         (0x602450, '??$create@VTextDisplay@RBX@@PBDPBD@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTextDisplay@RBX@@@boost@@PBD0@Z'),  # 0060429e
         (0x602550, '??$create@VEquationDisplay@RBX@@PBDPBD@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VEquationDisplay@RBX@@@boost@@PBD0@Z'),  # 00604317
         (0x6034d0, '?buildChatMenu@GuiBuilder@RBX@@AAEXPAVChatOption@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VUnifiedWidget@RBX@@@boost@@@Z'),  # 00603867, 00603668
+        (0x602280, '??$create@VChatButton@RBX@@PAVAdorn@2@PBD@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VChatButton@RBX@@@boost@@PAVAdorn@1@PBD@Z'),  # 006037c9 (explicit instantiation)
+        (0x601fd0, '??$create@VTopMenuBar@RBX@@PBDW4Style@Layout@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTopMenuBar@RBX@@@boost@@PBDW4Style@Layout@1@@Z'),  # 00602e66 (explicit instantiation)
+        (0x6026e0, '??$create@VMenuSpacer@RBX@@MM@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VMenuSpacer@RBX@@@boost@@MM@Z'),  # 00603da5 (explicit instantiation)
         (0x603f00, '??$shared_from_dynamic_cast@VTextDisplay@RBX@@VInstance@2@@RBX@@YA?AV?$shared_ptr@VTextDisplay@RBX@@@boost@@PAV?$enable_shared_from_this@VInstance@RBX@@@2@@Z'),  # 00604dc6
     ],
 }
@@ -542,7 +544,7 @@ for build in pending_builds:  # noqa: E501
 # The GuiBuilder unit range: 006023d0 (after create<ScoreHud> 00602350) up to 006060b0 (not GuiBuilder; see
 # NOT_ATTEMPTED). The create<...> instances inside it (HealthHud, TextDisplay, EquationDisplay, ArrowPanel, MenuSpacer)
 # and shared_from_dynamic_cast<TextDisplay> 00603f00 are used only by this unit's bodies and are counted with it.
-# Exact rows below 006023d0 are support rows (not counted here).
+# Exact rows below 006023d0 are counted only with the reference proof below (TEMPLATE_RANGE); the rest are support.
 UNIT_RANGES = ((0x6023d0, 0x6060b0),)
 
 
@@ -555,6 +557,59 @@ def counts(address):
 
 
 counted = sorted({r['address'] for r in main_rows if counts(r['address'])})
+
+# Template instances of this unit below 006023d0 (create<...>, shared_ptr<T>(T*, Deleter), lexical_cast,
+# shared_dynamic_cast). Candidates: main-build exact rows in [00600d60, 006023d0) that creatable-shared-count does not
+# count (it counts the shared_count<gui T*> ctors 006006a0..00600cd0). A candidate is counted only when every reference
+# to it in the original lies in a GuiBuilder body (UNIT_RANGES) or inside another counted candidate: every E8/E9 rel32
+# / 0F 8x jcc rel32 in .text and every absolute dword equal to its address in any section (a stray byte match only
+# excludes).
+TEMPLATE_RANGE = (0x600d60, 0x6023d0)
+SHARED_COUNT = json.loads((ROOT / 'work/2008-06/shared-layouts/creatable-shared-count-working.json').read_text())
+counted_elsewhere = set(SHARED_COUNT['exact_function_rows'])
+extent = {}
+for r in main_rows:
+    a = int(r['address'], 16)
+    if TEMPLATE_RANGE[0] <= a < TEMPLATE_RANGE[1] and r['address'] not in counted_elsewhere and r['address'] not in extent:
+        rows = [x for x in main_rows if x['address'] == r['address']]
+        if all(x['exact'] and not x.get('extent_split') for x in rows):
+            extent[r['address']] = (a, a + r['target_size'])
+references = {k: [] for k in extent}
+by_value = {lo: k for k, (lo, hi) in extent.items()}
+for section in pe.sections:
+    blob = section.get_data()
+    base = pe.OPTIONAL_HEADER.ImageBase + section.VirtualAddress
+    label = section.Name.rstrip(b'\0').decode()
+    for k, (lo, hi) in extent.items():
+        needle = struct.pack('<I', lo)
+        at = blob.find(needle)
+        while at >= 0:
+            references[k].append(('%s dword' % label, base + at))
+            at = blob.find(needle, at + 1)
+    if section is TEXT:
+        for m in re.finditer(b'[\xe8\xe9]', blob[:-4]):
+            at = m.start()
+            value = (base + at + 5 + struct.unpack_from('<i', blob, at + 1)[0]) & 0xffffffff
+            if value in by_value:
+                references[by_value[value]].append(('call' if blob[at] == 0xe8 else 'jmp', base + at))
+        for m in re.finditer(b'\x0f[\x80-\x8f]', blob[:-5]):  # jcc rel32 (a conditional tail jump)
+            at = m.start()
+            value = (base + at + 6 + struct.unpack_from('<i', blob, at + 2)[0]) & 0xffffffff
+            if value in by_value:
+                references[by_value[value]].append(('jcc', base + at))
+accepted = set(extent)
+while True:
+    def inside(site):
+        return any(lo <= site < hi for lo, hi in UNIT_RANGES) or \
+            any(extent[k][0] <= site < extent[k][1] for k in accepted)
+    drop = {k for k in accepted if not references[k] or not all(inside(site) for _, site in references[k])}
+    if not drop:
+        break
+    accepted -= drop
+TEMPLATE_PROOF = {k: {'extent': '%08x..%08x' % extent[k], 'counted': k in accepted,
+                      'references': ['%s %08x' % (kind, site) for kind, site in references[k]]}
+                  for k in sorted(extent)}
+counted = sorted(set(counted) | accepted)
 support = sorted({r['address'] for r in main_rows if r['exact'] and not r.get('extent_split')} - set(counted))
 inexact = list({(r['address'], r['symbol']): r for r in main_rows if not r['exact']}.values())
 sha = nb.sha
@@ -569,6 +624,7 @@ receipt = {
     'layout': {k: hex(v) for k, v in LAYOUT_VALUES.items()},
     'exact_function_rows': counted,
     'exact_support_rows': support,
+    'template_reference_proof': TEMPLATE_PROOF,
     'exact_extent_split_rows': sorted({r['address'] for r in main_rows if r['exact'] and r.get('extent_split')}),
     'rows': {b.name: list(b.rows.values()) for b in main},
     'not_exact_rows': [{'address': r['address'], 'symbol': r['symbol'], 'size': r['size'],
@@ -581,9 +637,8 @@ receipt = {
     'external_slots': SLOT_CHECK,
     'shared_header_gaps': HEADER_GAPS,
     'pending_note': 'pending_rows are exact only against out/native-layouts/gui-hud-builder-pending (native '
-                    'util/Object.h with a three-parameter Creatable::create; native gui/Gui.h with TopMenuBar(const '
-                    'std::string&, Layout::Style, bool = false) and inline TextDisplay setFontSize / setFontColor / '
-                    'setBorderColor). Not counted; their vtables are not walked.',
+                    'util/Object.h with a three-parameter Creatable::create). Not counted; their vtables are not '
+                    'walked.',
     'not_attempted': NOT_ATTEMPTED,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
