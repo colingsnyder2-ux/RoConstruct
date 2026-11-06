@@ -3,13 +3,14 @@ from pathlib import Path
 import argparse,capstone,hashlib,json,struct,sys
 ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT))
 from roc import match,native_asm
-parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('object',type=Path);parser.add_argument('address',type=lambda x:int(x,16));parser.add_argument('symbol');parser.add_argument('--output',type=Path);args=parser.parse_args();path=args.object;raw=path.read_bytes();secs,syms,defs,starts=match._coff_data_index(raw);funcs={n:(b,r) for n,b,r in match.coff_functions(raw)};base,image=match._image('2008-06');address=args.address
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('object',type=Path);parser.add_argument('address',type=lambda x:int(x,16));parser.add_argument('symbol');parser.add_argument('--output',type=Path);parser.add_argument('--provider',nargs=2,action='append',default=[],metavar=('SYMBOL','OBJECT'));args=parser.parse_args();path=args.object;raw=path.read_bytes();secs,syms,defs,starts=match._coff_data_index(raw);funcs={n:(b,r) for n,b,r in match.coff_functions(raw)};base,image=match._image('2008-06');address=args.address
 name=next(n for n in funcs if n.startswith(args.symbol));body,refs=funcs[name];fv,fs=defs[name];full=bytes(image[address-base:address-base+len(body)]);bindings={};events=[];seen=set();errors=[]
 # Candidate relocation fields must correspond to original absolute or direct-branch operands.
 # The mined function index can stop before a compiler-owned catch/cleanup tail.
 primary_disassembler=capstone.Cs(capstone.CS_ARCH_X86,capstone.CS_MODE_32)
-primary_refs={x-address for x in match._base_relocs('2008-06') if address<=x<address+len(body)}
-primary_refs|={i.address-address+1 for i in primary_disassembler.disasm(full,address) if i.size==5 and i.bytes[0] in (0xe8,0xe9)}
+def address_fields(data,va):
+ return {x-va for x in match._base_relocs('2008-06') if va<=x<va+len(data)}|{i.address-va+1 for i in primary_disassembler.disasm(data,va) if i.size==5 and i.bytes[0] in (0xe8,0xe9)}
+primary_refs=address_fields(full,address)
 if not set(refs)<=primary_refs:
  raise SystemExit('candidate relocation is not an original address operand; EH proof refused')
 # Resolve only COFF-declared weak fallbacks; availability is not final PE selection.
@@ -20,6 +21,15 @@ while symbol_index<symbol_count:
   tag,search=struct.unpack_from('<II',raw,offset+18)
   weak[syms[symbol_index][0]]={'fallback':syms[tag][0],'search_characteristic':search}
  symbol_index+=1+aux
+
+object_id=hashlib.sha256(raw).hexdigest()
+providers={};used_providers=set()
+for symbol,filename in args.provider:
+ provider_path=Path(filename);provider_raw=provider_path.read_bytes()
+ names={n for n,_,_ in match.coff_functions(provider_raw)}
+ if symbol not in names:raise ValueError('exact provider symbol missing: '+symbol)
+ if symbol in providers:raise ValueError('duplicate provider symbol: '+symbol)
+ providers[symbol]=(provider_path,provider_raw,hashlib.sha256(provider_raw).hexdigest())
 
 def u(va):return struct.unpack_from('<I',image,va-base)[0]
 def relocs(sec):
@@ -78,7 +88,25 @@ def external(symbol,va):
   if import_aliases.get((dll,export))==symbol:return True
  return symbol in (export,'_'+export)
 def walk(symbol,va,addend=0):
- key=(symbol,va,addend)
+ global raw,secs,syms,defs,starts,funcs,weak,fs,fv,body,object_id
+ if symbol not in defs and symbol in providers:
+  provider_path,provider_raw,provider_id=providers[symbol]
+  saved=(raw,secs,syms,defs,starts,funcs,weak,fs,fv,body,object_id)
+  raw=provider_raw;secs,syms,defs,starts=match._coff_data_index(raw)
+  funcs={n:(b,r) for n,b,r in match.coff_functions(raw)};weak={};fs=-1;fv=0;body=b'';object_id=provider_id
+  offset,count=struct.unpack_from('<II',raw,8);index=0
+  while index<count:
+   position=offset+index*18;storage,aux=struct.unpack_from('<BB',raw,position+16)
+   if storage==105 and aux:
+    tag,search=struct.unpack_from('<II',raw,position+18)
+    weak[syms[index][0]]={'fallback':syms[tag][0],'search_characteristic':search}
+   index+=1+aux
+  used_providers.add(symbol)
+  events.append({'kind':'explicit object provider','symbol':symbol,'object':str(provider_path),'object_sha256':provider_id,'scope':'Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven.'})
+  try:walk(symbol,va,addend)
+  finally:raw,secs,syms,defs,starts,funcs,weak,fs,fv,body,object_id=saved
+  return
+ key=(object_id,symbol,va,addend)
  if key in seen:return
  seen.add(key)
  if symbol in weak and symbol not in defs:
@@ -93,13 +121,13 @@ def walk(symbol,va,addend=0):
  code=bool(s[9]&0x20)
  if code:
   assert addend==0 and symbol in funcs,(symbol,addend)
-  data,mask=funcs[symbol];other=bytes(image[va-base:va-base+len(data)]);ok=match.exact_match(other,[],data,mask);events.append({'symbol':symbol,'original':hex(va),'kind':'cleanup/handler code','size':len(data),'exact':ok});assert ok,events[-1]
+  data,mask=funcs[symbol];other=bytes(image[va-base:va-base+len(data)]);assert set(mask)<=address_fields(other,va),(symbol,'non-address relocation');ok=match.exact_match(other,[],data,mask);events.append({'symbol':symbol,'original':hex(va),'kind':'cleanup/handler code','size':len(data),'exact':ok});assert ok,events[-1]
   for off,idx,kind in relocs(sec):
    if value<=off<value+len(data):
     delta=off-value;dest=syms[idx][0];original=u(va+delta)
     if kind==20:
      original=(va+delta+4+struct.unpack_from('<i',other,delta)[0])&0xffffffff
-     if dest in defs or dest in weak:walk(dest,original)
+     if dest in defs or dest in weak or dest in providers:walk(dest,original)
      else:assert external(dest,original),(symbol,dest,hex(original))
     elif kind==6:
      bias=struct.unpack_from('<i',data,delta)[0];walk(dest,original,bias)
@@ -109,4 +137,7 @@ def walk(symbol,va,addend=0):
   assert kind==6;dest=syms[idx][0];pointer=u(va+off);assert base<=pointer<base+len(image),(symbol,off,pointer);bias=struct.unpack_from('<i',data,off)[0];walk(dest,pointer,bias)
 try:walk(handler,bindings[handler])
 except AssertionError as error:errors.append(str(error))
-out=args.output or ROOT/('work/2008-06/eh-graph-%08x.json'%address);out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps({'scope':__doc__+' Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.','address':'%08x'%address,'primary_body_size':len(body),'primary_body_exact':True,'tool_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'original_sha256':hashlib.sha256((ROOT/'clients/2008-06/Roblox.exe').read_bytes()).hexdigest(),'object':str(path),'object_sha256':hashlib.sha256(raw).hexdigest(),'events':events,'errors':errors},indent=2)+'\n');print('EH graph nodes',len(events),'errors',len(errors));print(errors[:1]);assert not errors
+for provider_path,provider_raw,provider_id in providers.values():
+ if hashlib.sha256(provider_path.read_bytes()).hexdigest()!=provider_id:errors.append('provider input changed: '+str(provider_path))
+if hashlib.sha256(path.read_bytes()).hexdigest()!=object_id:errors.append('primary object input changed')
+out=args.output or ROOT/('work/2008-06/eh-graph-%08x.json'%address);out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps({'scope':__doc__+' Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.','address':'%08x'%address,'primary_body_size':len(body),'primary_body_exact':True,'tool_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'original_sha256':hashlib.sha256((ROOT/'clients/2008-06/Roblox.exe').read_bytes()).hexdigest(),'object':str(path),'object_sha256':hashlib.sha256(raw).hexdigest(),'provider_inputs':[{'symbol':n,'object':str(v[0]),'sha256':v[2],'used':n in used_providers} for n,v in providers.items()],'events':events,'errors':errors},indent=2)+'\n');print('EH graph nodes',len(events),'errors',len(errors));print(errors[:1]);assert not errors

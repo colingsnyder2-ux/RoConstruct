@@ -75,6 +75,15 @@ bindings remain blockers. `"calls":[]` asserts a leaf has no calls. Omitting
 Direct-call binding proof alone does not establish callee ABI, EH/tail-jump/data
 identity, linked provider selection or complete class safety.
 
+For an EH graph blocked on an existing native function in another object, use
+`audit_native_eh_graph.py OBJECT ADDRESS FULL_SYMBOL --provider EXACT_SYMBOL VALIDATED_OBJECT --output RECEIPT.json`.
+Repeat `--provider` for independently compiled providers. Exact symbols are required;
+missing or duplicate symbols and changed inputs fail. Reached providers must
+match original bytes/operands; unused providers confer no proof. This checks reachable
+original code/data availability, never final linked selection or runtime safety.
+Unknown named data, callbacks and ABI obligations remain blockers; do not replace
+those proofs with address aliases or stubs.
+
 For mismatches, inspect the same saved object, without compiling again:
 
 ```text
