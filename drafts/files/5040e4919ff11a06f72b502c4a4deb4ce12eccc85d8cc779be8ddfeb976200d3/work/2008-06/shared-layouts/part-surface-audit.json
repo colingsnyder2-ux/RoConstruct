@@ -1,0 +1,6 @@
+{
+  "swap_target": "Part runnable integration (Part surface query)",
+  "getSurface": {"run": "work/2008-06/native-check-runs/20261105-192033-0366f8fd", "addr": "00599890", "size": 356, "symbol": "?getSurface@PartInstance@RBX@@QAEPAVSurface@2@ABVRay@G3D@@AAH@Z", "target_sha256": "ee0a2accfd2d6f4e7eb561fa65735e208edbaf43c26a0cf16b881baea3aa7461", "source_sha256": "268fa35b16a7b2c5a4e1fdd31727b269285ae55ab69607d23c69164540eff17e", "object_sha256": "60f92b6e5c564a9fc655d7127915e9809081688a344a9e52a43e2e2e2e2840e7", "result": "exact bytes+data 100%"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 52, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

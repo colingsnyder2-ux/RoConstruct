@@ -1,0 +1,6 @@
+{
+  "swap_target": "Part runnable integration (Part locked propagation)",
+  "setLocked": {"run": "work/2008-06/native-check-runs/20261105-192406-2d3963ef", "addr": "0059de20", "size": 142, "symbol": "?setLocked@PartInstance@RBX@@SAXPAVInstance@2@_N@Z", "target_sha256": "bf75856d3720314499a796cae78ff51a0008c94f2a146f1fb5d4080091806149", "source_sha256": "1ad8bb1effdf1414904d0ff7bc43c5cf26d5e82aa007936687bd1c2b88a1e647", "object_sha256": "b90c0236e617bc1d4d14ed96dc5086b3c5c4d9b3257c9e72822944f3aa6dbe4e", "result": "exact bytes+data 100%"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 53, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}
