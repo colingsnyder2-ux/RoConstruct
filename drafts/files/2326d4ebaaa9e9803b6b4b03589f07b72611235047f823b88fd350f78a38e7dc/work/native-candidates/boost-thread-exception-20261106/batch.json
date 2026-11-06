@@ -1,0 +1,23 @@
+{
+  "jobs": [
+    {
+      "source": "../../work/native-candidates/boost-thread-exception-20261106/BoostThreadExceptions.cpp",
+      "checks": [
+        {
+          "addr": "00568430",
+          "symbol": "??0thread_resource_error@boost@@QAE@XZ"
+        },
+        {
+          "addr": "00568450",
+          "symbol": "?what@thread_resource_error@boost@@UBEPBDXZ",
+          "calls": []
+        },
+        {
+          "addr": "00568420",
+          "symbol": "?what@lock_error@boost@@UBEPBDXZ",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

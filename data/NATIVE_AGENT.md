@@ -1,11 +1,17 @@
 # Native source recovery with automatic draft sharing
 
-Contributor priority: recover substantial native class bodies and authentic
-associated headers in class/family batches. Follow the contributor class/header
-batch policy in `docs/NATIVE_SWAP_BATCH.md`: keep a short authorized target list,
-hand off exhausted or owner-blocked proof work, and continue another unleased
-family. Audit receipts document work; they are not the main deliverable. Preserve
-partial source and all proof/runtime boundaries; do not pad class/file counts.
+Default assignment: recover new native classes, implemented methods and authentic
+associated headers across the client. Spend most effort on these source batches.
+A class does not need to unblock the current runnable swap to be a valid target.
+Reuse existing files, preserve recovered bodies, and choose unleased classes with
+strong original evidence. Extend partial classes when that adds real methods.
+
+Blocker repair is secondary: attempt a small evidence-backed fix when it directly
+prevents the current class/header batch from compiling or being checked, within
+the existing function budget. Save harder dependency/EH/selection/runtime issues
+for owner integration, then continue another class. Do not turn source recovery
+into a prolonged Workspace writer, linker or audit campaign. An explicit owner
+integration assignment may prioritize those blockers separately.
 
 Current workflow: 52. Use `docs/NATIVE_WORKER_HISTORY.md` only as history.
 Native authority: **RoConstruct, branch `work`, subtree `workspace/`**. Local paths
@@ -13,15 +19,18 @@ below that subtree retain their normal repository-relative names.
 
 ## Task and priorities
 
-Advance one authorized runnable class swap and its real dependencies. Recover
+Default to new native class/header recovery across the client. Recover
 real native C++ under `rebuild/2008-06/native-classes`, `native-headers` and
 `native-world`. Mining requires a separate explicit assignment: do not run
 `roc auto`, `roc xcopy`, `roc immediates`, `roc similar` or `roc submit` in this loop.
 Mined source is untrusted reference material, not layout or integration authority.
 
-Open each batch with:
+Open each source batch with:
 
-**swap target → current concrete blocker → required source/provider → next proof**
+**class/family -> missing source/header -> next implementation -> next check**
+
+For secondary blocker fixes or explicit owner integration work, use:
+**swap target -> current concrete blocker -> required source/provider -> next proof**
 
 Read current `AGENTS.md`, `CLAUDE.md` and `docs/NATIVE_SWAP_BATCH.md`. Use:
 
@@ -30,7 +39,9 @@ Read current `AGENTS.md`, `CLAUDE.md` and `docs/NATIVE_SWAP_BATCH.md`. Use:
   state and is **not currently shipped in the Worker**; there is no contributor
   queue endpoint. If absent, use the owner's assignment and relevant published
   receipts under `work/2008-06/shared-layouts/`; report missing priorities rather
-  than inventing a queue or choosing unrelated easy matches.
+  than inventing a queue. A general class/header assignment can continue with an
+  unleased missing/partial class supported by original source/assembly evidence;
+  it need not wait for an owner swap target.
 - Dependency graph: local `work/2008-06/graph.json`, or the packaged snapshot under
   `docs/graph-data/2008-06/`. After missing-input setup, inspect focused evidence
   with `roc graph 2008-06 --focus ADDRESS --depth 1 --json`; refresh only when
@@ -267,7 +278,7 @@ without discarding originals. No new edits in an ended session until resumed.
 Follow `docs/NATIVE_SWAP_BATCH.md`. Read original assembly with `roc native-asm`
 and focused evidence with `roc source 2008-06 ADDRESS --json`. Keep genuine native
 classes/lifetimes; no invented fields, padding, raw-offset views, stubs, assembly
-patches or weakened checks. Work on required dependencies, not unrelated exacts.
+patches or weakened checks. Prioritize class implementations/headers; keep hard swap blockers for the owner.
 
 Compile once per distinct candidate and build configuration. Reuse that exact
 object for applicable byte, data and call-binding checks. Recompile whenever
@@ -295,8 +306,8 @@ unleased blocker while owner gates await review. Draft upload never waits for
 successful compilation or approval.
 
 Repeat the authorized loop persistently: read current state/leases → choose a
-required blocker → test evidence-backed hypotheses → save proofs and drafts →
-advance the next obligation → repeat. A parked blocker, match, upload or handoff
+missing/partial class family → test evidence-backed hypotheses → save proofs and drafts →
+upload the class batch and choose the next family → repeat. A parked blocker, match, upload or handoff
 does not stop all useful work. Do not poll/spin or recompile unchanged candidates.
 Near a platform/context limit, save the queue, next action, hashes and evidence,
 then flush drafts **before** the limit prevents cleanup. For a global block, end
