@@ -1,0 +1,38 @@
+{
+ "bodies": [
+  {
+   "addr": "005832c0",
+   "byte_identical": true,
+   "candidate_sha256": "f44201f79c353fe3c9858d9384c8f65303c75d0ca62cfce724b5480dbd9f93a2",
+   "candidate_size": 28,
+   "direct_sites": 1,
+   "indirect_sites": [],
+   "relocated_windows": 4,
+   "symbol": "??1Verb@RBX@@UAE@XZ",
+   "target_sha256": "1c5a1fc2e403a92a2f489d13ccfd18b4fd694466ecdd770f637accfdc9558988",
+   "target_size": 28,
+   "unclassified_sites": 0
+  }
+ ],
+ "client": "2008-06",
+ "demangle": {
+  "__available__": true,
+  "__tool__": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-4f7d46a43031423c966cd798b30be257\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\undname.exe",
+  "names": {}
+ },
+ "failures": [],
+ "indirect_call_bindings_verified": false,
+ "object": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-4f7d46a43031423c966cd798b30be257\\work\\2008-06\\native-check-runs\\20261106-122432-79a80ce8\\unit-002\\candidate.obj",
+ "object_sha256": "70a36bbe0bab23e430458a5e17e18e44545195715fdd4bb594352940cc55d33b",
+ "schema": 1,
+ "scope": "Indirect-call ABI only: the same imported callee, reached through the same IAT slot with the same declared ABI and the same argument setup as the original client. Direct-call bindings, referenced data, provider selection, linked selection, EH/tail-jump identity and runtime gates are separate obligations and are asserted by the runner receipt, not here.",
+ "totals": {
+  "bodies": 1,
+  "byte_identical_bodies": 1,
+  "direct_sites": 1,
+  "indirect_sites": 0,
+  "unclassified_sites": 0,
+  "verified": 0
+ },
+ "workflow": 52
+}

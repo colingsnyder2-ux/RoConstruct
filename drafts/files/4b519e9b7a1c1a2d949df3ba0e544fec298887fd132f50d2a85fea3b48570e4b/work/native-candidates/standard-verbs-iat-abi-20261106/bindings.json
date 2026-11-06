@@ -1,0 +1,1865 @@
+{
+ "bodies": [
+  {
+   "addr": "005c7ea0",
+   "byte_identical": false,
+   "candidate_sha256": "9d17770482ac52ef462ea64dc789252fa0dabf4e6e35ff1198b464a49d630178",
+   "candidate_size": 2676,
+   "direct_sites": 112,
+   "indirect_sites": [
+    {
+     "argument_setup_bytes": [
+      "83ec1c",
+      "8bf1",
+      "8bcc",
+      "89642434",
+      "68408f8300",
+      "89742434"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "83ec1c",
+      "8bf1",
+      "8bcc",
+      "89642434",
+      "6800000000",
+      "89742434"
+     ],
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "candidate_relocation": {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "type": 6
+     },
+     "expected_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "external_matches_original_import": true,
+     "iat_slot": "00802458",
+     "instruction_bytes": "ff1558248000",
+     "instruction_bytes_identical": false,
+     "offset": 50,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 52,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+     }
+    },
+    {
+     "argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "6868ad8000",
+      "c744244400000000",
+      "8d5e28"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "c744244400000000",
+      "8d5e28"
+     ],
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "candidate_relocation": {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "type": 6
+     },
+     "expected_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "external_matches_original_import": true,
+     "iat_slot": "00802458",
+     "instruction_bytes": "ff1558248000",
+     "instruction_bytes_identical": false,
+     "offset": 101,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 103,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+     }
+    },
+    {
+     "argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "68648f8300",
+      "c644244401",
+      "8d5e50"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "c644244401",
+      "8d5e50"
+     ],
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "candidate_relocation": {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "type": 6
+     },
+     "expected_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "external_matches_original_import": true,
+     "iat_slot": "00802458",
+     "instruction_bytes": "ff1558248000",
+     "instruction_bytes_identical": false,
+     "offset": 144,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 146,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+     }
+    },
+    {
+     "argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "6800908300",
+      "c64424440e",
+      "8d9e28020000"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "c64424440e",
+      "8d9e28020000"
+     ],
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "candidate_relocation": {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "type": 6
+     },
+     "expected_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "external_matches_original_import": true,
+     "iat_slot": "00802458",
+     "instruction_bytes": "ff1558248000",
+     "instruction_bytes_identical": false,
+     "offset": 390,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 392,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+     }
+    },
+    {
+     "argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "68d88f8300",
+      "c64424440f",
+      "8d9e4c020000"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "c64424440f",
+      "8d9e4c020000"
+     ],
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "candidate_relocation": {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "type": 6
+     },
+     "expected_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "external_matches_original_import": true,
+     "iat_slot": "00802458",
+     "instruction_bytes": "ff1558248000",
+     "instruction_bytes_identical": false,
+     "offset": 435,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 437,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+     }
+    },
+    {
+     "argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "6860d68200",
+      "c644244419",
+      "8d9e8c030000"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "c644244419",
+      "8d9e8c030000"
+     ],
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "candidate_relocation": {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "type": 6
+     },
+     "expected_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "external_matches_original_import": true,
+     "iat_slot": "00802458",
+     "instruction_bytes": "ff1558248000",
+     "instruction_bytes_identical": false,
+     "offset": 633,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 635,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+     }
+    },
+    {
+     "argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "68f43b8200",
+      "c64424441a",
+      "8d9ea8030000"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "c64424441a",
+      "8d9ea8030000"
+     ],
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "candidate_relocation": {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "type": 6
+     },
+     "expected_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "external_matches_original_import": true,
+     "iat_slot": "00802458",
+     "instruction_bytes": "ff1558248000",
+     "instruction_bytes_identical": false,
+     "offset": 678,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 680,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+     }
+    },
+    {
+     "argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "686cd68200",
+      "c64424441b",
+      "8d9ec4030000"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "83ec1c",
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "c64424441b",
+      "8d9ec4030000"
+     ],
+     "candidate_bytes": "ff1500000000",
+     "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "candidate_relocation": {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "type": 6
+     },
+     "expected_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+     "external_matches_original_import": true,
+     "iat_slot": "00802458",
+     "instruction_bytes": "ff1558248000",
+     "instruction_bytes_identical": false,
+     "offset": 723,
+     "operand_kind": "indirect_absolute_slot",
+     "operand_offset": 725,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+     }
+    },
+    {
+     "argument_setup_bytes": [
+      "89642448",
+      "8b1de4238000",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "89642448",
+      "8b1d00000000",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+     "candidate_loader_bytes": "8b1d00000000",
+     "candidate_relocation": {
+      "symbol": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+      "type": 6
+     },
+     "expected_external": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+     "external_matches_original_import": true,
+     "iat_slot": "008023e4",
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "loader_bytes": "8b1de4238000",
+     "loader_bytes_identical": false,
+     "offset": 884,
+     "operand_kind": "indirect_register_slot",
+     "operand_offset": 870,
+     "original_import": {
+      "dll": "MSVCP90.dll",
+      "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z"
+     }
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 954,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1024,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1094,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1164,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1234,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1304,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1374,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1444,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1514,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1584,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1654,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1724,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1794,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1864,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 1934,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 2004,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 2074,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 2144,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 2214,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 2284,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 2354,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 2424,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 2494,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bcc",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "51"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 2564,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    },
+    {
+     "argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "68e0908300",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "argument_setup_identical": false,
+     "candidate_argument_setup_bytes": [
+      "8bd4",
+      "89642448",
+      "6800000000",
+      "83c004",
+      "50",
+      "52"
+     ],
+     "candidate_bytes": "ffd3",
+     "candidate_external": null,
+     "candidate_relocation": null,
+     "expected_external": null,
+     "external_matches_original_import": false,
+     "iat_slot": null,
+     "instruction_bytes": "ffd3",
+     "instruction_bytes_identical": true,
+     "offset": 2634,
+     "operand_kind": "unclassified",
+     "operand_offset": null,
+     "original_import": null
+    }
+   ],
+   "symbol": "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z",
+   "target_sha256": "100a6228e8a15b9f718bb05f4cb7df7308a1df9a4743a8cd60e810ce950adf07",
+   "target_size": 2676,
+   "unclassified_sites": 25
+  },
+  {
+   "addr": "00450450",
+   "byte_identical": false,
+   "candidate_sha256": "61d6aa82b8ecfa03228ffa316c779ed28dded9a1dbe01c18cc4f84e46a757103",
+   "candidate_size": 998,
+   "direct_sites": 60,
+   "indirect_sites": [],
+   "symbol": "??1StandardVerbs@RBX@@QAE@XZ",
+   "target_sha256": "80028858a1362be355548126762026d5a7405fd5220667aad5ee744484d63014",
+   "target_size": 998,
+   "unclassified_sites": 0
+  }
+ ],
+ "client": "2008-06",
+ "demangle": {
+  "available": true,
+  "names": {
+   "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z": "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl std::operator+<char,struct std::char_traits<char>,class std::allocator<char> >(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,char const *)",
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(char const *)"
+  },
+  "tool": null
+ },
+ "failures": [
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@50",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@101",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@144",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@390",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@435",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@633",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@678",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@723",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@884",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@954",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1024",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1094",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1164",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1234",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1304",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1374",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1444",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1514",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1584",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1654",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1724",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1794",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1864",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@1934",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@2004",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@2074",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@2144",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@2214",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@2284",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@2354",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@2424",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@2494",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@2564",
+  "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z@2634"
+ ],
+ "imports_observed": {
+  "00802354": {
+   "dll": "MSVCP90.dll",
+   "import": "?end@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ"
+  },
+  "00802358": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Myptr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IAEPADXZ"
+  },
+  "0080235c": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z"
+  },
+  "00802360": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAE@XZ"
+  },
+  "00802364": {
+   "dll": "MSVCP90.dll",
+   "import": "?open@?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAEXPBDHH@Z"
+  },
+  "00802368": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z"
+  },
+  "0080236c": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z"
+  },
+  "00802370": {
+   "dll": "MSVCP90.dll",
+   "import": "?pubsync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ"
+  },
+  "00802374": {
+   "dll": "MSVCP90.dll",
+   "import": "?sgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHPADH@Z"
+  },
+  "00802378": {
+   "dll": "MSVCP90.dll",
+   "import": "?deallocate@?$allocator@D@std@@QAEXPADI@Z"
+  },
+  "0080237c": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$allocator@D@std@@QAE@XZ"
+  },
+  "00802380": {
+   "dll": "MSVCP90.dll",
+   "import": "?allocate@?$allocator@D@std@@QAEPADIPBX@Z"
+  },
+  "00802384": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?6DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z"
+  },
+  "00802388": {
+   "dll": "MSVCP90.dll",
+   "import": "?length@?$char_traits@D@std@@SAIPBD@Z"
+  },
+  "0080238c": {
+   "dll": "MSVCP90.dll",
+   "import": "?width@ios_base@std@@QBEHXZ"
+  },
+  "00802390": {
+   "dll": "MSVCP90.dll",
+   "import": "?flags@ios_base@std@@QBEHXZ"
+  },
+  "00802394": {
+   "dll": "MSVCP90.dll",
+   "import": "?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHD@Z"
+  },
+  "00802398": {
+   "dll": "MSVCP90.dll",
+   "import": "?eof@?$char_traits@D@std@@SAHXZ"
+  },
+  "0080239c": {
+   "dll": "MSVCP90.dll",
+   "import": "?eq_int_type@?$char_traits@D@std@@SA_NABH0@Z"
+  },
+  "008023a0": {
+   "dll": "MSVCP90.dll",
+   "import": "?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHPBDH@Z"
+  },
+  "008023a4": {
+   "dll": "MSVCP90.dll",
+   "import": "?width@ios_base@std@@QAEHH@Z"
+  },
+  "008023a8": {
+   "dll": "MSVCP90.dll",
+   "import": "?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QAEXH_N@Z"
+  },
+  "008023ac": {
+   "dll": "MSVCP90.dll",
+   "import": "?uncaught_exception@std@@YA_NXZ"
+  },
+  "008023b0": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEXXZ"
+  },
+  "008023b4": {
+   "dll": "MSVCP90.dll",
+   "import": "?good@ios_base@std@@QBE_NXZ"
+  },
+  "008023b8": {
+   "dll": "MSVCP90.dll",
+   "import": "?tie@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEPAV?$basic_ostream@DU?$char_traits@D@std@@@2@XZ"
+  },
+  "008023bc": {
+   "dll": "MSVCP90.dll",
+   "import": "?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ"
+  },
+  "008023c0": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Unlock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEXXZ"
+  },
+  "008023c4": {
+   "dll": "MSVCP90.dll",
+   "import": "?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEPAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ"
+  },
+  "008023c8": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Lock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEXXZ"
+  },
+  "008023cc": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z"
+  },
+  "008023d0": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z"
+  },
+  "008023d4": {
+   "dll": "MSVCP90.dll",
+   "import": "??_D?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAEXXZ"
+  },
+  "008023d8": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z"
+  },
+  "008023dc": {
+   "dll": "MSVCP90.dll",
+   "import": "?clear@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ"
+  },
+  "008023e0": {
+   "dll": "MSVCP90.dll",
+   "import": "?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z"
+  },
+  "008023e4": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z"
+  },
+  "008023e8": {
+   "dll": "MSVCP90.dll",
+   "import": "?npos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@2IB"
+  },
+  "008023ec": {
+   "dll": "MSVCP90.dll",
+   "import": "?erase@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@II@Z"
+  },
+  "008023f0": {
+   "dll": "MSVCP90.dll",
+   "import": "?swap@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXAAV12@@Z"
+  },
+  "008023f4": {
+   "dll": "MSVCP90.dll",
+   "import": "?size@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIXZ"
+  },
+  "008023f8": {
+   "dll": "MSVCP90.dll",
+   "import": "?insert@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@IPBD@Z"
+  },
+  "008023fc": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?PDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z"
+  },
+  "00802400": {
+   "dll": "MSVCP90.dll",
+   "import": "?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHPBD@Z"
+  },
+  "00802404": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z"
+  },
+  "00802408": {
+   "dll": "MSVCP90.dll",
+   "import": "??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ"
+  },
+  "0080240c": {
+   "dll": "MSVCP90.dll",
+   "import": "??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z"
+  },
+  "00802410": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_fstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z"
+  },
+  "00802414": {
+   "dll": "MSVCP90.dll",
+   "import": "?tellg@?$basic_istream@DU?$char_traits@D@std@@@std@@QAE?AV?$fpos@H@2@XZ"
+  },
+  "00802418": {
+   "dll": "MSVCP90.dll",
+   "import": "?seekg@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@JH@Z"
+  },
+  "0080241c": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z"
+  },
+  "00802420": {
+   "dll": "MSVCP90.dll",
+   "import": "??_D?$basic_fstream@DU?$char_traits@D@std@@@std@@QAEXXZ"
+  },
+  "00802424": {
+   "dll": "MSVCP90.dll",
+   "import": "?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHABV12@@Z"
+  },
+  "00802428": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z"
+  },
+  "0080242c": {
+   "dll": "MSVCP90.dll",
+   "import": "??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ"
+  },
+  "00802430": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z"
+  },
+  "00802434": {
+   "dll": "MSVCP90.dll",
+   "import": "?str@?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ"
+  },
+  "00802438": {
+   "dll": "MSVCP90.dll",
+   "import": "??_D?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ"
+  },
+  "0080243c": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z"
+  },
+  "00802440": {
+   "dll": "MSVCP90.dll",
+   "import": "??_D?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ"
+  },
+  "00802444": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z"
+  },
+  "00802448": {
+   "dll": "MSVCP90.dll",
+   "import": "??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z"
+  },
+  "0080244c": {
+   "dll": "MSVCP90.dll",
+   "import": "??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z"
+  },
+  "00802450": {
+   "dll": "MSVCP90.dll",
+   "import": "??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z"
+  },
+  "00802454": {
+   "dll": "MSVCP90.dll",
+   "import": "??0id@locale@std@@QAE@I@Z"
+  },
+  "00802458": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+  },
+  "0080245c": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+  },
+  "00802460": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+  },
+  "00802464": {
+   "dll": "MSVCP90.dll",
+   "import": "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ"
+  },
+  "00802468": {
+   "dll": "MSVCP90.dll",
+   "import": "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+  },
+  "0080246c": {
+   "dll": "MSVCP90.dll",
+   "import": "?begin@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ"
+  },
+  "00802470": {
+   "dll": "MSVCP90.dll",
+   "import": "??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z"
+  },
+  "00802474": {
+   "dll": "MSVCP90.dll",
+   "import": "?find_first_of@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDI@Z"
+  },
+  "00802478": {
+   "dll": "MSVCP90.dll",
+   "import": "??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@N@Z"
+  },
+  "0080247c": {
+   "dll": "MSVCP90.dll",
+   "import": "?find_first_not_of@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDI@Z"
+  },
+  "00802480": {
+   "dll": "MSVCP90.dll",
+   "import": "?getline@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@PADH@Z"
+  },
+  "00802484": {
+   "dll": "MSVCP90.dll",
+   "import": "??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAN@Z"
+  },
+  "00802488": {
+   "dll": "MSVCP90.dll",
+   "import": "??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAH@Z"
+  },
+  "0080248c": {
+   "dll": "MSVCP90.dll",
+   "import": "?eof@ios_base@std@@QBE_NXZ"
+  },
+  "00802490": {
+   "dll": "MSVCP90.dll",
+   "import": "?end@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ"
+  },
+  "00802494": {
+   "dll": "MSVCP90.dll",
+   "import": "?begin@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ"
+  },
+  "00802498": {
+   "dll": "MSVCP90.dll",
+   "import": "?find@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDII@Z"
+  },
+  "0080249c": {
+   "dll": "MSVCP90.dll",
+   "import": "?rfind@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDII@Z"
+  },
+  "008024a0": {
+   "dll": "MSVCP90.dll",
+   "import": "?str@?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z"
+  },
+  "008024a4": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z"
+  },
+  "008024a8": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z"
+  },
+  "008024ac": {
+   "dll": "MSVCP90.dll",
+   "import": "_Inf"
+  },
+  "008024b0": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$_String_val@DV?$allocator@D@std@@@std@@QAE@ABV01@@Z"
+  },
+  "008024b4": {
+   "dll": "MSVCP90.dll",
+   "import": "??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z"
+  },
+  "008024b8": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IAEX_NI@Z"
+  },
+  "008024bc": {
+   "dll": "MSVCP90.dll",
+   "import": "?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ID@Z"
+  },
+  "008024c0": {
+   "dll": "MSVCP90.dll",
+   "import": "?reserve@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXI@Z"
+  },
+  "008024c4": {
+   "dll": "MSVCP90.dll",
+   "import": "?find_first_of@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDII@Z"
+  },
+  "008024c8": {
+   "dll": "MSVCP90.dll",
+   "import": "?str@?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ"
+  },
+  "008024cc": {
+   "dll": "MSVCP90.dll",
+   "import": "_Nan"
+  },
+  "008024d0": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@D@Z"
+  },
+  "008024d4": {
+   "dll": "MSVCP90.dll",
+   "import": "??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z"
+  },
+  "008024d8": {
+   "dll": "MSVCP90.dll",
+   "import": "??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@PBX@Z"
+  },
+  "008024dc": {
+   "dll": "MSVCP90.dll",
+   "import": "??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@K@Z"
+  },
+  "008024e0": {
+   "dll": "MSVCP90.dll",
+   "import": "??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@P6AAAVios_base@1@AAV21@@Z@Z"
+  },
+  "008024e4": {
+   "dll": "MSVCP90.dll",
+   "import": "?read@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@PADH@Z"
+  },
+  "008024e8": {
+   "dll": "MSVCP90.dll",
+   "import": "?clear@?$basic_ios@DU?$char_traits@D@std@@@std@@QAEXH_N@Z"
+  },
+  "008024ec": {
+   "dll": "MSVCP90.dll",
+   "import": "?write@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@PBDH@Z"
+  },
+  "008024f0": {
+   "dll": "MSVCP90.dll",
+   "import": "?get@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@AAD@Z"
+  },
+  "008024f4": {
+   "dll": "MSVCP90.dll",
+   "import": "?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHIIPBDI@Z"
+  },
+  "008024f8": {
+   "dll": "MSVCP90.dll",
+   "import": "?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ"
+  },
+  "008024fc": {
+   "dll": "MSVCP90.dll",
+   "import": "?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ"
+  },
+  "00802500": {
+   "dll": "MSVCP90.dll",
+   "import": "??1?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAE@XZ"
+  },
+  "00802504": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z"
+  },
+  "00802508": {
+   "dll": "MSVCP90.dll",
+   "import": "?peek@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEHXZ"
+  },
+  "0080250c": {
+   "dll": "MSVCP90.dll",
+   "import": "_FInf"
+  },
+  "00802510": {
+   "dll": "MSVCP90.dll",
+   "import": "?get@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEHXZ"
+  },
+  "00802514": {
+   "dll": "MSVCP90.dll",
+   "import": "??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAI@Z"
+  },
+  "00802518": {
+   "dll": "MSVCP90.dll",
+   "import": "??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAM@Z"
+  },
+  "0080251c": {
+   "dll": "MSVCP90.dll",
+   "import": "_FNan"
+  },
+  "00802520": {
+   "dll": "MSVCP90.dll",
+   "import": "_FSnan"
+  },
+  "00802524": {
+   "dll": "MSVCP90.dll",
+   "import": "??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAG@Z"
+  },
+  "00802528": {
+   "dll": "MSVCP90.dll",
+   "import": "?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@V?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@0@Z"
+  },
+  "0080252c": {
+   "dll": "MSVCP90.dll",
+   "import": "??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AA_J@Z"
+  },
+  "00802530": {
+   "dll": "MSVCP90.dll",
+   "import": "??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@_J@Z"
+  },
+  "00802534": {
+   "dll": "MSVCP90.dll",
+   "import": "??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@J@Z"
+  },
+  "00802538": {
+   "dll": "MSVCP90.dll",
+   "import": "?setw@std@@YA?AU?$_Smanip@H@1@H@Z"
+  },
+  "0080253c": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Xran@_String_base@std@@SAXXZ"
+  },
+  "00802540": {
+   "dll": "MSVCP90.dll",
+   "import": "?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z"
+  },
+  "00802544": {
+   "dll": "MSVCP90.dll",
+   "import": "??1?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAE@XZ"
+  },
+  "00802548": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAE@XZ"
+  },
+  "0080254c": {
+   "dll": "MSVCP90.dll",
+   "import": "?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ"
+  },
+  "00802550": {
+   "dll": "MSVCP90.dll",
+   "import": "?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ"
+  },
+  "00802554": {
+   "dll": "MSVCP90.dll",
+   "import": "?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADH@Z"
+  },
+  "00802558": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Xsgetn_s@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPADIH@Z"
+  },
+  "0080255c": {
+   "dll": "MSVCP90.dll",
+   "import": "?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHPBDH@Z"
+  },
+  "00802560": {
+   "dll": "MSVCP90.dll",
+   "import": "?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEPAV12@PADH@Z"
+  },
+  "00802564": {
+   "dll": "MSVCP90.dll",
+   "import": "??1locale@std@@QAE@XZ"
+  },
+  "00802568": {
+   "dll": "MSVCP90.dll",
+   "import": "?pubimbue@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAE?AVlocale@2@ABV32@@Z"
+  },
+  "0080256c": {
+   "dll": "MSVCP90.dll",
+   "import": "??1?$basic_ostream@DU?$char_traits@D@std@@@std@@UAE@XZ"
+  },
+  "00802570": {
+   "dll": "MSVCP90.dll",
+   "import": "??_7?$basic_ostream@DU?$char_traits@D@std@@@std@@6B@"
+  },
+  "00802574": {
+   "dll": "MSVCP90.dll",
+   "import": "??1?$basic_istream@DU?$char_traits@D@std@@@std@@UAE@XZ"
+  },
+  "00802578": {
+   "dll": "MSVCP90.dll",
+   "import": "??_7?$basic_istream@DU?$char_traits@D@std@@@std@@6B@"
+  },
+  "0080257c": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Ios_base_dtor@ios_base@std@@CAXPAV12@@Z"
+  },
+  "00802580": {
+   "dll": "MSVCP90.dll",
+   "import": "??_7ios_base@std@@6B@"
+  },
+  "00802584": {
+   "dll": "MSVCP90.dll",
+   "import": "??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@"
+  },
+  "00802588": {
+   "dll": "MSVCP90.dll",
+   "import": "?insert@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXV?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@PBD1@Z"
+  },
+  "0080258c": {
+   "dll": "MSVCP90.dll",
+   "import": "?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QAEPAV?$basic_streambuf@DU?$char_traits@D@std@@@2@PAV32@@Z"
+  },
+  "00802590": {
+   "dll": "MSVCP90.dll",
+   "import": "??1?$basic_ios@DU?$char_traits@D@std@@@std@@UAE@XZ"
+  },
+  "00802594": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z"
+  },
+  "00802598": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z"
+  },
+  "0080259c": {
+   "dll": "MSVCP90.dll",
+   "import": "??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@I@Z"
+  },
+  "008025a0": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ID@Z"
+  },
+  "008025a4": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Incref@facet@locale@std@@QAEXXZ"
+  },
+  "008025a8": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Getcat@?$ctype@D@std@@SAIPAPBVfacet@locale@2@PBV42@@Z"
+  },
+  "008025ac": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Getfacet@locale@std@@QBEPBVfacet@12@I@Z"
+  },
+  "008025b0": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Id_cnt@id@locale@std@@0HA"
+  },
+  "008025b4": {
+   "dll": "MSVCP90.dll",
+   "import": "??1_Lockit@std@@QAE@XZ"
+  },
+  "008025b8": {
+   "dll": "MSVCP90.dll",
+   "import": "?id@?$ctype@D@std@@2V0locale@2@A"
+  },
+  "008025bc": {
+   "dll": "MSVCP90.dll",
+   "import": "??0_Lockit@std@@QAE@H@Z"
+  },
+  "008025c0": {
+   "dll": "MSVCP90.dll",
+   "import": "?tolower@?$ctype@D@std@@QBEDD@Z"
+  },
+  "008025c4": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Getgloballocale@locale@std@@CAPAV_Locimp@12@XZ"
+  },
+  "008025c8": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Init@locale@std@@CAPAV_Locimp@12@XZ"
+  },
+  "008025cc": {
+   "dll": "MSVCP90.dll",
+   "import": "?resize@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXI@Z"
+  },
+  "008025d0": {
+   "dll": "MSVCP90.dll",
+   "import": "?erase@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@V?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@0@Z"
+  },
+  "008025d4": {
+   "dll": "MSVCP90.dll",
+   "import": "?close@?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ"
+  },
+  "008025d8": {
+   "dll": "MSVCP90.dll",
+   "import": "??$getline@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@0@AAV10@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@D@Z"
+  },
+  "008025dc": {
+   "dll": "MSVCP90.dll",
+   "import": "?open@?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXPBDHH@Z"
+  },
+  "008025e0": {
+   "dll": "MSVCP90.dll",
+   "import": "??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@XZ"
+  },
+  "008025e4": {
+   "dll": "MSVCP90.dll",
+   "import": "?_Decref@facet@locale@std@@QAEPAV123@XZ"
+  },
+  "008025e8": {
+   "dll": "MSVCP90.dll",
+   "import": "??$?5DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@0@AAV10@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z"
+  }
+ },
+ "indirect_call_bindings_verified": false,
+ "object": "work\\2008-06\\native-check-runs\\20261106-114631-31eff734\\unit-000\\candidate.obj",
+ "object_sha256": "7dd934b0a3dbef0b61d734c5730e66ce5647135e68490ed7e7d3c23aced9f598",
+ "schema": 1,
+ "scope": "Indirect-call ABI only: the same imported callee, reached through the same IAT slot with the same declared ABI and the same argument setup as the original client. Direct-call bindings, referenced data, provider selection, linked selection, EH/tail-jump identity and runtime gates are separate obligations and are asserted by the runner receipt, not here.",
+ "totals": {
+  "bodies": 2,
+  "byte_identical_bodies": 0,
+  "direct_sites": 172,
+  "indirect_sites": 34,
+  "unclassified_sites": 25,
+  "verified": 0
+ },
+ "workflow": 52
+}

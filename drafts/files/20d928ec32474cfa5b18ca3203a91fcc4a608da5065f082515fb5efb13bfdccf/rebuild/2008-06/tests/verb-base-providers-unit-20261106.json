@@ -1,0 +1,14 @@
+{"jobs":[
+ {"source":"native-classes/RunStateVerbConstructor.cpp","checks":[
+   {"addr":"0057e330","symbol":"??0RunStateVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z",
+    "calls":[
+     {"offset":75,"target":"005833e0","symbol":"??0Verb@RBX@@IAE@PAVVerbContainer@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z","known_address":true}]}]},
+ {"source":"native-classes/Verb.cpp","checks":[
+   {"addr":"005833e0","symbol":"??0Verb@RBX@@IAE@PAVVerbContainer@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"}]},
+ {"source":"native-classes/VerbBaseLifetime.cpp","checks":[
+   {"addr":"005832c0","symbol":"??1Verb@RBX@@UAE@XZ"}]},
+ {"source":"native-classes/BasicVerbConstructors.cpp","checks":[
+   {"addr":"0057e8d0","symbol":"??0DeleteBase@RBX@@IAE@PAVDataModel@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+    "calls":[
+     {"offset":59,"target":"0057e730","symbol":"??0EditSelectionVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z","known_address":true}]}]}
+]}
