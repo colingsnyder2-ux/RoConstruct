@@ -1,23 +1,20 @@
-// from server: 35% by colin
-// roc 2007-08 00552000  size: 77 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00552000
-
-struct StreamBuf {
-    int pubsync();
-};
+// from server: 57% by Intel
+extern "C" int __stdcall pubsync(void*);
 
 struct S {
-    char pad[0x4c];
-    StreamBuf* buf;
-    int f();
+    char padding0[0x4c];
+    void* buffer;
+
+    void func();
 };
 
-extern "C" void __stdcall sub_551A20();
-
-int S::f()
+void S::func()
 {
-    sub_551A20();
-    if (buf)
-        buf->pubsync();
-    return 0;
+    __try {
+        int v = 0;
+        if (buffer) {
+            v = pubsync(buffer);
+        }
+    } __finally {
+    }
 }
