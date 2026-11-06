@@ -492,7 +492,7 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_kernel_stages.py": "6d717a5b2e05c6c95f7616af5c14b664f1816d53879e57f5b670697a6415ce27",
+    "rebuild/2008-06/tests/record_native_kernel_stages.py": "35aefdfdcfc7db9912dd9241167848c8d13ae56366432d9a5bd1c8ca5f213339",
     "rebuild/2008-06/tests/NativeKernelStagesLayout.cpp": "50c9c870279472e4c86cddfe61e1e45b5c2c5ef59d32ede907fe625176f8cbf3",
     "rebuild/2008-06/native-classes/CleanStage2008.cpp": "67b9edf43b73110f13d6c41d592571fe3aabb54aa68f86a8eda9c577b74d80b4",
     "rebuild/2008-06/native-classes/IWorldStage2008.cpp": "7f066b32a85f6b7f85d5c10aa6fa8083bd8c48a6d8a37390f35f91b128b6a53c",
@@ -508,18 +508,18 @@
     "rebuild/2008-06/native-headers/v8kernel/Kernel2008.h": "fb82da917a4e2fe556518a919f2f90434adef274e231fb42224b9288ebcf3862"
   },
   "objects": {
-    "NativeKernelStagesLayout.obj": "66015b82ddfa8b7bc8ac66c68da88edd1d9a1e321f0add7f1602638cb5b2217e",
-    "NativeKernelStages_clean.obj": "6b28c537fb4ee1427790df93367ff914c6123bb7a6392199d36a1d30089186a2",
-    "NativeKernelStages_worldstage.obj": "64439bac3d71e64d15e822b0f0a64300aec5176b085dc39fca41020c8f09683f",
-    "NativeKernelStages_joint.obj": "ecfa16bf04f1b332f7e42df2ebb7c64d276a5b8784915d0cbf8ee8b7d274b9ed",
-    "NativeKernelStages_simjobstage.obj": "d6be577f5b71a50845a7f7925262b6b3e06497f04722294688bf2984df100e00",
-    "NativeKernelStages_simjobstage_ctor.obj": "ade7f4d694f2b865efbf5d6fa5d62d615f3be26312e409a12d5fb4f1b20dbab8",
-    "NativeKernelStages_simjob.obj": "2a7c038e881271eecc30f552559fbadf29629942e91494c22467e4575251b5b3",
-    "NativeKernelStages_kernel.obj": "64127ce2d15fd951c08d56e15d44c5aa20bae02f23b896fb9c71f16628a92e46",
-    "NativeKernelStages_clean_pending.obj": "5550468882a9d71632efcb61180244d2b0b0021ee2ed903b90ec1f54b12e8cd9",
-    "NativeKernelStages_joint_pending.obj": "f1853ade64e9814ffde98bf2de2c6589a15947bca1abbf191b38e7389f7a1bf8",
-    "NativeKernelStages_simjobstage_pending.obj": "0fa3a2c9795809417f7893290be1a7c734583e59189f8ea8c9c51637476e3d08",
-    "NativeKernelStages_kernel_pending.obj": "adef8ebd790c08d468f267ae1743929757eace1e4da80ff088788096a92dca44"
+    "NativeKernelStagesLayout.obj": "a82b1d7133cdce57fe80d39ee5a218d90858c9de81c586da2ede8c7a0acf63f4",
+    "NativeKernelStages_clean.obj": "5ea13d1aed9164d0903e2a299b26e9b1598f2ed1e09a9249b385e0b1aa006aac",
+    "NativeKernelStages_worldstage.obj": "ca85c366b13427597888aafa13932727f4dc2a5f7d2e444fba3f64b47782191e",
+    "NativeKernelStages_joint.obj": "0aee86b986a0065a1d9e3ac65bb8a3ee85f1a619756c631daf4630ab52790eb0",
+    "NativeKernelStages_simjobstage.obj": "ca0a22e1f248e3dd4e054393745cf9805229a2fcd26bf43e13f2e62b7f39f7bb",
+    "NativeKernelStages_simjobstage_ctor.obj": "36f24a090f449d479d1f9f5c354125993c5fb2d97e25fa743979bf7f8c6f1811",
+    "NativeKernelStages_simjob.obj": "2d475ff3a5a24860762decd9c3adabaa7119cb7cfd82e2fb4dc7756d59a54956",
+    "NativeKernelStages_kernel.obj": "c13be8598083119169e739dd8313e17d40cf77b9dd7306f8c73a5d5a1b163831",
+    "NativeKernelStages_clean_pending.obj": "7dbc202854d60c96ae7df16b0cd07dc465edb2b00bf0143ef644fb893added9c",
+    "NativeKernelStages_joint_pending.obj": "27b1b88f97bae3b243ff61a4842e7d28aa3ad0b055230981d2ae9e73ddc0003e",
+    "NativeKernelStages_simjobstage_pending.obj": "338a0a13be0b45dfb1b5956ca55a965d870b7a70b6ef75705503991cecc3d0da",
+    "NativeKernelStages_kernel_pending.obj": "0a779701a8cd3575a041c6964009e8163e76675c5554485c58fc783a040b6375"
   },
   "layout": {
     "CleanStage": "0x10 (005ea920): IWorldStage only (upstream +0x4, downstream +0x8, world +0xc)",
@@ -843,7 +843,7 @@
         "target_size": 30,
         "exact": true,
         "verified_targets": {
-          "??1Kernel@RBX@@UAE@XZ": "0x5faca0 (call target of a non-exact row)",
+          "??1Kernel@RBX@@UAE@XZ": "0x5faca0 (own row)",
           "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
         },
         "local_eh": []
@@ -874,6 +874,23 @@
         "exact": true,
         "verified_targets": {},
         "local_eh": []
+      },
+      {
+        "address": "005faca0",
+        "symbol": "??1Kernel@RBX@@UAE@XZ",
+        "size": 162,
+        "target_size": 162,
+        "exact": true,
+        "verified_targets": {
+          "??_7Kernel@RBX@@6B@": "0x84105c (vtable RTTI .?AVKernel@RBX@@ offset 0x0)",
+          "?numKernels@Kernel@RBX@@0HA": "0x97b5b8 (data)",
+          "??1KernelData@RBX@@QAE@XZ": "0x5fa970 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1Kernel@RBX@@UAE@XZ"
+        ]
       }
     ],
     "not_exact": [
@@ -892,14 +909,6 @@
         "target_size": 178,
         "exact": false,
         "reason": "the 2008 KernelData is 0x3c (new 0x3c, constructor 005fb5f0) and CodeProfiler 0xc048 (new 0xc048, constructor 005c43a0); the donor KernelData.h / util/Profiling.h give 0x30 / 0x20040"
-      },
-      {
-        "address": "005faca0",
-        "symbol": "??1Kernel@RBX@@UAE@XZ",
-        "size": 175,
-        "target_size": 162,
-        "exact": false,
-        "reason": "the 2008 CodeProfiler has a virtual destructor (005fad00 deletes profilingKernel through slot 0); the donor Profiler has none; the rest (--numKernels, ~KernelData call, ~Array, ~IStage) is identical"
       }
     ]
   },
@@ -979,6 +988,7 @@
     "005faa20",
     "005faa30",
     "005faa40",
+    "005faca0",
     "005fb0c0",
     "0064a310",
     "0064a380",
