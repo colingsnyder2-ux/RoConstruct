@@ -1,0 +1,215 @@
+{
+  "started_unix": 1794008481.1348157,
+  "finished_unix": 1794008481.199853,
+  "results": {
+    "RunService": [
+      {
+        "address": 3589972,
+        "label": "RBX/RunService::RunService",
+        "member": "RBX/RunService.c",
+        "size": 3
+      },
+      {
+        "address": 3589976,
+        "label": "RBX/RunService::RunService",
+        "member": "RBX/RunService_1.c",
+        "size": 771
+      },
+      {
+        "address": 3591684,
+        "label": "RBX/RunService::stopTasks",
+        "member": "RBX/stopTasks.c",
+        "size": 267
+      },
+      {
+        "address": 3592036,
+        "label": "RBX/RunService::start",
+        "member": "RBX/start.c",
+        "size": 431
+      },
+      {
+        "address": 3592732,
+        "label": "RBX/RunService::~RunService",
+        "member": "RBX/_RunService.c",
+        "size": 117
+      },
+      {
+        "address": 3592892,
+        "label": "RBX/RunService::~RunService",
+        "member": "RBX/_RunService_1.c",
+        "size": 3
+      },
+      {
+        "address": 3592896,
+        "label": "RBX/RunService::~RunService",
+        "member": "RBX/_RunService_2.c",
+        "size": 5
+      },
+      {
+        "address": 3592904,
+        "label": "RBX/RunService::~RunService",
+        "member": "RBX/_RunService_3.c",
+        "size": 5
+      },
+      {
+        "address": 3592912,
+        "label": "RBX/RunService::~RunService",
+        "member": "RBX/_RunService_4.c",
+        "size": 429
+      },
+      {
+        "address": 3594212,
+        "label": "RBX/RunService::~RunService",
+        "member": "RBX/_RunService_5.c",
+        "size": 5
+      },
+      {
+        "address": 3594220,
+        "label": "RBX/RunService::~RunService",
+        "member": "RBX/_RunService_6.c",
+        "size": 5
+      },
+      {
+        "address": 3594228,
+        "label": "RBX/RunService::getPhysicsJob",
+        "member": "RBX/getPhysicsJob.c",
+        "size": 3
+      },
+      {
+        "address": 3594232,
+        "label": "RBX/RunService::raiseHeartbeat",
+        "member": "RBX/raiseHeartbeat.c",
+        "size": 145
+      },
+      {
+        "address": 3594380,
+        "label": "RBX/RunService::gameStepped",
+        "member": "RBX/gameStepped.c",
+        "size": 107
+      },
+      {
+        "address": 3594488,
+        "label": "RBX/RunService::renderStepped",
+        "member": "RBX/renderStepped.c",
+        "size": 39
+      },
+      {
+        "address": 3594528,
+        "label": "RBX/RunService::setRunState",
+        "member": "RBX/setRunState.c",
+        "size": 95
+      },
+      {
+        "address": 3594624,
+        "label": "RBX/RunService::onServiceProvider",
+        "member": "RBX/onServiceProvider_5.c",
+        "size": 9
+      },
+      {
+        "address": 3594636,
+        "label": "RBX/RunService::smoothFps",
+        "member": "RBX/smoothFps.c",
+        "size": 5
+      },
+      {
+        "address": 3594644,
+        "label": "RBX/RunService::heartbeatFps",
+        "member": "RBX/heartbeatFps.c",
+        "size": 5
+      },
+      {
+        "address": 3594652,
+        "label": "RBX/RunService::physicsAverageStep",
+        "member": "RBX/physicsAverageStep.c",
+        "size": 5
+      },
+      {
+        "address": 3594660,
+        "label": "RBX/RunService::heartbeatAverageStep",
+        "member": "RBX/heartbeatAverageStep.c",
+        "size": 5
+      },
+      {
+        "address": 3594668,
+        "label": "RBX/RunService::physicsCpuFraction",
+        "member": "RBX/physicsCpuFraction.c",
+        "size": 5
+      },
+      {
+        "address": 3594676,
+        "label": "RBX/RunService::heartbeatCpuFraction",
+        "member": "RBX/heartbeatCpuFraction.c",
+        "size": 5
+      },
+      {
+        "address": 3594796,
+        "label": "RBX/RunService::run",
+        "member": "RBX/run.c",
+        "size": 5
+      },
+      {
+        "address": 3594840,
+        "label": "RBX/RunService::pause",
+        "member": "RBX/pause.c",
+        "size": 5
+      },
+      {
+        "address": 3594848,
+        "label": "RBX/RunService::stop",
+        "member": "RBX/stop.c",
+        "size": 5
+      }
+    ],
+    "Instance parenting": [
+      {
+        "address": 7511652,
+        "label": "RBX/Instance::setParentInternal",
+        "member": "RBX/setParentInternal.c",
+        "size": 1951
+      },
+      {
+        "address": 7522184,
+        "label": "RBX/Instance::setAndLockParent",
+        "member": "RBX/setAndLockParent.c",
+        "size": 255
+      },
+      {
+        "address": 7523984,
+        "label": "RBX/Instance::askSetParent",
+        "member": "RBX/askSetParent_55.c",
+        "size": 3
+      },
+      {
+        "address": 7523988,
+        "label": "RBX/Instance::askForbidParent",
+        "member": "RBX/askForbidParent_1.c",
+        "size": 3
+      },
+      {
+        "address": 7525972,
+        "label": "RBX/Instance::getParentDangerous",
+        "member": "RBX/getParentDangerous.c",
+        "size": 3
+      },
+      {
+        "address": 7525976,
+        "label": "RBX/Instance::setParent",
+        "member": "RBX/setParent.c",
+        "size": 5
+      },
+      {
+        "address": 10316740,
+        "label": "RBX/Instance::unlockParent",
+        "member": "RBX/unlockParent.c",
+        "size": 33
+      },
+      {
+        "address": 13265456,
+        "label": "RBX/Instance::verifySetParent",
+        "member": "RBX/verifySetParent_5.c",
+        "size": 1
+      }
+    ],
+    "embedded XML writer": []
+  }
+}

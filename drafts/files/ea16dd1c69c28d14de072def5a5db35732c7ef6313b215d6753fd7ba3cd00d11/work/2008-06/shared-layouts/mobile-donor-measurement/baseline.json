@@ -1,0 +1,80 @@
+{
+  "design": "Serial marginal-evidence pilot, not randomized speedup comparison. Target-only sources/proofs frozen before donor lookup. 2008 only.",
+  "baseline_origin": "Owner working checkout; inactive native candidates, not active client selection",
+  "samples": [
+    {
+      "family": "RunService",
+      "source": "rebuild/2008-06/native-classes/RunService.cpp",
+      "header": "rebuild/2008-06/native-headers/util/RunStateOwner.h",
+      "gaps": [
+        "callable return type inferred",
+        "unknown timing/mutex/queue fields",
+        "remaining virtual slots and ABI/provider selection"
+      ],
+      "checks": [
+        [
+          "00555900",
+          "?enqueueTask@RunService@RBX@@"
+        ],
+        [
+          "005559a0",
+          "?drainTasks@RunService@RBX@@"
+        ],
+        [
+          "00554da0",
+          "?setRunState@RunService@RBX@@"
+        ]
+      ],
+      "source_sha256": "67dc145cc390585d83f0cceb37d99a2139909f02559d70a37105235bedf49d93",
+      "header_sha256": "a93fe2728883bcbd53444eea87e3d2924f5ef48535070fef5a384061b31ae3d6"
+    },
+    {
+      "family": "Instance parenting",
+      "source": "rebuild/2008-06/native-classes/InstanceParent.cpp",
+      "header": "rebuild/2008-06/native-headers/v8tree/InstanceEvents.h",
+      "gaps": [
+        "whole-class ABI and linked-provider closure",
+        "target parenting bodies already have local proof; donor API drift unknown"
+      ],
+      "checks": [
+        [
+          "0055a8f0",
+          "?setParent@Instance@RBX@@"
+        ],
+        [
+          "005574b0",
+          "?contains@Instance@RBX@@"
+        ]
+      ],
+      "source_sha256": "1dbd36cbc66465f69c84ab4849fa97ecdac0b856cb6a8adb2ad693c9872467a7",
+      "header_sha256": "961ec6f9d064f1da2cb9c3adf336cd62b2c7309a379fa194791c784e32697aaf"
+    },
+    {
+      "family": "embedded XML writer",
+      "source": "rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp",
+      "header": "rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h",
+      "gaps": [
+        "writer destructor mismatch",
+        "CWorkspace::write empty first EH state unexplained",
+        "scoped versus canonical header divergence"
+      ],
+      "checks": [
+        [
+          "0046b860",
+          "?write@CWorkspace@@"
+        ],
+        [
+          "0046b550",
+          "??0TextXmlWriterWithEmbeddedContent@@"
+        ],
+        [
+          "0046b1e0",
+          "??1TextXmlWriterWithEmbeddedContent@@"
+        ]
+      ],
+      "source_sha256": "e4b2ff3a6a716043ffbd07f9220df188c841276ce4212b3ba2469055dbf0fd4f",
+      "header_sha256": "1ca6e5964e444a115dad09236570d16dcb7321dd79fc6b9f4537fdc8ffca3802"
+    }
+  ],
+  "frozen_at_unix": 1794008460.1736865
+}

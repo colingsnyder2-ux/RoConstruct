@@ -1,0 +1,568 @@
+== 00555900 147 bytes unit=RBX::Reflection::Z::$$A6AXMM::?$TSignalDesc::TSignalInstance
+00555900  push -1
+00555902  push 0x7bdf30  ; fn_007bdf30 [unit? CSpinButtonCtrl]
+00555907  mov eax, dword ptr fs:[0]
+0055590d  push eax
+0055590e  mov dword ptr fs:[0], esp
+00555915  sub esp, 8
+00555918  push esi
+00555919  push edi
+0055591a  mov esi, ecx
+0055591c  lea edi, [esi + 0x2ac]
+00555922  mov ecx, edi
+00555924  mov dword ptr [esp + 0x18], 0
+0055592c  mov dword ptr [esp + 8], edi
+00555930  call 0x594ce0  ; fn_00594ce0 [unit? RBX::Lua::ThreadRef::VNode::?$sp_counted_impl_p]
+00555935  mov byte ptr [esp + 0xc], 1
+0055593a  lea eax, [esp + 0x20]
+0055593e  push eax
+0055593f  lea ecx, [esi + 0x2b4]
+00555945  mov byte ptr [esp + 0x1c], 1
+0055594a  call 0x419ae0  ; fn_00419ae0 [unit? VCLuaFunction::?$CComObject]
+0055594f  mov ecx, edi
+00555951  mov byte ptr [esp + 0x18], 0
+00555956  call 0x594d00  ; fn_00594d00 [unit? RBX::Lua::ThreadRef::VNode::?$sp_counted_impl_p]
+0055595b  mov eax, dword ptr [esp + 0x20]
+0055595f  pop edi
+00555960  mov dword ptr [esp + 0x14], 0xffffffff
+00555968  pop esi
+00555969  test eax, eax
+0055596b  je 0x555982
+0055596d  mov eax, dword ptr [eax]
+0055596f  test eax, eax
+00555971  je 0x555982
+00555973  lea ecx, [esp + 0x20]
+00555977  push 1
+00555979  push ecx
+0055597a  mov edx, ecx
+0055597c  push edx
+0055597d  call eax
+0055597f  add esp, 0xc
+00555982  mov ecx, dword ptr [esp + 8]
+00555986  mov dword ptr fs:[0], ecx
+0055598d  add esp, 0x14
+00555990  ret 0x20
+== 005559a0 462 bytes unit=RBX::Reflection::Z::$$A6AXMM::?$TSignalDesc::TSignalInstance
+005559a0  push ebp
+005559a1  mov ebp, esp
+005559a3  push -1
+005559a5  push 0x7cde10  ; fn_007cde10 [unit? seg_007c0000]
+005559aa  mov eax, dword ptr fs:[0]
+005559b0  push eax
+005559b1  mov dword ptr fs:[0], esp
+005559b8  sub esp, 0x6c
+005559bb  push ebx
+005559bc  push esi
+005559bd  push edi
+005559be  mov esi, ecx
+005559c0  mov dword ptr [ebp - 0x10], esp
+005559c3  mov dword ptr [ebp - 0x14], esi
+005559c6  xor ebx, ebx
+005559c8  jmp 0x5559d0
+005559ca  lea ebx, [ebx]
+005559d0  mov dword ptr [ebp - 0x50], ebx
+005559d3  lea edi, [esi + 0x2ac]
+005559d9  mov ecx, edi
+005559db  mov dword ptr [ebp - 4], ebx
+005559de  mov dword ptr [ebp - 0x20], edi
+005559e1  call 0x594ce0  ; fn_00594ce0 [unit? RBX::Lua::ThreadRef::VNode::?$sp_counted_impl_p]
+005559e6  mov byte ptr [ebp - 0x1c], 1
+005559ea  mov byte ptr [ebp - 4], 1
+005559ee  cmp dword ptr [esi + 0x2d0], ebx
+005559f4  jne 0x555a33
+005559f6  mov ecx, edi
+005559f8  mov byte ptr [ebp - 4], bl
+005559fb  call 0x594d00  ; fn_00594d00 [unit? RBX::Lua::ThreadRef::VNode::?$sp_counted_impl_p]
+00555a00  mov eax, dword ptr [ebp - 0x50]
+00555a03  mov dword ptr [ebp - 4], 0xffffffff
+00555a0a  cmp eax, ebx
+00555a0c  je 0x555a22
+00555a0e  mov eax, dword ptr [eax]
+00555a10  cmp eax, ebx
+00555a12  je 0x555a22
+00555a14  lea ecx, [ebp - 0x48]
+00555a17  push 1
+00555a19  push ecx
+00555a1a  mov edx, ecx
+00555a1c  push edx
+00555a1d  call eax
+00555a1f  add esp, 0xc
+00555a22  mov ecx, dword ptr [ebp - 0xc]
+00555a25  pop edi
+00555a26  pop esi
+00555a27  mov dword ptr fs:[0], ecx
+00555a2e  pop ebx
+00555a2f  mov esp, ebp
+00555a31  pop ebp
+00555a32  ret 
+00555a33  mov edi, dword ptr [esi + 0x2cc]
+00555a39  mov eax, dword ptr [esi + 0x2d0]
+00555a3f  add eax, edi
+00555a41  cmp edi, eax
+00555a43  jbe 0x555a4b
+00555a45  call dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+00555a4b  mov ecx, dword ptr [esi + 0x2b4]
+00555a51  mov dword ptr [ebp - 0x28], ecx
+00555a54  lea ecx, [ebp - 0x28]
+00555a57  mov dword ptr [ebp - 0x24], edi
+00555a5a  call 0x496020  ; fn_00496020 [unit? RBX::Network::Players]
+00555a5f  push eax
+00555a60  lea ecx, [ebp - 0x50]
+00555a63  call 0x554f90  ; fn_00554f90 [unit? RBX::RunService]
+00555a68  cmp dword ptr [esi + 0x2d0], ebx
+00555a6e  je 0x555ac2
+00555a70  mov eax, dword ptr [esi + 0x2cc]
+00555a76  mov edx, dword ptr [esi + 0x2c4]
+00555a7c  mov edi, dword ptr [edx + eax*4]
+00555a7f  mov eax, dword ptr [edi]
+00555a81  cmp eax, ebx
+00555a83  je 0x555a99
+00555a85  mov eax, dword ptr [eax]
+00555a87  lea ecx, [edi + 8]
+00555a8a  cmp eax, ebx
+00555a8c  je 0x555a97
+00555a8e  push 1
+00555a90  push ecx
+00555a91  push ecx
+00555a92  call eax
+00555a94  add esp, 0xc
+00555a97  mov dword ptr [edi], ebx
+00555a99  inc dword ptr [esi + 0x2cc]
+00555a9f  mov eax, dword ptr [esi + 0x2cc]
+00555aa5  cmp dword ptr [esi + 0x2c8], eax
+00555aab  ja 0x555ab3
+00555aad  mov dword ptr [esi + 0x2cc], ebx
+00555ab3  add dword ptr [esi + 0x2d0], -1
+00555aba  jne 0x555ac2
+00555abc  mov dword ptr [esi + 0x2cc], ebx
+00555ac2  mov ecx, dword ptr [ebp - 0x20]
+00555ac5  mov byte ptr [ebp - 4], bl
+00555ac8  call 0x594d00  ; fn_00594d00 [unit? RBX::Lua::ThreadRef::VNode::?$sp_counted_impl_p]
+00555acd  mov eax, dword ptr [ebp - 0x50]
+00555ad0  mov byte ptr [ebp - 0x1c], bl
+00555ad3  mov byte ptr [ebp - 4], 2
+00555ad7  cmp eax, ebx
+00555ad9  jne 0x555aed
+00555adb  lea ecx, [ebp - 0x78]
+00555ade  call 0x409ef0  ; fn_00409ef0 [unit? RBX::GlobalSettings::Item]
+00555ae3  push eax
+00555ae4  mov byte ptr [ebp - 4], 3
+00555ae8  call 0x40a500  ; fn_0040a500 [unit? boost::any::_N::?$holder]
+00555aed  mov edx, dword ptr [eax + 4]
+00555af0  lea ecx, [ebp - 0x48]
+00555af3  push ecx
+00555af4  call edx
+00555af6  add esp, 4
+00555af9  jmp 0x555b3f
+00555afb  lea eax, [ebp - 0x30]
+00555afe  push eax
+00555aff  call 0x569620  ; fn_00569620 [unit? RBX::ServiceProvider]
+00555b04  add esp, 4
+00555b07  mov ecx, dword ptr [ebp - 0x18]
+00555b0a  mov edx, dword ptr [ecx]
+00555b0c  mov esi, dword ptr [eax]
+00555b0e  mov eax, dword ptr [edx + 4]
+00555b11  mov byte ptr [ebp - 4], 5
+00555b15  call eax
+00555b17  push eax
+00555b18  push 0x8103ac
+00555b1d  push 3
+00555b1f  push esi
+00555b20  call 0x5693a0  ; fn_005693a0 [unit? RBX::ServiceProvider]
+00555b25  add esp, 0x10
+00555b28  lea ecx, [ebp - 0x30]
+00555b2b  mov byte ptr [ebp - 4], 4
+00555b2f  call 0x600660  ; ??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ
+00555b34  mov eax, 0x555b3a
+00555b39  ret 
+00555b3a  mov esi, dword ptr [ebp - 0x14]
+00555b3d  xor ebx, ebx
+00555b3f  mov eax, dword ptr [ebp - 0x50]
+00555b42  mov dword ptr [ebp - 4], 0xffffffff
+00555b49  cmp eax, ebx
+00555b4b  je 0x5559d0
+00555b51  mov eax, dword ptr [eax]
+00555b53  cmp eax, ebx
+00555b55  je 0x5559d0
+00555b5b  lea ecx, [ebp - 0x48]
+00555b5e  push 1
+00555b60  push ecx
+00555b61  mov edx, ecx
+00555b63  push edx
+00555b64  call eax
+00555b66  add esp, 0xc
+00555b69  jmp 0x5559d0
+== 00554da0 106 bytes unit=RBX::RunService
+00554da0  push esi
+00554da1  push edi
+00554da2  mov edi, dword ptr [esp + 0xc]
+00554da6  mov esi, ecx
+00554da8  cmp edi, 1
+00554dab  jne 0x554dbe
+00554dad  mov eax, dword ptr [esi + 0x1b4]
+00554db3  test eax, eax
+00554db5  je 0x554dda
+00554db7  cmp eax, 2
+00554dba  jne 0x554e05
+00554dbc  jmp 0x554dda
+00554dbe  cmp edi, 2
+00554dc1  jne 0x554dce
+00554dc3  cmp dword ptr [esi + 0x1b4], 1
+00554dca  jne 0x554e05
+00554dcc  jmp 0x554dda
+00554dce  test edi, edi
+00554dd0  jne 0x554dda
+00554dd2  fldz 
+00554dd4  fstp qword ptr [esi + 0x1b8]
+00554dda  push ebx
+00554ddb  mov ebx, dword ptr [esi + 0x1b4]
+00554de1  cmp ebx, edi
+00554de3  je 0x554e04
+00554de5  push edi
+00554de6  lea ecx, [esi + 0x190]
+00554dec  mov dword ptr [esi + 0x1b4], edi
+00554df2  call 0x554ae0  ; fn_00554ae0 [unit? RBX::RunService]
+00554df7  push edi
+00554df8  push ebx
+00554df9  lea ecx, [esi + 0x170]
+00554dff  call 0x554a60  ; fn_00554a60 [unit? RBX::RunService]
+00554e04  pop ebx
+00554e05  pop edi
+00554e06  pop esi
+00554e07  ret 4
+== 0055a8f0 967 bytes unit=RBX::VInstance::?$NonFactoryProduct
+0055a8f0  push -1
+0055a8f2  mov eax, dword ptr fs:[0]
+0055a8f8  push 0x7ce49f  ; fn_007ce49f [unit? seg_007c0000]
+0055a8fd  push eax
+0055a8fe  mov dword ptr fs:[0], esp
+0055a905  sub esp, 0xbc
+0055a90b  push ebx
+0055a90c  push ebp
+0055a90d  mov ebp, dword ptr [esp + 0xd4]
+0055a914  push esi
+0055a915  mov esi, ecx
+0055a917  push edi
+0055a918  mov edi, dword ptr [esi + 0x104]
+0055a91e  cmp ebp, edi
+0055a920  je 0x55ac9c
+0055a926  cmp esi, ebp
+0055a928  jne 0x55a995
+0055a92a  lea eax, [esp + 0x50]
+0055a92e  push eax
+0055a92f  call 0x5574d0  ; fn_005574d0 [unit? RBX::VInstance::?$NonFactoryProduct]
+0055a934  cmp dword ptr [eax + 0x18], 0x10
+0055a938  mov dword ptr [esp + 0xd4], 0
+0055a943  jb 0x55a94a
+0055a945  mov eax, dword ptr [eax + 4]
+0055a948  jmp 0x55a94d
+0055a94a  add eax, 4
+0055a94d  push eax
+0055a94e  lea ecx, [esp + 0x38]
+0055a952  push 0x82d908
+0055a957  push ecx
+0055a958  call 0x509b10  ; fn_00509b10 [unit? G3D::Shader]
+0055a95d  add esp, 0xc
+0055a960  lea ecx, [esp + 0x50]
+0055a964  mov byte ptr [esp + 0xd4], 2
+0055a96c  call dword ptr [0x802468]  ; MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+0055a972  lea edx, [esp + 0x34]
+0055a976  push edx
+0055a977  lea ecx, [esp + 0x80]
+0055a97e  call 0x409d50  ; fn_00409d50 [unit? RBX::VInstance::?$NonFactoryProduct]
+0055a983  push 0x8d1bc8
+0055a988  lea eax, [esp + 0x80]
+0055a98f  push eax
+0055a990  call 0x6a158c  ; MSVCR90.dll!_CxxThrowException
+0055a995  push ebp
+0055a996  call 0x4c9c50  ; fn_004c9c50 [unit? RBX::VInstance::?$NonFactoryProduct]
+0055a99b  test al, al
+0055a99d  je 0x55aa4d
+0055a9a3  lea ecx, [esp + 0x50]
+0055a9a7  push ecx
+0055a9a8  mov ecx, ebp
+0055a9aa  call 0x5574d0  ; fn_005574d0 [unit? RBX::VInstance::?$NonFactoryProduct]
+0055a9af  mov edi, eax
+0055a9b1  lea edx, [esp + 0x34]
+0055a9b5  push edx
+0055a9b6  mov ecx, esi
+0055a9b8  mov dword ptr [esp + 0xd8], 3
+0055a9c3  call 0x5574d0  ; fn_005574d0 [unit? RBX::VInstance::?$NonFactoryProduct]
+0055a9c8  mov ecx, 0x10
+0055a9cd  mov byte ptr [esp + 0xd4], 4
+0055a9d5  cmp dword ptr [edi + 0x18], ecx
+0055a9d8  jb 0x55a9df
+0055a9da  mov edi, dword ptr [edi + 4]
+0055a9dd  jmp 0x55a9e2
+0055a9df  add edi, 4
+0055a9e2  cmp dword ptr [eax + 0x18], ecx
+0055a9e5  jb 0x55a9ec
+0055a9e7  mov eax, dword ptr [eax + 4]
+0055a9ea  jmp 0x55a9ef
+0055a9ec  add eax, 4
+0055a9ef  push edi
+0055a9f0  push eax
+0055a9f1  lea eax, [esp + 0x84]
+0055a9f8  push 0x82d8c8
+0055a9fd  push eax
+0055a9fe  call 0x509b10  ; fn_00509b10 [unit? G3D::Shader]
+0055aa03  add esp, 0x10
+0055aa06  lea ecx, [esp + 0x34]
+0055aa0a  mov byte ptr [esp + 0xd4], 6
+0055aa12  call dword ptr [0x802468]  ; MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+0055aa18  lea ecx, [esp + 0x50]
+0055aa1c  mov byte ptr [esp + 0xd4], 7
+0055aa24  call dword ptr [0x802468]  ; MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+0055aa2a  lea ecx, [esp + 0x7c]
+0055aa2e  push ecx
+0055aa2f  lea ecx, [esp + 0xa8]
+0055aa36  call 0x409d50  ; fn_00409d50 [unit? RBX::VInstance::?$NonFactoryProduct]
+0055aa3b  push 0x8d1bc8
+0055aa40  lea edx, [esp + 0xa8]
+0055aa47  push edx
+0055aa48  call 0x6a158c  ; MSVCR90.dll!_CxxThrowException
+0055aa4d  lea eax, [esp + 0x10]
+0055aa51  push edi
+0055aa52  push eax
+0055aa53  call 0x618a40  ; fn_00618a40 [unit? RBX::VFlag::?$FactoryProduct]
+0055aa58  add esp, 8
+0055aa5b  lea ecx, [esp + 0x18]
+0055aa5f  push ecx
+0055aa60  lea ecx, [esi + 0xe4]
+0055aa66  mov dword ptr [esp + 0xd8], 8
+0055aa71  call 0x42af90  ; ?shared_from_this@?$enable_shared_from_this@VInstance@RBX@@@boost@@QAE?AV?$shared_ptr@VInstance@RBX@@@2@XZ
+0055aa76  mov ecx, dword ptr [esp + 0x10]
+0055aa7a  mov byte ptr [esp + 0xd4], 9
+0055aa82  test ecx, ecx
+0055aa84  je 0x55abc0
+0055aa8a  push ebp
+0055aa8b  call 0x5574b0  ; fn_005574b0 [unit? RBX::VInstance::?$NonFactoryProduct]
+0055aa90  test al, al
+0055aa92  jne 0x55aaa7
+0055aa94  push ebp
+0055aa95  push ecx
+0055aa96  lea edx, [esp + 0x20]
+0055aa9a  push edx
+0055aa9b  call 0x558370  ; fn_00558370 [unit? RBX::VInstance::?$AbstractFactoryProduct]
+0055aaa0  mov ecx, dword ptr [esp + 0x1c]
+0055aaa4  add esp, 0xc
+0055aaa7  mov eax, dword ptr [ecx]
+0055aaa9  mov edx, dword ptr [eax + 0x20]
+0055aaac  push esi
+0055aaad  call edx
+0055aaaf  mov ecx, dword ptr [esp + 0x10]
+0055aab3  add ecx, 0x108
+0055aab9  call 0x49add0  ; fn_0049add0 [unit? RBX::Network::VPlayers::?$SignalDesc]
+0055aabe  mov edi, eax
+0055aac0  mov ebx, dword ptr [edi]
+0055aac2  lea eax, [esp + 0x74]
+0055aac6  push eax
+0055aac7  mov ecx, ebx
+0055aac9  call 0x68ff20  ; fn_0068ff20 [unit? Ogre::RbxSceneManagerFactory]
+0055aace  lea ecx, [esp + 0x6c]
+0055aad2  push ecx
+0055aad3  mov ecx, ebx
+0055aad5  mov dword ptr [esp + 0x24], eax
+0055aad9  call 0x68fef0  ; fn_0068fef0 [unit? Ogre::RbxSceneManagerFactory]
+0055aade  mov ecx, dword ptr [esp + 0x20]
+0055aae2  lea edx, [esp + 0x18]
+0055aae6  push edx
+0055aae7  mov edx, dword ptr [ecx + 4]
+0055aaea  mov ecx, dword ptr [ecx]
+0055aaec  push edx
+0055aaed  mov edx, dword ptr [eax + 4]
+0055aaf0  mov eax, dword ptr [eax]
+0055aaf2  push ecx
+0055aaf3  push edx
+0055aaf4  push eax
+0055aaf5  lea ecx, [esp + 0x3c]
+0055aaf9  push ecx
+0055aafa  call 0x438b30  ; fn_00438b30 [unit? IIHAAH::?$CMap]
+0055aaff  mov edx, dword ptr [eax + 4]
+0055ab02  mov eax, dword ptr [eax]
+0055ab04  mov ecx, dword ptr [edi]
+0055ab06  add esp, 0x18
+0055ab09  push edx
+0055ab0a  push eax
+0055ab0b  lea edx, [esp + 0x28]
+0055ab0f  push edx
+0055ab10  call 0x439480  ; fn_00439480 [unit? CSelectionPropGrid]
+0055ab15  mov edi, dword ptr [edi]
+0055ab17  mov eax, dword ptr [edi + 0x10]
+0055ab1a  sub eax, dword ptr [edi + 0xc]
+0055ab1d  test eax, 0xfffffff8
+0055ab22  jne 0x55ab33
+0055ab24  mov ecx, dword ptr [esp + 0x10]
+0055ab28  add ecx, 0x108
+0055ab2e  call 0x456e80  ; fn_00456e80 [unit? CRobloxReportView::CStatsItemRecord::CValueItem]
+0055ab33  mov eax, dword ptr [esp + 0x10]
+0055ab37  mov dword ptr [esi + 0x104], 0
+0055ab41  test eax, eax
+0055ab43  je 0x55ab4a
+0055ab45  lea edi, [eax + 0x14]
+0055ab48  jmp 0x55ab4c
+0055ab4a  xor edi, edi
+0055ab4c  sub esp, 8
+0055ab4f  lea edx, [esp + 0x20]
+0055ab53  mov ecx, esp
+0055ab55  mov dword ptr [esp + 0x28], esp
+0055ab59  push edx
+0055ab5a  call 0x4116f0  ; ??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z
+0055ab5f  push edi
+0055ab60  mov ecx, 0x973c6c
+0055ab65  call 0x49d200  ; fn_0049d200 [unit? RBX::Network::VPlayers::?$BoundFuncDesc]
+0055ab6a  sub esp, 8
+0055ab6d  mov eax, esp
+0055ab6f  mov dword ptr [esp + 0x28], esp
+0055ab73  push esi
+0055ab74  push eax
+0055ab75  call 0x618a40  ; fn_00618a40 [unit? RBX::VFlag::?$FactoryProduct]
+0055ab7a  mov ecx, dword ptr [esp + 0x20]
+0055ab7e  add esp, 8
+0055ab81  add ecx, 0x44
+0055ab84  call 0x558590  ; fn_00558590 [unit? RBX::VInstance::?$AbstractFactoryProduct]
+0055ab89  mov ecx, dword ptr [esp + 0x10]
+0055ab8d  mov eax, dword ptr [ecx]
+0055ab8f  mov edx, dword ptr [eax + 0x24]
+0055ab92  push esi
+0055ab93  call edx
+0055ab95  mov ecx, dword ptr [esp + 0x10]
+0055ab99  cmp dword ptr [ecx + 0x108], 0
+0055aba0  je 0x55abb5
+0055aba2  mov edx, dword ptr [ecx + 0x108]
+0055aba8  mov eax, dword ptr [edx + 0x10]
+0055abab  sub eax, dword ptr [edx + 0xc]
+0055abae  sar eax, 3
+0055abb1  test eax, eax
+0055abb3  jne 0x55abc0
+0055abb5  mov eax, dword ptr [ecx]
+0055abb7  mov edx, dword ptr [eax + 0x28]
+0055abba  call edx
+0055abbc  mov ecx, dword ptr [esp + 0x10]
+0055abc0  test ebp, ebp
+0055abc2  je 0x55abe1
+0055abc4  lea ecx, [ebp + 0x108]
+0055abca  call 0x49add0  ; fn_0049add0 [unit? RBX::Network::VPlayers::?$SignalDesc]
+0055abcf  mov eax, dword ptr [eax]
+0055abd1  lea ecx, [esp + 0x18]
+0055abd5  push ecx
+0055abd6  mov ecx, eax
+0055abd8  call 0x420110  ; fn_00420110 [unit? CInsertObjectDialog]
+0055abdd  mov ecx, dword ptr [esp + 0x10]
+0055abe1  mov dword ptr [esi + 0x104], ebp
+0055abe7  test ebp, ebp
+0055abe9  je 0x55ac51
+0055abeb  mov edx, dword ptr [ebp]
+0055abee  mov eax, dword ptr [edx + 0x1c]
+0055abf1  push esi
+0055abf2  mov ecx, ebp
+0055abf4  call eax
+0055abf6  mov edx, dword ptr [esp + 0x10]
+0055abfa  push edx
+0055abfb  mov ecx, ebp
+0055abfd  call 0x5574b0  ; fn_005574b0 [unit? RBX::VInstance::?$NonFactoryProduct]
+0055ac02  test al, al
+0055ac04  jne 0x55ac11
+0055ac06  push edx
+0055ac07  push ebp
+0055ac08  push esi
+0055ac09  call 0x558220  ; fn_00558220 [unit? RBX::VInstance::?$AbstractFactoryProduct]
+0055ac0e  add esp, 0xc
+0055ac11  sub esp, 8
+0055ac14  mov eax, esp
+0055ac16  mov dword ptr [esp + 0x28], esp
+0055ac1a  push esi
+0055ac1b  push eax
+0055ac1c  call 0x618a40  ; fn_00618a40 [unit? RBX::VFlag::?$FactoryProduct]
+0055ac21  add esp, 8
+0055ac24  lea ecx, [ebp + 0x24]
+0055ac27  call 0x5584c0  ; fn_005584c0 [unit? RBX::VInstance::?$AbstractFactoryProduct]
+0055ac2c  sub esp, 8
+0055ac2f  lea edx, [esp + 0x20]
+0055ac33  mov ecx, esp
+0055ac35  mov dword ptr [esp + 0x28], esp
+0055ac39  push edx
+0055ac3a  lea edi, [ebp + 0x14]
+0055ac3d  call 0x4116f0  ; ??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z
+0055ac42  push edi
+0055ac43  mov ecx, 0x973e90
+0055ac48  call 0x49d200  ; fn_0049d200 [unit? RBX::Network::VPlayers::?$BoundFuncDesc]
+0055ac4d  mov ecx, dword ptr [esp + 0x10]
+0055ac51  mov eax, dword ptr [esi]
+0055ac53  mov edx, dword ptr [eax + 0x10]
+0055ac56  mov dword ptr [esp + 0x2c], ecx
+0055ac5a  lea ecx, [esp + 0x28]
+0055ac5e  push ecx
+0055ac5f  mov ecx, esi
+0055ac61  mov dword ptr [esp + 0x2c], esi
+0055ac65  mov dword ptr [esp + 0x34], ebp
+0055ac69  call edx
+0055ac6b  push 0x973d34
+0055ac70  mov ecx, esi
+0055ac72  call 0x40db00  ; fn_0040db00 [unit? RBX::Reflection::Metadata::VMember::?$FactoryProduct]
+0055ac77  lea ecx, [esp + 0x18]
+0055ac7b  mov byte ptr [esp + 0xd4], 8
+0055ac83  call 0x600660  ; ??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ
+0055ac88  lea ecx, [esp + 0x10]
+0055ac8c  mov dword ptr [esp + 0xd4], 0xffffffff
+0055ac97  call 0x600660  ; ??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ
+0055ac9c  mov ecx, dword ptr [esp + 0xcc]
+0055aca3  pop edi
+0055aca4  pop esi
+0055aca5  pop ebp
+0055aca6  mov dword ptr fs:[0], ecx
+0055acad  pop ebx
+0055acae  add esp, 0xc8
+0055acb4  ret 4
+== 0046b860 112 bytes unit=VCWorkspace::?$CComObject
+0046b860  mov eax, dword ptr fs:[0]
+0046b866  push -1
+0046b868  push 0x7c39e8  ; fn_007c39e8 [unit? seg_007c0000]
+0046b86d  push eax
+0046b86e  mov dword ptr fs:[0], esp
+0046b875  mov ecx, dword ptr [ecx + 0x24]
+0046b878  sub esp, 0x4c
+0046b87b  test ecx, ecx
+0046b87d  je 0x46b886
+0046b87f  call 0x41eea0  ; fn_0041eea0 [unit? RBX::VSpecialShape::?$FactoryProduct::Creator]
+0046b884  jmp 0x46b888
+0046b886  xor eax, eax
+0046b888  mov ecx, dword ptr [esp + 0x60]
+0046b88c  push ecx
+0046b88d  push eax
+0046b88e  lea ecx, [esp + 8]
+0046b892  call 0x46b550  ; fn_0046b550 [unit? VCWorkspace::?$CComObject]
+0046b897  mov edx, dword ptr [esp + 0x5c]
+0046b89b  push edx
+0046b89c  lea ecx, [esp + 4]
+0046b8a0  mov dword ptr [esp + 0x58], 1
+0046b8a8  call 0x58e810  ; fn_0058e810 [unit? TextXmlWriter]
+0046b8ad  lea ecx, [esp]
+0046b8b0  mov dword ptr [esp + 0x54], 0xffffffff
+0046b8b8  call 0x46b1e0  ; fn_0046b1e0 [unit? VCWorkspace::?$CComObject]
+0046b8bd  mov ecx, dword ptr [esp + 0x4c]
+0046b8c1  xor eax, eax
+0046b8c3  mov dword ptr fs:[0], ecx
+0046b8ca  add esp, 0x58
+0046b8cd  ret 8
+== 0046b1e0 77 bytes unit=VCWorkspace::?$CComObject
+0046b1e0  push -1
+0046b1e2  push 0x7c3948  ; fn_007c3948 [unit? seg_007c0000]
+0046b1e7  mov eax, dword ptr fs:[0]
+0046b1ed  push eax
+0046b1ee  mov dword ptr fs:[0], esp
+0046b1f5  push ecx
+0046b1f6  push esi
+0046b1f7  mov esi, ecx
+0046b1f9  mov dword ptr [esp + 4], esi
+0046b1fd  lea ecx, [esi + 0x28]
+0046b200  mov dword ptr [esp + 0x10], 0
+0046b208  call 0x46b070  ; fn_0046b070 [unit? VCWorkspace::?$CComObject]
+0046b20d  lea ecx, [esi + 4]
+0046b210  mov dword ptr [esp + 0x10], 0xffffffff
+0046b218  call 0x4146d0  ; fn_004146d0 [unit? CopyVerb]
+0046b21d  mov ecx, dword ptr [esp + 8]
+0046b221  pop esi
+0046b222  mov dword ptr fs:[0], ecx
+0046b229  add esp, 0x10
+0046b22c  ret 

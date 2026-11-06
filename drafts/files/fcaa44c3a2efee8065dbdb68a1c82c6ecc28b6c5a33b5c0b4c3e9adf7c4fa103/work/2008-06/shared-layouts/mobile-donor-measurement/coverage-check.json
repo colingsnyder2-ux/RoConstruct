@@ -1,0 +1,13 @@
+{
+  "checked_unix": 1794008543.1069467,
+  "counts": {
+    "%TextXmlWriterWithEmbeddedContent%": 0,
+    "%CWorkspace%": 0,
+    "%RunService%enqueueTask%": 0,
+    "%RunService%drainTasks%": 0,
+    "%RunService%RunView%": 0,
+    "Android binary contains TextXmlWriterWithEmbeddedContent": false,
+    "Android binary contains CWorkspace": false
+  },
+  "scope": "No matching named evidence found; not proof that an optimized/inlined implementation cannot exist"
+}

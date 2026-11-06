@@ -1,0 +1,10 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/ClipboardActions.cpp",
+      "checks": [
+        {"addr": "00415510", "symbol": "?doIt@PasteVerb@@"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CRobloxTreeCtrl.cpp",
+      "checks": [
+        {"addr": "00425050", "symbol": "?hasChildren@CRobloxTreeCtrlNode@@"},
+        {"addr": "00424c00", "symbol": "?insertItem@CRobloxTreeCtrlNode@@"},
+        {"addr": "00426100", "symbol": "?addChild@CRobloxTreeCtrlNode@@"},
+        {"addr": "004262c0", "symbol": "?populate@CRobloxTreeCtrlNode@@"},
+        {"addr": "00424dd0", "symbol": "?onEvent@CRobloxTreeCtrlNode@@MAEXPBVInstance@RBX@@VPropertyChanged@3@@Z"},
+        {"addr": "00425450", "symbol": "?onEvent@CRobloxTreeCtrlNode@@MAEXPBVInstance@RBX@@UChildAdded@3@@Z"},
+        {"addr": "004256c0", "symbol": "?onEvent@CRobloxTreeCtrlNode@@MAEXPBVInstance@RBX@@UChildRemoved@3@@Z"}
+      ]
+    }
+  ]
+}

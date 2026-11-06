@@ -1,0 +1,19 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CRobloxDoc.cpp",
+      "checks": [
+        {"addr": "00455580", "symbol": "?handle_455580@CRobloxDoc@@"},
+        {"addr": "00454c90", "symbol": "?handle_454c90@CRobloxDoc@@"},
+        {"addr": "004533f0", "symbol": "?handle_4533f0@CRobloxDoc@@"},
+        {"addr": "00455a20", "symbol": "?handle_455a20@CRobloxDoc@@"},
+        {"addr": "00455820", "symbol": "?handle_455820@CRobloxDoc@@"},
+        {"addr": "004545d0", "symbol": "?handle_4545d0@CRobloxDoc@@"},
+        {"addr": "004513c0", "symbol": "?OnOpenDocument@CRobloxDoc@@"},
+        {"addr": "00450f30", "symbol": "?handle_450f30@CRobloxDoc@@"},
+        {"addr": "00454920", "symbol": "?handle_454920@CRobloxDoc@@"},
+        {"addr": "00450d90", "symbol": "?handle_450d90@CRobloxDoc@@"}
+      ]
+    }
+  ]
+}
