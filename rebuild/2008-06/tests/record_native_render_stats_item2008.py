@@ -1,0 +1,465 @@
+"""Verify the inactive native CRobloxWnd::RenderStatsItem recovery (2008-06) and the Stats::TypedStatsItem<G3D::Stopwatch>
+/ <int> template instances its constructor binds (original COMDATs in the CRobloxWnd unit, 0045c0f0..0045f730).
+
+Builds (document-swap flags plus /fp:fast, VS2008 RTM 21022):
+  * native-classes/RenderStatsItem2008.cpp with the current native headers only (main): the TypedStatsItem<Stopwatch>
+    / <int> instances requested explicitly (the proposed Item::createBoundChildItem<T> that instantiates them in the
+    original does not exist yet). Only this object is used for vtable slot checks.
+  * the same unit with /DNATIVE_RENDERSTATSITEM_PENDING against generated header copies in
+    out/native-layouts/render-stats-item2008-pending/: CRobloxView.h with `class RenderStatsItem;` nested in CRobloxWnd
+    (RTTI .?AVRenderStatsItem@CRobloxWnd@@, 0081a32c) and stats/Stats.h with the member template
+    Item::createBoundChildItem<T>(const char*, const T&) (0045f120 / 0045f230). Rows exact only in this build are
+    recorded exact=false (pending-build-only) and not counted.
+  * tests/NativeRenderStatsItem2008Layout.cpp: RenderStats offsets with current headers; RenderStatsItem offsets in the
+    pending configuration (the class needs the nested declaration).
+
+Every exact row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
+the original instruction uses and verified: imports by DLL export name, string literals by bytes, type descriptors and
+vtables by original RTTI names, own symbols by the row proven here, folded bodies by their address, and the remaining
+externals by the explicit EXTERNAL / DATA maps. A symbol binds to one address across all rows.
+Writes work/2008-06/shared-layouts/render-stats-item2008-working.json.
+"""
+import json
+import struct
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from roc import match, rebuild  # noqa: E402
+import native_bind as nb  # noqa: E402
+
+R = ROOT / 'rebuild/2008-06'
+OUT = nb.OUT
+OUT.mkdir(parents=True, exist_ok=True)
+SRC = R / 'native-classes/RenderStatsItem2008.cpp'
+HDR = R / 'native-headers/RenderStatsItem2008/RenderStatsItem2008.h'
+LAYOUT = R / 'tests/NativeRenderStatsItem2008Layout.cpp'
+
+# ---- proposed shared-header changes (not edited; generated copies for the pending build only) ----------------------
+PROPOSAL_VIEW_ANCHOR = ('__declspec(align(8)) class CRobloxWnd : public CWnd, public RBX::IRunView, public RBX::IMetric {\n'
+                        'public:\n')
+PROPOSAL_VIEW = '    class RenderStatsItem; // RTTI .?AVRenderStatsItem@CRobloxWnd@@ (vtable 0081a32c); RenderStatsItem2008.h\n'
+PROPOSAL_STATS_DECL_ANCHOR = '\t\t\tItem* createBoundMemChildItem(const char* name, const size_t& value);    // 005c9dc0\n'
+PROPOSAL_STATS_DECL = ('\t\t\ttemplate<typename T>\n'
+                       '\t\t\tItem* createBoundChildItem(const char* name, const T& value); // 0045f120 (G3D::Stopwatch), 0045f230 (int)\n')
+PROPOSAL_STATS_DEF_ANCHOR = '\t\tclass TypedMemItem : public TypedStatsItem<size_t>\n'
+PROPOSAL_STATS_DEF = ('\t\ttemplate<typename T>\n'
+                      '\t\tItem* Item::createBoundChildItem(const char* name, const T& value)\n'
+                      '\t\t{\n'
+                      '\t\t\tboost::shared_ptr<Item> item = Creatable<Instance>::create<TypedStatsItem<T> >(&value);\n'
+                      '\t\t\titem->setName(name);\n'
+                      '\t\t\titem->setParent(this);\n'
+                      '\t\t\treturn item.get();\n'
+                      '\t\t}\n\n')
+
+pending = OUT / 'render-stats-item2008-pending'
+(pending / 'stats').mkdir(parents=True, exist_ok=True)
+text = (R / 'native-headers/CRobloxView.h').read_text()
+assert text.count(PROPOSAL_VIEW_ANCHOR) == 1
+(pending / 'CRobloxView.h').write_text(text.replace(PROPOSAL_VIEW_ANCHOR, PROPOSAL_VIEW_ANCHOR + PROPOSAL_VIEW))
+text = (R / 'native-headers/stats/Stats.h').read_text()
+assert text.count(PROPOSAL_STATS_DECL_ANCHOR) == 1 and text.count(PROPOSAL_STATS_DEF_ANCHOR) == 1
+text = text.replace(PROPOSAL_STATS_DECL_ANCHOR, PROPOSAL_STATS_DECL_ANCHOR + PROPOSAL_STATS_DECL)
+(pending / 'stats/Stats.h').write_text(text.replace(PROPOSAL_STATS_DEF_ANCHOR, PROPOSAL_STATS_DEF + PROPOSAL_STATS_DEF_ANCHOR))
+PENDING_FLAGS = ['/I' + str(pending), '/DNATIVE_RENDERSTATSITEM_PENDING']
+
+
+def build(name, src, extra=()):
+    obj = OUT / (name + '.obj')
+    flags = nb.flags()
+    i = next(k for k, x in enumerate(flags) if x.replace('\\', '/').endswith('rebuild/2008-06/native-headers'))
+    flags = flags[:i] + list(extra) + flags[i:] + ['/fp:fast', '/Fo' + str(obj), str(src)]
+    code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags, OUT)
+    assert code == 0, log
+    return obj, flags
+
+
+layout_obj, layout_flags = build('NativeRenderStatsItem2008Layout', LAYOUT)
+layout_pend_obj, layout_pend_flags = build('NativeRenderStatsItem2008LayoutPending', LAYOUT, PENDING_FLAGS)
+main_obj, main_flags = build('NativeRenderStatsItem2008', SRC)
+pend_obj, pend_flags = build('NativeRenderStatsItem2008Pending', SRC, PENDING_FLAGS)
+
+# ---- layout ---------------------------------------------------------------------------------------------------------
+LAYOUT_MAIN = (('?nativeRenderStatsSize@@', 0x238), ('?nativeRenderStatsSwapBuffer@@', 0x58),
+               ('?nativeRenderStatsSort@@', 0xb0), ('?nativeRenderStatsCpuTotal@@', 0x108),
+               ('?nativeRenderStatsCpuShadow@@', 0x160), ('?nativeRenderStatsProxyArrays@@', 0x1b8),
+               ('?nativeRenderStatsMajor@@', 0x210), ('?nativeRenderStatsMinorGL@@', 0x21c),
+               ('?nativeRenderStatsProxyCount@@', 0x220), ('?nativeRenderStatsTriangles@@', 0x228),
+               ('?nativeRenderStatsUnshadowed@@', 0x234))
+LAYOUT_PENDING = (('?nativeRenderStatsItemSize@@', 0x178), ('?nativeRenderStatsItemAggregation@@', 0x158),
+                  ('?nativeRenderStatsItemTexture@@', 0x15c), ('?nativeRenderStatsItemMinor@@', 0x16c),
+                  ('?nativeRenderStatsItemRenderStats@@', 0x170))
+
+
+def probe(obj, items):
+    funcs = match.coff_functions(Path(obj).read_bytes())
+    for prefix, value in items:
+        name, body, refs = next(x for x in funcs if x[0].startswith(prefix))
+        assert body == b'\xb8' + struct.pack('<I', value) + b'\xc3', (prefix, body.hex())
+
+
+probe(layout_obj, LAYOUT_MAIN)
+probe(layout_pend_obj, LAYOUT_MAIN + LAYOUT_PENDING)
+assert not any(x[0].startswith('?nativeRenderStatsItem') for x in match.coff_functions(layout_obj.read_bytes()))
+
+original = nb.Original()
+names = {int(k, 16): v.get('symbol', '') for k, v in json.loads((R / 'offline/evidence.json').read_text())['names'].items()}
+
+
+def norm(symbol):
+    return symbol.replace('3QBDB', '3PBDB').replace('3PADA', '3PBDB')
+
+
+STR = '?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@'
+TSW = '?$TypedStatsItem@VStopwatch@G3D@@@Stats@RBX@@'
+TSH = '?$TypedStatsItem@H@Stats@RBX@@'
+RSI = 'RenderStatsItem@CRobloxWnd@@'
+DEL = 'VDeleter@?$Creatable@VInstance@RBX@@@'
+BSW = '?$bind_t@ABVStopwatch@G3D@@P6AABV12@PBV12@@ZV?$list1@V?$value@PBVStopwatch@G3D@@@_bi@boost@@@_bi@boost@@@_bi@boost@@'
+BSH = '?$bind_t@ABHP6AABHPBH@ZV?$list1@V?$value@PBH@_bi@boost@@@_bi@boost@@@_bi@boost@@'
+SPW = '?$sp_counted_impl_pd@PAV' + TSW + 'VDeleter@?$Creatable@VInstance@RBX@@@3@@detail@boost@@'
+SPH = '?$sp_counted_impl_pd@PAV' + TSH + 'VDeleter@?$Creatable@VInstance@RBX@@@3@@detail@boost@@'
+SPR = '?$sp_counted_impl_pd@PAV' + RSI + 'VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@detail@boost@@'
+
+# ---- externals: address the original instruction uses, read at the call sites listed ---------------------------------
+EXTERNAL = {
+    '??0Item@Stats@RBX@@QAE@XZ': 0x45ebe0,                     # 0045f35f, 0045ecc6 (Stats receipt row)
+    '??1Item@Stats@RBX@@UAE@XZ': 0x45ba10,                     # 0045eeb8 (Stats receipt row)
+    '?setParent@Instance@RBX@@QAEXPAV12@@Z': 0x55a8f0,         # 0045f1dd
+    '?createChildItem@Item@Stats@RBX@@QAEPAV123@PBD@Z': 0x5c9c70,   # 0045f497 (Stats receipt row)
+    '?formatMem@Item@Stats@RBX@@QAEXI@Z': 0x5c8ea0,            # 0045f6df (Stats receipt row)
+    '?formatValue@Item@Stats@RBX@@QAAXNPBDZZ': 0x5c8f20,       # 0045f65e (Stats receipt row)
+    '??$formatValue@H@Item@Stats@RBX@@QAEXABH@Z': 0x5c9110,    # 0045f00a (Stats receipt row)
+    # Item::formatValue<G3D::Stopwatch> (Stats unit; "%s (%.3gfps)", Log::formatTime): Stats receipt not_attempted
+    '??$formatValue@VStopwatch@G3D@@@Item@Stats@RBX@@QAEXABVStopwatch@G3D@@@Z': 0x5c8fa0,   # 0045ee49
+    '?videoMemorySize@DXCaps@G3D@@SA_KXZ': 0x476470,           # 0045f6f6 (record_native_render_settings binds the same)
+    '??R?$function0@HV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBEHXZ': 0x42afc0,   # 0045effa (ICF function0<bool>)
+    '?has_empty_target@function@detail@boost@@YA_NZZ': 0x60a2f0,   # 0045ed39
+    '??0bad_function_call@boost@@QAE@XZ': 0x409ef0,            # 0045edd4 (other recorders bind the same)
+    '??$throw_exception@Vbad_function_call@boost@@@boost@@YAXABVbad_function_call@0@@Z': 0x40a500,   # 0045ede5
+}
+# Static data the original reads or pushes.
+DATA = {
+    '?chunkCount@RenderStats@@2HA': 0x97288c,            # 0045f4a2 (AggregateChunk2008 binds the same)
+    '?aggregatedChunkCount@RenderStats@@2HA': 0x972890,  # 0045f4b9
+    '?aggregateChunkCount@RenderStats@@2HA': 0x972894,   # 0045f4ce
+    '?_sizeOfAllTexturesInMemory@Texture@G3D@@0IA': 0x96ef44,   # 0045f6cf
+    '?_sizeOfAllVARAreasInMemory@VARArea@G3D@@0IA': 0x96efd0,   # 0045f6e4
+    '__real@3f800000': 0x827494,                         # 1.0f (0045f637)
+    '__real@42c80000': 0x8163a4,                         # 100.0f (0045f647)
+}
+assert struct.unpack('<f', original.data(0x827494, 4))[0] == 1.0 and struct.unpack('<f', original.data(0x8163a4, 4))[0] == 100.0
+# ICF / folded bodies the original keeps once (rows verified by other receipts or by address only).
+FOLDED = {
+    '??_G' + TSW + 'UAEPAXI@Z': 0x45eed0, '??_G' + TSH + 'UAEPAXI@Z': 0x45eed0,   # = TypedStatsItem<unsigned int> ??_G
+    '??1' + TSH + 'UAE@XZ': 0x45ee60,                                              # ICF with ??1 TypedStatsItem<Stopwatch>
+    '?deref@' + TSW + 'CAABVStopwatch@G3D@@PBV45@@Z': 0x5ec170,                   # mov eax, imm32 in 0045ecc6
+    '?deref@' + TSH + 'CAABHPBH@Z': 0x5ec170,
+    '??_G' + RSI + 'UAEPAXI@Z': 0x5ca1a0,                                         # = Item ??_G (no own destructor)
+    '?update@Item@Stats@RBX@@MAEXXZ': 0x47d410,
+}
+for i, (thunk, address) in enumerate((('WBA', 0x45eda0), ('WBE', 0x5a4150), ('WCE', 0x5a4140), ('WEE', 0x45ed90),
+                                      ('WGE', 0x45efd0), ('WIE', 0x45efe0), ('WKE', 0x5c9c40), ('WME', 0x45efc0))):
+    FOLDED['??_E' + TSW + thunk + '@AEPAXI@Z'] = address
+    FOLDED['??_E' + TSH + thunk + '@AEPAXI@Z'] = address
+for thunk, address in (('WBA', 0x5ca170), ('WBE', 0x45f720), ('WCE', 0x5c9b90), ('WEE', 0x5bcd70),
+                       ('WGE', 0x5ca180), ('WIE', 0x5ca190), ('WKE', 0x45ecb0), ('WME', 0x5a6610)):
+    FOLDED['??_E' + RSI + thunk + '@AEPAXI@Z'] = address
+# Call targets whose own rows are compiled here but not exact: bound by address, never proof.
+UNPROVEN = {
+    '??0' + TSW + 'QAE@PBVStopwatch@G3D@@@Z': 0x45ecc0,   # 0045f069 (row compiled, not exact)
+    '??0' + TSH + 'QAE@PBH@Z': 0x45eef0,                  # 0045f0e9 (row compiled, not exact)
+    # boost::detail::shared_count(T*, Deleter): the 2008 form is 110 bytes, donor boost 1.34.1 compiles to 131
+    # (TANDEM 2026-11-04 NetworkSettings note); rows compiled, not exact.
+    '??$?0PAV' + TSW + DEL + '2@@shared_count@detail@boost@@QAE@PAV' + TSW + DEL + '5@@Z': 0x45b830,   # 0045c250
+    '??$?0PAV' + TSH + DEL + '2@@shared_count@detail@boost@@QAE@PAV' + TSH + DEL + '5@@Z': 0x45b8c0,   # 0045c300
+    '??$?0PAV' + RSI + DEL + 'RBX@@@shared_count@detail@boost@@QAE@PAV' + RSI + DEL + 'RBX@@@Z': 0x45b700,  # 0045c0f0
+}
+
+# Rows: (address, symbol or unique symbol prefix)
+ROWS = [
+    (0x45edb0, '??R?$function0@VStopwatch@G3D@@'),
+    (0x45ee30, '?update@' + TSW), (0x45eff0, '?update@' + TSH),
+    (0x45f020, '??$create@V' + TSW + 'PBVStopwatch@G3D@@@'), (0x45f0a0, '??$create@V' + TSH + 'PBH@'),
+    (0x45c250, '??$?0V' + TSW + DEL), (0x45c300, '??$?0V' + TSH + DEL),
+    (0x45c3b0, '?manage@?$functor_manager@V' + BSW), (0x45c410, '?manage@?$functor_manager@V' + BSH),
+    (0x45c6e0, '?invoke@?$function_obj_invoker0@V' + BSW), (0x45c710, '?invoke@?$function_obj_invoker0@V' + BSH),
+]
+# Rows the Stats receipt already counts (verified again here, not counted).
+SHARED_ROWS = [
+    (0x45ee60, '??1' + TSW + 'UAE@XZ'),
+]
+PENDING_ROWS = [
+    (0x45f340, '??0' + RSI + 'QAE@PAVRenderStats@@@Z'),
+    (0x45f570, '?update@' + RSI + 'MAEXXZ'),
+    (0x45f120, '??$createBoundChildItem@VStopwatch@G3D@@@Item@Stats@RBX@@'),
+    (0x45f230, '??$createBoundChildItem@H@Item@Stats@RBX@@'),
+    (0x45f730, '??$create@V' + RSI + 'PAVRenderStats@@@'),
+    (0x45c0f0, '??$?0V' + RSI + DEL),
+]
+NONEXACT_ROWS = [
+    (0x45ecc0, '??0' + TSW + 'QAE@PBVStopwatch@G3D@@@Z', 'TypedStatsItem(const T*) from Stats.h: the original inlines '
+     'boost::function0 assign_to and the vtable assign_to down to has_empty_target (194 bytes); this unit keeps the '
+     'inner assign_to out of line (120). Same gap as TypedStatsItem<unsigned int> 005bc860 in the Stats receipt'),
+    (0x45eef0, '??0' + TSH + 'QAE@PBH@Z', 'as 0045ecc0 (194 vs 120 bytes)'),
+    (0x45b830, '??$?0PAV' + TSW + DEL, 'boost shared_count(T*, Deleter): 2008 form 110 bytes, donor boost 1.34.1 131'),
+    (0x45b8c0, '??$?0PAV' + TSH + DEL, 'as 0045b830'),
+]
+NOT_ATTEMPTED = {
+    '0045f7b0': 'CRobloxWnd::setDataModel (the construction site 0045faf8): maintainer-owned CRobloxWnd',
+    '0045c1a0/0045c580': 'shared_ptr<ControllerService> / create<ControllerService>: other classes in the same unit',
+    '0045b700': 'shared_count(RenderStatsItem*, Deleter): only in the pending object; same 110 vs 131 boost gap as 0045b830',
+    '005c8fa0': 'Item::formatValue<G3D::Stopwatch> (Stats unit, "%s (%.3gfps)" with Log::formatTime): Stats.h owner',
+}
+
+LOCAL_EH = nb.LOCAL_EH
+UNBOUND = []
+binding = {}
+
+
+def resolve(obj, rows):
+    funcs = match.coff_functions(Path(obj).read_bytes())
+    out = []
+    for row in rows:
+        address, key = row[0], row[1]
+        hits = [x for x in funcs if x[0] == key] or [x for x in funcs if x[0].startswith(key) and not LOCAL_EH.match(x[0])]
+        assert len(hits) == 1, (hex(address), key, [h[0] for h in hits])
+        out.append((address, hits[0][0]))
+    return out
+
+
+def verify(obj, rows, own, strict=True):
+    raw = Path(obj).read_bytes()
+    sections, symbols, definitions, _ = match._coff_data_index(raw)
+    bodies = {n: (b, r) for n, b, r in match.coff_functions(raw)}
+    result = []
+    for address, name in rows:
+        body, refs = bodies[name]
+        target, target_refs, _ = match.target('2008-06', '%08x' % address)
+        exact = match.exact_match(target, target_refs, body, refs)
+        entry = {'address': '%08x' % address, 'symbol': name, 'size': len(body), 'target_size': len(target), 'exact': exact}
+        if not exact:
+            assert not strict, (name, entry['address'], len(body), len(target))
+            result.append(entry)
+            continue
+        start, section = definitions[name]
+        table = sections[section]
+        code = raw[table[4] + start:]
+        verified, local = {}, set()
+        for i in range(table[7]):
+            offset, index, kind = struct.unpack_from('<IIH', raw, table[5] + 10 * i)
+            offset -= start
+            if not 0 <= offset < len(body):
+                continue
+            symbol = symbols[index][0]
+            if kind == 20:
+                value = (address + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+            else:
+                value = (struct.unpack_from('<I', target, offset)[0] - struct.unpack_from('<i', code, offset)[0]) & 0xffffffff
+            if LOCAL_EH.match(symbol):
+                local.add(symbol)
+                continue
+            hit = original.imported(value)
+            if hit is not None:
+                assert hit[1] == nb.plain(symbol), (name, symbol, hex(value), hit)
+                how = '%s!%s' % hit
+            elif symbol.startswith('??_C@'):
+                pos, at = definitions[symbol]
+                literal = raw[sections[at][4] + pos:sections[at][4] + sections[at][3]].split(b'\0')[0] + b'\0'
+                assert original.data(value, len(literal)) == literal, (name, symbol, hex(value))
+                how = 'literal %r' % literal[:-1].decode()
+            elif symbol.startswith('??_R0') and symbol.endswith('@8'):
+                rtti = original.string(value + 8)
+                assert norm(rtti) == norm('.' + symbol[5:-2]), (name, symbol, hex(value), rtti)
+                how = 'RTTI %s' % rtti
+            elif symbol.startswith('??_7'):
+                rtti, at = original.vtable_class(value)
+                cls = symbol[4:symbol.index('@@6B') + 2]
+                assert norm(rtti) == norm('.?AV' + cls), (name, symbol, hex(value), rtti)
+                how = 'vtable RTTI %s offset %#x' % (rtti, at)
+            elif symbol in own:
+                assert own[symbol] == value, (name, symbol, hex(value), hex(own[symbol]))
+                how = 'own row'
+            elif symbol in FOLDED:
+                assert FOLDED[symbol] == value, (name, symbol, hex(value))
+                how = 'folded'
+            elif symbol in DATA:
+                assert DATA[symbol] == value, (name, symbol, hex(value))
+                how = 'data'
+            elif symbol in EXTERNAL:
+                assert EXTERNAL[symbol] == value, (name, symbol, hex(value), hex(EXTERNAL[symbol]))
+                how = 'external' + (' (evidence name)' if norm(names.get(value, '')) == norm(symbol) else '')
+            elif symbol in UNPROVEN:
+                assert UNPROVEN[symbol] == value, (name, symbol, hex(value))
+                how = 'call target of a non-exact row'
+            elif symbol.startswith('?stored_vtable@'):
+                how = 'local static'
+            else:
+                UNBOUND.append('%s in %s -> %s' % (symbol, name, hex(value)))
+                continue
+            prev = binding.setdefault(symbol, (value, name))
+            assert prev[0] == value, ('inconsistent', symbol, hex(prev[0]), prev[1], hex(value), name)
+            verified[symbol] = '%s (%s)' % (hex(value), how)
+        entry.update({'verified_targets': verified, 'local_eh': sorted(local)})
+        result.append(entry)
+    return result
+
+
+rows = resolve(main_obj, ROWS)
+shared_rows = resolve(main_obj, SHARED_ROWS)
+pend_rows = resolve(pend_obj, PENDING_ROWS)
+nonexact_rows = resolve(main_obj, NONEXACT_ROWS)
+own = {}
+for address, name in rows + shared_rows + pend_rows:
+    own.setdefault(name, address)
+main_out = verify(main_obj, rows, own)
+shared_out = verify(main_obj, shared_rows, own)
+for row in shared_out:
+    row['counted_by'] = 'stats-service-working.json'
+pend_out = verify(pend_obj, pend_rows, own)
+for row in pend_out:   # exact only with the generated CRobloxView.h / Stats.h copies: not counted
+    row['exact'] = False
+    row['exact_pending_build_only'] = True
+nonexact_out = verify(main_obj, nonexact_rows, own, strict=False)
+for row, (_, _, why) in zip(nonexact_out, NONEXACT_ROWS):
+    if row['exact']:
+        raise AssertionError('row unexpectedly exact, re-review: %s' % row['address'])
+    row['reason'] = why
+assert not UNBOUND, '\n'.join(UNBOUND)
+
+# The pending build must also bind the shared instances to the same rows (same code in both configurations).
+pend_shared = resolve(pend_obj, ROWS + SHARED_ROWS)
+pend_bodies = {n: b for n, b, r in match.coff_functions(pend_obj.read_bytes())}
+main_bodies = {n: b for n, b, r in match.coff_functions(main_obj.read_bytes())}
+for (address, name), (_, pname) in zip(rows + shared_rows, pend_shared):
+    assert name == pname and main_bodies[name] == pend_bodies[pname], hex(address)
+
+# ---- vtables from the object built with the current headers, slot by slot -------------------------------------------
+d = lambda a: struct.unpack('<I', original.data(a, 4))[0]
+slot_names = {}
+for table_ in (own, FOLDED, EXTERNAL, UNPROVEN):
+    for k, v in table_.items():
+        slot_names.setdefault(k, v)
+INSTANCE_VT = 0x82d884
+assert original.vtable_class(INSTANCE_VT) == ('.?AVInstance@RBX@@', 0)
+
+
+def compiled_vtable(obj, prefix):
+    raw = Path(obj).read_bytes()
+    sections, symbols, definitions, _ = match._coff_data_index(raw)
+    hits = [s for s in definitions if s.startswith(prefix)]
+    assert len(hits) == 1, (prefix, hits)
+    start, section = definitions[hits[0]]
+    table = sections[section]
+    slots = {}
+    for i in range(table[7]):
+        offset, index, kind = struct.unpack_from('<IIH', raw, table[5] + 10 * i)
+        if offset >= start:
+            slots[(offset - start) // 4] = symbols[index][0]
+    return hits[0], [slots[i] for i in range(len(slots))]
+
+
+def check_vtable(prefix, address, rtti, inherit=None):
+    symbol, slots = compiled_vtable(main_obj, prefix)
+    assert norm(original.vtable_class(address)[0]) == norm(rtti), (hex(address), original.vtable_class(address), rtti)
+    out, bad = [], []
+    for i, slot in enumerate(slots):
+        value = d(address + 4 * i)
+        expect, how = slot_names.get(slot), 'bound'
+        if expect is not None:
+            ok = expect == value
+        elif norm(names.get(value, '')) == norm(slot):
+            ok, how = True, 'evidence name'
+        elif inherit is not None and value == d(inherit + 4 * i) and 'TypedStatsItem' not in slot.split('@@')[0]:
+            ok, how = True, 'inherited (slot of the base vtable %08x)' % inherit
+        else:
+            ok, how = False, 'unbound'
+        out.append({'slot': i, 'symbol': slot, 'original': '%08x' % value, 'ok': ok, 'how': how})
+        if not ok:
+            bad.append((i, slot, hex(value)))
+    assert not bad, (symbol, bad)
+    return {'symbol': symbol, 'address': '%08x' % address, 'slots': out}
+
+
+GUID = '6B?$GuidItem@VInstance@RBX@@@'
+vt = {
+    'TypedStatsItem<G3D::Stopwatch>': check_vtable('??_7' + TSW + GUID, 0x81a08c, '.?AV' + TSW, INSTANCE_VT),
+    'TypedStatsItem<int>': check_vtable('??_7' + TSH + GUID, 0x81a154, '.?AV' + TSH, INSTANCE_VT),
+}
+for key, address in (('?update@' + TSW, 0x45ee30), ('?update@' + TSH, 0x45eff0)):
+    assert any(s['symbol'].startswith(key) and s['original'] == '%08x' % address for t in vt.values() for s in t['slots'])
+# Secondary vtables: each ??_E thunk slot 0, as the TypedStatsItem<Stopwatch> / <int> constructors store them.
+for table_, primary in ((TSW, (0x81a07c, 0x81a074, 0x81a06c, 0x81a05c, 0x81a04c, 0x81a03c, 0x81a02c, 0x81a01c, 0x81a00c)),
+                        (TSH, (0x81a144, 0x81a13c, 0x81a134, 0x81a124, 0x81a114, 0x81a104, 0x81a0f4, 0x81a0e4, 0x81a0d4))):
+    got = sorted(d(a) for a in primary if d(a) != 0x56a560)   # 0056a560: Object/Debugable slot of the +0x20 table
+    assert got == sorted(v for k, v in FOLDED.items() if k.startswith('??_E' + table_)), (table_, [hex(x) for x in got])
+# RenderStatsItem's vtable 0081a32c exists only in the pending object: not slot-checked (rule: current headers only).
+# Its slots are read here so the receipt records that slot 16 is update 0045f570 and the rest are Item's.
+item_vt = [d(0x819fc4 + 4 * i) for i in range(17)]
+rsi_vt = [d(0x81a32c + 4 * i) for i in range(17)]
+assert rsi_vt[16] == 0x45f570 and rsi_vt[:16] == item_vt[:16]
+assert original.vtable_class(0x81a32c) == ('.?AVRenderStatsItem@CRobloxWnd@@', 0)
+
+
+# ---- RTTI bases, allocation sizes, construction site, strings --------------------------------------------------------
+def bases(vtable):
+    hierarchy = d(d(vtable - 4) + 16)
+    out = {}
+    for i in range(d(hierarchy + 8)):
+        bcd = d(d(hierarchy + 12) + 4 * i)
+        out.setdefault(original.string(d(bcd) + 8), struct.unpack('<i', original.data(bcd + 8, 4))[0])
+    return out
+
+
+b = bases(0x81a32c)
+assert len(b) == 22 and b['.?AVItem@Stats@RBX@@'] == 0 and '.?AVService@RBX@@' not in b
+for factory, size, ctor in ((0x45f730, 0x178, 0x45f340), (0x45f020, 0x178, 0x45ecc0), (0x45f0a0, 0x178, 0x45eef0)):
+    body, _, _ = match.target('2008-06', '%08x' % factory)
+    at = body.index(b'\x68' + struct.pack('<I', size))
+    call = body.index(b'\xe8', at + 5)
+    while (factory + call + 5 + struct.unpack_from('<i', body, call + 1)[0]) & 0xffffffff != ctor:
+        call = body.index(b'\xe8', call + 1)
+# Construction site 0045faf8 (CRobloxWnd 0045f7b0): view->getRenderStats() (virtual [vtbl+0x1c]) pushed to create<>.
+body, _, _ = match.target('2008-06', '0045f7b0')
+site = 0x45faf8 - 0x45f7b0
+assert body[site - 0x13:site - 0xd] == b'\x8b\x8e\xb0\x00\x00\x00' and body[site - 0xb:site - 0x6] == b'\x8b\x50\x1c\xff\xd2'
+assert (0x45faf8 + 5 + struct.unpack_from('<i', body, site + 1)[0]) & 0xffffffff == 0x45f730
+for address, text in ((0x81a370, '2D CPU Render'), (0x81a204, 'Aggregation'), (0x81a398, 'n/a'),
+                      (0x81a388, '%.0f%%, %.2g'), (0x81a380, '%d/%d')):
+    assert original.string(address) == text, (hex(address), text)
+
+sha = nb.sha
+paths = [Path(__file__).resolve(), HDR, SRC, LAYOUT]
+exact_rows = sorted({r['address'] for r in main_out if r['exact']})
+receipt = {
+    'class': 'CRobloxWnd::RenderStatsItem (pending-build-only) and RBX::Stats::TypedStatsItem<G3D::Stopwatch> / <int> instances',
+    'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
+    'flags': {'layout': layout_flags, 'layout_pending': layout_pend_flags, 'main': main_flags, 'pending': pend_flags},
+    'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
+    'objects': {p.name: sha(p) for p in (layout_obj, layout_pend_obj, main_obj, pend_obj)},
+    'layout': {'RenderStatsItem': '0x178 (0045f730); Item* aggregation +0x158, textureMemory +0x15c, varMemory +0x160, '
+                                  'videoMemory +0x164, majorChanges +0x168, minorChanges +0x16c, RenderStats* +0x170',
+               'RenderStats': '0x238 (donor RenderLib/RenderStats.h): 6 G3D::Stopwatch from +0, ints from +0x210',
+               'TypedStatsItem<T>': '0x178 (0045f020 / 0045f0a0), boost::function0<T> +0x158'},
+    'rows': {'main': main_out, 'shared_with_stats_receipt': shared_out, 'pending': pend_out,
+             'compiled_not_exact': nonexact_out},
+    'exact_function_rows': exact_rows,
+    'vtables': vt,
+    'render_stats_item_vtable': {'address': '0081a32c', 'slot_checked': False,
+                                 'note': 'class exists only in the pending object; slots 0-15 equal Item 00819fc4, '
+                                         'slot 16 = update 0045f570'},
+    'pending_note': 'pending rows are exact only under NATIVE_RENDERSTATSITEM_PENDING with generated copies of '
+                    'native-headers/CRobloxView.h (class RenderStatsItem nested in CRobloxWnd) and stats/Stats.h '
+                    '(Item::createBoundChildItem<T>) in out/native-layouts/render-stats-item2008-pending.',
+    'not_attempted': NOT_ATTEMPTED,
+    'proposal_crobloxview_h': {'after': PROPOSAL_VIEW_ANCHOR.strip(), 'add': PROPOSAL_VIEW.strip()},
+    'proposal_stats_h': {'declaration_after': PROPOSAL_STATS_DECL_ANCHOR.strip(), 'declaration': PROPOSAL_STATS_DECL,
+                         'definition_before': PROPOSAL_STATS_DEF_ANCHOR.strip(), 'definition': PROPOSAL_STATS_DEF},
+    'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
+}
+(ROOT / 'work/2008-06/shared-layouts/render-stats-item2008-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
+print('PASS native RenderStatsItem2008: %d rows exact (%d distinct addresses); %d pending-build-only, %d shared with the '
+      'Stats receipt, %d compiled-not-exact rows not counted; targets and %d vtables verified'
+      % (sum(r['exact'] for r in main_out), len(exact_rows), len(pend_out), len(shared_out), len(nonexact_out), len(vt)))
