@@ -94,7 +94,7 @@ namespace RBX
 			catch (const std::exception& exp)
 			{
 				std::string what = exp.what();
-				StandardOut::singleton()->print(MESSAGE_WARNING, "Exception caught in onEvent. %s", what.c_str());
+				StandardOut::singleton()->print(MESSAGE_WARNING, "Exception caught in onEvent. %s", &static_cast<const std::string&>(what)[0]);
 			}
 		}
 
