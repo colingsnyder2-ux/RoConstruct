@@ -60,10 +60,10 @@
     {
       "source": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-now\\frozen\\workspace\\rebuild\\2008-06\\native-classes\\MoveUpVerbConstructors.cpp",
       "status": "complete",
-      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-111010-d242203f\\unit-000\\candidate.obj",
-      "compile_seconds": 10.391,
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-111234-9abf9af6\\unit-000\\candidate.obj",
+      "compile_seconds": 5.328,
       "compiler_exit": 0,
-      "source_sha256": "8ce6b0f98a8475d93ae12f621800abd0f29a87d44dcb2f6cfafe3084d4a31430",
+      "source_sha256": "870fe67217555b2673e432112ea72d195148d13047b52b93174e0320683ff780",
       "flags": [
         "/DBOOST_ALL_NO_LIB",
         "/DWIN32",
@@ -81,6 +81,7 @@
         "/GS-",
         "/EHsc",
         "/MD",
+        "/DROC_INACTIVE_MOVEUP_PROVIDER",
         "/IC:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-now\\frozen\\workspace\\rebuild\\2008-06\\native-headers",
         "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
         "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
@@ -100,7 +101,7 @@
         "/D_XTPLIB_NOAUTOLINK",
         "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
       ],
-      "log": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-111010-d242203f\\unit-000\\compile.log",
+      "log": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-111234-9abf9af6\\unit-000\\compile.log",
       "dependencies": {
         "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers\\reflection\\function.h": "add014ca4df97c43359c4e82248d728f938e52dd8b0800fead985bf1b0b3237d",
         "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include\\reflection\\object.h": "75b395785762eba0e30e1e001dda10cb97e19a76f9a25a0f29320de27aa2dfe6",
@@ -806,7 +807,7 @@
         "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinVer.h": "167110abfa6b0bd62822db22730ad1d4b6f40b831fc18961448de2bcbcb02fe5",
         "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\wnnc.h": "076a2ad4b12b9da3309859567d256841a51272c29840887f95f15c29c29793fd",
         "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WTypes.h": "b9ff4e15e2bad4dd2834c152204f6ab327dc82f75248144f2f1a7ba10f780e56",
-        "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-now\\frozen\\workspace\\rebuild\\2008-06\\native-classes\\MoveUpVerbConstructors.cpp": "8ce6b0f98a8475d93ae12f621800abd0f29a87d44dcb2f6cfafe3084d4a31430",
+        "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-now\\frozen\\workspace\\rebuild\\2008-06\\native-classes\\MoveUpVerbConstructors.cpp": "870fe67217555b2673e432112ea72d195148d13047b52b93174e0320683ff780",
         "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-now\\frozen\\workspace\\rebuild\\2008-06\\native-headers\\reflection\\descriptor.h": "ab76c748ef0163fd305c1794c80781c56431a64bb84b415af6ef4f5a9b6dafd6",
         "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-now\\frozen\\workspace\\rebuild\\2008-06\\native-headers\\reflection\\enumconverter.h": "2bc378dd626b3fc5fdc273188161936226a1200c69d71b9f0e8bd7032e6c3b00",
         "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-now\\frozen\\workspace\\rebuild\\2008-06\\native-headers\\reflection\\member.h": "e4647c28e9c3c1e5013e1e49411cd35541b04633d8960570e946b6c4465705bb",
@@ -826,7 +827,7 @@
         "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-now\\frozen\\workspace\\rebuild\\2008-06\\native-headers\\v8tree\\VerbContainer.h": "0bf3dd21fc0125202b1f91579ddaa025ea3e365c15d1f4da835c361c06de7b90",
         "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-now\\frozen\\workspace\\rebuild\\2008-06\\native-headers\\v8xml\\XmlElement.h": "dd6594e4312f376e95960b5cbd27d14fb83e4c796d08ecd1ea19ea98333502c4"
       },
-      "object_sha256": "c0ba319ad813f162ea13e7a4f3f981b97297711c371c028c88011952389f4c76",
+      "object_sha256": "d3cf053ef59ddcd146c9f91acd452bd4d35e77f948cfa078fade615ece7b56a0",
       "checks": [
         {
           "addr": "005c5400",
@@ -888,7 +889,8 @@
             "unused_expectations": [],
             "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
           },
-          "check_seconds": 4.531
+          "check_seconds": 4.172,
+          "address": "005c5400"
         },
         {
           "addr": "005c5490",
@@ -950,13 +952,14 @@
             "unused_expectations": [],
             "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
           },
-          "check_seconds": 0.0
+          "check_seconds": 0.0,
+          "address": "005c5490"
         }
       ],
       "coverage": [],
       "layouts": [],
-      "analysis_seconds": 4.547,
-      "seconds": 16.469,
+      "analysis_seconds": 4.204,
+      "seconds": 11.25,
       "unit": 0
     },
     {
@@ -1730,7 +1733,8 @@
             ]
           ],
           "data_errors": [],
-          "check_seconds": 3.563
+          "check_seconds": 3.563,
+          "address": "007f2a90"
         },
         {
           "addr": "007fc8e0",
@@ -1749,7 +1753,8 @@
             ]
           ],
           "data_errors": [],
-          "check_seconds": 0.0
+          "check_seconds": 0.0,
+          "address": "007fc8e0"
         },
         {
           "addr": "00559870",
@@ -1768,7 +1773,8 @@
             ]
           ],
           "data_errors": [],
-          "check_seconds": 0.0
+          "check_seconds": 0.0,
+          "address": "00559870"
         },
         {
           "addr": "004117b0",
@@ -1782,7 +1788,8 @@
           "first_byte_difference": null,
           "data_matches": [],
           "data_errors": [],
-          "check_seconds": 0.0
+          "check_seconds": 0.0,
+          "address": "004117b0"
         },
         {
           "addr": "00557630",
@@ -1796,7 +1803,8 @@
           "first_byte_difference": null,
           "data_matches": [],
           "data_errors": [],
-          "check_seconds": 0.0
+          "check_seconds": 0.0,
+          "address": "00557630"
         }
       ],
       "coverage": [],
@@ -1814,9 +1822,18 @@
   ],
   "source_hashes": {
     "rebuild/2008-06/native-classes/InstanceNameDescriptor.cpp": "2c157dea1b83780e6633d0edb60b575a538b560b3fef6a5c55d92bfb0d186e4a",
-    "rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp": "8ce6b0f98a8475d93ae12f621800abd0f29a87d44dcb2f6cfafe3084d4a31430",
+    "rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp": "870fe67217555b2673e432112ea72d195148d13047b52b93174e0320683ff780",
     "docs/DRAFT_INTEGRATION.md": "49fb61f2b3435eeb446482b6f8a518431402b09c7b74265146af00236ab3c586",
     "rebuild/2008-06/tests/move-up-verbs-unit-20261106.json": "5a2d28a39b6cc3cffa52020d268ee7e2e5022d56ce1295fb4b61c87096feacad",
     "rebuild/2008-06/tests/instance-name-descriptor-unit-20261106.json": "6fbe854a33e96f81fa7f2b4a532a0771ea53ee5e169de724b9896ac404603ca4"
+  },
+  "provider_selection": "BasicVerbConstructors.cpp remains canonical; MoveUpVerbConstructors.cpp is disabled unless ROC_INACTIVE_MOVEUP_PROVIDER is explicitly selected for an isolated alternative proof. Never link both.",
+  "alternative_object_source_sha256": "870fe67217555b2673e432112ea72d195148d13047b52b93174e0320683ff780",
+  "default_configuration": {
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-111625-bfaaca0a\\unit-000\\candidate.obj",
+    "object_sha256": "b7300efe24b279c6b41eb2b5c669849fc93a1f555cf16dee306a4b2b0cfae70f",
+    "compiler_exit": 0,
+    "MoveUp_exports": 0,
+    "passed": true
   }
 }
