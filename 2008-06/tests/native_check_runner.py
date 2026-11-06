@@ -29,6 +29,14 @@ sys.path.insert(0, str(ROOT))
 from roc import libs, match, rebuild, native_work
 
 
+# Original IWorkspace COM slots (IDispatch + SaveToFile/SaveSelectionToFile).
+# See record_native_workspace_save.py; verify the original slot before trusting a label.
+METHOD_IDENTITIES = {
+    '?SaveToFile@CWorkspace@@UAGJPA_W@Z': ('0046c780', 0x80ae88),
+    '?SaveSelectionToFile@CWorkspace@@UAGJPA_W@Z': ('0046b8d0', 0x80ae8c),
+}
+
+
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -156,6 +164,17 @@ def analyze_object(job, obj):
             row['first_byte_difference'] = next((i for i in range(min(len(target), len(body)))
                 if not any(r <= i < r + 4 for r in masked) and target[i] != body[i]),
                 min(len(target), len(body)) if len(target) != len(body) else None)
+            identity = METHOD_IDENTITIES.get(name)
+            if identity:
+                expected, slot = identity
+                image_base, image = match._image('2008-06')
+                original = struct.unpack_from('<I', image, slot - image_base)[0]
+                passed = addr == expected and original == int(expected, 16)
+                row['method_identity'] = dict(expected=expected, vtable_slot=f'{slot:08x}',
+                                              original_slot_target=f'{original:08x}', passed=passed)
+                if not passed:
+                    row.update(status='method_identity_mismatch', masked_byte_score=row['score'], score=0)
+                    exact = False
             if exact:
                 data_matches, data_errors = match.data_check('2008-06', addr, target, match.coff_data_refs(raw, name))
                 row.update(data_matches=data_matches, data_errors=data_errors)
