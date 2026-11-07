@@ -2712,6 +2712,16 @@ def command_groups(sub):
     return "\n".join(lines)
 
 
+def cmd_native_status(args):
+    command = [sys.executable, "-m", "roc.native_status"]
+    for flag in ("write", "check", "json", "staged"):
+        if getattr(args, flag, False):
+            command.append("--" + flag)
+    if args.path:
+        command.extend(["--path", args.path])
+    subprocess.run(command, cwd=ROOT, check=True)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="roc", description=__doc__, usage="roc <command> [options]",
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -2944,6 +2954,12 @@ def main(argv=None):
                             "help": "do not append to work/agent-memory/attempts.jsonl"}))
     cmd("classify", cmd_classify, "compile a source and classify target/candidate mismatch",
         (["client"], {}), (["addr"], {}), (["source"], {}))
+    cmd("native-status", cmd_native_status, "inspect or update native status banners",
+        (["--write"], {"action": "store_true"}),
+        (["--check"], {"action": "store_true"}),
+        (["--json"], {"action": "store_true"}),
+        (["--staged"], {"action": "store_true"}),
+        (["--path"], {}))
     cmd("native-asm", cmd_native_asm, "target disassembly with named calls/imports; --obj diffs a candidate .obj symbol",
         (["client"], {}), (["addrs"], {"nargs": "+"}),
         (["--obj"], {"help": "candidate COFF .obj to diff against each ADDR"}),
