@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "generated_from": {
-    "work_commit": "68a9d6279893d9efa8b3df76ceee6c13a8d14a28",
+    "work_commit": "e0cda2d8285d05deab5ddd11372c8884e51537f4",
     "catalog_authority": "RoConstruct/work/workspace",
     "catalog_scope": "Native source catalog only. Blob equality proves same stored bytes; it does not prove class identity, ABI, selection, or runtime readiness."
   },
@@ -390,8 +390,8 @@
           "path": "native-classes/CMainFrameXtp.cpp",
           "scope": "native-classes",
           "canonical_blob": "45503cf6e74c16b1991897e482707c87f7a13a35",
-          "public_blob": "8e1c5dc8bfd3ecd903508a523f7e2433d64c2853",
-          "state": "diverged",
+          "public_blob": "45503cf6e74c16b1991897e482707c87f7a13a35",
+          "state": "equivalent",
           "group": "WindowsClient"
         },
         {
@@ -590,8 +590,8 @@
           "path": "native-classes/CWebToolbox.cpp",
           "scope": "native-classes",
           "canonical_blob": "6b795bb6dbe6cf641cef6429a74bdf1b1ab989cd",
-          "public_blob": "23af85bb801e34047501da64e9fd0c2d6d61bf7f",
-          "state": "diverged",
+          "public_blob": "6b795bb6dbe6cf641cef6429a74bdf1b1ab989cd",
+          "state": "equivalent",
           "group": "WindowsClient"
         },
         {
@@ -1326,8 +1326,8 @@
           "path": "native-headers/CMainFrame.h",
           "scope": "native-headers",
           "canonical_blob": "7deaccbff09b7a938b9c80baeddf508b8074bd30",
-          "public_blob": "8dd841c2cbf6b56b9b945d51f25aeed804decc9a",
-          "state": "diverged",
+          "public_blob": "7deaccbff09b7a938b9c80baeddf508b8074bd30",
+          "state": "equivalent",
           "group": "WindowsClient"
         },
         {
@@ -1390,8 +1390,8 @@
           "path": "native-headers/CRobloxApp.h",
           "scope": "native-headers",
           "canonical_blob": "25b8a6a3223f62aac3fe292fa31f0a4a837b5118",
-          "public_blob": "a378c4732806e4d1658f43d0fbac8e5bcb444a32",
-          "state": "diverged",
+          "public_blob": "25b8a6a3223f62aac3fe292fa31f0a4a837b5118",
+          "state": "equivalent",
           "group": "WindowsClient"
         },
         {
@@ -2324,8 +2324,8 @@
           "path": "native-classes/InstanceBaseCallbacks.cpp",
           "scope": "native-classes",
           "canonical_blob": "136da90893f105066a1052fc4ac5e2a0f6abfa5b",
-          "public_blob": "ea494cb8b4ba60ac2e3a78a6a5da23f2c294fe05",
-          "state": "diverged",
+          "public_blob": "136da90893f105066a1052fc4ac5e2a0f6abfa5b",
+          "state": "equivalent",
           "group": "App/v8datamodel"
         },
         {
@@ -2612,8 +2612,8 @@
           "path": "native-classes/RunService.cpp",
           "scope": "native-classes",
           "canonical_blob": "bdcf1ea6c97d1176006bd3b50ab77502bf58e0e3",
-          "public_blob": "0176535763a30cb949925f0fd4ca6f6de40436fd",
-          "state": "diverged",
+          "public_blob": "bdcf1ea6c97d1176006bd3b50ab77502bf58e0e3",
+          "state": "equivalent",
           "group": "App/v8datamodel"
         },
         {
@@ -2940,8 +2940,8 @@
           "path": "native-headers/axis-vector-negation/reflection/function.h",
           "scope": "native-headers",
           "canonical_blob": "2318a4caad41c98d3817715ab77a22f6e6e6db34",
-          "public_blob": null,
-          "state": "missing-public",
+          "public_blob": "2318a4caad41c98d3817715ab77a22f6e6e6db34",
+          "state": "equivalent",
           "group": "App/v8datamodel"
         },
         {
@@ -2964,8 +2964,8 @@
           "path": "native-headers/instance-base-callbacks/reflection/function.h",
           "scope": "native-headers",
           "canonical_blob": "2318a4caad41c98d3817715ab77a22f6e6e6db34",
-          "public_blob": null,
-          "state": "missing-public",
+          "public_blob": "2318a4caad41c98d3817715ab77a22f6e6e6db34",
+          "state": "equivalent",
           "group": "App/v8datamodel"
         },
         {
@@ -3060,32 +3060,32 @@
           "path": "native-headers/runservice-events/reflection/function.h",
           "scope": "native-headers",
           "canonical_blob": "2318a4caad41c98d3817715ab77a22f6e6e6db34",
-          "public_blob": null,
-          "state": "missing-public",
+          "public_blob": "2318a4caad41c98d3817715ab77a22f6e6e6db34",
+          "state": "equivalent",
           "group": "App/v8datamodel"
         },
         {
           "path": "native-headers/runservice-events/util/Events.h",
           "scope": "native-headers",
           "canonical_blob": "5145442d3fd379e8cbee3091e924492372224a8e",
-          "public_blob": null,
-          "state": "missing-public",
+          "public_blob": "5145442d3fd379e8cbee3091e924492372224a8e",
+          "state": "equivalent",
           "group": "App/v8datamodel"
         },
         {
           "path": "native-headers/serializer-load/reflection/function.h",
           "scope": "native-headers",
           "canonical_blob": "2318a4caad41c98d3817715ab77a22f6e6e6db34",
-          "public_blob": null,
-          "state": "missing-public",
+          "public_blob": "2318a4caad41c98d3817715ab77a22f6e6e6db34",
+          "state": "equivalent",
           "group": "App/v8datamodel"
         },
         {
           "path": "native-headers/serializer-load/v8tree/Instance.h",
           "scope": "native-headers",
           "canonical_blob": "f98c2ed9ad434b82445d73d26c3227824ca321b0",
-          "public_blob": null,
-          "state": "missing-public",
+          "public_blob": "f98c2ed9ad434b82445d73d26c3227824ca321b0",
+          "state": "equivalent",
           "group": "App/v8datamodel"
         },
         {
@@ -3620,8 +3620,8 @@
           "path": "native-headers/workspace-camera/reflection/function.h",
           "scope": "native-headers",
           "canonical_blob": "2318a4caad41c98d3817715ab77a22f6e6e6db34",
-          "public_blob": null,
-          "state": "missing-public",
+          "public_blob": "2318a4caad41c98d3817715ab77a22f6e6e6db34",
+          "state": "equivalent",
           "group": "App/v8datamodel"
         }
       ],
@@ -4258,8 +4258,8 @@
           "path": "native-headers/part-resize/G3D/Matrix3.h",
           "scope": "native-headers",
           "canonical_blob": "5698a18cad6f492ffb1bd2fe08531354af9c3d22",
-          "public_blob": "e0d1989387ba1fcd6219bb5c1e8bf41ef3856249",
-          "state": "diverged",
+          "public_blob": "5698a18cad6f492ffb1bd2fe08531354af9c3d22",
+          "state": "equivalent",
           "group": "App/v8world"
         },
         {
@@ -4670,8 +4670,8 @@
           "path": "native-classes/AxisMoveToolRender.cpp",
           "scope": "native-classes",
           "canonical_blob": "22919f07a5bac0b862573293682cbb3c4e5955ed",
-          "public_blob": "71c0ff47fb93a83ec438c1594a55bf31266a7146",
-          "state": "diverged",
+          "public_blob": "22919f07a5bac0b862573293682cbb3c4e5955ed",
+          "state": "equivalent",
           "group": "Rendering"
         },
         {
@@ -5228,8 +5228,8 @@
           "path": "native-headers/serializer-load/util/Name.h",
           "scope": "native-headers",
           "canonical_blob": "e307ecb78073098b7fc9302494c6a5821f9872e3",
-          "public_blob": null,
-          "state": "missing-public",
+          "public_blob": "e307ecb78073098b7fc9302494c6a5821f9872e3",
+          "state": "equivalent",
           "group": "Base/util"
         },
         {

@@ -71,7 +71,7 @@ do not replace modern work tooling with that checkout's older modules.
 
 - Review every differing/public-only path by method, header and dependency.
 - Compare drafts, contributor forks and local snapshots; retain provenance.
-- Publish eight canonical-only files only after ownership and proof review.
+- Eight canonical-only overlay headers were published unchanged in e0cda2d828.
 - Trace experimental binaries and all build entrypoints before physical quarantine.
 - Inventory and back up dirty worktree files before retiring local branches.
 - Archive obsolete outputs only after dependency and active-worker checks.
