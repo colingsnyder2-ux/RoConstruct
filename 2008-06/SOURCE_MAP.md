@@ -5,7 +5,7 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 
 | Group | Paths | Equivalent | Byte-different | Public-only | Missing-public | Donor-only |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| App/v8tree | 36 | 4 | 21 | 8 | 0 | 3 |
+| App/v8tree | 40 | 8 | 21 | 8 | 0 | 3 |
 | App/v8xml | 5 | 0 | 4 | 0 | 0 | 1 |
 | App/reflection | 14 | 5 | 8 | 1 | 0 | 0 |
 | WindowsClient | 355 | 5 | 210 | 24 | 0 | 116 |
@@ -20,7 +20,7 @@ Byte differences include **802 banner-only**, **1 line-ending-only**, and
 **2 requiring method review**. Metadata equality is not runtime proof.
 
 
-[Browse projects and all source versions](catalog/README.md)
+[Browse projects and all source versions](catalog/README.md/README.md)
 
 Forks, durable drafts and local snapshots are indexed as candidates.
 Open a project to inspect immutable links and retained local origins.

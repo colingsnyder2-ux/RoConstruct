@@ -14,11 +14,12 @@
 </details>
 
 **`2cf757d43b45`** · proof not assessed
-- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 - fork · mewpokemons · [v8xml/SerializerV2.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 - fork · mewpokemons · [v8xml/SerializerV2.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 
-<details><summary>7 retained local origins</summary>
+<details><summary>8 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
@@ -26,6 +27,7 @@
 - local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 
 </details>
@@ -39,7 +41,8 @@
 </details>
 
 **`840a449228d4`** · proof not assessed
-- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 
 **`cca555497678`** · proof not assessed
 
@@ -92,14 +95,15 @@
 </details>
 
 **`4735a94a2fc1`** · proof not assessed
-- canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
 - fork · coldek · [v8xml/XmlElement.h](https://github.com/coldek/RoConstruct/blob/6da8e40862d5e855f1161fc0e18cf67b9c34dd32/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
 - fork · coldek · [v8xml/XmlElement.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
 - fork · mewpokemons · [v8xml/XmlElement.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
 - fork · mewpokemons · [v8xml/XmlElement.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
 - fork · mewpokemons · [v8xml/XmlElement.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
 
-<details><summary>12 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
 - local-branch refs/heads/claude/p6-startup-20261101@6da8e40862d5 · `rebuild/2008-06/native-headers/v8xml/XmlElement.h`
 - local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-headers/v8xml/XmlElement.h`
@@ -112,6 +116,7 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 
 </details>
@@ -125,7 +130,8 @@
 </details>
 
 **`d99a08534aeb`** · proof not assessed
-- public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/v8xml/XmlElement.h)
+- public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/v8xml/XmlElement.h)
+- public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/v8xml/XmlElement.h)
 
 **`f174979b46be`** · proof not assessed
 
@@ -399,13 +405,14 @@
 </details>
 
 **`926ed9a2e40b`** · proof not assessed
-- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
 - fork · coldek · [v8xml/XmlSerializer.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
 - fork · mewpokemons · [v8xml/XmlSerializer.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
 - fork · mewpokemons · [v8xml/XmlSerializer.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
 - fork · mewpokemons · [v8xml/XmlSerializer.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-headers/v8xml/XmlSerializer.h`
 - local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-headers/v8xml/XmlSerializer.h`
@@ -417,12 +424,14 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`9708b0ce7da5`** · proof not assessed
-- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/v8xml/XmlSerializer.h)
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/v8xml/XmlSerializer.h)
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/v8xml/XmlSerializer.h)
 
 **`f7e7664cd17a`** · proof not assessed
 
@@ -438,7 +447,8 @@
 <summary>native-headers/writer-2008/v8xml/XmlSerializer.h — diverged; 6 content versions</summary>
 
 **`27c830f7288c`** · proof not assessed
-- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 
 <details><summary>23 retained local origins</summary>
 
@@ -469,7 +479,8 @@
 </details>
 
 **`7ddb47145f7c`** · proof not assessed
-- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 
 **`b6537135948a`** · proof not assessed
 
@@ -489,11 +500,12 @@
 </details>
 
 **`c2a51a511331`** · proof not assessed
-- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - fork · mewpokemons · [v8xml/XmlSerializer.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - fork · mewpokemons · [v8xml/XmlSerializer.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 
-<details><summary>7 retained local origins</summary>
+<details><summary>8 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -501,6 +513,7 @@
 - local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 
 </details>
@@ -519,8 +532,10 @@
 <summary>native-headers/writer-state-2008/v8xml/XmlSerializer.h — candidate-only; 2 content versions</summary>
 
 **`17f06d56e6c3`** · proof not assessed
-- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
-- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/a7620cc076b3837789e15d6124380b9c9373655f59317675f3d8db4fd983a1d1/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/a7620cc076b3837789e15d6124380b9c9373655f59317675f3d8db4fd983a1d1/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/a7620cc076b3837789e15d6124380b9c9373655f59317675f3d8db4fd983a1d1/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -530,7 +545,8 @@
 </details>
 
 **`fd8436be3051`** · proof not assessed
-- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/02d2238bab09712f788776e8da4dc67820e5dd82be9886369644887aaedf6658/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/02d2238bab09712f788776e8da4dc67820e5dd82be9886369644887aaedf6658/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/02d2238bab09712f788776e8da4dc67820e5dd82be9886369644887aaedf6658/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
 
 <details><summary>1 retained local origins</summary>
 

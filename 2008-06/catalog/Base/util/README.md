@@ -4,6 +4,6 @@
 
 Expand a native path for every distinct content version. No candidate is auto-promoted.
 
-- [native-classes/CChatPromptLifetime.cpp → native-headers/log-2008/util/Log.h](sources-001.md)
-- [native-headers/nullable-class-name/util/Object.h → native-headers/util/MarshalWindow.h](sources-002.md)
-- [native-headers/util/MarshaledListener.h → native-headers/util/scopedassign.h](sources-003.md)
+- [native-classes/CChatPromptLifetime.cpp → native-headers/LuaBridge2008/LuaYieldingThreads2008.h](sources-001.md)
+- [native-headers/cow-noinline-read/util/Utilities.h → native-headers/util/MD5Hasher2008.h](sources-002.md)
+- [native-headers/util/MarshalWindow.h → native-headers/util/scopedassign.h](sources-003.md)
