@@ -11,7 +11,7 @@
 // vtable is emitted by this unit. The proposal to switch Connector2008.h to the 2008 headers is in the recorder receipt.
 #include <G3D/Vector3.h>
 #include "v8kernel/KernelIndex.h"
-#include "v8kernel/KernelInput.h"
+#include "v8kernel/KernelInput2008.h"
 #include "v8kernel/Body2008.h"
 #include "v8kernel/Point2008.h"
 #include "v8world/GeoPair2008.h"
@@ -166,12 +166,7 @@ namespace RBX
 		float rotVel;
 		computeParams(normal, rotation, rotVel);
 
-		kernelInput.setGoal(rotation);
-
-		float lastGoal = 0;
-		float currentGoal;
-		float increment;
-		kernelInput.get(lastGoal, currentGoal, increment);
+		float currentGoal = kernelInput.setGoal(rotation);
 
 		G3D::Vector3 v2 = normal * ((currentGoal - rotation) * k);
 

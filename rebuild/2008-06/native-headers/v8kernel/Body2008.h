@@ -216,6 +216,10 @@ namespace RBX
 		{
 			return canThrottle;
 		}
+		const G3D::Vector3& getCofmOffset() const         // inline in SimBody::getOwnerPV 00658ca0 (00658ca7..00658ce3:
+		{                                                 // Cofm::getCofmInBody 00660160 or the Vector3::zero() static)
+			return cofm ? cofm->getCofmInBody() : G3D::Vector3::zero();
+		}
 		const PV& getPVUnsafe() const                     // no updatePV: Point::step 0064dc93 reads pv +0x94 directly
 		{                                                 // (analog name)
 			return pv;
