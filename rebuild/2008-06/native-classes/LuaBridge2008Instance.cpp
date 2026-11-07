@@ -4,6 +4,7 @@
 // (RBX::Instances / Instance::setParent2 in v8tree/Instance.h, and the donor LuaArguments.h that needs Instances).
 #include "LuaBridge2008/LuaSignalBridge2008.h"
 #include "LuaBridge2008/LuaEnumBridge2008.h"
+#include "LuaBridge2008/LuaArguments2008.h"
 #ifdef NATIVE_LUABRIDGE_PENDING
 #include "script/LuaArguments.h"
 #endif
@@ -29,6 +30,17 @@ void RBX::Lua::newweaktable(lua_State* L, const char* mode)
     lua_pushliteral(L, "__mode");
     lua_pushstring(L, mode);
     lua_settable(L, -3);
+}
+
+// 0061a5f0 / 0061bcb0: LuaArguments size() / get(int, Value&) (vtable 00844174 slots 0 / 1).
+size_t LuaArguments2008::size() const
+{
+    return lua_gettop(L) - 1;
+}
+
+void LuaArguments2008::get(int index, Reflection::Value& value) const
+{
+    get(L, index + offset, value, true);
 }
 
 const luaL_Reg ObjectBridge::classLibrary[] = 
@@ -461,3 +473,41 @@ template bool SharedPtrBridge<Reflection::DescribedBase>::getPtr<boost::shared_p
     lua_State*, size_t, boost::shared_ptr<Reflection::DescribedBase>&);
 }}
 template ContentId Reflection::TypedPropertyDescriptor<ContentId>::getValue(const Reflection::DescribedBase*) const;
+
+// pass 4: ConstProperty::getValue<T> / Property::setValue<T> (declared in the read-only native reflection/property.h,
+// defined in no native header): checked pointer dynamic_cast of the descriptor to TypedPropertyDescriptor<T> (the type
+// descriptor pushed in each body names T), std::bad_cast on failure, then the getset getValue / setValue slot. Defined
+// after the property paths above so that, as in the target, they stay out of line. The instances are the forwarders
+// 0061a600..0061aa60 (callers 0061ad51 / 0061adba / 0061af11 / 0061af6b / 0061b30d / 0061b36d / 0061b3d0 / 0061b433 /
+// 0061b5c2 / 0061b669 in the pending property paths).
+namespace RBX { namespace Reflection {
+template<typename T>
+T ConstProperty::getValue() const
+{
+    const TypedPropertyDescriptor<T>* typed = dynamic_cast<const TypedPropertyDescriptor<T>*>(&getDescriptor());
+    if (typed == NULL)
+        throw std::bad_cast();
+    return typed->getValue(getInstance());
+}
+
+template<typename T>
+void Property::setValue(const T& value)
+{
+    const TypedPropertyDescriptor<T>* typed = dynamic_cast<const TypedPropertyDescriptor<T>*>(&getDescriptor());
+    if (typed == NULL)
+        throw std::bad_cast();
+    typed->setValue(getInstance(), value);
+}
+
+template boost::shared_ptr<Instance> ConstProperty::getValue<boost::shared_ptr<Instance> >() const;
+template boost::shared_ptr<DescribedBase> ConstProperty::getValue<boost::shared_ptr<DescribedBase> >() const;
+template Lua::FunctionRef ConstProperty::getValue<Lua::FunctionRef>() const;
+template boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > >
+    ConstProperty::getValue<boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > >() const;
+template void Property::setValue<std::string>(const std::string&);
+template void Property::setValue<Soundscape::SoundId>(const Soundscape::SoundId&);
+template void Property::setValue<TextureId>(const TextureId&);
+template void Property::setValue<Lua::FunctionRef>(const Lua::FunctionRef&);
+template void Property::setValue<boost::shared_ptr<Instance> >(const boost::shared_ptr<Instance>&);
+template void Property::setValue<boost::shared_ptr<DescribedBase> >(const boost::shared_ptr<DescribedBase>&);
+}}

@@ -25,6 +25,16 @@ Step 2: three inactive units built with the document-swap flags (VS2008 RTM 2102
   the enum unit (NATIVE_LUABRIDGE_PENDING against a generated copy of reflection/enumconverter.h with the proposed
   EnumDescriptor::lookupDescriptor, out/native-layouts/lua-bridge2008-pending/) records pending-build-only rows, never
   counted; a counted row may not call one.
+  Pass 4 (2026-11-06): the YieldingThreads unit native-classes/LuaBridge2008Yield.cpp (declarations
+  LuaBridge2008/LuaYieldingThreads2008.h: the 2008 {shared_ptr<ThreadRef>, double, double} WaitingThread under the
+  non-colliding class name YieldingThreads2008, because native script/ScriptContext.h reaches the read-only donor
+  script/ScriptEvent.h with float fields). Its std::vector<WaitingThread> / shared_ptr<ThreadRef> template instances are
+  rows; three of them run through catch funclets and are compared whole with the image (BOUNDS evidence).
+  LuaArguments size()/get() 0061a5f0 / 0061bcb0 (vtable 00844174) are declared as LuaArguments2008 in
+  LuaBridge2008/LuaArguments2008.h (the donor script/LuaArguments.h needs RBX::Instances); the static get 005ad380 is
+  bound by its unique evidence name. The Reflection getValue/setValue forwarders 0061a600..0061aa60 are
+  ConstProperty::getValue<T> / Property::setValue<T> (declared, not defined, in native reflection/property.h), defined
+  in the instance unit after their callers and explicitly instantiated for the T each body's type descriptor names.
 Every relocation of an exact row is bound to the address the original instruction uses and verified: imports by
 DLL name / ordinal, literals by bytes, RTTI and vtables by original RTTI names, Bridge<T>::className statics by the
 string their constant pointer names, Lua library functions and other externals by the offline evidence name at that
@@ -48,9 +58,12 @@ BRIDGE_H = HDR / 'LuaBridge2008/LuaBridge2008.h'
 SIGNAL_H = HDR / 'LuaBridge2008/LuaSignalBridge2008.h'
 INSTANCE_H = HDR / 'LuaBridge2008/LuaInstanceBridge2008.h'
 ENUM_H = HDR / 'LuaBridge2008/LuaEnumBridge2008.h'
+YIELD_H = HDR / 'LuaBridge2008/LuaYieldingThreads2008.h'
+ARGS_H = HDR / 'LuaBridge2008/LuaArguments2008.h'
 ENUMCONVERTER_H = HDR / 'reflection/enumconverter.h'
 UNITS = {'instance': SRC / 'LuaBridge2008Instance.cpp', 'atomic': SRC / 'LuaBridge2008Atomic.cpp',
-         'signal': SRC / 'LuaBridge2008Signal.cpp', 'enum': SRC / 'LuaBridge2008Enum.cpp'}
+         'signal': SRC / 'LuaBridge2008Signal.cpp', 'enum': SRC / 'LuaBridge2008Enum.cpp',
+         'yield': SRC / 'LuaBridge2008Yield.cpp'}
 PENDING = OUT / 'lua-bridge2008-pending'
 original = Original()
 
@@ -70,7 +83,7 @@ def build(source, name, extra=(), pre=()):
 
 # The atomic unit needs /fp:fast: tonumberClamped 0061c830 returns its double as float with no rounding store, which
 # /fp:precise emits (162 bytes against 142); every other atomic row is byte-identical under both profiles.
-UNIT_FLAGS = {'instance': [], 'atomic': ['/fp:fast'], 'signal': [], 'enum': []}
+UNIT_FLAGS = {'instance': [], 'atomic': ['/fp:fast'], 'signal': [], 'enum': [], 'yield': []}
 OBJ = {k: build(v, 'NativeLuaBridge2008' + k.capitalize(), UNIT_FLAGS[k]) for k, v in UNITS.items()}
 
 # ---- pending build (enum unit only): a generated copy of the read-only native reflection/enumconverter.h with the
@@ -102,6 +115,18 @@ V3B = '@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z'
 ENUMS = 'PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@'
 ENUMD = 'PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@'
 ENUMI = 'PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@'
+YT = 'YieldingThreads2008@Lua@RBX@@'
+STR = 'V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@'
+SPI = 'V?$shared_ptr@VInstance@RBX@@@boost@@'
+SPD = 'V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@'
+SPCI = ('V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@'
+        'boost@@@std@@@std@@@boost@@')
+WT = 'UWaitingThread@' + YT
+WTV = '?$vector@' + WT + 'V?$allocator@' + WT + '@std@@@std@@'
+WTI = 'V?$_Vector_iterator@' + WT + 'V?$allocator@' + WT + '@std@@@2@'
+WTC = 'V?$_Vector_const_iterator@' + WT + 'V?$allocator@' + WT + '@std@@@2@'
+WTA = 'V?$allocator@' + WT + '@std@@'
+TAGS = 'U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z'
 ROWS = {
     'instance': [
         (0x0061a420, '?newweaktable@Lua@RBX@@YAXPAUlua_State@@PBD@Z'),
@@ -122,6 +147,21 @@ ROWS = {
         (0x0061a720, '??$getPtr@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$SharedPtrBridge@VDescribedBase@Reflection'
                      '@RBX@@@Lua@RBX@@SA_NPAUlua_State@@IAAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z'),
         (0x0061a7b0, '?getValue@?$TypedPropertyDescriptor@VContentId@RBX@@@Reflection@RBX@@QBE?AVContentId@3@PBVDescribedBase@23@@Z'),
+        # pass 4: LuaArguments size() / get(int, Value&) (vtable 00844174 slots 0 / 1), declared as LuaArguments2008.
+        (0x0061a5f0, '?size@LuaArguments2008@Lua@RBX@@UBEIXZ'),
+        (0x0061bcb0, '?get@LuaArguments2008@Lua@RBX@@UBEXHAAVValue@Reflection@3@@Z'),
+        # pass 4: ConstProperty::getValue<T> / Property::setValue<T> instances (T named by the TypedPropertyDescriptor<T>
+        # type descriptor each body pushes; the RTTI names are checked through the ??_R0 relocations).
+        (0x0061a600, '??$setValue@' + STR + '@Property@Reflection@RBX@@QAEXAB' + STR + '@Z'),
+        (0x0061a660, '??$setValue@VSoundId@Soundscape@RBX@@@Property@Reflection@RBX@@QAEXABVSoundId@Soundscape@2@@Z'),
+        (0x0061a6c0, '??$setValue@VTextureId@RBX@@@Property@Reflection@RBX@@QAEXABVTextureId@2@@Z'),
+        (0x0061a7e0, '??$getValue@' + SPI + '@ConstProperty@Reflection@RBX@@QBE?A' + SPI + 'XZ'),
+        (0x0061a850, '??$getValue@' + SPD + '@ConstProperty@Reflection@RBX@@QBE?A' + SPD + 'XZ'),
+        (0x0061a8c0, '??$getValue@VFunctionRef@Lua@RBX@@@ConstProperty@Reflection@RBX@@QBE?AVFunctionRef@Lua@2@XZ'),
+        (0x0061a930, '??$getValue@' + SPCI + '@ConstProperty@Reflection@RBX@@QBE?A' + SPCI + 'XZ'),
+        (0x0061a9a0, '??$setValue@VFunctionRef@Lua@RBX@@@Property@Reflection@RBX@@QAEXABVFunctionRef@Lua@2@@Z'),
+        (0x0061aa00, '??$setValue@' + SPI + '@Property@Reflection@RBX@@QAEXAB' + SPI + '@Z'),
+        (0x0061aa60, '??$setValue@' + SPD + '@Property@Reflection@RBX@@QAEXAB' + SPD + '@Z'),
     ],
     'atomic': [
         (0x0061c6f0, '??H' + CF + 'QBE?AV01@ABVVector3@1@@Z'),
@@ -228,6 +268,45 @@ ROWS = {
         (0x0061f050, '?declareAllEnums@Enums@Lua@RBX@@SAXPAUlua_State@@@Z'),
     ],
 }
+# pass 4: the YieldingThreads unit 00620970..006217e2 (LuaBridge2008Yield.cpp; the 2008 double layout is declared as
+# YieldingThreads2008 in LuaBridge2008/LuaYieldingThreads2008.h, a codegen analog of RBX::Lua::YieldingThreads: the
+# read-only donor script/ScriptEvent.h reached through native script/ScriptContext.h declares float fields). The
+# std::vector<WaitingThread> / shared_ptr<ThreadRef> template rows are the instances this unit's bodies call.
+ROWS['yield'] = [
+    (0x00620970, '??$checked_delete@VThreadRef@Lua@RBX@@@boost@@YAXPAVThreadRef@Lua@RBX@@@Z'),
+    (0x00620990, '??0WaitingThread@' + YT + 'QAE@ABU0123@@Z'),
+    # listed 110 bytes; the emitted body runs on through its 21-byte catch funclet 00620a3e (BOUNDS evidence).
+    ((0x006209d0, 0, 131, 'raw'), '??$?0VThreadRef@Lua@RBX@@@shared_count@detail@boost@@QAE@PAVThreadRef@Lua@RBX@@@Z'),
+    (0x00620a60, '?dispose@?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@UAEXXZ'),
+    (0x00620a80, '??$_Copy_opt@PA' + WT + 'PAU1234@Uforward_iterator_tag@std@@@std@@YAPA' + WT + 'PAU1234@00'
+                 'Uforward_iterator_tag@0@' + TAGS),
+    (0x00620b10, '??$_Copy_backward_opt@PA' + WT + 'PAU1234@Uforward_iterator_tag@std@@@std@@YAPA' + WT + 'PAU1234@00'
+                 'Uforward_iterator_tag@0@' + TAGS),
+    (0x00620ba0, '??$_Fill@PA' + WT + 'U1234@@std@@YAXPA' + WT + '0ABU1234@@Z'),
+    (0x00620c20, '??$_Copy_backward_opt@PA' + WT + 'PAU1234@@std@@YAPA' + WT + 'PAU1234@00Urandom_access_iterator_tag@0@'
+                 + TAGS),
+    (0x00620c80, '??$_Uninit_copy@PA' + WT + 'PAU1234@' + WTA + '@std@@YAPA' + WT + 'PAU1234@00AA' + WTA[:-6] + '@0@'
+                 + TAGS),
+    (0x00620cd0, '??0WaitingThread@' + YT + 'QAE@PAUlua_State@@N@Z'),
+    (0x00620d60, '??$unchecked_copy@PA' + WT + 'PAU1234@@stdext@@YAPA' + WT + 'PAU1234@00@Z'),
+    (0x00620dc0, '??$_Uninit_fill_n@PA' + WT + 'IU1234@' + WTA + '@std@@YAXPA' + WT + 'IABU1234@AA' + WTA[:-6] + '@0@'
+                 + TAGS),
+    (0x00620e10, '??$_Unchecked_move_backward@PA' + WT + 'PAU1234@@stdext@@YAPA' + WT + 'PAU1234@00@Z'),
+    (0x00620e40, '?_Ufill@' + WTV + 'IAEPA' + WT + 'PAU3456@IABU3456@@Z'),
+    (0x00620e80, '?erase@' + WTV + 'QAE?A' + WTI + WTC + '0@Z'),
+    (0x00620f10, '??$_Umove@PA' + WT + '@' + WTV + 'IAEPA' + WT + 'PAU2345@00@Z'),
+    # listed 239 bytes; the body runs on through its catch funclet 0062102f (17 bytes) (BOUNDS evidence).
+    ((0x00620f40, 0, 256, 'raw'), '??0' + WTV + 'QAE@ABV01@@Z'),
+    # listed 564 bytes; the body runs on through 00621284 (159 bytes: rest of the second catch funclet and the
+    # copy-insert tail) (BOUNDS evidence).
+    ((0x00621050, 0, 723, 'raw'), '?_Insert_n@' + WTV + 'IAEX' + WTC + 'IAB' + WT + '@Z'),
+    (0x00621330, '??0' + YT + 'QAE@PAVScriptContext@2@@Z'),
+    (0x00621390, '?insert@' + WTV + 'QAE?A' + WTI + WTC + 'AB' + WT + '@Z'),
+    (0x00621440, '?push_back@' + WTV + 'QAEXAB' + WT + '@Z'),
+    (0x006214e0, '?queueWaiter@' + YT + 'QAEXPAUlua_State@@N@Z'),
+    (0x00621590, '?resume@' + YT + 'QAEXVHeartbeat@3@@Z'),
+    (0x006217d0, '?queueWaiter@' + YT + 'QAEXPAUlua_State@@@Z'),
+]
 PENDING_ROWS = {
     # Byte-exact only against the generated enumconverter.h copy (EnumDescriptor::lookupDescriptor proposal).
     'enum_pending': [
@@ -248,6 +327,10 @@ CLASSNAMES = {
     'PBVItem@EnumDescriptor@Reflection@RBX@@$0A@': (0x0095b1dc, 'EnumItem'),
 }
 EXTERNAL = {
+    # The static LuaArguments::get(lua_State*, int, Value&, bool) 005ad380 (ScriptContext unit): its evidence name
+    # ?get@LuaArguments@Lua@RBX@@SA_NPAUlua_State@@HAAVValue@Reflection@3@_N@Z is unique (checked below); the analog
+    # class of LuaBridge2008/LuaArguments2008.h declares it under its own name.
+    '?get@LuaArguments2008@Lua@RBX@@SA_NPAUlua_State@@HAAVValue@Reflection@3@_N@Z': 0x005ad380,
     # G3D::format (record_native_network_player.py / record_native_lua_args.py bind it to 00509b10).
     '?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ': 0x00509b10,
     # boost 1.34.1 signals connection (libs/signals/src/connection.cpp): ~connection 00595370 and disconnect 00595230
@@ -364,6 +447,10 @@ def _all_enum_descriptors():
 
 
 _all_enum_descriptors()
+# LuaArguments vtable 00844174: RTTI LuaArguments with base FunctionDescriptor::Arguments, slots size 0061a5f0 and
+# get 0061bcb0 (the own rows), followed by the next vtable's RTTI pointer.
+assert original.vtable_class(0x00844174) == ('.?AVLuaArguments@Lua@RBX@@', 0), original.vtable_class(0x00844174)
+assert (d(0x00844174), d(0x00844178)) == (0x0061a5f0, 0x0061bcb0)
 for key, (address, text) in CLASSNAMES.items():
     assert original.string(d(address)) == text, (key, hex(address), original.string(d(address)))
 
@@ -470,6 +557,7 @@ EVIDENCE_ADDRS = {}
 for _a, _v in sorted(EVIDENCE.items()):
     EVIDENCE_ADDRS.setdefault(_v.get('symbol'), []).append(_a)
 assert EVIDENCE_ADDRS[_init] == ['007f4110'], EVIDENCE_ADDRS.get(_init)
+assert EVIDENCE_ADDRS['?get@LuaArguments@Lua@RBX@@SA_NPAUlua_State@@HAAVValue@Reflection@3@_N@Z'] == ['005ad380']
 LENIENT = []          # inside a library body: unprovable library-internal targets are listed, not asserted
 CURRENT = []          # object whose relocations are being bound (instances are looked up there first)
 INSTANCES = {}        # symbol -> verified instance record
@@ -657,6 +745,9 @@ VTABLES = {
         (OBJ['signal'], 0x00844688, '.?AV?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@'),
     '??_7?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@6B@':
         (OBJ['signal'], 0x00844694, '.?AV?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@'),
+    # pass 4: the shared_ptr<ThreadRef> count of the YieldingThreads unit (stored by shared_count<ThreadRef*> 006209d0).
+    '??_7?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@6B@':
+        (OBJ['yield'], 0x0084478c, '.?AV?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@'),
 }
 vtables = {}
 for symbol, (vobj, vt, rtti_name) in VTABLES.items():
@@ -718,39 +809,37 @@ NOT_EXACT = {
     '0061f080 / 0061f0f0': 'EnumDescriptor::lookupDescriptor(const Name&) and Enums on_index: byte-exact only in the '
                            'pending build (generated enumconverter.h copy; allEnumsByName() 0056c520 is private in the '
                            'read-only native header): pending-build-only, not counted',
-    '0061a600..0061a6c0 / 0061a7e0..0061aa60': 'Reflection property getValue/setValue forwarders (dynamic_cast<Class&> '
-                'then the getset slot), called only from the pending property paths 0061abe0 / 0061b190; the class '
-                'type descriptors (e.g. 009303c0 / 0095af78) are not identified yet',
-    '0061abe0 / 0061b190 / 0061bcd0..0061c2c0': 'instance-bridge property push / set paths: need NATIVE_LUABRIDGE_PENDING '
-                '(Instances typedef / setParent2 in v8tree/Instance.h); 0061bcd0 is 201 B against 202 B from the '
-                'read-only MemberDescriptorContainer::findDescriptor',
+    '0061abe0 / 0061b190 / 0061bda0 / 0061c0e0 / 0061c2c0': 'instance-bridge property push / set / function call / '
+                'on_newindex paths: need NATIVE_LUABRIDGE_PENDING (Instances typedef / setParent2 in v8tree/Instance.h)',
+    '0061bcd0': 'write-access check called from 0061be19 / 0061c185 (201 B): takes its Instance* in esi and a second '
+                'pointer in edi (no prologue), Security::Context::isInRole / requirePermission with "modify a StatsService" '
+                '(dynamic_cast to Stats::StatsService), "GuiRoot" / "GuiHooks" (DataModel +0x21c / +0x224 through '
+                'getRootAncestor and isAncestorOf); the register-argument convention is not reproduced by a plain static '
+                'function in this profile, not attempted further',
     '0061ba10': 'MemberDescriptorContainer<SignalDescriptor>::findDescriptor (ICF-folded, called from 9 sites in other '
-                'units): not emitted by this build',
-    '0061a5f0 / 0061bcb0': 'LuaArguments::size / get: 2008 layout offset +0xc, L +0x10, and get() calls the 4-argument '
-                           'static LuaArguments::get 005ad380 (ScriptContext unit, no evidence name); the donor '
-                           'script/LuaArguments.h needs Instances and differs (not built)',
-    '00620970 / 006209d0': 'checked_delete<ThreadRef> / shared_count<ThreadRef*> instances referenced from the '
-                           'ThreadRef/YieldingThreads unit (00620a42, 00620d21), not from the signal bridge',
-    '00620990': 'copy of a {shared_ptr, double, double} value called from 0062120e / 006212b4 (YieldingThreads unit)',
-    '00620a60..006217d0': 'ThreadRef/YieldingThreads unit (YieldingThreads ctor 00621330): blocked by the read-only donor '
-                          'script/ScriptEvent.h, which native script/ScriptContext.h includes: 2008 WaitingThread is '
-                          '{shared_ptr<ThreadRef>, double, double} (0x18 B: vector stride /24 in push_back 00621440, '
-                          'fld qword in queueWaiter 006214e0) and queueWaiter takes double (006217d0 pushes fldz as a '
-                          'qword) where the donor has float; see proposals',
-    '00620910': 'std::_Allocate<map<const Name*, const ICreator*> node>: counted by scorehud-leaderboard-working.json',
+                'units): the read-only native reflection/member.h body emits 202 B against 232 B: the target inlines the '
+                'checked _Vector_const_iterator::operator+= of `descriptors.begin()+i` (ours calls it out of line) and its '
+                'end() path checks only _Myfirst <= _Mylast; owner of reflection/member.h, not changed here',
+    '00620910': 'std::_Allocate<0x18-byte element> (ICF-folded; this unit emits it as _Allocate<WaitingThread>, bytes '
+                'equal, recorded as an instance): counted by scorehud-leaderboard-working.json, not here',
     '0061f60e': 'catch funclet of shared_count<connection> 0061f5a0, compared as part of that row (not counted separately)',
     '00620344 / 00620357 / 00620422': 'pieces of TGenericSlotWrapper<FunctionScriptSlot / WaitScriptSlot>::execute '
                                       '00620310 / 006203a0, compared as part of those rows (not counted separately)',
-    '00620a3e': 'catch funclet of the shared_count<ThreadRef*> instance 006209d0',
+    '00620a3e': 'catch funclet of shared_count<ThreadRef*> 006209d0, compared as part of that row (not counted '
+                'separately)',
+    '0062102f': 'catch funclet of vector<WaitingThread>(const vector&) 00620f40, compared as part of that row (not '
+                'counted separately)',
+    '00621284': 'tail of vector<WaitingThread>::_Insert_n 00621050 (second catch funclet and the copy-insert branch), '
+                'compared as part of that row (not counted separately)',
 }
 receipt = {
-    'family': 'LuaBridge2008 (RBX::Lua instance / atomic / enum / signal bridges, 2008-06)',
+    'family': 'LuaBridge2008 (RBX::Lua instance / atomic / enum / signal bridges and YieldingThreads, 2008-06)',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'flags': flags(), 'unit_flags': UNIT_FLAGS,
     'profile': 'document-swap flags (atomic unit + /fp:fast)',
     'original_sha256': sha(original.path),
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in
                 [Path(__file__).resolve(), ROOT / 'rebuild/2008-06/tests/native_bind.py', BRIDGE_H, SIGNAL_H,
-                 INSTANCE_H, ENUM_H, PENDING / 'reflection/enumconverter.h'] +
+                 INSTANCE_H, ENUM_H, YIELD_H, ARGS_H, PENDING / 'reflection/enumconverter.h'] +
                 list(UNITS.values())},
     'objects': dict([(k, sha(v)) for k, v in OBJ.items()] + [(k, sha(v)) for k, v in PENDING_OBJ.items()]),
     'boundary': {
@@ -761,16 +850,18 @@ receipt = {
         'first': '0061a420 RBX::Lua::newweaktable (exact row; pushes the literal "__mode")',
         'after': '006217f0 luaD_seterrorobj, 00621920 luaD_rawrunprotected, 00621a70 luaD_reallocstack ... (Lua 5.1.1 '
                  'ldo.c compiled as C++, calls only Lua internals)',
-        'last': '006217d0 (pushes 0.0 and calls 006214e0; ThreadRef/YieldingThreads part, not exact yet)',
+        'last': '006217d0 YieldingThreads::queueWaiter(lua_State*) (pushes 0.0 as a double and calls 006214e0; exact row)',
         'units': 'instance bridge 0061a420..0061c6ef (data: bad_alloc message 0095af70, className "Object" 0095af74); '
                  'atomic classes 0061c6f0..0061ecaf (data 0095b1b8: Color3/Vector3/BrickColor/CFrame classNames '
                  '0095b1bc..0095b1c8); enum bridges 0061edb0..0061f0f0 (data 0095b1d0: Enums/Enum/EnumItem '
                  '0095b1d4..0095b1dc); signal bridge 0061f180..00620a3e (data 0095b1e0: RBXScriptSignal 0095b1e4, '
-                 'RBXScriptConnection 0095b1e8); thread refs / YieldingThreads 00620a60..006217d0 '
-                 '(YieldingThreads ctor 00621330)',
+                 'RBXScriptConnection 0095b1e8); YieldingThreads 00620970..006217e2 (shared_ptr<ThreadRef> pieces '
+                 '00620970..00620a60, std::vector<WaitingThread> instances, YieldingThreads ctor 00621330, queueWaiter '
+                 '006214e0 / 006217d0, resume 00621590)',
         'rtti_vtables': {'0084463c': 'sp_counted_impl_p<boost::signals::connection>',
                          '00844688': 'TGenericSlotWrapper<WaitScriptSlot>',
-                         '00844694': 'TGenericSlotWrapper<FunctionScriptSlot>'},
+                         '00844694': 'TGenericSlotWrapper<FunctionScriptSlot>',
+                         '0084478c': 'sp_counted_impl_p<RBX::Lua::ThreadRef>'},
         'classNames': {'%08x' % a: t for a, t in CLASSNAMES.values()},
     },
     'layout': {
@@ -794,13 +885,19 @@ receipt = {
     'instances_in_range_not_counted': instances_in_range,
     'pending_build_only': sorted({r['address'] for k in PENDING_ROWS for r in results[k]}),
     'not_exact': NOT_EXACT,
-    'left': sorted(set(in_range) - set(exact) - set(instances_in_range) - {'0061f60e', '00620344', '00620357', '00620422'}),
+    'left': sorted(set(in_range) - set(exact) - set(instances_in_range) - {'0061f60e', '00620344', '00620357', '00620422', '00620a3e', '0062102f', '00621284'}),
     'bounds_evidence': ['0061f5a0 shared_count<boost::signals::connection> ctor: 131 bytes (listed 110) including its catch '
                         'funclet 0061f60e, which only the EH tables reference; whole body byte-exact against the image',
                         '00620310 TGenericSlotWrapper<FunctionScriptSlot>::execute: 134 bytes (listed 52 + 00620344 19 + '
                         'catch funclet 00620357 63); whole body byte-exact against the image',
                         '006203a0 TGenericSlotWrapper<WaitScriptSlot>::execute: 193 bytes (listed 130 + catch funclet '
-                        '00620422 63); whole body byte-exact against the image'],
+                        '00620422 63); whole body byte-exact against the image',
+                        '006209d0 shared_count<ThreadRef*> ctor: 131 bytes (listed 110 + catch funclet 00620a3e 21); whole '
+                        'body byte-exact against the image',
+                        '00620f40 vector<WaitingThread>(const vector&): 256 bytes (listed 239 + catch funclet 0062102f 17); '
+                        'whole body byte-exact against the image',
+                        '00621050 vector<WaitingThread>::_Insert_n: 723 bytes (listed 564 + 00621284 159); whole body '
+                        'byte-exact against the image'],
     'vtables': vtables,
     'proposals': [
         'native-headers/v8tree/Instance.h (owner): `typedef std::vector<boost::shared_ptr<Instance> > Instances;` in '
@@ -814,13 +911,16 @@ receipt = {
         'Name::lookup 00554290) calls allEnumsByName 0056c520 twice and the ICF-folded map find 00451600, copying the '
         'returned iterator before the end() compare (hence const_iterator); 0061f080 and 0061f0f0 are byte-exact against '
         'the generated out/native-layouts/lua-bridge2008-pending/reflection/enumconverter.h (pending-build-only).',
-        'native-headers/script/ScriptContext.h (owner; it includes the donor script/ScriptEvent.h): a native 2008 '
-        'ScriptEvent.h (or YieldingThreads declaration) with `struct WaitingThread { boost::shared_ptr<ThreadRef> thread; '
+        'native-headers/script/ScriptContext.h (owner; it includes the donor script/ScriptEvent.h), optional since pass 4: '
+        'the YieldingThreads unit is now built and exact through the non-colliding YieldingThreads2008 declaration in '
+        'LuaBridge2008/LuaYieldingThreads2008.h; a native 2008 ScriptEvent.h (so that ScriptContext::yieldEvent names the '
+        'real class) would take that shape: `struct WaitingThread { boost::shared_ptr<ThreadRef> thread; '
         'double requestedDelay; double elapsedTime; WaitingThread(lua_State*, double); }` and `void queueWaiter(lua_State*, '
         'double)`. Evidence: element stride 0x18 (imul 0x2aaaaaab / sar 2 in push_back 00621440), queueWaiter 006214e0 '
         'reads its delay with fld qword [esp+0x30] and stores yieldCaptured at RobloxExtraSpace+8 (L-0xc), '
         'queueWaiter(L) 006217d0 pushes fldz as a qword, the WaitingThread ctor 00620cd0 news the ThreadRef (0x20, '
-        'ThreadRef(lua_State*) 00593e40). The YieldingThreads unit 00620a60..006217d0 cannot be built here until then.',
+        'ThreadRef(lua_State*) 00593e40); resume(Heartbeat) 00621590 pushes elapsedTime and heartbeat.time and calls '
+        'ScriptContext::resume(L, 2) (the donor pushes one value and resumes with 1).',
     ],
     'scope': 'Inactive. Exact rows with every call/data target verified; the enum-unit pending build (generated '
              'enumconverter.h copy) only records pending-build-only rows, which are not counted; no active build, swap or '
