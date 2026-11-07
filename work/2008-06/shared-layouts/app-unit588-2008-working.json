@@ -1,0 +1,781 @@
+{
+  "class": "RBX RootInstance unit of the application range 00588000..00594000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "root": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit588-2008/NativeAppUnit588_2008_root.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit588_2008RootInstance.cpp"
+    ]
+  },
+  "pending_flags": {
+    "root": [
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/DNATIVE_APPUNIT588_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit588-2008/NativeAppUnit588_2008_root_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit588_2008RootInstance.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit588_2008RootInstance.cpp": "6e083c425f6fd756cdf75288e5ca127d95984d4d87938e32726da4c1f42d2da7",
+    "rebuild/2008-06/tests/record_native_app_unit588_2008.py": "1254b38dcbf892db2733dd5f48fd61805985364528edb27ddf2c9d59a514cb67",
+    "rebuild/2008-06/native-headers/v8datamodel/RootInstance.h": "c11395d8b365e9b05e12e3e8da34e9633c5a73e3cb08eeb52848285819ac4693",
+    "rebuild/2008-06/native-headers/v8datamodel/ModelInstance.h": "26d0b60ee3ed3b13750c4770f8219eec819b2efb922ec6a18345a5ab3e22ed21"
+  },
+  "objects": {
+    "root": "3a031eaf41e4f2b150cd28df199e992aedcf448a60155ce05fa5793388758d5a"
+  },
+  "unit_map": {
+    "change-history ..0058c91f (109 rows from 00588000)": "ChangeHistoryService.cpp: the unit starts before 00588000 (00587eb0, 730 B, ends 00588192). Strings \"ChangeHistoryService is currently ...\" 00588780 / 0058a130, create<ChangeHistoryService> 0058a2a0 and FactoryProduct ctor 0058a8d0 (change-history-factory-working.json), ChangeHistoryService() 0058ab90, leaf virtuals 0058aca0..0058ad10, BoundFuncDesc / UTuple holder instantiations 0058adc0..0058c3c0, members 0058c4f0..0058c620 and the static initializer 0058c8b0 (\"ChangeHistoryService.enabled\"). Matched bodies for many rows exist in change-history-layout-working.json and the history-* trials (method lists without exact flags, so not counted); their sources belong to the ChangeHistory* native-class owners and are not rebuilt here. Counted by camera-history-trial.json: 0058a9e0, 0058c5c0.",
+    "xml-serializer 0058c920..0059001f (42 rows from 0058c990)": "XmlSerializer.cpp (native v8xml/XmlSerializer.h owner): 0058c920 (string-holding name/value ctor, callers TextXmlWriterWithEmbeddedContent::serializeNode 0058f270 and 00591970), isCloseTag 0058c990, endsWithClose, TextXmlParser skipWhitespace / readTag / removeTag / findNextToken / parse 0058f6c0 (\"TextXmlParser::parse empty file\"), base64 / istreambuf_iterator helpers 0058d4b0..0058d900, TextXmlWriter serialize 0058e810 / writeOpenTag 0058eb10 / serializeNode 0058ecb0 / encodedWrite 0058e4a0, XmlParser() 0058f230, TextXmlWriterWithEmbeddedContent::serializeNode 0058f270, XmlWriter() 0058fff0. Not built here.",
+    "root-instance 00590020..005917bb (39 rows from 00590030)": "RootInstance.cpp: 00590020 (5 B jmp ~ModelInstance 00584790, called only from the RootInstance unwind funclets 007d1b83 / 007d1c7b) .. RootInstance() 00591580 (572 B, ends 005917bb); vtables 00831c64..00831d4c (RTTI .?AVRootInstance@RBX@@, 34 bases, ICameraOwner at +0x288), ~RootInstance 00590630, deleting dtor 005a0910 (placed in the Workspace range, only reached through the vtable thunks). Built here: 30 counted rows, including ServiceProvider::create<StarterPackService / Teams / Lighting>(const Instance*) 00590d80 / 00590dd0 / 00590e20 (create<T>(const Instance*) defined in the unit, Service.h proposal). Shared STL COMDATs emitted here (00590390 _Destroy_range, 005903d0 _Destroy, 005903f0 for_each, 00590500 _Tidy, 00590550 ~vector<weak_ptr<PartInstance>>) are library templates called from other units: 005903f0 / 00590550 are support rows, the others are not counted. Not counted: vtordisp thunk 005907e0 (jmp 00584b10, an adjustor in the ModelInstance unit: which getPrimaryPart thunk it is cannot be told apart), insertSpawnLocation 005910a0 (pending-build-only), insertInstances 005911d0 (2008 shape), RootInstance() 00591580 (World size).",
+    "serializer-v2 005917c0..00593baf (40 rows)": "SerializerV2.cpp (metadata-load/v8xml/SerializerV2.h owner): map<string, InstanceHandle> tree helpers 005917c0..00591930 (first caller 00591e60), IDREFBinding list helpers 005919f0 / 00591e00, the xmlns writer 00591a30 (\"xmlns:xmime\"), replaceHandles 00591c60 / isolate 00591d30, ArchiveBinder resolveRefs 00592720 / ArchiveBinder() 00592940 / processID 005930c0 / processIDREF 00593170 / ~ArchiveBinder 005931e0, buildIsolationMap 00592780, 00593250 (\"Unknown object class\"), isolateHandles 00593480, load 00593500, loadXML 00593570, load(istream) 00593730 (\"SerializerV2::load can't read\"). Not built here.",
+    "lua-thread-ref 00593bb0.. (11 rows below 00594000)": "Lua ThreadRef / FunctionRef unit (LuaBridge2008 owner): ThreadRef::removeRef 00593bb0, FunctionRef::removeRef 00593c60, lua_pushfunction 00593c40, ThreadRef::Node::get 00593cb0, shared_count<mutex> 00593d90, ThreadRef ctors 00593e40 / 00593f70; continues past 00594000 (reset 00594060, ~ThreadRef 00594380). Not built here.",
+    "library code": "No standalone library unit lies in 00588000..00594000. The STL / boost template instantiations listed above (map/set trees, list, vector helpers, istreambuf_iterator, base64, sp_counted_impl_p) are instantiated by the RBX units they sit in; only those the built RootInstance unit references are bound, as support rows."
+  },
+  "range_rows_counted_by_other_receipts": {
+    "0058a9e0": [
+      "camera-history-trial.json"
+    ],
+    "0058c5c0": [
+      "camera-history-trial.json"
+    ]
+  },
+  "rows": {
+    "root": [
+      {
+        "address": "00590030",
+        "symbol": "?setInsertPoint@RootInstance@RBX@@QAEXABVVector3@G3D@@@Z",
+        "size": 57,
+        "target_size": 57,
+        "exact": true,
+        "verified_targets": {
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590070",
+        "symbol": "?moveSafe@RootInstance@RBX@@AAEXAAVMegaDragger@2@VVector3@G3D@@W4MoveType@12@@Z",
+        "size": 91,
+        "target_size": 91,
+        "exact": true,
+        "verified_targets": {
+          "?startDragging@MegaDragger@RBX@@QAEXXZ": "0x60de00 (external (evidence name))",
+          "?alignAndCleanParts@MegaDragger@RBX@@QAEXXZ": "0x60df80 (external (evidence name))",
+          "?safeMoveYDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z": "0x60e100 (external (evidence name))",
+          "?finishDragging@MegaDragger@RBX@@QAEXXZ": "0x60e780 (external (evidence name))",
+          "?safeMoveNoDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z": "0x60e180 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005900d0",
+        "symbol": "?moveSafe@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@VVector3@G3D@@W4MoveType@12@@Z",
+        "size": 133,
+        "target_size": 133,
+        "exact": true,
+        "verified_targets": {
+          "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@PAVRootInstance@1@@Z": "0x60e630 (external (evidence name))",
+          "?moveSafe@RootInstance@RBX@@AAEXAAVMegaDragger@2@VVector3@G3D@@W4MoveType@12@@Z": "0x590070 (own row)",
+          "??1MegaDragger@RBX@@QAE@XZ": "0x60e700 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?moveSafe@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@VVector3@G3D@@W4MoveType@12@@Z"
+        ]
+      },
+      {
+        "address": "00590160",
+        "symbol": "?onDescendentAdded@RootInstance@RBX@@MAEXPAVInstance@2@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "?onDescendentAdded@ModelInstance@RBX@@MAEXPAVInstance@2@@Z": "0x584620 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590180",
+        "symbol": "?onDescendentRemoving@RootInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 12,
+        "target_size": 12,
+        "exact": true,
+        "verified_targets": {
+          "?onDescendentRemoving@ModelInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x584670 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590190",
+        "symbol": "?computeIdeInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@XZ",
+        "size": 167,
+        "target_size": 167,
+        "exact": true,
+        "verified_targets": {
+          "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z": "0x4a6100 (external (evidence name))",
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590240",
+        "symbol": "?moveToIdeInsertPoint@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "size": 177,
+        "target_size": 177,
+        "exact": true,
+        "verified_targets": {
+          "?computeExtents@DragUtilities@RBX@@SA?AVExtents@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60f2d0 (external (evidence name))",
+          "?computeIdeInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@XZ": "0x590190 (own row)",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))",
+          "?moveSafe@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@VVector3@G3D@@W4MoveType@12@@Z": "0x5900d0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590300",
+        "symbol": "?computeControllersUsed@RootInstance@RBX@@ABE?AVControllerTypeArray@2@XZ",
+        "size": 144,
+        "target_size": 144,
+        "exact": true,
+        "verified_targets": {
+          "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_R0?AVPVInstance@RBX@@@8": "0x947f1c (RTTI type .?AVPVInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590440",
+        "symbol": "?insertRaw@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z",
+        "size": 185,
+        "target_size": 185,
+        "exact": true,
+        "verified_targets": {
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": "0x5903f0 (support body exact at the bound address)",
+          "?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x59c640 (external (evidence name))",
+          "?join@DragUtilities@RBX@@SAXABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60ed40 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005905c0",
+        "symbol": "??0ICameraOwner@RBX@@QAE@XZ",
+        "size": 81,
+        "target_size": 81,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0ICameraOwner@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00590620",
+        "symbol": "??1ICameraOwner@RBX@@UAE@XZ",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x590550 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590630",
+        "symbol": "??1RootInstance@RBX@@MAE@XZ",
+        "size": 336,
+        "target_size": 336,
+        "exact": true,
+        "verified_targets": {
+          "??_7RootInstance@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x831d4c (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x0))",
+          "??_7RootInstance@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x831d40 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x10))",
+          "??_7RootInstance@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x831d38 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x14))",
+          "??_7RootInstance@RBX@@6BDebugable@1@@": "0x831d30 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x20))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x831d20 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x24))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x831d10 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x44))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x831d00 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x64))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x831cf0 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x84))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x831ce0 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0xa4))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x831cd0 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0xc4))",
+          "??_7RootInstance@RBX@@6BIControllable@1@@": "0x831cc4 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x130))",
+          "??_7RootInstance@RBX@@6B?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@1@@": "0x831cac (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x1a0))",
+          "??_7RootInstance@RBX@@6BICameraOwner@1@@": "0x831c94 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x288))",
+          "??_7RootInstance@RBX@@6BIPrimaryPart@1@@": "0x831c88 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x2ec))",
+          "??_7RootInstance@RBX@@6BILocation@1@@": "0x831c80 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x2f4))",
+          "??_7RootInstance@RBX@@6BICameraSubject@1@@": "0x831c64 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x2fc))",
+          "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x590550 (support body exact at the bound address)",
+          "??1ModelInstance@RBX@@UAE@XZ": "0x584790 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??1RootInstance@RBX@@MAE@XZ"
+        ]
+      },
+      {
+        "address": "00590780",
+        "symbol": "??_ERootInstance@RBX@@OBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_ERootInstance@RBX@@MAEPAXI@Z": "0x5a0910 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590790",
+        "symbol": "?getCameraIgnorePrimitives@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXAAV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?getCameraIgnorePrimitives@ModelInstance@RBX@@UAEXAAV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@@Z": "0x583570 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005907a0",
+        "symbol": "??_ERootInstance@RBX@@OCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_ERootInstance@RBX@@MAEPAXI@Z": "0x5a0910 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005907b0",
+        "symbol": "??_ERootInstance@RBX@@OEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_ERootInstance@RBX@@MAEPAXI@Z": "0x5a0910 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005907c0",
+        "symbol": "?onCameraNear@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXM@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?onCameraNear@ModelInstance@RBX@@UAEXM@Z": "0x5843c0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005907d0",
+        "symbol": "?getLocation@ModelInstance@RBX@@$4PPPPPPPM@GA@BE?BVCoordinateFrame@G3D@@XZ",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?getLocation@ModelInstance@RBX@@UBE?BVCoordinateFrame@G3D@@XZ": "0x583cf0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005907f0",
+        "symbol": "?onChildControllerChanged@RootInstance@RBX@@MAEXXZ",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00590800",
+        "symbol": "?computeCharacterInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@ABVExtents@2@@Z",
+        "size": 478,
+        "target_size": 478,
+        "exact": true,
+        "verified_targets": {
+          "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z": "0x49aca0 (external (evidence name))",
+          "?getCoordinateFrame@GCamera@G3D@@QBE?AVCoordinateFrame@2@XZ": "0x5107b0 (external)",
+          "?zLookDirection@CoordinateFrame@G3D@@2MB": "0x828b60 (data bytes 000080bf)",
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "__real@358637bd": "0x826e70 (constant 358637bd)",
+          "?unitize@Vector3@G3D@@QAEMM@Z": "0x518470 (external)",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "??0?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x4293d0 (external)",
+          "?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x59c640 (external (evidence name))",
+          "?computeExtents@DragUtilities@RBX@@SA?AVExtents@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60f2d0 (external (evidence name))",
+          "__real@00000000": "0x8135c4 (constant 00000000)",
+          "__real@40e00000": "0x831db4 (constant 40e00000)",
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))",
+          "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x590550 (support body exact at the bound address)",
+          "?computeIdeInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@XZ": "0x590190 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?computeCharacterInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@ABVExtents@2@@Z"
+        ]
+      },
+      {
+        "address": "005909e0",
+        "symbol": "?moveToPoint@RootInstance@RBX@@QAEXPAVPVInstance@2@VVector3@G3D@@@Z",
+        "size": 363,
+        "target_size": 363,
+        "exact": true,
+        "verified_targets": {
+          "?contains@Instance@RBX@@QBE_NPBV12@@Z": "0x5574b0 (external (evidence name))",
+          "??0?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@QAE@XZ": "0x4293d0 (external)",
+          "?push_back@?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@QAEXABQAVPVInstance@RBX@@@Z": "0x4213a0 (external)",
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))",
+          "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@PAVRootInstance@1@@Z": "0x60e540 (external)",
+          "?moveSafe@RootInstance@RBX@@AAEXAAVMegaDragger@2@VVector3@G3D@@W4MoveType@12@@Z": "0x590070 (own row)",
+          "??1MegaDragger@RBX@@QAE@XZ": "0x60e700 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?moveToPoint@RootInstance@RBX@@QAEXPAVPVInstance@2@VVector3@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "00590b50",
+        "symbol": "?moveToCharacterInsertPoint@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "size": 182,
+        "target_size": 182,
+        "exact": true,
+        "verified_targets": {
+          "?computeExtents@DragUtilities@RBX@@SA?AVExtents@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60f2d0 (external (evidence name))",
+          "?computeCharacterInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@ABVExtents@2@@Z": "0x590800 (own row)",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))",
+          "?moveSafe@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@VVector3@G3D@@W4MoveType@12@@Z": "0x5900d0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590c10",
+        "symbol": "?insertToTree@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@@Z",
+        "size": 234,
+        "target_size": 234,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?insertRaw@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z": "0x590440 (own row)",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (static data (one address per symbol))",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (static data (one address per symbol))",
+          "?moveSafe@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@VVector3@G3D@@W4MoveType@12@@Z": "0x5900d0 (own row)",
+          "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x590550 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?insertToTree@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@@Z"
+        ]
+      },
+      {
+        "address": "00590d00",
+        "symbol": "?insertCharacterView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z",
+        "size": 116,
+        "target_size": 116,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVHopperBin@RBX@@@8": "0x9496a0 (RTTI type .?AVHopperBin@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?findLocalPlayer@Players@Network@RBX@@SAPAVPlayer@23@PBVInstance@3@@Z": "0x49ac80 (external)",
+          "?getPlayerBackpack@Player@Network@RBX@@QBEPAVBackpack@3@XZ": "0x48c470 (external (evidence name))",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+          "?insertRaw@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z": "0x590440 (own row)",
+          "?moveToCharacterInsertPoint@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x590b50 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590d80",
+        "symbol": "??$create@VStarterPackService@RBX@@@ServiceProvider@RBX@@SAPAVStarterPackService@1@PBVInstance@1@@Z",
+        "size": 65,
+        "target_size": 65,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVServiceProvider@RBX@@@8": "0x92e15c (RTTI type .?AVServiceProvider@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??$create@VStarterPackService@RBX@@@ServiceProvider@RBX@@QBEPAVStarterPackService@1@XZ": "0x4b3960 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590dd0",
+        "symbol": "??$create@VTeams@RBX@@@ServiceProvider@RBX@@SAPAVTeams@1@PBVInstance@1@@Z",
+        "size": 65,
+        "target_size": 65,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVServiceProvider@RBX@@@8": "0x92e15c (RTTI type .?AVServiceProvider@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??$create@VTeams@RBX@@@ServiceProvider@RBX@@QBEPAVTeams@1@XZ": "0x4b3b40 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590e20",
+        "symbol": "??$create@VLighting@RBX@@@ServiceProvider@RBX@@SAPAVLighting@1@PBVInstance@1@@Z",
+        "size": 65,
+        "target_size": 65,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVServiceProvider@RBX@@@8": "0x92e15c (RTTI type .?AVServiceProvider@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??$create@VLighting@RBX@@@ServiceProvider@RBX@@QBEPAVLighting@1@XZ": "0x4b3870 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590e70",
+        "symbol": "?insertIdeView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@W4PromptMode@2@@Z",
+        "size": 282,
+        "target_size": 282,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVHopperBin@RBX@@@8": "0x9496a0 (RTTI type .?AVHopperBin@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??$create@VStarterPackService@RBX@@@ServiceProvider@RBX@@SAPAVStarterPackService@1@PBVInstance@1@@Z": "0x590d80 (own row)",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+          "??_R0?AVTool@RBX@@@8": "0x9496bc (RTTI type .?AVTool@RBX@@)",
+          "??_C@_0P@GFMJFLOC@Inserting?5Tool?$AA@": "0x831e00 (string 'Inserting Tool')",
+          "??_C@_0EH@NCMABJD@Put?5this?5tool?5into?5the?5starter?5p@": "0x831db8 (string 'Put this tool into the starter pack (oth')",
+          "__imp__MessageBoxA@16": "0x802d78 (user32.dll!MessageBoxA)",
+          "?insertRaw@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z": "0x590440 (own row)",
+          "?moveToIdeInsertPoint@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x590240 (own row)",
+          "?computeExtents@DragUtilities@RBX@@SA?AVExtents@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60f2d0 (external (evidence name))",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?lookAt@Camera@RBX@@QAEXABVVector3@G3D@@@Z": "0x5cc010 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590f90",
+        "symbol": "?insert3dView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@W4PromptMode@2@@Z",
+        "size": 270,
+        "target_size": 270,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z": "0x49aca0 (external (evidence name))",
+          "?insertCharacterView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z": "0x590d00 (own row)",
+          "?insertIdeView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@W4PromptMode@2@@Z": "0x590e70 (own row)",
+          "?computeExtents@DragUtilities@RBX@@SA?AVExtents@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60f2d0 (external (evidence name))",
+          "?zoomExtents@Camera@RBX@@QAEXVExtents@2@ABVRect2D@G3D@@W4ZoomType@12@@Z": "0x5ce0d0 (external (evidence name))",
+          "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x590550 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?insert3dView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@W4PromptMode@2@@Z"
+        ]
+      },
+      {
+        "address": "00591510",
+        "symbol": "?classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x975c48 (static data (one address per symbol))",
+          "?sRootInstance@RBX@@3PADA": "0x9495e4 (data bytes 526f6f74496e7374616e636500)",
+          "?classDescriptor@?$Described@VModelInstance@RBX@@$1?sModel@2@3PADAV?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x585100 (external)",
+          "?foo@?1??classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x975b88 (static data (one address per symbol))",
+          "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+          "??__Ffoo@?1??classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fda60 (support body exact at the bound address)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+        ]
+      }
+    ]
+  },
+  "support_rows": {
+    "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": "005903f0",
+    "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "00590550",
+    "??__Ffoo@?1??classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "007fda60",
+    "??_GRootInstance@RBX@@MAEPAXI@Z": {
+      "address": "005a0910",
+      "exact": true,
+      "verified_targets": {
+        "??1RootInstance@RBX@@MAE@XZ": "0x590630 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      }
+    }
+  },
+  "vtables_current_headers": {
+    "??_7RootInstance@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "00831d40",
+      "slots": 2,
+      "checked": [],
+      "not_bound_here": 2
+    },
+    "??_7RootInstance@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "00831d38",
+      "slots": 1,
+      "checked": [
+        "0 ??_ERootInstance@RBX@@OBE@AEPAXI@Z = 0x590780"
+      ],
+      "not_bound_here": 0
+    },
+    "??_7RootInstance@RBX@@6B?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@1@@": {
+      "address": "00831cac",
+      "slots": 5,
+      "checked": [],
+      "not_bound_here": 5
+    },
+    "??_7RootInstance@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "00831d4c",
+      "slots": 26,
+      "checked": [
+        "5 ?onDescendentAdded@RootInstance@RBX@@MAEXPAVInstance@2@@Z = 0x590160",
+        "6 ?onDescendentRemoving@RootInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boos = 0x590180",
+        "18 ?onChildControllerChanged@RootInstance@RBX@@MAEXXZ = 0x5907f0"
+      ],
+      "not_bound_here": 23
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "00831ce0",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "00831d20",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERootInstance@RBX@@OCE@AEPAXI@Z = 0x5907a0"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "00831d10",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERootInstance@RBX@@OEE@AEPAXI@Z = 0x5907b0"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "00831d00",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "00831cf0",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "00831cd0",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7RootInstance@RBX@@6BDebugable@1@@": {
+      "address": "00831d30",
+      "slots": 1,
+      "checked": [],
+      "not_bound_here": 1
+    },
+    "??_7RootInstance@RBX@@6BICameraOwner@1@@": {
+      "address": "00831c94",
+      "slots": 5,
+      "checked": [],
+      "not_bound_here": 5
+    },
+    "??_7RootInstance@RBX@@6BICameraSubject@1@@": {
+      "address": "00831c64",
+      "slots": 6,
+      "checked": [
+        "1 ?onCameraNear@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXM@Z = 0x5907c0",
+        "2 ?getCameraIgnorePrimitives@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXAAV?$vector@PBVPr = 0x590790"
+      ],
+      "not_bound_here": 4
+    },
+    "??_7RootInstance@RBX@@6BIControllable@1@@": {
+      "address": "00831cc4",
+      "slots": 2,
+      "checked": [],
+      "not_bound_here": 2
+    },
+    "??_7RootInstance@RBX@@6BILocation@1@@": {
+      "address": "00831c80",
+      "slots": 1,
+      "checked": [
+        "0 ?getLocation@ModelInstance@RBX@@$4PPPPPPPM@GA@BE?BVCoordinateFrame@G3D@@XZ = 0x5907d0"
+      ],
+      "not_bound_here": 0
+    },
+    "??_7RootInstance@RBX@@6BIPrimaryPart@1@@": {
+      "address": "00831c88",
+      "slots": 2,
+      "checked": [],
+      "not_bound_here": 2
+    }
+  },
+  "pending_build_only": [
+    {
+      "address": "005910a0",
+      "symbol": "?insertSpawnLocation@RootInstance@RBX@@AAEXPAVSpawnLocation@2@@Z",
+      "size": 293,
+      "target_size": 293,
+      "exact": false,
+      "verified_targets": {
+        "??$create@VTeams@RBX@@@ServiceProvider@RBX@@SAPAVTeams@1@PBVInstance@1@@Z": "0x590dd0 (own row)",
+        "?getTeamColor@SpawnLocation@RBX@@QBE?AVBrickColor@2@XZ": "0x5d1ba0 (external (evidence name))",
+        "?teamExists@Teams@RBX@@QAE_NVBrickColor@2@@Z": "0x5d5f20 (external)",
+        "??$create@VTeam@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTeam@RBX@@@boost@@XZ": "0x409140 (external)",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+        "?setTeamColor@Team@RBX@@QAEXVBrickColor@2@@Z": "0x566700 (external)",
+        "??_C@_05BBLMIBKN@?5Team?$AA@": "0x831e10 (string ' Team')",
+        "?name@BrickColor@RBX@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x5b61b0 (external (evidence name))",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z": "0x8023e4 (msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?insertSpawnLocation@RootInstance@RBX@@AAEXPAVSpawnLocation@2@@Z"
+      ],
+      "pending_build_exact": true,
+      "main_build_size": 293,
+      "status": "pending-build-only",
+      "reason": "SpawnLocation::neutral is read at +0x400 (005910b5 cmp byte ptr [edi+0x400]); the committed v8datamodel/SpawnLocation.h states +0x400 but compiles to +0x2e8 over the donor PartInstance. Exact only with native-headers/part-embedded (2008 PartInstance, embedded Primitive at +0x228) ahead of the path."
+    }
+  ],
+  "not_exact": [
+    {
+      "address": "00591580",
+      "symbol": "??0RootInstance@RBX@@IAE@XZ",
+      "size": 572,
+      "target_size": 572,
+      "exact": false,
+      "reason": "572 / 572 B: identical except the World allocation size: the original passes 0x114 to operator new at 00591739 before World::World 005ea920, the donor v8world/World.h gives sizeof(World) = 0xb8. Needs a 2008 World declaration (owner proposal in the receipt); the World layout itself is not derived here."
+    }
+  ],
+  "rejected": {
+    "AppUnit588_2008RootInstance.cpp without /U_RELEASEASSERT": "RBXASSERT bodies stay in: insertRaw 217/185, insertCharacterView 143/116, insertIdeView 308/282, insert3dView 313/270, moveToPoint 402/363",
+    "AppUnit588_2008RootInstance.cpp without /fp:fast": "computeIdeInsertPoint 181/167, moveToIdeInsertPoint 225/177",
+    "moveToIdeInsertPoint / moveToCharacterInsertPoint / insert3dView with `!partArray.empty()`": "177/177 and 182/182 B, test eax,0xfffffff8 instead of sar eax,3 / test eax,eax",
+    "insertToTree / insertIdeView with `partArray.size() > 0`": "234/234 and 282/282 B, sar/test instead of test 0xfffffff8",
+    "computeCharacterInsertPoint with the donor getCamera()->getCameraCoordinateFrame() and `(halfSize * cameraLook) * Vector3(1,0,1)`": "539/478 (slot 1 getCamera instead of slot 2 getGCamera)",
+    "computeCharacterInsertPoint without the halfY / lookY reads (y zeroed directly)": "478/478 B: lookVector product scheduled fld [eax]; fld [esp+8]; fmul st(1) instead of fld [esp+8]; fld st(0); fmul [eax]. Variants tried: halfSize * cameraLook (480), cameraLook * halfSize (480), donor * Vector3(1,0,1) (478/496), Vector3 cameraLook(look.x, 0, look.z) (478), a CoordinateFrame local (480), lookY read only (478), halfY read only (478)"
+  },
+  "proposals": {
+    "v8world/World.h (World owner)": "The 2008 World is 0x114 bytes: RootInstance() 00591580 passes 0x114 to operator new (00591739) before World::World 005ea920; the donor World.h gives 0xb8. With a 2008 World declaration of that size the RootInstance constructor of this unit is exact (only the push immediate differs).",
+    "v8tree/Service.h (core owner)": "Define template<class Class> static Class* ServiceProvider::create(const Instance* context) in the header: walk context->getParent() (+0x104) with dynamic_cast<const ServiceProvider*> and tail-call provider->create<Class>(). Evidence: 00590d80 / 00590dd0 / 00590e20 (this unit, exact with that body), the same definition is repeated in LocalBackpack2008.cpp, SoundServiceProvider.cpp and AppUnit4C8_2008PhysicsServiceCreate.cpp.",
+    "v8datamodel/Workspace.h (Workspace owner)": "insertInstances 005911d0 needs a Workspace member taking a Decal*: 005a3d40 (ret 4, ecx = the result of the ServiceProvider::find helper 00491e50 whose tail call is 00490af0) builds a 0x50-byte MouseCommand (new 0x50 at 005a3d92) and calls Workspace::setMouseCommand 005a1fc0. insertInstances 005911d0 reaches it for a dynamic_cast<Decal*> (RTTI 00940dbc) instance only when insertMode == INSERT_TO_3D_VIEW (00591472), and then returns without inserting the rest. Its other 2008-only steps: an early for_each(setParent) return when requestedParent is not in this tree (005911fa..00591282), requestedParent defaulting to this (0059141e), and a final 0058c5c0(\"Insert\" 00831e18, this) (camera-history-trial names it recordCameraHistory).",
+    "v8datamodel/SpawnLocation.h (SpawnLocation owner), FYI": "insertSpawnLocation 005910a0 is exact once the 2008 PartInstance (native-headers/part-embedded) is used: neutral is read at +0x400 (005910b5), as the header comment says; over the default PartInstance it compiles to +0x2e8. No change to SpawnLocation.h is needed; the PartInstance owner proposal stands."
+  },
+  "exact_function_rows": [
+    "00590030",
+    "00590070",
+    "005900d0",
+    "00590160",
+    "00590180",
+    "00590190",
+    "00590240",
+    "00590300",
+    "00590440",
+    "005905c0",
+    "00590620",
+    "00590630",
+    "00590780",
+    "00590790",
+    "005907a0",
+    "005907b0",
+    "005907c0",
+    "005907d0",
+    "005907f0",
+    "00590800",
+    "005909e0",
+    "00590b50",
+    "00590c10",
+    "00590d00",
+    "00590d80",
+    "00590dd0",
+    "00590e20",
+    "00590e70",
+    "00590f90",
+    "00591510"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
