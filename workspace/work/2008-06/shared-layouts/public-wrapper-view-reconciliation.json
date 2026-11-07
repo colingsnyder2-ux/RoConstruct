@@ -1,0 +1,192 @@
+{
+  "schema": 1,
+  "scope": "inactive source only; no linked selection or runtime claim",
+  "source_sha256": "b2e57235d2bb6ad12b8b05a8c2430f49ec515909c11cd65ac9c1a940446223fc",
+  "public_base": "76cede182885256cf1db4656f1ef8f3c239bd073",
+  "restored": "CWrapperView::OnDraw",
+  "original": "0070bdf0",
+  "proof": {
+    "run": "work/2008-06/native-check-runs/20261106-225050-2b24def4",
+    "results_sha256": "6790426c13420cfef73fbf8885902dd3fe5bd8c424d2cd60816cf4c432bc58fb",
+    "object_sha256": "1e50f6b054616d4fc0450936ed62b132ed60c465b1f3990021f47f3dd381c160",
+    "check": {
+      "addr": "0070bdf0",
+      "requested_symbol": "?OnDraw@CWrapperView@@MAEXPAVCDC@@@Z",
+      "status": "exact",
+      "symbol": "?OnDraw@CWrapperView@@MAEXPAVCDC@@@Z",
+      "score": 100,
+      "target_size": 3,
+      "object_size": 3,
+      "target_sha256": "e598d0c3ba86d917b177d7adde0556aa99bc355543c57aee0a3e50b684dd7e99",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [],
+        "unused_expectations": [],
+        "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+      },
+      "check_seconds": 2.5
+    }
+  },
+  "existing_method_regression": {
+    "analysis": "work/2008-06/native-check-runs/20261106-225050-2b24def4/analysis-48df57db.json",
+    "sha256": "03802804858974f7011ad15b06996b5b18476a2a3243b4cec98a5f267c445c63",
+    "checks": [
+      {
+        "addr": "006c4cb0",
+        "requested_symbol": "?_GetBaseClass@CWrapperView@@KGPAUCRuntimeClass@@XZ",
+        "status": "exact",
+        "symbol": "?_GetBaseClass@CWrapperView@@KGPAUCRuntimeClass@@XZ",
+        "score": 100,
+        "target_size": 5,
+        "object_size": 5,
+        "target_sha256": "b7ce9e593ac526ede8d19d77c63c1f59e68377475dea3d4de7f2dd594d4a2859",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 2.14
+      },
+      {
+        "addr": "0042ece0",
+        "requested_symbol": "?GetThisClass@CWrapperView@@SGPAUCRuntimeClass@@XZ",
+        "status": "exact",
+        "symbol": "?GetThisClass@CWrapperView@@SGPAUCRuntimeClass@@XZ",
+        "score": 100,
+        "target_size": 6,
+        "object_size": 6,
+        "target_sha256": "1233ff779424d1fa6a48c1347f18663edbb58d80a107a55cff63840a6f3abfc5",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8456160,
+            28
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "0042ece0",
+        "requested_symbol": "?GetRuntimeClass@CWrapperView@@UBEPAUCRuntimeClass@@XZ",
+        "status": "exact",
+        "symbol": "?GetRuntimeClass@CWrapperView@@UBEPAUCRuntimeClass@@XZ",
+        "score": 100,
+        "target_size": 6,
+        "object_size": 6,
+        "target_sha256": "1233ff779424d1fa6a48c1347f18663edbb58d80a107a55cff63840a6f3abfc5",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8456160,
+            28
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "0042eb40",
+        "requested_symbol": "??0CWrapperView@@IAE@XZ",
+        "status": "exact",
+        "symbol": "??0CWrapperView@@IAE@XZ",
+        "score": 100,
+        "target_size": 74,
+        "object_size": 74,
+        "target_sha256": "5c1811abe79ad9626e1396066c3159e655ed3c33a53f1dd2552dfa9931fd109f",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8456860,
+            404
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "0042eb90",
+        "requested_symbol": "?PreCreateWindow@CWrapperView@@UAEHAAUtagCREATESTRUCTA@@@Z",
+        "status": "exact",
+        "symbol": "?PreCreateWindow@CWrapperView@@UAEHAAUtagCREATESTRUCTA@@@Z",
+        "score": 100,
+        "target_size": 35,
+        "object_size": 35,
+        "target_sha256": "defc9a405c7b779269425048a1b36a6b97ff9024e4ec14c85c53fff2a5bb37ae",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "0042ebc0",
+        "requested_symbol": "?OnCmdMsg@CWrapperView@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+        "status": "exact",
+        "symbol": "?OnCmdMsg@CWrapperView@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+        "score": 100,
+        "target_size": 73,
+        "object_size": 73,
+        "target_sha256": "b72e47fbb826a974afe71494639a7576b3c211791bc0d8b8c2d153ed38367853",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "0042ec10",
+        "requested_symbol": "?OnWndMsg@CWrapperView@@MAEHIIJPAJ@Z",
+        "status": "exact",
+        "symbol": "?OnWndMsg@CWrapperView@@MAEHIIJPAJ@Z",
+        "score": 100,
+        "target_size": 207,
+        "object_size": 207,
+        "target_sha256": "bac24634137ae2aabb6f2005c83b8ee40aa504576279c9242dad511b7e21da61",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "00430010",
+        "requested_symbol": "?CreateObject@CWrapperView@@SGPAVCObject@@XZ",
+        "status": "exact",
+        "symbol": "?CreateObject@CWrapperView@@SGPAVCObject@@XZ",
+        "score": 100,
+        "target_size": 89,
+        "object_size": 89,
+        "target_sha256": "b05f03a90c2ec931b215c8d8e240992f2b4409dda3007864f41aab29debf4c8d",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "00430070",
+        "requested_symbol": "??_GCWrapperView@@UAEPAXI@Z",
+        "status": "exact",
+        "symbol": "??_GCWrapperView@@UAEPAXI@Z",
+        "score": 100,
+        "target_size": 96,
+        "object_size": 96,
+        "target_sha256": "9d8c2e0fdc5900e4849fd5a981bd32f1a317c6849a6644e221462179a2348671",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ]
+  },
+  "layout_compile": {
+    "run": "work/2008-06/native-check-runs/20261106-225153-a0008d92",
+    "summary_sha256": "01ffda4003e8e6e8d1982f04fbe675e368efdbe82b09af1c5f4e91efb2b7cfcf",
+    "state": "complete",
+    "failed_sources": 0
+  },
+  "unresolved": [
+    "linked provider selection",
+    "runtime P5/P6"
+  ],
+  "excluded_snapshot": "138d3a09c8",
+  "frozen_header_tree": "2186ca661d9c63a796e664f2af3348519bd0981b"
+}
