@@ -2,7 +2,7 @@
 
 ## Start here
 
-- [Setup](SETUP.md) and [server operations](SERVER.md).
+- [Setup](setup/SETUP.md) and [server operations](hosting/SERVER.md).
 - [Native recovery](NATIVE_AGENT.md): classes, implemented methods and authentic headers.
 - [Class/header batches](NATIVE_SWAP_BATCH.md): source priorities, checks and handoff.
 - [Owner draft integration](DRAFT_INTEGRATION.md): reviewed promotion and preservation.

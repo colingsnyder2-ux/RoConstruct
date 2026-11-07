@@ -51,9 +51,9 @@ fixes, ports (WebAssembly, Linux, macOS), bug fixes, modding and preservation.
 
 | Document | For |
 |---|---|
-| [docs/SETUP.md](docs/SETUP.md) | install, Linux, models and ChatGPT plan, dashboard, matching by hand, troubleshooting |
+| [docs/SETUP.md](docs/setup/SETUP.md) | install, Linux, models and ChatGPT plan, dashboard, matching by hand, troubleshooting |
 | [docs/AGENT_GUIDE.md](docs/AGENT_GUIDE.md) | matching workflow, tool routing, experiment memory, automatic agent workers |
-| [docs/SERVER.md](docs/SERVER.md) | hosting, publishing, Discord, private cluster, clients, packages |
+| [docs/SERVER.md](docs/hosting/SERVER.md) | hosting, publishing, Discord, private cluster, clients, packages |
 | [docs/SOURCES.md](docs/recovery/SOURCES.md) | every source we compile, what is still missing ([live page](https://colingsnyder2-ux.github.io/RoConstruct/sources.html)) |
 
 Recovered sources, portable agent evidence and historical research reports are published

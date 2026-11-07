@@ -51,6 +51,9 @@ SERVER_MODULES += ["integration_notify", "integration_site", "agent_inbox", "nat
 
 COMMON_FILES = [".gitattributes", "roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "packaging/organize-local.ps1", "research/repair-patterns.json", "docs/SETUP.md", "docs/SERVER.md",
+                "docs/setup/SETUP.md", "docs/hosting/SERVER.md",
+                "docs/recovery/SOURCES.md", "docs/recovery/GRAPH.md", "docs/recovery/SOURCE_CATALOG.md",
+                "docs/GRAPH_EVIDENCE.md",
                 "research/log.jsonl",
                 "CLAUDE.md", "AGENTS.md", "docs/AGENT_GUIDE.md", "research/lessons.json", "research/reports.json",
                 "research/recipes.json", "research/template-units.json", "research/function-data.json",
