@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -64,9 +65,9 @@ struct Primary {
 
 struct Secondary {
     virtual ~Secondary();
-    char padding0[160];
+    char padding0[152];
     Buttons *buttons;
-    char padding1[68];
+    char padding1[64];
 };
 
 struct Tertiary {

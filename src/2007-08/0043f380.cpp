@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -67,9 +68,9 @@ struct Base {
     void** table;
     char padding04[28];
     void** secondary;
-    char padding24[160];
+    char padding24[152];
     Button* buttons;
-    char paddingC8[68];
+    char paddingC8[64];
     void** tertiary;
 
     Base(const void*, const void*);
