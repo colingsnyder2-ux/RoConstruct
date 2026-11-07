@@ -5,6 +5,10 @@
 // ServiceProvider::findServiceProvider (004898d0), Instance::findFirstChildOfType<T> (006294a0), a complete
 // RBX::Workspace for dynamic_cast and a native ModelInstance.h that compiles (donor Camera.h passes &sCamera);
 // the recorder checks them against generated header copies (proposals).
+// >>> native-status (generated) -- do not edit >>>
+// ClickDetector | 2008-06 | partial
+// 3/6 exact by name (50%) | 3/6 exact bodies | no strings | verified 2026-11-07| by king_originala (+1) (mixed 2)
+// <<< native-status | src 62df6556 | roc native-status --write
 #include "v8datamodel/ClickDetector.h"
 #include "v8datamodel/PartInstance.h"
 #include "Network/Players.h"

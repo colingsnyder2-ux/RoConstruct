@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Http | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src f8ab0cf4 | roc native-status --write
 #include <string>
 
 namespace RBX

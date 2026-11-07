@@ -1,5 +1,9 @@
 // Inactive typed candidate: destructor matches; SpatialHash allocation and scratch element type remain open.
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// ContactManager | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 83977498 | roc native-status --write
 #include <set>
 #include <vector>
 #include <G3D/Vector3.h>

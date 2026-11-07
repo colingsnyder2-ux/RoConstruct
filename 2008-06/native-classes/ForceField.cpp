@@ -5,6 +5,10 @@
 // (dynamic_cast in askSetParent 0062d090 and the ancestor walk 0062d380) and Instance::visitDescendents
 // (0062d400, used by render3dAdorn 0062d570). The recorder builds them against generated copies under
 // out/native-layouts/debris-forcefield-pending/.
+// >>> native-status (generated) -- do not edit >>>
+// ForceField | 2008-06 | partial
+// 2/6 exact by name (33%) | 2/6 exact bodies | no strings | verified 2026-11-07| by colin (+3) (mixed 3)
+// <<< native-status | src 2968fa49 | roc native-status --write
 #include "v8datamodel/ForceField.h"
 #include "v8datamodel/PartInstance.h"
 #include "AppDraw/Draw.h"

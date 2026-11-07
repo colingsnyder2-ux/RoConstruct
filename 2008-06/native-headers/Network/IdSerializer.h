@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// IdSerializer | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src b62f39fd | roc native-status --write
 // 2008-06 native RBX::Network::IdSerializer and its string dictionaries (inactive). Shape after the donor
 // tools/rbxgs/Client/Network/Streaming.h; every base, field and size below is read from the 2008-06 binary:
 //   RTTI       vtable 0082534c .?AVIdSerializer@Network@RBX@@ (18 bases): Instance only (no Described or

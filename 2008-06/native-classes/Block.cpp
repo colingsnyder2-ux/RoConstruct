@@ -2,6 +2,10 @@
 // Verified by tests/record_native_world_shapes.py. Unit 00647700..00649120: Block methods, the file-local
 // RBX::myLess / RBX::BlockTemplate (0x60 bytes: BlockTemplate::getVertices 00648f30 news 0x60) and the
 // std::map<Vector3, BlockTemplate*, myLess> members it instantiates.
+// >>> native-status (generated) -- do not edit >>>
+// Block | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 9a6ebc17 | roc native-status --write
 #include "v8world/Block2008.h"
 #include "util/Math.h"
 #include <G3D/AABox.h>

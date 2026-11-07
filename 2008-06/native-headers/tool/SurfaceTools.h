@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// SurfaceTools | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src f4e22179 | roc native-status --write
 
 #include "tool/SurfaceTool.h"
 

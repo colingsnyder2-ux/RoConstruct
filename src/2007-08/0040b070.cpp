@@ -1,3 +1,4 @@
+// from server: 99% by Intel
 // from server: 95% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -321,7 +322,7 @@ struct Window {
 };
 
 struct Combo {
-    char pad[0x178];
+    char pad[0x16c];
     Window* list;
     char gap[8];
     Window* edit;
@@ -337,7 +338,7 @@ extern "C" __declspec(dllimport) long __stdcall SendMessageA(void*, unsigned int
                                                              unsigned int, long);
 
 struct CBrowserView {
-    char pad[0x118];
+    char pad[0x104];
     Combo* combo;
 
     void navigate(const char*, unsigned long, const char*, const char*,
@@ -358,7 +359,8 @@ void CBrowserView::func_0040e7f0()
         Window* list = combo->list;
         if (SendMessageA(list->handle, 0x18b, 0, 0) > 10) {
             Window* finalList = combo->list;
-            combo->finalize(SendMessageA(finalList->handle, 0x18b, 0, 0) - 1);
+            int count = SendMessageA(finalList->handle, 0x18b, 0, 0);
+            combo->finalize(count - 1);
         }
     }
 

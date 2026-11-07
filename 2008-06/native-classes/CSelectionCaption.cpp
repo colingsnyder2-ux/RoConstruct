@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CSelectionCaption | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 054f0a3a | roc native-status --write
 #include "CSelectionCaption.h"
 #include "v8datamodel/Selection.h"
 #include "v8datamodel/SelectionChanged.h"

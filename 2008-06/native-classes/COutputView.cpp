@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// COutputView | 2008-06 | linked
+// 10/10 exact by name (100%) | 10/10 exact bodies | no strings | verified 2026-11-07| by colin (+4) (mixed 4)
+// <<< native-status | src 3fefa867 | roc native-status --write
 #include "COutputView.h"
 #include <atlenc.h>
 #include <time.h>

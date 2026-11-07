@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// AuthoringSettings | 2008-06 | linked
+// 1/1 exact by name (100%) | 1/1 exact bodies | no strings | verified 2026-11-07| by king_originala (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 9bed2929 | roc native-status --write
 #include "AuthoringSettings.h"
 #include <boost/thread/recursive_mutex.hpp>
 #include <G3D/format.h>

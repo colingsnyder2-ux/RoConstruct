@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// BevelMesh | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 2599de38 | roc native-status --write
 // 2008-06 native RBX::ViewNew::BevelMesh / BevelMesh::Builder (inactive).
 //   BevelMesh  RTTI base of WedgeMesh 008270e8 and TorsoMesh 00827124 (-> RenderBase::Mesh -> ReferenceCountedObject,
 //              all mdisp 0); no vtable of its own is referenced (never constructed as a complete object).

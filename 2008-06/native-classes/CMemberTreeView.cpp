@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CMemberTreeView | 2008-06 | linked
+// 9/9 exact by name (100%) | 9/9 exact bodies | no strings | verified 2026-11-07| by king_originala (+4) (mixed 4)
+// <<< native-status | src 107ce376 | roc native-status --write
 #include "CClassTreeView.h"
 #include "reflection/object.h"
 #include "reflection/enumconverter.h"

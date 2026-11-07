@@ -1,5 +1,9 @@
 // 2008-06 native RBX::Sky (inactive); evidence in native-headers/v8datamodel/Sky.h.
 // Verified by tests/record_native_effects.py.
+// >>> native-status (generated) -- do not edit >>>
+// Sky | 2008-06 | inactive
+// 0/1 exact by name (0%) | 0/1 exact bodies | no strings | verified 2026-11-07| by EspClaude (deepseek:deepseek-chat)
+// <<< native-status | src 281328ee | roc native-status --write
 #include "v8datamodel/Sky.h"
 
 namespace RBX

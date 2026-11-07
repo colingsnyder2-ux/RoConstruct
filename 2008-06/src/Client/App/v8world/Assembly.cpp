@@ -1,5 +1,9 @@
 // Source-derived world pipeline port from openrbx v8world/Assembly2.cpp.
 // June anchor swap is evidenced at 0064cc40/0064ccf0; full ABI/physics parity remains unproven.
+// >>> native-status (generated) -- do not edit >>>
+// Assembly | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 163d107d | roc native-status --write
 #include "v8world/Assembly.h"
 
 #include "util/Math.h"

@@ -8,6 +8,10 @@
 // Item::createBoundChildItem 005ca240 (with the ProfilingItem constructor, create and shared_ptr instances it
 // pulls in: 005c9ac0, 005c9ed0, 005c9f70, 005ca1c0, 005c91b0, 005c92e0).
 // Verified by tests/record_native_stats_service.py.
+// >>> native-status (generated) -- do not edit >>>
+// StatsService | 2008-06 | linked
+// 9/9 exact by name (100%) | 9/9 exact bodies | no strings | verified 2026-11-07| by king_originala (+2) (mixed 2)
+// <<< native-status | src a27e7f99 | roc native-status --write
 #include "stats/Stats.h"
 #include "util/Log.h"
 #include <G3D/format.h>

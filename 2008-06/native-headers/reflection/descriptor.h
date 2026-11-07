@@ -2,6 +2,10 @@
 // constructor has no RBXASSERT (inlined copies in Type 004897a0 and EnumDesc::addPair 0064d530 are
 // just the vtable store and Name::declare(name, -1)).
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// descriptor | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src d2516c9b | roc native-status --write
 #include <boost/noncopyable.hpp>
 #include <boost/thread/recursive_mutex.hpp>
 #include "util/Name.h"

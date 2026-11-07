@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRenderSettingsDefaults | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src ff937c28 | roc native-status --write
 #include "CRenderSettings.h"
 
 CRenderSettings::AASamples CRenderSettings::aaSamples = CRenderSettings::NONE;

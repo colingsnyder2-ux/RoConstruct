@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// SelectionVerbStates | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src f0c44da8 | roc native-status --write
 #include "StandardVerbs.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/DataModel.h"

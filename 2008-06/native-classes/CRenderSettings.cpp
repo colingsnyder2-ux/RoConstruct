@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRenderSettings | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 71eb9d9a | roc native-status --write
 #include "CRenderSettings.h"
 #include "reflection/enumconverter.h"
 #include <GLG3D/DXCaps.h>
@@ -28,6 +32,11 @@ GlobalSettingsItem<Class, ClassName>::~GlobalSettingsItem()
 } // namespace RBX
 
 template CRenderSettings& RBX::GlobalSettingsItem<CRenderSettings, sRenderSettings>::singleton();
+
+G3D::Vector2int16 CRenderSettings::getFullscreenSize() const
+{
+    return fullscreenSize;
+}
 
 using RBX::Reflection::EnumPropDescriptor;
 using RBX::Reflection::PropDescriptor;

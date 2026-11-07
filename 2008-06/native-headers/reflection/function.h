@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// function | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src e334687d | roc native-status --write
 #include "reflection/member.h"
 #include "reflection/type.h"
 #include "util/Utilities.h"

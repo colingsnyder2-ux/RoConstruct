@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CWebToolbox | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 1d262003 | roc native-status --write
 #include "CSecureHtmlView.h"
 #include <atlbase.h>
 

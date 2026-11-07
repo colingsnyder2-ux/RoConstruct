@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Geometry2008 | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 8cce7fd5 | roc native-status --write
 // 2008-06 native RBX::Geometry (inactive). Declared under a non-colliding name: the original include path
 // v8world/Geometry.h is reached by every unit that includes Primitive.h / PartInstance.h, so a header at that path
 // would shadow the donor for nearly all recorders (see the proposal in tests/record_native_world_shapes.py).

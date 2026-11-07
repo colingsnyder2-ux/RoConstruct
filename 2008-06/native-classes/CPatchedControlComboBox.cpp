@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CPatchedControlComboBox | 2008-06 | linked
+// 1/1 exact by name (100%) | 1/1 exact bodies | no strings | verified 2026-11-07| by colin (roc repair)
+// <<< native-status | src 928be26b | roc native-status --write
 #include "CPatchedControlComboBox.h"
 
 IMPLEMENT_XTP_CONTROL(CPatchedControlComboBox, CXTPControlComboBox)

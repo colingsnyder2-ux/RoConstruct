@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// WorkspaceStatsItem | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src ff7a6fa9 | roc native-status --write
 // 2008-06 native RBX::WorkspaceStatsItem (inactive, declaration only).
 //   RTTI       vtable 008340ac .?AVWorkspaceStatsItem@RBX@@ -> Stats::Item (22 bases, no Service/IRenderable).
 //   size       0x158 = sizeof(Stats::Item): Creatable<Instance>::create<WorkspaceStatsItem> 005a6620 allocates

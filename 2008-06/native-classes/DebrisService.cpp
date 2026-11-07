@@ -1,6 +1,10 @@
 // 2008-06 native RBX::DebrisService (inactive); evidence in native-headers/v8datamodel/DebrisService.h.
 // Verified by tests/record_native_debris_forcefield.py. Unit 0063b330..0063c3a0 plus the descriptor initializers
 // 007f8b60 / 007f8ba0 (atexit 00801060 / 00801080), doDeclare 005bfe20 and classDescriptor 005c06a0.
+// >>> native-status (generated) -- do not edit >>>
+// DebrisService | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src a7f2b116 | roc native-status --write
 #include "v8datamodel/DebrisService.h"
 #include "v8datamodel/TimerService.h"
 #include "util/standardout.h"

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ApplicationWindowClass | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 85aacb81 | roc native-status --write
 #include <afxwin.h>
 
 // 004495a0: register the application window class and create its MFC frame.

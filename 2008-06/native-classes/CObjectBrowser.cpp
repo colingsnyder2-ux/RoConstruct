@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CObjectBrowser | 2008-06 | partial
+// 4/5 exact by name (80%) | 4/5 exact bodies | no strings | verified 2026-11-07| by king_originala (+2) (mixed 4)
+// <<< native-status | src c7f8d5b8 | roc native-status --write
 #include "CObjectBrowser.h"
 #include <algorithm>
 

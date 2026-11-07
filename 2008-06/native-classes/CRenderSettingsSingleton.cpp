@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRenderSettingsSingleton | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 1983bb3e | roc native-status --write
 #include "CRenderSettings.h"
 #include <boost/thread/recursive_mutex.hpp>
 

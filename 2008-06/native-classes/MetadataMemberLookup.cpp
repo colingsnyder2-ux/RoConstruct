@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// MetadataMemberLookup | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 5103578e | roc native-status --write
 #include "reflection/Metadata.h"
 #include "reflection/object.h"
 #include "reflection/property.h"

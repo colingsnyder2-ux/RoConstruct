@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// UserInputMovement | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 30d3c1e2 | roc native-status --write
 #include "util/UserInputBase.h"
 namespace RBX {
 bool MovementKeys::any() const

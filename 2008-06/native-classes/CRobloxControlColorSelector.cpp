@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxControlColorSelector | 2008-06 | linked
+// 10/10 exact by name (100%) | 10/10 exact bodies | no strings | verified 2026-11-07| by king_originala (+4) (mixed 4)
+// <<< native-status | src 16c76398 | roc native-status --write
 #include "CRobloxControlColorSelector.h"
 #include "v8datamodel/BrickColor.h"
 #include <G3D/Color3uint8.h>

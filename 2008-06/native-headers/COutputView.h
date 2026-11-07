@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// COutputView | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src df91f268 | roc native-status --write
 #include "CSecureHtmlView.h"
 #include <deque>
 #include <atlbase.h>

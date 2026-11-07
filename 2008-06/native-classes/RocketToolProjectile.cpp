@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load
+// >>> native-status (generated) -- do not edit >>>
+// RocketToolProjectile | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src c3e8ef25 | roc native-status --write
 #include "util/NativeContentProvider.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"

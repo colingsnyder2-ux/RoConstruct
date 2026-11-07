@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// MovementKeys | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src b5d50a4f | roc native-status --write
 namespace RBX {
 // Original byte field order established by 005ce960 SDL key queries.
 // Byte fields + bool predicate jointly reproduce reader, predicate and render caller.

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// AppOpenFile | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 96be2322 | roc native-status --write
 #include "CRobloxApp.h"
 #include "CIDEDocManager.h"
 #include "CRobloxDoc.h"

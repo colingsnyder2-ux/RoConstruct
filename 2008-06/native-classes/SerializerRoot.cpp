@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// SerializerRoot | 2008-06 | linked
+// 1/1 exact by name (100%) | 1/1 exact bodies | no strings | verified 2026-11-07| by colin
+// <<< native-status | src 292a0e88 | roc native-status --write
 #include "../native-headers/v8xml/XmlElement.h"
 #include "v8xml/SerializerV2.h"
 

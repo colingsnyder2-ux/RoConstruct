@@ -4,6 +4,10 @@
 // Image block 007b8180..007b93cf; recovered here: the root constructor 007b8450, shade 007b8500, getIfResolved 007b85e0,
 // alphaOnlyVersion 007b8eb0, getSize 007b8f40, MegaTextureProxy(TextureManager&, name) 007b8fb0 (with the inline shade
 // slot 007b8fe0 and ??_G 007b9350). resolve 007b8610 / MegaTextureProxy::resolve 007b9000 are not built.
+// >>> native-status (generated) -- do not edit >>>
+// TextureProxyRender | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 58c15739 | roc native-status --write
 #include "RenderLib/TextureProxy2008.h"
 
 namespace RBX

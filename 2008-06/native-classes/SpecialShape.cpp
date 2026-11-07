@@ -4,6 +4,10 @@
 // setVertColor compare with `fld; fcomp mem`). The EnumPropDescriptor constructor 0059fe00 and the
 // TypedPropertyDescriptor<MeshId> Value/boost::any helpers 0059eec0..0059f400 come from header templates; they are
 // exact only against the generated reflection.h / type.h / property.h copies the recorder writes (proposals).
+// >>> native-status (generated) -- do not edit >>>
+// SpecialShape | 2008-06 | linked
+// 1/1 exact by name (100%) | 1/1 exact bodies | no strings | verified 2026-11-07| by auto
+// <<< native-status | src c206826e | roc native-status --write
 #include "v8datamodel/SpecialShape.h"
 #include "v8datamodel/PartInstance.h"
 #include "reflection/enumconverter.h"

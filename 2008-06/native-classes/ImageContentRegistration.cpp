@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// ImageContentRegistration | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src a15cc400 | roc native-status --write
 #include <windows.h>
 #include <atlbase.h>
 #include <atlutil.h>

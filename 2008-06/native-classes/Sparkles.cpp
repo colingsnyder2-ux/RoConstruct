@@ -1,5 +1,9 @@
 // 2008-06 native RBX::Sparkles (inactive); evidence in native-headers/v8datamodel/Sparkles.h.
 // Verified by tests/record_native_effects.py.
+// >>> native-status (generated) -- do not edit >>>
+// Sparkles | 2008-06 | partial
+// 2/3 exact by name (67%) | 2/3 exact bodies | no strings | verified 2026-11-07| by EspClaude (+2) (mixed 2)
+// <<< native-status | src d5c4ba55 | roc native-status --write
 #include "v8datamodel/Sparkles.h"
 #include "v8datamodel/PartInstance.h"
 

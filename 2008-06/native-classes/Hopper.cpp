@@ -1,6 +1,10 @@
 // 2008-06 native RBX::Hopper / StarterPackService / LegacyHopperService / BackpackItem / HopperBin (inactive): the
 // original Hopper unit 005cf160..005d1770 (dynamic initializers 007f5df0..007f5ef0, atexit functions 007feed0..
 // 007fefb0). Evidence in native-headers/v8datamodel/Hopper.h.
+// >>> native-status (generated) -- do not edit >>>
+// Hopper | 2008-06 | linked
+// 1/1 exact by name (100%) | 1/1 exact bodies | no strings | verified 2026-11-07| by auto
+// <<< native-status | src 3e7000bf | roc native-status --write
 #include "v8datamodel/Hopper.h"
 #ifdef NATIVE_HOPPER_PENDING
 #include "v8datamodel/Backpack.h"

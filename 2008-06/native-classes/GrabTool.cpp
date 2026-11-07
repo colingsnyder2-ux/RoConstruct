@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// GrabTool | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src f53f8b6b | roc native-status --write
 #include "tool/BasicMouseTools.h"
 #include "tool/DragTool.h"
 #include "v8datamodel/Workspace.h"

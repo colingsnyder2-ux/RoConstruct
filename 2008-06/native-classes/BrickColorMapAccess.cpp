@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// BrickColorMapAccess | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 16ffac63 | roc native-status --write
 #include "v8datamodel/BrickColor.h"
 #include <cstdlib>
 

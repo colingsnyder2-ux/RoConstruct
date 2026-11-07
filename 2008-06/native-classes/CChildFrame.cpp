@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CChildFrame | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src fa5b8315 | roc native-status --write
 #include "CChildFrame.h"
 
 IMPLEMENT_DYNCREATE(CChildFrame, CMDIChildWnd)
@@ -52,6 +56,11 @@ BEGIN_MESSAGE_MAP(CRbxChildFrame, CChildFrame)
     ON_WM_GETMINMAXINFO()
 END_MESSAGE_MAP()
 
+#ifdef NATIVE_CHILD_FRAME_PENDING
+// Pending a shared-header change: the original calls CRenderSettings::getFullscreenSize out of line
+// (call 00445250 with a hidden return slot), so the declaration it saw was not the in-class inline body
+// that native-headers/CRenderSettings.h has now. With that one line changed to the declaration
+// "G3D::Vector2int16 getFullscreenSize() const;" this body is exact (tests/record_native_child_frame.py).
 #include "CMainFrame.h"
 #include "CRenderSettings.h"
 
@@ -75,3 +84,4 @@ void CRbxChildFrame::OnGetMinMaxInfo(MINMAXINFO* lpMMI)
         lpMMI->ptMaxTrackSize.y = rect.bottom - rect.top;
     }
 }
+#endif

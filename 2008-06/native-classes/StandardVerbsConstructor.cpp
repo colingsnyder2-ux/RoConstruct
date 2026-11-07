@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// StandardVerbsConstructor | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 26b8949d | roc native-status --write
 #include "StandardVerbs.h"
 
 namespace RBX {

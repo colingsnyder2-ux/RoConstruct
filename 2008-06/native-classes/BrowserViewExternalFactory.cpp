@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// BrowserViewExternalFactory | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 4524d0a7 | roc native-status --write
 #include <afxwin.h>
 #include "CBrowserViewExternal.h"
 

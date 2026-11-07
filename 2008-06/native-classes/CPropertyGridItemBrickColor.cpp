@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CPropertyGridItemBrickColor | 2008-06 | linked
+// 6/6 exact by name (100%) | 6/6 exact bodies | no strings | verified 2026-11-07| by Espeon (+3) (mixed 4)
+// <<< native-status | src 2b4d3866 | roc native-status --write
 #include "CPropertyGridItemBrickColor.h"
 #include "CRobloxControlColorSelector.h"
 #include "v8datamodel/BrickColor.h"

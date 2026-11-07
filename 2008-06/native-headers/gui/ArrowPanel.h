@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// ArrowPanel | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src c8d05de1 | roc native-status --write
 // 2008-06 native RBX::ArrowPanel and RBX::ArrowButton (inactive). Shape after the donor tools/rbxgs gui/ArrowPanel.h
 // (the donor includes gui/Button.h; the 2008 button classes are in gui/WidgetButtons.h). Read from the binary
 // (tests/record_native_widget.py checks it):

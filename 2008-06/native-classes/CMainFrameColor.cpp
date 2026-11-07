@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CMainFrameColor | 2008-06 | partial
+// 1/2 exact by name (50%) | 1/2 exact bodies | no strings | verified 2026-11-07| by king_originala (mixed 2)
+// <<< native-status | src 412aa694 | roc native-status --write
 #include "CMainFrame.h"
 #include "CRobloxControlColorSelector.h"
 #include "v8datamodel/BrickColor.h"

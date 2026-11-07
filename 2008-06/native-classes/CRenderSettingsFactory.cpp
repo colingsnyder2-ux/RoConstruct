@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRenderSettingsFactory | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src e2bd476c | roc native-status --write
 #include "CRenderSettings.h"
 
 namespace RBX {

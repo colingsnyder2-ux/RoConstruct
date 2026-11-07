@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxViewInit | 2008-06 | linked
+// 3/3 exact by name (100%) | 3/3 exact bodies | no strings | verified 2026-11-07| by Espeon (+2) (mixed 2)
+// <<< native-status | src 9fa33974 | roc native-status --write
 #include "../native-headers/CRobloxView.h"
 #include "../native-headers/CRobloxDoc.h"
 #include "../native-headers/CWorkspace.h"

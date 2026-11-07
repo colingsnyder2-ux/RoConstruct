@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CylinderMesh | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src aea632b4 | roc native-status --write
 // 2008-06 native RBX::ViewNew::CylinderBuilder / CylinderAlongXMesh (inactive).
 //   CylinderBuilder  vtable 00827164 .?AVCylinderBuilder@ViewNew@RBX@@ -> LevelBuilder (mdisp 0); slots 0 build 00500d30
 //                    (inherited), 1 buildTop 004fd5c0, 2 buildBottom 004fd650, 3 buildLeft 004fd620, 4 buildRight 004fd590,

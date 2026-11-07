@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CScriptEditor | 2008-06 | linked
+// 34/34 exact by name (100%) | 34/34 exact bodies | no strings | verified 2026-11-07| by king_originala (+4) (mixed 5)
+// <<< native-status | src ad56528c | roc native-status --write
 #include "CScriptEditor.h"
 #include "script/Script.h"
 #include "v8datamodel/DataModel.h"

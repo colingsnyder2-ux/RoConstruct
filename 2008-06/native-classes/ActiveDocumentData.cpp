@@ -1,7 +1,29 @@
+// >>> native-status (generated) -- do not edit >>>
+// ActiveDocumentData | 2008-06 | linked
+// 1/1 exact by name (100%) | 1/1 exact bodies | no strings | verified 2026-11-07| by EspClaude (deepseek:deepseek-chat)
+// <<< native-status | src 536795ad | roc native-status --write
 #include "ActiveDocView.h"
 #include "CRobloxDoc.h"
 
+CRobloxDoc* currentDocument = 0;
+// Transitional provider for still-linked recovered bodies. currentDocument is
+// the 2008 state used by the native document source.
 CRobloxDoc* activeRobloxDoc = 0;
 std::set<ActiveDocView*> activeDocViews;
 boost::shared_ptr<RBX::DataModel> activeDocDataModel;
 
+void setCurrentDocument(bool makeCurrent, CRobloxDoc* document) {
+    boost::shared_ptr<RBX::DataModel> oldDataModel(activeDocDataModel);
+    if (makeCurrent) {
+        currentDocument = document;
+        activeDocDataModel = document->getDataModel();
+    } else {
+        if (document == currentDocument)
+            currentDocument = 0;
+        if (document->getDataModel() == activeDocDataModel)
+            activeDocDataModel.reset();
+    }
+    if (activeDocDataModel != oldDataModel)
+        for (std::set<ActiveDocView*>::iterator it = activeDocViews.begin(); it != activeDocViews.end(); ++it)
+            (*it)->update(activeDocDataModel, oldDataModel);
+}

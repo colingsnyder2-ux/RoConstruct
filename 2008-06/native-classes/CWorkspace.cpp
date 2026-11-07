@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CWorkspace | 2008-06 | linked
+// 4/4 exact by name (100%) | 4/4 exact bodies | no strings | verified 2026-11-07| by king_originala (+2) (mixed 4)
+// <<< native-status | src 56bb74a3 | roc native-status --write
 #include <afxwin.h>
 #include "../native-headers/CWorkspace.h"
 #include "../native-headers/v8datamodel/DataModel.h"

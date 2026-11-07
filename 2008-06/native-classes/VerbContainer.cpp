@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// VerbContainer | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 0719d6e4 | roc native-status --write
 #include "../native-headers/v8tree/VerbContainer.h"
 
 RBX::VerbContainer::VerbContainer(VerbContainer* parent) : parent(parent) {}

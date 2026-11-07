@@ -1,5 +1,9 @@
 // 2008-06 native RBX::Tool (inactive): the Tool part of the original Tool unit 005fd3a0..006004d0 (dynamic
 // initializers 007f7640..007f7990, atexit functions 007fffc0..00800110). Evidence in native-headers/v8datamodel/Tool.h.
+// >>> native-status (generated) -- do not edit >>>
+// Tool | 2008-06 | linked
+// 1/1 exact by name (100%) | named 1 | 1/1 exact bodies | no strings | verified 2026-11-07| by -
+// <<< native-status | src d5ee0051 | roc native-status --write
 #include "v8datamodel/Tool.h"
 #include "v8datamodel/PartInstance.h"
 #include "Network/Players.h"

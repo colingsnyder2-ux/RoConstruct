@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CBrowserDoc | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 68e31841 | roc native-status --write
 #include <afxwin.h>
 
 class CBrowserView;
@@ -8,7 +12,7 @@ class CBrowserView;
 class CNullDoc : public CDocument {
     DECLARE_DYNCREATE(CNullDoc)
 public:
-    CNullDoc() {}
+    CNullDoc();
 };
 
 // Declarations only. RTTI of vtable 0080d2c4: CBrowserDoc : CNullDoc : CDocument. CRuntimeClass 0080cfac

@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// ContentRead | 2008-06 | inactive
+// 0/1 exact by name (0%) | 0/1 exact bodies | no strings | verified 2026-11-07| by Espeon (roc repair)
+// <<< native-status | src 715b6cb2 | roc native-status --write
 #include "util/ContentRequest.h"
 #include "util/StandardOut.h"
 #include <sstream>

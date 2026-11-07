@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CMultiPlayerPane | 2008-06 | linked
+// 5/5 exact by name (100%) | 5/5 exact bodies | no strings | verified 2026-11-07| by auto (+1) (mixed 2)
+// <<< native-status | src 9cb453fd | roc native-status --write
 #include "../native-headers/CMultiPlayerPane.h"
 #include "../native-headers/CChatPrompt.h"
 

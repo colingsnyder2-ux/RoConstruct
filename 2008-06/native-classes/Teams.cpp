@@ -1,4 +1,8 @@
 // 2008-06 native RBX::Teams (inactive); evidence in native-headers/v8datamodel/Teams.h.
+// >>> native-status (generated) -- do not edit >>>
+// Teams | 2008-06 | linked
+// 2/2 exact by name (100%) | 2/2 exact bodies | no strings | verified 2026-11-07| by auto (+1) (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 68cf01f2 | roc native-status --write
 #include "v8datamodel/Teams.h"
 #include <algorithm>
 #include "Network/Players.h" // native Network::Players (ServiceProvider::find<Players>, 00491d50)

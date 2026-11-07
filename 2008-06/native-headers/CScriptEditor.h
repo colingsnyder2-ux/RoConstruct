@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CScriptEditor | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 15706d41 | roc native-status --write
 #include <afxwin.h>
 #include <afxext.h>
 #include <afxdlgs.h>
@@ -100,7 +104,13 @@ protected:
 };
 }
 
-#include "CScriptDoc.h"
+// Declaration only (CRuntimeClass 0081b1ec, size 0x5c = CDocument + shared_ptr).
+// CScriptEditor::OnUpdate 004657f0 reads the script shared_ptr at +0x54.
+class CScriptDoc : public CDocument {
+    DECLARE_DYNCREATE(CScriptDoc)
+public:
+    boost::shared_ptr<RBX::Script> script;   // +0x54
+};
 
 // Inactive layout recovery: CRuntimeClass 0081b208 (size 0x160, CreateObject 00465160),
 // RTTI base list at vtables 0081b3dc/0081b3d0/0081b3bc/0081b3a8, constructor 00465010 and

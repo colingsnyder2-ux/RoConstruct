@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// NullTool | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 4f6a3c9f | roc native-status --write
 #include "v8datamodel/MouseCommand.h"
 #include "util/Name.h"
 

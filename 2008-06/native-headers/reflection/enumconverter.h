@@ -4,6 +4,10 @@
 // index +0x10) and lookup 004aa0d0: two Name*-keyed maps at +0x30/+0x50, then five vectors
 // (enumToString is the std::string one at +0x88); no string-keyed maps.
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// enumconverter | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 06f7b13f | roc native-status --write
 #include <boost/bind.hpp>
 #include <vector>
 #include <algorithm>

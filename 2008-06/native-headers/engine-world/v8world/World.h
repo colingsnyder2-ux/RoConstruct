@@ -1,6 +1,10 @@
 // Inactive typed candidate: four notifier bases proved by RTTI; trailing owned array still missing.
 // Constructor and destructor do not yet match. No runtime/class-swap acceptance.
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// World | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src fefd356f | roc native-status --write
 #include <set>
 #include <boost/scoped_ptr.hpp>
 #include <G3D/Array.h>
@@ -66,15 +70,6 @@ namespace RBX
         boost::scoped_ptr<Profiling::CodeProfiler> profilingBroadphase;
 	public:
 		static bool disableEnvironmentalThrottle;
-
-		enum EThrottle
-		{
-			DefaultAuto,
-			Disabled,
-			Random,
-			Always
-		};
-		static EThrottle environmentalThrottle;
   
 	public:
 		void createJoints(Primitive* p);

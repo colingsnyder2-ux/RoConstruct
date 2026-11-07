@@ -1,4 +1,8 @@
 // Request and read bodies match; other stream helpers and runtime ABI remain unverified.
+// >>> native-status (generated) -- do not edit >>>
+// HttpWinInet | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 1df64f89 | roc native-status --write
 #define NDEBUG 1
 #define _CPPUNWIND 1
 #include <shlwapi.h>

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Block2008 | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 85c2c7b2 | roc native-status --write
 // 2008-06 native RBX::Block (inactive); non-colliding name, see v8world/Geometry2008.h.
 //   RTTI     vtable 0083f7ec .?AVBlock@RBX@@ -> Geometry (mdisp 0); 9 slots: 0 onSetSize 00648fd0, 1 ??_G 005e73b0
 //            (folded with Geometry's: the destructor is empty), 2 getGeometryType 0077d810 (folded `mov eax, 2`),

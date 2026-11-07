@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// ContentRequest | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 0cd0bc7d | roc native-status --write
 #include <iosfwd>
 #include <string>
 #include <boost/function.hpp>

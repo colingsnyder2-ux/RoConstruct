@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CSelectionTreeCtrl | 2008-06 | linked
+// 31/31 exact by name (100%) | 31/31 exact bodies | no strings | verified 2026-11-07| by king_originala (+7) (mixed 7)
+// <<< native-status | src 1938dc3f | roc native-status --write
 #include "CSelectionTreeCtrl.h"
 #include "CRobloxDoc.h"
 #include "v8tree/Instance.h"

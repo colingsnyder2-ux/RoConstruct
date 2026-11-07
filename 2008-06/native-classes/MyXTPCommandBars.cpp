@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// MyXTPCommandBars | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 09b4cdea | roc native-status --write
 #include <afxwin.h>
 #include <afxole.h>
 #include <afxcmn.h>

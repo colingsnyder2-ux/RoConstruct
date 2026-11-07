@@ -1,5 +1,9 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-import-length /I{headers}/std-noinline-string
 // getLogPath matches; logDirectory remains an inactive draft.
+// >>> native-status (generated) -- do not edit >>>
+// MainLogPath | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 6804d356 | roc native-status --write
 #include "CRobloxApp.h"
 #include "util/FileSystem.h"
 #include <shlwapi.h>

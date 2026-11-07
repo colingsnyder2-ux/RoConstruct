@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
+// >>> native-status (generated) -- do not edit >>>
+// DragPrimitiveBounds | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 6892ac0f | roc native-status --write
 #include "tool/Dragger.h"
 #include "tool/DragUtilities.h"
 #include "v8datamodel/PartInstance.h"

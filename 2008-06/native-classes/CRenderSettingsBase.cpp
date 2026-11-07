@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRenderSettingsBase | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src d55f0f27 | roc native-status --write
 #include "CRenderSettings.h"
 #include <G3D/format.h>
 #include <stdexcept>

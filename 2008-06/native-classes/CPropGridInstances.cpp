@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CPropGridInstances | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 0e444415 | roc native-status --write
 #include "CPropGrid.h"
 #include "v8tree/Instance.h"
 

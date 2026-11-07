@@ -1,5 +1,9 @@
 // 2008-06 native gui Button unit (inactive): KeyButton, ImageWidget, ImageButton, ImageKeyButton, 0064ef90..0064f6a0.
 // Layout and addresses in native-headers/gui/WidgetButtons.h; verified by tests/record_native_widget.py.
+// >>> native-status (generated) -- do not edit >>>
+// WidgetButtons | 2008-06 | partial
+// 9/10 exact by name (90%) | 9/10 exact bodies | no strings | verified 2026-11-07| by king_originala (+5) (mixed 3)
+// <<< native-status | src 9bfe438a | roc native-status --write
 #include "gui/WidgetButtons.h"
 
 namespace RBX

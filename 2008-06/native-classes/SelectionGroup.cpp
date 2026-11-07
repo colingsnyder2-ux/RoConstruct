@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// SelectionGroup | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 0952db8c | roc native-status --write
 #include "SelectionGroup.h"
 #include "v8tree/Instance.h"
 #include <algorithm>

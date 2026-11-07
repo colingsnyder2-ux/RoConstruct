@@ -15,6 +15,10 @@
 /// Software Foundation; either version 2 of the License, or (at your
 /// option) any later version.
 
+// >>> native-status (generated) -- do not edit >>>
+// RakPeer | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 495fef3b | roc native-status --write
 #ifndef __RAK_PEER_H
 #define __RAK_PEER_H
 

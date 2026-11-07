@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ServiceProvider | 2008-06 | partial
+// 1/3 exact by name (33%) | 1/3 exact bodies | no strings | verified 2026-11-07| by colin (mixed 2)
+// <<< native-status | src 9d5cf03b | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "../native-headers/v8datamodel/Selection.h"
 #include "util/RunStateOwner.h"

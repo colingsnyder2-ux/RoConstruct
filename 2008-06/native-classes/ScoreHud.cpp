@@ -1,5 +1,9 @@
 // 2008-06 native RBX::ScoreHud unit (inactive): 00650f80..00656488.
 // Layout and addresses in native-headers/gui/ScoreHud.h; verified by tests/record_native_hud.py.
+// >>> native-status (generated) -- do not edit >>>
+// ScoreHud | 2008-06 | partial
+// 5/6 exact by name (83%) | 5/6 exact bodies | no strings | verified 2026-11-07| by king_originala (+1) (mixed 4)
+// <<< native-status | src 0cb9a66e | roc native-status --write
 #include "gui/ScoreHud.h"
 #include "v8tree/Service.h"
 #include "Network/Players.h"

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Connector2008 | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src cda769f5 | roc native-status --write
 // 2008-06 native RBX::Connector, ContactConnector, PointToPointBreakConnector, NormalBreakConnector, RotateConnector
 // (inactive). Declared under a non-colliding name: the original path v8kernel/Connector.h is reached through the donor
 // v8kernel/KernelData.h <- Kernel.h <- IPipelined.h by every engine unit (Edge, Joint, Contact, Primitive, World ...),

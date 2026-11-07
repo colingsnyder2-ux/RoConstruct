@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CSettingsDialog | 2008-06 | linked
+// 4/4 exact by name (100%) | 4/4 exact bodies | no strings | verified 2026-11-07| by king_originala (+2) (mixed 3)
+// <<< native-status | src a9685516 | roc native-status --write
 #include "CSettingsDialog.h"
 #include "v8datamodel/GlobalSettings.h"
 #include "v8datamodel/Selection.h"

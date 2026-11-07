@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxViewMethods | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 44424274 | roc native-status --write
 #include "../native-headers/CRobloxView.h"
 #include "../native-headers/CRobloxDoc.h"
 #include "../native-headers/CWorkspace.h"
@@ -7,7 +11,7 @@
 #include <fstream>
 #include <afxdlgs.h>
 
-void setActiveDocument(bool, CRobloxDoc*);
+void fn_00405aa0(bool, CDocument*); // activation bookkeeping, unrecovered
 
 // The target calls std::string::compare(const char*) through the MSVCP import; taking the member's
 // address keeps the call out of line.
@@ -77,10 +81,10 @@ void CRobloxView::layout() {
 void CRobloxView::OnActivateView(BOOL activate, CView* activated, CView* deactivated) {
     CView::OnActivateView(activate, activated, deactivated);
     if (activate) {
-        setActiveDocument(true, static_cast<CRobloxDoc*>(m_pDocument));
+        fn_00405aa0(true, m_pDocument);
         window.setActive(true);
     } else if (activated != deactivated) {
-        setActiveDocument(false, static_cast<CRobloxDoc*>(m_pDocument));
+        fn_00405aa0(false, m_pDocument);
         window.setActive(false);
     }
 }
@@ -148,7 +152,7 @@ LRESULT CRobloxView::updateReflector(WPARAM, LPARAM) {
         }
         bool present = reflector.m_hWnd != 0;
         if (show != present) {
-            if (show) reflector.initialize(this, const_cast<RBX::DataModel*>(getDataModel().get()));
+            if (show) reflector.create(this, getDataModel().get());
             else reflector.DestroyWindow();
             layout();
         }
@@ -180,6 +184,24 @@ void CRobloxView::detachDataModel() {
 void CRobloxView::OnDestroy() {
     detachDataModel();
     CView::OnDestroy();
+}
+
+// Helpers in the browser-view unit: 004060d0 builds the site address, 0040e160 appends a path,
+// 0040f050 opens the popup window for it.
+CString fn_004060d0();
+CString fn_0040e160(const CString&, const char*);
+void fn_0040f050(RECT, CWnd*, CString, int);
+
+// 00459570: help popup, centred in the client area with a 12 pixel margin.
+// 0040f050 takes a trailing int (0); 004060d0 takes none.
+void CRobloxView::showHelp() {
+    RECT client;
+    ::GetClientRect(window.m_hWnd, &client);
+    ::InflateRect(&client, -12, -12);
+    client.right = (client.right - client.left) / 2;
+    int height = client.bottom - client.top;
+    client.bottom = std::min(480, height) - client.top;
+    fn_0040f050(client, &window, fn_0040e160(fn_004060d0(), "/Game/Help.aspx"), 0);
 }
 
 // The target calls CString::operator PCXSTR through the MFC import, so nothing is expanded here.

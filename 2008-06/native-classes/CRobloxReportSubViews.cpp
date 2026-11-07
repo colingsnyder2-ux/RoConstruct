@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxReportSubViews | 2008-06 | linked
+// 4/4 exact by name (100%) | 4/4 exact bodies | no strings | verified 2026-11-07| by king_originala (+1) (mixed 2)
+// <<< native-status | src db65e3ac | roc native-status --write
 #include "CRobloxReportSubViews.h"
 #include "CRobloxDoc.h"
 

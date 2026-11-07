@@ -1,6 +1,10 @@
 // 2008-06 native RBX::Rocket (inactive); evidence in native-headers/v8datamodel/Rocket.h. The original compiles it
 // in the BodyMover unit (0062e090..00633101), so it uses the same unit profile (see
 // tests/record_native_body_movers.py). Verified by tests/record_native_body_movers.py.
+// >>> native-status (generated) -- do not edit >>>
+// Rocket | 2008-06 | linked
+// 1/1 exact by name (100%) | named 1 | 1/1 exact bodies | 1/1 strings | verified 2026-11-07| by Espeon (deepseek:deepseek-chat)
+// <<< native-status | src be2bf013 | roc native-status --write
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"
 #ifdef NATIVE_ROCKET_PENDING

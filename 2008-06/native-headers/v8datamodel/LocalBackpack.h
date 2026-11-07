@@ -1,9 +1,12 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// LocalBackpack | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 0648c8e4 | roc native-status --write
 #include "v8datamodel/Hopper.h"
 #include "Network/Player.h"
 
 namespace RBX {
-namespace Network { class Players; }
 extern char sLocalBackpackItem[];
 class LocalBackpackItem : public DescribedCreatable<LocalBackpackItem, Widget, sLocalBackpackItem> {
     boost::shared_ptr<BackpackItem> myItem;

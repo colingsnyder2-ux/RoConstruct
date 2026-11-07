@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// Profiling | 2008-06 | partial
+// 2/3 exact by name (67%) | 2/3 exact bodies | no strings | verified 2026-11-07| by king_originala (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 8f1c6f1c | roc native-status --write
 #include "util/Profiling.h"
 
 namespace RBX

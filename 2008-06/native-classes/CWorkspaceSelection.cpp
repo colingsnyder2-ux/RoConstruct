@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CWorkspaceSelection | 2008-06 | linked
+// 2/2 exact by name (100%) | 2/2 exact bodies | no strings | verified 2026-11-07| by EspClaude (+1) (mixed 2)
+// <<< native-status | src 34b8d98d | roc native-status --write
 #include <afxwin.h>
 #include <algorithm>
 #include <boost/bind.hpp>

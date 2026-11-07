@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// custommesh | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src c61d32b5 | roc native-status --write
 
 #include "v8tree/Instance.h"
 #include "util/TextureId.h"

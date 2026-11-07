@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CObjectBrowser | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src c343b8fe | roc native-status --write
 #include "CClassTreeView.h"
 
 // Inactive layout recovery: the object browser view hosting the three reflection panes.

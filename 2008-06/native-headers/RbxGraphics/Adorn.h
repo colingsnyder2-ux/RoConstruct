@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Adorn | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src f2b0d550 | roc native-status --write
 #include <string>
 #include <G3D/Vector2.h>
 #include <G3D/Rect2D.h>
@@ -60,7 +64,6 @@ namespace RBX
 		virtual void sphere(const G3D::Sphere& sphere, const G3D::Color4& solidColor, const G3D::Color4& wireColor) = 0;
 		virtual void explosion(const G3D::Sphere& sph, const G3D::Color4& solidColor, const G3D::Color4& wireColor) = 0;
 		virtual void sparkle() = 0;
-		virtual void sparkles() = 0; // 2008 slot 19 (+0x4c)
 		virtual void cylinderAlongX(float radius, float length, const G3D::Color4& solidColor, const G3D::Color4& wireColor) = 0;
 		virtual void ray(const G3D::Ray& ray, const G3D::Color4& color, float scale) = 0;
 		virtual void lineSegment(const G3D::LineSegment& lineSegment, const G3D::Color4& color, float scale) = 0;

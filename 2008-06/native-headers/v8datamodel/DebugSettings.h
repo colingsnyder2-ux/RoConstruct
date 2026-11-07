@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// DebugSettings | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 8a71a6f8 | roc native-status --write
 // 2008-06 native RBX::DebugSettings (inactive). Shape after the donor tools/rbxgs v8datamodel/DebugSettings.h; every
 // base, field, accessor and descriptor below is read from the 2008-06 binary:
 //   RTTI       vtable 0082e6e4 .?AVDebugSettings@RBX@@ -> GlobalSettingsItem<DebugSettings, sDebugSettings> (vtable
@@ -22,7 +26,9 @@
 #include "v8datamodel/GlobalSettings.h"
 #include "util/Debug.h"
 #include <string>
+#ifdef NATIVE_DEBUGSETTINGS_PENDING
 #include "v8world/World.h"
+#endif
 
 struct NativeSettingsItemsLayout;
 
@@ -81,8 +87,10 @@ namespace RBX
 		void setShowWorldCoordinateFrames(bool value);     // 00565cb0
 
 		// "Throttle"
+#ifdef NATIVE_DEBUGSETTINGS_PENDING
 		World::EThrottle getEnvironmentalThrottle() const; // 005631b0
 		void setEnvironmentalThrottle(World::EThrottle value); // 00565d40
+#endif
 		bool get30FpsThrottle() const;                     // 005631a0
 		void set30FpsThrottle(bool value);                 // 00565d10
 		bool getDistributedPhysics() const;                // 00563190

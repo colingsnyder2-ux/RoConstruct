@@ -3800,7 +3800,7 @@
   "path": "2008-06/src/Client/App/include/v8world/World.h"
  },
  "005e61b0": {
-  "line": 175,
+  "line": 179,
   "path": "2008-06/src/Client/App/v8world/Assembly.cpp"
  },
  "005e72a0": {
@@ -6616,15 +6616,15 @@
   "path": "2008-06/src/Client/App/v8world/IWorldStage.cpp"
  },
  "0064b1b0": {
-  "line": 314,
+  "line": 318,
   "path": "2008-06/src/Client/App/v8world/SleepStage.cpp"
  },
  "0064c130": {
-  "line": 544,
+  "line": 548,
   "path": "2008-06/src/Client/App/v8world/SleepStage.cpp"
  },
  "0064ca00": {
-  "line": 726,
+  "line": 730,
   "path": "2008-06/src/Client/App/v8world/SleepStage.cpp"
  },
  "0064d060": {
@@ -7680,11 +7680,11 @@
   "path": "2008-06/src/Client/App/tool/RunDragger.cpp"
  },
  "0066f5f0": {
-  "line": 64,
+  "line": 68,
   "path": "2008-06/src/Client/App/v8world/AssemblyStage.cpp"
  },
  "0066f6e0": {
-  "line": 106,
+  "line": 110,
   "path": "2008-06/src/Client/App/v8world/AssemblyStage.cpp"
  },
  "00676480": {
@@ -7812,7 +7812,7 @@
   "path": "2008-06/src/Client/App/include/v8world/World.h"
  },
  "006fa3f0": {
-  "line": 16,
+  "line": 20,
   "path": "2008-06/src/Client/App/v8world/AssemblyStage.cpp"
  },
  "006fd220": {

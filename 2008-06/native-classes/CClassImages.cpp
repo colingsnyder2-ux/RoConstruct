@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CClassImages | 2008-06 | linked
+// 2/2 exact by name (100%) | 2/2 exact bodies | no strings | verified 2026-11-07| by auto (+1) (deepseek:deepseek-chat)
+// <<< native-status | src d699077e | roc native-status --write
 #include "CClassImages.h"
 #include <XTToolkitPro.h>
 #include <stdexcept>

@@ -1,5 +1,9 @@
 // 2008-06 native RBX::GameSettings (inactive); evidence in native-headers/v8datamodel/GameSettings.h.
 // Verified by tests/record_native_settings_items.py (unit profile: document-swap flags).
+// >>> native-status (generated) -- do not edit >>>
+// GameSettings | 2008-06 | linked
+// 1/1 exact by name (100%) | 1/1 exact bodies | no strings | verified 2026-11-07| by king_originala (deepseek:deepseek-flash)
+// <<< native-status | src 1a7bb98a | roc native-status --write
 #include "v8datamodel/GameSettings.h"
 #include <G3D/format.h>
 #include <boost/thread/recursive_mutex.hpp>

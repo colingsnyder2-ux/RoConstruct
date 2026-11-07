@@ -1,5 +1,8 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/axis-vector-negation
-// Harvest only the two verified render methods; exclude incidental profile helpers.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// AxisMoveToolRender | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 57e00f3e | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 #include "tool/MegaDragger.h"

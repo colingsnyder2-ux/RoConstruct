@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Instance | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 49ce2d01 | roc native-status --write
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
@@ -21,35 +25,8 @@ class IReferenceBinder;
 class XmlState;
 class Name;
 class RaiseDescendentAdded2;
-struct ChildAdded
-{
-public:
-	const boost::shared_ptr<Instance> child;
-
-public:
-	ChildAdded(const ChildAdded&);
-	ChildAdded(Instance* child)
-		: child(shared_from(child))
-	{
-	}
-private:
-	ChildAdded& operator=(const ChildAdded&);
-};
-
-struct ChildRemoved
-{
-public:
-	const boost::shared_ptr<Instance> child;
-
-public:
-	ChildRemoved(const ChildRemoved&);
-	ChildRemoved(Instance* child)
-		: child(shared_from(child))
-	{
-	}
-private:
-	ChildRemoved& operator=(const ChildRemoved&);
-};
+struct ChildAdded;
+struct ChildRemoved;
 struct DescendantAdded;
 struct DescendantRemoving;
 struct AncestorChanged {
@@ -81,12 +58,9 @@ public:
     static Reflection::BoundProp<bool, 1> propArchivable;
     static const Reflection::RefPropDescriptor<Instance, Instance> propParent;
     static const Reflection::PropDescriptor<Instance, std::string> desc_Name;
-    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childAdded;
-    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childRemoved;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentAdded;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentRemoving;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_ancestryChanged;
-    static Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> event_propertyChanged;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>, const Reflection::PropertyDescriptor*)> event_itemChanged;
     Instance();
     explicit Instance(const char*);
@@ -108,14 +82,6 @@ public:
     virtual boost::shared_ptr<Instance> createChild(const Name&);
     const std::string& getName() const { return name; }
     Instance* getParent() const { return parent; }
-    const Instance* getRootAncestor() const { return parent ? parent->getRootAncestor() : this; }
-    Instance* getRootAncestor() { return parent ? parent->getRootAncestor() : this; }
-    bool isAncestorOf(const Instance* descendent) const {
-        if (!descendent) return false;
-        Instance* ancestor = descendent->parent;
-        if (ancestor == this) return true;
-        return isAncestorOf(ancestor);
-    }
     bool isDescendentOf(const Instance*) const; // 00422ae0
     // 00423700; name provisional
     bool canAcceptChildren(std::vector<boost::shared_ptr<Instance> >::const_iterator,
@@ -171,10 +137,7 @@ public:
     template<class T> T* queryTypedParent() { return dynamic_cast<T*>(parent); }
     bool canAddChild(const Instance*) const;
     void setParent(Instance*);
-    __declspec(noinline) bool contains(const Instance*) const;
-    std::string getFullName() const;
-    static void signalDescendentRemoving(const boost::shared_ptr<Instance>&, Instance*, Instance*);
-    static void signalDescendentAdded(Instance*, Instance*, Instance*);
+    bool contains(const Instance*) const;
     void removeAllChildren();
     boost::shared_ptr<Instance> clone();  // ?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ
     void remove();  // ?remove@Instance@RBX@@QAEXXZ

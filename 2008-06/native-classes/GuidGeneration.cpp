@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// GuidGeneration | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src dfcd999b | roc native-status --write
 #include "util/Guid.h"
 #include <windows.h>
 #include <objbase.h>

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CClassTreeView | 2008-06 | linked
+// 13/13 exact by name (100%) | named 1 | 13/13 exact bodies | no strings | verified 2026-11-07| by king_originala (+3) (mixed 6)
+// <<< native-status | src 06b524dd | roc native-status --write
 #include "CClassTreeView.h"
 #include "reflection/object.h"
 #include "reflection/enumconverter.h"

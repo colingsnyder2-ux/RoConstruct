@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CWorkspaceSiteUrl | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src c4603326 | roc native-status --write
 #include "CWorkspace.h"
 #include <servprov.h>
 #include <exdisp.h>

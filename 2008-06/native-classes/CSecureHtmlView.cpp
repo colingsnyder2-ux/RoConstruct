@@ -1,10 +1,14 @@
+// >>> native-status (generated) -- do not edit >>>
+// CSecureHtmlView | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src d99ee39f | roc native-status --write
 #include "CSecureHtmlView.h"
 #include <mshtmdid.h>
 
 // Original 0041dcb0 (defined with CRobloxDHtmlDialog): S_OK when Http::trustCheck accepts the URL.
 HRESULT __cdecl checkDialogUrl(const char* url);
-// Original 00465b50: queries the application IsAdSyndicator endpoint for the URL host.
-bool __cdecl isAdSyndicator(const char* url);
+// Original 00465b50: cracks the URL with ATL::CUrl and compares it against the application base URL.
+bool __cdecl isApplicationUrl(const char* url);
 
 IMPLEMENT_DYNAMIC(CSecureHtmlView, CHtmlView)
 
@@ -39,6 +43,6 @@ void CSecureHtmlView::OnBeforeNavigate2(LPCTSTR url, DWORD flags, LPCTSTR target
                                         CByteArray& postedData, LPCTSTR headers, BOOL* cancel)
 {
     CHtmlView::OnBeforeNavigate2(url, flags, targetFrameName, postedData, headers, cancel);
-    if (strlen(targetFrameName) == 0 && checkDialogUrl(url) != S_OK && !isAdSyndicator(url))
+    if (strlen(targetFrameName) == 0 && checkDialogUrl(url) != S_OK && !isApplicationUrl(url))
         *cancel = TRUE;
 }

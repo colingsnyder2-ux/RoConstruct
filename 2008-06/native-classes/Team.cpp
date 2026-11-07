@@ -1,4 +1,8 @@
 // 2008-06 native RBX::Team (inactive); evidence in native-headers/v8datamodel/Team.h.
+// >>> native-status (generated) -- do not edit >>>
+// Team | 2008-06 | linked
+// 3/3 exact by name (100%) | 3/3 exact bodies | no strings | verified 2026-11-07| by auto (+2) (mixed 2)
+// <<< native-status | src af83d765 | roc native-status --write
 #include "v8datamodel/Team.h"
 #include "v8datamodel/Teams.h"
 

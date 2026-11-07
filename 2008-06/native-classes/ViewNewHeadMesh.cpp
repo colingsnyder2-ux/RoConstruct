@@ -1,4 +1,8 @@
 // 2008-06 native RBX::ViewNew::HeadBuilder / HeadMesh (inactive): the unit 004fdaf0..0050068f.
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewHeadMesh | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 1894b6a1 | roc native-status --write
 #include "ViewNew/HeadMesh.h"
 #include <algorithm>
 #include <math.h>

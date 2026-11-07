@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxDoc | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src f4f9c068 | roc native-status --write
 #include <afxwin.h>
 #include <afxdlgs.h>
 #include <afxpriv.h>
@@ -13,7 +17,6 @@
 #include "script/ScriptContext.h"
 #include "../native-headers/CRobloxDoc.h"
 #include "../native-headers/CSaveToRobloxDialog.h"
-#include "../native-headers/CUploadPlaceDialog.h"
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/CWorkspace.h"
 #include "util/RunStateOwner.h"
@@ -104,10 +107,15 @@ static __declspec(noinline) void launch(const char* first, const char* second)
     if ((UINT_PTR)ShellExecuteA(main->m_hWnd, "open", executable, args, folder, SW_SHOW) <= 32)
         throw std::runtime_error("ShellExecute failed");
 }
-extern CRobloxDoc* activeRobloxDoc;
-void setActiveDocument(bool, CRobloxDoc*);
+extern CRobloxDoc* currentDocument;
+void setCurrentDocument(bool, CRobloxDoc*);
+// Native predicates 00495e60/00495e70 resolve to NetworkClient/NetworkServer lookups.
+namespace RBX { namespace Network {
+class Client { public: static bool clientIsPresent(const Instance*, bool); };
+class Server { public: static bool serverIsPresent(const Instance*, bool); };
+} }
 inline bool canSaveDocument(RBX::DataModel* model) {
-    if (RBX::Network::Players::clientIsPresent(model, true) && !RBX::Network::Players::serverIsPresent(model, true)) return false;
+    if (RBX::Network::Client::clientIsPresent(model, true) && !RBX::Network::Server::serverIsPresent(model, true)) return false;
     return true;
 }
 
@@ -197,7 +205,7 @@ void CRobloxDoc::handle_454170(CCmdUI* ui) {
 void CRobloxDoc::handle_454300(CCmdUI* ui) {
     RBX::DataModel::Lock lock(workspace->getDataModel());
     RBX::RunService* state = getDataModel()->create<RBX::RunService>();
-    bool client = RBX::Network::Players::clientIsPresent(getDataModel().get(), true);
+    bool client = RBX::Network::Client::clientIsPresent(getDataModel().get(), true);
     ui->Enable(!client && state->getRunState() != RBX::RS_RUNNING);
 }
 
@@ -399,8 +407,8 @@ BOOL CRobloxDoc::SaveModified()
     if (!workspace || !workspace->getDataModel()) return TRUE;
     if (!IsModified()) return TRUE;
     RBX::DataModel::Lock request(getDataModel());
-    bool wasRunning = RBX::ServiceProvider::create<RBX::RunService>(getDataModel().get())->getRunState() == RBX::RS_RUNNING;
-    RBX::ServiceProvider::create<RBX::RunService>(getDataModel().get())->setRunState(RBX::RS_PAUSED);
+    bool wasRunning = RBX::ServiceProvider::find<RBX::RunService>(getDataModel().get())->getRunState() == RBX::RS_RUNNING;
+    RBX::ServiceProvider::find<RBX::RunService>(getDataModel().get())->setRunState(RBX::RS_PAUSED);
     RBX::Visit* visit = RBX::ServiceProvider::find<RBX::Visit>(getDataModel().get());
     if (!visit || visit->getUploadUrl() == "NoVisit") {
         SetForegroundWindow(AfxGetMainWnd()->m_hWnd);
@@ -408,10 +416,10 @@ BOOL CRobloxDoc::SaveModified()
     }
     if (visit->getUploadUrl().size() == 0) return TRUE;
     FlashWindow(AfxGetMainWnd()->m_hWnd, FALSE);
-    CUploadPlaceDialog dlg(workspace, 0);
+    CPublishAsPlaceDialog dlg(workspace, 0);
     int result = dlg.DoModal() == IDOK;
     if (!result && wasRunning)
-        RBX::ServiceProvider::create<RBX::RunService>(workspace->getDataModel().get())->setRunState(RBX::RS_RUNNING);
+        RBX::ServiceProvider::find<RBX::RunService>(workspace->getDataModel().get())->setRunState(RBX::RS_RUNNING);
     return result;
 }
 
@@ -491,7 +499,7 @@ void CRobloxDoc::DeleteContents() {
         static_cast<IWorkspace*>(workspace)->Release();
         workspace = 0;
     }
-    if (activeRobloxDoc == this) setActiveDocument(1, this);
+    if (currentDocument == this) setCurrentDocument(1, this);
     CDocument::DeleteContents();
 }
 

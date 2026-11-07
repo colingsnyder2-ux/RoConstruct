@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// MetadataClass | 2008-06 | linked
+// 1/1 exact by name (100%) | 1/1 exact bodies | no strings | verified 2026-11-07| by king_originala (deepseek:deepseek-flash)
+// <<< native-status | src afa929f6 | roc native-status --write
 #include "reflection/Metadata.h"
 #include <algorithm>
 

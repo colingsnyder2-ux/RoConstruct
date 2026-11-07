@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CMainFrameWindow | 2008-06 | inactive
+// 0/1 exact by name (0%) | 0/1 exact bodies | no strings | verified 2026-11-07| by tester
+// <<< native-status | src 4e60f154 | roc native-status --write
 #include "CMainFrame.h"
 
 extern bool nativeLockA, nativeLockB, nativeLockC;

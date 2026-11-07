@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// PartInstanceLocked | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 1ad8bb1e | roc native-status --write
 #include "../native-headers/v8datamodel/PartInstance.h"
 
 namespace RBX {

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ServiceLookup | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src f5a3caa5 | roc native-status --write
 #include "v8tree/Service.h"
 
 size_t RBX::ServiceProvider::newIndex()

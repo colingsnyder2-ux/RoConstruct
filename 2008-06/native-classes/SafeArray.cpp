@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// SafeArray | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 1328c4a0 | roc native-status --write
 #include <afxwin.h>
 #include <atlsafe.h>
 #include "reflection/type.h"

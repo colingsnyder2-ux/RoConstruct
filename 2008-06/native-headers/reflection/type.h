@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// type | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 94de0f25 | roc native-status --write
 #include <boost/any.hpp>
 #include <typeinfo>
 #include <list>
@@ -10,12 +14,6 @@ namespace RBX
 	namespace Reflection
 	{
         typedef std::vector<class Value> ValueCollection;
-
-		struct Tuple // proposal (2008 RTTI .?AUTuple@Reflection@RBX@@, size 0x18)
-		{
-			ValueCollection values;
-			explicit Tuple(size_t count) : values(count) {}
-		};
 
 		class Type : public Descriptor
 		{
@@ -80,9 +78,6 @@ namespace RBX
 
 			// Value constructors 0042d200/0042d240/0042d280 take const references.
 			template<typename ValueType>
-#ifdef NATIVE_VALUE_CTOR_NOINLINE
-			__declspec(noinline)
-#endif
 			Value(const ValueType& value)
 				: _type(&Type::singleton<typename ValueType>()),
 				  value(value)

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CRbxDocTemplate | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src d415dd43 | roc native-status --write
 #include <afxwin.h>
 
 class CRbxDocTemplate : public CMultiDocTemplate {

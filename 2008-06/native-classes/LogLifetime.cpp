@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// LogLifetime | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src c82f1fd2 | roc native-status --write
 #include "util/Log.h"
 #include <windows.h>
 #include <cstdio>

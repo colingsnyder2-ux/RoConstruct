@@ -1,54 +1,48 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxApp | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 34cb4a18 | roc native-status --write
 #include <afxwin.h>
 #include <string>
 #include <vector>
-#include <exception>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include "util/boost.hpp"
-#include "util/Log.h"
 
 // Log manager embedded in CRobloxApp at +0xa4 (constructed with "Roblox" by 0042a1c0).
-// Layout from that constructor: ILogProvider vptr 008104cc at +0; LogManager base at +4 with vptr
+// Layout from that constructor: vptr 008104cc at +0; ThreadLogManager base at +4 with vptr
 // 008104c0, +8 = 0, +c = GetCurrentThreadId(), +10 std::string name; then +2c = 0 and
 // +30 std::string. sizeof 0x4c, as CRobloxApp's next member sits at +0xf0.
-class LogManager {
+class ThreadLogManager {
 public:
-    explicit LogManager(const char* name);
-    virtual ~LogManager();
-    virtual std::string getLogPath() = 0;
-    static void ReportException(const std::exception&);
-    RBX::Log* getLog();
-protected:
-    RBX::Log* log;         // +4, severity +0x20 and filename +0x24 read by destructor
+    explicit ThreadLogManager(const char* name);
+    virtual ~ThreadLogManager();
+private:
+    void* reserved4;       // +4 (0 after construction; role not recovered)
     DWORD threadId;        // +8
     std::string name;      // +c
 };
 
-class ThreadLogManager : public LogManager {
+class LogManagerSink {    // vptr-only first base (008104cc)
 public:
-    ThreadLogManager();
-    virtual ~ThreadLogManager() {}
-    virtual std::string getLogPath();
+    virtual ~LogManagerSink();
 };
 
-class MainLogManager : public RBX::ILogProvider, public LogManager {
+class MainLogManager : public LogManagerSink, public ThreadLogManager {
 public:
     explicit MainLogManager(const char* name);   // 0042a1c0
     ~MainLogManager();
-    virtual RBX::Log* provideLog();               // 0042a5c0
-    virtual std::string getLogPath();             // 00427f30
     void startCrashReporter();                    // 00428180
 private:
     void* crashReporter;   // +2c (0 after construction)
-    std::string logIdentity; // +30, used in the log filename
+    std::string reportUrl; // +30 (role provisional)
 };
 
 // Crash-report uploader owned through CRobloxApp+0x10c: 28 bytes (new(0x1c) in InitInstance).
 // Constructor 0044d610 allocates the 72-byte state; destructor 0044a830.
 class ErrorUploader {
     struct data;
-    static RBX::worker_thread::work_result upload(boost::shared_ptr<data>);
     boost::shared_ptr<data> state;   // +0
     RBX::worker_thread thread;       // +8
 public:
@@ -67,12 +61,10 @@ public:
     virtual BOOL InitInstance();                   // 0044d810 (slot 22)
     virtual int Run();                             // 0044d790 (slot 23)
     virtual int ExitInstance();                    // 0044ad60 (slot 28)
-    BOOL initializeFramework(bool);                // 00449bf0
+    BOOL initializeFramework(void*);               // 00449bf0
     void initializeSettings();                     // 0044c760
     void initializeEmptyDocument();                // 0044a2c0
     BOOL openFiles(std::vector<std::string>::iterator, std::vector<std::string>::iterator); // 0044d1b0
-    int openFileFailed(std::string);                // 0044a950
-    BOOL openFile(std::string);                     // 0044a1f0
     MainLogManager logManager;                     // +0xa4
     std::string version;                           // +0xf0
     boost::scoped_ptr<ErrorUploader> errorUploader; // +0x10c

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Kernel2008 | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src fb82da91 | roc native-status --write
 // 2008-06 native RBX::Kernel (inactive). Declared under a non-colliding name: the original path v8kernel/Kernel.h is
 // included by the donor v8world/IPipelined.h, i.e. by every engine unit (Edge, Joint, Contact, Primitive, World ...),
 // so a header at that path would shadow the donor for nearly all recorders. A unit must not include both this header

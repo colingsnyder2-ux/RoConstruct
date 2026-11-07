@@ -2,10 +2,15 @@
 // Verified by tests/record_native_settings_items.py (unit profile: document-swap flags). Bodies that need a declaration
 // the shared headers lack (World::EThrottle) are guarded by NATIVE_DEBUGSETTINGS_PENDING and checked only against a
 // generated header copy (recorded pending-build-only, not counted).
+// >>> native-status (generated) -- do not edit >>>
+// DebugSettings | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 9fbf36de | roc native-status --write
 #include "v8datamodel/DebugSettings.h"
 #include "v8datamodel/PartInstance.h"
-#include "v8datamodel/ModelInstance.h"
-#include "v8datamodel/Workspace.h"
+#ifdef NATIVE_DEBUGSETTINGS_PENDING
+#include "v8datamodel/ModelInstance.h" // pulls the donor Camera.h, which needs the 2008 class-name declaration
+#endif
 #include "reflection/enumconverter.h"
 #include <G3D/format.h>
 #include <stdexcept>
@@ -174,6 +179,7 @@ namespace RBX
 		}
 	}
 
+#ifdef NATIVE_DEBUGSETTINGS_PENDING
 	void DebugSettings::setShowModelCoordinateFrames(bool value)
 	{
 		if (value != ModelInstance::showModelCoord)
@@ -182,15 +188,7 @@ namespace RBX
 			raisePropertyChanged(prop_ShowModelCoords);
 		}
 	}
-
-	void DebugSettings::setShowWorldCoordinateFrames(bool value)
-	{
-		if (value != Workspace::showWorldCoord)
-		{
-			Workspace::showWorldCoord = value;
-			raisePropertyChanged(prop_ShowWorldCoords);
-		}
-	}
+#endif
 
 	void DebugSettings::setValidatingDebug(bool value)
 	{

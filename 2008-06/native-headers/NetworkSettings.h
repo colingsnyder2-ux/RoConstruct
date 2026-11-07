@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// NetworkSettings | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 9c152d5f | roc native-status --write
 #include "v8datamodel/GlobalSettings.h"
 
 namespace RBX

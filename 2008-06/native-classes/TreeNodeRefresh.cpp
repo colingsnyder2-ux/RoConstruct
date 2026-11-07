@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// TreeNodeRefresh | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src a63d2766 | roc native-status --write
 #include "CRobloxTreeCtrl.h"
 
 void CRobloxTreeCtrlNode::refreshText()

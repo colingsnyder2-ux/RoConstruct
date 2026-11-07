@@ -1,9 +1,12 @@
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxApp | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src a6b08810 | roc native-status --write
 #include "CRobloxApp.h"
 #include <atlbase.h>
 #include "util/standardout.h"
 #include "security/SecurityContext.h"
-#include "util/Profiling.h"
 
 IMPLEMENT_DYNAMIC(CRobloxApp, CWinApp)
 
@@ -29,18 +32,33 @@ int CRobloxApp::Run()
 #include <stdexcept>
 #include "VersionInfo.h" // PJ Naughter CVersionInfo (OpenRBX declaration)
 
-#include "CRobloxCommandLineInfo.h"
-#include "CBrowserDocManager.h"
-#include "CIDEDocManager.h"
-#include "CRenderSettings.h"
+class CRobloxCommandLineInfo : public CCommandLineInfo {
+public:
+    bool flag28, flag29, flag2a, flag2b, flag2c, flag2d, embeddedIde, noStartPage; // +28..+2f
+    std::vector<std::string> files;                                                  // +30
+    CRobloxCommandLineInfo();          // 0044c1b0 (sizeof 72)
+    virtual ~CRobloxCommandLineInfo(); // 0044c360
+};
+class CBrowserDocManager : public CDocManager {
+    CDocTemplate* browserTemplate;     // +20
+public:
+    CBrowserDocManager();              // 00449650 (sizeof 36)
+};
+class CIDEDocManager : public CDocManager {
+    CDocTemplate* templates[4];        // +20..+2c
+public:
+    CIDEDocManager(bool);              // 00449910 (sizeof 48)
+};
 class NativeAtlModule { public: HRESULT RegisterServer(BOOL, const CLSID*); }; // 0044bea0
+class LogManager { public: static void ReportException(const std::exception&); }; // 00428850
 class NativeClassRegistration { public: NativeClassRegistration(); };             // 005c3ca0
 
-extern CString applicationBaseUrlText;                // 0096dcf0
+extern CString nativeCrashReportText;                 // 0096dcf0
 extern NativeAtlModule nativeAtlModule;               // 0096dbb4
 extern HRESULT (__stdcall* nativeRegistrationCallback)(); // 0096dd00
 extern int nativeStartupMode;                         // 0096d358
-namespace RBX { void setHttpTransportMode(int); }      // 00569910
+void nativeSetOutputMode(int);                        // 00569910
+void nativeProfilerEnable(bool);                      // 005c3f00
 void nativeInitializeTypes();                         // 004448f0
 void nativeInitializeCom();                           // 004495a0
 void nativeRegisterNames1();                          // 0041b8a0
@@ -48,12 +66,13 @@ void nativeRegisterNames2();                          // 0041bb70
 void nativeRegisterNames3();                          // 0041bc40
 void nativeSetVersion(const char*);                   // 0049ecf0
 void nativeInitializeCallbacks();                     // 0044cbb0
+void* nativeStartupContext();                         // 00412d50 (+0x130: startup mode)
 void __stdcall nativeSetRegistrationMode(bool);       // 0044d150
 
 BOOL CRobloxApp::InitInstance()
 {
     try {
-        RBX::setHttpTransportMode(0);
+        nativeSetOutputMode(0);
         RBX::StandardOut::singleton()->print(RBX::MESSAGE_INFO, "ROBLOX InitInstance");
         RBX::Security::Impersonator impersonator(RBX::Security::LocalGUI);
         errorUploader.reset(new ErrorUploader);
@@ -72,7 +91,7 @@ BOOL CRobloxApp::InitInstance()
                 DWORD enabled = 1;
                 key.QueryDWORDValue("CrashReport", enabled);
                 const DWORD crashReportingEnabled = enabled;
-                applicationBaseUrlText.ReleaseBuffer();
+                nativeCrashReportText.ReleaseBuffer();
                 if (crashReportingEnabled) logManager.startCrashReporter();
             } else logManager.startCrashReporter();
         }
@@ -94,7 +113,7 @@ BOOL CRobloxApp::InitInstance()
             nativeAtlModule.RegisterServer(TRUE, 0);
             return FALSE;
         }
-        RBX::Profiling::init(true);
+        nativeProfilerEnable(true);
         nativeInitializeTypes();
         static NativeClassRegistration classes;
         nativeRegisterNames1();
@@ -103,8 +122,8 @@ BOOL CRobloxApp::InitInstance()
         AfxEnableControlContainer(0);
         initializeSettings();
         nativeInitializeCallbacks();
-        CRenderSettings& settings = CRenderSettings::singleton();
-        if (!nativeStartupMode) nativeStartupMode = settings.graphicsMode;
+        void* startup = nativeStartupContext();
+        if (!nativeStartupMode) nativeStartupMode = *reinterpret_cast<int*>((char*)startup + 0x130);
         if (nativeStartupMode == 5) command.noStartPage = true;
         nativeRegisterNames3();
         if (command.m_bRunEmbedded || command.m_bRunAutomated) {

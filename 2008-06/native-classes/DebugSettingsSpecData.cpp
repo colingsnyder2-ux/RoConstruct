@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// DebugSettingsSpecData | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 8f0191ae | roc native-status --write
 #include "v8datamodel/DebugSettings.h"
 #include "RenderLib/Profiler.h"
 

@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// CMainFrameXtp | 2008-06 | inactive
+// 0/2 exact by name (0%) | 0/2 exact bodies | no strings | verified 2026-11-07| by king_originala (mixed 2)
+// <<< native-status | src b1f4166d | roc native-status --write
 #include "CMainFrame.h"
 #include "CPatchedControlComboBox.h"
 #include "CRobloxControlColorSelector.h"
@@ -14,11 +18,6 @@ class CRobloxReportPaneView : public CRobloxReportView { DECLARE_DYNCREATE(CRobl
 IMPLEMENT_DYNCREATE(CWrapperView, CView)
 
 CWrapperView::CWrapperView()
-{
-}
-
-// Original 0070bdf0; the embedded tree draws itself.
-void CWrapperView::OnDraw(CDC*)
 {
 }
 

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CDeclarationView | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 4f0dc92a | roc native-status --write
 #include "CDeclarationView.h"
 #include "reflection/function.h"
 #include "reflection/property.h"
@@ -153,7 +157,7 @@ void CDeclarationView::showDescriptor(const RBX::Reflection::Descriptor* descrip
         ownerClass = &signal->owner;
         item = RBX::Metadata::Reflection::singleton()->lookup(*signal);
     } else if (const EnumDescriptor::Item* enumItem = dynamic_cast<const EnumDescriptor::Item*>(descriptor)) {
-        text = G3D::format("%d: %s", enumItem->value, enumItem->name.c_str());
+        text = G3D::format("%d: %s", enumItem->index, enumItem->name.c_str());  // +0xc (donor layout: index)
     } else if (const ClassDescriptor* classDescriptor = dynamic_cast<const ClassDescriptor*>(descriptor)) {
         text = classDescriptor->name.toString();
         item = RBX::Metadata::Reflection::singleton()->lookup(*classDescriptor, false);

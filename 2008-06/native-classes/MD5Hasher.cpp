@@ -1,5 +1,9 @@
 // 2008-06 native RBX::MD5HasherImpl / MD5Hasher::create (inactive); evidence in native-headers/util/MD5Hasher2008.h.
 // Verified by tests/record_native_misc_leaves.py. Rows 0055c540..0055c905 and c_str 0055e320.
+// >>> native-status (generated) -- do not edit >>>
+// MD5Hasher | 2008-06 | linked
+// 1/1 exact by name (100%) | named 1 | 1/1 exact bodies | 2/2 strings | verified 2026-11-07| by colin
+// <<< native-status | src acaad615 | roc native-status --write
 #include "util/MD5Hasher2008.h"
 #include "util/standardout.h"
 #include <atlstr.h>

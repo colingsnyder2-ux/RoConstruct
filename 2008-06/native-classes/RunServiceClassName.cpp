@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// RunServiceClassName | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src c295d2af | roc native-status --write
 #include "util/RunStateOwner.h"
 
 namespace RBX {

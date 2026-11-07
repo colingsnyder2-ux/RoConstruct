@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Sparkles | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 0d4164d1 | roc native-status --write
 // 2008-06 native RBX::Sparkles and its base RBX::Effect (inactive). No donor source: every field, virtual and
 // descriptor below is read from the 2008-06 binary.
 //   RTTI       vtable 0084a234 .?AVSparkles@RBX@@ -> DescribedCreatable<Sparkles, Instance, sSparkles> (23 bases;

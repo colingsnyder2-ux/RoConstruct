@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// WorkspaceStatus | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 6990c216 | roc native-status --write
 #include "util/standardout.h"
 
 void __cdecl reportWorkspaceStatus(unsigned short status, const char* message)

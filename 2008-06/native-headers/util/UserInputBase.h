@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// UserInputBase | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src e01d4605 | roc native-status --write
 #include "RbxGraphics/TextureProxyBase.h"
 #include "util/TextureId.h"
 #include <G3D/Vector2.h>
@@ -8,7 +12,7 @@
 namespace RBX
 {
 	class Adorn;
-	class __declspec(novtable) UserInputBase
+	class UserInputBase
 	{
 	public:
 		enum WrapMode

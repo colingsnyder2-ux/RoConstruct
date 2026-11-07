@@ -1,4 +1,7 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// CInstanceExplorer | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 9c070ae2 | roc native-status --write
 #include "CInstanceExplorer.h"
 #include "CSettingsExplorer.h"
 #include "v8datamodel/Selection.h"
@@ -87,7 +90,9 @@ void CInstanceExplorer::onMarshaledEvent(const RBX::Instance*, RBX::DescendantRe
     populate();
 }
 
-// Original 00421d00; Selection::setSelection<vector<Instance*>::iterator> is 00420d20.
+// Original 00421d00 (exact, with Selection::setSelection<vector<Instance*>::iterator> 00420d20, once the shared
+// v8datamodel/Selection.h template reads addToSelection(boost::get_pointer(*first)); its current first->get()
+// cannot be instantiated for raw Instance* iterators). The vector holds raw pointers: push_back stores 4 bytes.
 void CInstanceExplorer::OnReportSelChanged(NMHDR*, LRESULT*)
 {
     RBX::Selection* selection = RBX::ServiceProvider::create<RBX::Selection>(root.get());

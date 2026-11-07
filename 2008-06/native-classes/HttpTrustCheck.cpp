@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// HttpTrustCheck | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 5760f44f | roc native-status --write
 #define _SCL_SECURE_NO_DEPRECATE
 #include "util/Http.h"
 #include <boost/thread/once.hpp>

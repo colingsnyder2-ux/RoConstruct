@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CMainFrameNewDocument | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 91642fc6 | roc native-status --write
 #include "CMainFrame.h"
 #include "CRobloxApp.h"
 
