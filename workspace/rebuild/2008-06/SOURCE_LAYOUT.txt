@@ -28,3 +28,7 @@ Physical source migration pilot:
 App/src/v8tree/InstanceChildLookup.cpp contains the recovered implementation.
 native-classes/InstanceChildLookup.cpp is a compatibility translation unit.
 Compile one path or the other, never both. The method remains inactive until selected and gated.
+
+App/src/v8tree/InstanceBaseCallbacks.cpp contains the recovered implementation.
+native-classes/InstanceBaseCallbacks.cpp is its compatibility translation unit.
+Compile one path or the other, never both.
