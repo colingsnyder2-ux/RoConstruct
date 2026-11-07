@@ -3,7 +3,7 @@
 ## Maintained and generated areas
 
 - `workspace/`: maintained tools, docs, tests, research and canonical native source.
-- `workspace/rebuild/2008-06/`: canonical native authority; physical provider/include paths remain stable.
+- `workspace/rebuild/2008-06/`: canonical native authority; compatibility paths remain while reviewed sources move.
 - `2008-06/`: public mirror with [project navigation](../2008-06/catalog/README.md).
 - `src/<client>/`: address-named mined functions, separate from class recovery.
 - `drafts/`: durable immutable contributor uploads, including incomplete work.
@@ -19,8 +19,9 @@ RoConstruct snapshots whenever a navigation map is generated. The five discovere
 contributor repositories were refreshed before inventory. Automatic bot branches
 are excluded. No contributor scripts are run and no review cursor is advanced.
 
-This snapshot indexes 54 sources, 6,205 distinct native content versions and
-39,276 origins, with zero reported source errors. Local branch history is included
+The latest published source map indexes 54 sources, 6,354 distinct native content
+versions and 40,134 origins, with zero reported source errors. These are inventory
+counts, not reviewed or integrated counts. Local branch history is included
 without assuming unpublished commits have public GitHub URLs. The exact contents
 of Colin's supplied mewpokemons `0e57052cc3` Instance unit are present as blob
 `e3bf01b832dcea9c8fdd65f63c92315753405f9d`.
@@ -51,20 +52,34 @@ No stub source is added to canonical providers or approved build selection.
 
 ## Work still requiring engineering review
 
-- 129 public-only native paths and additional distinct donor versions require
-  method/header/ABI/proof review before integration. Indexing is not approval.
+- The latest map lists 128 public-only native paths, two substantive differences,
+  and many additional donor versions. These need method/header/ABI/proof review;
+  indexing is not approval. Counts describe the map snapshot, not live progress.
 - ActiveDocumentData and CRobloxDoc contain coupled ownership/lifetime changes;
   keep both versions until their original call/data identities and lifetimes are checked.
-- Live configured and loopback file-lease API requests return unknown endpoint.
-  Physical relocation of potentially active local native/build files is blocked
-  until real ownership protection is restored. Local originals are untouched.
+- Live file leases are working again. Respect active ownership and keep local
+  originals untouched; the experimental client builder is currently leased.
 - The extra remote branch remains the current dirty checkout's branch and a
   legacy local publisher input. Do not delete it underneath workers; migrate those
   consumers and preserve dirty/untracked originals before retiring it.
-- Physical native project moves require include/build/provider/proof path updates
-  and affected gates. The current batch changes navigation instead of invalidating
-  already recorded native proof paths.
+- Only one native source has moved into the requested project layout so far.
+  Remaining moves need include/build/provider/proof updates and affected gates.
 
 Storage cleanup already recovered 285.90 GiB through cache eviction and lossless
 compression. See [storage audit](storage-audit-20261107.md). Reusable inputs,
 databases, drafts, native sources and proof artifacts were retained.
+
+## Subsequent organization and provider work
+
+- `InstanceChildLookup.cpp` now lives at `workspace/rebuild/2008-06/App/src/v8tree/`,
+  with a matching public copy. The original path is a compatibility translation
+  unit: compile either path, never both. Original byte/data and import checks
+  passed; this is inactive evidence, not a runtime class swap.
+- Eight older local-only source versions are retained under
+  `archive/source-snapshots/20261107-prior-local/`, with provenance in
+  `migration/20261107-prior-local-source-versions.json`. The map includes them.
+- The native Doc diagnostic builder checks for duplicate object names and a
+  mismatch between compiled and linked sources. This does not detect every
+  duplicate symbol or prove a linked, safe client.
+- The broader source consolidation, physical moves, donor reviews, real-provider
+  experimental client, cleanup and branch retirement remain unfinished.
