@@ -1,0 +1,1821 @@
+{
+ "client": "2008-06",
+ "sources": {
+  "00401910": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceFactoryTrial.cpp",
+   "line": 1
+  },
+  "00402730": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceFactoryTrial.cpp",
+   "line": 1
+  },
+  "00405aa0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ActiveDocumentData.cpp",
+   "line": 1
+  },
+  "0040ad20": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 86
+  },
+  "0040d140": {
+   "path": "workspace/rebuild/2008-06/native-classes/AuthoringSettings.cpp",
+   "line": 57
+  },
+  "00411be0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CChatPrompt.cpp",
+   "line": 4
+  },
+  "00412800": {
+   "path": "workspace/rebuild/2008-06/native-classes/CChatPrompt.cpp",
+   "line": 7
+  },
+  "00412f30": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassImages.cpp",
+   "line": 26
+  },
+  "00413230": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassImages.cpp",
+   "line": 7
+  },
+  "00415200": {
+   "path": "workspace/rebuild/2008-06/native-classes/ServiceProvider.cpp",
+   "line": 1
+  },
+  "00415b00": {
+   "path": "workspace/rebuild/2008-06/tests/NativeSafeArrayMismatch.cpp",
+   "line": 1
+  },
+  "00416370": {
+   "path": "workspace/rebuild/2008-06/tests/NativeValueVariantMismatch.cpp",
+   "line": 1
+  },
+  "004165e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeSafeArrayMismatch.cpp",
+   "line": 1
+  },
+  "00416900": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFactoryTrial.cpp",
+   "line": 1
+  },
+  "00416920": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFactoryTrial.cpp",
+   "line": 1
+  },
+  "00416950": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFactoryTrial.cpp",
+   "line": 1
+  },
+  "0041dd60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 254
+  },
+  "0041e4d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 1
+  },
+  "0041e550": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 1
+  },
+  "0041e650": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 256
+  },
+  "0041e670": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 259
+  },
+  "0041ef90": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 262
+  },
+  "0041f280": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 271
+  },
+  "0041f9d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CInsertObjectDialog.cpp",
+   "line": 27
+  },
+  "0041f9f0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CInsertObjectDialog.cpp",
+   "line": 34
+  },
+  "0041fb30": {
+   "path": "workspace/rebuild/2008-06/native-classes/MetadataClass.cpp",
+   "line": 10
+  },
+  "0041fbb0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CInsertObjectDialog.cpp",
+   "line": 40
+  },
+  "0041fe00": {
+   "path": "workspace/rebuild/2008-06/native-classes/CInsertObjectDialog.cpp",
+   "line": 18
+  },
+  "0041ff40": {
+   "path": "workspace/rebuild/2008-06/native-classes/CInsertObjectDialog.cpp",
+   "line": 25
+  },
+  "00420580": {
+   "path": "workspace/rebuild/2008-06/native-classes/CInsertObjectDialog.cpp",
+   "line": 47
+  },
+  "004226a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 102
+  },
+  "004226c0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 95
+  },
+  "004226e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 211
+  },
+  "00422720": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 260
+  },
+  "004228f0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 186
+  },
+  "00422900": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 191
+  },
+  "00422930": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 196
+  },
+  "00422950": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 201
+  },
+  "00422960": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 72
+  },
+  "00422b40": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 72
+  },
+  "00422bd0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 109
+  },
+  "00422d10": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 84
+  },
+  "00422da0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 204
+  },
+  "00422e10": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 66
+  },
+  "00422e50": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 216
+  },
+  "00422e90": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 117
+  },
+  "00422ed0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 214
+  },
+  "00422f70": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 225
+  },
+  "004230f0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 244
+  },
+  "00423240": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 232
+  },
+  "004232a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 245
+  },
+  "004233d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 288
+  },
+  "004234d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 223
+  },
+  "00423510": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 381
+  },
+  "00423c40": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 419
+  },
+  "00423d50": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 305
+  },
+  "00424580": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 301
+  },
+  "00424600": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 91
+  },
+  "004246d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 99
+  },
+  "00424750": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 105
+  },
+  "00424900": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 145
+  },
+  "00424ae0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 191
+  },
+  "00424c00": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 342
+  },
+  "00424dd0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 160
+  },
+  "00424f80": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 285
+  },
+  "00425050": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 386
+  },
+  "00425320": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 271
+  },
+  "00425450": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 160
+  },
+  "004256c0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 160
+  },
+  "00425810": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 160
+  },
+  "00425b00": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 60
+  },
+  "00425c90": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 59
+  },
+  "00425da0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 86
+  },
+  "00425de0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 123
+  },
+  "00426010": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 182
+  },
+  "00426100": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 369
+  },
+  "004262c0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 310
+  },
+  "004265e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 111
+  },
+  "00426640": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 125
+  },
+  "00426680": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 130
+  },
+  "00426780": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 322
+  },
+  "00426a80": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 356
+  },
+  "00426bd0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 81
+  },
+  "00426bf0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 147
+  },
+  "00426d60": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "line": 232
+  },
+  "00426ef0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 432
+  },
+  "004270c0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 67
+  },
+  "004271e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp",
+   "line": 141
+  },
+  "00427c20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceStatusTrial.cpp",
+   "line": 1
+  },
+  "004290b0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeAtlErrorCoreTrial.cpp",
+   "line": 1
+  },
+  "00429330": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceErrorTrial.cpp",
+   "line": 1
+  },
+  "0042e570": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042e5e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042e610": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042eac0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp",
+   "line": 6
+  },
+  "0042ed00": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042ee90": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042eec0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042eef0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042ef10": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042f9d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042fb20": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMainFrameColor.cpp",
+   "line": 9
+  },
+  "0042fb80": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042fbb0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "0042fbf0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMainFrameXtp.cpp",
+   "line": 184
+  },
+  "004300d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMainFrameColor.cpp",
+   "line": 19
+  },
+  "00430160": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "004302b0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00430360": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00430440": {
+   "path": "workspace/rebuild/2008-06/tests/NativeFramePaneOwner.cpp",
+   "line": 4
+  },
+  "00430b40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00430bd0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMainFrameWindow.cpp",
+   "line": 25
+  },
+  "004314c0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "004314e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMainFrameXtp.cpp",
+   "line": 66
+  },
+  "00431b40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00431bf0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00431c40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00431ce0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkerThread.cpp",
+   "line": 1
+  },
+  "00432000": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMainFrameDestructor.cpp",
+   "line": 4
+  },
+  "004321f0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMainFrameConstructor.cpp",
+   "line": 10
+  },
+  "00432e30": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp",
+   "line": 4
+  },
+  "00432e50": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp",
+   "line": 5
+  },
+  "00432e60": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp",
+   "line": 24
+  },
+  "00432f20": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp",
+   "line": 13
+  },
+  "00432f60": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp",
+   "line": 18
+  },
+  "00433130": {
+   "path": "workspace/rebuild/2008-06/native-classes/CBrowserFrameWnd.cpp",
+   "line": 12
+  },
+  "004333b0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 41
+  },
+  "00433420": {
+   "path": "workspace/rebuild/2008-06/native-classes/CObjectBrowser.cpp",
+   "line": 11
+  },
+  "00433480": {
+   "path": "workspace/rebuild/2008-06/native-classes/CObjectBrowser.cpp",
+   "line": 15
+  },
+  "004334f0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp",
+   "line": 26
+  },
+  "004335d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 122
+  },
+  "00433670": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp",
+   "line": 17
+  },
+  "004336e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp",
+   "line": 22
+  },
+  "00433860": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 85
+  },
+  "004338d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 36
+  },
+  "004339d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CObjectBrowser.cpp",
+   "line": 35
+  },
+  "00433b80": {
+   "path": "workspace/rebuild/2008-06/native-classes/CObjectBrowser.cpp",
+   "line": 57
+  },
+  "00433d00": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 95
+  },
+  "00433e30": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 57
+  },
+  "00433ea0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp",
+   "line": 60
+  },
+  "00433ef0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 9
+  },
+  "00434ff0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 133
+  },
+  "00435180": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp",
+   "line": 66
+  },
+  "004353e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp",
+   "line": 99
+  },
+  "00435680": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp",
+   "line": 127
+  },
+  "00435c80": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp",
+   "line": 153
+  },
+  "00435e70": {
+   "path": "workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp",
+   "line": 52
+  },
+  "00435eb0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 82
+  },
+  "00435fa0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 67
+  },
+  "00436090": {
+   "path": "workspace/rebuild/2008-06/native-classes/COutputView.cpp",
+   "line": 16
+  },
+  "00436150": {
+   "path": "workspace/rebuild/2008-06/native-classes/COutputView.cpp",
+   "line": 90
+  },
+  "004364b0": {
+   "path": "workspace/rebuild/2008-06/native-classes/COutputView.cpp",
+   "line": 23
+  },
+  "00436a30": {
+   "path": "workspace/rebuild/2008-06/native-classes/COutputView.cpp",
+   "line": 11
+  },
+  "00436b60": {
+   "path": "workspace/rebuild/2008-06/native-classes/COutputView.cpp",
+   "line": 38
+  },
+  "00436ce0": {
+   "path": "workspace/rebuild/2008-06/native-classes/COutputView.cpp",
+   "line": 68
+  },
+  "00437070": {
+   "path": "workspace/rebuild/2008-06/native-classes/COutputView.cpp",
+   "line": 75
+  },
+  "00437150": {
+   "path": "workspace/rebuild/2008-06/native-classes/COutputView.cpp",
+   "line": 86
+  },
+  "004373a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/COutputView.cpp",
+   "line": 60
+  },
+  "00437520": {
+   "path": "workspace/rebuild/2008-06/native-classes/COutputView.cpp",
+   "line": 131
+  },
+  "00437a20": {
+   "path": "workspace/rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp",
+   "line": 6
+  },
+  "00437ab0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp",
+   "line": 14
+  },
+  "00437ae0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp",
+   "line": 20
+  },
+  "00437b90": {
+   "path": "workspace/rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp",
+   "line": 28
+  },
+  "004381f0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp",
+   "line": 34
+  },
+  "004382b0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp",
+   "line": 47
+  },
+  "0043a7d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/PropertyGridWriteTrial.cpp",
+   "line": 1
+  },
+  "0044dde0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp",
+   "line": 95
+  },
+  "0044de10": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp",
+   "line": 40
+  },
+  "0044dfa0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp",
+   "line": 46
+  },
+  "0044dfc0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp",
+   "line": 57
+  },
+  "0044e090": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp",
+   "line": 69
+  },
+  "0044e2e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp",
+   "line": 86
+  },
+  "0044e310": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp",
+   "line": 102
+  },
+  "0044e370": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp",
+   "line": 111
+  },
+  "0044eb90": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp",
+   "line": 17
+  },
+  "0044ec60": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp",
+   "line": 24
+  },
+  "0044f5c0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp",
+   "line": 8
+  },
+  "0044f730": {
+   "path": "workspace/rebuild/2008-06/tests/NativeExitCommand.cpp",
+   "line": 1
+  },
+  "0044fe00": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentUrlTrial.cpp",
+   "line": 1
+  },
+  "00450370": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceFactoryTrial.cpp",
+   "line": 1
+  },
+  "00450450": {
+   "path": "workspace/rebuild/2008-06/native-classes/StandardVerbs.cpp",
+   "line": 4
+  },
+  "00451590": {
+   "path": "workspace/rebuild/2008-06/tests/NativeBinderLayout.cpp",
+   "line": 1
+  },
+  "00451b60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 1
+  },
+  "00452b40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeVisitServiceTrial.cpp",
+   "line": 1
+  },
+  "00452c80": {
+   "path": "workspace/rebuild/2008-06/native-classes/ServiceProvider.cpp",
+   "line": 1
+  },
+  "004530f0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ServiceProvider.cpp",
+   "line": 1
+  },
+  "00453c30": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentExecuteTrial.cpp",
+   "line": 17
+  },
+  "00454ac0": {
+   "path": "workspace/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp",
+   "line": 1
+  },
+  "00454c90": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentLDrawTrial.cpp",
+   "line": 11
+  },
+  "00455a20": {
+   "path": "workspace/rebuild/2008-06/native-classes/DocumentLoadFile.cpp",
+   "line": 1
+  },
+  "00455c30": {
+   "path": "workspace/rebuild/2008-06/native-classes/DocumentInsertModel.cpp",
+   "line": 6
+  },
+  "00456310": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxReportSubViews.cpp",
+   "line": 10
+  },
+  "00458520": {
+   "path": "workspace/rebuild/2008-06/native-classes/StatsService.cpp",
+   "line": 165
+  },
+  "00458a00": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxReportSubViews.cpp",
+   "line": 31
+  },
+  "00458a90": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxReportSubViews.cpp",
+   "line": 44
+  },
+  "00458c80": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxReportSubViews.cpp",
+   "line": 25
+  },
+  "00459ba0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxViewInit.cpp",
+   "line": 1
+  },
+  "00459eb0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxViewInit.cpp",
+   "line": 1
+  },
+  "0045a4a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CRobloxViewInit.cpp",
+   "line": 37
+  },
+  "004638d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 127
+  },
+  "00463910": {
+   "path": "workspace/rebuild/2008-06/native-classes/CObjectBrowser.cpp",
+   "line": 19
+  },
+  "00463930": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 74
+  },
+  "00463980": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 66
+  },
+  "004639a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 372
+  },
+  "00463ed0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 88
+  },
+  "00463f10": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 178
+  },
+  "00463f40": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 187
+  },
+  "00463f80": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 197
+  },
+  "00463fb0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 206
+  },
+  "00463ff0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 216
+  },
+  "00464040": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 229
+  },
+  "00464090": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 242
+  },
+  "004640d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 252
+  },
+  "00464100": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 258
+  },
+  "00464140": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 268
+  },
+  "00464170": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 274
+  },
+  "004641b0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 284
+  },
+  "004641e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 290
+  },
+  "00464270": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 311
+  },
+  "00464300": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 322
+  },
+  "004643b0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 299
+  },
+  "00464460": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 424
+  },
+  "004644e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 97
+  },
+  "00464540": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 334
+  },
+  "00464590": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 442
+  },
+  "00464830": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 460
+  },
+  "00464960": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 105
+  },
+  "00465010": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 45
+  },
+  "00465260": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 134
+  },
+  "00465500": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 118
+  },
+  "004657f0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 111
+  },
+  "00465830": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 54
+  },
+  "004659a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 345
+  },
+  "004659f0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "line": 127
+  },
+  "00466c00": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSettingsDialog.cpp",
+   "line": 22
+  },
+  "00466ca0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSettingsDialog.cpp",
+   "line": 19
+  },
+  "00466e10": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSettingsDialog.cpp",
+   "line": 12
+  },
+  "00467030": {
+   "path": "workspace/rebuild/2008-06/native-classes/CSettingsDialog.cpp",
+   "line": 30
+  },
+  "0046a940": {
+   "path": "workspace/rebuild/2008-06/native-classes/CWorkspace.cpp",
+   "line": 13
+  },
+  "0046aa70": {
+   "path": "workspace/rebuild/2008-06/native-classes/CWorkspaceLoad.cpp",
+   "line": 1
+  },
+  "0046ab60": {
+   "path": "workspace/rebuild/2008-06/native-classes/CWorkspace.cpp",
+   "line": 10
+  },
+  "0046ab90": {
+   "path": "workspace/rebuild/2008-06/native-classes/CWorkspace.cpp",
+   "line": 16
+  },
+  "0046ac90": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFactoryTrial.cpp",
+   "line": 1
+  },
+  "0046ad70": {
+   "path": "workspace/rebuild/2008-06/native-classes/WorkspaceRaiseError.cpp",
+   "line": 1
+  },
+  "0046ae30": {
+   "path": "workspace/rebuild/2008-06/native-classes/InstanceClassLookup.cpp",
+   "line": 3
+  },
+  "0046b0e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CWorkspace.cpp",
+   "line": 24
+  },
+  "0046b750": {
+   "path": "workspace/rebuild/2008-06/native-classes/CWorkspaceSelection.cpp",
+   "line": 12
+  },
+  "0046bd70": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceWriteTrial.cpp",
+   "line": 14
+  },
+  "0046bfd0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorkspaceWriteTrial.cpp",
+   "line": 39
+  },
+  "0046c230": {
+   "path": "workspace/rebuild/2008-06/native-classes/CWorkspaceExecScript.cpp",
+   "line": 8
+  },
+  "0046eb40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawPartShapeTrial.cpp",
+   "line": 1
+  },
+  "0046ecf0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawPartColorTrial.cpp",
+   "line": 1
+  },
+  "0046ed40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawPartTransformTrial.cpp",
+   "line": 1
+  },
+  "0046ef70": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawPartParentTrial.cpp",
+   "line": 1
+  },
+  "0046f000": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawPartWriteTrial.cpp",
+   "line": 1
+  },
+  "0046f200": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawParseTrial.cpp",
+   "line": 1
+  },
+  "0046f6b0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawWriteTrial.cpp",
+   "line": 1
+  },
+  "0046f9f0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeLDrawCompareTrial.cpp",
+   "line": 1
+  },
+  "00493da0": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp",
+   "line": 86
+  },
+  "00494600": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp",
+   "line": 125
+  },
+  "00494740": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp",
+   "line": 172
+  },
+  "00494830": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp",
+   "line": 143
+  },
+  "00495d00": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp",
+   "line": 160
+  },
+  "00495e60": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp",
+   "line": 125
+  },
+  "00495e70": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp",
+   "line": 130
+  },
+  "00495e80": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp",
+   "line": 140
+  },
+  "00495eb0": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp",
+   "line": 146
+  },
+  "00496390": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp",
+   "line": 206
+  },
+  "00499d60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeGuidRegistryConstructorTrial.cpp",
+   "line": 1
+  },
+  "0049a040": {
+   "path": "workspace/rebuild/2008-06/native-classes/GuidRegistryInitialize.cpp",
+   "line": 1
+  },
+  "0049d480": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp",
+   "line": 295
+  },
+  "004aabc0": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkSettings.cpp",
+   "line": 80
+  },
+  "004aad70": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkSettings.cpp",
+   "line": 103
+  },
+  "004aada0": {
+   "path": "workspace/rebuild/2008-06/native-classes/NetworkSettings.cpp",
+   "line": 112
+  },
+  "004aaee0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ProfiledRakPeer.cpp",
+   "line": 3
+  },
+  "004b3a50": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorldServiceFactoriesTrial.cpp",
+   "line": 1
+  },
+  "004cd7e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeWorldServiceFactoriesTrial.cpp",
+   "line": 1
+  },
+  "00551bf0": {
+   "path": "workspace/rebuild/2008-06/native-classes/TextureProxyBase2008.cpp",
+   "line": 13
+  },
+  "00551c70": {
+   "path": "workspace/rebuild/2008-06/native-classes/TextureProxyBase2008.cpp",
+   "line": 19
+  },
+  "00551cb0": {
+   "path": "workspace/rebuild/2008-06/native-classes/TextureProxyBase2008.cpp",
+   "line": 29
+  },
+  "00551cd0": {
+   "path": "workspace/rebuild/2008-06/native-classes/TextureProxyBase2008.cpp",
+   "line": 34
+  },
+  "00551db0": {
+   "path": "workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp",
+   "line": 58
+  },
+  "0055dc80": {
+   "path": "workspace/rebuild/2008-06/native-classes/ContentRead.cpp",
+   "line": 1
+  },
+  "0055e320": {
+   "path": "workspace/rebuild/2008-06/native-classes/MD5Hasher.cpp",
+   "line": 67
+  },
+  "0055fdc0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFindTrial.cpp",
+   "line": 1
+  },
+  "00560460": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFindTrial.cpp",
+   "line": 1
+  },
+  "00561980": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentLoadTrial.cpp",
+   "line": 1
+  },
+  "00561f20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentGetTrial.cpp",
+   "line": 1
+  },
+  "005620f0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentProviderWorkerTrial.cpp",
+   "line": 1
+  },
+  "005666d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/Team.cpp",
+   "line": 48
+  },
+  "00566700": {
+   "path": "workspace/rebuild/2008-06/native-classes/Team.cpp",
+   "line": 62
+  },
+  "00566720": {
+   "path": "workspace/rebuild/2008-06/native-classes/Team.cpp",
+   "line": 76
+  },
+  "00569bf0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeHttpTrustTrial.cpp",
+   "line": 1
+  },
+  "0056a160": {
+   "path": "workspace/rebuild/2008-06/tests/NativeHttpTrustTrial.cpp",
+   "line": 1
+  },
+  "0056a2e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeHttpTrustTrial.cpp",
+   "line": 21
+  },
+  "0056bff0": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 87
+  },
+  "0056c020": {
+   "path": "workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp",
+   "line": 87
+  },
+  "0057d520": {
+   "path": "workspace/rebuild/2008-06/tests/NativeRotateAxisTrial.cpp",
+   "line": 5
+  },
+  "0057d570": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 94
+  },
+  "0057d590": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 98
+  },
+  "0057d5b0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 102
+  },
+  "0057d5d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 106
+  },
+  "0057d5f0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 74
+  },
+  "0057d620": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 78
+  },
+  "0057dc60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeTiltAxisMismatch.cpp",
+   "line": 7
+  },
+  "0057e140": {
+   "path": "workspace/rebuild/2008-06/native-classes/CWorkspaceSelection.cpp",
+   "line": 1
+  },
+  "005819a0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 42
+  },
+  "005819d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 46
+  },
+  "00581a20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 50
+  },
+  "00581a70": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 54
+  },
+  "00581ac0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 58
+  },
+  "00581b10": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 62
+  },
+  "00581b60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 66
+  },
+  "00581bc0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 70
+  },
+  "00581d80": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 1
+  },
+  "00582300": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 86
+  },
+  "005833e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/Verb.cpp",
+   "line": 4
+  },
+  "00584790": {
+   "path": "workspace/rebuild/2008-06/tests/NativeModelLifetimeTrial.cpp",
+   "line": 16
+  },
+  "0058c920": {
+   "path": "workspace/rebuild/2008-06/native-classes/SerializerRoot.cpp",
+   "line": 1
+  },
+  "0059fee0": {
+   "path": "workspace/rebuild/2008-06/native-classes/SpecialShape.cpp",
+   "line": 64
+  },
+  "005a7ea0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeCacheDirectoryTrial.cpp",
+   "line": 1
+  },
+  "005b1470": {
+   "path": "workspace/rebuild/2008-06/native-classes/Accoutrement.cpp",
+   "line": 90
+  },
+  "005bf680": {
+   "path": "workspace/rebuild/2008-06/native-classes/GameSettings.cpp",
+   "line": 67
+  },
+  "005c3ed0": {
+   "path": "workspace/rebuild/2008-06/native-classes/Profiling.cpp",
+   "line": 1
+  },
+  "005c4340": {
+   "path": "workspace/rebuild/2008-06/native-classes/Profiling.cpp",
+   "line": 31
+  },
+  "005c43a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/Profiling.cpp",
+   "line": 39
+  },
+  "005c6090": {
+   "path": "workspace/rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp",
+   "line": 1
+  },
+  "005c6240": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6270": {
+   "path": "workspace/rebuild/2008-06/tests/NativeArrowFactoryTrial.cpp",
+   "line": 1
+  },
+  "005c63a0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMethodsTrial.cpp",
+   "line": 4
+  },
+  "005c6420": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c64e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6580": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c66d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6840": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6990": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6ae0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6c30": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6d80": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6e40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c6f00": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolVerbActionTrial.cpp",
+   "line": 1
+  },
+  "005c6f40": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7030": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7120": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c71e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c72b0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7380": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c74d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c75e0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7680": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7720": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c77c0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeToolCheckedMultiTrial.cpp",
+   "line": 1
+  },
+  "005c7ea0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeStandardVerbsConstructorTrial.cpp",
+   "line": 1
+  },
+  "005c8e50": {
+   "path": "workspace/rebuild/2008-06/native-classes/StatsService.cpp",
+   "line": 77
+  },
+  "005c8e70": {
+   "path": "workspace/rebuild/2008-06/native-classes/StatsService.cpp",
+   "line": 83
+  },
+  "005c8ea0": {
+   "path": "workspace/rebuild/2008-06/native-classes/StatsService.cpp",
+   "line": 89
+  },
+  "005c8f20": {
+   "path": "workspace/rebuild/2008-06/native-classes/StatsService.cpp",
+   "line": 94
+  },
+  "005c9bd0": {
+   "path": "workspace/rebuild/2008-06/native-classes/StatsService.cpp",
+   "line": 154
+  },
+  "005c9c50": {
+   "path": "workspace/rebuild/2008-06/native-classes/StatsService.cpp",
+   "line": 159
+  },
+  "005c9c70": {
+   "path": "workspace/rebuild/2008-06/native-classes/StatsService.cpp",
+   "line": 138
+  },
+  "005c9dc0": {
+   "path": "workspace/rebuild/2008-06/native-classes/StatsService.cpp",
+   "line": 146
+  },
+  "005ca390": {
+   "path": "workspace/rebuild/2008-06/native-classes/UserController.cpp",
+   "line": 72
+  },
+  "005ca500": {
+   "path": "workspace/rebuild/2008-06/native-classes/UserController.cpp",
+   "line": 76
+  },
+  "005ca760": {
+   "path": "workspace/rebuild/2008-06/native-classes/UserController.cpp",
+   "line": 133
+  },
+  "005cfb50": {
+   "path": "workspace/rebuild/2008-06/native-classes/Hopper.cpp",
+   "line": 87
+  },
+  "005d2410": {
+   "path": "workspace/rebuild/2008-06/native-classes/SpawnLocation.cpp",
+   "line": 37
+  },
+  "005d5f20": {
+   "path": "workspace/rebuild/2008-06/native-classes/Teams.cpp",
+   "line": 50
+  },
+  "005d6070": {
+   "path": "workspace/rebuild/2008-06/native-classes/Teams.cpp",
+   "line": 109
+  },
+  "005dcc60": {
+   "path": "workspace/rebuild/2008-06/native-classes/Message.cpp",
+   "line": 78
+  },
+  "005dcde0": {
+   "path": "workspace/rebuild/2008-06/native-classes/Message.cpp",
+   "line": 92
+  },
+  "005eb640": {
+   "path": "workspace/rebuild/2008-06/native-classes/Sky.cpp",
+   "line": 35
+  },
+  "005fe6a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/Tool.cpp",
+   "line": 97
+  },
+  "00601c50": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetChat.cpp",
+   "line": 46
+  },
+  "00601d00": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetChat.cpp",
+   "line": 56
+  },
+  "00609a60": {
+   "path": "workspace/rebuild/2008-06/native-classes/Feature.cpp",
+   "line": 185
+  },
+  "0060a360": {
+   "path": "workspace/rebuild/2008-06/native-classes/Feature.cpp",
+   "line": 99
+  },
+  "0060c340": {
+   "path": "workspace/rebuild/2008-06/native-classes/Feature.cpp",
+   "line": 125
+  },
+  "0060c400": {
+   "path": "workspace/rebuild/2008-06/native-classes/Feature.cpp",
+   "line": 281
+  },
+  "0060c580": {
+   "path": "workspace/rebuild/2008-06/native-classes/Feature.cpp",
+   "line": 303
+  },
+  "0060c600": {
+   "path": "workspace/rebuild/2008-06/native-classes/Feature.cpp",
+   "line": 331
+  },
+  "0060ca00": {
+   "path": "workspace/rebuild/2008-06/native-classes/Feature.cpp",
+   "line": 191
+  },
+  "00618390": {
+   "path": "workspace/rebuild/2008-06/native-classes/Flag.cpp",
+   "line": 34
+  },
+  "006297e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ClickDetector.cpp",
+   "line": 39
+  },
+  "006298d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ClickDetector.cpp",
+   "line": 53
+  },
+  "006299a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ClickDetector.cpp",
+   "line": 46
+  },
+  "00629a70": {
+   "path": "workspace/rebuild/2008-06/native-classes/ClickDetector.cpp",
+   "line": 58
+  },
+  "00629ac0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ClickDetector.cpp",
+   "line": 65
+  },
+  "00629b20": {
+   "path": "workspace/rebuild/2008-06/native-classes/ClickDetector.cpp",
+   "line": 77
+  },
+  "0062d090": {
+   "path": "workspace/rebuild/2008-06/native-classes/ForceField.cpp",
+   "line": 93
+  },
+  "0062d310": {
+   "path": "workspace/rebuild/2008-06/native-classes/ForceField.cpp",
+   "line": 54
+  },
+  "0062d380": {
+   "path": "workspace/rebuild/2008-06/native-classes/ForceField.cpp",
+   "line": 67
+  },
+  "0062d3d0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ForceField.cpp",
+   "line": 88
+  },
+  "0062d570": {
+   "path": "workspace/rebuild/2008-06/native-classes/ForceField.cpp",
+   "line": 98
+  },
+  "0062d6b0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ForceField.cpp",
+   "line": 80
+  },
+  "00632400": {
+   "path": "workspace/rebuild/2008-06/native-classes/BodyMovers.cpp",
+   "line": 162
+  },
+  "00632b50": {
+   "path": "workspace/rebuild/2008-06/native-classes/Rocket.cpp",
+   "line": 46
+  },
+  "0063c810": {
+   "path": "workspace/rebuild/2008-06/native-classes/Seat.cpp",
+   "line": 32
+  },
+  "0063d710": {
+   "path": "workspace/rebuild/2008-06/native-classes/Sparkles.cpp",
+   "line": 45
+  },
+  "0063da90": {
+   "path": "workspace/rebuild/2008-06/native-classes/Sparkles.cpp",
+   "line": 27
+  },
+  "0063dc20": {
+   "path": "workspace/rebuild/2008-06/native-classes/Sparkles.cpp",
+   "line": 33
+  },
+  "0063ec60": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMethodsTrial.cpp",
+   "line": 5
+  },
+  "0063ed20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMethodsTrial.cpp",
+   "line": 23
+  },
+  "0063ed80": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolDragTrial.cpp",
+   "line": 5
+  },
+  "0063ee20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMoveTrial.cpp",
+   "line": 11
+  },
+  "0063f040": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolFindTrial.cpp",
+   "line": 9
+  },
+  "0063f2d0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolRenderTrial.cpp",
+   "line": 11
+  },
+  "0063f470": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolRenderTrial.cpp",
+   "line": 21
+  },
+  "0063f630": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMethodsTrial.cpp",
+   "line": 8
+  },
+  "0063f670": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolMethodsTrial.cpp",
+   "line": 13
+  },
+  "00641ff0": {
+   "path": "workspace/rebuild/2008-06/native-classes/Widget.cpp",
+   "line": 10
+  },
+  "006422b0": {
+   "path": "workspace/rebuild/2008-06/native-classes/Widget.cpp",
+   "line": 124
+  },
+  "00642370": {
+   "path": "workspace/rebuild/2008-06/native-classes/Widget.cpp",
+   "line": 130
+  },
+  "006424a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/Widget.cpp",
+   "line": 140
+  },
+  "0064e660": {
+   "path": "workspace/rebuild/2008-06/native-classes/Mouse.cpp",
+   "line": 82
+  },
+  "0064e840": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetChat.cpp",
+   "line": 11
+  },
+  "0064e8a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetChat.cpp",
+   "line": 33
+  },
+  "0064e8c0": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetChat.cpp",
+   "line": 40
+  },
+  "0064ebf0": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetMenuItem.cpp",
+   "line": 7
+  },
+  "0064efd0": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "line": 16
+  },
+  "0064eff0": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "line": 21
+  },
+  "0064f010": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "line": 26
+  },
+  "0064f0c0": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "line": 38
+  },
+  "0064f110": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "line": 44
+  },
+  "0064f1c0": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "line": 51
+  },
+  "0064f340": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "line": 65
+  },
+  "0064f410": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "line": 73
+  },
+  "0064f500": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "line": 78
+  },
+  "0064f5c0": {
+   "path": "workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "line": 84
+  },
+  "0064fb60": {
+   "path": "workspace/rebuild/2008-06/native-classes/ChatOutput.cpp",
+   "line": 7
+  },
+  "0064fd70": {
+   "path": "workspace/rebuild/2008-06/native-classes/ChatOutput.cpp",
+   "line": 14
+  },
+  "0064fe10": {
+   "path": "workspace/rebuild/2008-06/native-classes/ChatOutput.cpp",
+   "line": 29
+  },
+  "00650440": {
+   "path": "workspace/rebuild/2008-06/native-classes/ChatOutput.cpp",
+   "line": 36
+  },
+  "00650c00": {
+   "path": "workspace/rebuild/2008-06/native-classes/ChatOutput.cpp",
+   "line": 42
+  },
+  "00650f80": {
+   "path": "workspace/rebuild/2008-06/native-classes/ScoreHud.cpp",
+   "line": 10
+  },
+  "00651210": {
+   "path": "workspace/rebuild/2008-06/native-classes/ScoreHud.cpp",
+   "line": 15
+  },
+  "006512e0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ScoreHud.cpp",
+   "line": 38
+  },
+  "00652510": {
+   "path": "workspace/rebuild/2008-06/native-classes/ScoreHud.cpp",
+   "line": 24
+  },
+  "00652600": {
+   "path": "workspace/rebuild/2008-06/native-classes/ScoreHud.cpp",
+   "line": 32
+  },
+  "00656430": {
+   "path": "workspace/rebuild/2008-06/native-classes/ScoreHud.cpp",
+   "line": 66
+  },
+  "00656490": {
+   "path": "workspace/rebuild/2008-06/native-classes/HealthHud.cpp",
+   "line": 7
+  },
+  "00656a50": {
+   "path": "workspace/rebuild/2008-06/native-classes/EquationDisplay.cpp",
+   "line": 7
+  },
+  "00656bf0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ArrowPanel.cpp",
+   "line": 7
+  },
+  "006570a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/ArrowPanel.cpp",
+   "line": 15
+  },
+  "00660210": {
+   "path": "workspace/rebuild/2008-06/native-classes/Filters.cpp",
+   "line": 23
+  },
+  "00660220": {
+   "path": "workspace/rebuild/2008-06/native-classes/Filters.cpp",
+   "line": 28
+  },
+  "00660320": {
+   "path": "workspace/rebuild/2008-06/native-classes/Filters.cpp",
+   "line": 62
+  },
+  "006604a0": {
+   "path": "workspace/rebuild/2008-06/native-classes/Filters.cpp",
+   "line": 87
+  },
+  "00665670": {
+   "path": "workspace/rebuild/2008-06/native-classes/SparklesEffect.cpp",
+   "line": 7
+  },
+  "00665680": {
+   "path": "workspace/rebuild/2008-06/native-classes/SparklesEffect.cpp",
+   "line": 11
+  },
+  "006776a0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolRenderTrial.cpp",
+   "line": 16
+  },
+  "00677b20": {
+   "path": "workspace/rebuild/2008-06/tests/NativeResizeToolRenderTrial.cpp",
+   "line": 26
+  },
+  "007ae3b0": {
+   "path": "workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp",
+   "line": 58
+  },
+  "007b7b10": {
+   "path": "workspace/rebuild/2008-06/native-classes/RenderMaterial.cpp",
+   "line": 137
+  },
+  "0080ead0": {
+   "path": "workspace/rebuild/2008-06/tests/NativeContentFactoryTrial.cpp",
+   "line": 1
+  }
+ }
+}
