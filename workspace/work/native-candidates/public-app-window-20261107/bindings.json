@@ -1,0 +1,22 @@
+[
+  {
+    "address": "004495a0",
+    "symbol": "?nativeInitializeCom@@YAXXZ",
+    "size": 173,
+    "exact": true,
+    "verified_targets": {
+      "__imp__DefWindowProcA@16": "user32.dll!DefWindowProcA",
+      "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "mfc90.dll!?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ",
+      "__imp__LoadIconA@8": "user32.dll!LoadIconA",
+      "__imp__LoadCursorA@8": "user32.dll!LoadCursorA",
+      "??_C@_04IFEHPILC@Menu?$AA@": "0x81662c",
+      "??_C@_0M@PHGLEEGE@ROBLOX?9ATOM?$AA@": "0x816620",
+      "__imp__RegisterClassA@4": "user32.dll!RegisterClassA",
+      "?GetThisClass@CFrameWnd@@SGPAUCRuntimeClass@@XZ": "mfc90.dll!?GetThisClass@CFrameWnd@@SGPAUCRuntimeClass@@XZ",
+      "?CreateObject@CRuntimeClass@@QAEPAVCObject@@XZ": "mfc90.dll!?CreateObject@CRuntimeClass@@QAEPAVCObject@@XZ",
+      "__imp_?rectDefault@CFrameWnd@@2VCRect@@B": "mfc90.dll!?rectDefault@CFrameWnd@@2VCRect@@B",
+      "??_C@_06NCICJBKL@ROBLOX?$AA@": "0x816618"
+    },
+    "local_eh": []
+  }
+]
