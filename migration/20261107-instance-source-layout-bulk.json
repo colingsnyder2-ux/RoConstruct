@@ -1,0 +1,34 @@
+{
+  "source_commit": "5f2b40c53ad7e9a51b3c47d849f82c27dd7f79b9",
+  "scope": "Exact public source snapshots preserved at prior logical paths for donor navigation; no acceptance or runtime claim.",
+  "files": [
+    {
+      "original_path": "2008-06/native-classes/InstanceLifetime.cpp",
+      "preserved_path": "archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceLifetime.cpp",
+      "current_path": "2008-06/App/src/v8tree/InstanceLifetime.cpp",
+      "blob": "8a60d2ac2c84531b1e639f5ca65e466995e29f03",
+      "sha256": "cefe9904ab285118fdee3bdcca40013b5d23288ece85ee4128c47cc0f7a6aca7"
+    },
+    {
+      "original_path": "2008-06/native-classes/InstanceDescendantEvents.cpp",
+      "preserved_path": "archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp",
+      "current_path": "2008-06/App/src/v8tree/InstanceDescendantEvents.cpp",
+      "blob": "1b6f3066a5691dc8b5c6ac053e01d60609e428d3",
+      "sha256": "daf0fc476a2b1b4b01ca0d939e41ade7cf22878ffa09bb4d625bccfd5650f8f5"
+    },
+    {
+      "original_path": "2008-06/native-classes/InstanceNameDescriptor.cpp",
+      "preserved_path": "archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceNameDescriptor.cpp",
+      "current_path": "2008-06/App/src/v8tree/InstanceNameDescriptor.cpp",
+      "blob": "5c1f5a7e241be78219497b7e6374d66aadace9dd",
+      "sha256": "b53c488304bf5c391b2897692391e65afd5f5b3d97a9cf56ccc5dcb4dc9dfbcc"
+    },
+    {
+      "original_path": "2008-06/native-classes/InstanceSignalDescriptors.cpp",
+      "preserved_path": "archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceSignalDescriptors.cpp",
+      "current_path": "2008-06/App/src/v8tree/InstanceSignalDescriptors.cpp",
+      "blob": "1d2e9d859ac63c582fdef7528b63f64a279e729f",
+      "sha256": "1a1a61d9a161e7996ad4596ee233b535d67a7151a44153067fb11b6c83fbb11d"
+    }
+  ]
+}
