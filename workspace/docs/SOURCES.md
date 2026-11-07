@@ -25,7 +25,7 @@ The clients and their compilers:
 | 2011-06 | | VS2008 RTM (cl 15.00.21022) |
 | 2012-06 | | VS2008 SP1 (cl 15.00.30729) |
 
-All recipes live in [`roc/libs.py`](roc/libs.py). Running them: `roc libs <recipe|all>`,
+All recipes live in [`roc/libs.py`](../roc/libs.py). Running them: `roc libs <recipe|all>`,
 or `roc mass` for the full automatic pass (runtime tagging + STL + every library + auto shapes).
 
 ---
@@ -227,14 +227,14 @@ contains symbol/build artifacts.
 The repeatable scout is `py -3 research/scout_sources.py`. It queries Common
 Crawl, Wayback CDX, and Sourcegraph for exact PDB/MAP/LIB/OBJ/build-file names
 without downloading binaries. Results and checked-query keys are stored in
-[`research/artifact-search-log.json`](research/artifact-search-log.json), so later runs
+[`research/artifact-search-log.json`](../research/artifact-search-log.json), so later runs
 skip the same index queries. Use `--target libcpmt.lib` to narrow a run.
 
 ---
 
 ## Adding a source
 
-1. Add a recipe to `RECIPES` in [`roc/libs.py`](roc/libs.py): a URL + SHA-256 (or a local
+1. Add a recipe to `RECIPES` in [`roc/libs.py`](../roc/libs.py): a URL + SHA-256 (or a local
    tree), the files to compile, the include dirs, and a flag grid.
 2. Run it: `roc libs <name>` (or against one client: `roc libs <name> --client <name>`).
 3. Matches are written to `src/<client>/<addr>.cpp` as compact `// roc-lib:` pointers and

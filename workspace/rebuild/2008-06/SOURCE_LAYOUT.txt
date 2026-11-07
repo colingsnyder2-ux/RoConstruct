@@ -7,10 +7,10 @@ Source/Rendering -> tools/rbxgs/Client/Rendering
 Source/Recovered -> native-classes (recovered implementation candidates)
 Source/Include   -> native-headers (shared recovered declarations)
 
-Source links expose the original project divisions in this canonical rebuild.
-These trees contain donor and recovered sources; module recipes and patches
-select and adapt the code actually built. A source file is not proof of native
-runtime integration.
+The Source/ entries above describe optional local views of donor inputs; they
+are not tracked directories in the published work tree. Their availability
+depends on local setup. Module recipes and patches select the code actually
+built. A source file is not proof of native runtime integration.
 
 Shared recovered declarations: native-headers/
 Recovered implementations and inactive trials: native-classes/
@@ -20,7 +20,7 @@ Build recipes: modules/
 Native promotions and ABI changes: patches/
 Generated source catalog: ../../local/units/generated-units.json (repo root local/)
 Audit, variants and imported snapshots: ../../work/2008-06/native-source-audit/
-Preserved full packages: C:/Users/colin/RoConstruct-archive/2026-11-01/
+Historical local packages: see the owner's archive inventory; paths vary by machine.
 
 Full native CRobloxApp/Doc/View/Frame integration remains incomplete.
 

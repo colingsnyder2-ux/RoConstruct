@@ -5,9 +5,9 @@
 </p>
 
 <p align="center">
-  <b>Rebuilding classic Roblox clients (2007–2012) as real C++ source, together.</b><br>
-  <a href="https://colingsnyder2-ux.github.io/RoConstruct/">Progress site</a> ·
-  <a href="https://discord.gg/Tayg763nrG">Discord</a> ·
+  <b>Rebuilding classic Roblox clients (2007â€“2012) as real C++ source, together.</b><br>
+  <a href="https://colingsnyder2-ux.github.io/RoConstruct/">Progress site</a> Â·
+  <a href="https://discord.gg/Tayg763nrG">Discord</a> Â·
   <a href="https://github.com/colingsnyder2-ux/RoConstruct/tree/work">Findings</a>
 </p>
 
@@ -20,7 +20,7 @@ the exact same bytes.
 
 | Step | What happens |
 |---|---|
-| Split | The exe is cut into functions (20k–40k per client). |
+| Split | The exe is cut into functions (20kâ€“40k per client). |
 | Guess | A person, an AI worker or a pattern matcher writes C++ for one function. |
 | Compile | The guess is built with the exact compiler Roblox used. |
 | Compare | Byte-identical code and data means **matched**; otherwise a diff shows what to fix. |
@@ -43,7 +43,7 @@ fixes, ports (WebAssembly, Linux, macOS), bug fixes, modding and preservation.
 |---|---|
 | A PC | `roc launch`: a cloud worker (API key or ChatGPT plan) keeps your PC mostly idle |
 | A GPU | `roc local-ai`, then `roc launch` with a local model |
-| OpenCode, Claude Code or Codex | `roc gui` → **Workers → Worker / Integrator**, or use [Matching agent](docs/MATCHING_AGENT.md) / [Native agent](docs/NATIVE_AGENT.md) |
+| OpenCode, Claude Code or Codex | `roc gui` â†’ **Workers â†’ Worker / Integrator**, or use [Matching agent](docs/MATCHING_AGENT.md) / [Native agent](docs/NATIVE_AGENT.md) |
 | C++ knowledge | `roc next`, `roc claim`, `roc check`, `roc submit` |
 | An always-on PC | `roc host` (maintainers) |
 
@@ -62,11 +62,11 @@ in [RoConstruct work branch](https://github.com/colingsnyder2-ux/RoConstruct/tre
 
 ## Native rebuild
 
-Work locally in `rebuild/2008-06/`. Its `Source/App`, `Source/Network`, `Source/RbxView`, and `Source/Rendering` views expose the shared Roblox source tree; `native-headers/` and `native-classes/` hold recovered declarations and implementations. See `rebuild/2008-06/SOURCE_LAYOUT.txt` for build inputs and audit locations.
+Work locally in `rebuild/2008-06/`. Recovered declarations and implementations live in `native-headers/` and `native-classes/`; reviewed sources are gradually moving into project folders such as `App/src/`. Some setups provide local `Source/` views of donor inputs, but those views are not part of the published Git tree. See `rebuild/2008-06/SOURCE_LAYOUT.txt` for build inputs and audit locations.
 
-The [findings source package](https://github.com/colingsnyder2-ux/RoConstruct/tree/work/2008-06) exports assembled C++, configs, patches, runtime harnesses and verification metadata. Native runtime integration remains partial. Run its `compile_test.bat` with `ROC_ROOT` pointing to this configured tooling checkout.
+The [public source package](https://github.com/colingsnyder2-ux/RoConstruct/tree/work/2008-06) exports assembled C++, configs, patches, runtime harnesses and verification metadata. Native runtime integration remains partial. Run its `compile_test.bat` with `ROC_ROOT` pointing to this configured tooling checkout.
 
-Keep current native work under `rebuild/2008-06/`; source exports are maintained in findings. `integration-status.json` distinguishes source-only recovery, inactive compiler probes, linked code, and scoped runtime evidence. `roc rebuild 2008-06 install` restores missing build inputs from findings while preserving existing files; generated build artifacts remain local.
+Keep current native work under `rebuild/2008-06/`; the work branch publishes a reviewed public view under `2008-06/`. `integration-status.json` distinguishes source-only recovery, inactive compiler probes, linked code, and scoped runtime evidence. `roc rebuild 2008-06 install` restores missing build inputs from the work-branch package while preserving existing files; generated build artifacts remain local.
 
 ## Rules
 
