@@ -1,0 +1,15 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/PanelGetPositionTrial.cpp",
+      "checks": [
+        {
+          "addr": "005737e0",
+          "symbol": "?getPosition@RelativePanel@RBX@@UBE?AVVector2@G3D@@XZ"
+        }
+      ],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}
