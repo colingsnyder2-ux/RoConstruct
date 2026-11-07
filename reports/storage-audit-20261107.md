@@ -1,5 +1,8 @@
 # Storage and source audit — 2026-11-07
 
+Completed storage recovery: **285.90 GiB**. Final observed C: free space:
+**355.9 GiB**. Public server `/v1/info` returned HTTP 200 after cleanup.
+
 Inventory baseline: `e7425c5c94585424a77a6277259446ce76b2c03f`.
 All branch blobs and 2,811,729 local work files were enumerated. Local files
 totaled 543.03 GiB before cleanup. No filesystem errors were reported; reparse
@@ -28,8 +31,8 @@ was approximately 711 MiB; 770 bytes of temporary garbage is not a cleanup prior
 | --- | ---: | --- |
 | integration/jobs | 128.29 GiB | Retain: indexed baseline/job dependencies need closure review |
 | integration/baselines | 84.12 GiB | Retain: index refers to these original snapshots |
-| libcache | 187.64 GiB | Rebuildable preprocessing cache; retention/compression candidate after recipe/dependency checks |
-| object-cache | 53.14 GiB | Evict old generated matching objects under per-key nonblocking locks |
+| libcache | 187.64 GiB | Generated preprocessing cache cleared; installed library sources retained |
+| object-cache | 53.14 GiB | Unused generated objects cleared under per-key nonblocking locks |
 | 2008-06 | 19.50 GiB | Retain source, original lifted evidence, runner objects and proofs |
 | codex-native-colin-20261029 | 9.31 GiB | Historical source/build snapshot; compare before archival |
 | function-history.sqlite | 4.13 GiB | Keep database; do not delete as scratch |
@@ -50,10 +53,15 @@ logical cache bytes removed: 258,528,812,689 (240.78 GiB). No busy object keys o
 failed preprocessing removals were reported. The second object pass retained
 anything written within five minutes. Installed libraries under tools remain.
 
-Large retained integration evidence is also being compressed with NTFS file
-compression. This preserves file names, source bytes, object bytes and receipt
-paths. Logical sizes do not reflect those physical disk savings. Compression
-errors, if any, remain in the local compression log.
+NTFS compression completed for 2,076 large retained integration evidence files,
+saving another 47,889,854,488 bytes (44.60 GiB). File names, source bytes, object
+bytes and receipt paths remain intact. No compression error lines were reported.
+Eight generated inventories/eviction receipts were ZIP-archived with SHA-256
+round-trip verification, saving 559,302,651 bytes. The verified archive remains
+at `C:\Users\colin\RoConstruct-cleanup-archive-20261107\storage-inventory-20261107.zip`.
+Original generated listings were removed only after ZIP integrity and byte-hash
+checks passed. These listings contain metadata, not recovered source. Compiler
+caches will grow again as matching/preprocessing work resumes.
 
 Historical published OpenCode goal sessions/locks are moved byte-for-byte from
 workspace/.opencode/goals into archive/workspace-state-20261107/opencode-goals.
