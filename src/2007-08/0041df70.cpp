@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 95% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -98,9 +99,9 @@ struct Owner;
 
 struct ViewTable
 {
-    void* reserved0[83];
+    void* reserved0[81];
     void (__thiscall *attach)(View*, Item*);
-    void* reserved1[4];
+    void* reserved1[2];
     void (__thiscall *refresh)(View*);
 };
 
@@ -111,14 +112,14 @@ struct View
 
 struct OwnerTable
 {
-    void* reserved[101];
+    void* reserved[99];
     View* (__thiscall *getView)(Owner*);
 };
 
 struct Owner
 {
     OwnerTable* table;
-    unsigned char storage[0x3c4];
+    unsigned char storage[0x308];
     unsigned char disabled;
 };
 
@@ -131,7 +132,7 @@ void CInstanceExplorer::update(int, Argument argument)
 {
     Item* item = new Item(convert(argument.object));
     Owner* owner = reinterpret_cast<Owner*>(
-        reinterpret_cast<char*>(this) - 0x378);
+        reinterpret_cast<char*>(this) - 0x2cc);
 
     View* view = owner->table->getView(owner);
     view->table->attach(view, item);

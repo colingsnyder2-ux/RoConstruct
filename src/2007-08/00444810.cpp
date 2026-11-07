@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 97% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -153,8 +154,9 @@ struct S;
 
 struct Object {
     virtual void slot0();
+    virtual void slot1();
     virtual void setName(const void*);
-    char padding[0x12C];
+    char padding[0xE4];
     unsigned char flag;
     void attach(S*);
 };

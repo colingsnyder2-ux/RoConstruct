@@ -1,4 +1,59 @@
+// from server: 100% by Intel
 // from server: 97% by EspClaude
+// roc 2007-08 0044bfb0  unit: CRobloxControlColorSelector  size: 145 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0044bfb0
+//
+// 0044bfb0  53                   push ebx
+// 0044bfb1  56                   push esi
+// 0044bfb2  8bf1                 mov esi, ecx
+// 0044bfb4  8b869c000000         mov eax, dword ptr [esi + 0x9c]
+// 0044bfba  83f8ff               cmp eax, -1
+// 0044bfbd  57                   push edi
+// 0044bfbe  750f                 jne 0x44bfcf
+// 0044bfc0  8b8e58010000         mov ecx, dword ptr [esi + 0x158]
+// 0044bfc6  85c9                 test ecx, ecx
+// 0044bfc8  7405                 je 0x44bfcf
+// 0044bfca  e8b1e51e00           call 0x63a580
+// 0044bfcf  85c0                 test eax, eax
+// 0044bfd1  7468                 je 0x44c03b
+// 0044bfd3  8b442418             mov eax, dword ptr [esp + 0x18]
+// 0044bfd7  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0044bfdb  50                   push eax
+// 0044bfdc  51                   push ecx
+// 0044bfdd  8bce                 mov ecx, esi
+// 0044bfdf  e8ecfbffff           call 0x44bbd0
+// 0044bfe4  83f8ff               cmp eax, -1
+// 0044bfe7  7452                 je 0x44c03b
+// 0044bfe9  837c241000           cmp dword ptr [esp + 0x10], 0
+// 0044bfee  89866c010000         mov dword ptr [esi + 0x16c], eax
+// 0044bff4  752f                 jne 0x44c025
+// 0044bff6  83ec10               sub esp, 0x10
+// 0044bff9  8bc4                 mov eax, esp
+// 0044bffb  33c9                 xor ecx, ecx
+// 0044bffd  8908                 mov dword ptr [eax], ecx
+// 0044bfff  33d2                 xor edx, edx
+// 0044c001  33ff                 xor edi, edi
+// 0044c003  895004               mov dword ptr [eax + 4], edx
+// 0044c006  33db                 xor ebx, ebx
+// 0044c008  897808               mov dword ptr [eax + 8], edi
+// 0044c00b  8bce                 mov ecx, esi
+// 0044c00d  89580c               mov dword ptr [eax + 0xc], ebx
+// 0044c010  e89b011f00           call 0x63c1b0
+// 0044c015  c7866c010000ffffffff mov dword ptr [esi + 0x16c], 0xffffffff
+// 0044c01f  5f                   pop edi
+// 0044c020  5e                   pop esi
+// 0044c021  5b                   pop ebx
+// 0044c022  c20c00               ret 0xc
+// 0044c025  8b16                 mov edx, dword ptr [esi]
+// 0044c027  8b8298000000         mov eax, dword ptr [edx + 0x98]
+// 0044c02d  8bce                 mov ecx, esi
+// 0044c02f  ffd0                 call eax
+// 0044c031  c7866c010000ffffffff mov dword ptr [esi + 0x16c], 0xffffffff
+// 0044c03b  5f                   pop edi
+// 0044c03c  5e                   pop esi
+// 0044c03d  5b                   pop ebx
+// 0044c03e  c20c00               ret 0xc
+
 // from server: 100% by king_originala
 // roc 2008-06 0044e370  unit: CRobloxControlColorSelector  size: 145 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0044e370
@@ -79,9 +134,9 @@ struct S
     VirtualFunction* vtable;
     char padding0[0x98];
     int enabled;
-    char padding1[0xBC];
+    char padding1[0xB8];
     Parent* parent;
-    char padding2[0x18];
+    char padding2[0x10];
     int selected;
 
     int getEnabled()

@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 96% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -103,11 +104,10 @@ struct CDataModelPropGrid {
     virtual void v27();
     virtual void adjust(Rect *, int);
 
-    char pad0[0xF4];
+    char pad0[0xDC];
     unsigned char flagF8;
-    unsigned char padF9;
     unsigned char flagFA;
-    char padFB[9];
+    char padFB[10];
     unsigned char flag104;
 
     void prepare();

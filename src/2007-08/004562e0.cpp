@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 96% by EspClaude
 // roc-cl: 50727
 // from server: 100% by EspClaude
@@ -263,11 +264,11 @@ struct CWnd {
 };
 
 struct CRobloxView : CWnd {
-    char pad24[0xb0 - 0x24];
+    char pad24[0x88 - 0x24];
     CWnd viewPane;
-    char pad_d4[0x180 - 0xd4];
+    char pad_d4[0x140 - 0xac];
     CWnd statusPane;
-    char pad_1a4[0x1d8 - 0x1a4];
+    char pad_1a4[0x198 - 0x164];
     CWnd *sidePane;
     void OnSize();
 };

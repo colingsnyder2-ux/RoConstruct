@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 96% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -70,7 +71,7 @@ struct Size {
 };
 
 struct ControlTable {
-    void* slots[129];
+    void* slots[123];
     Size* (__thiscall* measure)(Control*, Size*, int, int, int);
 };
 
@@ -78,7 +79,7 @@ struct Control {
     ControlTable* table;
     char padding[28];
     void* window;
-    char remainder[92];
+    char remainder[76];
 
     void __thiscall move(int, int, int, int, int);
     void __thiscall position(void*, int, int, int, int, unsigned int);
@@ -89,7 +90,7 @@ extern "C" {
 }
 
 struct CBrowserView {
-    char padding[156];
+    char padding[152];
     Control lower;
     Control upper;
 

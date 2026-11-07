@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 97% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -67,7 +68,7 @@ struct Control {
 };
 
 struct Base {
-    char padding[0x90];
+    char padding[0x48];
 };
 
 struct Listener {
@@ -75,7 +76,7 @@ struct Listener {
 };
 
 struct Source {
-    char padding[0xc4];
+    char padding[0x8c];
     Listener listener;
 };
 
@@ -102,7 +103,7 @@ struct Helper {
 };
 
 struct Prefix {
-    char padding[0x188];
+    char padding[0x17c];
 };
 
 struct TextureItem : Prefix, Base {
