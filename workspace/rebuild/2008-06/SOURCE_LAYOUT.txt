@@ -32,3 +32,7 @@ Compile one path or the other, never both. The method remains inactive until sel
 App/src/v8tree/InstanceBaseCallbacks.cpp contains the recovered implementation.
 native-classes/InstanceBaseCallbacks.cpp is its compatibility translation unit.
 Compile one path or the other, never both.
+
+App/src/v8tree/ contains the moved InstanceChildPermission, InstanceClassLookup
+and InstanceAnchorChildren implementations. Their native-classes counterparts
+are compatibility translation units. Compile either path per file, never both.
