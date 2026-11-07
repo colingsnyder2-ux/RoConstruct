@@ -23,5 +23,8 @@ Audit, variants and imported snapshots: ../../work/2008-06/native-source-audit/
 Preserved full packages: C:/Users/colin/RoConstruct-archive/2026-11-01/
 
 Full native CRobloxApp/Doc/View/Frame integration remains incomplete.
-The clean main-derived staging branch has 19 unresolved integration conflicts;
-the attempted merge was aborted. Current working native code is retained here.
+
+Physical source migration pilot:
+App/src/v8tree/InstanceChildLookup.cpp contains the recovered implementation.
+native-classes/InstanceChildLookup.cpp is a compatibility translation unit.
+Compile one path or the other, never both. The method remains inactive until selected and gated.

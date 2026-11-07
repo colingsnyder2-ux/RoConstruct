@@ -1,0 +1,27 @@
+{
+  "source_revision": "184c0036e06d0f9f5820a7a7377f52ef765db842",
+  "old_path": "rebuild/2008-06/native-classes/InstanceChildLookup.cpp",
+  "organized_path": "rebuild/2008-06/App/src/v8tree/InstanceChildLookup.cpp",
+  "original_sha256": "1d363ba462ea20c2738976c7d3dc25555ecdfeed8a4c895ac754b5e8cd8af035",
+  "compatibility_sha256": "9a54e5d473009c03bebe2a06f16768e2854455ccd684243e50a04ade2bdfd2e8",
+  "donor": {
+    "repository": "mewpokemons/RoConstruct",
+    "commit": "104afab0b69acdba02623ca3e2505ffa860dd83f",
+    "path": "rebuild/2008-06/native-classes/AppUnit558_2008Instance.cpp"
+  },
+  "verification": {
+    "original_address": "00557950",
+    "method": "RBX::Instance::findFirstChildByName",
+    "original_byte_length": 132,
+    "paths_checked": 2,
+    "result": "both paths exact; import relocation names checked",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "objects": [
+      "3f651f851c93b74c422bb16c588a339e65819cf2515c8779e25c9250487bba2b",
+      "c1426702d00e9a0a25980d187ff6a6e9cd01be1de723cda06032923602e64a1c"
+    ],
+    "local_receipts": "work/native-candidates/instance-organization-20261107/move-proof.json"
+  },
+  "selection": "inactive; compile one path only",
+  "runtime": "unverified"
+}

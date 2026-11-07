@@ -6,6 +6,22 @@ from pathlib import Path
 from types import SimpleNamespace
 
 
+def test_organized_source_is_included_in_status(tmp_path, monkeypatch):
+    path = Path(__file__).resolve().parents[1] / 'roc/native_status.py'
+    spec = importlib.util.spec_from_file_location('native_status_organized_test', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    source = tmp_path / 'rebuild/2008-06/App/src/v8tree/InstanceChildLookup.cpp'
+    source.parent.mkdir(parents=True)
+    source.write_text('void f() {}\n')
+    monkeypatch.setattr(module, 'ROOT', tmp_path)
+    monkeypatch.setattr(module, 'load_links', lambda: {})
+    monkeypatch.setattr(module, 'load_names', lambda: {})
+    monkeypatch.setattr(module, 'load_integration', lambda: {})
+    monkeypatch.setattr(module, 'load_db', lambda: ({}, {}, {}, {}))
+    assert str(source.relative_to(tmp_path)) in module.build_index()
+
+
 def test_missing_database_is_not_created(tmp_path, monkeypatch):
     path = Path(__file__).resolve().parents[1] / 'roc/native_status.py'
     spec = importlib.util.spec_from_file_location('native_status_missing_db_test', path)

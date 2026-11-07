@@ -15,6 +15,8 @@ def test_classify_pairs_canonical_and_public_blobs():
 
 def test_native_entries_excludes_non_native_tree_paths(tmp_path, monkeypatch):
     def entries(root, ref, prefix):
+        if prefix.endswith('/App/src'):
+            return {}
         return {'A.cpp': prefix} if prefix.endswith('native-classes') else {'B.h': prefix}
     monkeypatch.setattr(source_catalog, 'tree_entries', entries)
     rows = source_catalog.native_entries(tmp_path, 'work', 'workspace/rebuild/2008-06')
@@ -105,6 +107,16 @@ def test_other_client_native_paths_do_not_enter_2008_catalog():
     assert source_catalog.logical_native_path('2008-06/reference/2016-06/native-classes/A.cpp') is None
     assert source_catalog.logical_native_path('unknown/native-classes/A.cpp') is None
     assert source_catalog.map_group('native-classes/AppUnit558_2008Instance.cpp') == 'App/v8tree'
+
+
+def test_organized_source_is_indexed_without_mixing_client_versions(tmp_path, monkeypatch):
+    monkeypatch.setattr(source_catalog, 'tree_entries', lambda root, ref, prefix:
+                        {'v8tree/InstanceChildLookup.cpp': 'blob'} if prefix.endswith('/App/src') else {})
+    rows = source_catalog.native_entries(tmp_path, 'work', 'workspace/rebuild/2008-06')
+    assert rows == {'App/src/v8tree/InstanceChildLookup.cpp': 'blob'}
+    assert source_catalog.logical_native_path('workspace/rebuild/2008-06/App/src/v8tree/InstanceChildLookup.cpp') == 'App/src/v8tree/InstanceChildLookup.cpp'
+    assert source_catalog.logical_native_path('workspace/rebuild/2016-06/App/src/v8tree/Instance.cpp') is None
+    assert source_catalog.map_group('App/src/v8tree/InstanceChildLookup.cpp') == 'App/v8tree'
 
 
 def test_alternative_navigation_preserves_immutable_and_local_origins():

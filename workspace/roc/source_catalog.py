@@ -20,6 +20,7 @@ from roc.native_drafts import ROOT, lock
 
 SOURCE_SUFFIXES = {'.c', '.cc', '.cpp', '.cxx', '.h', '.hh', '.hpp', '.inl'}
 NATIVE_SCOPES = ('native-classes', 'native-headers', 'native-world')
+ORGANIZED_SCOPES = ('App/src',)
 
 # Browse groups only.  These do not rename files, claim original project layout,
 # or affect integration decisions.  Leave weakly identified paths in Other.
@@ -70,7 +71,7 @@ def tree_entries(root, ref, prefix):
 def native_entries(root, ref, prefix):
     """Return only native-tree blobs, with scope retained in each relative path."""
     result = {}
-    for scope in NATIVE_SCOPES:
+    for scope in NATIVE_SCOPES + ORGANIZED_SCOPES:
         for path, blob in tree_entries(root, ref, prefix + '/' + scope).items():
             result[scope + '/' + path] = blob
     return result
@@ -90,7 +91,7 @@ def classify_files(canonical, public):
             state = 'public-only'
         files.append({
             'path': path,
-            'scope': next((scope for scope in NATIVE_SCOPES if path.startswith(scope + '/')), 'other'),
+            'scope': next((scope for scope in NATIVE_SCOPES + ORGANIZED_SCOPES if path.startswith(scope + '/')), 'other'),
             'canonical_blob': canonical_blob,
             'public_blob': public_blob,
             'state': state,
@@ -144,6 +145,8 @@ def logical_native_path(path):
     """Only combine native paths with explicit matching client provenance."""
     parts = path.replace('\\', '/').split('/')
     for index, part in enumerate(parts):
+        if part == 'App' and parts[index:index + 2] == ['App', 'src'] and index and parts[index - 1] == '2008-06':
+            return '/'.join(parts[index:]) if is_source(path) else None
         if part not in NATIVE_SCOPES:
             continue
         versions = [p for p in parts[:index] if re.fullmatch(r'\d{4}-\d{2}', p)]

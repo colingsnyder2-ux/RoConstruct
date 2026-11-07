@@ -38,7 +38,7 @@ from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[1]
 CLIENT = "2008-06"
-NATIVE_DIRS = ["native-classes", "native-headers", "native-world"]
+NATIVE_DIRS = ["native-classes", "native-headers", "native-world", "App/src"]
 
 MARKER_START = "// >>> native-status (generated) -- do not edit >>>"
 MARKER_END = "// <<< native-status"
@@ -58,7 +58,7 @@ def load_links():
     out = {}
     for addr, info in sources.items():
         p = (info.get("path") or "").replace("workspace/", "")
-        if "/native-" in p:
+        if "/native-" in p or "/App/src/" in p:
             out[addr.lower()] = p
     return out
 
