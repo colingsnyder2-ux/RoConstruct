@@ -20,6 +20,12 @@ Builds (document-swap flags, VS2008 RTM 21022):
   * ContactUnit2008PVInstance.cpp again with /DNATIVE_CONTACTUNIT_PENDING and a generated copy of the native
     v8tree/Instance.h that declares Instance::readProperties (00557920) under out/native-layouts/contact-unit2008-pending.
     Rows exact only there are recorded exact=false (pending-build-only) and never counted.
+  * ContactUnit2008Contact.cpp (/fp:fast /U_RELEASEASSERT; empty in the current-header build) and
+    ContactUnit2008Connector.cpp again with /DNATIVE_BODYPRIM_PENDING and generated copies of v8world/Contact2008.h /
+    v8kernel/Connector2008.h under out/native-layouts/contact-unit2008-bodyprim-pending that declare the proposed
+    Contact::step / computeIsAdjacent / hit counters and the ContactConnector active counters: percentConnectorsActive
+    00606100, contactPairHitRatio 00606bc0, contactFeatureHitRatio 00606bf0, Contact::step 00606c50 and
+    computeIsAdjacent 00606ca0 are pending-build-only (never counted).
 
 Every counted row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, string literals by bytes, constants by bytes,
@@ -53,8 +59,9 @@ OUT.mkdir(parents=True, exist_ok=True)
 SOURCES = {
     'conn': R / 'native-classes/ContactUnit2008Connector.cpp',
     'pv': R / 'native-classes/ContactUnit2008PVInstance.cpp',
+    'contact': R / 'native-classes/ContactUnit2008Contact.cpp',
 }
-UNIT = {'conn': ['/fp:fast', '/U_RELEASEASSERT'], 'pv': ['/U_RELEASEASSERT']}
+UNIT = {'conn': ['/fp:fast', '/U_RELEASEASSERT'], 'pv': ['/U_RELEASEASSERT'], 'contact': ['/fp:fast', '/U_RELEASEASSERT']}
 DISCOVER = bool(os.environ.get('NATIVE_CONTACT_UNIT_DISCOVER'))
 RECEIPT = ROOT / 'work/2008-06/shared-layouts/contact-unit2008-working.json'
 
@@ -68,6 +75,33 @@ assert _text.count(_anchor) == 1
 (PENDING / 'v8tree/Instance.h').write_text(_text.replace(
     _anchor, _anchor + '    void readProperties(const ::XmlElement*, IReferenceBinder&); // 00557920\n'))
 PENDING_FLAGS = ['/I' + str(PENDING), '/DNATIVE_CONTACTUNIT_PENDING']
+# Generated copies of the world-shapes Contact2008.h and the kernel Connector2008.h with the proposed Contact /
+# ContactConnector declarations (the shared headers are not edited): NATIVE_BODYPRIM_PENDING rows only.
+BODYPRIM = OUT / 'contact-unit2008-bodyprim-pending'
+(BODYPRIM / 'v8world').mkdir(parents=True, exist_ok=True)
+(BODYPRIM / 'v8kernel').mkdir(parents=True, exist_ok=True)
+CONTACT_H = R / 'native-headers/v8world/Contact2008.h'
+CONNECTOR_H = R / 'native-headers/v8kernel/Connector2008.h'
+_anchor = '\t\tContact(Primitive* prim0, Primitive* prim1);    // 00606c20\n'
+_text = CONTACT_H.read_text()
+assert _text.count(_anchor) == 1
+(BODYPRIM / 'v8world/Contact2008.h').write_text(_text.replace(_anchor, _anchor + (
+    '\t\tbool step(int uiStepId);                        // 00606c50\n'
+    '\t\tbool computeIsAdjacent(float spaceAllowed);     // 00606ca0\n'
+    '\t\tstatic int contactPairMatches;                  // 0097b880\n'
+    '\t\tstatic int contactPairMisses;                   // 0097b884\n'
+    '\t\tstatic int contactFeatureMatches;               // 0097b888\n'
+    '\t\tstatic int contactFeatureMisses;                // 0097b88c\n'
+    '\t\tstatic float contactPairHitRatio();             // 00606bc0\n'
+    '\t\tstatic float contactFeatureHitRatio();          // 00606bf0\n')))
+_anchor = '\t\tvirtual bool canThrottle() const;                               // slot 2 (00606250; reads Body +0x30)\n'
+_text = CONNECTOR_H.read_text()
+assert _text.count(_anchor) == 1
+(BODYPRIM / 'v8kernel/Connector2008.h').write_text(_text.replace(_anchor, _anchor + (
+    '\t\tstatic int numActiveConnectors;                                 // 0097b878\n'
+    '\t\tstatic int numInactiveConnectors;                               // 0097b87c\n'
+    '\t\tstatic float percentConnectorsActive();                         // 00606100\n')))
+BODYPRIM_FLAGS = ['/I' + str(BODYPRIM), '/DNATIVE_BODYPRIM_PENDING']
 PROPOSALS = {
     'native-headers/v8tree/Instance.h (core owner)': (
         'declare `void readProperties(const ::XmlElement*, IReferenceBinder&);` public (evidence name '
@@ -83,16 +117,32 @@ PROPOSALS = {
         'boost::call_once(00609400, flag 0097b98c), where 00609400 is `jmp EnumDesc<ControllerType>::singleton` '
         '006093a0, then calls singleton() and PropertyDescriptor(classDescriptor, type, ...) 0056c650; the native '
         'reflection.h constructor (195 B) calls the singleton once without call_once. Not changed here.'),
-    'v8world/Contact2008.h, v8kernel/Connector2008.h, a native 2008 Body / Primitive header (world / kernel owners)': (
-        'the remaining Connector / Contact unit rows need: Body pv at +0x94.. (NormalBreakConnector::computeForce '
-        '00606670 reads [body + 4 * i + 0x94/0xa0/0xac] after Body::updatePV 00599360), Body canThrottle +0x30 '
-        '(00606250), Primitive geometry +0x9c / body +0xa0 / friction +0xb0 / elasticity +0xb4 / jointK ComputeProp '
-        '+0xec..+0xf8 (00606e90, 00607ad0), and declarations Contact::step(int) 00606c50, computeIsAdjacent 00606ca0, '
-        'createConnector 00606e00 and the static hit-ratio counters (00606bc0 contactPairHitRatio reads '
-        '0097b880/0097b884, 00606bf0 contactFeatureHitRatio reads 0097b888/0097b88c, 00606100 percentConnectorsActive '
-        'reads and resets 0097b878/0097b87c, written by ContactConnector::computeForce 00606834 / 00606a1d; DataModel::'
-        'evaluate 005760a1 / 005760d5 / 005762f3 names them by the strings "contactPairHitRatio", '
-        '"contactFeatureHitRatio" and "percentConnectorsActive").'),
+    'native-headers/v8world/Contact2008.h (world-shapes owner)': (
+        'declare in Contact (public): `bool step(int uiStepId);` (00606c50: stepContact slot 6, Primitive::onNewTouch '
+        '005e7530 when lastContactStep +0x20 is -1, then lastContactStep = uiStepId, else reset to -1 when it is older), '
+        '`bool computeIsAdjacent(float spaceAllowed);` (00606ca0, evidence name ?computeIsAdjacent@Contact@RBX@@QAE_NM@Z: '
+        'computeIsColliding slot 7 with +space then -space), the static counters `int contactPairMatches` 0097b880 / '
+        '`contactPairMisses` 0097b884 (++ by BlockBlockContact 00607d3b / 00607d07) and `contactFeatureMatches` 0097b888 / '
+        '`contactFeatureMisses` 0097b88c (++ by 00607588 / 00607548), and `static float contactPairHitRatio();` 00606bc0 / '
+        '`contactFeatureHitRatio();` 00606bf0 (DataModel::evaluate 005760a1 / 005760d5). With them the four rows are exact '
+        '(/fp:fast, pending build against out/native-layouts/contact-unit2008-bodyprim-pending/v8world/Contact2008.h; '
+        'bodies in native-classes/ContactUnit2008Contact.cpp under NATIVE_BODYPRIM_PENDING). The class of the ratio '
+        'functions is an analog (the binary has no name for them).'),
+    'native-headers/v8kernel/Connector2008.h (kernel / world-joints owner)': (
+        'declare in ContactConnector: `static int numActiveConnectors;` 0097b878 (++ by computeForce 00606832 when the '
+        'normal force is positive), `static int numInactiveConnectors;` 0097b87c (++ at 00606a1b) and `static float '
+        'percentConnectorsActive();` 00606100 (DataModel::evaluate 005762f3; reads both, resets both, -1 when the sum '
+        'is 0). Exact in the pending build (out/native-layouts/contact-unit2008-bodyprim-pending/v8kernel/'
+        'Connector2008.h). Also: the header includes the donor v8kernel/Body.h, Point.h and Pair.h, whose Body layout is '
+        'not the 2008 one (root +0x4 there, +0x10 in 2008; canThrottle +0x24 vs +0x30); ContactConnector::canThrottle '
+        '00606250 and NormalBreakConnector::computeForce 00606670 (pv +0x94 after Body::updatePV) need the 2008 Body of '
+        'native-headers/v8kernel/Body2008.h, which cannot be included next to the donor Body.h (C2011). A 2008 Point / '
+        'GeoPair on Body2008.h would be needed first.'),
+    'native 2008 Body / Primitive (FYI, body-primitive2008 receipt)': (
+        'native-headers/v8kernel/Body2008.h now declares the 2008 Body (0xdc) and Cofm (0x3c) layouts (19 Body / Cofm '
+        'rows exact, body-primitive2008-working.json); native-headers/v8world/Primitive2008.h declares only '
+        'Primitive::onNewTouch / getFastFuzzyExtents (no layout). The Primitive-field contact rows (00606e90.., '
+        'onPrimitiveContactParametersChanged 00607ad0) stay blocked on a complete 0xfc Primitive declaration.'),
 }
 
 
@@ -111,6 +161,10 @@ for key, src in SOURCES.items():
     OBJ[key], FLAGS[key] = build('NativeContactUnit2008_' + key, src, UNIT[key])
 OBJ['pv_pending'], FLAGS['pv_pending'] = build('NativeContactUnit2008_pv_pending', SOURCES['pv'],
                                                PENDING_FLAGS + UNIT['pv'])
+for _key in ('contact', 'conn'):
+    OBJ[_key + '_pending'], FLAGS[_key + '_pending'] = build('NativeContactUnit2008_%s_pending' % _key, SOURCES[_key],
+                                                             BODYPRIM_FLAGS + UNIT[_key])
+MAIN_OF = {'pv_pending': 'pv', 'contact_pending': 'contact', 'conn_pending': 'conn'}
 
 original = nb.Original()
 names = {int(k, 16): v.get('symbol', '') for k, v in json.loads((R / 'offline/evidence.json').read_text())['names'].items()}
@@ -224,6 +278,18 @@ BOUNDS_ROWS = [(0x608fa0, '?clearLegacyOffset@PVInstance@RBX@@QAEXXZ', 'pv', 128
 PENDING_ROWS = [
     (0x6089a0, '?readProperty@PVInstance@RBX@@MAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z', 'pv_pending',
      'exact only with the generated Instance.h that declares Instance::readProperties 00557920 (see PROPOSALS)'),
+    (0x606100, '?percentConnectorsActive@ContactConnector@RBX@@SAMXZ', 'conn_pending',
+     'exact only with the generated Connector2008.h that declares the ContactConnector counters 0097b878 / 0097b87c and '
+     'percentConnectorsActive (see PROPOSALS)'),
+    (0x606bc0, '?contactPairHitRatio@Contact@RBX@@SAMXZ', 'contact_pending',
+     'exact only with the generated Contact2008.h that declares the Contact hit counters and ratios (see PROPOSALS)'),
+    (0x606bf0, '?contactFeatureHitRatio@Contact@RBX@@SAMXZ', 'contact_pending',
+     'exact only with the generated Contact2008.h that declares the Contact hit counters and ratios (see PROPOSALS)'),
+    (0x606c50, '?step@Contact@RBX@@QAE_NH@Z', 'contact_pending',
+     'exact only with the generated Contact2008.h that declares Contact::step(int) (see PROPOSALS); calls '
+     'Primitive::onNewTouch 005e7530 through native-headers/v8world/Primitive2008.h'),
+    (0x606ca0, '?computeIsAdjacent@Contact@RBX@@QAE_NM@Z', 'contact_pending',
+     'exact only with the generated Contact2008.h that declares Contact::computeIsAdjacent(float) (see PROPOSALS)'),
 ]
 PENDING_EXTERNAL = {
     '?getTag@XmlElement@@QBEABVName@RBX@@XZ': None,
@@ -232,6 +298,13 @@ PENDING_EXTERNAL = {
     '?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z': 0x559170,   # native spelling
     '?findAttribute@XmlElement@@QBEPBVXmlAttribute@@ABVName@RBX@@@Z': 0x57c2b0,
     '?getValue@XmlNameValuePair@@QBE_NAAPBVName@RBX@@@Z': 0x57c360,
+    '?onNewTouch@Primitive@RBX@@SAXPAV12@0@Z': 0x5e7530,                              # Contact::step 00606c6f
+    '?numActiveConnectors@ContactConnector@RBX@@2HA': 0x97b878,                        # 00606107 / 00606832
+    '?numInactiveConnectors@ContactConnector@RBX@@2HA': 0x97b87c,                      # 00606101 / 00606a1b
+    '?contactPairMatches@Contact@RBX@@2HA': 0x97b880,                                  # 00606bc1 / 00607d3b
+    '?contactPairMisses@Contact@RBX@@2HA': 0x97b884,                                   # 00606bc6 / 00607d07
+    '?contactFeatureMatches@Contact@RBX@@2HA': 0x97b888,                               # 00606bf1 / 00607588
+    '?contactFeatureMisses@Contact@RBX@@2HA': 0x97b88c,                                # 00606bf6 / 00607548
 }
 UNBOUND = []
 binding = {}
@@ -388,6 +461,8 @@ for address, key, which, size in BOUNDS_ROWS:
     row.update({'prefix_exact': row['exact'], 'exact': False, 'counted': False, 'status': 'bounds',
                 'reason': 'function-list extent is %d bytes; the body ends at %d bytes (BOUNDS evidence)' % (row['target_size'], size)})
     bounds_out.append(row)
+# the current-header Contact unit build is empty: every body there needs the proposed Contact2008.h declarations
+assert not match.coff_functions(OBJ['contact'].read_bytes()), [x[0] for x in match.coff_functions(OBJ['contact'].read_bytes())]
 pend_out = []
 for address, key, which, why in PENDING_ROWS:
     row = verify(which, resolve(OBJ[which], [(address, key)]), own, strict=False, record=False, extra=PENDING_EXTERNAL)[0]
@@ -395,7 +470,7 @@ for address, key, which, why in PENDING_ROWS:
     row.update({'pending_build_exact': row['exact'], 'exact': False, 'status': 'pending-build-only', 'reason': why})
     pend_out.append(row)
     # the current-header build must not emit it
-    assert not [x for x in match.coff_functions(OBJ['pv'].read_bytes()) if x[0] == row['symbol']]
+    assert not [x for x in match.coff_functions(OBJ[MAIN_OF[which]].read_bytes()) if x[0] == row['symbol']]
 
 
 # ---- vtables referenced by the exact rows: slot by slot, current-header objects only ---------------------
@@ -540,8 +615,10 @@ receipt = {
     'compiler': 'VS2008 RTM 21022',
     'flags': {k: v for k, v in FLAGS.items()},
     'sources': {str(p.relative_to(ROOT)): nb.sha(p) for p in list(SOURCES.values()) + [Path(__file__).resolve(),
-                R / 'native-headers/v8kernel/Connector2008.h', R / 'native-headers/v8datamodel/PVInstance.h', INSTANCE_H]},
-    'generated_pending_headers': {str((PENDING / 'v8tree/Instance.h').relative_to(ROOT)): nb.sha(PENDING / 'v8tree/Instance.h')},
+                R / 'native-headers/v8kernel/Connector2008.h', R / 'native-headers/v8datamodel/PVInstance.h', INSTANCE_H,
+                CONTACT_H, R / 'native-headers/v8world/Primitive2008.h']},
+    'generated_pending_headers': {str(x.relative_to(ROOT)): nb.sha(x) for x in (
+        PENDING / 'v8tree/Instance.h', BODYPRIM / 'v8world/Contact2008.h', BODYPRIM / 'v8kernel/Connector2008.h')},
     'objects': {k: nb.sha(v) for k, v in OBJ.items()},
     'unit_map': UNIT_MAP,
     'rows': groups,

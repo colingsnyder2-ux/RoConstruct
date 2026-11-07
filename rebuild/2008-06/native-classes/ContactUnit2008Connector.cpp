@@ -21,4 +21,20 @@ namespace RBX
 			point1->accumulateForce(force);
 		}
 	}
+
+#ifdef NATIVE_BODYPRIM_PENDING
+	// 00606100 (pending-build-only: needs the ContactConnector statics of the generated Connector2008.h copy). The
+	// counters are incremented only by ContactConnector::computeForce 00606780 (00606832 active / 00606a1b inactive).
+	int ContactConnector::numActiveConnectors;      // 0097b878
+	int ContactConnector::numInactiveConnectors;    // 0097b87c
+
+	float ContactConnector::percentConnectorsActive()
+	{
+		int sum = numActiveConnectors + numInactiveConnectors;
+		float answer = (sum == 0) ? -1.0f : (float)numActiveConnectors / sum;
+		numActiveConnectors = 0;
+		numInactiveConnectors = 0;
+		return answer;
+	}
+#endif
 }
