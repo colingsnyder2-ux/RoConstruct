@@ -1,4 +1,46 @@
+// from server: 100% by Intel
 // from server: 99% by EspClaude
+// roc 2007-08 0043f740  unit: MVCXTPPropertyGridItem::?$XItem  size: 134 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0043f740
+//
+// 0043f740  6aff                 push -1
+// 0043f742  68c8ed7300           push 0x73edc8
+// 0043f747  64a100000000         mov eax, dword ptr fs:[0]
+// 0043f74d  50                   push eax
+// 0043f74e  51                   push ecx
+// 0043f74f  56                   push esi
+// 0043f750  a188518b00           mov eax, dword ptr [0x8b5188]
+// 0043f755  33c4                 xor eax, esp
+// 0043f757  50                   push eax
+// 0043f758  8d44240c             lea eax, [esp + 0xc]
+// 0043f75c  64a300000000         mov dword ptr fs:[0], eax
+// 0043f762  8bf1                 mov esi, ecx
+// 0043f764  89742408             mov dword ptr [esp + 8], esi
+// 0043f768  8b442420             mov eax, dword ptr [esp + 0x20]
+// 0043f76c  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
+// 0043f770  50                   push eax
+// 0043f771  51                   push ecx
+// 0043f772  8bce                 mov ecx, esi
+// 0043f774  e807fcffff           call 0x43f380
+// 0043f779  51                   push ecx
+// 0043f77a  8bcc                 mov ecx, esp
+// 0043f77c  89642424             mov dword ptr [esp + 0x24], esp
+// 0043f780  68f0f37800           push 0x78f3f0
+// 0043f785  c744241c00000000     mov dword ptr [esp + 0x1c], 0
+// 0043f78d  c706f4f27800         mov dword ptr [esi], 0x78f2f4
+// 0043f793  c7462094f27800       mov dword ptr [esi + 0x20], 0x78f294
+// 0043f79a  c786000100008cf27800 mov dword ptr [esi + 0x100], 0x78f28c
+// 0043f7a4  ff15b8dd7700         call dword ptr [0x77ddb8]
+// 0043f7aa  8bce                 mov ecx, esi
+// 0043f7ac  e87f8e2500           call 0x698630
+// 0043f7b1  8bc6                 mov eax, esi
+// 0043f7b3  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 0043f7b7  64890d00000000       mov dword ptr fs:[0], ecx
+// 0043f7be  59                   pop ecx
+// 0043f7bf  5e                   pop esi
+// 0043f7c0  83c410               add esp, 0x10
+// 0043f7c3  c20800               ret 8
+
 // from server: 100% by king_originala
 // roc 2008-06 00440db0  unit: CSelectionPropGrid  size: 122 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00440db0
@@ -59,7 +101,7 @@ struct First
 struct Second
 {
     virtual ~Second();
-    char padding[0xe8];
+    char padding[0xdc];
 };
 
 struct Third

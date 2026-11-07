@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 99% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -60,7 +61,7 @@ struct First
 struct Second
 {
     virtual ~Second();
-    char padding[0xe8];
+    char padding[0xdc];
 };
 
 struct Third

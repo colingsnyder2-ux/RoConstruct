@@ -1,30 +1,37 @@
-// from server: 81% by Intel
-struct IUnknown {
-    virtual void AddRef() = 0;
-    virtual void Release() = 0;
+// from server: 87% by Intel
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+
+struct IUnknown
+{
+    virtual long __stdcall QueryInterface(void*, void**) = 0;
+    virtual unsigned long __stdcall AddRef(void* self) = 0;
+    virtual unsigned long __stdcall Release(void* self) = 0;
 };
 
-extern "C" void __stdcall InitializeCriticalSectionAndSpinCount(void* cs, unsigned int count);
+struct Creator
+{
+    char pad[0xc];
+    IUnknown* pUnk;
+    long Create(void* pOuter);
+};
 
-unsigned int** g_ppGlobalPtr = (unsigned int**)0x883164;
-void* g_CriticalSection = (void*)0x883158;
+Creator g_creator;
 
-long __stdcall GetGlobalPointer(void* unused1, void* unused2, void* unused3, unsigned int** ppOut) {
-    if (!ppOut) {
+long __stdcall sub_416470(void* a1, void* a2, void* a3, IUnknown** ppOut)
+{
+    if (!ppOut)
         return 0x80004003;
-    }
 
-    if (!*g_ppGlobalPtr) {
-        InitializeCriticalSectionAndSpinCount(g_CriticalSection, 0);
-    }
+    long result = 0;
 
-    unsigned int* pGlobal = *g_ppGlobalPtr;
-    *ppOut = pGlobal;
+    if (!g_creator.pUnk)
+        g_creator.Create(a3);
 
-    if (pGlobal) {
-        IUnknown* pUnk = reinterpret_cast<IUnknown*>(pGlobal);
-        pUnk->AddRef();
-    }
+    *ppOut = g_creator.pUnk;
 
-    return 0;
+    if (g_creator.pUnk)
+        g_creator.pUnk->AddRef(g_creator.pUnk);
+
+    return result;
 }
