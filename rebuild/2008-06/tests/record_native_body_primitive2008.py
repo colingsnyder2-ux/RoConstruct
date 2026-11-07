@@ -1,5 +1,5 @@
-"""Verify the inactive 2008-06 native RBX::Body and RBX::Cofm rows (Body unit 00613ef0..00614bc7, Cofm unit
-0065fef0..0066017c).
+"""Verify the inactive 2008-06 native RBX::Body, RBX::Cofm and RBX::Point rows (Body unit 00613e80..00614bc7, Cofm unit
+0065fef0..0066017c, Point unit 0064dc70..0064dde3).
 
 Layout: native-headers/v8kernel/Body2008.h (a non-colliding path: the donor v8kernel/Body.h is reached by every engine
 unit). Body 0xdc (new 0xdc in the world body initializer 00614b40 and Primitive() 005e8770), Cofm 0x3c (new 0x3c in
@@ -10,6 +10,10 @@ Builds (document-swap flags, VS2008 RTM 21022, /fp:fast /U_RELEASEASSERT: withou
 kineticEnergy 274 B):
   * native-classes/BodyPrimitive2008Body.cpp: Body rows that need only the Body / Cofm layout.
   * native-classes/BodyPrimitive2008Cofm.cpp: Cofm(Body*), getMass, updateIfDirty, getCofmInBody, getMoment.
+  * native-classes/BodyPrimitive2008Point.cpp: Point::forceToBody, step, setWorldPos against native-headers/v8kernel/
+    Point2008.h (Point(Body*) 0064dc00 / ??_G 0064dc50 are counted by leaves2008-working.json).
+SimBody 0xb4 (new 0xb4 in Body() 006149c0 / setParent 006148b0, constructor 00658ae0) and the 2008 Point / GeoPair
+layouts (native-headers/v8kernel/Point2008.h, native-headers/v8world/GeoPair2008.h) are checked by the same unit.
 
 Every counted row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, constants by bytes, own symbols by the row
@@ -39,11 +43,15 @@ OUT = nb.OUT
 OUT.mkdir(parents=True, exist_ok=True)
 HEADER = R / 'native-headers/v8kernel/Body2008.h'
 PRIM_HEADER = R / 'native-headers/v8world/Primitive2008.h'
+POINT_HEADER = R / 'native-headers/v8kernel/Point2008.h'
+GEOPAIR_HEADER = R / 'native-headers/v8world/GeoPair2008.h'
 SOURCES = {
     'body': R / 'native-classes/BodyPrimitive2008Body.cpp',
     'cofm': R / 'native-classes/BodyPrimitive2008Cofm.cpp',
+    'point': R / 'native-classes/BodyPrimitive2008Point.cpp',
 }
-UNIT = {'body': ['/fp:fast', '/U_RELEASEASSERT'], 'cofm': ['/fp:fast', '/U_RELEASEASSERT']}
+UNIT = {'body': ['/fp:fast', '/U_RELEASEASSERT'], 'cofm': ['/fp:fast', '/U_RELEASEASSERT'],
+        'point': ['/fp:fast', '/U_RELEASEASSERT']}
 DISCOVER = bool(os.environ.get('NATIVE_BODY_PRIMITIVE_DISCOVER'))
 RECEIPT = ROOT / 'work/2008-06/shared-layouts/body-primitive2008-working.json'
 
@@ -55,9 +63,17 @@ FIELDS = {
              ('canThrottle', 0x30), ('link', 0x34), ('meInParent', 0x38), ('moment', 0x68), ('mass', 0x8c),
              ('stateIndex', 0x90), ('pv', 0x94)],
     'Cofm': [('body', 0x0), ('dirty', 0x4), ('cofmInBody', 0x8), ('mass', 0x14), ('moment', 0x18)],
+    'SimBody': [('body', 0x0), ('dt', 0x4), ('dirty', 0x8), ('pv', 0xc), ('qOrientation', 0x54), ('angMomentum', 0x64),
+                ('momentRecip', 0x70), ('massRecip', 0x7c), ('constantForceY', 0x80), ('force', 0x84),
+                ('torque', 0x90), ('impulse', 0x9c), ('rotImpulse', 0xa8)],
+    'Point': [('kernelIndex', 0x4), ('numOwners', 0x8), ('body', 0xc), ('localPos', 0x10), ('worldPos', 0x1c),
+              ('force', 0x28)],
+    'GeoPair': [('geoPairType', 0x0), ('offset0', 0x4), ('offset1', 0x8), ('body0', 0xc), ('body1', 0x10),
+                ('edgeLength0', 0x14), ('pairData', 0x18)],
 }
-SIZES = {'Body': 0xdc, 'Cofm': 0x3c}
-_lines = ['#include <stddef.h>', '#include "v8kernel/Body2008.h"', '#include "v8world/Primitive2008.h"', '',
+SIZES = {'Body': 0xdc, 'Cofm': 0x3c, 'SimBody': 0xb4, 'Point': 0x34, 'GeoPair': 0x24}
+_lines = ['#include <stddef.h>', '#include "v8kernel/Body2008.h"', '#include "v8world/Primitive2008.h"',
+          '#include "v8kernel/Point2008.h"', '#include "v8world/GeoPair2008.h"', '',
           'struct NativeBodyPrimitive2008Layout', '{', '\tstatic void check()', '\t{']
 for cls, fields in FIELDS.items():
     for field, offset in fields:
@@ -109,20 +125,44 @@ EXTERNAL = {
     '??KVector3@G3D@@QBE?AV01@M@Z': 0x518740,                                          # Vector3::operator/ 0066002a
     '??HMatrix3@G3D@@QBE?AV01@ABV01@@Z': 0x5132f0,                                     # Matrix3::operator+ 00660108
     '?alignedFree@System@G3D@@SAXPAX@Z': 0x507d20,      # inline ~Array<Body*> in ~Body 00614b16
+    '??0SimBody@RBX@@QAE@PAVBody@1@@Z': 0x658ae0,                                      # Body() 00614a8a, setParent 0061493d
+    '?update@SimBody@RBX@@AAEXXZ': 0x658d20,                                           # resetAccumulators 00613e89
+    '?step@SimBody@RBX@@QAEXXZ': 0x658fb0,                                             # Body::step 0061422d
+    '?getOwnerPV@SimBody@RBX@@QAE?AVPV@2@XZ': 0x658ca0,                                # Body::step 00614248
+    '??0CoordinateFrame@G3D@@QAE@XZ': 0x4782d0,                                        # Body() 00614a16 / 00614a5c
+    '?zero@Matrix3@G3D@@SAABV12@XZ': 0x513e20,                                         # Body() 00614a1b
+    '??9Matrix3@G3D@@QBE_NABV01@@Z': 0x5132d0,                                         # setMoment 0061411f
+    '??0Cofm@RBX@@QAE@PAVBody@1@@Z': 0x65fef0,
+    '?accumulateForce@SimBody@RBX@@QAEXABVVector3@G3D@@0@Z': 0x612fb0,               # Point::forceToBody 0064dc87
+    '?append@?$Array@PAVBody@RBX@@@G3D@@QAEXABQAVBody@RBX@@@Z': 0x5fabc0,              # onChildAdded 0061484f (ICF-shared)
+    '?resize@?$Array@PAVBody@RBX@@@G3D@@QAEXH_N@Z': 0x5fa770,                          # onChildRemoved 00614786 (ICF-shared)
 }
 DATA = {
     '?worldBody@Body@RBX@@0PAV12@A': 0x97bec4,           # initWorldBody 00614b79, getWorldBody 00614bbf
-    '?nextStateIndex@Body@RBX@@0HA': 0x95a898,           # getNextStateIndex 00613f20
+    '?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA': 0x95a898,   # function-local counter: getNextStateIndex 00613f20 and
+                                                                 # its inline copies (Body() 00614a2b, step 00614295 ...)
+    '?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A': 0x96f044,   # G3D Vector3::zero() static (Velocity() 00614170; the
+                                                             # SimBody ctor 00658ae0 uses the same 0096f044 / guard 0096f050)
     '_worldBodyFlag': 0x97bed8,                          # call_once flag pushed at 00614bb0 (file static)
 }
 FOLDED = {}
 UNPROVEN = {}
 ROWS = {
     'body': [
+        (0x613e80, '?resetAccumulators@SimBody@RBX@@QAEXXZ'),
         (0x613ef0, '?calcRoot@Body@RBX@@AAEPAV12@XZ'),
         (0x613f00, '?getBranchMass@Body@RBX@@QBEMXZ'),
         (0x613f20, '?getNextStateIndex@Body@RBX@@SAHXZ'),
         (0x613f40, '?advanceStateIndex@Body@RBX@@QAEXXZ'),
+        (0x613f70, '?makeCofmDirty@Body@RBX@@AAEXXZ'),
+        (0x613fb0, '?setPv@Body@RBX@@QAEXABVPV@2@@Z'),
+        (0x614040, '?setVelocity@Body@RBX@@QAEXABVVelocity@2@@Z'),
+        (0x6140b0, '?setMass@Body@RBX@@QAEXM@Z'),
+        (0x614110, '?setMoment@Body@RBX@@QAEXABVMatrix3@G3D@@@Z'),
+        (0x614170, '??0Velocity@RBX@@QAE@XZ'),
+        (0x614200, '?step@Body@RBX@@QAEX_N@Z'),
+        (0x6142d0, '?setMeInParent@Body@RBX@@QAEXABVCoordinateFrame@G3D@@@Z'),
+        (0x614380, '?setMeInParent@Body@RBX@@QAEXPAVLink@2@@Z'),
         (0x614400, '?setCoordinateFrame@Body@RBX@@QAEXABVCoordinateFrame@G3D@@@Z'),
         (0x614480, '?getBranchCofmPos@Body@RBX@@QBE?AVVector3@G3D@@XZ'),
         (0x6144e0, '?getBranchCofmCoordinateFrame@Body@RBX@@QBE?AVCoordinateFrame@G3D@@XZ'),
@@ -130,9 +170,18 @@ ROWS = {
         (0x614560, '?getIWorldAtPoint@Body@RBX@@QBE?AVMatrix3@G3D@@ABVVector3@4@@Z'),
         (0x6145e0, '?getBranchIWorldAtPoint@Body@RBX@@QBE?AVMatrix3@G3D@@ABVVector3@4@@Z'),
         (0x614670, '?kineticEnergy@Body@RBX@@QBEMXZ'),
+        (0x614760, '?onChildRemoved@Body@RBX@@AAEXPAV12@@Z'),
+        (0x6147f0, '?onChildAdded@Body@RBX@@AAEXPAV12@@Z'),
+        (0x6148b0, '?setParent@Body@RBX@@QAEXPAV12@@Z'),
+        (0x6149c0, '??0Body@RBX@@QAE@XZ'),
         (0x614ac0, '??1Body@RBX@@QAE@XZ'),
         (0x614b40, '?initWorldBody@Body@RBX@@CAXXZ'),
         (0x614bb0, '?getWorldBody@Body@RBX@@SAPAV12@XZ'),
+    ],
+    'point': [
+        (0x64dc70, '?forceToBody@Point@RBX@@QAEXXZ'),
+        (0x64dc90, '?step@Point@RBX@@QAEXXZ'),
+        (0x64dd40, '?setWorldPos@Point@RBX@@QAEXABVVector3@G3D@@@Z'),
     ],
     'cofm': [
         (0x65fef0, '??0Cofm@RBX@@QAE@PAVBody@1@@Z'),
@@ -390,25 +439,28 @@ double = {a: elsewhere[a] for a in exact_rows if a in elsewhere}
 assert not double, double
 
 BLOCKED = {
-    'Body() 006149c0': 'news the 0xb4 SimBody (constructor 00658ae0); the SimBody layout (body +0x0, a float +0x4, dirty '
-                       '+0x8, PV +0xc, Quaternion +0x54 (w = 1 at +0x60), Vector3s +0x64 / +0x70, +0x7c, constantForceY '
-                       '+0x80, force +0x84, torque +0x90 and two more Vector3 accumulators +0x9c / +0xa8) is not derived '
-                       'with field identities, so SimBody is declared only by its destructor.',
-    'SimBody::dirty (+0x8) users': 'makeCofmDirty 00613f70, setPv 00613fb0, setVelocity 00614040, setMass 006140b0, '
-                       'setMoment 00614110, step 00614200 (SimBody 00658fb0 / 00658ca0 / resetAccumulators 00613e80), '
-                       'setMeInParent 006142d0 / 00614380 (Link +0x4), onChildRemoved 00614760, onChildAdded 006147f0, '
-                       'setParent 006148b0 (new SimBody): all inline `simBody->dirty = true` at +0x8.',
+    'Body::accumulateTorque 006060b0': 'out-of-line COMDAT of the header-inline Body::accumulateTorque emitted in the '
+                       'Connector unit (callers 0062ec1a / 00666634 / 006676f2 in other units); no unit here calls it '
+                       'out of line (RotateConnector::computeForce inlines it), so it is not emitted.',
+    'SimBody unit 00658a30..0065925e': 'SimBody(Body*) 00658ae0, getOwnerPV 00658ca0, update 00658d20 and step 00658fb0 '
+                       'are only declared (call targets of the Body rows); update / step need Body::getCofmOffset, '
+                       'Quaternion(Matrix3) and the momentRecip helpers, not attempted.',
+    'SimBody::accumulateForce 00612fb0': 'declared out of line (Point::forceToBody 0064dc87 calls it); its COMDAT is '
+                       'emitted in another unit (00612fb0 precedes the GeoPair unit 00613060), not attempted.',
     'Primitive': 'v8world/Primitive2008.h declares only Primitive::onNewTouch 005e7530 and getFastFuzzyExtents 005e7a50 '
-                 '(call evidence for the contact unit); the 0xfc Primitive layout (constructor 005e8770: vtable 0083f83c, '
+                 '(call evidence for the contact unit). The 0xfc Primitive layout (constructor 005e8770: vtable 0083f83c, '
                  'Guid +0x8, geometry +0x9c, body +0xa0, friction +0xb0, elasticity +0xb4, jointK ComputeProp '
-                 '+0xe8..+0xf8) is not declared because +0x4..+0x98 and +0xa4..+0xe4 are not assigned to fields yet.',
+                 '+0xe8..+0xf8) is not declared: +0x4..+0x98 and +0xa4..+0xe4 are not assigned to fields yet, and its '
+                 'base IPipelined is declared only by the donor v8world/IPipelined.h, which includes the donor '
+                 'v8kernel/Kernel.h -> KernelData.h -> Body.h and so cannot be included next to Body2008.h (C2011). A 2008 '
+                 'Primitive needs a native IPipelined (and Kernel) declaration first.',
 }
 receipt = {
-    'class': 'RBX::Body / RBX::Cofm (2008-06), inactive',
+    'class': 'RBX::Body / RBX::Cofm / RBX::SimBody layout / RBX::Point (2008-06), inactive',
     'compiler': 'VS2008 RTM 21022',
     'flags': {k: v for k, v in FLAGS.items()},
     'sources': {str(p.relative_to(ROOT)): nb.sha(p) for p in list(SOURCES.values()) + [Path(__file__).resolve(), HEADER,
-                PRIM_HEADER]},
+                PRIM_HEADER, POINT_HEADER, GEOPAIR_HEADER]},
     'generated_layout_unit': {str(LAYOUT.relative_to(ROOT)): nb.sha(LAYOUT)},
     'layout': {cls: {'size': '%#x' % SIZES[cls], 'fields': {f: '%#x' % o for f, o in fields}} for cls, fields in FIELDS.items()},
     'objects': {k: nb.sha(v) for k, v in OBJ.items()},
@@ -424,10 +476,18 @@ receipt = {
         'Body::getBranchMass out of line': 'Cofm::updateIfDirty 0065ff20 is 526 / 575 B when getBranchMass is a call; '
                                            'the original inlines it (header-inline definition).',
         '/fp:precise': 'getBranchMass 37 / 21 B, kineticEnergy 274 / 238 B, updateIfDirty 611 / 575 B.',
+        'Body::nextStateIndex as a class static': 'the inline getNextStateIndex copies in setVelocity 00614040, step '
+                                  '00614200 and Body() 006149c0 then keep the last float store before the counter load '
+                                  '(same size, scheduling differs). Exact: the function-local `static int p` of the donor '
+                                  'getNextStateIndex (0095a898); getNextStateIndex 00613f20 stays exact.',
+        'calcRoot inline': 'setParent 006148b0 is 269 / 263 B when calcRoot is inlined one level; the original calls it '
+                           '(00614958): `__declspec(noinline)` as in the donor declaration.',
+        'VS2005 50727 for the Body unit': 'setVelocity 113 / 111 B (kineticEnergy is exact there too); kept on 21022.',
     },
     'blocked': BLOCKED,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
 RECEIPT.write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS body-primitive2008: %d counted exact rows (%s); %d not exact; layout Body 0xdc / Cofm 0x3c checked'
+print('PASS body-primitive2008: %d counted exact rows (%s); %d not exact; layout Body 0xdc / Cofm 0x3c / SimBody 0xb4 / '
+      'Point 0x34 / GeoPair 0x24 checked'
       % (len(exact_rows), ' '.join(exact_rows), sum(1 for rows in groups.values() for r in rows if not r['exact'])))

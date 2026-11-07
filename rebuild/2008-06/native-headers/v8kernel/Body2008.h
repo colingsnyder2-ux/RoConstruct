@@ -12,7 +12,7 @@
 //            = NULL, index +0x18 = -1, children (G3D::Array data / num / numAllocated +0x1c / +0x20 / +0x24) = 0,
 //            cofm +0x28 = NULL, simBody +0x2c = NULL, canThrottle +0x30 = true, link +0x34 = NULL, meInParent +0x38
 //            (CoordinateFrame() 004782d0), moment +0x68 = Matrix3::zero() (00513e20, operator= 00513220), mass +0x8c = 0,
-//            stateIndex +0x90 = getNextStateIndex() (inline, static 0095a898), pv +0x94 (CoordinateFrame() + Velocity()
+//            stateIndex +0x90 = getNextStateIndex() (inline; its function-local static counter is 0095a898), pv +0x94 (CoordinateFrame() + Velocity()
 //            00614170 at +0xc4), then root = this and simBody = new SimBody(this) (0xb4, constructor 00658ae0).
 //   dtor     00614ac0: setParent(NULL) 006148b0 when parent is set, delete simBody (~SimBody, folded empty body 0047d410),
 //            ~children (G3D::Array: alignedFree 00507d20, then data / num / numAllocated = 0).
@@ -33,12 +33,25 @@
 // Cofm (0x3c: onChildAdded 006147f0 news 0x3c): Cofm(Body*) 0065fef0 stores body +0x0, dirty +0x4 = true and
 // cofmInBody +0x8 = (0, 0, 0); updateIfDirty 0065ff20 tests dirty and writes mass +0x14; getCofmInBody 00660160 returns
 // +0x8, getMass 0065ff10 returns +0x14 (`?getMass@Cofm@RBX@@QBE?BMXZ`, const float), getMoment 00660170 returns +0x18.
-// SimBody (0xb4, constructor 00658ae0) is declared here only by its out-of-line destructor (folded at 0047d410): its
-// fields are not derived, so it must not be used for new, sizeof or member access.
+// SimBody (0xb4: Body() 006149c0 and setParent 006148b0 new 0xb4, then call SimBody(Body*) 00658ae0):
+//   ctor     00658ae0: body +0x0 (argument), dt +0x4 = 0, dirty +0x8 = true, pv +0xc (CoordinateFrame() 004782d0 +
+//            Velocity() 00614170 at +0x3c), qOrientation +0x54 = (0, 0, 0, 1), angMomentum +0x64 and momentRecip +0x70
+//            zeroed, massRecip +0x7c not initialized, constantForceY +0x80 = 0, then force +0x84, torque +0x90 and the
+//            two impulse accumulators +0x9c / +0xa8 = Vector3::zero() (function-local static 0096f044, guard 0096f050).
+//   dt       +0x4: Kernel insertBody 005fb0e0 stores the kernel step time (00649310) into body->simBody +0x4, removeBody
+//            005fb110 zeroes it; step() 00658fb0 takes no argument (`ret`) and multiplies force / torque by it.
+//   impulse  +0x9c / +0xa8: step() 00658fb0 adds +0x9c to force * dt before scaling by massRecip +0x7c into
+//            pv.velocity.linear +0x3c, and +0xa8 to torque * dt into angMomentum +0x64; resetAccumulators 00613e80 and
+//            step() zero both with torque (analog names: linear / rotational impulse).
+//   update   00658d20 (when dirty +0x8): pv from Body::getPV / Cofm::getCofmInBody, qOrientation, massRecip +0x7c.
+//   getOwnerPV 00658ca0 (`ret 4`, PV returned by value; Body::step 00614248).
 #include <G3D/Vector3.h>
 #include <G3D/Matrix3.h>
 #include <G3D/CoordinateFrame.h>
 #include "util/IndexArray.h"
+#include "util/Quaternion.h"
+#include "v8kernel/Link.h"      // donor; no Body include, 2008 layout (Link() 00613d20: body +0x4; setMeInParent 00614380
+                                // / setParent 006148e1 write link->body at +0x4 through setBody)
 #include "util/PV.h"
 #include "v8kernel/KernelIndex.h"
 #include "util/Math.h"
@@ -52,8 +65,54 @@ namespace RBX
 
 	class SimBody
 	{
+		friend struct ::NativeBodyPrimitive2008Layout;
+
+	private:
+		void update();                                    // 00658d20
+		void updateIfDirty()
+		{
+			if (dirty)
+				update();
+		}
+
 	public:
+		Body* body;                                       // +0x0
+		float dt;                                         // +0x4  (Kernel insertBody 005fb0e0 / removeBody 005fb110)
+		bool dirty;                                       // +0x8
+		PV pv;                                            // +0xc
+		Quaternion qOrientation;                          // +0x54
+		G3D::Vector3 angMomentum;                         // +0x64
+		G3D::Vector3 momentRecip;                         // +0x70
+		float massRecip;                                  // +0x7c
+		float constantForceY;                             // +0x80
+		G3D::Vector3 force;                               // +0x84
+		G3D::Vector3 torque;                              // +0x90
+		G3D::Vector3 impulse;                             // +0x9c (analog name)
+		G3D::Vector3 rotImpulse;                          // +0xa8 (analog name)
+
+		SimBody(Body* body);                              // 00658ae0
 		~SimBody();                                       // folded empty body 0047d410 (Body::~Body 00614af9)
+
+		void step();                                      // 00658fb0
+		PV getOwnerPV();                                  // 00658ca0
+		void makeDirty()
+		{
+			dirty = true;
+		}
+		void accumulateForce(const G3D::Vector3& _force, const G3D::Vector3& worldPos);   // 00612fb0 (out of line)
+		void accumulateTorque(const G3D::Vector3& _torque)   // inline in Body::accumulateTorque 006060b0
+		{
+			updateIfDirty();
+			torque += _torque;
+		}
+		void resetAccumulators()                          // out-of-line COMDAT 00613e80 (Body::step 0061421e)
+		{
+			updateIfDirty();
+			force = G3D::Vector3(0.0f, constantForceY, 0.0f);
+			torque = G3D::Vector3(0.0f, 0.0f, 0.0f);
+			impulse = G3D::Vector3(0.0f, 0.0f, 0.0f);
+			rotImpulse = G3D::Vector3(0.0f, 0.0f, 0.0f);
+		}
 	};
 
 	class Cofm
@@ -71,6 +130,14 @@ namespace RBX
 
 	public:
 		Cofm(Body* body);                                 // 0065fef0
+		bool getIsDirty() const                           // makeCofmDirty 00613f7a reads +0x4
+		{
+			return dirty;
+		}
+		void makeDirty()                                  // makeCofmDirty 00613fa0 stores +0x4 = 1
+		{
+			dirty = true;
+		}
 		const G3D::Vector3& getCofmInBody() const;        // 00660160
 		const float getMass() const;                      // 0065ff10
 		const G3D::Matrix3& getMoment() const;            // 00660170
@@ -104,10 +171,12 @@ namespace RBX
 		mutable PV pv;                                    // +0x94
 
 		static Body* worldBody;                           // 0097bec4 (initWorldBody 00614b40, getWorldBody 00614bb0)
-		static int nextStateIndex;                        // 0095a898
 
 		void updatePV() const;                            // 00599360
-		Body* calcRoot();                                 // 00613ef0
+		void makeCofmDirty();                             // 00613f70
+		void onChildAdded(Body* child);                   // 006147f0
+		void onChildRemoved(Body* child);                 // 00614760
+		__declspec(noinline) Body* calcRoot();            // 00613ef0 (called, not inlined, by setParent 00614958)
 		void resetRoot(Body* newRoot);                    // 00614530
 		static void initWorldBody();                      // 00614b40 (boost::call_once target)
 
@@ -146,6 +215,10 @@ namespace RBX
 		const bool getCanThrottle() const
 		{
 			return canThrottle;
+		}
+		const PV& getPVUnsafe() const                     // no updatePV: Point::step 0064dc93 reads pv +0x94 directly
+		{                                                 // (analog name)
+			return pv;
 		}
 		const PV& getPV() const
 		{
@@ -188,6 +261,23 @@ namespace RBX
 
 		void setParent(Body* newParent);                  // 006148b0
 		void setPv(const PV& _pv);                        // 00613fb0
+		void setVelocity(const Velocity& worldVelocity);  // 00614040
+		void setMass(float _mass);                        // 006140b0
+		void setMoment(const G3D::Matrix3& _momentInBody);   // 00614110
+		void setMeInParent(const G3D::CoordinateFrame& _meInParent);   // 006142d0
+		void setMeInParent(Link* _link);                  // 00614380
+		void step(bool throttling);                       // 00614200 (`ret 4`: the step time is SimBody::dt)
+		void accumulateForce(const G3D::Vector3& force, const G3D::Vector3& worldPos)   // inline in Point::forceToBody
+		{                                                 // 0064dc70 (SimBody::accumulateForce 00612fb0)
+			SimBody* simBody = root->simBody;
+			if (simBody)
+				simBody->accumulateForce(force, worldPos);
+		}
+		void accumulateTorque(const G3D::Vector3& torque) // out-of-line COMDAT 006060b0 (Connector unit)
+		{
+			if (root->simBody)
+				root->simBody->accumulateTorque(torque);
+		}
 		void setCoordinateFrame(const G3D::CoordinateFrame& worldCord);   // 00614400
 
 		G3D::Vector3 getBranchCofmPos() const;            // 00614480

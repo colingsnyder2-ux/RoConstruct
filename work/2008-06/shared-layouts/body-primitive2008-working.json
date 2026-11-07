@@ -1,5 +1,5 @@
 {
-  "class": "RBX::Body / RBX::Cofm (2008-06), inactive",
+  "class": "RBX::Body / RBX::Cofm / RBX::SimBody layout / RBX::Point (2008-06), inactive",
   "compiler": "VS2008 RTM 21022",
   "flags": {
     "layout": [
@@ -120,17 +120,60 @@
       "/U_RELEASEASSERT",
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeBodyPrimitive2008_cofm.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/BodyPrimitive2008Cofm.cpp"
+    ],
+    "point": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeBodyPrimitive2008_point.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/BodyPrimitive2008Point.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/native-classes/BodyPrimitive2008Body.cpp": "6c0128b41665df64a7f2c93f7e4d8ae27f29ccff9df378e41a16799adf219020",
+    "rebuild/2008-06/native-classes/BodyPrimitive2008Body.cpp": "0d63c3f3047a33fbcddf089195a5b26c9c3bac95d7d36ed94f06c005d03005f1",
     "rebuild/2008-06/native-classes/BodyPrimitive2008Cofm.cpp": "d0020ffe4edf9c22465ee7927c9287bdd7881826538b5fa9d49d6fa13fda7f56",
-    "rebuild/2008-06/tests/record_native_body_primitive2008.py": "cd4a1a4d2d21f10afdcf9b2319c5b5bcf9905a3bbf57dd41a5f6b2c33924dd5d",
-    "rebuild/2008-06/native-headers/v8kernel/Body2008.h": "e8c2ca0fdd13a9214fdba2c0da59db3bbd0fe1ad891959382baf487ef0faf911",
-    "rebuild/2008-06/native-headers/v8world/Primitive2008.h": "393487cf6a8076ce7f03938fc48dfec4c83917b623eb79890afc60117ea3d83e"
+    "rebuild/2008-06/native-classes/BodyPrimitive2008Point.cpp": "fdeb934ab559b73e1005db6fa7edf0bb75ab0a58aced4afcb96802f666a03af6",
+    "rebuild/2008-06/tests/record_native_body_primitive2008.py": "990470e85219d673424027e6670dc7e962aaf3bf0ffdc841dc6177193952124c",
+    "rebuild/2008-06/native-headers/v8kernel/Body2008.h": "30f7f5ad7349f89149c48f5068540964b5b53cb4b102c840120ba284cd487748",
+    "rebuild/2008-06/native-headers/v8world/Primitive2008.h": "393487cf6a8076ce7f03938fc48dfec4c83917b623eb79890afc60117ea3d83e",
+    "rebuild/2008-06/native-headers/v8kernel/Point2008.h": "217c158ef6dad5e3fddb936646cc3788586a3b0615d89564884fb171925d98fe",
+    "rebuild/2008-06/native-headers/v8world/GeoPair2008.h": "d66b2bca49ccc1057aeb5c7c3542d085e8f0c81d16f9a0eafa7cc426c937bca1"
   },
   "generated_layout_unit": {
-    "rebuild/2008-06/out/native-layouts/NativeBodyPrimitive2008Layout.cpp": "5dbd2658a2972af5c150abc92954fd7fbfc48a7952d5b23cdcc2740e5b9b7eeb"
+    "rebuild/2008-06/out/native-layouts/NativeBodyPrimitive2008Layout.cpp": "e11a3799c7cde9e80881cc9b51febf4d90395d5acbc3e39f4df6c94722034bf4"
   },
   "layout": {
     "Body": {
@@ -164,15 +207,70 @@
         "mass": "0x14",
         "moment": "0x18"
       }
+    },
+    "SimBody": {
+      "size": "0xb4",
+      "fields": {
+        "body": "0x0",
+        "dt": "0x4",
+        "dirty": "0x8",
+        "pv": "0xc",
+        "qOrientation": "0x54",
+        "angMomentum": "0x64",
+        "momentRecip": "0x70",
+        "massRecip": "0x7c",
+        "constantForceY": "0x80",
+        "force": "0x84",
+        "torque": "0x90",
+        "impulse": "0x9c",
+        "rotImpulse": "0xa8"
+      }
+    },
+    "Point": {
+      "size": "0x34",
+      "fields": {
+        "kernelIndex": "0x4",
+        "numOwners": "0x8",
+        "body": "0xc",
+        "localPos": "0x10",
+        "worldPos": "0x1c",
+        "force": "0x28"
+      }
+    },
+    "GeoPair": {
+      "size": "0x24",
+      "fields": {
+        "geoPairType": "0x0",
+        "offset0": "0x4",
+        "offset1": "0x8",
+        "body0": "0xc",
+        "body1": "0x10",
+        "edgeLength0": "0x14",
+        "pairData": "0x18"
+      }
     }
   },
   "objects": {
-    "layout": "301fe47bf0c040d059387c47d9fe0bfbabdedeb9929ed2eca447287a7356e4a9",
-    "body": "d68aac284b0c1190d581887a3bd003b248b1ed4cc931d789eae5683fdaaef7ef",
-    "cofm": "20decb1f7b7f36cb23a5c264ce3f1a2f2959124471547c15a0f83b5d791b75c5"
+    "layout": "a05510b2b26d88b0702aa28626b2e8f050db95ea139dac5b063a345efe685034",
+    "body": "5afc7a020f1c1e8d2605608210871151fd4227b4d450b5218c1869ad5a7eee9c",
+    "cofm": "af13416ec43f6ab8377276cb3377d552173b198c2c96871e2681a005d8d28bc4",
+    "point": "b5de87918a6366c43d68209e4e84f1afc9e78daaf44c0a14ec4e3e81611b10be"
   },
   "rows": {
     "body": [
+      {
+        "address": "00613e80",
+        "symbol": "?resetAccumulators@SimBody@RBX@@QAEXXZ",
+        "size": 98,
+        "target_size": 98,
+        "exact": true,
+        "verified_targets": {
+          "?update@SimBody@RBX@@AAEXXZ": "0x658d20 (external)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
       {
         "address": "00613ef0",
         "symbol": "?calcRoot@Body@RBX@@AAEPAV12@XZ",
@@ -206,7 +304,7 @@
         "target_size": 29,
         "exact": true,
         "verified_targets": {
-          "?nextStateIndex@Body@RBX@@0HA": "0x95a898 (data)"
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
         },
         "local_eh": [],
         "vtables": [],
@@ -219,7 +317,131 @@
         "target_size": 35,
         "exact": true,
         "verified_targets": {
-          "?nextStateIndex@Body@RBX@@0HA": "0x95a898 (data)"
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00613f70",
+        "symbol": "?makeCofmDirty@Body@RBX@@AAEXXZ",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00613fb0",
+        "symbol": "?setPv@Body@RBX@@QAEXABVPV@2@@Z",
+        "size": 137,
+        "target_size": 137,
+        "exact": true,
+        "verified_targets": {
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614040",
+        "symbol": "?setVelocity@Body@RBX@@QAEXABVVelocity@2@@Z",
+        "size": 111,
+        "target_size": 111,
+        "exact": true,
+        "verified_targets": {
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006140b0",
+        "symbol": "?setMass@Body@RBX@@QAEXM@Z",
+        "size": 82,
+        "target_size": 82,
+        "exact": true,
+        "verified_targets": {
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614110",
+        "symbol": "?setMoment@Body@RBX@@QAEXABVMatrix3@G3D@@@Z",
+        "size": 86,
+        "target_size": 86,
+        "exact": true,
+        "verified_targets": {
+          "??9Matrix3@G3D@@QBE_NABV01@@Z": "0x5132d0 (external)",
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614170",
+        "symbol": "??0Velocity@RBX@@QAE@XZ",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614200",
+        "symbol": "?step@Body@RBX@@QAEX_N@Z",
+        "size": 193,
+        "target_size": 193,
+        "exact": true,
+        "verified_targets": {
+          "?resetAccumulators@SimBody@RBX@@QAEXXZ": "0x613e80 (own row)",
+          "?step@SimBody@RBX@@QAEXXZ": "0x658fb0 (external)",
+          "?getOwnerPV@SimBody@RBX@@QAE?AVPV@2@XZ": "0x658ca0 (external)",
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006142d0",
+        "symbol": "?setMeInParent@Body@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+        "size": 164,
+        "target_size": 164,
+        "exact": true,
+        "verified_targets": {
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)",
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614380",
+        "symbol": "?setMeInParent@Body@RBX@@QAEXPAVLink@2@@Z",
+        "size": 125,
+        "target_size": 125,
+        "exact": true,
+        "verified_targets": {
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)",
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
         },
         "local_eh": [],
         "vtables": [],
@@ -234,7 +456,7 @@
         "verified_targets": {
           "?updatePV@Body@RBX@@ABEXXZ": "0x599360 (external (evidence name))",
           "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
-          "?setPv@Body@RBX@@QAEXABVPV@2@@Z": "0x613fb0 (external (evidence name))"
+          "?setPv@Body@RBX@@QAEXABVPV@2@@Z": "0x613fb0 (own row)"
         },
         "local_eh": [],
         "vtables": [],
@@ -335,13 +557,90 @@
         "counted": true
       },
       {
+        "address": "00614760",
+        "symbol": "?onChildRemoved@Body@RBX@@AAEXPAV12@@Z",
+        "size": 130,
+        "target_size": 130,
+        "exact": true,
+        "verified_targets": {
+          "?resize@?$Array@PAVBody@RBX@@@G3D@@QAEXH_N@Z": "0x5fa770 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006147f0",
+        "symbol": "?onChildAdded@Body@RBX@@AAEXPAV12@@Z",
+        "size": 184,
+        "target_size": 184,
+        "exact": true,
+        "verified_targets": {
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)",
+          "?append@?$Array@PAVBody@RBX@@@G3D@@QAEXABQAVBody@RBX@@@Z": "0x5fabc0 (external)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Cofm@RBX@@QAE@PAVBody@1@@Z": "0x65fef0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?onChildAdded@Body@RBX@@AAEXPAV12@@Z"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006148b0",
+        "symbol": "?setParent@Body@RBX@@QAEXPAV12@@Z",
+        "size": 263,
+        "target_size": 263,
+        "exact": true,
+        "verified_targets": {
+          "?onChildRemoved@Body@RBX@@AAEXPAV12@@Z": "0x614760 (own row)",
+          "??1SimBody@RBX@@QAE@XZ": "0x47d410 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?onChildAdded@Body@RBX@@AAEXPAV12@@Z": "0x6147f0 (own row)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0SimBody@RBX@@QAE@PAVBody@1@@Z": "0x658ae0 (external)",
+          "?calcRoot@Body@RBX@@AAEPAV12@XZ": "0x613ef0 (own row)",
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)",
+          "?resetRoot@Body@RBX@@AAEXPAV12@@Z": "0x614530 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?setParent@Body@RBX@@QAEXPAV12@@Z"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006149c0",
+        "symbol": "??0Body@RBX@@QAE@XZ",
+        "size": 251,
+        "target_size": 251,
+        "exact": true,
+        "verified_targets": {
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))",
+          "?zero@Matrix3@G3D@@SAABV12@XZ": "0x513e20 (external)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)",
+          "??0Velocity@RBX@@QAE@XZ": "0x614170 (own row)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0SimBody@RBX@@QAE@PAVBody@1@@Z": "0x658ae0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??0Body@RBX@@QAE@XZ"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
         "address": "00614ac0",
         "symbol": "??1Body@RBX@@QAE@XZ",
         "size": 121,
         "target_size": 121,
         "exact": true,
         "verified_targets": {
-          "?setParent@Body@RBX@@QAEXPAV12@@Z": "0x6148b0 (external)",
+          "?setParent@Body@RBX@@QAEXPAV12@@Z": "0x6148b0 (own row)",
           "??1SimBody@RBX@@QAE@XZ": "0x47d410 (external)",
           "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
           "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
@@ -360,7 +659,7 @@
         "exact": true,
         "verified_targets": {
           "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
-          "??0Body@RBX@@QAE@XZ": "0x6149c0 (external)",
+          "??0Body@RBX@@QAE@XZ": "0x6149c0 (own row)",
           "?worldBody@Body@RBX@@0PAV12@A": "0x97bec4 (data)"
         },
         "local_eh": [
@@ -380,6 +679,48 @@
           "?initWorldBody@Body@RBX@@CAXXZ": "0x614b40 (own row)",
           "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
           "?worldBody@Body@RBX@@0PAV12@A": "0x97bec4 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      }
+    ],
+    "point": [
+      {
+        "address": "0064dc70",
+        "symbol": "?forceToBody@Point@RBX@@QAEXXZ",
+        "size": 29,
+        "target_size": 29,
+        "exact": true,
+        "verified_targets": {
+          "?accumulateForce@SimBody@RBX@@QAEXABVVector3@G3D@@0@Z": "0x612fb0 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0064dc90",
+        "symbol": "?step@Point@RBX@@QAEXXZ",
+        "size": 163,
+        "target_size": 163,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0064dd40",
+        "symbol": "?setWorldPos@Point@RBX@@QAEXABVVector3@G3D@@@Z",
+        "size": 166,
+        "target_size": 166,
+        "exact": true,
+        "verified_targets": {
+          "?updatePV@Body@RBX@@ABEXXZ": "0x599360 (external (evidence name))"
         },
         "local_eh": [],
         "vtables": [],
@@ -461,10 +802,20 @@
   },
   "vtables": {},
   "exact_function_rows": [
+    "00613e80",
     "00613ef0",
     "00613f00",
     "00613f20",
     "00613f40",
+    "00613f70",
+    "00613fb0",
+    "00614040",
+    "006140b0",
+    "00614110",
+    "00614170",
+    "00614200",
+    "006142d0",
+    "00614380",
     "00614400",
     "00614480",
     "006144e0",
@@ -472,9 +823,16 @@
     "00614560",
     "006145e0",
     "00614670",
+    "00614760",
+    "006147f0",
+    "006148b0",
+    "006149c0",
     "00614ac0",
     "00614b40",
     "00614bb0",
+    "0064dc70",
+    "0064dc90",
+    "0064dd40",
     "0065fef0",
     "0065ff10",
     "0065ff20",
@@ -485,12 +843,16 @@
   "rejected_variants": {
     "00614670 kineticEnergy": "returning the expression directly (238 B, matrix-row products scheduled differently); (I*w).dot(w); `* 0.5f`; `* 0.5`; mass * linear.dot(linear); linear.squaredLength() (230 B); linear term first (244 B); named Vector3 / split float locals (238 / 242 B). Exact: a named float `calc` local, then return it.",
     "Body::getBranchMass out of line": "Cofm::updateIfDirty 0065ff20 is 526 / 575 B when getBranchMass is a call; the original inlines it (header-inline definition).",
-    "/fp:precise": "getBranchMass 37 / 21 B, kineticEnergy 274 / 238 B, updateIfDirty 611 / 575 B."
+    "/fp:precise": "getBranchMass 37 / 21 B, kineticEnergy 274 / 238 B, updateIfDirty 611 / 575 B.",
+    "Body::nextStateIndex as a class static": "the inline getNextStateIndex copies in setVelocity 00614040, step 00614200 and Body() 006149c0 then keep the last float store before the counter load (same size, scheduling differs). Exact: the function-local `static int p` of the donor getNextStateIndex (0095a898); getNextStateIndex 00613f20 stays exact.",
+    "calcRoot inline": "setParent 006148b0 is 269 / 263 B when calcRoot is inlined one level; the original calls it (00614958): `__declspec(noinline)` as in the donor declaration.",
+    "VS2005 50727 for the Body unit": "setVelocity 113 / 111 B (kineticEnergy is exact there too); kept on 21022."
   },
   "blocked": {
-    "Body() 006149c0": "news the 0xb4 SimBody (constructor 00658ae0); the SimBody layout (body +0x0, a float +0x4, dirty +0x8, PV +0xc, Quaternion +0x54 (w = 1 at +0x60), Vector3s +0x64 / +0x70, +0x7c, constantForceY +0x80, force +0x84, torque +0x90 and two more Vector3 accumulators +0x9c / +0xa8) is not derived with field identities, so SimBody is declared only by its destructor.",
-    "SimBody::dirty (+0x8) users": "makeCofmDirty 00613f70, setPv 00613fb0, setVelocity 00614040, setMass 006140b0, setMoment 00614110, step 00614200 (SimBody 00658fb0 / 00658ca0 / resetAccumulators 00613e80), setMeInParent 006142d0 / 00614380 (Link +0x4), onChildRemoved 00614760, onChildAdded 006147f0, setParent 006148b0 (new SimBody): all inline `simBody->dirty = true` at +0x8.",
-    "Primitive": "v8world/Primitive2008.h declares only Primitive::onNewTouch 005e7530 and getFastFuzzyExtents 005e7a50 (call evidence for the contact unit); the 0xfc Primitive layout (constructor 005e8770: vtable 0083f83c, Guid +0x8, geometry +0x9c, body +0xa0, friction +0xb0, elasticity +0xb4, jointK ComputeProp +0xe8..+0xf8) is not declared because +0x4..+0x98 and +0xa4..+0xe4 are not assigned to fields yet."
+    "Body::accumulateTorque 006060b0": "out-of-line COMDAT of the header-inline Body::accumulateTorque emitted in the Connector unit (callers 0062ec1a / 00666634 / 006676f2 in other units); no unit here calls it out of line (RotateConnector::computeForce inlines it), so it is not emitted.",
+    "SimBody unit 00658a30..0065925e": "SimBody(Body*) 00658ae0, getOwnerPV 00658ca0, update 00658d20 and step 00658fb0 are only declared (call targets of the Body rows); update / step need Body::getCofmOffset, Quaternion(Matrix3) and the momentRecip helpers, not attempted.",
+    "SimBody::accumulateForce 00612fb0": "declared out of line (Point::forceToBody 0064dc87 calls it); its COMDAT is emitted in another unit (00612fb0 precedes the GeoPair unit 00613060), not attempted.",
+    "Primitive": "v8world/Primitive2008.h declares only Primitive::onNewTouch 005e7530 and getFastFuzzyExtents 005e7a50 (call evidence for the contact unit). The 0xfc Primitive layout (constructor 005e8770: vtable 0083f83c, Guid +0x8, geometry +0x9c, body +0xa0, friction +0xb0, elasticity +0xb4, jointK ComputeProp +0xe8..+0xf8) is not declared: +0x4..+0x98 and +0xa4..+0xe4 are not assigned to fields yet, and its base IPipelined is declared only by the donor v8world/IPipelined.h, which includes the donor v8kernel/Kernel.h -> KernelData.h -> Body.h and so cannot be included next to Body2008.h (C2011). A 2008 Primitive needs a native IPipelined (and Kernel) declaration first."
   },
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
 }

@@ -4,13 +4,22 @@ Unit map of the range (boundary evidence in the receipt's `unit_map`):
   * Connector unit 006060b0..00606a50 (ContactConnector statics 0097b878/0097b87c, the connector getBody /
     computeForce / canThrottle slots, GeoPair::match 00606a50): world-joints-working.json counts 00606150..006062c0
     and 00606d40; this recorder adds PointToPointBreakConnector::computeForce 006065d0
-    (native-classes/ContactUnit2008Connector.cpp, against native-headers/v8kernel/Connector2008.h, read-only).
+    (native-classes/ContactUnit2008Connector.cpp, against native-headers/v8kernel/Connector2008.h, read-only) and
+    percentConnectorsActive 00606100, ContactConnector::canThrottle 00606250, RotateConnector::computeParams 006062e0,
+    NormalBreakConnector::computeForce 00606670, GeoPair::match 00606a50 (native-classes/
+    ContactUnit2008ConnectorBody.cpp: unit-local connector redeclarations on the 2008 Body / Point / GeoPair headers,
+    which cannot be included next to Connector2008.h).
   * Contact unit 00606b00..00608945 (Contact statics 0097b880..0097b88c, Contact / BallBall / BallBlock /
     BlockBlockContact): world-shapes / leaves2008 count their rows; the remaining rows need the 2008 Primitive /
     Body layouts (reported, not built).
   * PVInstance unit 00608950..00609a1f (native-classes/ContactUnit2008PVInstance.cpp against the shared
     native-headers/v8datamodel/PVInstance.h, read-only).
   * Feature / VelocityMotor unit 00609a30..: feature-working.json.
+  * ContactManager unit 0060cae0..0060dd5f: world-shapes / leaves2008 count the contact constructors and slots; this
+    recorder adds the rows that need no Primitive / World layout (native-classes/ContactUnit2008Manager.cpp against
+    native-headers/v8world/ContactManager2008.h): G3D::Array<Contact*>::resize / append 0060cfd0 / 0060d0d0,
+    Array<const Primitive*>::operator=(vector) 0060d200, getHit(vector) 0060db10, set<Primitive*>(range) 0060dba0,
+    intersectingOthers(Array) 0060dc10 / (Primitive*) 0060dcd0.
 
 Builds (document-swap flags, VS2008 RTM 21022):
   * ContactUnit2008Connector.cpp with /fp:fast /U_RELEASEASSERT (the world-joints connector profile: without /fp:fast
@@ -20,11 +29,11 @@ Builds (document-swap flags, VS2008 RTM 21022):
   * ContactUnit2008PVInstance.cpp again with /DNATIVE_CONTACTUNIT_PENDING and a generated copy of the native
     v8tree/Instance.h that declares Instance::readProperties (00557920) under out/native-layouts/contact-unit2008-pending.
     Rows exact only there are recorded exact=false (pending-build-only) and never counted.
-  * ContactUnit2008Contact.cpp (/fp:fast /U_RELEASEASSERT; empty in the current-header build) and
-    ContactUnit2008Connector.cpp again with /DNATIVE_BODYPRIM_PENDING and generated copies of v8world/Contact2008.h /
-    v8kernel/Connector2008.h under out/native-layouts/contact-unit2008-bodyprim-pending that declare the proposed
-    Contact::step / computeIsAdjacent / hit counters and the ContactConnector active counters: percentConnectorsActive
-    00606100, contactPairHitRatio 00606bc0, contactFeatureHitRatio 00606bf0, Contact::step 00606c50 and
+  * ContactUnit2008ConnectorBody.cpp and ContactUnit2008Manager.cpp with /fp:fast /U_RELEASEASSERT;
+  * ContactUnit2008Contact.cpp (/fp:fast /U_RELEASEASSERT; empty in the current-header build) and again with
+    /DNATIVE_BODYPRIM_PENDING and a generated copy of v8world/Contact2008.h under
+    out/native-layouts/contact-unit2008-bodyprim-pending that declares the proposed Contact::step / computeIsAdjacent /
+    hit counters: contactPairHitRatio 00606bc0, contactFeatureHitRatio 00606bf0, Contact::step 00606c50 and
     computeIsAdjacent 00606ca0 are pending-build-only (never counted).
 
 Every counted row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
@@ -60,8 +69,11 @@ SOURCES = {
     'conn': R / 'native-classes/ContactUnit2008Connector.cpp',
     'pv': R / 'native-classes/ContactUnit2008PVInstance.cpp',
     'contact': R / 'native-classes/ContactUnit2008Contact.cpp',
+    'connbody': R / 'native-classes/ContactUnit2008ConnectorBody.cpp',
+    'manager': R / 'native-classes/ContactUnit2008Manager.cpp',
 }
-UNIT = {'conn': ['/fp:fast', '/U_RELEASEASSERT'], 'pv': ['/U_RELEASEASSERT'], 'contact': ['/fp:fast', '/U_RELEASEASSERT']}
+UNIT = {'conn': ['/fp:fast', '/U_RELEASEASSERT'], 'pv': ['/U_RELEASEASSERT'], 'contact': ['/fp:fast', '/U_RELEASEASSERT'],
+        'connbody': ['/fp:fast', '/U_RELEASEASSERT'], 'manager': ['/fp:fast', '/U_RELEASEASSERT']}
 DISCOVER = bool(os.environ.get('NATIVE_CONTACT_UNIT_DISCOVER'))
 RECEIPT = ROOT / 'work/2008-06/shared-layouts/contact-unit2008-working.json'
 
@@ -75,13 +87,11 @@ assert _text.count(_anchor) == 1
 (PENDING / 'v8tree/Instance.h').write_text(_text.replace(
     _anchor, _anchor + '    void readProperties(const ::XmlElement*, IReferenceBinder&); // 00557920\n'))
 PENDING_FLAGS = ['/I' + str(PENDING), '/DNATIVE_CONTACTUNIT_PENDING']
-# Generated copies of the world-shapes Contact2008.h and the kernel Connector2008.h with the proposed Contact /
-# ContactConnector declarations (the shared headers are not edited): NATIVE_BODYPRIM_PENDING rows only.
+# Generated copy of the world-shapes Contact2008.h with the proposed Contact declarations (the shared header is not
+# edited): NATIVE_BODYPRIM_PENDING rows only.
 BODYPRIM = OUT / 'contact-unit2008-bodyprim-pending'
 (BODYPRIM / 'v8world').mkdir(parents=True, exist_ok=True)
-(BODYPRIM / 'v8kernel').mkdir(parents=True, exist_ok=True)
 CONTACT_H = R / 'native-headers/v8world/Contact2008.h'
-CONNECTOR_H = R / 'native-headers/v8kernel/Connector2008.h'
 _anchor = '\t\tContact(Primitive* prim0, Primitive* prim1);    // 00606c20\n'
 _text = CONTACT_H.read_text()
 assert _text.count(_anchor) == 1
@@ -94,13 +104,6 @@ assert _text.count(_anchor) == 1
     '\t\tstatic int contactFeatureMisses;                // 0097b88c\n'
     '\t\tstatic float contactPairHitRatio();             // 00606bc0\n'
     '\t\tstatic float contactFeatureHitRatio();          // 00606bf0\n')))
-_anchor = '\t\tvirtual bool canThrottle() const;                               // slot 2 (00606250; reads Body +0x30)\n'
-_text = CONNECTOR_H.read_text()
-assert _text.count(_anchor) == 1
-(BODYPRIM / 'v8kernel/Connector2008.h').write_text(_text.replace(_anchor, _anchor + (
-    '\t\tstatic int numActiveConnectors;                                 // 0097b878\n'
-    '\t\tstatic int numInactiveConnectors;                               // 0097b87c\n'
-    '\t\tstatic float percentConnectorsActive();                         // 00606100\n')))
 BODYPRIM_FLAGS = ['/I' + str(BODYPRIM), '/DNATIVE_BODYPRIM_PENDING']
 PROPOSALS = {
     'native-headers/v8tree/Instance.h (core owner)': (
@@ -129,20 +132,33 @@ PROPOSALS = {
         'bodies in native-classes/ContactUnit2008Contact.cpp under NATIVE_BODYPRIM_PENDING). The class of the ratio '
         'functions is an analog (the binary has no name for them).'),
     'native-headers/v8kernel/Connector2008.h (kernel / world-joints owner)': (
-        'declare in ContactConnector: `static int numActiveConnectors;` 0097b878 (++ by computeForce 00606832 when the '
-        'normal force is positive), `static int numInactiveConnectors;` 0097b87c (++ at 00606a1b) and `static float '
-        'percentConnectorsActive();` 00606100 (DataModel::evaluate 005762f3; reads both, resets both, -1 when the sum '
-        'is 0). Exact in the pending build (out/native-layouts/contact-unit2008-bodyprim-pending/v8kernel/'
-        'Connector2008.h). Also: the header includes the donor v8kernel/Body.h, Point.h and Pair.h, whose Body layout is '
-        'not the 2008 one (root +0x4 there, +0x10 in 2008; canThrottle +0x24 vs +0x30); ContactConnector::canThrottle '
-        '00606250 and NormalBreakConnector::computeForce 00606670 (pv +0x94 after Body::updatePV) need the 2008 Body of '
-        'native-headers/v8kernel/Body2008.h, which cannot be included next to the donor Body.h (C2011). A 2008 Point / '
-        'GeoPair on Body2008.h would be needed first.'),
+        'the header includes the donor v8kernel/Body.h, Point.h and Pair.h, whose Body layout is not the 2008 one (root '
+        '+0x4 there, +0x10 in 2008; canThrottle +0x24 vs +0x30; pv +0x88 vs +0x94). Proposal: include '
+        'native-headers/v8kernel/Body2008.h, v8kernel/Point2008.h and v8world/GeoPair2008.h (the 2008 Body / Point / '
+        'GeoPair, layouts checked by body-primitive2008-working.json) instead, and declare in ContactConnector `static '
+        'int numActiveConnectors;` 0097b878 (++ by computeForce 00606832 when the pair length is negative), `static int '
+        'numInactiveConnectors;` 0097b87c (++ at 00606a1b) and `static float percentConnectorsActive();` 00606100 '
+        '(DataModel::evaluate 005762f3; -1 when the sum is 0, then resets both). Until then native-classes/'
+        'ContactUnit2008ConnectorBody.cpp redeclares Connector / ContactConnector / PointToPointBreakConnector / '
+        'NormalBreakConnector / RotateConnector unit-locally on those 2008 headers (same bases, slots, fields; no ctor '
+        'or vtable emitted) and counts percentConnectorsActive 00606100, ContactConnector::canThrottle 00606250, '
+        'RotateConnector::computeParams 006062e0 (private member, analog name), NormalBreakConnector::computeForce '
+        '00606670 and GeoPair::match 00606a50. Switching would need the world-joints units that include the donor '
+        'Edge / Joint headers (donor Body.h) to be checked first, which is why it is a proposal.'),
+    'v8kernel/KernelInput.h (donor, no native header; kernel owner)': (
+        'RotateConnector::computeForce 006064a0 reads currentGoal (+0x4 of KernelInput, connector +0x28) before adding '
+        'increment (+0x2c) and uses the old value against the rotation (00606504 .. 006064f9); the donor KernelInput '
+        'adds the increment in setGoal before get(). A native 2008 KernelInput with that order would make 006064a0 '
+        'buildable (302 / 304 B now).'),
     'native 2008 Body / Primitive (FYI, body-primitive2008 receipt)': (
-        'native-headers/v8kernel/Body2008.h now declares the 2008 Body (0xdc) and Cofm (0x3c) layouts (19 Body / Cofm '
-        'rows exact, body-primitive2008-working.json); native-headers/v8world/Primitive2008.h declares only '
-        'Primitive::onNewTouch / getFastFuzzyExtents (no layout). The Primitive-field contact rows (00606e90.., '
-        'onPrimitiveContactParametersChanged 00607ad0) stay blocked on a complete 0xfc Primitive declaration.'),
+        'native-headers/v8kernel/Body2008.h declares the 2008 Body (0xdc), Cofm (0x3c) and SimBody (0xb4) layouts '
+        '(body-primitive2008-working.json); native-headers/v8world/Primitive2008.h still declares only '
+        'Primitive::onNewTouch / getFastFuzzyExtents. The Primitive-field contact rows (00606ce0, createConnector '
+        '00606e00, 00606e90.., onPrimitiveContactParametersChanged 00607ad0) and the ContactManager rows createContact '
+        '0060d770 (geometry +0x9c, Geometry slot 2), onNewPair 0060d8b0 (ContactManager world +0x4, World::'
+        'insertContact 005e9260), getHit 0060d6e0 and intersectingOthers(set) 0060d630 (Primitive contact list) stay '
+        'blocked: a 2008 Primitive must derive from IPipelined, whose only declaration is the donor v8world/'
+        'IPipelined.h (-> donor Kernel.h -> KernelData.h -> Body.h), so it cannot be declared next to Body2008.h.'),
 }
 
 
@@ -161,12 +177,13 @@ for key, src in SOURCES.items():
     OBJ[key], FLAGS[key] = build('NativeContactUnit2008_' + key, src, UNIT[key])
 OBJ['pv_pending'], FLAGS['pv_pending'] = build('NativeContactUnit2008_pv_pending', SOURCES['pv'],
                                                PENDING_FLAGS + UNIT['pv'])
-for _key in ('contact', 'conn'):
+for _key in ('contact',):
     OBJ[_key + '_pending'], FLAGS[_key + '_pending'] = build('NativeContactUnit2008_%s_pending' % _key, SOURCES[_key],
                                                              BODYPRIM_FLAGS + UNIT[_key])
-MAIN_OF = {'pv_pending': 'pv', 'contact_pending': 'contact', 'conn_pending': 'conn'}
+MAIN_OF = {'pv_pending': 'pv', 'contact_pending': 'contact'}
 
 original = nb.Original()
+assert struct.unpack('<d', original.data(0x828830, 8))[0] == 1.5707963267949   # G3D::halfPi() static (G3D g3dmath.h value)
 names = {int(k, 16): v.get('symbol', '') for k, v in json.loads((R / 'offline/evidence.json').read_text())['names'].items()}
 
 
@@ -198,6 +215,19 @@ EXTERNAL = {
     '?_Tidy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXXZ': 0x4077d0,
     '??0?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z': 0x584440,   # 00609410 (evidence name)
     '??__Fs@?1??singleton@?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@SAABV123@XZ@YAXXZ': 0x8001b0,   # atexit argument 006093da
+    # ContactManager unit (ContactUnit2008Manager.cpp): ICF-shared std::set<Primitive*> / G3D::Array bodies and the
+    # ContactManager rows that need the Primitive layout (not built), bound at the original call sites
+    '??0?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVPrimitive@RBX@@@1@ABV?$allocator@PAVPrimitive@RBX@@@1@@Z': 0x64b2a0,   # 0060dcfa / 0060dbcd
+    '??1?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE@XZ': 0x64b230,                                                       # 0060dd41 / 0060dc82
+    '?insert@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVPrimitive@RBX@@@Z': 0x5e8c40,   # 0060dd15 / 0060dbee
+    '?getHit@ContactManager@RBX@@QBEPAVPrimitive@2@ABVRay@G3D@@PBV?$Array@PBVPrimitive@RBX@@@5@PBVHitTestFilter@2@AAVVector3@5@AA_N@Z': 0x60d6e0,   # 0060db66 (evidence name)
+    '?intersectingOthers@ContactManager@RBX@@QAE_NPAVPrimitive@2@ABV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@M@Z': 0x60d630,   # 0060dd2e / 0060dc67 (evidence name)
+    '?resize@?$Array@PBVPrimitive@RBX@@@G3D@@QAEXH_N@Z': 0x5cc9a0,                     # Array::operator=(vector) 0060d215
+    '?realloc@?$Array@PAVContact@RBX@@@G3D@@AAEXH@Z': 0x502080,                         # Array<Contact*>::resize (ICF-shared realloc)
+    '?alignedFree@System@G3D@@SAXPAX@Z': 0x507d20,                                      # inline ~Array in getHit 0060db7a
+    '__ftol2_sse': 0x6a17f0,                                                            # Array<Contact*>::resize (static CRT)
+    '?unitize@Vector3@G3D@@QAEMM@Z': 0x518470,                                         # computeParams 0060631f
+    '?updatePV@Body@RBX@@ABEXXZ': 0x599360,                                            # NormalBreak computeForce 00606687
     '??0CoordinateFrame@G3D@@QAE@XZ': 0x4782d0,                                        # setPVGridOffsetLegacy 0060918e
     '?isTopLevelPVInstance@PVInstance@RBX@@QBE_NXZ': 0x5840a0,                         # computeIsTopFlag 00609117
     '?getTopPVController@PVInstance@RBX@@QBEPAVController@2@XZ': 0x59a9e0,             # 0060912a (evidence name)
@@ -215,6 +245,13 @@ EXTERNAL = {
     '?classDescriptor@?$Described@VPVInstance@RBX@@$1?sPVInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x585090,
 }
 DATA = {
+    '?minSize@?3??resize@?$Array@PAVContact@RBX@@@G3D@@QAEXH_N@Z@4HB': 0x97bebc,     # Array<Contact*>::resize local static
+    '??_B?3??resize@?$Array@PAVContact@RBX@@@G3D@@QAEXH_N@Z@53': 0x97bec0,             # its guard
+    # G3D::halfPi()'s function-local `static const double` (read in place by RotateConnector::computeParams 006063f1..;
+    # its 8 bytes are checked against the G3D value 1.5707963267949 below)
+    '?p@?1??halfPi@G3D@@YAABNXZ@4NB': 0x828830,
+    '?numActiveConnectors@ContactConnector@RBX@@2HA': 0x97b878,                        # 00606107 / 00606832
+    '?numInactiveConnectors@ContactConnector@RBX@@2HA': 0x97b87c,                      # 00606101 / 00606a1b
     '?prop_ControllerType@PVInstance@RBX@@2V?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@2@B': 0x97b994,
     '?prop_ControllerFlagShown@RBX@@3V?$PropDescriptor@VPVInstance@RBX@@_N@Reflection@2@A': 0x97b9d4,
     '?name_name@@3ABVName@RBX@@B': 0x975338,
@@ -230,6 +267,22 @@ FOLDED = {}
 ROWS = {
     'conn': [
         (0x6065d0, '?computeForce@PointToPointBreakConnector@RBX@@UAEXM_N@Z'),
+    ],
+    'connbody': [
+        (0x606100, '?percentConnectorsActive@ContactConnector@RBX@@SAMXZ'),
+        (0x606250, '?canThrottle@ContactConnector@RBX@@UBE_NXZ'),
+        (0x6062e0, '?computeParams@RotateConnector@RBX@@AAEXAAVVector3@G3D@@AAM1@Z'),
+        (0x606670, '?computeForce@NormalBreakConnector@RBX@@UAEXM_N@Z'),
+        (0x606a50, '?match@GeoPair@RBX@@QAE_NPAVBody@2@0W4GeoPairType@2@HH@Z'),
+    ],
+    'manager': [
+        (0x60cfd0, '?resize@?$Array@PAVContact@RBX@@@G3D@@QAEXH_N@Z'),
+        (0x60d0d0, '?append@?$Array@PAVContact@RBX@@@G3D@@QAEXABQAVContact@RBX@@@Z'),
+        (0x60d200, '??4?$Array@PBVPrimitive@RBX@@@G3D@@QAEAAV01@ABV?$vector@PBVPrimitive@RBX@@'),
+        (0x60db10, '?getHit@ContactManager@RBX@@QBEPAVPrimitive@2@ABVRay@G3D@@PBV?$vector@PBVPrimitive@RBX@@'),
+        (0x60dba0, '??$?0PBQAVPrimitive@RBX@@@?$set@PAVPrimitive@RBX@@'),
+        (0x60dc10, '?intersectingOthers@ContactManager@RBX@@QAE_NABV?$Array@PAVPrimitive@RBX@@@G3D@@M@Z'),
+        (0x60dcd0, '?intersectingOthers@ContactManager@RBX@@QAE_NPAVPrimitive@2@M@Z'),
     ],
     'pv': [
         (0x608950, '?getShowControllerFlag@PVInstance@RBX@@QBE_NXZ'),
@@ -263,6 +316,15 @@ ROWS = {
 # Identical bodies the original keeps once (ICF): verified exact at the same address, not counted again.
 ALIASES = [('pv', 0x608a60, '?onChildRemoving@PVInstance@RBX@@MAEXPAVInstance@2@@Z')]
 NON_EXACT_ROWS = [
+    (0x606780, '?computeForce@ContactConnector@RBX@@UAEXM_N@Z', 'connbody',
+     '720 / 720 B: two x87 scheduling spots differ (the original folds `frictionOffset.x +=` into `fadd [esi+0x44]` and '
+     'pops the friction-clamp branch stack in the other order). Rejected: `frictionOffset += dt * perpVel` / '
+     '`perpVel * dt` (same bytes), `frictionOffset = frictionOffset + perpVel * dt` / `= perpVel * dt + frictionOffset` '
+     '(724 B), a named `delta` local (same bytes).'),
+    (0x6064a0, '?computeForce@RotateConnector@RBX@@UAEXM_N@Z', 'connbody',
+     '302 / 304 B: the original reads KernelInput::currentGoal (+0x28 of the connector) before adding increment '
+     '(+0x2c) and uses the old value against the rotation; the donor v8kernel/KernelInput.h (read-only, no native '
+     'header) adds the increment inside setGoal before get() reads it. Needs a 2008 KernelInput declaration.'),
     (0x609690, '?computeTopPVController@PVInstance@RBX@@ABE?AV', 'pv',
      'the original inlines the top-level test (dynamic_cast of the parent, then an out-of-line getTypedRoot<PVInstance> '
      '005836d0) and keeps one more RCP copy; the native header form calls isTopLevelPVInstance out of line (511 / 573 B). '
@@ -278,9 +340,6 @@ BOUNDS_ROWS = [(0x608fa0, '?clearLegacyOffset@PVInstance@RBX@@QAEXXZ', 'pv', 128
 PENDING_ROWS = [
     (0x6089a0, '?readProperty@PVInstance@RBX@@MAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z', 'pv_pending',
      'exact only with the generated Instance.h that declares Instance::readProperties 00557920 (see PROPOSALS)'),
-    (0x606100, '?percentConnectorsActive@ContactConnector@RBX@@SAMXZ', 'conn_pending',
-     'exact only with the generated Connector2008.h that declares the ContactConnector counters 0097b878 / 0097b87c and '
-     'percentConnectorsActive (see PROPOSALS)'),
     (0x606bc0, '?contactPairHitRatio@Contact@RBX@@SAMXZ', 'contact_pending',
      'exact only with the generated Contact2008.h that declares the Contact hit counters and ratios (see PROPOSALS)'),
     (0x606bf0, '?contactFeatureHitRatio@Contact@RBX@@SAMXZ', 'contact_pending',
@@ -299,8 +358,6 @@ PENDING_EXTERNAL = {
     '?findAttribute@XmlElement@@QBEPBVXmlAttribute@@ABVName@RBX@@@Z': 0x57c2b0,
     '?getValue@XmlNameValuePair@@QBE_NAAPBVName@RBX@@@Z': 0x57c360,
     '?onNewTouch@Primitive@RBX@@SAXPAV12@0@Z': 0x5e7530,                              # Contact::step 00606c6f
-    '?numActiveConnectors@ContactConnector@RBX@@2HA': 0x97b878,                        # 00606107 / 00606832
-    '?numInactiveConnectors@ContactConnector@RBX@@2HA': 0x97b87c,                      # 00606101 / 00606a1b
     '?contactPairMatches@Contact@RBX@@2HA': 0x97b880,                                  # 00606bc1 / 00607d3b
     '?contactPairMisses@Contact@RBX@@2HA': 0x97b884,                                   # 00606bc6 / 00607d07
     '?contactFeatureMatches@Contact@RBX@@2HA': 0x97b888,                               # 00606bf1 / 00607588
@@ -594,7 +651,8 @@ UNIT_MAP = {
         '0062ec1a / 00666634 / 006676f2), 00606100 percentConnectorsActive (0097b878/0097b87c), connector getBody / '
         'potentialEnergy / RotateConnector() / ??_G 00606150..006062c0 (world-joints), GeoPair helper 00606270 + thunk '
         '00606770 (`add ecx, 8; jmp 00606270`, called from deleteUnmatchedConnectors 00607e2f), 006062e0 (called by '
-        'RotateConnector::computeForce 006064c5), computeForce 006064a0 / 006065d0 / 00606670 / 00606780, GeoPair::match '
+        'RotateConnector::computeForce 006064c5; RotateConnector::computeParams, analog name), computeForce 006064a0 / '
+        '006065d0 / 00606670 / 00606780, GeoPair::match '
         '00606a50. The counters 0097b878/0097b87c are written only by 00606780 (00606834 / 00606a1d).'),
     'contact 00606b00..00608945': (
         'Block edge helper 00606b00 (table 0084aec8), Extents::overlapsOrTouches 00606b60, contactPairHitRatio 00606bc0 '
@@ -616,9 +674,11 @@ receipt = {
     'flags': {k: v for k, v in FLAGS.items()},
     'sources': {str(p.relative_to(ROOT)): nb.sha(p) for p in list(SOURCES.values()) + [Path(__file__).resolve(),
                 R / 'native-headers/v8kernel/Connector2008.h', R / 'native-headers/v8datamodel/PVInstance.h', INSTANCE_H,
-                CONTACT_H, R / 'native-headers/v8world/Primitive2008.h']},
+                CONTACT_H, R / 'native-headers/v8world/Primitive2008.h', R / 'native-headers/v8kernel/Body2008.h',
+                R / 'native-headers/v8kernel/Point2008.h', R / 'native-headers/v8world/GeoPair2008.h',
+                R / 'native-headers/v8world/ContactManager2008.h']},
     'generated_pending_headers': {str(x.relative_to(ROOT)): nb.sha(x) for x in (
-        PENDING / 'v8tree/Instance.h', BODYPRIM / 'v8world/Contact2008.h', BODYPRIM / 'v8kernel/Connector2008.h')},
+        PENDING / 'v8tree/Instance.h', BODYPRIM / 'v8world/Contact2008.h')},
     'objects': {k: nb.sha(v) for k, v in OBJ.items()},
     'unit_map': UNIT_MAP,
     'rows': groups,

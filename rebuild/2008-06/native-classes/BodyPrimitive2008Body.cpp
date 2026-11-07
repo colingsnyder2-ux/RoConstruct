@@ -1,16 +1,35 @@
-// 2008-06 native RBX::Body (inactive): rows of the original Body unit (00613ef0..00614bc7) that need only the Body /
-// Cofm layout of native-headers/v8kernel/Body2008.h. Rows that touch SimBody fields (setPv, setVelocity, setMass,
-// setMoment, makeCofmDirty, step, setMeInParent, onChildAdded/Removed, setParent) or allocate a SimBody (Body())
-// are not built: the 0xb4 SimBody layout is not derived. Verified by tests/record_native_body_primitive2008.py.
+// 2008-06 native RBX::Body (inactive): rows of the original Body unit (00613e80..00614bc7) against the Body / Cofm /
+// SimBody layouts of native-headers/v8kernel/Body2008.h (SimBody 0xb4: constructor 00658ae0, step 00658fb0, Kernel
+// insertBody 005fb0e0). Verified by tests/record_native_body_primitive2008.py.
 #include <boost/thread/once.hpp>
+#include <limits.h>
 #include "v8kernel/Body2008.h"
 
 namespace RBX
 {
 	Body* Body::worldBody;                       // 0097bec4
-	int Body::nextStateIndex;                    // 0095a898
 
 	static boost::once_flag worldBodyFlag = BOOST_ONCE_INIT;   // 0097bed8 (call_once flag of getWorldBody)
+
+	// 006149c0
+	Body::Body()
+		: leafBodyIndex(-1),
+		  numConnectors(0),
+		  unreadFlag(false),
+		  root(NULL),
+		  parent(NULL),
+		  index(-1),
+		  cofm(NULL),
+		  simBody(NULL),
+		  canThrottle(true),
+		  link(NULL),
+		  moment(G3D::Matrix3::zero()),
+		  mass(0.0f),
+		  stateIndex(getNextStateIndex())
+	{
+		root = this;
+		simBody = new SimBody(this);
+	}
 
 	// 00613ef0
 	Body* Body::calcRoot()
@@ -21,16 +40,124 @@ namespace RBX
 	// 00613f20
 	int Body::getNextStateIndex()
 	{
-		nextStateIndex++;
-		if (nextStateIndex == 0x7fffffff)
-			nextStateIndex = 1;
-		return nextStateIndex;
+		static int p;                            // 0095a898
+		if (++p == INT_MAX)
+			p = 1;
+		return p;
 	}
 
 	// 00613f40
 	void Body::advanceStateIndex()
 	{
 		stateIndex = getNextStateIndex();
+	}
+
+	// 00613f70
+	void Body::makeCofmDirty()
+	{
+		if (!cofm || !cofm->getIsDirty())
+		{
+			if (getParent())
+			{
+				getParent()->makeCofmDirty();
+			}
+			else
+			{
+				if (simBody)
+					simBody->makeDirty();
+			}
+			if (cofm)
+				cofm->makeDirty();
+		}
+	}
+
+	// 00613fb0
+	void Body::setPv(const PV& _pv)
+	{
+		if (!parent)
+		{
+			pv = _pv;
+			if (simBody)
+				simBody->makeDirty();
+			advanceStateIndex();
+		}
+	}
+
+	// 00614040
+	void Body::setVelocity(const Velocity& worldVelocity)
+	{
+		if (!getParent())
+		{
+			pv.velocity = worldVelocity;
+			advanceStateIndex();
+			if (simBody)
+				simBody->makeDirty();
+		}
+	}
+
+	// 006140b0
+	void Body::setMass(float _mass)
+	{
+		if (mass != _mass)
+		{
+			makeCofmDirty();
+			mass = _mass;
+		}
+	}
+
+	// 00614110
+	void Body::setMoment(const G3D::Matrix3& _momentInBody)
+	{
+		if (moment != _momentInBody)
+		{
+			makeCofmDirty();
+			moment = _momentInBody;
+		}
+	}
+
+	// 00614200
+	void Body::step(bool throttling)
+	{
+		if (throttling && canThrottle)
+		{
+			simBody->resetAccumulators();
+		}
+		else
+		{
+			simBody->step();
+			pv = cofm == NULL ? simBody->pv : simBody->getOwnerPV();
+			advanceStateIndex();
+		}
+	}
+
+	// 006142d0
+	void Body::setMeInParent(const G3D::CoordinateFrame& _meInParent)
+	{
+		if (link)
+		{
+			link->setBody(NULL);
+			link = NULL;
+		}
+		if (getParent())
+		{
+			meInParent = _meInParent;
+			makeCofmDirty();
+			root->advanceStateIndex();
+		}
+	}
+
+	// 00614380
+	void Body::setMeInParent(Link* _link)
+	{
+		if (link && link != _link)
+			link->setBody(NULL);
+		if (getParent())
+		{
+			link = _link;
+			link->setBody(this);
+			makeCofmDirty();
+			root->advanceStateIndex();
+		}
 	}
 
 	// 00614400
@@ -78,6 +205,57 @@ namespace RBX
 		float calc = (pv.velocity.rotational.dot(getIWorld() * pv.velocity.rotational)
 			+ pv.velocity.linear.dot(pv.velocity.linear) * mass) / 2;
 		return calc;
+	}
+
+	// 00614760
+	void Body::onChildRemoved(Body* child)
+	{
+		children.fastRemove(child);
+		if (numChildren() == 0)
+		{
+			delete cofm;
+			cofm = NULL;
+		}
+		makeCofmDirty();
+	}
+
+	// 006147f0
+	void Body::onChildAdded(Body* child)
+	{
+		makeCofmDirty();
+		children.fastAppend(child);
+		if (!cofm)
+			cofm = new Cofm(this);
+	}
+
+	// 006148b0
+	void Body::setParent(Body* newParent)
+	{
+		if (parent != newParent)
+		{
+			if (link)
+			{
+				link->setBody(NULL);
+				link = NULL;
+			}
+			if (getParent())
+			{
+				parent->onChildRemoved(this);
+			}
+			else
+			{
+				delete simBody;
+				simBody = NULL;
+			}
+			parent = newParent;
+			if (newParent)
+				newParent->onChildAdded(this);
+			else
+				simBody = new SimBody(this);
+			Body* myRoot = getParent() ? getParent()->calcRoot() : this;
+			myRoot->advanceStateIndex();
+			resetRoot(myRoot);
+		}
 	}
 
 	// 00614ac0

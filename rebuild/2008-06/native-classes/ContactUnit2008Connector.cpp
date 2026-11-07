@@ -1,4 +1,5 @@
-// 2008-06 native RBX::PointToPointBreakConnector::computeForce (inactive). Row of the original Connector unit
+// 2008-06 native RBX::PointToPointBreakConnector::computeForce (inactive). Row of the original Connector unit (the rows
+// that read 2008 Body / Point / GeoPair fields are in ContactUnit2008ConnectorBody.cpp)
 // (006060b0..00606a50: the connector getBody / potentialEnergy / RotateConnector rows are in KernelConnector.cpp,
 // recorded by tests/record_native_world_joints.py). Declarations: native-headers/v8kernel/Connector2008.h
 // (read-only here); the Point fields come from the donor v8kernel/Point.h, whose layout is the 2008 one
@@ -21,20 +22,4 @@ namespace RBX
 			point1->accumulateForce(force);
 		}
 	}
-
-#ifdef NATIVE_BODYPRIM_PENDING
-	// 00606100 (pending-build-only: needs the ContactConnector statics of the generated Connector2008.h copy). The
-	// counters are incremented only by ContactConnector::computeForce 00606780 (00606832 active / 00606a1b inactive).
-	int ContactConnector::numActiveConnectors;      // 0097b878
-	int ContactConnector::numInactiveConnectors;    // 0097b87c
-
-	float ContactConnector::percentConnectorsActive()
-	{
-		int sum = numActiveConnectors + numInactiveConnectors;
-		float answer = (sum == 0) ? -1.0f : (float)numActiveConnectors / sum;
-		numActiveConnectors = 0;
-		numInactiveConnectors = 0;
-		return answer;
-	}
-#endif
 }

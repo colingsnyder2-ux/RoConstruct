@@ -1,0 +1,29 @@
+// 2008-06 native RBX::Point rows of the original Point unit (0064dc00..0064dde3) that read 2008 Body fields
+// (inactive): forceToBody 0064dc70, step 0064dc90 and setWorldPos 0064dd40, against native-headers/v8kernel/
+// Point2008.h and Body2008.h. Point(Body*) 0064dc00 and the scalar deleting destructor 0064dc50 are counted by
+// leaves2008-working.json (native-classes/Leaves2008Point.cpp, donor Point.h) and are not rebuilt here.
+// Verified by tests/record_native_body_primitive2008.py.
+#include "v8kernel/Point2008.h"
+
+namespace RBX
+{
+	// 0064dc70
+	void Point::forceToBody()
+	{
+		body->accumulateForce(force, worldPos);
+	}
+
+	// 0064dc90
+	void Point::step()
+	{
+		worldPos = body->getPVUnsafe().position.pointToWorldSpace(localPos);
+		force = G3D::Vector3::zero();
+	}
+
+	// 0064dd40
+	void Point::setWorldPos(const G3D::Vector3& _worldPos)
+	{
+		worldPos = _worldPos;
+		localPos = body->getCoordinateFrame().pointToObjectSpace(worldPos);
+	}
+}
