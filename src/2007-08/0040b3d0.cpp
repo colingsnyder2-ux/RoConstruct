@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -443,7 +444,7 @@ struct Unknown {
 };
 
 struct WindowTable {
-    void *unused[81];
+    void *unused[79];
     int (__thiscall *create)(Window *, const char *, const char *,
                             DWORD, const Rect &, Window *, unsigned int,
                             void *, void *);
@@ -451,7 +452,7 @@ struct WindowTable {
 
 struct Window {
     WindowTable *table;
-    unsigned char storage[228];
+    unsigned char storage[208];
 
     Window();
     void modifyStyle(DWORD, DWORD, unsigned int);
@@ -461,7 +462,7 @@ struct Window {
 };
 
 struct View {
-    unsigned char storage[708];
+    unsigned char storage[688];
     Unknown *object;
     unsigned long reserved;
     String text;

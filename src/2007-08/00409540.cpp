@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 97% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -175,7 +176,7 @@ struct Object {
     long check();
 };
 
-struct Root { virtual ~Root(); };
+struct Root { virtual ~Root(); char bytes[0x10]; };
 struct Pad { char bytes[8]; };
 struct IFace { VTable* vtable; long QueryInterface(const void* id, void** p) { return vtable->query(reinterpret_cast<Interface*>(this),id,p); } unsigned long Release() { return vtable->release(reinterpret_cast<Interface*>(this)); } };
 struct Full : Root, Object, Pad, IFace {};
@@ -184,7 +185,7 @@ extern "C" long __stdcall update(Object *object, const void *iid,
                                 unsigned long mask, unsigned long value)
 {
     Full* full = static_cast<Full*>(object);
-    IFace* base = reinterpret_cast<IFace*>(reinterpret_cast<char*>(full) + 0x14);
+    IFace* base = reinterpret_cast<IFace*>(reinterpret_cast<char*>(full) + 0x24);
     void *p;
     if (base->QueryInterface(iid, &p) < 0)
         return 0x80004002L;

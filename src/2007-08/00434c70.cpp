@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -114,7 +115,7 @@ struct Font {
 };
 
 struct Node {
-    char padding[0x131];
+    char padding[0xe9];
     unsigned char strikeOut;
     unsigned char italic;
 };

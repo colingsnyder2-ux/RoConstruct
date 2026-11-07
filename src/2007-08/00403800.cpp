@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 95% by EspClaude
 // roc-cl: 50727
 // from server: 100% by tester
@@ -51,7 +52,7 @@ public:
 struct Item;
 
 struct Owner {
-    char padding[0x24];
+    char padding[0x34];
     boost::shared_ptr<Item> item;
     boost::shared_ptr<Item> get() const;
 };
