@@ -639,6 +639,12 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeLDrawPartColorFull.obj', 'NativeContentReadFull.obj'] if NATIVE_DOC else []
 if NATIVE_DOC:
     native_doc_objects += ['NativeDocExtra%02d.obj' % index for index, _ in enumerate(extra_sources)]
+    compiled_doc_objects = [obj.lower() for obj, _ in doc_sources]
+    linked_doc_objects = [obj.lower() for obj in native_doc_objects]
+    if (len(linked_doc_objects) != len(set(linked_doc_objects))
+            or set(linked_doc_objects) != set(compiled_doc_objects)
+            or set(linked_doc_objects) & {unit[0].lower() for unit in units}):
+        raise RuntimeError('Native-Doc object selection is duplicated or differs from compiled sources')
     native_doc_objects += [str(ROOT / 'rebuild/2008-06/out/native-layouts' / name) for name in (
         'WorkspaceInsertNativeProfile.obj',
         'WorkspaceSiteTrustProfile.obj')]
