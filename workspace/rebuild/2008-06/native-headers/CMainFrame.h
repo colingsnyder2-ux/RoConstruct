@@ -14,8 +14,8 @@ public:
     DECLARE_MESSAGE_MAP()
 public:
     CMainFrame();
-    virtual ~CMainFrame();
     BOOL showFrame(int);
+    virtual ~CMainFrame();
     void showDockPane(int, CRect, XTPDockingPaneDirection);
     void setFullscreen(bool);
     void configureFullscreen();
