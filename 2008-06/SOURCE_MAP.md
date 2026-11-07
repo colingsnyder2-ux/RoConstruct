@@ -5,7 +5,7 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 
 | Group | Paths | Equivalent | Byte-different | Public-only | Missing-public | Donor-only |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| App/v8tree | 44 | 12 | 21 | 8 | 0 | 3 |
+| App/v8tree | 48 | 16 | 21 | 8 | 0 | 3 |
 | App/v8xml | 5 | 0 | 4 | 0 | 0 | 1 |
 | App/reflection | 14 | 5 | 8 | 1 | 0 | 0 |
 | WindowsClient | 355 | 5 | 210 | 24 | 0 | 116 |

@@ -3,6 +3,305 @@
 [Project index](README.md) · [Previous](sources-005.md) · [Next](sources-007.md)
 
 <details>
+<summary>native-classes/CSelectionPropGrid.cpp — diverged; 7 content versions</summary>
+
+**`01e43b0a7ea8`** · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CSelectionPropGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CSelectionPropGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CSelectionPropGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CSelectionPropGrid.cpp)
+
+**`0ae183cf841c`** · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
+- fork · coldek · [native-classes/CSelectionPropGrid.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
+- fork · mewpokemons · [native-classes/CSelectionPropGrid.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
+- fork · mewpokemons · [native-classes/CSelectionPropGrid.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
+- fork · mewpokemons · [native-classes/CSelectionPropGrid.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
+
+<details><summary>76 retained local origins</summary>
+
+- local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-classes/CSelectionPropGrid.cpp`
+- local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-classes/CSelectionPropGrid.cpp`
+- local-branch refs/heads/codex/worker-selection-verbs@dd86b261e5b6 · `rebuild/2008-06/native-classes/CSelectionPropGrid.cpp`
+- local · `local/integrators/0328757c82f5413b9533f7b9790bb1cf/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/17ce05b592ad4885afc1c8173b0deca3/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/1c8dbb0c65904ffb87b50e428b665158/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/5e47eccb4f5f461fbb704492ec2a7001/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/76acdd8bbe094baa8980644731a80aba/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/76acdd8bbe094baa8980644731a80aba/work/native-linked-preflight/7fd833be088e18708fd2/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/76acdd8bbe094baa8980644731a80aba/work/native-linked-preflight/d501f01dda75f6329d6f/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/76acdd8bbe094baa8980644731a80aba/work/nv/0eb00ed44916/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/76acdd8bbe094baa8980644731a80aba/work/nv/45c404b58058/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/76acdd8bbe094baa8980644731a80aba/work/nv/99982c29c12e/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/76acdd8bbe094baa8980644731a80aba/work/nv/c6dd0db0b960/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/7817dc504d3642a894448d7047638f70/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/de0395a5614e4d45acd95c6be4c4ff97/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/f15e3506f2fc4f0ea72b5ecc48ac8c84/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/crobloxview-20261102/t/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/instance-accessors/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/dimensions/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/dimensions-fast/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/double-center/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/double-center-fast/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/double-direct/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/double-direct-fast/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/float-center/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/float-center-fast/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/float-direct/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/float-direct-fast/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/inline-width/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/inline-width-fast/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/mfc-family36/native/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/mfc-profile36/native/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/mfc36-verified/native/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/regalloc/cached-window/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/regalloc/explicit-delete/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/regalloc/loop-event/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/regalloc/loop-window/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/world-layout-audit/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/integration/baselines/a5e043cd4bc7e9c50ec0dd0b048c6dc2bbe34680fc5a1cd409fd64fcebce4cdd/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/integration/baselines/c5a365706c8e899051a53cf4289533e736abdf4322c1b531cdb6c57815c9b2cb/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/0009c278d03e44329a509d3dabe8b870/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/01fcaea6f458429ea23a1a352fa78420/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/0af2f3561a1c44c38332053e7e767bc2/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/0f078522dc5d4dacaa29b995091945b2/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/1ea4b9b1e55f48df88a82b90bce02d25/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/2ff48b0946f24cfa884f5c460ea42cc6/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/31c53bb11920499fb14ddd67eab86efd/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/3a14c94022cf4d628f4af900f83330c3/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/404207f3dd994afea90c21faab1bb40f/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/5c32d39045af41858cf137b8819e4ae5/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/5e7b8b517dcf47c7a3849ae74dbcc1e9/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/6bf1db4db2c441a696d96d3788df0b4d/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/6e8152cfcc714356b9f3c387a179bbc8/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/79bc7d7cb8ad45a79e802e2bce046b15/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/81ffdb19a75c46e7b336ae0d0590b9f6/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/8d2f6bf326484e1a95e94a2759725b05/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/982e35819cd34db98c69fc141f355997/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/9c3f5c68e9d841c6a6e5713ef7ea9c30/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/a1874d20df534725989e50ff79e51134/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/b5d1820eb523462cadc9851a09d7750f/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/cbeba8a70d344a2d92df5f30594aaadb/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/cdf37903cca64c0a863e72838810d45f/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/eba92580a2604fab9ae8cfbe179709eb/baseline/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/eecb7fb8989948e398d817d2f6d5ed98/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/f1e2aa567d13498daabcabda8b0dd77a/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/fe24b1df657942b9b9250095cc272863/fresh/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`0dcf2151e72c`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`184f973f8852`** · proof not assessed
+
+<details><summary>19 retained local origins</summary>
+
+- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/work/native-linked-preflight/8e9fcab8892f714812de/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/802551008982f4f8a1edb71c6ee9f2c28a89205c7ddd2cecd034410ec76f466b/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/a7a5d67e893c6f2b003f1cc600069b21b7753d7bd34c0170c8bfafc78a4c4711/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/cd14486b36f9542f6db419acfb0986a86d31560be808b3dd0fd3ba6bfd8856ea/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/frontier32/sources/b76888298c47a3ce6e3586e0ce5a161ebbe2a424f2598b955b2b31156ea4682a/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/frontier32b/sources/422dbed0f612931d7674b22d903e61e2ee654fb1eb3bd971f6cbd83fb5e8f0d9/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/isolated-shared/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/agents/214e357ba17c4ac6917a7659fbf5ebc1/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/agents/466271fd73b04d98b6ab25de7157cd99/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/agents/7775a876ba004a8c8bc0a9a2c0b49899/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/agents/d1691806d60f4c859f52cd53ed27c9f4/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/agents/d17290f6ed374eab91f15e00713e9ed0/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/server-sources/932c654cf0dfd88cece9fae6cacdd1d3378274f6d3dd0988c7b5cf4a62ba61b6/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/snapshots/9ee4d7199524430889c270df6f00680b/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/script-context/snapshot/d28939faef5424a478f22570af009465f94e3dd76fad26484c9c2818f16acc85/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`1ad50844cc1e`** · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/CSelectionPropGrid.cpp`
+- local · `local/findings/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`53d199add656`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`703c89ff453f`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/CSelectionPropGrid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/CSelectionPropGridEvents.cpp — diverged; 6 content versions</summary>
+
+**`08d7bf9447e8`** · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+
+**`4ddda8b71bb6`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`4f96f65f005b`** · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp`
+- local · `local/findings/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`92b7e02a98cd`** · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- fork · coldek · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- fork · mewpokemons · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- fork · mewpokemons · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- fork · mewpokemons · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+
+<details><summary>10 retained local origins</summary>
+
+- local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp`
+- local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp`
+- local-branch refs/heads/codex/worker-selection-verbs@dd86b261e5b6 · `rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp`
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`b31f1fadf37a`** · proof not assessed
+
+<details><summary>70 retained local origins</summary>
+
+- local · `local/integrators/0328757c82f5413b9533f7b9790bb1cf/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/1c8dbb0c65904ffb87b50e428b665158/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/work/native-linked-preflight/8e9fcab8892f714812de/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/de0395a5614e4d45acd95c6be4c4ff97/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/f15e3506f2fc4f0ea72b5ecc48ac8c84/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/802551008982f4f8a1edb71c6ee9f2c28a89205c7ddd2cecd034410ec76f466b/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/a7a5d67e893c6f2b003f1cc600069b21b7753d7bd34c0170c8bfafc78a4c4711/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/cd14486b36f9542f6db419acfb0986a86d31560be808b3dd0fd3ba6bfd8856ea/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/crobloxview-20261102/t/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/frontier32/sources/b76888298c47a3ce6e3586e0ce5a161ebbe2a424f2598b955b2b31156ea4682a/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/frontier32b/sources/422dbed0f612931d7674b22d903e61e2ee654fb1eb3bd971f6cbd83fb5e8f0d9/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/instance-accessors/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/dimensions/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/dimensions-fast/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/double-center/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/double-center-fast/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/double-direct/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/double-direct-fast/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/float-center/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/float-center-fast/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/float-direct/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/float-direct-fast/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/inline-width/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/label2d-probes/inline-width-fast/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/mfc-family36/native/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/mfc-profile36/native/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/mfc36-verified/native/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/gui-live-validation/world-layout-audit/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/integration/baselines/a5e043cd4bc7e9c50ec0dd0b048c6dc2bbe34680fc5a1cd409fd64fcebce4cdd/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/integration/baselines/c5a365706c8e899051a53cf4289533e736abdf4322c1b531cdb6c57815c9b2cb/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/0009c278d03e44329a509d3dabe8b870/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/01fcaea6f458429ea23a1a352fa78420/baseline/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/0af2f3561a1c44c38332053e7e767bc2/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/0f078522dc5d4dacaa29b995091945b2/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/1ea4b9b1e55f48df88a82b90bce02d25/baseline/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/2ff48b0946f24cfa884f5c460ea42cc6/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/31c53bb11920499fb14ddd67eab86efd/baseline/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/3a14c94022cf4d628f4af900f83330c3/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/404207f3dd994afea90c21faab1bb40f/baseline/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/5c32d39045af41858cf137b8819e4ae5/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/5e7b8b517dcf47c7a3849ae74dbcc1e9/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/6bf1db4db2c441a696d96d3788df0b4d/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/6e8152cfcc714356b9f3c387a179bbc8/baseline/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/79bc7d7cb8ad45a79e802e2bce046b15/baseline/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/81ffdb19a75c46e7b336ae0d0590b9f6/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/9c3f5c68e9d841c6a6e5713ef7ea9c30/baseline/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/a1874d20df534725989e50ff79e51134/baseline/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/b5d1820eb523462cadc9851a09d7750f/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/cbeba8a70d344a2d92df5f30594aaadb/baseline/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/cdf37903cca64c0a863e72838810d45f/baseline/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/eba92580a2604fab9ae8cfbe179709eb/baseline/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/eecb7fb8989948e398d817d2f6d5ed98/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/f1e2aa567d13498daabcabda8b0dd77a/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-recovery-server/fe24b1df657942b9b9250095cc272863/fresh/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/isolated-shared/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/agents/214e357ba17c4ac6917a7659fbf5ebc1/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/agents/466271fd73b04d98b6ab25de7157cd99/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/agents/7775a876ba004a8c8bc0a9a2c0b49899/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/agents/d1691806d60f4c859f52cd53ed27c9f4/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/agents/d17290f6ed374eab91f15e00713e9ed0/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/server-sources/932c654cf0dfd88cece9fae6cacdd1d3378274f6d3dd0988c7b5cf4a62ba61b6/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/gui-five/proofs/snapshots/9ee4d7199524430889c270df6f00680b/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-throughput-20261102/script-context/snapshot/d28939faef5424a478f22570af009465f94e3dd76fad26484c9c2818f16acc85/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`de1bc6892945`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/CSelectionPropGridEvents.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>native-classes/CSelectionPropGridSelection.cpp — diverged; 7 content versions</summary>
 
 **`246bc0147d72`** · proof not assessed
@@ -121,6 +420,7 @@
 - fork · mewpokemons · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CSelectionPropGridSelection.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 
 <details><summary>10 retained local origins</summary>
 
@@ -149,6 +449,7 @@
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CSelectionPropGridSelection.cpp)
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 
 </details>
 
@@ -159,6 +460,7 @@
 - public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CSettingsDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CSettingsDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CSettingsDialog.cpp)
+- public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CSettingsDialog.cpp)
 
 **`3aacd7e2d2a7`** · proof not assessed
 
@@ -189,6 +491,7 @@
 - fork · mewpokemons · [native-classes/CSettingsDialog.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/CSettingsDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CSettingsDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CSettingsDialog.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CSettingsDialog.cpp)
 
 <details><summary>7 retained local origins</summary>
 
@@ -249,6 +552,14 @@
 - draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
 - draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/cb4020c26e008a9e68f3538ec9656e1a499c2cfa4fefaea8784484d8e1fae512/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
 - draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/d39272889f217a674d465200e5f29828a937a79fe53bfd7ef10e6a49ed7db69c/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/16f002ebbc907cdc31770e6dba3063a0aad90721f45f9b3dd4e44b545cb777c3/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/1b1d93072d137eb6ad0823c4c29d9854b452fe6c5edaed7b78663c798ce9fdbc/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/32e731867b812c14d30c0b776977faf273805d6c504692dbf51781c776af60cb/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/73b6f2a24d9dabf695fb68e209034c19737cc17bf69c4ff6e59bba973c422dfa/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/cb4020c26e008a9e68f3538ec9656e1a499c2cfa4fefaea8784484d8e1fae512/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/d39272889f217a674d465200e5f29828a937a79fe53bfd7ef10e6a49ed7db69c/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -294,6 +605,7 @@
 - public · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CUploadPlaceDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CUploadPlaceDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CUploadPlaceDialog.cpp)
+- public · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CUploadPlaceDialog.cpp)
 
 **`1cb069eec602`** · proof not assessed
 
@@ -321,6 +633,7 @@
 - fork · mewpokemons · [native-classes/CUploadPlaceDialog.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -377,6 +690,7 @@
 - archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
 - archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
 - archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
+- archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -399,6 +713,8 @@
 - canonical · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - public · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CWebToolbox.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CWebToolbox.cpp)
+- public · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CWebToolbox.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 
 **`8f739c1292b8`** · proof not assessed
 - fork · coldek · [native-classes/CWebToolbox.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/CWebToolbox.cpp)
@@ -442,6 +758,7 @@
 - draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)
+- draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -476,6 +793,7 @@
 - public · colingsnyder2-ux · [native-classes/CWebToolboxPage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CWebToolboxPage.cpp)
 - public · colingsnyder2-ux · [native-classes/CWebToolboxPage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CWebToolboxPage.cpp)
 - public · colingsnyder2-ux · [native-classes/CWebToolboxPage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CWebToolboxPage.cpp)
+- public · colingsnyder2-ux · [native-classes/CWebToolboxPage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CWebToolboxPage.cpp)
 
 **`cd92795f9fb9`** · proof not assessed
 
@@ -504,6 +822,7 @@
 - fork · mewpokemons · [native-classes/CWorkspaceExecScript.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/CWorkspaceExecScript.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScript.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScript.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScript.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -589,6 +908,7 @@
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CWorkspaceExecScript.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CWorkspaceExecScript.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CWorkspaceExecScript.cpp)
+- public · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CWorkspaceExecScript.cpp)
 
 </details>
 
@@ -659,6 +979,7 @@
 - fork · mewpokemons · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -686,6 +1007,7 @@
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
+- public · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 
 </details>
 
@@ -717,6 +1039,7 @@
 - public · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CameraCenterCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CameraCenterCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CameraCenterCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CameraCenterCommand.cpp)
 
 **`299cccce9503`** · proof not assessed
 
@@ -753,6 +1076,7 @@
 - fork · mewpokemons · [native-classes/CameraCenterCommand.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/CameraCenterCommand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CameraCenterCommand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CameraCenterCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CameraCenterCommand.cpp)
 
 <details><summary>10 retained local origins</summary>
 
@@ -800,6 +1124,7 @@
 - public · colingsnyder2-ux · [native-classes/ControllerApply.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ControllerApply.cpp)
 - public · colingsnyder2-ux · [native-classes/ControllerApply.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ControllerApply.cpp)
 - public · colingsnyder2-ux · [native-classes/ControllerApply.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ControllerApply.cpp)
+- public · colingsnyder2-ux · [native-classes/ControllerApply.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ControllerApply.cpp)
 
 **`ab6163d9b290`** · proof not assessed
 
@@ -815,6 +1140,7 @@
 - fork · mewpokemons · [native-classes/ControllerApply.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ControllerApply.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ControllerApply.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/ControllerApply.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ControllerApply.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/ControllerApply.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ControllerApply.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/ControllerApply.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -904,6 +1230,7 @@
 - public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/DocumentException.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/DocumentException.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/DocumentException.cpp)
+- public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/DocumentException.cpp)
 
 **`e80f3c3063d7`** · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/DocumentException.cpp)
@@ -913,6 +1240,7 @@
 - fork · mewpokemons · [native-classes/DocumentException.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/DocumentException.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/DocumentException.cpp)
 
 <details><summary>33 retained local origins</summary>
 
@@ -961,6 +1289,7 @@
 - public · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/DocumentExecute.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/DocumentExecute.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/DocumentExecute.cpp)
+- public · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/DocumentExecute.cpp)
 
 **`166543af8a04`** · proof not assessed
 
@@ -1002,6 +1331,7 @@
 - fork · mewpokemons · [native-classes/DocumentExecute.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/DocumentExecute.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/DocumentExecute.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/DocumentExecute.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/DocumentExecute.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -1053,6 +1383,7 @@
 - fork · mewpokemons · [native-classes/DocumentInitialize.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/DocumentInitialize.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/DocumentInitialize.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/DocumentInitialize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/DocumentInitialize.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -1072,6 +1403,7 @@
 - public · colingsnyder2-ux · [native-classes/DocumentInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/DocumentInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/DocumentInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/DocumentInitialize.cpp)
+- public · colingsnyder2-ux · [native-classes/DocumentInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/DocumentInitialize.cpp)
 
 **`f3ec71c5fb7a`** · proof not assessed
 
@@ -1173,6 +1505,7 @@
 - public · colingsnyder2-ux · [native-classes/DocumentInsertModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/DocumentInsertModel.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentInsertModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/DocumentInsertModel.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentInsertModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/DocumentInsertModel.cpp)
+- public · colingsnyder2-ux · [native-classes/DocumentInsertModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/DocumentInsertModel.cpp)
 
 **`f623cebd1eec`** · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/DocumentInsertModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/DocumentInsertModel.cpp)
@@ -1182,6 +1515,7 @@
 - fork · mewpokemons · [native-classes/DocumentInsertModel.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/DocumentInsertModel.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentInsertModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/DocumentInsertModel.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentInsertModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/DocumentInsertModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentInsertModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/DocumentInsertModel.cpp)
 
 <details><summary>10 retained local origins</summary>
 
@@ -1241,6 +1575,7 @@
 - public · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/DocumentLDraw.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/DocumentLDraw.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/DocumentLDraw.cpp)
+- public · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/DocumentLDraw.cpp)
 
 **`c9487821a2d6`** · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/DocumentLDraw.cpp)
@@ -1248,6 +1583,7 @@
 - fork · mewpokemons · [native-classes/DocumentLDraw.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/DocumentLDraw.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/DocumentLDraw.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/DocumentLDraw.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/DocumentLDraw.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -1299,6 +1635,7 @@
 - fork · mewpokemons · [native-classes/DocumentLaunch.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/DocumentLaunch.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/DocumentLaunch.cpp)
 
 <details><summary>33 retained local origins</summary>
 
@@ -1358,6 +1695,7 @@
 - public · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/DocumentLaunch.cpp)
+- public · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/DocumentLaunch.cpp)
 
 **`bcbf92bf5abd`** · proof not assessed
 
@@ -1454,6 +1792,7 @@
 - fork · mewpokemons · [native-classes/DocumentLoadFile.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/DocumentLoadFile.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/DocumentLoadFile.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/DocumentLoadFile.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/DocumentLoadFile.cpp)
 
 <details><summary>10 retained local origins</summary>
 
@@ -1474,666 +1813,13 @@
 - public · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/DocumentLoadFile.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/DocumentLoadFile.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/DocumentLoadFile.cpp)
+- public · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/DocumentLoadFile.cpp)
 
 **`fcf61531e0d8`** · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
 - local · `rebuild/2008-06/native-classes/DocumentLoadFile.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/DocumentLoadFromString.cpp — diverged; 8 content versions</summary>
-
-**`217eeb636938`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`224bebeafd75`** · proof not assessed
-- fork · coldek · [native-classes/DocumentLoadFromString.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp)
-- fork · mewpokemons · [native-classes/DocumentLoadFromString.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp)
-
-<details><summary>22 retained local origins</summary>
-
-- local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-classes/DocumentLoadFromString.cpp`
-- local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-classes/DocumentLoadFromString.cpp`
-- local-branch refs/heads/codex/worker-selection-verbs@dd86b261e5b6 · `rebuild/2008-06/native-classes/DocumentLoadFromString.cpp`
-- local · `work/crobloxview-20261102/t/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc-family36/native/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc-profile36/native/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc36-verified/native/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/01fcaea6f458429ea23a1a352fa78420/baseline/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/1ea4b9b1e55f48df88a82b90bce02d25/baseline/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/31c53bb11920499fb14ddd67eab86efd/baseline/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/404207f3dd994afea90c21faab1bb40f/baseline/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/6e8152cfcc714356b9f3c387a179bbc8/baseline/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/79bc7d7cb8ad45a79e802e2bce046b15/baseline/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/9c3f5c68e9d841c6a6e5713ef7ea9c30/baseline/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/a1874d20df534725989e50ff79e51134/baseline/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/b5d1820eb523462cadc9851a09d7750f/fresh/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/cbeba8a70d344a2d92df5f30594aaadb/baseline/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/cdf37903cca64c0a863e72838810d45f/baseline/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/eba92580a2604fab9ae8cfbe179709eb/baseline/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/eecb7fb8989948e398d817d2f6d5ed98/fresh/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/fe24b1df657942b9b9250095cc272863/fresh/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`23288a755364`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/DocumentLoadFromString.cpp`
-- local · `local/findings/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`27ce1d202b99`** · proof not assessed
-
-<details><summary>12 retained local origins</summary>
-
-- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/work/native-linked-preflight/8e9fcab8892f714812de/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/isolated-shared/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/214e357ba17c4ac6917a7659fbf5ebc1/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/466271fd73b04d98b6ab25de7157cd99/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/7775a876ba004a8c8bc0a9a2c0b49899/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d1691806d60f4c859f52cd53ed27c9f4/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d17290f6ed374eab91f15e00713e9ed0/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/server-sources/932c654cf0dfd88cece9fae6cacdd1d3378274f6d3dd0988c7b5cf4a62ba61b6/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/snapshots/9ee4d7199524430889c270df6f00680b/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/script-context/snapshot/d28939faef5424a478f22570af009465f94e3dd76fad26484c9c2818f16acc85/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ba210b6ce3d7`** · proof not assessed
-- public · colingsnyder2-ux · [native-classes/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/DocumentLoadFromString.cpp)
-- public · colingsnyder2-ux · [native-classes/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/DocumentLoadFromString.cpp)
-- public · colingsnyder2-ux · [native-classes/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/DocumentLoadFromString.cpp)
-
-**`d883435e5979`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ee4a5917be4e`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`f52fa698812d`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp)
-- fork · mewpokemons · [native-classes/DocumentLoadFromString.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp)
-- fork · mewpokemons · [native-classes/DocumentLoadFromString.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp)
-- canonical · colingsnyder2-ux · [native-classes/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp)
-- canonical · colingsnyder2-ux · [native-classes/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp)
-
-<details><summary>9 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/DocumentUrl.cpp — diverged; 6 content versions</summary>
-
-**`3123f6b95cdf`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`41947d221ae2`** · proof not assessed
-- public · colingsnyder2-ux · [native-classes/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/DocumentUrl.cpp)
-- public · colingsnyder2-ux · [native-classes/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/DocumentUrl.cpp)
-- public · colingsnyder2-ux · [native-classes/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/DocumentUrl.cpp)
-
-**`633fffaf93fe`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/DocumentUrl.cpp)
-- fork · mewpokemons · [native-classes/DocumentUrl.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/DocumentUrl.cpp)
-- fork · mewpokemons · [native-classes/DocumentUrl.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/DocumentUrl.cpp)
-- canonical · colingsnyder2-ux · [native-classes/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/DocumentUrl.cpp)
-- canonical · colingsnyder2-ux · [native-classes/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/DocumentUrl.cpp)
-
-<details><summary>9 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`81f049b404a8`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/DocumentUrl.cpp`
-- local · `local/findings/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`df3974f6a6b1`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e36fe953c0cc`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/DocumentUrl.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/DuplicateSelectionVerb.cpp — diverged; 6 content versions</summary>
-
-**`5097b1352ca0`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp`
-- local · `local/findings/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`71fc2ae602cf`** · proof not assessed
-- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/DuplicateSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/DuplicateSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/DuplicateSelectionVerb.cpp)
-
-**`80c8ffcb18ba`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
-- fork · coldek · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
-- fork · mewpokemons · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
-- fork · mewpokemons · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
-- fork · mewpokemons · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
-
-<details><summary>10 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`854ecf816f41`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`dfae0bfcc28e`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e1f06bffabdd`** · proof not assessed
-
-<details><summary>3 retained local origins</summary>
-
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/EditSelectionVerbConstructor.cpp — diverged; 6 content versions</summary>
-
-**`1d64968275a1`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp`
-- local · `local/findings/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`49dab23b22e4`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`6377d3926981`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
-- fork · mewpokemons · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
-- fork · mewpokemons · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
-- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
-- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
-
-<details><summary>9 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`68b85e6ce480`** · proof not assessed
-- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
-- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
-- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
-
-**`6c6720193673`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`c832131870ed`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/ExitCommand.cpp — diverged; 6 content versions</summary>
-
-**`1dd511cc2e06`** · proof not assessed
-- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ExitCommand.cpp)
-- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ExitCommand.cpp)
-- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ExitCommand.cpp)
-
-**`985303cea55b`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
-- fork · coldek · [native-classes/ExitCommand.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/ExitCommand.cpp)
-- fork · mewpokemons · [native-classes/ExitCommand.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/ExitCommand.cpp)
-- fork · mewpokemons · [native-classes/ExitCommand.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/ExitCommand.cpp)
-- fork · mewpokemons · [native-classes/ExitCommand.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ExitCommand.cpp)
-- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
-- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
-
-<details><summary>10 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`9ef2f0710acc`** · proof not assessed
-
-<details><summary>3 retained local origins</summary>
-
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`c70e6e53cf5d`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`d55d631f0332`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`edbc58fb402d`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/ExitCommand.cpp`
-- local · `local/findings/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/GroupSelectionVerb.cpp — diverged; 6 content versions</summary>
-
-**`3a605f3737d2`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`6bb225641bf5`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`a336fe2c6b3c`** · proof not assessed
-
-<details><summary>3 retained local origins</summary>
-
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`a653979e1737`** · proof not assessed
-- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/GroupSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/GroupSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/GroupSelectionVerb.cpp)
-
-**`c126640556d3`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
-- fork · coldek · [native-classes/GroupSelectionVerb.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
-- fork · mewpokemons · [native-classes/GroupSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
-- fork · mewpokemons · [native-classes/GroupSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
-- fork · mewpokemons · [native-classes/GroupSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
-
-<details><summary>10 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ef856983d1a6`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/GroupSelectionVerb.cpp`
-- local · `local/findings/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/HttpScriptCheck.cpp — public-only; 4 content versions</summary>
-
-**`004f7658da37`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/HttpScriptCheck.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`32d0c382b683`** · proof not assessed
-- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpScriptCheck.cpp)
-- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/HttpScriptCheck.cpp)
-- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/HttpScriptCheck.cpp)
-
-**`9a85b56e5abf`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-classes/HttpScriptCheck.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`d74b0b5e0a2f`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/HttpScriptCheck.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/InsertModelFromRobloxVerb.cpp — diverged; 6 content versions</summary>
-
-**`2972794546a9`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
-- fork · coldek · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
-- fork · mewpokemons · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
-- fork · mewpokemons · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
-- fork · mewpokemons · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
-
-<details><summary>10 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`4bd1d904c1b6`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`a60dd413cfc2`** · proof not assessed
-
-<details><summary>3 retained local origins</summary>
-
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`bafa0115dda2`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e57999b381f9`** · proof not assessed
-- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
-
-**`f69b40cd3cf6`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp`
-- local · `local/findings/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/JoinCommand.cpp — diverged; 6 content versions</summary>
-
-**`27fcbf701a43`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`51315d0aa5e1`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/JoinCommand.cpp)
-- fork · mewpokemons · [native-classes/JoinCommand.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/JoinCommand.cpp)
-- fork · mewpokemons · [native-classes/JoinCommand.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/JoinCommand.cpp)
-- canonical · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/JoinCommand.cpp)
-- canonical · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/JoinCommand.cpp)
-
-<details><summary>9 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`5602b6ea93d7`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`6a8947876433`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`cfaf88867aea`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/JoinCommand.cpp`
-- local · `local/findings/2008-06/native-classes/JoinCommand.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e8766df188f3`** · proof not assessed
-- public · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/JoinCommand.cpp)
-- public · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/JoinCommand.cpp)
-- public · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/JoinCommand.cpp)
-
-</details>
-
-<details>
-<summary>native-classes/MetadataExplorerOrder.cpp — public-only; 4 content versions</summary>
-
-**`2a3e5de50df1`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-classes/MetadataExplorerOrder.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`56c0ab64f3f1`** · proof not assessed
-- public · colingsnyder2-ux · [native-classes/MetadataExplorerOrder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/MetadataExplorerOrder.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataExplorerOrder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/MetadataExplorerOrder.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataExplorerOrder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/MetadataExplorerOrder.cpp)
-
-**`aa999f4e6635`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/MetadataExplorerOrder.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e3f214e2100b`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/MetadataExplorerOrder.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

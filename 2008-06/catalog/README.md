@@ -5,7 +5,7 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 
 | Project | Native paths |
 | --- | ---: |
-| [App/v8tree](App/v8tree/README.md) | 44 |
+| [App/v8tree](App/v8tree/README.md) | 48 |
 | [App/v8xml](App/v8xml/README.md) | 5 |
 | [App/reflection](App/reflection/README.md) | 14 |
 | [WindowsClient](WindowsClient/README.md) | 355 |
@@ -18,7 +18,7 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 
 ## Coverage
 
-56 sources checked; 0 errors.
+57 sources checked; 0 errors.
 
 See [source-map.json](../source-map.json) for revisions, hashes, origins, errors and exclusions.
 Local-only candidates have no public code URL until separately reviewed and published.
