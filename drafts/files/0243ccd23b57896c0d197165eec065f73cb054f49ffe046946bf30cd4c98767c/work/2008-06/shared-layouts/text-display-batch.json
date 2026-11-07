@@ -1,0 +1,24 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/TextDisplay.cpp",
+      "checks": [
+        {
+          "addr": "005735e0",
+          "symbol": "?init@TextDisplay@RBX@@AAEXXZ",
+          "calls": [
+            {"offset": 37, "target": "00514940", "symbol": "?purple@Color3@G3D@@SAABV12@XZ"},
+            {"offset": 78, "target": "007baf10", "symbol": "?clear@Color4@G3D@@SAABV12@XZ"}
+          ]
+        },
+        {"addr": "00573670", "symbol": "?render2d@TextDisplay@RBX@@UAEXPAVAdorn@2@@Z"},
+        {"addr": "005744a0", "symbol": "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"},
+        {"addr": "00574570", "symbol": "?getFontSize@TextDisplay@RBX@@MBEHXZ"},
+        {"addr": "00574580", "symbol": "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"},
+        {"addr": "00574630", "symbol": "??1TextDisplay@RBX@@UAE@XZ"}
+      ],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

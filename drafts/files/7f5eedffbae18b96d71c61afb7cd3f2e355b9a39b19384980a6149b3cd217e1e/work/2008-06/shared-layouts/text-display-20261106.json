@@ -1,0 +1,322 @@
+{
+  "schema": 1,
+  "class": "RBX::TextDisplay",
+  "client": "2008-06",
+  "unit": "gui/TextDisplay.cpp (recovered source), declaration in native-headers/gui/Gui.h",
+  "state": "inactive candidate: local byte checks only; no link, no selection, no runtime/P5/P6 gate",
+  "delivered_by": {
+    "session": "abe884ed686f42e5a1441704f58001c5",
+    "packet": "084600535f3ccd3adfa7060e2ce65989422957e299c294e169c5475f69e0c65e",
+    "contents": "final native-classes/TextDisplay.cpp (/fp:fast + render2d direct-call form) and the final text-display-batch.json manifest; acknowledged (durable) before the scope-expansion session"
+  },
+  "package_marker_revision": "045d8ce8e42565232578ac46d73ad4bde5c260008ea025c6982b75e9cb7b10e5",
+  "workspace_manifest_source_revision": null,
+  "baseline_commit": null,
+  "run": "work\\2008-06\\native-check-runs\\20261106-211959-55fa8ee9",
+  "manifest_sha256": "7a6227031597df4d8eb3d1463b6677f6f20374a8ff422c43e869f548f3770033",
+  "observer_sha256": "d1193d5d990c94bacc99e1c6b7a7d3dee0d615da55547a3f7440a62d01493302",
+  "sources": {
+    "rebuild/2008-06/native-classes/TextDisplay.cpp": "4937d96592fcfcdb819a7d1d901c26211a44831af944e26063f14fa9cbe80b11",
+    "work/2008-06/shared-layouts/text-display-batch.json": "cc119576d9e0cac3aaa569b6b2134644cb8ef495203ef2a1217d11530971a43e",
+    "rebuild/2008-06/native-headers/gui/Gui.h": "f0e69edf834bdc245fb2fb39c77462d010b860bdeb354d551bd9c2f56291f64c",
+    "rebuild/2008-06/out/native-layouts/native-check-runs/20261106-211959-55fa8ee9/unit-000/candidate.obj": "b7072b9a4590428cd38a5203ca8e7bd25950372c873500b3d0e75b17333b5776"
+  },
+  "compiler": "C:\\Users\\colin\\RoConstruct\\RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+  "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+  "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX (+ /DBOOST_ALL_NO_LIB and the rbxgs recipe defines/includes added by the runner)",
+  "profile_note": "/fp:fast is required: without it MSVC 15.00.21022 materialises the Color4 temporary of init() on the stack (158 B) instead of building it in the member (130 B). The sibling ArrowTool/AxisMoveTool units pin /fp:fast for the same reason.",
+  "extent_split": {
+    "recorded_extent": {
+      "addr": "00574630",
+      "size": 111
+    },
+    "split": [
+      {
+        "addr": "00574630",
+        "symbol": "??1TextDisplay@RBX@@UAE@XZ",
+        "size": 80,
+        "exact": true,
+        "sha256": "9ac7571a753dfa41394b3a5ac9e5e5fad8ba06f8fdc5b7554a6b024bbab6c22f"
+      },
+      {
+        "addr": "00574680",
+        "symbol": "??_GTextDisplay@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "exact": true,
+        "sha256": "5b360916e3c309896c3cc86aafb84f43b0abfcd6c11964c2cbba33c6df19c153",
+        "note": "scalar deleting destructor; the analyzer recorded it inside the 111-byte 00574630 extent (the same extent-split pattern the widget family records as EXTENT_SPLITS)"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "addr": "005735e0",
+      "symbol": "?init@TextDisplay@RBX@@AAEXXZ",
+      "status": "exact",
+      "target_size": 130,
+      "object_size": 130,
+      "target_sha256": "0413b787838471e18b659dbf94041cde9e3bfbbe42964d58968c67bd8b7745d1",
+      "score": 100,
+      "direct_call_bindings": [
+        {
+          "offset": 37,
+          "target": "00514940",
+          "symbol": "?purple@Color3@G3D@@SAABV12@XZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 78,
+          "target": "007baf10",
+          "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+          "status": "verified_binding"
+        }
+      ]
+    },
+    {
+      "addr": "00573670",
+      "symbol": "?render2d@TextDisplay@RBX@@UAEXPAVAdorn@2@@Z",
+      "status": "exact",
+      "target_size": 119,
+      "object_size": 119,
+      "target_sha256": "41b9b8909482f6d07d8bd637e7b5801cca34ac5e89e8542510a526c25fc5330e",
+      "score": 100,
+      "direct_call_bindings": [
+        {
+          "offset": 39,
+          "target": null,
+          "symbol": null,
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 78,
+          "target": "00573360",
+          "symbol": "?label2d@GuiItem@RBX@@IBEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@2W4XAlign@32@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 95,
+          "target": null,
+          "symbol": null,
+          "status": "unresolved_or_wrong_binding"
+        }
+      ]
+    },
+    {
+      "addr": "005744a0",
+      "symbol": "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+      "status": "exact",
+      "target_size": 203,
+      "object_size": 203,
+      "target_sha256": "ac8d8991a1f9adbd5be93b57c079af65c38fce77bcc54042c18318c4e95d8945",
+      "score": 100,
+      "direct_call_bindings": [
+        {
+          "offset": 30,
+          "target": "005739d0",
+          "symbol": "??0GuiItem@RBX@@QAE@XZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 139,
+          "target": null,
+          "symbol": null,
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 152,
+          "target": "005735e0",
+          "symbol": "?init@TextDisplay@RBX@@AAEXXZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 164,
+          "target": "0055af90",
+          "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 176,
+          "target": null,
+          "symbol": null,
+          "status": "unresolved_or_wrong_binding"
+        }
+      ]
+    },
+    {
+      "addr": "00574570",
+      "symbol": "?getFontSize@TextDisplay@RBX@@MBEHXZ",
+      "status": "exact",
+      "target_size": 7,
+      "object_size": 7,
+      "target_sha256": "bfd8f2154ad6f04a2cb86f7aafe4a71e3e7bd290576d267e04be09e2a07a4453",
+      "score": 100
+    },
+    {
+      "addr": "00574580",
+      "symbol": "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "status": "exact",
+      "target_size": 36,
+      "object_size": 36,
+      "target_sha256": "56755382038d97a6f0e5df8e148b12cbc394d4530734baee0488a501a597213e",
+      "score": 100
+    },
+    {
+      "addr": "00574630",
+      "symbol": "??1TextDisplay@RBX@@UAE@XZ",
+      "status": "different",
+      "target_size": 111,
+      "object_size": 80,
+      "target_sha256": "0c0e34c84f77460a03e0793c80351b4f6ccf85236ce55a30f52bb6510b8c16a4",
+      "score": 83
+    },
+    {
+      "addr": "005745b0",
+      "symbol": "??_ETextDisplay@RBX@@WIE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 11,
+      "object_size": 11,
+      "target_sha256": "9bf8913f19b2f96e69cb0e3d7272ac2e7880ba343f9cf5de647a3d16646ebe74",
+      "score": 100
+    },
+    {
+      "addr": "005745c0",
+      "symbol": "??_ETextDisplay@RBX@@WKE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 11,
+      "object_size": 11,
+      "target_sha256": "661fa4d084b9fa7982cf987e99fe58f2f0becfb52ccca460f8780e138acf6cdf",
+      "score": 100
+    },
+    {
+      "addr": "005745d0",
+      "symbol": "??_ETextDisplay@RBX@@WME@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 11,
+      "object_size": 11,
+      "target_sha256": "befecf2c6889cebde55f9e48eb41a4af21e0b063ef525d157bf6baa7df400113",
+      "score": 100
+    },
+    {
+      "addr": "005745e0",
+      "symbol": "??_ETextDisplay@RBX@@WBA@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 8,
+      "object_size": 8,
+      "target_sha256": "1ca3d82cc98911c1f5d2e5cb71cc6a563c9283c9c0c3f93332c92e65e67c7446",
+      "score": 100
+    },
+    {
+      "addr": "005745f0",
+      "symbol": "??_ETextDisplay@RBX@@WBE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 8,
+      "object_size": 8,
+      "target_sha256": "dfe62ad316d1944cd2b6aa38647740359f1013acdd8271f66cc96650e757b003",
+      "score": 100
+    },
+    {
+      "addr": "00574600",
+      "symbol": "??_ETextDisplay@RBX@@WCE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 8,
+      "object_size": 8,
+      "target_sha256": "837b683ea2473016de2993070b2724394c9dbc8f04bd0487556f43ecb88fc23c",
+      "score": 100
+    },
+    {
+      "addr": "00574610",
+      "symbol": "??_ETextDisplay@RBX@@WEE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 8,
+      "object_size": 8,
+      "target_sha256": "42da79b15c27c3964e33e69be3954cabf1d829867e077984b0abec878e8efe8b",
+      "score": 100
+    },
+    {
+      "addr": "00574620",
+      "symbol": "??_ETextDisplay@RBX@@WGE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 8,
+      "object_size": 8,
+      "target_sha256": "349009645efcf5211de066e1c96eaceac7e98bd54038cdb50c512e8d6f0577d7",
+      "score": 100
+    }
+  ],
+  "totals": {
+    "checks": 14,
+    "exact": 13,
+    "data_checked": 13,
+    "data_mismatches": [],
+    "mismatches": [
+      {
+        "addr": "00574630",
+        "reason": "recorded extent 111 B covers dtor (80 B) + scalar deleting destructor (31 B); both halves verified exact above"
+      }
+    ]
+  },
+  "recovered_methods": [
+    {
+      "addr": "005735e0",
+      "symbol": "?init@TextDisplay@RBX@@AAEXXZ"
+    },
+    {
+      "addr": "00573670",
+      "symbol": "?render2d@TextDisplay@RBX@@UAEXPAVAdorn@2@@Z"
+    },
+    {
+      "addr": "005744a0",
+      "symbol": "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"
+    },
+    {
+      "addr": "00574570",
+      "symbol": "?getFontSize@TextDisplay@RBX@@MBEHXZ"
+    },
+    {
+      "addr": "00574580",
+      "symbol": "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+    }
+  ],
+  "generated_symbols_verified": [
+    "??1TextDisplay@RBX@@UAE@XZ (00574630, 80 B)",
+    "??_GTextDisplay@RBX@@UAEPAXI@Z (00574680, 31 B)",
+    "??_ETextDisplay@RBX@@W{BA,BE,CE,EE,GE,IE,KE,ME}@AEPAXI@Z (005745b0..00574620, 8 subobject adjustor thunks)"
+  ],
+  "evidence": {
+    "vtable": "RBX::TextDisplay main vtable 0082fcbe4 -> 26 slots; slot 20 = 00574570 (getFontSize), slot 24 = 00573670 (render2d), slot 25 = 00574580 (getLabel). Independently asserted by tests/record_native_widget.py lines 167-168.",
+    "layout": "GuiItem base 0x144 bytes (guiSize +0x13c/+0x140); TextDisplay adds label (std::string) +0x144, fontSize +0x160, fontColor (Color4) +0x164, borderColor (Color4) +0x174, align (Adorn::XAlign) +0x184; size 0x188 confirmed by the 0x188 allocation at 00602470 (the StatsHud factory).",
+    "external_bindings": {
+      "00514940": "?purple@Color3@G3D@@SAABV12@XZ (Color3(0.7, 0, 1) static; read from the binary)",
+      "007baf10": "?clear@Color4@G3D@@SAABV12@XZ (Color4(0,0,0,0) static; read from the binary)",
+      "005744a0": "called by EquationDisplay 00656a73 and the StatsHud factory 006024d8"
+    }
+  },
+  "remaining_obligations": [
+    "indirect virtual call getLabel through vtable slot 25 (call edx at 00573697): an indirect-call ABI proof is still required",
+    "IAT calls (std::string default/copy ctor, operator=, ~basic_string, free) and the ~GuiIt/m base call chain: provider/ABI closure for the GuiItem/Instance base remains owner integration work",
+    "vtable data identity (??_7TextDisplay@@6B and the ten subobject vtables) is checked only through the referenced-data path of the exact rows; a full slot-by-slot walk with subobject offsets is owner work",
+    "no linked selection, no runtime activation, no P5/P6 gate, no independent server credit"
+  ],
+  "rejected_variants": [
+    {
+      "hypothesis": "fontColor assigned from a named local Color4",
+      "result": "init() 158 B vs 130 B: the local is materialised on the stack"
+    },
+    {
+      "hypothesis": "fontColor = G3D::Color4(G3D::Color3::purple(), 1.0f) (explicit alpha)",
+      "result": "same 158 B; the explicit argument does not change the temporary"
+    },
+    {
+      "hypothesis": "new (&fontColor) G3D::Color4(...)",
+      "result": "189 B with an EH prologue and a null-this check; not the original"
+    },
+    {
+      "hypothesis": "render2d with a named local std::string label",
+      "result": "123 B vs 119 B: the temporary address is reloaded (lea eax,[esp+0x10]) instead of reusing the sret register; the direct argument form label2d(adorn, getLabel(), ...) is exact"
+    },
+    {
+      "hypothesis": "/O2 without /Ob2, /Os, /Ot, /O1, /Ox",
+      "result": "init() 120-158 B and the ctor/getLabel/dtors diverge; only /fp:fast keeps every function exact"
+    }
+  ],
+  "next_proof": "owner integration: the vtable slot walk, the GuiItem/Instance base ctor+dtor ABI closure and linked/runtime selection for the gui family (same state as its sibling units Widget, EquationDisplay, HealthHud, ArrowPanel)."
+}
