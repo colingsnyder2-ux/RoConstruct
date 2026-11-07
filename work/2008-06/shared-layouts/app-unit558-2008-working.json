@@ -1,0 +1,649 @@
+{
+  "class": "RBX Instance unit (v8tree/Instance.cpp) of the application range 00558000..00564000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), document-swap flags",
+  "flags": {
+    "inst": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit558-2008/NativeAppUnit558_2008_inst.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit558_2008Instance.cpp"
+    ],
+    "inst_pending": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit558-2008/pending",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/DNATIVE_APPUNIT558_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit558-2008/NativeAppUnit558_2008_inst_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit558_2008Instance.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit558_2008.py": "9e4dd5178f1684bed9d44b933a46dd18956470d5b6a25c168a53a6084e937314",
+    "rebuild/2008-06/native-classes/AppUnit558_2008Instance.cpp": "f0ef843d70e47f0016b80642c146afaa2b1dd3cf6cdf4ed91d71cd9acf247106",
+    "rebuild/2008-06/native-headers/AppUnit558_2008/InstanceDescendantRemoving2008.h": "130472c57567cb2f06fbdcfd235f3f5ea32db855e79112a4178810943d070ffb",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+    "rebuild/2008-06/native-headers/v8tree/InstanceEvents.h": "fa84d45939e176d7a62e9e68b7b46b25b3b9feb157a9d648d90a5b544411ab18",
+    "rebuild/2008-06/native-headers/v8xml/XmlElement.h": "9fb2186f9cd2a7b71cc2e213244b480d674fa9997d2199e8df5fc3108406e76a",
+    "rebuild/2008-06/native-headers/util/Events.h": "39a843b3c01f563b19f81d44bf218ee2e9dfe6aed61212e43962617ab6bd82b3"
+  },
+  "objects": {
+    "inst": "2a8e80bd054cc9a968df6e2f90265fe0d5d8afe0ae1fbb6397bb9f42dd20f9cc",
+    "inst_pending": "f47b9bf9f262fcdbcca5a105c3977cfc7c0657d59c1f937457cb8299348453d7"
+  },
+  "pending_header_declarations": "    void readProperties(const ::XmlElement*, IReferenceBinder&);  // 00557920 QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z\n    void read(const ::XmlElement*, IReferenceBinder&);  // 0055b6f0 QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z\n    Instance* findFirstChildByNameRecursive(const std::string&) const;  // 005581b0 QBEPAV12@ABV?$basic_string\n    boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > getChildren2();  // 005580e0 QAE?AV?$shared_ptr@$$CBV?$vector\n    boost::shared_ptr<Instance> findFirstChildByName2(std::string, bool);  // 00558970 QAE?AV?$shared_ptr@VInstance\n",
+  "unit_map": {
+    "instance 00557310..0055bad9 (starts below the range)": "v8tree/Instance.cpp. Evidence names for most rows (Instance::setName 0055af90, setParent 0055a8f0 with the \"Attempt to set %s as its own parent\" / \"results in circular reference\" strings, remove 0055b4a0, readChildren / readChild / read 0055b6a0 / 0055b5a0 / 0055b6f0, write / writeProperties / writeChildren 00558c50 / 00558b80 / 00558110, clone 00559350, onAncestorChanged / onDescendentAdded / onDescendentRemoving 0055acc0 / 0055ae20 / 0055ae90, ~Instance 0055a540 and Instance() / Instance(const char*) 0055b7e0 / 0055b960, which store the Instance vtables 0082d808..0082d870 (RTTI .?AVInstance@RBX@@) and call Described<Instance> 0055b780); the Notifier<Instance, E>::raise instantiations 00557780..00558730; the XmlElement / XmlAttribute templates only write() reaches (00557e30, 00558030, 00558830); the descriptor instantiations of the Instance statics (GetImpl / GetSetImpl 00557f50..00557fe0, BoundProp / PropDescriptor / RefPropDescriptor / SignalDesc / BoundFuncDesc ctors and invokers 00559400..0055a460, initializers at 007f28e0..007f2bb0); the class-name static 00557330 (\"2AC1A572DB6944B0A65C38C4140AF2F4\", 526 callers). Built here (main and pending builds).",
+    "content-provider 0055bae0..0055306f": "util/ContentProvider.cpp: ContentId isAsset / isHttp / fromAssets / operators 0055bae0..0055bd80 and 0055c500 (\"rbxasset://\", \"http\"), ContentProvider::isHttpUrl 0055bd10, the asset-folder registry read 0055c3e0 (\"Roblox\\content\\\"), setAssetFolder 00560590, getLocalCachePath 0055f940, FailedUrl 0055f710, the cache map<ContentId, CachedContent> _Tree members 0055c0e0 / 0055c170 / 0055ca20 / 0055cb20 / 0055e010 / 0055efc0 / 0055f2c0, the request list / deque members 0055d330..00561850, the worker / load / get bodies 00561980 / 00561e30 / 00561f20 / 005620f0 (\"Unable to load %s\", \"Content failed for %s because %s\"), classDescriptor 005612b0 (\"ContentProvider\"), DescribedNonCreatable ctor 005613f0 and ContentProvider() / ~ContentProvider 00562c30 / 00562e60 (RTTI .?AVContentProvider@RBX@@ vtables 0082deec..). Library code interleaved here, not recovered: boost.date_time (bad_day_of_month / bad_year / bad_month 0055bbc0..0055bca0, gregorian calendar 0055c1f0..0055c2d0, int_adapter 0055c100..0055c140 / 0055cc40 / 0055cdc0, counted_time 0055d270 / 0055d780, second_clock 0055e7d0, to_tick_count 0055c930), ATL CString / CPathT / string resources (0055be30 / 0055bea0 / 0055c190 / 0055cbb0 / 0055d760 / 0055d950 / 0055d9f0 / 0055dae0 / 0055dee0 / 0055df40 / 0055e250 / 0055ee20), MD5HasherImpl (0055c540..0055c8b0, 0055e320; misc-leaves owner). The native util/NativeContentProvider.h and the colin content-* trial receipts cover this unit; not built here.",
+    "shared-helpers 00563070..005630ff": "boost::mutex scoped_lock helpers 00563070 (21 callers, calls do_lock 00594c10) and two std::string COMDATs 00563090 / 005630e0 (93 callers each); guid-registry-mutex probe. ICF-shared library instantiations: not built here.",
+    "debug-settings 00563100..": "v8datamodel/DebugSettings.cpp (osVer 005632c0, osPlatformId 00563330, registry reads 00563370 / 005634b0, the FactoryProduct<DebugSettings, GlobalSettings::Item> rows 00563b40 / 00563be0, the GetImpl / GetSetImpl descriptors 00563a80..00563ec0, boost::any holder<double> 00563cd0..00563f60); settings-items owner, continues past 00564000. Not built here."
+  },
+  "unit_rows": {
+    "instance": {
+      "rows": 114,
+      "span": "00557310..0055b960"
+    },
+    "content-provider": {
+      "rows": 197,
+      "span": "0055bae0..00563050"
+    },
+    "shared-helpers": {
+      "rows": 3,
+      "span": "00563070..005630e0"
+    },
+    "debug-settings": {
+      "rows": 50,
+      "span": "00563100..00563ff0"
+    }
+  },
+  "range_rows_total": 328,
+  "range_rows_counted_by_other_receipts": [
+    "0055c540 counted by misc-leaves-working.json",
+    "0055c6a0 counted by misc-leaves-working.json",
+    "0055c710 counted by misc-leaves-working.json",
+    "0055c740 counted by misc-leaves-working.json",
+    "0055c800 counted by misc-leaves-working.json",
+    "0055c8b0 counted by misc-leaves-working.json",
+    "0055dae0 counted by misc-leaves-working.json",
+    "0055dfd0 counted by browser-view-working.json",
+    "0055e250 counted by misc-leaves-working.json",
+    "0055e320 counted by misc-leaves-working.json",
+    "0055e590 counted by spawn-working.json",
+    "0055e5f0 counted by browser-view-working.json",
+    "00563100 counted by settings-items-working.json",
+    "00563110 counted by settings-items-working.json",
+    "00563120 counted by settings-items-working.json",
+    "00563130 counted by settings-items-working.json",
+    "00563140 counted by settings-items-working.json",
+    "00563a80 counted by settings-items-working.json",
+    "00563ad0 counted by settings-items-working.json",
+    "00563b00 counted by body-movers-working.json, settings-items-working.json, special-shape-working.json",
+    "00563b40 counted by settings-items-working.json",
+    "00563ba0 counted by settings-items-working.json",
+    "00563bb0 counted by settings-items-working.json",
+    "00563bc0 counted by settings-items-working.json",
+    "00563bd0 counted by settings-items-working.json",
+    "00563be0 counted by settings-items-working.json",
+    "00563c40 counted by humanoid2008-working.json",
+    "00563c60 counted by settings-items-working.json",
+    "00563d10 counted by settings-items-working.json",
+    "00563d50 counted by settings-items-working.json",
+    "00563d90 counted by settings-items-working.json",
+    "00563e20 counted by settings-items-working.json",
+    "00563e70 counted by settings-items-working.json",
+    "00563ec0 counted by settings-items-working.json"
+  ],
+  "instance_rows_below_range_counted_by_other_receipts": [],
+  "rows_probed_exact_by_other_receipts_not_counted_here": [
+    "00558110 probed by instance-serialization-working-probe.json",
+    "0055a470 probed by instance-lifetime-working-probe.json",
+    "0055a540 probed by instance-after-class-lookup.json, instance-after-history-update.json, instance-after-insert.json, instance-after-players.json, instance-after-service-link.json, instance-lifetime-working-probe.json",
+    "0055b7e0 probed by instance-after-class-lookup.json, instance-after-history-update.json, instance-after-insert.json, instance-after-players.json, instance-after-service-link.json, instance-lifetime-working-probe.json",
+    "0055b960 probed by instance-after-service-link.json, instance-lifetime-working-probe.json",
+    "0055c000 probed by scorehud-leaderboard-working.json",
+    "0055c100 probed by lighting2008-working.json",
+    "0055c120 probed by lighting2008-working.json",
+    "0055c390 probed by hopper-family-working.json, local-backpack-working.json, mouse-working.json",
+    "0055c930 probed by lighting2008-working.json"
+  ],
+  "rows": {
+    "inst": [
+      {
+        "address": "0055af90",
+        "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 57,
+        "target_size": 57,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x8023d8 (msvcp90.dll!??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)",
+          "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+          "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B": "0x973d54 (static data (one address per symbol))",
+          "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00557490",
+        "symbol": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z",
+        "size": 20,
+        "target_size": 20,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005574b0",
+        "symbol": "?contains@Instance@RBX@@QBE_NPBV12@@Z",
+        "size": 32,
+        "target_size": 32,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00557950",
+        "symbol": "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 132,
+        "target_size": 132,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x802444 (msvcp90.dll!??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0055afd0",
+        "symbol": "?removeAllChildren@Instance@RBX@@QAEXXZ",
+        "size": 143,
+        "target_size": 143,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00558ff0",
+        "symbol": "??$for_eachChild@VRaiseDescendentAdded2@RBX@@@Instance@RBX@@QBEXVRaiseDescendentAdded2@1@@Z",
+        "size": 383,
+        "target_size": 383,
+        "exact": true,
+        "verified_targets": {
+          "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0 (support body exact at the bound address)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (support body exact at the bound address)",
+          "?raise@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@IBEXUDescendantAdded@2@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z": "0x557780 (external)",
+          "??$for_eachChild@VRaiseDescendentAdded2@RBX@@@Instance@RBX@@QBEXVRaiseDescendentAdded2@1@@Z": "0x558ff0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$for_eachChild@VRaiseDescendentAdded2@RBX@@@Instance@RBX@@QBEXVRaiseDescendentAdded2@1@@Z"
+        ]
+      },
+      {
+        "address": "00559230",
+        "symbol": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
+        "size": 17,
+        "target_size": 17,
+        "exact": true,
+        "verified_targets": {
+          "??$for_eachChild@VRaiseDescendentAdded2@RBX@@@Instance@RBX@@QBEXVRaiseDescendentAdded2@1@@Z": "0x558ff0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00558d90",
+        "symbol": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
+        "size": 285,
+        "target_size": 285,
+        "exact": true,
+        "verified_targets": {
+          "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0 (support body exact at the bound address)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (support body exact at the bound address)",
+          "?raise@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@IBEXUChildAdded@2@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": "0x557a00 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z"
+        ]
+      },
+      {
+        "address": "0055acc0",
+        "symbol": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z",
+        "size": 348,
+        "target_size": 348,
+        "exact": true,
+        "verified_targets": {
+          "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0 (support body exact at the bound address)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (support body exact at the bound address)",
+          "?event_ancestryChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A": "0x973c38 (static data (one address per symbol))",
+          "?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x49d200 (support body exact at the bound address)",
+          "?raise@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@IBEXUAncestorChanged@2@@Z": "0x558730 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z"
+        ]
+      },
+      {
+        "address": "00558730",
+        "symbol": "?raise@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@IBEXUAncestorChanged@2@@Z",
+        "size": 138,
+        "target_size": 138,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@IBEXUAncestorChanged@2@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z": "0x557d60 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00558910",
+        "symbol": "??0DescendantAdded@RBX@@QAE@PAVInstance@1@0@Z",
+        "size": 85,
+        "target_size": 85,
+        "exact": true,
+        "verified_targets": {
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??0DescendantAdded@RBX@@QAE@PAVInstance@1@0@Z"
+        ]
+      },
+      {
+        "address": "00557e80",
+        "symbol": "?raise@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@IBEXUDescendantAdded@2@@Z",
+        "size": 202,
+        "target_size": 202,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@IBEXUDescendantAdded@2@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z": "0x557780 (external)",
+          "??1DescendantAdded@RBX@@QAE@XZ": "0x422c60 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0055ae90",
+        "symbol": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 241,
+        "target_size": 241,
+        "exact": true,
+        "verified_targets": {
+          "?event_descendentRemoving@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A": "0x973ca0 (static data (one address per symbol))",
+          "?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x49d200 (support body exact at the bound address)",
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (support body exact at the bound address)",
+          "?raise@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@IBEXUDescendantRemoving@2@@Z": "0x558660 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00558660",
+        "symbol": "?raise@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@IBEXUDescendantRemoving@2@@Z",
+        "size": 202,
+        "target_size": 202,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@IBEXUDescendantRemoving@2@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z": "0x557c40 (external)",
+          "??1DescendantRemoving@RBX@@QAE@XZ": "0x422c60 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0055b6a0",
+        "symbol": "?readChildren@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+        "size": 67,
+        "target_size": 67,
+        "exact": true,
+        "verified_targets": {
+          "?tag_Item@@3ABVName@RBX@@B": "0x97535c (static data (one address per symbol))",
+          "?findFirstChildByTag@XmlElement@@QBEPBV1@ABVName@RBX@@@Z": "0x57c230 (external (evidence name))",
+          "?readChild@Instance@RBX@@AAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "0x55b5a0 (external)",
+          "?findNextChildWithSameTag@XmlElement@@QBEPBV1@PBV1@@Z": "0x57c250 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00559170",
+        "symbol": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+        "size": 185,
+        "target_size": 185,
+        "exact": true,
+        "verified_targets": {
+          "?name_name@@3ABVName@RBX@@B": "0x975338 (static data (one address per symbol))",
+          "?findAttribute@XmlElement@@QBEPBVXmlAttribute@@ABVName@RBX@@@Z": "0x57c2b0 (external (evidence name))",
+          "?getValue@XmlNameValuePair@@QBE_NAAPBVName@RBX@@@Z": "0x57c360 (external (evidence name))",
+          "?findDescriptor@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QBE?AV?$_Vector_const_iterator@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@std@@ABVName@3@@Z": "0x61ba10 (external)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??DIterator@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QBE?AVProperty@23@XZ": "0x4174b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00558c50",
+        "symbol": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ",
+        "size": 314,
+        "target_size": 314,
+        "exact": true,
+        "verified_targets": {
+          "?getNullName@Name@RBX@@SAABV12@XZ": "0x554270 (external (evidence name))",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?tag_Item@@3ABVName@RBX@@B": "0x97535c (static data (one address per symbol))",
+          "?tag_class@@3ABVName@RBX@@B": "0x975378 (static data (one address per symbol))",
+          "??$addAttribute@PBVName@RBX@@@XmlElement@@QAEXABVName@RBX@@PBV12@@Z": "0x557e30 (own row)",
+          "??0InstanceHandle@RBX@@QAE@PAVInstance@1@@Z": "0x594e00 (external (evidence name))",
+          "?name_referent@@3ABVName@RBX@@B": "0x975310 (static data (one address per symbol))",
+          "??$addAttribute@VInstanceHandle@RBX@@@XmlElement@@QAEXABVName@RBX@@VInstanceHandle@2@@Z": "0x558830 (own row)",
+          "?tag_Properties@@3ABVName@RBX@@B": "0x97530c (static data (one address per symbol))",
+          "?addChild@XmlElement@@QAEPAV1@ABVName@RBX@@@Z": "0x496bc0 (support body exact at the bound address)",
+          "?writeProperties@Instance@RBX@@ABEXPAVXmlElement@@@Z": "0x558b80 (external (evidence name))",
+          "?writeChildren@Instance@RBX@@QAEXPAVXmlElement@@@Z": "0x558110 (external (evidence name))",
+          "?tag_External@@3ABVName@RBX@@B": "0x975358 (static data (one address per symbol))",
+          "??$?0VInstanceHandle@RBX@@@XmlElement@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": "0x417510 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?write@Instance@RBX@@UAEPAVXmlElement@@XZ"
+        ]
+      },
+      {
+        "address": "00557e30",
+        "symbol": "??$addAttribute@PBVName@RBX@@@XmlElement@@QAEXABVName@RBX@@PBV12@@Z",
+        "size": 74,
+        "target_size": 74,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00558830",
+        "symbol": "??$addAttribute@VInstanceHandle@RBX@@@XmlElement@@QAEXABVName@RBX@@VInstanceHandle@2@@Z",
+        "size": 209,
+        "target_size": 209,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??$?0VInstanceHandle@RBX@@@XmlAttribute@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": "0x558030 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$addAttribute@VInstanceHandle@RBX@@@XmlElement@@QAEXABVName@RBX@@VInstanceHandle@2@@Z"
+        ]
+      },
+      {
+        "address": "00558030",
+        "symbol": "??$?0VInstanceHandle@RBX@@@XmlAttribute@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z",
+        "size": 174,
+        "target_size": 174,
+        "exact": true,
+        "verified_targets": {
+          "??0XmlNameValuePair@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": "0x4172a0 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VInstanceHandle@RBX@@@XmlAttribute@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z"
+        ]
+      },
+      {
+        "address": "0055b4a0",
+        "symbol": "?remove@Instance@RBX@@QAEXXZ",
+        "size": 246,
+        "target_size": 246,
+        "exact": true,
+        "verified_targets": {
+          "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0 (support body exact at the bound address)",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+          "?remove@Instance@RBX@@QAEXXZ": "0x55b4a0 (own row)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf0@XVInstance@RBX@@@_mfi@boost@@V?$list1@V?$arg@$00@boost@@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf0@XVInstance@RBX@@@_mfi@boost@@V?$list1@V?$arg@$00@boost@@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": "0x558fa0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?remove@Instance@RBX@@QAEXXZ"
+        ]
+      },
+      {
+        "address": "00558fa0",
+        "symbol": "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf0@XVInstance@RBX@@@_mfi@boost@@V?$list1@V?$arg@$00@boost@@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf0@XVInstance@RBX@@@_mfi@boost@@V?$list1@V?$arg@$00@boost@@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z",
+        "size": 67,
+        "target_size": 67,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ]
+  },
+  "not_exact": [
+    {
+      "address": "0055ae20 (not exact)",
+      "symbol": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z",
+      "size": 97,
+      "target_size": 97,
+      "exact": false,
+      "reason": "97/97 bytes, not exact: the compiled body keeps instance->parent in edx and the shared_from temporary address in eax where the original uses eax / ecx; every call target is the same (DescendantAdded ctor 00558910, raise 00557e80, shared_from 00618a40, fire 0049d200)"
+    }
+  ],
+  "pending_build_only": [
+    {
+      "address": "00557920 (pending-build-only)",
+      "symbol": "?readProperties@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+      "size": 43,
+      "target_size": 43,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with NATIVE_APPUNIT558_PENDING and the generated v8tree/Instance.h copy that adds PENDING_DECLS; not counted"
+    },
+    {
+      "address": "0055b6f0 (pending-build-only)",
+      "symbol": "?read@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+      "size": 113,
+      "target_size": 113,
+      "exact": false,
+      "verified_targets": {
+        "?name_referent@@3ABVName@RBX@@B": "0x975310 (static data (one address per symbol))",
+        "?findAttribute@XmlElement@@QBEPBVXmlAttribute@@ABVName@RBX@@@Z": "0x57c2b0 (external (evidence name))",
+        "?tag_Item@@3ABVName@RBX@@B": "0x97535c (static data (one address per symbol))",
+        "?tag_Properties@@3ABVName@RBX@@B": "0x97530c (static data (one address per symbol))",
+        "?findFirstChildByTag@XmlElement@@QBEPBV1@ABVName@RBX@@@Z": "0x57c230 (external (evidence name))",
+        "?readProperties@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "0x557920 (own row)",
+        "?readChildren@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "0x55b6a0 (own row)"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with NATIVE_APPUNIT558_PENDING and the generated v8tree/Instance.h copy that adds PENDING_DECLS; not counted"
+    },
+    {
+      "address": "0055b5a0 (pending-build-only)",
+      "symbol": "?readChild@Instance@RBX@@AAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+      "size": 255,
+      "target_size": 255,
+      "exact": false,
+      "verified_targets": {
+        "?tag_class@@3ABVName@RBX@@B": "0x975378 (static data (one address per symbol))",
+        "?findAttribute@XmlElement@@QBEPBVXmlAttribute@@ABVName@RBX@@@Z": "0x57c2b0 (external (evidence name))",
+        "?getValue@XmlNameValuePair@@QBE_NAAPBVName@RBX@@@Z": "0x57c360 (external (evidence name))",
+        "?read@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "0x55b6f0 (own row)",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+        "?name_referent@@3ABVName@RBX@@B": "0x975310 (static data (one address per symbol))"
+      },
+      "local_eh": [
+        "__ehhandler$?readChild@Instance@RBX@@AAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z"
+      ],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with NATIVE_APPUNIT558_PENDING and the generated v8tree/Instance.h copy that adds PENDING_DECLS; not counted"
+    },
+    {
+      "address": "005581b0 (pending-build-only)",
+      "symbol": "?findFirstChildByNameRecursive@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 101,
+      "target_size": 101,
+      "exact": false,
+      "verified_targets": {
+        "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x557950 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?findFirstChildByNameRecursive@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x5581b0 (own row)"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with NATIVE_APPUNIT558_PENDING and the generated v8tree/Instance.h copy that adds PENDING_DECLS; not counted"
+    },
+    {
+      "address": "005580e0 (pending-build-only)",
+      "symbol": "?getChildren2@Instance@RBX@@QAE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ",
+      "size": 33,
+      "target_size": 33,
+      "exact": false,
+      "verified_targets": {
+        "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0 (support body exact at the bound address)"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with NATIVE_APPUNIT558_PENDING and the generated v8tree/Instance.h copy that adds PENDING_DECLS; not counted"
+    }
+  ],
+  "support_rows": {
+    "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0",
+    "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40",
+    "?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x49d200",
+    "??1DescendantAdded@RBX@@QAE@XZ": "0x422c60",
+    "??1DescendantRemoving@RBX@@QAE@XZ": "0x422c60",
+    "?addChild@XmlElement@@QAEPAV1@ABVName@RBX@@@Z": "0x496bc0",
+    "??$?0VInstanceHandle@RBX@@@XmlElement@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": "0x417510",
+    "??0XmlNameValuePair@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": "0x4172a0"
+  },
+  "vtables_current_headers": {},
+  "bounds_evidence": [
+    {
+      "rows": "00557780 + 00557806 + 00557828 (joined; not counted)",
+      "symbol": "?raise@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@IBEXUDescendantAdded@2@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
+      "compiled_size": 270,
+      "joined_size": 270,
+      "exact_when_joined": true,
+      "reason": "one function: the try body and its catch funclet (\"Exception caught in onEvent. %s\" / the drainTasks print); the analysed rows split it (extent fix needed)"
+    },
+    {
+      "rows": "00557c40 + 00557cc9 + 00557ceb (joined; not counted)",
+      "symbol": "?raise@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@IBEXUDescendantRemoving@2@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z",
+      "compiled_size": 273,
+      "joined_size": 273,
+      "exact_when_joined": true,
+      "reason": "one function: the try body and its catch funclet (\"Exception caught in onEvent. %s\" / the drainTasks print); the analysed rows split it (extent fix needed)"
+    },
+    {
+      "rows": "00557d60 + 00557db0 + 00557dc3 (joined; not counted)",
+      "symbol": "?raise@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@IBEXUAncestorChanged@2@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z",
+      "compiled_size": 203,
+      "joined_size": 203,
+      "exact_when_joined": true,
+      "reason": "one function: the try body and its catch funclet (\"Exception caught in onEvent. %s\" / the drainTasks print); the analysed rows split it (extent fix needed)"
+    }
+  ],
+  "not_attempted": {
+    "setParent 0055a8f0": "needs the private statics signalDescendentAdded / signalDescendentRemoving (00558220 / 00558370) and the ChildAdded / ChildRemoved signal descriptors, which v8tree/Instance.h does not declare",
+    "signalDescendentAdded / signalDescendentRemoving 00558220 / 00558370": "private statics not declared",
+    "Notifier<Instance, ChildAdded / ChildRemoved>::raise 005584c0 / 00558590": "reached only from setParent; an explicit instantiation of raise(ChildAdded) gives 182 B against 205 B (rejected) and ChildRemoved is not defined in any native header",
+    "findChildIndex 00558ac0 / clone 00559350 + 00559250 / predelete 0055b770 + 0055b060 / 0055b360 / 005587c0 / 00558eb0": "not declared in v8tree/Instance.h (names partly from the donor); not attempted this pass",
+    "writeProperties 00558b80": "calls the PropertyDescriptor writer 0056bee0 through the Described member container; not attempted this pass",
+    "descriptor instantiations 00559400..0055a460, 00557f50..00557fe0": "BoundProp / PropDescriptor / RefPropDescriptor / SignalDesc / BoundFuncDesc ctors and invokers of the Instance statics (initializers outside the range): need the static definitions and the 2008 reflection templates (reflection owner); not attempted",
+    "ctors / dtor / createChild / writeChildren 0055b7e0 / 0055b960 / 0055a540 / 0055a470 / 00558110": "already probed relocation_normalized_exact by colin instance-* receipts (not counted there by the top-level rule): left to that owner, not counted here"
+  },
+  "rejected": {
+    "onAddListener(ChildAdded) 00558d90, donor loop `for (it = c->begin(); it != c->end(); it++)`": "284 B vs 285 B",
+    "for_eachChild<RaiseDescendentAdded2> 00558ff0 with `notifier->raise(DescendantAdded(instance, instance->parent), listener)` written in one expression": "385 B vs 383 B (the original reads notifier and parent into locals first)",
+    "explicit instantiation of Notifier<Instance, ChildAdded>::raise(ChildAdded)": "182 B vs 205 B (005584c0)"
+  },
+  "proposals": {
+    "v8tree/Instance.h (core owner)": "Declare public `void readProperties(const ::XmlElement*, IReferenceBinder&);` (00557920), `void read(const ::XmlElement*, IReferenceBinder&);` (0055b6f0), `Instance* findFirstChildByNameRecursive(const std::string&) const;` (005581b0), `boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > getChildren2();` (005580e0) and `boost::shared_ptr<Instance> findFirstChildByName2(std::string, bool);` (00558970); the mangled evidence names give the access (QAE / QBE public) and the signatures. With them the pending-build rows below compile exact against out/native-layouts/app-unit558-2008/pending/v8tree/Instance.h and can be counted (readChild 0055b5a0 needs read).",
+    "v8tree/InstanceEvents.h (owner of the Instance event structs)": "Define `struct DescendantRemoving { const boost::shared_ptr<Instance> instance; const boost::shared_ptr<Instance> parent; DescendantRemoving(const boost::shared_ptr<Instance>&, const boost::shared_ptr<Instance>&); }` (layout from onDescendentRemoving 0055ae90: two shared_ptrs built in place, passed by value, 0x10 bytes, to raise 00558660). Until then native-headers/AppUnit558_2008/InstanceDescendantRemoving2008.h defines it. FYI: the 2008 evidence names spell the structs DescendentAdded / DescendentRemoving (00557780 / 00557e80 ?raise@?$Notifier@VInstance@RBX@@UDescendentAdded@2@@...; DescendentAdded ctor 00558910 ??0DescendentAdded@RBX@@AAE@PAVInstance@1@0@Z, a private out-of-line ctor called from onDescendentAdded); a rename would make the mangled names match."
+  },
+  "exact_function_rows": [
+    "00557490",
+    "005574b0",
+    "00557950",
+    "00557e30",
+    "00557e80",
+    "00558030",
+    "00558660",
+    "00558730",
+    "00558830",
+    "00558910",
+    "00558c50",
+    "00558d90",
+    "00558fa0",
+    "00558ff0",
+    "00559170",
+    "00559230",
+    "0055acc0",
+    "0055ae90",
+    "0055af90",
+    "0055afd0",
+    "0055b4a0",
+    "0055b6a0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
