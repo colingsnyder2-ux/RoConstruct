@@ -6,13 +6,15 @@ Native C++ recovery, original-binary matching, and verified client integration.
 
 | Area | Contents |
 | --- | --- |
-| [Native source map](2008-06/SOURCE_MAP.md) | Project-grouped navigation with canonical and public source links |
+| [Native source projects](2008-06/catalog/README.md) | Canonical/public code plus fork, draft, local branch and snapshot versions |
+| [Source comparison](2008-06/SOURCE_MAP.md) | Separate code differences from generated metadata |
 | [Reviewed workspace](workspace/) | Maintained source, tools, tests, research and build recipes |
 | [2008-06 source](2008-06/) | Public native source view and build inputs |
 | [Recovered functions](src/) | Address-indexed mined functions |
 | [Native contributor guide](data/NATIVE_AGENT.md) | Setup, ownership and draft sharing |
 | [Worker package](data/native-worker.zip) | [Package manifest](data/native-worker.json) |
 | [Reconciliation status](reports/source-cleanup-20261107.md) | Source differences, archive and remaining review |
+| [Documentation](workspace/docs/README.md) | Current workflows and archived history |
 
 ## Source authority
 

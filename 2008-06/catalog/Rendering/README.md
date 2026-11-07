@@ -1,0 +1,7 @@
+# Rendering
+
+[All projects](../README.md)
+
+Expand a native path for every distinct content version. No candidate is auto-promoted.
+
+- [native-classes/AdornG3DTextureTrioTrial.cpp → native-headers/util/IRenderable.h](sources-001.md)

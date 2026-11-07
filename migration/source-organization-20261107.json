@@ -1,0 +1,42 @@
+{
+  "base": "56fa93ec3e5bb928682551b4b89baab06cdfb15b",
+  "entries": [
+    {
+      "original": "workspace/docs/DRAFT_FINDINGS_AUTHORITY_VALIDATION.md",
+      "archived": "archive/research/2026-11-07/DRAFT_FINDINGS_AUTHORITY_VALIDATION.md",
+      "blob": "7177497687913969c94bd68fbc3b3ff52840f407"
+    },
+    {
+      "original": "workspace/docs/DRAFT_WORKFLOW_VALIDATION.md",
+      "archived": "archive/research/2026-11-07/DRAFT_WORKFLOW_VALIDATION.md",
+      "blob": "a51990f0ee2b4f7fc326067bb2f56bb924c91fa9"
+    },
+    {
+      "original": "workspace/docs/NATIVE_PREFLIGHT_CASE.md",
+      "archived": "archive/research/2026-11-07/NATIVE_PREFLIGHT_CASE.md",
+      "blob": "a4f6995d3d79bc1bb3135536d672625ff0b133a9"
+    },
+    {
+      "original": "workspace/docs/PROVIDER_ROUTING_CASE.md",
+      "archived": "archive/research/2026-11-07/PROVIDER_ROUTING_CASE.md",
+      "blob": "db83c98b0f5d9320dfaa8be2cb6b734792473ec2"
+    },
+    {
+      "original": "workspace/docs/P2_GEOMETRY_CHECKPOINT.md",
+      "archived": "archive/research/2026-11-07/P2_GEOMETRY_CHECKPOINT.md",
+      "blob": "b1dd9d42daae71ddf2eb23444b21cdb3af909dfa"
+    },
+    {
+      "original": "rebuild/2008-06/p6/NativeClientStub.cpp",
+      "archived": "archive/experiments/stub-client-20261107/NativeClientStub.cpp",
+      "sha256": "4efdb23ce15ba6e940a8840239bc8d85bc9b16952858ed1717853c93c33039e7",
+      "action": "preserved-copy; local original retained"
+    },
+    {
+      "original": "rebuild/2008-06/p6/build_native_client.py",
+      "archived": "archive/experiments/stub-client-20261107/build_native_client.py",
+      "sha256": "35a178cae1487ae0f72adf5c6f652ed438097a1c5384ccf81adf5e551714dae7",
+      "action": "preserved-copy; local original retained"
+    }
+  ]
+}
