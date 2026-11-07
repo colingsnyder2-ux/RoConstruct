@@ -1,0 +1,34 @@
+{
+  "source_commit": "055581438a7adc5a80e40bbfd943e43f7d1cf444",
+  "scope": "Exact public source snapshots preserved at prior logical paths for donor navigation; no acceptance or runtime claim.",
+  "files": [
+    {
+      "original_path": "2008-06/native-classes/InstanceAncestorChanged.cpp",
+      "preserved_path": "archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceAncestorChanged.cpp",
+      "current_path": "2008-06/App/src/v8tree/InstanceAncestorChanged.cpp",
+      "blob": "1cf7409b723fd7fe10cca8ab29ab6889589b6628",
+      "sha256": "986994bdbc317bbc7173dca45e452b3eff737bd91ac4c07c249a03a95f62d463"
+    },
+    {
+      "original_path": "2008-06/native-classes/InstanceChildListener.cpp",
+      "preserved_path": "archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceChildListener.cpp",
+      "current_path": "2008-06/App/src/v8tree/InstanceChildListener.cpp",
+      "blob": "ea603ae695c702fc6c2ca6b29ddbd5130f6d84c3",
+      "sha256": "4fd7ccd2b94d532cd4c3d7488c844eb046f1654768b875ed458d01c5b0e77b9a"
+    },
+    {
+      "original_path": "2008-06/native-classes/InstanceReadChildren.cpp",
+      "preserved_path": "archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadChildren.cpp",
+      "current_path": "2008-06/App/src/v8tree/InstanceReadChildren.cpp",
+      "blob": "ed8ad795e1c4e89e808216bb8538b801d8e6a889",
+      "sha256": "1e4a8eb3399cc0e6f59ffef5c0d2de161786919b7f5beffc1a0575ed030559ac"
+    },
+    {
+      "original_path": "2008-06/native-classes/InstanceReadProperty.cpp",
+      "preserved_path": "archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadProperty.cpp",
+      "current_path": "2008-06/App/src/v8tree/InstanceReadProperty.cpp",
+      "blob": "8abba9f293d193f083318ab34af9aa6750bdd251",
+      "sha256": "7c9904f184b30332613a5fbe04944b33b76f2ee7edd1a8fe5270cba44c6a0573"
+    }
+  ]
+}
