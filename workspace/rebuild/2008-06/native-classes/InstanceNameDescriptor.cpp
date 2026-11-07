@@ -1,4 +1,2 @@
-#include "v8tree/Instance.h"
-namespace RBX {
-const Reflection::PropDescriptor<Instance, std::string> Instance::desc_Name("Name", "Data", &Instance::getName, &Instance::setName, Reflection::PropertyDescriptor::STANDARD);
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8tree/InstanceNameDescriptor.cpp"

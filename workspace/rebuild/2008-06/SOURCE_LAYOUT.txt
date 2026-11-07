@@ -40,3 +40,7 @@ are compatibility translation units. Compile either path per file, never both.
 App/src/v8tree/ also contains InstanceAncestorChanged, InstanceChildListener,
 InstanceReadChildren and InstanceReadProperty. Their native-classes counterparts
 are compatibility translation units. Compile either path per file, never both.
+
+App/src/v8tree/ also contains InstanceLifetime, InstanceDescendantEvents,
+InstanceNameDescriptor and InstanceSignalDescriptors. Their native-classes
+counterparts are compatibility units. Compile either path per file, never both.
