@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "kind": "class-family queue / handoff note",
+  "date": "2026-11-06",
+  "family": "RBX::TopMenuBar (2008-06 gui, declared in native-headers/gui/Gui.h, no source units yet)",
+  "lease": "RBX::TopMenuBar (Colin, 4h) covering rebuild/2008-06/native-classes/TopMenuBar.cpp, rebuild/2008-06/tests/record_native_top_menu_bar.py, work/2008-06/shared-layouts/top-menu-bar-20261106.json",
+  "why": "Unleased family with strong original evidence: four classes carry full RTTI vtables (TopMenuBar, PercentPanel, RelativePanel, MenuSpacer), the sibling unit ArrowPanel derives from TopMenuBar and is already verified, and Gui.h already holds the authentic declarations.",
+  "vtable_slots": {
+    "TopMenuBar": {"vtable": "0082faf4", "slots": 25,
+      "overrides": {"19": "00573f30 getChildPosition", "21": "00573e00 isVisible (7 B inline body)",
+                    "23": "00573e30 getSize", "24": "00574050 render2d"}},
+    "PercentPanel": {"vtable": "0084213c", "slots": 25, "overrides": {"18": "005738e0 getPosition"}},
+    "RelativePanel": {"vtable": "0083ab1c", "slots": 25, "overrides": {"18": "005737e0 getPosition"}},
+    "MenuSpacer": {"vtable": "0084204c", "slots": 25, "overrides": ["none (uses GuiItem's)"]},
+    "MenuDivider": {"note": "no RTTI vtable in the binary - leave out like the donor's MultiVerbWidget"},
+    "ArrowPanel": {"vtable": "0084c164", "overrides": {"21": "00656db0", "23": "00656bf0"},
+                   "note": "already verified by tests/record_native_widget.py; pins the TopMenuBar base shape"}
+  },
+  "member_offsets": {
+    "base": "GuiItem is 0x144 bytes (guiSize +0x13c/+0x140; verified by the text-display batch)",
+    "TopMenuBar": {"backdropColor": "+0x144 (Color4)", "layoutStyle": "+0x154 (Layout::Style)",
+                   "visible": "+0x158 (bool; isVisible 00573e00 is the 7-byte mov al,[ecx+0x158] body)"},
+    "PercentPanel": {"xLocation": "+0x15c (Rect::Location)", "yLocation": "+0x160 (Rect::Location)",
+                     "position": "+0x164 (G3D::Vector2)"},
+    "RelativePanel": {"xLocation": "+0x15c", "yLocation": "+0x160", "offset": "+0x164 (G3D::Vector2int16)"}
+  },
+  "candidate_addresses": {
+    "00573e00": "TopMenuBar::isVisible inline body (7 B, no relocs)",
+    "00573e30": "TopMenuBar::getSize (242 B, relocs [73,86,91], 3 calls)",
+    "00573f30": "TopMenuBar::getChildPosition (273 B, relocs [85,98,103,255], 3 calls)",
+    "00574050": "TopMenuBar::render2d (220 B, relocs [151,164,169], 5 calls)",
+    "005738e0": "PercentPanel::getPosition (122 B)",
+    "005737e0": "RelativePanel::getPosition (241 B)",
+    "00573cb0": "330 B, 23 relocs, 3 calls - probably a TopMenuBar ctor (Color4 by value + string)",
+    "00574400": "153 B, relocs [55,68,73], 3 calls - second TopMenuBar/PercentPanel ctor candidate",
+    "00573b10": "identified as GuiRoot::GuiRoot (stores 0082f9fc, string(PBD 0x82fa60) + setName) - NOT TopMenuBar",
+    "00573ac0": "identified as a std::vector index + __RTDynamicCast helper - NOT TopMenuBar"
+  },
+  "next_implementation": "rebuild/2008-06/native-classes/TopMenuBar.cpp: TopMenuBar::init (private, noinline), the two out-of-line ctors, getChildPosition, getSize, render2d; then PercentPanel/RelativePanel/MenuSpacer ctors and getPosition/init as follow-up rows in the same family.",
+  "next_check": "python rebuild/2008-06/tests/native_check_runner.py run work/2008-06/shared-layouts/top-menu-bar-batch.json --workers 1, with the same pinned profile that the text-display batch needed: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX",
+  "profile_note": "/fp:fast is required for G3D Color temporaries (see the research note 'gui family needs /fp:fast for G3D Color temporaries'); without it TopMenuBar's backdropColor construction will differ exactly like TextDisplay::init did.",
+  "shared_headers": "native-headers/gui/Gui.h already declares TopMenuBar/PercentPanel/RelativePanel/MenuSpacer authentically (verified against the subclass ArrowPanel and the vtable slots above); do not create duplicate declaration-only headers. gui/Gui.h is shared - no edits needed for this batch.",
+  "watching_session": "51d99930249e49dc92d7e2cd06e59687 (native_drafts, scope = native-classes/TopMenuBar.cpp, tests/record_native_top_menu_bar.py, this note)",
+  "previous_batch": "RBX::TextDisplay delivered in draft packets 084600535f3ccd3adfa7060e2ce65989422957e299c294e169c5475f69e0c65e (source+manifest) and 7f5eedffbae18b96d71c61afb7cd3f2e355b9a39b19384980a6149b3cd217e1e (receipt), receipt work/2008-06/shared-layouts/text-display-20261106.json"
+}

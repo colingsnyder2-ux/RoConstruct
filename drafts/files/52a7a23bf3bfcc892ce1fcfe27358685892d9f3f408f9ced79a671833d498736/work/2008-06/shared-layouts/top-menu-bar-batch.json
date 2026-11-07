@@ -1,0 +1,34 @@
+{
+  "receipt": "work/2008-06/shared-layouts/top-menu-bar-20261106.json",
+  "run": "work/2008-06/native-check-runs/20261106-220635-89abf3bd",
+  "jobs": [
+    {
+      "source": "native-classes/TopMenuBar.cpp",
+      "checks": [
+        {"addr": "00573530", "symbol": "?init@TopMenuBar@RBX@@AAEXXZ"},
+        {
+          "addr": "00573cb0",
+          "symbol": "??0TopMenuBar@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@1@_N@Z",
+          "calls": [
+            {"offset": 29, "target": "005739d0", "symbol": "??0GuiItem@RBX@@QAE@XZ"},
+            {"offset": 140, "target": "007baf10", "symbol": "?clear@Color4@G3D@@SAABV12@XZ"},
+            {"offset": 194, "target": "0055af90", "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"}
+          ]
+        },
+        {"addr": "00573e00", "symbol": "?isVisible@TopMenuBar@RBX@@UBE_NXZ"},
+        {"addr": "00573e20", "symbol": "??1TopMenuBar@RBX@@UAE@XZ"},
+        {"addr": "00573e10", "symbol": "??_ETopMenuBar@RBX@@WIE@AEPAXI@Z"},
+        {"addr": "00574130", "symbol": "??_ETopMenuBar@RBX@@WBA@AEPAXI@Z"},
+        {"addr": "00574140", "symbol": "??_ETopMenuBar@RBX@@WEE@AEPAXI@Z"},
+        {"addr": "005cf5b0", "symbol": "??_ETopMenuBar@RBX@@WCE@AEPAXI@Z"},
+        {"addr": "005cf860", "symbol": "??_ETopMenuBar@RBX@@WKE@AEPAXI@Z"},
+        {"addr": "00642340", "symbol": "??_ETopMenuBar@RBX@@WBE@AEPAXI@Z"},
+        {"addr": "00642350", "symbol": "??_ETopMenuBar@RBX@@WGE@AEPAXI@Z"},
+        {"addr": "00642360", "symbol": "??_ETopMenuBar@RBX@@WME@AEPAXI@Z"},
+        {"addr": "00574150", "symbol": "??_GTopMenuBar@RBX@@UAEPAXI@Z"}
+      ],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}
