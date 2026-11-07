@@ -19,7 +19,10 @@ jobs:
           (cd src && zip -qr ../dist/roconstruct-findings-src.zip .)
           zip -qr dist/roconstruct-evidence.zip data units 2008-06/verification
           zip -qr dist/roconstruct-native-source.zip 2008-06
+          git -c core.autocrlf=false archive --format=zip --output=dist/roconstruct-canonical-native.zip "$GITHUB_SHA" workspace/rebuild/2008-06
+          for archive in dist/*.zip; do unzip -tq "$archive" >/dev/null; done
           sha256sum dist/*.zip > dist/SHA256SUMS
+          sha256sum --check dist/SHA256SUMS
       - name: Update stable source downloads
         env:
           GH_TOKEN: ${{ github.token }}

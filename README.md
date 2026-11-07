@@ -9,6 +9,7 @@ Native C++ recovery, original-binary matching, and verified client integration.
 | [Native source projects](2008-06/catalog/README.md) | Canonical/public code plus fork, draft, local branch and snapshot versions |
 | [Source comparison](2008-06/SOURCE_MAP.md) | Separate code differences from generated metadata |
 | [Reviewed workspace](workspace/) | Maintained source, tools, tests, research and build recipes |
+| [Canonical native source](workspace/rebuild/2008-06/) | Authoritative recovered code and build evidence |
 | [2008-06 source](2008-06/) | Public native source view and build inputs |
 | [Recovered functions](src/) | Address-indexed mined functions |
 | [Native contributor guide](data/NATIVE_AGENT.md) | Setup, ownership and draft sharing |
@@ -19,7 +20,8 @@ Native C++ recovery, original-binary matching, and verified client integration.
 ## Source authority
 
 `work:workspace/rebuild/2008-06` contains reviewed native source. Public
-`2008-06/native-*` paths are reconciled per method and header. Drafts, mined
+`2008-06/native-*` paths are reconciled per method and header. The release
+workflow packages the canonical native tree separately from that public view. Drafts, mined
 functions and historical snapshots retain their provenance and separate status.
 
 Browse by project without changing compiler include paths or proof identities.
