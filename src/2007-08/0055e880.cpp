@@ -1,4 +1,20 @@
+// from server: 100% by Intel
 // from server: 93% by EspClaude
+// roc 2007-08 0055e880  unit: RBX::SelectAllCommand  size: 31 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0055e880
+//
+// 0055e880  56                   push esi
+// 0055e881  57                   push edi
+// 0055e882  8bf9                 mov edi, ecx
+// 0055e884  8b770c               mov esi, dword ptr [edi + 0xc]
+// 0055e887  e804faffff           call 0x55e290
+// 0055e88c  8b470c               mov eax, dword ptr [edi + 0xc]
+// 0055e88f  8b8888010000         mov ecx, dword ptr [eax + 0x188]
+// 0055e895  e856f80100           call 0x57e0f0
+// 0055e89a  5f                   pop edi
+// 0055e89b  5e                   pop esi
+// 0055e89c  c20400               ret 4
+
 // from server: 100% by colin
 // roc 2008-06 0057d8c0  unit: RBX::SelectAllCommand  size: 31 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0057d8c0
@@ -33,7 +49,7 @@
 struct Context;
 struct Selection { Context* apply(); };
 struct Context {
-    char padding[0x204];
+    char padding[0x188];
     Selection* selection;
 };
 extern bool __cdecl isLocked(Context*);

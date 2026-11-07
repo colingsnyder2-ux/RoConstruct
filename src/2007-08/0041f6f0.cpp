@@ -1,4 +1,42 @@
+// from server: 100% by Intel
 // from server: 94% by EspClaude
+// roc 2007-08 0041f6f0  unit: CSettingsExplorer  size: 97 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0041f6f0
+//
+// 0041f6f0  56                   push esi
+// 0041f6f1  8bf1                 mov esi, ecx
+// 0041f6f3  8b8608010000         mov eax, dword ptr [esi + 0x108]
+// 0041f6f9  85c0                 test eax, eax
+// 0041f6fb  7552                 jne 0x41f74f
+// 0041f6fd  8b86bc000000         mov eax, dword ptr [esi + 0xbc]
+// 0041f703  6a00                 push 0
+// 0041f705  68544e8800           push 0x884e54
+// 0041f70a  684c1f8800           push 0x881f4c
+// 0041f70f  6a00                 push 0
+// 0041f711  50                   push eax
+// 0041f712  e81f162100           call 0x630d36
+// 0041f717  83c414               add esp, 0x14
+// 0041f71a  85c0                 test eax, eax
+// 0041f71c  742f                 je 0x41f74d
+// 0041f71e  8bb6bc000000         mov esi, dword ptr [esi + 0xbc]
+// 0041f724  6a00                 push 0
+// 0041f726  68544e8800           push 0x884e54
+// 0041f72b  684c1f8800           push 0x881f4c
+// 0041f730  6a00                 push 0
+// 0041f732  56                   push esi
+// 0041f733  e8fe152100           call 0x630d36
+// 0041f738  83c414               add esp, 0x14
+// 0041f73b  8bc8                 mov ecx, eax
+// 0041f73d  e8aeffffff           call 0x41f6f0
+// 0041f742  85c0                 test eax, eax
+// 0041f744  7407                 je 0x41f74d
+// 0041f746  b801000000           mov eax, 1
+// 0041f74b  5e                   pop esi
+// 0041f74c  c3                   ret 
+// 0041f74d  33c0                 xor eax, eax
+// 0041f74f  5e                   pop esi
+// 0041f750  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 004225b0  unit: CSettingsExplorer  size: 97 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004225b0
@@ -44,7 +82,7 @@ extern char sourceType;
 extern char targetType;
 
 struct S {
-    char padding0[0x104];
+    char padding0[0xbc];
     void* parent;
     char padding1[0x48];
     int value;

@@ -1,4 +1,40 @@
+// from server: 100% by Intel
 // from server: 93% by EspClaude
+// roc 2007-08 004311f0  unit: CMainFrame  size: 93 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 004311f0
+//
+// 004311f0  56                   push esi
+// 004311f1  57                   push edi
+// 004311f2  8b7c240c             mov edi, dword ptr [esp + 0xc]
+// 004311f6  8bf1                 mov esi, ecx
+// 004311f8  8b8ed8000000         mov ecx, dword ptr [esi + 0xd8]
+// 004311fe  57                   push edi
+// 004311ff  e8fc192000           call 0x632c00
+// 00431204  33c0                 xor eax, eax
+// 00431206  85ff                 test edi, edi
+// 00431208  7509                 jne 0x431213
+// 0043120a  3886ec000000         cmp byte ptr [esi + 0xec], al
+// 00431210  0f94c0               sete al
+// 00431213  50                   push eax
+// 00431214  8d8e6c020000         lea ecx, [esi + 0x26c]
+// 0043121a  e8e1c22500           call 0x68d500
+// 0043121f  57                   push edi
+// 00431220  8d8e20010000         lea ecx, [esi + 0x120]
+// 00431226  e815e82300           call 0x66fa40
+// 0043122b  8b8ed8000000         mov ecx, dword ptr [esi + 0xd8]
+// 00431231  85c9                 test ecx, ecx
+// 00431233  7406                 je 0x43123b
+// 00431235  57                   push edi
+// 00431236  e8c5192000           call 0x632c00
+// 0043123b  8b442410             mov eax, dword ptr [esp + 0x10]
+// 0043123f  50                   push eax
+// 00431240  57                   push edi
+// 00431241  8bce                 mov ecx, esi
+// 00431243  e822f11f00           call 0x63036a
+// 00431248  5f                   pop edi
+// 00431249  5e                   pop esi
+// 0043124a  c20800               ret 8
+
 // from server: 100% by king_originala
 // roc 2008-06 00430ae0  unit: CMainFrame  size: 93 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00430ae0
@@ -50,11 +86,11 @@ struct CXTPDockingPaneManager {
 };
 
 struct CMainFrame {
-    char pad0[0xec];
+    char pad0[0xd8];
     CommandBars* field_ec;
-    char pad1[0x104 - 0xf0];
+    char pad1[0x10];
     char field_104;
-    char pad2[0x138 - 0x105];
+    char pad2[0x33];
     char field_138[0x284 - 0x138];
     TabClient field_284;
 

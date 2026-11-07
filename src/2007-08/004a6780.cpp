@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 93% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -55,7 +56,7 @@
 // 004ab998  c20400               ret 4
 
 struct Node {
-    char padding[0x104];
+    char padding[0xbc];
     Node* parent;
     bool f(Node* node);
 };
@@ -63,7 +64,7 @@ struct Node {
 extern Node* __cdecl getCharacter(Node* node);
 
 struct S {
-    char padding[0x2c70];
+    char padding[0x1d8c];
     Node* root;
     bool f(Node* node);
 };
