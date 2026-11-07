@@ -4,7 +4,7 @@
 
 Expand a native path for every distinct content version. No candidate is auto-promoted.
 
-- [native-classes/BodyPrimitive2008Body.cpp → native-classes/LDrawModelWrite.cpp](sources-001.md)
-- [native-classes/LDrawPartColor.cpp → native-classes/WorldJoint.cpp](sources-002.md)
-- [native-classes/WorldJointGlue.cpp → native-headers/stats/WorkspaceStatsItem.h](sources-003.md)
-- [native-headers/tool/ModelTool.h → native-headers/v8world/Primitive2008.h](sources-004.md)
+- [native-classes/BodyPrimitive2008Body.cpp → native-classes/HumanoidStates2.cpp](sources-001.md)
+- [native-classes/HumanoidStates3.cpp → native-classes/WorkspaceSelectAll.cpp](sources-002.md)
+- [native-classes/WorkspaceSharedFrom.cpp → native-headers/humanoid/HumanoidState.h](sources-003.md)
+- [native-headers/humanoid/HumanoidStates1.h → native-headers/v8world/Primitive2008.h](sources-004.md)
