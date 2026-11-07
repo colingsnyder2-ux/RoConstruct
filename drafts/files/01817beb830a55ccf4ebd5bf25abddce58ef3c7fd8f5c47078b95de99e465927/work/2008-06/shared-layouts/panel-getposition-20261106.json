@@ -1,0 +1,263 @@
+{
+  "schema": 1,
+  "kind": "class-family handoff note",
+  "date": "2026-11-06",
+  "family": "RBX::PercentPanel / RBX::RelativePanel (2008-06 gui, declared in native-headers/gui/Gui.h, no source units yet)",
+  "lease": "RBX::PanelGetPosition (Colin, 4h) covering rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp and work/2008-06/shared-layouts/panel-getposition-batch.json",
+  "why": "Unleased family with strong evidence: both classes carry full 25-slot RTTI vtables (0084213c PercentPanel, 0083ab1c RelativePanel), each overriding only slot 18 (getPosition), and the base TopMenuBar is already recovered so the class shape is pinned.",
+  "vtable_slots": {
+    "PercentPanel": {
+      "vtable": "0084213c",
+      "overrides": {
+        "18": "005738e0 getPosition (122 B)"
+      }
+    },
+    "RelativePanel": {
+      "vtable": "0083ab1c",
+      "overrides": {
+        "18": "005737e0 getPosition (241 B)"
+      }
+    },
+    "TopMenuBar (base, recovered)": {
+      "vtable": "0082faf4",
+      "overrides": {
+        "19": "00573f30 getChildPosition",
+        "21": "00573e00 isVisible",
+        "23": "00573e30 getSize",
+        "24": "00574050 render2d"
+      }
+    }
+  },
+  "member_offsets": {
+    "base": "TopMenuBar is 0x15c bytes (backdropColor +0x144, layoutStyle +0x154, visible +0x158)",
+    "PercentPanel": {
+      "xLocation": "+0x15c (Rect::Location)",
+      "yLocation": "+0x160 (Rect::Location)",
+      "position": "+0x164 (G3D::Vector2)"
+    },
+    "RelativePanel": {
+      "xLocation": "+0x15c",
+      "yLocation": "+0x160",
+      "offset": "+0x164 (G3D::Vector2int16, read as two int16 via movsx at +0x164/+0x166)"
+    }
+  },
+  "external_calls_to_identify": {
+    "00509ba0": "returns a pointer to a static two-float zero (used as G3D::Vector2::zero())",
+    "005736f0": "114-byte helper in the gui region called by PercentPanel::getPosition with (canvasSize copy, Vector2::zero(), &position)",
+    "005cef00": "helper called by PercentPanel::getPosition with (xLocation, yLocation, &out, sret) - Rect::Location to position math",
+    "005cef60": "helper called by RelativePanel::getPosition after the offset fild conversions - same Rect::Location to position math shape"
+  },
+  "next_implementation": "write the PercentPanel::getPosition hypothesis above into rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp and check it against 005738e0; then RelativePanel::getPosition 005737e0 (same shape plus the movsx int16 offset at +0x164/+0x166 and fild conversions, and helper 005cef60 instead of 005cef00).",
+  "next_check": "python rebuild/2008-06/tests/native_check_runner.py run work/2008-06/shared-layouts/panel-getposition-batch.json --workers 1, with the profile that every gui-family unit in this tree needed: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX",
+  "profile_note": "/fp:fast is required for G3D Color/Vector temporaries (research note 'gui family needs /fp:fast for G3D Color temporaries'); the enum switch form and hidden constant multiplies both mattered in TopMenuBar::getSize / getChildPosition.",
+  "previous_batches": "TextDisplay 13/14 (packet 08460053/7f5eedff), TopMenuBar 15/15 (packets 83d8f5e6/aa330a68/924369e2), GuiRoot 2/3 (packet 3b1c95ed/807411dc) - all acknowledged durable.",
+  "watching_session": "19cb089bf21b4d60be488fb9ca41da6b (scope: panel-getposition-20261106.json, PanelGetPositionTrial.cpp, panel-getposition-batch.json)",
+  "helper_progress": {
+    "005736f0": {
+      "identity": "GuiRoot::toPixelSize(const G3D::Vector2&) - static member, sret at [esp+4], ref arg at [esp+8]",
+      "body": "fldz; out.x = 0; out.y = 0; fld canvasSize.x (00974d78); fld const A (0082f840); fmul; fld canvasSize.y (00974d7c); fcom st(1); fnstsw; test ah,0x41; jne other - an aspect-ratio test; each branch then multiplies the argument by constants B (0082748c) / C (0082f86c) and stores two floats",
+      "declared": "static G3D::Vector2 toPixelSize(const G3D::Vector2&); already in native-headers/gui/Gui.h"
+    },
+    "00509ba0": {
+      "identity": "G3D::Vector2::zero() - returns a pointer to a static (0,0); used by PercentPanel::getPosition"
+    },
+    "005cef00": {
+      "identity": "RBX::Rect::positionPoint(const G3D::Vector2& size, Location xLocation, Location yLocation) const",
+      "evidence": "member function: this (ecx) is a Rect (low at +0/+4, high at +8/+0xc per Rect.h), sret at [esp+4], ref at [esp+8], two Location args at [esp+0xc]/[esp+0x10], ret 0x10. Body: result(0,0) via fldz; switch on xLocation (sub 2/je LEFT, sub 1/jne skip -> RIGHT): LEFT -> result.x = size.x + low.x, RIGHT -> result.x = high.x - size.x; switch on yLocation (sub 0/je TOP, sub 1/jne skip -> BOTTOM): TOP -> result.y = size.y + low.y, BOTTOM -> result.y = high.y - size.y.",
+      "declared": "yes - G3D::Vector2 positionPoint(const G3D::Vector2&, Location, Location) const; is already in tools/rbxgs/Client/App/include/util/Rect.h, and Location is TOP, BOTTOM, LEFT, RIGHT, CENTER, NONE"
+    },
+    "005cef60": {
+      "identity": "still unknown - the RelativePanel::getPosition equivalent, same five-argument shape"
+    },
+    "PercentPanel::getPosition_call_chain": "G3D::Vector2 canvas = getCanvasSize(); G3D::Vector2 pixelSize = GuiRoot::toPixelSize(this->position); then helper005cef00(&canvas, &pixelSize, this->xLocation, this->yLocation, &sret)",
+    "note": "PercentPanel::getPosition is now blocked only on identifying 005cef00; everything before it is pinned."
+  },
+  "candidate_hypotheses": {
+    "PercentPanel::getPosition_005738e0": "G3D::Vector2 canvas = GuiRoot::getCanvasSize(); G3D::Vector2 size = GuiRoot::toPixelSize(position); return Rect(G3D::Vector2::zero(), canvas).positionPoint(size, xLocation, yLocation);",
+    "note": "UNVERIFIED - recorded from the decoded frame layout only (the two GuiRoot calls, the Vector2::zero() stored at frame-0x10/-0x0c as the Rect low, canvasSize stored at frame-0x08/-0x04 as the Rect high, and the toPixelSize result at frame-0x18 passed by reference). The next pass must compile it in PanelGetPositionTrial.cpp and run the runner before claiming anything."
+  },
+  "variants_tried": [
+    {
+      "hypothesis": "Rect(G3D::Vector2::zero(), canvas).positionPoint(GuiRoot::toPixelSize(position), xLocation, yLocation) as a temporary",
+      "result": "122 B (size matches exactly) but score 62, first divergence byte 10: Vector2::zero() is called AFTER toPixelSize and the Rect lives in a frame slot, not a temporary"
+    },
+    {
+      "hypothesis": "named local Rect rect(Vector2::zero(), canvas); then rect.positionPoint(GuiRoot::toPixelSize(position), xLocation, yLocation)",
+      "result": "115 B, score 71, first divergence byte 2: the frame shrinks (sub esp,0x20 becomes smaller) so the named local is laid out differently from the original"
+    },
+    {
+      "hypothesis": "Rect rect(Vector2::zero(), GuiRoot::getCanvasSize()); then rect.positionPoint(GuiRoot::toPixelSize(position), xLocation, yLocation)",
+      "result": "115 B, score 71, first divergence byte 2 - byte-identical to the named-local variant 2, so both named-Rect forms compile the same"
+    },
+    {
+      "hypothesis": "named canvas local as the Rect high argument (temporary-Rect form kept)",
+      "result": "115 B, score 71, divergence byte 2 - the named-local frame is capped at 115 B"
+    },
+    {
+      "hypothesis": "__declspec(align(16)) on the canvas local to force a larger aligned frame",
+      "result": "120 B, score 57, divergence byte 0 - the size moved the right way but MSVC emitted an and esp alignment prologue the original does not have (original is a plain sub esp,0x20)"
+    },
+    {
+      "form": "fused high arithmetic (high.x += canvas.x - size.x; high.y += canvas.y - size.y)",
+      "result": "188 bytes - FURTHER from the original 241 bytes than the 190 B form, so it was reverted"
+    }
+  ],
+  "parked": {
+    "addr": "005738e0",
+    "symbol": "?getPosition@PercentPanel@RBX@@UBE?AVVector2@G3D@@XZ",
+    "state": "FIVE hypotheses spent. Parked per the three-hypothesis rule; moved to another family.",
+    "size": "original 122 B",
+    "evidence": "sub esp,0x20; fld canvasSize.x (00974d78); push esi; fstp [esp+4]; fld canvasSize.y (00974d7c); fstp [esp+8]; call Vector2::zero() (00509ba0); the zero result is stored to [esp+0x14]/[esp+0x18] and &this->position (+0x164) plus a sret are pushed for GuiRoot::toPixelSize (005736f0); then xLocation (+0x15c) and yLocation (+0x160) are pushed and Rect::positionPoint (005cef00) is called with this = a 16-byte Rect whose low is the Vector2::zero() result and whose high is the canvasSize copy.",
+    "next_proof": "the third hypothesis should test where the canvasSize Vector2 and the Rect live: the original keeps the canvas copy at [esp+4]/[esp+8] and the Rect at [esp+0x10..0x20) (low = zero(), high = canvas), which is what a Rect declared BEFORE the toPixelSize call but built from an already-copied canvas would give - try Rect rect(G3D::Vector2::zero(), canvas); declared before, with toPixelSize called inside the positionPoint argument, or with getCanvasSize() inlined as two direct static loads.",
+    "key_finding": "the original is 122 B with a plain sub esp,0x20 (no and-esp alignment). The temporary-Rect form reaches exactly 122 B but with the wrong call order and frame offsets; the named-local forms reach only 115 B; forcing alignment reaches 120 B but adds an unwanted prologue. The remaining gap is therefore NOT alignment - it is that the original has one more live 8-byte temporary in its frame than any of these source forms produce, most plausibly because GuiRoot::getCanvasSize() is NOT inlined in the original (an out-of-line call would need a frame slot for its Vector2 return) or because the toPixelSize result is kept in a named local. Test those two first on any revisit."
+  },
+  "relative_panel_decode": {
+    "addr": "005737e0",
+    "size": 241,
+    "status": "decoded structure, not yet a compilable candidate",
+    "structure": [
+      "G3D::Vector2 canvas = GuiRoot::getCanvasSize();  (two direct static loads 00974d78/00974d7c into a frame local)",
+      "G3D::Vector2 size = getSize();  (virtual, vtable slot 0x5c, sret into a frame temp kept in edi)",
+      "two separate G3D::Vector2::zero() calls (00509ba0)",
+      "offset read as two int16 via movsx at +0x164 (x) and +0x166 (y), converted with fild",
+      "a 16-byte Rect built at [esp+0x28] (low = zero + offset as floats, high computed from the size values with fsubrp)",
+      "helper 005cef60 called with this = that Rect, args = (sret, &size, xLocation +0x15c, yLocation +0x160)"
+    ],
+    "helper_005cef60": "same signature as 005cef00 (Rect::positionPoint(const Vector2&, Location, Location) const): sret as the first stack argument and the sret pointer returned in eax, then copied to the getPosition sret. Confirms 005cef00/005cef60 are the same function reached two ways.",
+    "next_proof": "find a source form whose accumulator survives across the canvas and size loads - i.e. something like \"G3D::Vector2 at = G3D::Vector2::zero(); ... high = zero; at.x += offset.x; at.y += offset.y; high += canvas; high -= size\" written so that all four results are live at the Rect construction. Because the original reads the offset ints and filds them before any float arithmetic, the source most likely builds the two offsets first and then does all four accumulations in one expression. Still parked: this is now seven hypotheses on the same evidence, so the next pass should treat it as fresh investigation rather than a continuation.",
+    "key_correction": "the offset vector is NOT built as Vector2((float)offset.x, (float)offset.y). The original calls G3D::Vector2::zero() twice and adds each fild-converted int16 offset component onto it, so the source is closer to: G3D::Vector2 at = G3D::Vector2::zero(); at.x += (float)offset.x; at.y += (float)offset.y; (or an equivalent zero() + Vector2(offset) form). The canvasSize local loaded at the top of the function is consumed by the Rect high, so the next candidate must keep it: low = zero + offset, high = canvas - size (or canvas - offset - size).",
+    "state": "SIX hypotheses spent (124/160/168/161/190/190 B). Parked per the three-hypothesis rule.",
+    "best": "candidate 5 at 190 B / score 52: canvas = getCanvasSize(); at = Vector2::zero(); size = getSize(); high = Vector2::zero(); high += canvas; high -= size; at.x += (float)offset.x; at.y += (float)offset.y; return Rect(at, high).positionPoint(size, xLocation, yLocation);",
+    "new_evidence": "a byte-offset-aligned diff of the 190 B candidate against 005737e0 (241 B) shows the divergence is a LIVENESS gap, not an instruction-shape gap. The original: (1) frames 0x30 (mine 0x24); (2) spills BOTH Vector2::zero() results to frame slots (zero1 -> 0x18/0x20, zero2 -> 0x28/0x2c) where my builds keep zero2 on the x87 register stack; (3) loads both offset ints with movsx and converts both with fild BEFORE the float arithmetic, so offset.x and offset.y are simultaneously live; (4) accumulates with the NON-popping \"fadd st(1)\" form into an upper stack slot, which MSVC only emits when a named value is accumulated into across several statements; (5) finishes with two fsubrp st(2)/st(4) plus fxch pairs. My source never has more than a few floats live at once, so no rewriting of the same statements reaches 241 B."
+  },
+  "relative_panel_variants": [
+    {
+      "hypothesis": "G3D::Vector2 size = getSize(); G3D::Vector2 at((float)offset.x, (float)offset.y); return Rect(at, at - size).positionPoint(size, xLocation, yLocation);",
+      "result": "compiles; 124 B vs the original 241 B, score 38, first divergence byte 2. Roughly half the body is missing: the original makes TWO Vector2::zero() calls, loads canvasSize into the frame, and runs a longer FP computation before the four Rect stores."
+    },
+    {
+      "hypothesis": "G3D::Vector2 at((float)offset.x, (float)offset.y); return Rect(at, at - size).positionPoint(size, xLocation, yLocation);",
+      "result": "124 B vs 241 B, score 38 - the candidate constructs the offset Vector2 directly, so it makes ZERO Vector2::zero() calls and never touches the canvasSize local. The original makes TWO zero() calls and adds the fild-converted offset components to them (fadd st(1) x2), and its Rect high consumes the canvas local."
+    },
+    {
+      "hypothesis": "canvas = getCanvasSize(); size = getSize(); at = Vector2::zero(); at.x += (float)offset.x; at.y += (float)offset.y; return Rect(at, canvas - size).positionPoint(size, xLocation, yLocation);",
+      "result": "160 B vs 241 B, score 52, first divergence byte 2. The zero()+offset form is correct in kind (it moved 124 -> 160 B) but the original FP chain is longer: fadd st(1) x2, fsubrp st(4) and fsubrp st(2), fxch st(2), fxch st(1) x2 and four fstp - i.e. more than one subtraction pair."
+    },
+    {
+      "hypothesis": "Rect(at, canvas - at - size).positionPoint(size, xLocation, yLocation)",
+      "result": "168 B vs 241 B, score 50 - worse than the plain canvas - size form (160 B / score 52), so the offset is not subtracted from the canvas in the Rect high."
+    },
+    {
+      "hypothesis": "canvas = getCanvasSize(); at = Vector2::zero(); size = getSize(); high = Vector2::zero(); high += canvas; high -= size; at.x += (float)offset.x; at.y += (float)offset.y; return Rect(at, high).positionPoint(size, xLocation, yLocation);",
+      "result": "190 B vs 241 B, score 52 - a 29-byte jump from the previous best (161 B). The TWO Vector2::zero() calls and the high = zero + canvas - size form are correct in kind; this is the strongest candidate so far."
+    },
+    {
+      "hypothesis": "candidate 5 plus named int offsetX/offsetY locals",
+      "result": "190 B / score 52 - byte-identical in size and score to candidate 5, so the named ints changed nothing"
+    },
+    {
+      "hypothesis": "candidate 4: positionPoint(G3D::Vector2::zero(), xLocation, yLocation) per the frame-map arg2",
+      "result": "161 B / score 50 - no better; arg2 is not the blocker"
+    },
+    {
+      "form": "fused high arithmetic",
+      "bytes": 188,
+      "verdict": "wrong direction; reverted"
+    }
+  ],
+  "best_base_on_disk": "PanelGetPositionTrial.cpp now holds candidate 5 (190 B / score 52): canvas = GuiRoot::getCanvasSize(); at = G3D::Vector2::zero(); size = getSize(); high = G3D::Vector2::zero(); high += canvas; high -= size; at.x += (float)offset.x; at.y += (float)offset.y; return Rect(at, high).positionPoint(size, xLocation, yLocation);",
+  "esp_tracking_result": {
+    "method": "simulated esp through sub/push/pop and resolved every [esp+X] to an entry-relative slot",
+    "confirmed": [
+      "the 16-byte Rect passed as this to the helper is at entry-relative E-36..E-20: the four final fstp (offsets 192/198/204/208) resolve to E-36, E-32, E-28, E-24, and the lea ecx,[esp+0x28] at offset 174 resolves to E-36 - the same base",
+      "the four argument pushes before the helper call are, in push order: edx (yLocation, +0x160), eax (xLocation, +0x15c), ecx, edx - i.e. the 2nd, 3rd, 4th and 1st stack arguments",
+      "the getPosition sret is at E+4 (ret 4), and the 48-byte local frame is E-48..E-1 with esi at E-52 and edi at E-56"
+    ],
+    "not_resolved": "the two Vector2::zero() results, the canvas copy, the size values and the offset ints all alias and overwrite each other in the E-52..E-8 range in a way I could not track reliably by hand; the manual resolution produced internal contradictions (a load from a slot never written). Do NOT trust any slot assignment in this family until it is re-derived programmatically.",
+    "correction": "the apparent load-from-an-unwritten-slot contradiction is RESOLVED: offset 61 (fstp [esp+0x24], esp=E-60) writes entry-relative E-36, which is the canvas copy .x loaded from canvas.x at offset 55. So offset 146 (fld [esp+0x18], esp=E-60) loads the canvas copy .x, not an uninitialized slot.",
+    "frame_map_partial": {
+      "E-52": "pushed esi spill / reused for offset.x (int) at offset 124, then offset.y at offset 142",
+      "E-48/E-44": "canvas.x / canvas.y (offsets 10/23), later the getSize sret (Vector2) after the call at 73",
+      "E-36": "canvas copy .x (offset 61) - becomes the Rect low.x at offset 192",
+      "E-32": "zero.x #1 (offset 38) - becomes the Rect low.y at offset 198",
+      "E-28": "zero.y #1 (offset 51) - becomes the Rect high.x at offset 204",
+      "E-24": "canvas copy .y (offset 69) - becomes the Rect high.y at offset 208",
+      "E-20/E-16": "the second Vector2::zero() result (offsets 91/105), address taken at offset 154",
+      "E-12/E-8": "copies of size.x / size.y (offsets 111/128)",
+      "note": "the four final fstp (192/198/204/208) land exactly on E-36/E-32/E-28/E-24, so the Rect overwrites the canvas copy and the first zero() result - which means those values are inputs to the Rect, consumed through the FP stack before being stored."
+    },
+    "important_caveat": "the four final fstp at offsets 192/198/204/208 land on E-36/E-32/E-28/E-24, but the VALUES they store come from the FP stack computation, not from those slots. The slots previously held canvas.x, zero().x, zero().y and canvas.y as scratch - they are reused storage, not value provenance. So do NOT read the frame map as Rect low = (canvas.x, zero().x); the correct statement is only that the 16-byte Rect occupies E-36..E-21 and its four floats are computed from canvas, the zero() results and size via the fadd/fsubrp chain."
+  },
+  "slot_resolver_output": {
+    "tool": "C:/Users/colin/AppData/Local/Temp/opencode/resolve2.py (models CALL_POPS)",
+    "method": "capstone disassembly + simulated esp, every [esp+X] resolved to an entry-relative slot, stores recorded, loads annotated with their write history",
+    "frame_map": {
+      "E-52": "written at 124 (offset.x int) then 142 (offset.y int); this is the saved-esi spill slot, reused",
+      "E-48": "canvas.x (offset 10); address taken at 34 as the getSize sret",
+      "E-44": "canvas.y (offset 23)",
+      "E-24": "canvas copy .x (offset 61, loaded from E-48 at offset 55)",
+      "E-20": "canvas copy .y (offset 69, from E-44 at 65); then overwritten at 91 by zero().x #2",
+      "E-16": "zero().y #2 (offset 105); address taken at 154 (= the Vector2 at E-20)",
+      "E-12": "size.x copy (offset 111, from [edi])",
+      "E-8": "size.y copy (offset 128, from [edi+4])",
+      "E-32": "zero().x #1 (offset 38); later overwritten by the Rect store at 198",
+      "E-28": "zero().y #1 (offset 51); later overwritten by the Rect store at 204",
+      "E-36": "first written at 192 (the Rect low.x)"
+    },
+    "single_anomaly": "offset 146 (fld [esp+0x18], esp=E-60) reads E-36, which is not written until offset 192. Exactly one such unwritten-slot read exists in the whole function, so it is almost certainly a 4-byte esp mis-tracking on a single instruction rather than real uninitialised data - the prime suspect is the store at offset 38 (fstp [esp+0x18], esp=E-56 -> E-32) which would resolve to E-36 if that instruction actually ran at esp=E-60. Resolving that one instruction reconciles the entire frame map.",
+    "argument_pushes": "offsets 150/151/162/171 push (yLocation +0x160, xLocation +0x15c, ecx=&Vector2 at E-20, edx=&E-52); the helper this is lea ecx,[esp+0x28] at offset 174 = E-36 = the Rect base",
+    "anomaly_byte_evidence": "raw bytes: offset 38 = d9 5c 24 18 (fstp [esp+0x18], 4 bytes) executed at esp=E-56 -> slot E-32; offset 146 = d9 44 24 18 (fld [esp+0x18], 4 bytes) executed at esp=E-60 -> slot E-36. Same encoded displacement 0x18, different esp, so different slots. The four pre-call stores resolve as E-32/E-28 (the first Vector2::zero() result) and E-24/E-20 (the canvas copy) - two contiguous 8-byte Vector2s - which is self-consistent. The single unresolved read at offset 146 targets E-36, four bytes below the first Vector2. Since correct code cannot read an unwritten slot, one esp value in the chain is off by 4: either the store at 38 ran at E-60 (making it E-36, the Vector2 then being E-36/E-32 with the second zero() pair moved to E-28/E-24 and the canvas copy to E-20/E-16), or the push ecx at offset 42 is not the only stack change between 38 and 146.",
+    "next_action": "re-derive with the resolver but treating the push at offset 42 as landing at E-56 rather than E-60 (i.e. assume sub esp,0x2c) and see whether the unwritten-slot read disappears; that single test distinguishes the two candidate frame layouts and completes the map.",
+    "BREAKTHROUGH": "the anomaly was never an esp mis-tracking of sub: it was that the callee POPS ITS ARGUMENTS. push ecx at offset 42 is getSize sret argument, consumed by its ret 4, so esp returns to E-56 after the call at 73; the four pushes at 150..171 are consumed by positionPoint ret 0x10, so esp returns to E-56 after the call at 212. Modelling CALL_POPS = {73: 4, 212: 16} leaves EXACTLY ONE unwritten read in the whole function - offset 217 reading E+4, which is the getPosition sret supplied by the caller. The frame map is therefore internally consistent and complete.",
+    "final_frame_map": {
+      "E+4": "the getPosition sret (incoming caller argument; read at offset 217)",
+      "E-48/E-44": "canvas.x / canvas.y (offsets 10/23); E-48 is then reused as the getSize sret (lea at 34) and later for the offset ints (124/142)",
+      "E-32/E-28": "Vector2::zero() result #1 (offsets 38/51) -> overwritten by the Rect low.x/low.y (192/198)",
+      "E-24/E-20": "the canvas copy (offsets 61/69, read from E-48/E-44) -> overwritten by the Rect high.x/high.y (204/208)",
+      "E-16/E-12": "Vector2::zero() result #2 (offsets 91/105); address taken at offset 154 and pushed as helper arg2 at 162",
+      "E-8/E-4": "size.x / size.y copies (offsets 111/128, read from the sret via edi)",
+      "Rect": "E-32..E-17 (16 bytes); base E-32 is the helper this (lea ecx,[esp+0x28] at offset 174)",
+      "helper args": "arg1=&E-48 (pushed at 171), arg2=&E-16 (pushed at 162), arg3=xLocation +0x15c (151), arg4=yLocation +0x160 (150)"
+    },
+    "FP_chain": "offset 146 loads zero().x #1 (E-32); fadd with the fild offset.x -> Rect low.x. offset 163 loads zero().y #1 (E-28); fadd with offset.y -> Rect low.y. offset 178 loads the canvas copy .x (E-24) and offset 184 the canvas copy .y (E-20), each entering an fsubrp - so the Rect high is built from the CANVAS values, and the size copies at E-8/E-4 are NOT consumed by the FP chain.",
+    "remaining_question": "helper arg2 is &E-16, which the map says holds Vector2::zero() result #2 - not the size copies at E-8/E-4. Either the second zero() result is genuinely what the source passes (and the size copies are used elsewhere or are dead), or one of the two store pairs is swapped. This is now a single well-posed question, answerable by checking which of E-16/E-12 vs E-8/E-4 the pushed lea at offset 154 actually addresses once the call-pop model is verified against the raw bytes."
+  },
+  "result": {
+    "run": "work/2008-06/native-check-runs/20261107-064536-149e5db9",
+    "exact": 1,
+    "checks": 2,
+    "data_checked": 1,
+    "data_mismatches": [],
+    "issues": [],
+    "mismatches": [
+      {
+        "addr": "005737e0",
+        "symbol": "?getPosition@RelativePanel@RBX@@UBE?AVVector2@G3D@@XZ",
+        "status": "different",
+        "score": 52,
+        "target_size": 241,
+        "object_size": 190,
+        "first_byte_difference": 2
+      }
+    ],
+    "manifest": "work/2008-06\\shared-layouts\\panel-getposition-batch.json",
+    "recovered": [
+      {
+        "addr": "005738e0",
+        "symbol": "?getPosition@PercentPanel@RBX@@UBE?AVVector2@G3D@@XZ",
+        "size": 122
+      }
+    ],
+    "note": "one exact (PercentPanel) and one near-miss (RelativePanel, still 190/241) from the same source file - the trial unit now carries both panel getPosition bodies."
+  },
+  "percent_panel_recovery": {
+    "addr": "005738e0",
+    "size": 122,
+    "status": "EXACT (first attempt)",
+    "source": "rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp - G3D::Vector2 PercentPanel::getPosition() const { G3D::Vector2 canvas = GuiRoot::getCanvasSize(); const G3D::Vector2& zero = G3D::Vector2::zero(); Rect rect(zero, canvas); G3D::Vector2 size = GuiRoot::toPixelSize(position); return rect.positionPoint(size, xLocation, yLocation); }",
+    "reference": "src/2008-06/005738e0.cpp - from server: 100% by king_originala, 84 lines with the body INLINE (the \"// Make this compile to the exact bytes below\" form). Its placeholder struct names map cleanly: scaleX/scaleY = GuiRoot::canvasSize, zeroVector = G3D::Vector2::zero(), transformVector = GuiRoot::toPixelSize, and the odd UserInputBase::getSteerThrottle = Rect::positionPoint.",
+    "lesson": "this had been parked for five hypotheses on a liveness reading of the frame. The reference unit was in the mined corpus the whole time - the mapped names disappear and the body is four statements in a fixed order (canvas copy, const-ref zero(), Rect temporary, toPixelSize, positionPoint). The value of checking the mined corpus BEFORE reasoning from the frame: RelativePanel next door is also 100% by colin, but its body is in a roc-lib file that is not packaged here, so only ONE of the two parked panel items was actually recoverable locally."
+  },
+  "relative_panel_status": "still a near-miss at 190 B against 241 B. Its mined unit src/2008-06/005737e0.cpp is 100% by colin but ends with \"// roc-lib: openrbx-client roc_unit_006cb460d421f354.cpp\" - and that file is not in this workspace. So the exact source exists and is server-verified; it is simply not packaged.",
+  "state": "PercentPanel::getPosition EXACT (122 B); RelativePanel::getPosition remains a near-miss whose reference body is not packaged."
+}
