@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CWebToolbox | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
-// <<< native-status | src f110b756 | roc native-status --write
 #include "CWebToolbox.h"
 
 // Original 004060d0 returns the application-owned base URL CString.
@@ -97,4 +93,11 @@ void CWebToolbox::OnActivate(UINT state, CWnd* other, BOOL minimized)
     CSecureHtmlView::OnActivate(state, other, minimized);
     if (owner)
         owner->SetFocus();
+}
+
+void CWebToolbox::showPage(int page)
+{
+    CString url;
+    url.Format("%s/IDE/ClientToolbox.aspx?Category=%d", (LPCSTR)applicationBaseUrl(), page);
+    Navigate(url);
 }

@@ -1,7 +1,4 @@
-// >>> native-status (generated) -- do not edit >>>
-// InstanceBaseCallbacks | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
-// <<< native-status | src baa292c7 | roc native-status --write
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/instance-base-callbacks
 #include "v8tree/Instance.h"
 
 #ifndef NATIVE_INSTANCE_EXTERNAL_BASE_CALLBACKS

@@ -1,7 +1,4 @@
-// >>> native-status (generated) -- do not edit >>>
-// RunService | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
-// <<< native-status | src 307a8171 | roc native-status --write
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string /I{headers}/runservice-events
 #include "util/RunStateOwner.h"
 #include "util/StandardOut.h"
 #include <exception>
@@ -78,4 +75,22 @@ void RBX::RunService::invalidateRunViews() {
         }
         runViewsDoneCondition.notify_all();
     }
+}
+
+// 00555830: detach a view while preserving its pending-invalidation accounting.
+void RBX::RunService::removeRunView(IRunView* view) {
+    boost::mutex::scoped_lock lock(viewMutex);
+    runViewValid(view);
+    views.erase(view);
+}
+
+void RBX::RunService::runViewValid(IRunView* view) {
+    boost::mutex::scoped_lock lock(viewMutex);
+    if (!invalidRunViewCount) return;
+    std::map<IRunView*, bool>::iterator it = views.find(view);
+    if (it != views.end() && !it->second) {
+        --invalidRunViewCount;
+        it->second = true;
+    }
+    if (!invalidRunViewCount) runViewsDoneCondition.notify_all();
 }
