@@ -21,8 +21,35 @@ class IReferenceBinder;
 class XmlState;
 class Name;
 class RaiseDescendentAdded2;
-struct ChildAdded;
-struct ChildRemoved;
+struct ChildAdded
+{
+public:
+	const boost::shared_ptr<Instance> child;
+
+public:
+	ChildAdded(const ChildAdded&);
+	ChildAdded(Instance* child)
+		: child(shared_from(child))
+	{
+	}
+private:
+	ChildAdded& operator=(const ChildAdded&);
+};
+
+struct ChildRemoved
+{
+public:
+	const boost::shared_ptr<Instance> child;
+
+public:
+	ChildRemoved(const ChildRemoved&);
+	ChildRemoved(Instance* child)
+		: child(shared_from(child))
+	{
+	}
+private:
+	ChildRemoved& operator=(const ChildRemoved&);
+};
 struct DescendantAdded;
 struct DescendantRemoving;
 struct AncestorChanged {

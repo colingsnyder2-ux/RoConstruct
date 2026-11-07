@@ -128,6 +128,7 @@ namespace RBX
 				return characterAppearance;
 			}
 			void setCharacterAppearance(const std::string& value);    // 00495d00
+			void rebuildBackpack();                                  // 004925c0
 			int getUserID() const                                     // 004899a0 (ICF)
 			{
 				return userId;

@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 99% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -40,7 +41,7 @@ struct Primary {
 
 struct Secondary {
     virtual ~Secondary();
-    char storage[0xFC];
+    char storage[0xF0];
 };
 
 struct Tertiary {

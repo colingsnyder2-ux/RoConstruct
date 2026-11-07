@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 99% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -182,9 +183,9 @@ struct DockingPane {
 };
 
 struct MyXTPCommandBars {
-    char pad0[236];
+    char pad0[216];
     CommandBars* bars;
-    char pad1[72];
+    char pad1[68];
     DockingPane docking;
     void exchange(Section*, int);
 };

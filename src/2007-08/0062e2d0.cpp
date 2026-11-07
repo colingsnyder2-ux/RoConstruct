@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 99% by EspClaude
 // roc-cl: 50727
 // from server: 100% by Espeon
@@ -414,9 +415,9 @@ struct Object {
 struct Renderer;
 
 struct RendererTable {
-    unsigned char padding0[56];
+    unsigned char padding0[52];
     void (__thiscall *setFrame)(Renderer*, const Frame&);
-    unsigned char padding1[20];
+    unsigned char padding1[12];
     void (__thiscall *draw)(Renderer*, float, float, const Color4&, void*);
 };
 

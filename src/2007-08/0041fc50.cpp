@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 99% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -45,7 +46,7 @@ struct View;
 
 struct ViewTable
 {
-    void* reserved[27];
+    void* reserved[26];
     void (__thiscall *draw)(View*, Context*, int);
 };
 

@@ -175,6 +175,7 @@ namespace RBX
 			return color;
 		}
 		void setColor(BrickColor value);
+		void outfitChanged(); // 0059e3a0
 		G3D::Color3 getColor3() const
 		{
 			return color.color3();

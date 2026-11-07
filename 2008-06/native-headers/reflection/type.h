@@ -11,6 +11,12 @@ namespace RBX
 	{
         typedef std::vector<class Value> ValueCollection;
 
+		struct Tuple // proposal (2008 RTTI .?AUTuple@Reflection@RBX@@, size 0x18)
+		{
+			ValueCollection values;
+			explicit Tuple(size_t count) : values(count) {}
+		};
+
 		class Type : public Descriptor
 		{
 		public:

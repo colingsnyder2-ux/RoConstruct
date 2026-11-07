@@ -1,4 +1,67 @@
+// from server: 100% by Intel
 // from server: 99% by EspClaude
+// roc 2007-08 004206d0  unit: CRobloxTreeCtrl  size: 172 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 004206d0
+//
+// 004206d0  6aff                 push -1
+// 004206d2  6858be7300           push 0x73be58
+// 004206d7  64a100000000         mov eax, dword ptr fs:[0]
+// 004206dd  50                   push eax
+// 004206de  83ec08               sub esp, 8
+// 004206e1  56                   push esi
+// 004206e2  57                   push edi
+// 004206e3  a188518b00           mov eax, dword ptr [0x8b5188]
+// 004206e8  33c4                 xor eax, esp
+// 004206ea  50                   push eax
+// 004206eb  8d442414             lea eax, [esp + 0x14]
+// 004206ef  64a300000000         mov dword ptr fs:[0], eax
+// 004206f5  8d44240c             lea eax, [esp + 0xc]
+// 004206f9  50                   push eax
+// 004206fa  e871440200           call 0x444b70
+// 004206ff  83c404               add esp, 4
+// 00420702  8b4c2424             mov ecx, dword ptr [esp + 0x24]
+// 00420706  8b410c               mov eax, dword ptr [ecx + 0xc]
+// 00420709  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 0042070d  6a01                 push 1
+// 0042070f  50                   push eax
+// 00420710  c744242400000000     mov dword ptr [esp + 0x24], 0
+// 00420718  e843250200           call 0x442c60
+// 0042071d  85c0                 test eax, eax
+// 0042071f  740b                 je 0x42072c
+// 00420721  8bc8                 mov ecx, eax
+// 00420723  e8c8efffff           call 0x41f6f0
+// 00420728  8bf8                 mov edi, eax
+// 0042072a  eb02                 jmp 0x42072e
+// 0042072c  33ff                 xor edi, edi
+// 0042072e  8b742410             mov esi, dword ptr [esp + 0x10]
+// 00420732  85f6                 test esi, esi
+// 00420734  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 0042073c  742a                 je 0x420768
+// 0042073e  8d5604               lea edx, [esi + 4]
+// 00420741  83c8ff               or eax, 0xffffffff
+// 00420744  f00fc102             lock xadd dword ptr [edx], eax
+// 00420748  751e                 jne 0x420768
+// 0042074a  8b16                 mov edx, dword ptr [esi]
+// 0042074c  8b4204               mov eax, dword ptr [edx + 4]
+// 0042074f  8bce                 mov ecx, esi
+// 00420751  ffd0                 call eax
+// 00420753  8d4e08               lea ecx, [esi + 8]
+// 00420756  83caff               or edx, 0xffffffff
+// 00420759  f00fc111             lock xadd dword ptr [ecx], edx
+// 0042075d  7509                 jne 0x420768
+// 0042075f  8b06                 mov eax, dword ptr [esi]
+// 00420761  8b5008               mov edx, dword ptr [eax + 8]
+// 00420764  8bce                 mov ecx, esi
+// 00420766  ffd2                 call edx
+// 00420768  8bc7                 mov eax, edi
+// 0042076a  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0042076e  64890d00000000       mov dword ptr fs:[0], ecx
+// 00420775  59                   pop ecx
+// 00420776  5f                   pop edi
+// 00420777  5e                   pop esi
+// 00420778  83c414               add esp, 0x14
+// 0042077b  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 00423050  unit: CRobloxTreeCtrl  size: 160 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00423050
@@ -93,7 +156,7 @@ struct Shared {
 };
 
 struct Input {
-    char padding[0x1c];
+    char padding[0xc];
     int value;
 };
 

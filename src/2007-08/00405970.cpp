@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 99% by EspClaude
 // roc-cl: 50727
 // from server: 100% by EspClaude
@@ -126,7 +127,7 @@ struct IFace {
     virtual long __stdcall QueryInterface(const void *, void **) = 0;
     virtual unsigned long __stdcall AddRef() = 0;
     virtual unsigned long __stdcall Release() = 0;
-    unsigned long pad;
+    unsigned long pad[5];
 };
 
 struct Full : IFace, Object {};

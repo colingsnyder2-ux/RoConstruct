@@ -1,4 +1,76 @@
+// from server: 100% by Intel
 // from server: 99% by EspClaude
+// roc 2007-08 0040ec40  unit: CRbxChildFrame  size: 185 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0040ec40
+//
+// 0040ec40  8b442404             mov eax, dword ptr [esp + 4]
+// 0040ec44  53                   push ebx
+// 0040ec45  50                   push eax
+// 0040ec46  8bd9                 mov ebx, ecx
+// 0040ec48  e871172200           call 0x6303be
+// 0040ec4d  83f8ff               cmp eax, -1
+// 0040ec50  7506                 jne 0x40ec58
+// 0040ec52  0bc0                 or eax, eax
+// 0040ec54  5b                   pop ebx
+// 0040ec55  c20400               ret 4
+// 0040ec58  8b4b20               mov ecx, dword ptr [ebx + 0x20]
+// 0040ec5b  56                   push esi
+// 0040ec5c  57                   push edi
+// 0040ec5d  6a00                 push 0
+// 0040ec5f  51                   push ecx
+// 0040ec60  c783d400000000000000 mov dword ptr [ebx + 0xd4], 0
+// 0040ec6a  ff15c8ec7700         call dword ptr [0x77ecc8]
+// 0040ec70  50                   push eax
+// 0040ec71  e882162200           call 0x6302f8
+// 0040ec76  8b3dccec7700         mov edi, dword ptr [0x77eccc]
+// 0040ec7c  6a00                 push 0
+// 0040ec7e  8bf0                 mov esi, eax
+// 0040ec80  8b5604               mov edx, dword ptr [esi + 4]
+// 0040ec83  6820f10000           push 0xf120
+// 0040ec88  52                   push edx
+// 0040ec89  ffd7                 call edi
+// 0040ec8b  8b4604               mov eax, dword ptr [esi + 4]
+// 0040ec8e  6a00                 push 0
+// 0040ec90  6820f00000           push 0xf020
+// 0040ec95  50                   push eax
+// 0040ec96  ffd7                 call edi
+// 0040ec98  8b4e04               mov ecx, dword ptr [esi + 4]
+// 0040ec9b  6a00                 push 0
+// 0040ec9d  6830f00000           push 0xf030
+// 0040eca2  51                   push ecx
+// 0040eca3  ffd7                 call edi
+// 0040eca5  8b5604               mov edx, dword ptr [esi + 4]
+// 0040eca8  6a00                 push 0
+// 0040ecaa  6810f00000           push 0xf010
+// 0040ecaf  52                   push edx
+// 0040ecb0  ffd7                 call edi
+// 0040ecb2  8b4604               mov eax, dword ptr [esi + 4]
+// 0040ecb5  6a00                 push 0
+// 0040ecb7  6800f00000           push 0xf000
+// 0040ecbc  50                   push eax
+// 0040ecbd  ffd7                 call edi
+// 0040ecbf  8b4b20               mov ecx, dword ptr [ebx + 0x20]
+// 0040ecc2  6a01                 push 1
+// 0040ecc4  6800e90000           push 0xe900
+// 0040ecc9  51                   push ecx
+// 0040ecca  e82f162200           call 0x6302fe
+// 0040eccf  6a00                 push 0
+// 0040ecd1  8bf0                 mov esi, eax
+// 0040ecd3  6a00                 push 0
+// 0040ecd5  6800008000           push 0x800000
+// 0040ecda  8bce                 mov ecx, esi
+// 0040ecdc  e8d7162200           call 0x6303b8
+// 0040ece1  6a20                 push 0x20
+// 0040ece3  6a00                 push 0
+// 0040ece5  6800020000           push 0x200
+// 0040ecea  8bce                 mov ecx, esi
+// 0040ecec  e823152200           call 0x630214
+// 0040ecf1  5f                   pop edi
+// 0040ecf2  5e                   pop esi
+// 0040ecf3  33c0                 xor eax, eax
+// 0040ecf5  5b                   pop ebx
+// 0040ecf6  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 00412b90  unit: CRbxChildFrame  size: 185 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00412b90
@@ -87,7 +159,7 @@ struct Menu {
 struct Window {
     char padding[0x20];
     HANDLE handle;
-    char padding2[0xC4];
+    char padding2[0xB0];
     int autoMenuEnable;
 
     int OnCreate(void*);

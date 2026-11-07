@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 99% by EspClaude
 // roc-cl: 50727
 // from server: 100% by EspClaude
@@ -278,12 +279,10 @@ public:
     virtual void v77();
     virtual void v78();
     virtual void v79();
-    virtual void v80();
-    virtual void v81();
     virtual int LoadFrame(unsigned int id, unsigned long style, void* parent, void* context);
     char pad[0x1c];
     HWND m_hWnd;
-    char pad2[0x4b4 - 0x24];
+    char pad2[0x48c - 0x24];
     CMainFrame();
     void restore(int state);
     void show();
