@@ -573,7 +573,7 @@ retention, model budgets, leases and independent batched acceptance remain in pl
 
 Run `python benchmarks/integration_local.py` for a bounded cold/warm historical
 compile benchmark. It performs no linking, model requests, claims or submissions.
-See [implementation report](INTEGRATION_WORKFLOW_V2.md) for scope and limitations.
+See [implementation report](integration/INTEGRATION_WORKFLOW_V2.md) for scope and limitations.
 
 
 ## Adaptation, bulk work, budgets and audit
@@ -606,7 +606,7 @@ receipts and lost/uncovered addresses. The legacy-reproduction audit reports his
 current-profile rebuild fixes the shared-helper runtime crash and preserves all
 398 accepted native bodies. `--current-profile` explicitly checks every accepted
 credit plus runtime/ABI gates and reports legacy inventory changes separately;
-it requires the authoritative credit database and awards no credit. See `INTEGRATION_WORKFLOW_V2.md` for exact receipts and scope.
+it requires the authoritative credit database and awards no credit. See `docs/integration/INTEGRATION_WORKFLOW_V2.md` for exact receipts and scope.
 The configured verifier has been restarted with the updated routes and gates.
 Automatic publishing is paused, as authorized; native verification remains active.
 

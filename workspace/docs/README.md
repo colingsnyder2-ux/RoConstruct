@@ -24,7 +24,7 @@
 ## Historical evidence
 
 - [Worker history](NATIVE_WORKER_HISTORY.md) is history, not the current assignment.
-- [Integration implementation report](INTEGRATION_WORKFLOW_V2.md) remains linked by the integration reference.
+- [Integration implementation report](integration/INTEGRATION_WORKFLOW_V2.md) remains linked by the integration reference.
 - [Integrator performance](INTEGRATOR_PERFORMANCE.md) remains an input to packaging.
 - [Archived validation and investigation notes](https://github.com/colingsnyder2-ux/RoConstruct/tree/work/archive/research/2026-11-07).
 
