@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// ReplicatorMarker | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 3fbb7a70 | roc native-status --write
 // 2008-06 native RBX::Network::Marker (inactive). Shape after the donor tools/rbxgs/Client/Network/Replicator.h
 // (where Marker lives with Replicator; kept in its own header so the donor Replicator.h is not shadowed).
 // Every base, field and size below is read from the 2008-06 binary:

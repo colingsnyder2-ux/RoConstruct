@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CMainFrame | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 8507208f | roc native-status --write
 #include "CMainFrameBases.h"
 #include "util/boost.hpp"
 #include <boost/scoped_ptr.hpp>
@@ -15,6 +19,7 @@ public:
 public:
     CMainFrame();
     virtual ~CMainFrame();
+    BOOL showFrame(int);
     void showDockPane(int, CRect, XTPDockingPaneDirection);
     void setFullscreen(bool);
     void configureFullscreen();

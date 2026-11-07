@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// MoveUpSelectionVerb | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 8a34306c | roc native-status --write
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/v8datamodel/Workspace.h"
 #include "../native-headers/util/RunStateOwner.h"

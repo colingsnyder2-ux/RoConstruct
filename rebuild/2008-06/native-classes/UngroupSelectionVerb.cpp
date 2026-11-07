@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// UngroupSelectionVerb | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 6b536efd | roc native-status --write
 #include "StandardVerbs.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/DataModel.h"

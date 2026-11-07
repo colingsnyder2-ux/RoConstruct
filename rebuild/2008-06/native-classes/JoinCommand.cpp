@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// JoinCommand | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 876aa58f | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Selection.h"
 #include "StandardVerbs.h"

@@ -1,5 +1,9 @@
 // Inactive native recovery of RBX::Accoutrement and RBX::Hat.
 // Layout and evidence: native-headers/v8datamodel/Accoutrement.h. Verified by tests/record_native_appearance.py.
+// >>> native-status (generated) -- do not edit >>>
+// Accoutrement | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 04a5eada | roc native-status --write
 #include "v8datamodel/Accoutrement.h"
 
 namespace RBX

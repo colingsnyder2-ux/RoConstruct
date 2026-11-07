@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr
+// >>> native-status (generated) -- do not edit >>>
+// CSaveToRobloxDialog | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src c9aa424f | roc native-status --write
 #include "CSaveToRobloxDialog.h"
 #include <exdispid.h>
 

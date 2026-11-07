@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxView | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src d00e7aa6 | roc native-status --write
 #include "VerbBinder.h"
 #include "CWebToolbox.h"
 #include "v8tree/VerbContainer.h"

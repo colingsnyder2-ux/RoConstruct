@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// InstanceAncestorChanged | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 758d2a7d | roc native-status --write
 #include "v8tree/Instance.h"
 
 namespace RBX {

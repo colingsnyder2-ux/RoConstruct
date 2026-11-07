@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// PhysicsServiceEvents | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src ca5b4e12 | roc native-status --write
 #include "v8datamodel/PhysicsService.h"
 #include "v8datamodel/PartInstance.h"
 #include "reflection/signal.h"

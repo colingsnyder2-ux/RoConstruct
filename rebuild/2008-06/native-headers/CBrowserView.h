@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CBrowserView | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src b4667890 | roc native-status --write
 #include "CSecureHtmlView.h"
 #include <XTToolkitPro.h>
 #include <atlbase.h>

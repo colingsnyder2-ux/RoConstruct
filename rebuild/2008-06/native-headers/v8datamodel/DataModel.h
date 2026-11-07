@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// DataModel | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 6f95760f | roc native-status --write
 #include "v8tree/Service.h"
 #include "v8tree/VerbContainer.h"
 #include "v8tree/IDataState.h"

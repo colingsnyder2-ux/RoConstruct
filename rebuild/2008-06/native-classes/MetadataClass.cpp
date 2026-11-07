@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// MetadataClass | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src afa929f6 | roc native-status --write
 #include "reflection/Metadata.h"
 #include <algorithm>
 

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// VerbContainer | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src a311f03c | roc native-status --write
 #include <map>
 #include <string>
 

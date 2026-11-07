@@ -1,5 +1,9 @@
 // 2008-06 native RBX::TimerService (inactive); evidence in native-headers/v8datamodel/TimerService.h.
 // Verified by tests/record_native_spawn.py.
+// >>> native-status (generated) -- do not edit >>>
+// TimerService | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 9b241fd0 | roc native-status --write
 #include "v8datamodel/TimerService.h"
 #include "util/standardout.h"
 #include <G3D/System.h>

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// UserController | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 50d100ac | roc native-status --write
 // 2008-06 native RBX::ControllerService and the user/AI controllers (inactive). Shape after the donor
 // tools/rbxgs/Client/App/include/v8datamodel/UserController.h; every base, field and virtual below is read from the
 // 2008-06 binary (verified by tests/record_native_user_controller.py):

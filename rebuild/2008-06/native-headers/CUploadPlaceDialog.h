@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CUploadPlaceDialog | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 85d76acc | roc native-status --write
 #include "CSaveToRobloxDialog.h"
 
 // Inactive layout recovery. RTTI (COL of vtables 0081757c/00817550): CUploadPlaceDialog ->

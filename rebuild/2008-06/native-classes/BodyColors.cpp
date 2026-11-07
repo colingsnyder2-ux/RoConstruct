@@ -2,6 +2,10 @@
 // Layout and evidence: native-headers/v8datamodel/BodyColors.h. Verified by tests/record_native_appearance.py.
 // In the original, BodyColors shares the CharacterAppearance unit with Clothing/Shirt/Pants/ShirtGraphic/Skin
 // (native-classes/Clothing.cpp, another owner); CharacterAppearance::dataChanged 005d3b50 is defined there.
+// >>> native-status (generated) -- do not edit >>>
+// BodyColors | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 8e5a42fc | roc native-status --write
 #include "v8datamodel/BodyColors.h"
 #include "v8datamodel/PartInstance.h"
 #include "humanoid/Humanoid.h"

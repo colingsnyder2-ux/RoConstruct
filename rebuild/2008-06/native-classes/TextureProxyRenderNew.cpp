@@ -5,6 +5,10 @@
 // BadConversion copy constructor 007adcf0, the root constructor 007ade10, shade 007aded0, ~TextureProxy 007ae3b0,
 // MegaTextureProxy(TextureManager&, name) 007ae4b0 and its ??_G 007aea40. resolve 007aec70 /
 // MegaTextureProxy::resolve 007ae4e0 and the shading helpers 007ad9d0 / 007ada80 / 007add10 are not built.
+// >>> native-status (generated) -- do not edit >>>
+// TextureProxyRenderNew | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src bae98b0b | roc native-status --write
 #include <sstream>
 #include "RenderLib/TextureProxy2008.h"
 

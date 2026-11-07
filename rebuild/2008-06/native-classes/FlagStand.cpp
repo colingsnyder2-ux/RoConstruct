@@ -2,6 +2,10 @@
 // (0062b8f0..0062cf40, initializers 007f7e90/007f7ef0, atexit 00800450/00800470). The FlagStandService half lives in
 // native-classes/FlagStandService.cpp (another contributor). Evidence in native-headers/v8datamodel/FlagStand.h.
 // Verified by tests/record_native_flag_family.py.
+// >>> native-status (generated) -- do not edit >>>
+// FlagStand | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 7d2ca4f8 | roc native-status --write
 #include "v8datamodel/FlagStand.h"
 #include "reflection/signal.h"
 

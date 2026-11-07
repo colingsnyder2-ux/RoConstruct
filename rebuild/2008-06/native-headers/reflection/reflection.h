@@ -1,6 +1,10 @@
 // 2008-06 override of Source/App/include/reflection/reflection.h: class-name template parameters take the
 // char array itself (const char*), as the 2008 binary pushes .data name arrays directly.
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// reflection | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 40c3aa45 | roc native-status --write
 #include <boost/type_traits.hpp>
 #include "reflection/object.h"
 

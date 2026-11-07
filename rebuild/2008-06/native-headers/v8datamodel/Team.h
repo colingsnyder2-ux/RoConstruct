@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Team | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 050be389 | roc native-status --write
 // 2008-06 native RBX::Team (inactive). Shape after the donor tools/rbxgs Team.h; every field,
 // virtual and descriptor below is read from the 2008-06 binary:
 //   RTTI       vtable 0082ea84 .?AVTeam@RBX@@ -> DescribedCreatable<Team, Instance, sTeam>

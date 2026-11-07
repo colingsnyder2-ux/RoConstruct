@@ -4,6 +4,10 @@
 // 0084b174) is built from native-classes/SimJobStage2008Ctor.cpp: it news the 2008 Kernel (Kernel2008.h), which cannot
 // share a unit with the donor v8world/Edge.h (IPipelined.h includes the donor v8kernel/Kernel.h). The assembly /
 // mechanism rows (0064d0f0 .. 0064d2a0, 0064d3d0, 0064d410) need Assembly / Mechanism / ContactManager (not built).
+// >>> native-status (generated) -- do not edit >>>
+// SimJobStage2008 | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 85b1689e | roc native-status --write
 #include "v8world/SimJobStage2008.h"
 #include "v8world/SimJob2008.h"
 #include "v8world/Edge.h"

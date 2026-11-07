@@ -7,6 +7,10 @@
 
 // For more information, see http://www.boost.org
 
+// >>> native-status (generated) -- do not edit >>>
+// function_base | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 9e6bb423 | roc native-status --write
 #ifndef BOOST_FUNCTION_BASE_HEADER
 #define BOOST_FUNCTION_BASE_HEADER
 

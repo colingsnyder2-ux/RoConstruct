@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CMarshalWindow | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 7bada83a | roc native-status --write
 #include "util/MarshalWindow.h"
 #include "util/EventDataBase.h"
 

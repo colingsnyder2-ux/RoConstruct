@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// ModelSetFrontTool | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 2de4e42e | roc native-status --write
 #include "tool/SurfaceTools.h"
 #include "v8datamodel/Surface.h"
 #include "v8datamodel/PartInstance.h"

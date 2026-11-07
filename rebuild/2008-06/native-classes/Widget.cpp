@@ -1,5 +1,9 @@
 // 2008-06 native RBX::Widget / RBX::VerbWidget unit (inactive): the original gui/Widget.cpp, 00641ff0..006426f0.
 // Layout and addresses in native-headers/gui/Widget.h; verified by tests/record_native_widget.py.
+// >>> native-status (generated) -- do not edit >>>
+// Widget | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 0e8aade5 | roc native-status --write
 #include "gui/Widget.h"
 
 namespace RBX

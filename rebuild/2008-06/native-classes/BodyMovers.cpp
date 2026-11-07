@@ -1,6 +1,10 @@
 // 2008-06 native RBX::BodyMover family (inactive); evidence in native-headers/v8datamodel/BodyMovers.h.
 // The original unit 0062e090..00633101 also holds Rocket (native-classes/Rocket.cpp). Verified by
 // tests/record_native_body_movers.py.
+// >>> native-status (generated) -- do not edit >>>
+// BodyMovers | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 49f732f3 | roc native-status --write
 #include "v8datamodel/BodyMovers.h"
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"

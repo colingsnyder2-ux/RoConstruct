@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// SimJobStage2008 | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 8dab6772 | roc native-status --write
 // 2008-06 native RBX::SimJobStage (inactive). Declared under a non-colliding name: the original path
 // v8world/SimJobStage.h is included by the donor v8world/World.h, so a header at that path would shadow the donor for
 // every unit that includes World.h. A unit must not include both this header and the donor v8world/SimJobStage.h (or

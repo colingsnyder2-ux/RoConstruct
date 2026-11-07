@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxReportSubViews | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src db65e3ac | roc native-status --write
 #include "CRobloxReportSubViews.h"
 #include "CRobloxDoc.h"
 

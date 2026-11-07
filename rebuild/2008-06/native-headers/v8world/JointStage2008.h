@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// JointStage2008 | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src a4c99017 | roc native-status --write
 // 2008-06 native RBX::JointStage (inactive). Declared under a non-colliding name: the original path
 // v8world/JointStage.h is included by the donor v8world/World.h, so a header at that path would shadow the donor for
 // every unit that includes World.h. A unit must not include both this header and the donor v8world/JointStage.h (or

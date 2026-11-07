@@ -1,4 +1,8 @@
 // 2008-06 native RBX::Teams (inactive); evidence in native-headers/v8datamodel/Teams.h.
+// >>> native-status (generated) -- do not edit >>>
+// Teams | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 68cf01f2 | roc native-status --write
 #include "v8datamodel/Teams.h"
 #include <algorithm>
 #include "Network/Players.h" // native Network::Players (ServiceProvider::find<Players>, 00491d50)

@@ -3,6 +3,10 @@
 // does not exist yet: the unit is compiled only with NATIVE_BACKPACK_PENDING against a generated copy of the donor
 // Script.h with the 2008 const-char-array class names (tests/record_native_hopper.py), so every row is recorded
 // exact=false (pending-build-only).
+// >>> native-status (generated) -- do not edit >>>
+// Backpack | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 6e5e7f84 | roc native-status --write
 #ifdef NATIVE_BACKPACK_PENDING
 #include "v8datamodel/Backpack.h"
 

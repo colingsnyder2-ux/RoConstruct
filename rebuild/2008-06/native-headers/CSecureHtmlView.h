@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CSecureHtmlView | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src ed3f334b | roc native-status --write
 #include <afxwin.h>
 #include <afxext.h>
 #include <afxhtml.h>

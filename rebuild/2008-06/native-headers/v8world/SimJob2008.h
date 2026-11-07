@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// SimJob2008 | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src f5932ce8 | roc native-status --write
 // 2008-06 native RBX::SimJob / AssemblySimJob (inactive). No donor class exists (the donor tree has neither); the name
 // v8world/SimJob2008.h follows the other 2008 engine headers.
 // Every field, slot and size below is read from the 2008-06 binary:

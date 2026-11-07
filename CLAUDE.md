@@ -1,16 +1,42 @@
 # RoConstruct
 
+## Choose the task before running commands
+
+**Native task** (`NATIVE_AGENT.md`, native recovery, class swaps, runnable integration):
+follow `docs/NATIVE_AGENT.md` and `docs/NATIVE_SWAP_BATCH.md`. Work on real native
+classes, implemented methods and authentic headers. Blocker repair is secondary.
+Do not run bulk mining passes or `roc submit`.
+Local exacts are inactive evidence; the owner handles reviewed integration and gates.
+Contributor priority: substantial native class/header batches using the class-batch
+policy in `docs/NATIVE_SWAP_BATCH.md`. Handoff exhausted or owner-blocked proofs;
+continue another authorized unleased family. Receipt-only uploads and file counts
+are not recovered classes. Keep all required integration/runtime gates.
+
+**Mining task** (an explicit function/server-score assignment): follow
+`docs/MINING_WORKFLOW.md` and `docs/AGENT_GUIDE.md`. Mining commands and server
+scores belong only to this mode. Reading another guide never changes the task.
+When continuing a native task, stay native even if asked for "fast exacts".
+
 Work in the existing checkout. Do not create worktrees unless the user explicitly asks.
 
-Matching decompilation of old Roblox clients: write C++ that the client's original
-MSVC compiles to the exact target bytes. A function counts only when the group
-server re-verifies it byte-identical.
+For function mining, a gain counts only when the group server independently
+re-verifies code and data. Native source recovery and runnable class integration
+have separate proof stages; mining totals do not measure runnable progress.
 
 Run commands as `roc.cmd <cmd>` (Windows) or `./roc.sh <cmd>` (Linux); `roc --help`
 lists them all.
 
 ## Efficient native integration checks
 
+- Native recovery defaults to `docs/NATIVE_SWAP_BATCH.md`: choose one native
+  class/header family and its source gaps, batch evidence-backed variants in isolated
+  runner outputs, compile once and reuse objects for byte/data/call/diff checks.
+  After a match, advance provider/layout/ABI/selection proof. After three rejected
+  hypotheses, park with evidence and choose another required blocker. Report
+  inactive, selected, fully gated class swaps and server credit separately.
+
+- Use `roc.cmd source-catalog --ref refs/remotes/findings/work --local --output work/source-catalog/2008-06-COMMIT.json`
+  to build a read-only inventory pairing canonical/public native files and hashing local snapshots; never moves code.
 - Use `roc.cmd native-asm 2008-06 ADDR [ADDR...]` for grouped disassembly and
   its `--obj`/`--sym` mode for object comparison. Check relocation targets too.
 - Run `python rebuild/2008-06/tests/verify_native_checkpoint.py` to batch the
@@ -70,7 +96,10 @@ explicit task-owned paths, automatic durable draft uploads (including incomplete
 No fork, branch or native integration submission is needed to share drafts. Ordinary
 function matching still uses `roc submit`. Owner integration follows
 `docs/DRAFT_INTEGRATION.md`; only independently verified server receipts grant credit.
-The owner's scheduled integration task is authorized to commit/push reviewed changes.
+The owner's scheduled integration task is authorized to commit/push reviewed native changes
+directly to RoConstruct work/workspace. Findings is the native authority;
+retired feature branches are not native integration destinations. Optional coordination
+notes are sparse advisory context; file leases remain authoritative.
 
 ## New native files on the Integration Digest webhook
 
@@ -81,14 +110,12 @@ remote setup is needed. A branch seen for the first time is only recorded, so no
 
 - `roc.cmd native-files scan --dry-run` previews what would be posted (nothing sent, nothing saved);
   `--backfill` also lists what first-seen branches already have beyond `main`; `--no-forks` skips forks.
-- Fork work is merged automatically onto the bot branch `auto-merge/native` (never your working branch):
-  clean merges become merge commits; conflicts, unrelated histories or merges that would delete native files
-  are copied to `merge/<fork>/<branch>/` there, with a `MERGE_NEEDED.md`. Fast-forward or cherry-pick from it
-  when you want the work. `roc.cmd native-files merge --dry-run` runs it without pushing.
+- Legacy bot merges are retired. The two-hour draft integration reviews explicit
+  source paths and commits directly to `work`; it never recreates retired branches.
 - The partial / recovery / header / site rows on that webhook are off by default; set
   `"integration_digest_extra_rows": true` in `roconstruct-settings.json` to bring them back.
 
-## Assigned single-function recovery
+## Mining only: assigned single-function recovery
 
 When the wrapper supplies an assigned source, evidence packet, check command and
 120-second triage budget, setup is already complete. Read this file once, then
@@ -106,18 +133,21 @@ recipes or logs before the first experiment. Record a specific blocker if the
 packet lacks the native declaration or ABI evidence needed for a useful draft.
 All rules below still apply; the wrapper handles submissions and propagation.
 
-## Get set up (downloads are fine)
+## Setup for the selected task
 
-1. `roc doctor` - lists what is missing and how to fix it. (Remill/LLVM is optional; env overrides are documented in `docs/AGENT_GUIDE.md`.)
-2. `roc install --yes` - exact historical compilers.
-3. `roc client-fetch <client>` then `roc analyze <client>` - binary and function list.
-4. `roc pull <client>` - everyone's current sources, so you never redo matched work.
-5. `roc config --user NAME --server URL` if `roc submit` says they are missing.
+Native: use the verified Worker bootstrap and missing-input setup in
+`docs/NATIVE_AGENT.md`; preserve edits and start automatic draft uploads.
+Mining: use `docs/MINING_WORKFLOW.md`. Do not switch workflows during setup.
 
 ## Where the knowledge is
 
-- `docs/AGENT_GUIDE.md` - the one current guide: acceptance rules, tool routing, order
-  of work, experiment-memory schema, automatic worker. Read first.
+- `docs/GHIDRA_REFERENCE.md` - optional symbolized iOS 2013 pseudo-C donor and
+  bounded lookup command; consult for 2012 recovery before guessing identities
+  or behavior. Donor evidence never substitutes for selected-target proof.
+
+- `docs/NATIVE_AGENT.md` - native recovery, Worker setup and automatic draft sharing.
+- `docs/NATIVE_SWAP_BATCH.md` - runnable swap blockers and native proof batches.
+- `docs/AGENT_GUIDE.md` - function mining reference; consult only for the selected task.
 - `research/lessons.json` - ranked, receipt-backed lessons; append each trial to
   `work/agent-memory/attempts.jsonl` (shared with other PCs through the server).
 - `research/recipes.json` - named compiler-only experiments with recorded results;
@@ -129,60 +159,11 @@ All rules below still apply; the wrapper handles submissions and propagation.
   RoConstruct-findings `reports/`): history, not instructions.
 - `docs/SETUP.md`, `docs/SERVER.md` - install, models, dashboard, hosting, packages.
 
-## How matching work is done (current methods, 2026-10-12)
+## Function mining instructions: separate task only
 
-Start with `roc research log` (newest entries):
-they say what just worked, what was parked, and what to try next. Don't repeat a
-variant recorded there as rejected.
-
-1. **Free automatic passes first:** `roc mass`, `roc auto`, `roc xcopy`, `roc donor`.
-2. **Near-miss repair (main source of new 2008 exacts).** Take current 90-99% sources
-   in a size band (for example 70-94 bytes, then 95-129, ...). Read the target
-   disassembly against yours (`roc check`, `roc classify`) and fix only what the
-   bytes prove. Fixes that have worked:
-   - a wrong immediate constant;
-   - storage sizes read from the allocation size the target passes to `new`;
-   - by-value argument sizes read from stack offsets;
-   - `__declspec(dllimport)` on Win32 APIs called through the IAT;
-   - `volatile` to force evaluation order;
-   - removing `volatile` to let stores reorder;
-   - `/fp:fast` for x87 ordering.
-   One hypothesis per trial.
-3. **Compiler gates.** Try each candidate under both 2008 compiler builds (VS2005
-   50727 and VS2008 RTM 21022) × a few flag profiles (`O2`, `O1`, `Od/Ob0`,
-   `GS-`/`GS`, `EHsc`, `MD`). Pin a winner with `// roc-flags:` / `// roc-cl:` lines.
-   If the whole grid fails, park the function and move on.
-4. **Authentic vendor families.** Explicitly instantiate real library templates
-   (G3D `Array`, STL `vector`/`pair`, Boost) for element types observed in the
-   binary. Compile each instantiation under the config grid and fan the objects out
-   against all unresolved functions.
-5. **Propagation.** A repaired source often fixes siblings: scan it against other
-   unresolved functions of the same shape.
-6. **Libraries.** Library configuration for 2008 is largely done (XTP, Ogre, zlib,
-   ATL/MFC). Change a recipe in `roc/libs.py` only with new evidence: the exact
-   upstream version, or the vendor's build prelude and defines.
-7. **Boundaries.** Fix function extents only with proof, via `work/<client>/bounds.json`.
-   A `BOUNDS:` line in `roc check` output is such a proof: submit the source anyway (the
-   server re-check records it too). Only the server host runs `roc extents <client> --apply`
-   then `roc analyze <client>`, which hot-reseeds the live server.
-
-Write bulk trials as a recipe in `research/recipes.json` (op `grid` or `fanout`),
-not a new script; generated units go through `libs.add_unit` so every PC can rebuild
-them. Keep each campaign's evidence in `work/<campaign>-<date>/`: sources, hashes,
-diffs, server receipts and a summary. Compiling locally is free, so submit only
-gains, with `roc submit <client> [addr ...]`.
-
-Player/LLM submissions belong in Player Mining. Include the actual model:
-`roc submit <client> [addr ...] --model gpt-6.1-sol` for GPT-6.1 Sol; use your own
-model name for other LLMs. Never label LLM work as `roc repair`, `roc auto`, or
-another automatic command: those labels route to Server Mining.
-
-Afterwards append one dated entry to `research/log.jsonl` with
-`roc research note TITLE TEXT`, covering:
-- what was tried;
-- the exacts gained;
-- the rejected variants;
-- what to try next.
+Setup, bulk automatic passes, near-miss campaigns, propagation and `roc submit`
+live in `docs/MINING_WORKFLOW.md`. Open that workflow only for an explicit mining
+assignment. Native recovery continues with its current class/header queue.
 
 ## Known 2008-06 findings (don't rediscover these)
 
@@ -215,4 +196,6 @@ Afterwards append one dated entry to `research/log.jsonl` with
 - Never invent struct fields, offsets or ABIs: derive them from the binary or a compile.
 - Never overwrite a better stored source; submit only improvements.
 - Don't edit `clients/` or `tools/` by hand. Don't delete files you didn't create.
-- Don't `git push`. Contributors share results through `roc submit`.
+- Do not push without explicit owner authorization. Native contributors share automatic
+  drafts; mining contributors use `roc submit`. Authorized owner integration follows
+  `docs/DRAFT_INTEGRATION.md`.

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CPropGridCategory | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 69104413 | roc native-status --write
 #include "CPropGrid.h"
 #include "util/Name.h"
 

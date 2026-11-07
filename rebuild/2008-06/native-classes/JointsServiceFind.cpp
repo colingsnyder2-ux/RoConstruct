@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/nullable-class-name
+// >>> native-status (generated) -- do not edit >>>
+// JointsServiceFind | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 52cff009 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8datamodel/JointsService.h"
 namespace RBX {

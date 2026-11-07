@@ -1,4 +1,8 @@
 // 2008-06 native RBX::ViewNew::BevelMesh::Builder (inactive): build 00501040.
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewBevelMesh | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src fa5b577c | roc native-status --write
 #include "ViewNew/BevelMesh.h"
 
 namespace RBX

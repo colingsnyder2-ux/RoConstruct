@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-noinline-shared-destructor
+// >>> native-status (generated) -- do not edit >>>
+// ServiceSelection | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 45e006f1 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8datamodel/Selection.h"
 

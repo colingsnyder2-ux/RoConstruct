@@ -5,6 +5,10 @@
 // NATIVE_GEOMETRYSERVICE_PENDING against the generated overlay of tests/NativeGeometryServicePendingWorkspace.h
 // (proposal in the recorder). 0062dc10 also constructs RBX::FilterStairs, declared by the native
 // v8datamodel/Filters2008.h (tests/record_native_hit_filters.py).
+// >>> native-status (generated) -- do not edit >>>
+// GeometryService | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src f1ef3c80 | roc native-status --write
 #include "v8datamodel/GeometryService.h"
 #ifdef NATIVE_GEOMETRYSERVICE_PENDING
 #include "v8datamodel/Workspace.h"

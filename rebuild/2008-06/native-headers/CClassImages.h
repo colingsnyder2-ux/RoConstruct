@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CClassImages | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 6e745f38 | roc native-status --write
 #include <afxwin.h>
 #include <afxcmn.h>
 

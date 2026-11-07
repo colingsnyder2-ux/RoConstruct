@@ -2,6 +2,10 @@
 // native-headers/v8datamodel/UserController.h. Verified by tests/record_native_user_controller.py.
 // Unit profile: document-swap flags plus /fp:fast (x87 constant folding in chaseTarget/updateTarget and the keyboard
 // getValue bodies).
+// >>> native-status (generated) -- do not edit >>>
+// UserController | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 48cf0cc6 | roc native-status --write
 #include "v8datamodel/UserController.h"
 #include "v8datamodel/PVInstance.h"
 #include "util/Math.h"

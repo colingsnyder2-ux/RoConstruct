@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// ClipboardActions | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src c5cf548a | roc native-status --write
 #include <afxwin.h>
 #include <sstream>
 #include <algorithm>

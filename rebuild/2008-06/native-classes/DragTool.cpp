@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// DragTool | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 65b13f25 | roc native-status --write
 #include "tool/DragTool.h"
 #include "tool/PartDragTool.h"
 #include "tool/GroupDragTool.h"

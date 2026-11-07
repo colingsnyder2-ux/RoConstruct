@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CObjectBrowser | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src c7f8d5b8 | roc native-status --write
 #include "CObjectBrowser.h"
 #include <algorithm>
 

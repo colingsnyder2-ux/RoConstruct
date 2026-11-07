@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CClassTreeView | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 06b524dd | roc native-status --write
 #include "CClassTreeView.h"
 #include "reflection/object.h"
 #include "reflection/enumconverter.h"

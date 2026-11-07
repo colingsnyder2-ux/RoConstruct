@@ -3,6 +3,10 @@
 // PartInstance::getIsTransparent 006601c0 is emitted first). The PartByLocalCharacter constructor needs a
 // Humanoid::getHeadFromCharacter declaration that no native header provides yet, so it compiles only under
 // NATIVE_HIT_FILTERS_PENDING against the declaration-only overlay tests/NativeHitTestFilterPendingHumanoid.h.
+// >>> native-status (generated) -- do not edit >>>
+// Filters | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 8d72c974 | roc native-status --write
 #include "v8datamodel/Filters2008.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/ModelInstance.h"

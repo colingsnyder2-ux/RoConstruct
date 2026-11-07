@@ -1,6 +1,10 @@
 // 2008-06 native RBX::Ball (inactive); evidence in native-headers/v8world/Ball2008.h.
 // Verified by tests/record_native_world_shapes.py. Unit 00649130..006492bc (getMomentSolid, getGridVolume,
 // onSetSize, hitTest).
+// >>> native-status (generated) -- do not edit >>>
+// Ball | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src bfdf6b9e | roc native-status --write
 #include "v8world/Ball2008.h"
 #include "util/Math.h"
 #include <G3D/Sphere.h>

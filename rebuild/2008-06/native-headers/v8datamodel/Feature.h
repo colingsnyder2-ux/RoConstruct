@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Feature | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src b1eabe86 | roc native-status --write
 // 2008-06 native RBX::Feature, RBX::Hole and RBX::MotorFeature (inactive). Shape after the donor
 // tools/rbxgs v8datamodel/Feature.h; every field, virtual and descriptor below is read from the 2008-06 binary.
 // VelocityMotor (same source unit) is declared at the end of this header: see its block comment.

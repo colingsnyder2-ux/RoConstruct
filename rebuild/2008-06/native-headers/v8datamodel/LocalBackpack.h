@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// LocalBackpack | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 0648c8e4 | roc native-status --write
 #include "v8datamodel/Hopper.h"
 #include "Network/Player.h"
 

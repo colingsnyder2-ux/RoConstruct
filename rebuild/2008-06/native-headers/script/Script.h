@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Script | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src d4997772 | roc native-status --write
 #include "v8tree/Instance.h"
 #include "boost/shared_ptr.hpp"
 #include "boost/signals.hpp"

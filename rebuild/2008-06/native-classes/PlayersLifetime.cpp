@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// PlayersLifetime | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src bf6d665e | roc native-status --write
 #include <RakPeer.h>
 #include <PluginInterface.h>
 #include "Network/Players.h"

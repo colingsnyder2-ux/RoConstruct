@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxReportView | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src be560a77 | roc native-status --write
 #include "CRobloxReportView.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Stats.h"

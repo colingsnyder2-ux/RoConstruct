@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Clothing | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 167ef866 | roc native-status --write
 // 2008-06 native layout of RBX::CharacterAppearance and its subclasses Clothing, Shirt, Pants,
 // ShirtGraphic and Skin. Inactive: no build list or swap uses it.
 //

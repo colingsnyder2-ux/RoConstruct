@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// HistoryRecordLookup | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 40e6cade | roc native-status --write
 #include "v8datamodel/HistoryRecord.h"
 #include "v8tree/Instance.h"
 

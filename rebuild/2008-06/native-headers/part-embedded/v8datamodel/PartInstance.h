@@ -1,6 +1,10 @@
 // 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/PartInstance.h: class names are .data
 // char arrays passed directly as template arguments (see native-headers/util/Name.h).
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// PartInstance | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 8f09901d | roc native-status --write
 #include "AppDraw/Part.h"
 #include "v8world/Primitive.h"
 #include "util/ContentProvider.h"

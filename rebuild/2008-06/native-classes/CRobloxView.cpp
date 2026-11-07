@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxView | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 4c63215e | roc native-status --write
 #include "../native-headers/CRobloxView.h"
 
 // Constructor 00459eb0. Binder 00459890 and CRobloxWnd 0045c730 are external here.

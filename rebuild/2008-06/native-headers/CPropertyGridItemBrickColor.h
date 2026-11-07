@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CPropertyGridItemBrickColor | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src e827221d | roc native-status --write
 #include <XTToolkitPro.h>
 
 // Inactive layout recovery of the BrickColor property-grid row.

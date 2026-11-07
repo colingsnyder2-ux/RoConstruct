@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// VersionInfo | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 8eadb783 | roc native-status --write
 #ifndef VERSIONINFO_H
 #define VERSIONINFO_H
 

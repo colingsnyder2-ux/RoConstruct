@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// FaceInstance | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src bef9f5d1 | roc native-status --write
 
 #include "reflection/reflection.h"
 #include "v8tree/Instance.h"

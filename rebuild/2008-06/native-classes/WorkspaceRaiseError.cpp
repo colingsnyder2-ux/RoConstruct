@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// WorkspaceRaiseError | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 9e500bb6 | roc native-status --write
 #include <afxwin.h>
 #include <afxdisp.h>
 

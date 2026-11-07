@@ -176,9 +176,11 @@ def main(args):
     if args.action == 'hook':
         hook = ROOT / '.git' / 'hooks' / 'pre-commit'
         if hook.exists() and 'roc lease check' not in hook.read_text():
-            raise SystemExit('%s already exists; add this line to it: python roc.py lease check --staged' % hook)
+            raise SystemExit('%s already exists; add these lines to it: python roc.py lease check --staged ; python roc.py native-status --check --staged' % hook)
         hook.write_text('#!/bin/sh\n# roc lease check: refuse commits touching files another worker leases\n'
-                        'exec python "$(git rev-parse --show-toplevel)/roc.py" lease check --staged\n', newline='\n')
+                        'python "$(git rev-parse --show-toplevel)/roc.py" lease check --staged || exit 1\n'
+                        '# roc native-status check: refuse commits with stale/missing native banners\n'
+                        'python "$(git rev-parse --show-toplevel)/roc.py" native-status --check --staged || exit 1\n', newline='\n')
         print('installed', hook)
         return
     api, user = _api(args)

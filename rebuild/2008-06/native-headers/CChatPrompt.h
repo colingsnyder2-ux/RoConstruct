@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CChatPrompt | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src b0520e93 | roc native-status --write
 #include <afxext.h>
 #include <boost/shared_ptr.hpp>
 

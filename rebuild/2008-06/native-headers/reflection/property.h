@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// property | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 62aeba12 | roc native-status --write
 #include "reflection/member.h"
 #include "reflection/enumconverter.h"
 #include "v8xml/XmlElement.h"

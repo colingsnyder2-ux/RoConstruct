@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// AxisVerbConstructors | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 0b0b1f02 | roc native-status --write
 #include "StandardVerbs.h"
 #include "util/Math.h"
 

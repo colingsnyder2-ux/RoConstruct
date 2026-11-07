@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// ScoreHud | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 324bff76 | roc native-status --write
 // 2008-06 native RBX::ScoreHud (inactive). Shape after the donor tools/rbxgs gui/ScoreHud.h. Read from the binary
 // (tests/record_native_hud.py checks it):
 //   ScoreHud  vtable 0084bcb4 .?AVScoreHud@RBX@@ -> GuiItem -> Instance (+ GuiTarget +0x130), Listener<Instance,

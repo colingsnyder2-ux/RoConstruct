@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// WorkspaceClose | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 7fd7e242 | roc native-status --write
 #include <afxwin.h>
 #include "CWorkspace.h"
 

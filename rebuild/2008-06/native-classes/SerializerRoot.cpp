@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// SerializerRoot | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 292a0e88 | roc native-status --write
 #include "../native-headers/v8xml/XmlElement.h"
 #include "v8xml/SerializerV2.h"
 

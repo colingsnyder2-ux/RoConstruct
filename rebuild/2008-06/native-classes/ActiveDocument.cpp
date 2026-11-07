@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ActiveDocument | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src cf4da001 | roc native-status --write
 #include "ActiveDocView.h"
 #include "CRobloxDoc.h"
 

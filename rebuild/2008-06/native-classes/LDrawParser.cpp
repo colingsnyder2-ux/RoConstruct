@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// >>> native-status (generated) -- do not edit >>>
+// LDrawParser | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 9f5c8495 | roc native-status --write
 #include "util/LDrawParser.h"
 #include "util/LDrawMapRoot.h"
 #include <memory>

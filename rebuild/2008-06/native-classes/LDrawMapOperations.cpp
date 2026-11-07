@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// LDrawMapOperations | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 9a7ac793 | roc native-status --write
 #include "util/LDrawMapRoot.h"
 #include <algorithm>
 #include <cctype>

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RobloxLib | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 283a8a8c | roc native-status --write
 #include <oaidl.h>
 
 // Original embedded TYPELIB, read through its dual (vtable) interfaces.

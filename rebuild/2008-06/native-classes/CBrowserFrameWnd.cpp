@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CBrowserFrameWnd | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src f7dd6285 | roc native-status --write
 #include "CBrowserFrameWnd.h"
 
 IMPLEMENT_DYNCREATE(CBrowserFrameWnd, CXTPFrameWnd)

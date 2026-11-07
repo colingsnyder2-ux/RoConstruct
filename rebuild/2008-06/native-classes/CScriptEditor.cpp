@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CScriptEditor | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src ad56528c | roc native-status --write
 #include "CScriptEditor.h"
 #include "script/Script.h"
 #include "v8datamodel/DataModel.h"

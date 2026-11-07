@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Profiling | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src ce01754b | roc native-status --write
 #include <G3D/Vector3.h>
 #include <G3D/System.h>
 #include <boost/noncopyable.hpp>

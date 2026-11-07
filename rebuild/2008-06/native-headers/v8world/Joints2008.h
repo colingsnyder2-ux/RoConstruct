@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Joints2008 | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src b941dedb | roc native-status --write
 // 2008-06 native RBX::Joint family (inactive): Joint, RigidJoint, WeldJoint, SnapJoint, MultiJoint, RotateJoint,
 // DynamicRotateJoint, RotatePJoint, RotateVJoint, GlueJoint, MotorJoint. Declared under a non-colliding name: the
 // original paths v8world/Joint.h, RigidJoint.h, ... are reached through the donor Primitive.h (which includes

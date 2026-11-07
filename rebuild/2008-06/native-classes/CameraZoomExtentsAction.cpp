@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/camera-zoom
+// >>> native-status (generated) -- do not edit >>>
+// CameraZoomExtentsAction | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 4198072f | roc native-status --write
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Selection.h"
 #include "StandardVerbs.h"

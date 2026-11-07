@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// AuthoringSettings | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 9bed2929 | roc native-status --write
 #include "AuthoringSettings.h"
 #include <boost/thread/recursive_mutex.hpp>
 #include <G3D/format.h>

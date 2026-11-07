@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CChildFrame | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 01ad64af | roc native-status --write
 #include <afxwin.h>
 
 // Inactive layout recovery of the two MDI child frames.

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// MarshalWindow | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src c939ada0 | roc native-status --write
 #include <atlbase.h>
 #include <atlwin.h>
 #include <atlsync.h>

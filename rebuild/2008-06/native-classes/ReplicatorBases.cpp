@@ -6,6 +6,10 @@
 // string dictionary and profiler types); this unit instantiates the base chain explicitly instead of through
 // Replicator's constructor: these come out of this unit as COMDATs, a codegen analog, not their original unit.
 // Verified by tests/record_native_replicator.py.
+// >>> native-status (generated) -- do not edit >>>
+// ReplicatorBases | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 1d9e7735 | roc native-status --write
 #include "Network/IdSerializer.h"
 
 namespace RBX

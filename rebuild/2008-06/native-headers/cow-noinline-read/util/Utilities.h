@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Utilities | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src d21ef3cb | roc native-status --write
 #include <string>
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>

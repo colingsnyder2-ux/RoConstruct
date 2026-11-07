@@ -6,6 +6,10 @@
 // JointInstance/MotorJoint fields are exact only against the 2008 layouts of those generated copies.
 // Unit profile: document-swap flags plus /fp:fast (float setters 0060c580..0060c600) and /U_RELEASEASSERT
 // (rbx_static_cast without the debug dynamic_cast, so IPipelined::getWorld inlines in 0060a0f0).
+// >>> native-status (generated) -- do not edit >>>
+// Feature | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 483fd7bc | roc native-status --write
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8world/MotorJoint.h"

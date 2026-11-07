@@ -1,5 +1,9 @@
 // 2008-06 native RBX::Message / RBX::Hint (inactive); evidence in native-headers/v8datamodel/Message.h.
 // Verified by tests/record_native_effects.py.
+// >>> native-status (generated) -- do not edit >>>
+// Message | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 842be823 | roc native-status --write
 #include "v8datamodel/Message.h"
 #include "util/Rect.h"
 #include "Network/Player.h" // native Network::Player (render2d dynamic_casts the parent to it)

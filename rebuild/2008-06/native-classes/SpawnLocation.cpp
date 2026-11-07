@@ -1,6 +1,10 @@
 // 2008-06 native RBX::SpawnLocation and RBX::SpawnerService (inactive): one original unit (005d1ba0..005d39f0,
 // initializers 007f5f20..007f5fb0, atexit 007feff0..007ff070). Evidence in native-headers/v8datamodel/
 // SpawnLocation.h and SpawnerService.h. Verified by tests/record_native_spawn.py.
+// >>> native-status (generated) -- do not edit >>>
+// SpawnLocation | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 492fb96c | roc native-status --write
 #include "v8datamodel/SpawnLocation.h"
 #include "v8datamodel/SpawnerService.h"
 

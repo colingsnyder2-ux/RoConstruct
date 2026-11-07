@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxApp | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 05783c3d | roc native-status --write
 #include <afxwin.h>
 #include <string>
 #include <vector>
@@ -57,10 +61,12 @@ public:
     virtual BOOL InitInstance();                   // 0044d810 (slot 22)
     virtual int Run();                             // 0044d790 (slot 23)
     virtual int ExitInstance();                    // 0044ad60 (slot 28)
-    BOOL initializeFramework(void*);               // 00449bf0
+    BOOL initializeFramework(bool);               // 00449bf0
     void initializeSettings();                     // 0044c760
     void initializeEmptyDocument();                // 0044a2c0
     BOOL openFiles(std::vector<std::string>::iterator, std::vector<std::string>::iterator); // 0044d1b0
+    int openFileFailed(std::string);                 // 0044a950
+    BOOL openFile(std::string);                      // 0044a1f0
     MainLogManager logManager;                     // +0xa4
     std::string version;                           // +0xf0
     boost::scoped_ptr<ErrorUploader> errorUploader; // +0x10c

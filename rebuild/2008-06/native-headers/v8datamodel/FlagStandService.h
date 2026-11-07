@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// FlagStandService | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src c04f93d8 | roc native-status --write
 #include <list>
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"

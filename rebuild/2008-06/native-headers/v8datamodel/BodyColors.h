@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// BodyColors | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 12768267 | roc native-status --write
 // 2008-06 native layout of RBX::BodyColors (a CharacterAppearance subclass). Inactive: no build list or
 // swap uses it. CharacterAppearance / IModelModifier come from native-headers/v8datamodel/Clothing.h.
 //

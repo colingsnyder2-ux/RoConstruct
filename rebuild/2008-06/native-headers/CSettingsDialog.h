@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CSettingsDialog | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 9910e88e | roc native-status --write
 #include "CSelectionPropGrid.h"
 #include "CSettingsExplorer.h"
 #include "CSettingsPropGrid.h"

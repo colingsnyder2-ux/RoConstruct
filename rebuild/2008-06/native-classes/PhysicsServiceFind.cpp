@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-noinline-shared-destructor
+// >>> native-status (generated) -- do not edit >>>
+// PhysicsServiceFind | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src f66d4dea | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8datamodel/PhysicsService.h"
 namespace RBX {

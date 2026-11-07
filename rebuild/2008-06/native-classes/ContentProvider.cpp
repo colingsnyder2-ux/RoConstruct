@@ -1,4 +1,8 @@
 // Isolated layout/lifetime trial; donor ContentProvider is a different singleton class.
+// >>> native-status (generated) -- do not edit >>>
+// ContentProvider | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src d3e00db6 | roc native-status --write
 #include "util/NativeContentProvider.h"
 #include "util/Http.h"
 #include "util/standardout.h"

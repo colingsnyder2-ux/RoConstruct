@@ -4,6 +4,10 @@
 // empty step() 0047d410 (identical-code folded), the out-of-line inline ~MechanismTracker 004c99b0;
 // DirectPhysicsReceiver scalar deleting destructor 004ab5b0 and the empty step(unsigned) 0070bdf0 (both folded).
 // sendPackets 004cd420 and receivePacket 004c83b0 are declared only (open).
+// >>> native-status (generated) -- do not edit >>>
+// NetworkPhysics | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src b4a7a546 | roc native-status --write
 #include "Network/PhysicsReplication.h"
 
 namespace RBX

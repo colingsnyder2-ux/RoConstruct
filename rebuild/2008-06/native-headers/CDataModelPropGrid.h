@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CDataModelPropGrid | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 12177b48 | roc native-status --write
 #include "CSelectionPropGrid.h"
 #include "ActiveDocView.h"
 

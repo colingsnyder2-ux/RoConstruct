@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// Explosion | 2008-06 | inactive
+// unmapped (no binary link) | by -
+// <<< native-status | src 14a2e0f7 | roc native-status --write
 #include "v8datamodel/Explosion.h"
 namespace RBX {
 char sExplosion[] = "Explosion";
