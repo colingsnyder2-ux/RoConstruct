@@ -1,0 +1,13 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "0045a4a0",
+                                        "symbol":  "?OnInitialUpdate@CRobloxView@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CRobloxViewInit.cpp"
+                 }
+             ]
+}

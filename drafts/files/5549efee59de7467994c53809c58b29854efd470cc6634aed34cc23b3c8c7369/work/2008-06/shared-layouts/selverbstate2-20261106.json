@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00581090",
+                                        "symbol":  "?doIt@DeleteSelectionVerb@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "00582d70",
+                                        "symbol":  "?isEnabled@AttachCameraCommand@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/SelectionVerbStates.cpp"
+                 }
+             ]
+}

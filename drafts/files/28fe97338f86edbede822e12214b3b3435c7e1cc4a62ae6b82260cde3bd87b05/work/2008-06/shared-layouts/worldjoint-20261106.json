@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00645ae0",
+                                        "symbol":  "?removeFromKernel@RotateJoint@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "006463f0",
+                                        "symbol":  "?stepUi@DynamicRotateJoint@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/WorldJointRotate.cpp"
+                 }
+             ]
+}

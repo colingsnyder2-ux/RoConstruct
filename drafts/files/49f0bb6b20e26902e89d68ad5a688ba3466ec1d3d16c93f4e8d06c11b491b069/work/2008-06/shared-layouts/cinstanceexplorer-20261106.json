@@ -1,0 +1,21 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00421bc0",
+                                        "symbol":  "??1CInstanceExplorer@@"
+                                    },
+                                    {
+                                        "addr":  "00421a50",
+                                        "symbol":  "?setRoot@CInstanceExplorer@@"
+                                    },
+                                    {
+                                        "addr":  "00420fb0",
+                                        "symbol":  "?onMarshaledEvent@CInstanceExplorer@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CInstanceExplorer.cpp"
+                 }
+             ]
+}

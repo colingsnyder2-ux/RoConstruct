@@ -1,0 +1,21 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "005b2750",
+                                        "symbol":  "??0Accoutrement@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "005b28d0",
+                                        "symbol":  "??1Accoutrement@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "005b2a40",
+                                        "symbol":  "?getAttachmentPoint@Accoutrement@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/Accoutrement.cpp"
+                 }
+             ]
+}

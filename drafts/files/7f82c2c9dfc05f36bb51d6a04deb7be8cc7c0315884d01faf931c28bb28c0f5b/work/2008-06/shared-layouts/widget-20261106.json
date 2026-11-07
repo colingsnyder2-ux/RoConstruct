@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00642750",
+                                        "symbol":  "??0Widget@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "00642520",
+                                        "symbol":  "??1Widget@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/Widget.cpp"
+                 }
+             ]
+}

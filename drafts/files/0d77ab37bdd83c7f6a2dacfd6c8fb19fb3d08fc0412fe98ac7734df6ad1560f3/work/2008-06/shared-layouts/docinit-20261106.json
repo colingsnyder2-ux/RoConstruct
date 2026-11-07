@@ -1,0 +1,21 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "005819d0",
+                                        "symbol":  "?doIt@CameraPanLeftCommand@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "00581b10",
+                                        "symbol":  "?doIt@CameraZoomInCommand@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "00451210",
+                                        "symbol":  "?doIt@CameraTiltUpCommand@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/DocumentInitialize.cpp"
+                 }
+             ]
+}

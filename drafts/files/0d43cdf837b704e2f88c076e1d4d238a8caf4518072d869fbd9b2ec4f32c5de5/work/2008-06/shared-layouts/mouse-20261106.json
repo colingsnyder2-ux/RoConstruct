@@ -1,0 +1,25 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "005ff750",
+                                        "symbol":  "?getOrigin@Mouse@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "005ff900",
+                                        "symbol":  "?update@Mouse@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "005ff680",
+                                        "symbol":  "?getMouse@Tool@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "005ff600",
+                                        "symbol":  "??0Mouse@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/Mouse.cpp"
+                 }
+             ]
+}

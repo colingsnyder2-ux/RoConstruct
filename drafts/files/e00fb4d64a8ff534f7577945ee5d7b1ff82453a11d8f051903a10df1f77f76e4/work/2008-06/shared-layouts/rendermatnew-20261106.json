@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "007b78b0",
+                                        "symbol":  "?color@Level@Material@RenderNew@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "007ad4b0",
+                                        "symbol":  "?levelCount@Material@RenderNew@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/RenderMaterialNew.cpp"
+                 }
+             ]
+}

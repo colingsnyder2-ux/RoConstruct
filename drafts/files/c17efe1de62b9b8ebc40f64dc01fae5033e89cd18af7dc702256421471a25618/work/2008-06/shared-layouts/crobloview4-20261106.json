@@ -1,0 +1,41 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00459fd0",
+                                        "symbol":  "?CreateObject@CRobloxView@@"
+                                    },
+                                    {
+                                        "addr":  "004597c0",
+                                        "symbol":  "?closeToolbox@CRobloxView@@"
+                                    },
+                                    {
+                                        "addr":  "00459210",
+                                        "symbol":  "?OnSetFocus@CRobloxView@@"
+                                    },
+                                    {
+                                        "addr":  "00459390",
+                                        "symbol":  "?OnSize@CRobloxView@@"
+                                    },
+                                    {
+                                        "addr":  "004597f0",
+                                        "symbol":  "?toggleToolbox@CRobloxView@@"
+                                    },
+                                    {
+                                        "addr":  "00459810",
+                                        "symbol":  "?openToolboxPage@CRobloxView@@"
+                                    },
+                                    {
+                                        "addr":  "00459660",
+                                        "symbol":  "?OnDestroy@CRobloxView@@"
+                                    },
+                                    {
+                                        "addr":  "0045a2f0",
+                                        "symbol":  "?detachDataModel@CRobloxView@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CRobloxViewMethods.cpp"
+                 }
+             ]
+}

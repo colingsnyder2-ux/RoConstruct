@@ -1,0 +1,29 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00436a30",
+                                        "symbol":  "??0COutputView@@"
+                                    },
+                                    {
+                                        "addr":  "00436090",
+                                        "symbol":  "?OnInitialUpdate@COutputView@@"
+                                    },
+                                    {
+                                        "addr":  "004364b0",
+                                        "symbol":  "?OnDocumentComplete@COutputView@@"
+                                    },
+                                    {
+                                        "addr":  "00436b60",
+                                        "symbol":  "?appendElement@COutputView@@"
+                                    },
+                                    {
+                                        "addr":  "004373a0",
+                                        "symbol":  "??0CStandardOutputView@@"
+                                    }
+                                ],
+                     "source":  "native-classes/COutputView.cpp"
+                 }
+             ]
+}

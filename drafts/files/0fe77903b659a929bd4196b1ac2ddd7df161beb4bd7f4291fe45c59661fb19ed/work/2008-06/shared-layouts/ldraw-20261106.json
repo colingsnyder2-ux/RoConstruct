@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "0046d710",
+                                        "symbol":  "??0LDraw2RobloxMapRoot@LDraw2Lua@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "0046e430",
+                                        "symbol":  "??1LDraw2RobloxMapRoot@LDraw2Lua@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/LDrawMapRootConstructor.cpp"
+                 }
+             ]
+}

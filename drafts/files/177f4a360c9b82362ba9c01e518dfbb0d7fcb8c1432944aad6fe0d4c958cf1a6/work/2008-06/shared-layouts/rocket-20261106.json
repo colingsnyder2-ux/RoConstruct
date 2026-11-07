@@ -1,0 +1,21 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00632e10",
+                                        "symbol":  "??0Rocket@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "00632fd0",
+                                        "symbol":  "?fire@Rocket@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "00632d10",
+                                        "symbol":  "?abort@Rocket@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/Rocket.cpp"
+                 }
+             ]
+}

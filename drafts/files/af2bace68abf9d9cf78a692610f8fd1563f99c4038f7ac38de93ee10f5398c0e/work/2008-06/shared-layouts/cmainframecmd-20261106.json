@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00430bf0",
+                                        "symbol":  "?setFullscreen@CMainFrame@@"
+                                    },
+                                    {
+                                        "addr":  "004321f0",
+                                        "symbol":  "?OnDestroy@CMainFrame@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CMainFrameCommands.cpp"
+                 }
+             ]
+}

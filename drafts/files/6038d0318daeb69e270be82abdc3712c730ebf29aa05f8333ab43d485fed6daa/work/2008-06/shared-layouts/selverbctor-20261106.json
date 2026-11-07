@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00580d10",
+                                        "symbol":  "??0UngroupSelectionVerb@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "00581090",
+                                        "symbol":  "??0DeleteSelectionVerb@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/SelectionVerbConstructors.cpp"
+                 }
+             ]
+}

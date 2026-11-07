@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "004fec20",
+                                        "symbol":  "??0CylinderBuilder@ViewNew@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "004fe070",
+                                        "symbol":  "?buildTop@CylinderBuilder@ViewNew@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/ViewNewCylinderMesh.cpp"
+                 }
+             ]
+}

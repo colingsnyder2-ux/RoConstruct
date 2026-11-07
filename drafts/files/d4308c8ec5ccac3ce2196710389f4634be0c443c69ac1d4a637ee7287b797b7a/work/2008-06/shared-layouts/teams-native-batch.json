@@ -1,0 +1,12 @@
+{
+  "batch": "RBX::Teams",
+  "change": "Removed NATIVE_TEAMS_PENDING guard around getTeamColorForHumanoid; includes ModelInstance.h and Humanoid.h.",
+  "changed_files": [
+    "rebuild/2008-06/native-classes/Teams.cpp"
+  ],
+  "verification": "rebuild/2008-06/tests/record_native_team.py PASS: 64 Team rows, 48 Teams rows, 2 pending exact, targets verified.",
+  "package_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "workspace_manifest_source_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "baseline_commit": "unknown",
+  "status": "inactive draft; no active build, swap, runtime, or server credit"
+}

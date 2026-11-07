@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00615a20",
+                                        "symbol":  "??0MouseCommand@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "0064e020",
+                                        "symbol":  "??1MouseCommand@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/MouseCommand.cpp"
+                 }
+             ]
+}

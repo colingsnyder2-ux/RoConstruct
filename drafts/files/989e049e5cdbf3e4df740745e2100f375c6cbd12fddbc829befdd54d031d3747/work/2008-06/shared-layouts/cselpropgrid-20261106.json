@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00440e30",
+                                        "symbol":  "?setSelection@CSelectionPropGrid@@"
+                                    },
+                                    {
+                                        "addr":  "00439d70",
+                                        "symbol":  "?onEvent@CSelectionPropGrid@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CSelectionPropGridSelection.cpp"
+                 }
+             ]
+}

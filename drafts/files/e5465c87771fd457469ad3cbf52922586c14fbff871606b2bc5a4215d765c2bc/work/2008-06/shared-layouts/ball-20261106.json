@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "006491a0",
+                                        "symbol":  "?hitTest@Ball@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "00649390",
+                                        "symbol":  "?getMomentSolid@Ball@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/Ball.cpp"
+                 }
+             ]
+}

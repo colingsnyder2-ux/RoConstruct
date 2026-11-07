@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/NetworkSettings.cpp",
+      "checks": [
+        {
+          "addr": "004aa150",
+          "symbol": "??0?$EnumDesc@W4PhysicsSendMethod@NetworkSettings@RBX@@@Reflection@RBX@@AAE@XZ"
+        },
+        {
+          "addr": "004aa2c0",
+          "symbol": "??0?$EnumDesc@W4PhysicsReceiveMethod@NetworkSettings@RBX@@@Reflection@RBX@@AAE@XZ"
+        }
+      ]
+    }
+  ]
+}

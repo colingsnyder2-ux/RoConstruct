@@ -1,0 +1,21 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "004944b0",
+                                        "symbol":  "??0Player@Network@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "004937f0",
+                                        "symbol":  "??1Player@Network@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "00494650",
+                                        "symbol":  "?setName@Player@Network@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/NetworkPlayer.cpp"
+                 }
+             ]
+}

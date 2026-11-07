@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "0062d820",
+                                        "symbol":  "??0ForceField@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "0062d950",
+                                        "symbol":  "??1ForceField@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/ForceField.cpp"
+                 }
+             ]
+}
