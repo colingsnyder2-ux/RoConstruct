@@ -3,9 +3,291 @@
 [Project index](README.md) · [Previous](sources-001.md) · [Next](sources-003.md)
 
 <details>
+<summary>native-classes/ThreadLogPath.cpp — public-only; 4 content versions</summary>
+
+**`4b2dfd90f2e8`** · `native-classes/ThreadLogPath.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/ThreadLogPath.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`525d73d2332c`** · `native-classes/ThreadLogPath.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/ThreadLogPath.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7dcdc24b978e`** · `native-classes/ThreadLogPath.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/ThreadLogPath.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`8ddb94d995c3`** · `native-classes/ThreadLogPath.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ThreadLogPath.cpp)
+
+</details>
+
+<details>
+<summary>native-classes/ThreadName.cpp — public-only; 4 content versions</summary>
+
+**`331b44a60eec`** · `native-classes/ThreadName.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/ThreadName.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`5aa094b0df96`** · `native-classes/ThreadName.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/ThreadName.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`dcbcc1b6598b`** · `native-classes/ThreadName.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/ThreadName.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`f26712284a48`** · `native-classes/ThreadName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ThreadName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ThreadName.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ThreadName.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ThreadName.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ThreadName.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ThreadName.cpp)
+
+</details>
+
+<details>
+<summary>native-classes/ThreadNameState.cpp — public-only; 4 content versions</summary>
+
+**`0ebcda88ddad`** · `native-classes/ThreadNameState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ThreadNameState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ThreadNameState.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadNameState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ThreadNameState.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadNameState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ThreadNameState.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadNameState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ThreadNameState.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadNameState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ThreadNameState.cpp)
+
+**`8de51864c2c7`** · `native-classes/ThreadNameState.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/ThreadNameState.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`976090f84fd2`** · `native-classes/ThreadNameState.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/ThreadNameState.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e85dc45d0666`** · `native-classes/ThreadNameState.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/ThreadNameState.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/ThreadNameStorage.cpp — public-only; 4 content versions</summary>
+
+**`0d179a672ec5`** · `native-classes/ThreadNameStorage.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/ThreadNameStorage.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`46a5fe15aff3`** · `native-classes/ThreadNameStorage.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/ThreadNameStorage.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`55f55b39d871`** · `native-classes/ThreadNameStorage.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/ThreadNameStorage.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`dd3825c9aa11`** · `native-classes/ThreadNameStorage.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ThreadNameStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ThreadNameStorage.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadNameStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ThreadNameStorage.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadNameStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ThreadNameStorage.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadNameStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ThreadNameStorage.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadNameStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ThreadNameStorage.cpp)
+
+</details>
+
+<details>
+<summary>native-classes/UserInputBaseLifetime.cpp — public-only; 4 content versions</summary>
+
+**`4b41b2b4ab45`** · `native-classes/UserInputBaseLifetime.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/UserInputBaseLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`83110e365b14`** · `native-classes/UserInputBaseLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/UserInputBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/UserInputBaseLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/UserInputBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/UserInputBaseLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/UserInputBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/UserInputBaseLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/UserInputBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/UserInputBaseLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/UserInputBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/UserInputBaseLifetime.cpp)
+
+**`8c10931793ae`** · `native-classes/UserInputBaseLifetime.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/UserInputBaseLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`bc10c0135dc1`** · `native-classes/UserInputBaseLifetime.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/UserInputBaseLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/WorldLifetime.cpp — diverged; 6 content versions</summary>
+
+**`54b799ad05b8`** · `native-classes/WorldLifetime.cpp` · proof not assessed
+
+<details><summary>5 retained local origins</summary>
+
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`69175b76f498`** · `native-classes/WorldLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/WorldLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/WorldLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/WorldLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/WorldLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/WorldLifetime.cpp)
+
+**`8cfa4134b1b8`** · `native-classes/WorldLifetime.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a0eff3134d55`** · `native-classes/WorldLifetime.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/WorldLifetime.cpp`
+- local · `local/findings/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`c79503aca1ad`** · `native-classes/WorldLifetime.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d8683e0453c9`** · `native-classes/WorldLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/WorldLifetime.cpp)
+- fork · mewpokemons · [native-classes/WorldLifetime.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/WorldLifetime.cpp)
+- fork · mewpokemons · [native-classes/WorldLifetime.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/WorldLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/WorldLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/WorldLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/WorldLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/WorldLifetime.cpp)
+
+<details><summary>6 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/WorldLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/XmlNameValuePairClear.cpp — equivalent; 2 content versions</summary>
+
+**`a2cd4c6afa35`** · `native-classes/XmlNameValuePairClear.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/XmlNameValuePairClear.cpp)
+- canonical · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp)
+- public · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/XmlNameValuePairClear.cpp)
+- canonical · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp)
+- public · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/XmlNameValuePairClear.cpp)
+- canonical · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp)
+- public · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/XmlNameValuePairClear.cpp)
+- canonical · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp)
+- public · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/XmlNameValuePairClear.cpp)
+- canonical · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp)
+
+<details><summary>3 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`f91b3b0bd35e`** · `native-classes/XmlNameValuePairClear.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/XmlNameValuePairClear.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>native-headers/CFileVersionInfo.h — diverged; 6 content versions</summary>
 
-**`70c6a65131fb`** · proof not assessed
+**`70c6a65131fb`** · `native-headers/CFileVersionInfo.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
@@ -14,13 +296,14 @@
 
 </details>
 
-**`9001a74ec7e2`** · proof not assessed
+**`9001a74ec7e2`** · `native-headers/CFileVersionInfo.h` · proof not assessed
 - public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/CFileVersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/CFileVersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/CFileVersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/CFileVersionInfo.h)
+- public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/CFileVersionInfo.h)
 
-**`cf1a2260edd5`** · proof not assessed
+**`cf1a2260edd5`** · `native-headers/CFileVersionInfo.h` · proof not assessed
 - canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 - fork · coldek · [native-headers/CFileVersionInfo.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 - fork · mewpokemons · [native-headers/CFileVersionInfo.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CFileVersionInfo.h)
@@ -29,6 +312,7 @@
 - canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 - canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 - canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
+- canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 
 <details><summary>108 retained local origins</summary>
 
@@ -143,7 +427,7 @@
 
 </details>
 
-**`f23ea8095d00`** · proof not assessed
+**`f23ea8095d00`** · `native-headers/CFileVersionInfo.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -151,7 +435,7 @@
 
 </details>
 
-**`f92f40e6bc88`** · proof not assessed
+**`f92f40e6bc88`** · `native-headers/CFileVersionInfo.h` · proof not assessed
 
 <details><summary>37 retained local origins</summary>
 
@@ -195,7 +479,7 @@
 
 </details>
 
-**`f961fe4ef137`** · proof not assessed
+**`f961fe4ef137`** · `native-headers/CFileVersionInfo.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -208,7 +492,7 @@
 <details>
 <summary>native-headers/LuaBridge2008/LuaSignalBridge2008.h — candidate-only; 1 content versions</summary>
 
-**`1447d1b54392`** · proof not assessed
+**`1447d1b54392`** · `native-headers/LuaBridge2008/LuaSignalBridge2008.h` · proof not assessed
 - fork · mewpokemons · [LuaBridge2008/LuaSignalBridge2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/LuaBridge2008/LuaSignalBridge2008.h)
 
 </details>
@@ -216,7 +500,7 @@
 <details>
 <summary>native-headers/LuaBridge2008/LuaYieldingThreads2008.h — candidate-only; 1 content versions</summary>
 
-**`73869413a41f`** · proof not assessed
+**`73869413a41f`** · `native-headers/LuaBridge2008/LuaYieldingThreads2008.h` · proof not assessed
 - fork · mewpokemons · [LuaBridge2008/LuaYieldingThreads2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/LuaBridge2008/LuaYieldingThreads2008.h)
 
 </details>
@@ -224,7 +508,7 @@
 <details>
 <summary>native-headers/cow-noinline-read/util/Utilities.h — diverged; 6 content versions</summary>
 
-**`0721044cfa37`** · proof not assessed
+**`0721044cfa37`** · `native-headers/cow-noinline-read/util/Utilities.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
@@ -233,19 +517,21 @@
 
 </details>
 
-**`1c1679374140`** · proof not assessed
+**`1c1679374140`** · `native-headers/cow-noinline-read/util/Utilities.h` · proof not assessed
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
+- public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 
-**`695034671077`** · proof not assessed
+**`695034671077`** · `native-headers/cow-noinline-read/util/Utilities.h` · proof not assessed
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - fork · mewpokemons · [util/Utilities.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - fork · mewpokemons · [util/Utilities.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
+- canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 
 <details><summary>8 retained local origins</summary>
 
@@ -260,7 +546,7 @@
 
 </details>
 
-**`86a09d5d3df6`** · proof not assessed
+**`86a09d5d3df6`** · `native-headers/cow-noinline-read/util/Utilities.h` · proof not assessed
 
 <details><summary>20 retained local origins</summary>
 
@@ -287,7 +573,7 @@
 
 </details>
 
-**`898c2f73723f`** · proof not assessed
+**`898c2f73723f`** · `native-headers/cow-noinline-read/util/Utilities.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -295,7 +581,7 @@
 
 </details>
 
-**`a8444367e5c0`** · proof not assessed
+**`a8444367e5c0`** · `native-headers/cow-noinline-read/util/Utilities.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -308,13 +594,14 @@
 <details>
 <summary>native-headers/draw-handles/util/Rect.h — diverged; 6 content versions</summary>
 
-**`135d725a2d1d`** · proof not assessed
+**`135d725a2d1d`** · `native-headers/draw-handles/util/Rect.h` · proof not assessed
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 - fork · mewpokemons · [util/Rect.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 - fork · mewpokemons · [util/Rect.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
+- canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 
 <details><summary>8 retained local origins</summary>
 
@@ -329,7 +616,7 @@
 
 </details>
 
-**`42cc78d2f20e`** · proof not assessed
+**`42cc78d2f20e`** · `native-headers/draw-handles/util/Rect.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
@@ -338,7 +625,7 @@
 
 </details>
 
-**`6a922ec2d349`** · proof not assessed
+**`6a922ec2d349`** · `native-headers/draw-handles/util/Rect.h` · proof not assessed
 
 <details><summary>20 retained local origins</summary>
 
@@ -365,13 +652,14 @@
 
 </details>
 
-**`76e2dd3921d3`** · proof not assessed
+**`76e2dd3921d3`** · `native-headers/draw-handles/util/Rect.h` · proof not assessed
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/draw-handles/util/Rect.h)
+- public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/draw-handles/util/Rect.h)
 
-**`a531ae7ccaa1`** · proof not assessed
+**`a531ae7ccaa1`** · `native-headers/draw-handles/util/Rect.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -379,7 +667,7 @@
 
 </details>
 
-**`bfe708e43e2c`** · proof not assessed
+**`bfe708e43e2c`** · `native-headers/draw-handles/util/Rect.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -392,7 +680,7 @@
 <details>
 <summary>native-headers/log-2008/util/Log.h — public-only; 4 content versions</summary>
 
-**`2f21fb4f4253`** · proof not assessed
+**`2f21fb4f4253`** · `native-headers/log-2008/util/Log.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -400,7 +688,7 @@
 
 </details>
 
-**`40b69cf317cf`** · proof not assessed
+**`40b69cf317cf`** · `native-headers/log-2008/util/Log.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -408,13 +696,14 @@
 
 </details>
 
-**`4c7a18397ceb`** · proof not assessed
+**`4c7a18397ceb`** · `native-headers/log-2008/util/Log.h` · proof not assessed
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/log-2008/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/log-2008/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/log-2008/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/log-2008/util/Log.h)
+- public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/log-2008/util/Log.h)
 
-**`e2b20cc18149`** · proof not assessed
+**`e2b20cc18149`** · `native-headers/log-2008/util/Log.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -427,13 +716,14 @@
 <details>
 <summary>native-headers/nullable-class-name/util/Object.h — diverged; 6 content versions</summary>
 
-**`15cfade0c10a`** · proof not assessed
+**`15cfade0c10a`** · `native-headers/nullable-class-name/util/Object.h` · proof not assessed
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/nullable-class-name/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/nullable-class-name/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/nullable-class-name/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/nullable-class-name/util/Object.h)
 
-**`2446ccfe6418`** · proof not assessed
+**`2446ccfe6418`** · `native-headers/nullable-class-name/util/Object.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -441,7 +731,7 @@
 
 </details>
 
-**`34b29124e21a`** · proof not assessed
+**`34b29124e21a`** · `native-headers/nullable-class-name/util/Object.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -449,7 +739,7 @@
 
 </details>
 
-**`74656c593bbe`** · proof not assessed
+**`74656c593bbe`** · `native-headers/nullable-class-name/util/Object.h` · proof not assessed
 
 <details><summary>20 retained local origins</summary>
 
@@ -476,13 +766,14 @@
 
 </details>
 
-**`c85200e9f0bb`** · proof not assessed
+**`c85200e9f0bb`** · `native-headers/nullable-class-name/util/Object.h` · proof not assessed
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
 - fork · mewpokemons · [util/Object.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
 - fork · mewpokemons · [util/Object.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
 
 <details><summary>8 retained local origins</summary>
 
@@ -497,7 +788,7 @@
 
 </details>
 
-**`e6dc2710b879`** · proof not assessed
+**`e6dc2710b879`** · `native-headers/nullable-class-name/util/Object.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
@@ -511,7 +802,7 @@
 <details>
 <summary>native-headers/serializer-load/util/Name.h — equivalent; 2 content versions</summary>
 
-**`e307ecb78073`** · proof not assessed
+**`e307ecb78073`** · `native-headers/serializer-load/util/Name.h` · proof not assessed
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/serializer-load/util/Name.h)
@@ -520,6 +811,8 @@
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/serializer-load/util/Name.h)
+- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/serializer-load/util/Name.h)
+- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/serializer-load/util/Name.h)
 
 <details><summary>5 retained local origins</summary>
 
@@ -531,7 +824,7 @@
 
 </details>
 
-**`e96babe55baa`** · proof not assessed
+**`e96babe55baa`** · `native-headers/serializer-load/util/Name.h` · proof not assessed
 
 <details><summary>11 retained local origins</summary>
 
@@ -554,13 +847,14 @@
 <details>
 <summary>native-headers/util/EventDataBase.h — diverged; 8 content versions</summary>
 
-**`88396b60acc8`** · proof not assessed
+**`88396b60acc8`** · `native-headers/util/EventDataBase.h` · proof not assessed
 - public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/util/EventDataBase.h)
 - public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/util/EventDataBase.h)
 - public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/util/EventDataBase.h)
 - public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/util/EventDataBase.h)
+- public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/util/EventDataBase.h)
 
-**`897fb83c18c1`** · proof not assessed
+**`897fb83c18c1`** · `native-headers/util/EventDataBase.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -568,7 +862,7 @@
 
 </details>
 
-**`9b4e1f32640a`** · proof not assessed
+**`9b4e1f32640a`** · `native-headers/util/EventDataBase.h` · proof not assessed
 
 <details><summary>98 retained local origins</summary>
 
@@ -673,7 +967,7 @@
 
 </details>
 
-**`a8cc5bc103f0`** · proof not assessed
+**`a8cc5bc103f0`** · `native-headers/util/EventDataBase.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
@@ -682,7 +976,7 @@
 
 </details>
 
-**`aa09e9b1db16`** · proof not assessed
+**`aa09e9b1db16`** · `native-headers/util/EventDataBase.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -690,7 +984,7 @@
 
 </details>
 
-**`c23b6f670f31`** · proof not assessed
+**`c23b6f670f31`** · `native-headers/util/EventDataBase.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -698,7 +992,7 @@
 
 </details>
 
-**`c261727dce82`** · proof not assessed
+**`c261727dce82`** · `native-headers/util/EventDataBase.h` · proof not assessed
 
 <details><summary>17 retained local origins</summary>
 
@@ -722,7 +1016,7 @@
 
 </details>
 
-**`fc0e33acd523`** · proof not assessed
+**`fc0e33acd523`** · `native-headers/util/EventDataBase.h` · proof not assessed
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h)
 - fork · coldek · [util/EventDataBase.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/util/EventDataBase.h)
 - fork · mewpokemons · [util/EventDataBase.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/util/EventDataBase.h)
@@ -731,6 +1025,7 @@
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h)
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h)
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h)
+- canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h)
 
 <details><summary>12 retained local origins</summary>
 
@@ -754,7 +1049,7 @@
 <details>
 <summary>native-headers/util/Events.h — diverged; 8 content versions</summary>
 
-**`1a297cc5a4c6`** · proof not assessed
+**`1a297cc5a4c6`** · `native-headers/util/Events.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -762,13 +1057,14 @@
 
 </details>
 
-**`307aaabd8d71`** · proof not assessed
+**`307aaabd8d71`** · `native-headers/util/Events.h` · proof not assessed
 - canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/util/Events.h)
 - fork · mewpokemons · [util/Events.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/util/Events.h)
 - fork · mewpokemons · [util/Events.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/util/Events.h)
 - canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/util/Events.h)
 - canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/util/Events.h)
 - canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/util/Events.h)
+- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/util/Events.h)
 
 <details><summary>8 retained local origins</summary>
 
@@ -783,7 +1079,7 @@
 
 </details>
 
-**`33e59aee4241`** · proof not assessed
+**`33e59aee4241`** · `native-headers/util/Events.h` · proof not assessed
 
 <details><summary>20 retained local origins</summary>
 
@@ -810,7 +1106,7 @@
 
 </details>
 
-**`a548c552c3ad`** · proof not assessed
+**`a548c552c3ad`** · `native-headers/util/Events.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
@@ -819,7 +1115,7 @@
 
 </details>
 
-**`d6875d24a4e9`** · proof not assessed
+**`d6875d24a4e9`** · `native-headers/util/Events.h` · proof not assessed
 
 <details><summary>122 retained local origins</summary>
 
@@ -948,7 +1244,7 @@
 
 </details>
 
-**`de82badc6a93`** · proof not assessed
+**`de82badc6a93`** · `native-headers/util/Events.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -956,13 +1252,14 @@
 
 </details>
 
-**`e502aa249a13`** · proof not assessed
+**`e502aa249a13`** · `native-headers/util/Events.h` · proof not assessed
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/util/Events.h)
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/util/Events.h)
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/util/Events.h)
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/util/Events.h)
+- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/util/Events.h)
 
-**`f6d34702277a`** · proof not assessed
+**`f6d34702277a`** · `native-headers/util/Events.h` · proof not assessed
 - fork · coldek · [util/Events.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/util/Events.h)
 - fork · mewpokemons · [util/Events.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/util/Events.h)
 
@@ -980,7 +1277,7 @@
 <details>
 <summary>native-headers/util/Extents.h — diverged; 6 content versions</summary>
 
-**`485932612ca2`** · proof not assessed
+**`485932612ca2`** · `native-headers/util/Extents.h` · proof not assessed
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/util/Extents.h)
 - fork · coldek · [util/Extents.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/util/Extents.h)
 - fork · mewpokemons · [util/Extents.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/util/Extents.h)
@@ -989,6 +1286,7 @@
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/util/Extents.h)
+- canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/util/Extents.h)
 
 <details><summary>13 retained local origins</summary>
 
@@ -1008,13 +1306,14 @@
 
 </details>
 
-**`5d19b468017e`** · proof not assessed
+**`5d19b468017e`** · `native-headers/util/Extents.h` · proof not assessed
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/util/Extents.h)
+- public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/util/Extents.h)
 
-**`7558befbe2fc`** · proof not assessed
+**`7558befbe2fc`** · `native-headers/util/Extents.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -1022,7 +1321,7 @@
 
 </details>
 
-**`7a13ae318200`** · proof not assessed
+**`7a13ae318200`** · `native-headers/util/Extents.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
@@ -1031,7 +1330,7 @@
 
 </details>
 
-**`d1e23450b9c2`** · proof not assessed
+**`d1e23450b9c2`** · `native-headers/util/Extents.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -1039,7 +1338,7 @@
 
 </details>
 
-**`dc1669a6e425`** · proof not assessed
+**`dc1669a6e425`** · `native-headers/util/Extents.h` · proof not assessed
 
 <details><summary>21 retained local origins</summary>
 
@@ -1072,7 +1371,7 @@
 <details>
 <summary>native-headers/util/FileSystem.h — diverged; 6 content versions</summary>
 
-**`09e3905e26a6`** · proof not assessed
+**`09e3905e26a6`** · `native-headers/util/FileSystem.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -1080,13 +1379,14 @@
 
 </details>
 
-**`13068abafe2a`** · proof not assessed
+**`13068abafe2a`** · `native-headers/util/FileSystem.h` · proof not assessed
 - public · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/util/FileSystem.h)
 - public · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/util/FileSystem.h)
 - public · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/util/FileSystem.h)
 - public · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/util/FileSystem.h)
+- public · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/util/FileSystem.h)
 
-**`40c98c38eac0`** · proof not assessed
+**`40c98c38eac0`** · `native-headers/util/FileSystem.h` · proof not assessed
 
 <details><summary>16 retained local origins</summary>
 
@@ -1109,13 +1409,14 @@
 
 </details>
 
-**`4f1c7d33e8a9`** · proof not assessed
+**`4f1c7d33e8a9`** · `native-headers/util/FileSystem.h` · proof not assessed
 - canonical · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/util/FileSystem.h)
 - fork · mewpokemons · [util/FileSystem.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/util/FileSystem.h)
 - fork · mewpokemons · [util/FileSystem.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/util/FileSystem.h)
 - canonical · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/util/FileSystem.h)
 - canonical · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/util/FileSystem.h)
 - canonical · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/util/FileSystem.h)
+- canonical · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/util/FileSystem.h)
 
 <details><summary>12 retained local origins</summary>
 
@@ -1134,7 +1435,7 @@
 
 </details>
 
-**`57af62ef8268`** · proof not assessed
+**`57af62ef8268`** · `native-headers/util/FileSystem.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -1142,7 +1443,7 @@
 
 </details>
 
-**`cd5dee628fcd`** · proof not assessed
+**`cd5dee628fcd`** · `native-headers/util/FileSystem.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
@@ -1156,7 +1457,7 @@
 <details>
 <summary>native-headers/util/GuidItem.h — diverged; 8 content versions</summary>
 
-**`0994d0a649d2`** · proof not assessed
+**`0994d0a649d2`** · `native-headers/util/GuidItem.h` · proof not assessed
 - canonical · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/util/GuidItem.h)
 - fork · coldek · [util/GuidItem.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/util/GuidItem.h)
 - fork · mewpokemons · [util/GuidItem.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/util/GuidItem.h)
@@ -1165,6 +1466,7 @@
 - canonical · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/util/GuidItem.h)
 - canonical · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/util/GuidItem.h)
 - canonical · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/util/GuidItem.h)
+- canonical · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/util/GuidItem.h)
 
 <details><summary>12 retained local origins</summary>
 
@@ -1183,7 +1485,7 @@
 
 </details>
 
-**`52e9df115218`** · proof not assessed
+**`52e9df115218`** · `native-headers/util/GuidItem.h` · proof not assessed
 
 <details><summary>142 retained local origins</summary>
 
@@ -1332,7 +1634,7 @@
 
 </details>
 
-**`6f237a516b11`** · proof not assessed
+**`6f237a516b11`** · `native-headers/util/GuidItem.h` · proof not assessed
 
 <details><summary>24 retained local origins</summary>
 
@@ -1363,7 +1665,7 @@
 
 </details>
 
-**`73fc8682b774`** · proof not assessed
+**`73fc8682b774`** · `native-headers/util/GuidItem.h` · proof not assessed
 - fork · coldek · [util/GuidItem.h](https://github.com/coldek/RoConstruct/blob/6da8e40862d5e855f1161fc0e18cf67b9c34dd32/rebuild/2008-06/native-headers/util/GuidItem.h)
 
 <details><summary>1 retained local origins</summary>
@@ -1372,7 +1674,7 @@
 
 </details>
 
-**`a1cc64b57114`** · proof not assessed
+**`a1cc64b57114`** · `native-headers/util/GuidItem.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
@@ -1380,13 +1682,14 @@
 
 </details>
 
-**`a7d870ed21df`** · proof not assessed
+**`a7d870ed21df`** · `native-headers/util/GuidItem.h` · proof not assessed
 - public · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/util/GuidItem.h)
 - public · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/util/GuidItem.h)
 - public · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/util/GuidItem.h)
 - public · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/util/GuidItem.h)
+- public · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/util/GuidItem.h)
 
-**`b50630fd36c9`** · proof not assessed
+**`b50630fd36c9`** · `native-headers/util/GuidItem.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
@@ -1395,219 +1698,11 @@
 
 </details>
 
-**`dbb967107bcc`** · proof not assessed
+**`dbb967107bcc`** · `native-headers/util/GuidItem.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
 - local · `2008-06/native-headers/util/GuidItem.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-headers/util/GuidRegistry.h — diverged; 6 content versions</summary>
-
-**`0a9ecb96adae`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/util/GuidRegistry.h`
-- local · `local/findings/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`17f542fea9b4`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`57401d3b16c0`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`7a9003c5b9b4`** · proof not assessed
-- public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/util/GuidRegistry.h)
-- public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/util/GuidRegistry.h)
-- public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/util/GuidRegistry.h)
-- public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/util/GuidRegistry.h)
-
-**`d64136363f1b`** · proof not assessed
-
-<details><summary>32 retained local origins</summary>
-
-- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/work/native-linked-preflight/8e9fcab8892f714812de/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/isolated-shared/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/214e357ba17c4ac6917a7659fbf5ebc1/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/466271fd73b04d98b6ab25de7157cd99/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/7775a876ba004a8c8bc0a9a2c0b49899/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d1691806d60f4c859f52cd53ed27c9f4/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d17290f6ed374eab91f15e00713e9ed0/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/server-sources/932c654cf0dfd88cece9fae6cacdd1d3378274f6d3dd0988c7b5cf4a62ba61b6/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/snapshots/9ee4d7199524430889c270df6f00680b/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/script-context/snapshot/d28939faef5424a478f22570af009465f94e3dd76fad26484c9c2818f16acc85/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`d7118c5b23c9`** · proof not assessed
-- canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
-- fork · coldek · [util/GuidRegistry.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/util/GuidRegistry.h)
-- fork · mewpokemons · [util/GuidRegistry.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/util/GuidRegistry.h)
-- fork · mewpokemons · [util/GuidRegistry.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/util/GuidRegistry.h)
-- fork · mewpokemons · [util/GuidRegistry.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/util/GuidRegistry.h)
-- canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
-- canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
-- canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
-
-<details><summary>34 retained local origins</summary>
-
-- local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-headers/util/GuidRegistry.h`
-- local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-headers/util/GuidRegistry.h`
-- local-branch refs/heads/codex/worker-selection-verbs@dd86b261e5b6 · `rebuild/2008-06/native-headers/util/GuidRegistry.h`
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/crobloxview-20261102/t/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc-family36/native/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc-profile36/native/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc36-verified/native/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/01fcaea6f458429ea23a1a352fa78420/baseline/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/1ea4b9b1e55f48df88a82b90bce02d25/baseline/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/31c53bb11920499fb14ddd67eab86efd/baseline/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/404207f3dd994afea90c21faab1bb40f/baseline/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/6e8152cfcc714356b9f3c387a179bbc8/baseline/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/79bc7d7cb8ad45a79e802e2bce046b15/baseline/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/9c3f5c68e9d841c6a6e5713ef7ea9c30/baseline/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/a1874d20df534725989e50ff79e51134/baseline/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/b5d1820eb523462cadc9851a09d7750f/fresh/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/cbeba8a70d344a2d92df5f30594aaadb/baseline/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/cdf37903cca64c0a863e72838810d45f/baseline/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/eba92580a2604fab9ae8cfbe179709eb/baseline/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/eecb7fb8989948e398d817d2f6d5ed98/fresh/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/fe24b1df657942b9b9250095cc272863/fresh/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-headers/util/LDrawEntities.h — diverged; 6 content versions</summary>
-
-**`297d0315f299`** · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/util/LDrawEntities.h`
-- local · `local/findings/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`398bfc6db480`** · proof not assessed
-
-<details><summary>16 retained local origins</summary>
-
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`746fde68ef55`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`a45c46eba3bf`** · proof not assessed
-- public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/util/LDrawEntities.h)
-- public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/util/LDrawEntities.h)
-- public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/util/LDrawEntities.h)
-- public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/util/LDrawEntities.h)
-
-**`f32e7707c13e`** · proof not assessed
-- canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
-- fork · mewpokemons · [util/LDrawEntities.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/util/LDrawEntities.h)
-- fork · mewpokemons · [util/LDrawEntities.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/util/LDrawEntities.h)
-- canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
-- canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
-- canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`f7b1a13a3b0d`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 
 </details>
 
