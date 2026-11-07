@@ -44,3 +44,7 @@ are compatibility translation units. Compile either path per file, never both.
 App/src/v8tree/ also contains InstanceLifetime, InstanceDescendantEvents,
 InstanceNameDescriptor and InstanceSignalDescriptors. Their native-classes
 counterparts are compatibility units. Compile either path per file, never both.
+
+WindowsClient/src/ contains the moved CMainFrame source batch. Their
+native-classes counterparts are compatibility units. Compile either path
+per file, never both. CMainFrameCommands remains at its original path.

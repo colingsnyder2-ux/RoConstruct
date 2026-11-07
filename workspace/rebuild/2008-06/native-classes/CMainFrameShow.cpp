@@ -1,8 +1,2 @@
-#include "CMainFrame.h"
-
-BOOL CMainFrame::showFrame(int command)
-{
-    windowPosition.LoadWindowPos(this, "CMainFrameV2", NULL);
-    if (command) command = windowPosition.showCmd;
-    return ShowWindow(command) != FALSE;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../WindowsClient/src/CMainFrameShow.cpp"

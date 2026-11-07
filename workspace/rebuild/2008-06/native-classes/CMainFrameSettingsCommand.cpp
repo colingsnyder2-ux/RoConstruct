@@ -1,8 +1,2 @@
-#include "CMainFrame.h"
-
-void showSettingsDialog(CWnd* parent);
-
-void CMainFrame::handle_42ee80()
-{
-    showSettingsDialog(this);
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../WindowsClient/src/CMainFrameSettingsCommand.cpp"
