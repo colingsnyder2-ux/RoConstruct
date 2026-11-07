@@ -11,11 +11,12 @@ Unit map (boundary evidence in the receipt's `unit_map`; rows counted by other r
     instances. Built here: native-classes/AppUnit4BC_2008Receiver.cpp against the read-only Network/PhysicsSenders2008.h
     and the new AppUnit4BC_2008/AssociationTimeStamp.h.
 
-Builds (document-swap flags, VS2008 RTM 21022, /fp:fast):
-  * current: the unit against the committed native headers only (counted rows and the vtable slot checks);
-  * pending: -DNATIVE_APPUNIT4BC_PENDING against the generated header copy
-    out/native-layouts/app-unit4bc-2008-pending/Network/PhysicsSenders2008.h (proposal in the receipt). Rows exact only
-    there are recorded exact=false (pending-build-only) and are not counted.
+Build (document-swap flags, VS2008 RTM 21022, /fp:fast): the unit against the committed native headers only (counted
+rows and the vtable slot checks). Batch 21 applied the batch-20 proposals to Network/PhysicsSenders2008.h (now in this
+lease): boost::hash<shared_ptr<PartInstance> > with the out-of-line hash_value 004ca5b0 and the user-declared
+PartItem(const shared_ptr<PartInstance>&) 004c7a10, so there is no pending build any more. The receiver unit continues
+past 004c8000; its index rows there (insert_ 004c8b20 / 004c8cf0 / 004c8e40) are counted here, the rest of that range is
+mapped by tests/record_native_app_unit4c8_2008.py.
 
 Every counted row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the
 address the original instruction uses and verified: imports by DLL export name, vtables by original RTTI names,
@@ -49,46 +50,6 @@ DISCOVER = bool(os.environ.get('NATIVE_APP_UNIT4BC_DISCOVER'))
 RECEIPT = ROOT / 'work/2008-06/shared-layouts/app-unit4bc-2008-working.json'
 UNIT_FLAGS = ['/fp:fast']
 
-# ---- pending header copy (generated; the committed Network/PhysicsSenders2008.h is read-only here) ----------------
-PENDING_DIR = R / 'out/native-layouts/app-unit4bc-2008-pending'
-PENDING_EDITS = [
-    # 1. receiver container hashes through boost::hash<shared_ptr<PartInstance> > (out-of-line hash_value 004ca5b0)
-    ('''					boost::multi_index::hashed_unique<
-						boost::multi_index::member<PartItem, boost::shared_ptr<PartInstance>, &PartItem::part>,
-						PartHash>,
-					boost::multi_index::ordered_non_unique<
-						boost::multi_index::member<PartItem, unsigned int, &PartItem::timestamp> >''',
-     '''					boost::multi_index::hashed_unique<
-						boost::multi_index::member<PartItem, boost::shared_ptr<PartInstance>, &PartItem::part> >,
-					boost::multi_index::ordered_non_unique<
-						boost::multi_index::member<PartItem, unsigned int, &PartItem::timestamp> >'''),
-    # 2. the user-declared PartItem constructor 004c7a10
-    ('''				History history[8];                                                // +0x20
-''', '''				History history[8];                                                // +0x20
-				PartItem(const boost::shared_ptr<PartInstance>& part);             // 004c7a10
-'''),
-    # 3. the out-of-line hash 004ca5b0 (cdecl, one const shared_ptr& argument)
-    ('''	namespace Network
-	{
-		// Hashes''', '''	std::size_t hash_value(const boost::shared_ptr<PartInstance>& part); // 004ca5b0
-
-	namespace Network
-	{
-		// Hashes'''),
-]
-
-
-def write_pending_header():
-    text = (R / 'native-headers/Network/PhysicsSenders2008.h').read_text()
-    for old, new in PENDING_EDITS:
-        assert text.count(old) == 1, old[:80]
-        text = text.replace(old, new)
-    path = PENDING_DIR / 'Network/PhysicsSenders2008.h'
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text)
-    return path
-
-
 def build(name, extra=(), include=()):
     obj = OUT / (name + '.obj')
     flags = ['/I' + str(p) for p in include] + nb.flags() + list(extra) + ['/Fo' + str(obj), str(UNIT)]
@@ -97,11 +58,8 @@ def build(name, extra=(), include=()):
     return obj, flags
 
 
-pending_header = write_pending_header()
 OBJ, FLAGS = {}, {}
 OBJ['cur'], FLAGS['cur'] = build('NativeAppUnit4BC_2008_cur', UNIT_FLAGS)
-OBJ['pend'], FLAGS['pend'] = build('NativeAppUnit4BC_2008_pend', UNIT_FLAGS + ['/DNATIVE_APPUNIT4BC_PENDING'],
-                                   [PENDING_DIR])
 
 original = nb.Original()
 names = {int(k, 16): v.get('symbol', '') for k, v in json.loads((R / 'offline/evidence.json').read_text())['names'].items()}
@@ -113,6 +71,7 @@ RI = 'UPartItem@' + IR
 HASHED = '@?$hashed_index@U?$member@' + RI
 ORDERED = '@?$ordered_index@U?$member@' + RI + 'I$07@'
 VF = '?$vector@MV?$allocator@M@std@@@std@@'
+TWO_ARG = 'ABUPartItem@' + IR + 'PAU5234@@Z'   # insert_(const value_type&, node*), not the hinted overload
 
 # (address, symbol or unique prefix): one entry per counted address (current-header build)
 ROWS = [
@@ -127,20 +86,22 @@ ROWS = [
     (0x4c7dd0, '??0PartItem@' + IR + 'QAE@ABU0123@@Z'),
     (0x4c7e80, '?erase_' + ORDERED),
     (0x4c7ef0, '??$get@UTimeStamp@@@?$' + AI + 'QAEAAUTimeStamp@@XZ'),
+    # boost::hash<shared_ptr<PartInstance> > with the out-of-line hash_value 004ca5b0 (batch 21 header change)
+    (0x4c72b0, '??$find@V?$shared_ptr@VPartInstance@RBX@@@boost@@U?$hash@'),
+    (0x4c7330, '?unchecked_rehash' + HASHED),
+    (0x4c7730, '?reserve' + HASHED),
+    # the user-declared PartItem(const shared_ptr<PartInstance>&) 004c7a10 and the implicit History() it reaches
+    (0x4c76a0, '??0History@' + IR + 'QAE@XZ'),
+    (0x4c7a10, '??0PartItem@' + IR + 'QAE@ABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z'),
+    # receiver insert path past 004c8000 (receivePacket 004c9120 inserts new PartItems): the two-argument insert_
+    # (value, node) of index_base / the ordered index / the hashed index (hash_value call 004c8e60)
+    (0x4c8b20, ('?insert_@?$index_base@' + RI, TWO_ARG)),
+    (0x4c8cf0, ('?insert_' + ORDERED, TWO_ARG)),
+    (0x4c8e40, ('?insert_' + HASHED, TWO_ARG)),
 ]
 # identical-code-folded symbols of counted rows (bound to the same address, not counted twice)
 FOLDED = [
     (0x4c7090, '??_G?$TItem@UTimeStamp@@@?$' + AI + 'UAEPAXI@Z'),
-]
-# exact only in the pending build (recorded exact=false, never counted)
-PENDING_ROWS = [
-    (0x4c72b0, '??$find@V?$shared_ptr@VPartInstance@RBX@@@boost@@U?$hash@'),
-    (0x4c7330, '?unchecked_rehash' + HASHED),
-    # reserve is byte-exact in the current build too, but its only call target is unchecked_rehash 004c7330, which is
-    # exact only in the pending build: not counted until that target is proven from committed headers.
-    (0x4c7730, '?reserve' + HASHED),
-    (0x4c76a0, '??0History@' + IR + 'QAE@XZ'),
-    (0x4c7a10, '??0PartItem@' + IR + 'QAE@ABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z'),
 ]
 
 # ---- externals: address the original instruction uses (call site in parentheses) ----------------------------------
@@ -155,7 +116,9 @@ EXTERNAL = {
     '??1PartItem@' + IR + 'QAE@XZ': 0x4af950,                                 # erase_ 004c7ec3 (network-physics-senders2008 row)
     '??_L@YGXPAXIHP6EX0@Z1@Z': 0x6a1598,                                     # eh vector constructor iterator (004c7a6e)
     '??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z': 0x6a1bb6,                             # eh vector copy constructor iterator (004c7e41)
-    '?hash_value@RBX@@YAIABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z': 0x4ca5b0,  # pending: find 004c72ba, rehash 004c73e5
+    # find 004c72ba, unchecked_rehash 004c73e5, insert_ 004c8e60 (row counted by network-physics-senders2008, which
+    # builds the definition; its bytes are also checked below)
+    '?hash_value@RBX@@YAIABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z': 0x4ca5b0,
     '__real@4f800000': 0x819778,                                              # 2^32 (reserve 004c7751; checked by bytes)
 }
 # Bodies emitted in the unit whose original address is a row counted by another receipt (ICF-shared COMDATs): bound by
@@ -165,7 +128,7 @@ COUNTED_ELSEWHERE = {
     '?_Xlen@': (0x4c6d40, 'humanoid2008 / misc-leaves'),                     # vector copy ctor 004c77e5, get 004c7c7f
     '?insert@?$vector@PAVItem@?$' + AI: (0x4c7c60, 'humanoid2008'),         # get<TimeStamp> 004c7f8b (vector<const Primitive*> ICF)
     '??$_Allocate@': (0x420b50, 'network-physics-senders2008'),              # vector copy ctor 004c77f3, rehash 004c739f
-    '??0?$bucket_array@V?$allocator@' + RI: (0x4cb540, 'network-physics-senders2008'),  # pending rehash 004c737e
+    '??0?$bucket_array@V?$allocator@' + RI: (0x4cb540, 'network-physics-senders2008'),  # rehash 004c737e
 }
 # Library bodies (boost ordered_index_node_impl, not instantiated on RBX types) emitted in the unit: accepted only when
 # relocation-masked exact at the bound address, with their own targets bound recursively; support rows, never counted.
@@ -175,6 +138,8 @@ SUPPORT = {
     '?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@': 0x4c69e0,         # erase_ 004c7eb? (ordered)
     '?rotate_left@ordered_index_node_impl@detail@multi_index@boost@@': 0x4c6770,                 # rebalance_for_erase
     '?rotate_right@ordered_index_node_impl@detail@multi_index@boost@@': 0x4c67f0,                # rebalance_for_erase
+    '?rebalance@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU': 0x4c6870,             # link 004c6980
+    '?link@ordered_index_node_impl@detail@multi_index@boost@@': 0x4c6980,                        # ordered insert_
 }
 SUPPORT_PREFIX = {}
 LOCAL_STATIC_AT = {
@@ -200,7 +165,9 @@ def resolve(obj, rows):
     funcs = match.coff_functions(Path(obj).read_bytes())
     out = []
     for address, key in rows:
-        hits = [x for x in funcs if x[0] == key] or [x for x in funcs if x[0].startswith(key) and not nb.LOCAL_EH.match(x[0])]
+        key, contains = key if isinstance(key, tuple) else (key, '')
+        hits = [x for x in funcs if x[0] == key] or [x for x in funcs if x[0].startswith(key) and contains in x[0]
+                                                      and not nb.LOCAL_EH.match(x[0])]
         if DISCOVER and len(hits) != 1:
             print('UNRESOLVED', '%08x' % address, key[:120], [h[0][:120] for h in hits])
             continue
@@ -321,7 +288,7 @@ def verify(which, rows, own, strict=True, record=True):
 primes = struct.unpack('<28I', original.data(0x824988, 0x70))
 assert primes[:3] == (53, 97, 193) and primes[-1] == 4294967291, primes
 assert original.data(0x819778, 4) == struct.pack('<f', 4294967296.0)
-# The out-of-line hash the pending rows call: 004ca5b0 is `return p + (p >> 3)` of the shared_ptr's pointer (cdecl).
+# The out-of-line hash find / unchecked_rehash / insert_ call: 004ca5b0 is `return p + (p >> 3)` of the shared_ptr's pointer (cdecl).
 assert target_of(0x4ca5b0)[0] == bytes.fromhex('8b4424048b088bc1c1e80303c1c3'), target_of(0x4ca5b0)[0].hex()
 
 cur_rows = resolve(OBJ['cur'], ROWS)
@@ -331,16 +298,6 @@ for address, name in cur_rows + folded_rows:
     own.setdefault(name, address)
 counted = verify('cur', cur_rows, own)
 folded = verify('cur', folded_rows, own)
-pend_rows = resolve(OBJ['pend'], PENDING_ROWS)
-pend_own = dict(own)
-pend_own.update({n: a for a, n in pend_rows})
-pending = verify('pend', pend_rows, pend_own, strict=False, record=False)
-pending_cur = {r['address']: r for r in verify('cur', [(a, n) for a, n in resolve(OBJ['cur'], [
-    (0x4c7330, '?unchecked_rehash' + HASHED)])], own, strict=False, record=False)}
-for row in pending:
-    assert row['exact'] or DISCOVER, ('pending row not exact', row['address'])
-    row.update({'exact': False, 'pending_build_exact': True, 'reason': 'pending-build-only'})
-
 if DISCOVER:
     print('\n'.join(sorted(set(UNBOUND))))
     for r in counted + folded:
@@ -349,8 +306,6 @@ if DISCOVER:
     sys.exit(0)
 assert not UNBOUND, UNBOUND
 assert all(r['exact'] for r in counted + folded)
-# the current header's PartHash inlines the hash: unchecked_rehash is not exact there (482 vs 497 bytes)
-assert not pending_cur['004c7330']['exact'], pending_cur
 
 # ---- vtables (current-header object) ----------------------------------------------------------------------------
 text = next(x for x in original.pe.sections if x.Name.startswith(b'.text'))
@@ -435,8 +390,6 @@ elsewhere = counted_elsewhere()
 exact_rows = sorted({r['address'] for r in counted})
 double = {a: elsewhere[a] for a in exact_rows if a in elsewhere}
 assert not double, double
-pending_addresses = {r['address'] for r in pending}
-assert not pending_addresses & set(exact_rows)
 range_counted = {a: sorted(set(v)) for a, v in sorted(elsewhere.items()) if '004bc000' <= a < '004c8000'}
 
 UNIT_MAP = {
@@ -490,28 +443,16 @@ REJECTED = {
         '256 vs 282 bytes: the original tests the guard again for every loop compare and for the subscript'),
     'get<TimeStamp> with the index helper returning size_t by value': '280 vs 282 bytes (register allocation)',
     'get<TimeStamp> with `while (Index::get() >= items.size())`': 'not exact (operand order)',
-    'unit without /fp:fast': 'hashed reserve 004c7730 121 vs 117 B; pending unchecked_rehash 504 vs 497 B',
+    'unit without /fp:fast': 'hashed reserve 004c7730 121 vs 117 B; unchecked_rehash 504 vs 497 B',
     'explicit instantiation of the three-argument hashed_index::find<Key, Hash, Pred>': (
         'C3190 under 21022; the one-argument find<Key> instantiation emits the three-argument body 004c72b0'),
 }
 
 PROPOSALS = [
-    'Owner of native-headers/Network/PhysicsSenders2008.h: the receiver container hashes through '
-    '`boost::hash<boost::shared_ptr<PartInstance> >` (drop PartHash from the InterpolatingPhysicsReceiver::PartItems '
-    'hashed_unique) with a declared, out-of-line `std::size_t hash_value(const boost::shared_ptr<PartInstance>& part);` '
-    'in namespace RBX. Evidence: the receiver find 004c72b0, unchecked_rehash 004c7330, replace_ 004c8b70 and insert_ '
-    '004c8e40 all call 004ca5b0 (cdecl, `add esp, 4` at the call site; body `mov eax,[esp+4]; mov ecx,[eax]; '
-    'mov eax,ecx; shr eax,3; add eax,ecx; ret`), which lies in the sender unit and is inlined only there (sender '
-    'replace_ 004cc5e0 hashes inline at 004cc64f). With this change find and unchecked_rehash are byte-exact with '
-    'every target verified against out/native-layouts/app-unit4bc-2008-pending/Network/PhysicsSenders2008.h '
-    '(unchecked_rehash is 482 vs 497 B with the inline PartHash). The sender typedef probably uses the same hasher '
-    '(not changed or checked here).',
-    'Same owner: declare `PartItem(const boost::shared_ptr<PartInstance>& part);` in InterpolatingPhysicsReceiver::'
-    'PartItem. Evidence: 004c7a10 (ret 4, EH frame) copies the shared_ptr with an add-ref, fldz/fstp qword +0x10, '
-    'zeroes +0x18/+0x1c, leaves the ordered key +8 unwritten and runs the eh vector constructor 006a1598 over '
-    'history[8] (0x4c, History() 004c76a0, ~History 004ae910); its only caller is receivePacket 004c9120. Exact in '
-    'the pending build together with the implicit History() 004c76a0.',
-    'For the PartItem helpers 004c6dc0 / 004c6ed0 / 004c6f70: they need PartItem member declarations and the 2008 '
+    'Applied in batch 21 (Network/PhysicsSenders2008.h is in this lease now): the receiver and sender containers hash '
+    'through boost::hash<shared_ptr<PartInstance> > with the out-of-line RBX::hash_value 004ca5b0 (defined and counted '
+    'by NetworkPhysicsSenders2008.cpp), and PartItem(const shared_ptr<PartInstance>&) 004c7a10 is declared.',
+    'Open: the PartItem helpers 004c6dc0 / 004c6ed0 / 004c6f70 need PartItem member declarations and the 2008 '
     'PartInstance with the Primitive embedded at +0x228 (owner of v8datamodel/PartInstance.h; same evidence as the '
     'contact-unit2008 / app-unit609 receipts).',
 ]
@@ -522,23 +463,21 @@ receipt = {
     'compiler': 'VS2008 RTM 21022',
     'flags': FLAGS,
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): nb.sha(p) for p in paths},
-    'generated_pending_header': {str(pending_header.relative_to(ROOT)).replace('\\', '/'): nb.sha(pending_header)},
     'objects': {k: nb.sha(v) for k, v in OBJ.items()},
     'unit_map': UNIT_MAP,
     'range_rows_counted_by_other_receipts': range_counted,
     'rows': counted,
     'folded_rows': folded,
-    'pending_rows': pending,
+    'pending_rows': [],
     'support_rows': support_out,
     'vtables': vtables,
     'not_exact': NOT_EXACT,
     'rejected': REJECTED,
     'proposals': PROPOSALS,
     'exact_function_rows': exact_rows,
-    'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. Pending rows '
-             'are exact only against the generated header copy and are not counted.',
+    'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
 RECEIPT.write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS app-unit4bc-2008: %d counted exact rows (%s); %d pending-build-only, %d not exact, %d support rows, '
-      '%d vtables' % (len(exact_rows), ' '.join(exact_rows), len(pending), len(NOT_EXACT), len(support_out),
+print('PASS app-unit4bc-2008: %d counted exact rows (%s); 0 pending-build-only, %d not exact, %d support rows, '
+      '%d vtables' % (len(exact_rows), ' '.join(exact_rows), len(NOT_EXACT), len(support_out),
                       len(vtables)))

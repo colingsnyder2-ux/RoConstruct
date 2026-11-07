@@ -1171,3 +1171,36 @@ The evidence names reflect@007b76c0 / transparent@00503cb0 come from the donor's
   - Owner of native-headers/part-embedded/v8world/Primitive.h, FYI: the 2008 Primitive is now declared at v8world/Primitive2008.h (0xfc, sizeof/offsetof checked in both configurations). The second EdgeList array is G3D::Array<Primitive*>, not the Array<Edge*> `pending` declared there. Evidence: insertEdge 005e8990 appends the other primitive with Array<Primitive*>::append 0059a190, and removeEdge 005e8610 resizes it with Array<Primitive*>::resize 00599a70. Controller is at +0xe8 (setController 005e85e0 / getController 00574fb0), initialised to the inlined NullController::getStaticNullController static (00976384, guard 00976390). JointK is at +0xec (dirty +0xf0, object +0xf4, getFunc +0xf8).
   - IStage owner (donor v8kernel/IStage.h), FYI: the 2008 KERNEL_STAGE is 7 (Kernel::getStageType 0077d800 `mov eax, 7`; IPipelined::getKernel 00645850 `push 7`). The donor enum has 8. IPipelined2008.h keeps getStage/getKernel out of line, so nothing depends on the enum value.
   - BOUNDS / unit map (no bounds.json change): 006064a0 and 00612fb0 are separate functions. The SimBody unit region also holds PV::pvAtLocalCoord 00658a00, the Quaternion product 00658a30 and PV::pvAtLocalOffset 00658c50 (evidence name), all between the PV and SimBody rows. IPipelined bodies 006457e0..00645860 are already counted by kernel-stages / world-joints.
+
+- 2026-11-07 Claude (w2, batch 21, lease physics receiver/sender pass 2 + 004c8000..004d4000; globs AppUnit4BC_2008*, AppUnit4C8_2008*, Network/PhysicsSenders2008.h, NetworkPhysicsSenders2008*.cpp, record_native_network_physics_senders2008.py, record_native_app_unit4bc_2008.py, record_native_app_unit4c8_2008.py), inactive.
+
+Applied the two batch-20 proposals to Network/PhysicsSenders2008.h, one per trial:
+- Both containers hash through boost::hash<shared_ptr<PartInstance> >, which reaches the out-of-line RBX::hash_value 004ca5b0 by ADL. PartHash is removed. The sender inlines the hash (004cc64f); the receiver calls 004ca5b0 (004c72ba / 004c73e5 / 004c8bc0 / 004c8e60). The definition is in NetworkPhysicsSenders2008.cpp, where it is a row.
+- InterpolatingPhysicsReceiver::PartItem(const shared_ptr&) 004c7a10 is declared.
+
+app-unit4bc-2008: 11 -> 19 counted rows, no pending build left.
+- The 5 former pending rows: find 004c72b0, unchecked_rehash 004c7330, reserve 004c7730, History() 004c76a0, PartItem 004c7a10.
+- 3 receiver rows past 004c8000: insert_(value, node) of index_base 004c8b20, the ordered index 004c8cf0 and the hashed index 004c8e40.
+
+network-physics-senders2008: 21 -> 39 distinct addresses, from an explicit instantiation of the sender container. New rows: hash_value 004ca5b0, hashed link 004c9b20 / link_point 004cad90 / unchecked_rehash 004cb5c0 / reserve 004cbe20 / erase_ 004cc580, ordered in_place 004cae60 / 004caf40, link_point 004cb200 / 004cb280, insert_ 004cb7b0 / 004cbea0, erase_ 004cb850 / 004cbf40, index_base insert_ 004cb010 / erase_ 004cb300, and PartItem copy 004c9d90 / operator= 004cb060. The boost ordered_index_node_impl helpers, including restore 004c9930, are support rows.
+
+New app-unit4c8-2008: 1 counted row and the unit map of 004c8000..004d4000.
+- Counted row: ServiceProvider::create<PhysicsService>(const Instance*) 004cd8d0, exact on the first trial (native-classes/AppUnit4C8_2008PhysicsServiceCreate.cpp). Its tail target 004cd7e0 is checked by the symbol in world-service-actions-secure-trial.json.
+- Unit map: receiver unit to 004c9789; RakNet GetTime 004c9790..004c992f; sender unit 004c9930..004cdcbf; RakNet Huffman / SocketLayer / ReliabilityLayer from 004cdcc0 (library).
+
+Every target is verified in all three receipts, and all three PASS.
+
+Not counted:
+- Sender ordered replace_ 004cbfb0: byte-exact, but its target, the index-2 replace_ 004cb8e0, is not (337 vs 495 B).
+- Receiver modify_ 004c8010 / 004c8b70 and the modify helper 004c8da0: the modifier type is not derived.
+- Container insert_ 004c8ef0: 151 vs 172 B.
+- receivePacket 004c9120 / 004c83b0, reader 004c8150, step 004c8fa0 / 004cd920: need the native Replicator and the 2008 PartInstance (Primitive at +0x228).
+
+Rejected variants: none new. Shadowing: none (no new header).
+
+Next: derive the receivePacket modifier type, to get modify_ 004c8010 / 004c8b70 and 004c8da0.
+  Proposals:
+  - Applied (header now in this lease, no outside owner): Network/PhysicsSenders2008.h. Both the receiver and the sender PartItems now hash through boost::hash<boost::shared_ptr<PartInstance> >, which reaches the out-of-line RBX::hash_value 004ca5b0 by ADL; PartHash is removed. Evidence: the receiver calls 004ca5b0 at 004c72ba, 004c73e5, 004c8bc0 and 004c8e60. Only the sender unit has the body inline (replace_ 004cc5e0 at 004cc64f), so the out-of-line copy is defined in NetworkPhysicsSenders2008.cpp, where it is an exact row. Also declared: InterpolatingPhysicsReceiver::PartItem(const shared_ptr<PartInstance>&) 004c7a10.
+  - Owner of v8datamodel/PartInstance.h (unchanged from batch 20): the PartItem helpers 004c6dc0 / 004c6ed0 / 004c6f70 and InterpolatingPhysicsReceiver::step 004c8fa0 need the 2008 PartInstance with the Primitive embedded at +0x228 (`lea ecx,[edi+0x228]` before getAssembly 005e7570). Same evidence as the contact-unit2008 / app-unit609 receipts.
+  - Owner of the Replicator 2008 header (FYI): receivePacket 004c9120 / 004c83b0, the item reader 004c8150 and PhysicsSender::step 004cd920 / sendPackets 004cce00 stay open until the native Replicator / IdSerializer API (deserialize 004a8b60) is declared.
+  - BOUNDS / unit map for the server host (no bounds.json change). 004c9790 / 004c9910 are RakNet GetTime.cpp (GetTimeNS / GetTime evidence names), between the receiver unit (ends 004c9789) and the sender unit. The sender unit runs from 004c9930 to 004cdcbf, with PhysicsSender::step ending at 004cdcb8. RakNet HuffmanEncodingTree / SocketLayer / ReliabilityLayer run from 004cdcc0 past 004d4000. The analog server's 'RBX::Network::PhysicsSender' attribution of 004cdcc0..004d19f0 is wrong: these are RakNet library rows.

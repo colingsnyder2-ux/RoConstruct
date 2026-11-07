@@ -27,8 +27,9 @@
 //            004ca090), node_count +0x30. Destructor 004ccab0 (delete_all_nodes 004cc460: ~PartItem releases only
 //            the shared_ptr at value +0).
 //              index 0 hashed_unique on value +0: replace_ 004cc5e0 compares the two shared_ptr pointers and hashes
-//                      x + (x >> 3) of the pointer (boost::hash<T*>); boost 1.34.1 has no hash_value(shared_ptr), so
-//                      the hasher is a named functor over part.get() (PartHash; analog name).
+//                      x + (x >> 3) of the pointer inline: boost::hash<shared_ptr<PartInstance> > (boost 1.34.1 has no
+//                      hash_value(shared_ptr)) reaching RBX::hash_value, defined out of line at 004ca5b0 in this
+//                      unit (NetworkPhysicsSenders2008.cpp) and called by the receiver (below).
 //              index 1 ordered_non_unique on the double at value +8 with std::greater<double> (node impl +0x60).
 //              index 2 ordered_non_unique on the int at value +0x44 with std::less<int>: in_place 004caf40 is the
 //                      non-unique form (`v < prev` rejects, then `!(next < v)`), link_point 004cb280 uses setl.
@@ -45,7 +46,8 @@
 //            004cb540 and calculate_max_load 004ca090, both identical-code folded with the sender's); node: value
 //            0x280, ordered impl +0x280, hashed impl +0x290. Destructor 004b58f0 (delete_all_nodes 004b43c0 calls
 //            ~PartItem 004af950).
-//              index 0 hashed_unique on value +0 (shared_ptr, as above).
+//              index 0 hashed_unique on value +0 (shared_ptr, boost::hash; find 004c72b0, unchecked_rehash
+//                      004c7330, replace_ 004c8b70 and insert_ 004c8e40 call hash_value 004ca5b0).
 //              index 1 ordered_non_unique on the unsigned at value +8: link_point 004c7110 compares with setb and
 //                      always returns true (non-unique form).
 //   PartItem 0x280: ~PartItem 004af950 (compiler generated): eh vector destructor 006a165b over 8 History of 0x4c at
@@ -75,19 +77,13 @@ namespace RBX
 	class PartInstance;
 	class PhysicsService;
 
+	// Out-of-line hash of the part pointer (004ca5b0, cdecl: `return p + (p >> 3)` of part.get()). boost::hash<
+	// shared_ptr<PartInstance> > reaches it by ADL. The receiver's find 004c72b0, unchecked_rehash 004c7330, replace_
+	// 004c8b70 and insert_ 004c8e40 call it (004c72ba, 004c73e5, 004c8bc0, 004c8e60, `add esp, 4` after each).
+	std::size_t hash_value(const boost::shared_ptr<PartInstance>& part);
+
 	namespace Network
 	{
-		// Hashes the part pointer: boost::hash<PartInstance*> of part.get() (004cc5e0: x + (x >> 3)). Analog name. It
-		// derives from std::unary_function like boost::hash: a base-less (POD) hasher is value-initialized in the
-		// default ctor_args_list, which adds a byte store to both constructors (004ccb10, 004b5e80 have none).
-		struct PartHash : std::unary_function<boost::shared_ptr<PartInstance>, std::size_t>
-		{
-			std::size_t operator()(const boost::shared_ptr<PartInstance>& part) const
-			{
-				return boost::hash<PartInstance*>()(part.get());
-			}
-		};
-
 		class PhysicsSender : public IPhysicsSender
 		{
 			friend struct ::NativeNetworkPhysicsSendersLayout; // tests/NativeNetworkPhysicsSenders2008Layout.cpp
@@ -105,8 +101,7 @@ namespace RBX
 				PartItem,
 				boost::multi_index::indexed_by<
 					boost::multi_index::hashed_unique<
-						boost::multi_index::member<PartItem, boost::shared_ptr<PartInstance>, &PartItem::part>,
-						PartHash>,
+						boost::multi_index::member<PartItem, boost::shared_ptr<PartInstance>, &PartItem::part> >,
 					boost::multi_index::ordered_non_unique<
 						boost::multi_index::member<PartItem, double, &PartItem::priority>, std::greater<double> >,
 					boost::multi_index::ordered_non_unique<
@@ -148,13 +143,16 @@ namespace RBX
 				int head;                                                          // +0x18
 				int count;                                                         // +0x1c
 				History history[8];                                                // +0x20
+				// 004c7a10 (ret 4, only caller receivePacket 004c9120): copies the part (add-ref), zeroes interval (fldz /
+				// fstp qword +0x10), head and count (+0x18 / +0x1c); the eh vector constructor 006a1598 runs History()
+				// 004c76a0 over history[8]. The ordered key +8 is not written.
+				PartItem(const boost::shared_ptr<PartInstance>& part);
 			};
 			typedef boost::multi_index::multi_index_container<
 				PartItem,
 				boost::multi_index::indexed_by<
 					boost::multi_index::hashed_unique<
-						boost::multi_index::member<PartItem, boost::shared_ptr<PartInstance>, &PartItem::part>,
-						PartHash>,
+						boost::multi_index::member<PartItem, boost::shared_ptr<PartInstance>, &PartItem::part> >,
 					boost::multi_index::ordered_non_unique<
 						boost::multi_index::member<PartItem, unsigned int, &PartItem::timestamp> >
 				>

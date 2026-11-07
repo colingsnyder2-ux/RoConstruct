@@ -62,25 +62,46 @@ PS = 'PhysicsSender@' + NS
 IR = 'InterpolatingPhysicsReceiver@' + NS
 SI = 'UPartItem@' + PS        # sender item type in template arguments
 RI = 'UPartItem@' + IR        # receiver item type
+TWO_ARG = 'ABUPartItem@' + PS + 'PAU5234@@Z'  # insert_(const value_type&, node*) (not the hinted overload)
 
 # Rows: (address, symbol prefix, substrings the symbol must contain). Each spec must select exactly one function.
 SPECS = [
+    # the part hash boost::hash<shared_ptr<PartInstance> > reaches (both containers)
+    (0x4ca5b0, '?hash_value@RBX@@YAIABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z', []),
     # PhysicsSender
     (0x4ccb10, '??0' + PS + 'QAE@PAVReplicator@12@@Z', []),
     (0x4ccb90, '??1' + PS + 'UAE@XZ', []),
     (0x4ccde0, '??_G' + PS + 'UAEPAXI@Z', []),
-    (0x4cc400, '??0?$multi_index_container@' + SI, []),
-    (0x4cbdc0, '??0?$hashed_index@U?$member@' + SI, []),
+    (0x4cc400, '??0?$multi_index_container@' + SI, ['default_constructible_tuple_cons']),
+    (0x4cbdc0, '??0?$hashed_index@U?$member@' + SI, ['ABV?$allocator@']),
     (0x4cacc0, '?empty_initialize@?$ordered_index@U?$member@' + SI + 'N$07@', []),
     (0x4cadd0, '?empty_initialize@?$ordered_index@U?$member@' + SI + 'H$0EE@', []),
     (0x4cb540, '??0?$bucket_array@V?$allocator@' + SI, []),
     (0x4ca090, '?calculate_max_load@?$hashed_index@U?$member@' + SI, []),
     (0x4ccab0, '??1?$multi_index_container@' + SI, []),
     (0x4cc460, '?delete_all_nodes_@?$hashed_index@U?$member@' + SI, []),
+    # sender container members (explicit instantiation; batch 21)
+    (0x4c9b20, '?link@?$hashed_index@U?$member@' + SI, ['@234@PAUhashed_index_node_impl@234@@Z']),
+    (0x4c9d90, '??0PartItem@' + PS + 'QAE@ABU0123@@Z', []),
+    (0x4cad90, '?link_point@?$hashed_index@U?$member@' + SI, []),
+    (0x4cae60, '?in_place@?$ordered_index@U?$member@' + SI + 'N$07@', []),
+    (0x4caf40, '?in_place@?$ordered_index@U?$member@' + SI + 'H$0EE@', []),
+    (0x4cb010, '?insert_@?$index_base@' + SI, [TWO_ARG]),
+    (0x4cb060, '??4PartItem@' + PS + 'QAEAAU0123@ABU0123@@Z', []),
+    (0x4cb200, '?link_point@?$ordered_index@U?$member@' + SI + 'N$07@', []),
+    (0x4cb280, '?link_point@?$ordered_index@U?$member@' + SI + 'H$0EE@', []),
+    (0x4cb300, '?erase_@?$index_base@' + SI, []),
+    (0x4cb7b0, '?insert_@?$ordered_index@U?$member@' + SI + 'H$0EE@', [TWO_ARG]),
+    (0x4cb850, '?erase_@?$ordered_index@U?$member@' + SI + 'H$0EE@', []),
+    (0x4cb5c0, '?unchecked_rehash@?$hashed_index@U?$member@' + SI, []),
+    (0x4cbe20, '?reserve@?$hashed_index@U?$member@' + SI, []),
+    (0x4cbea0, '?insert_@?$ordered_index@U?$member@' + SI + 'N$07@', [TWO_ARG]),
+    (0x4cbf40, '?erase_@?$ordered_index@U?$member@' + SI + 'N$07@', []),
+    (0x4cc580, '?erase_@?$hashed_index@U?$member@' + SI, []),
     # InterpolatingPhysicsReceiver
     (0x4b5e80, '??0' + IR + 'QAE@PAVReplicator@12@@Z', []),
     (0x4b6290, '??_G' + IR + 'UAEPAXI@Z', []),
-    (0x4b0ae0, '??0?$multi_index_container@' + RI, []),
+    (0x4b0ae0, '??0?$multi_index_container@' + RI, ['default_constructible_tuple_cons']),
     (0x4acc30, '?empty_initialize@?$ordered_index@U?$member@' + RI + 'I$07@', []),
     (0x4cb540, '??0?$bucket_array@V?$allocator@' + RI, []),
     (0x4ca090, '?calculate_max_load@?$hashed_index@U?$member@' + RI, []),
@@ -91,6 +112,7 @@ SPECS = [
     # std templates reached by bucket_array (identical-code folded in the original)
     (0x4acf00, '??$_Lower_bound@PBIIH@std@@', []),
     (0x420b50, '??$_Allocate@Uhashed_index_node_impl@detail@multi_index@boost@@@std@@', []),
+    (0x420b50, '??$_Allocate@I@std@@YAPAIIPAI@Z', []),                      # ICF; sender unchecked_rehash 004cb5c0
 ]
 
 functions = [n for n, b, r in match.coff_functions(unit_obj.read_bytes()) if not nb.LOCAL_EH.match(n)]
@@ -109,6 +131,10 @@ EXTERNAL = {
     '??1scoped_connection@signals@boost@@QAE@XZ': 0x5954b0,         # 004ccbbf, 004ccbcc
     '??_M@YGXPAXIHP6EX0@Z@Z': 0x6a165b,                             # eh vector destructor iterator (004af982)
     REAL_2_32: 0x819778,                                            # 2^32 (004ca09d unsigned fild correction)
+    # PartItem(const&) 004c9d90 copies lastFrame through 00513220, whose evidence name is the identical-code-folded
+    # Matrix3::operator= (same body as the implicit Matrix3 copy constructor the compiled copy calls).
+    '??0Matrix3@G3D@@QAE@ABV01@@Z': 0x513220,
+    '??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z': 0x4025b0,   # PartItem::operator= 004cb060 (evidence name)
 }
 # The prime table of bucket_array_base (DIR32 in 004cb54e / 004cb553 / 004cb564): the original pushes 00824988 and
 # 008249f8 = its end; the static is bound to its start.
@@ -120,6 +146,9 @@ EXTERNAL[prime_names[0]] = 0x824988
 # Verify the folded data the externals name: the 2^32 constant and the prime table (first primes 53, 97, ...; 28
 # entries ending 4294967291).
 assert original.data(0x819778, 4) == struct.pack('<f', 4294967296.0)
+# 1.0f the sender hashed reserve 004cbe20 / unchecked_rehash compare with (checked by bytes)
+EXTERNAL['__real@3f800000'] = 0x827494
+assert original.data(0x827494, 4) == struct.pack('<f', 1.0)
 primes = struct.unpack('<28I', original.data(0x824988, 0x70))
 assert primes[:3] == (53, 97, 193) and primes[-1] == 4294967291, primes
 
@@ -129,6 +158,34 @@ EXTERNAL['__TI2?AVbad_alloc@std@@'] = 0x8d07d8
 catchable = d(0x8d07d8 + 12)
 assert [original.string(d(d(catchable + 4 + 4 * i) + 4) + 8) for i in range(d(catchable))] == [
     '.?AVbad_alloc@std@@', '.?AVexception@std@@']
+
+# boost 1.34.1 ordered_index_node_impl helpers (library code, not instantiated on RBX types; the receiver unit's
+# app-unit4bc-2008 receipt lists the same bodies as support rows): bound by the call sites of the sender index rows and
+# accepted only when the compiled body is relocation-masked exact at that address. Support rows, never counted.
+NODE_IMPL = '@ordered_index_node_impl@detail@multi_index@boost@@'
+SUPPORT = {
+    '?increment' + NODE_IMPL + 'SAXAAPAU1234@@Z': 0x4c66c0,
+    '?decrement' + NODE_IMPL + 'SAXAAPAU1234@@Z': 0x4c6710,
+    '?rotate_left' + NODE_IMPL: 0x4c6770,
+    '?rotate_right' + NODE_IMPL: 0x4c67f0,
+    '?rebalance' + NODE_IMPL + 'SAXPAU': 0x4c6870,
+    '?link' + NODE_IMPL: 0x4c6980,
+    '?rebalance_for_erase' + NODE_IMPL: 0x4c69e0,
+    '?restore' + NODE_IMPL: 0x4c9930,
+}
+support_rows = {}
+unit_bodies = {n: (b, r) for n, b, r in match.coff_functions(raw_unit)}
+for symbol in unit_bodies:
+    for prefix, value in SUPPORT.items():
+        if symbol.startswith(prefix):
+            assert symbol not in EXTERNAL, symbol
+            sbody, srefs = unit_bodies[symbol]
+            starget, strefs, _ = match.target('2008-06', '%08x' % value)
+            assert match.exact_match(starget, strefs, sbody, srefs), ('support body not exact', symbol, hex(value))
+            EXTERNAL[symbol] = value
+            support_rows[symbol] = '%08x (support body exact at the bound address)' % value
+# their own call targets are each other (rotate / rebalance): verified with the same binding
+support_verified = nb.verify(original, unit_obj, [(s, EXTERNAL[s]) for s in sorted(support_rows)], EXTERNAL)
 
 rows = nb.verify(original, unit_obj, [(s, a) for a, s in ROWS], EXTERNAL)
 own = {s: a for a, s in ROWS}
@@ -210,6 +267,11 @@ NOT_EXACT = [
                  'and the item update 004c9e30; declared only, bound through vtable 00826928 slot 1.'),
     ('004cce00', 'PhysicsSender::sendPackets (BitStream packet build, item copy 004c9d90, Replicator API); declared '
                  'only, bound through vtable slot 2.'),
+    ('004cbfb0', 'ordered_index<priority, greater<double>>::replace_ (503 B): byte-exact, but its call target, the '
+                 'index-2 replace_ 004cb8e0, is not (337 B original vs 495 B compiled from the explicit instantiation), '
+                 'so it is not counted.'),
+    ('004cb8e0', 'ordered_index<lastSendStep, less<int>>::replace_: 337 B original vs 495 B compiled (the boost 1.34.1 '
+                 'body with in_place inlined); not derived.'),
     ('004c8fa0', 'InterpolatingPhysicsReceiver::step (iterates items, 004c6f70 interpolation; World/Clump/MotorJoint '
                  'API); declared only, bound through vtable 00824ee4 slot 1.'),
     ('004c9120', 'InterpolatingPhysicsReceiver::receivePacket (Replicator / IdSerializer deserialize 004a8b60); '
@@ -230,7 +292,7 @@ receipt = {
               '+0x40, shared_ptr<PhysicsService> +0x44, scoped_connection +0x4c/+0x60; PartItem 0x50); '
               'InterpolatingPhysicsReceiver 0x3c (replicator +4, items +8 [hashed_unique part, ordered_non_unique '
               'unsigned +8]; PartItem 0x280 with History[8] of 0x4c at +0x20).',
-    'methods': rows, 'not_exact': NOT_EXACT, 'vtables': vtables, 'proposals': [],
+    'methods': rows, 'support_rows': support_verified, 'not_exact': NOT_EXACT, 'vtables': vtables, 'proposals': [],
     'exact_distinct_addresses': exact_addresses,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. The four '
              'slot bodies need the native Replicator and remain open.',
