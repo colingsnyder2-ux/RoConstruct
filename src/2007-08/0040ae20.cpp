@@ -1,4 +1,72 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
+// roc 2007-08 0040ae20  unit: CNullDoc  size: 189 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0040ae20
+//
+// 0040ae20  8b442404             mov eax, dword ptr [esp + 4]
+// 0040ae24  56                   push esi
+// 0040ae25  50                   push eax
+// 0040ae26  8bf1                 mov esi, ecx
+// 0040ae28  e8cf532200           call 0x6301fc
+// 0040ae2d  83f8ff               cmp eax, -1
+// 0040ae30  7506                 jne 0x40ae38
+// 0040ae32  0bc0                 or eax, eax
+// 0040ae34  5e                   pop esi
+// 0040ae35  c20400               ret 4
+// 0040ae38  57                   push edi
+// 0040ae39  6800e80000           push 0xe800
+// 0040ae3e  56                   push esi
+// 0040ae3f  8dbe08010000         lea edi, [esi + 0x108]
+// 0040ae45  6810000150           push 0x50010010
+// 0040ae4a  8bcf                 mov ecx, edi
+// 0040ae4c  e8ef452400           call 0x64f440
+// 0040ae51  85f6                 test esi, esi
+// 0040ae53  7405                 je 0x40ae5a
+// 0040ae55  8b4620               mov eax, dword ptr [esi + 0x20]
+// 0040ae58  eb02                 jmp 0x40ae5c
+// 0040ae5a  33c0                 xor eax, eax
+// 0040ae5c  898640010000         mov dword ptr [esi + 0x140], eax
+// 0040ae62  a1d8868c00           mov eax, dword ptr [0x8c86d8]
+// 0040ae67  85c0                 test eax, eax
+// 0040ae69  8b35ecd27700         mov esi, dword ptr [0x77d2ec]
+// 0040ae6f  7513                 jne 0x40ae84
+// 0040ae71  6a00                 push 0
+// 0040ae73  e8382e2300           call 0x63dcb0
+// 0040ae78  a1d8868c00           mov eax, dword ptr [0x8c86d8]
+// 0040ae7d  83c404               add esp, 4
+// 0040ae80  85c0                 test eax, eax
+// 0040ae82  7427                 je 0x40aeab
+// 0040ae84  83c004               add eax, 4
+// 0040ae87  50                   push eax
+// 0040ae88  ffd6                 call esi
+// 0040ae8a  833dd8868c0000       cmp dword ptr [0x8c86d8], 0
+// 0040ae91  750a                 jne 0x40ae9d
+// 0040ae93  6a00                 push 0
+// 0040ae95  e8162e2300           call 0x63dcb0
+// 0040ae9a  83c404               add esp, 4
+// 0040ae9d  8b0dd8868c00         mov ecx, dword ptr [0x8c86d8]
+// 0040aea3  51                   push ecx
+// 0040aea4  8bcf                 mov ecx, edi
+// 0040aea6  e8658b2300           call 0x643a10
+// 0040aeab  e820312400           call 0x64dfd0
+// 0040aeb0  83c004               add eax, 4
+// 0040aeb3  50                   push eax
+// 0040aeb4  ffd6                 call esi
+// 0040aeb6  e815312400           call 0x64dfd0
+// 0040aebb  50                   push eax
+// 0040aebc  8bcf                 mov ecx, edi
+// 0040aebe  e8cd8b2300           call 0x643a90
+// 0040aec3  8b17                 mov edx, dword ptr [edi]
+// 0040aec5  8b824c010000         mov eax, dword ptr [edx + 0x14c]
+// 0040aecb  6a00                 push 0
+// 0040aecd  6893000000           push 0x93
+// 0040aed2  8bcf                 mov ecx, edi
+// 0040aed4  ffd0                 call eax
+// 0040aed6  5f                   pop edi
+// 0040aed7  33c0                 xor eax, eax
+// 0040aed9  5e                   pop esi
+// 0040aeda  c20400               ret 4
+
 // from server: 100% by colin
 // roc 2008-06 0040e5b0  unit: CBrowserView  size: 189 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0040e5b0
@@ -151,7 +219,7 @@ struct Bar {
     typedef int (__thiscall *Dispatch)(Bar*, unsigned int, int);
 
     struct Table {
-        void* slots[85];
+        void* slots[83];
         Dispatch invoke;
     };
 
@@ -167,7 +235,7 @@ struct Bar {
 struct Browser {
     char reserved0[0x20];
     void* window;
-    char reserved1[0xF8];
+    char reserved1[0xE4];
     Bar bar;
 
     int BaseCreate(void*);

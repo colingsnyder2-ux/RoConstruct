@@ -1,4 +1,75 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
+// roc 2007-08 00419f80  unit: VDHTMLWindowService::?$BoundFuncDesc  size: 209 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00419f80
+//
+// 00419f80  6aff                 push -1
+// 00419f82  688cb17300           push 0x73b18c
+// 00419f87  64a100000000         mov eax, dword ptr fs:[0]
+// 00419f8d  50                   push eax
+// 00419f8e  51                   push ecx
+// 00419f8f  53                   push ebx
+// 00419f90  55                   push ebp
+// 00419f91  56                   push esi
+// 00419f92  57                   push edi
+// 00419f93  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00419f98  33c4                 xor eax, esp
+// 00419f9a  50                   push eax
+// 00419f9b  8d442418             lea eax, [esp + 0x18]
+// 00419f9f  64a300000000         mov dword ptr fs:[0], eax
+// 00419fa5  8b442430             mov eax, dword ptr [esp + 0x30]
+// 00419fa9  8b6c2434             mov ebp, dword ptr [esp + 0x34]
+// 00419fad  8bf1                 mov esi, ecx
+// 00419faf  89742414             mov dword ptr [esp + 0x14], esi
+// 00419fb3  8b4c2454             mov ecx, dword ptr [esp + 0x54]
+// 00419fb7  51                   push ecx
+// 00419fb8  50                   push eax
+// 00419fb9  c744242800000000     mov dword ptr [esp + 0x28], 0
+// 00419fc1  e84af1ffff           call 0x419110
+// 00419fc6  50                   push eax
+// 00419fc7  8bce                 mov ecx, esi
+// 00419fc9  e8e26d1500           call 0x570db0
+// 00419fce  8b542428             mov edx, dword ptr [esp + 0x28]
+// 00419fd2  8b44242c             mov eax, dword ptr [esp + 0x2c]
+// 00419fd6  c644242001           mov byte ptr [esp + 0x20], 1
+// 00419fdb  c70650787800         mov dword ptr [esi], 0x787850
+// 00419fe1  895628               mov dword ptr [esi + 0x28], edx
+// 00419fe4  89462c               mov dword ptr [esi + 0x2c], eax
+// 00419fe7  8d7e30               lea edi, [esi + 0x30]
+// 00419fea  e8113a1500           call 0x56da00
+// 00419fef  8d4c2438             lea ecx, [esp + 0x38]
+// 00419ff3  51                   push ecx
+// 00419ff4  8d4f04               lea ecx, [edi + 4]
+// 00419ff7  8907                 mov dword ptr [edi], eax
+// 00419ff9  e8a2a1ffff           call 0x4141a0
+// 00419ffe  c644242002           mov byte ptr [esp + 0x20], 2
+// 0041a003  8d5e14               lea ebx, [esi + 0x14]
+// 0041a006  e845331500           call 0x56d350
+// 0041a00b  57                   push edi
+// 0041a00c  8903                 mov dword ptr [ebx], eax
+// 0041a00e  e8ed391500           call 0x56da00
+// 0041a013  50                   push eax
+// 0041a014  6aff                 push -1
+// 0041a016  55                   push ebp
+// 0041a017  e824291100           call 0x52c940
+// 0041a01c  83c408               add esp, 8
+// 0041a01f  50                   push eax
+// 0041a020  8bcb                 mov ecx, ebx
+// 0041a022  e8d9331500           call 0x56d400
+// 0041a027  8d4c2438             lea ecx, [esp + 0x38]
+// 0041a02b  c7442420ffffffff     mov dword ptr [esp + 0x20], 0xffffffff
+// 0041a033  ff15ace67700         call dword ptr [0x77e6ac]
+// 0041a039  8bc6                 mov eax, esi
+// 0041a03b  8b4c2418             mov ecx, dword ptr [esp + 0x18]
+// 0041a03f  64890d00000000       mov dword ptr fs:[0], ecx
+// 0041a046  59                   pop ecx
+// 0041a047  5f                   pop edi
+// 0041a048  5e                   pop esi
+// 0041a049  5d                   pop ebp
+// 0041a04a  5b                   pop ebx
+// 0041a04b  83c410               add esp, 0x10
+// 0041a04e  c23000               ret 0x30
+
 // from server: 100% by king_originala
 // roc 2008-06 0041be50  unit: VDHTMLWindow::?$BoundFuncDesc  size: 195 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0041be50
@@ -91,7 +162,7 @@ struct Base {
     virtual ~Base();
     char padding[16];
     Entry entry;
-    char remainder[32];
+    char remainder[16];
 
     Base(void* descriptor);
 };

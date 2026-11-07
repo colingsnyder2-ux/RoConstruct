@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -56,7 +57,7 @@ struct S_func_0070bdf0 {
 struct CRobloxView {
     char padding0[0x54];
     void* handle;
-    char padding1[0x58];
+    char padding1[0x30];
     S_func_0070bdf0 state;
 
     void baseActivate(int active, void* activated, void* deactivated);

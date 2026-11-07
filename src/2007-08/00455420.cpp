@@ -1,4 +1,47 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
+// roc 2007-08 00455420  unit: RBX::NullController  size: 134 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00455420
+//
+// 00455420  6aff                 push -1
+// 00455422  682ba57400           push 0x74a52b
+// 00455427  64a100000000         mov eax, dword ptr fs:[0]
+// 0045542d  50                   push eax
+// 0045542e  83ec08               sub esp, 8
+// 00455431  56                   push esi
+// 00455432  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00455437  33c4                 xor eax, esp
+// 00455439  50                   push eax
+// 0045543a  8d442410             lea eax, [esp + 0x10]
+// 0045543e  64a300000000         mov dword ptr fs:[0], eax
+// 00455444  c744240800000000     mov dword ptr [esp + 8], 0
+// 0045544c  68e8000000           push 0xe8
+// 00455451  c644240c00           mov byte ptr [esp + 0xc], 0
+// 00455456  ff15d0e67700         call dword ptr [0x77e6d0]
+// 0045545c  83c404               add esp, 4
+// 0045545f  8944240c             mov dword ptr [esp + 0xc], eax
+// 00455463  85c0                 test eax, eax
+// 00455465  c744241800000000     mov dword ptr [esp + 0x18], 0
+// 0045546d  7409                 je 0x455478
+// 0045546f  8bc8                 mov ecx, eax
+// 00455471  e83affffff           call 0x4553b0
+// 00455476  eb02                 jmp 0x45547a
+// 00455478  33c0                 xor eax, eax
+// 0045547a  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0045547e  8b742420             mov esi, dword ptr [esp + 0x20]
+// 00455482  51                   push ecx
+// 00455483  50                   push eax
+// 00455484  8bce                 mov ecx, esi
+// 00455486  c7442420ffffffff     mov dword ptr [esp + 0x20], 0xffffffff
+// 0045548e  e80deaffff           call 0x453ea0
+// 00455493  8bc6                 mov eax, esi
+// 00455495  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 00455499  64890d00000000       mov dword ptr fs:[0], ecx
+// 004554a0  59                   pop ecx
+// 004554a1  5e                   pop esi
+// 004554a2  83c414               add esp, 0x14
+// 004554a5  c3                   ret 
+
 // from server: 100% by tester
 // roc 2008-06 00458590  unit: RBX::VInstance::?$NonFactoryProduct  size: 120 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00458590
@@ -80,7 +123,7 @@ public:
 
 class GlobalSettings : public Instance
 {
-    char data[0x130 - 4];
+    char data[0xe8 - 4];
 public:
     GlobalSettings();
 };

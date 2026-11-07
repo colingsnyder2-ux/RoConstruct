@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -44,7 +45,7 @@ struct Node {
 };
 
 struct Map {
-    char data[36];
+    char data[16];
     void** lookup(void* const* key);
 };
 

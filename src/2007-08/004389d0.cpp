@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -75,7 +76,7 @@ String __cdecl makeValue(int);
 
 struct Binding
 {
-    char data[100];
+    char data[92];
 };
 
 struct Base
@@ -89,7 +90,7 @@ struct Base
     void* secondaryTable;
     char reserved24[104];
     int type;
-    char reserved90[20];
+    char reserved90[16];
     String value;
     Binding binding;
 };
