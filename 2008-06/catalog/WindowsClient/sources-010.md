@@ -3,16 +3,101 @@
 [Project index](README.md) · [Previous](sources-009.md) · [Next](sources-011.md)
 
 <details>
+<summary>native-headers/COutputView.h — diverged; 6 content versions</summary>
+
+**`18a34454990d`** · proof not assessed
+- canonical · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/COutputView.h)
+- fork · coldek · [native-headers/COutputView.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/COutputView.h)
+- fork · mewpokemons · [native-headers/COutputView.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/COutputView.h)
+- fork · mewpokemons · [native-headers/COutputView.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/COutputView.h)
+- fork · mewpokemons · [native-headers/COutputView.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/COutputView.h)
+
+<details><summary>8 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`5c0e5d4ed81d`** · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/COutputView.h`
+- local · `local/findings/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`6ca00c5a4e1b`** · proof not assessed
+- public · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/COutputView.h)
+
+**`784353be1921`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a53da7d3bf2f`** · proof not assessed
+
+<details><summary>25 retained local origins</summary>
+
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`c70f1939aa07`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>native-headers/CPropGrid.h — diverged; 10 content versions</summary>
 
 **`0329efbcd9c3`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CPropGrid.h)
+- canonical · colingsnyder2-ux · [native-headers/CPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CPropGrid.h)
 - fork · coldek · [native-headers/CPropGrid.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CPropGrid.h)
 - fork · mewpokemons · [native-headers/CPropGrid.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CPropGrid.h)
 - fork · mewpokemons · [native-headers/CPropGrid.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CPropGrid.h)
 - fork · mewpokemons · [native-headers/CPropGrid.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CPropGrid.h)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-headers/CPropGrid.h`
 - local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-headers/CPropGrid.h`
@@ -24,6 +109,7 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -45,7 +131,7 @@
 
 **`1eedf183e3e2`** · proof not assessed
 
-<details><summary>79 retained local origins</summary>
+<details><summary>81 retained local origins</summary>
 
 - local · `local/integrators/1c8dbb0c65904ffb87b50e428b665158/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
@@ -97,6 +183,8 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/01fcaea6f458429ea23a1a352fa78420/baseline/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/1ea4b9b1e55f48df88a82b90bce02d25/baseline/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/31c53bb11920499fb14ddd67eab86efd/baseline/rebuild/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
@@ -146,13 +234,7 @@
 </details>
 
 **`56f18fe7feff`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CPropGrid.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [native-headers/CPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CPropGrid.h)
 
 **`5dde9d78c9ab`** · proof not assessed
 
@@ -170,9 +252,10 @@
 
 **`7eb770952fbe`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CPropGrid.h`
+- local · `local/findings/2008-06/native-headers/CPropGrid.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -212,13 +295,13 @@
 </details>
 
 **`2255e40573f0`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h)
+- canonical · colingsnyder2-ux · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h)
 - fork · coldek · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h)
 - fork · mewpokemons · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h)
 - fork · mewpokemons · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h)
 - fork · mewpokemons · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h)
 
-<details><summary>7 retained local origins</summary>
+<details><summary>8 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
@@ -227,14 +310,16 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`5478e580847d`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h`
+- local · `local/findings/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -247,17 +332,11 @@
 </details>
 
 **`c2a93b69f5ba`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CPropertyGridItemBrickColor.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CPropertyGridItemBrickColor.h)
 
 **`f691b9bd1c12`** · proof not assessed
 
-<details><summary>20 retained local origins</summary>
+<details><summary>22 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
@@ -277,6 +356,8 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 
@@ -285,22 +366,24 @@
 </details>
 
 <details>
-<summary>native-headers/CRbxDocTemplate.h — public-only; 3 content versions</summary>
+<summary>native-headers/CRbxDocTemplate.h — public-only; 4 content versions</summary>
 
 **`6c81ae3c8eda`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CRbxDocTemplate.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CRbxDocTemplate.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CRbxDocTemplate.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [native-headers/CRbxDocTemplate.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CRbxDocTemplate.h)
 
 **`8fa990f2f7cf`** · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
 - local · `rebuild/2008-06/native-headers/CRbxDocTemplate.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`c63a28501ea4`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-headers/CRbxDocTemplate.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -319,15 +402,16 @@
 
 **`381296b8465d`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CReflectionTreeView.h`
+- local · `local/findings/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`69b8517053a9`** · proof not assessed
 
-<details><summary>23 retained local origins</summary>
+<details><summary>25 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
@@ -350,6 +434,8 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 
@@ -364,22 +450,16 @@
 </details>
 
 **`c3783f3d9c90`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CReflectionTreeView.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [native-headers/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CReflectionTreeView.h)
 
 **`c99b6875dd72`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h)
+- canonical · colingsnyder2-ux · [native-headers/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h)
 - fork · coldek · [native-headers/CReflectionTreeView.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CReflectionTreeView.h)
 - fork · mewpokemons · [native-headers/CReflectionTreeView.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CReflectionTreeView.h)
 - fork · mewpokemons · [native-headers/CReflectionTreeView.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CReflectionTreeView.h)
 - fork · mewpokemons · [native-headers/CReflectionTreeView.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CReflectionTreeView.h)
 
-<details><summary>7 retained local origins</summary>
+<details><summary>8 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
@@ -388,6 +468,7 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -402,11 +483,17 @@
 </details>
 
 <details>
-<summary>native-headers/CRobloxApp.h — equivalent; 7 content versions</summary>
+<summary>native-headers/CRobloxApp.h — equivalent; 8 content versions</summary>
 
 **`25b8a6a3223f`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CRobloxApp.h)
-- canonical · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CRobloxApp.h)
+- public · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CRobloxApp.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CRobloxApp.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`4ef0762491fc`** · proof not assessed
 
@@ -426,17 +513,28 @@
 
 **`6e6c9b2f5b6c`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CRobloxApp.h`
+- local · `local/findings/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`802b0cece65e`** · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`a378c4732806`** · proof not assessed
+- archive · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CRobloxApp.h)
 
 <details><summary>1 retained local origins</summary>
 
-- local · `local/findings/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-organization-20261107/navigation/preserved-previous/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -491,16 +589,10 @@
 </details>
 
 <details>
-<summary>native-headers/CRobloxCommandLineInfo.h — public-only; 3 content versions</summary>
+<summary>native-headers/CRobloxCommandLineInfo.h — public-only; 4 content versions</summary>
 
 **`1ab6e307ccd5`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CRobloxCommandLineInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CRobloxCommandLineInfo.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CRobloxCommandLineInfo.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [native-headers/CRobloxCommandLineInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CRobloxCommandLineInfo.h)
 
 **`77c93ad2ce15`** · proof not assessed
 
@@ -518,19 +610,27 @@
 
 </details>
 
+**`de6d6d96a668`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-headers/CRobloxCommandLineInfo.h` · root `b52aa15feaea5a0c`
+
+</details>
+
 </details>
 
 <details>
 <summary>native-headers/CRobloxDHtmlDialog.h — diverged; 7 content versions</summary>
 
 **`4301ebf2d657`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h)
 - fork · coldek · [native-headers/CRobloxDHtmlDialog.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h)
 - fork · mewpokemons · [native-headers/CRobloxDHtmlDialog.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h)
 - fork · mewpokemons · [native-headers/CRobloxDHtmlDialog.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h)
 - fork · mewpokemons · [native-headers/CRobloxDHtmlDialog.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h`
 - local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h`
@@ -542,6 +642,7 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -555,7 +656,7 @@
 
 **`8ebd98fc957c`** · proof not assessed
 
-<details><summary>59 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/work/native-linked-preflight/8e9fcab8892f714812de/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
@@ -589,6 +690,8 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/01fcaea6f458429ea23a1a352fa78420/baseline/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/1ea4b9b1e55f48df88a82b90bce02d25/baseline/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/31c53bb11920499fb14ddd67eab86efd/baseline/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
@@ -699,13 +802,7 @@
 </details>
 
 **`b97b8268b092`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CRobloxDHtmlDialog.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CRobloxDHtmlDialog.h)
 
 **`e270858a273e`** · proof not assessed
 
@@ -717,9 +814,10 @@
 
 **`fefc8d6d8d53`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h`
+- local · `local/findings/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -729,13 +827,13 @@
 <summary>native-headers/CRobloxDoc.h — diverged; 10 content versions</summary>
 
 **`0e9132224535`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CRobloxDoc.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CRobloxDoc.h)
 - fork · coldek · [native-headers/CRobloxDoc.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CRobloxDoc.h)
 - fork · mewpokemons · [native-headers/CRobloxDoc.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CRobloxDoc.h)
 - fork · mewpokemons · [native-headers/CRobloxDoc.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CRobloxDoc.h)
 - fork · mewpokemons · [native-headers/CRobloxDoc.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CRobloxDoc.h)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-headers/CRobloxDoc.h`
 - local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-headers/CRobloxDoc.h`
@@ -747,6 +845,7 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -896,17 +995,11 @@
 </details>
 
 **`682036bf3a18`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CRobloxDoc.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [native-headers/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CRobloxDoc.h)
 
 **`786fd3a29e5f`** · proof not assessed
 
-<details><summary>52 retained local origins</summary>
+<details><summary>54 retained local origins</summary>
 
 - local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/work/native-linked-preflight/8e9fcab8892f714812de/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
@@ -935,6 +1028,8 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/01fcaea6f458429ea23a1a352fa78420/baseline/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/1ea4b9b1e55f48df88a82b90bce02d25/baseline/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/31c53bb11920499fb14ddd67eab86efd/baseline/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
@@ -965,9 +1060,10 @@
 
 **`bd99b985fe42`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CRobloxDoc.h`
+- local · `local/findings/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -994,9 +1090,10 @@
 
 **`0ac141c7d27c`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CRobloxReportSubViews.h`
+- local · `local/findings/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1017,17 +1114,11 @@
 </details>
 
 **`384d5f5fe526`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CRobloxReportSubViews.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CRobloxReportSubViews.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [native-headers/CRobloxReportSubViews.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CRobloxReportSubViews.h)
 
 **`3f4db83582de`** · proof not assessed
 
-<details><summary>20 retained local origins</summary>
+<details><summary>22 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
@@ -1047,19 +1138,21 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`f1d6b9b5b7e7`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CRobloxReportSubViews.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CRobloxReportSubViews.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxReportSubViews.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CRobloxReportSubViews.h)
 - fork · coldek · [native-headers/CRobloxReportSubViews.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CRobloxReportSubViews.h)
 - fork · mewpokemons · [native-headers/CRobloxReportSubViews.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CRobloxReportSubViews.h)
 - fork · mewpokemons · [native-headers/CRobloxReportSubViews.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CRobloxReportSubViews.h)
 - fork · mewpokemons · [native-headers/CRobloxReportSubViews.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CRobloxReportSubViews.h)
 
-<details><summary>7 retained local origins</summary>
+<details><summary>8 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
@@ -1068,6 +1161,7 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CRobloxReportSubViews.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1086,7 +1180,7 @@
 
 **`5640eb51278d`** · proof not assessed
 
-<details><summary>18 retained local origins</summary>
+<details><summary>20 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
@@ -1104,6 +1198,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
 
@@ -1132,13 +1228,7 @@
 </details>
 
 **`9f02a51e2ac3`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CRobloxReportView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CRobloxReportView.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [native-headers/CRobloxReportView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CRobloxReportView.h)
 
 **`b9296637c15e`** · proof not assessed
 
@@ -1149,11 +1239,11 @@
 </details>
 
 **`cabdbf745611`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CRobloxReportView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CRobloxReportView.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxReportView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CRobloxReportView.h)
 - fork · mewpokemons · [native-headers/CRobloxReportView.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CRobloxReportView.h)
 - fork · mewpokemons · [native-headers/CRobloxReportView.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CRobloxReportView.h)
 
-<details><summary>6 retained local origins</summary>
+<details><summary>7 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
@@ -1161,14 +1251,16 @@
 - local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`fdf8de3a9b7c`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CRobloxReportView.h`
+- local · `local/findings/2008-06/native-headers/CRobloxReportView.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1201,11 +1293,11 @@
 </details>
 
 **`0ef2e22a195b`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CRobloxView.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CRobloxView.h)
 - fork · mewpokemons · [native-headers/CRobloxView.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CRobloxView.h)
 - fork · mewpokemons · [native-headers/CRobloxView.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CRobloxView.h)
 
-<details><summary>7 retained local origins</summary>
+<details><summary>8 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
@@ -1214,6 +1306,7 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1352,20 +1445,15 @@
 
 **`6b95dffc2733`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CRobloxView.h`
+- local · `local/findings/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`7469e596714a`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CRobloxView.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [native-headers/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CRobloxView.h)
 
 **`775685e36eaf`** · proof not assessed
 - fork · coldek · [native-headers/CRobloxView.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CRobloxView.h)
@@ -1408,7 +1496,7 @@
 
 **`e1a6b373864a`** · proof not assessed
 
-<details><summary>17 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
@@ -1425,6 +1513,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 
@@ -1436,22 +1526,16 @@
 <summary>native-headers/CSaveToRobloxDialog.h — diverged; 6 content versions</summary>
 
 **`4e4b68be0928`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CSaveToRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CSaveToRobloxDialog.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [native-headers/CSaveToRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CSaveToRobloxDialog.h)
 
 **`5f30c339ddcd`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CSaveToRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CSaveToRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h)
 - fork · coldek · [native-headers/CSaveToRobloxDialog.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h)
 - fork · mewpokemons · [native-headers/CSaveToRobloxDialog.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h)
 - fork · mewpokemons · [native-headers/CSaveToRobloxDialog.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h)
 - fork · mewpokemons · [native-headers/CSaveToRobloxDialog.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-headers/CSaveToRobloxDialog.h`
 - local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-headers/CSaveToRobloxDialog.h`
@@ -1463,6 +1547,7 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1484,7 +1569,7 @@
 
 **`da1215c1f807`** · proof not assessed
 
-<details><summary>59 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/work/native-linked-preflight/8e9fcab8892f714812de/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
@@ -1518,6 +1603,8 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/01fcaea6f458429ea23a1a352fa78420/baseline/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/1ea4b9b1e55f48df88a82b90bce02d25/baseline/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-recovery-server/31c53bb11920499fb14ddd67eab86efd/baseline/rebuild/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
@@ -1550,9 +1637,10 @@
 
 **`f9117f11e22e`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CSaveToRobloxDialog.h`
+- local · `local/findings/2008-06/native-headers/CSaveToRobloxDialog.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1571,7 +1659,7 @@
 
 **`31a7b980e675`** · proof not assessed
 
-<details><summary>20 retained local origins</summary>
+<details><summary>22 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
@@ -1591,36 +1679,33 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`3cf6d6577f84`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CScriptDoc.h)
+- public · colingsnyder2-ux · [native-headers/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CScriptDoc.h)
 
-<details><summary>1 retained local origins</summary>
+**`4df7c9cf9687`** · proof not assessed
 
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CScriptDoc.h`
 - local · `local/findings/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`4df7c9cf9687`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CScriptDoc.h`
-
-</details>
-
 **`501da49ea3ac`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CScriptDoc.h)
+- canonical · colingsnyder2-ux · [native-headers/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CScriptDoc.h)
 - fork · coldek · [native-headers/CScriptDoc.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CScriptDoc.h)
 - fork · mewpokemons · [native-headers/CScriptDoc.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CScriptDoc.h)
 - fork · mewpokemons · [native-headers/CScriptDoc.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CScriptDoc.h)
 - fork · mewpokemons · [native-headers/CScriptDoc.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CScriptDoc.h)
 
-<details><summary>7 retained local origins</summary>
+<details><summary>8 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
@@ -1629,6 +1714,7 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CScriptDoc.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1647,7 +1733,7 @@
 
 **`15f012771b5e`** · proof not assessed
 
-<details><summary>18 retained local origins</summary>
+<details><summary>20 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
@@ -1665,6 +1751,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 
@@ -1697,28 +1785,23 @@
 </details>
 
 **`8187c0eba0e4`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CScriptEditor.h)
+- public · colingsnyder2-ux · [native-headers/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/CScriptEditor.h)
 
-<details><summary>1 retained local origins</summary>
+**`9492059ce406`** · proof not assessed
 
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CScriptEditor.h`
 - local · `local/findings/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`9492059ce406`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CScriptEditor.h`
-
-</details>
-
 **`98b51fb5510b`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CScriptEditor.h)
+- canonical · colingsnyder2-ux · [native-headers/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/CScriptEditor.h)
 - fork · mewpokemons · [native-headers/CScriptEditor.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CScriptEditor.h)
 - fork · mewpokemons · [native-headers/CScriptEditor.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CScriptEditor.h)
 
-<details><summary>6 retained local origins</summary>
+<details><summary>7 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
@@ -1726,6 +1809,7 @@
 - local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1738,93 +1822,6 @@
 - local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CScriptEditor.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-headers/CSecureHtmlView.h — diverged; 6 content versions</summary>
-
-**`55ab30eda2e7`** · proof not assessed
-- public · colingsnyder2-ux · [native-headers/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/CSecureHtmlView.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`65407228ad3e`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`9a4042b152f2`** · proof not assessed
-
-<details><summary>23 retained local origins</summary>
-
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`b3db00d59961`** · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h)
-- fork · coldek · [native-headers/CSecureHtmlView.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CSecureHtmlView.h)
-- fork · mewpokemons · [native-headers/CSecureHtmlView.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CSecureHtmlView.h)
-- fork · mewpokemons · [native-headers/CSecureHtmlView.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CSecureHtmlView.h)
-- fork · mewpokemons · [native-headers/CSecureHtmlView.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CSecureHtmlView.h)
-
-<details><summary>7 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`eb5b1e674d84`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CSecureHtmlView.h`
-
-</details>
-
-**`fd58ef29733d`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/CSecureHtmlView.h` · root `b52aa15feaea5a0c`
 
 </details>
 

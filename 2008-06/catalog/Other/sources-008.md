@@ -3,23 +3,124 @@
 [Project index](README.md) · [Previous](sources-007.md) · [Next](sources-009.md)
 
 <details>
-<summary>native-headers/engine-world/v8world/ContactManager.h — diverged; 7 content versions</summary>
+<summary>native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp — diverged; 6 content versions</summary>
 
-**`1bd7ffc7d2f6`** · proof not assessed
-- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/engine-world/v8world/ContactManager.h)
+**`170be5d9a564`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>23 retained local origins</summary>
 
-- local · `local/findings/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 
 </details>
 
+**`53cd79b64a52`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`73de1fd0afed`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7f13fbebdb2a`** · proof not assessed
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
+- fork · mewpokemons · [boost/shared_ptr.hpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
+- fork · mewpokemons · [boost/shared_ptr.hpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
+
+<details><summary>8 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`9935b6e76ea7`** · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp`
+- local · `local/findings/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d31c61c547db`** · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
+
+</details>
+
+<details>
+<summary>native-headers/engine-world/engine-world/v8world/ContactManager.h — candidate-only; 1 content versions</summary>
+
+**`b66e8b4ba40a`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/engine-world/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-headers/engine-world/engine-world/v8world/World.h — candidate-only; 1 content versions</summary>
+
+**`05985bfdbd22`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/engine-world/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-headers/engine-world/v8world/ContactManager.h — diverged; 7 content versions</summary>
+
+**`1bd7ffc7d2f6`** · proof not assessed
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/engine-world/v8world/ContactManager.h)
+
 **`3a7baadcbb8d`** · proof not assessed
-- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 - fork · mewpokemons · [v8world/ContactManager.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 - fork · mewpokemons · [v8world/ContactManager.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 
-<details><summary>6 retained local origins</summary>
+<details><summary>7 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
@@ -27,12 +128,13 @@
 - local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`49af3a11953b`** · proof not assessed
 
-<details><summary>14 retained local origins</summary>
+<details><summary>16 retained local origins</summary>
 
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
@@ -46,6 +148,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 
@@ -80,9 +184,10 @@
 
 **`c6c48083d5f2`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h`
+- local · `local/findings/2008-06/native-headers/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -112,7 +217,7 @@
 
 **`64c069e43dd2`** · proof not assessed
 
-<details><summary>17 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
@@ -129,6 +234,8 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 
@@ -143,13 +250,7 @@
 </details>
 
 **`bbb36aeedcdb`** · proof not assessed
-- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/engine-world/v8world/World.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/engine-world/v8world/World.h)
 
 **`eaba202501dd`** · proof not assessed
 
@@ -160,11 +261,11 @@
 </details>
 
 **`ef02e3a94a57`** · proof not assessed
-- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
 - fork · mewpokemons · [v8world/World.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
 - fork · mewpokemons · [v8world/World.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
 
-<details><summary>6 retained local origins</summary>
+<details><summary>7 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
@@ -172,14 +273,16 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`f50b7dbe17eb`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/engine-world/v8world/World.h`
+- local · `local/findings/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -189,11 +292,11 @@
 <summary>native-headers/gui/ArrowPanel.h — diverged; 6 content versions</summary>
 
 **`095b55f913d6`** · proof not assessed
-- canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
+- canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
 - fork · mewpokemons · [gui/ArrowPanel.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
 - fork · mewpokemons · [gui/ArrowPanel.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>10 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
@@ -204,6 +307,7 @@
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -217,20 +321,15 @@
 
 **`5a7633a311b8`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/ArrowPanel.h`
+- local · `local/findings/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`a555f0ed7fc5`** · proof not assessed
-- public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/gui/ArrowPanel.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/gui/ArrowPanel.h)
 
 **`ab556783628f`** · proof not assessed
 
@@ -242,7 +341,7 @@
 
 **`e2e3895de7fa`** · proof not assessed
 
-<details><summary>12 retained local origins</summary>
+<details><summary>14 retained local origins</summary>
 
 - local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
@@ -254,6 +353,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 
@@ -281,17 +382,11 @@
 </details>
 
 **`a1a14ff296ac`** · proof not assessed
-- public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/gui/ChatOutput.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/gui/ChatOutput.h)
 
 **`bc38868dd543`** · proof not assessed
 
-<details><summary>12 retained local origins</summary>
+<details><summary>14 retained local origins</summary>
 
 - local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
@@ -303,17 +398,19 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`c1d831969a62`** · proof not assessed
-- canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
+- canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
 - fork · mewpokemons · [gui/ChatOutput.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/ChatOutput.h)
 - fork · mewpokemons · [gui/ChatOutput.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/ChatOutput.h)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>10 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
@@ -324,14 +421,16 @@
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`f38ab1fb9e4e`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/ChatOutput.h`
+- local · `local/findings/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -350,7 +449,7 @@
 
 **`9b98325f62a9`** · proof not assessed
 
-<details><summary>12 retained local origins</summary>
+<details><summary>14 retained local origins</summary>
 
 - local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
@@ -362,6 +461,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 
@@ -369,20 +470,15 @@
 
 **`b6446e3eb75b`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/EquationDisplay.h`
+- local · `local/findings/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`c0bb1c6e2c6b`** · proof not assessed
-- public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/gui/EquationDisplay.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/gui/EquationDisplay.h)
 
 **`d95f93c1f842`** · proof not assessed
 
@@ -393,11 +489,11 @@
 </details>
 
 **`de2062619c02`** · proof not assessed
-- canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
+- canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
 - fork · mewpokemons · [gui/EquationDisplay.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
 - fork · mewpokemons · [gui/EquationDisplay.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>10 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
@@ -408,6 +504,7 @@
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -421,20 +518,15 @@
 
 **`4fc98cc3efba`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/Gui.h`
+- local · `local/findings/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`5d4d445d23dc`** · proof not assessed
-- public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/gui/Gui.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/gui/Gui.h)
 
 **`6caa3b383263`** · proof not assessed
 
@@ -454,7 +546,7 @@
 
 **`a4eb91058b83`** · proof not assessed
 
-<details><summary>23 retained local origins</summary>
+<details><summary>25 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
@@ -477,6 +569,8 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 
@@ -493,12 +587,12 @@
 </details>
 
 **`b44fa877b939`** · proof not assessed
-- canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/gui/Gui.h)
+- canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/gui/Gui.h)
 - fork · coldek · [gui/Gui.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/gui/Gui.h)
 - fork · mewpokemons · [gui/Gui.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/gui/Gui.h)
 - fork · mewpokemons · [gui/Gui.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/Gui.h)
 
-<details><summary>6 retained local origins</summary>
+<details><summary>7 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
@@ -506,6 +600,7 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -648,9 +743,10 @@
 
 **`20a7088f5bb6`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/HealthHud.h`
+- local · `local/findings/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -664,7 +760,7 @@
 
 **`9d3e313362d4`** · proof not assessed
 
-<details><summary>12 retained local origins</summary>
+<details><summary>14 retained local origins</summary>
 
 - local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
@@ -676,26 +772,22 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`c3afd10122ef`** · proof not assessed
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/gui/HealthHud.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/gui/HealthHud.h)
 
 **`c8025463ceb6`** · proof not assessed
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
+- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
 - fork · mewpokemons · [gui/HealthHud.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/HealthHud.h)
 - fork · mewpokemons · [gui/HealthHud.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/HealthHud.h)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>10 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
@@ -706,6 +798,7 @@
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -732,15 +825,16 @@
 
 **`6626681b4456`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/ScoreHud.h`
+- local · `local/findings/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`b28bfd1cc3df`** · proof not assessed
 
-<details><summary>12 retained local origins</summary>
+<details><summary>14 retained local origins</summary>
 
 - local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
@@ -752,6 +846,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
 
@@ -761,10 +857,10 @@
 - fork · mewpokemons · [gui/ScoreHud.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/ScoreHud.h)
 
 **`e64f8b21c3ae`** · proof not assessed
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
+- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
 - fork · mewpokemons · [gui/ScoreHud.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/ScoreHud.h)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>10 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
@@ -775,17 +871,12 @@
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`e7002bca2bf8`** · proof not assessed
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/gui/ScoreHud.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/gui/ScoreHud.h)
 
 **`f6b9e924894a`** · proof not assessed
 
@@ -801,11 +892,11 @@
 <summary>native-headers/gui/Widget.h — diverged; 6 content versions</summary>
 
 **`4a084418e0f9`** · proof not assessed
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
+- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
 - fork · mewpokemons · [gui/Widget.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/Widget.h)
 - fork · mewpokemons · [gui/Widget.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/Widget.h)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>10 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
@@ -816,6 +907,7 @@
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -837,24 +929,19 @@
 
 **`57e292c682fc`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/Widget.h`
-
-</details>
-
-**`87c7ba4b3d55`** · proof not assessed
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/gui/Widget.h)
-
-<details><summary>1 retained local origins</summary>
-
 - local · `local/findings/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
 
 </details>
 
+**`87c7ba4b3d55`** · proof not assessed
+- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/gui/Widget.h)
+
 **`ae4e170c7615`** · proof not assessed
 
-<details><summary>12 retained local origins</summary>
+<details><summary>14 retained local origins</summary>
 
 - local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
@@ -866,6 +953,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
 
@@ -878,7 +967,7 @@
 
 **`0a265346e648`** · proof not assessed
 
-<details><summary>12 retained local origins</summary>
+<details><summary>14 retained local origins</summary>
 
 - local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
@@ -890,6 +979,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
 
@@ -897,9 +988,10 @@
 
 **`4c57afe77af1`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/WidgetButtons.h`
+- local · `local/findings/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -912,11 +1004,11 @@
 </details>
 
 **`bc71b95fea8e`** · proof not assessed
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
+- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
 - fork · mewpokemons · [gui/WidgetButtons.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
 - fork · mewpokemons · [gui/WidgetButtons.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>10 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
@@ -927,6 +1019,7 @@
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -939,13 +1032,7 @@
 </details>
 
 **`fbd35cd20ae3`** · proof not assessed
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/gui/WidgetButtons.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/gui/WidgetButtons.h)
 
 </details>
 
@@ -954,9 +1041,10 @@
 
 **`328e04a851c1`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/WidgetChat.h`
+- local · `local/findings/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -977,17 +1065,11 @@
 </details>
 
 **`6c8f38d6f792`** · proof not assessed
-- public · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/gui/WidgetChat.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/gui/WidgetChat.h)
 
 **`79d8c6389b52`** · proof not assessed
 
-<details><summary>12 retained local origins</summary>
+<details><summary>14 retained local origins</summary>
 
 - local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
@@ -999,17 +1081,19 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`8d7da0b13137`** · proof not assessed
-- canonical · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h)
+- canonical · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h)
 - fork · mewpokemons · [gui/WidgetChat.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/WidgetChat.h)
 - fork · mewpokemons · [gui/WidgetChat.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/WidgetChat.h)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>10 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
@@ -1020,6 +1104,7 @@
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1030,18 +1115,19 @@
 
 **`03e8d892eee0`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/WidgetMenuItem.h`
+- local · `local/findings/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`1084b28a8738`** · proof not assessed
-- canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h)
+- canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h)
 - fork · mewpokemons · [gui/WidgetMenuItem.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h)
 - fork · mewpokemons · [gui/WidgetMenuItem.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>10 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
@@ -1052,21 +1138,16 @@
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`1258a7043fa3`** · proof not assessed
-- public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/gui/WidgetMenuItem.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/gui/WidgetMenuItem.h)
 
 **`aa31d1024c83`** · proof not assessed
 
-<details><summary>12 retained local origins</summary>
+<details><summary>14 retained local origins</summary>
 
 - local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
@@ -1078,6 +1159,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 
@@ -1105,7 +1188,7 @@
 <summary>native-headers/leaves2008/BlockBlockContact2008.h — candidate-only; 1 content versions</summary>
 
 **`08f31bc78588`** · proof not assessed
-- draft · colingsnyder2-ux · [leaves2008/BlockBlockContact2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-headers/leaves2008/BlockBlockContact2008.h)
+- draft · colingsnyder2-ux · [leaves2008/BlockBlockContact2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-headers/leaves2008/BlockBlockContact2008.h)
 - fork · mewpokemons · [leaves2008/BlockBlockContact2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/leaves2008/BlockBlockContact2008.h)
 - fork · mewpokemons · [leaves2008/BlockBlockContact2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/leaves2008/BlockBlockContact2008.h)
 
@@ -1121,7 +1204,7 @@
 <summary>native-headers/leaves2008/GuiTarget2008.h — candidate-only; 1 content versions</summary>
 
 **`9f5b6bd12e02`** · proof not assessed
-- draft · colingsnyder2-ux · [leaves2008/GuiTarget2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h)
+- draft · colingsnyder2-ux · [leaves2008/GuiTarget2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h)
 - fork · mewpokemons · [leaves2008/GuiTarget2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h)
 - fork · mewpokemons · [leaves2008/GuiTarget2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h)
 
@@ -1138,7 +1221,7 @@
 <summary>native-headers/leaves2008/IndexBox2008.h — candidate-only; 1 content versions</summary>
 
 **`ba9eaa20363c`** · proof not assessed
-- draft · colingsnyder2-ux · [leaves2008/IndexBox2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h)
+- draft · colingsnyder2-ux · [leaves2008/IndexBox2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h)
 - fork · mewpokemons · [leaves2008/IndexBox2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h)
 - fork · mewpokemons · [leaves2008/IndexBox2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h)
 
@@ -1155,7 +1238,7 @@
 <summary>native-headers/leaves2008/Log2008.h — candidate-only; 1 content versions</summary>
 
 **`9a4cfb3212a9`** · proof not assessed
-- draft · colingsnyder2-ux · [leaves2008/Log2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Log2008.h)
+- draft · colingsnyder2-ux · [leaves2008/Log2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Log2008.h)
 - fork · mewpokemons · [leaves2008/Log2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/leaves2008/Log2008.h)
 - fork · mewpokemons · [leaves2008/Log2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/leaves2008/Log2008.h)
 
@@ -1172,7 +1255,7 @@
 <summary>native-headers/leaves2008/NullController2008.h — candidate-only; 1 content versions</summary>
 
 **`f8cad10d93ff`** · proof not assessed
-- draft · colingsnyder2-ux · [leaves2008/NullController2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/NullController2008.h)
+- draft · colingsnyder2-ux · [leaves2008/NullController2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/NullController2008.h)
 - fork · mewpokemons · [leaves2008/NullController2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/leaves2008/NullController2008.h)
 - fork · mewpokemons · [leaves2008/NullController2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/leaves2008/NullController2008.h)
 
@@ -1189,7 +1272,7 @@
 <summary>native-headers/leaves2008/Point2008.h — candidate-only; 1 content versions</summary>
 
 **`8e164e9d3062`** · proof not assessed
-- draft · colingsnyder2-ux · [leaves2008/Point2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Point2008.h)
+- draft · colingsnyder2-ux · [leaves2008/Point2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Point2008.h)
 - fork · mewpokemons · [leaves2008/Point2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/leaves2008/Point2008.h)
 - fork · mewpokemons · [leaves2008/Point2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/leaves2008/Point2008.h)
 
@@ -1206,7 +1289,7 @@
 <summary>native-headers/leaves2008/RevoluteLink2008.h — candidate-only; 1 content versions</summary>
 
 **`ce6c1de569d7`** · proof not assessed
-- draft · colingsnyder2-ux · [leaves2008/RevoluteLink2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h)
+- draft · colingsnyder2-ux · [leaves2008/RevoluteLink2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h)
 - fork · mewpokemons · [leaves2008/RevoluteLink2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h)
 - fork · mewpokemons · [leaves2008/RevoluteLink2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h)
 
@@ -1223,7 +1306,7 @@
 <summary>native-headers/leaves2008/StandardOut2008.h — candidate-only; 1 content versions</summary>
 
 **`607cf4c64f70`** · proof not assessed
-- draft · colingsnyder2-ux · [leaves2008/StandardOut2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h)
+- draft · colingsnyder2-ux · [leaves2008/StandardOut2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h)
 - fork · mewpokemons · [leaves2008/StandardOut2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h)
 - fork · mewpokemons · [leaves2008/StandardOut2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h)
 
@@ -1237,22 +1320,24 @@
 </details>
 
 <details>
-<summary>native-headers/mfc-import-length/atlsimpstr.h — public-only; 3 content versions</summary>
+<summary>native-headers/mfc-import-length/atlsimpstr.h — public-only; 4 content versions</summary>
 
 **`6257dd578bc3`** · proof not assessed
-- public · colingsnyder2-ux · [mfc-import-length/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/mfc-import-length/atlsimpstr.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/mfc-import-length/atlsimpstr.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [mfc-import-length/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/mfc-import-length/atlsimpstr.h)
 
 **`710dbbc036bb`** · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
 - local · `rebuild/2008-06/native-headers/mfc-import-length/atlsimpstr.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`735180e3c7c9`** · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-headers/mfc-import-length/atlsimpstr.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1279,7 +1364,7 @@
 
 **`08d3ba75860d`** · proof not assessed
 
-<details><summary>18 retained local origins</summary>
+<details><summary>20 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
@@ -1297,6 +1382,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 
@@ -1311,20 +1398,14 @@
 </details>
 
 **`89fe2de963d0`** · proof not assessed
-- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 
 **`c16fa7c691f4`** · proof not assessed
-- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - fork · mewpokemons · [mfc-metadata/atlsimpstr.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - fork · mewpokemons · [mfc-metadata/atlsimpstr.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 
-<details><summary>6 retained local origins</summary>
+<details><summary>7 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
@@ -1332,14 +1413,16 @@
 - local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`c3dc16ee0641`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h`
+- local · `local/findings/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1349,17 +1432,11 @@
 <summary>native-headers/mfc-noinline-pcxstr/atlsimpstr.h — diverged; 6 content versions</summary>
 
 **`09e845d6c2d7`** · proof not assessed
-- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 
 **`3cb12a1ec9ea`** · proof not assessed
 
-<details><summary>23 retained local origins</summary>
+<details><summary>25 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
@@ -1382,6 +1459,8 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 
@@ -1405,20 +1484,21 @@
 
 **`bbfb04a592d7`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h`
+- local · `local/findings/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`c2a57e7aa27e`** · proof not assessed
-- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 - fork · coldek · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 - fork · mewpokemons · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 - fork · mewpokemons · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 - fork · mewpokemons · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 
-<details><summary>7 retained local origins</summary>
+<details><summary>8 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
@@ -1427,6 +1507,7 @@
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1452,27 +1533,22 @@
 </details>
 
 **`643335fb95c8`** · proof not assessed
-- public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/stats/Stats.h)
+- public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/stats/Stats.h)
 
-<details><summary>1 retained local origins</summary>
+**`bf3423e9eca6`** · proof not assessed
 
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/stats/Stats.h`
 - local · `local/findings/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`bf3423e9eca6`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/stats/Stats.h`
-
-</details>
-
 **`e530d9903932`** · proof not assessed
-- canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
+- canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
 - fork · mewpokemons · [stats/Stats.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/stats/Stats.h)
 
-<details><summary>12 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
@@ -1486,12 +1562,13 @@
 - local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`f058e0252f7e`** · proof not assessed
 
-<details><summary>15 retained local origins</summary>
+<details><summary>17 retained local origins</summary>
 
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
@@ -1506,6 +1583,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 
@@ -1528,11 +1607,11 @@
 </details>
 
 **`40c79aac4689`** · proof not assessed
-- canonical · colingsnyder2-ux · [tool/AxisMoveGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h)
 - fork · mewpokemons · [tool/AxisMoveGrid.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h)
 - fork · mewpokemons · [tool/AxisMoveGrid.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h)
 
-<details><summary>6 retained local origins</summary>
+<details><summary>7 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
@@ -1540,14 +1619,16 @@
 - local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`547d3cfe4fa0`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/AxisMoveGrid.h`
+- local · `local/findings/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1561,7 +1642,7 @@
 
 **`c666c3951ade`** · proof not assessed
 
-<details><summary>18 retained local origins</summary>
+<details><summary>20 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
@@ -1579,19 +1660,15 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`cb1b63667ca0`** · proof not assessed
-- public · colingsnyder2-ux · [tool/AxisMoveGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/tool/AxisMoveGrid.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/tool/AxisMoveGrid.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [tool/AxisMoveGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/tool/AxisMoveGrid.h)
 
 </details>
 
@@ -1608,15 +1685,16 @@
 
 **`4312316eb510`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/AxisMoveTool.h`
+- local · `local/findings/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`8275550d1d55`** · proof not assessed
 
-<details><summary>14 retained local origins</summary>
+<details><summary>16 retained local origins</summary>
 
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
@@ -1630,17 +1708,19 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`a31d0a1220c4`** · proof not assessed
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
 - fork · mewpokemons · [tool/AxisMoveTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
 - fork · mewpokemons · [tool/AxisMoveTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
@@ -1652,6 +1732,7 @@
 - local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1664,13 +1745,7 @@
 </details>
 
 **`b7731375755d`** · proof not assessed
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/tool/AxisMoveTool.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/tool/AxisMoveTool.h)
 
 </details>
 
@@ -1679,20 +1754,15 @@
 
 **`4c55b79291d7`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/BasicMouseTools.h`
+- local · `local/findings/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`5316689fafa8`** · proof not assessed
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/tool/BasicMouseTools.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/tool/BasicMouseTools.h)
 
 **`806ffde74b2a`** · proof not assessed
 
@@ -1715,11 +1785,11 @@
 </details>
 
 **`91c13a9eee64`** · proof not assessed
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
 - fork · mewpokemons · [tool/BasicMouseTools.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
 - fork · mewpokemons · [tool/BasicMouseTools.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
@@ -1731,6 +1801,7 @@
 - local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1746,7 +1817,7 @@
 
 **`b9a87a211c12`** · proof not assessed
 
-<details><summary>14 retained local origins</summary>
+<details><summary>16 retained local origins</summary>
 
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
@@ -1760,6 +1831,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
 
@@ -1788,9 +1861,10 @@
 
 **`145d852ef13a`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/DragTool.h`
+- local · `local/findings/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1804,7 +1878,7 @@
 
 **`723014e125ad`** · proof not assessed
 
-<details><summary>19 retained local origins</summary>
+<details><summary>21 retained local origins</summary>
 
 - local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
@@ -1823,28 +1897,24 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`857f2a1b0361`** · proof not assessed
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/tool/DragTool.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/tool/DragTool.h)
 
 **`d5bd1b3208e6`** · proof not assessed
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
 - fork · coldek · [tool/DragTool.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/DragTool.h)
 - fork · mewpokemons · [tool/DragTool.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/DragTool.h)
 - fork · mewpokemons · [tool/DragTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/DragTool.h)
 - fork · mewpokemons · [tool/DragTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/DragTool.h)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
@@ -1857,6 +1927,7 @@
 - local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1866,13 +1937,7 @@
 <summary>native-headers/tool/FlatTool.h — diverged; 6 content versions</summary>
 
 **`25f09a08b37c`** · proof not assessed
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/tool/FlatTool.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/tool/FlatTool.h)
 
 **`2c448f7ed40e`** · proof not assessed
 
@@ -1883,13 +1948,13 @@
 </details>
 
 **`4f5fa9c89e97`** · proof not assessed
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
 - fork · coldek · [tool/FlatTool.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/FlatTool.h)
 - fork · mewpokemons · [tool/FlatTool.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/FlatTool.h)
 - fork · mewpokemons · [tool/FlatTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/FlatTool.h)
 - fork · mewpokemons · [tool/FlatTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/FlatTool.h)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
@@ -1902,12 +1967,13 @@
 - local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`7874e8f134b5`** · proof not assessed
 
-<details><summary>19 retained local origins</summary>
+<details><summary>21 retained local origins</summary>
 
 - local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
@@ -1926,6 +1992,8 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 
@@ -1933,9 +2001,10 @@
 
 **`820b27448fe4`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/FlatTool.h`
+- local · `local/findings/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1954,24 +2023,19 @@
 
 **`693dd00ccc04`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/GroupDragTool.h`
-
-</details>
-
-**`78076f0fbc84`** · proof not assessed
-- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/tool/GroupDragTool.h)
-
-<details><summary>1 retained local origins</summary>
-
 - local · `local/findings/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
+**`78076f0fbc84`** · proof not assessed
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/tool/GroupDragTool.h)
+
 **`79cefa918a13`** · proof not assessed
 
-<details><summary>18 retained local origins</summary>
+<details><summary>20 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
@@ -1989,6 +2053,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 
@@ -2003,11 +2069,11 @@
 </details>
 
 **`a81b963d6aca`** · proof not assessed
-- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
 - fork · mewpokemons · [tool/GroupDragTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
 - fork · mewpokemons · [tool/GroupDragTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
 
-<details><summary>6 retained local origins</summary>
+<details><summary>7 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
@@ -2015,6 +2081,7 @@
 - local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -2040,13 +2107,13 @@
 </details>
 
 **`2f4a05ab5827`** · proof not assessed
-- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
 - fork · coldek · [tool/MegaDragger.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/MegaDragger.h)
 - fork · mewpokemons · [tool/MegaDragger.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/MegaDragger.h)
 - fork · mewpokemons · [tool/MegaDragger.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/MegaDragger.h)
 - fork · mewpokemons · [tool/MegaDragger.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/MegaDragger.h)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
@@ -2059,17 +2126,12 @@
 - local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-merge/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`7f37596c902f`** · proof not assessed
-- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/tool/MegaDragger.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/tool/MegaDragger.h)
 
 **`94318d89c2b3`** · proof not assessed
 
@@ -2081,15 +2143,16 @@
 
 **`9df44275918a`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/MegaDragger.h`
+- local · `local/findings/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`d457290a43cc`** · proof not assessed
 
-<details><summary>19 retained local origins</summary>
+<details><summary>21 retained local origins</summary>
 
 - local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
@@ -2108,6 +2171,8 @@
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 
@@ -2119,13 +2184,7 @@
 <summary>native-headers/tool/NullTool.h — diverged; 6 content versions</summary>
 
 **`4f9967b99e70`** · proof not assessed
-- public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/tool/NullTool.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-headers/tool/NullTool.h)
 
 **`657f52b4b25e`** · proof not assessed
 
@@ -2136,11 +2195,11 @@
 </details>
 
 **`7828b517ff5a`** · proof not assessed
-- canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/tool/NullTool.h)
+- canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-headers/tool/NullTool.h)
 - fork · mewpokemons · [tool/NullTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/NullTool.h)
 - fork · mewpokemons · [tool/NullTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/NullTool.h)
 
-<details><summary>6 retained local origins</summary>
+<details><summary>7 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
@@ -2148,6 +2207,7 @@
 - local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -2161,7 +2221,7 @@
 
 **`ed8fb4bffba0`** · proof not assessed
 
-<details><summary>18 retained local origins</summary>
+<details><summary>20 retained local origins</summary>
 
 - local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
@@ -2179,6 +2239,8 @@
 - local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 
@@ -2186,270 +2248,10 @@
 
 **`fff362a3e7fc`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/NullTool.h`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-headers/tool/ResizeTool.h — diverged; 6 content versions</summary>
-
-**`0e9d20b7a08b`** · proof not assessed
-- public · colingsnyder2-ux · [tool/ResizeTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/tool/ResizeTool.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`6901871acff3`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`838a260e0c94`** · proof not assessed
-- canonical · colingsnyder2-ux · [tool/ResizeTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h)
-- fork · coldek · [tool/ResizeTool.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/ResizeTool.h)
-- fork · mewpokemons · [tool/ResizeTool.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/ResizeTool.h)
-- fork · mewpokemons · [tool/ResizeTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/ResizeTool.h)
-- fork · mewpokemons · [tool/ResizeTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/ResizeTool.h)
-
-<details><summary>11 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`9cfe6ee8cbb0`** · proof not assessed
-
-<details><summary>19 retained local origins</summary>
-
-- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`acbdd2fc6cda`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/tool/ResizeTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`d05ae4fcf132`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/ResizeTool.h`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-headers/tool/ShootTool.h — diverged; 6 content versions</summary>
-
-**`16eae0ae2255`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/ShootTool.h`
-
-</details>
-
-**`221d72a77c52`** · proof not assessed
-- public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/tool/ShootTool.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`46827d0499f5`** · proof not assessed
-- canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h)
-- fork · coldek · [tool/ShootTool.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/ShootTool.h)
-- fork · mewpokemons · [tool/ShootTool.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/ShootTool.h)
-- fork · mewpokemons · [tool/ShootTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/ShootTool.h)
-- fork · mewpokemons · [tool/ShootTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/ShootTool.h)
-
-<details><summary>11 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`79729e5691ba`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`7bda432bbccf`** · proof not assessed
-
-<details><summary>19 retained local origins</summary>
-
-- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`83a43b6273f7`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-headers/tool/ShootTools.h — diverged; 6 content versions</summary>
-
-**`4b1ebf2ac613`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/ShootTools.h`
-
-</details>
-
-**`4ff12fa975ba`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`8728a84fad18`** · proof not assessed
-- canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h)
-- fork · coldek · [tool/ShootTools.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/ShootTools.h)
-- fork · mewpokemons · [tool/ShootTools.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/ShootTools.h)
-- fork · mewpokemons · [tool/ShootTools.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/ShootTools.h)
-- fork · mewpokemons · [tool/ShootTools.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/ShootTools.h)
-
-<details><summary>11 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`aa60504a0629`** · proof not assessed
-- public · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-headers/tool/ShootTools.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`caaecdc2b01b`** · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`f341f5057af3`** · proof not assessed
-
-<details><summary>19 retained local origins</summary>
-
-- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `local/findings/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 

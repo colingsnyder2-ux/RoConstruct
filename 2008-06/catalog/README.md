@@ -5,7 +5,7 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 
 | Project | Native paths |
 | --- | ---: |
-| [App/v8tree](App/v8tree/README.md) | 34 |
+| [App/v8tree](App/v8tree/README.md) | 36 |
 | [App/v8xml](App/v8xml/README.md) | 5 |
 | [App/reflection](App/reflection/README.md) | 14 |
 | [WindowsClient](WindowsClient/README.md) | 355 |

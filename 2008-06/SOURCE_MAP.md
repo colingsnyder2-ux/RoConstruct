@@ -5,10 +5,10 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 
 | Group | Paths | Equivalent | Byte-different | Public-only | Missing-public | Donor-only |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| App/v8tree | 34 | 2 | 21 | 8 | 0 | 3 |
+| App/v8tree | 36 | 4 | 21 | 8 | 0 | 3 |
 | App/v8xml | 5 | 0 | 4 | 0 | 0 | 1 |
 | App/reflection | 14 | 5 | 8 | 1 | 0 | 0 |
-| WindowsClient | 355 | 5 | 209 | 25 | 0 | 116 |
+| WindowsClient | 355 | 5 | 210 | 24 | 0 | 116 |
 | App/v8datamodel | 200 | 3 | 150 | 25 | 0 | 22 |
 | App/v8world | 107 | 2 | 81 | 2 | 0 | 22 |
 | Network | 56 | 0 | 28 | 15 | 0 | 13 |
@@ -16,7 +16,7 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 | Base/util | 67 | 2 | 50 | 12 | 0 | 3 |
 | Other | 359 | 0 | 232 | 37 | 0 | 90 |
 
-Byte differences include **801 banner-only**, **1 line-ending-only**, and
+Byte differences include **802 banner-only**, **1 line-ending-only**, and
 **2 requiring method review**. Metadata equality is not runtime proof.
 
 

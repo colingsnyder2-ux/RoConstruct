@@ -6,7 +6,7 @@
 <summary>native-world/App/v8world/AssemblyStage.cpp — diverged; 6 content versions</summary>
 
 **`10e2a7c4c416`** · proof not assessed
-- canonical · colingsnyder2-ux · [v8world/AssemblyStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-world/App/v8world/AssemblyStage.cpp)
+- canonical · colingsnyder2-ux · [v8world/AssemblyStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-world/App/v8world/AssemblyStage.cpp)
 - fork · coldek · [v8world/AssemblyStage.cpp](https://github.com/coldek/RoConstruct/blob/6da8e40862d5e855f1161fc0e18cf67b9c34dd32/rebuild/2008-06/native-world/App/v8world/AssemblyStage.cpp)
 - fork · coldek · [v8world/AssemblyStage.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-world/App/v8world/AssemblyStage.cpp)
 - fork · mewpokemons · [v8world/AssemblyStage.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-world/App/v8world/AssemblyStage.cpp)
@@ -30,13 +30,7 @@
 </details>
 
 **`15bf15fe6d97`** · proof not assessed
-- public · colingsnyder2-ux · [v8world/AssemblyStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-world/App/v8world/AssemblyStage.cpp)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-world/App/v8world/AssemblyStage.cpp` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [v8world/AssemblyStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-world/App/v8world/AssemblyStage.cpp)
 
 **`194d783d2305`** · proof not assessed
 
@@ -200,9 +194,10 @@
 
 **`4244935386ae`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-world/App/v8world/AssemblyStage.cpp`
+- local · `local/findings/2008-06/native-world/App/v8world/AssemblyStage.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -220,13 +215,7 @@
 <summary>native-world/App/v8world/Clump.cpp — diverged; 6 content versions</summary>
 
 **`00655c98c49c`** · proof not assessed
-- public · colingsnyder2-ux · [v8world/Clump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-world/App/v8world/Clump.cpp)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-world/App/v8world/Clump.cpp` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [v8world/Clump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-world/App/v8world/Clump.cpp)
 
 **`637591eb3c46`** · proof not assessed
 
@@ -398,14 +387,15 @@
 
 **`a778ff436d98`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-world/App/v8world/Clump.cpp`
+- local · `local/findings/2008-06/native-world/App/v8world/Clump.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`e3cc0d86426f`** · proof not assessed
-- canonical · colingsnyder2-ux · [v8world/Clump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-world/App/v8world/Clump.cpp)
+- canonical · colingsnyder2-ux · [v8world/Clump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-world/App/v8world/Clump.cpp)
 - fork · coldek · [v8world/Clump.cpp](https://github.com/coldek/RoConstruct/blob/6da8e40862d5e855f1161fc0e18cf67b9c34dd32/rebuild/2008-06/native-world/App/v8world/Clump.cpp)
 - fork · coldek · [v8world/Clump.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-world/App/v8world/Clump.cpp)
 - fork · mewpokemons · [v8world/Clump.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-world/App/v8world/Clump.cpp)
@@ -443,14 +433,15 @@
 
 **`6ede89d2e8a8`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-world/App/v8world/ClumpStage.cpp`
+- local · `local/findings/2008-06/native-world/App/v8world/ClumpStage.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`70d03cce5fb9`** · proof not assessed
-- canonical · colingsnyder2-ux · [v8world/ClumpStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-world/App/v8world/ClumpStage.cpp)
+- canonical · colingsnyder2-ux · [v8world/ClumpStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-world/App/v8world/ClumpStage.cpp)
 - fork · coldek · [v8world/ClumpStage.cpp](https://github.com/coldek/RoConstruct/blob/6da8e40862d5e855f1161fc0e18cf67b9c34dd32/rebuild/2008-06/native-world/App/v8world/ClumpStage.cpp)
 - fork · coldek · [v8world/ClumpStage.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-world/App/v8world/ClumpStage.cpp)
 - fork · mewpokemons · [v8world/ClumpStage.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-world/App/v8world/ClumpStage.cpp)
@@ -474,13 +465,7 @@
 </details>
 
 **`9a2fe851b06d`** · proof not assessed
-- public · colingsnyder2-ux · [v8world/ClumpStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-world/App/v8world/ClumpStage.cpp)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-world/App/v8world/ClumpStage.cpp` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [v8world/ClumpStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-world/App/v8world/ClumpStage.cpp)
 
 **`fac13cd765dc`** · proof not assessed
 
@@ -661,7 +646,7 @@
 <summary>native-world/App/v8world/SleepStage.cpp — diverged; 6 content versions</summary>
 
 **`097a04b31481`** · proof not assessed
-- canonical · colingsnyder2-ux · [v8world/SleepStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-world/App/v8world/SleepStage.cpp)
+- canonical · colingsnyder2-ux · [v8world/SleepStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-world/App/v8world/SleepStage.cpp)
 - fork · coldek · [v8world/SleepStage.cpp](https://github.com/coldek/RoConstruct/blob/6da8e40862d5e855f1161fc0e18cf67b9c34dd32/rebuild/2008-06/native-world/App/v8world/SleepStage.cpp)
 - fork · coldek · [v8world/SleepStage.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-world/App/v8world/SleepStage.cpp)
 - fork · mewpokemons · [v8world/SleepStage.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-world/App/v8world/SleepStage.cpp)
@@ -846,9 +831,10 @@
 
 **`53685a17f743`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-world/App/v8world/SleepStage.cpp`
+- local · `local/findings/2008-06/native-world/App/v8world/SleepStage.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -861,13 +847,7 @@
 </details>
 
 **`6a6b1f7ecef6`** · proof not assessed
-- public · colingsnyder2-ux · [v8world/SleepStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-world/App/v8world/SleepStage.cpp)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-world/App/v8world/SleepStage.cpp` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [v8world/SleepStage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-world/App/v8world/SleepStage.cpp)
 
 </details>
 
@@ -875,7 +855,7 @@
 <summary>native-world/App/v8world/WorldHelpers.cpp — diverged; 8 content versions</summary>
 
 **`2f217b1912d1`** · proof not assessed
-- canonical · colingsnyder2-ux · [v8world/WorldHelpers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/workspace/rebuild/2008-06/native-world/App/v8world/WorldHelpers.cpp)
+- canonical · colingsnyder2-ux · [v8world/WorldHelpers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/workspace/rebuild/2008-06/native-world/App/v8world/WorldHelpers.cpp)
 - fork · coldek · [v8world/WorldHelpers.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-world/App/v8world/WorldHelpers.cpp)
 - fork · mewpokemons · [v8world/WorldHelpers.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-world/App/v8world/WorldHelpers.cpp)
 - fork · mewpokemons · [v8world/WorldHelpers.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-world/App/v8world/WorldHelpers.cpp)
@@ -914,13 +894,7 @@
 </details>
 
 **`c355c93b5871`** · proof not assessed
-- public · colingsnyder2-ux · [v8world/WorldHelpers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/56fa93ec3e5bb928682551b4b89baab06cdfb15b/2008-06/native-world/App/v8world/WorldHelpers.cpp)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-world/App/v8world/WorldHelpers.cpp` · root `b52aa15feaea5a0c`
-
-</details>
+- public · colingsnyder2-ux · [v8world/WorldHelpers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/f2d7538d3227cf464eeb5e9dd2b17fb27d64e216/2008-06/native-world/App/v8world/WorldHelpers.cpp)
 
 **`d30b3137c1ec`** · proof not assessed
 
@@ -941,9 +915,10 @@
 
 **`e27435f0bbca`** · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
 - local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-world/App/v8world/WorldHelpers.cpp`
+- local · `local/findings/2008-06/native-world/App/v8world/WorldHelpers.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
