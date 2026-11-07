@@ -1,0 +1,11 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CRobloxTreeCtrl.cpp",
+      "checks": [
+        {"addr": "00425de0", "symbol": "??0CRobloxTreeCtrlNode@@"},
+        {"addr": "00424900", "symbol": "??1CRobloxTreeCtrlNode@@"}
+      ]
+    }
+  ]
+}

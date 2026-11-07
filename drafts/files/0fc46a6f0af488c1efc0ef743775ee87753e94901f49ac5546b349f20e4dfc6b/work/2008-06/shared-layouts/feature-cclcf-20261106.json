@@ -1,0 +1,11 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/Feature.cpp",
+      "checks": [
+        {"addr": "00609da0", "symbol": "?computeLocalCoordinateFrame@Feature@RBX@@"},
+        {"addr": "0060a490", "symbol": "?getRenderCoord@Feature@RBX@@"}
+      ]
+    }
+  ]
+}

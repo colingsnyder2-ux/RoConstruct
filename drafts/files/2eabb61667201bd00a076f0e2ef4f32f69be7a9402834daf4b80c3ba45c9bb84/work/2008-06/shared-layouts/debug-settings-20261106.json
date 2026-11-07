@@ -1,0 +1,10 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/DebugSettings.cpp",
+      "checks": [
+        {"addr": "00564a60", "symbol": "??0?$EnumDesc@W4ErrorReporting@DebugSettings@RBX@@@Reflection@2@@"}
+      ]
+    }
+  ]
+}

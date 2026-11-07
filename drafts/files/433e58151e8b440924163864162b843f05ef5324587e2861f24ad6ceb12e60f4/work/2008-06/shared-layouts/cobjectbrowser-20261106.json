@@ -1,0 +1,10 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CObjectBrowser.cpp",
+      "checks": [
+        {"addr": "004339d0", "symbol": "?OnSize@CObjectBrowser@@"}
+      ]
+    }
+  ]
+}

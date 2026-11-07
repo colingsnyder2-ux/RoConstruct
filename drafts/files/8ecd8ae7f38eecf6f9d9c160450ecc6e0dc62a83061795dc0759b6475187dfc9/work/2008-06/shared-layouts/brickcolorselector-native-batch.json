@@ -1,0 +1,13 @@
+{
+  "batch": "CPropertyGridItemBrickColor",
+  "change": "Removed NATIVE_BRICKCOLOR_SELECTOR_PENDING guard around OnInplaceButtonDown; added friend class CPropertyGridItemBrickColor to CRobloxControlColorSelector.h.",
+  "changed_files": [
+    "rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp",
+    "rebuild/2008-06/native-headers/CRobloxControlColorSelector.h"
+  ],
+  "verification": "Direct native-header compile of CPropertyGridItemBrickColor.cpp succeeded.",
+  "package_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "workspace_manifest_source_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "baseline_commit": "unknown",
+  "status": "inactive draft; no active build, swap, runtime, or server credit"
+}

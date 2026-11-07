@@ -1,0 +1,16 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/InsertDecalAction.cpp",
+      "checks": [
+        {"addr": "0041f040", "symbol": "?doIt@InsertDecal@@"}
+      ]
+    },
+    {
+      "source": "native-classes/CameraCenterCommand.cpp",
+      "checks": [
+        {"addr": "005823f0", "symbol": "?doIt@CameraCenterCommand@RBX@@"}
+      ]
+    }
+  ]
+}

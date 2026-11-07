@@ -1,0 +1,12 @@
+{
+  "batch": "CRbxChildFrame (CChildFrame family)",
+  "change": "Removed NATIVE_CHILD_FRAME_PENDING guard around CRbxChildFrame::OnGetMinMaxInfo; includes CMainFrame.h and CRenderSettings.h unconditionally.",
+  "changed_files": [
+    "rebuild/2008-06/native-classes/CChildFrame.cpp"
+  ],
+  "verification": "Direct native-header compile of CChildFrame.cpp succeeded.",
+  "package_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "workspace_manifest_source_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "baseline_commit": "unknown",
+  "status": "inactive draft; no active build, swap, runtime, or server credit"
+}
