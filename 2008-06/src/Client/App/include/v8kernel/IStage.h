@@ -36,8 +36,8 @@ namespace RBX {
 				COLLISION_STAGE = 0x4,
 				SLEEP_STAGE = 0x5,
 				SEPARATE_STAGE = 0x6,
-				SIMJOB_STAGE = 0x7,
-				KERNEL_STAGE = 0x8,
+				SIMJOB_STAGE = 0x6,
+				KERNEL_STAGE = 0x7,
 			};
 			IStage(IStage* upstream, IStage* downstream):upstream(upstream),downstream(downstream) {}
 

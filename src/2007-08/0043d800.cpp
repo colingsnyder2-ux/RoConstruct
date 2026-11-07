@@ -1,4 +1,64 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
+// roc 2007-08 0043d800  unit: RBX::VSoundId::?$XItem  size: 180 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0043d800
+//
+// 0043d800  6aff                 push -1
+// 0043d802  6836ea7300           push 0x73ea36
+// 0043d807  64a100000000         mov eax, dword ptr fs:[0]
+// 0043d80d  50                   push eax
+// 0043d80e  51                   push ecx
+// 0043d80f  53                   push ebx
+// 0043d810  56                   push esi
+// 0043d811  57                   push edi
+// 0043d812  a188518b00           mov eax, dword ptr [0x8b5188]
+// 0043d817  33c4                 xor eax, esp
+// 0043d819  50                   push eax
+// 0043d81a  8d442414             lea eax, [esp + 0x14]
+// 0043d81e  64a300000000         mov dword ptr fs:[0], eax
+// 0043d824  8bf1                 mov esi, ecx
+// 0043d826  89742410             mov dword ptr [esp + 0x10], esi
+// 0043d82a  8b7c2424             mov edi, dword ptr [esp + 0x24]
+// 0043d82e  8b4704               mov eax, dword ptr [edi + 4]
+// 0043d831  8d4804               lea ecx, [eax + 4]
+// 0043d834  ff15a8e67700         call dword ptr [0x77e6a8]
+// 0043d83a  6a00                 push 0
+// 0043d83c  6a00                 push 0
+// 0043d83e  50                   push eax
+// 0043d83f  8bce                 mov ecx, esi
+// 0043d841  e8fac72500           call 0x69a040
+// 0043d846  8b442428             mov eax, dword ptr [esp + 0x28]
+// 0043d84a  50                   push eax
+// 0043d84b  8d9e00010000         lea ebx, [esi + 0x100]
+// 0043d851  57                   push edi
+// 0043d852  8bcb                 mov ecx, ebx
+// 0043d854  c744242400000000     mov dword ptr [esp + 0x24], 0
+// 0043d85c  e86fddffff           call 0x43b5d0
+// 0043d861  b801000000           mov eax, 1
+// 0043d866  8986f0000000         mov dword ptr [esi + 0xf0], eax
+// 0043d86c  c706b4e27800         mov dword ptr [esi], 0x78e2b4
+// 0043d872  c7462054e27800       mov dword ptr [esi + 0x20], 0x78e254
+// 0043d879  c70348e27800         mov dword ptr [ebx], 0x78e248
+// 0043d87f  89be18010000         mov dword ptr [esi + 0x118], edi
+// 0043d885  8b17                 mov edx, dword ptr [edi]
+// 0043d887  8844241c             mov byte ptr [esp + 0x1c], al
+// 0043d88b  8b4204               mov eax, dword ptr [edx + 4]
+// 0043d88e  8bcf                 mov ecx, edi
+// 0043d890  ffd0                 call eax
+// 0043d892  0fb6c8               movzx ecx, al
+// 0043d895  51                   push ecx
+// 0043d896  8bce                 mov ecx, esi
+// 0043d898  e823b42500           call 0x698cc0
+// 0043d89d  8bc6                 mov eax, esi
+// 0043d89f  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0043d8a3  64890d00000000       mov dword ptr fs:[0], ecx
+// 0043d8aa  59                   pop ecx
+// 0043d8ab  5f                   pop edi
+// 0043d8ac  5e                   pop esi
+// 0043d8ad  5b                   pop ebx
+// 0043d8ae  83c410               add esp, 0x10
+// 0043d8b1  c20800               ret 8
+
 // from server: 100% by colin
 // roc 2008-06 0043cfa0  unit: RBX::Soundscape::VSoundId::?$XItem  size: 168 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0043cfa0
@@ -86,7 +146,7 @@ struct Secondary {
 };
 
 struct Base : Primary, Secondary {
-    char pad0[0xd8];
+    char pad0[0xcc];
     int flag;
     char pad1[0x0c];
 
@@ -97,7 +157,7 @@ struct Base : Primary, Secondary {
 
 struct Helper {
     virtual ~Helper();
-    char pad[0x1c];
+    char pad[0x14];
 
     Helper(Item*, int);
 };

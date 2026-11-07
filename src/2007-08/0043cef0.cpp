@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -87,7 +88,7 @@ struct Base
     void* table;
     char pad04[0x1c];
     void* secondaryTable;
-    char pad24[0xd8];
+    char pad24[0xcc];
     int kind;
     char pad100[0x0c];
 
@@ -99,7 +100,7 @@ struct Base
 struct Member
 {
     void* table;
-    char pad[0x1c];
+    char pad[0x14];
 
     Member(Item*, int);
     ~Member();

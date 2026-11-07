@@ -1,4 +1,64 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
+// roc 2007-08 0043d6c0  unit: HVCXTPPropertyGridItemEnum::?$XItem  size: 180 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0043d6c0
+//
+// 0043d6c0  6aff                 push -1
+// 0043d6c2  6836ea7300           push 0x73ea36
+// 0043d6c7  64a100000000         mov eax, dword ptr fs:[0]
+// 0043d6cd  50                   push eax
+// 0043d6ce  51                   push ecx
+// 0043d6cf  53                   push ebx
+// 0043d6d0  56                   push esi
+// 0043d6d1  57                   push edi
+// 0043d6d2  a188518b00           mov eax, dword ptr [0x8b5188]
+// 0043d6d7  33c4                 xor eax, esp
+// 0043d6d9  50                   push eax
+// 0043d6da  8d442414             lea eax, [esp + 0x14]
+// 0043d6de  64a300000000         mov dword ptr fs:[0], eax
+// 0043d6e4  8bf1                 mov esi, ecx
+// 0043d6e6  89742410             mov dword ptr [esp + 0x10], esi
+// 0043d6ea  8b7c2424             mov edi, dword ptr [esp + 0x24]
+// 0043d6ee  8b4704               mov eax, dword ptr [edi + 4]
+// 0043d6f1  8d4804               lea ecx, [eax + 4]
+// 0043d6f4  ff15a8e67700         call dword ptr [0x77e6a8]
+// 0043d6fa  6a00                 push 0
+// 0043d6fc  6a00                 push 0
+// 0043d6fe  50                   push eax
+// 0043d6ff  8bce                 mov ecx, esi
+// 0043d701  e83ac92500           call 0x69a040
+// 0043d706  8b442428             mov eax, dword ptr [esp + 0x28]
+// 0043d70a  50                   push eax
+// 0043d70b  8d9e00010000         lea ebx, [esi + 0x100]
+// 0043d711  57                   push edi
+// 0043d712  8bcb                 mov ecx, ebx
+// 0043d714  c744242400000000     mov dword ptr [esp + 0x24], 0
+// 0043d71c  e8afdeffff           call 0x43b5d0
+// 0043d721  b801000000           mov eax, 1
+// 0043d726  8986f0000000         mov dword ptr [esi + 0xf0], eax
+// 0043d72c  c7064ce17800         mov dword ptr [esi], 0x78e14c
+// 0043d732  c74620ece07800       mov dword ptr [esi + 0x20], 0x78e0ec
+// 0043d739  c703e0e07800         mov dword ptr [ebx], 0x78e0e0
+// 0043d73f  89be18010000         mov dword ptr [esi + 0x118], edi
+// 0043d745  8b17                 mov edx, dword ptr [edi]
+// 0043d747  8844241c             mov byte ptr [esp + 0x1c], al
+// 0043d74b  8b4204               mov eax, dword ptr [edx + 4]
+// 0043d74e  8bcf                 mov ecx, edi
+// 0043d750  ffd0                 call eax
+// 0043d752  0fb6c8               movzx ecx, al
+// 0043d755  51                   push ecx
+// 0043d756  8bce                 mov ecx, esi
+// 0043d758  e863b52500           call 0x698cc0
+// 0043d75d  8bc6                 mov eax, esi
+// 0043d75f  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0043d763  64890d00000000       mov dword ptr fs:[0], ecx
+// 0043d76a  59                   pop ecx
+// 0043d76b  5f                   pop edi
+// 0043d76c  5e                   pop esi
+// 0043d76d  5b                   pop ebx
+// 0043d76e  83c410               add esp, 0x10
+// 0043d771  c20800               ret 8
+
 // from server: 100% by colin
 // roc 2008-06 0043c9b0  unit: HVCXTPPropertyGridItemEnum::?$XItem  size: 168 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0043c9b0
@@ -87,7 +147,7 @@ struct Secondary {
 };
 
 struct GridItem : Primary, Secondary {
-    char padding[0xd8];
+    char padding[0xcc];
     int flag;
     char tail[0x0c];
 
@@ -98,7 +158,7 @@ struct GridItem : Primary, Secondary {
 
 struct Item {
     virtual ~Item();
-    char padding[0x1c];
+    char padding[0x14];
 
     Item(Property *, int);
 };

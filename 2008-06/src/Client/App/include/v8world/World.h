@@ -74,6 +74,24 @@ namespace RBX
 		boost::scoped_ptr<Profiling::CodeProfiler> profilingBroadphase;
 	public:
 		static bool disableEnvironmentalThrottle;
+
+		enum EThrottle
+		{
+			DefaultAuto,
+			Disabled,
+			Random,
+			Always
+		};
+		static EThrottle environmentalThrottle;
+
+		enum EThrottle
+		{
+			DefaultAuto,
+			Disabled,
+			Random,
+			Always
+		};
+		static EThrottle environmentalThrottle;
   
 	public:
 		void createJoints(Primitive* p);

@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 98% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -86,7 +87,7 @@ struct Primary {
 
 struct Secondary {
     virtual ~Secondary();
-    char padding[0xd8];
+    char padding[0xcc];
     int state;
     char tail[0x14];
 };
@@ -100,7 +101,7 @@ struct ItemBase : Primary, Secondary {
 struct Attachment {
     Attachment(Source*, int);
     virtual ~Attachment();
-    char padding[0x1c];
+    char padding[0x14];
 };
 
 struct Item : ItemBase, Attachment {

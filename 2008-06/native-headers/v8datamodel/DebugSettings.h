@@ -83,10 +83,8 @@ namespace RBX
 		void setShowWorldCoordinateFrames(bool value);     // 00565cb0
 
 		// "Throttle"
-#ifdef NATIVE_DEBUGSETTINGS_PENDING
 		World::EThrottle getEnvironmentalThrottle() const; // 005631b0
 		void setEnvironmentalThrottle(World::EThrottle value); // 00565d40
-#endif
 		bool get30FpsThrottle() const;                     // 005631a0
 		void set30FpsThrottle(bool value);                 // 00565d10
 		bool getDistributedPhysics() const;                // 00563190
