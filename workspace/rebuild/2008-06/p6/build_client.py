@@ -641,7 +641,8 @@ if NATIVE_DOC:
     native_doc_objects += ['NativeDocExtra%02d.obj' % index for index, _ in enumerate(extra_sources)]
     compiled_doc_objects = [obj.lower() for obj, _ in doc_sources]
     linked_doc_objects = [obj.lower() for obj in native_doc_objects]
-    if (len(linked_doc_objects) != len(set(linked_doc_objects))
+    if (len(compiled_doc_objects) != len(set(compiled_doc_objects))
+            or len(linked_doc_objects) != len(set(linked_doc_objects))
             or set(linked_doc_objects) != set(compiled_doc_objects)
             or set(linked_doc_objects) & {unit[0].lower() for unit in units}):
         raise RuntimeError('Native-Doc object selection is duplicated or differs from compiled sources')
