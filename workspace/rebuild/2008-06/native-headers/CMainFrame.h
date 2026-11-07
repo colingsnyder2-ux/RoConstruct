@@ -15,6 +15,7 @@ public:
 public:
     CMainFrame();
     virtual ~CMainFrame();
+    BOOL showFrame(int);
     void showDockPane(int, CRect, XTPDockingPaneDirection);
     void setFullscreen(bool);
     void configureFullscreen();
