@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "kind": "class-family queue note",
+  "family": "FilePacketLogger (2008-06; no source unit, unleased)",
+  "lease": "RBX::FilePacketLogger (Colin, 4h) covering native-classes/FilePacketLogger.cpp and this receipt",
+  "vtables": [
+    [
+      "0082450c",
+      19
+    ]
+  ],
+  "named_methods": [
+    {
+      "addr": "0x4aae80",
+      "score": 100,
+      "symbol": "?OnAttach@FilePacketLogger@@UAEXPAVRakPeerInterface@@@Z"
+    },
+    {
+      "addr": "0x4aaea0",
+      "score": 51,
+      "symbol": "?WriteLog@FilePacketLogger@@UAEXPBD@Z"
+    }
+  ],
+  "companion": "Exposer (vtable 00822d3c, 19 slots, 1 named method) - the other uncovered class with named methods",
+  "why": "one of only two uncovered RTTI classes whose methods already carry evidence names; 19-slot main vtable means a real polymorphic class with a small, bounded method set - a good fit for one batch",
+  "next_implementation": "rebuild/2008-06/native-classes/FilePacketLogger.cpp: start from the named methods above, locate the constructor by finding a call that stores the main vtable 0082450c, then fill the remaining slots from the vtable diff against its base",
+  "next_check": "python rebuild/2008-06/tests/native_check_runner.py run work/2008-06/shared-layouts/file-packet-logger-batch.json --workers 1",
+  "note": "check the base class of the 0082450c vtable first (read its complete-object locator) so the header shape is known before writing bodies",
+  "watching_session": "2411449ddd2f43adb0aeec04d2d20d8c (scope: this receipt and native-classes/FilePacketLogger.cpp)"
+}

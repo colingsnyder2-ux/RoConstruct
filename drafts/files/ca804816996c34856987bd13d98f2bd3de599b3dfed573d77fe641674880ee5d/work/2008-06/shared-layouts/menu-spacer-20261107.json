@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "kind": "class-family queue note",
+  "family": "RBX::MenuSpacer / RBX::MenuDivider (2008-06 gui, declared in native-headers/gui/Gui.h, no source units)",
+  "lease": "RBX::MenuSpacer (Colin, 4h) covering native-classes/MenuSpacer.cpp and this receipt",
+  "why": "unleased, uncovered by any other worker; MenuSpacer has a full 25-slot main vtable (0084204c) so it is a real polymorphic class, and Gui.h already holds the authentic declaration",
+  "vtable": {
+    "MenuSpacer main": "0084204c (25 slots, no own overrides - identical to GuiItem)",
+    "MenuDivider": "NO vtable detected in vtables.json; it declares virtual void render2d(Adorn*) so either it is never instantiated in 2008-06 or its vtable has no detectable RTTI locator - resolve before writing it"
+  },
+  "class_shape": {
+    "MenuSpacer": "class MenuSpacer : public GuiItem { protected: void addItem(GuiItem*); public: MenuSpacer(float, float); }; - no data members, so sizeof == GuiItem (0x144)",
+    "MenuDivider": "class MenuDivider : public MenuSpacer { public: MenuDivider(float,float); MenuDivider(float); MenuDivider(); virtual void render2d(Adorn*); };"
+  },
+  "base": "RBX::GuiItem is fully recovered in the tree (native-classes/GuiItem.cpp: ctor 005739d0, dtor 00411540, onDescendentRemoving 005746a0) so the base shape is pinned",
+  "next_implementation": "rebuild/2008-06/native-classes/MenuSpacer.cpp: MenuSpacer::MenuSpacer(float,float) and MenuSpacer::addItem(GuiItem*); locate the ctor by finding a call to GuiItem::GuiItem (005739d0) that stores the 0084204c vtable and does not add members",
+  "next_check": "python rebuild/2008-06/tests/native_check_runner.py run work/2008-06/shared-layouts/menu-spacer-batch.json --workers 1 with /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX",
+  "profile_note": "/fp:fast is required for G3D temporaries throughout this gui family",
+  "note_on_region": "EspClaude now holds RBX::app unit 00570000 2008 (the 00570000-00576000 address region); file leases remain distinct, but expect overlap pressure in the gui region",
+  "watching_session": "63571b0cf28e41d1b598685c71bb80d5 (scope: this receipt and native-classes/MenuSpacer.cpp)",
+  "result": {
+    "run": "work/2008-06/native-check-runs/20261107-010408-79af025a",
+    "exact": 1,
+    "checks": 1,
+    "data_checked": 1,
+    "data_mismatches": [],
+    "recovered": [
+      {
+        "addr": "006005e0",
+        "symbol": "??0MenuSpacer@RBX@@QAE@MM@Z",
+        "size": 122,
+        "body": "MenuSpacer::MenuSpacer(float x, float y) : GuiItem() { setGuiSize(G3D::Vector2(x, y)); }"
+      }
+    ],
+    "evidence": "GuiItem::GuiItem() (005739d0) base, the eleven MenuSpacer vtables stored at [this], [this+0x10..0xc4] and [this+0x130], then arg1 -> guiSize.x (+0x13c) and arg2 -> guiSize.y (+0x140); ret 8 confirms two float parameters",
+    "not_recovered": "MenuSpacer::addItem(GuiItem*) is declared in Gui.h but has no code in the binary (never referenced); MenuDivider has no detectable vtable so its three constructors and render2d cannot be located yet"
+  },
+  "state": "MenuSpacer ctor recovered byte-exact on the first hypothesis"
+}
