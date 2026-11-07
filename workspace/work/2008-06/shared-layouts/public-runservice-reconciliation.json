@@ -1,0 +1,416 @@
+{
+  "schema": 1,
+  "scope": "inactive source; linked selection, P5/P6 and runtime not proved",
+  "source_sha256": "a14081f7459f4d107b4e23fc4ec9999d766308e58d82bfe4398db989632c64ac",
+  "base": "76cede182885256cf1db4656f1ef8f3c239bd073",
+  "frozen_header_tree": "2186ca661d9c63a796e664f2af3348519bd0981b",
+  "method_bindings": [
+    {
+      "address": "005555e0",
+      "symbol": "?runViewValid@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+      "size": 239,
+      "exact": true,
+      "verified_targets": {
+        "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0",
+        "?find@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABQAVIRunView@RBX@@@Z": "0x451600",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "??Citerator@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QBEPAU?$pair@QAVIRunView@RBX@@_N@2@XZ": "0x6787f0",
+        "?notify_all@condition_impl@detail@boost@@QAEXXZ": "0x5f1d30",
+        "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00"
+      },
+      "local_eh": [
+        "__ehhandler$?runViewValid@RunService@RBX@@QAEXPAVIRunView@2@@Z"
+      ]
+    },
+    {
+      "address": "00555830",
+      "symbol": "?removeRunView@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+      "size": 120,
+      "exact": true,
+      "verified_targets": {
+        "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0",
+        "?runViewValid@RunService@RBX@@QAEXPAVIRunView@2@@Z": "0x5555e0",
+        "?erase@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAEIABQAVIRunView@RBX@@@Z": "0x405ce0",
+        "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00"
+      },
+      "local_eh": [
+        "__ehhandler$?removeRunView@RunService@RBX@@QAEXPAVIRunView@2@@Z"
+      ]
+    }
+  ],
+  "exception_graphs": [
+    {
+      "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+      "address": "005555e0",
+      "primary_body_size": 239,
+      "primary_body_exact": true,
+      "tool_sha256": "f63afd15a3b5a20f7ee5adf1d5dbb89de29b4e75f4e7d473e530ab62dee925e4",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "object": "work\\2008-06\\native-check-runs\\20261106-230109-e48cacc5\\unit-000\\candidate.obj",
+      "object_sha256": "1405754b08c28d0b3e4211916c08cd004f1ca8309e995e70f9f325eb668d2645",
+      "events": [
+        {
+          "symbol": "__ehhandler$?runViewValid@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+          "original": "0x7cddd8",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?runViewValid@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+          "original": "0x8e8d38",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "original_bytes": "2205931901000000308d8e00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?runViewValid@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+          "original": "0x8e8d30",
+          "kind": "EH data",
+          "size": 8,
+          "exact": true,
+          "original_bytes": "ffffffffd0dd7c00",
+          "native_bytes": "ffffffff00000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?runViewValid@RunService@RBX@@QAEXPAVIRunView@2@@Z$0",
+          "original": "0x7cddd0",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$scoped_lock@Vmutex@boost@@@thread@detail@boost@@QAE@XZ",
+          "original": "0x4174f0",
+          "kind": "cleanup/handler code",
+          "size": 22,
+          "exact": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+      "address": "00555830",
+      "primary_body_size": 120,
+      "primary_body_exact": true,
+      "tool_sha256": "f63afd15a3b5a20f7ee5adf1d5dbb89de29b4e75f4e7d473e530ab62dee925e4",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "object": "work\\2008-06\\native-check-runs\\20261106-230109-e48cacc5\\unit-000\\candidate.obj",
+      "object_sha256": "1405754b08c28d0b3e4211916c08cd004f1ca8309e995e70f9f325eb668d2645",
+      "events": [
+        {
+          "symbol": "__ehhandler$?removeRunView@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+          "original": "0x7cddd8",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?removeRunView@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+          "original": "0x8e8d38",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "original_bytes": "2205931901000000308d8e00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?removeRunView@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+          "original": "0x8e8d30",
+          "kind": "EH data",
+          "size": 8,
+          "exact": true,
+          "original_bytes": "ffffffffd0dd7c00",
+          "native_bytes": "ffffffff00000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?removeRunView@RunService@RBX@@QAEXPAVIRunView@2@@Z$0",
+          "original": "0x7cddd0",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$scoped_lock@Vmutex@boost@@@thread@detail@boost@@QAE@XZ",
+          "original": "0x4174f0",
+          "kind": "cleanup/handler code",
+          "size": 22,
+          "exact": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "existing_method_regression": [
+    {
+      "addr": "00556b00",
+      "requested_symbol": "??0RunService@RBX@@",
+      "status": "exact",
+      "symbol": "??0RunService@RBX@@QAE@XZ",
+      "score": 100,
+      "target_size": 531,
+      "object_size": 531,
+      "target_sha256": "282d5f9ebd19f8bd1db45e4821aa1d4550e0cbe8f9a7b51826de847059148e92",
+      "first_byte_difference": null,
+      "data_matches": [
+        [
+          8573988,
+          12
+        ],
+        [
+          8574516,
+          4
+        ],
+        [
+          8574148,
+          64
+        ],
+        [
+          8574132,
+          8
+        ],
+        [
+          8574124,
+          4
+        ],
+        [
+          8574116,
+          4
+        ],
+        [
+          8574100,
+          12
+        ],
+        [
+          8574084,
+          12
+        ],
+        [
+          8574068,
+          12
+        ],
+        [
+          8574052,
+          12
+        ],
+        [
+          8574036,
+          12
+        ],
+        [
+          8574020,
+          12
+        ],
+        [
+          8574004,
+          12
+        ],
+        [
+          8573972,
+          12
+        ],
+        [
+          8573956,
+          12
+        ],
+        [
+          8574504,
+          12
+        ]
+      ],
+      "data_errors": [],
+      "check_seconds": 2.313
+    },
+    {
+      "addr": "00555c00",
+      "requested_symbol": "??1RunService@RBX@@",
+      "status": "exact",
+      "symbol": "??1RunService@RBX@@UAE@XZ",
+      "score": 100,
+      "target_size": 573,
+      "object_size": 573,
+      "target_sha256": "b3a46a798afbdc6ca7f69139f75c191b8aa42b8ef2d2bb432fb97cb24bc2779c",
+      "first_byte_difference": null,
+      "data_matches": [
+        [
+          8574148,
+          64
+        ],
+        [
+          8574132,
+          8
+        ],
+        [
+          8574124,
+          4
+        ],
+        [
+          8574116,
+          4
+        ],
+        [
+          8574100,
+          12
+        ],
+        [
+          8574084,
+          12
+        ],
+        [
+          8574068,
+          12
+        ],
+        [
+          8574052,
+          12
+        ],
+        [
+          8574036,
+          12
+        ],
+        [
+          8574020,
+          12
+        ],
+        [
+          8574004,
+          12
+        ],
+        [
+          8573988,
+          12
+        ],
+        [
+          8573972,
+          12
+        ],
+        [
+          8573956,
+          12
+        ]
+      ],
+      "data_errors": [],
+      "check_seconds": 0.0
+    },
+    {
+      "addr": "00555900",
+      "requested_symbol": "?enqueueTask@RunService@RBX@@",
+      "status": "exact",
+      "symbol": "?enqueueTask@RunService@RBX@@QAEXV?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@Z",
+      "score": 100,
+      "target_size": 147,
+      "object_size": 147,
+      "target_sha256": "156f38598f452ca4ae4c9dbc6704d137605077d9e7fe8cd3babb8b2011a25e0f",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "check_seconds": 0.0
+    },
+    {
+      "addr": "005559a0",
+      "requested_symbol": "?drainTasks@RunService@RBX@@",
+      "status": "exact",
+      "symbol": "?drainTasks@RunService@RBX@@QAEXXZ",
+      "score": 100,
+      "target_size": 462,
+      "object_size": 462,
+      "target_sha256": "a80f446cbbe0e8747f10e94a18ce6308e129891726171d4deb5dad3bc142727e",
+      "first_byte_difference": null,
+      "data_matches": [
+        [
+          8455084,
+          3
+        ]
+      ],
+      "data_errors": [],
+      "check_seconds": 0.0
+    },
+    {
+      "addr": "00554440",
+      "requested_symbol": "?onAncestorChanged@RunService@RBX@@",
+      "status": "exact",
+      "symbol": "?onAncestorChanged@RunService@RBX@@UAEXABUAncestorChanged@2@@Z",
+      "score": 100,
+      "target_size": 30,
+      "object_size": 30,
+      "target_sha256": "69c49f19712ee4ca360545691fde57dbc669c26a8a9a203476a648f0b2fbd040",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "check_seconds": 0.0
+    },
+    {
+      "addr": "00554da0",
+      "requested_symbol": "?setRunState@RunService@RBX@@",
+      "status": "exact",
+      "symbol": "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z",
+      "score": 100,
+      "target_size": 106,
+      "object_size": 106,
+      "target_sha256": "a530de5bbd62f0132fa3192f8bb1a6d52ffb8018fcb4c7e1f78cbeea5eca0282",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "check_seconds": 0.0
+    },
+    {
+      "addr": "00554ae0",
+      "requested_symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@@Z",
+      "status": "exact",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@@Z",
+      "score": 100,
+      "target_size": 131,
+      "object_size": 131,
+      "target_sha256": "768deaf99a183f719ac45a1cfefbfe3ff50232bddf0a4a15f1510f5f7e8d4784",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "check_seconds": 0.0
+    },
+    {
+      "addr": "00554750",
+      "requested_symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@PAV",
+      "status": "exact",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@PAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z",
+      "score": 100,
+      "target_size": 185,
+      "object_size": 185,
+      "target_sha256": "f186b327eb8f1564d91dace57a09bf3890c3bbfe009eedbc5eddf5d1e3b423da",
+      "first_byte_difference": null,
+      "data_matches": [
+        [
+          8436164,
+          32
+        ]
+      ],
+      "data_errors": [],
+      "check_seconds": 0.0
+    },
+    {
+      "addr": "00554a60",
+      "requested_symbol": "?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@@Z",
+      "status": "exact",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@@Z",
+      "score": 100,
+      "target_size": 123,
+      "object_size": 123,
+      "target_sha256": "62836aa7deb43b9771f25dbbab190d9dec2b70bca6afa8957f878b41b87e6e51",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "check_seconds": 0.0
+    }
+  ],
+  "layout": {
+    "size": "0x2d8",
+    "viewMutex": "0x280",
+    "views": "0x288",
+    "invalidRunViewCount": "0x2a8",
+    "runViewsDoneCondition": "0x24c",
+    "object_sha256": "a46e1dafbf9b0631a2b7c540fa42205a4d06ce5392c4d6bc982bff77e85211a4"
+  },
+  "excluded_snapshot": "138d3a09c8"
+}

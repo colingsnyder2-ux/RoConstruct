@@ -76,3 +76,21 @@ void RBX::RunService::invalidateRunViews() {
         runViewsDoneCondition.notify_all();
     }
 }
+
+// 00555830: detach a view while preserving its pending-invalidation accounting.
+void RBX::RunService::removeRunView(IRunView* view) {
+    boost::mutex::scoped_lock lock(viewMutex);
+    runViewValid(view);
+    views.erase(view);
+}
+
+void RBX::RunService::runViewValid(IRunView* view) {
+    boost::mutex::scoped_lock lock(viewMutex);
+    if (!invalidRunViewCount) return;
+    std::map<IRunView*, bool>::iterator it = views.find(view);
+    if (it != views.end() && !it->second) {
+        --invalidRunViewCount;
+        it->second = true;
+    }
+    if (!invalidRunViewCount) runViewsDoneCondition.notify_all();
+}
