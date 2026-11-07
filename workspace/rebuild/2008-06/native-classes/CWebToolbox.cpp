@@ -94,3 +94,10 @@ void CWebToolbox::OnActivate(UINT state, CWnd* other, BOOL minimized)
     if (owner)
         owner->SetFocus();
 }
+
+void CWebToolbox::showPage(int page)
+{
+    CString url;
+    url.Format("%s/IDE/ClientToolbox.aspx?Category=%d", (LPCSTR)applicationBaseUrl(), page);
+    Navigate(url);
+}

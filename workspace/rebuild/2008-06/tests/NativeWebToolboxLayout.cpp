@@ -8,6 +8,6 @@ typedef char HtmlViewSize[sizeof(CHtmlView) == 0xf4 ? 1 : -1];
 typedef char SecureHtmlViewSize[sizeof(CSecureHtmlView) == 0xf8 ? 1 : -1];
 typedef char SecureHtmlViewFlag[offsetof(CSecureHtmlView, flag_f4) == 0xf4 ? 1 : -1];
 typedef char WebToolboxSize[sizeof(CWebToolbox) == 0x100 ? 1 : -1];
-typedef char WebToolboxField[offsetof(CWebToolbox, field_f8) == 0xf8 ? 1 : -1];
+typedef char WebToolboxField[offsetof(CWebToolbox, owner) == 0xf8 ? 1 : -1];
 typedef char WebToolboxExternal[offsetof(CWebToolbox, external) == 0xfc ? 1 : -1];
 typedef char ComPtrSize[sizeof(CComPtr<IDispatch>) == 4 ? 1 : -1];
