@@ -12,7 +12,7 @@ git fetch --no-write-fetch-head findings refs/heads/work:refs/remotes/findings/w
 python -m roc.source_catalog --ref refs/remotes/findings/work --output work/source-navigation/RUN/catalog.json --map-output work/source-navigation/RUN/source-map.json
 ```
 
-The catalog pairs `native-classes`, `native-headers`, `native-world`, and organized `App/src` sources.
+The catalog pairs `native-classes`, `native-headers`, `native-world`, and organized `src` and `include` sources under App, Base, Network, Rendering, WindowsClient and Studio.
 The larger public package source tree remains browseable but is not mislabeled
 as a native mirror conflict. It records reviewed/public blob identity per native
 file and a content-derived hash for each local source snapshot. It never copies,
@@ -72,3 +72,8 @@ path, the no-loss check, and then refresh the public mirror.
 
 Blob equality only says both stored files have identical bytes. It does not show
 that code is selected, ABI-safe, runnable, or credited.
+
+Compatibility translation units are linked to their organized sources in the
+browse pages. Earlier paths retain their distinct fork, draft and snapshot
+versions; the links do not imply that any donor was accepted. Compile either
+a compatibility path or its organized source, never both.

@@ -10,6 +10,7 @@ import hashlib
 import html
 import json
 import os
+import posixpath
 from pathlib import Path
 import re
 import subprocess
@@ -20,7 +21,9 @@ from roc.native_drafts import ROOT, lock
 
 SOURCE_SUFFIXES = {'.c', '.cc', '.cpp', '.cxx', '.h', '.hh', '.hpp', '.inl'}
 NATIVE_SCOPES = ('native-classes', 'native-headers', 'native-world')
-ORGANIZED_SCOPES = ('App/src',)
+ORGANIZED_SCOPES = tuple(project + '/' + area for project in
+                         ('App', 'Base', 'Network', 'Rendering', 'WindowsClient', 'Studio')
+                         for area in ('src', 'include'))
 
 # Browse groups only.  These do not rename files, claim original project layout,
 # or affect integration decisions.  Leave weakly identified paths in Other.
@@ -28,6 +31,7 @@ MAP_GROUPS = (
     ('App/v8tree', ('v8tree/', 'native-classes/instance', 'appunit558_2008instance')),
     ('App/v8xml', ('v8xml/',)),
     ('App/reflection', ('reflection/',)),
+    ('Studio', ()),
     ('WindowsClient', ('app', 'frame', 'view', 'doc', 'dialog', 'browser', 'editor',
                     'command', 'verb', 'toolbox', 'propertygrid', 'propgrid', 'explorer', 'script')),
     ('App/v8datamodel', ('datamodel', 'instance', 'service', 'collection', 'selection',
@@ -75,6 +79,36 @@ def native_entries(root, ref, prefix):
         for path, blob in tree_entries(root, ref, prefix + '/' + scope).items():
             result[scope + '/' + path] = blob
     return result
+
+
+def compatibility_aliases(root, canonical):
+    """Recognize only exact shims pointing to tracked organized sources."""
+    import io
+    candidates = {p: b for p, b in canonical.items() if p.startswith('native-classes/')}
+    ids = sorted(set(candidates.values()))
+    if not ids:
+        return {}
+    raw = subprocess.check_output(['git', 'cat-file', '--batch'], cwd=root,
+                                  input=('\n'.join(ids) + '\n').encode())
+    stream, blobs = io.BytesIO(raw), {}
+    for sha in ids:
+        header = stream.readline().split()
+        if header[0].decode() != sha or header[1] != b'blob':
+            raise ValueError('Compatibility blob identity mismatch')
+        blobs[sha] = stream.read(int(header[2]))
+        stream.read(1)
+    pattern = re.compile(rb'(?:[ ]*// native-flags:[^\n]*\n)?'
+                         rb'// Compatibility translation unit; compile this file or the organized source, not both\.\n'
+                         rb'#include "([^"\n]+)"\n?')
+    aliases = {}
+    for path, sha in candidates.items():
+        found = pattern.fullmatch(blobs[sha].replace(b'\r\n', b'\n'))
+        if not found:
+            continue
+        target = posixpath.normpath(posixpath.join(posixpath.dirname(path), found.group(1).decode('utf-8')))
+        if target in canonical and any(target.startswith(scope + '/') for scope in ORGANIZED_SCOPES):
+            aliases[path] = target
+    return aliases
 
 
 def classify_files(canonical, public):
@@ -135,6 +169,16 @@ def compare_blobs(root, files):
 def map_group(path):
     """Return a conservative browse group for a native relative path."""
     searchable = path.lower().replace('\\', '/')
+    parts = searchable.split('/')
+    if len(parts) >= 3 and parts[1] in ('src', 'include'):
+        projects = {'base': 'Base/util', 'network': 'Network', 'rendering': 'Rendering',
+                    'windowsclient': 'WindowsClient', 'studio': 'Studio'}
+        if parts[0] in projects:
+            return projects[parts[0]]
+        if parts[0] == 'app':
+            return {'v8tree': 'App/v8tree', 'v8xml': 'App/v8xml',
+                    'reflection': 'App/reflection', 'v8datamodel': 'App/v8datamodel',
+                    'v8world': 'App/v8world'}.get(parts[2], 'Other')
     for group, terms in MAP_GROUPS:
         if any(term in searchable for term in terms):
             return group
@@ -145,7 +189,7 @@ def logical_native_path(path):
     """Only combine native paths with explicit matching client provenance."""
     parts = path.replace('\\', '/').split('/')
     for index, part in enumerate(parts):
-        if part == 'App' and parts[index:index + 2] == ['App', 'src'] and index and parts[index - 1] == '2008-06':
+        if index and parts[index - 1] == '2008-06' and '/'.join(parts[index:index + 2]) in ORGANIZED_SCOPES:
             return '/'.join(parts[index:]) if is_source(path) else None
         if part not in NATIVE_SCOPES:
             continue
@@ -282,7 +326,11 @@ def source_map(data):
     """Make a stable, generated browse map from a source-catalog result."""
     groups = {name: [] for name, _ in MAP_GROUPS}
     groups['Other'] = []
-    files = {row['path']: row for row in data['files']}
+    files = {row['path']: dict(row) for row in data['files']}
+    for old, target in data.get('compatibility_aliases', {}).items():
+        if old in files and target in files:
+            files[old]['compatibility_target'] = target
+            files[target].setdefault('previous_paths', []).append(old)
     for version in (data.get('alternatives') or {}).get('versions', []):
         files.setdefault(version['path'], dict(path=version['path'], state='candidate-only'))
     for row in sorted(files.values(), key=lambda row: row['path']):
@@ -383,11 +431,17 @@ def write_browse(folder, data):
         sections = []
         for row in group['files']:
             start = len(lines)
-            candidates = versions.get(row['path'], [])
+            candidates = list(versions.get(row['path'], []))
+            for old in row.get('previous_paths', []):
+                candidates.extend(versions.get(old, []))
             lines.extend(['<details>', '<summary>{} — {}; {} content versions</summary>'.format(
                 html.escape(row['path']), row['state'], len(candidates)), ''])
+            if row.get('compatibility_target'):
+                lines.extend(['Compatibility path for `{}`; compile either path, never both.'.format(row['compatibility_target']), ''])
+            if row.get('previous_paths'):
+                lines.extend(['Earlier paths and their donor versions: {}.'.format(', '.join('`' + p + '`' for p in row['previous_paths'])), ''])
             for version in candidates:
-                lines.append('**`{}`** · proof not assessed'.format(version['blob'][:12]))
+                lines.append('**`{}`** · `{}` · proof not assessed'.format(version['blob'][:12], version['path']))
                 seen = set()
                 local = []
                 for origin in version['origins']:
@@ -500,6 +554,7 @@ def catalog(root, ref, include_local=False):
         'public_prefix': public_prefix,
         'summary': dict(canonical_files=len(canonical), public_files=len(public), **counts),
         'files': files,
+        'compatibility_aliases': compatibility_aliases(root, canonical),
         'local_snapshots': local_snapshots(root) if include_local else [],
         'comparison_summary': compare_blobs(root, files),
     }

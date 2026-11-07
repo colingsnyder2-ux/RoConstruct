@@ -158,3 +158,25 @@ def test_write_requires_live_owned_lease(monkeypatch):
     records[0]['expires'] = module.time.time() - 1
     with pytest.raises(RuntimeError, match='live lease'):
         module.require_live_leases(['rebuild/file.cpp'])
+
+
+@pytest.mark.parametrize('scope', [
+    'App/src', 'App/include', 'Base/src', 'Base/include', 'Network/src', 'Network/include',
+    'Rendering/src', 'Rendering/include', 'WindowsClient/src', 'WindowsClient/include',
+    'Studio/src', 'Studio/include',
+])
+def test_every_project_scope_is_scanned_and_links_are_retained(tmp_path, monkeypatch, scope):
+    path = Path(__file__).resolve().parents[1] / 'roc/native_status.py'
+    spec = importlib.util.spec_from_file_location('native_status_scopes_test', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    source = tmp_path / 'rebuild/2008-06' / scope / 'Thing.cpp'
+    source.parent.mkdir(parents=True)
+    source.write_text('void f() {}\n')
+    monkeypatch.setattr(module, 'ROOT', tmp_path)
+    monkeypatch.setattr(module, 'load_names', lambda: {})
+    monkeypatch.setattr(module, 'load_integration', lambda: {})
+    monkeypatch.setattr(module, 'load_db', lambda: ({}, {}, {}, {}))
+    monkeypatch.setattr(module, 'load_json', lambda path: {'sources': {'00500000': {'path': str(source.relative_to(tmp_path)).replace('\\', '/')}}})
+    assert module.load_links()['00500000'].endswith(scope + '/Thing.cpp')
+    assert str(source.relative_to(tmp_path)) in module.build_index()

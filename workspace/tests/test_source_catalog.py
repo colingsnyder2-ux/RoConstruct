@@ -15,7 +15,7 @@ def test_classify_pairs_canonical_and_public_blobs():
 
 def test_native_entries_excludes_non_native_tree_paths(tmp_path, monkeypatch):
     def entries(root, ref, prefix):
-        if prefix.endswith('/App/src'):
+        if any(prefix.endswith('/' + scope) for scope in source_catalog.ORGANIZED_SCOPES):
             return {}
         return {'A.cpp': prefix} if prefix.endswith('native-classes') else {'B.h': prefix}
     monkeypatch.setattr(source_catalog, 'tree_entries', entries)
@@ -169,7 +169,7 @@ def test_project_pages_include_donor_only_paths(tmp_path):
             blob='123456789abcdef', origins=[dict(kind='fork', path='native-classes/AppUnit558_2008Instance.cpp',
                 url='https://github.com/mewpokemons/RoConstruct/blob/abc/native-classes/AppUnit558_2008Instance.cpp')])])))
     source_catalog.write_browse(tmp_path / 'catalog', data)
-    page = (tmp_path / 'catalog/App/v8tree/sources-001.md').read_text()
+    page = (tmp_path / 'catalog/App/v8tree/sources-001.md').read_text(encoding='utf-8')
     assert 'candidate-only' in page
     assert 'AppUnit558_2008Instance.cpp' in page
     assert 'mewpokemons' in page
@@ -196,3 +196,60 @@ def test_generated_banner_does_not_hide_changed_code_or_flags():
     assert source_catalog.body_comparison(source, banner + source.replace(b'/O2', b'/Od')) == 'requires-method-review'
     malformed = b'// >>> native-status (generated)\nint lost;\n// <<< native-status\n'
     assert source_catalog.body_comparison(source, malformed + source) == 'requires-method-review'
+
+
+def test_all_project_scopes_keep_provenance_and_grouping():
+    cases = {
+        'App/include/v8tree/Instance.h': 'App/v8tree',
+        'App/src/v8datamodel/Settings.cpp': 'App/v8datamodel',
+        'Base/src/util/Name.cpp': 'Base/util',
+        'Network/include/network/Peer.h': 'Network',
+        'Rendering/src/Camera.cpp': 'Rendering',
+        'WindowsClient/src/Frame.cpp': 'WindowsClient',
+        'Studio/include/Editor.h': 'Studio',
+        'App/src/unknown/Thing.cpp': 'Other',
+    }
+    for path, group in cases.items():
+        assert source_catalog.logical_native_path('workspace/rebuild/2008-06/' + path) == path
+        assert source_catalog.logical_native_path('2008-06/' + path) == path
+        assert source_catalog.map_group(path) == group
+        assert source_catalog.logical_native_path('workspace/rebuild/2012-06/' + path) is None
+
+
+def test_all_organized_scopes_are_enumerated(tmp_path, monkeypatch):
+    monkeypatch.setattr(source_catalog, 'tree_entries',
+        lambda root, ref, prefix: {'File.cpp': prefix} if any(
+            prefix.endswith('/' + scope) for scope in source_catalog.ORGANIZED_SCOPES) else {})
+    entries = source_catalog.native_entries(tmp_path, 'work', 'workspace/rebuild/2008-06')
+    assert set(entries) == {scope + '/File.cpp' for scope in source_catalog.ORGANIZED_SCOPES}
+
+
+def test_compatibility_paths_show_old_donors_with_moved_source(tmp_path):
+    import subprocess
+    def git(*args):
+        return subprocess.check_output(['git', *args], cwd=tmp_path, text=True).strip()
+    git('init', '-q')
+    base = tmp_path / 'workspace/rebuild/2008-06'
+    old, target = 'native-classes/Example.cpp', 'App/src/v8tree/Example.cpp'
+    for path, data in [(old, '// Compatibility translation unit; compile this file or the organized source, not both.\n#include "../App/src/v8tree/Example.cpp"\n'),
+                       (target, 'void Example::run() {}\n'),
+                       ('native-classes/NotShim.cpp', '#include "../App/src/v8tree/Example.cpp"\n')]:
+        p = base / path
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(data, encoding='utf-8')
+    git('add', '.')
+    git('-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-qm', 'source')
+    commit = git('rev-parse', 'HEAD')
+    canonical = source_catalog.native_entries(tmp_path, commit, 'workspace/rebuild/2008-06')
+    aliases = source_catalog.compatibility_aliases(tmp_path, canonical)
+    assert aliases == {old: target}
+    result = source_catalog.source_map(dict(work_commit=commit, authority='test', scope='test',
+        files=source_catalog.classify_files(canonical, {}), compatibility_aliases=aliases,
+        alternatives=dict(sources=[], errors=[], versions=[dict(path=old, blob='123456789abcdef',
+            origins=[dict(kind='fork', path=old, url='https://github.com/example/repo/blob/abc/' + old)])])))
+    source_catalog.write_browse(tmp_path / 'browse', result)
+    text = ''.join(p.read_text(encoding='utf-8') for p in (tmp_path / 'browse/App/v8tree').glob('*.md'))
+    assert 'Earlier paths and their donor versions' in text
+    assert 'https://github.com/example/repo/blob/abc/' in text
+    other = ''.join(p.read_text(encoding='utf-8') for p in (tmp_path / 'browse/Other').glob('*.md'))
+    assert 'compile either path, never both' in other
