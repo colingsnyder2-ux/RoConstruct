@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "kind": "class-family queue note",
+  "family": "Exposer (2008-06; global scope, derives protected from RakNet PacketLogger; vtable 00822d3c, 19 slots)",
+  "lease": "RBX::Exposer (Colin, 4h) covering native-classes/Exposer.cpp and this receipt",
+  "why": "one of only two uncovered RTTI classes whose methods already carried evidence names. The vtable dump settled its shape immediately: 00822d3c is identical to PacketLogger's 00825724 in EVERY slot except slot 0 (0049ed90 vs PacketLogger 004bae40), so Exposer overrides nothing but the destructor and adds no virtuals. That made it the smallest complete class in the client.",
+  "source_origin": "the class body is the ORIGINAL SOURCE, copied verbatim from the vendor tree tools/rbxgs/Client/Network/Client.cpp (also in rebuild/2008-06/out/RbxgsApp/overlay/Network/Client.cpp), where it is declared at global scope before `namespace RBX`. Nothing was reconstructed or invented; the unit is that text plus a documented emission trigger.",
+  "result": {
+    "run": "work/2008-06/native-check-runs/20261107-041200-e3986550",
+    "exact": 2,
+    "checks": 2,
+    "data_checked": 2,
+    "data_mismatches": [],
+    "issues": [],
+    "mismatches": [],
+    "manifest": "work/2008-06/shared-layouts/exposer-batch.json",
+    "recovered": [
+      {
+        "addr": "0049f180",
+        "symbol": "?IDTOString@Exposer@@SAPBDH@Z",
+        "size": 119,
+        "body": "static const char* IDTOString(int id) { Exposer exposer; return exposer.PacketLogger::IDTOString((unsigned char)id); }"
+      },
+      {
+        "addr": "0049ed90",
+        "symbol": "??_GExposer@@UAEPAXI@Z",
+        "size": 30,
+        "body": "the implicitly-generated scalar deleting destructor (empty body: MSVC emits ~PacketLogger, the deleting-flag test and operator delete, with no vptr store because nothing virtual runs during destruction)"
+      }
+    ],
+    "consequence": "the class is COMPLETE - its entire vtable is now accounted for (17 inherited slots from PacketLogger plus the recovered deleting dtor in slot 0)."
+  },
+  "binary_evidence": {
+    "0049f180": "EH prologue (push -1 / push 0x7c773b / fs:[0]), `lea ecx,[esp+4]`, call 004baa10 = ??0PacketLogger@@QAE@XZ, `mov dword ptr [esp+4], 0x822d3c` (the Exposer vtable - proof the temporary really is an Exposer), the int argument from [esp+0x220], call 004badc0 = ?IDTOString@PacketLogger@@IAEPADE@Z (the protected non-virtual), then 004baa40 = ??1PacketLogger@@QAE@XZ, `mov eax,esi`, `ret` with no argument popped - exactly a static member.",
+    "0049ed90": "push esi; mov esi,ecx; call 004baa40; test byte [esp+8],1; push esi; call 0x6a067a (operator delete); mov eax,esi; pop esi; ret 4.",
+    "vtable_00822d3c": "19 slots; slot 0 = 0049ed90 (this dtor), all others byte-identical to PacketLogger 00825724."
+  },
+  "emission_traps": "the class body is inside a class declaration, so IDTOString is inline and MSVC emits nothing unless something in the TU references it (the original Client.cpp did, which is why Roblox.exe has it). Two traps were found by experiment: making the trigger `static` lets the optimizer delete it as dead code (verified: an object with no .text at all), and making the POINTER `(*const p)` turns the initializer into a constant expression so MSVC folds it and emits no .text COMDAT for the function. The working form is a plain external-linkage non-const pointer: `const char* (*kExposerIDTOStringRef)(int) = &Exposer::IDTOString;`",
+  "include_prerequisite": "the packaged tree has no PacketLogger.h; the unit pins /I{headers} plus the vendor raknet30 Source dir and the Network source dir, the same set that makes native-classes/FilePacketLogger.cpp compile.",
+  "note": "the evidence map's symbols on the 17 inherited vtable slots are wrong (e.g. 00645830 is reported as ?putInKernel@IPipelined@RBX@@UAEXPAVKernel@2@@Z while it is really PacketLogger::OnAttach, as proven by the FilePacketLogger batch) - the vtable slot indices, not those names, are the authority.",
+  "not_recovered": "the Exposer constructor ??0Exposer@@QAE@XZ (18 B) is implicitly generated and is emitted by the unit, but it was not given a check entry because it is pure compiler output from the base constructor; nothing about it is authored.",
+  "watching_session": "6f02494cc00f4d17a626e9264879822b (scope: this receipt, native-classes/Exposer.cpp and the batch manifest)",
+  "state": "COMPLETE: Exposer 2/2 exact - Exposer::IDTOString 0049f180 and the scalar deleting destructor 0049ed90. The class is fully recovered."
+}
