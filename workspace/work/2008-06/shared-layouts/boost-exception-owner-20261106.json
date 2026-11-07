@@ -1,0 +1,1794 @@
+{
+  "scope": "Inactive candidate; no linked selection, runtime or server credit",
+  "draft_packets": [
+    302,
+    305
+  ],
+  "base_commit": "8f89c5ee2b40e14ba54f0815b8bb80fbddf36676",
+  "build": {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-boost-review-20261106\\validated\\work\\native-candidates\\boost-thread-exception-owner-20261106\\BoostThreadExceptions.cpp",
+    "status": "complete",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-214649-c0b984b1\\unit-000\\candidate.obj",
+    "compile_seconds": 0.281,
+    "compiler_exit": 0,
+    "source_sha256": "0955859ef55bf1e132b081b4e76c430108fa1a14e30b6b19a25eaaf219126124",
+    "flags": [
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/D_XTP_STATICLINK",
+      "/D_XTPLIB_NOAUTOLINK",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
+    ],
+    "log": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-214649-c0b984b1\\unit-000\\compile.log",
+    "dependencies": {
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\config\\compiler\\visualc.hpp": "2f1a5c35fb0548d13186f04c8315c5026a57f93f1ebbebf75543df31ecc86032",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\config\\no_tr1\\utility.hpp": "905bab318cdeebd5d3fca521b4db18d87b5c4b13578f7711a46586ef82fb7847",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\config\\platform\\win32.hpp": "f4e9e3b0b200d26344d7e6ba9546ed93240733defcfac4f6709e6aaf3431a713",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\config\\requires_threads.hpp": "10897c96cc5da4d3caa1e573bb748b0b33b2a22761701ea0a0ac7400afb28fdf",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\config\\select_compiler_config.hpp": "618288c89aec3ed202c6039cf4ea9bdf96d98046a03545dce5170b8f48e566ad",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\config\\select_platform_config.hpp": "e6ce7fbc79cc77ac88ddefaccd798a43a967f6e0b2a2d03c5eaf635cfd7207f8",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\config\\select_stdlib_config.hpp": "8f5511f24fd2b4db16f6437bd95ad1789a35d7b3937b5ce1853a7c50fb1d1830",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\config\\stdlib\\dinkumware.hpp": "758dc1d4138a89624f7d75f74d3b0310d231dbb90706b7887c34ddfd360c1c90",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\config\\suffix.hpp": "085fb1ec06c02b29fc9a08617511fb0fedd6722f8a7059edae9f35d157151f5b",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\config\\user.hpp": "cf1d37a33b87e25e9d932d15d5cf59656c953fa213d8670432e438d5de75040a",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\config.hpp": "bae5017d9a2579f66a8fa14bf43859c56dd9979624c893d4c69ad46bad974ffb",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\detail\\workaround.hpp": "bf90fdd6f1e803aba18cc1f8b5c8bb5eb24df1cd2e3a0b2896bd4218f9a9a405",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\thread\\detail\\config.hpp": "a69804aa6f2b60dc35daef1e03bef5f615e28c64eaf45b78fe560fde3427e89c",
+      "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src\\boost\\thread\\exceptions.hpp": "2b88a50e65fa77768bbefe0c485effbad88fda85ee43510d9012c25293047551",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\climits": "e02813776512e545a7cddcb5cf97fe1c82dc8cfb587039593682c9f00ce21cb4",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\CodeAnalysis\\sourceannotations.h": "492e8bf2c45a6a2a33e295d73b44dcb3d67a4bf37de1db63c01324985c5675ef",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\crtassem.h": "6e91403c5dd83b1d996837132960dde8d703381c2820178478e2a7f374bc780a",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\crtdbg.h": "5ae2e3a9f2d36ffbd1f5f9585d19419d2b00d5aabdc8876a2591cfd82da99e80",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\crtdefs.h": "718c0fe0fd6110215ab8c7ad2c79121c3e940c43b90dee2030f19d595dcec018",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cstddef": "6ad1bb9465c2b9e0d97583b9b56acc6f78316384ca36daaab6efd0550068d59b",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cstdio": "5acb814b7db101e619f4b30088b3918823e340844d0cc8b455f0557cc4ab4ae3",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cstdlib": "687b09c5c4960ac4c8749de9d824c1c313f2af0d3cde68b8104833d9d272312f",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cstring": "3a54848b4cf709a6b0936508a6905cbfd1b4b91661833e5b573c76419f09d875",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\ctype.h": "31fc9b23bc16f88f05722dfa118e4ce5f3305d200293a25e6897eefd5991f0d7",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cwchar": "daceb41d0686b3166d6d3a1c8cd1bdd6d080b3f1a1abf1b026f0240d6f2f293d",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\eh.h": "96b650363a5b6cbb0d519af9fa638cc3f8acb10285f4e0f0fde081661fb19ecf",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\exception": "7398b7dc3ab844603844d76255970c546c7797a8d820173ab26a6185830d5178",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\ios": "cffe017ecd38d253e0ce76e16c9a3aa2bb54ef8b6465a00cce12d52053d27af7",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\iosfwd": "5475dc20ed7b117b0b4604d59969a1cddb7b11b2f0f6fa3f50611f9751269c12",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\istream": "d8ad368326716d9e8f5dee70a6fa329004693c7f67374d924b9a9b96a4a43f26",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\limits.h": "2b989d57b00c4c5c47518388428b14d90443f5e003117c25c7f0df064d883005",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\locale.h": "94b4f5b2fd9667eb11d7b40feb58db9f2086319378581ad6093daab6e851f838",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\malloc.h": "dd16da751b7d626c3230c8490890697b698eef9b1eb1d46d9de4e4dd19055a32",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\new": "693999d736b1827935ddd6c14083b4d44dd5782b0ce47025e05bff5edd00bf29",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\ostream": "74d287973749df090c24e7d8e8b53d1c438edbcdc6a1944b957553bd0eaf9103",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\sal.h": "c25c776da247c8d3c145cb9afcbc81eea81912f588166de4f84cec9baf8fac18",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\share.h": "c0fcc6e1758bf0362d75f6cc4b2a2c41dd9d4d2286114724670000e4a912454b",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\stddef.h": "2e604fb2a77340a25599dec98c283ce0b3d3373ab86473ab29bb1715e7c3a7b5",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\stdexcept": "09a34bce5467eac227a5b4b835ed71fdd65d5aeaccdcdcfc8cbadc51148647f7",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\stdio.h": "6bfd372dfe186587b84f5bee916af281baa68bd274c0ab17697954039a03e9ad",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\stdlib.h": "f8cf8dc763a4d57b604e6c8ce7699726dd9ff50cafbde27fb46e5c1eaf6ff718",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\streambuf": "68c937564ae56483a9aa02771d32024ce049a282e6bb7cf4ca6eb4879dff16b2",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\string": "e6088b68daf907b85267f3f732b983866cb82c4401b256935660d73cc82617a4",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\string.h": "984ee4ebe5e79679ead40e0822eb3b28cdfba241dcb9746a0ca0ce1d13631a3a",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\swprintf.inl": "fe65a446685d03da6af5d85e969bba363284843ba26cd646f88719787b0f2531",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\typeinfo": "331ff999a901db6d437392e8e711f91045b962a1e98ac0a7429799619e5a44a4",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\use_ansi.h": "672019e959d8cdd9e9bf216e6c74bed0189986c5b8659f2462c7902e1e3f003b",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\utility": "22c6e90f1358f8df2b3a13e36acce72a4091fd175b4a8e84cac3b169b3b14c3d",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\vadefs.h": "aae1adc7f057aa349aafd6e78388f3065516cacd3ab1e1adb175d5f269d2b8a2",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\wchar.h": "09ed2ef2b89b34a1dfd577025d5c047d861f03db567efa130f2ccc2380f7b6d8",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\wtime.inl": "4be4fa6b7531a938b4ca936fdb8149e2388878251f6b87a568f445e6eccd8762",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xdebug": "c2850f4ccdf816fbae80136f054c1cc3b94fbb92b8b4f540eea3b9788512658c",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xiosbase": "7218de75602e0fddb67a8eee48ce4d389746c5fa5679c7c2f6e1c6a033d2abaa",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xlocale": "5874f74b2c1519d605785b87909ad8b6b8abc627562b665c1264a1e6f67a26da",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xlocinfo": "5eee3f7fe3f38af813fe55e4b25a3ac651d1431309665ba0aedc5e47d52428b3",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xlocinfo.h": "0960c4405f4b273a6de2435625df2862833255c58eaabbf78c3ac67641325167",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xlocnum": "36fafafdb4f5a8c4cdb51145bc28857a14d540bf9b3f44d28dabff27339fb4a2",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xmemory": "78f61087b9fcda38c80f18ef7a59a14e10a78de239f87aba13e282769b75538d",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xstddef": "0a01b93b8f58c90a416633dbe60ee11f4844038f6d8d42ae8bd36ec6d3ecbb67",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xstring": "09f2e47e92ca601817cea05d8e08a2045b0c079f912fbe9125a40117348e29be",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xutility": "ef94b8bae26597f0c39fa0f6d685cdaa8ed5628e1e2bc4dbdadea78cd577a163",
+      "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\yvals.h": "f2cf5625d2a60310032d8a6f130bf037811f87ad4a6026089e784d611d8ed6ca",
+      "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-boost-review-20261106\\validated\\work\\native-candidates\\boost-thread-exception-owner-20261106\\BoostThreadExceptions.cpp": "0955859ef55bf1e132b081b4e76c430108fa1a14e30b6b19a25eaaf219126124"
+    },
+    "object_sha256": "a6f3fe2b27f95f0a3820342a62f8d32034aa3ca8569647d501afc33f024f7798",
+    "checks": [
+      {
+        "addr": "00568430",
+        "requested_symbol": "??0thread_resource_error@boost@@",
+        "status": "exact",
+        "symbol": "??0thread_resource_error@boost@@QAE@XZ",
+        "score": 100,
+        "target_size": 26,
+        "object_size": 26,
+        "target_sha256": "c7f9f88bea9d88b185e6edad9809b16d062cf629a5a0d42c9dcad9a091385c62",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8455380,
+            8
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 3.484
+      },
+      {
+        "addr": "00568450",
+        "requested_symbol": "?what@thread_resource_error@boost@@",
+        "status": "exact",
+        "symbol": "?what@thread_resource_error@boost@@UBEPBDXZ",
+        "score": 100,
+        "target_size": 6,
+        "object_size": 6,
+        "target_sha256": "92feac01e9af67b9f4d4615fa4c0cbea65db6b44debe2f82f5a26c6cdaef1e70",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8580880,
+            29
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.016
+      },
+      {
+        "addr": "00568420",
+        "requested_symbol": "?what@lock_error@boost@@",
+        "status": "exact",
+        "symbol": "?what@lock_error@boost@@UBEPBDXZ",
+        "score": 100,
+        "target_size": 6,
+        "object_size": 6,
+        "target_sha256": "0edeab4d69f8c19242ff15abc17fe634c69ae774bc7d042163d1235d6cf0caad",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8580860,
+            18
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "00406be0",
+        "requested_symbol": "??_Gthread_resource_error@boost@@",
+        "status": "exact",
+        "symbol": "??_Gthread_resource_error@boost@@UAEPAXI@Z",
+        "score": 100,
+        "target_size": 30,
+        "object_size": 30,
+        "target_sha256": "dd5e99a360ffe2dc5847709cdb9f8adf25d4b8220c2b585581de721032a9bd51",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "00568410",
+        "requested_symbol": "??1thread_resource_error@boost@@",
+        "status": "exact",
+        "symbol": "??1thread_resource_error@boost@@UAE@XZ",
+        "score": 100,
+        "target_size": 12,
+        "object_size": 12,
+        "target_sha256": "598b1af03eb6a89193eb8679a6f4424c25290a9307dbe419efa1b45df09982e8",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8434844,
+            8
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": [],
+    "analysis_seconds": 3.5,
+    "seconds": 3.812,
+    "unit": 0
+  },
+  "eh": [
+    {
+      "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+      "address": "00556b00",
+      "primary_body_size": 531,
+      "primary_body_exact": true,
+      "tool_sha256": "0058e22fb5108b3e3ac8d9f14de968300009a87a4188fe51a28a24492d793f62",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-051646-3213c231\\unit-000\\candidate.obj",
+      "object_sha256": "1cea46eda435bd4084480d3bd2f3b7dbb9d9544bf0a26d434ae7e5e56e8812f5",
+      "import_library_inputs": [
+        {
+          "library": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib",
+          "sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+        },
+        {
+          "library": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcprt.lib",
+          "sha256": "6bedbd9c1bddf28a984a58e4548ffa9286f172e55fb5dd2af0b1a1a34d81b020"
+        },
+        {
+          "library": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Lib\\kernel32.lib",
+          "sha256": "5c76cde0da4a277962316070b966e0829d35df93d5b54d79d81f964e56cd4819"
+        }
+      ],
+      "provider_inputs": [
+        {
+          "symbol": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-073802-c2c1247a\\unit-000\\candidate.obj",
+          "sha256": "c5a01eb157347d00928a40fe55f59924a2739a12f55d19a9999be76875d28ce8",
+          "used": false
+        },
+        {
+          "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-073802-c2c1247a\\unit-000\\candidate.obj",
+          "sha256": "c5a01eb157347d00928a40fe55f59924a2739a12f55d19a9999be76875d28ce8",
+          "used": true
+        },
+        {
+          "symbol": "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-111042-138dcefb\\unit-000\\candidate.obj",
+          "sha256": "4ec9c888f46dfda519a916eda3803eea5f71feb186ed7ef075644bc4a6d20e36",
+          "used": true
+        },
+        {
+          "symbol": "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\property-provider-build-cstr\\candidate.obj",
+          "sha256": "fc4662ace6cbd974023aa57a25743b955ab91bb375a4f2111e9498fc0d27cfea",
+          "used": true
+        },
+        {
+          "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\standardout-lifetime-build\\candidate.obj",
+          "sha256": "77eb51ca60c6dc6c203492d0bcb811962c8b4905de8b4c6c91aa336df49d8e4a",
+          "used": true
+        },
+        {
+          "symbol": "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\donor-standardout.obj",
+          "sha256": "32a1ba6cbb530dcf58677ce46fa7a681f3f2a4e409094e3d0337f8ade871fb81",
+          "used": false
+        },
+        {
+          "symbol": "??0mutex@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\Boost-mutex.obj",
+          "sha256": "38570751c3ea1a12292b8420844d984ccdf6dc2ec5f54578d4a740457c94ef74",
+          "used": true
+        },
+        {
+          "symbol": "??1mutex@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\Boost-mutex.obj",
+          "sha256": "38570751c3ea1a12292b8420844d984ccdf6dc2ec5f54578d4a740457c94ef74",
+          "used": true
+        },
+        {
+          "symbol": "??0thread_resource_error@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-214649-c0b984b1\\unit-000\\candidate.obj",
+          "sha256": "a6f3fe2b27f95f0a3820342a62f8d32034aa3ca8569647d501afc33f024f7798",
+          "used": true
+        }
+      ],
+      "events": [
+        {
+          "symbol": "__ehhandler$??0RunService@RBX@@QAE@XZ",
+          "original": "0x7ce049",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$??0RunService@RBX@@QAE@XZ",
+          "original": "0x8e8f1c",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190e000000408f8e00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190e00000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$??0RunService@RBX@@QAE@XZ",
+          "original": "0x8e8f40",
+          "kind": "EH data",
+          "size": 112,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffff90df7c000000000098df7c0001000000a6df7c0002000000b4df7c0003000000c2df7c0004000000d0df7c0005000000dedf7c0006000000ecdf7c0007000000fadf7c000800000008e07c000900000016e07c000a00000024e07c000b00000032e07c000c00000040e07c00",
+          "native_bytes": "ffffffff0000000000000000000000000100000000000000020000000000000003000000000000000400000000000000050000000000000006000000000000000700000000000000080000000000000009000000000000000a000000000000000b000000000000000c00000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$??0RunService@RBX@@QAE@XZ$0",
+          "original": "0x7cdf90",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$DescribedCreatable@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@RBX@@UAE@XZ",
+          "original": "0x554870",
+          "kind": "cleanup/handler code",
+          "size": 5,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@RBX@@MAE@XZ",
+          "original": "0x554350",
+          "kind": "cleanup/handler code",
+          "size": 83,
+          "exact": true
+        },
+        {
+          "symbol": "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+          "original": "0x82d3b4",
+          "kind": "EH data",
+          "size": 64,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "10d4470090af550080e8680080e86800c0ac550020ae550090ae5500f0bd7000f0bd7000f0bd700010d4470070915500908e450070a45500508c550090745500",
+          "native_bytes": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "symbol": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ",
+          "original": "0x47d410",
+          "kind": "cleanup/handler code",
+          "size": 1,
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-073802-c2c1247a\\unit-000\\candidate.obj",
+          "object_sha256": "c5a01eb157347d00928a40fe55f59924a2739a12f55d19a9999be76875d28ce8",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0x55af90",
+          "kind": "cleanup/handler code",
+          "size": 57,
+          "exact": true
+        },
+        {
+          "symbol": "__imp_??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z",
+          "original": "0x8023d8",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+          "original": "0x80240c",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-111042-138dcefb\\unit-000\\candidate.obj",
+          "object_sha256": "4ec9c888f46dfda519a916eda3803eea5f71feb186ed7ef075644bc4a6d20e36",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B",
+          "original": "0x973d54",
+          "kind": "EH data",
+          "size": 28,
+          "exact": true,
+          "zero_initialized": true,
+          "original_bytes": "00000000000000000000000000000000000000000000000000000000",
+          "native_bytes": "00000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\property-provider-build-cstr\\candidate.obj",
+          "object_sha256": "fc4662ace6cbd974023aa57a25743b955ab91bb375a4f2111e9498fc0d27cfea",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z",
+          "original": "0x40db00",
+          "kind": "cleanup/handler code",
+          "size": 160,
+          "exact": true
+        },
+        {
+          "symbol": "?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@@Z",
+          "original": "0x40a530",
+          "kind": "cleanup/handler code",
+          "size": 143,
+          "exact": true
+        },
+        {
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "original": "0x802890",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+          "original": "0x40a1c0",
+          "kind": "cleanup/handler code",
+          "size": 197,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+          "original": "0x7bd121",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+          "original": "0x8d15a0",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190400000080158d00010000006c158d0000000000000000000000000001000000",
+          "native_bytes": "220593190400000000000000010000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+          "original": "0x8d1580",
+          "kind": "EH data",
+          "size": 32,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffff00000000ffffffff000000000100000010d17b000200000019d17b00",
+          "native_bytes": "ffffffff00000000ffffffff0000000001000000000000000200000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z$2",
+          "original": "0x7bd110",
+          "kind": "cleanup/handler code",
+          "size": 9,
+          "exact": true
+        },
+        {
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "original": "0x802468",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z$3",
+          "original": "0x7bd119",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ",
+          "original": "0x600660",
+          "kind": "cleanup/handler code",
+          "size": 53,
+          "exact": true
+        },
+        {
+          "symbol": "__tryblocktable$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+          "original": "0x8d156c",
+          "kind": "EH data",
+          "size": 20,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "000000000000000003000000010000005c158d00",
+          "native_bytes": "0000000000000000030000000100000000000000"
+        },
+        {
+          "symbol": "__catchsym$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z$4",
+          "original": "0x8d155c",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "0900000088859200e8ffffff20a24000",
+          "native_bytes": "0900000000000000e8ffffff00000000"
+        },
+        {
+          "symbol": "??_R0?AVexception@std@@@8",
+          "original": "0x928588",
+          "kind": "EH data",
+          "size": 28,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "80018500000000002e3f4156657863657074696f6e40737464404000",
+          "native_bytes": "00000000000000002e3f4156657863657074696f6e40737464404000"
+        },
+        {
+          "kind": "canonical type_info vtable binding",
+          "original": "0x850180",
+          "anchors": [
+            {
+              "type": ".?AVCWorkspace@@",
+              "descriptor": "0x9281e0",
+              "vtable": "0x850180"
+            },
+            {
+              "type": ".?AVInstance@RBX@@",
+              "descriptor": "0x92907c",
+              "vtable": "0x850180"
+            }
+          ],
+          "exact": true
+        },
+        {
+          "symbol": "??_7type_info@@6B@",
+          "original": "0x850180",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "__catch$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z$0",
+          "original": "0x40a220",
+          "kind": "cleanup/handler code",
+          "size": 101,
+          "exact": true
+        },
+        {
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "original": "0x802458",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\standardout-lifetime-build\\candidate.obj",
+          "object_sha256": "77eb51ca60c6dc6c203492d0bcb811962c8b4905de8b4c6c91aa336df49d8e4a",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "original": "0x569620",
+          "kind": "cleanup/handler code",
+          "size": 173,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "original": "0x7cf8c9",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "original": "0x8eb298",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190200000088b28e00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190200000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "original": "0x8eb288",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffffb0f87c0000000000bef87c00",
+          "native_bytes": "ffffffff000000000000000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ$0",
+          "original": "0x7cf8b0",
+          "kind": "cleanup/handler code",
+          "size": 14,
+          "exact": true
+        },
+        {
+          "symbol": "?$S1@?1??singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ@4IA",
+          "original": "0x974ab4",
+          "kind": "EH data",
+          "size": 4,
+          "exact": true,
+          "zero_initialized": true,
+          "original_bytes": "00000000",
+          "native_bytes": "00000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ$1",
+          "original": "0x7cf8be",
+          "kind": "cleanup/handler code",
+          "size": 11,
+          "exact": true
+        },
+        {
+          "symbol": "??0StandardOut@RBX@@QAE@XZ",
+          "original": "0x569530",
+          "kind": "cleanup/handler code",
+          "size": 83,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$??0StandardOut@RBX@@QAE@XZ",
+          "original": "0x7cf8a3",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$??0StandardOut@RBX@@QAE@XZ",
+          "original": "0x8eb264",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190200000054b28e00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190200000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$??0StandardOut@RBX@@QAE@XZ",
+          "original": "0x8eb254",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffff90f87c00000000009bf87c00",
+          "native_bytes": "ffffffff000000000000000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$??0StandardOut@RBX@@QAE@XZ$0",
+          "original": "0x7cf890",
+          "kind": "cleanup/handler code",
+          "size": 11,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$enable_shared_from_this@VStandardOut@RBX@@@boost@@IAE@XZ",
+          "original": "0x5576e0",
+          "kind": "cleanup/handler code",
+          "size": 27,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$??0StandardOut@RBX@@QAE@XZ$1",
+          "original": "0x7cf89b",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MAE@XZ",
+          "original": "0x5e9f20",
+          "kind": "cleanup/handler code",
+          "size": 54,
+          "exact": true
+        },
+        {
+          "symbol": "??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ",
+          "original": "0x5e9ec0",
+          "kind": "cleanup/handler code",
+          "size": 84,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ",
+          "original": "0x7d72e8",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ",
+          "original": "0x8f5e98",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "2205931901000000905e8f00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ",
+          "original": "0x8f5e90",
+          "kind": "EH data",
+          "size": 8,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffffe0727d00",
+          "native_bytes": "ffffffff00000000"
+        },
+        {
+          "symbol": "__unwindfunclet$??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ$1",
+          "original": "0x7d72e0",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$_Vector_val@PAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@V?$allocator@PAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@@std@@@std@@QAE@XZ",
+          "original": "0x5b3d20",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "??_7StandardOut@RBX@@6B@",
+          "original": "0x82f510",
+          "kind": "EH data",
+          "size": 12,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "d0965600f0bd7000f0bd7000",
+          "native_bytes": "000000000000000000000000"
+        },
+        {
+          "kind": "COFF weak fallback availability",
+          "symbol": "??_EStandardOut@RBX@@UAEPAXI@Z",
+          "fallback": "??_GStandardOut@RBX@@UAEPAXI@Z",
+          "original": "0x5696d0",
+          "scope": "Final PE weak selection unproven"
+        },
+        {
+          "symbol": "??_GStandardOut@RBX@@UAEPAXI@Z",
+          "original": "0x5696d0",
+          "kind": "cleanup/handler code",
+          "size": 30,
+          "exact": true
+        },
+        {
+          "symbol": "??1StandardOut@RBX@@UAE@XZ",
+          "original": "0x569590",
+          "kind": "cleanup/handler code",
+          "size": 144,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$??1StandardOut@RBX@@UAE@XZ",
+          "original": "0x7cf8a3",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$??1StandardOut@RBX@@UAE@XZ",
+          "original": "0x8eb264",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190200000054b28e00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190200000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$??1StandardOut@RBX@@UAE@XZ",
+          "original": "0x8eb254",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffff90f87c00000000009bf87c00",
+          "native_bytes": "ffffffff000000000000000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$??1StandardOut@RBX@@UAE@XZ$0",
+          "original": "0x7cf890",
+          "kind": "cleanup/handler code",
+          "size": 11,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$??1StandardOut@RBX@@UAE@XZ$1",
+          "original": "0x7cf89b",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "??1mutex@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\Boost-mutex.obj",
+          "object_sha256": "38570751c3ea1a12292b8420844d984ccdf6dc2ec5f54578d4a740457c94ef74",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "??1mutex@boost@@QAE@XZ",
+          "original": "0x594cb0",
+          "kind": "cleanup/handler code",
+          "size": 37,
+          "exact": true
+        },
+        {
+          "symbol": "__imp__DeleteCriticalSection@4",
+          "original": "0x8022dc",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "__imp__CloseHandle@4",
+          "original": "0x802234",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "?onAddListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z",
+          "original": "0x70bdf0",
+          "kind": "cleanup/handler code",
+          "size": 3,
+          "exact": true
+        },
+        {
+          "symbol": "?onRemoveListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z",
+          "original": "0x70bdf0",
+          "kind": "cleanup/handler code",
+          "size": 3,
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "??0mutex@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\Boost-mutex.obj",
+          "object_sha256": "38570751c3ea1a12292b8420844d984ccdf6dc2ec5f54578d4a740457c94ef74",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "??0mutex@boost@@QAE@XZ",
+          "original": "0x594c90",
+          "kind": "cleanup/handler code",
+          "size": 24,
+          "exact": true
+        },
+        {
+          "symbol": "?new_critical_section@?A0xba967ce0@@YAPAXXZ",
+          "original": "0x594c10",
+          "kind": "cleanup/handler code",
+          "size": 126,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$?new_critical_section@?A0xba967ce0@@YAPAXXZ",
+          "original": "0x7d1fe0",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?new_critical_section@?A0xba967ce0@@YAPAXXZ",
+          "original": "0x8eeabc",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190200000098ea8e0001000000a8ea8e0000000000000000000000000001000000",
+          "native_bytes": "220593190200000000000000010000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?new_critical_section@?A0xba967ce0@@YAPAXXZ",
+          "original": "0x8eea98",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffff00000000ffffffff00000000",
+          "native_bytes": "ffffffff00000000ffffffff00000000"
+        },
+        {
+          "symbol": "__tryblocktable$?new_critical_section@?A0xba967ce0@@YAPAXXZ",
+          "original": "0x8eeaa8",
+          "kind": "EH data",
+          "size": 20,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "0000000000000000010000000100000088ea8e00",
+          "native_bytes": "0000000000000000010000000100000000000000"
+        },
+        {
+          "symbol": "__catchsym$?new_critical_section@?A0xba967ce0@@YAPAXXZ$2",
+          "original": "0x8eea88",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "400000000000000000000000784c5900",
+          "native_bytes": "40000000000000000000000000000000"
+        },
+        {
+          "symbol": "__catch$?new_critical_section@?A0xba967ce0@@YAPAXXZ$0",
+          "original": "0x594c78",
+          "kind": "cleanup/handler code",
+          "size": 22,
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "??0thread_resource_error@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-214649-c0b984b1\\unit-000\\candidate.obj",
+          "object_sha256": "a6f3fe2b27f95f0a3820342a62f8d32034aa3ca8569647d501afc33f024f7798",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "??0thread_resource_error@boost@@QAE@XZ",
+          "original": "0x568430",
+          "kind": "cleanup/handler code",
+          "size": 26,
+          "exact": true
+        },
+        {
+          "symbol": "__imp_??0exception@std@@QAE@XZ",
+          "original": "0x802898",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "??_7thread_resource_error@boost@@6B@",
+          "original": "0x8104d4",
+          "kind": "EH data",
+          "size": 8,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "e06b400050845600",
+          "native_bytes": "0000000000000000"
+        },
+        {
+          "kind": "COFF weak fallback availability",
+          "symbol": "??_Ethread_resource_error@boost@@UAEPAXI@Z",
+          "fallback": "??_Gthread_resource_error@boost@@UAEPAXI@Z",
+          "original": "0x406be0",
+          "scope": "Final PE weak selection unproven"
+        },
+        {
+          "symbol": "??_Gthread_resource_error@boost@@UAEPAXI@Z",
+          "original": "0x406be0",
+          "kind": "cleanup/handler code",
+          "size": 30,
+          "exact": true
+        },
+        {
+          "symbol": "??1thread_resource_error@boost@@UAE@XZ",
+          "original": "0x568410",
+          "kind": "cleanup/handler code",
+          "size": 12,
+          "exact": true
+        },
+        {
+          "symbol": "??_7thread_exception@boost@@6B@",
+          "original": "0x80b49c",
+          "kind": "EH data",
+          "size": 8,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "e06b40004c156a00",
+          "native_bytes": "0000000000000000"
+        },
+        {
+          "kind": "COFF weak fallback availability",
+          "symbol": "??_Ethread_exception@boost@@UAEPAXI@Z",
+          "fallback": "??_Gthread_exception@boost@@UAEPAXI@Z",
+          "original": "0x406be0",
+          "scope": "Final PE weak selection unproven"
+        }
+      ],
+      "errors": [
+        "('??_Gthread_exception@boost@@UAEPAXI@Z', 'non-address relocation')"
+      ]
+    },
+    {
+      "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+      "address": "00555c00",
+      "primary_body_size": 573,
+      "primary_body_exact": true,
+      "tool_sha256": "0058e22fb5108b3e3ac8d9f14de968300009a87a4188fe51a28a24492d793f62",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-051646-3213c231\\unit-000\\candidate.obj",
+      "object_sha256": "1cea46eda435bd4084480d3bd2f3b7dbb9d9544bf0a26d434ae7e5e56e8812f5",
+      "import_library_inputs": [
+        {
+          "library": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib",
+          "sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+        },
+        {
+          "library": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcprt.lib",
+          "sha256": "6bedbd9c1bddf28a984a58e4548ffa9286f172e55fb5dd2af0b1a1a34d81b020"
+        },
+        {
+          "library": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Lib\\kernel32.lib",
+          "sha256": "5c76cde0da4a277962316070b966e0829d35df93d5b54d79d81f964e56cd4819"
+        }
+      ],
+      "provider_inputs": [
+        {
+          "symbol": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-073802-c2c1247a\\unit-000\\candidate.obj",
+          "sha256": "c5a01eb157347d00928a40fe55f59924a2739a12f55d19a9999be76875d28ce8",
+          "used": false
+        },
+        {
+          "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-073802-c2c1247a\\unit-000\\candidate.obj",
+          "sha256": "c5a01eb157347d00928a40fe55f59924a2739a12f55d19a9999be76875d28ce8",
+          "used": true
+        },
+        {
+          "symbol": "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-111042-138dcefb\\unit-000\\candidate.obj",
+          "sha256": "4ec9c888f46dfda519a916eda3803eea5f71feb186ed7ef075644bc4a6d20e36",
+          "used": true
+        },
+        {
+          "symbol": "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\property-provider-build-cstr\\candidate.obj",
+          "sha256": "fc4662ace6cbd974023aa57a25743b955ab91bb375a4f2111e9498fc0d27cfea",
+          "used": true
+        },
+        {
+          "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\standardout-lifetime-build\\candidate.obj",
+          "sha256": "77eb51ca60c6dc6c203492d0bcb811962c8b4905de8b4c6c91aa336df49d8e4a",
+          "used": true
+        },
+        {
+          "symbol": "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\donor-standardout.obj",
+          "sha256": "32a1ba6cbb530dcf58677ce46fa7a681f3f2a4e409094e3d0337f8ade871fb81",
+          "used": false
+        },
+        {
+          "symbol": "??0mutex@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\Boost-mutex.obj",
+          "sha256": "38570751c3ea1a12292b8420844d984ccdf6dc2ec5f54578d4a740457c94ef74",
+          "used": true
+        },
+        {
+          "symbol": "??1mutex@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\Boost-mutex.obj",
+          "sha256": "38570751c3ea1a12292b8420844d984ccdf6dc2ec5f54578d4a740457c94ef74",
+          "used": true
+        },
+        {
+          "symbol": "??0thread_resource_error@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-214649-c0b984b1\\unit-000\\candidate.obj",
+          "sha256": "a6f3fe2b27f95f0a3820342a62f8d32034aa3ca8569647d501afc33f024f7798",
+          "used": true
+        }
+      ],
+      "events": [
+        {
+          "symbol": "__ehhandler$??1RunService@RBX@@UAE@XZ",
+          "original": "0x7cded8",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$??1RunService@RBX@@UAE@XZ",
+          "original": "0x8e8dd4",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190e000000f88d8e00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190e00000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$??1RunService@RBX@@UAE@XZ",
+          "original": "0x8e8df8",
+          "kind": "EH data",
+          "size": 112,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffff20de7c000000000028de7c000100000036de7c000200000044de7c000300000052de7c000400000060de7c00050000006ede7c00060000007cde7c00070000008ade7c000800000098de7c0009000000a6de7c000a000000b4de7c000b000000c2de7c000b000000d0de7c00",
+          "native_bytes": "ffffffff0000000000000000000000000100000000000000020000000000000003000000000000000400000000000000050000000000000006000000000000000700000000000000080000000000000009000000000000000a000000000000000b000000000000000b00000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$??1RunService@RBX@@UAE@XZ$0",
+          "original": "0x7cde20",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$DescribedCreatable@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@RBX@@UAE@XZ",
+          "original": "0x554870",
+          "kind": "cleanup/handler code",
+          "size": 5,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@RBX@@MAE@XZ",
+          "original": "0x554350",
+          "kind": "cleanup/handler code",
+          "size": 83,
+          "exact": true
+        },
+        {
+          "symbol": "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+          "original": "0x82d3b4",
+          "kind": "EH data",
+          "size": 64,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "10d4470090af550080e8680080e86800c0ac550020ae550090ae5500f0bd7000f0bd7000f0bd700010d4470070915500908e450070a45500508c550090745500",
+          "native_bytes": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "symbol": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ",
+          "original": "0x47d410",
+          "kind": "cleanup/handler code",
+          "size": 1,
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-073802-c2c1247a\\unit-000\\candidate.obj",
+          "object_sha256": "c5a01eb157347d00928a40fe55f59924a2739a12f55d19a9999be76875d28ce8",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0x55af90",
+          "kind": "cleanup/handler code",
+          "size": 57,
+          "exact": true
+        },
+        {
+          "symbol": "__imp_??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z",
+          "original": "0x8023d8",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+          "original": "0x80240c",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-111042-138dcefb\\unit-000\\candidate.obj",
+          "object_sha256": "4ec9c888f46dfda519a916eda3803eea5f71feb186ed7ef075644bc4a6d20e36",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B",
+          "original": "0x973d54",
+          "kind": "EH data",
+          "size": 28,
+          "exact": true,
+          "zero_initialized": true,
+          "original_bytes": "00000000000000000000000000000000000000000000000000000000",
+          "native_bytes": "00000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\property-provider-build-cstr\\candidate.obj",
+          "object_sha256": "fc4662ace6cbd974023aa57a25743b955ab91bb375a4f2111e9498fc0d27cfea",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z",
+          "original": "0x40db00",
+          "kind": "cleanup/handler code",
+          "size": 160,
+          "exact": true
+        },
+        {
+          "symbol": "?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@@Z",
+          "original": "0x40a530",
+          "kind": "cleanup/handler code",
+          "size": 143,
+          "exact": true
+        },
+        {
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "original": "0x802890",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+          "original": "0x40a1c0",
+          "kind": "cleanup/handler code",
+          "size": 197,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+          "original": "0x7bd121",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+          "original": "0x8d15a0",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190400000080158d00010000006c158d0000000000000000000000000001000000",
+          "native_bytes": "220593190400000000000000010000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+          "original": "0x8d1580",
+          "kind": "EH data",
+          "size": 32,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffff00000000ffffffff000000000100000010d17b000200000019d17b00",
+          "native_bytes": "ffffffff00000000ffffffff0000000001000000000000000200000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z$2",
+          "original": "0x7bd110",
+          "kind": "cleanup/handler code",
+          "size": 9,
+          "exact": true
+        },
+        {
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "original": "0x802468",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z$3",
+          "original": "0x7bd119",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ",
+          "original": "0x600660",
+          "kind": "cleanup/handler code",
+          "size": 53,
+          "exact": true
+        },
+        {
+          "symbol": "__tryblocktable$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+          "original": "0x8d156c",
+          "kind": "EH data",
+          "size": 20,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "000000000000000003000000010000005c158d00",
+          "native_bytes": "0000000000000000030000000100000000000000"
+        },
+        {
+          "symbol": "__catchsym$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z$4",
+          "original": "0x8d155c",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "0900000088859200e8ffffff20a24000",
+          "native_bytes": "0900000000000000e8ffffff00000000"
+        },
+        {
+          "symbol": "??_R0?AVexception@std@@@8",
+          "original": "0x928588",
+          "kind": "EH data",
+          "size": 28,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "80018500000000002e3f4156657863657074696f6e40737464404000",
+          "native_bytes": "00000000000000002e3f4156657863657074696f6e40737464404000"
+        },
+        {
+          "kind": "canonical type_info vtable binding",
+          "original": "0x850180",
+          "anchors": [
+            {
+              "type": ".?AVCWorkspace@@",
+              "descriptor": "0x9281e0",
+              "vtable": "0x850180"
+            },
+            {
+              "type": ".?AVInstance@RBX@@",
+              "descriptor": "0x92907c",
+              "vtable": "0x850180"
+            }
+          ],
+          "exact": true
+        },
+        {
+          "symbol": "??_7type_info@@6B@",
+          "original": "0x850180",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "__catch$?raise@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@IBEXVPropertyChanged@2@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z$0",
+          "original": "0x40a220",
+          "kind": "cleanup/handler code",
+          "size": 101,
+          "exact": true
+        },
+        {
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "original": "0x802458",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\standardout-lifetime-build\\candidate.obj",
+          "object_sha256": "77eb51ca60c6dc6c203492d0bcb811962c8b4905de8b4c6c91aa336df49d8e4a",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "original": "0x569620",
+          "kind": "cleanup/handler code",
+          "size": 173,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "original": "0x7cf8c9",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "original": "0x8eb298",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190200000088b28e00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190200000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+          "original": "0x8eb288",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffffb0f87c0000000000bef87c00",
+          "native_bytes": "ffffffff000000000000000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ$0",
+          "original": "0x7cf8b0",
+          "kind": "cleanup/handler code",
+          "size": 14,
+          "exact": true
+        },
+        {
+          "symbol": "?$S1@?1??singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ@4IA",
+          "original": "0x974ab4",
+          "kind": "EH data",
+          "size": 4,
+          "exact": true,
+          "zero_initialized": true,
+          "original_bytes": "00000000",
+          "native_bytes": "00000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ$1",
+          "original": "0x7cf8be",
+          "kind": "cleanup/handler code",
+          "size": 11,
+          "exact": true
+        },
+        {
+          "symbol": "??0StandardOut@RBX@@QAE@XZ",
+          "original": "0x569530",
+          "kind": "cleanup/handler code",
+          "size": 83,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$??0StandardOut@RBX@@QAE@XZ",
+          "original": "0x7cf8a3",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$??0StandardOut@RBX@@QAE@XZ",
+          "original": "0x8eb264",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190200000054b28e00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190200000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$??0StandardOut@RBX@@QAE@XZ",
+          "original": "0x8eb254",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffff90f87c00000000009bf87c00",
+          "native_bytes": "ffffffff000000000000000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$??0StandardOut@RBX@@QAE@XZ$0",
+          "original": "0x7cf890",
+          "kind": "cleanup/handler code",
+          "size": 11,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$enable_shared_from_this@VStandardOut@RBX@@@boost@@IAE@XZ",
+          "original": "0x5576e0",
+          "kind": "cleanup/handler code",
+          "size": 27,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$??0StandardOut@RBX@@QAE@XZ$1",
+          "original": "0x7cf89b",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MAE@XZ",
+          "original": "0x5e9f20",
+          "kind": "cleanup/handler code",
+          "size": 54,
+          "exact": true
+        },
+        {
+          "symbol": "??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ",
+          "original": "0x5e9ec0",
+          "kind": "cleanup/handler code",
+          "size": 84,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ",
+          "original": "0x7d72e8",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ",
+          "original": "0x8f5e98",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "2205931901000000905e8f00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ",
+          "original": "0x8f5e90",
+          "kind": "EH data",
+          "size": 8,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffffe0727d00",
+          "native_bytes": "ffffffff00000000"
+        },
+        {
+          "symbol": "__unwindfunclet$??0?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@IAE@XZ$1",
+          "original": "0x7d72e0",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$_Vector_val@PAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@V?$allocator@PAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@@std@@@std@@QAE@XZ",
+          "original": "0x5b3d20",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "??_7StandardOut@RBX@@6B@",
+          "original": "0x82f510",
+          "kind": "EH data",
+          "size": 12,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "d0965600f0bd7000f0bd7000",
+          "native_bytes": "000000000000000000000000"
+        },
+        {
+          "kind": "COFF weak fallback availability",
+          "symbol": "??_EStandardOut@RBX@@UAEPAXI@Z",
+          "fallback": "??_GStandardOut@RBX@@UAEPAXI@Z",
+          "original": "0x5696d0",
+          "scope": "Final PE weak selection unproven"
+        },
+        {
+          "symbol": "??_GStandardOut@RBX@@UAEPAXI@Z",
+          "original": "0x5696d0",
+          "kind": "cleanup/handler code",
+          "size": 30,
+          "exact": true
+        },
+        {
+          "symbol": "??1StandardOut@RBX@@UAE@XZ",
+          "original": "0x569590",
+          "kind": "cleanup/handler code",
+          "size": 144,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$??1StandardOut@RBX@@UAE@XZ",
+          "original": "0x7cf8a3",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$??1StandardOut@RBX@@UAE@XZ",
+          "original": "0x8eb264",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190200000054b28e00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190200000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$??1StandardOut@RBX@@UAE@XZ",
+          "original": "0x8eb254",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffff90f87c00000000009bf87c00",
+          "native_bytes": "ffffffff000000000000000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$??1StandardOut@RBX@@UAE@XZ$0",
+          "original": "0x7cf890",
+          "kind": "cleanup/handler code",
+          "size": 11,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$??1StandardOut@RBX@@UAE@XZ$1",
+          "original": "0x7cf89b",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "??1mutex@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\Boost-mutex.obj",
+          "object_sha256": "38570751c3ea1a12292b8420844d984ccdf6dc2ec5f54578d4a740457c94ef74",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "??1mutex@boost@@QAE@XZ",
+          "original": "0x594cb0",
+          "kind": "cleanup/handler code",
+          "size": 37,
+          "exact": true
+        },
+        {
+          "symbol": "__imp__DeleteCriticalSection@4",
+          "original": "0x8022dc",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "__imp__CloseHandle@4",
+          "original": "0x802234",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "?onAddListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z",
+          "original": "0x70bdf0",
+          "kind": "cleanup/handler code",
+          "size": 3,
+          "exact": true
+        },
+        {
+          "symbol": "?onRemoveListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@MBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z",
+          "original": "0x70bdf0",
+          "kind": "cleanup/handler code",
+          "size": 3,
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "??0mutex@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\integration-pass-20261106-2007\\Boost-mutex.obj",
+          "object_sha256": "38570751c3ea1a12292b8420844d984ccdf6dc2ec5f54578d4a740457c94ef74",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "??0mutex@boost@@QAE@XZ",
+          "original": "0x594c90",
+          "kind": "cleanup/handler code",
+          "size": 24,
+          "exact": true
+        },
+        {
+          "symbol": "?new_critical_section@?A0xba967ce0@@YAPAXXZ",
+          "original": "0x594c10",
+          "kind": "cleanup/handler code",
+          "size": 126,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$?new_critical_section@?A0xba967ce0@@YAPAXXZ",
+          "original": "0x7d1fe0",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?new_critical_section@?A0xba967ce0@@YAPAXXZ",
+          "original": "0x8eeabc",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "220593190200000098ea8e0001000000a8ea8e0000000000000000000000000001000000",
+          "native_bytes": "220593190200000000000000010000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?new_critical_section@?A0xba967ce0@@YAPAXXZ",
+          "original": "0x8eea98",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "ffffffff00000000ffffffff00000000",
+          "native_bytes": "ffffffff00000000ffffffff00000000"
+        },
+        {
+          "symbol": "__tryblocktable$?new_critical_section@?A0xba967ce0@@YAPAXXZ",
+          "original": "0x8eeaa8",
+          "kind": "EH data",
+          "size": 20,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "0000000000000000010000000100000088ea8e00",
+          "native_bytes": "0000000000000000010000000100000000000000"
+        },
+        {
+          "symbol": "__catchsym$?new_critical_section@?A0xba967ce0@@YAPAXXZ$2",
+          "original": "0x8eea88",
+          "kind": "EH data",
+          "size": 16,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "400000000000000000000000784c5900",
+          "native_bytes": "40000000000000000000000000000000"
+        },
+        {
+          "symbol": "__catch$?new_critical_section@?A0xba967ce0@@YAPAXXZ$0",
+          "original": "0x594c78",
+          "kind": "cleanup/handler code",
+          "size": 22,
+          "exact": true
+        },
+        {
+          "kind": "explicit object provider",
+          "symbol": "??0thread_resource_error@boost@@QAE@XZ",
+          "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-214649-c0b984b1\\unit-000\\candidate.obj",
+          "object_sha256": "a6f3fe2b27f95f0a3820342a62f8d32034aa3ca8569647d501afc33f024f7798",
+          "scope": "Availability only; traversed bytes/operands must independently match original. Final PE selection/ABI unproven."
+        },
+        {
+          "symbol": "??0thread_resource_error@boost@@QAE@XZ",
+          "original": "0x568430",
+          "kind": "cleanup/handler code",
+          "size": 26,
+          "exact": true
+        },
+        {
+          "symbol": "__imp_??0exception@std@@QAE@XZ",
+          "original": "0x802898",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "??_7thread_resource_error@boost@@6B@",
+          "original": "0x8104d4",
+          "kind": "EH data",
+          "size": 8,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "e06b400050845600",
+          "native_bytes": "0000000000000000"
+        },
+        {
+          "kind": "COFF weak fallback availability",
+          "symbol": "??_Ethread_resource_error@boost@@UAEPAXI@Z",
+          "fallback": "??_Gthread_resource_error@boost@@UAEPAXI@Z",
+          "original": "0x406be0",
+          "scope": "Final PE weak selection unproven"
+        },
+        {
+          "symbol": "??_Gthread_resource_error@boost@@UAEPAXI@Z",
+          "original": "0x406be0",
+          "kind": "cleanup/handler code",
+          "size": 30,
+          "exact": true
+        },
+        {
+          "symbol": "??1thread_resource_error@boost@@UAE@XZ",
+          "original": "0x568410",
+          "kind": "cleanup/handler code",
+          "size": 12,
+          "exact": true
+        },
+        {
+          "symbol": "??_7thread_exception@boost@@6B@",
+          "original": "0x80b49c",
+          "kind": "EH data",
+          "size": 8,
+          "exact": true,
+          "zero_initialized": false,
+          "original_bytes": "e06b40004c156a00",
+          "native_bytes": "0000000000000000"
+        },
+        {
+          "kind": "COFF weak fallback availability",
+          "symbol": "??_Ethread_exception@boost@@UAEPAXI@Z",
+          "fallback": "??_Gthread_exception@boost@@UAEPAXI@Z",
+          "original": "0x406be0",
+          "scope": "Final PE weak selection unproven"
+        }
+      ],
+      "errors": [
+        "('??_Gthread_exception@boost@@UAEPAXI@Z', 'non-address relocation')"
+      ]
+    }
+  ],
+  "excluded_snapshot_commits": [
+    "138d3a09c8"
+  ],
+  "remaining": [
+    "boost::thread_exception scalar deleting destructor",
+    "indirect calls, full ABI, provider selection, P5/P6/runtime gates"
+  ]
+}
