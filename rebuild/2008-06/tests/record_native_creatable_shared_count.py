@@ -19,7 +19,10 @@ Builds (document-swap flags, VS2008 RTM 21022), all from the current committed n
                                                       unit's header set.
   * native-classes/CreatableSharedCount2008Network.cpp  RBX::Network::Client / Server from the native
                                                       Network/Client2008.h / Server2008.h
-                                                      (record_native_network_client_server2008.py); RakNet
+                                                      (record_native_network_client_server2008.py) and Replicator /
+                                                      Replicator::ReplicatorStatsItem / Server::ClientProxy from
+                                                      Network/Replicator2008.h / ClientProxy2008.h
+                                                      (record_native_network_replicator2008.py); RakNet
                                                       raknet30/Source is appended after the document-swap includes.
 
 Per row: the compiled function (resolved through its ??_7sp_counted_impl_pd relocation, whose class must equal the
@@ -123,17 +126,16 @@ ROWS = {
     0x656c90: 'ImageWidget@RBX', 0x656d20: 'ArrowButton@RBX',
     # CreatableSharedCount2008Network.cpp (native Network/Client2008.h / Server2008.h)
     0x49a0a0: 'Client@Network@RBX', 0x49a310: 'Server@Network@RBX',
+    # CreatableSharedCount2008Network.cpp (native Network/Replicator2008.h / ClientProxy2008.h; partial declarations,
+    # layout-independent rows)
+    0x49e590: 'Replicator@Network@RBX', 0x4a1be0: 'ClientProxy@Server@Network@RBX',
+    0x4ac3a0: 'ReplicatorStatsItem@Replicator@Network@RBX',
 }
 # Same family, no complete native 2008 declaration of T yet: not built, listed with the header each would need.
 BLOCKED = {
     0x40b1e0: ('Reflection@Metadata@1RBX', 'reflection/Metadata.h declares class Reflection in namespace RBX::Metadata; '
                'the 2008 RTTI .?AVReflection@Metadata@0RBX@@ (and this vtable 0080bc54) place it in '
                'RBX::Reflection::Metadata (header-owner proposal)'),
-    0x49e590: ('Replicator@Network@RBX', 'native-headers/Replicator.h is the provisional donor layout (needs '
-               'PluginInterface.h; record_native_client_proxy.py: Replicator 2008 layout +0x2b74..+0x2d68 still open)'),
-    0x4a1be0: ('ClientProxy@Server@Network@RBX', 'needs the native 2008 Network::Replicator and Server '
-               '(record_native_client_proxy.py: blocked)'),
-    0x4ac3a0: ('ReplicatorStatsItem@Replicator@Network@RBX', 'nested in the provisional native-headers/Replicator.h'),
 }
 assert not set(ROWS) & set(BLOCKED)
 

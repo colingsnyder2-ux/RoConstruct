@@ -195,19 +195,19 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_creatable_shared_count.py": "5e3a3271e096c3ae7d5b791193e12260e2b84606c8d6682c40bf7fc048f0a981",
+    "rebuild/2008-06/tests/record_native_creatable_shared_count.py": "b0abb80e2ae7a669de91571bc5ac48f9c760b136516bbf585cd780bc5e48a44b",
     "rebuild/2008-06/native-classes/CreatableSharedCount2008.cpp": "672bf1a4f00fa4e731decfd13d0d707146f7996704e5dd58cbb9a06ed78f761f",
     "rebuild/2008-06/native-classes/CreatableSharedCount2008Stats.cpp": "4b7cbbc2eecaaeb979a4510482fb04978227adb971b7bec5d1abd5ece68a56cd",
     "rebuild/2008-06/native-classes/CreatableSharedCount2008Content.cpp": "2ad1ee69751492415eff73f0aea4525a5373b7f1389a2f53fc6b3c944ab78c46",
     "rebuild/2008-06/native-classes/CreatableSharedCount2008Lighting.cpp": "f7f171860ababfc987cbff03d7ded28b7952c062db16999b0e249e87bc43065c",
-    "rebuild/2008-06/native-classes/CreatableSharedCount2008Network.cpp": "5cd33e6036aad241302ee67289ad5cf34923227ec20f0a3fa5a26081fa3854e9"
+    "rebuild/2008-06/native-classes/CreatableSharedCount2008Network.cpp": "a20497292f8e1825e94063a519080d9d1843f91dece45e7ca1ebe81e30d1daab"
   },
   "objects": {
-    "CreatableSharedCount2008.obj": "2449d2c9b210d0e26e5ba6c5cef657305133c20edacd1f29dee6b8b68baccc17",
-    "CreatableSharedCount2008Stats.obj": "d7703ea11e95ae4f0a5ac33e42b3fd752fc0abec0147d587194e97dd8a855ef8",
-    "CreatableSharedCount2008Content.obj": "45aab61161a5ccb14cee4e9f07b6c32076ab016e390c2f083c83e289c09d0a1e",
-    "CreatableSharedCount2008Lighting.obj": "7560b47af237e2f33d2e67ded425f9db65d940ed94282850cbe06aee9260b313",
-    "CreatableSharedCount2008Network.obj": "8ef28892528e018acb6c838ff59463311330c0ae93f3d77581a4ecd710eaecb1"
+    "CreatableSharedCount2008.obj": "fb13b359e2d63e01c530c7764886277b22b0932b44ee55976e942b87f2dbb441",
+    "CreatableSharedCount2008Stats.obj": "28c986282f8f74e79cffc8b6f945e39b07e265137c7429c1c718847e33a0573d",
+    "CreatableSharedCount2008Content.obj": "b1412744e7929722e1d86f4534bb3a9eb0e06657437278bb8f2e1165c14f2b5e",
+    "CreatableSharedCount2008Lighting.obj": "948ab05212f0ba6253704e64ed930ab696121ef6676c40102db82d3cbc0762b4",
+    "CreatableSharedCount2008Network.obj": "072065da7f2d77da470caaf4f477a0ba223a5faba04d67494dcf435663a5517a"
   },
   "rows": [
     {
@@ -1142,6 +1142,25 @@
       ]
     },
     {
+      "address": "0049e590",
+      "T": "Replicator@Network@RBX",
+      "unit": "network",
+      "symbol": "??$?0PAVReplicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@shared_count@detail@boost@@QAE@PAVReplicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@5@@Z",
+      "size": 131,
+      "target_size": 131,
+      "exact": true,
+      "vtable": "00822cc4",
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_pd@PAVReplicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@detail@boost@@6B@": "0x822cc4 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVReplicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@detail@boost@@ offset 0x0)",
+        "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0PAVReplicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@shared_count@detail@boost@@QAE@PAVReplicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@5@@Z"
+      ]
+    },
+    {
       "address": "0049e620",
       "T": "NetworkSettings@RBX",
       "unit": "main",
@@ -1158,6 +1177,25 @@
       },
       "local_eh": [
         "__ehhandler$??$?0PAVNetworkSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVNetworkSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+      ]
+    },
+    {
+      "address": "004a1be0",
+      "T": "ClientProxy@Server@Network@RBX",
+      "unit": "network",
+      "symbol": "??$?0PAVClientProxy@Server@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@shared_count@detail@boost@@QAE@PAVClientProxy@Server@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@6@@Z",
+      "size": 131,
+      "target_size": 131,
+      "exact": true,
+      "vtable": "008233b0",
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_pd@PAVClientProxy@Server@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@detail@boost@@6B@": "0x8233b0 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVClientProxy@Server@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@detail@boost@@ offset 0x0)",
+        "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0PAVClientProxy@Server@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@shared_count@detail@boost@@QAE@PAVClientProxy@Server@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@6@@Z"
       ]
     },
     {
@@ -1196,6 +1234,25 @@
       },
       "local_eh": [
         "__ehhandler$??$?0PAVHint@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVHint@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+      ]
+    },
+    {
+      "address": "004ac3a0",
+      "T": "ReplicatorStatsItem@Replicator@Network@RBX",
+      "unit": "network",
+      "symbol": "??$?0PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@shared_count@detail@boost@@QAE@PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@6@@Z",
+      "size": 131,
+      "target_size": 131,
+      "exact": true,
+      "vtable": "0082476c",
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_pd@PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@detail@boost@@6B@": "0x82476c (vtable RTTI .?AV?$sp_counted_impl_pd@PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@detail@boost@@ offset 0x0)",
+        "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@shared_count@detail@boost@@QAE@PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@6@@Z"
       ]
     },
     {
@@ -2566,9 +2623,12 @@
     "00490630",
     "0049a0a0",
     "0049a310",
+    "0049e590",
     "0049e620",
+    "004a1be0",
     "004a3710",
     "004a3a00",
+    "004ac3a0",
     "004ac4c0",
     "004ac620",
     "004ac710",
@@ -2650,21 +2710,6 @@
       "T": "Reflection@Metadata@1RBX",
       "vtable": "0080bc54",
       "needs": "reflection/Metadata.h declares class Reflection in namespace RBX::Metadata; the 2008 RTTI .?AVReflection@Metadata@0RBX@@ (and this vtable 0080bc54) place it in RBX::Reflection::Metadata (header-owner proposal)"
-    },
-    "0049e590": {
-      "T": "Replicator@Network@RBX",
-      "vtable": "00822cc4",
-      "needs": "native-headers/Replicator.h is the provisional donor layout (needs PluginInterface.h; record_native_client_proxy.py: Replicator 2008 layout +0x2b74..+0x2d68 still open)"
-    },
-    "004a1be0": {
-      "T": "ClientProxy@Server@Network@RBX",
-      "vtable": "008233b0",
-      "needs": "needs the native 2008 Network::Replicator and Server (record_native_client_proxy.py: blocked)"
-    },
-    "004ac3a0": {
-      "T": "ReplicatorStatsItem@Replicator@Network@RBX",
-      "vtable": "0082476c",
-      "needs": "nested in the provisional native-headers/Replicator.h"
     }
   },
   "sp_counted_impl_pd_slots": {
@@ -5693,20 +5738,95 @@
             "original": "005a0460"
           }
         ]
+      },
+      "0049e590": {
+        "vtable": "00822cc4",
+        "slots": [
+          {
+            "slot": 0,
+            "symbol": "??_E?$sp_counted_impl_pd@PAVReplicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@detail@boost@@UAEPAXI@Z",
+            "original": "00415000"
+          },
+          {
+            "slot": 1,
+            "symbol": "?dispose@?$sp_counted_impl_pd@PAVReplicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@detail@boost@@UAEXXZ",
+            "original": "0048ee50"
+          },
+          {
+            "slot": 2,
+            "symbol": "?destroy@sp_counted_base@detail@boost@@UAEXXZ",
+            "original": "00405e10"
+          },
+          {
+            "slot": 3,
+            "symbol": "?get_deleter@?$sp_counted_impl_pd@PAVReplicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@detail@boost@@UAEPAXABVtype_info@@@Z",
+            "original": "005a0460"
+          }
+        ]
+      },
+      "004a1be0": {
+        "vtable": "008233b0",
+        "slots": [
+          {
+            "slot": 0,
+            "symbol": "??_E?$sp_counted_impl_pd@PAVClientProxy@Server@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@detail@boost@@UAEPAXI@Z",
+            "original": "00415000"
+          },
+          {
+            "slot": 1,
+            "symbol": "?dispose@?$sp_counted_impl_pd@PAVClientProxy@Server@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@detail@boost@@UAEXXZ",
+            "original": "0048ee50"
+          },
+          {
+            "slot": 2,
+            "symbol": "?destroy@sp_counted_base@detail@boost@@UAEXXZ",
+            "original": "00405e10"
+          },
+          {
+            "slot": 3,
+            "symbol": "?get_deleter@?$sp_counted_impl_pd@PAVClientProxy@Server@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@detail@boost@@UAEPAXABVtype_info@@@Z",
+            "original": "005a0460"
+          }
+        ]
+      },
+      "004ac3a0": {
+        "vtable": "0082476c",
+        "slots": [
+          {
+            "slot": 0,
+            "symbol": "??_E?$sp_counted_impl_pd@PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@detail@boost@@UAEPAXI@Z",
+            "original": "00415000"
+          },
+          {
+            "slot": 1,
+            "symbol": "?dispose@?$sp_counted_impl_pd@PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@detail@boost@@UAEXXZ",
+            "original": "0048ee50"
+          },
+          {
+            "slot": 2,
+            "symbol": "?destroy@sp_counted_base@detail@boost@@UAEXXZ",
+            "original": "00405e10"
+          },
+          {
+            "slot": 3,
+            "symbol": "?get_deleter@?$sp_counted_impl_pd@PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@detail@boost@@UAEPAXABVtype_info@@@Z",
+            "original": "005a0460"
+          }
+        ]
       }
     },
     "folded_slot_bodies": [
       {
         "address": "00415000",
         "exact_for_every_T": true,
-        "instances": 121,
+        "instances": 124,
         "counted_here": false,
         "example_symbol": "??_G?$sp_counted_impl_pd@PAVRunService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXI@Z"
       },
       {
         "address": "0048ee50",
         "exact_for_every_T": false,
-        "instances": 121,
+        "instances": 124,
         "counted_here": false,
         "example_symbol": "?dispose@?$sp_counted_impl_pd@PAVRunService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEXXZ",
         "reason": "the original dispose inlines Deleter::operator() (31 bytes: Instance release then the virtual deleting call through +0x10); boost dispose here calls the out-of-line 00405e30 (13 bytes)"
@@ -5714,7 +5834,7 @@
       {
         "address": "005a0460",
         "exact_for_every_T": true,
-        "instances": 121,
+        "instances": 124,
         "counted_here": false,
         "example_symbol": "?get_deleter@?$sp_counted_impl_pd@PAVRunService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z"
       }
@@ -5725,7 +5845,7 @@
     "main": 109,
     "content": 1,
     "stats": 6,
-    "network": 2,
+    "network": 5,
     "lighting": 1
   },
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
