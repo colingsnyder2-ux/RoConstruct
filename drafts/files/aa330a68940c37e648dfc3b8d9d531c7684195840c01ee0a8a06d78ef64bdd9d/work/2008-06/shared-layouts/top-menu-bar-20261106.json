@@ -1,0 +1,193 @@
+{
+  "schema": 1,
+  "class": "RBX::TopMenuBar",
+  "client": "2008-06",
+  "unit": "gui/TopMenuBar.cpp (recovered source), declaration in native-headers/gui/Gui.h",
+  "state": "inactive candidate: local byte checks only; no link, no selection, no runtime/P5-P6 gate",
+  "package_marker_revision": "045d8ce8e42565232578ac46d73ad4bde5c260008ea025c6982b75e9cb7b10e5",
+  "workspace_manifest_source_revision": null,
+  "baseline_commit": null,
+  "run": "work/2008-06/native-check-runs/20261106-230937-aae0009f",
+  "manifest_sha256": "fd2efd4ceb7876f909f9f2913a9ab0b5a6ada95b83b1f482c052458d02a70ec5",
+  "observer_sha256": "d1193d5d990c94bacc99e1c6b7a7d3dee0d615da55547a3f7440a62d01493302",
+  "sources": {
+    "rebuild/2008-06/native-classes/TopMenuBar.cpp": "6c4d86da93141449ce3dd5a287081f317daaa9ac59a6322c2450a68831f1d378",
+    "work/2008-06/shared-layouts/top-menu-bar-batch.json": "ba43818b1c556b2889b62ef1d225ef36297b940290b6ccc41c9ad030ce8f2d54",
+    "rebuild/2008-06/out/native-layouts/native-check-runs/20261106-220635-89abf3bd/unit-000/candidate.obj": "755a91109cc00c5d0d7b695fce931736c30b4fa30b41610a61590c1ed97baf77"
+  },
+  "compiler": "C:\\Users\\colin\\RoConstruct\\RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+  "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+  "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX (+ /DBOOST_ALL_NO_LIB and the rbxgs recipe defines/includes added by the runner)",
+  "checks": [
+    {
+      "addr": "00573530",
+      "symbol": "?init@TopMenuBar@RBX@@AAEXXZ",
+      "status": "exact",
+      "target_size": 62,
+      "object_size": 62
+    },
+    {
+      "addr": "00573cb0",
+      "symbol": "??0TopMenuBar@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@1@_N@Z",
+      "status": "exact",
+      "target_size": 330,
+      "object_size": 330,
+      "direct_call_bindings": [
+        {
+          "offset": 29,
+          "target": "005739d0",
+          "symbol": "??0GuiItem@RBX@@QAE@XZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 140,
+          "target": "007baf10",
+          "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 194,
+          "target": "0055af90",
+          "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "status": "verified_binding"
+        }
+      ]
+    },
+    {
+      "addr": "00573e00",
+      "symbol": "?isVisible@TopMenuBar@RBX@@UBE_NXZ",
+      "status": "exact",
+      "target_size": 7,
+      "object_size": 7
+    },
+    {
+      "addr": "00573e20",
+      "symbol": "??1TopMenuBar@RBX@@UAE@XZ",
+      "status": "exact",
+      "target_size": 5,
+      "object_size": 5
+    },
+    {
+      "addr": "00573e10",
+      "symbol": "??_ETopMenuBar@RBX@@WIE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 11,
+      "object_size": 11
+    },
+    {
+      "addr": "00574130",
+      "symbol": "??_ETopMenuBar@RBX@@WBA@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 8,
+      "object_size": 8
+    },
+    {
+      "addr": "00574140",
+      "symbol": "??_ETopMenuBar@RBX@@WEE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 8,
+      "object_size": 8
+    },
+    {
+      "addr": "005cf5b0",
+      "symbol": "??_ETopMenuBar@RBX@@WCE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 8,
+      "object_size": 8
+    },
+    {
+      "addr": "005cf860",
+      "symbol": "??_ETopMenuBar@RBX@@WKE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 11,
+      "object_size": 11
+    },
+    {
+      "addr": "00642340",
+      "symbol": "??_ETopMenuBar@RBX@@WBE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 8,
+      "object_size": 8
+    },
+    {
+      "addr": "00642350",
+      "symbol": "??_ETopMenuBar@RBX@@WGE@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 8,
+      "object_size": 8
+    },
+    {
+      "addr": "00642360",
+      "symbol": "??_ETopMenuBar@RBX@@WME@AEPAXI@Z",
+      "status": "exact",
+      "target_size": 11,
+      "object_size": 11
+    },
+    {
+      "addr": "00574150",
+      "symbol": "??_GTopMenuBar@RBX@@UAEPAXI@Z",
+      "status": "exact",
+      "target_size": 31,
+      "object_size": 31
+    }
+  ],
+  "totals": {
+    "checks": 15,
+    "exact": 15,
+    "data_checked": 15,
+    "data_mismatches": [],
+    "mismatches": []
+  },
+  "recovered_methods": [
+    {
+      "addr": "00573530",
+      "symbol": "?init@TopMenuBar@RBX@@AAEXXZ",
+      "note": "private noinline init"
+    },
+    {
+      "addr": "00573cb0",
+      "symbol": "??0TopMenuBar@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@1@_N@Z",
+      "note": "(const std::string&, Layout::Style, bool); the (\u2026, G3D::Color4) overload is never referenced and absent from the binary"
+    },
+    {
+      "addr": "00573e30",
+      "symbol": "?getSize@TopMenuBar@RBX@@UBE?AVVector2@G3D@@XZ",
+      "size": 242,
+      "body": "G3D::Vector2 size(0,0); for (int i = 0; i < numChildren(); ++i) { const GuiItem* child = dynamic_cast<const GuiItem*>(getChild(i)); if (child) { G3D::Vector2 childSize = child->getSize(); switch (layoutStyle) { case Layout::HORIZONTAL: size.x += childSize.x; size.y = G3D::max(size.y, childSize.y); break; case Layout::VERTICAL: size.x = G3D::max(size.x, childSize.x); size.y += childSize.y; break; } } } return size;",
+      "note": "recovered as a task-owned trial (native-classes/TopMenuBarGetSizeTrial.cpp) then merged into the class unit; the switch form is required, an if/else is 7 bytes short because MSVC emits sub 0/je/sub 1/jne for the enum switch"
+    },
+    {
+      "addr": "00573f30",
+      "symbol": "?getChildPosition@TopMenuBar@RBX@@MBE?AVVector2@G3D@@PBVGuiItem@2@@Z",
+      "size": 273,
+      "body": "G3D::Vector2 position = getPosition(); G3D::Vector2 size = getSize(); for (int i = 0; i < numChildren(); ++i) { const GuiItem* item = dynamic_cast<const GuiItem*>(getChild(i)); if (item) { G3D::Vector2 itemSize = item->getSize(); if (item == child) { int axis = (layoutStyle + 1) % 2; position[axis] += (size[axis] - itemSize[axis]) * 0.5f; return position; } switch (layoutStyle) { case Layout::HORIZONTAL: case Layout::VERTICAL: position[layoutStyle] += item->getSize()[layoutStyle]; break; } } } return position;",
+      "note": "recovered as the task-owned trial TopMenuBarGetChildPositionTrial.cpp then merged into the class unit. Three hypotheses were needed: an if/else is 10 bytes short (MSVC emits a signed jg where the original has the unsigned ja of an enum switch range check), the switch fixes that but still 10 short, and the missing piece was a * 0.5f constant multiply (00819bac) in the requested-child branch."
+    }
+  ],
+  "generated_symbols_verified": [
+    "?isVisible@TopMenuBar@RBX@@UBE_NXZ (00573e00, 7 B inline body reading visible +0x158)",
+    "??1TopMenuBar@RBX@@UAE@XZ (00573e20, 5 B tail jump to ~GuiItem)",
+    "??_GTopMenuBar@RBX@@UAEPAXI@Z (00574150, 31 B scalar deleting destructor)",
+    "??_ETopMenuBar@RBX@@W{IE,BA,EE,CE,KE,BE,GE,ME}@AEPAXI@Z (8 subobject adjustor thunks; folded COMDAT shares 00642340/00642350/00642360 with Widget and 005cf5b0/005cf860 with the ChatWidget region)"
+  ],
+  "evidence": {
+    "vtable": "TopMenuBar main vtable 0082faf4, 25 slots: it overrides only getChildPosition (slot 19, 00573f30), isVisible (21), getSize (23) and render2d (24); subclass ArrowPanel 0084c164 is already verified, which pins the base shape.",
+    "layout": "GuiItem base 0x144; TopMenuBar adds backdropColor +0x144 (Color4), layoutStyle +0x154, visible +0x158. init() stores layoutStyle=0, backdropColor=clear(), visible=true; the ctor adds setName(name), layoutStyle=style and, when the bool argument is set, a guarded static Color4(0.6,0.6,0.6,0.6) copied into backdropColor (guard 0x974e50, static 0x974e40)."
+  },
+  "remaining_obligations": [
+    "render2d 00574050 (220 B) is the last recovered TopMenuBar method",
+    "getChildPosition/getSize indirect obligations: the virtual getPosition (slot 0x48) and getSize (slot 0x5c) calls, the __RTDynamicCast import call and the per-iteration numChildren call each need separate indirect/import-call evidence",
+    "vtable slot-by-slot walk with subobject offsets, linked provider selection and runtime gates stay with the owner; no independent server credit claimed"
+  ],
+  "rejected_variants": [
+    {
+      "hypothesis": "ctor body calls init()",
+      "result": "ctor 216 B vs 330 B: init() was inlined by the original build despite __declspec(noinline), so the three member stores must be written out in the ctor body"
+    },
+    {
+      "hypothesis": "backdropColor = G3D::Color4(0.6f, 0.6f, 0.6f, 0.6f)",
+      "result": "ctor 266 B vs 330 B, first divergence at 214: the original uses a guarded function-local static const Color4 (Color4 has a user-provided ctor, so the guard is emitted)"
+    }
+  ],
+  "next_proof": "recover TopMenuBar::render2d 00574050 (220 B, 5 calls) - the last method of this class; then the PercentPanel / RelativePanel / MenuSpacer ctors and their getPosition/init bodies."
+}
