@@ -197,7 +197,8 @@ def source_versions(root, commit, donor_refs=(), source_roots=(), draft_files=No
                     raise ValueError('No supported immutable GitHub URL for ' + ref)
                 repository = match[1]
             raw = subprocess.check_output(['git', 'ls-tree', '-r', '-z', revision, '--',
-                'workspace/rebuild/2008-06', 'rebuild/2008-06', '2008-06', 'drafts/files'], cwd=root)
+                'workspace/rebuild/2008-06', 'rebuild/2008-06', '2008-06', 'drafts/files',
+                'archive/source-snapshots'], cwd=root)
             count = 0
             for row in raw.split(b'\0'):
                 if not row:
@@ -209,6 +210,7 @@ def source_versions(root, commit, donor_refs=(), source_roots=(), draft_files=No
                 if not path or mode not in (b'100644', b'100755') or kind != b'blob':
                     continue
                 role = ('local-branch' if local_branch else 'draft' if original.startswith('drafts/') else
+                        'archive' if original.startswith('archive/source-snapshots/') else
                         'canonical' if ref == commit and original.startswith('workspace/') else
                         'public' if ref == commit else 'fork')
                 origin = dict(kind=role, ref=ref, revision=revision, path=original)
@@ -350,7 +352,7 @@ def render_source_map_markdown(data, browse=None):
             'Sources checked: {}. Errors: {}. See JSON for coverage and exclusions.'.format(
                 len(alternatives['sources']), len(alternatives['errors'])), ''])
         for row in alternatives['versions']:
-            if not any(origin['kind'] in ('fork', 'draft', 'draft-upload', 'local', 'local-branch') for origin in row['origins']):
+            if not any(origin['kind'] in ('fork', 'draft', 'draft-upload', 'local', 'local-branch', 'archive') for origin in row['origins']):
                 continue
             lines.append('- `{}` · `{}` · proof not assessed'.format(row['path'], row['blob'][:12]))
             for origin in row['origins']:

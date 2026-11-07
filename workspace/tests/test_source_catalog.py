@@ -119,6 +119,24 @@ def test_organized_source_is_indexed_without_mixing_client_versions(tmp_path, mo
     assert source_catalog.map_group('App/src/v8tree/InstanceChildLookup.cpp') == 'App/v8tree'
 
 
+def test_archived_source_versions_keep_immutable_origin(tmp_path):
+    import subprocess
+    def git(*args):
+        return subprocess.check_output(['git', *args], cwd=tmp_path, text=True).strip()
+    git('init', '-q')
+    path = tmp_path / 'archive/source-snapshots/old/2008-06/native-classes/Example.cpp'
+    path.parent.mkdir(parents=True)
+    path.write_text('void Example::f() {}\n')
+    git('add', '.')
+    git('-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-qm', 'snapshot')
+    commit = git('rev-parse', 'HEAD')
+    result = source_catalog.source_versions(tmp_path, commit)
+    assert not result['errors']
+    row = next(v for v in result['versions'] if v['path'] == 'native-classes/Example.cpp')
+    assert row['origins'][0]['kind'] == 'archive'
+    assert '/blob/' + commit + '/archive/source-snapshots/' in row['origins'][0]['url']
+
+
 def test_alternative_navigation_preserves_immutable_and_local_origins():
     mapped = source_catalog.source_map(dict(work_commit='abc', authority='test', scope='test', files=[],
         alternatives=dict(sources=['fork', 'local'], errors=[], versions=[dict(path='native-classes/A.cpp',
