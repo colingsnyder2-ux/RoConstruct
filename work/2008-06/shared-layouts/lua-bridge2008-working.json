@@ -49,7 +49,7 @@
   "profile": "document-swap flags (atomic unit + /fp:fast)",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
   "sources": {
-    "rebuild/2008-06/tests/record_native_lua_bridge2008.py": "a94734d23ccb3bf85d7ed87a9ee1da59b99eb86a3ccc854f1cb3353a6ee5fd1f",
+    "rebuild/2008-06/tests/record_native_lua_bridge2008.py": "827be07bc282f4e757bbf1642eec2fd75829a939a9b5fcbdb477c79cfa7a19d9",
     "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
     "rebuild/2008-06/native-headers/LuaBridge2008/LuaBridge2008.h": "b53d3795837b184de343c02a2ff8fecd91547abd3cfb348f31f40b91eaeff98f",
     "rebuild/2008-06/native-headers/LuaBridge2008/LuaSignalBridge2008.h": "4f1cc46e7b95bdfcd3570677f0da528d395e61d5a818b7819f99f21840a4052a",
@@ -65,18 +65,18 @@
     "rebuild/2008-06/native-classes/LuaBridge2008Yield.cpp": "737e13cdff77ff102ecba2bfb0d9206309889b8e1cc2e6e124126a9e9188e21f"
   },
   "objects": {
-    "instance": "7fee102ac29fc206274674a6792a44be0600de5a5686f22be84aafac193ca245",
-    "atomic": "bab81bbafba54baec84d4a35f811b8135ea5e47c5d51a7e75040f69bc8921b33",
-    "signal": "a12c89efa80344ce531e7ff7961e5307c05ce9734cbffc9345a7605e8fabdd3e",
-    "enum": "5940c12d3c09661070d9f37a92ed365c65ff0f32430a6bc7667022ae4338af21",
-    "yield": "a2fba28008173b99c5b2e2516d2a6ecad8ad16e0b603d35cf2002ac8dbda73d8",
-    "enum_pending": "5f687796bf670bdcbf096520cf3f02f255852df7d44dd4619ef8c330a3636d83"
+    "instance": "fd84e4a5b86819f2578ebead0d85f4ca47392cbc11206f13ffff0e26a32b1ba2",
+    "atomic": "cb68feaade30a5eb8e99cbe7e2ad2d1ca0a52cac6fad4ef3577e48fdeca11510",
+    "signal": "eab607de88b40b87e77d7763bddeaf7661c308abc342a503cf837be1d740d74a",
+    "enum": "8ea5b0aacd94ede4c620103caf737e7e78f95468fd9ad94ebf96cd36d3fe2001",
+    "yield": "61a40a5d407b6ff17d78d4005031cd9b8e8627efb83c4df3b9e3d884cc4f19fc",
+    "enum_pending": "65116be1f2318874a54501f0c0564e0abac82f0ba409d2739d6c4dabf9665c3a"
   },
   "boundary": {
     "range": "0061a420..006217e2 (functions listed 0061a420 <= addr < 006217f0: 147)",
     "before": "0061a090..0061a3f0 boost thread tss_hooks unit (0061a3f0 TLS callback: DLL_PROCESS_DETACH -> on_process_exit 0061a110; 0061a260 creates the tss cleanup list); 0061a400 (31 bytes) is called only from 0061b190 (enum conversion) and is left unattributed",
     "first": "0061a420 RBX::Lua::newweaktable (exact row; pushes the literal \"__mode\")",
-    "after": "006217f0 luaD_seterrorobj, 00621920 luaD_rawrunprotected, 00621a70 luaD_reallocstack ... (Lua 5.1.1 ldo.c compiled as C++, calls only Lua internals)",
+    "after": "006217f0 luaD_seterrorobj, 00621920 luaD_rawrunprotected, 00621a70 luaD_reallocstack ... (Lua 5.1.1 ldo.c compiled as C++, calls only Lua internals); the library runs to lbaselib luaopen_base 00628f50 (ends 00628f73) and the next Roblox code is the IEquipable unit 00628f80 (script-app2008-working.json)",
     "last": "006217d0 YieldingThreads::queueWaiter(lua_State*) (pushes 0.0 as a double and calls 006214e0; exact row)",
     "units": "instance bridge 0061a420..0061c6ef (data: bad_alloc message 0095af70, className \"Object\" 0095af74); atomic classes 0061c6f0..0061ecaf (data 0095b1b8: Color3/Vector3/BrickColor/CFrame classNames 0095b1bc..0095b1c8); enum bridges 0061edb0..0061f0f0 (data 0095b1d0: Enums/Enum/EnumItem 0095b1d4..0095b1dc); signal bridge 0061f180..00620a3e (data 0095b1e0: RBXScriptSignal 0095b1e4, RBXScriptConnection 0095b1e8); YieldingThreads 00620970..006217e2 (shared_ptr<ThreadRef> pieces 00620970..00620a60, std::vector<WaitingThread> instances, YieldingThreads ctor 00621330, queueWaiter 006214e0 / 006217d0, resume 00621590)",
     "rtti_vtables": {
@@ -2783,7 +2783,7 @@
   "not_exact": {
     "0061f080 / 0061f0f0": "EnumDescriptor::lookupDescriptor(const Name&) and Enums on_index: byte-exact only in the pending build (generated enumconverter.h copy; allEnumsByName() 0056c520 is private in the read-only native header): pending-build-only, not counted",
     "0061abe0 / 0061b190 / 0061bda0 / 0061c0e0 / 0061c2c0": "instance-bridge property push / set / function call / on_newindex paths: need NATIVE_LUABRIDGE_PENDING (Instances typedef / setParent2 in v8tree/Instance.h)",
-    "0061bcd0": "write-access check called from 0061be19 / 0061c185 (201 B): takes its Instance* in esi and a second pointer in edi (no prologue), Security::Context::isInRole / requirePermission with \"modify a StatsService\" (dynamic_cast to Stats::StatsService), \"GuiRoot\" / \"GuiHooks\" (DataModel +0x21c / +0x224 through getRootAncestor and isAncestorOf); the register-argument convention is not reproduced by a plain static function in this profile, not attempted further",
+    "0061bcd0": "write-access check called from 0061be19 / 0061c185 (201 B): takes its Instance* in esi (no prologue; edi is not an argument: it is saved at 0061bd2b before the DataModel dynamic_cast and restored at 0061bd97), Security::Context::isInRole / requirePermission with \"modify a StatsService\" (dynamic_cast to Stats::StatsService), \"GuiRoot\" / \"GuiHooks\" (DataModel +0x21c / +0x224 through getRootAncestor and isAncestorOf); an esi-argument convention for an internal function is whole-program (/GL + /LTCG) code generation, which a COFF /c compile cannot emit; a plain static function was tried in pass 1 and is not repeated. Next hypothesis (not run here): a /GL /LTCG DLL link of the instance unit compared from the linked image",
     "0061ba10": "MemberDescriptorContainer<SignalDescriptor>::findDescriptor (ICF-folded, called from 9 sites in other units): the read-only native reflection/member.h body emits 202 B against 232 B: the target inlines the checked _Vector_const_iterator::operator+= of `descriptors.begin()+i` (ours calls it out of line) and its end() path checks only _Myfirst <= _Mylast; owner of reflection/member.h, not changed here",
     "00620910": "std::_Allocate<0x18-byte element> (ICF-folded; this unit emits it as _Allocate<WaitingThread>, bytes equal, recorded as an instance): counted by scorehud-leaderboard-working.json, not here",
     "0061f60e": "catch funclet of shared_count<connection> 0061f5a0, compared as part of that row (not counted separately)",

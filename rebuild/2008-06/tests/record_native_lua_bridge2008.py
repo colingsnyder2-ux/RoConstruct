@@ -811,11 +811,14 @@ NOT_EXACT = {
                            'read-only native header): pending-build-only, not counted',
     '0061abe0 / 0061b190 / 0061bda0 / 0061c0e0 / 0061c2c0': 'instance-bridge property push / set / function call / '
                 'on_newindex paths: need NATIVE_LUABRIDGE_PENDING (Instances typedef / setParent2 in v8tree/Instance.h)',
-    '0061bcd0': 'write-access check called from 0061be19 / 0061c185 (201 B): takes its Instance* in esi and a second '
-                'pointer in edi (no prologue), Security::Context::isInRole / requirePermission with "modify a StatsService" '
-                '(dynamic_cast to Stats::StatsService), "GuiRoot" / "GuiHooks" (DataModel +0x21c / +0x224 through '
-                'getRootAncestor and isAncestorOf); the register-argument convention is not reproduced by a plain static '
-                'function in this profile, not attempted further',
+    '0061bcd0': 'write-access check called from 0061be19 / 0061c185 (201 B): takes its Instance* in esi (no prologue; '
+                'edi is not an argument: it is saved at 0061bd2b before the DataModel dynamic_cast and restored at 0061bd97), '
+                'Security::Context::isInRole / requirePermission with "modify a StatsService" (dynamic_cast to '
+                'Stats::StatsService), "GuiRoot" / "GuiHooks" (DataModel +0x21c / +0x224 through getRootAncestor and '
+                'isAncestorOf); an esi-argument convention for an internal function is whole-program (/GL + /LTCG) '
+                'code generation, which a COFF /c compile cannot emit; a plain static function was tried in pass 1 and is '
+                'not repeated. Next hypothesis (not run here): a /GL /LTCG DLL link of the instance unit compared from the '
+                'linked image',
     '0061ba10': 'MemberDescriptorContainer<SignalDescriptor>::findDescriptor (ICF-folded, called from 9 sites in other '
                 'units): the read-only native reflection/member.h body emits 202 B against 232 B: the target inlines the '
                 'checked _Vector_const_iterator::operator+= of `descriptors.begin()+i` (ours calls it out of line) and its '
@@ -849,7 +852,8 @@ receipt = {
                   'from 0061b190 (enum conversion) and is left unattributed',
         'first': '0061a420 RBX::Lua::newweaktable (exact row; pushes the literal "__mode")',
         'after': '006217f0 luaD_seterrorobj, 00621920 luaD_rawrunprotected, 00621a70 luaD_reallocstack ... (Lua 5.1.1 '
-                 'ldo.c compiled as C++, calls only Lua internals)',
+                 'ldo.c compiled as C++, calls only Lua internals); the library runs to lbaselib luaopen_base 00628f50 '
+                 '(ends 00628f73) and the next Roblox code is the IEquipable unit 00628f80 (script-app2008-working.json)',
         'last': '006217d0 YieldingThreads::queueWaiter(lua_State*) (pushes 0.0 as a double and calls 006214e0; exact row)',
         'units': 'instance bridge 0061a420..0061c6ef (data: bad_alloc message 0095af70, className "Object" 0095af74); '
                  'atomic classes 0061c6f0..0061ecaf (data 0095b1b8: Color3/Vector3/BrickColor/CFrame classNames '
