@@ -1,3 +1,4 @@
+// from server: 100% by Intel
 // from server: 92% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -76,7 +77,7 @@ inline S::S()
 
 struct ListenerBase {
     unsigned long* volatile tablePointer;
-    char padding[0x20];
+    char padding[0x18];
 
     ListenerBase();
     ~ListenerBase();

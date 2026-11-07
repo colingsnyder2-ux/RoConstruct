@@ -1,4 +1,70 @@
+// from server: 100% by Intel
 // from server: 95% by EspClaude
+// roc 2007-08 00418e10  unit: DHTMLWindow  size: 209 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00418e10
+//
+// 00418e10  6aff                 push -1
+// 00418e12  6880af7300           push 0x73af80
+// 00418e17  64a100000000         mov eax, dword ptr fs:[0]
+// 00418e1d  50                   push eax
+// 00418e1e  83ec08               sub esp, 8
+// 00418e21  53                   push ebx
+// 00418e22  55                   push ebp
+// 00418e23  56                   push esi
+// 00418e24  57                   push edi
+// 00418e25  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00418e2a  33c4                 xor eax, esp
+// 00418e2c  50                   push eax
+// 00418e2d  8d44241c             lea eax, [esp + 0x1c]
+// 00418e31  64a300000000         mov dword ptr fs:[0], eax
+// 00418e37  8bf1                 mov esi, ecx
+// 00418e39  83ec0c               sub esp, 0xc
+// 00418e3c  89642420             mov dword ptr [esp + 0x20], esp
+// 00418e40  8bdc                 mov ebx, esp
+// 00418e42  6a00                 push 0
+// 00418e44  83ec38               sub esp, 0x38
+// 00418e47  8964245c             mov dword ptr [esp + 0x5c], esp
+// 00418e4b  8bec                 mov ebp, esp
+// 00418e4d  83ec24               sub esp, 0x24
+// 00418e50  8d842498000000       lea eax, [esp + 0x98]
+// 00418e57  8bcc                 mov ecx, esp
+// 00418e59  89a42480000000       mov dword ptr [esp + 0x80], esp
+// 00418e60  50                   push eax
+// 00418e61  c784249400000000000000 mov dword ptr [esp + 0x94], 0
+// 00418e6c  bf804e4100           mov edi, 0x414e80
+// 00418e71  e87a401500           call 0x56cef0
+// 00418e76  83ec08               sub esp, 8
+// 00418e79  8bcc                 mov ecx, esp
+// 00418e7b  89a4248c000000       mov dword ptr [esp + 0x8c], esp
+// 00418e82  56                   push esi
+// 00418e83  51                   push ecx
+// 00418e84  c68424a000000001     mov byte ptr [esp + 0xa0], 1
+// 00418e8c  e8df470800           call 0x49d670
+// 00418e91  83c408               add esp, 8
+// 00418e94  33c0                 xor eax, eax
+// 00418e96  50                   push eax
+// 00418e97  57                   push edi
+// 00418e98  55                   push ebp
+// 00418e99  888424a4000000       mov byte ptr [esp + 0xa4], al
+// 00418ea0  e89bc5ffff           call 0x415440
+// 00418ea5  83c438               add esp, 0x38
+// 00418ea8  8bcb                 mov ecx, ebx
+// 00418eaa  e8b1f9ffff           call 0x418860
+// 00418eaf  8b0dccaf8b00         mov ecx, dword ptr [0x8bafcc]
+// 00418eb5  e896e8ffff           call 0x417750
+// 00418eba  8d4c242c             lea ecx, [esp + 0x2c]
+// 00418ebe  c7442424ffffffff     mov dword ptr [esp + 0x24], 0xffffffff
+// 00418ec6  e8b53f1500           call 0x56ce80
+// 00418ecb  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
+// 00418ecf  64890d00000000       mov dword ptr fs:[0], ecx
+// 00418ed6  59                   pop ecx
+// 00418ed7  5f                   pop edi
+// 00418ed8  5e                   pop esi
+// 00418ed9  5d                   pop ebp
+// 00418eda  5b                   pop ebx
+// 00418edb  83c414               add esp, 0x14
+// 00418ede  c22400               ret 0x24
+
 // from server: 100% by colin
 // roc 2008-06 0041cb30  unit: VDHTMLWindowService::?$FactoryProduct  size: 197 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0041cb30
@@ -107,7 +173,7 @@ struct FunctionTable {
 struct Function {
     FunctionTable* table;
     unsigned int reserved;
-    unsigned int storage[6];
+    unsigned int storage[1];
     Function(const Function&);
     Function(Bind, int);
 };
