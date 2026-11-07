@@ -1,0 +1,110 @@
+{
+  "scope": "Historical unreviewed source snapshots; no integration, ABI or runtime claim.",
+  "previous_map_commit": "285c17ed5537fafdf65b615d75919ee0a953c3b0",
+  "entries": {
+    "archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp": {
+      "old_logical_path": "native-classes/AxisMoveToolRender.cpp",
+      "git_blob": "71c0ff47fb93a83ec438c1594a55bf31266a7146",
+      "sha256": "b883ec8f8df41188a68c6ba9cf6378a8289dd8cf10af17f3925f8a6286672c7f",
+      "previous_origins": [
+        {
+          "kind": "local",
+          "path": "local/findings/2008-06/native-classes/AxisMoveToolRender.cpp",
+          "root_id": "b52aa15feaea5a0c",
+          "availability": "local-only; not published or verified"
+        }
+      ]
+    },
+    "archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp": {
+      "old_logical_path": "native-classes/CMainFrameXtp.cpp",
+      "git_blob": "8e1c5dc8bfd3ecd903508a523f7e2433d64c2853",
+      "sha256": "282dc4207b84de592f3cf118a4b33b4c3156c05a1354e5331cfa30fa351cb902",
+      "previous_origins": [
+        {
+          "kind": "local",
+          "path": "local/findings/2008-06/native-classes/CMainFrameXtp.cpp",
+          "root_id": "b52aa15feaea5a0c",
+          "availability": "local-only; not published or verified"
+        }
+      ]
+    },
+    "archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp": {
+      "old_logical_path": "native-classes/CWebToolbox.cpp",
+      "git_blob": "23af85bb801e34047501da64e9fd0c2d6d61bf7f",
+      "sha256": "1316521563282800ffb820771f1690396dd2ca7795a17a845bb86d983da46db5",
+      "previous_origins": [
+        {
+          "kind": "local",
+          "path": "local/findings/2008-06/native-classes/CWebToolbox.cpp",
+          "root_id": "b52aa15feaea5a0c",
+          "availability": "local-only; not published or verified"
+        }
+      ]
+    },
+    "archive/source-snapshots/20261107-prior-local/2008-06/native-classes/InstanceBaseCallbacks.cpp": {
+      "old_logical_path": "native-classes/InstanceBaseCallbacks.cpp",
+      "git_blob": "ea494cb8b4ba60ac2e3a78a6a5da23f2c294fe05",
+      "sha256": "5c3af30b812ac5b97843a683d229d201d82cef58dc8401845b0e249b0642278e",
+      "previous_origins": [
+        {
+          "kind": "local",
+          "path": "local/findings/2008-06/native-classes/InstanceBaseCallbacks.cpp",
+          "root_id": "b52aa15feaea5a0c",
+          "availability": "local-only; not published or verified"
+        }
+      ]
+    },
+    "archive/source-snapshots/20261107-prior-local/2008-06/native-classes/RunService.cpp": {
+      "old_logical_path": "native-classes/RunService.cpp",
+      "git_blob": "0176535763a30cb949925f0fd4ca6f6de40436fd",
+      "sha256": "f4596c4770149667b9b3c356f2f8ef9e1db4a1ff7e8dada53460f627fe78a1d1",
+      "previous_origins": [
+        {
+          "kind": "local",
+          "path": "local/findings/2008-06/native-classes/RunService.cpp",
+          "root_id": "b52aa15feaea5a0c",
+          "availability": "local-only; not published or verified"
+        }
+      ]
+    },
+    "archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CMainFrame.h": {
+      "old_logical_path": "native-headers/CMainFrame.h",
+      "git_blob": "8dd841c2cbf6b56b9b945d51f25aeed804decc9a",
+      "sha256": "74c25f420fdb07c0f0cd8093ff876daac3e6c4ea6265b396fe0348651ee05313",
+      "previous_origins": [
+        {
+          "kind": "local",
+          "path": "local/findings/2008-06/native-headers/CMainFrame.h",
+          "root_id": "b52aa15feaea5a0c",
+          "availability": "local-only; not published or verified"
+        }
+      ]
+    },
+    "archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CRobloxApp.h": {
+      "old_logical_path": "native-headers/CRobloxApp.h",
+      "git_blob": "a378c4732806e4d1658f43d0fbac8e5bcb444a32",
+      "sha256": "7999bc307060048811f171adf1b800b1588edab08f5ac30387ad08f83be24efa",
+      "previous_origins": [
+        {
+          "kind": "local",
+          "path": "local/findings/2008-06/native-headers/CRobloxApp.h",
+          "root_id": "b52aa15feaea5a0c",
+          "availability": "local-only; not published or verified"
+        }
+      ]
+    },
+    "archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h": {
+      "old_logical_path": "native-headers/part-resize/G3D/Matrix3.h",
+      "git_blob": "e0d1989387ba1fcd6219bb5c1e8bf41ef3856249",
+      "sha256": "438264967a0d4b1cbfd7ac53f897e918e315f29f68f9b2af572323e5413a74af",
+      "previous_origins": [
+        {
+          "kind": "local",
+          "path": "local/findings/2008-06/native-headers/part-resize/G3D/Matrix3.h",
+          "root_id": "b52aa15feaea5a0c",
+          "availability": "local-only; not published or verified"
+        }
+      ]
+    }
+  }
+}
