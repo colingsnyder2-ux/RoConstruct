@@ -35,7 +35,7 @@ fields/offsets/ABIs, replacing a better stored source, hand edits under `clients
 Before reconstruction/integration, query `roc graph CLIENT --why ADDRESS --json`
 or `roc graph CLIENT --next 20 --milestone p2 --json` (P2: June 2008).
 Reuse existing mined/library/native implementations; graph hints do not grant
-ownership. Refresh the existing server claim before work. See [GRAPH.md](GRAPH.md)
+ownership. Refresh the existing server claim before work. See [GRAPH.md](recovery/GRAPH.md)
 for generation, evidence limits, dependency ordering and the public explorer.
 
 ## Tool routing

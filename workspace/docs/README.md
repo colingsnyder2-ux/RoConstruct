@@ -7,7 +7,7 @@
 - [Class/header batches](NATIVE_SWAP_BATCH.md): source priorities, checks and handoff.
 - [Owner draft integration](DRAFT_INTEGRATION.md): reviewed promotion and preservation.
 - [Runtime integration](NATIVE_RUNTIME_INTEGRATION.md): selection and runtime obligations.
-- [Source catalog](SOURCE_CATALOG.md): canonical, fork, draft and local alternatives.
+- [Source catalog](recovery/SOURCE_CATALOG.md): canonical, fork, draft and local alternatives.
 
 ## Separate matching assignment
 
@@ -17,8 +17,8 @@
 ## Tool and architecture references
 
 - [Integration API/workflow](INTEGRATION.md).
-- [Dependency graph](GRAPH.md) and [graph evidence](GRAPH_EVIDENCE.md).
-- [Source inputs](SOURCES.md) and [offline integration](OFFLINE_INTEGRATION.md).
+- [Dependency graph](recovery/GRAPH.md) and [graph evidence](GRAPH_EVIDENCE.md).
+- [Source inputs](recovery/SOURCES.md) and [offline integration](OFFLINE_INTEGRATION.md).
 - [Native recovery reference](NATIVE_RECOVERY_WORKFLOW.md).
 
 ## Historical evidence
