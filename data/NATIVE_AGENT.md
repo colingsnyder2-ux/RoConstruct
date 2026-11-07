@@ -17,6 +17,26 @@ Current workflow: 52. Use `docs/NATIVE_WORKER_HISTORY.md` only as history.
 Native authority: **RoConstruct, branch `work`, subtree `workspace/`**. Local paths
 below that subtree retain their normal repository-relative names.
 
+## Concurrent agents and verification
+
+Before choosing files, run `roc.cmd lease ls` and inspect all overlapping leases,
+including your own username. The server treats one username as one owner: it
+cannot distinguish two chats or stop them replacing or releasing each other's
+leases. Choose a distinct unleased family and unique lease name; renew or release
+only your own lease. Keep scratch sources, manifests, objects and draft sessions
+separate. Never edit another agent's files or shared headers.
+
+Equal byte size is only a lead; establish original address and symbol identity
+before matching a body. Report matching pre-existing code as verified existing
+work, not a newly recovered method. Byte/data matches do not establish call
+bindings, ABI, linked selection or runtime. Do not repeatedly compile unrelated
+existing files just to find equal sizes.
+
+In Windows PowerShell, use `Select-Object -First N` instead of Unix `head`.
+Use `@'` / `'@` here-strings piped to `python -`, not `python - <<'PY'`.
+Use the configured native runner and toolchain instead of guessing compiler paths.
+Put temporary scripts and output in a unique task scratch folder.
+
 ## Task and priorities
 
 Default to new native class/header recovery across the client. Recover
