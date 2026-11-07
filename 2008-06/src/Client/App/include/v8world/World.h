@@ -37,6 +37,16 @@ namespace RBX
 		AutoDestroy(Joint* j) : joint(j) {}
 	};
 
+	struct AssemblyPhysicsOn
+	{
+		Primitive* primitive;
+	};
+
+	struct AssemblyPhysicsOff
+	{
+		Primitive* primitive;
+	};
+
 	class World : public Notifier<World, AutoJoin>, public Notifier<World, AutoDestroy>,
 				  public Notifier<World, AutoA>, public Notifier<World, AutoB>
 	{
