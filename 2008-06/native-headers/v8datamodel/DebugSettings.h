@@ -22,9 +22,7 @@
 #include "v8datamodel/GlobalSettings.h"
 #include "util/Debug.h"
 #include <string>
-#ifdef NATIVE_DEBUGSETTINGS_PENDING
 #include "v8world/World.h"
-#endif
 
 struct NativeSettingsItemsLayout;
 

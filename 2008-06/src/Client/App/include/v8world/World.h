@@ -83,15 +83,6 @@ namespace RBX
 			Always
 		};
 		static EThrottle environmentalThrottle;
-
-		enum EThrottle
-		{
-			DefaultAuto,
-			Disabled,
-			Random,
-			Always
-		};
-		static EThrottle environmentalThrottle;
   
 	public:
 		void createJoints(Primitive* p);
