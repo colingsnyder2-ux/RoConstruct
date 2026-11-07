@@ -39,6 +39,21 @@ Unrelated remote advances are preserved and push retries never force.
 
 ## Review and verification
 
+Start with `python -m roc.native_drafts triage --discover-forks --diff --output REPORT.json` after
+fetching work and contributor refs. Discovery reads local refs and never fetches or advances review tips.
+Inspect its errors and all distinct variants. Add `--fork LABEL OLD_SHA NEW_SHA` for each already fetched,
+relevant non-bot contributor branch; repeat the flag for multiple forks. Use
+full commit IDs and an ancestor range. `--after N` narrows pending drafts only;
+it does not mark earlier packets reviewed or advance a cursor. The command
+deduplicates exact path/content variants, compares each source's recorded base
+with the committed work snapshot, reports current local server leases or unknown
+ownership, and can include complete diffs. Its report is created only if the
+output path does not exist. No draft code executes and no review state changes.
+Triage is an index for human/agent review, not proof or permission to integrate.
+Still review every source, resolve conflicts and run required verification;
+use the existing isolated batch runner to compile reviewed candidates in parallel.
+
+
 1. Keep the integration guard token for the entire run; release in final cleanup.
    The guard expires after three hours. Stop before expiry or release/reacquire
    before continuing; never steal another live guard. Read durable pending rows

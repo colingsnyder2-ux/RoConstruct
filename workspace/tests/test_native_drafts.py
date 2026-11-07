@@ -30,6 +30,74 @@ def workspace(tmp_path):
     return root
 
 
+def test_triage_deduplicates_fork_and_drafts_without_touching_work(tmp_path):
+    import sqlite3
+    import time
+
+    root = tmp_path / 'owner'
+    root.mkdir()
+    def git(*args):
+        return subprocess.check_output(['git', *args], cwd=root).decode().strip()
+    git('init', '-q')
+    git('config', 'user.name', 'Test')
+    git('config', 'user.email', 'test@example.invalid')
+    name = 'rebuild/2008-06/native-classes/Foo.cpp'
+    canonical = root / 'workspace' / name
+    canonical.parent.mkdir(parents=True)
+    canonical.write_bytes(b'int value = 1;\n')
+    fork = root / name
+    fork.parent.mkdir(parents=True)
+    fork.write_bytes(b'int value = 1;\n')
+    git('add', '.')
+    git('commit', '-qm', 'base')
+    old = git('rev-parse', 'HEAD')
+    git('update-ref', 'refs/remotes/findings/work', old)
+    fork.write_bytes(b'int value = 2;\n')
+    git('add', name)
+    git('commit', '-qm', 'fork')
+    new = git('rev-parse', 'HEAD')
+
+    inbox = d.Inbox(root)
+    token = inbox.register('tester')['token']
+    common = dict(schema=1, user='tester', model='model', session='a'*32, baseline='worker')
+    for original in ('int value = 1;\n', 'int value = 0;\n'):
+        packet = dict(common, files={name: {'base': original, 'text': 'int value = 2;\n'}})
+        inbox.receive(packet, token)
+    server = root / 'work/server.db'
+    with sqlite3.connect(server) as db:
+        db.execute('CREATE TABLE file_leases(name TEXT,user TEXT,patterns TEXT,expires REAL)')
+        db.execute('INSERT INTO file_leases VALUES(?,?,?,?)', ('active', 'other', json.dumps([name]), time.time()+600))
+    canonical.write_bytes(b'active worker edit\n')
+    index = (root / '.git/index').read_bytes()
+    report = d.triage(root, forks=[('fork', old, new)], include_diff=True)
+    assert report['canonical_commit'] == old and report['pending_packets'] == 2
+    assert len(report['variants']) == 1 and report['errors'] == []
+    variant = report['variants'][0]
+    assert sorted(s['relation'] for s in variant['sources']) == ['base_matches_current', 'base_matches_current', 'three_way_review']
+    assert variant['leases'][0]['name'] == 'active' and '+int value = 2;' in variant['diff']
+    assert canonical.read_bytes() == b'active worker edit\n' and (root / '.git/index').read_bytes() == index
+    assert git('rev-parse', 'HEAD') == new and len(inbox.pending()) == 2
+    inbox.receive(dict(common, files={name: {'base': 'int value = 1;\n', 'text': None}}), token)
+    deletion = d.triage(root, after=2)
+    assert len(deletion['variants']) == 1
+    assert deletion['variants'][0]['sources'][0]['relation'] == 'deletion_proposed'
+    existing = root / 'existing-report.json'
+    existing.write_text('preserve me')
+    with pytest.raises(FileExistsError):
+        d.main(['--root', str(root), 'triage', '--output', str(existing)])
+    assert existing.read_text() == 'preserve me'
+    blocked_fork = d.triage(root, forks=[('fork', new, old)])
+    assert blocked_fork['pending_packets'] == 3 and blocked_fork['errors'][0]['fork'] == 'fork'
+    git('update-ref', 'refs/forks/alice/main', new)
+    git('update-ref', 'refs/forks/bob/main', old)
+    state = root / 'work/native-draft-integration-state.json'
+    state.write_text(json.dumps({'reviewed_fork_tips': {'alice/main': old}}))
+    discovered = d.triage(root, discover_forks=True)
+    assert [x['status'] for x in discovered['forks_observed']] == ['comparison_requested', 'already_in_canonical']
+    assert any(s.get('label') == 'alice/main' for s in discovered['variants'][0]['sources'])
+    assert json.loads(state.read_text())['reviewed_fork_tips']['alice/main'] == old
+
+
 def test_http_drafts_new_files_deletions_offline_and_restart(tmp_path, receiver):
     inbox, server = receiver
     root = workspace(tmp_path)

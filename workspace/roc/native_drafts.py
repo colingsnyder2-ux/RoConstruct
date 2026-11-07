@@ -1,7 +1,10 @@
 """Durable, branch-free native draft checkpoints. Uploads never execute or activate code."""
 import argparse
+import difflib
 from contextlib import contextmanager
+from fnmatch import fnmatchcase
 import hashlib
+import io
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import os
@@ -499,6 +502,186 @@ def start(root, session, every=300):
     return dict(pid=p.pid, session=session)
 
 
+def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_diff=False, discover_forks=False):
+    """Read-only draft/fork comparison. Results are leads, never verified review."""
+    root = Path(root)
+
+    def git(*args):
+        return subprocess.check_output(['git', *args], cwd=root)
+
+    def tree(commit, prefixes):
+        result = {}
+        for row in git('ls-tree', '-r', '-z', commit, '--', *prefixes).split(b'\0'):
+            if row:
+                meta, name = row.split(b'\t', 1)
+                mode, kind, oid = meta.split()
+                result[name.decode('utf-8', errors='surrogateescape')] = (mode.decode(), kind.decode(), oid.decode())
+        return result
+
+    commit = git('rev-parse', '--verify', ref + '^{commit}').decode().strip()
+    current_tree = tree(commit, ['workspace/'])
+    pending = [row for row in Inbox(root).pending() if row['seq'] > after]
+    inbox = Inbox(root)
+    records, errors = [], []
+    for row in pending:
+        try:
+            packet = inbox.packet(row['id'])
+            for name, value in packet['files'].items():
+                records.append({'path': name, 'text': value['text'], 'base_text': value['base'],
+                                'source': {'kind': 'draft', 'seq': row['seq'], 'id': row['id'],
+                                           'user': row['user'], 'model': packet['model'], 'state': row['state']}})
+        except (OSError, ValueError) as error:
+            errors.append({'id': row['id'], 'seq': row['seq'], 'error': str(error)})
+
+    observed = []
+    forks = list(forks)
+    if discover_forks:
+        state_path = root / 'work/native-draft-integration-state.json'
+        try:
+            reviewed = json.loads(state_path.read_text(encoding='utf-8')).get('reviewed_fork_tips', {}) if state_path.exists() else {}
+        except (OSError, ValueError) as error:
+            errors.append({'error': 'Cannot read reviewed fork tips: ' + str(error)})
+            reviewed = {}
+        for line in git('for-each-ref', '--format=%(refname)%09%(objectname)', 'refs/forks/').decode().splitlines():
+            name, tip = line.split('\t', 1)
+            label = name.removeprefix('refs/forks/')
+            owner, _, branch = label.partition('/')
+            if (not branch or owner == 'origin' or branch in ('archive', 'auto-merge/native',
+                    'claude/p6-startup-20261101', 'codex/native-partial-search-20261029',
+                    'contrib-snapshot', 'gh-pages') or
+                    re.search(r'(^|[/_-])(bot|dependabot|renovate)([/_-]|$)', label, re.I)):
+                continue
+            item = {'ref': name, 'tip': tip}
+            observed.append(item)
+            if subprocess.run(['git', 'merge-base', '--is-ancestor', tip, commit], cwd=root, capture_output=True).returncode == 0:
+                item['status'] = 'already_in_canonical'; continue
+            old = reviewed.get(label)
+            if not old:
+                try:
+                    old = git('merge-base', tip, commit).decode().strip()
+                except subprocess.CalledProcessError:
+                    item['status'] = 'no_base'
+                    errors.append({'fork': label, 'error': 'No reviewed tip or common base'}); continue
+            item['base'] = old
+            item['status'] = 'unchanged' if old == tip else 'comparison_requested'
+            if old != tip and not any(f[0] == label and tuple(f[1:]) == (old, tip) for f in forks):
+                forks.append((label, old, tip))
+
+    native_dirs = ('rebuild/2008-06/native-classes/', 'rebuild/2008-06/native-headers/',
+                   'rebuild/2008-06/native-world/')
+    for label, old, new in forks:
+        if not re.fullmatch(r'[0-9a-f]{40}', old) or not re.fullmatch(r'[0-9a-f]{40}', new):
+            errors.append({'fork': label, 'error': 'Fork comparison requires full lowercase commit IDs'}); continue
+        if subprocess.run(['git', 'merge-base', '--is-ancestor', old, new], cwd=root,
+                          capture_output=True).returncode:
+            errors.append({'fork': label, 'old': old, 'new': new,
+                           'error': 'Fork old commit is not an available ancestor of new commit'}); continue
+        try:
+            old_tree, new_tree = tree(old, native_dirs), tree(new, native_dirs)
+            changed = git('diff', '--name-only', '-z', '--no-renames', old, new, '--', *native_dirs)
+        except subprocess.CalledProcessError as error:
+            errors.append({'fork': label, 'old': old, 'new': new, 'error': str(error)}); continue
+        for raw in changed.split(b'\0'):
+            if not raw:
+                continue
+            try:
+                name = raw.decode('utf-8')
+            except UnicodeDecodeError:
+                errors.append({'fork': label, 'error': 'Non-UTF-8 fork path', 'path_bytes': raw.hex()}); continue
+            try:
+                safe_path(name)
+            except ValueError as error:
+                errors.append({'fork': label, 'path': name, 'error': str(error)}); continue
+            records.append({'path': name, 'fork_new': new_tree.get(name), 'fork_old': old_tree.get(name),
+                            'source': {'kind': 'fork', 'label': label, 'old': old, 'new': new}})
+
+    # Read each required blob once. Never read or alter the shared working tree.
+    wanted = set()
+    for row in records:
+        for entry in (current_tree.get('workspace/' + row['path']), row.get('fork_old'), row.get('fork_new')):
+            if entry and entry[0] in ('100644', '100755') and entry[1] == 'blob':
+                wanted.add(entry[2])
+    blobs = {}
+    if wanted:
+        result = subprocess.run(['git', 'cat-file', '--batch'], cwd=root,
+                                input=('\n'.join(sorted(wanted)) + '\n').encode(), capture_output=True, check=True)
+        stream = io.BytesIO(result.stdout)
+        for oid in sorted(wanted):
+            header = stream.readline().split()
+            if len(header) != 3 or header[0].decode() != oid or header[1] != b'blob':
+                raise ValueError('Git blob identity mismatch')
+            blobs[oid] = stream.read(int(header[2])); stream.read(1)
+
+    leases = None
+    try:
+        dbpath = root / 'work/server.db'
+        with sqlite3.connect(dbpath.resolve().as_uri() + '?mode=ro', uri=True, timeout=1) as db:
+            leases = [dict(name=name, user=user, patterns=json.loads(patterns), expires=expires)
+                      for name, user, patterns, expires in db.execute(
+                          'SELECT name,user,patterns,expires FROM file_leases WHERE expires>?', (time.time(),))]
+    except (OSError, ValueError, sqlite3.Error):
+        pass  # Unknown ownership is not an available lease.
+
+    variants = {}
+    normalize = lambda b: b.replace(b'\r\n', b'\n') if b is not None else None
+    for row in records:
+        name = row['path']; current = current_tree.get('workspace/' + name)
+        if current and (current[0] not in ('100644', '100755') or current[1] != 'blob'):
+            errors.append({'path': name, 'source': row['source'], 'error': 'Non-regular canonical path'}); continue
+        current_bytes = blobs[current[2]] if current else None
+        if row['source']['kind'] == 'fork':
+            old, new = row.get('fork_old'), row.get('fork_new')
+            if any(e and (e[0] not in ('100644', '100755') or e[1] != 'blob') for e in (old, new)):
+                errors.append({'path': name, 'source': row['source'], 'error': 'Non-regular fork path'}); continue
+            base_bytes = blobs[old[2]] if old else None
+            candidate = blobs[new[2]] if new else None
+        else:
+            try:
+                base_bytes = row['base_text'].encode('utf-8') if row['base_text'] is not None else None
+                candidate = row['text'].encode('utf-8') if row['text'] is not None else None
+            except UnicodeEncodeError:
+                errors.append({'path': name, 'source': row['source'], 'error': 'Invalid Unicode in draft content'}); continue
+        identity = hashlib.sha256(candidate).hexdigest() if candidate is not None else None
+        key = (name, identity)
+        if candidate is None:
+            relation = 'deletion_proposed'
+        elif normalize(candidate) == normalize(current_bytes):
+            relation = 'same_content' if candidate == current_bytes else 'newline_only'
+        elif current_bytes is None and base_bytes is None:
+            relation = 'new_path'
+        elif base_bytes is None:
+            relation = 'base_unavailable'
+        elif current_bytes is None:
+            relation = 'canonical_path_missing'
+        elif normalize(base_bytes) == normalize(current_bytes):
+            relation = 'base_matches_current'
+        else:
+            relation = 'three_way_review'
+        source = dict(row['source'], relation=relation,
+                      base_sha256=hashlib.sha256(base_bytes).hexdigest() if base_bytes is not None else None)
+        if key not in variants:
+            covering = None if leases is None else [dict(name=l['name'], user=l['user'], expires=l['expires'])
+                for l in leases if any(fnmatchcase(name, pattern) for pattern in l['patterns'])]
+            item = dict(path=name, candidate_sha256=identity,
+                        canonical_sha256=hashlib.sha256(current_bytes).hexdigest() if current_bytes is not None else None,
+                        leases=covering, sources=[])
+            if include_diff:
+                try:
+                    before = (current_bytes or b'').decode('utf-8').splitlines(keepends=True)
+                    after_text = (candidate or b'').decode('utf-8').splitlines(keepends=True)
+                    item['diff'] = ''.join(difflib.unified_diff(before, after_text,
+                                           fromfile='work/' + name, tofile='candidate/' + name))
+                except UnicodeDecodeError:
+                    item['diff_error'] = 'Non-UTF-8 content; inspect blob separately'
+            variants[key] = item
+        variants[key]['sources'].append(source)
+    return {'scope': 'Read-only triage; no code executed, review decision, verification, integration or credit.',
+            'forks_observed': observed,
+            'canonical_commit': commit, 'after_seq': after, 'pending_packets': len(pending),
+            'lease_state': 'current local server DB' if leases is not None else 'unknown',
+            'variants': list(variants.values()), 'errors': errors}
+
+
 def integration_lock(root, action, token=None):
     """Hold one OS lock across separate automation tool calls; bounded orphan lifetime."""
     folder = root / 'work/draft-integration-guard'
@@ -554,6 +737,14 @@ def main(argv=None):
             p.add_argument('--wait', action='store_true')
             p.add_argument('--timeout', type=float, default=60)
     sub.add_parser('pending')
+    scan = sub.add_parser('triage', help='Read-only deduplicated draft/fork comparison; does not approve or execute')
+    scan.add_argument('--ref', default='refs/remotes/findings/work', help='Fetched canonical work commit/ref')
+    scan.add_argument('--after', type=int, default=0, help='Only pending draft sequences after this value')
+    scan.add_argument('--fork', nargs=3, action='append', default=[], metavar=('LABEL', 'OLD_SHA', 'NEW_SHA'),
+                      help='Compare a reviewed fork range already fetched locally; repeat for each branch')
+    scan.add_argument('--discover-forks', action='store_true', help='Compare locally fetched contributor refs; never fetch or advance review tips')
+    scan.add_argument('--diff', action='store_true', help='Include complete untrusted unified diffs')
+    scan.add_argument('--output', type=Path, help='Write new JSON report without replacing an existing file')
     notes=sub.add_parser('notes')
     notes.add_argument('--server')
     note=sub.add_parser('note')
@@ -626,6 +817,16 @@ def main(argv=None):
         inbox = Inbox(root)
         if args.action == 'pending':
             result = inbox.pending()
+        elif args.action == 'triage':
+            if args.after < 0:
+                raise ValueError('--after must be nonnegative')
+            result = triage(root, args.ref, args.after, args.fork, args.diff, args.discover_forks)
+            if args.output:
+                with args.output.open('x', encoding='utf-8', newline='\n') as stream:
+                    json.dump(result, stream, indent=2, ensure_ascii=True)
+                    stream.write('\n')
+                print('Triage report written:', args.output)
+                return
         elif args.action == 'show':
             result = inbox.packet(args.id)
         else:
