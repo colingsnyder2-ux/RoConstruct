@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "scope": "inactive source; no linked executable selection, runtime or P5/P6 claim",
+  "source_sha256": "85aacb819b321a22bc11cb7f246a22132d42dc7035b4c3c02c889ecf89f38d0b",
+  "public_blob": "fa95b9eeaaa5b7674231cdf816f01c655d108508",
+  "frozen_header_tree": "2186ca661d9c63a796e664f2af3348519bd0981b",
+  "body_check": {
+    "addr": "004495a0",
+    "requested_symbol": "?nativeInitializeCom@@YAXXZ",
+    "status": "exact",
+    "symbol": "?nativeInitializeCom@@YAXXZ",
+    "score": 100,
+    "target_size": 173,
+    "object_size": 173,
+    "target_sha256": "dfa495ab183cdbf556d5a8ac9d3ac0d0d26722498fdea9ddb17edfd62299050b",
+    "first_byte_difference": null,
+    "data_matches": [
+      [
+        8480300,
+        5
+      ],
+      [
+        8480288,
+        12
+      ],
+      [
+        8480280,
+        7
+      ]
+    ],
+    "data_errors": [],
+    "check_seconds": 2.172
+  },
+  "binding_checks": [
+    {
+      "address": "004495a0",
+      "symbol": "?nativeInitializeCom@@YAXXZ",
+      "size": 173,
+      "exact": true,
+      "verified_targets": {
+        "__imp__DefWindowProcA@16": "user32.dll!DefWindowProcA",
+        "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "mfc90.dll!?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ",
+        "__imp__LoadIconA@8": "user32.dll!LoadIconA",
+        "__imp__LoadCursorA@8": "user32.dll!LoadCursorA",
+        "??_C@_04IFEHPILC@Menu?$AA@": "0x81662c",
+        "??_C@_0M@PHGLEEGE@ROBLOX?9ATOM?$AA@": "0x816620",
+        "__imp__RegisterClassA@4": "user32.dll!RegisterClassA",
+        "?GetThisClass@CFrameWnd@@SGPAUCRuntimeClass@@XZ": "mfc90.dll!?GetThisClass@CFrameWnd@@SGPAUCRuntimeClass@@XZ",
+        "?CreateObject@CRuntimeClass@@QAEPAVCObject@@XZ": "mfc90.dll!?CreateObject@CRuntimeClass@@QAEPAVCObject@@XZ",
+        "__imp_?rectDefault@CFrameWnd@@2VCRect@@B": "mfc90.dll!?rectDefault@CFrameWnd@@2VCRect@@B",
+        "??_C@_06NCICJBKL@ROBLOX?$AA@": "0x816618"
+      },
+      "local_eh": []
+    }
+  ],
+  "mfc_class_and_virtual_target": {
+    "scope": "static PE evidence for pinned MFC 9.0.21022.8; no runtime execution or P5/P6 selection",
+    "original_exe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+    "mfc_sha256": "287bd98054c5d2c4126298ee50a2633edc745bc76a1ce04e980f3ecc577ce943",
+    "preferred_image_base": "0x785e0000",
+    "get_this_class_ordinal": 3808,
+    "runtime_class": "0x785e90e8",
+    "runtime_class_size": "0xe8",
+    "class_factory_ordinal": 1834,
+    "factory_dispatch_offset": "0xc",
+    "constructor_ordinal": 415,
+    "vtable": "0x785e9144",
+    "virtual_call_offset": "0x144",
+    "slot_target": "0x78616408",
+    "target": "CFrameWnd::Create",
+    "target_ordinal": 1684,
+    "passed": true
+  },
+  "affected_app_compile": {
+    "status": "compiled; original match remains unresolved",
+    "check": {
+      "addr": "0044d810",
+      "requested_symbol": "?InitInstance@CRobloxApp@@UAEHXZ",
+      "status": "different",
+      "symbol": "?InitInstance@CRobloxApp@@UAEHXZ",
+      "score": 75,
+      "target_size": 1467,
+      "object_size": 1470,
+      "target_sha256": "8b11c6af62f60e2cda30f344ce4bca69a7c4ce9b5a6baaa9104c72508040bad2",
+      "first_byte_difference": 238,
+      "check_seconds": 0.937
+    },
+    "source_sha256": "a6b088101f950293db6f5dde1c2854970e7e94ceb24e8fcd91ffd083862c181c",
+    "note": "Existing InitInstance differs from original before provider selection; do not treat as complete swap."
+  },
+  "excluded_snapshot": "138d3a09c8"
+}
