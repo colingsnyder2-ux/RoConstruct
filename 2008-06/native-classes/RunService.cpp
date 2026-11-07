@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string /I{headers}/runservice-events
 #include "util/RunStateOwner.h"
 #include "util/StandardOut.h"
 #include <exception>
@@ -81,4 +82,15 @@ void RBX::RunService::removeRunView(IRunView* view) {
     boost::mutex::scoped_lock lock(viewMutex);
     runViewValid(view);
     views.erase(view);
+}
+
+void RBX::RunService::runViewValid(IRunView* view) {
+    boost::mutex::scoped_lock lock(viewMutex);
+    if (!invalidRunViewCount) return;
+    std::map<IRunView*, bool>::iterator it = views.find(view);
+    if (it != views.end() && !it->second) {
+        --invalidRunViewCount;
+        it->second = true;
+    }
+    if (!invalidRunViewCount) runViewsDoneCondition.notify_all();
 }
