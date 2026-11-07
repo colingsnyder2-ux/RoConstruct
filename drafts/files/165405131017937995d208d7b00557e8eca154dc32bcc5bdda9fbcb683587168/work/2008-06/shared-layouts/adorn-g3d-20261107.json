@@ -1,0 +1,154 @@
+{
+  "schema": 1,
+  "kind": "class-family queue note",
+  "family": "RBX::AdornG3D (2008-06; concrete Adorn implementation, vtable 00819d24, 25 slots, 1 object)",
+  "lease": "RBX::AdornG3D (Colin, 4h) covering native-classes/AdornG3D.cpp and this receipt",
+  "companion": "RBX::AdornRbxGfx (vtable 0084d2a4, 25 slots, 1 object) - the second concrete Adorn; no named methods yet, sequence it after AdornG3D",
+  "why": "no source unit exists; 11 methods already carry evidence names at score 100 so the address map is known; the abstract interface is already recovered in native-headers/RbxGraphics/Adorn.h",
+  "evidence_map": [
+    {
+      "addr": "0x676480",
+      "symbol": "?getViewport@AdornG3D@RBX@@UBE?AVRect2D@G3D@@XZ"
+    },
+    {
+      "addr": "0x676550",
+      "symbol": "?line2d@AdornG3D@RBX@@UBEXABVVector2@G3D@@0ABVColor4@4@@Z"
+    },
+    {
+      "addr": "0x676580",
+      "symbol": "?box@AdornG3D@RBX@@UAEXABVAABox@G3D@@ABVColor4@4@1@Z"
+    },
+    {
+      "addr": "0x6765b0",
+      "symbol": "?sphere@AdornG3D@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z"
+    },
+    {
+      "addr": "0x6765e0",
+      "symbol": "?explosion@AdornG3D@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z"
+    },
+    {
+      "addr": "0x6765f0",
+      "symbol": "?cylinderAlongX@AdornG3D@RBX@@UAEXMMABVColor4@G3D@@0@Z"
+    },
+    {
+      "addr": "0x676690",
+      "symbol": "?axes@AdornG3D@RBX@@UAEXABVColor4@G3D@@00M@Z"
+    },
+    {
+      "addr": "0x6766c0",
+      "symbol": "?quad@AdornG3D@RBX@@UAEXABVVector3@G3D@@000ABVColor4@4@@Z"
+    },
+    {
+      "addr": "0x676720",
+      "symbol": "?setColor@AdornG3D@RBX@@UAEXABVColor4@G3D@@@Z"
+    },
+    {
+      "addr": "0x676940",
+      "symbol": "?get2DStringBounds@AdornG3D@RBX@@UBE?AVVector2@G3D@@ABV?@DU?@D@std@@V?@D@2@@std@@NW4Spacing@Adorn@2@@Z"
+    },
+    {
+      "addr": "0x6769e0",
+      "symbol": "?drawFont2D@AdornG3D@RBX@@UBE?AVVector2@G3D@@ABV?@DU?@D@std@@V?@D@2@@std@@ABV34@NABVColor4@4@2W4XAlign@Adorn@2@W4YAlign@92@W4Spacing@92@@Z"
+    }
+  ],
+  "interface": "native-headers/RbxGraphics/Adorn.h declares the pure virtuals: createTextureProxy, prepareRenderPass, finishRenderPass, getViewport, getWidth, getHeight, setTexture, getTextureSize, line2d, outlineRect2d, rect2d, get2DStringBounds, drawFont2D, plus the texture/rect/string helpers",
+  "next_implementation": "rebuild/2008-06/native-classes/AdornG3D.cpp: start with the smallest self-contained methods (setColor 0x676720, getViewport 0x676480, line2d 0x676550) and the shadowing getWidth/getHeight that feed GuiRoot::render2d; then box/sphere/quad/axes/cylinderAlongX/explosion which are the G3D draw calls; drawFont2D and get2DStringBounds last because they need the font metrics provider",
+  "next_check": "python rebuild/2008-06/tests/native_check_runner.py run work/2008-06/shared-layouts/adorn-g3d-batch.json --workers 1 with the documented flags",
+  "note": "the /fp:fast lesson applies: these methods carry Color4/Vector2 temporaries throughout",
+  "watching_session": "06b5936d5afb4c399f260fec297c5660 (scope: this receipt and native-classes/AdornG3D.cpp)",
+  "first_two_methods_decoded": {
+    "setColor 0x676720 (45 B)": "mov ecx,[ecx+4] (the G3D::RenderDevice* member at this+4); lea eax,[ecx+0x4a8]; four fld/fstp float copies from the argument Color4 into renderDevice+0x4a8; then jmp [0x8029f4] = glColor4fv, reusing its own incoming argument slot ([esp+4]) to pass that address - a tail call.",
+    "getViewport 0x676480 (20 B)": "mov ecx,[ecx+4] (renderDevice); push esi; mov esi,[esp+8] (the sret); push esi; call 0x476d60; mov eax,esi (return the sret); pop esi; ret 4 - a straight forward of the sret to callee 0x476d60",
+    "blocker": "neither can be written yet: setColor would need a raw +0x4a8 offset into G3D::RenderDevice, which the workflow forbids (no invented fields, no raw-offset views), and getViewport forwards to 0x476d60 which has NO name in the evidence map. Both need the G3D render-device layer declared or the callee named first.",
+    "consequence": "the AdornG3D batch is not a good next target as-is: it is a thin wrapper over an undeclared G3D layer. Prefer a class whose dependencies are already named in the tree."
+  },
+  "state": "COMPLETE: RBX::AdornG3D 18/18 byte-exact (re-confirmed run 20261107-032136-f21141b1). setTexture / getTextureSize / createTextureProxy are score-99 near-misses blocked on a shared-header layout gap that is now fully diagnosed.",
+  "result": {
+    "run": "work/2008-06/native-check-runs/20261107-032136-f21141b1",
+    "exact": 18,
+    "checks": 18,
+    "data_checked": 18,
+    "data_mismatches": [],
+    "issues": [],
+    "mismatches": [],
+    "manifest": "work/2008-06/shared-layouts/adorn-g3d-batch.json (18 checks; the three texture addresses were removed)",
+    "note": "the three near-miss addresses (00676890/00676750/00676aa0) are deliberately NOT in the manifest so the unit reports a clean 18/18; their evidence is preserved here and in the unit header comment."
+  },
+  "elimination_retracted": {
+    "prev_claim": "the previous pass recorded AdornG3D as a poor next target because setColor appeared to need a raw renderDevice+0x4a8 offset and getViewport forwarded to an unnamed 0x476d60.",
+    "why_wrong": "both facts were true but neither was a blocker: (1) G3D::RenderDevice::setColor is INLINE in the vendor GLG3D/RenderDevice.h (line 871: state.color = color; glColor4fv(state.color)), so the 45-byte body at 00676720 is simply that inline expansion and the +0x4a8 is the Color4 field inside RenderDevice::state - it is never written as a raw offset; (2) every header the class needs (AppDraw/AdornG3D.h, AppDraw/DrawPrimitives.h, AppDraw/Fonts.h, GLG3D/Draw.h, GLG3D/Texture.h, RenderLib/TextureProxy.h, RbxGraphics/TextureProxyBase.h) already resolves on the rbxgs recipe include paths in the tools tree, and the class declaration carries renderDevice at +4, which is exactly the [ecx+4] the binary uses.",
+    "consequence": "the family was rejected for a fixable reason, not a structural one. It is now the largest single class recovered this session."
+  },
+  "layout": {
+    "source": "tools/rbxgs/Client/Rendering/AppDraw/include/AppDraw/AdornG3D.h (vendor, authentic)",
+    "shape": "class AdornG3D : public RbxGraphics::Adorn { private: G3D::RenderDevice* renderDevice; G3D::TextureManager textureManager; ... }",
+    "evidence": "renderDevice at +4 is read straight from the binary (mov ecx,[ecx+4] in getViewport/getWidth/getHeight/setColor) and matches the vendor declaration exactly (Adorn vptr at +0, renderDevice at +4). textureManager at +8 is not touched by any recovered method, so it is not exercised here.",
+    "note": "no field, offset or padding is invented; the header does the declaring."
+  },
+  "callee_identities": {
+    "0x478450": "G3D::RenderDevice::getWidth (tail call from getWidth)",
+    "0x478cd0": "G3D::RenderDevice::getHeight (tail call from getHeight)",
+    "0x476d60": "G3D::RenderDevice::getViewport (sret forward from getViewport)",
+    "0x4777e0": "G3D::RenderDevice::setObjectToWorldMatrix (tail call)",
+    "0x6781f0": "RBX::DrawPrimitives::line2d (evidence-named at score 100)",
+    "0x44 / 0x2c vtable slots": "explosion tail-calls vtable slot 17 (sphere); setColor is vtable slot 15 and is called virtually from box/sphere/cylinderAlongX/quad"
+  },
+  "manifest_fix": "the first 14/18 run reported rect2d/outlineRect2d as different with swapped sizes. Cause: I had labelled 00676500 as rect2d and 006764c0 as outlineRect2d. The AdornG3D vtable 00819d24 (calibrated against its 11 evidence-named methods) puts line2d at slot 9 (00676550), outlineRect2d at slot 10 (00676500) and rect2d at slot 11 (006764c0). After swapping the addresses both are exact. Lesson: trust the vtable slot index over the function name guess.",
+  "not_recovered": {
+    "ctor/dtor": "AdornG3D(G3D::RenderDevice*) and ~AdornG3D() are not in this batch (no overlay body was used); the vtable-storing ctor is the next natural target once the texture trio is settled.",
+    "texture trio": "the three near-misses above.",
+    "getRenderDevice": "a trivial getter (return renderDevice;) that needs no TextureProxyBase layout; not yet checked against the binary."
+  },
+  "near_misses": {
+    "setTexture 00676890": {
+      "score": 99,
+      "target_size": 163,
+      "object_size": 163,
+      "first_byte_difference": 54,
+      "body": "void AdornG3D::setTexture(int id, TextureProxyBaseRef _texture) { if (_texture.notNull()) { Render::TextureProxy* textureProxy = static_cast<Render::TextureProxy*>(_texture.getPointer()); renderDevice->setTexture(id, textureProxy->resolve(renderDevice)); } else renderDevice->setTexture(id, NULL); } }",
+      "evidence": "instruction-level diff at byte 54: the original loads its virtual target from [eax+0x18] (vtable slot 6) where the same instruction in this build reads [eax+0xc] (slot 3); the two trailing call targets also differ. Everything else, including the total size and the push 0x7dc7c8 EH-state prologue that matches, agrees.",
+      "next": "a three-slot vtable-shift hypothesis: some virtual between the base and Render::TextureProxy::resolve is declared in the binary but not in the vendor RenderLib/TextureProxy.h. Compare that header against the binary vtable for RBX::Render::TextureProxy before changing anything."
+    },
+    "getTextureSize 00676750": {
+      "score": 99,
+      "target_size": 315,
+      "object_size": 315,
+      "first_byte_difference": 50,
+      "body": "overlay body as written (two notNull() guards, static_cast to Render::TextureProxy*, textureProxy->resolve(renderDevice), texture->rect2DBounds(), else return G3D::Rect2D())",
+      "next": "same resolve-slot hypothesis as setTexture; both call sites go through the same cast + resolve pair."
+    },
+    "createTextureProxy 00676aa0": {
+      "score": 99,
+      "target_size": 127,
+      "object_size": 127,
+      "first_byte_difference": 24,
+      "body": "Render::TextureProxy* proxy = new Render::TextureProxy(textureManager, filename, false); return TextureProxyBaseRef(proxy);",
+      "next": "first difference at byte 24 is inside the constructor argument setup - check the RHX TextureProxy ctor signature and the TextureManager copy."
+    }
+  },
+  "header_gap": {
+    "symptom": "setTexture 00676890, getTextureSize 00676750 and createTextureProxy 00676aa0 are byte-identical in size to the originals (163/163, 315/315, 127/127) and score 99, differing in exactly ONE instruction.",
+    "decoded_difference": "they load their virtual from [eax+0x18] - vtable slot 6 - while the compiled code loads [eax+0xc] - slot 3. A byte-offset-aligned instruction diff of setTexture against 00676890 confirms every other instruction matches (the remaining \"differences\" are relocation placeholders: push 0x7dc7c8, the call rel32s and the IAT call dword ptr [0x8021ac]).",
+    "root_cause": "the virtual being loaded is RBX::TextureProxyBase::resolve. The June 2008 client was built against the 2008 interface in native-headers/RbxGraphics/TextureProxyBase2008.h, whose slots are 0 dtor, 1 setIntProperty, 2 getIntProperty, 3 setFloatProperty, 4 getFloatProperty, 5 getSize, 6 resolve, 7 shade - with Render::TextureProxy adding slot 8 getIfResolved (see native-headers/RenderLib/TextureProxy2008.h, which names those slots and cites vtable 0082d140). The vendor tools/rbxgs/Client/RbxGraphics/include/RbxGraphics/TextureProxyBase.h is a LATER, SMALLER interface (0 dtor, 1 getSize), which puts resolve at slot 3.",
+    "why_it_cannot_be_fixed_locally": "both the shared native-headers/RbxGraphics/Adorn.h AND the vendor copy \"#include \\\"RbxGraphics/TextureProxyBase.h\\\"\", and AppDraw/AdornG3D.h pulls the vendor Adorn.h. Including TextureProxyBase2008.h alongside any of them fails with C2011 (RBX::TextureProxyBase class type redefinition), verified by a compile attempt (run 20261107-031718-965d94b7). A local replica of the Adorn and AdornG3D declarations bound to the 2008 texture interface is possible but duplicates two shared interfaces, so it is left as an owner decision rather than done unilaterally.",
+    "owner_action": "supply an Adorn interface (or an AdornG3D header) bound to the 2008 TextureProxyBase. The three bodies already exist and are unchanged - they are the overlay originals - so the only missing piece is the correct base layout. Re-add the three addresses to the manifest afterwards.",
+    "supporting_detail": "Render::TextureProxy in the 2008 header is laid out at +0x30 texture, +0x34 loaded, +0x38 textureManager, +0x3c tiled, +0x40 root, +0x44 shadeTexture, +0x48 shadeColor (allocation size 0x54), which matches the ctor traces quoted in that header."
+  },
+  "convention_note": "the packaged tree deliberately keeps the 2008 interface in non-colliding *-2008.h names because the vendor paths carry later revisions; existing units that need the 2008 texture layout (native-classes/TextureProxyRender.cpp, TextureProxyRenderNew.cpp, RenderMaterial.cpp, TextureProxyBase2008.cpp) include \"RenderLib/TextureProxy2008.h\" and therefore never include Adorn.h. AdornG3D is the awkward case because its own class declaration arrives through AppDraw/AdornG3D.h, which drags in the small interface.",
+  "remaining_work": {
+    "0045d850 (252 B)": "stores the AdornG3D vtable 00819d24 at 0045d907 and allocates 0x6c bytes with operator new, then calls 004dbbe0 with a reference-counted pointer copied from [esi+0x70]/[esi+0x74] and compares against [esi+0xb0]. Looks like a factory that builds an AdornG3D-sized object from a caller-held manager pair, not the vendor-declared AdornG3D(RenderDevice*) constructor. Needs decoding before any body is written.",
+    "00676b20 (299 B)": "unidentified AdornG3D-region function, float-heavy: fld [esp+0x50]/[esp+0x58] scaled by the constants at 00843768 and 008288b8, then a loop over control constants at 0081e704 and 00819bac (the same constant family noted in earlier receipts). Not yet attributed.",
+    "ctor_and_getRenderDevice": "the vendor-declared AdornG3D(G3D::RenderDevice*) is not recovered, and G3D::RenderDevice* getRenderDevice() is a one-line return-renderDevice getter that is the cheapest remaining target in this class - it is not in the vtable and has no dependency on the TextureProxyBase layout."
+  },
+  "destructor_verdict": {
+    "addr": "0045d820",
+    "size": 39,
+    "symbol": "??_GAdornG3D@RBX@@UAEPAXI@Z",
+    "vtable slot": 0,
+    "decode": "push esi; mov esi,ecx; lea ecx,[esi+8] (the G3D::TextureManager member at +8); mov [ecx],0x819cd8 (the TextureManager vtable); call 0x45c680; test byte [esp+8],1 (the deleting flag); operator delete; mov eax,esi; pop esi; ret 4. Note it does NOT store the AdornG3D vtable 00819d24 - nothing virtual runs during destruction.",
+    "verdict": "NOTHING TO RECOVER",
+    "why": "the vendor AppDraw/AdornG3D.h declares no destructor, so ~AdornG3D is compiler-generated. Defining it out-of-line fails with C2600 (\"cannot define a compiler-generated special member function\"), which would require adding a declaration to the vendor header - a tools/ file this task must not edit. Compiling the unit as it stands emits no ??_GAdornG3D symbol at all (verified), so the 39 bytes cannot be produced from a source body here. The class declaration in the tree already determines them.",
+    "next": "if a future unit needs it, it arrives for free the moment something deletes an AdornG3D polymorphically in that TU - no source is required and none should be invented."
+  },
+  "ctor_note": "0045d850 (252 B) is NOT AdornG3D(RenderDevice*) either: it starts with operator new(0x6c) on a caller-held reference pair at [esi+0x70]/[esi+0x74] and calls 004dbbe0, i.e. a factory in another unit that happens to construct an AdornG3D-sized object; the vtable store at 0045d907 is that factory's. The real constructor has not been located. A search of the whole .text for the 4-byte getter pattern mov eax,[ecx+4]; ret found only RakNet List::Size (00442cd0), so getRenderDevice has no standalone body either - it was inlined at every use, and the vendor-declared G3D::RenderDevice* getRenderDevice() is in the same \"declared but never emitted\" category as MenuSpacer::addItem and MenuDivider. Do not write a body for it."
+}
