@@ -1,2 +1,2 @@
-#include "../native-headers/ChatEnter.h"
-ChatEnter::ChatEnter() {}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../WindowsClient/src/ChatEnter.cpp"
