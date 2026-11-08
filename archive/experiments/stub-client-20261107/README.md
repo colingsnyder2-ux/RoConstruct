@@ -17,9 +17,9 @@ the experimental builder only. The normal build_client profile has not been
 replaced with this builder. Existing diagnostic binaries have not been fully
 traced or authorized for execution.
 
-Physical quarantine of the active local originals is ownership-blocked: both
-configured and explicit loopback lease requests returned unknown endpoint. The
-local originals remain untouched rather than bypassing file ownership. Fix the
-live lease API, acquire the file lease, recheck hashes/callers, then move the
-originals into the existing inactive-candidate mechanism. This archive preserves
-reviewable bytes and is not a claim that the local quarantine step is complete.
+On 2026-11-07 the local originals were moved into the inactive candidate
+`work/native-candidates/stub-client-quarantine-20261107/` after acquiring file
+leases, checking for active processes and maintained callers, and verifying
+that both files matched the archived copies byte for byte. The local
+`quarantine.json` records original paths and hashes. The archived copies above
+remain the durable, tracked evidence. This does not establish runtime safety.
