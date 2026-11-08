@@ -16,6 +16,34 @@ spec.loader.exec_module(runner)
 
 
 class RunnerTests(unittest.TestCase):
+    def test_save_retries_transient_windows_sharing_error(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / 'summary.json'
+            error = PermissionError('sharing violation')
+            error.winerror = 5
+            original = runner.os.replace
+            attempts = iter((True, False))
+            def replace(source, target):
+                if next(attempts):
+                    raise error
+                original(source, target)
+            with patch.object(runner.os, 'replace', side_effect=replace), \
+                 patch.object(runner.time, 'sleep'):
+                runner.save(output, {'state': 'complete'})
+            self.assertEqual(json.loads(output.read_text()), {'state': 'complete'})
+            self.assertEqual(list(Path(temporary).glob('*.tmp')), [])
+
+    def test_save_fails_closed_for_persistent_sharing_error(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / 'summary.json'
+            error = PermissionError('sharing violation')
+            error.winerror = 5
+            with patch.object(runner.os, 'replace', side_effect=error), \
+                 patch.object(runner.time, 'sleep'), self.assertRaises(PermissionError):
+                runner.save(output, {'state': 'complete'})
+            self.assertFalse(output.exists())
+            self.assertEqual(list(Path(temporary).glob('*.tmp')), [])
+
     def test_known_com_method_cannot_match_its_sibling(self):
         name = '?SaveToFile@CWorkspace@@UAGJPA_W@Z'
         with tempfile.TemporaryDirectory() as temporary:
