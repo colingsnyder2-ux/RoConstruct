@@ -132,6 +132,8 @@ class Replica:
         self.store.db.commit()
         self.db = self.store.db
         self.store.db = TransactionConnection(self.db)
+        from roc.leases import Leases
+        self.store.file_leases = Leases(self.store.db, self.store.lock)
         self.lock = threading.RLock()
         self.fingerprint = identity()
 

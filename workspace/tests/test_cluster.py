@@ -58,6 +58,21 @@ class ClusterTests(unittest.TestCase):
     def seed(self):
         self.a.run(lambda: self.a.db.execute("INSERT INTO funcs(client,addr,size,unit) VALUES('2008-06','00401000',10,'Pilot')"))
 
+    def test_file_leases_replicate_and_rollback_without_quorum(self):
+        pattern = ['rebuild/2008-06/native-classes/Foo.cpp']
+        self.a.run(lambda: self.a.store.file_leases.take('Alice', 'foo-lease', pattern))
+        active = self.b.run(lambda: self.b.store.file_leases.active())
+        self.assertEqual([row['name'] for row in active], ['foo-lease'])
+        with self.assertRaises(PermissionError):
+            self.b.run(lambda: self.b.store.file_leases.take('Bob', 'other-lease', pattern))
+        self.journal.fail = True
+        with self.assertRaises(RuntimeError):
+            self.a.run(lambda: self.a.store.file_leases.renew('Alice', 'foo-lease', release=True))
+        self.journal.fail = False
+        self.assertEqual([row['name'] for row in self.b.run(lambda: self.b.store.file_leases.active())], ['foo-lease'])
+        self.b.run(lambda: self.b.store.file_leases.renew('Alice', 'foo-lease', release=True))
+        self.assertEqual(self.a.run(lambda: self.a.store.file_leases.active()), [])
+
     def test_agent_memory_replicates_without_duplicate_reports(self):
         report = {"kind": "trial", "client": "2008-06", "addresses": ["00401000"], "outcome": "no_gain"}
         self.a.run(lambda: self.a.store.remember("alice", [report]))

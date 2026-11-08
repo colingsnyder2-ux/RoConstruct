@@ -722,7 +722,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
         with leases_lock:
             if not hasattr(store, 'file_leases'):
                 from roc.leases import Leases
-                store.file_leases = Leases(store.db)
+                store.file_leases = Leases(store.db, store.lock)
             return store.file_leases
 
     lease_slots = threading.BoundedSemaphore(8)
@@ -770,7 +770,10 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                     return self.send(404,{'error':'Unknown native recovery action'})
                 except (ValueError,TypeError,OSError) as error:return self.send(503 if str(error).startswith('Native inputs changed') else 400,{'error':str(error)})
             if url.path == '/v1/leases':
-                return self.send(200, {'leases': file_leases().active()})
+                try:
+                    return self.send(200, {'leases': file_leases().active()})
+                except sqlite3.Error:
+                    return self.send(503, {'error': 'Lease database unavailable; retry'})
             if url.path in ("/v1/integration", "/v1/integration/base", "/v1/integration/evidence", "/v1/integration/context", "/v1/integration/metrics"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
@@ -901,6 +904,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                     return self.send(409, {"error": str(error)})
                 except (ValueError, TypeError, LookupError) as error:
                     return self.send(400, {"error": str(error)})
+                except sqlite3.Error:
+                    return self.send(503, {"error": "Lease database unavailable; retry"})
                 return self.send(200, result)
             if path.startswith("/v1/integration/"):
                 if integration is None:

@@ -6,11 +6,13 @@ another user's active lease; `roc lease check --staged` (the pre-commit hook) re
 files another user holds. Leases expire unless renewed.
 """
 from fnmatch import fnmatchcase
+from contextlib import contextmanager
 import json
 from pathlib import Path
 import re
 import subprocess
 import sys
+import threading
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -63,11 +65,33 @@ def _clean(patterns):
 class Leases:
     """Server-side store, sharing the server's sqlite connection."""
 
-    def __init__(self, db):
+    def __init__(self, db, lock=None):
         self.db = db
-        self.db.executescript(SCHEMA)
+        self.lock = lock or threading.Lock()
+        with self.lock:
+            self.db.execute(SCHEMA)
+            if not getattr(self.db, 'active', False):
+                self.db.commit()
+
+    @contextmanager
+    def _transaction(self):
+        managed = not getattr(self.db, 'active', False)
+        if managed:
+            self.db.execute('BEGIN IMMEDIATE')
+        try:
+            yield
+            if managed:
+                self.db.commit()
+        except BaseException:
+            if managed:
+                self.db.rollback()
+            raise
 
     def active(self, now=None):
+        with self.lock:
+            return self._active(now)
+
+    def _active(self, now=None):
         rows = self.db.execute('SELECT name,patterns,user,worker,branch,note,created,expires FROM file_leases '
                                'WHERE expires>? ORDER BY name', (now or time.time(),)).fetchall()
         keys = ('name', 'patterns', 'user', 'worker', 'branch', 'note', 'created', 'expires')
@@ -80,8 +104,8 @@ class Leases:
         if not 0 < hours <= MAX_HOURS:
             raise ValueError('hours must be in (0, %d]' % MAX_HOURS)
         patterns, now = _clean(patterns), time.time()
-        with self.db:
-            for lease in self.active(now):
+        with self.lock, self._transaction():
+            for lease in self._active(now):
                 if lease['user'] == user:
                     continue
                 if lease['name'] == name:
@@ -98,7 +122,7 @@ class Leases:
         hours = float(hours)
         if not 0 < hours <= MAX_HOURS:
             raise ValueError('hours must be in (0, %d]' % MAX_HOURS)
-        with self.db:
+        with self.lock, self._transaction():
             if release:
                 changed = self.db.execute('DELETE FROM file_leases WHERE name=? AND user=?', (name, user)).rowcount
             else:
