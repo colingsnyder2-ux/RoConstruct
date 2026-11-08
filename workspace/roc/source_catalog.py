@@ -24,6 +24,7 @@ NATIVE_SCOPES = ('native-classes', 'native-headers', 'native-world')
 ORGANIZED_SCOPES = tuple(project + '/' + area for project in
                          ('App', 'Base', 'Network', 'Rendering', 'WindowsClient', 'Studio', 'Unclassified')
                          for area in ('src', 'include'))
+EXPERIMENT_SCOPES = ('experiments/overlays',)
 
 # Browse groups only.  These do not rename files, claim original project layout,
 # or affect integration decisions.  Leave weakly identified paths in Other.
@@ -33,6 +34,7 @@ MAP_GROUPS = (
     ('App/reflection', ('reflection/',)),
     ('App/tool', ('tool/',)),
     ('Unclassified', ()),
+    ('Experiments/overlays', ()),
     ('Studio', ()),
     ('WindowsClient', ('app', 'frame', 'view', 'doc', 'dialog', 'browser', 'editor',
                     'command', 'verb', 'toolbox', 'propertygrid', 'propgrid', 'explorer', 'script')),
@@ -77,7 +79,7 @@ def tree_entries(root, ref, prefix):
 def native_entries(root, ref, prefix):
     """Return only native-tree blobs, with scope retained in each relative path."""
     result = {}
-    for scope in NATIVE_SCOPES + ORGANIZED_SCOPES:
+    for scope in NATIVE_SCOPES + ORGANIZED_SCOPES + EXPERIMENT_SCOPES:
         for path, blob in tree_entries(root, ref, prefix + '/' + scope).items():
             result[scope + '/' + path] = blob
     return result
@@ -86,7 +88,7 @@ def native_entries(root, ref, prefix):
 def compatibility_aliases(root, canonical):
     """Recognize only exact shims pointing to tracked organized sources."""
     import io
-    candidates = {p: b for p, b in canonical.items() if p.startswith(('native-classes/', 'native-headers/'))}
+    candidates = {p: b for p, b in canonical.items() if p.startswith(('native-classes/', 'native-headers/', 'Unclassified/include/'))}
     ids = sorted(set(candidates.values()))
     if not ids:
         return {}
@@ -101,7 +103,8 @@ def compatibility_aliases(root, canonical):
         stream.read(1)
     pattern = re.compile(rb'(?:[ ]*// native-flags:[^\n]*\n)?'
                          rb'(?:// Compatibility translation unit; compile this file or the organized source, not both\.'
-                         rb'|// Compatibility header; declarations live at the organized path\.)\n'
+                         rb'|// Compatibility header; declarations live at the organized path\.'
+                         rb'|// Compatibility header; experiment lives in the organized path\.)\n'
                          rb'#include "([^"\n]+)"\n?')
     aliases = {}
     for path, sha in candidates.items():
@@ -109,7 +112,7 @@ def compatibility_aliases(root, canonical):
         if not found:
             continue
         target = posixpath.normpath(posixpath.join(posixpath.dirname(path), found.group(1).decode('utf-8')))
-        if target in canonical and any(target.startswith(scope + '/') for scope in ORGANIZED_SCOPES):
+        if target in canonical and any(target.startswith(scope + '/') for scope in ORGANIZED_SCOPES + EXPERIMENT_SCOPES):
             aliases[path] = target
     return aliases
 
@@ -128,7 +131,7 @@ def classify_files(canonical, public):
             state = 'public-only'
         files.append({
             'path': path,
-            'scope': next((scope for scope in NATIVE_SCOPES + ORGANIZED_SCOPES if path.startswith(scope + '/')), 'other'),
+            'scope': next((scope for scope in NATIVE_SCOPES + ORGANIZED_SCOPES + EXPERIMENT_SCOPES if path.startswith(scope + '/')), 'other'),
             'canonical_blob': canonical_blob,
             'public_blob': public_blob,
             'state': state,
@@ -181,6 +184,8 @@ def compare_blobs(root, files, aliases=None, canonical=None):
 def map_group(path):
     """Return a conservative browse group for a native relative path."""
     searchable = path.lower().replace('\\', '/')
+    if searchable.startswith('experiments/overlays/'):
+        return 'Experiments/overlays'
     parts = searchable.split('/')
     if len(parts) >= 3 and parts[1] in ('src', 'include'):
         projects = {'base': 'Base/util', 'network': 'Network', 'rendering': 'Rendering',
@@ -201,7 +206,7 @@ def logical_native_path(path):
     """Only combine native paths with explicit matching client provenance."""
     parts = path.replace('\\', '/').split('/')
     for index, part in enumerate(parts):
-        if index and parts[index - 1] == '2008-06' and '/'.join(parts[index:index + 2]) in ORGANIZED_SCOPES:
+        if index and parts[index - 1] == '2008-06' and '/'.join(parts[index:index + 2]) in ORGANIZED_SCOPES + EXPERIMENT_SCOPES:
             return '/'.join(parts[index:]) if is_source(path) else None
         if part not in NATIVE_SCOPES:
             continue
@@ -612,7 +617,7 @@ def catalog(root, ref, include_local=False):
         'schema': 1,
         'authority': 'RoConstruct/work/workspace',
         'work_commit': commit,
-        'scope': ('Native source catalog only. Blob equality proves same stored bytes; '
+        'scope': ('Native source and explicitly inactive overlay catalog. Blob equality proves same stored bytes; '
                   'it does not prove class identity, ABI, selection, or runtime readiness.'),
         'canonical_prefix': canonical_prefix,
         'public_prefix': public_prefix,

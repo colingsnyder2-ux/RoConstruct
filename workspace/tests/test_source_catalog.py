@@ -15,7 +15,7 @@ def test_classify_pairs_canonical_and_public_blobs():
 
 def test_native_entries_excludes_non_native_tree_paths(tmp_path, monkeypatch):
     def entries(root, ref, prefix):
-        if any(prefix.endswith('/' + scope) for scope in source_catalog.ORGANIZED_SCOPES):
+        if any(prefix.endswith('/' + scope) for scope in source_catalog.ORGANIZED_SCOPES + source_catalog.EXPERIMENT_SCOPES):
             return {}
         return {'A.cpp': prefix} if prefix.endswith('native-classes') else {'B.h': prefix}
     monkeypatch.setattr(source_catalog, 'tree_entries', entries)
@@ -328,3 +328,24 @@ def test_header_alias_is_compared_to_target_content(tmp_path):
     counts = source_catalog.compare_blobs(tmp_path, rows, aliases, {'Base/include/util/Log.h': target})
     assert [row['comparison'] for row in rows] == ['alias-target-content', 'requires-method-review', 'requires-method-review']
     assert counts == {'alias-target-content': 1, 'requires-method-review': 2}
+
+
+def test_experimental_overlay_is_indexed_and_stays_labeled(tmp_path, monkeypatch):
+    monkeypatch.setattr(source_catalog, 'tree_entries', lambda root, ref, prefix:
+                        {'test/Example.h': 'blob'} if prefix.endswith('/experiments/overlays') else {})
+    rows = source_catalog.native_entries(tmp_path, 'work', 'workspace/rebuild/2008-06')
+    assert rows == {'experiments/overlays/test/Example.h': 'blob'}
+    assert source_catalog.logical_native_path('workspace/rebuild/2008-06/experiments/overlays/test/Example.h') == 'experiments/overlays/test/Example.h'
+    assert source_catalog.logical_native_path('workspace/rebuild/2016-06/experiments/overlays/test/Example.h') is None
+    assert source_catalog.map_group('experiments/overlays/test/Example.h') == 'Experiments/overlays'
+
+
+def test_experimental_overlay_alias_targets_real_file(tmp_path):
+    import subprocess
+    subprocess.run(['git', 'init', '-q'], cwd=tmp_path, check=True)
+    def blob(data):
+        return subprocess.check_output(['git', 'hash-object', '-w', '--stdin'], cwd=tmp_path, input=data).decode().strip()
+    old = 'Unclassified/include/test/Example.h'
+    new = 'experiments/overlays/test/Example.h'
+    shim = blob(b'// Compatibility header; experiment lives in the organized path.\n#include "../../../experiments/overlays/test/Example.h"\n')
+    assert source_catalog.compatibility_aliases(tmp_path, {old: shim, new: blob(b'// original\n')}) == {old: new}
