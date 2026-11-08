@@ -1,3 +1,2 @@
-#include "v8datamodel/Workspace.h"
-#include <Ogre.h>
-int main(){return 0;}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "regression/OgreTest.cpp"
