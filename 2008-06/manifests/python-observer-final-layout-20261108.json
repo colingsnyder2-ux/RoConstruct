@@ -1,0 +1,30 @@
+{
+  "base": "652222b04b6d45f6ff83f6790d499f7108cfb92f",
+  "root_scripts_scanned": 3,
+  "moves": [
+    {
+      "old": "tests/record_native_document_link_trial.py",
+      "new": "tests/matching/record_native_document_link_trial.py",
+      "original_sha256": "4f773e49ca87f50c3d12dac35850e4ab623668d20a0b3b389e0973c41ab44230",
+      "relocated_sha256": "909163334c810a576594775eae768c24a9813e711b655c74159fd2d51d89eb79",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_workspace_finalconstruct_trial.py",
+      "new": "tests/matching/record_native_workspace_finalconstruct_trial.py",
+      "original_sha256": "c81f55330ebf2c357e9680b0fe860c1fb117ab4cfda0a5a0ba1f8fd1dd50594d",
+      "relocated_sha256": "0542610fe055748a9e2bce030a3854e6f8f3501c81a085090d9031e6c46a7711",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_workspace_save.py",
+      "new": "tests/matching/record_native_workspace_save.py",
+      "original_sha256": "c25fbb4ff7cf643514a58be018e915249e1f329e5aa9e0ed5b45e4a259e942ed",
+      "relocated_sha256": "9c263488fa89067b77e470b4c496a093cb950bc4f01291911e857cf219f11f2c",
+      "root_depth_adjustments": 1
+    }
+  ],
+  "excluded_counts": {},
+  "externally_referenced_excluded": [],
+  "scope": "Only root-depth expressions changed. Compatibility entry points execute relocated source, so observer hashes cover the actual source. Historical receipts remain historical; no native, ABI, runtime or server-credit change."
+}
