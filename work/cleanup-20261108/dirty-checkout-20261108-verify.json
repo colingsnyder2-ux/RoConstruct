@@ -1,0 +1,13 @@
+﻿{
+    "createdUtc":  "2026-11-08T16:27:01.3015932Z",
+    "archive":  "dirty-checkout-20261108.zip",
+    "entriesInArchive":  3372,
+    "expectedFiles":  3372,
+    "missingFromArchive":  [
+
+                           ],
+    "mismatches":  [
+
+                   ],
+    "passed":  true
+}
