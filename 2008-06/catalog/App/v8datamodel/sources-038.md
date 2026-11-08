@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp`.
 
 **`1575bb6e638a`** · `App/src/v8datamodel/MotorFeatureCommands.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8datamodel/MotorFeatureCommands.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/v8datamodel/MotorFeatureCommands.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/src/v8datamodel/MotorFeatureCommands.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/App/src/v8datamodel/MotorFeatureCommands.cpp)
@@ -51,6 +52,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`38846b104980`** · `App/src/v8datamodel/MotorFeatureCommands.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/src/v8datamodel/MotorFeatureCommands.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/src/v8datamodel/MotorFeatureCommands.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/src/v8datamodel/MotorFeatureCommands.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/App/src/v8datamodel/MotorFeatureCommands.cpp)
@@ -79,6 +81,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 - public · colingsnyder2-ux · [v8datamodel/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/MotorFeatureCommands.cpp)
 
 **`0599f58eb89a`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/267fd9cce038f5e7d761f56bf657654e030ec7c1b05af7fd97bd2763dd4012a7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/267fd9cce038f5e7d761f56bf657654e030ec7c1b05af7fd97bd2763dd4012a7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/267fd9cce038f5e7d761f56bf657654e030ec7c1b05af7fd97bd2763dd4012a7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/267fd9cce038f5e7d761f56bf657654e030ec7c1b05af7fd97bd2763dd4012a7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -122,6 +125,8 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`128bde71eb1f`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/MotorFeatureCommands.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - public · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/MotorFeatureCommands.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - public · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -229,6 +234,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 - public · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 **`4b505eeb37b6`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/9ac04684ecbde8401dc8bd97d7f4e1a7289c596516023dc1c0c98490ebf9cbb7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/9ac04684ecbde8401dc8bd97d7f4e1a7289c596516023dc1c0c98490ebf9cbb7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/9ac04684ecbde8401dc8bd97d7f4e1a7289c596516023dc1c0c98490ebf9cbb7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/9ac04684ecbde8401dc8bd97d7f4e1a7289c596516023dc1c0c98490ebf9cbb7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -272,6 +278,8 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`7e8ef26892bc`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/08eac4126f9ec0e8cb192e68ad21220b148d681a1af1538d19c36ae533aa6148/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/50de12c6510030746de6abf7287c5011fe69ac7445fc16fd3293c2a0b3c29a44/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/08eac4126f9ec0e8cb192e68ad21220b148d681a1af1538d19c36ae533aa6148/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/50de12c6510030746de6abf7287c5011fe69ac7445fc16fd3293c2a0b3c29a44/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/08eac4126f9ec0e8cb192e68ad21220b148d681a1af1538d19c36ae533aa6148/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -352,6 +360,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`86bca675a731`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/f4b98f15f11d0070683cdf59b8556c61c47862670da3076ec25ba7d2c5748976/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/f4b98f15f11d0070683cdf59b8556c61c47862670da3076ec25ba7d2c5748976/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/f4b98f15f11d0070683cdf59b8556c61c47862670da3076ec25ba7d2c5748976/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/f4b98f15f11d0070683cdf59b8556c61c47862670da3076ec25ba7d2c5748976/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -411,6 +420,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`9f2f1879282d`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/358bc2cec98d554cae4badca2d802a0d4bb6fb22bd4d9145d1b65fdd612602ee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/358bc2cec98d554cae4badca2d802a0d4bb6fb22bd4d9145d1b65fdd612602ee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/358bc2cec98d554cae4badca2d802a0d4bb6fb22bd4d9145d1b65fdd612602ee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/358bc2cec98d554cae4badca2d802a0d4bb6fb22bd4d9145d1b65fdd612602ee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -454,6 +464,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`b4621486f087`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/d740395c5a5be097e4bc18f518c598dc62fe88f3c960b167d697c51af3e2ccb4/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/d740395c5a5be097e4bc18f518c598dc62fe88f3c960b167d697c51af3e2ccb4/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/d740395c5a5be097e4bc18f518c598dc62fe88f3c960b167d697c51af3e2ccb4/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/d740395c5a5be097e4bc18f518c598dc62fe88f3c960b167d697c51af3e2ccb4/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -515,6 +526,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`cc2a3e64418f`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/3a1ee5f0cabebe5c4608b41316c9579aa648656d4046c2987ad37e2f342d8ba1/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/3a1ee5f0cabebe5c4608b41316c9579aa648656d4046c2987ad37e2f342d8ba1/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/3a1ee5f0cabebe5c4608b41316c9579aa648656d4046c2987ad37e2f342d8ba1/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/3a1ee5f0cabebe5c4608b41316c9579aa648656d4046c2987ad37e2f342d8ba1/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -558,6 +570,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`d57aede7d8b9`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/0d5986dbb3fdb1ce4bedb309618739c7a84e69ad8e3d7db6a8b41c92be65bb26/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/0d5986dbb3fdb1ce4bedb309618739c7a84e69ad8e3d7db6a8b41c92be65bb26/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/0d5986dbb3fdb1ce4bedb309618739c7a84e69ad8e3d7db6a8b41c92be65bb26/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/0d5986dbb3fdb1ce4bedb309618739c7a84e69ad8e3d7db6a8b41c92be65bb26/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -601,6 +614,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`ee133d56a603`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/f5436dcc4c2cd445f45dda5a5932f87eff85b7f3f6ce254443030643cb0e3aee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/f5436dcc4c2cd445f45dda5a5932f87eff85b7f3f6ce254443030643cb0e3aee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/f5436dcc4c2cd445f45dda5a5932f87eff85b7f3f6ce254443030643cb0e3aee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/f5436dcc4c2cd445f45dda5a5932f87eff85b7f3f6ce254443030643cb0e3aee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -644,6 +658,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`f00435082cee`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/3836df8b82ac7a72fa49562596435f59142794e9f57e0cba4485cd5a32f5dc97/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/3836df8b82ac7a72fa49562596435f59142794e9f57e0cba4485cd5a32f5dc97/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/3836df8b82ac7a72fa49562596435f59142794e9f57e0cba4485cd5a32f5dc97/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/3836df8b82ac7a72fa49562596435f59142794e9f57e0cba4485cd5a32f5dc97/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -687,6 +702,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`f4a27fa66955`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/d39e2201582eb3331f4c9dc638af95357a32650d5323cc65e7f74077173c9c74/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/d39e2201582eb3331f4c9dc638af95357a32650d5323cc65e7f74077173c9c74/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/d39e2201582eb3331f4c9dc638af95357a32650d5323cc65e7f74077173c9c74/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/d39e2201582eb3331f4c9dc638af95357a32650d5323cc65e7f74077173c9c74/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
@@ -730,6 +746,7 @@ Earlier paths and their donor versions: `native-classes/MotorFeatureCommands.cpp
 </details>
 
 **`fddd9bc5b78f`** · `native-classes/MotorFeatureCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/17b3ac7405463fb012f53a9cffd8bda93911af1cfcbebb3dc23f746954616289/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/17b3ac7405463fb012f53a9cffd8bda93911af1cfcbebb3dc23f746954616289/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/17b3ac7405463fb012f53a9cffd8bda93911af1cfcbebb3dc23f746954616289/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/17b3ac7405463fb012f53a9cffd8bda93911af1cfcbebb3dc23f746954616289/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)

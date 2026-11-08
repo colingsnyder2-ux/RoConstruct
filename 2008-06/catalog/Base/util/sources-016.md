@@ -39,6 +39,8 @@ Compatibility path for `Base/include/util/Log.h`; compile either path, never bot
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/util/Log.h)
 
 **`6fa3f1ba551d`** · `native-headers/util/Log.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/Log.h)
+- canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/Log.h)
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/Log.h)
@@ -234,6 +236,8 @@ Compatibility path for `Base/include/util/MD5Hasher2008.h`; compile either path,
 </details>
 
 **`39ecc9786bd5`** · `native-headers/util/MD5Hasher2008.h` · proof not assessed
+- public · colingsnyder2-ux · [util/MD5Hasher2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/MD5Hasher2008.h)
+- canonical · colingsnyder2-ux · [util/MD5Hasher2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/MD5Hasher2008.h)
 - public · colingsnyder2-ux · [util/MD5Hasher2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/MD5Hasher2008.h)
 - canonical · colingsnyder2-ux · [util/MD5Hasher2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/MD5Hasher2008.h)
 - public · colingsnyder2-ux · [util/MD5Hasher2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/MD5Hasher2008.h)
@@ -411,6 +415,8 @@ Compatibility path for `Base/include/util/MarshalWindow.h`; compile either path,
 </details>
 
 **`2e3226dcdadd`** · `native-headers/util/MarshalWindow.h` · proof not assessed
+- public · colingsnyder2-ux · [util/MarshalWindow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/MarshalWindow.h)
+- canonical · colingsnyder2-ux · [util/MarshalWindow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/MarshalWindow.h)
 - public · colingsnyder2-ux · [util/MarshalWindow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/MarshalWindow.h)
 - canonical · colingsnyder2-ux · [util/MarshalWindow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/MarshalWindow.h)
 - public · colingsnyder2-ux · [util/MarshalWindow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/MarshalWindow.h)
@@ -721,6 +727,8 @@ Compatibility path for `Base/include/util/MarshalWindow.h`; compile either path,
 Compatibility path for `Base/include/util/MarshaledListener.h`; compile either path, never both.
 
 **`0122e918726d`** · `native-headers/util/MarshaledListener.h` · proof not assessed
+- public · colingsnyder2-ux · [util/MarshaledListener.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/MarshaledListener.h)
+- canonical · colingsnyder2-ux · [util/MarshaledListener.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/MarshaledListener.h)
 - public · colingsnyder2-ux · [util/MarshaledListener.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/MarshaledListener.h)
 - canonical · colingsnyder2-ux · [util/MarshaledListener.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/MarshaledListener.h)
 - public · colingsnyder2-ux · [util/MarshaledListener.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/MarshaledListener.h)
@@ -1134,6 +1142,8 @@ Compatibility path for `Base/include/util/MovementKeys.h`; compile either path, 
 </details>
 
 **`b1de2898871e`** · `native-headers/util/MovementKeys.h` · proof not assessed
+- public · colingsnyder2-ux · [util/MovementKeys.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/MovementKeys.h)
+- canonical · colingsnyder2-ux · [util/MovementKeys.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/MovementKeys.h)
 - public · colingsnyder2-ux · [util/MovementKeys.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/MovementKeys.h)
 - canonical · colingsnyder2-ux · [util/MovementKeys.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/MovementKeys.h)
 - public · colingsnyder2-ux · [util/MovementKeys.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/MovementKeys.h)

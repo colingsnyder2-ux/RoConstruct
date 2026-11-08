@@ -58,6 +58,8 @@ Compatibility path for `Unclassified/src/RakPeerLifetime.cpp`; compile either pa
 </details>
 
 **`2512fc276588`** · `native-classes/RakPeerLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/RakPeerLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/RakPeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/RakPeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/RakPeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/RakPeerLifetime.cpp)
@@ -248,6 +250,8 @@ Compatibility path for `Unclassified/src/RakPeerNetworkLoop.cpp`; compile either
 - public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 
 **`cce8fddff3f9`** · `native-classes/RakPeerNetworkLoop.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/RakPeerNetworkLoop.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/RakPeerNetworkLoop.cpp)
@@ -322,6 +326,8 @@ Compatibility path for `Unclassified/src/RakPeerRawRPC.cpp`; compile either path
 </details>
 
 **`437cdd6cb4ef`** · `native-classes/RakPeerRawRPC.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/RakPeerRawRPC.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/RakPeerRawRPC.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/RakPeerRawRPC.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/RakPeerRawRPC.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/RakPeerRawRPC.cpp)
@@ -557,6 +563,8 @@ Compatibility path for `Unclassified/src/RakPeerUpdate.cpp`; compile either path
 </details>
 
 **`a54af0d1e173`** · `native-classes/RakPeerUpdate.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RakPeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/RakPeerUpdate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/RakPeerUpdate.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/RakPeerUpdate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/RakPeerUpdate.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/RakPeerUpdate.cpp)
@@ -671,6 +679,8 @@ Compatibility path for `Unclassified/src/ReplicatorBases.cpp`; compile either pa
 </details>
 
 **`c37203af9b5e`** · `native-classes/ReplicatorBases.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ReplicatorBases.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ReplicatorBases.cpp)
 - public · colingsnyder2-ux · [native-classes/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ReplicatorBases.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ReplicatorBases.cpp)
 - public · colingsnyder2-ux · [native-classes/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ReplicatorBases.cpp)
@@ -742,6 +752,8 @@ Compatibility path for `Unclassified/src/ReplicatorBases.cpp`; compile either pa
 Compatibility path for `Unclassified/src/ReplicatorMarker.cpp`; compile either path, never both.
 
 **`47000943eeb9`** · `native-classes/ReplicatorMarker.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ReplicatorMarker.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ReplicatorMarker.cpp)
 - public · colingsnyder2-ux · [native-classes/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ReplicatorMarker.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ReplicatorMarker.cpp)
 - public · colingsnyder2-ux · [native-classes/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ReplicatorMarker.cpp)
@@ -914,6 +926,8 @@ Compatibility path for `WindowsClient/include/CMultiPlayerPane.h`; compile eithe
 </details>
 
 **`79d2001ab148`** · `native-headers/CMultiPlayerPane.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/CMultiPlayerPane.h)
+- canonical · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/CMultiPlayerPane.h)
 - public · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/CMultiPlayerPane.h)
 - canonical · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/CMultiPlayerPane.h)
 - public · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/CMultiPlayerPane.h)

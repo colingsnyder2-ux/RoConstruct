@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/InsertModelFromRobloxVerb.h`.
 
 **`20cc842771a5`** · `WindowsClient/include/InsertModelFromRobloxVerb.h` · proof not assessed
+- public · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - public · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - public · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - public · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
@@ -34,6 +35,7 @@ Earlier paths and their donor versions: `native-headers/InsertModelFromRobloxVer
 </details>
 
 **`c141ab7ad064`** · `WindowsClient/include/InsertModelFromRobloxVerb.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
@@ -226,6 +228,8 @@ Earlier paths and their donor versions: `native-headers/InsertModelFromRobloxVer
 </details>
 
 **`ea13606b884c`** · `native-headers/InsertModelFromRobloxVerb.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/InsertModelFromRobloxVerb.h)
+- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
 - public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/InsertModelFromRobloxVerb.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
 - public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/InsertModelFromRobloxVerb.h)
@@ -309,6 +313,7 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 </details>
 
 **`8b0d99ac29ac`** · `WindowsClient/include/InsertObject.h` · proof not assessed
+- public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/InsertObject.h)
 - public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/InsertObject.h)
 - public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/InsertObject.h)
 - public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/InsertObject.h)
@@ -327,6 +332,7 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 - public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/InsertObject.h)
 
 **`dccc8ba7ca6c`** · `WindowsClient/include/InsertObject.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
 - canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
 - canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
 - canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
@@ -410,6 +416,8 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 </details>
 
 **`67b464537b52`** · `native-headers/InsertObject.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/InsertObject.h)
+- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/InsertObject.h)
 - public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/InsertObject.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/InsertObject.h)
 - public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/InsertObject.h)
@@ -588,6 +596,7 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 
 **`7d21f553e663`** · `WindowsClient/include/LoginRenewer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
@@ -663,6 +672,7 @@ Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 </details>
 
 **`d126812a82f7`** · `WindowsClient/include/LoginRenewer.h` · proof not assessed
+- public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/LoginRenewer.h)
 - public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/LoginRenewer.h)
 - public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/LoginRenewer.h)
 - public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/WindowsClient/include/LoginRenewer.h)
@@ -926,6 +936,8 @@ Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 </details>
 
 **`fe4fcea04f27`** · `native-headers/LoginRenewer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/LoginRenewer.h)
+- canonical · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/LoginRenewer.h)
 - public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/LoginRenewer.h)
 - public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/LoginRenewer.h)

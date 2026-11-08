@@ -121,6 +121,8 @@ Compatibility path for `App/src/v8datamodel/HistoryItemPropertyTrial.cpp`; compi
 </details>
 
 **`be54ddb6e364`** · `native-classes/HistoryItemPropertyTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
@@ -259,6 +261,8 @@ Compatibility path for `App/src/v8datamodel/HistoryItemState.cpp`; compile eithe
 </details>
 
 **`b7b4970f68de`** · `native-classes/HistoryItemState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HistoryItemState.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/HistoryItemState.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HistoryItemState.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/HistoryItemState.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HistoryItemState.cpp)
@@ -422,6 +426,8 @@ Compatibility path for `App/src/v8datamodel/HistoryRecordLookup.cpp`; compile ei
 </details>
 
 **`9f6324bf03a2`** · `native-classes/HistoryRecordLookup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HistoryRecordLookup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/HistoryRecordLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HistoryRecordLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/HistoryRecordLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HistoryRecordLookup.cpp)
@@ -599,6 +605,8 @@ Compatibility path for `App/src/v8datamodel/HistoryRecordPlayback.cpp`; compile 
 - public · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/HistoryRecordPlayback.cpp)
 
 **`922dfb3d43ec`** · `native-classes/HistoryRecordPlayback.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HistoryRecordPlayback.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/HistoryRecordPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HistoryRecordPlayback.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/HistoryRecordPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HistoryRecordPlayback.cpp)
@@ -772,6 +780,7 @@ Compatibility path for `App/src/v8datamodel/HistoryRecordPlayback.cpp`; compile 
 Compatibility path for `App/src/v8datamodel/Hopper.cpp`; compile either path, never both.
 
 **`02b2a1e3d948`** · `native-classes/Hopper.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Hopper.cpp)
 - draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Hopper.cpp)
 - fork · coldek · [native-classes/Hopper.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/Hopper.cpp)
 - draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Hopper.cpp)
@@ -817,6 +826,7 @@ Compatibility path for `App/src/v8datamodel/Hopper.cpp`; compile either path, ne
 </details>
 
 **`443e8612bc15`** · `native-classes/Hopper.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/d4308de01d60fb8afdecb1cc16efb344e2bd2ad1f98ff1e924d7fe45fe75c68c/rebuild/2008-06/native-classes/Hopper.cpp)
 - draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/d4308de01d60fb8afdecb1cc16efb344e2bd2ad1f98ff1e924d7fe45fe75c68c/rebuild/2008-06/native-classes/Hopper.cpp)
 - fork · mewpokemons · [native-classes/Hopper.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/Hopper.cpp)
 - draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/d4308de01d60fb8afdecb1cc16efb344e2bd2ad1f98ff1e924d7fe45fe75c68c/rebuild/2008-06/native-classes/Hopper.cpp)
@@ -887,6 +897,8 @@ Compatibility path for `App/src/v8datamodel/Hopper.cpp`; compile either path, ne
 </details>
 
 **`547d4e6f923a`** · `native-classes/Hopper.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/Hopper.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/Hopper.cpp)
 - public · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/Hopper.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/Hopper.cpp)
 - public · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/Hopper.cpp)
@@ -1043,6 +1055,8 @@ Compatibility path for `App/src/v8world/IWorldStage2008.cpp`; compile either pat
 </details>
 
 **`3c73d5f33371`** · `native-classes/IWorldStage2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/IWorldStage2008.cpp)
+- canonical · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/IWorldStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/IWorldStage2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/IWorldStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/IWorldStage2008.cpp)

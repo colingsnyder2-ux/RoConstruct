@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 </details>
 
 **`9dc3fb3bd28e`** · `Unclassified/include/AuthoringSettings.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
@@ -69,6 +70,7 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 </details>
 
 **`de7977dfe155`** · `Unclassified/include/AuthoringSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/AuthoringSettings.h)
 - public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/AuthoringSettings.h)
 - public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/AuthoringSettings.h)
 - public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/AuthoringSettings.h)
@@ -226,6 +228,8 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 - public · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/AuthoringSettings.h)
 
 **`f75ae26eeddc`** · `native-headers/AuthoringSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/AuthoringSettings.h)
+- canonical · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/AuthoringSettings.h)
 - public · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/AuthoringSettings.h)
 - public · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/AuthoringSettings.h)
@@ -304,6 +308,7 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 
 **`1ba7e4016455`** · `Unclassified/include/LuaArgs.h` · proof not assessed
+- public · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/LuaArgs.h)
 - public · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/LuaArgs.h)
 - public · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/LuaArgs.h)
 - public · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/LuaArgs.h)
@@ -331,6 +336,7 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 </details>
 
 **`a32f2a8d3ab6`** · `Unclassified/include/LuaArgs.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
@@ -536,6 +542,8 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 </details>
 
 **`b3eae13679e0`** · `native-headers/LuaArgs.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/LuaArgs.h)
+- canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/LuaArgs.h)
 - canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/LuaArgs.h)
@@ -623,6 +631,7 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 </details>
 
 **`7c1fdd06fc7b`** · `Unclassified/include/RobloxLib.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
@@ -689,6 +698,7 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 </details>
 
 **`af4d35943b8d`** · `Unclassified/include/RobloxLib.h` · proof not assessed
+- public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/RobloxLib.h)
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/RobloxLib.h)
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/RobloxLib.h)
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/Unclassified/include/RobloxLib.h)
@@ -978,6 +988,8 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/RobloxLib.h)
 
 **`e6b2ebab5c8d`** · `native-headers/RobloxLib.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/RobloxLib.h)
+- canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/RobloxLib.h)
 - canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/RobloxLib.h)

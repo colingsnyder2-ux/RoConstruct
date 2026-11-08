@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsDialog.h`.
 </details>
 
 **`55feba21eb77`** · `WindowsClient/include/CSettingsDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/CSettingsDialog.h)
 - public · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/CSettingsDialog.h)
 - public · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/CSettingsDialog.h)
 - public · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CSettingsDialog.h)
@@ -35,6 +36,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsDialog.h`.
 - public · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CSettingsDialog.h)
 
 **`8ae57a1c0e57`** · `WindowsClient/include/CSettingsDialog.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h)
 - canonical · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h)
 - canonical · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h)
 - canonical · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h)
@@ -218,6 +220,8 @@ Earlier paths and their donor versions: `native-headers/CSettingsDialog.h`.
 </details>
 
 **`93b1c82f9e30`** · `native-headers/CSettingsDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/CSettingsDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/CSettingsDialog.h)
 - public · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/CSettingsDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/CSettingsDialog.h)
 - public · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/CSettingsDialog.h)
@@ -304,6 +308,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsDialog.h`.
 Earlier paths and their donor versions: `native-headers/CSettingsExplorer.h`.
 
 **`777b62a235b8`** · `WindowsClient/include/CSettingsExplorer.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - public · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - public · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - public · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CSettingsExplorer.h)
@@ -331,6 +336,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsExplorer.h`.
 </details>
 
 **`c0b17cb298e1`** · `WindowsClient/include/CSettingsExplorer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - canonical · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - canonical · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - canonical · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h)
@@ -383,6 +389,8 @@ Earlier paths and their donor versions: `native-headers/CSettingsExplorer.h`.
 </details>
 
 **`41baa3de21ba`** · `native-headers/CSettingsExplorer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/CSettingsExplorer.h)
+- canonical · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/CSettingsExplorer.h)
 - public · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/CSettingsExplorer.h)
 - canonical · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/CSettingsExplorer.h)
 - public · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/CSettingsExplorer.h)
@@ -600,6 +608,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsExplorer.h`.
 Earlier paths and their donor versions: `native-headers/CSettingsPropGrid.h`.
 
 **`075f419dee50`** · `WindowsClient/include/CSettingsPropGrid.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/CSettingsPropGrid.h)
 - canonical · colingsnyder2-ux · [include/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/CSettingsPropGrid.h)
 - canonical · colingsnyder2-ux · [include/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/CSettingsPropGrid.h)
 - canonical · colingsnyder2-ux · [include/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/CSettingsPropGrid.h)
@@ -652,6 +661,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsPropGrid.h`.
 </details>
 
 **`1dc361e349f5`** · `WindowsClient/include/CSettingsPropGrid.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/CSettingsPropGrid.h)
 - public · colingsnyder2-ux · [include/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/CSettingsPropGrid.h)
 - public · colingsnyder2-ux · [include/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/CSettingsPropGrid.h)
 - public · colingsnyder2-ux · [include/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CSettingsPropGrid.h)
@@ -786,6 +796,8 @@ Earlier paths and their donor versions: `native-headers/CSettingsPropGrid.h`.
 </details>
 
 **`9fe58bbfaf31`** · `native-headers/CSettingsPropGrid.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/CSettingsPropGrid.h)
+- canonical · colingsnyder2-ux · [native-headers/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/CSettingsPropGrid.h)
 - public · colingsnyder2-ux · [native-headers/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/CSettingsPropGrid.h)
 - canonical · colingsnyder2-ux · [native-headers/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/CSettingsPropGrid.h)
 - public · colingsnyder2-ux · [native-headers/CSettingsPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/CSettingsPropGrid.h)
@@ -905,6 +917,7 @@ Earlier paths and their donor versions: `native-headers/CUploadPlaceDialog.h`.
 </details>
 
 **`68a8288e3bd4`** · `WindowsClient/include/CUploadPlaceDialog.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
 - canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
 - canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
 - canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
@@ -971,6 +984,7 @@ Earlier paths and their donor versions: `native-headers/CUploadPlaceDialog.h`.
 </details>
 
 **`ce44148f578d`** · `WindowsClient/include/CUploadPlaceDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
 - public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
 - public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
 - public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
@@ -994,6 +1008,8 @@ Earlier paths and their donor versions: `native-headers/CUploadPlaceDialog.h`.
 - public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
 
 **`07eeaf02f613`** · `native-headers/CUploadPlaceDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
 - public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/CUploadPlaceDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
 - public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/CUploadPlaceDialog.h)

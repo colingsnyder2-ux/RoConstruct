@@ -33,6 +33,8 @@ Compatibility path for `App/src/v8datamodel/SpawnLocation.cpp`; compile either p
 </details>
 
 **`3b2d268f698f`** · `native-classes/SpawnLocation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/SpawnLocation.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/SpawnLocation.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/SpawnLocation.cpp)
@@ -213,6 +215,7 @@ Compatibility path for `App/src/v8datamodel/SpecialShape.cpp`; compile either pa
 </details>
 
 **`8d9cec38f04e`** · `native-classes/SpecialShape.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/SpecialShape.cpp)
 - draft · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/SpecialShape.cpp)
 - fork · coldek · [native-classes/SpecialShape.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/SpecialShape.cpp)
 - draft · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/SpecialShape.cpp)
@@ -259,6 +262,8 @@ Compatibility path for `App/src/v8datamodel/SpecialShape.cpp`; compile either pa
 </details>
 
 **`a1a0560ae719`** · `native-classes/SpecialShape.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/SpecialShape.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/SpecialShape.cpp)
 - public · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/SpecialShape.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/SpecialShape.cpp)
 - public · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/SpecialShape.cpp)
@@ -429,6 +434,8 @@ Compatibility path for `App/src/v8datamodel/StatsClassName.cpp`; compile either 
 </details>
 
 **`6f93636698a2`** · `native-classes/StatsClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/StatsClassName.cpp)
+- canonical · colingsnyder2-ux · [native-classes/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/StatsClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/StatsClassName.cpp)
 - canonical · colingsnyder2-ux · [native-classes/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/StatsClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/StatsClassName.cpp)
@@ -548,6 +555,8 @@ Compatibility path for `App/src/v8datamodel/SurfaceFlat.cpp`; compile either pat
 - public · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/SurfaceFlat.cpp)
 
 **`6d47bbd02460`** · `native-classes/SurfaceFlat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/SurfaceFlat.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/SurfaceFlat.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/SurfaceFlat.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/SurfaceFlat.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/SurfaceFlat.cpp)
@@ -702,6 +711,8 @@ Compatibility path for `App/src/tool/SurfaceTool.cpp`; compile either path, neve
 </details>
 
 **`71c732fdf120`** · `native-classes/SurfaceTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SurfaceTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/SurfaceTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SurfaceTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/SurfaceTool.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/SurfaceTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SurfaceTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/SurfaceTool.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/SurfaceTool.cpp)
@@ -932,6 +943,8 @@ Compatibility path for `App/src/tool/SurfaceToolFactories.cpp`; compile either p
 </details>
 
 **`e94bc6a1d3e6`** · `native-classes/SurfaceToolFactories.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SurfaceToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/SurfaceToolFactories.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SurfaceToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/SurfaceToolFactories.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/SurfaceToolFactories.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SurfaceToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/SurfaceToolFactories.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/SurfaceToolFactories.cpp)
@@ -1081,6 +1094,8 @@ Compatibility path for `App/src/tool/SurfaceToolInteractions.cpp`; compile eithe
 </details>
 
 **`f026a7d3806f`** · `native-classes/SurfaceToolInteractions.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/SurfaceToolInteractions.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/SurfaceToolInteractions.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/SurfaceToolInteractions.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/SurfaceToolInteractions.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/SurfaceToolInteractions.cpp)
@@ -1172,6 +1187,8 @@ Compatibility path for `App/src/tool/SurfaceToolMouseDown.cpp`; compile either p
 </details>
 
 **`4199700c9330`** · `native-classes/SurfaceToolMouseDown.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/SurfaceToolMouseDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/SurfaceToolMouseDown.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/SurfaceToolMouseDown.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/SurfaceToolMouseDown.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/SurfaceToolMouseDown.cpp)

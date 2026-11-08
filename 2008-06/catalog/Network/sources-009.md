@@ -8,6 +8,8 @@
 Compatibility path for `Network/include/RakPeer.h`; compile either path, never both.
 
 **`2363aa188e76`** · `native-headers/RakPeer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/RakPeer.h)
+- canonical · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/RakPeer.h)
 - public · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/RakPeer.h)
 - canonical · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/RakPeer.h)
 - public · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/RakPeer.h)
@@ -326,6 +328,8 @@ Compatibility path for `Network/include/RakPeerInterface.h`; compile either path
 - public · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-headers/RakPeerInterface.h)
 
 **`9778bfa8363c`** · `native-headers/RakPeerInterface.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/RakPeerInterface.h)
+- canonical · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/RakPeerInterface.h)
 - public · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/RakPeerInterface.h)
 - canonical · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/RakPeerInterface.h)
 - public · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/RakPeerInterface.h)
@@ -567,6 +571,8 @@ Compatibility path for `Network/include/Replicator.h`; compile either path, neve
 </details>
 
 **`cc54ea1cd529`** · `native-headers/Replicator.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/Replicator.h)
+- canonical · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/Replicator.h)
 - public · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/Replicator.h)
 - canonical · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/Replicator.h)
 - public · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/Replicator.h)
@@ -667,6 +673,7 @@ Compatibility path for `Network/include/Replicator.h`; compile either path, neve
 </details>
 
 **`92c84416fffb`** · `native-headers/http-inline-lifetime/util/Http.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/http-inline-lifetime/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/http-inline-lifetime/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/http-inline-lifetime/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/http-inline-lifetime/util/Http.h)
@@ -709,6 +716,7 @@ Compatibility path for `Network/include/Replicator.h`; compile either path, neve
 <summary>native-headers/http-native/util/Http.h — public-only; 4 content versions</summary>
 
 **`86f1a90ef817`** · `native-headers/http-native/util/Http.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/http-native/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/http-native/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/http-native/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/http-native/util/Http.h)
@@ -783,6 +791,7 @@ Compatibility path for `Network/include/Replicator.h`; compile either path, neve
 </details>
 
 **`5c0dbf350a61`** · `native-headers/http-noinline/util/Http.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/http-noinline/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/http-noinline/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/http-noinline/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/http-noinline/util/Http.h)
@@ -865,6 +874,7 @@ Compatibility path for `Network/include/Replicator.h`; compile either path, neve
 </details>
 
 **`92c84416fffb`** · `native-headers/util/Http.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/Http.h)
 - public · colingsnyder2-ux · [util/Http.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/util/Http.h)

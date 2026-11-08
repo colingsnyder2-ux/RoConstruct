@@ -19,6 +19,7 @@
 <summary>native-classes/AggregateChunk2008.cpp — candidate-only; 1 content versions</summary>
 
 **`3c46091996a2`** · `native-classes/AggregateChunk2008.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/AggregateChunk2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AggregateChunk2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/AggregateChunk2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AggregateChunk2008.cpp)
 - fork · mewpokemons · [native-classes/AggregateChunk2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/AggregateChunk2008.cpp)
 - fork · mewpokemons · [native-classes/AggregateChunk2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/AggregateChunk2008.cpp)
@@ -120,6 +121,8 @@ Compatibility path for `App/src/tool/AnchorTool.cpp`; compile either path, never
 </details>
 
 **`5ef3b2c4b8a5`** · `native-classes/AnchorTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/AnchorTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/AnchorTool.cpp)
 - public · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/AnchorTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/AnchorTool.cpp)
 - public · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/AnchorTool.cpp)
@@ -220,6 +223,7 @@ Compatibility path for `App/src/tool/AnchorTool.cpp`; compile either path, never
 <summary>native-classes/ArchiveBinderResolve.cpp — candidate-only; 3 content versions</summary>
 
 **`4964c36f2fe4`** · `native-classes/ArchiveBinderResolve.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/7f68064ea527bcbd85aa841f74ba3570bfecf2efb3e86b331ccf40be91b73ad7/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
 - draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/7f68064ea527bcbd85aa841f74ba3570bfecf2efb3e86b331ccf40be91b73ad7/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
 - draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/7f68064ea527bcbd85aa841f74ba3570bfecf2efb3e86b331ccf40be91b73ad7/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
 - draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/7f68064ea527bcbd85aa841f74ba3570bfecf2efb3e86b331ccf40be91b73ad7/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
@@ -263,6 +267,7 @@ Compatibility path for `App/src/tool/AnchorTool.cpp`; compile either path, never
 </details>
 
 **`91168639491f`** · `native-classes/ArchiveBinderResolve.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/c5b40235005b847c5eae76d9a4fde6d8e79f8fd1eb8118a88055332c3ad56650/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
 - draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/c5b40235005b847c5eae76d9a4fde6d8e79f8fd1eb8118a88055332c3ad56650/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
 - draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/c5b40235005b847c5eae76d9a4fde6d8e79f8fd1eb8118a88055332c3ad56650/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
 - draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/c5b40235005b847c5eae76d9a4fde6d8e79f8fd1eb8118a88055332c3ad56650/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
@@ -306,6 +311,9 @@ Compatibility path for `App/src/tool/AnchorTool.cpp`; compile either path, never
 </details>
 
 **`f714e8e7b01f`** · `native-classes/ArchiveBinderResolve.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/1a07fbb6c71b779e90d9318d61b650175bdd61d96a32fa17a6a5c25b7e7dcd0b/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
+- draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/28b473ef1bb7d5e0016293767bb160d86e7d388c72b13c5585f8698e54d5c778/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
+- draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/ee493ecec9e48f33c67d67c21e30736d26d5726145461ad7fe2ae2dd3ec98e05/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
 - draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/1a07fbb6c71b779e90d9318d61b650175bdd61d96a32fa17a6a5c25b7e7dcd0b/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
 - draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/28b473ef1bb7d5e0016293767bb160d86e7d388c72b13c5585f8698e54d5c778/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
 - draft · colingsnyder2-ux · [native-classes/ArchiveBinderResolve.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/ee493ecec9e48f33c67d67c21e30736d26d5726145461ad7fe2ae2dd3ec98e05/rebuild/2008-06/native-classes/ArchiveBinderResolve.cpp)
@@ -504,6 +512,8 @@ Compatibility path for `Unclassified/src/ArrowPanel.cpp`; compile either path, n
 </details>
 
 **`e7e42d09080f`** · `native-classes/ArrowPanel.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ArrowPanel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ArrowPanel.cpp)
 - public · colingsnyder2-ux · [native-classes/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ArrowPanel.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ArrowPanel.cpp)
 - public · colingsnyder2-ux · [native-classes/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ArrowPanel.cpp)
@@ -576,6 +586,8 @@ Compatibility path for `App/src/tool/ArrowToolBase.cpp`; compile either path, ne
 </details>
 
 **`085fb89e697a`** · `native-classes/ArrowToolBase.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ArrowToolBase.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ArrowToolBase.cpp)
 - public · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ArrowToolBase.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ArrowToolBase.cpp)
 - public · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ArrowToolBase.cpp)
@@ -786,6 +798,8 @@ Compatibility path for `App/src/tool/ArrowToolFactory.cpp`; compile either path,
 </details>
 
 **`88b239e3ed85`** · `native-classes/ArrowToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ArrowToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ArrowToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ArrowToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ArrowToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ArrowToolFactory.cpp)
@@ -890,6 +904,8 @@ Compatibility path for `Unclassified/src/AtlErrorCore.cpp`; compile either path,
 </details>
 
 **`9c1b1ed14fa9`** · `native-classes/AtlErrorCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/AtlErrorCore.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/AtlErrorCore.cpp)
 - public · colingsnyder2-ux · [native-classes/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/AtlErrorCore.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/AtlErrorCore.cpp)
 - public · colingsnyder2-ux · [native-classes/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/AtlErrorCore.cpp)

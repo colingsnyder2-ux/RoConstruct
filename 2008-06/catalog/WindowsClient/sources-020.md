@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 
 **`234396e760f4`** · `WindowsClient/include/MyXTPCommandBars.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
@@ -83,6 +84,7 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 </details>
 
 **`f22153f50415`** · `WindowsClient/include/MyXTPCommandBars.h` · proof not assessed
+- public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/WindowsClient/include/MyXTPCommandBars.h)
@@ -156,6 +158,8 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 </details>
 
 **`55bea8260b23`** · `native-headers/MyXTPCommandBars.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/MyXTPCommandBars.h)
+- canonical · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/MyXTPCommandBars.h)
@@ -443,6 +447,7 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 
 **`4dbbf206fceb`** · `WindowsClient/include/NativeCameraCommands.h` · proof not assessed
+- public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/WindowsClient/include/NativeCameraCommands.h)
@@ -477,6 +482,7 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 </details>
 
 **`922fb973709e`** · `WindowsClient/include/NativeCameraCommands.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
@@ -549,6 +555,8 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 </details>
 
 **`130d6780159f`** · `native-headers/NativeCameraCommands.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/NativeCameraCommands.h)
+- canonical · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/NativeCameraCommands.h)
@@ -766,6 +774,7 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 
 **`34ad0621e3d9`** · `WindowsClient/include/NativeExitCommand.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
@@ -847,6 +856,7 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 </details>
 
 **`bccea3c02f51`** · `WindowsClient/include/NativeExitCommand.h` · proof not assessed
+- public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/NativeExitCommand.h)
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/NativeExitCommand.h)
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/NativeExitCommand.h)
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/WindowsClient/include/NativeExitCommand.h)
@@ -872,6 +882,8 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/NativeExitCommand.h)
 
 **`205e74a7c566`** · `native-headers/NativeExitCommand.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/NativeExitCommand.h)
+- canonical · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/NativeExitCommand.h)
 - public · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/NativeExitCommand.h)
 - public · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/NativeExitCommand.h)

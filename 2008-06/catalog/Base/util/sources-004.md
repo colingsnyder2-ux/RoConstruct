@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 </details>
 
 **`a45c46eba3bf`** · `Base/include/util/LDrawEntities.h` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Base/include/util/LDrawEntities.h)
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Base/include/util/LDrawEntities.h)
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Base/include/util/LDrawEntities.h)
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/Base/include/util/LDrawEntities.h)
@@ -41,6 +42,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/LDrawEntities.h)
 
 **`f32e7707c13e`** · `Base/include/util/LDrawEntities.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h)
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h)
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h)
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h)
@@ -150,6 +152,8 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 </details>
 
 **`7dae70ce7033`** · `native-headers/util/LDrawEntities.h` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/LDrawEntities.h)
+- canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/LDrawEntities.h)
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/LDrawEntities.h)
@@ -319,6 +323,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 
 **`809fedda6531`** · `Base/include/util/LDrawMapRoot.h` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Base/include/util/LDrawMapRoot.h)
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Base/include/util/LDrawMapRoot.h)
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Base/include/util/LDrawMapRoot.h)
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/Base/include/util/LDrawMapRoot.h)
@@ -343,6 +348,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/LDrawMapRoot.h)
 
 **`a5ff11ca8c93`** · `Base/include/util/LDrawMapRoot.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h)
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h)
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h)
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h)
@@ -506,6 +512,8 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 </details>
 
 **`bba39ca4c3ed`** · `native-headers/util/LDrawMapRoot.h` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/LDrawMapRoot.h)
+- canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/LDrawMapRoot.h)
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/LDrawMapRoot.h)
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/LDrawMapRoot.h)
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/LDrawMapRoot.h)
@@ -630,6 +638,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 Earlier paths and their donor versions: `native-headers/util/LDrawParser.h`.
 
 **`72741ec28cf7`** · `Base/include/util/LDrawParser.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Base/include/util/LDrawParser.h)
 - canonical · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Base/include/util/LDrawParser.h)
 - canonical · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Base/include/util/LDrawParser.h)
 - canonical · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/Base/include/util/LDrawParser.h)
@@ -699,6 +708,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawParser.h`.
 </details>
 
 **`75cd764ea743`** · `Base/include/util/LDrawParser.h` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Base/include/util/LDrawParser.h)
 - public · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Base/include/util/LDrawParser.h)
 - public · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Base/include/util/LDrawParser.h)
 - public · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/Base/include/util/LDrawParser.h)
@@ -817,6 +827,8 @@ Earlier paths and their donor versions: `native-headers/util/LDrawParser.h`.
 </details>
 
 **`daef60d23032`** · `native-headers/util/LDrawParser.h` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/LDrawParser.h)
+- canonical · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/LDrawParser.h)
 - public · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/LDrawParser.h)
 - canonical · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/LDrawParser.h)
 - public · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/LDrawParser.h)
@@ -941,6 +953,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawParser.h`.
 Earlier paths and their donor versions: `native-headers/util/Log.h`.
 
 **`4c7a18397ceb`** · `Base/include/util/Log.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Base/include/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Base/include/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Base/include/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/Base/include/util/Log.h)
@@ -965,6 +978,7 @@ Earlier paths and their donor versions: `native-headers/util/Log.h`.
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/Log.h)
 
 **`ce0c7c393092`** · `Base/include/util/Log.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Base/include/util/Log.h)
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Base/include/util/Log.h)
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Base/include/util/Log.h)
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/Base/include/util/Log.h)
@@ -1067,6 +1081,8 @@ Earlier paths and their donor versions: `native-headers/util/Log.h`.
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/util/Log.h)
 
 **`6fa3f1ba551d`** · `native-headers/util/Log.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/Log.h)
+- canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/Log.h)
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/Log.h)

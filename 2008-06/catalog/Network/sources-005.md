@@ -30,6 +30,7 @@
 </details>
 
 **`fedb22bf8670`** · `native-classes/HttpTrustCheck.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HttpTrustCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HttpTrustCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HttpTrustCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpTrustCheck.cpp)
@@ -88,6 +89,7 @@
 </details>
 
 **`3c3843ba32d5`** · `native-classes/HttpTrustInitialize.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HttpTrustInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HttpTrustInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HttpTrustInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpTrustInitialize.cpp)
@@ -154,6 +156,7 @@
 </details>
 
 **`d05906fabe2e`** · `native-classes/HttpTrustState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HttpTrustState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HttpTrustState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HttpTrustState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpTrustState.cpp)
@@ -204,6 +207,7 @@
 <summary>native-classes/HttpWinHttp.cpp — public-only; 4 content versions</summary>
 
 **`234bb7ba83f1`** · `native-classes/HttpWinHttp.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HttpWinHttp.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HttpWinHttp.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HttpWinHttp.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpWinHttp.cpp)
@@ -278,6 +282,7 @@
 </details>
 
 **`1b2dad60415c`** · `native-classes/HttpWinInet.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpWinInet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HttpWinInet.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinInet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HttpWinInet.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinInet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HttpWinInet.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinInet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpWinInet.cpp)
@@ -394,6 +399,8 @@ Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either p
 </details>
 
 **`768d6acf420b`** · `native-classes/NetworkPlayer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/NetworkPlayer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/NetworkPlayer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/NetworkPlayer.cpp)
@@ -520,6 +527,7 @@ Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either p
 <summary>native-classes/NetworkPlayers.cpp — diverged; 11 content versions</summary>
 
 **`24a3155e1382`** · `native-classes/NetworkPlayers.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/NetworkPlayers.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/NetworkPlayers.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/NetworkPlayers.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/NetworkPlayers.cpp)
@@ -582,6 +590,7 @@ Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either p
 </details>
 
 **`3f3cbb6760d8`** · `native-classes/NetworkPlayers.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
@@ -635,6 +644,7 @@ Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either p
 </details>
 
 **`4cd2a4a2ee31`** · `native-classes/NetworkPlayers.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - fork · mewpokemons · [native-classes/NetworkPlayers.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
@@ -684,6 +694,7 @@ Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either p
 </details>
 
 **`4f50d615792f`** · `native-classes/NetworkPlayers.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
@@ -860,6 +871,8 @@ Compatibility path for `Unclassified/src/PeerClassName.cpp`; compile either path
 </details>
 
 **`e1b4f856e23a`** · `native-classes/PeerClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/PeerClassName.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/PeerClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/PeerClassName.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/PeerClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/PeerClassName.cpp)
@@ -950,6 +963,8 @@ Compatibility path for `Unclassified/src/PeerConstructor.cpp`; compile either pa
 </details>
 
 **`478a82d087cc`** · `native-classes/PeerConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/PeerConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/PeerConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/PeerConstructor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/PeerConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/PeerConstructor.cpp)
@@ -1118,6 +1133,8 @@ Compatibility path for `Unclassified/src/PeerLifetime.cpp`; compile either path,
 </details>
 
 **`501f0fff8ea1`** · `native-classes/PeerLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/PeerLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/PeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/PeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/PeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/PeerLifetime.cpp)

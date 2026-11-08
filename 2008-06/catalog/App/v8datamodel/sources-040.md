@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/MouseGetDecal.cpp`.
 
 **`6319cfc793ea`** · `App/src/v8datamodel/MouseGetDecal.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
@@ -42,6 +43,7 @@ Earlier paths and their donor versions: `native-classes/MouseGetDecal.cpp`.
 </details>
 
 **`7b747d4fb40a`** · `App/src/v8datamodel/MouseGetDecal.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
@@ -88,6 +90,8 @@ Earlier paths and their donor versions: `native-classes/MouseGetDecal.cpp`.
 </details>
 
 **`2693bacf3c37`** · `native-classes/MouseGetDecal.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/MouseGetDecal.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/MouseGetDecal.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/MouseGetDecal.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/MouseGetDecal.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/MouseGetDecal.cpp)
@@ -228,6 +232,7 @@ Earlier paths and their donor versions: `native-classes/MouseGetDecal.cpp`.
 Earlier paths and their donor versions: `native-classes/MouseGetSurface.cpp`.
 
 **`01be885902fe`** · `App/src/v8datamodel/MouseGetSurface.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
@@ -256,6 +261,7 @@ Earlier paths and their donor versions: `native-classes/MouseGetSurface.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 
 **`06c227084567`** · `App/src/v8datamodel/MouseGetSurface.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
@@ -355,6 +361,8 @@ Earlier paths and their donor versions: `native-classes/MouseGetSurface.cpp`.
 </details>
 
 **`9ed3a186aef7`** · `native-classes/MouseGetSurface.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/MouseGetSurface.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/MouseGetSurface.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/MouseGetSurface.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/MouseGetSurface.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/MouseGetSurface.cpp)
@@ -448,6 +456,7 @@ Earlier paths and their donor versions: `native-classes/MouseGetSurface.cpp`.
 Earlier paths and their donor versions: `native-classes/MouseUnlocked.cpp`.
 
 **`40727f7971f9`** · `App/src/v8datamodel/MouseUnlocked.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/src/v8datamodel/MouseUnlocked.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/src/v8datamodel/MouseUnlocked.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/src/v8datamodel/MouseUnlocked.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/App/src/v8datamodel/MouseUnlocked.cpp)
@@ -485,6 +494,7 @@ Earlier paths and their donor versions: `native-classes/MouseUnlocked.cpp`.
 </details>
 
 **`d7f2dfffbb8e`** · `App/src/v8datamodel/MouseUnlocked.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8datamodel/MouseUnlocked.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/v8datamodel/MouseUnlocked.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/src/v8datamodel/MouseUnlocked.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/App/src/v8datamodel/MouseUnlocked.cpp)
@@ -565,6 +575,8 @@ Earlier paths and their donor versions: `native-classes/MouseUnlocked.cpp`.
 </details>
 
 **`c79e74edda37`** · `native-classes/MouseUnlocked.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/MouseUnlocked.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/MouseUnlocked.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/MouseUnlocked.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/MouseUnlocked.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseUnlocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/MouseUnlocked.cpp)
@@ -677,6 +689,7 @@ Earlier paths and their donor versions: `native-classes/MoveDownSelectionVerb.cp
 </details>
 
 **`57f613eb55e7`** · `App/src/v8datamodel/MoveDownSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/src/v8datamodel/MoveDownSelectionVerb.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/src/v8datamodel/MoveDownSelectionVerb.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/src/v8datamodel/MoveDownSelectionVerb.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/App/src/v8datamodel/MoveDownSelectionVerb.cpp)
@@ -704,6 +717,7 @@ Earlier paths and their donor versions: `native-classes/MoveDownSelectionVerb.cp
 - public · colingsnyder2-ux · [v8datamodel/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/MoveDownSelectionVerb.cpp)
 
 **`b80843add62f`** · `App/src/v8datamodel/MoveDownSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8datamodel/MoveDownSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/v8datamodel/MoveDownSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/src/v8datamodel/MoveDownSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/App/src/v8datamodel/MoveDownSelectionVerb.cpp)
@@ -764,6 +778,8 @@ Earlier paths and their donor versions: `native-classes/MoveDownSelectionVerb.cp
 </details>
 
 **`426db48de6ea`** · `native-classes/MoveDownSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/MoveDownSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/MoveDownSelectionVerb.cpp)
@@ -822,6 +838,7 @@ Earlier paths and their donor versions: `native-classes/MoveDownSelectionVerb.cp
 </details>
 
 **`47d6ec530ea1`** · `native-classes/MoveDownSelectionVerb.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
@@ -933,6 +950,7 @@ Earlier paths and their donor versions: `native-classes/MoveDownSelectionVerb.cp
 Earlier paths and their donor versions: `native-classes/NetworkPlayer.cpp`.
 
 **`55a953aa2b25`** · `App/src/v8datamodel/NetworkPlayer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/src/v8datamodel/NetworkPlayer.cpp)
 - public · colingsnyder2-ux · [v8datamodel/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/src/v8datamodel/NetworkPlayer.cpp)
 - public · colingsnyder2-ux · [v8datamodel/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/src/v8datamodel/NetworkPlayer.cpp)
 - public · colingsnyder2-ux · [v8datamodel/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/App/src/v8datamodel/NetworkPlayer.cpp)
@@ -969,6 +987,7 @@ Earlier paths and their donor versions: `native-classes/NetworkPlayer.cpp`.
 </details>
 
 **`85c07bc7a6d0`** · `App/src/v8datamodel/NetworkPlayer.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8datamodel/NetworkPlayer.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/v8datamodel/NetworkPlayer.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/src/v8datamodel/NetworkPlayer.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/App/src/v8datamodel/NetworkPlayer.cpp)
@@ -1031,6 +1050,8 @@ Earlier paths and their donor versions: `native-classes/NetworkPlayer.cpp`.
 </details>
 
 **`768d6acf420b`** · `native-classes/NetworkPlayer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/NetworkPlayer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/NetworkPlayer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/NetworkPlayer.cpp)

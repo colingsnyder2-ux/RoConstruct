@@ -84,6 +84,8 @@ Compatibility path for `App/src/tool/RocketToolLaunch.cpp`; compile either path,
 </details>
 
 **`867ced1f5df7`** · `native-classes/RocketToolLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/RocketToolLaunch.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/RocketToolLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/RocketToolLaunch.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/RocketToolLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/RocketToolLaunch.cpp)
@@ -241,6 +243,8 @@ Compatibility path for `App/src/tool/RocketToolProjectile.cpp`; compile either p
 - public · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/RocketToolProjectile.cpp)
 
 **`fa4ced07fed2`** · `native-classes/RocketToolProjectile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/RocketToolProjectile.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/RocketToolProjectile.cpp)
 - public · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/RocketToolProjectile.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/RocketToolProjectile.cpp)
 - public · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/RocketToolProjectile.cpp)
@@ -334,6 +338,8 @@ Compatibility path for `App/src/v8datamodel/RotateAxisAction.cpp`; compile eithe
 </details>
 
 **`4467989179a7`** · `native-classes/RotateAxisAction.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/RotateAxisAction.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/RotateAxisAction.cpp)
 - public · colingsnyder2-ux · [native-classes/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/RotateAxisAction.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/RotateAxisAction.cpp)
 - public · colingsnyder2-ux · [native-classes/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/RotateAxisAction.cpp)
@@ -552,6 +558,8 @@ Compatibility path for `App/src/reflection/SafeArray.cpp`; compile either path, 
 </details>
 
 **`d46315040d77`** · `native-classes/SafeArray.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SafeArray.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/SafeArray.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SafeArray.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/SafeArray.cpp)
 - public · colingsnyder2-ux · [native-classes/SafeArray.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/SafeArray.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SafeArray.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/SafeArray.cpp)
 - public · colingsnyder2-ux · [native-classes/SafeArray.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/SafeArray.cpp)
@@ -615,6 +623,7 @@ Compatibility path for `App/src/reflection/SafeArray.cpp`; compile either path, 
 <summary>native-classes/SceneManager2008.cpp — candidate-only; 1 content versions</summary>
 
 **`657f16b4add4`** · `native-classes/SceneManager2008.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/SceneManager2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManager2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SceneManager2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManager2008.cpp)
 - fork · mewpokemons · [native-classes/SceneManager2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/SceneManager2008.cpp)
 - fork · mewpokemons · [native-classes/SceneManager2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/SceneManager2008.cpp)
@@ -667,6 +676,7 @@ Compatibility path for `App/src/reflection/SafeArray.cpp`; compile either path, 
 <summary>native-classes/SceneManagerAggregating2008.cpp — candidate-only; 2 content versions</summary>
 
 **`a19eecbb798e`** · `native-classes/SceneManagerAggregating2008.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - fork · mewpokemons · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - fork · mewpokemons · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
@@ -713,6 +723,7 @@ Compatibility path for `App/src/reflection/SafeArray.cpp`; compile either path, 
 </details>
 
 **`f1b0fe3b5085`** · `native-classes/SceneManagerAggregating2008.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
@@ -797,6 +808,8 @@ Compatibility path for `App/src/v8tree/ScoreHud.cpp`; compile either path, never
 - public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ScoreHud.cpp)
 
 **`b08e1b9c4734`** · `native-classes/ScoreHud.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ScoreHud.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ScoreHud.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ScoreHud.cpp)
@@ -888,6 +901,9 @@ Compatibility path for `App/src/v8tree/ScoreHud.cpp`; compile either path, never
 </details>
 
 **`cedd955592cd`** · `native-classes/ScoreHud.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/0c68805773bd0e93646c9b73a930df4e024b67cac10fa3275db82be2ed05e498/rebuild/2008-06/native-classes/ScoreHud.cpp)
+- draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/7972c6cbe62f0d62c5480125c4feaf2709fc36dbc9d1f89bb455769a568ad277/rebuild/2008-06/native-classes/ScoreHud.cpp)
+- draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/c28adbf310e0c2778c1ca02f0879d4d6ad57f0c04b351be3226633b4bbfd1872/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/0c68805773bd0e93646c9b73a930df4e024b67cac10fa3275db82be2ed05e498/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/7972c6cbe62f0d62c5480125c4feaf2709fc36dbc9d1f89bb455769a568ad277/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/c28adbf310e0c2778c1ca02f0879d4d6ad57f0c04b351be3226633b4bbfd1872/rebuild/2008-06/native-classes/ScoreHud.cpp)

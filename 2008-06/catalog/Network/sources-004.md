@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/Replicator.h`.
 
 **`4235a637aa93`** · `Network/include/Replicator.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Network/include/Replicator.h)
 - canonical · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Network/include/Replicator.h)
 - canonical · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Network/include/Replicator.h)
 - canonical · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Network/include/Replicator.h)
@@ -54,6 +55,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 </details>
 
 **`6f9fd074c67e`** · `Network/include/Replicator.h` · proof not assessed
+- public · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Network/include/Replicator.h)
 - public · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Network/include/Replicator.h)
 - public · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Network/include/Replicator.h)
 - public · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Network/include/Replicator.h)
@@ -220,6 +222,8 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 </details>
 
 **`cc54ea1cd529`** · `native-headers/Replicator.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/Replicator.h)
+- canonical · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/Replicator.h)
 - public · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/Replicator.h)
 - canonical · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/Replicator.h)
 - public · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/Replicator.h)
@@ -503,6 +507,8 @@ Compatibility path for `WindowsClient/src/CMultiPlayerPane.cpp`; compile either 
 </details>
 
 **`977fca1bfefd`** · `native-classes/CMultiPlayerPane.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CMultiPlayerPane.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp)
 - public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/CMultiPlayerPane.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp)
 - public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/CMultiPlayerPane.cpp)
@@ -584,6 +590,10 @@ Compatibility path for `WindowsClient/src/CMultiPlayerPane.cpp`; compile either 
 <summary>native-classes/FilePacketLogger.cpp — candidate-only; 2 content versions</summary>
 
 **`140f97cbc1ed`** · `native-classes/FilePacketLogger.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/4180944e2b2573198702173e6d0ae92004aec4cdc342719426efb99afdccac90/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/9e304e3f0338d916caf7d99436ba36c1efe6d01dc5f35be35f1bc0f5df2eb590/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/a99ddb356dac24eba49aef9ea54b2d59d637703fc0242490c5945d64edca7a89/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/a9dcc3db0f0240f324e65b4664b0fbf83fa46377b1598ecc56117de1950b8f01/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/4180944e2b2573198702173e6d0ae92004aec4cdc342719426efb99afdccac90/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/9e304e3f0338d916caf7d99436ba36c1efe6d01dc5f35be35f1bc0f5df2eb590/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/a99ddb356dac24eba49aef9ea54b2d59d637703fc0242490c5945d64edca7a89/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
@@ -736,6 +746,7 @@ Compatibility path for `WindowsClient/src/CMultiPlayerPane.cpp`; compile either 
 </details>
 
 **`225fe6d3f256`** · `native-classes/FilePacketLogger.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
@@ -797,6 +808,7 @@ Compatibility path for `WindowsClient/src/CMultiPlayerPane.cpp`; compile either 
 <summary>native-classes/HttpLifetime.cpp — public-only; 2 content versions</summary>
 
 **`3fe36138b478`** · `native-classes/HttpLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HttpLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HttpLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HttpLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpLifetime.cpp)
@@ -861,6 +873,7 @@ Compatibility path for `WindowsClient/src/CMultiPlayerPane.cpp`; compile either 
 </details>
 
 **`5a0489edde31`** · `native-classes/HttpResultCheck.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HttpResultCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HttpResultCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HttpResultCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpResultCheck.cpp)
@@ -919,6 +932,7 @@ Compatibility path for `WindowsClient/src/CMultiPlayerPane.cpp`; compile either 
 <summary>native-classes/HttpRobloxSite.cpp — public-only; 4 content versions</summary>
 
 **`3d716aaaf7e0`** · `native-classes/HttpRobloxSite.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HttpRobloxSite.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HttpRobloxSite.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HttpRobloxSite.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpRobloxSite.cpp)
@@ -1009,6 +1023,7 @@ Compatibility path for `WindowsClient/src/CMultiPlayerPane.cpp`; compile either 
 </details>
 
 **`ec36c98f0c34`** · `native-classes/HttpTransport.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HttpTransport.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HttpTransport.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HttpTransport.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpTransport.cpp)
@@ -1051,6 +1066,7 @@ Compatibility path for `WindowsClient/src/CMultiPlayerPane.cpp`; compile either 
 <summary>native-classes/HttpTransportState.cpp — public-only; 4 content versions</summary>
 
 **`058dc712d34d`** · `native-classes/HttpTransportState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HttpTransportState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HttpTransportState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HttpTransportState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpTransportState.cpp)

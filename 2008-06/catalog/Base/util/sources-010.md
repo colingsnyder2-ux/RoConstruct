@@ -85,6 +85,8 @@ Compatibility path for `App/src/v8world/ContactManagerLifetime.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/ContactManagerLifetime.cpp)
 
 **`b3f484c7da6b`** · `native-classes/ContactManagerLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ContactManagerLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ContactManagerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ContactManagerLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ContactManagerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ContactManagerLifetime.cpp)
@@ -157,6 +159,7 @@ Compatibility path for `App/src/v8world/ContactManagerLifetime.cpp`; compile eit
 <summary>native-classes/ErrorUploaderLifetime.cpp — public-only; 4 content versions</summary>
 
 **`6661405fe603`** · `native-classes/ErrorUploaderLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ErrorUploaderLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ErrorUploaderLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ErrorUploaderLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ErrorUploaderLifetime.cpp)
@@ -231,6 +234,7 @@ Compatibility path for `App/src/v8world/ContactManagerLifetime.cpp`; compile eit
 </details>
 
 **`56b64e1ca15f`** · `native-classes/FeatureLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/FeatureLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/FeatureLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/FeatureLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/FeatureLifetime.cpp)
 - fork · mewpokemons · [native-classes/FeatureLifetime.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/FeatureLifetime.cpp)
 - fork · mewpokemons · [native-classes/FeatureLifetime.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/FeatureLifetime.cpp)
@@ -291,6 +295,7 @@ Compatibility path for `App/src/v8world/ContactManagerLifetime.cpp`; compile eit
 </details>
 
 **`777c72ab042c`** · `native-classes/FeatureLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/FeatureLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/FeatureLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/FeatureLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/FeatureLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/FeatureLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/FeatureLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/FeatureLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/FeatureLifetime.cpp)
@@ -358,6 +363,8 @@ Compatibility path for `App/src/v8world/ContactManagerLifetime.cpp`; compile eit
 Compatibility path for `Unclassified/src/FileSystem.cpp`; compile either path, never both.
 
 **`0f6f215db8f9`** · `native-classes/FileSystem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/FileSystem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/FileSystem.cpp)
+- canonical · colingsnyder2-ux · [native-classes/FileSystem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/FileSystem.cpp)
 - public · colingsnyder2-ux · [native-classes/FileSystem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/FileSystem.cpp)
 - canonical · colingsnyder2-ux · [native-classes/FileSystem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/FileSystem.cpp)
 - public · colingsnyder2-ux · [native-classes/FileSystem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/FileSystem.cpp)
@@ -597,6 +604,8 @@ Compatibility path for `Unclassified/src/G3DHashable.cpp`; compile either path, 
 </details>
 
 **`f9e5e0b5500d`** · `native-classes/G3DHashable.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/G3DHashable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/G3DHashable.cpp)
+- canonical · colingsnyder2-ux · [native-classes/G3DHashable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/G3DHashable.cpp)
 - public · colingsnyder2-ux · [native-classes/G3DHashable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/G3DHashable.cpp)
 - canonical · colingsnyder2-ux · [native-classes/G3DHashable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/G3DHashable.cpp)
 - public · colingsnyder2-ux · [native-classes/G3DHashable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/G3DHashable.cpp)
@@ -718,6 +727,8 @@ Compatibility path for `App/src/tool/GameToolEvents.cpp`; compile either path, n
 </details>
 
 **`7f0135397849`** · `native-classes/GameToolEvents.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GameToolEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/GameToolEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GameToolEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/GameToolEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/GameToolEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/GameToolEvents.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GameToolEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/GameToolEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/GameToolEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/GameToolEvents.cpp)
@@ -924,6 +935,8 @@ Compatibility path for `App/src/v8datamodel/HistoryRecordLifetime.cpp`; compile 
 </details>
 
 **`dfa20400194a`** · `native-classes/HistoryRecordLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/HistoryRecordLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/HistoryRecordLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/HistoryRecordLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/HistoryRecordLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/HistoryRecordLifetime.cpp)
@@ -1028,6 +1041,8 @@ Compatibility path for `Unclassified/src/LDrawEntityLifetime.cpp`; compile eithe
 </details>
 
 **`365e200aaab9`** · `native-classes/LDrawEntityLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LDrawEntityLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/LDrawEntityLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/LDrawEntityLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/LDrawEntityLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/LDrawEntityLifetime.cpp)
@@ -1202,6 +1217,8 @@ Compatibility path for `Unclassified/src/LDrawMapRootLifetime.cpp`; compile eith
 </details>
 
 **`9c3d86ee98ce`** · `native-classes/LDrawMapRootLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LDrawMapRootLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/LDrawMapRootLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/LDrawMapRootLifetime.cpp)

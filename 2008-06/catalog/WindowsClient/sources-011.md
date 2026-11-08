@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxControlColorSelec
 </details>
 
 **`62e29bd49187`** · `WindowsClient/include/CRobloxControlColorSelector.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
@@ -83,6 +84,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxControlColorSelec
 </details>
 
 **`faf76dd7ac8c`** · `WindowsClient/include/CRobloxControlColorSelector.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
@@ -184,6 +186,8 @@ Earlier paths and their donor versions: `native-headers/CRobloxControlColorSelec
 </details>
 
 **`8b2b32807c99`** · `native-headers/CRobloxControlColorSelector.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/CRobloxControlColorSelector.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/CRobloxControlColorSelector.h)
@@ -330,6 +334,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxControlColorSelec
 Earlier paths and their donor versions: `native-headers/CRobloxDHtmlDialog.h`.
 
 **`4301ebf2d657`** · `WindowsClient/include/CRobloxDHtmlDialog.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - canonical · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - canonical · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - canonical · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
@@ -405,6 +410,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDHtmlDialog.h`.
 </details>
 
 **`b97b8268b092`** · `WindowsClient/include/CRobloxDHtmlDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - public · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - public · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - public · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
@@ -486,6 +492,8 @@ Earlier paths and their donor versions: `native-headers/CRobloxDHtmlDialog.h`.
 </details>
 
 **`88724f138d72`** · `native-headers/CRobloxDHtmlDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/CRobloxDHtmlDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/CRobloxDHtmlDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/CRobloxDHtmlDialog.h)

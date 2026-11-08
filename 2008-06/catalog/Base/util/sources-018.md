@@ -84,6 +84,8 @@ Compatibility path for `Base/include/util/Sound.h`; compile either path, never b
 </details>
 
 **`3682dd938864`** · `native-headers/util/Sound.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Sound.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/Sound.h)
+- canonical · colingsnyder2-ux · [util/Sound.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/Sound.h)
 - public · colingsnyder2-ux · [util/Sound.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/Sound.h)
 - canonical · colingsnyder2-ux · [util/Sound.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/Sound.h)
 - public · colingsnyder2-ux · [util/Sound.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/Sound.h)
@@ -178,6 +180,8 @@ Compatibility path for `Base/include/util/Sound.h`; compile either path, never b
 </details>
 
 **`3a147bf671f2`** · `native-headers/util/Sound.h` · proof not assessed
+- draft · colingsnyder2-ux · [util/Sound.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/b9f836843d6794d92e0c0e1bdeb071c5e580cfcbce075023cb483ee1b6d1a8ab/rebuild/2008-06/native-headers/util/Sound.h)
+- draft · colingsnyder2-ux · [util/Sound.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/d057a35d7d804559675857e68c526088d0b8bafbb0c205350cd9641b2b21a41b/rebuild/2008-06/native-headers/util/Sound.h)
 - draft · colingsnyder2-ux · [util/Sound.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/b9f836843d6794d92e0c0e1bdeb071c5e580cfcbce075023cb483ee1b6d1a8ab/rebuild/2008-06/native-headers/util/Sound.h)
 - draft · colingsnyder2-ux · [util/Sound.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/d057a35d7d804559675857e68c526088d0b8bafbb0c205350cd9641b2b21a41b/rebuild/2008-06/native-headers/util/Sound.h)
 - draft · colingsnyder2-ux · [util/Sound.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/b9f836843d6794d92e0c0e1bdeb071c5e580cfcbce075023cb483ee1b6d1a8ab/rebuild/2008-06/native-headers/util/Sound.h)
@@ -359,6 +363,8 @@ Compatibility path for `Base/include/util/UserInputBase.h`; compile either path,
 </details>
 
 **`2d24409f72a7`** · `native-headers/util/UserInputBase.h` · proof not assessed
+- public · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/UserInputBase.h)
+- canonical · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/UserInputBase.h)
 - public · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/UserInputBase.h)
 - canonical · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/UserInputBase.h)
 - public · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/UserInputBase.h)
@@ -513,6 +519,8 @@ Compatibility path for `Base/include/util/Vector6.h`; compile either path, never
 </details>
 
 **`32b743d1ff9f`** · `native-headers/util/Vector6.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/Vector6.h)
+- canonical · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/Vector6.h)
 - public · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/Vector6.h)
 - canonical · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/Vector6.h)
 - public · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/Vector6.h)
@@ -758,6 +766,8 @@ Compatibility path for `Base/include/util/scopedassign.h`; compile either path, 
 </details>
 
 **`41e5c7730c2d`** · `native-headers/util/scopedassign.h` · proof not assessed
+- public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/scopedassign.h)
+- canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/scopedassign.h)
 - canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/scopedassign.h)

@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/util/scopedassign.h`.
 </details>
 
 **`68f862c17363`** · `Base/include/util/scopedassign.h` · proof not assessed
+- public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Base/include/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Base/include/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Base/include/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/Base/include/util/scopedassign.h)
@@ -42,6 +43,7 @@ Earlier paths and their donor versions: `native-headers/util/scopedassign.h`.
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/scopedassign.h)
 
 **`c5f64132fb33`** · `Base/include/util/scopedassign.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Base/include/util/scopedassign.h)
 - canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Base/include/util/scopedassign.h)
 - canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Base/include/util/scopedassign.h)
 - canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/Base/include/util/scopedassign.h)
@@ -150,6 +152,8 @@ Earlier paths and their donor versions: `native-headers/util/scopedassign.h`.
 </details>
 
 **`41e5c7730c2d`** · `native-headers/util/scopedassign.h` · proof not assessed
+- public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/scopedassign.h)
+- canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/util/scopedassign.h)
 - canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/util/scopedassign.h)
@@ -331,6 +335,7 @@ Earlier paths and their donor versions: `native-headers/util/scopedassign.h`.
 Earlier paths and their donor versions: `native-classes/accepted/App/util/Name.cpp`.
 
 **`345365f62d4f`** · `Base/src/util/Name.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Base/src/util/Name.cpp)
 - canonical · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Base/src/util/Name.cpp)
 - canonical · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Base/src/util/Name.cpp)
 
@@ -344,6 +349,7 @@ Earlier paths and their donor versions: `native-classes/accepted/App/util/Name.c
 </details>
 
 **`d647a353b02b`** · `Base/src/util/Name.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Base/src/util/Name.cpp)
 - public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Base/src/util/Name.cpp)
 - public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Base/src/util/Name.cpp)
 
@@ -453,6 +459,8 @@ Earlier paths and their donor versions: `native-classes/accepted/App/util/Name.c
 </details>
 
 **`829e4c4f7853`** · `native-classes/accepted/App/util/Name.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/accepted/App/util/Name.cpp)
+- canonical · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/accepted/App/util/Name.cpp)
 - public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/accepted/App/util/Name.cpp)
 - canonical · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/accepted/App/util/Name.cpp)
 - public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/accepted/App/util/Name.cpp)
@@ -532,6 +540,7 @@ Earlier paths and their donor versions: `native-classes/accepted/App/util/Name.c
 </details>
 
 **`7ff90a56bc96`** · `native-classes/CChatPromptLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CChatPromptLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CChatPromptLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/CChatPromptLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/CChatPromptLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/CChatPromptLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/CChatPromptLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/CChatPromptLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CChatPromptLifetime.cpp)
@@ -763,6 +772,8 @@ Compatibility path for `WindowsClient/src/CFileVersionInfo.cpp`; compile either 
 </details>
 
 **`adb56cc6996d`** · `native-classes/CFileVersionInfo.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CFileVersionInfo.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/CFileVersionInfo.cpp)
 - public · colingsnyder2-ux · [native-classes/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/CFileVersionInfo.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/CFileVersionInfo.cpp)
 - public · colingsnyder2-ux · [native-classes/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/CFileVersionInfo.cpp)
@@ -905,6 +916,8 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryEvents.cpp`; compile ei
 </details>
 
 **`af8f4d60a980`** · `native-classes/ChangeHistoryEvents.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ChangeHistoryEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ChangeHistoryEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ChangeHistoryEvents.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ChangeHistoryEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ChangeHistoryEvents.cpp)
@@ -1066,6 +1079,8 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryLifetime.cpp`; compile 
 </details>
 
 **`4a417eb474d6`** · `native-classes/ChangeHistoryLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ChangeHistoryLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ChangeHistoryLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ChangeHistoryLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ChangeHistoryLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ChangeHistoryLifetime.cpp)
