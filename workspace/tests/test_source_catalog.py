@@ -310,3 +310,21 @@ def test_preserve_many_repeated_origins_keeps_order_and_uniqueness():
     previous = {"versions": [{"path": "native-classes/A.cpp", "blob": "a", "origins": prior}], "sources": [], "excluded_directory_names": []}
     result = source_catalog.preserve_prior_versions(current, previous)
     assert [item["ref"] for item in result["versions"][0]["origins"]] == [str(i) for i in range(450)]
+
+
+def test_header_alias_is_compared_to_target_content(tmp_path):
+    import subprocess
+    subprocess.run(['git', 'init', '-q'], cwd=tmp_path, check=True)
+    def blob(data):
+        return subprocess.check_output(['git', 'hash-object', '-w', '--stdin'], cwd=tmp_path, input=data).decode().strip()
+    target = blob(b'#pragma once\nstruct Log {};\n')
+    public = blob(b'#pragma once\n// >>> native-status (generated) -- do not edit >>>\n// Log\n// <<< native-status\nstruct Log {};\n')
+    different = blob(b'#pragma once\nstruct Other {};\n')
+    shim = blob(b'// Compatibility header; declarations live at the organized path.\n#include "../../../Base/include/util/Log.h"\n')
+    rows = [dict(path='native-headers/log/Log.h', state='diverged', canonical_blob=shim, public_blob=public),
+            dict(path='native-headers/other/Log.h', state='diverged', canonical_blob=shim, public_blob=different),
+            dict(path='native-classes/Log.cpp', state='diverged', canonical_blob=shim, public_blob=public)]
+    aliases = {row['path']: 'Base/include/util/Log.h' for row in rows}
+    counts = source_catalog.compare_blobs(tmp_path, rows, aliases, {'Base/include/util/Log.h': target})
+    assert [row['comparison'] for row in rows] == ['alias-target-content', 'requires-method-review', 'requires-method-review']
+    assert counts == {'alias-target-content': 1, 'requires-method-review': 2}

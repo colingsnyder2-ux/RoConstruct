@@ -146,10 +146,15 @@ def body_comparison(left, right):
     return 'generated-banner-only' if re.sub(banner, b'', left) == re.sub(banner, b'', right) else 'requires-method-review'
 
 
-def compare_blobs(root, files):
+def compare_blobs(root, files, aliases=None, canonical=None):
     """Distinguish generated metadata from code without rewriting either blob."""
     ids = sorted({row[key] for row in files if row['state'] == 'diverged'
                   for key in ('canonical_blob', 'public_blob')})
+    aliases, canonical = aliases or {}, canonical or {}
+    targets = {row['path']: canonical[aliases[row['path']]] for row in files
+               if row['state'] == 'diverged' and row['path'].startswith('native-headers/')
+               and row['path'] in aliases and aliases[row['path']] in canonical}
+    ids = sorted(set(ids) | set(targets.values()))
     blobs = {}
     if ids:
         import io
@@ -165,6 +170,10 @@ def compare_blobs(root, files):
     counts = {}
     for row in files:
         row['comparison'] = body_comparison(blobs[row['canonical_blob']], blobs[row['public_blob']]) if row['state'] == 'diverged' else row['state']
+        if row['comparison'] == 'requires-method-review' and row['path'] in targets:
+            target_match = body_comparison(blobs[targets[row['path']]], blobs[row['public_blob']])
+            if target_match in ('equivalent', 'line-endings-only', 'generated-banner-only'):
+                row['comparison'] = 'alias-target-content'
         counts[row['comparison']] = counts.get(row['comparison'], 0) + 1
     return counts
 
@@ -425,8 +434,9 @@ def render_source_map_markdown(data, browse=None):
     if compared:
         lines.extend(['', 'Byte differences include **{} banner-only**, **{} line-ending-only**, and'.format(
             compared.get('generated-banner-only', 0), compared.get('line-endings-only', 0)),
-            '**{} requiring method review**. Metadata equality is not runtime proof.'.format(
-                compared.get('requires-method-review', 0)), ''])
+            '**{} requiring method review**. {} header aliases match their target content.'.format(
+                compared.get('requires-method-review', 0), compared.get('alias-target-content', 0)),
+            'Content equality is not ABI, selection or runtime proof.', ''])
     if browse:
         lines.extend(['', '[Browse projects and all source versions](' + browse + '/README.md)', '',
                       'Forks, durable drafts and local snapshots are indexed as candidates.',
@@ -597,6 +607,7 @@ def catalog(root, ref, include_local=False):
     files = classify_files(canonical, public)
     counts = {state: sum(row['state'] == state for row in files)
               for state in ('equivalent', 'diverged', 'missing-public', 'public-only')}
+    aliases = compatibility_aliases(root, canonical)
     result = {
         'schema': 1,
         'authority': 'RoConstruct/work/workspace',
@@ -607,9 +618,9 @@ def catalog(root, ref, include_local=False):
         'public_prefix': public_prefix,
         'summary': dict(canonical_files=len(canonical), public_files=len(public), **counts),
         'files': files,
-        'compatibility_aliases': compatibility_aliases(root, canonical),
+        'compatibility_aliases': aliases,
         'local_snapshots': local_snapshots(root) if include_local else [],
-        'comparison_summary': compare_blobs(root, files),
+        'comparison_summary': compare_blobs(root, files, aliases, canonical),
     }
     return result
 
