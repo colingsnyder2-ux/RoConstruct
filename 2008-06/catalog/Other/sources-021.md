@@ -52,6 +52,8 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/bd042efe940a541021544938e216ce97a3fa584d19d723ec8da2832819a8f051/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/8ee8cc79e1f8488498dd95f8f9e01df8446aa080d8f0f2dff8927b6105fcb27c/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/bd042efe940a541021544938e216ce97a3fa584d19d723ec8da2832819a8f051/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/8ee8cc79e1f8488498dd95f8f9e01df8446aa080d8f0f2dff8927b6105fcb27c/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/bd042efe940a541021544938e216ce97a3fa584d19d723ec8da2832819a8f051/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -107,6 +109,8 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/ceebd5b2dbdb1376b81e79eff12db1d25539e6d9865ec32c61b3dedc0cc5f996/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/3f7c8781e3f01a81d83e34ce890800e2c833948ac9368ee7e6b401d07d4922a9/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/ceebd5b2dbdb1376b81e79eff12db1d25539e6d9865ec32c61b3dedc0cc5f996/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/3f7c8781e3f01a81d83e34ce890800e2c833948ac9368ee7e6b401d07d4922a9/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/ceebd5b2dbdb1376b81e79eff12db1d25539e6d9865ec32c61b3dedc0cc5f996/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -162,6 +166,8 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/1a17d94529ded8ae2cd4bf0402612beb6a8f040bfc6c2be50895f4bf8d190b85/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/01c8e32f47b696bfc7b78a65328ee4d3ddfa1ba8d50a7be93c0d6a6a46601a1c/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/1a17d94529ded8ae2cd4bf0402612beb6a8f040bfc6c2be50895f4bf8d190b85/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/01c8e32f47b696bfc7b78a65328ee4d3ddfa1ba8d50a7be93c0d6a6a46601a1c/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/1a17d94529ded8ae2cd4bf0402612beb6a8f040bfc6c2be50895f4bf8d190b85/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -194,6 +200,7 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/drafts/files/ebaba85a268b7601a97f85bc3d9e94aff27278d4460ca627eead05de9cef566b/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/ebaba85a268b7601a97f85bc3d9e94aff27278d4460ca627eead05de9cef566b/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/ebaba85a268b7601a97f85bc3d9e94aff27278d4460ca627eead05de9cef566b/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/ebaba85a268b7601a97f85bc3d9e94aff27278d4460ca627eead05de9cef566b/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -225,6 +232,7 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/drafts/files/d7628ad65e14a2bf354151f162ab6a9cd18527a65d1602165b5f72cb82bd2ac6/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/d7628ad65e14a2bf354151f162ab6a9cd18527a65d1602165b5f72cb82bd2ac6/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/d7628ad65e14a2bf354151f162ab6a9cd18527a65d1602165b5f72cb82bd2ac6/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/d7628ad65e14a2bf354151f162ab6a9cd18527a65d1602165b5f72cb82bd2ac6/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -325,6 +333,10 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/291b3fa609133e0ed9c0f7632c4b138afad9362ba8e2dc564724219c0397a8bb/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/30a2701a63290a7e06823fa32010300ca496809aba76d3e09f600e7f69f2d7a8/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/bc505f9c7b154127ff0534dd91e83230a81ec2fc439b6543234c92d08c722263/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/287d6e51b40c053b2949769c0133e324fbc4d89fd6ff2d670609caab07b9fff3/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/291b3fa609133e0ed9c0f7632c4b138afad9362ba8e2dc564724219c0397a8bb/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/30a2701a63290a7e06823fa32010300ca496809aba76d3e09f600e7f69f2d7a8/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/bc505f9c7b154127ff0534dd91e83230a81ec2fc439b6543234c92d08c722263/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>5 retained local origins</summary>
 
@@ -544,6 +556,15 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/d3de48f36ac45cc89f8f1ea0efa23b958eb9af9fa8ce67fd33b71634468612d6/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/d7ff8570ae17f6321a5e89a53fe0f090e17c25d4362a954e35e89ce69b3a138d/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/f1dbf12ff77d13d6bcbe09da48a06ba1bcfbd0d3748c60d7eb969b7d0e5d95ac/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/0b5842d2ae3d6c7a701b2d027520c8b0cc4e1c49dc5c45e1e6f21b5ba5ee185a/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/36d17e543163677fd55f36eac5ab48f913d1144437cccaaa35bc39ac73f940e9/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/3d310be8659ffb5fbaa6b453b4efe665fa3664593ce2379c0c7f678bcc89464a/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/416daec62317c0b5b23af9431530325d99640d923555691999fe3131de46b11a/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/97e103e8d3bfbde03626f78c612a0abeb62e8db53cf87f28a53bdfc8fb71cf44/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/b672f05fccc3921e789da42ecd578fc80ce53d01e4ceb8fe7e30a8c0e216731c/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/d3de48f36ac45cc89f8f1ea0efa23b958eb9af9fa8ce67fd33b71634468612d6/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/d7ff8570ae17f6321a5e89a53fe0f090e17c25d4362a954e35e89ce69b3a138d/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/f1dbf12ff77d13d6bcbe09da48a06ba1bcfbd0d3748c60d7eb969b7d0e5d95ac/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -583,6 +604,7 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/drafts/files/08a9f0709701a1f0880e0cd89c879d121230623b2ea90bf1765a68e439bc7302/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/08a9f0709701a1f0880e0cd89c879d121230623b2ea90bf1765a68e439bc7302/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/08a9f0709701a1f0880e0cd89c879d121230623b2ea90bf1765a68e439bc7302/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/08a9f0709701a1f0880e0cd89c879d121230623b2ea90bf1765a68e439bc7302/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -798,6 +820,15 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/8dc61f52ca7889e9c94abfd241bd243c1abde231999d88d1990b0781f342ad05/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/b97a05e65e32cedbf604c3eac21d8d65c9ed95b65f83564165756ea35a8337d4/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/df84ab692b18687028d1c9f480ff31c9c59ee76e23883357333606947afdc566/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/0a4fe1e32ad4c10b2d2e57e7754667fea104ee7077ede118257ad30d37a8e051/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/2c7163e6c57d1966cb637ef5f314addfb67a818d0be2a5a7685471ef531b90fc/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/2c872b82f2dab6ad875504b580e04d7fb99927818d35b28bb3598f3abda55671/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/336deb149faa4bf294fb58683ea9c0d38c0dc6a97384f4fc36a9127ec827ed25/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/4b1a4b0000550f8d39c4380cffb4defe1b7922a5e6d548a86d866bdc4b0bbaa3/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/8167beef63bc6fd29e05eabfa4cf308db87d4f9b625c2d8f884f2f15ebc757ad/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/8dc61f52ca7889e9c94abfd241bd243c1abde231999d88d1990b0781f342ad05/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/b97a05e65e32cedbf604c3eac21d8d65c9ed95b65f83564165756ea35a8337d4/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/df84ab692b18687028d1c9f480ff31c9c59ee76e23883357333606947afdc566/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -883,6 +914,9 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/01817beb830a55ccf4ebd5bf25abddce58ef3c7fd8f5c47078b95de99e465927/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/e324e8e6680d48a28745d255ca3c9be419a7b94fa73a099ba446c8f12e21b1ec/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/f178a1911c497dadaf77126bce1c9682042ca84b03616050c4cc68b6467f49a8/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/01817beb830a55ccf4ebd5bf25abddce58ef3c7fd8f5c47078b95de99e465927/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/e324e8e6680d48a28745d255ca3c9be419a7b94fa73a099ba446c8f12e21b1ec/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/f178a1911c497dadaf77126bce1c9682042ca84b03616050c4cc68b6467f49a8/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>3 retained local origins</summary>
 
@@ -916,6 +950,7 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/drafts/files/894756cdf5db47a7551cf3caa2081bb32a3837aa2e0c7832378e1421be94ef4d/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/894756cdf5db47a7551cf3caa2081bb32a3837aa2e0c7832378e1421be94ef4d/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/894756cdf5db47a7551cf3caa2081bb32a3837aa2e0c7832378e1421be94ef4d/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/894756cdf5db47a7551cf3caa2081bb32a3837aa2e0c7832378e1421be94ef4d/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -1016,6 +1051,10 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/655c7f5a53481b8d13d0e7fd70f96a6e9364611e44367936dc1084547482412e/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/c3034a9b557efa9dbff04a14bdd40b34ebd0582eb10f2e4808c623db45d1bc25/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/d7768520bedf633be74b9ce4e7bd5c11e9e328cf8601edc2e648e592f092bafb/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/0859f4d5cbedfdaf55aea52f8d32dbd2d404b4235c6d25e1c05fc5b4cb4a9952/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/655c7f5a53481b8d13d0e7fd70f96a6e9364611e44367936dc1084547482412e/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/c3034a9b557efa9dbff04a14bdd40b34ebd0582eb10f2e4808c623db45d1bc25/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/d7768520bedf633be74b9ce4e7bd5c11e9e328cf8601edc2e648e592f092bafb/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>4 retained local origins</summary>
 
@@ -1073,6 +1112,8 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/ffe748a50cb25b33d5685c0ea91ff59ce0b8236497eba0e4507b029fc3af5cfb/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/1426f18e22d892660c5562de0c0b4a45249fee2d770e5055af572688983e8a94/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/ffe748a50cb25b33d5685c0ea91ff59ce0b8236497eba0e4507b029fc3af5cfb/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/1426f18e22d892660c5562de0c0b4a45249fee2d770e5055af572688983e8a94/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/ffe748a50cb25b33d5685c0ea91ff59ce0b8236497eba0e4507b029fc3af5cfb/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -1105,6 +1146,7 @@
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/drafts/files/8ad0384b810004d989b2834957bc7af88d0fcb76ffe9a15c99ce9f8de2fee62e/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/8ad0384b810004d989b2834957bc7af88d0fcb76ffe9a15c99ce9f8de2fee62e/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 - draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/8ad0384b810004d989b2834957bc7af88d0fcb76ffe9a15c99ce9f8de2fee62e/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
+- draft · colingsnyder2-ux · [native-classes/PanelGetPositionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/8ad0384b810004d989b2834957bc7af88d0fcb76ffe9a15c99ce9f8de2fee62e/rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp)
 
 <details><summary>1 retained local origins</summary>
 
