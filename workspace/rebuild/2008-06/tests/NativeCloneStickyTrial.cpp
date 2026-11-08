@@ -1,4 +1,2 @@
-#include "NativeCloneToolInlineTrial.h"
-namespace RBX {
-MouseCommand* CloneTool::isSticky() const { return new CloneTool(workspace); }
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeCloneStickyTrial.cpp"

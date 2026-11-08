@@ -1,5 +1,2 @@
-#include "NativeCloneToolTrial.h"
-#include "StandardVerbs.h"
-namespace RBX {
-template<> const Name& Named<MouseCommand, sCloneTool>::getName() const { return NativeToolName<CloneTool>::get(); }
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeCloneNameTrial.cpp"

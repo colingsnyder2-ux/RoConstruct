@@ -1,5 +1,2 @@
-#include "NativeModelToolTrial.h"
-namespace RBX {
-ModelTool::ModelTool(Workspace* workspace) : MouseCommand(workspace) {}
-void forceDestroy(ModelTool* p) { delete p; }
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeModelToolTrial.cpp"

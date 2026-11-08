@@ -1,5 +1,2 @@
-#include "NativeSurfaceToolTrial.h"
-namespace RBX {
-SurfaceTool::SurfaceTool(Workspace* workspace) : MouseCommand(workspace), surface(NULL) {}
-void forceDestroy(SurfaceTool* p) { delete p; }
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeSurfaceToolTrial.cpp"

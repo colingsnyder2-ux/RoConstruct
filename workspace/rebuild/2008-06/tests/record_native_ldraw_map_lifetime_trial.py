@@ -12,7 +12,7 @@ sys.path.insert(0, str(root))
 from roc import match, rebuild
 
 out = root/'rebuild/2008-06/out/native-layouts'
-source = root/'rebuild/2008-06/tests/NativeLDrawMapRootLifetimeTrial.cpp'
+source = root/'rebuild/2008-06/experiments/trials/NativeLDrawMapRootLifetimeTrial.cpp'
 header = root/'rebuild/2008-06/tests/NativeLDrawMapRootTrial.h'
 base = json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
@@ -44,7 +44,7 @@ pe = pefile.PE(str(root/'work/2008-06/original-p4-reference/Roblox.exe'))
 assert struct.unpack('<I',pe.get_data(0x81c904-pe.OPTIONAL_HEADER.ImageBase,4))[0] == 0x46d6f0
 thunk,_,_ = match.target('2008-06','0046d6f0')
 assert 0x46d6f0+4+4+struct.unpack_from('<i',thunk,4)[0] == 0x46d590
-constructor_source = root/'rebuild/2008-06/tests/NativeLDrawMapRootConstructorTrial.cpp'
+constructor_source = root/'rebuild/2008-06/experiments/trials/NativeLDrawMapRootConstructorTrial.cpp'
 constructor_obj = out/'NativeLDrawMapRootConstructorTrial.obj'
 constructor_flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
 constructor_flags += ['/Fo'+str(constructor_obj),str(constructor_source)]

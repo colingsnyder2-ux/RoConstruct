@@ -12,7 +12,7 @@ sys.path.insert(0, str(root))
 from roc import match, rebuild
 
 out = root/'rebuild/2008-06/out/native-layouts'
-source = root/'rebuild/2008-06/tests/NativeDocumentLDrawTrial.cpp'
+source = root/'rebuild/2008-06/experiments/trials/NativeDocumentLDrawTrial.cpp'
 base = json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 flags = [x for x in base['flags'] if x != '/c' and not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
 flags += ['/P',str(source)]
@@ -34,7 +34,7 @@ raw = obj.read_bytes()
 name, body, refs = next(x for x in match.coff_functions(raw) if x[0].startswith('?handle_454c90@CRobloxDoc@@'))
 target, targetrefs, _ = match.target('2008-06','00454c90')
 assert match.exact_match(target,targetrefs,body,refs)
-lifetime_source = root/'rebuild/2008-06/tests/NativeLDrawParserLifetimeTrial.cpp'
+lifetime_source = root/'rebuild/2008-06/experiments/trials/NativeLDrawParserLifetimeTrial.cpp'
 lifetime_obj = out/'NativeLDrawParserLifetimeTrial.obj'
 lifetime_flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
 lifetime_flags += ['/Fo'+str(lifetime_obj),str(lifetime_source)]
@@ -48,7 +48,7 @@ assert match.exact_match(destructor_target,destructor_targetrefs,destructor,dest
 assert destructor_target[2:6] == struct.pack('<I',0x81cb74)
 assert destructor_target[6:9] == bytes.fromhex('83 c1 04')
 assert destructor_target[11:15] == struct.pack('<I',0x802468)
-constructor_source = root/'rebuild/2008-06/tests/NativeLDrawParserConstructorTrial.cpp'
+constructor_source = root/'rebuild/2008-06/experiments/trials/NativeLDrawParserConstructorTrial.cpp'
 constructor_obj = out/'NativeLDrawParserConstructorTrial.obj'
 constructor_flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
 constructor_flags += ['/Fo'+str(constructor_obj),str(constructor_source)]

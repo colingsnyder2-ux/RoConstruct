@@ -1,7 +1,2 @@
-#include "NativeResizeToolTrial.h"
-#include "StandardVerbs.h"
-namespace RBX {
-template<> MouseCommand* TToolVerb<ResizeTool, RunStateVerb>::newMouseCommand() {
-    return new ResizeTool(dataModel->getWorkspace());
-}
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeResizeToolFactoryTrial.cpp"

@@ -1,6 +1,2 @@
-#include "NativeGameToolTrial.h"
-namespace RBX {
-GameTool::GameTool(Workspace* workspace) : Named<MouseCommand, sGameTool>(workspace) {}
-GameTool::~GameTool() {}
-MouseCommand* GameTool::isSticky() const { return new GameTool(workspace); }
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeGameToolLifetimeTrial.cpp"

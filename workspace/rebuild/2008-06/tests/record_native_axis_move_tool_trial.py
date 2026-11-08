@@ -5,7 +5,7 @@ import pefile
 root = Path(__file__).resolve().parents[3]; sys.path.insert(0, str(root))
 from roc import match, rebuild
 out = root / 'rebuild/2008-06/out/native-layouts'
-source = root / 'rebuild/2008-06/tests/NativeAxisMoveToolTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeAxisMoveToolTrial.cpp'
 header = root / 'rebuild/2008-06/tests/NativeAxisMoveToolTrial.h'
 obj = out / 'NativeAxisMoveToolTrial.obj'
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
@@ -52,7 +52,7 @@ for suffix, address, expected in [
         slots[offset // 4] = {'symbol': symbols[symbol][0], 'original_address': hex(target)}
     assert len(slots) == len(expected)
     vtables.append({'base': suffix, 'address': hex(address), 'slots': [slots[i] for i in range(len(expected))]})
-methods_source = root / 'rebuild/2008-06/tests/NativeAxisMoveToolMethodsTrial.cpp'
+methods_source = root / 'rebuild/2008-06/experiments/trials/NativeAxisMoveToolMethodsTrial.cpp'
 methods_obj = out / 'NativeAxisMoveToolMethodsTrial.obj'
 code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/Fo' + str(methods_obj), str(methods_source)], out); assert code == 0, log
 methods_raw = methods_obj.read_bytes(); sections, symbols, definitions, _ = match._coff_data_index(methods_raw)
@@ -77,7 +77,7 @@ for prefix, address, expected in [
         assert any(k.startswith(symbol) and v == value for k, v in bindings.items()), (symbol, bindings)
     rows.append({'symbol': name, 'address': hex(address), 'size': len(body), 'exact': True,
                  'bindings': {k: hex(v) for k, v in bindings.items()}})
-down_source = root / 'rebuild/2008-06/tests/NativeAxisMoveDownTrial.cpp'
+down_source = root / 'rebuild/2008-06/experiments/trials/NativeAxisMoveDownTrial.cpp'
 down_obj = out / 'NativeAxisMoveDownTrial.obj'
 code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/fp:fast', '/Fo' + str(down_obj), str(down_source)], out); assert code == 0, log
 down_raw = down_obj.read_bytes(); sections, symbols, definitions, _ = match._coff_data_index(down_raw)

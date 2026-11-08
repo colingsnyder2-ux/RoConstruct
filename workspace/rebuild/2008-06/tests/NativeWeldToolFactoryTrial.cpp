@@ -1,6 +1,2 @@
-#include "NativeSurfaceSiblingsTrial.h"
-#include "StandardVerbs.h"
-namespace RBX {
-template<> const Name& Named<SurfaceTool, sWeldTool>::getName() const { return NativeToolName<WeldTool>::get(); }
-template<> MouseCommand* TToolVerb<WeldTool, RunStateVerb>::newMouseCommand() { return new WeldTool(dataModel->getWorkspace()); }
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeWeldToolFactoryTrial.cpp"
