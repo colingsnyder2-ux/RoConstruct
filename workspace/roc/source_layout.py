@@ -232,6 +232,43 @@ def object_identity(raw):
     return result, functions
 
 
+def validate_public_package(root, base, package):
+    """Fail closed if any existing public package entry is missing or stale."""
+    files = package.get('files')
+    if not isinstance(files, dict):
+        raise ValueError('Public package lacks a file inventory')
+    prefix = '2008-06/'
+    blobs = {}
+    for line in git(root, 'ls-tree', '-rz', base, '--', prefix).split(b'\0'):
+        if not line:
+            continue
+        meta, path = line.split(b'\t', 1)
+        mode, kind, blob = meta.split()
+        name = path.decode('utf-8')[len(prefix):]
+        if name in files:
+            if mode not in (b'100644', b'100755') or kind != b'blob':
+                raise ValueError('Non-regular public package entry: ' + name)
+            blobs[name] = blob.decode()
+    for name in files:
+        safe(name)
+        if name not in blobs:
+            raise ValueError('Missing public package entry: ' + name)
+    ids = sorted(set(blobs.values()))
+    data = io.BytesIO(git(root, 'cat-file', '--batch', data=('\n'.join(ids) + '\n').encode()))
+    hashes = {}
+    for blob in ids:
+        head = data.readline().split()
+        if len(head) != 3 or head[0].decode() != blob or head[1] != b'blob':
+            raise ValueError('Public package blob mismatch')
+        content = data.read(int(head[2]))
+        if data.read(1) != b'\n':
+            raise ValueError('Truncated public package blob')
+        hashes[blob] = sha(content)
+    for name, blob in blobs.items():
+        if files[name] != hashes[blob]:
+            raise ValueError('Public package entry is stale: ' + name)
+
+
 def verify(root, out, run):
     root, out, run = Path(root).resolve(), Path(out).resolve(), Path(run).resolve()
     if not out.is_relative_to((root / 'work/native-candidates').resolve()):
@@ -366,9 +403,21 @@ def verify(root, out, run):
         else:
             mirror['2008-06/' + old] = str(out / 'public-shim' / old)
             mirror['2008-06/' + new] = str(out / 'public' / old)
+    package_output = None
+    if mirror:
+        package = json.loads(git(root, 'show', plan['base'] + ':2008-06/package.json'))
+        validate_public_package(root, plan['base'], package)
+        for name, source in mirror.items():
+            relative = name.removeprefix('2008-06/')
+            package['files'][relative] = sha(Path(source).read_bytes())
+        package['files'] = dict(sorted(package['files'].items()))
+        package_output = ('public-package.json', package)
+        mirror['2008-06/package.json'] = str(out / package_output[0])
     report = dict(base=plan['base'], header_tree=plan['header_tree'], run=str(run), accepted=accepted,
                   skipped=skipped, scope='Object equivalence and listed original code/data checks only; preservation-only moves do not prove original identity; no runtime or server credit.')
     outputs = (('review.json', report), ('integration-manifest.json', manifest), ('public-manifest.json', mirror))
+    if package_output:
+        outputs += (package_output,)
     if any((out / name).exists() for name, _ in outputs):
         raise FileExistsError('Refusing to overwrite existing review output')
     for name, value in outputs:

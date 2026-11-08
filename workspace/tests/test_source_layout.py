@@ -18,6 +18,7 @@ def source_repo(tmp_path):
     for path, data in {
         'workspace/rebuild/2008-06/native-classes/Thing.cpp': b'// native-flags: /O2\nint thing() { return 1; }\n',
         '2008-06/native-classes/Thing.cpp': b'// native-flags: /O2\nint thing() { return 1; }\n',
+        '2008-06/package.json': json.dumps({'format': 1, 'files': {'native-classes/Thing.cpp': hashlib.sha256(b'// native-flags: /O2\nint thing() { return 1; }\n').hexdigest()}}).encode(),
         'workspace/rebuild/2008-06/native-headers/thing.h': b'#include \"../App/include/thing.h\"\n',
         'workspace/rebuild/2008-06/App/include/thing.h': b'#pragma once\n',
         'workspace/rebuild/2008-06/tests/native_check_runner.py': b'# reviewed runner\n',
@@ -76,6 +77,10 @@ def test_different_public_version_requires_opt_in_and_keeps_its_flags(source_rep
     root, spec = source_repo
     public = root / '2008-06/native-classes/Thing.cpp'
     public.write_bytes(b'// native-flags: /Od\nint thing() { return 2; }\n')
+    package = root / '2008-06/package.json'
+    data = json.loads(package.read_text())
+    data['files']['native-classes/Thing.cpp'] = digest(public)
+    package.write_text(json.dumps(data))
     subprocess.run(['git', 'add', '.'], cwd=root, check=True)
     subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
                     'commit', '-qm', 'public variant'], cwd=root, check=True)
@@ -159,6 +164,10 @@ def test_public_mirror_leaves_different_public_file_unchanged(source_repo, monke
     root, spec = source_repo
     public = root / '2008-06/native-classes/Thing.cpp'
     public.write_bytes(b'// native-flags: /Od\nint thing() { return 2; }\n')
+    package = root / '2008-06/package.json'
+    data = json.loads(package.read_text())
+    data['files']['native-classes/Thing.cpp'] = digest(public)
+    package.write_text(json.dumps(data))
     subprocess.run(['git', 'add', '.'], cwd=root, check=True)
     subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
                     'commit', '-qm', 'public variant'], cwd=root, check=True)
@@ -399,3 +408,61 @@ def test_prepare_accepts_scoped_existing_accepted_source(source_repo):
     spec['moves'][0]['source'] = 'native-classes/unreviewed/App/Thing.cpp'
     with pytest.raises(ValueError):
         source_layout.inspect_move(root, spec['base'], spec['moves'][0])
+
+
+def test_public_manifest_updates_package_hashes(source_repo, monkeypatch):
+    root, spec = source_repo
+    spec['moves'][0].update(checks=[], preservation_only=True)
+    out = root / 'work/native-candidates/test'
+    source_layout.prepare(root, spec, out)
+    run = make_run(root, out)
+    rows = json.loads((run / 'results.json').read_text())
+    for row in rows:
+        row['checks'] = []
+    (run / 'results.json').write_text(json.dumps(rows))
+    monkeypatch.setattr(source_layout, 'object_identity', lambda raw: raw)
+    source_layout.verify(root, out, run)
+    mirror = json.loads((out / 'public-manifest.json').read_text())
+    package = json.loads(Path(mirror['2008-06/package.json']).read_text())
+    for path in ('native-classes/Thing.cpp', 'WindowsClient/src/Thing.cpp'):
+        assert package['files'][path] == digest(Path(mirror['2008-06/' + path]))
+
+
+def test_public_manifest_rejects_stale_existing_package_entry(source_repo, monkeypatch):
+    root, spec = source_repo
+    package = root / '2008-06/package.json'
+    data = json.loads(package.read_text())
+    data['files']['native-classes/Thing.cpp'] = 'stale'
+    package.write_text(json.dumps(data))
+    subprocess.run(['git', 'add', '.'], cwd=root, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                    'commit', '-qm', 'stale package'], cwd=root, check=True)
+    spec['base'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    spec['moves'][0].update(checks=[], preservation_only=True)
+    out = root / 'work/native-candidates/test'
+    source_layout.prepare(root, spec, out)
+    run = make_run(root, out)
+    rows = json.loads((run / 'results.json').read_text())
+    for row in rows:
+        row['checks'] = []
+    (run / 'results.json').write_text(json.dumps(rows))
+    monkeypatch.setattr(source_layout, 'object_identity', lambda raw: raw)
+    with pytest.raises(ValueError, match='package entry is stale'):
+        source_layout.verify(root, out, run)
+    assert not (out / 'public-manifest.json').exists()
+
+
+def test_public_package_rejects_unrelated_stale_entry(source_repo):
+    root, spec = source_repo
+    other = root / '2008-06/other.h'
+    other.write_bytes(b'other')
+    package = root / '2008-06/package.json'
+    data = json.loads(package.read_text())
+    data['files']['other.h'] = 'stale'
+    package.write_text(json.dumps(data))
+    subprocess.run(['git', 'add', '.'], cwd=root, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                    'commit', '-qm', 'unrelated stale package'], cwd=root, check=True)
+    base = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    with pytest.raises(ValueError, match='package entry is stale: other.h'):
+        source_layout.validate_public_package(root, base, data)
