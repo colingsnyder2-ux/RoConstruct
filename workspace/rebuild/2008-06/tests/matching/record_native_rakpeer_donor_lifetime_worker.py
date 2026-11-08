@@ -1,0 +1,10 @@
+import json,sys,hashlib
+from pathlib import Path
+root=Path(__file__).resolve().parents[4];sys.path.insert(0,str(root));from roc import rebuild,match
+out=root/'rebuild/2008-06/out/native-layouts/rakpeer-donor-lifetime-worker';out.mkdir(parents=True,exist_ok=True);donor=root/'tools/rbxgs/Client/Network/raknet30/Source';header=(donor/'RakPeer.h').read_text();old='#ifndef _RELEASE\n\tdouble _maxSendBPS;\n\tunsigned short _minExtraPing, _extraPingVariance;\n#endif';assert header.count(old)==1;header=header.replace(old,'\tdouble _maxSendBPS;\n\tunsigned short _minExtraPing, _extraPingVariance;');(out/'RakPeer.h').write_text(header);src=out/'RakPeer.cpp';src.write_text('#include <malloc.h>\\n'+(donor/'RakPeer.cpp').read_text());prior=json.loads((root/'work/2008-06/shared-layouts/profiling-integrated.json').read_text());flags=[x for x in prior['flags'] if not x.startswith('/Fo') and not x.lower().endswith('.cpp')];flags.insert(0,'/I'+str(out));flags+=['/I'+str(donor),'/I'+str(root/'tools/rbxgs/Client/Network')];obj=out/'RakPeer.obj';code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],out);(out/'compile.log').write_text(log);rows=[]
+if code==0:
+ funcs=match.coff_functions(obj.read_bytes())
+ for pre,addr in [('??0RakPeer@@',0x4c18d0),('??1RakPeer@@',0x4c4d50)]:
+  name,body,refs=next(x for x in funcs if x[0].startswith(pre));target,tr,_=match.target('2008-06','%08x'%addr);rows.append({'symbol':name,'target':hex(addr),'size':len(body),'target_size':len(target),'exact':match.exact_match(target,tr,body,refs)})
+result={'scope':'Native-header-first isolated original donor source; simulator fields enabled only in copied RakPeer.h, all other release behavior unchanged. Nonexact is not integration.','compile_exit':code,'errors':[x for x in log.splitlines() if 'error C' in x][:40],'methods':rows,'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'header_sha256':hashlib.sha256((out/'RakPeer.h').read_bytes()).hexdigest()};(root/'work/2008-06/shared-layouts/rakpeer-donor-lifetime-worker.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
+
