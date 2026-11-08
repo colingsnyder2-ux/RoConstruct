@@ -1,19 +1,2 @@
-#include "CMainFrame.h"
-#include "CRobloxControlColorSelector.h"
-#include "v8datamodel/ToolsPart.h"
-#include <G3D/Color3uint8.h>
-
-void CMainFrame::handle_4300d0(CCmdUI* ui)
-{
-    if (ui->m_pOther) {
-        CXTPControls* controls = ((CXTPToolBar*)ui->m_pOther)->GetControls();
-        int index = (int)ui->m_nIndex;
-        CRobloxControlColorSelector* control = index >= 0 && index < controls->GetCount()
-            ? (CRobloxControlColorSelector*)controls->GetAt(index) : NULL;
-        G3D::Color3uint8 color(RBX::FillTool::color.get().color3());
-        unsigned long value = (((unsigned long)color.b << 8) | color.g) << 8;
-        value |= color.r;
-        control->SetColor(value);
-    }
-    ui->Enable(TRUE);
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeMainFrameColorWorkerTrial.cpp"

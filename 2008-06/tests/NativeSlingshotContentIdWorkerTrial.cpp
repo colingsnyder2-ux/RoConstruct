@@ -1,7 +1,2 @@
-#include "util/ContentProvider.h"
-namespace RBX {
-ContentId ContentId::fromAssets(const char* path) {
- std::string prefix("rbxasset://");
- return ContentId(prefix + path);
-}
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp"

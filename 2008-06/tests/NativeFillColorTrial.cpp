@@ -1,5 +1,2 @@
-#include "v8datamodel/ToolsPart.h"
-namespace RBX {
-FillToolColor::FillToolColor() {}
-FillToolColor FillTool::color;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeFillColorTrial.cpp"
