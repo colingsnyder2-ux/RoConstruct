@@ -10,7 +10,7 @@ Builds (document-swap flags, VS2008 RTM 21022), all from the current native head
                                             extent at 0063b5c0, compared in full once;
   * native-classes/ForceField.cpp           (/fp:fast) the ForceField unit 0062d0c0..0062d8d0 plus class descriptor
                                             005c0400, doDeclare 005bf9c0 / callDoDeclare 005bffb0 and atexit 007fe720
-                                            (rows in tests/record_native_debris_forcefield_rows.py). The 0062d310 row of
+                                            (rows in tests/matching/record_native_debris_forcefield_rows.py). The 0062d310 row of
                                             the function list holds two functions; hasForceField is compared against its
                                             bytes 00..70 and recorded as a slice, not as the whole row;
   * ForceField.cpp with NATIVE_FORCEFIELD_PENDING against out/native-layouts/debris-forcefield-pending/ (a copy of
@@ -517,7 +517,7 @@ paths = [Path(__file__).resolve(), LAYOUT, DEBRIS_H, DEBRIS_SRC]
 objects = [layout_obj, debris_obj]
 flags = {'layout': layout_flags, 'debris': debris_flags}
 if HAVE_FORCE:
-    paths += [R / 'tests/record_native_debris_forcefield_rows.py', FORCE_H, FORCE_SRC]
+    paths += [R / 'tests/matching/record_native_debris_forcefield_rows.py', FORCE_H, FORCE_SRC]
     paths.append(R / 'tests/NativeDebrisForceFieldPendingWorkspace.h')
     objects += [force_obj, forcep_obj]
     flags['forcefield'] = force_flags

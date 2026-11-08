@@ -21,7 +21,7 @@ Builds (document-swap flags, VS2008 RTM 21022), all from the current native head
 Every exact row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, string literals by bytes, type descriptors and
 vtables by original RTTI names, own symbols by the row proven here, folded bodies by their address, and the remaining
-externals by the EXTERNAL / DATA maps in tests/record_native_settings_items_maps.py (call sites read in the original
+externals by the EXTERNAL / DATA maps in tests/matching/record_native_settings_items_maps.py (call sites read in the original
 disassembly). A symbol binds to one address across all rows. Vtables are compared slot by slot from the objects built
 with the current headers (never the pending one). Writes work/2008-06/shared-layouts/settings-items-working.json.
 Set NATIVE_SETTINGS_ITEMS_DISCOVER=1 to list unbound targets and non-exact rows instead of asserting.
@@ -49,7 +49,7 @@ GAME_SRC = R / 'native-classes/GameSettings.cpp'
 DEBUG_SRC = R / 'native-classes/DebugSettings.cpp'
 GAME_H = R / 'native-headers/v8datamodel/GameSettings.h'
 DEBUG_H = R / 'native-headers/v8datamodel/DebugSettings.h'
-MAPS = R / 'tests/record_native_settings_items_maps.py'
+MAPS = R / 'tests/matching/record_native_settings_items_maps.py'
 DISCOVER = bool(os.environ.get('NATIVE_SETTINGS_ITEMS_DISCOVER'))
 
 # Generated header copies for the pending build only (shared headers are not edited).

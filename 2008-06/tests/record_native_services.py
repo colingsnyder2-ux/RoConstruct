@@ -117,7 +117,7 @@ DNP = '?$DescribedNonCreatable@VPhysicsService@RBX@@VInstance@2@$1?sPhysicsServi
 DSP = '?$Described@VPhysicsService@RBX@@$1?sPhysicsService@2@3QBDBV' + NFP[:-6] + '@2@@Reflection@RBX@@'
 DLR = 'VDeleter@?$Creatable@VInstance@RBX@@@'
 
-from record_native_services_maps import EXTERNAL, DATA, FOLDED, UNPROVEN, NOT_ATTEMPTED, NOT_ATTEMPTED_NETWORK  # noqa: E402  (tests/record_native_services_maps.py)
+from record_native_services_maps import EXTERNAL, DATA, FOLDED, UNPROVEN, NOT_ATTEMPTED, NOT_ATTEMPTED_NETWORK  # noqa: E402  (tests/matching/record_native_services_maps.py)
 
 # Rows: (address, symbol or unique symbol prefix)
 LAYOUT_ROWS = [
@@ -406,7 +406,7 @@ for address, text in ((0x83f858, 'PhysicsService'), (0x826a04, 'PhysicsService')
     assert original.string(address) == text, (hex(address), text)
 
 sha = nb.sha
-paths = [Path(__file__).resolve(), R / 'tests/record_native_services_maps.py', LAYOUT, JOINTS_H, PHYSICS_H, JOINTS_SRC, PHYSICS_SRC]
+paths = [Path(__file__).resolve(), R / 'tests/matching/record_native_services_maps.py', LAYOUT, JOINTS_H, PHYSICS_H, JOINTS_SRC, PHYSICS_SRC]
 objects = [layout_obj, joints_obj, physics_obj, physp_obj]
 flags = {'layout': layout_flags, 'joints': joints_flags, 'physics': physics_flags, 'physics_pending': physp_flags}
 if HAVE_NETWORK:

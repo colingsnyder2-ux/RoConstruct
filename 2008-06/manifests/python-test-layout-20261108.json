@@ -1,0 +1,77 @@
+{
+  "base": "4ab8783caacd9c2d731454ffef0798f928159438",
+  "moves": [
+    {
+      "old": "tests/audit_native_rakpeer_stale_profiler_worker.py",
+      "new": "tests/matching/audit_native_rakpeer_stale_profiler_worker.py",
+      "sha256": "4cc92d626b736e5b75f90867f5203520bb8ec0dbfb3d5a7fc1e36b29b51709c1"
+    },
+    {
+      "old": "tests/compare_cylinder_reference.py",
+      "new": "tests/regression/compare_cylinder_reference.py",
+      "sha256": "8afc8c426a7622cabac3dd0afb149046ae9acab1f7aa29fc49203d4a365eac16"
+    },
+    {
+      "old": "tests/compare_p4_reverb.py",
+      "new": "tests/matching/compare_p4_reverb.py",
+      "sha256": "d458ddb6db9b0568cffb6608c113331bae44e78bb4bf2eff82ec8a292cf15f55"
+    },
+    {
+      "old": "tests/investigate_p6_close.py",
+      "new": "tests/runtime/investigate_p6_close.py",
+      "sha256": "7498b1d90cab699d1e89abf9f2dbdc482bd48391201233eb748725f50b0e73be"
+    },
+    {
+      "old": "tests/probe_native_service_provider_inline.py",
+      "new": "tests/matching/probe_native_service_provider_inline.py",
+      "sha256": "6b769a5840c3d957d8d25ae064b6cff54ee87778253795f982e8c9bd44e8bb18"
+    },
+    {
+      "old": "tests/probe_native_service_provider_instantiation.py",
+      "new": "tests/matching/probe_native_service_provider_instantiation.py",
+      "sha256": "7582cd03807603ad13068ac3c60b085e7c3ae0a7dc9659129358d3a63965e81a"
+    },
+    {
+      "old": "tests/probe_native_service_provider_profiles.py",
+      "new": "tests/matching/probe_native_service_provider_profiles.py",
+      "sha256": "aa967fb2719bb3b64562f3e55bc8063974650bed0fb9e3cd6769ffadc3c6528d"
+    },
+    {
+      "old": "tests/record_native_debris_forcefield_rows.py",
+      "new": "tests/matching/record_native_debris_forcefield_rows.py",
+      "sha256": "74e4221efe699d7fb4b2863ec0ec23176fe84e024ad2a6b76d3ea775327fb257"
+    },
+    {
+      "old": "tests/record_native_part_tail_reflection_worker.py",
+      "new": "tests/matching/record_native_part_tail_reflection_worker.py",
+      "sha256": "b56c6293f25837f9575cd118fc2fb7fb78484517247a2f25e1c8a785221d079d"
+    },
+    {
+      "old": "tests/record_native_part_tail_scan_worker.py",
+      "new": "tests/matching/record_native_part_tail_scan_worker.py",
+      "sha256": "8ecca0fa10ad313e6d9710d14302ab3f4d6989bdb551e76c7ad8e9648b46b407"
+    },
+    {
+      "old": "tests/record_native_services_maps.py",
+      "new": "tests/matching/record_native_services_maps.py",
+      "sha256": "eb61cfe756ac9e186e3a38abc412b37cdf16a444bb6696b4d93f163181093649"
+    },
+    {
+      "old": "tests/record_native_settings_items_maps.py",
+      "new": "tests/matching/record_native_settings_items_maps.py",
+      "sha256": "2c04551c02fedcc7b03728461bc154c4985ecaf011c9ed366934de21beba6aaf"
+    },
+    {
+      "old": "tests/record_p0_runtime.py",
+      "new": "tests/runtime/record_p0_runtime.py",
+      "sha256": "da27997f44b14dc80ef37d38c1acae3f6bc59680e7ffcb5e85b7ca8b406c1c1f"
+    }
+  ],
+  "consumer_paths": {
+    "record_native_services.py": "record_native_services_maps.py",
+    "record_native_settings_items.py": "record_native_settings_items_maps.py",
+    "record_native_debris_forcefield.py": "record_native_debris_forcefield_rows.py"
+  },
+  "root_python_before": 699,
+  "scope": "Byte-preserving Python relocation with compatibility entry points; no native, ABI, runtime or server-credit change."
+}
