@@ -1,0 +1,16 @@
+{
+  "analysis.json": "f15d050cb9497c40ebfee21de6036e9d958012cac7cb837e5b152b37c4000f08",
+  "baseline-link-log.txt": "8baa00c38ed45c67b639960e9fb5dc68ecfd20ffd57819d63748a9cf2c48812b",
+  "compile-results.json": "b502707a7cb5b1f3e9bba07ace425bc2cfb6ddc3759b019c2b40e16f60e75cfd",
+  "compile-summary.json": "3e0f2b184d288dcbc435afcf23b544d8f4099fecba20718d7a4fa1a4e6c7199b",
+  "historical-hypotheses.json": "6e278ecb04fd15d29cf341585e1294002c07687c91483780e08e21cc341881fb",
+  "link-log.txt": "ee65a58d743b05ce9dc14daa24733f6b34d94b3823f986a33bed9524a617e1bc",
+  "link-receipt.json": "39231af8bbeb0ffd953e042e751e50aeadb3590520525333146a0c1fb5d2e8cd",
+  "original-assembly.txt": "2a88880787fe6fe7b5870b5718bf1ce86c0cbaa533378c1aeef1ebbbd2da7c66",
+  "README.md": "6c637bab3203cbc9254b7e8d8f4c34cb12b1f0f19057094be744d97ca9e49a56",
+  "candidate/DocumentLoadFromString.cpp": "878ca781408b0fba0f34c583e8c5bed9503a0ed8c85769e5b78b6e6bace59db9",
+  "candidate/ExitCommand.cpp": "b4d8ad7b95f3dbbc9b7ca11bc6e5dfcf8c3135bb0cc5f4a9f586a4dfb85f317a",
+  "candidate/FillToolColor.cpp": "c2eedbe22f53c5ba25f5c9e1dba954be2abfcf026ebe0b15262391c2b81289ae",
+  "candidate/PlayersAbusePredicate.cpp": "e343d0183705256e51004c42278c536db56ba80ece2e109c5fa5030d5f425ffb",
+  "candidate/WorkspaceGetWorkspace.cpp": "211474167383ff679e60f814400ec02a4e40d64032c738f2f8a8680f02de8c4e"
+}

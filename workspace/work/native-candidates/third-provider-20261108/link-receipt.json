@@ -1,0 +1,36 @@
+{
+  "exit_code": 1120,
+  "before": 111,
+  "after": 107,
+  "resolved": [
+    "public: bool __thiscall RBX::Network::Players::canReportAbuse(void)const ",
+    "public: class RBX::Workspace * __thiscall CWorkspace::getWorkspace(void)",
+    "public: static class RBX::FillToolColor RBX::FillTool::color",
+    "public: virtual void __thiscall ExitCommand::doIt(class RBX::IDataState *)"
+  ],
+  "introduced": [],
+  "duplicates": [],
+  "provider_objects": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\third-providers-fresh-20261108\\source\\WindowsClient\\src\\ExitCommand.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082247-0a5fbceb\\unit-000\\candidate.obj",
+      "sha256": "ca4a563928692e36c89a934aa6cff3fc05f8a1458da7ad72750d35a18be8d0a6"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\third-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\WorkspaceGetWorkspace.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082247-0a5fbceb\\unit-001\\candidate.obj",
+      "sha256": "56427405500db2037d5168e4c97d48ba6c47e6f3485672bdc7775941735aca56"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\third-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\FillToolColor.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082247-0a5fbceb\\unit-002\\candidate.obj",
+      "sha256": "55c3c2b282566d0809e3f6694ce6043273ca5670804596490f989068a3597d1b"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\third-providers-fresh-20261108\\source\\Network\\src\\PlayersAbusePredicate.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082247-0a5fbceb\\unit-004\\candidate.obj",
+      "sha256": "2ae10b59a30eec6bf9d0af5e2d5d9c114bc446066d90d1174469a8d9eea415c3"
+    }
+  ],
+  "scope": "Fresh candidate link-only diagnostic; call bindings, ABI, EH, runtime, original selection and server credit unproven. Do not run."
+}

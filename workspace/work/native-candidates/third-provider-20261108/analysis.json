@@ -1,0 +1,120 @@
+[
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\third-providers-fresh-20261108\\source\\WindowsClient\\src\\ExitCommand.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082247-0a5fbceb\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "0044f730",
+        "requested_symbol": "?doIt@ExitCommand@@",
+        "status": "exact",
+        "symbol": "?doIt@ExitCommand@@UAEXPAVIDataState@RBX@@@Z",
+        "score": 100,
+        "target_size": 105,
+        "object_size": 105,
+        "target_sha256": "ca0fcc563abf4c29e2bf590fe9a7c50fdb422df1eb4b561ce429cbe41066555d",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 2.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\third-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\WorkspaceGetWorkspace.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082247-0a5fbceb\\unit-001\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "0046a970",
+        "requested_symbol": "?getWorkspace@CWorkspace@@",
+        "status": "exact",
+        "symbol": "?getWorkspace@CWorkspace@@QAEPAVWorkspace@RBX@@XZ",
+        "score": 100,
+        "target_size": 17,
+        "object_size": 17,
+        "target_sha256": "9d5801b51897285bcebac68ce86dd0437d6f631ca257f2a90a107bda0761d9a6",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\third-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\FillToolColor.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082247-0a5fbceb\\unit-002\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005b6460",
+        "requested_symbol": "??_GFillToolColor@RBX@@",
+        "status": "exact",
+        "symbol": "??_GFillToolColor@RBX@@UAEPAXI@Z",
+        "score": 100,
+        "target_size": 74,
+        "object_size": 74,
+        "target_sha256": "33d2db6c94be53e14f52de39c9d4146a92f891a7ca56ee9b7d419d3ed1fe6e4f",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\third-providers-fresh-20261108\\source\\WindowsClient\\src\\DocumentLoadFromString.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082247-0a5fbceb\\unit-003\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00454ac0",
+        "requested_symbol": "?loadFromString@CRobloxDoc",
+        "status": "different",
+        "symbol": "?loadFromString@CRobloxDoc@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "score": 91,
+        "target_size": 385,
+        "object_size": 459,
+        "target_sha256": "4dad61e87bf03e803f24d1b3c757a6ddd3e5d02006516d4f6c6dfaf2ece6fc5c",
+        "first_byte_difference": 385,
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\third-providers-fresh-20261108\\source\\Network\\src\\PlayersAbusePredicate.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082247-0a5fbceb\\unit-004\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00496390",
+        "requested_symbol": "?canReportAbuse@Players@Network@RBX",
+        "status": "exact",
+        "symbol": "?canReportAbuse@Players@Network@RBX@@QBE_NXZ",
+        "score": 100,
+        "target_size": 33,
+        "object_size": 33,
+        "target_sha256": "1995a89fcad3a22a34b3ed24771ad0bbfd7dcdc1910056c63c0c2fbffdda5249",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

@@ -1,0 +1,166 @@
+[
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeFilteredSelectionServiceFull.obj",
+    "sha256": "b6aedab0eac78f2bc8801ff0b57b92a087141d977b95b793e2f98fff200fba01",
+    "exit_code": 1120,
+    "before": 111,
+    "after": 111,
+    "resolved": [
+      "public: static class RBX::FilteredSelection<class RBX::PVInstance> * __cdecl RBX::ServiceProvider::create<class RBX::FilteredSelection<class RBX::PVInstance> >(class RBX::Instance const *)"
+    ],
+    "introduced": [
+      "public: class RBX::FilteredSelection<class RBX::PVInstance> * __thiscall RBX::ServiceProvider::create<class RBX::FilteredSelection<class RBX::PVInstance> >(void)const "
+    ],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeExitCommandFull.obj",
+    "sha256": "078265f5bb861043e4759cc059a068466042048ad2c2279710428b5b6c8a3bd7",
+    "exit_code": 1120,
+    "before": 111,
+    "after": 110,
+    "resolved": [
+      "public: virtual void __thiscall ExitCommand::doIt(class RBX::IDataState *)"
+    ],
+    "introduced": [],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeWorkspaceGetWorkspaceFull.obj",
+    "sha256": "e6fe59443aa637110666e2461738dd73aef78c6766e24f9768d8aefeef225b4d",
+    "exit_code": 1120,
+    "before": 111,
+    "after": 110,
+    "resolved": [
+      "public: class RBX::Workspace * __thiscall CWorkspace::getWorkspace(void)"
+    ],
+    "introduced": [],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeDocumentExecuteFull.obj",
+    "sha256": "53af418a85e78e459435a3bc785f6eb9b2a45e4045ca44a6edd5684373488ec1",
+    "exit_code": 1120,
+    "before": 111,
+    "after": 112,
+    "resolved": [
+      "public: void __thiscall CRobloxDoc::handle_453c30(struct tagNMHDR *,long *)"
+    ],
+    "introduced": [
+      "public: class RBX::ContentProvider * __thiscall RBX::ServiceProvider::create<class RBX::ContentProvider>(void)const ",
+      "public: static bool __cdecl RBX::ContentProvider::isUrl(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)"
+    ],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeDocumentLDrawFull.obj",
+    "sha256": "526ba32500dbefd8816cfdddbcecf2ea83b0f6ff22c165965ffe34055d524a87",
+    "exit_code": 1120,
+    "before": 111,
+    "after": 113,
+    "resolved": [
+      "public: void __thiscall CRobloxDoc::handle_454c90(void)"
+    ],
+    "introduced": [
+      "public: __thiscall RBX::LDraw2Lua::LDrawParser::LDrawParser(char const *)",
+      "public: virtual __thiscall RBX::LDraw2Lua::LDrawParser::~LDrawParser(void)",
+      "public: void __thiscall RBX::LDraw2Lua::LDrawParser::parse(class std::basic_ostream<char,struct std::char_traits<char> > &)"
+    ],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeFillToolColorFull.obj",
+    "sha256": "e93012c96fb029a80862d6d80787bf8cca3c37ed4da6591e8232345b18e24265",
+    "exit_code": 1120,
+    "before": 111,
+    "after": 110,
+    "resolved": [
+      "public: static class RBX::FillToolColor RBX::FillTool::color"
+    ],
+    "introduced": [],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeSelectionVerbStatesFull.obj",
+    "sha256": "896d4fae74e9a813c85efd05c8476b4896f3ee727c58b4a931837138b9fced54",
+    "exit_code": 1120,
+    "before": 111,
+    "after": 114,
+    "resolved": [
+      "public: virtual void __thiscall RBX::DeleteBase::doIt(class RBX::IDataState *)"
+    ],
+    "introduced": [
+      "public: class RBX::FilteredSelection<class RBX::ModelInstance> * __thiscall RBX::ServiceProvider::create<class RBX::FilteredSelection<class RBX::ModelInstance> >(void)const ",
+      "public: class RBX::FilteredSelection<class RBX::PVInstance> * __thiscall RBX::ServiceProvider::create<class RBX::FilteredSelection<class RBX::PVInstance> >(void)const ",
+      "public: class RBX::ModelInstance * __thiscall RBX::FilteredSelection<class RBX::ModelInstance>::findFirst(bool (__cdecl*)(class RBX::ModelInstance *))",
+      "public: static void __cdecl RBX::PartInstance::setLocked(class RBX::Instance *,bool)"
+    ],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeDocumentLoadFromStringFull.obj",
+    "sha256": "a68e7aea0ecdd21302a39204f9392b95d93f4b2e706790472fedab50f8a96ecd",
+    "exit_code": 1120,
+    "before": 111,
+    "after": 110,
+    "resolved": [
+      "public: int __thiscall CRobloxDoc::loadFromString(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)"
+    ],
+    "introduced": [],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeVisitServiceLookupFull.obj",
+    "sha256": "7c94bf4ed52b76cb31e1c65b67d7aa34f3667e830029f135de3f2cff76dc2e8e",
+    "exit_code": 1120,
+    "before": 111,
+    "after": 112,
+    "resolved": [
+      "public: class RBX::Visit * __thiscall RBX::ServiceProvider::find<class RBX::Visit>(void)const "
+    ],
+    "introduced": [
+      "public: class boost::shared_ptr<class RBX::Instance> __thiscall RBX::ServiceProvider::findServiceByClassName(class RBX::Name const &)const ",
+      "public: static unsigned int __cdecl RBX::ServiceProvider::newIndex(void)"
+    ],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativePlayersAbuseFull.obj",
+    "sha256": "dce992541cf2730540d503de0d3d245d32645223e1212272bb656ef5f895f300",
+    "exit_code": 1120,
+    "before": 111,
+    "after": 110,
+    "resolved": [
+      "public: bool __thiscall RBX::Network::Players::canReportAbuse(void)const "
+    ],
+    "introduced": [],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeInsertDecalActionFull.obj",
+    "sha256": "5d7a41cb5df88042157451a9332bb9dbda080d7727134676a8be09abf4ef87f0",
+    "exit_code": 1120,
+    "before": 111,
+    "after": 113,
+    "resolved": [
+      "public: virtual void __thiscall InsertDecal::doIt(class RBX::IDataState *)"
+    ],
+    "introduced": [
+      "class RBX::ContentId __cdecl RBX::registerImageContent(class std::basic_istream<char,struct std::char_traits<char> > &,class RBX::Name const &)",
+      "class RBX::Name const & __cdecl RBX::getMimeType(char const *)",
+      "public: class RBX::ContentProvider * __thiscall RBX::ServiceProvider::create<class RBX::ContentProvider>(void)const "
+    ],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  }
+]
