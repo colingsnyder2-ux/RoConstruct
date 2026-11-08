@@ -141,6 +141,63 @@ if native_md5_proof:
     units.append(('NativeMD5Runtime.obj', ROOT / 'rebuild/2008-06/tests/NativeMD5Runtime.cpp',
                   mfc_flags + ['/DBOOST_ALL_NO_LIB', '/I' + str(ROOT / 'rebuild/2008-06/native-headers')]
                   + ['/I' + str(path) for path in includes]))
+def source_owner(source):
+    marker = '// Compatibility translation unit; compile this file or the organized source, not both.'
+    path, seen = Path(source).resolve(), set()
+    while True:
+        if path in seen:
+            raise RuntimeError('Cyclic compatibility source: ' + str(path))
+        seen.add(path)
+        lines = path.read_text(encoding='utf-8-sig', errors='replace').splitlines()
+        if marker not in [line.strip() for line in lines]:
+            return os.path.normcase(str(path))
+        meaningful, in_banner = [], False
+        for line in lines:
+            text = line.strip()
+            if text.startswith('// >>> native-status'):
+                in_banner = True
+            elif in_banner and text.startswith('// <<< native-status'):
+                in_banner = False
+            elif not in_banner and text and text != marker and not text.startswith('// native-flags:'):
+                meaningful.append(text)
+        if in_banner or len(meaningful) != 1:
+            raise RuntimeError('Malformed compatibility source: ' + str(path))
+        include = re.fullmatch(r'#\s*include\s*"([^"\r\n]+)"', meaningful[0])
+        if not include:
+            raise RuntimeError('Malformed compatibility source: ' + str(path))
+        path = (path.parent / include.group(1)).resolve()
+        if path.suffix.lower() != '.cpp':
+            raise RuntimeError('Compatibility source must include C++: ' + str(path))
+
+
+def check_source_ownership(entries, split_source=None):
+    objects, sources = {}, {}
+    for entry in entries:
+        obj, source = entry[:2]
+        object_key = str(obj).casefold()
+        owner = source_owner(source)
+        if object_key in objects:
+            raise RuntimeError('Duplicate provider object: ' + str(obj))
+        if owner in sources:
+            previous_object, previous_source = sources[owner]
+            pair = {previous_object, object_key}
+            allowed = (split_source is not None
+                       and pair == {'nativeservicechangehistoryfull.obj', 'servicechangehistorycreatefull.obj'}
+                       and Path(previous_source).resolve() == Path(source).resolve() == Path(split_source).resolve())
+            if allowed:
+                profile = Path(source).read_text(encoding='utf-8-sig', errors='replace')
+                body = Path(owner).read_text(encoding='utf-8-sig', errors='replace')
+                allowed = ('/DSERVICE_HISTORY_FIND_ONLY' in profile
+                           and '#ifndef SERVICE_HISTORY_FIND_ONLY' in body
+                           and '#ifndef SERVICE_HISTORY_CREATE_ONLY' in body)
+            if not allowed:
+                raise RuntimeError('Duplicate provider source: ' + str(source) + ' and ' + str(previous_source))
+        objects[object_key] = source
+        sources[owner] = (object_key, source)
+
+
+check_source_ownership(units + [('P6Data.obj', HERE / 'P6Data.cpp')])
+
 # P6Data.cpp shares the player engine layer's headers, defines and overlay.
 from roc import libs as recipes
 engine = spec["layers"][0]
@@ -499,6 +556,8 @@ if NATIVE_DOC:
     for index, source in enumerate(extra_sources):
         assert source.is_file(), source
         doc_sources.append(('NativeDocExtra%02d.obj' % index, source))
+    check_source_ownership(units + doc_sources + [('P6Data.obj', HERE / 'P6Data.cpp')],
+                           ROOT / 'rebuild/2008-06/native-classes/ServiceChangeHistory.cpp')
     # Native-Doc closure probes change one source at a time. Cache only these
     # objects; key covers source, common native headers, overlay and flags.
     # Opt-in: normal diagnostic builds stay fully fresh.
