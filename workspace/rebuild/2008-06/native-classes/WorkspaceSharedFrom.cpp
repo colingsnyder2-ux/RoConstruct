@@ -1,5 +1,2 @@
-#include "v8datamodel/Workspace.h"
-
-namespace RBX {
-template boost::shared_ptr<Workspace> shared_from<Workspace>(Workspace*);
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8datamodel/WorkspaceSharedFrom.cpp"

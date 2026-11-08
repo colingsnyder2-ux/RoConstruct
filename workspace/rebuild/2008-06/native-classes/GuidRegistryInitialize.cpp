@@ -1,13 +1,2 @@
-#include "util/GuidRegistry.h"
-#include <boost/thread/once.hpp>
-
-namespace RBX {
-
-GuidRegistry* guidRegistry = 0;
-boost::once_flag guidRegistryInitialized = BOOST_ONCE_INIT;
-
-void initializeGuidRegistry()
-{
-    guidRegistry = new GuidRegistry;
-}
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/GuidRegistryInitialize.cpp"

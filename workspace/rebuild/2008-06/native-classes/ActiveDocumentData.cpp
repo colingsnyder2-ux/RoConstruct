@@ -1,7 +1,2 @@
-#include "ActiveDocView.h"
-#include "CRobloxDoc.h"
-
-CRobloxDoc* activeRobloxDoc = 0;
-std::set<ActiveDocView*> activeDocViews;
-boost::shared_ptr<RBX::DataModel> activeDocDataModel;
-
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/ActiveDocumentData.cpp"

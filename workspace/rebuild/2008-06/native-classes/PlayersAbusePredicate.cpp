@@ -1,4 +1,2 @@
-#include "Network/Players.h"
-namespace RBX { namespace Network {
-bool Players::canReportAbuse() const { return abuseReporter || clientIsPresent(this, true); }
-} }
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/PlayersAbusePredicate.cpp"

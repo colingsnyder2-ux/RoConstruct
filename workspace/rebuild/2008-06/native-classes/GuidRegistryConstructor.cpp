@@ -1,3 +1,2 @@
-#include "util/GuidRegistry.h"
-
-RBX::GuidRegistry::GuidRegistry() : tree(), mutex() {}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/GuidRegistryConstructor.cpp"

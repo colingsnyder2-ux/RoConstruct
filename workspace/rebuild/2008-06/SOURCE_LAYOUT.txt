@@ -69,3 +69,6 @@ Native-classes counterparts are compatibility units; compile either path per fil
 Project src/ directories also contain the reviewed mass source-layout batch.
 Native-classes counterparts are compatibility units; compile either path per file.
 Preservation-only moves retain previous proof status and do not prove original identity.
+
+The second mass batch preserves divergent public originals at their old paths.
+Unclassified/src holds code awaiting project identification; no runtime claim is implied.

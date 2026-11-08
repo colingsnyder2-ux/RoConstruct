@@ -1,9 +1,2 @@
-#include <afxwin.h>
-
-// Original 0096dcf0, populated by application registry/settings startup.
-CString applicationBaseUrlText;
-
-CString applicationBaseUrl()
-{
-    return applicationBaseUrlText;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/ApplicationBaseUrl.cpp"

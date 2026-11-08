@@ -19,7 +19,7 @@ import sys
 
 from roc import match
 
-PROJECTS = ('App', 'Base', 'Network', 'Rendering', 'WindowsClient', 'Studio')
+PROJECTS = ('App', 'Base', 'Network', 'Rendering', 'WindowsClient', 'Studio', 'Unclassified')
 BANNER = re.compile(rb'(?m)^// >>> native-status \(generated\)[^\n]*\n(?://[^\n]*\n)*?// <<< native-status[^\n]*(?:\n|$)')
 MARKER = b'// Compatibility translation unit; compile this file or the organized source, not both.\n'
 
@@ -102,8 +102,11 @@ def inspect_move(root, base, row):
     public = git(root, 'show', base + ':2008-06/' + oldpath)
     if MARKER in native or re.search(rb'^\s*#\s*include\s*"\.\.?/', native, re.M):
         raise ValueError('Existing shim or relative include requires manual review: ' + oldpath)
-    if BANNER.sub(b'', public).replace(b'\r\n', b'\n') != native.replace(b'\r\n', b'\n'):
+    if (BANNER.sub(b'', public).replace(b'\r\n', b'\n') != native.replace(b'\r\n', b'\n')
+            and row.get('preserve_public_variant') is not True):
         raise ValueError('Public source differs beyond status/line endings: ' + oldpath)
+    if BANNER.sub(b'', public).replace(b'\r\n', b'\n') == native.replace(b'\r\n', b'\n'):
+        compatibility_shim(old, new, public)
     for prefix in ('workspace/rebuild/2008-06/', '2008-06/'):
         check = subprocess.run(['git', 'cat-file', '-e', base + ':' + prefix + newpath], cwd=root, capture_output=True)
         if check.returncode == 0:
@@ -175,8 +178,14 @@ def prepare(root, spec, out):
         pub = out / 'public' / old
         pub.parent.mkdir(parents=True, exist_ok=True)
         pub.write_bytes(public)
+        public_variant = BANNER.sub(b'', public).replace(b'\r\n', b'\n') != native.replace(b'\r\n', b'\n')
+        if not public_variant:
+            pubshim = out / 'public-shim' / old
+            pubshim.parent.mkdir(parents=True, exist_ok=True)
+            pubshim.write_bytes(compatibility_shim(safe(old), safe(new), public))
         records.append(dict(source=old, target=new, source_sha256=sha(native), public_sha256=sha(public),
-                            checks=checks, preservation_only=not bool(checks)))
+                            checks=checks, preservation_only=not bool(checks),
+                            public_variant=public_variant))
     plan = dict(base=base, header_tree=git(root, 'rev-parse', base + ':workspace/rebuild/2008-06/native-headers').decode().strip(),
                 runner_sha256=sha(git(root, 'show', base + ':workspace/rebuild/2008-06/tests/native_check_runner.py')), moves=records)
     (out / 'plan.json').write_text(json.dumps(plan, indent=2) + '\n', encoding='utf-8')
@@ -314,6 +323,8 @@ def verify(root, out, run):
                 raise ValueError('Candidate or public snapshot changed')
             if (out / 'candidate' / old).read_bytes() != compatibility_shim(old, new, native):
                 raise ValueError('Compatibility source differs from reviewed wrapper')
+            if not move.get('public_variant') and (out / 'public-shim' / old).read_bytes() != compatibility_shim(old, new, public):
+                raise ValueError('Public compatibility source differs from reviewed wrapper')
             accepted.append(dict(move, proofs=[{key: r[key] for key in
                 ('source_sha256', 'object_sha256', 'flags', 'dependencies', 'build_inputs', 'checks')}
                 for r in pair]))
@@ -328,8 +339,11 @@ def verify(root, out, run):
         old, new = move['source'], move['target']
         manifest['files']['rebuild/2008-06/' + old] = str(out / 'candidate' / old)
         manifest['files']['rebuild/2008-06/' + new] = str(out / 'candidate' / new)
-        mirror['2008-06/' + old] = str(out / 'candidate' / old)
-        mirror['2008-06/' + new] = str(out / 'public' / old)
+        if move.get('public_variant'):
+            mirror['2008-06/' + new] = str(out / 'candidate' / new)
+        else:
+            mirror['2008-06/' + old] = str(out / 'public-shim' / old)
+            mirror['2008-06/' + new] = str(out / 'public' / old)
     report = dict(base=plan['base'], header_tree=plan['header_tree'], run=str(run), accepted=accepted,
                   skipped=skipped, scope='Object equivalence and listed original code/data checks only; preservation-only moves do not prove original identity; no runtime or server credit.')
     outputs = (('review.json', report), ('integration-manifest.json', manifest), ('public-manifest.json', mirror))

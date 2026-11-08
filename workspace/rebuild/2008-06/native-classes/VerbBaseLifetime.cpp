@@ -1,6 +1,2 @@
-#include "v8tree/Verb.h"
-
-RBX::Verb::~Verb()
-{
-    if (container) container->verbs.erase(&name);
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8tree/VerbBaseLifetime.cpp"

@@ -19,8 +19,11 @@ never treats a proposal as approval. Choose the project folder explicitly.
 Fetch work and inspect the sources, target grouping, ownership, compiler flags
 and original identities before using the spec. Checks are input evidence;
 never infer them solely from candidate output. Each source needs at least one.
-The tool rejects relative source includes, pre-existing destinations, public
-code differences and ambiguous compiler flags; review those cases separately.
+The tool rejects relative source includes, pre-existing destinations and
+ambiguous compiler flags. Public differences require explicit
+`"preserve_public_variant": true`: the original public file stays untouched,
+and the organized public path receives the canonical bytes. Their differences
+remain unresolved and require method-level review.
 For an existing canonical file without original-match evidence, an explicit
 `"preservation_only": true` and empty `checks` permit a move only after both
 translation units compile to identical non-debug objects and named relocations.

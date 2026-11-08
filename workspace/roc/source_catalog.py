@@ -22,7 +22,7 @@ from roc.native_drafts import ROOT, lock
 SOURCE_SUFFIXES = {'.c', '.cc', '.cpp', '.cxx', '.h', '.hh', '.hpp', '.inl'}
 NATIVE_SCOPES = ('native-classes', 'native-headers', 'native-world')
 ORGANIZED_SCOPES = tuple(project + '/' + area for project in
-                         ('App', 'Base', 'Network', 'Rendering', 'WindowsClient', 'Studio')
+                         ('App', 'Base', 'Network', 'Rendering', 'WindowsClient', 'Studio', 'Unclassified')
                          for area in ('src', 'include'))
 
 # Browse groups only.  These do not rename files, claim original project layout,
@@ -32,6 +32,7 @@ MAP_GROUPS = (
     ('App/v8xml', ('v8xml/',)),
     ('App/reflection', ('reflection/',)),
     ('App/tool', ('tool/',)),
+    ('Unclassified', ()),
     ('Studio', ()),
     ('WindowsClient', ('app', 'frame', 'view', 'doc', 'dialog', 'browser', 'editor',
                     'command', 'verb', 'toolbox', 'propertygrid', 'propgrid', 'explorer', 'script')),
@@ -173,7 +174,7 @@ def map_group(path):
     parts = searchable.split('/')
     if len(parts) >= 3 and parts[1] in ('src', 'include'):
         projects = {'base': 'Base/util', 'network': 'Network', 'rendering': 'Rendering',
-                    'windowsclient': 'WindowsClient', 'studio': 'Studio'}
+                    'windowsclient': 'WindowsClient', 'studio': 'Studio', 'unclassified': 'Unclassified'}
         if parts[0] in projects:
             return projects[parts[0]]
         if parts[0] == 'app':

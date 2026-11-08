@@ -70,6 +70,25 @@ def test_preservation_only_requires_explicit_opt_in(source_repo):
     assert plan['moves'][0]['checks'] == []
 
 
+def test_different_public_version_requires_opt_in_and_keeps_its_flags(source_repo):
+    root, spec = source_repo
+    public = root / '2008-06/native-classes/Thing.cpp'
+    public.write_bytes(b'// native-flags: /Od\nint thing() { return 2; }\n')
+    subprocess.run(['git', 'add', '.'], cwd=root, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                    'commit', '-qm', 'public variant'], cwd=root, check=True)
+    spec['base'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    out = root / 'work/native-candidates/test'
+    with pytest.raises(ValueError, match='Public source differs'):
+        source_layout.prepare(root, spec, out)
+    spec['moves'][0]['preserve_public_variant'] = True
+    plan = source_layout.prepare(root, spec, out)
+    assert plan['moves'][0]['public_variant'] is True
+    assert (out / 'public/native-classes/Thing.cpp').read_bytes() == public.read_bytes()
+    assert not (out / 'public-shim/native-classes/Thing.cpp').exists()
+    assert (out / 'candidate/native-classes/Thing.cpp').read_bytes().startswith(b'// native-flags: /O2\n')
+
+
 def test_compatibility_shim_preserves_flags_after_comments():
     old = source_layout.safe('native-classes/Thing.cpp')
     new = source_layout.safe('WindowsClient/src/Thing.cpp')
@@ -132,6 +151,30 @@ def test_preservation_only_checks_whole_object_without_claiming_original(source_
     result = source_layout.verify(root, out, run)
     assert result['accepted'][0]['preservation_only'] is True
     assert 'do not prove original identity' in result['scope']
+
+
+def test_public_mirror_leaves_different_public_file_unchanged(source_repo, monkeypatch):
+    root, spec = source_repo
+    public = root / '2008-06/native-classes/Thing.cpp'
+    public.write_bytes(b'// native-flags: /Od\nint thing() { return 2; }\n')
+    subprocess.run(['git', 'add', '.'], cwd=root, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                    'commit', '-qm', 'public variant'], cwd=root, check=True)
+    spec['base'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    spec['moves'][0].update(checks=[], preservation_only=True, preserve_public_variant=True)
+    out = root / 'work/native-candidates/test'
+    source_layout.prepare(root, spec, out)
+    run = make_run(root, out)
+    rows = json.loads((run / 'results.json').read_text())
+    for row in rows:
+        row['checks'] = []
+    (run / 'results.json').write_text(json.dumps(rows))
+    monkeypatch.setattr(source_layout, 'object_identity', lambda raw: raw)
+    assert len(source_layout.verify(root, out, run)['accepted']) == 1
+    mirror = json.loads((out / 'public-manifest.json').read_text())
+    assert '2008-06/native-classes/Thing.cpp' not in mirror
+    assert public.read_bytes() == b'// native-flags: /Od\nint thing() { return 2; }\n'
+    assert Path(mirror['2008-06/WindowsClient/src/Thing.cpp']).read_bytes() == (root / 'workspace/rebuild/2008-06/native-classes/Thing.cpp').read_bytes()
 
 
 def test_rejects_original_location_object_difference(source_repo, monkeypatch):

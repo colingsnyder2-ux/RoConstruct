@@ -202,6 +202,7 @@ def test_all_project_scopes_keep_provenance_and_grouping():
     cases = {
         'App/include/v8tree/Instance.h': 'App/v8tree',
         'App/src/tool/AnchorTool.cpp': 'App/tool',
+        'Unclassified/src/Unknown.cpp': 'Unclassified',
         'App/src/v8datamodel/Settings.cpp': 'App/v8datamodel',
         'Base/src/util/Name.cpp': 'Base/util',
         'Network/include/network/Peer.h': 'Network',

@@ -1,7 +1,2 @@
-#include "CWorkspace.h"
-#include "v8datamodel/DataModel.h"
-
-RBX::Workspace* CWorkspace::getWorkspace()
-{
-    return dataModel ? dataModel->getWorkspace() : NULL;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8datamodel/WorkspaceGetWorkspace.cpp"

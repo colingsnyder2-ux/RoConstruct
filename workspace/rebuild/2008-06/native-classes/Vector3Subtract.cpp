@@ -1,4 +1,2 @@
-#include <G3D/Vector3.h>
-
-typedef G3D::Vector3 (G3D::Vector3::*VectorSubtract)(const G3D::Vector3&) const;
-VectorSubtract keepVectorSubtract = &G3D::Vector3::operator-;
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/Vector3Subtract.cpp"

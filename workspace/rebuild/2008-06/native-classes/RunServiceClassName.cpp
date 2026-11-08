@@ -1,8 +1,2 @@
-#include "util/RunStateOwner.h"
-
-namespace RBX {
-template<>
-const Name& FactoryProduct<RunService, Instance, sRunService>::getClassName() const {
-    return Name::declare<sRunService>();
-}
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/RunServiceClassName.cpp"

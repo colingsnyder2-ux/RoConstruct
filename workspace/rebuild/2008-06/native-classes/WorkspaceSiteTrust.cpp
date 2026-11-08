@@ -1,14 +1,2 @@
-#include <afxwin.h>
-#include "util/Http.h"
-#include <urlmon.h>
-
-HRESULT validateWorkspaceSiteUrl(const wchar_t* url)
-{
-    return RBX::Http::trustCheck(CString(url)) ? S_OK : E_FAIL;
-}
-
-HRESULT validateWorkspaceSiteZone(const wchar_t* url, DWORD zone)
-{
-    if (zone == URLZONE_UNTRUSTED) return E_FAIL;
-    return validateWorkspaceSiteUrl(url);
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/WorkspaceSiteTrust.cpp"
