@@ -77,3 +77,25 @@ def test_export_applies_native_world_adoption(tmp_path, original_exists):
     package = tmp_path / 'package'
     rebuild_package.export(root, package)
     assert (package / 'src/Client/App/v8world/Assembly.cpp').read_text() == 'native implementation'
+
+
+def test_export_and_install_preserve_build_tool_wrappers(tmp_path):
+    import runpy
+    from roc import rebuild_install
+
+    root = tmp_path / 'checkout'
+    source = root / 'rebuild/2008-06'
+    (source / 'build').mkdir(parents=True)
+    (source / 'modules').mkdir()
+    (source / 'modules/rbxgs-app.json').write_text('{}')
+    (source / 'build/example.py').write_text('RESULT = 42\n')
+    (source / 'example.py').write_text("__file__ = str(__import__('pathlib').Path(__file__).parent / 'build' / 'example.py')\nexec(compile(open(__file__, 'rb').read(), __file__, 'exec'))\n")
+
+    package = tmp_path / 'package'
+    manifest = rebuild_package.export(root, package)
+    assert 'scripts/build/example.py' in manifest['files']
+    assert runpy.run_path(str(package / 'scripts/example.py'))['RESULT'] == 42
+
+    destination = tmp_path / 'restored'
+    rebuild_install._restore_missing_inputs(package, destination)
+    assert runpy.run_path(str(destination / 'example.py'))['RESULT'] == 42
