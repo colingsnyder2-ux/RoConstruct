@@ -1,0 +1,42 @@
+{
+  "base": "02bb49bbe7d8ffb00bcc3b0ad175c61f4cc52357",
+  "moves": [
+    {
+      "old": "rebuild/2008-06/base_check.py",
+      "new": "rebuild/2008-06/build/base_check.py",
+      "original_sha256": "42f9cc603e5bcbcbf145c5a921a1d15c601c51e4d9aa4046ab9939b5394f9040",
+      "relocated_sha256": "a770ced8d987840757324eaa7e132aa69deea07187fc29703481a743c010b1ec"
+    },
+    {
+      "old": "rebuild/2008-06/header_catalog.py",
+      "new": "rebuild/2008-06/build/header_catalog.py",
+      "original_sha256": "6fea516f7ea5fe4111fcf16cf190d8455203ac53b274968bbf291f539cc378ab",
+      "relocated_sha256": "6b8c21cae9522cfcec7fb62bb7eb4a30624d72430ca7a7316769bd31d0289671"
+    },
+    {
+      "old": "rebuild/2008-06/layout_map.py",
+      "new": "rebuild/2008-06/build/layout_map.py",
+      "original_sha256": "f79ca89c728818ee36bd1a8eff81a9d39669001d27cbf52677d9c06b6a06d52e",
+      "relocated_sha256": "a003f4d972d01c4ef5d0d06e0357b95311bcd821952d11bd75975e06c55a0db7"
+    },
+    {
+      "old": "rebuild/2008-06/size_check.py",
+      "new": "rebuild/2008-06/build/size_check.py",
+      "original_sha256": "f1d208546dfe3e2371740a69e55e350d92ccea5d5371851201225c75befb3865",
+      "relocated_sha256": "932b4327e5e8b44c80b63b9bd0fcd680c152a4103250d1a0aadf5e39c02261cf"
+    },
+    {
+      "old": "rebuild/2008-06/swap_build.py",
+      "new": "rebuild/2008-06/build/swap_build.py",
+      "original_sha256": "eee0792980b0c4d910f1234a22ce0915673d8cdd207fe86afee0a3afbdacaa5c",
+      "relocated_sha256": "a6f370545c914a01060cf7cafda3c302fc98f606e726312c27c4fee386797bec"
+    },
+    {
+      "old": "rebuild/2008-06/swap_plan.py",
+      "new": "rebuild/2008-06/build/swap_plan.py",
+      "original_sha256": "b8a1bbc832f4be509173add2479fce6108d82db6594bc2c4258407e9c5471c3f",
+      "relocated_sha256": "87611839ec9bfedd7c92c39c17d3244ad3cde86d1ee470d9dc13d1d9bd4f3d02"
+    }
+  ],
+  "scope": "Only file-relative root depth changed; compatibility entry points retained."
+}
