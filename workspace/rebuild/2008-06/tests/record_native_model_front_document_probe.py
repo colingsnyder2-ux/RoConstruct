@@ -1,8 +1,3 @@
-import hashlib,json,re,sys
-from pathlib import Path
-root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import rebuild
-out=root/'rebuild/2008-06/out/native-layouts';work=out/'document-swap-link-trial';proof=root/'work/2008-06/shared-layouts';basepath=proof/'document-swap-provider-trial.json';base=json.loads(basepath.read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-for path,value in base['objects'].items():assert sha(root/path)==value,('stale baseline',path)
-a=json.loads((proof/'model-set-front-tool-factory-trial.json').read_text());b=json.loads((proof/'model-set-front-methods-trial.json').read_text());c=json.loads((proof/'top-level-pv-parent-trial.json').read_text()); objects=[out/'NativeTopLevelPVParentLink.obj',out/'NativeModelSetFrontToolFactoryTrial.obj',out/'NativeModelSetFrontMethodsTrial.obj'];expected=[c['link_object_sha256'],a['object_sha256'],b['object_sha256']]
-for p,h in zip(objects,expected):assert sha(p)==h,('stale object',p)
-args=[('/OUT:NativeDocModelFrontProbe.exe' if x.upper().startswith('/OUT:') else '/MAP:NativeDocModelFrontProbe.map' if x.upper().startswith('/MAP:') else x) for x in base['link_flags']]+list(map(str,objects));code,log=rebuild.run(rebuild.toolchain(21022),'link',args,work);(work/'NativeDocModelFrontProbe.log').write_text(log);errors=[x for x in log.splitlines() if re.search(r'\berror LNK(?:2001|2019|2005)\b',x)];receipt={'scope':'Isolated incompatible ABI diagnostic; never run.','baseline_errors':len(base['errors']),'baseline_receipt_sha256':sha(basepath),'link_exit':code,'errors':errors,'objects':{str(p.relative_to(root)):sha(p) for p in objects},'observer_sha256':sha(Path(__file__))};(proof/'model-front-document-probe.json').write_text(json.dumps(receipt,indent=2)+'\n');print('Model front probe: exit',code,'errors',len(errors),'baseline',len(base['errors']))
+# Compatibility entry point; implementation is in matching/.
+__file__ = str(__import__('pathlib').Path(__file__).parent / 'matching' / 'record_native_model_front_document_probe.py')
+exec(compile(open(__file__, 'rb').read(), __file__, 'exec'))
