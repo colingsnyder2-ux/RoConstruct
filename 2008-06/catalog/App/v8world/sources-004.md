@@ -3,6 +3,149 @@
 [Project index](README.md) · [Previous](sources-003.md) · [Next](sources-005.md)
 
 <details>
+<summary>native-classes/WorldJointRigid.cpp — diverged; 6 content versions</summary>
+
+**`2e40da8d9bcc`** · `native-classes/WorldJointRigid.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/WorldJointRigid.cpp`
+- local · `local/findings/2008-06/native-classes/WorldJointRigid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`523a9e80554c`** · `native-classes/WorldJointRigid.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/WorldJointRigid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`680011934a41`** · `native-classes/WorldJointRigid.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/WorldJointRigid.cpp)
+- fork · mewpokemons · [native-classes/WorldJointRigid.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/WorldJointRigid.cpp)
+- fork · mewpokemons · [native-classes/WorldJointRigid.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/WorldJointRigid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/WorldJointRigid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/WorldJointRigid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/WorldJointRigid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/WorldJointRigid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/WorldJointRigid.cpp)
+
+<details><summary>7 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/WorldJointRigid.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/WorldJointRigid.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/WorldJointRigid.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/WorldJointRigid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/WorldJointRigid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/WorldJointRigid.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-classes/WorldJointRigid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7942421ce9df`** · `native-classes/WorldJointRigid.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/WorldJointRigid.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/WorldJointRigid.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/WorldJointRigid.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/WorldJointRigid.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/WorldJointRigid.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/WorldJointRigid.cpp)
+
+**`7990f13a235d`** · `native-classes/WorldJointRigid.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/WorldJointRigid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`8626f2118f82`** · `native-classes/WorldJointRigid.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/WorldJointRigid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/WorldJointRotate.cpp — diverged; 7 content versions</summary>
+
+**`1d1600cf2035`** · `native-classes/WorldJointRotate.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/WorldJointRotate.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`4d197a901794`** · `native-classes/WorldJointRotate.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/WorldJointRotate.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/WorldJointRotate.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/WorldJointRotate.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/WorldJointRotate.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/WorldJointRotate.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/WorldJointRotate.cpp)
+
+**`d453fd8812a6`** · `native-classes/WorldJointRotate.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/WorldJointRotate.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e9e3d96238e3`** · `native-classes/WorldJointRotate.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/WorldJointRotate.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`efdb2d12e2fa`** · `native-classes/WorldJointRotate.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/WorldJointRotate.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`f5eda48305c3`** · `native-classes/WorldJointRotate.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/WorldJointRotate.cpp`
+- local · `local/findings/2008-06/native-classes/WorldJointRotate.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`fdd555cbadf3`** · `native-classes/WorldJointRotate.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/WorldJointRotate.cpp)
+- fork · mewpokemons · [native-classes/WorldJointRotate.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/WorldJointRotate.cpp)
+- fork · mewpokemons · [native-classes/WorldJointRotate.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/WorldJointRotate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/WorldJointRotate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/WorldJointRotate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/WorldJointRotate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/WorldJointRotate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/WorldJointRotate.cpp)
+
+<details><summary>6 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/WorldJointRotate.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/WorldJointRotate.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/WorldJointRotate.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/WorldJointRotate.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/WorldJointRotate.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-classes/WorldJointRotate.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>native-headers/CWorkspace.h — diverged; 13 content versions</summary>
 
 **`0897e0b76e49`** · `native-headers/CWorkspace.h` · proof not assessed
@@ -204,6 +347,7 @@
 - canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
 - canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
 - canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
+- canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
 
 <details><summary>12 retained local origins</summary>
 
@@ -269,6 +413,7 @@
 - public · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/CWorkspace.h)
 - public · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/CWorkspace.h)
 - public · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/CWorkspace.h)
+- public · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/CWorkspace.h)
 
 **`e9af73bb8bda`** · `native-headers/CWorkspace.h` · proof not assessed
 
@@ -323,6 +468,7 @@
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h)
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h)
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h)
+- canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h)
 
 <details><summary>10 retained local origins</summary>
 
@@ -370,6 +516,7 @@
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/Network/PhysicsReplication.h)
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/Network/PhysicsReplication.h)
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/Network/PhysicsReplication.h)
+- public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/Network/PhysicsReplication.h)
 
 </details>
 
@@ -395,6 +542,7 @@
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h)
+- canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h)
 
 <details><summary>12 retained local origins</summary>
 
@@ -442,6 +590,7 @@
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/camera-zoom/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/camera-zoom/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/camera-zoom/util/Extents.h)
+- public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/camera-zoom/util/Extents.h)
 
 **`a8a25574fc0b`** · `native-headers/camera-zoom/util/Extents.h` · proof not assessed
 
@@ -481,6 +630,7 @@
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
+- canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 
 <details><summary>8 retained local origins</summary>
 
@@ -526,6 +676,7 @@
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/humanoid/Humanoid.h)
+- public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/humanoid/Humanoid.h)
 
 **`cd0e528b42e4`** · `native-headers/humanoid/Humanoid.h` · proof not assessed
 
@@ -567,6 +718,7 @@
 - draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
 - draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
 - draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
+- draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -655,6 +807,7 @@
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 
 **`aaa7b9ac7462`** · `native-headers/humanoid/HumanoidFloorFields.h` · proof not assessed
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
@@ -666,6 +819,7 @@
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 
 <details><summary>12 retained local origins</summary>
 
@@ -814,6 +968,7 @@
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
 
 <details><summary>12 retained local origins</summary>
 
@@ -1003,6 +1158,7 @@
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/humanoid/HumanoidState.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/humanoid/HumanoidState.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/humanoid/HumanoidState.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/humanoid/HumanoidState.h)
 
 **`b8a612b088fe`** · `native-headers/humanoid/HumanoidState.h` · proof not assessed
 
@@ -1032,6 +1188,7 @@
 - public · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/humanoid/HumanoidStates1.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/humanoid/HumanoidStates1.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/humanoid/HumanoidStates1.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/humanoid/HumanoidStates1.h)
 
 **`32c70bc03bd5`** · `native-headers/humanoid/HumanoidStates1.h` · proof not assessed
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h)
@@ -1043,6 +1200,7 @@
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h)
 
 <details><summary>9 retained local origins</summary>
 
@@ -1135,6 +1293,7 @@
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h)
 
 <details><summary>9 retained local origins</summary>
 
@@ -1185,6 +1344,7 @@
 - public · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/humanoid/HumanoidStates2.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/humanoid/HumanoidStates2.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/humanoid/HumanoidStates2.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/humanoid/HumanoidStates2.h)
 
 **`8e71665e3a0b`** · `native-headers/humanoid/HumanoidStates2.h` · proof not assessed
 
@@ -1242,6 +1402,7 @@
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h)
 
 <details><summary>8 retained local origins</summary>
 
@@ -1300,6 +1461,7 @@
 - public · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/humanoid/HumanoidStates3.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/humanoid/HumanoidStates3.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/humanoid/HumanoidStates3.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/humanoid/HumanoidStates3.h)
 
 </details>
 
@@ -1312,6 +1474,7 @@
 - public · colingsnyder2-ux · [humanoid/HumanoidStates3SimJob.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates3SimJob.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates3SimJob.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidStates3SimJob.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h)
 
 **`0a5f3cf72cf5`** · `native-headers/humanoid/HumanoidStates3SimJob.h` · proof not assessed
 
@@ -1358,6 +1521,7 @@
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/part-embedded/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/part-embedded/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/part-embedded/util/Extents.h)
+- canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/part-embedded/util/Extents.h)
 
 <details><summary>8 retained local origins</summary>
 
@@ -1422,195 +1586,13 @@
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/part-embedded/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/part-embedded/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/part-embedded/util/Extents.h)
+- public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/part-embedded/util/Extents.h)
 
 **`97455da40190`** · `native-headers/part-embedded/util/Extents.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
 - local · `rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-headers/part-embedded/v8world/Primitive.h — diverged; 6 content versions</summary>
-
-**`4257cee627b4`** · `native-headers/part-embedded/v8world/Primitive.h` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h`
-- local · `local/findings/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`6bee1e3a6f79`** · `native-headers/part-embedded/v8world/Primitive.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`9f2c3a69dc2b`** · `native-headers/part-embedded/v8world/Primitive.h` · proof not assessed
-- canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-- fork · mewpokemons · [v8world/Primitive.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-- fork · mewpokemons · [v8world/Primitive.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-- canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-- canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-- canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-- canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-
-<details><summary>8 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`c2204c7dff22`** · `native-headers/part-embedded/v8world/Primitive.h` · proof not assessed
-
-<details><summary>20 retained local origins</summary>
-
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e64af1ef03a6`** · `native-headers/part-embedded/v8world/Primitive.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e81aa7c089ce`** · `native-headers/part-embedded/v8world/Primitive.h` · proof not assessed
-- public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-- public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-- public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-- public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-- public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/part-embedded/v8world/Primitive.h)
-
-</details>
-
-<details>
-<summary>native-headers/part-resize/G3D/Matrix3.h — equivalent; 6 content versions</summary>
-
-**`017137c71513`** · `native-headers/part-resize/G3D/Matrix3.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`5698a18cad6f`** · `native-headers/part-resize/G3D/Matrix3.h` · proof not assessed
-- public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- fork · mewpokemons · [G3D/Matrix3.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- fork · mewpokemons · [G3D/Matrix3.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-
-<details><summary>8 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`5a618c96ab73`** · `native-headers/part-resize/G3D/Matrix3.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`8aa290f66c44`** · `native-headers/part-resize/G3D/Matrix3.h` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h`
-- local · `local/findings/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`93c0a9958119`** · `native-headers/part-resize/G3D/Matrix3.h` · proof not assessed
-
-<details><summary>20 retained local origins</summary>
-
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e0d1989387ba`** · `native-headers/part-resize/G3D/Matrix3.h` · proof not assessed
-- archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-- archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `work/native-candidates/instance-organization-20261107/navigation/preserved-previous/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 
 </details>
 

@@ -3,6 +3,141 @@
 [Project index](README.md) · [Previous](sources-003.md) · [Next](sources-005.md)
 
 <details>
+<summary>native-classes/PhysicsServiceProvider.cpp — public-only; 5 content versions</summary>
+
+**`0ccb7f1798eb`** · `native-classes/PhysicsServiceProvider.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/PhysicsServiceProvider.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`55e829551bb5`** · `native-classes/PhysicsServiceProvider.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/0e2be92db98e7097a2a13147fc31cfd472bfbb20bc92800c672ed4f50ff25b76/rebuild/2008-06/native-classes/PhysicsServiceProvider.cpp)
+- draft · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/0e2be92db98e7097a2a13147fc31cfd472bfbb20bc92800c672ed4f50ff25b76/rebuild/2008-06/native-classes/PhysicsServiceProvider.cpp)
+- draft · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/0e2be92db98e7097a2a13147fc31cfd472bfbb20bc92800c672ed4f50ff25b76/rebuild/2008-06/native-classes/PhysicsServiceProvider.cpp)
+- draft · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/0e2be92db98e7097a2a13147fc31cfd472bfbb20bc92800c672ed4f50ff25b76/rebuild/2008-06/native-classes/PhysicsServiceProvider.cpp)
+- draft · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/0e2be92db98e7097a2a13147fc31cfd472bfbb20bc92800c672ed4f50ff25b76/rebuild/2008-06/native-classes/PhysicsServiceProvider.cpp)
+- draft · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/0e2be92db98e7097a2a13147fc31cfd472bfbb20bc92800c672ed4f50ff25b76/rebuild/2008-06/native-classes/PhysicsServiceProvider.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- draft-upload · `drafts/files/0e2be92db98e7097a2a13147fc31cfd472bfbb20bc92800c672ed4f50ff25b76/rebuild/2008-06/native-classes/PhysicsServiceProvider.cpp`
+
+</details>
+
+**`8e76a9fdb85f`** · `native-classes/PhysicsServiceProvider.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/PhysicsServiceProvider.cpp)
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/PhysicsServiceProvider.cpp)
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/PhysicsServiceProvider.cpp)
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/PhysicsServiceProvider.cpp)
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/PhysicsServiceProvider.cpp)
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/PhysicsServiceProvider.cpp)
+
+**`c0cedaf578f7`** · `native-classes/PhysicsServiceProvider.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/PhysicsServiceProvider.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d5b1ebc68451`** · `native-classes/PhysicsServiceProvider.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/PhysicsServiceProvider.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/PhysicsServiceSignals.cpp — diverged; 6 content versions</summary>
+
+**`1ae041e001e6`** · `native-classes/PhysicsServiceSignals.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp`
+- local · `local/findings/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`2348cd3985af`** · `native-classes/PhysicsServiceSignals.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`4e7e2614d308`** · `native-classes/PhysicsServiceSignals.cpp` · proof not assessed
+
+<details><summary>5 retained local origins</summary>
+
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a9354faf24e6`** · `native-classes/PhysicsServiceSignals.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`bb6e63dfba90`** · `native-classes/PhysicsServiceSignals.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- public · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/PhysicsServiceSignals.cpp)
+
+**`f54f8a603250`** · `native-classes/PhysicsServiceSignals.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- fork · mewpokemons · [native-classes/PhysicsServiceSignals.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- fork · mewpokemons · [native-classes/PhysicsServiceSignals.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PhysicsServiceSignals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp)
+
+<details><summary>6 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/RootInstance.cpp — candidate-only; 1 content versions</summary>
+
+**`d651cf05c4a5`** · `native-classes/RootInstance.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/RootInstance.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>native-classes/RunService.cpp — equivalent; 14 content versions</summary>
 
 **`0176535763a3`** · `native-classes/RunService.cpp` · proof not assessed
@@ -11,6 +146,7 @@
 - archive · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/RunService.cpp)
 - archive · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/RunService.cpp)
 - archive · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/RunService.cpp)
+- archive · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/RunService.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -141,6 +277,7 @@
 - draft · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/RunService.cpp)
 - draft · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/RunService.cpp)
 - draft · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/RunService.cpp)
+- draft · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/RunService.cpp)
 
 <details><summary>3 retained local origins</summary>
 
@@ -266,6 +403,8 @@
 - canonical · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/RunService.cpp)
 - public · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/RunService.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/RunService.cpp)
+- public · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/RunService.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/RunService.cpp)
 
 </details>
 
@@ -303,6 +442,7 @@
 - public · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/RunServiceClassName.cpp)
+- public · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/RunServiceClassName.cpp)
 
 **`dfac8a7babc8`** · `native-classes/RunServiceClassName.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/RunServiceClassName.cpp)
@@ -312,6 +452,7 @@
 - canonical · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/RunServiceClassName.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/RunServiceClassName.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -355,6 +496,7 @@
 - public · colingsnyder2-ux · [native-classes/RunServiceCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/RunServiceCreate.cpp)
 - public · colingsnyder2-ux · [native-classes/RunServiceCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/RunServiceCreate.cpp)
 - public · colingsnyder2-ux · [native-classes/RunServiceCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/RunServiceCreate.cpp)
+- public · colingsnyder2-ux · [native-classes/RunServiceCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/RunServiceCreate.cpp)
 
 **`9e62e7659d9a`** · `native-classes/RunServiceCreate.cpp` · proof not assessed
 
@@ -407,6 +549,7 @@
 - public · colingsnyder2-ux · [native-classes/RunServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/RunServiceFind.cpp)
 - public · colingsnyder2-ux · [native-classes/RunServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/RunServiceFind.cpp)
 - public · colingsnyder2-ux · [native-classes/RunServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/RunServiceFind.cpp)
+- public · colingsnyder2-ux · [native-classes/RunServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/RunServiceFind.cpp)
 
 </details>
 
@@ -419,6 +562,7 @@
 - public · colingsnyder2-ux · [native-classes/SelectionAncestorListener.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SelectionAncestorListener.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionAncestorListener.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SelectionAncestorListener.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionAncestorListener.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SelectionAncestorListener.cpp)
+- public · colingsnyder2-ux · [native-classes/SelectionAncestorListener.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/SelectionAncestorListener.cpp)
 
 **`a9ec66fe1e3c`** · `native-classes/SelectionAncestorListener.cpp` · proof not assessed
 
@@ -472,6 +616,7 @@
 - public · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SelectionBack.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SelectionBack.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SelectionBack.cpp)
+- public · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/SelectionBack.cpp)
 
 **`4d67a984d29d`** · `native-classes/SelectionBack.cpp` · proof not assessed
 
@@ -498,6 +643,7 @@
 - canonical · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/SelectionBack.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/SelectionBack.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/SelectionBack.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/SelectionBack.cpp)
 
 <details><summary>8 retained local origins</summary>
 
@@ -547,6 +693,7 @@
 - public · colingsnyder2-ux · [native-classes/SelectionBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SelectionBase.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SelectionBase.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SelectionBase.cpp)
+- public · colingsnyder2-ux · [native-classes/SelectionBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/SelectionBase.cpp)
 
 **`9564434cb447`** · `native-classes/SelectionBase.cpp` · proof not assessed
 
@@ -567,6 +714,7 @@
 - public · colingsnyder2-ux · [native-classes/SelectionCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SelectionCreate.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SelectionCreate.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SelectionCreate.cpp)
+- public · colingsnyder2-ux · [native-classes/SelectionCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/SelectionCreate.cpp)
 
 **`86e84625e188`** · `native-classes/SelectionCreate.cpp` · proof not assessed
 
@@ -615,6 +763,7 @@
 - canonical · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/SelectionFront.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/SelectionFront.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/SelectionFront.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/SelectionFront.cpp)
 
 <details><summary>32 retained local origins</summary>
 
@@ -676,6 +825,7 @@
 - public · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SelectionFront.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SelectionFront.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SelectionFront.cpp)
+- public · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/SelectionFront.cpp)
 
 **`ee98a5a7bcff`** · `native-classes/SelectionFront.cpp` · proof not assessed
 
@@ -733,6 +883,7 @@
 - canonical · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/SelectionGroup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/SelectionGroup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/SelectionGroup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/SelectionGroup.cpp)
 
 <details><summary>10 retained local origins</summary>
 
@@ -764,6 +915,7 @@
 - public · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SelectionGroup.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SelectionGroup.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SelectionGroup.cpp)
+- public · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/SelectionGroup.cpp)
 
 **`984d22aade80`** · `native-classes/SelectionGroup.cpp` · proof not assessed
 
@@ -868,6 +1020,7 @@
 - public · colingsnyder2-ux · [native-classes/SelectionIterators.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SelectionIterators.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionIterators.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SelectionIterators.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionIterators.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SelectionIterators.cpp)
+- public · colingsnyder2-ux · [native-classes/SelectionIterators.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/SelectionIterators.cpp)
 
 **`923bc9e7dba2`** · `native-classes/SelectionIterators.cpp` · proof not assessed
 
@@ -904,6 +1057,7 @@
 - public · colingsnyder2-ux · [native-classes/SelectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SelectionLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SelectionLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SelectionLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/SelectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/SelectionLifetime.cpp)
 
 **`4821b00e6c3f`** · `native-classes/SelectionLifetime.cpp` · proof not assessed
 
@@ -964,6 +1118,7 @@
 - public · colingsnyder2-ux · [native-classes/SelectionMutations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SelectionMutations.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionMutations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SelectionMutations.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionMutations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SelectionMutations.cpp)
+- public · colingsnyder2-ux · [native-classes/SelectionMutations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/SelectionMutations.cpp)
 
 </details>
 
@@ -984,6 +1139,7 @@
 - public · colingsnyder2-ux · [native-classes/SelectionRemove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SelectionRemove.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionRemove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SelectionRemove.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionRemove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SelectionRemove.cpp)
+- public · colingsnyder2-ux · [native-classes/SelectionRemove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/SelectionRemove.cpp)
 
 **`b0c08838aae6`** · `native-classes/SelectionRemove.cpp` · proof not assessed
 
@@ -1012,6 +1168,7 @@
 - draft · colingsnyder2-ux · [native-classes/SerializerLoadInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/ee18cd0f4770dd7c83e911a30ddb85a8119ddb0e2cd94bdc86a9b98c5ce67030/rebuild/2008-06/native-classes/SerializerLoadInstances.cpp)
 - draft · colingsnyder2-ux · [native-classes/SerializerLoadInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/ee18cd0f4770dd7c83e911a30ddb85a8119ddb0e2cd94bdc86a9b98c5ce67030/rebuild/2008-06/native-classes/SerializerLoadInstances.cpp)
 - draft · colingsnyder2-ux · [native-classes/SerializerLoadInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/ee18cd0f4770dd7c83e911a30ddb85a8119ddb0e2cd94bdc86a9b98c5ce67030/rebuild/2008-06/native-classes/SerializerLoadInstances.cpp)
+- draft · colingsnyder2-ux · [native-classes/SerializerLoadInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/ee18cd0f4770dd7c83e911a30ddb85a8119ddb0e2cd94bdc86a9b98c5ce67030/rebuild/2008-06/native-classes/SerializerLoadInstances.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -1038,6 +1195,8 @@
 - canonical · colingsnyder2-ux · [native-classes/SerializerLoadInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/SerializerLoadInstances.cpp)
 - public · colingsnyder2-ux · [native-classes/SerializerLoadInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SerializerLoadInstances.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SerializerLoadInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/SerializerLoadInstances.cpp)
+- public · colingsnyder2-ux · [native-classes/SerializerLoadInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/SerializerLoadInstances.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SerializerLoadInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/SerializerLoadInstances.cpp)
 
 <details><summary>3 retained local origins</summary>
 
@@ -1096,6 +1255,7 @@
 - public · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ServiceChangeHistory.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ServiceChangeHistory.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ServiceChangeHistory.cpp)
+- public · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/ServiceChangeHistory.cpp)
 
 **`a6523cfad056`** · `native-classes/ServiceChangeHistory.cpp` · proof not assessed
 
@@ -1169,6 +1329,7 @@
 - canonical · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/ServiceChangeHistory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/ServiceChangeHistory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/ServiceChangeHistory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/ServiceChangeHistory.cpp)
 
 <details><summary>7 retained local origins</summary>
 
@@ -1201,6 +1362,7 @@
 - public · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ServiceLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ServiceLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ServiceLookup.cpp)
+- public · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/ServiceLookup.cpp)
 
 **`598dc992c809`** · `native-classes/ServiceLookup.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/ServiceLookup.cpp)
@@ -1212,6 +1374,7 @@
 - canonical · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/ServiceLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/ServiceLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/ServiceLookup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/ServiceLookup.cpp)
 
 <details><summary>33 retained local origins</summary>
 
@@ -1314,6 +1477,7 @@
 - public · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ServiceProvider.cpp)
+- public · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/ServiceProvider.cpp)
 
 **`1425f27f4674`** · `native-classes/ServiceProvider.cpp` · proof not assessed
 - fork · coldek · [native-classes/ServiceProvider.cpp](https://github.com/coldek/RoConstruct/blob/6da8e40862d5e855f1161fc0e18cf67b9c34dd32/rebuild/2008-06/native-classes/ServiceProvider.cpp)
@@ -1514,6 +1678,7 @@
 - canonical · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/ServiceProvider.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/ServiceProvider.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -1549,342 +1714,6 @@
 <details><summary>1 retained local origins</summary>
 
 - local · `work/fork-merge/rebuild/2008-06/native-classes/ServiceProvider.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/ServiceSelection.cpp — diverged; 9 content versions</summary>
-
-**`2dad7fe35f70`** · `native-classes/ServiceSelection.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`3f426300944d`** · `native-classes/ServiceSelection.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ServiceSelection.cpp)
-- public · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ServiceSelection.cpp)
-- public · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ServiceSelection.cpp)
-- public · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ServiceSelection.cpp)
-- public · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ServiceSelection.cpp)
-
-**`4456c903a40f`** · `native-classes/ServiceSelection.cpp` · proof not assessed
-
-<details><summary>6 retained local origins</summary>
-
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`463a691b447d`** · `native-classes/ServiceSelection.cpp` · proof not assessed
-- fork · coldek · [native-classes/ServiceSelection.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/ServiceSelection.cpp)
-- fork · mewpokemons · [native-classes/ServiceSelection.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/ServiceSelection.cpp)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `work/fork-merge/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`51118f8a5373`** · `native-classes/ServiceSelection.cpp` · proof not assessed
-
-<details><summary>23 retained local origins</summary>
-
-- local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-classes/ServiceSelection.cpp`
-- local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-classes/ServiceSelection.cpp`
-- local-branch refs/heads/codex/worker-selection-verbs@dd86b261e5b6 · `rebuild/2008-06/native-classes/ServiceSelection.cpp`
-- local · `work/crobloxview-20261102/t/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc-family36/native/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc-profile36/native/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc36-verified/native/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/01fcaea6f458429ea23a1a352fa78420/baseline/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/1ea4b9b1e55f48df88a82b90bce02d25/baseline/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/31c53bb11920499fb14ddd67eab86efd/baseline/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/404207f3dd994afea90c21faab1bb40f/baseline/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/6e8152cfcc714356b9f3c387a179bbc8/baseline/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/79bc7d7cb8ad45a79e802e2bce046b15/baseline/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/81ffdb19a75c46e7b336ae0d0590b9f6/fresh/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/9c3f5c68e9d841c6a6e5713ef7ea9c30/baseline/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/a1874d20df534725989e50ff79e51134/baseline/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/b5d1820eb523462cadc9851a09d7750f/fresh/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/cbeba8a70d344a2d92df5f30594aaadb/baseline/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/cdf37903cca64c0a863e72838810d45f/baseline/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/eba92580a2604fab9ae8cfbe179709eb/baseline/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/eecb7fb8989948e398d817d2f6d5ed98/fresh/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/f1e2aa567d13498daabcabda8b0dd77a/fresh/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/fe24b1df657942b9b9250095cc272863/fresh/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`6f1f05319da2`** · `native-classes/ServiceSelection.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/ServiceSelection.cpp`
-- local · `local/findings/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`7eb4a9fdeca9`** · `native-classes/ServiceSelection.cpp` · proof not assessed
-
-<details><summary>13 retained local origins</summary>
-
-- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/work/native-linked-preflight/8e9fcab8892f714812de/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/frontier32/sources/b76888298c47a3ce6e3586e0ce5a161ebbe2a424f2598b955b2b31156ea4682a/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/frontier32b/sources/422dbed0f612931d7674b22d903e61e2ee654fb1eb3bd971f6cbd83fb5e8f0d9/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/isolated-shared/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/214e357ba17c4ac6917a7659fbf5ebc1/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/466271fd73b04d98b6ab25de7157cd99/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/7775a876ba004a8c8bc0a9a2c0b49899/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d1691806d60f4c859f52cd53ed27c9f4/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d17290f6ed374eab91f15e00713e9ed0/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/server-sources/932c654cf0dfd88cece9fae6cacdd1d3378274f6d3dd0988c7b5cf4a62ba61b6/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/snapshots/9ee4d7199524430889c270df6f00680b/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/script-context/snapshot/d28939faef5424a478f22570af009465f94e3dd76fad26484c9c2818f16acc85/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`c37804174e13`** · `native-classes/ServiceSelection.cpp` · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/ServiceSelection.cpp)
-- fork · mewpokemons · [native-classes/ServiceSelection.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/ServiceSelection.cpp)
-- fork · mewpokemons · [native-classes/ServiceSelection.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ServiceSelection.cpp)
-- canonical · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/ServiceSelection.cpp)
-- canonical · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/ServiceSelection.cpp)
-- canonical · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/ServiceSelection.cpp)
-- canonical · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/ServiceSelection.cpp)
-
-<details><summary>7 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`fca87dfc90f6`** · `native-classes/ServiceSelection.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/ServiceSelection.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/SoundServiceFind.cpp — public-only; 4 content versions</summary>
-
-**`0e91e984362f`** · `native-classes/SoundServiceFind.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/SoundServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/SoundServiceFind.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/SoundServiceFind.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SoundServiceFind.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SoundServiceFind.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SoundServiceFind.cpp)
-
-**`47adc0190bca`** · `native-classes/SoundServiceFind.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/SoundServiceFind.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`51162ea24d3f`** · `native-classes/SoundServiceFind.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/SoundServiceFind.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`76e8fa6d87b4`** · `native-classes/SoundServiceFind.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-classes/SoundServiceFind.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/SoundServicePlay.cpp — diverged; 6 content versions</summary>
-
-**`6219deec685a`** · `native-classes/SoundServicePlay.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`850c87d111ca`** · `native-classes/SoundServicePlay.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/SoundServicePlay.cpp`
-- local · `local/findings/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`8775911ac968`** · `native-classes/SoundServicePlay.cpp` · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
-- fork · coldek · [native-classes/SoundServicePlay.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
-- fork · mewpokemons · [native-classes/SoundServicePlay.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
-- fork · mewpokemons · [native-classes/SoundServicePlay.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
-- fork · mewpokemons · [native-classes/SoundServicePlay.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
-- canonical · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
-- canonical · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
-- canonical · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
-- canonical · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
-
-<details><summary>15 retained local origins</summary>
-
-- local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-classes/SoundServicePlay.cpp`
-- local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-classes/SoundServicePlay.cpp`
-- local-branch refs/heads/codex/worker-selection-verbs@dd86b261e5b6 · `rebuild/2008-06/native-classes/SoundServicePlay.cpp`
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/crobloxview-20261102/t/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/fe24b1df657942b9b9250095cc272863/fresh/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`a6d90ec4c3c9`** · `native-classes/SoundServicePlay.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ed8844f9b19d`** · `native-classes/SoundServicePlay.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/SoundServicePlay.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/SoundServicePlay.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SoundServicePlay.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SoundServicePlay.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SoundServicePlay.cpp)
-
-**`fd6782f95d00`** · `native-classes/SoundServicePlay.cpp` · proof not assessed
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/isolated-shared/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/214e357ba17c4ac6917a7659fbf5ebc1/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/466271fd73b04d98b6ab25de7157cd99/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/7775a876ba004a8c8bc0a9a2c0b49899/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d1691806d60f4c859f52cd53ed27c9f4/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d17290f6ed374eab91f15e00713e9ed0/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/server-sources/932c654cf0dfd88cece9fae6cacdd1d3378274f6d3dd0988c7b5cf4a62ba61b6/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/snapshots/9ee4d7199524430889c270df6f00680b/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/script-context/snapshot/d28939faef5424a478f22570af009465f94e3dd76fad26484c9c2818f16acc85/rebuild/2008-06/native-classes/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/SoundServiceProvider.cpp — diverged; 6 content versions</summary>
-
-**`21c7c5737699`** · `native-classes/SoundServiceProvider.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/SoundServiceProvider.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/SoundServiceProvider.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/SoundServiceProvider.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/SoundServiceProvider.cpp)
-- public · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/SoundServiceProvider.cpp)
-
-**`34442a191825`** · `native-classes/SoundServiceProvider.cpp` · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/SoundServiceProvider.cpp)
-- fork · mewpokemons · [native-classes/SoundServiceProvider.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/SoundServiceProvider.cpp)
-- fork · mewpokemons · [native-classes/SoundServiceProvider.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/SoundServiceProvider.cpp)
-- canonical · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/SoundServiceProvider.cpp)
-- canonical · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/SoundServiceProvider.cpp)
-- canonical · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/SoundServiceProvider.cpp)
-- canonical · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/SoundServiceProvider.cpp)
-
-<details><summary>6 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`4a767e2427b0`** · `native-classes/SoundServiceProvider.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/SoundServiceProvider.cpp`
-- local · `local/findings/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`810b7992dd30`** · `native-classes/SoundServiceProvider.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`a7ff92966310`** · `native-classes/SoundServiceProvider.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`fed75d011b62`** · `native-classes/SoundServiceProvider.cpp` · proof not assessed
-
-<details><summary>5 retained local origins</summary>
-
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/SoundServiceProvider.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/SpawnerService.cpp — candidate-only; 1 content versions</summary>
-
-**`4e15a957743e`** · `native-classes/SpawnerService.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/SpawnerService.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

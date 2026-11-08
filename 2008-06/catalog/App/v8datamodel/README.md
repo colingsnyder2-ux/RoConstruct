@@ -4,12 +4,13 @@
 
 Expand a native path for every distinct content version. No candidate is auto-promoted.
 
-- [native-classes/ActiveDataModel.cpp → native-classes/ContentProviderLoadContent.cpp](sources-001.md)
-- [native-classes/ContentProviderRegisterFile.cpp → native-classes/GameSettingsSingleton.cpp](sources-002.md)
-- [native-classes/GameSettingsStorage.cpp → native-classes/RootInstance.cpp](sources-003.md)
-- [native-classes/RunService.cpp → native-classes/SpawnerService.cpp](sources-004.md)
-- [native-classes/StarterPackService.cpp → native-headers/runservice-events/util/Events.h](sources-005.md)
-- [native-headers/slingshot-load/util/ContentProvider.h → native-headers/v8datamodel/DebrisService.h](sources-006.md)
-- [native-headers/v8datamodel/DebugSettings.h → native-headers/v8datamodel/JointInstance.h](sources-007.md)
-- [native-headers/v8datamodel/JointsService.h → native-headers/v8datamodel/SelectionChanged.h](sources-008.md)
-- [native-headers/v8datamodel/Sky.h → native-headers/v8datamodel/custommesh.h](sources-009.md)
+- [native-classes/ActiveDataModel.cpp → native-classes/ContentProviderLoad.cpp](sources-001.md)
+- [native-classes/ContentProviderLoadContent.cpp → native-classes/FlagStandService.cpp](sources-002.md)
+- [native-classes/GameSettings.cpp → native-classes/PhysicsServiceLifetime.cpp](sources-003.md)
+- [native-classes/PhysicsServiceProvider.cpp → native-classes/ServiceProvider.cpp](sources-004.md)
+- [native-classes/ServiceSelection.cpp → native-headers/RenderContentProvider.h](sources-005.md)
+- [native-headers/SelectionGroup.h → native-headers/v8datamodel/ChangeHistoryService.h](sources-006.md)
+- [native-headers/v8datamodel/ClickDetector.h → native-headers/v8datamodel/GameSettings.h](sources-007.md)
+- [native-headers/v8datamodel/GeometryService.h → native-headers/v8datamodel/RootInstance.h](sources-008.md)
+- [native-headers/v8datamodel/Seat.h → native-headers/v8datamodel/TimerService.h](sources-009.md)
+- [native-headers/v8datamodel/Tool.h → native-headers/v8datamodel/custommesh.h](sources-010.md)
