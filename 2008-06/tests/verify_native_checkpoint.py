@@ -56,7 +56,9 @@ checks = network_checks + sound_checks if group == 'all' else (network_checks if
 
 def run(name):
     start = time.monotonic()
-    script = tests / name
+    script = tests / 'matching' / name
+    if not script.is_file():
+        script = tests / name
     digest = hashlib.sha256(script.read_bytes()).hexdigest()
     result = subprocess.run([sys.executable, str(script)], cwd=root,
                             stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
