@@ -22,7 +22,7 @@ import native_bind
 from native_bind import XTP_FLAGS, plain, rebuild, sha
 from roc import match
 
-SOURCE = HERE / 'NativeWrapperViewTrial.cpp'
+SOURCE = HERE.parent / 'experiments/trials/NativeWrapperViewTrial.cpp'
 HEADER = ROOT / 'rebuild/2008-06/native-headers/CWrapperView.h'
 LAYOUT = HERE / 'NativeWrapperViewLayout.cpp'
 CLIENT = ROOT / 'clients/2008-06/Roblox.exe'

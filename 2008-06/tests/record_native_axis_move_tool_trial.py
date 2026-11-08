@@ -99,7 +99,7 @@ for prefix, address, expected in [
         assert any(k.startswith(symbol) and v == value for k, v in bindings.items()), (symbol, bindings)
     rows.append({'symbol': name, 'address': hex(address), 'size': len(body), 'exact': True,
                  'bindings': {k: hex(v) for k, v in bindings.items()}})
-hit_source = root / 'rebuild/2008-06/tests/NativeHitMoveHandlesTrial.cpp'
+hit_source = root / 'rebuild/2008-06/experiments/trials/NativeHitMoveHandlesTrial.cpp'
 hit_obj = out / 'NativeHitMoveHandlesTrial.obj'
 code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/fp:fast', '/Fo' + str(hit_obj), str(hit_source)], out); assert code == 0, log
 hit_raw = hit_obj.read_bytes(); sections, symbols, definitions, _ = match._coff_data_index(hit_raw)
@@ -152,7 +152,7 @@ for stem, extra, checks in [
  ('NativeAxisRenderTrial', ['/fp:fast'], [
   ('?render2d@AxisMoveTool', 0x640f30, [('?bounds@AxisMoveTool@', 0x640b40), ('?orange@Color3@', 0x5149b0), ('?handles2d@DrawAdorn@', 0x677b20)]),
   ('?render3dAdorn@AxisMoveTool', 0x641040, [('?bounds@AxisMoveTool@', 0x640b40), ('?getCoordinateFrame@GCamera@', 0x5107b0), ('?handles3d@DrawAdorn@', 0x6776a0)])])]:
-    src = root / ('rebuild/2008-06/tests/' + stem + '.cpp'); output = out / (stem + '.obj')
+    src = root / ('rebuild/2008-06/experiments/trials/' + stem + '.cpp'); src = src if src.is_file() else root / ('rebuild/2008-06/tests/' + stem + '.cpp'); output = out / (stem + '.obj')
     code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + extra + ['/Fo' + str(output), str(src)], out); assert code == 0, log
     compiled = output.read_bytes(); sections, symbols, definitions, _ = match._coff_data_index(compiled)
     for prefix, address, expected in checks:

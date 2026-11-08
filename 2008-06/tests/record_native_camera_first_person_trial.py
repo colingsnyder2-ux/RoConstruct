@@ -16,7 +16,7 @@ patched.write_text(text.replace('bool getCursorCenterLocked() const;', 'bool get
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
 flags.insert(0, '/I' + str(overlay.parent))
-source = root / 'rebuild/2008-06/tests/NativeCameraFirstPersonTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeCameraFirstPersonTrial.cpp'
 obj = out / 'NativeCameraFirstPersonTrial.obj'
 code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/Fo' + str(obj), str(source)], out)
 assert code == 0, log

@@ -54,7 +54,7 @@ checks = [
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 rows, objects = [], []
 for stem, methods in checks:
-    source = root / ('rebuild/2008-06/tests/' + stem + '.cpp'); obj = out / (stem + '.obj')
+    source = root / ('rebuild/2008-06/experiments/trials/' + stem + '.cpp'); source = source if source.is_file() else root / ('rebuild/2008-06/tests/' + stem + '.cpp'); obj = out / (stem + '.obj')
     extra_flags = (['/fp:fast', '/QIfist'] if stem == 'NativeResizeToolMoveTrial' else
                    ['/fp:fast'] if stem in ('NativeClosestRayTrial', 'NativeHandleHitTestTrial', 'NativeHandleRadiusTrial', 'NativeResizeToolRenderTrial') else [])
     code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + extra_flags + ['/Fo' + str(obj), str(source)], out)

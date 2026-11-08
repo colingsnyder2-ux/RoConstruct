@@ -9,7 +9,7 @@ overlay=out/'overlay/v8tree'; overlay.mkdir(parents=True,exist_ok=True)
 hdr=(main/'rebuild/2008-06/native-headers/v8tree/Service.h').read_text(); (overlay/'Service.h').write_text(hdr.replace('    static size_t newIndex();','    static Instance* create(Instance*, const Name&);\n    static size_t newIndex();'))
 (overlay.parent/'StandardVerbs.h').write_text((main/'rebuild/2008-06/native-headers/StandardVerbs.h').read_text())
 flags.insert(0,'/I'+str(overlay.parent))
-source=root/'rebuild/2008-06/tests/NativeInsertServiceTrial.cpp'; obj=out/'NativeInsertServiceTrial.obj'
+source=root/'rebuild/2008-06/experiments/trials/NativeInsertServiceTrial.cpp'; obj=out/'NativeInsertServiceTrial.obj'
 code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(source)],out)
 print(log); assert code==0
 name,body,refs=next(x for x in match.coff_functions(obj.read_bytes()) if x[0].startswith('?doIt@InsertService@@'))

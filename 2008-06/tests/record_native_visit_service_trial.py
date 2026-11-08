@@ -10,7 +10,7 @@ sys.path.insert(0, str(root))
 from roc import match, rebuild
 
 out = root/'rebuild/2008-06/out/native-layouts'
-source = root/'rebuild/2008-06/tests/NativeVisitServiceTrial.cpp'
+source = root/'rebuild/2008-06/experiments/trials/NativeVisitServiceTrial.cpp'
 base = json.loads((root/'work/2008-06/shared-layouts/instance-after-service-link.json').read_text())
 common = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('InstanceLifetime.cpp')]
 flags = [x for x in common if x != '/c'] + ['/DSERVICE_CONTENT_FIND_ONLY','/P',str(source)]

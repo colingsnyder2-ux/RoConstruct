@@ -12,7 +12,7 @@ sys.path.insert(0,str(root))
 from roc import match,rebuild
 
 out = root/'rebuild/2008-06/out/native-layouts'
-source = root/'rebuild/2008-06/tests/NativeDocumentExecuteTrial.cpp'
+source = root/'rebuild/2008-06/experiments/trials/NativeDocumentExecuteTrial.cpp'
 base = json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 flags = [x for x in base['flags'] if x != '/c' and not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp') and x != '/DNOMINMAX']
 flags += ['/D_XTP_STATICLINK','/D_XTPLIB_NOAUTOLINK','/I'+str(root/'tools/libs/xtp-11.2.2/Source'),'/P',str(source)]
@@ -62,7 +62,7 @@ assert match.exact_match(copy_target,copy_targetrefs,copy_body,copy_refs)
 pe = pefile.PE(str(root/'work/2008-06/original-p4-reference/Roblox.exe'))
 assert struct.unpack('<I',pe.get_data(0x850b14+0x214-pe.OPTIONAL_HEADER.ImageBase,4))[0] == 0x6a6f20
 sha = lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-paths = [source,Path(__file__),root/'rebuild/2008-06/tests/NativeContentProviderTrial.cpp',
+paths = [source,Path(__file__),root/'rebuild/2008-06/experiments/trials/NativeContentProviderTrial.cpp',
          root/'rebuild/2008-06/native-headers/CRobloxDoc.h',root/'rebuild/2008-06/native-headers/CWorkspace.h',
          root/'tools/libs/xtp-11.2.2/Source/CommandBars/XTPControlComboBox.h']
 receipt = {'inputs':{str(p.relative_to(root)):sha(p) for p in paths},'object_sha256':sha(obj),

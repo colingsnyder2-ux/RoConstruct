@@ -11,7 +11,7 @@ sys.path.insert(0, str(root))
 from roc import match, rebuild
 
 out = root / 'rebuild/2008-06/out/native-layouts'
-source = root / 'rebuild/2008-06/tests/NativeFilteredSelectionTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeFilteredSelectionTrial.cpp'
 header = root / 'rebuild/2008-06/native-headers/v8datamodel/Selection.h'
 obj = out / 'NativeFilteredSelectionTrial.obj'
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())

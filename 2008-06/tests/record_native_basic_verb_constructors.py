@@ -6,7 +6,7 @@ root = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(root))
 from roc import match, rebuild
 out = root / 'rebuild/2008-06/out/native-layouts'
-source = root / 'rebuild/2008-06/tests/NativeBasicVerbConstructorsTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeBasicVerbConstructorsTrial.cpp'
 header = root / 'rebuild/2008-06/native-headers/StandardVerbs.h'
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 obj = out / 'NativeBasicVerbConstructorsTrial.obj'

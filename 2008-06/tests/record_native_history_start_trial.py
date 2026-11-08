@@ -64,7 +64,7 @@ needle = '    HistoryItem(ChangeHistoryService*, boost::shared_ptr<Instance>);'
 assert record.count(needle) == 1
 record = record.replace(needle, needle + '\n    HistoryItem();')
 (out / 'v8datamodel/HistoryRecord.h').write_text(record)
-source = root / 'rebuild/2008-06/tests/NativeChangeHistoryStartTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeChangeHistoryStartTrial.cpp'
 obj = out / 'NativeChangeHistoryStartTrial.obj'
 base = json.loads((root / 'work/2008-06/shared-layouts/change-history-layout-working.json').read_text())
 flags = [x for x in base['flags']['enable'] if not x.startswith('/Fo') and not x.endswith('ChangeHistoryEnable.cpp')]

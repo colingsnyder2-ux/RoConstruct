@@ -3,7 +3,7 @@ import hashlib,json,struct,sys
 from pathlib import Path
 import pefile
 root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
-out=root/'rebuild/2008-06/out/native-layouts';src=root/'rebuild/2008-06/tests/NativePartToolsFactoriesTrial.cpp';header=root/'rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h';obj=out/'NativePartToolsFactoriesTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags.insert(0,'/I'+str(out/'workspace-model-vector-include'));overlay=out/'part-tools-factory-include/v8datamodel';overlay.mkdir(parents=True,exist_ok=True);h=header.read_text()
+out=root/'rebuild/2008-06/out/native-layouts';src=root/'rebuild/2008-06/experiments/trials/NativePartToolsFactoriesTrial.cpp';header=root/'rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h';obj=out/'NativePartToolsFactoriesTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags.insert(0,'/I'+str(out/'workspace-model-vector-include'));overlay=out/'part-tools-factory-include/v8datamodel';overlay.mkdir(parents=True,exist_ok=True);h=header.read_text()
 for typ in ('FillTool','DropperTool','ModelSetPrimaryPartTool'):
  old=typ+'(Workspace*);';assert h.count(old)==1;h=h.replace(old,typ+'(Workspace* workspace) : Named<PartTool, s'+typ+'>(workspace) {}')
 (overlay/'ToolsPart.h').write_text(h);flags.insert(0,'/I'+str(overlay.parent))

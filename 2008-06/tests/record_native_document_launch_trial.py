@@ -12,7 +12,7 @@ sys.path.insert(0, str(root))
 from roc import match, rebuild
 
 out = root / 'rebuild/2008-06/out/native-layouts'
-source = root / 'rebuild/2008-06/tests/NativeDocumentLaunchTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeDocumentLaunchTrial.cpp'
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 flags = [f for f in base['flags'] if not f.startswith('/Fo') and not f.endswith('NativeDocumentLayout.cpp') and not f.startswith('/Ob')]
 obj = out / 'NativeDocumentLaunchTrial.obj'

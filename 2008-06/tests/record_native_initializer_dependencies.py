@@ -8,12 +8,12 @@ out = root / 'rebuild/2008-06/out/native-layouts'
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 common = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
 units = [('rebuild/2008-06/native-classes/Verb.cpp', 'NativeVerbConstructor.obj', '005833e0', '??0Verb@RBX@@', {'?declare@Name@RBX@@': 0x553f90, '??A?$map@': 0x5644a0}),
-         ('rebuild/2008-06/tests/NativeWorkspaceGetWorkspaceTrial.cpp', 'NativeWorkspaceGetWorkspaceTrial.obj', '0046a970', '?getWorkspace@CWorkspace@@', {}),
-         ('rebuild/2008-06/tests/NativeRunStateVerbConstructorTrial.cpp', 'NativeRunStateVerbConstructorTrial.obj', '0057e330', '??0RunStateVerb@RBX@@', {'??0Verb@RBX@@': 0x5833e0, '??_7RunStateVerb@RBX@@': 0x83074c}),
+         ('rebuild/2008-06/experiments/trials/NativeWorkspaceGetWorkspaceTrial.cpp', 'NativeWorkspaceGetWorkspaceTrial.obj', '0046a970', '?getWorkspace@CWorkspace@@', {}),
+         ('rebuild/2008-06/experiments/trials/NativeRunStateVerbConstructorTrial.cpp', 'NativeRunStateVerbConstructorTrial.obj', '0057e330', '??0RunStateVerb@RBX@@', {'??0Verb@RBX@@': 0x5833e0, '??_7RunStateVerb@RBX@@': 0x83074c}),
          ('rebuild/2008-06/tests/NativeEditSelectionVerbConstructorTrial.cpp', 'NativeEditSelectionVerbConstructorTrial.obj', '0057e730', '??0EditSelectionVerb@RBX@@', {'??0Verb@RBX@@': 0x5833e0, '??_7EditSelectionVerb@RBX@@': 0x830764, '??$shared_from@VWorkspace@RBX@@': 0x618a40}),
-         ('rebuild/2008-06/tests/NativeWorkspaceSharedFromTrial.cpp', 'NativeWorkspaceSharedFromTrial.obj', '00618a40', '??$shared_from@VWorkspace@RBX@@', {'?shared_from_this@': 0x42af90, '??$shared_static_cast@VWorkspace@RBX@@': 0x4a2070}),
-         ('rebuild/2008-06/tests/NativeAxisBaseTrial.cpp', 'NativeAxisBaseTrial.obj', '0057f450', '??0RotateAxisCommand@RBX@@', {'??0EditSelectionVerb@RBX@@': 0x57e730, '??_7RotateAxisCommand@RBX@@': 0x830a50}),
-         ('rebuild/2008-06/tests/NativeAxisBaseTrial.cpp', 'NativeAxisBaseTrial.obj', '0057f4c0', '??0ControllerCommand@RBX@@', {'??0EditSelectionVerb@RBX@@': 0x57e730, '??_7ControllerCommand@RBX@@': 0x830a6c})]
+         ('rebuild/2008-06/experiments/trials/NativeWorkspaceSharedFromTrial.cpp', 'NativeWorkspaceSharedFromTrial.obj', '00618a40', '??$shared_from@VWorkspace@RBX@@', {'?shared_from_this@': 0x42af90, '??$shared_static_cast@VWorkspace@RBX@@': 0x4a2070}),
+         ('rebuild/2008-06/experiments/trials/NativeAxisBaseTrial.cpp', 'NativeAxisBaseTrial.obj', '0057f450', '??0RotateAxisCommand@RBX@@', {'??0EditSelectionVerb@RBX@@': 0x57e730, '??_7RotateAxisCommand@RBX@@': 0x830a50}),
+         ('rebuild/2008-06/experiments/trials/NativeAxisBaseTrial.cpp', 'NativeAxisBaseTrial.obj', '0057f4c0', '??0ControllerCommand@RBX@@', {'??0EditSelectionVerb@RBX@@': 0x57e730, '??_7ControllerCommand@RBX@@': 0x830a6c})]
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 rows = []
 for path, output, address, prefix, expected in units:

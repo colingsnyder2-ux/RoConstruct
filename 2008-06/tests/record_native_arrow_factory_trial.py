@@ -3,7 +3,7 @@ import hashlib,json,sys
 from pathlib import Path
 root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root))
 from roc import match,rebuild
-out=root/'rebuild/2008-06/out/native-layouts';source=root/'rebuild/2008-06/tests/NativeArrowFactoryTrial.cpp'
+out=root/'rebuild/2008-06/out/native-layouts';source=root/'rebuild/2008-06/experiments/trials/NativeArrowFactoryTrial.cpp'
 base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 donor=root/'tools/rbxgs/Client/App/include/v8datamodel/MouseCommand.h'
 overlay=out/'arrow-donor-profile/v8datamodel';overlay.mkdir(parents=True,exist_ok=True)

@@ -12,7 +12,7 @@ sys.path.insert(0, str(root))
 from roc import match, rebuild
 
 out = root / 'rebuild/2008-06/out/native-layouts'
-source = root / 'rebuild/2008-06/tests/NativeWorkspaceFactoryTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeWorkspaceFactoryTrial.cpp'
 header = root / 'rebuild/2008-06/native-headers/CWorkspace.h'
 overlay = out / 'workspace-com-map-include'
 overlay.mkdir(exist_ok=True)

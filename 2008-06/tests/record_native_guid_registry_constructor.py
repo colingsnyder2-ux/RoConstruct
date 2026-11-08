@@ -12,7 +12,7 @@ sys.path.insert(0, str(root))
 from roc import match, rebuild
 
 out = root / 'rebuild/2008-06/out/native-layouts'
-source = root / 'rebuild/2008-06/tests/NativeGuidRegistryConstructorTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeGuidRegistryConstructorTrial.cpp'
 previous = json.loads((root / 'work/2008-06/shared-layouts/guid-item-working-probe.json').read_text())
 flags = [x for x in previous['flags'] if not x.startswith('/Fo') and not x.endswith('GuidItem.cpp')]
 obj = out / 'NativeGuidRegistryConstructorTrial.obj'

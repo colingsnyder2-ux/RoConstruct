@@ -12,7 +12,7 @@ sys.path.insert(0, str(root))
 from roc import match, rebuild
 
 out = root / 'rebuild/2008-06/out/native-layouts'
-source = root / 'rebuild/2008-06/tests/NativeWorldServiceFactoriesTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeWorldServiceFactoriesTrial.cpp'
 find_trial = '--find-trial' in sys.argv
 allocation_trial = '--allocation-trial' in sys.argv
 lifetime_trial = '--lifetime-trial' in sys.argv
