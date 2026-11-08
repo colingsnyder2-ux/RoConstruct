@@ -3,6 +3,123 @@
 [Project index](README.md) · [Previous](sources-006.md) · [Next](sources-008.md)
 
 <details>
+<summary>native-classes/AxisMoveToolDown.cpp — equivalent; 7 content versions</summary>
+
+Compatibility path for `App/src/tool/AxisMoveToolDown.cpp`; compile either path, never both.
+
+**`1379a6afacce`** · `native-classes/AxisMoveToolDown.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/AxisMoveToolDown.cpp`
+- local · `local/findings/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`6216fb1acc5b`** · `native-classes/AxisMoveToolDown.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/AxisMoveToolDown.cpp)
+
+**`b824bd6173a5`** · `native-classes/AxisMoveToolDown.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`bba313f557f3`** · `native-classes/AxisMoveToolDown.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- fork · mewpokemons · [native-classes/AxisMoveToolDown.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- fork · mewpokemons · [native-classes/AxisMoveToolDown.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+
+<details><summary>6 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d0fac61433bc`** · `native-classes/AxisMoveToolDown.cpp` · proof not assessed
+
+<details><summary>5 retained local origins</summary>
+
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e7e0242546ac`** · `native-classes/AxisMoveToolDown.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/AxisMoveToolDown.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e6cba5727d5b`** · `native-classes/AxisMoveToolDown.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/AxisMoveToolDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/AxisMoveToolDown.cpp)
+
+</details>
+
+<details>
 <summary>native-classes/AxisMoveToolFactory.cpp — candidate-only; 1 content versions</summary>
 
 **`5a0d8ebfd2e8`** · `native-classes/AxisMoveToolFactory.cpp` · proof not assessed
@@ -32,6 +149,7 @@
 - draft · colingsnyder2-ux · [native-classes/AxisMoveToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/5d87dd1bd8802ab95472ca0c978bb85759923abf1da993b00ae09a5f0ef0fd8a/rebuild/2008-06/native-classes/AxisMoveToolFactory.cpp)
 - draft · colingsnyder2-ux · [native-classes/AxisMoveToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/5d87dd1bd8802ab95472ca0c978bb85759923abf1da993b00ae09a5f0ef0fd8a/rebuild/2008-06/native-classes/AxisMoveToolFactory.cpp)
 - draft · colingsnyder2-ux · [native-classes/AxisMoveToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/5d87dd1bd8802ab95472ca0c978bb85759923abf1da993b00ae09a5f0ef0fd8a/rebuild/2008-06/native-classes/AxisMoveToolFactory.cpp)
+- draft · colingsnyder2-ux · [native-classes/AxisMoveToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/5d87dd1bd8802ab95472ca0c978bb85759923abf1da993b00ae09a5f0ef0fd8a/rebuild/2008-06/native-classes/AxisMoveToolFactory.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -153,6 +271,8 @@ Compatibility path for `App/src/tool/AxisMoveToolMethods.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/AxisMoveToolMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/AxisMoveToolMethods.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/AxisMoveToolMethods.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/AxisMoveToolMethods.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/AxisMoveToolMethods.cpp)
 
 </details>
 
@@ -268,6 +388,8 @@ Compatibility path for `App/src/tool/AxisMoveToolMove.cpp`; compile either path,
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/AxisMoveToolMove.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/AxisMoveToolMove.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/AxisMoveToolMove.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/AxisMoveToolMove.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/AxisMoveToolMove.cpp)
 
 </details>
 
@@ -301,6 +423,7 @@ Compatibility path for `App/src/tool/AxisMoveToolMove.cpp`; compile either path,
 - draft · colingsnyder2-ux · [native-classes/AxisMoveToolNamed.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/460dc769286578b9e2b42d767a9779e20a96739eec87813379f45858cd37463f/rebuild/2008-06/native-classes/AxisMoveToolNamed.cpp)
 - draft · colingsnyder2-ux · [native-classes/AxisMoveToolNamed.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/460dc769286578b9e2b42d767a9779e20a96739eec87813379f45858cd37463f/rebuild/2008-06/native-classes/AxisMoveToolNamed.cpp)
 - draft · colingsnyder2-ux · [native-classes/AxisMoveToolNamed.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/460dc769286578b9e2b42d767a9779e20a96739eec87813379f45858cd37463f/rebuild/2008-06/native-classes/AxisMoveToolNamed.cpp)
+- draft · colingsnyder2-ux · [native-classes/AxisMoveToolNamed.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/460dc769286578b9e2b42d767a9779e20a96739eec87813379f45858cd37463f/rebuild/2008-06/native-classes/AxisMoveToolNamed.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -342,6 +465,7 @@ Compatibility path for `App/src/v8datamodel/Backpack.cpp`; compile either path, 
 - draft · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/bff0348f52a765629094596b5b5b0eaea2a59a6a148f4e8b7a4ac4a1e88b0a78/rebuild/2008-06/native-classes/Backpack.cpp)
 - draft · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/bff0348f52a765629094596b5b5b0eaea2a59a6a148f4e8b7a4ac4a1e88b0a78/rebuild/2008-06/native-classes/Backpack.cpp)
 - draft · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/bff0348f52a765629094596b5b5b0eaea2a59a6a148f4e8b7a4ac4a1e88b0a78/rebuild/2008-06/native-classes/Backpack.cpp)
+- draft · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/bff0348f52a765629094596b5b5b0eaea2a59a6a148f4e8b7a4ac4a1e88b0a78/rebuild/2008-06/native-classes/Backpack.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -457,6 +581,8 @@ Compatibility path for `App/src/v8datamodel/Backpack.cpp`; compile either path, 
 - canonical · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/Backpack.cpp)
 - public · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/Backpack.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/Backpack.cpp)
+- public · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/Backpack.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/Backpack.cpp)
 
 </details>
 
@@ -569,6 +695,8 @@ Compatibility path for `App/src/v8world/Ball.cpp`; compile either path, never bo
 - canonical · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/Ball.cpp)
 - public · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/Ball.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/Ball.cpp)
+- public · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/Ball.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/Ball.cpp)
 
 </details>
 
@@ -694,6 +822,8 @@ Compatibility path for `App/src/v8world/Block.cpp`; compile either path, never b
 - canonical · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/Block.cpp)
 - public · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/Block.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/Block.cpp)
+- public · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/Block.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/Block.cpp)
 
 </details>
 
@@ -816,6 +946,7 @@ Compatibility path for `App/src/v8datamodel/BodyColors.cpp`; compile either path
 - draft · colingsnyder2-ux · [native-classes/BodyColors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/f19d57d34b2d0ceaaaee31409e2481c6d279b1a9510676a9ce58f47b4a050054/rebuild/2008-06/native-classes/BodyColors.cpp)
 - draft · colingsnyder2-ux · [native-classes/BodyColors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/f19d57d34b2d0ceaaaee31409e2481c6d279b1a9510676a9ce58f47b4a050054/rebuild/2008-06/native-classes/BodyColors.cpp)
 - draft · colingsnyder2-ux · [native-classes/BodyColors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/f19d57d34b2d0ceaaaee31409e2481c6d279b1a9510676a9ce58f47b4a050054/rebuild/2008-06/native-classes/BodyColors.cpp)
+- draft · colingsnyder2-ux · [native-classes/BodyColors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/f19d57d34b2d0ceaaaee31409e2481c6d279b1a9510676a9ce58f47b4a050054/rebuild/2008-06/native-classes/BodyColors.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -857,6 +988,8 @@ Compatibility path for `App/src/v8datamodel/BodyColors.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/BodyColors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/BodyColors.cpp)
 - public · colingsnyder2-ux · [native-classes/BodyColors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/BodyColors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BodyColors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/BodyColors.cpp)
+- public · colingsnyder2-ux · [native-classes/BodyColors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/BodyColors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BodyColors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/BodyColors.cpp)
 
 </details>
 
@@ -892,6 +1025,7 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - draft · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/9e5d7a71d3c341bdfb04ac029b7f2cce5340dd624d82e66a5aa7487abed442a2/rebuild/2008-06/native-classes/BodyMovers.cpp)
 - draft · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/9e5d7a71d3c341bdfb04ac029b7f2cce5340dd624d82e66a5aa7487abed442a2/rebuild/2008-06/native-classes/BodyMovers.cpp)
 - draft · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/9e5d7a71d3c341bdfb04ac029b7f2cce5340dd624d82e66a5aa7487abed442a2/rebuild/2008-06/native-classes/BodyMovers.cpp)
+- draft · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/9e5d7a71d3c341bdfb04ac029b7f2cce5340dd624d82e66a5aa7487abed442a2/rebuild/2008-06/native-classes/BodyMovers.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -1020,6 +1154,8 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/BodyMovers.cpp)
 - public · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/BodyMovers.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/BodyMovers.cpp)
+- public · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/BodyMovers.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/BodyMovers.cpp)
 
 </details>
 
@@ -1069,6 +1205,7 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/BrickColorColor3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/BrickColorColor3.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorColor3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/BrickColorColor3.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorColor3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/BrickColorColor3.cpp)
+- public · colingsnyder2-ux · [native-classes/BrickColorColor3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/BrickColorColor3.cpp)
 
 **`cc08138ed819`** · `native-classes/BrickColorColor3.cpp` · proof not assessed
 
@@ -1118,6 +1255,7 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/BrickColorConversions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/BrickColorConversions.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorConversions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/BrickColorConversions.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorConversions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/BrickColorConversions.cpp)
+- public · colingsnyder2-ux · [native-classes/BrickColorConversions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/BrickColorConversions.cpp)
 
 **`68fb43327237`** · `native-classes/BrickColorConversions.cpp` · proof not assessed
 
@@ -1191,119 +1329,6 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/BrickColorMapAccess.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/BrickColorMapAccess.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorMapAccess.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/BrickColorMapAccess.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorMapAccess.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/BrickColorMapAccess.cpp)
-
-</details>
-
-<details>
-<summary>native-classes/BrickColorMapSingleton.cpp — public-only; 4 content versions</summary>
-
-**`b1cab2c8c424`** · `native-classes/BrickColorMapSingleton.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/BrickColorMapSingleton.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`b72e3ecdfcca`** · `native-classes/BrickColorMapSingleton.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-classes/BrickColorMapSingleton.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ecc9a8bd6ae8`** · `native-classes/BrickColorMapSingleton.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/BrickColorMapSingleton.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/BrickColorMapSingleton.cpp)
-
-**`f6fd5a1d5fb6`** · `native-classes/BrickColorMapSingleton.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/BrickColorMapSingleton.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/BrickColorProviders.cpp — public-only; 4 content versions</summary>
-
-**`196ef1742e71`** · `native-classes/BrickColorProviders.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-classes/BrickColorProviders.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`527743f91e53`** · `native-classes/BrickColorProviders.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/BrickColorProviders.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`64e5a10eed58`** · `native-classes/BrickColorProviders.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/BrickColorProviders.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`c3a15c8b4cfc`** · `native-classes/BrickColorProviders.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/BrickColorProviders.cpp)
-- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/BrickColorProviders.cpp)
+- public · colingsnyder2-ux · [native-classes/BrickColorMapAccess.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/BrickColorMapAccess.cpp)
 
 </details>

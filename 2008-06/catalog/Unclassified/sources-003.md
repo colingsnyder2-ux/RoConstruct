@@ -19,6 +19,7 @@ Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
+- canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 
 **`76e2dd3921d3`** · `Unclassified/include/draw-handles/util/Rect.h` · proof not assessed
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/draw-handles/util/Rect.h)
@@ -32,6 +33,7 @@ Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/draw-handles/util/Rect.h)
+- public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 
 **`135d725a2d1d`** · `native-headers/draw-handles/util/Rect.h` · proof not assessed
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
@@ -157,6 +159,8 @@ Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
+- public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/draw-handles/util/Rect.h)
+- canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 
 </details>
 
@@ -177,6 +181,7 @@ Earlier paths and their donor versions: `native-headers/engine-world/v8world/Con
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 
 **`3a7baadcbb8d`** · `Unclassified/include/engine-world/v8world/ContactManager.h` · proof not assessed
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
@@ -190,6 +195,7 @@ Earlier paths and their donor versions: `native-headers/engine-world/v8world/Con
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 
 **`1bd7ffc7d2f6`** · `native-headers/engine-world/v8world/ContactManager.h` · proof not assessed
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/engine-world/v8world/ContactManager.h)
@@ -322,6 +328,8 @@ Earlier paths and their donor versions: `native-headers/engine-world/v8world/Con
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 
 </details>
 
@@ -342,6 +350,7 @@ Earlier paths and their donor versions: `native-headers/engine-world/v8world/Wor
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/engine-world/v8world/World.h)
 
 **`ef02e3a94a57`** · `Unclassified/include/engine-world/v8world/World.h` · proof not assessed
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
@@ -355,6 +364,7 @@ Earlier paths and their donor versions: `native-headers/engine-world/v8world/Wor
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 
 **`05985bfdbd22`** · `native-headers/engine-world/v8world/World.h` · proof not assessed
 
@@ -498,6 +508,8 @@ Earlier paths and their donor versions: `native-headers/engine-world/v8world/Wor
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
 
 </details>
 
@@ -527,6 +539,8 @@ Earlier paths and their donor versions: `native-headers/instance-base-callbacks/
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 
 **`2318a4caad41`** · `native-headers/instance-base-callbacks/reflection/function.h` · proof not assessed
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
@@ -598,6 +612,8 @@ Earlier paths and their donor versions: `native-headers/instance-base-callbacks/
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 
 </details>
 
@@ -618,6 +634,7 @@ Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/Seri
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 
 **`840a449228d4`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
@@ -631,6 +648,7 @@ Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/Seri
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 
 **`1962bc477a4b`** · `native-headers/metadata-load/v8xml/SerializerV2.h` · proof not assessed
 
@@ -756,6 +774,8 @@ Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/Seri
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 
 </details>
 
@@ -776,6 +796,7 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 
 **`c16fa7c691f4`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
@@ -789,6 +810,7 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 
 **`0124b808a9d9`** · `native-headers/mfc-metadata/atlsimpstr.h` · proof not assessed
 
@@ -914,6 +936,8 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 
 </details>
 
@@ -934,6 +958,7 @@ Earlier paths and their donor versions: `native-headers/mfc-noinline-pcxstr/atls
 - public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 
 **`c2a57e7aa27e`** · `Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
@@ -947,6 +972,7 @@ Earlier paths and their donor versions: `native-headers/mfc-noinline-pcxstr/atls
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 
 **`09e845d6c2d7`** · `native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
 - public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
@@ -1080,5 +1106,7 @@ Earlier paths and their donor versions: `native-headers/mfc-noinline-pcxstr/atls
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 
 </details>

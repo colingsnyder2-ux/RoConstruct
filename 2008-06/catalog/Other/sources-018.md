@@ -154,6 +154,8 @@ Compatibility path for `App/src/v8datamodel/HistoryRecordPlayback.cpp`; compile 
 - canonical · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/HistoryRecordPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/HistoryRecordPlayback.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/HistoryRecordPlayback.cpp)
+- public · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/HistoryRecordPlayback.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/HistoryRecordPlayback.cpp)
 
 </details>
 
@@ -203,6 +205,7 @@ Compatibility path for `App/src/v8datamodel/Hopper.cpp`; compile either path, ne
 - draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Hopper.cpp)
 - draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Hopper.cpp)
 - draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Hopper.cpp)
+- draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Hopper.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -239,6 +242,7 @@ Compatibility path for `App/src/v8datamodel/Hopper.cpp`; compile either path, ne
 - draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/d4308de01d60fb8afdecb1cc16efb344e2bd2ad1f98ff1e924d7fe45fe75c68c/rebuild/2008-06/native-classes/Hopper.cpp)
 - draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/d4308de01d60fb8afdecb1cc16efb344e2bd2ad1f98ff1e924d7fe45fe75c68c/rebuild/2008-06/native-classes/Hopper.cpp)
 - draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/d4308de01d60fb8afdecb1cc16efb344e2bd2ad1f98ff1e924d7fe45fe75c68c/rebuild/2008-06/native-classes/Hopper.cpp)
+- draft · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/d4308de01d60fb8afdecb1cc16efb344e2bd2ad1f98ff1e924d7fe45fe75c68c/rebuild/2008-06/native-classes/Hopper.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -358,6 +362,8 @@ Compatibility path for `App/src/v8datamodel/Hopper.cpp`; compile either path, ne
 - canonical · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/Hopper.cpp)
 - public · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/Hopper.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/Hopper.cpp)
+- public · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/Hopper.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Hopper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/Hopper.cpp)
 
 </details>
 
@@ -470,6 +476,8 @@ Compatibility path for `App/src/v8world/IWorldStage2008.cpp`; compile either pat
 - canonical · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/IWorldStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/IWorldStage2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/IWorldStage2008.cpp)
+- public · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/IWorldStage2008.cpp)
+- canonical · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/IWorldStage2008.cpp)
 
 </details>
 
@@ -598,6 +606,8 @@ Compatibility path for `App/src/v8datamodel/InsertObjectAction.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/InsertObjectAction.cpp)
 - public · colingsnyder2-ux · [native-classes/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/InsertObjectAction.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/InsertObjectAction.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/InsertObjectAction.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/InsertObjectAction.cpp)
 
 </details>
 
@@ -705,6 +715,8 @@ Compatibility path for `Unclassified/src/Kernel2008.cpp`; compile either path, n
 - draft · colingsnyder2-ux · [native-classes/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/Kernel2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/Kernel2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/Kernel2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/Kernel2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/Kernel2008.cpp)
 
 <details><summary>3 retained local origins</summary>
 
@@ -778,6 +790,8 @@ Compatibility path for `Unclassified/src/Kernel2008.cpp`; compile either path, n
 - canonical · colingsnyder2-ux · [native-classes/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/Kernel2008.cpp)
 - public · colingsnyder2-ux · [native-classes/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/Kernel2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/Kernel2008.cpp)
+- public · colingsnyder2-ux · [native-classes/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/Kernel2008.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/Kernel2008.cpp)
 
 </details>
 
@@ -890,6 +904,8 @@ Compatibility path for `Unclassified/src/KernelConnector.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/KernelConnector.cpp)
 - public · colingsnyder2-ux · [native-classes/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/KernelConnector.cpp)
 - canonical · colingsnyder2-ux · [native-classes/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/KernelConnector.cpp)
+- public · colingsnyder2-ux · [native-classes/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/KernelConnector.cpp)
+- canonical · colingsnyder2-ux · [native-classes/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/KernelConnector.cpp)
 
 </details>
 
@@ -1012,6 +1028,8 @@ Compatibility path for `Unclassified/src/LDrawAssetState.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/LDrawAssetState.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/LDrawAssetState.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/LDrawAssetState.cpp)
+- public · colingsnyder2-ux · [native-classes/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/LDrawAssetState.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/LDrawAssetState.cpp)
 
 </details>
 
@@ -1127,6 +1145,8 @@ Compatibility path for `Unclassified/src/LDrawMapOperations.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/LDrawMapOperations.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/LDrawMapOperations.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/LDrawMapOperations.cpp)
+- public · colingsnyder2-ux · [native-classes/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/LDrawMapOperations.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/LDrawMapOperations.cpp)
 
 </details>
 
@@ -1242,5 +1262,7 @@ Compatibility path for `App/src/v8xml/LDrawMapRootConstructor.cpp`; compile eith
 - canonical · colingsnyder2-ux · [native-classes/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/LDrawMapRootConstructor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/LDrawMapRootConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp)
 
 </details>

@@ -30,6 +30,8 @@ Earlier paths and their donor versions: `native-headers/workspace-camera/reflect
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 
 **`2318a4caad41`** · `native-headers/workspace-camera/reflection/function.h` · proof not assessed
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/workspace-camera/reflection/function.h)
@@ -104,6 +106,8 @@ Earlier paths and their donor versions: `native-headers/workspace-camera/reflect
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/workspace-camera/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
 
 </details>
 
@@ -124,6 +128,7 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 
 **`c2a51a511331`** · `Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · proof not assessed
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
@@ -137,6 +142,7 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 
 **`27c830f7288c`** · `native-headers/writer-2008/v8xml/XmlSerializer.h` · proof not assessed
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
@@ -165,6 +171,7 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 
 <details><summary>23 retained local origins</summary>
 
@@ -291,6 +298,8 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 
 </details>
 
@@ -315,6 +324,7 @@ Earlier paths and their donor versions: `native-classes/ActiveDocView.cpp`.
 - canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/src/ActiveDocView.cpp)
 - canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/src/ActiveDocView.cpp)
 - canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/src/ActiveDocView.cpp)
+- canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/src/ActiveDocView.cpp)
 
 **`6cf37e289eeb`** · `Unclassified/src/ActiveDocView.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/Unclassified/src/ActiveDocView.cpp)
@@ -332,6 +342,7 @@ Earlier paths and their donor versions: `native-classes/ActiveDocView.cpp`.
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/src/ActiveDocView.cpp)
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/src/ActiveDocView.cpp)
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/src/ActiveDocView.cpp)
+- public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/src/ActiveDocView.cpp)
 
 **`327b5a2ad1b1`** · `native-classes/ActiveDocView.cpp` · proof not assessed
 
@@ -564,6 +575,8 @@ Earlier paths and their donor versions: `native-classes/ActiveDocView.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ActiveDocView.cpp)
 - public · colingsnyder2-ux · [native-classes/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ActiveDocView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ActiveDocView.cpp)
+- public · colingsnyder2-ux · [native-classes/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/ActiveDocView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/ActiveDocView.cpp)
 
 </details>
 
@@ -588,6 +601,7 @@ Earlier paths and their donor versions: `native-classes/ActiveDocument.cpp`.
 - canonical · colingsnyder2-ux · [src/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/src/ActiveDocument.cpp)
 - canonical · colingsnyder2-ux · [src/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/src/ActiveDocument.cpp)
 - canonical · colingsnyder2-ux · [src/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/src/ActiveDocument.cpp)
+- canonical · colingsnyder2-ux · [src/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/src/ActiveDocument.cpp)
 
 **`a3d79a61927c`** · `Unclassified/src/ActiveDocument.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/Unclassified/src/ActiveDocument.cpp)
@@ -605,6 +619,7 @@ Earlier paths and their donor versions: `native-classes/ActiveDocument.cpp`.
 - public · colingsnyder2-ux · [src/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/src/ActiveDocument.cpp)
 - public · colingsnyder2-ux · [src/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/src/ActiveDocument.cpp)
 - public · colingsnyder2-ux · [src/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/src/ActiveDocument.cpp)
+- public · colingsnyder2-ux · [src/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/src/ActiveDocument.cpp)
 
 **`48e02fc1c94d`** · `native-classes/ActiveDocument.cpp` · proof not assessed
 
@@ -798,6 +813,8 @@ Earlier paths and their donor versions: `native-classes/ActiveDocument.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ActiveDocument.cpp)
 - public · colingsnyder2-ux · [native-classes/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ActiveDocument.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ActiveDocument.cpp)
+- public · colingsnyder2-ux · [native-classes/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/ActiveDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ActiveDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/ActiveDocument.cpp)
 
 </details>
 
@@ -837,6 +854,8 @@ Earlier paths and their donor versions: `native-classes/ActiveDocumentData.cpp`.
 - canonical · colingsnyder2-ux · [src/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/src/ActiveDocumentData.cpp)
 - public · colingsnyder2-ux · [src/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/src/ActiveDocumentData.cpp)
 - canonical · colingsnyder2-ux · [src/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/src/ActiveDocumentData.cpp)
+- public · colingsnyder2-ux · [src/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/src/ActiveDocumentData.cpp)
+- canonical · colingsnyder2-ux · [src/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/src/ActiveDocumentData.cpp)
 
 **`215c60297e69`** · `native-classes/ActiveDocumentData.cpp` · proof not assessed
 
@@ -914,6 +933,7 @@ Earlier paths and their donor versions: `native-classes/ActiveDocumentData.cpp`.
 - draft · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/e9638214409f12cb1bc43b827a7ffaee309b289705eea80716d01adf37de22a9/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 - draft · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/e9638214409f12cb1bc43b827a7ffaee309b289705eea80716d01adf37de22a9/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 - draft · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/e9638214409f12cb1bc43b827a7ffaee309b289705eea80716d01adf37de22a9/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
+- draft · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/e9638214409f12cb1bc43b827a7ffaee309b289705eea80716d01adf37de22a9/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -957,6 +977,7 @@ Earlier paths and their donor versions: `native-classes/ActiveDocumentData.cpp`.
 - public · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/ActiveDocumentData.cpp)
 - public · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ActiveDocumentData.cpp)
 - public · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ActiveDocumentData.cpp)
+- public · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/ActiveDocumentData.cpp)
 
 **`d11747a3454e`** · `native-classes/ActiveDocumentData.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
@@ -1036,5 +1057,6 @@ Earlier paths and their donor versions: `native-classes/ActiveDocumentData.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 
 </details>

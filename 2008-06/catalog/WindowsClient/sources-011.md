@@ -22,6 +22,7 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 - public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/WindowsClient/include/NativeCameraCommands.h)
+- public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/WindowsClient/include/NativeCameraCommands.h)
 
 **`922fb973709e`** · `WindowsClient/include/NativeCameraCommands.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
@@ -38,6 +39,7 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
+- canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
 
 **`4dbbf206fceb`** · `native-headers/NativeCameraCommands.h` · proof not assessed
 - public · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/NativeCameraCommands.h)
@@ -171,6 +173,8 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 - canonical · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/NativeCameraCommands.h)
+- public · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/NativeCameraCommands.h)
+- canonical · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/NativeCameraCommands.h)
 
 </details>
 
@@ -194,6 +198,7 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 - canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
+- canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
 
 **`bccea3c02f51`** · `WindowsClient/include/NativeExitCommand.h` · proof not assessed
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/WindowsClient/include/NativeExitCommand.h)
@@ -210,6 +215,7 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/WindowsClient/include/NativeExitCommand.h)
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/WindowsClient/include/NativeExitCommand.h)
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/WindowsClient/include/NativeExitCommand.h)
+- public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/WindowsClient/include/NativeExitCommand.h)
 
 **`34ad0621e3d9`** · `native-headers/NativeExitCommand.h` · proof not assessed
 - canonical · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/NativeExitCommand.h)
@@ -343,6 +349,8 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 - canonical · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/NativeExitCommand.h)
 - public · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/NativeExitCommand.h)
+- public · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/NativeExitCommand.h)
+- canonical · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/NativeExitCommand.h)
 
 </details>
 
@@ -359,6 +367,7 @@ Earlier paths and their donor versions: `native-headers/PropertyGridItems.h`.
 - canonical · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h)
 - canonical · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h)
 - canonical · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h)
+- canonical · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h)
 
 **`421fc72b8a27`** · `WindowsClient/include/PropertyGridItems.h` · proof not assessed
 - public · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/PropertyGridItems.h)
@@ -368,6 +377,7 @@ Earlier paths and their donor versions: `native-headers/PropertyGridItems.h`.
 - public · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/WindowsClient/include/PropertyGridItems.h)
 - public · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/WindowsClient/include/PropertyGridItems.h)
 - public · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/WindowsClient/include/PropertyGridItems.h)
+- public · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/WindowsClient/include/PropertyGridItems.h)
 
 **`1f61bcba2aea`** · `native-headers/PropertyGridItems.h` · proof not assessed
 
@@ -589,6 +599,8 @@ Earlier paths and their donor versions: `native-headers/PropertyGridItems.h`.
 - canonical · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/PropertyGridItems.h)
 - public · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/PropertyGridItems.h)
 - canonical · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/PropertyGridItems.h)
+- public · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/PropertyGridItems.h)
+- canonical · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/PropertyGridItems.h)
 
 </details>
 
@@ -610,6 +622,7 @@ Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 - canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
+- canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
 
 **`e460097dd780`** · `WindowsClient/include/SelectionGroup.h` · proof not assessed
 - public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/WindowsClient/include/SelectionGroup.h)
@@ -624,6 +637,7 @@ Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 - public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/WindowsClient/include/SelectionGroup.h)
 - public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/WindowsClient/include/SelectionGroup.h)
 - public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/WindowsClient/include/SelectionGroup.h)
+- public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/WindowsClient/include/SelectionGroup.h)
 
 **`41f9796027ba`** · `native-headers/SelectionGroup.h` · proof not assessed
 
@@ -831,6 +845,8 @@ Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 - canonical · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/SelectionGroup.h)
 - public · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/SelectionGroup.h)
+- public · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/SelectionGroup.h)
+- canonical · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/SelectionGroup.h)
 
 </details>
 
@@ -847,6 +863,7 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 - canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
+- canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
 
 **`90b1130c948d`** · `WindowsClient/include/StandardVerbs.h` · proof not assessed
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/StandardVerbs.h)
@@ -856,6 +873,7 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/WindowsClient/include/StandardVerbs.h)
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/WindowsClient/include/StandardVerbs.h)
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/WindowsClient/include/StandardVerbs.h)
+- public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/WindowsClient/include/StandardVerbs.h)
 
 **`1cc8c915a4f4`** · `native-headers/StandardVerbs.h` · proof not assessed
 
@@ -1156,5 +1174,7 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 - canonical · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/StandardVerbs.h)
 - public · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/StandardVerbs.h)
+- public · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/StandardVerbs.h)
+- canonical · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/StandardVerbs.h)
 
 </details>

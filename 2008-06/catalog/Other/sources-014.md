@@ -3,6 +3,40 @@
 [Project index](README.md) · [Previous](sources-013.md) · [Next](sources-015.md)
 
 <details>
+<summary>native-classes/GroupDragTool.cpp — candidate-only; 1 content versions</summary>
+
+**`7e423c41ba16`** · `native-classes/GroupDragTool.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/GroupDragTool.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/Gui.cpp — candidate-only; 1 content versions</summary>
+
+**`f08c151b8247`** · `native-classes/Gui.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/Gui.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/GuiHudBuilder2008.cpp — candidate-only; 1 content versions</summary>
+
+**`982fb661e2f0`** · `native-classes/GuiHudBuilder2008.cpp` · proof not assessed
+- fork · mewpokemons · [native-classes/GuiHudBuilder2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/GuiHudBuilder2008.cpp)
+
+</details>
+
+<details>
 <summary>native-classes/GuiItem.cpp — equivalent; 18 content versions</summary>
 
 Compatibility path for `Unclassified/src/GuiItem.cpp`; compile either path, never both.
@@ -315,5 +349,7 @@ Compatibility path for `Unclassified/src/GuiItem.cpp`; compile either path, neve
 - canonical · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/GuiItem.cpp)
 - public · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/GuiItem.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/GuiItem.cpp)
+- public · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/GuiItem.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/GuiItem.cpp)
 
 </details>
