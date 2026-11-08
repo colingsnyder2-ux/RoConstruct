@@ -1,3 +1,4 @@
+import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -376,6 +377,9 @@ def test_triage_includes_organized_fork_paths(tmp_path, prefix):
     canonical = root / 'workspace' / name
     canonical.parent.mkdir(parents=True)
     canonical.write_text('old body\n')
+    public = root / name.removeprefix('rebuild/')
+    public.parent.mkdir(parents=True)
+    public.write_text('public body\n')
     fork = root / (prefix + name)
     fork.parent.mkdir(parents=True, exist_ok=True)
     fork.write_text('old body\n')
@@ -387,8 +391,13 @@ def test_triage_includes_organized_fork_paths(tmp_path, prefix):
     git('add', prefix + name)
     git('commit', '-qm', 'fork')
     new = git('rev-parse', 'HEAD')
-    report = d.triage(root, forks=[('contributor', old, new)])
+    report = d.triage(root, forks=[('contributor', old, new)], include_diff=True)
     assert not report['errors']
     assert len(report['variants']) == 1
     assert report['variants'][0]['path'] == name
+    assert report['variants'][0]['public_path'] == name.removeprefix('rebuild/')
+    assert report['variants'][0]['public_relation'] == 'different'
+    assert '-public body' in report['variants'][0]['public_diff']
+    assert '+new body' in report['variants'][0]['public_diff']
+    assert report['variants'][0]['public_sha256'] == hashlib.sha256(b'public body\n').hexdigest()
     assert report['variants'][0]['sources'][0]['fork_path'] == prefix + name

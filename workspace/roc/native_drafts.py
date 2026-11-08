@@ -519,7 +519,7 @@ def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_di
         return result
 
     commit = git('rev-parse', '--verify', ref + '^{commit}').decode().strip()
-    current_tree = tree(commit, ['workspace/'])
+    current_tree = tree(commit, ['workspace/', '2008-06/'])
     pending = [row for row in Inbox(root).pending() if row['seq'] > after]
     inbox = Inbox(root)
     records, errors = [], []
@@ -600,7 +600,10 @@ def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_di
     # Read each required blob once. Never read or alter the shared working tree.
     wanted = set()
     for row in records:
-        for entry in (current_tree.get('workspace/' + row['path']), row.get('fork_old'), row.get('fork_new')):
+        name = row['path']
+        public_path = name.removeprefix('rebuild/') if name.startswith('rebuild/2008-06/') else None
+        for entry in (current_tree.get('workspace/' + name), current_tree.get(public_path),
+                      row.get('fork_old'), row.get('fork_new')):
             if entry and entry[0] in ('100644', '100755') and entry[1] == 'blob':
                 wanted.add(entry[2])
     blobs = {}
@@ -631,6 +634,12 @@ def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_di
         if current and (current[0] not in ('100644', '100755') or current[1] != 'blob'):
             errors.append({'path': name, 'source': row['source'], 'error': 'Non-regular canonical path'}); continue
         current_bytes = blobs[current[2]] if current else None
+        public_path = name.removeprefix('rebuild/') if name.startswith('rebuild/2008-06/') else None
+        public = current_tree.get(public_path)
+        if public and (public[0] not in ('100644', '100755') or public[1] != 'blob'):
+            errors.append({'path': public_path, 'source': row['source'], 'error': 'Non-regular public path'})
+            public = None
+        public_bytes = blobs[public[2]] if public else None
         if row['source']['kind'] == 'fork':
             old, new = row.get('fork_old'), row.get('fork_new')
             if any(e and (e[0] not in ('100644', '100755') or e[1] != 'blob') for e in (old, new)):
@@ -664,8 +673,15 @@ def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_di
         if key not in variants:
             covering = None if leases is None else [dict(name=l['name'], user=l['user'], expires=l['expires'])
                 for l in leases if any(fnmatchcase(name, pattern) for pattern in l['patterns'])]
+            public_relation = ('missing' if public_bytes is None else
+                               'deletion_proposed' if candidate is None else
+                               'same_content' if candidate == public_bytes else
+                               'newline_only' if normalize(candidate) == normalize(public_bytes) else 'different')
             item = dict(path=name, candidate_sha256=identity,
                         canonical_sha256=hashlib.sha256(current_bytes).hexdigest() if current_bytes is not None else None,
+                        public_path=public_path if public is not None else None,
+                        public_sha256=hashlib.sha256(public_bytes).hexdigest() if public_bytes is not None else None,
+                        public_relation=public_relation,
                         leases=covering, sources=[])
             if include_diff:
                 try:
@@ -673,6 +689,10 @@ def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_di
                     after_text = (candidate or b'').decode('utf-8').splitlines(keepends=True)
                     item['diff'] = ''.join(difflib.unified_diff(before, after_text,
                                            fromfile='work/' + name, tofile='candidate/' + name))
+                    if public_bytes is not None and public_bytes != current_bytes:
+                        public_lines = public_bytes.decode('utf-8').splitlines(keepends=True)
+                        item['public_diff'] = ''.join(difflib.unified_diff(public_lines, after_text,
+                                                      fromfile=public_path, tofile='candidate/' + name))
                 except UnicodeDecodeError:
                     item['diff_error'] = 'Non-UTF-8 content; inspect blob separately'
             variants[key] = item
