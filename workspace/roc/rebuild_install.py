@@ -70,15 +70,20 @@ def install(root, client='2008-06', package=None):
     if not (package / 'config/rbxgs-app.json').exists():
         cache = root / 'local/rebuild-inputs'
         cache.parent.mkdir(parents=True, exist_ok=True)
-        if not (cache / '.git').exists():
+        cached_package = cache / client
+        if (cached_package / 'config/rbxgs-app.json').exists():
+            package = cached_package
+        elif (cache / '.git').exists():
+            raise ValueError('Existing rebuild-inputs checkout lacks required inputs; preserved: ' + str(cache))
+        else:
             subprocess.run(['git', 'clone', '--filter=blob:none', '--no-checkout', '--depth=1',
                             '--branch', 'work', 'https://github.com/colingsnyder2-ux/RoConstruct.git',
                             str(cache)], check=True, stdin=subprocess.DEVNULL)
-        subprocess.run(['git', '-C', str(cache), 'sparse-checkout', 'set', '--cone',
-                        *[client + '/' + folder for folder in
-                          ('config', 'patches', 'tests', 'scripts', 'src/glue', 'verification/manifests')]], check=True, stdin=subprocess.DEVNULL)
-        subprocess.run(['git', '-C', str(cache), 'checkout', 'main'], check=True, stdin=subprocess.DEVNULL)
-        package = cache / client
+            subprocess.run(['git', '-C', str(cache), 'sparse-checkout', 'set', '--cone',
+                            *[client + '/' + folder for folder in
+                              ('config', 'patches', 'tests', 'scripts', 'src/glue', 'verification/manifests')]], check=True, stdin=subprocess.DEVNULL)
+            subprocess.run(['git', '-C', str(cache), 'checkout', 'work'], check=True, stdin=subprocess.DEVNULL)
+            package = cached_package
     copies = []
     for source, target in [('config', 'modules'), ('patches', 'patches'), ('tests', 'tests'),
                            ('src/glue', 'glue'), ('verification/manifests', 'manifests'), ('scripts', '')]:

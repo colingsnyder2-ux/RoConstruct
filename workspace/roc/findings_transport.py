@@ -52,6 +52,8 @@ def _publish_downloads(root, git_exe, log=print, guide_base=None):
 def _publish_package(root, git_exe, log=print):
     """Update the native package using existing blobs for unchanged or renamed files."""
     root = Path(root)
+    if (root / 'work/draft-workflow-enabled.json').exists():
+        raise ValueError('Committed workspace owns native sources; legacy package publication is disabled')
     folder = root / 'local/findings/2008-06'
     manifest = json.loads((folder / 'package.json').read_text(encoding='utf-8'))
     index = root / 'work' / ('package-index-' + uuid.uuid4().hex)

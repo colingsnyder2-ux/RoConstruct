@@ -10,6 +10,16 @@ import pytest
 from roc.findings_transport import publish_downloads, publish_package
 
 
+def test_legacy_package_publication_is_disabled_for_workspace_authority(tmp_path):
+    work = tmp_path / 'work'
+    work.mkdir()
+    (work / 'draft-workflow-enabled.json').write_text('{}')
+    with pytest.raises(ValueError, match='legacy package publication is disabled'):
+        publish_package(tmp_path, 'git')
+    assert (work / 'draft-workflow-enabled.json').read_text() == '{}'
+    assert not (tmp_path / 'local/findings/2008-06').exists()
+
+
 @pytest.mark.skipif(not shutil.which('git'), reason='Git required for isolated local transport test')
 def test_download_publication_preserves_remote_sources_and_local_edits(tmp_path):
     def git(folder, *args):
