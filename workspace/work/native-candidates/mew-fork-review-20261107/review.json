@@ -1,0 +1,154 @@
+{
+  "scope": "Reviewed 18 native paths from the stated historical fork tip; content identity and source/header comparison only. No code imported, proof or runtime credit.",
+  "fork": "mew/claude/optimistic-shannon-0xccuy",
+  "reviewed_tip": "96ddc80766be85d2a3861e51bbf1fedeaa4f725a",
+  "new_tip_pending": "a355381b778e8cc23e4be927223d55d9662bd60f",
+  "canonical_commit": "15c887ffca415483ab168e9f9bb4f20ce11cf1a9",
+  "reviewed_paths": [
+    {
+      "fork_path": "rebuild/2008-06/native-classes/Accoutrement.cpp",
+      "fork_sha256": "04a5eadad7d264c3eb7c4de8b5347f5e5c458f098645c1ef2bda3b2c5164f45c",
+      "canonical_path": "rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp",
+      "canonical_sha256": "04a5eadad7d264c3eb7c4de8b5347f5e5c458f098645c1ef2bda3b2c5164f45c",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-classes/BodyColors.cpp",
+      "fork_sha256": "8e5a42fcc8c74e6a9b39eb6ff340136b488a6a2d0839a5d5c6db91c7b55dbce4",
+      "canonical_path": "rebuild/2008-06/App/src/v8datamodel/BodyColors.cpp",
+      "canonical_sha256": "8e5a42fcc8c74e6a9b39eb6ff340136b488a6a2d0839a5d5c6db91c7b55dbce4",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-classes/BodyMovers.cpp",
+      "fork_sha256": "acafd391d729247814dec0e25bb3a5552ce38c9758eee2395de1b7a618344b87",
+      "canonical_path": "rebuild/2008-06/App/src/v8datamodel/BodyMovers.cpp",
+      "canonical_sha256": "49f732f369e3e4060b55003a270b4cd8d5e82dda52bfc4aad923903ad1f87908",
+      "decision": "retain canonical",
+      "detail": "Fork adds local AncestorChanged definition; canonical shared Instance.h already defines it, so importing adds a conflicting redefinition."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-classes/Feature.cpp",
+      "fork_sha256": "5c2856ca8cd115f68eacc66cd4341d765de54ab376549cef638caf8336c59f6c",
+      "canonical_path": "rebuild/2008-06/App/src/v8datamodel/Feature.cpp",
+      "canonical_sha256": "483fd7bc6129ef8924fcd0a04097d00dd8b0728bfe6df2d9e76fb56cfe1c9ac7",
+      "decision": "retain canonical",
+      "detail": "Fork has older partial Feature unit; canonical retains VelocityMotor and matching join body. Do not replace recovered methods with smaller snapshot."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-classes/Message.cpp",
+      "fork_sha256": "842be823c8d7015c3a7377287b01c53f23755bb814a01a419a0c10fbcf7b5d6b",
+      "canonical_path": "rebuild/2008-06/App/src/v8datamodel/Message.cpp",
+      "canonical_sha256": "842be823c8d7015c3a7377287b01c53f23755bb814a01a419a0c10fbcf7b5d6b",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-classes/NetworkPlayer.cpp",
+      "fork_sha256": "3ccdfe1faffa303e7a4c3abf88b4d8210c6d9b681ae5b1efe19f4fa06015d4bb",
+      "canonical_path": "rebuild/2008-06/App/src/v8datamodel/NetworkPlayer.cpp",
+      "canonical_sha256": "3ccdfe1faffa303e7a4c3abf88b4d8210c6d9b681ae5b1efe19f4fa06015d4bb",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-classes/Rocket.cpp",
+      "fork_sha256": "be2bf0139428226da77fb1e1f0a99820c20f8690367314cee7da616ead90e45a",
+      "canonical_path": "rebuild/2008-06/App/src/v8datamodel/Rocket.cpp",
+      "canonical_sha256": "be2bf0139428226da77fb1e1f0a99820c20f8690367314cee7da616ead90e45a",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-classes/SpawnLocation.cpp",
+      "fork_sha256": "492fb96ce19593a8de992325569816501ada107721bf617948dfb67ab8f2afd4",
+      "canonical_path": "rebuild/2008-06/App/src/v8datamodel/SpawnLocation.cpp",
+      "canonical_sha256": "492fb96ce19593a8de992325569816501ada107721bf617948dfb67ab8f2afd4",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-classes/TimerService.cpp",
+      "fork_sha256": "9b241fd0d627af37fa78acff419423aeca02b5c0729eac6f843cf1da75bd5907",
+      "canonical_path": "rebuild/2008-06/App/src/v8datamodel/TimerService.cpp",
+      "canonical_sha256": "9b241fd0d627af37fa78acff419423aeca02b5c0729eac6f843cf1da75bd5907",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-headers/Network/Player.h",
+      "fork_sha256": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
+      "canonical_path": "rebuild/2008-06/Network/include/Network/Player.h",
+      "canonical_sha256": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-headers/v8datamodel/Accoutrement.h",
+      "fork_sha256": "5be50e8dcbc219a0e437bc067ca34c3a5bee63eb3d6667dfe8182ee026ac0e05",
+      "canonical_path": "rebuild/2008-06/App/include/v8datamodel/Accoutrement.h",
+      "canonical_sha256": "5be50e8dcbc219a0e437bc067ca34c3a5bee63eb3d6667dfe8182ee026ac0e05",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-headers/v8datamodel/BodyColors.h",
+      "fork_sha256": "127682675030b36108f7c64ffc86e07553402157b2d8bdca123d8cff8ba299d3",
+      "canonical_path": "rebuild/2008-06/App/include/v8datamodel/BodyColors.h",
+      "canonical_sha256": "127682675030b36108f7c64ffc86e07553402157b2d8bdca123d8cff8ba299d3",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h",
+      "fork_sha256": "63c7bf7fcbea26960d8ac1ff1a1785a02e37d69d147b929c5222443c80046163",
+      "canonical_path": "rebuild/2008-06/App/include/v8datamodel/BodyMovers.h",
+      "canonical_sha256": "63c7bf7fcbea26960d8ac1ff1a1785a02e37d69d147b929c5222443c80046163",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-headers/v8datamodel/Feature.h",
+      "fork_sha256": "595d94ab454b9ff4dd01b22de6ebd1d9ad8dcb5fe89eabc931f6582874e0156d",
+      "canonical_path": "rebuild/2008-06/App/include/v8datamodel/Feature.h",
+      "canonical_sha256": "b1eabe86377ca5d951c7dcf0b192e7901358e20a9f675cc074093144ac789a3b",
+      "decision": "retain canonical",
+      "detail": "Fork header lacks canonical VelocityMotor declarations and layout; join declaration already present."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-headers/v8datamodel/Rocket.h",
+      "fork_sha256": "fba2f12ab6e99b46a151044a05a9265b619afc8cd5ca706b27b2861cb9fce613",
+      "canonical_path": "rebuild/2008-06/App/include/v8datamodel/Rocket.h",
+      "canonical_sha256": "fba2f12ab6e99b46a151044a05a9265b619afc8cd5ca706b27b2861cb9fce613",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-headers/v8datamodel/SpawnLocation.h",
+      "fork_sha256": "2410712f84b89fde96ffd18f0c127a7375d19204fa8d83607d730573056e0b7b",
+      "canonical_path": "rebuild/2008-06/App/include/v8datamodel/SpawnLocation.h",
+      "canonical_sha256": "2410712f84b89fde96ffd18f0c127a7375d19204fa8d83607d730573056e0b7b",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h",
+      "fork_sha256": "00d1445a19fe74b5ca56ce75883fb5edc7fce458fee81ce7fe8508b96514af69",
+      "canonical_path": "rebuild/2008-06/App/include/v8datamodel/SpawnerService.h",
+      "canonical_sha256": "00d1445a19fe74b5ca56ce75883fb5edc7fce458fee81ce7fe8508b96514af69",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    },
+    {
+      "fork_path": "rebuild/2008-06/native-headers/v8datamodel/TimerService.h",
+      "fork_sha256": "7640981dca3c803865379af03e18282faa98ba191080235bcc98283277715f93",
+      "canonical_path": "rebuild/2008-06/App/include/v8datamodel/TimerService.h",
+      "canonical_sha256": "7640981dca3c803865379af03e18282faa98ba191080235bcc98283277715f93",
+      "decision": "exact content present",
+      "detail": "Full source/header bytes match canonical organized path."
+    }
+  ],
+  "remaining": "Later fork tip and its new changes remain unreviewed; do not advance fork cursor to it."
+}
