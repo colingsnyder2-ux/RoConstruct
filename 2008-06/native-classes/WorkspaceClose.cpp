@@ -1,12 +1,2 @@
-// >>> native-status (generated) -- do not edit >>>
-// WorkspaceClose | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
-// <<< native-status | src 7fd7e242 | roc native-status --write
-#include <afxwin.h>
-#include "CWorkspace.h"
-
-HRESULT __stdcall CWorkspace::Close() {
-    AFX_MANAGE_STATE(AfxGetAppModuleState());
-    cleanup();
-    return S_OK;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/WorkspaceClose.cpp"

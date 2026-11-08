@@ -1,10 +1,2 @@
-// >>> native-status (generated) -- do not edit >>>
-// NativeClassNames | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
-// <<< native-status | src 05d9160f | roc native-status --write
-namespace RBX {
-extern const char sInstance[] = "Instance";
-char sSelection[] = "Selection";
-char sTexture[] = "Texture";
-char sRunService[] = "RunService";
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/NativeClassNames.cpp"

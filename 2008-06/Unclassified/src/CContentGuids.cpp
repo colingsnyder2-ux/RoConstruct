@@ -1,0 +1,8 @@
+// >>> native-status (generated) -- do not edit >>>
+// CContentGuids | 2008-06 | inactive
+// unmapped (no binary link) | unmapped (no binary link) | by -
+// <<< native-status | src 2f4939cf | roc native-status --write
+#include <guiddef.h>
+
+extern const IID IID_IContent = {0xd63f927a, 0x1170, 0x4239, {0x9c, 0x1d, 0x06, 0xe8, 0xa6, 0x58, 0xf3, 0x00}};
+extern const CLSID CLSID_Content = {0x19821fdd, 0x546e, 0x4284, {0xa9, 0x25, 0xb2, 0xc5, 0xd7, 0xcc, 0x30, 0x84}};

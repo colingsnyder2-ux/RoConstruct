@@ -1,13 +1,2 @@
-// >>> native-status (generated) -- do not edit >>>
-// ApplicationBaseUrl | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
-// <<< native-status | src 80b442d2 | roc native-status --write
-#include <afxwin.h>
-
-// Original 0096dcf0, populated by application registry/settings startup.
-CString applicationBaseUrlText;
-
-CString applicationBaseUrl()
-{
-    return applicationBaseUrlText;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/ApplicationBaseUrl.cpp"
