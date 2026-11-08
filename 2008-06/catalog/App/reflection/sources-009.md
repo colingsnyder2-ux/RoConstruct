@@ -73,6 +73,8 @@ Compatibility path for `Unclassified/include/instance-base-callbacks/reflection/
 </details>
 
 **`84ccda811e41`** · `native-headers/instance-base-callbacks/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
@@ -126,7 +128,7 @@ Compatibility path for `Unclassified/include/instance-base-callbacks/reflection/
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>57 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -177,10 +179,14 @@ Compatibility path for `Unclassified/include/instance-base-callbacks/reflection/
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -192,6 +198,8 @@ Compatibility path for `Unclassified/include/instance-base-callbacks/reflection/
 Compatibility path for `App/include/reflection/Metadata.h`; compile either path, never both.
 
 **`17767eb6dbc4`** · `native-headers/reflection/Metadata.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/reflection/Metadata.h)
+- canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/reflection/Metadata.h)
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/reflection/Metadata.h)
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/reflection/Metadata.h)
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/reflection/Metadata.h)
@@ -251,7 +259,7 @@ Compatibility path for `App/include/reflection/Metadata.h`; compile either path,
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/reflection/Metadata.h)
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/reflection/Metadata.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
@@ -308,10 +316,14 @@ Compatibility path for `App/include/reflection/Metadata.h`; compile either path,
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -485,6 +497,8 @@ Compatibility path for `App/include/reflection/descriptor.h`; compile either pat
 </details>
 
 **`b788ad3a6405`** · `native-headers/reflection/descriptor.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/reflection/descriptor.h)
+- canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/reflection/descriptor.h)
@@ -544,7 +558,7 @@ Compatibility path for `App/include/reflection/descriptor.h`; compile either pat
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
@@ -601,10 +615,14 @@ Compatibility path for `App/include/reflection/descriptor.h`; compile either pat
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -732,6 +750,8 @@ Compatibility path for `App/include/reflection/enumconverter.h`; compile either 
 </details>
 
 **`6d96f267f89e`** · `native-headers/reflection/enumconverter.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/reflection/enumconverter.h)
+- canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/reflection/enumconverter.h)
@@ -791,7 +811,7 @@ Compatibility path for `App/include/reflection/enumconverter.h`; compile either 
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
@@ -848,10 +868,14 @@ Compatibility path for `App/include/reflection/enumconverter.h`; compile either 
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -945,6 +969,7 @@ Compatibility path for `App/include/reflection/enumconverter.h`; compile either 
 <summary>native-headers/reflection/function.h — public-only; 5 content versions</summary>
 
 **`0a9d46f04d1e`** · `native-headers/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/reflection/function.h)

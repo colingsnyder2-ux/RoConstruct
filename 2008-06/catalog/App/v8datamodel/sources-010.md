@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GeometryServ
 </details>
 
 **`6b1cb2091ba2`** · `App/include/v8datamodel/GeometryService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8datamodel/GeometryService.h)
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8datamodel/GeometryService.h)
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/v8datamodel/GeometryService.h)
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/v8datamodel/GeometryService.h)
@@ -31,6 +32,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GeometryServ
 </details>
 
 **`b2532ae6dd39`** · `App/include/v8datamodel/GeometryService.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8datamodel/GeometryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8datamodel/GeometryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/v8datamodel/GeometryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/v8datamodel/GeometryService.h)
@@ -61,7 +63,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GeometryServ
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/GeometryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/GeometryService.h)
 
-<details><summary>56 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
@@ -115,10 +117,14 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GeometryServ
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/include/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -245,6 +251,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GeometryServ
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8datamodel/GeometryService.h)
 
 **`d2968b81c5e4`** · `native-headers/v8datamodel/GeometryService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/v8datamodel/GeometryService.h)
+- canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h)
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/v8datamodel/GeometryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h)
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/v8datamodel/GeometryService.h)
@@ -304,7 +312,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GeometryServ
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/GeometryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
@@ -361,10 +369,14 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GeometryServ
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -384,6 +396,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GeometryServ
 Earlier paths and their donor versions: `native-headers/v8datamodel/GlobalSettings.h`.
 
 **`1a392a59513f`** · `App/include/v8datamodel/GlobalSettings.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h)
@@ -414,7 +427,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GlobalSettin
 - canonical · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h)
 
-<details><summary>56 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
@@ -468,14 +481,19 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GlobalSettin
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/include/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`57e2693e22d9`** · `App/include/v8datamodel/GlobalSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8datamodel/GlobalSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8datamodel/GlobalSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/v8datamodel/GlobalSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/v8datamodel/GlobalSettings.h)
@@ -576,6 +594,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GlobalSettin
 </details>
 
 **`a313f755a6f8`** · `native-headers/v8datamodel/GlobalSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/v8datamodel/GlobalSettings.h)
+- canonical · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/v8datamodel/GlobalSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/v8datamodel/GlobalSettings.h)
@@ -635,7 +655,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GlobalSettin
 - public · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/GlobalSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GlobalSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
@@ -692,10 +712,14 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/GlobalSettin
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h` · root `b52aa15feaea5a0c`
 
 </details>
 

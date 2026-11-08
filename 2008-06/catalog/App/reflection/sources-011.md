@@ -31,6 +31,7 @@ Compatibility path for `App/include/reflection/type.h`; compile either path, nev
 </details>
 
 **`13a5747a2e86`** · `native-headers/reflection/type.h` · proof not assessed
+- draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
 - draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
 - draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
 - draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
@@ -134,6 +135,8 @@ Compatibility path for `App/include/reflection/type.h`; compile either path, nev
 </details>
 
 **`89a4477b34e1`** · `native-headers/reflection/type.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/reflection/type.h)
+- canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/reflection/type.h)
 - public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/reflection/type.h)
 - canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/reflection/type.h)
 - public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/reflection/type.h)
@@ -193,7 +196,7 @@ Compatibility path for `App/include/reflection/type.h`; compile either path, nev
 - public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/reflection/type.h)
 - canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/reflection/type.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
@@ -250,10 +253,14 @@ Compatibility path for `App/include/reflection/type.h`; compile either path, nev
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/reflection/type.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -340,6 +347,8 @@ Compatibility path for `App/include/reflection/type.h`; compile either path, nev
 Compatibility path for `Unclassified/include/runservice-events/reflection/function.h`; compile either path, never both.
 
 **`22d8b1e99045`** · `native-headers/runservice-events/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/runservice-events/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/runservice-events/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/runservice-events/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/runservice-events/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/runservice-events/reflection/function.h)
@@ -395,7 +404,7 @@ Compatibility path for `Unclassified/include/runservice-events/reflection/functi
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/runservice-events/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/runservice-events/reflection/function.h)
 
-<details><summary>55 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -448,10 +457,14 @@ Compatibility path for `Unclassified/include/runservice-events/reflection/functi
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -594,6 +607,8 @@ Compatibility path for `Unclassified/include/serializer-load/reflection/function
 </details>
 
 **`439f090fcc1f`** · `native-headers/serializer-load/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/serializer-load/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/serializer-load/reflection/function.h)
@@ -649,7 +664,7 @@ Compatibility path for `Unclassified/include/serializer-load/reflection/function
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/serializer-load/reflection/function.h)
 
-<details><summary>55 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -702,10 +717,14 @@ Compatibility path for `Unclassified/include/serializer-load/reflection/function
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -781,6 +800,8 @@ Compatibility path for `Unclassified/include/workspace-camera/reflection/functio
 </details>
 
 **`34818bf706a9`** · `native-headers/workspace-camera/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/workspace-camera/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/workspace-camera/reflection/function.h)
@@ -836,7 +857,7 @@ Compatibility path for `Unclassified/include/workspace-camera/reflection/functio
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
 
-<details><summary>55 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -889,10 +910,14 @@ Compatibility path for `Unclassified/include/workspace-camera/reflection/functio
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 
 </details>
 

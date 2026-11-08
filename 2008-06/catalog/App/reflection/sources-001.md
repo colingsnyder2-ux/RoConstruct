@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/reflection/Metadata.h`.
 </details>
 
 **`424ee22f7c09`** · `App/include/reflection/Metadata.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/reflection/Metadata.h)
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/reflection/Metadata.h)
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/reflection/Metadata.h)
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/reflection/Metadata.h)
@@ -47,7 +48,7 @@ Earlier paths and their donor versions: `native-headers/reflection/Metadata.h`.
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/reflection/Metadata.h)
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/reflection/Metadata.h)
 
-<details><summary>56 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
@@ -101,10 +102,14 @@ Earlier paths and their donor versions: `native-headers/reflection/Metadata.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/include/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -134,6 +139,7 @@ Earlier paths and their donor versions: `native-headers/reflection/Metadata.h`.
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/reflection/Metadata.h)
 
 **`bd95a8efc304`** · `App/include/reflection/Metadata.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/reflection/Metadata.h)
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/reflection/Metadata.h)
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/reflection/Metadata.h)
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/reflection/Metadata.h)
@@ -148,6 +154,8 @@ Earlier paths and their donor versions: `native-headers/reflection/Metadata.h`.
 </details>
 
 **`17767eb6dbc4`** · `native-headers/reflection/Metadata.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/reflection/Metadata.h)
+- canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/reflection/Metadata.h)
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/reflection/Metadata.h)
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/reflection/Metadata.h)
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/reflection/Metadata.h)
@@ -207,7 +215,7 @@ Earlier paths and their donor versions: `native-headers/reflection/Metadata.h`.
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/reflection/Metadata.h)
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/reflection/Metadata.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
@@ -264,10 +272,14 @@ Earlier paths and their donor versions: `native-headers/reflection/Metadata.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/reflection/Metadata.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -434,6 +446,7 @@ Earlier paths and their donor versions: `native-headers/reflection/descriptor.h`
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/reflection/descriptor.h)
 
 **`80c6327a0718`** · `App/include/reflection/descriptor.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/reflection/descriptor.h)
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/reflection/descriptor.h)
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/reflection/descriptor.h)
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/reflection/descriptor.h)
@@ -448,6 +461,7 @@ Earlier paths and their donor versions: `native-headers/reflection/descriptor.h`
 </details>
 
 **`c5150d5bca22`** · `App/include/reflection/descriptor.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/reflection/descriptor.h)
@@ -478,7 +492,7 @@ Earlier paths and their donor versions: `native-headers/reflection/descriptor.h`
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/reflection/descriptor.h)
 
-<details><summary>56 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
@@ -532,10 +546,14 @@ Earlier paths and their donor versions: `native-headers/reflection/descriptor.h`
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/include/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -581,6 +599,8 @@ Earlier paths and their donor versions: `native-headers/reflection/descriptor.h`
 </details>
 
 **`b788ad3a6405`** · `native-headers/reflection/descriptor.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/reflection/descriptor.h)
+- canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/reflection/descriptor.h)
@@ -640,7 +660,7 @@ Earlier paths and their donor versions: `native-headers/reflection/descriptor.h`
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
@@ -697,10 +717,14 @@ Earlier paths and their donor versions: `native-headers/reflection/descriptor.h`
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/reflection/descriptor.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -821,6 +845,7 @@ Earlier paths and their donor versions: `native-headers/reflection/enumconverter
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/reflection/enumconverter.h)
 
 **`8ecb1458c9c0`** · `App/include/reflection/enumconverter.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/reflection/enumconverter.h)
@@ -851,7 +876,7 @@ Earlier paths and their donor versions: `native-headers/reflection/enumconverter
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/reflection/enumconverter.h)
 
-<details><summary>56 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
@@ -905,10 +930,14 @@ Earlier paths and their donor versions: `native-headers/reflection/enumconverter
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/include/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -922,6 +951,7 @@ Earlier paths and their donor versions: `native-headers/reflection/enumconverter
 </details>
 
 **`d0c7ad74fe42`** · `App/include/reflection/enumconverter.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/reflection/enumconverter.h)
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/reflection/enumconverter.h)
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/reflection/enumconverter.h)
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/reflection/enumconverter.h)
@@ -968,6 +998,8 @@ Earlier paths and their donor versions: `native-headers/reflection/enumconverter
 </details>
 
 **`6d96f267f89e`** · `native-headers/reflection/enumconverter.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/reflection/enumconverter.h)
+- canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/reflection/enumconverter.h)
@@ -1027,7 +1059,7 @@ Earlier paths and their donor versions: `native-headers/reflection/enumconverter
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
@@ -1084,10 +1116,14 @@ Earlier paths and their donor versions: `native-headers/reflection/enumconverter
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/reflection/enumconverter.h` · root `b52aa15feaea5a0c`
 
 </details>
 

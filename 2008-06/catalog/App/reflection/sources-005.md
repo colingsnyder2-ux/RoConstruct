@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/MetadataContainersLifetime.cpp`.
 
 **`10a54fbb33e1`** · `App/src/reflection/MetadataContainersLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [reflection/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/reflection/MetadataContainersLifetime.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/reflection/MetadataContainersLifetime.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/reflection/MetadataContainersLifetime.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/reflection/MetadataContainersLifetime.cpp)
@@ -59,6 +60,7 @@ Earlier paths and their donor versions: `native-classes/MetadataContainersLifeti
 - public · colingsnyder2-ux · [reflection/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/reflection/MetadataContainersLifetime.cpp)
 
 **`9c19d79bef31`** · `App/src/reflection/MetadataContainersLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp)
@@ -92,7 +94,7 @@ Earlier paths and their donor versions: `native-classes/MetadataContainersLifeti
 - canonical · colingsnyder2-ux · [reflection/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
@@ -103,6 +105,8 @@ Earlier paths and their donor versions: `native-classes/MetadataContainersLifeti
 - local · `work/o26/c/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/reflection/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -183,6 +187,8 @@ Earlier paths and their donor versions: `native-classes/MetadataContainersLifeti
 </details>
 
 **`c7bc181ee1fb`** · `native-classes/MetadataContainersLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/MetadataContainersLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/MetadataContainersLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/MetadataContainersLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/MetadataContainersLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/MetadataContainersLifetime.cpp)
@@ -248,7 +254,7 @@ Earlier paths and their donor versions: `native-classes/MetadataContainersLifeti
 - public · colingsnyder2-ux · [native-classes/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MetadataContainersLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataContainersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/MetadataContainersLifetime.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
@@ -259,6 +265,8 @@ Earlier paths and their donor versions: `native-classes/MetadataContainersLifeti
 - local · `work/o26/c/rebuild/2008-06/native-classes/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-classes/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-classes/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/MetadataContainersLifetime.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -278,6 +286,7 @@ Earlier paths and their donor versions: `native-classes/MetadataContainersLifeti
 Earlier paths and their donor versions: `native-classes/MetadataItemLifetime.cpp`.
 
 **`3d5c04d23623`** · `App/src/reflection/MetadataItemLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp)
@@ -311,7 +320,7 @@ Earlier paths and their donor versions: `native-classes/MetadataItemLifetime.cpp
 - canonical · colingsnyder2-ux · [reflection/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
@@ -322,10 +331,13 @@ Earlier paths and their donor versions: `native-classes/MetadataItemLifetime.cpp
 - local · `work/o26/c/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/reflection/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`42d354b1ea9e`** · `App/src/reflection/MetadataItemLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [reflection/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/reflection/MetadataItemLifetime.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/reflection/MetadataItemLifetime.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/reflection/MetadataItemLifetime.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/reflection/MetadataItemLifetime.cpp)
@@ -412,6 +424,8 @@ Earlier paths and their donor versions: `native-classes/MetadataItemLifetime.cpp
 </details>
 
 **`52b8708946f6`** · `native-classes/MetadataItemLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/MetadataItemLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/MetadataItemLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/MetadataItemLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/MetadataItemLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/MetadataItemLifetime.cpp)
@@ -477,7 +491,7 @@ Earlier paths and their donor versions: `native-classes/MetadataItemLifetime.cpp
 - public · colingsnyder2-ux · [native-classes/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MetadataItemLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataItemLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/MetadataItemLifetime.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
@@ -488,6 +502,8 @@ Earlier paths and their donor versions: `native-classes/MetadataItemLifetime.cpp
 - local · `work/o26/c/rebuild/2008-06/native-classes/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-classes/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-classes/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/MetadataItemLifetime.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -576,6 +592,7 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLifeti
 - public · colingsnyder2-ux · [reflection/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp)
 
 **`41966f102b45`** · `App/src/reflection/MetadataReflectionLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [reflection/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp)
@@ -590,6 +607,7 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLifeti
 </details>
 
 **`ccf072fa94ab`** · `App/src/reflection/MetadataReflectionLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp)
@@ -623,7 +641,7 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLifeti
 - canonical · colingsnyder2-ux · [reflection/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
@@ -634,6 +652,8 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLifeti
 - local · `work/o26/c/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/reflection/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -668,6 +688,8 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLifeti
 - public · colingsnyder2-ux · [native-classes/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/MetadataReflectionLifetime.cpp)
 
 **`bf8509e2b86f`** · `native-classes/MetadataReflectionLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/MetadataReflectionLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/MetadataReflectionLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/MetadataReflectionLifetime.cpp)
@@ -733,7 +755,7 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLifeti
 - public · colingsnyder2-ux · [native-classes/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MetadataReflectionLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataReflectionLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
@@ -744,6 +766,8 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLifeti
 - local · `work/o26/c/rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -818,6 +842,7 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLifeti
 Earlier paths and their donor versions: `native-classes/MetadataReflectionLoad.cpp`.
 
 **`2d639867197a`** · `App/src/reflection/MetadataReflectionLoad.cpp` · proof not assessed
+- public · colingsnyder2-ux · [reflection/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/reflection/MetadataReflectionLoad.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/reflection/MetadataReflectionLoad.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/reflection/MetadataReflectionLoad.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/reflection/MetadataReflectionLoad.cpp)
@@ -860,6 +885,7 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLoad.c
 - public · colingsnyder2-ux · [reflection/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/reflection/MetadataReflectionLoad.cpp)
 
 **`5b6785be56bc`** · `App/src/reflection/MetadataReflectionLoad.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp)
@@ -893,7 +919,7 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLoad.c
 - canonical · colingsnyder2-ux · [reflection/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
@@ -904,6 +930,8 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLoad.c
 - local · `work/o26/c/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/reflection/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -963,6 +991,8 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLoad.c
 </details>
 
 **`7074b69e5059`** · `native-classes/MetadataReflectionLoad.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/MetadataReflectionLoad.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/MetadataReflectionLoad.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/MetadataReflectionLoad.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/MetadataReflectionLoad.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/MetadataReflectionLoad.cpp)
@@ -1028,7 +1058,7 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLoad.c
 - public · colingsnyder2-ux · [native-classes/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MetadataReflectionLoad.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataReflectionLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/MetadataReflectionLoad.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
@@ -1039,6 +1069,8 @@ Earlier paths and their donor versions: `native-classes/MetadataReflectionLoad.c
 - local · `work/o26/c/rebuild/2008-06/native-classes/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-classes/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-classes/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/MetadataReflectionLoad.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

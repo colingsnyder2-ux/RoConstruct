@@ -8,16 +8,20 @@
 Earlier paths and their donor versions: `Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp`.
 
 **`69c522ab9b8f`** · `experiments/overlays/boost-function-pod-vtable/boost/function/function_template.hpp` · proof not assessed
+- public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/experiments/overlays/boost-function-pod-vtable/boost/function/function_template.hpp)
 - public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/boost-function-pod-vtable/boost/function/function_template.hpp)
 
 **`ab5c643ebf14`** · `experiments/overlays/boost-function-pod-vtable/boost/function/function_template.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/experiments/overlays/boost-function-pod-vtable/boost/function/function_template.hpp)
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/boost-function-pod-vtable/boost/function/function_template.hpp)
 
-<details><summary>3 retained local origins</summary>
+<details><summary>5 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-final-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/experiments/overlays/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/overlays/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/overlays/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -54,6 +58,7 @@ Earlier paths and their donor versions: `Unclassified/include/boost-function-pod
 </details>
 
 **`30d0b027a8b5`** · `Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · proof not assessed
+- public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 - public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 
 **`69c522ab9b8f`** · `Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · proof not assessed
@@ -153,13 +158,18 @@ Earlier paths and their donor versions: `Unclassified/include/boost-function-pod
 </details>
 
 **`e3e774984653`** · `Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 
-<details><summary>3 retained local origins</summary>
+<details><summary>7 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-final-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -171,11 +181,12 @@ Earlier paths and their donor versions: `Unclassified/include/boost-function-pod
 Earlier paths and their donor versions: `Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp`.
 
 **`4f6cd24139bb`** · `experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -187,10 +198,13 @@ Earlier paths and their donor versions: `Unclassified/include/boost-inline-nothr
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`7cb122d925fc`** · `experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/boost-inline-nothrow/boost/shared_ptr.hpp)
@@ -292,24 +306,30 @@ Earlier paths and their donor versions: `Unclassified/include/boost-inline-nothr
 </details>
 
 **`7f249468832c`** · `Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 
-<details><summary>8 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`b04b1daba7c1`** · `Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
@@ -345,16 +365,18 @@ Earlier paths and their donor versions: `Unclassified/include/boost-inline-nothr
 Earlier paths and their donor versions: `Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp`.
 
 **`0ee326f808aa`** · `experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 
 **`7f13fbebdb2a`** · `experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -366,6 +388,8 @@ Earlier paths and their donor versions: `Unclassified/include/boost-noinline-sha
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/overlays/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -381,6 +405,7 @@ Earlier paths and their donor versions: `Unclassified/include/boost-noinline-sha
 </details>
 
 **`13d2dafe859d`** · `Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
@@ -468,20 +493,25 @@ Earlier paths and their donor versions: `Unclassified/include/boost-noinline-sha
 </details>
 
 **`b2d322681381`** · `Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 
-<details><summary>8 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -515,10 +545,11 @@ Earlier paths and their donor versions: `Unclassified/include/boost-noinline-sha
 Earlier paths and their donor versions: `Unclassified/include/camera-zoom/util/Extents.h`.
 
 **`15a77df18499`** · `experiments/overlays/camera-zoom/util/Extents.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/experiments/overlays/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/camera-zoom/util/Extents.h)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/overlays/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -529,10 +560,13 @@ Earlier paths and their donor versions: `Unclassified/include/camera-zoom/util/E
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/experiments/overlays/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/overlays/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/overlays/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`3c434de37ece`** · `experiments/overlays/camera-zoom/util/Extents.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/experiments/overlays/camera-zoom/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/camera-zoom/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/camera-zoom/util/Extents.h)
 
@@ -622,6 +656,7 @@ Earlier paths and their donor versions: `Unclassified/include/camera-zoom/util/E
 </details>
 
 **`3253f119bf6d`** · `Unclassified/include/camera-zoom/util/Extents.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 
@@ -661,20 +696,25 @@ Earlier paths and their donor versions: `Unclassified/include/camera-zoom/util/E
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 
 **`9c44aaa2fbd5`** · `Unclassified/include/camera-zoom/util/Extents.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -686,11 +726,12 @@ Earlier paths and their donor versions: `Unclassified/include/camera-zoom/util/E
 Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/util/Utilities.h`.
 
 **`695034671077`** · `experiments/overlays/cow-noinline-read/util/Utilities.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -702,29 +743,37 @@ Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`8fa2c3ecade4`** · `experiments/overlays/cow-noinline-read/util/Utilities.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 
 **`05ae638a5067`** · `Unclassified/include/cow-noinline-read/util/Utilities.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 
-<details><summary>8 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -848,6 +897,7 @@ Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/
 </details>
 
 **`a1adef8590b3`** · `Unclassified/include/cow-noinline-read/util/Utilities.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
@@ -860,11 +910,12 @@ Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/
 Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/Rect.h`.
 
 **`135d725a2d1d`** · `experiments/overlays/draw-handles/util/Rect.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -876,10 +927,13 @@ Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`15f22d7605ba`** · `experiments/overlays/draw-handles/util/Rect.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/draw-handles/util/Rect.h)
@@ -1004,25 +1058,31 @@ Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 
 **`b2191ed683cf`** · `Unclassified/include/draw-handles/util/Rect.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 
 **`b59ce50456b4`** · `Unclassified/include/draw-handles/util/Rect.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 
-<details><summary>8 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 
 </details>
 

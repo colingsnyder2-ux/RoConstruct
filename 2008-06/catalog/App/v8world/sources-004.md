@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/Ball.cpp`.
 
 **`4c67893130fa`** · `App/src/v8world/Ball.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8world/Ball.cpp)
 - public · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8world/Ball.cpp)
 - public · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/v8world/Ball.cpp)
 - public · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/v8world/Ball.cpp)
@@ -59,6 +60,7 @@ Earlier paths and their donor versions: `native-classes/Ball.cpp`.
 - public · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8world/Ball.cpp)
 
 **`fe56da7ec712`** · `App/src/v8world/Ball.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp)
 - canonical · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp)
 - canonical · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp)
 - canonical · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp)
@@ -92,7 +94,7 @@ Earlier paths and their donor versions: `native-classes/Ball.cpp`.
 - canonical · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp)
 - canonical · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp` · root `b52aa15feaea5a0c`
@@ -103,6 +105,8 @@ Earlier paths and their donor versions: `native-classes/Ball.cpp`.
 - local · `work/o26/c/rebuild/2008-06/App/src/v8world/Ball.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/src/v8world/Ball.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/src/v8world/Ball.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/v8world/Ball.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/v8world/Ball.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -161,6 +165,8 @@ Earlier paths and their donor versions: `native-classes/Ball.cpp`.
 </details>
 
 **`f55c7a4cc4d2`** · `native-classes/Ball.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/Ball.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/Ball.cpp)
 - public · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/Ball.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/Ball.cpp)
 - public · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/Ball.cpp)
@@ -226,7 +232,7 @@ Earlier paths and their donor versions: `native-classes/Ball.cpp`.
 - public · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/Ball.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/Ball.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/Ball.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/Ball.cpp` · root `b52aa15feaea5a0c`
@@ -237,6 +243,8 @@ Earlier paths and their donor versions: `native-classes/Ball.cpp`.
 - local · `work/o26/c/rebuild/2008-06/native-classes/Ball.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-classes/Ball.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-classes/Ball.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/Ball.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/Ball.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -312,6 +320,7 @@ Earlier paths and their donor versions: `native-classes/Block.cpp`.
 </details>
 
 **`e09a0c994d1e`** · `App/src/v8world/Block.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8world/Block.cpp)
 - canonical · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8world/Block.cpp)
 - canonical · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/v8world/Block.cpp)
 - canonical · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/v8world/Block.cpp)
@@ -345,7 +354,7 @@ Earlier paths and their donor versions: `native-classes/Block.cpp`.
 - canonical · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/v8world/Block.cpp)
 - canonical · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/v8world/Block.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/v8world/Block.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/v8world/Block.cpp` · root `b52aa15feaea5a0c`
@@ -356,10 +365,13 @@ Earlier paths and their donor versions: `native-classes/Block.cpp`.
 - local · `work/o26/c/rebuild/2008-06/App/src/v8world/Block.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/src/v8world/Block.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/src/v8world/Block.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/v8world/Block.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/v8world/Block.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`f9687883c8bb`** · `App/src/v8world/Block.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8world/Block.cpp)
 - public · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8world/Block.cpp)
 - public · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/v8world/Block.cpp)
 - public · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/v8world/Block.cpp)
@@ -400,6 +412,8 @@ Earlier paths and their donor versions: `native-classes/Block.cpp`.
 </details>
 
 **`628f8eede21c`** · `native-classes/Block.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/Block.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/Block.cpp)
 - public · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/Block.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/Block.cpp)
 - public · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/Block.cpp)
@@ -465,7 +479,7 @@ Earlier paths and their donor versions: `native-classes/Block.cpp`.
 - public · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/Block.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/Block.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/Block.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/Block.cpp` · root `b52aa15feaea5a0c`
@@ -476,6 +490,8 @@ Earlier paths and their donor versions: `native-classes/Block.cpp`.
 - local · `work/o26/c/rebuild/2008-06/native-classes/Block.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-classes/Block.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-classes/Block.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/Block.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/Block.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -542,6 +558,7 @@ Earlier paths and their donor versions: `native-classes/Block.cpp`.
 Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 
 **`30b7aa3f0cde`** · `App/src/v8world/CleanStage2008.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp)
@@ -575,7 +592,7 @@ Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
@@ -586,6 +603,8 @@ Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 - local · `work/o26/c/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -618,6 +637,7 @@ Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 - public · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8world/CleanStage2008.cpp)
 
 **`78aaeb7d9a62`** · `App/src/v8world/CleanStage2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8world/CleanStage2008.cpp)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8world/CleanStage2008.cpp)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/v8world/CleanStage2008.cpp)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/v8world/CleanStage2008.cpp)
@@ -688,6 +708,8 @@ Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 - public · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CleanStage2008.cpp)
 
 **`58da3a56a107`** · `native-classes/CleanStage2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/CleanStage2008.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/CleanStage2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/CleanStage2008.cpp)
@@ -753,7 +775,7 @@ Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 - public · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/CleanStage2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
@@ -764,6 +786,8 @@ Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 - local · `work/o26/c/rebuild/2008-06/native-classes/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-classes/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-classes/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/CleanStage2008.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -793,6 +817,8 @@ Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 </details>
 
 **`e3cceef427f6`** · `native-classes/CleanStage2008.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/CleanStage2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/CleanStage2008.cpp)
@@ -902,6 +928,7 @@ Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 Earlier paths and their donor versions: `native-classes/Contact.cpp`.
 
 **`3a76ab152e56`** · `App/src/v8world/Contact.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8world/Contact.cpp)
 - public · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8world/Contact.cpp)
 - public · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/v8world/Contact.cpp)
 - public · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/v8world/Contact.cpp)
@@ -916,6 +943,7 @@ Earlier paths and their donor versions: `native-classes/Contact.cpp`.
 </details>
 
 **`8f5f1d47d9ee`** · `App/src/v8world/Contact.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp)
 - canonical · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp)
 - canonical · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp)
 - canonical · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp)
@@ -949,7 +977,7 @@ Earlier paths and their donor versions: `native-classes/Contact.cpp`.
 - canonical · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp)
 - canonical · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp` · root `b52aa15feaea5a0c`
@@ -960,6 +988,8 @@ Earlier paths and their donor versions: `native-classes/Contact.cpp`.
 - local · `work/o26/c/rebuild/2008-06/App/src/v8world/Contact.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/src/v8world/Contact.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/src/v8world/Contact.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/v8world/Contact.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/v8world/Contact.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1065,6 +1095,8 @@ Earlier paths and their donor versions: `native-classes/Contact.cpp`.
 - public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/Contact.cpp)
 
 **`e64912ff8900`** · `native-classes/Contact.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/Contact.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/Contact.cpp)
 - public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/Contact.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/Contact.cpp)
 - public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/Contact.cpp)
@@ -1130,7 +1162,7 @@ Earlier paths and their donor versions: `native-classes/Contact.cpp`.
 - public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/Contact.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/Contact.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/Contact.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/Contact.cpp` · root `b52aa15feaea5a0c`
@@ -1141,6 +1173,8 @@ Earlier paths and their donor versions: `native-classes/Contact.cpp`.
 - local · `work/o26/c/rebuild/2008-06/native-classes/Contact.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-classes/Contact.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-classes/Contact.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/Contact.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/Contact.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

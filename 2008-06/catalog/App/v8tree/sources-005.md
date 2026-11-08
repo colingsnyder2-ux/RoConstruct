@@ -45,6 +45,7 @@ Earlier paths and their donor versions: `native-classes/GuidItem.cpp`.
 </details>
 
 **`ba162561ab77`** · `App/src/v8tree/GuidItem.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8tree/GuidItem.cpp)
 - canonical · colingsnyder2-ux · [v8tree/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8tree/GuidItem.cpp)
 - canonical · colingsnyder2-ux · [v8tree/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/v8tree/GuidItem.cpp)
 - canonical · colingsnyder2-ux · [v8tree/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/v8tree/GuidItem.cpp)
@@ -78,7 +79,7 @@ Earlier paths and their donor versions: `native-classes/GuidItem.cpp`.
 - canonical · colingsnyder2-ux · [v8tree/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/v8tree/GuidItem.cpp)
 - canonical · colingsnyder2-ux · [v8tree/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/v8tree/GuidItem.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/v8tree/GuidItem.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/v8tree/GuidItem.cpp` · root `b52aa15feaea5a0c`
@@ -89,10 +90,13 @@ Earlier paths and their donor versions: `native-classes/GuidItem.cpp`.
 - local · `work/o26/c/rebuild/2008-06/App/src/v8tree/GuidItem.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/src/v8tree/GuidItem.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/src/v8tree/GuidItem.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/v8tree/GuidItem.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/v8tree/GuidItem.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`e405b2c9ae48`** · `App/src/v8tree/GuidItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8tree/GuidItem.cpp)
 - public · colingsnyder2-ux · [v8tree/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8tree/GuidItem.cpp)
 - public · colingsnyder2-ux · [v8tree/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/v8tree/GuidItem.cpp)
 - public · colingsnyder2-ux · [v8tree/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/v8tree/GuidItem.cpp)
@@ -256,6 +260,8 @@ Earlier paths and their donor versions: `native-classes/GuidItem.cpp`.
 </details>
 
 **`466133108c1f`** · `native-classes/GuidItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/GuidItem.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/GuidItem.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/GuidItem.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/GuidItem.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/GuidItem.cpp)
@@ -321,7 +327,7 @@ Earlier paths and their donor versions: `native-classes/GuidItem.cpp`.
 - public · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/GuidItem.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/GuidItem.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/GuidItem.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/GuidItem.cpp` · root `b52aa15feaea5a0c`
@@ -332,6 +338,8 @@ Earlier paths and their donor versions: `native-classes/GuidItem.cpp`.
 - local · `work/o26/c/rebuild/2008-06/native-classes/GuidItem.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-classes/GuidItem.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-classes/GuidItem.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/GuidItem.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/GuidItem.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -445,6 +453,7 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChanged.
 - public · colingsnyder2-ux · [v8tree/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp)
 
 **`b639260c0089`** · `App/src/v8tree/InstanceAncestorChanged.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp)
@@ -486,7 +495,7 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChanged.
 - canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/instance-source-layout-more-20261107/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
@@ -498,6 +507,8 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChanged.
 - local · `work/o26/c/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -511,6 +522,7 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChanged.
 </details>
 
 **`eb2316546176`** · `App/src/v8tree/InstanceAncestorChanged.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/v8tree/InstanceAncestorChanged.cpp)
@@ -559,6 +571,7 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChanged.
 </details>
 
 **`1cf7409b723f`** · `native-classes/InstanceAncestorChanged.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceAncestorChanged.cpp)
@@ -665,6 +678,8 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChanged.
 </details>
 
 **`da025803d738`** · `native-classes/InstanceAncestorChanged.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/InstanceAncestorChanged.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/InstanceAncestorChanged.cpp)
@@ -746,7 +761,7 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChanged.
 - public · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/instance-source-layout-more-20261107/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
@@ -758,6 +773,8 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChanged.
 - local · `work/o26/c/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -800,6 +817,7 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChangedN
 </details>
 
 **`96bde6b1760a`** · `App/src/v8tree/InstanceAncestorChangedNative.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp)
@@ -833,7 +851,7 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChangedN
 - canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
@@ -844,6 +862,8 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChangedN
 - local · `work/o26/c/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -876,6 +896,7 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChangedN
 - public · colingsnyder2-ux · [v8tree/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp)
 
 **`eff2c65a877d`** · `App/src/v8tree/InstanceAncestorChangedNative.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/v8tree/InstanceAncestorChangedNative.cpp)
@@ -908,6 +929,8 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChangedN
 </details>
 
 **`72cbf3da715d`** · `native-classes/InstanceAncestorChangedNative.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/InstanceAncestorChangedNative.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/InstanceAncestorChangedNative.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/InstanceAncestorChangedNative.cpp)
@@ -973,7 +996,7 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChangedN
 - public · colingsnyder2-ux · [native-classes/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/InstanceAncestorChangedNative.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceAncestorChangedNative.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp)
 
-<details><summary>9 retained local origins</summary>
+<details><summary>11 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
@@ -984,6 +1007,8 @@ Earlier paths and their donor versions: `native-classes/InstanceAncestorChangedN
 - local · `work/o26/c/rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

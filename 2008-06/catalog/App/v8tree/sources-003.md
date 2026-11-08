@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/PropertyChanged.h
 </details>
 
 **`396e4495d5d5`** · `App/include/v8tree/PropertyChanged.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8tree/PropertyChanged.h)
 - canonical · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8tree/PropertyChanged.h)
 - canonical · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/v8tree/PropertyChanged.h)
 - canonical · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/v8tree/PropertyChanged.h)
@@ -45,7 +46,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/PropertyChanged.h
 - canonical · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8tree/PropertyChanged.h)
 - canonical · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8tree/PropertyChanged.h)
 
-<details><summary>52 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
@@ -95,10 +96,14 @@ Earlier paths and their donor versions: `native-headers/v8tree/PropertyChanged.h
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/include/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -126,6 +131,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/PropertyChanged.h
 - public · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8tree/PropertyChanged.h)
 
 **`c068fc1fa4ad`** · `App/include/v8tree/PropertyChanged.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8tree/PropertyChanged.h)
 - public · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8tree/PropertyChanged.h)
 - public · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/v8tree/PropertyChanged.h)
 - public · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/v8tree/PropertyChanged.h)
@@ -289,6 +295,8 @@ Earlier paths and their donor versions: `native-headers/v8tree/PropertyChanged.h
 </details>
 
 **`7a69610fd5f2`** · `native-headers/v8tree/PropertyChanged.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/v8tree/PropertyChanged.h)
+- canonical · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h)
 - public · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/v8tree/PropertyChanged.h)
 - canonical · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h)
 - public · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/v8tree/PropertyChanged.h)
@@ -344,7 +352,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/PropertyChanged.h
 - public · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8tree/PropertyChanged.h)
 - canonical · colingsnyder2-ux · [v8tree/PropertyChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h)
 
-<details><summary>55 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
@@ -397,10 +405,14 @@ Earlier paths and their donor versions: `native-headers/v8tree/PropertyChanged.h
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/v8tree/PropertyChanged.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -479,6 +491,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8tree/Service.h)
 
 **`8b62e90c7dcb`** · `App/include/v8tree/Service.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8tree/Service.h)
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8tree/Service.h)
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/v8tree/Service.h)
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/v8tree/Service.h)
@@ -493,6 +506,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 </details>
 
 **`a27b4b64ff6d`** · `App/include/v8tree/Service.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
@@ -523,7 +537,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
 
-<details><summary>56 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
@@ -577,10 +591,14 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -696,6 +714,8 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 </details>
 
 **`58647b4997d8`** · `native-headers/v8tree/Service.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/v8tree/Service.h)
+- canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/v8tree/Service.h)
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/v8tree/Service.h)
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/v8tree/Service.h)
@@ -755,7 +775,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8tree/Service.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
@@ -812,10 +832,14 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 
 </details>
 
