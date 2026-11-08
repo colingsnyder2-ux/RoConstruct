@@ -42,6 +42,7 @@ Earlier paths and their donor versions: `native-headers/util/GuidRegistry.h`.
 </details>
 
 **`d7118c5b23c9`** · `Base/include/util/GuidRegistry.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h)
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h)
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h)
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h)
@@ -73,7 +74,7 @@ Earlier paths and their donor versions: `native-headers/util/GuidRegistry.h`.
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h)
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
@@ -120,6 +121,7 @@ Earlier paths and their donor versions: `native-headers/util/GuidRegistry.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
@@ -135,10 +137,13 @@ Earlier paths and their donor versions: `native-headers/util/GuidRegistry.h`.
 - local · `work/o28/c/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Base/include/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`e62fe071bc05`** · `Base/include/util/GuidRegistry.h` · proof not assessed
+- public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Base/include/util/GuidRegistry.h)
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Base/include/util/GuidRegistry.h)
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Base/include/util/GuidRegistry.h)
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Base/include/util/GuidRegistry.h)
@@ -194,6 +199,8 @@ Earlier paths and their donor versions: `native-headers/util/GuidRegistry.h`.
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/util/GuidRegistry.h)
 
 **`90ec0e179be0`** · `native-headers/util/GuidRegistry.h` · proof not assessed
+- public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/util/GuidRegistry.h)
+- canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/util/GuidRegistry.h)
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/util/GuidRegistry.h)
@@ -255,7 +262,7 @@ Earlier paths and their donor versions: `native-headers/util/GuidRegistry.h`.
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/util/GuidRegistry.h)
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
@@ -303,6 +310,7 @@ Earlier paths and their donor versions: `native-headers/util/GuidRegistry.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
@@ -320,6 +328,8 @@ Earlier paths and their donor versions: `native-headers/util/GuidRegistry.h`.
 - local · `work/o28/c/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-headers/util/GuidRegistry.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -448,6 +458,7 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 </details>
 
 **`9cf83575ada4`** · `Base/include/util/IRenderable.h` · proof not assessed
+- public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Base/include/util/IRenderable.h)
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Base/include/util/IRenderable.h)
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Base/include/util/IRenderable.h)
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Base/include/util/IRenderable.h)
@@ -488,6 +499,7 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/IRenderable.h)
 
 **`fc1b5c5ae26a`** · `Base/include/util/IRenderable.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Base/include/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Base/include/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Base/include/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Base/include/util/IRenderable.h)
@@ -519,7 +531,7 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Base/include/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Base/include/util/IRenderable.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
@@ -566,6 +578,7 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
@@ -581,6 +594,8 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 - local · `work/o28/c/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Base/include/util/IRenderable.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -670,6 +685,8 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 </details>
 
 **`c0892ad70b1a`** · `native-headers/util/IRenderable.h` · proof not assessed
+- public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/util/IRenderable.h)
+- canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/util/IRenderable.h)
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/util/IRenderable.h)
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/util/IRenderable.h)
@@ -731,7 +748,7 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/util/IRenderable.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
@@ -779,6 +796,7 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
@@ -796,6 +814,8 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 - local · `work/o28/c/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-headers/util/IRenderable.h` · root `b52aa15feaea5a0c`
 
 </details>
 

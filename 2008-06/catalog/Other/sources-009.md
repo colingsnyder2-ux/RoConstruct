@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 
 **`289c865ef1b0`** · `App/include/v8kernel/Kernel2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
@@ -37,7 +38,7 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 
-<details><summary>56 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
@@ -80,6 +81,7 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
@@ -95,6 +97,8 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - local · `work/o28/c/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -122,6 +126,7 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8kernel/Kernel2008.h)
 
 **`8bf1a1630523`** · `App/include/v8kernel/Kernel2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/v8kernel/Kernel2008.h)
@@ -250,6 +255,8 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 </details>
 
 **`e49ac1b33a80`** · `native-headers/v8kernel/Kernel2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/v8kernel/Kernel2008.h)
+- canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/v8kernel/Kernel2008.h)
@@ -307,7 +314,7 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>62 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
@@ -351,6 +358,7 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
@@ -368,6 +376,8 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - local · `work/o28/c/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -388,25 +398,32 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 Earlier paths and their donor versions: `Unclassified/src/ArrowPanel.cpp`.
 
 **`354bb1f12426`** · `App/src/gui/ArrowPanel.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/gui/ArrowPanel.cpp)
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/gui/ArrowPanel.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/App/src/gui/ArrowPanel.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/gui/ArrowPanel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/gui/ArrowPanel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/gui/ArrowPanel.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`8f13335a793e`** · `App/src/gui/ArrowPanel.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/gui/ArrowPanel.cpp)
 - public · colingsnyder2-ux · [gui/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/ArrowPanel.cpp)
 
 **`1e1ffb8eb3cf`** · `Unclassified/src/ArrowPanel.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ArrowPanel.cpp)
 - canonical · colingsnyder2-ux · [src/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/src/ArrowPanel.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/Unclassified/src/ArrowPanel.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Unclassified/src/ArrowPanel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Unclassified/src/ArrowPanel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Unclassified/src/ArrowPanel.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -492,6 +509,7 @@ Earlier paths and their donor versions: `Unclassified/src/ArrowPanel.cpp`.
 - public · colingsnyder2-ux · [src/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ArrowPanel.cpp)
 
 **`e50f19a3d5e2`** · `Unclassified/src/ArrowPanel.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ArrowPanel.cpp)
 - public · colingsnyder2-ux · [src/ArrowPanel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/ArrowPanel.cpp)
 
 **`ffac54e499c4`** · `Unclassified/src/ArrowPanel.cpp` · proof not assessed
@@ -511,15 +529,19 @@ Earlier paths and their donor versions: `Unclassified/src/ArrowPanel.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/ChatOutput.cpp`.
 
 **`a4be95936bb5`** · `App/src/gui/ChatOutput.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/gui/ChatOutput.cpp)
 - public · colingsnyder2-ux · [gui/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/ChatOutput.cpp)
 
 **`b223e49b3da2`** · `App/src/gui/ChatOutput.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/gui/ChatOutput.cpp)
 - canonical · colingsnyder2-ux · [gui/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/gui/ChatOutput.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/App/src/gui/ChatOutput.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/gui/ChatOutput.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/gui/ChatOutput.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/gui/ChatOutput.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -566,12 +588,15 @@ Earlier paths and their donor versions: `Unclassified/src/ChatOutput.cpp`.
 - public · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ChatOutput.cpp)
 
 **`7e9f73a6bce0`** · `Unclassified/src/ChatOutput.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ChatOutput.cpp)
 - canonical · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/src/ChatOutput.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/Unclassified/src/ChatOutput.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Unclassified/src/ChatOutput.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Unclassified/src/ChatOutput.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Unclassified/src/ChatOutput.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -624,6 +649,7 @@ Earlier paths and their donor versions: `Unclassified/src/ChatOutput.cpp`.
 </details>
 
 **`dce739d0d4bf`** · `Unclassified/src/ChatOutput.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ChatOutput.cpp)
 - public · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/ChatOutput.cpp)
 
 </details>
@@ -634,19 +660,24 @@ Earlier paths and their donor versions: `Unclassified/src/ChatOutput.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/EquationDisplay.cpp`.
 
 **`abf86339953a`** · `App/src/gui/EquationDisplay.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/gui/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/EquationDisplay.cpp)
 
 **`e99dfb17b287`** · `App/src/gui/EquationDisplay.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/gui/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/gui/EquationDisplay.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/App/src/gui/EquationDisplay.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/gui/EquationDisplay.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/gui/EquationDisplay.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/gui/EquationDisplay.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`535341ffb1e9`** · `Unclassified/src/EquationDisplay.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/EquationDisplay.cpp)
 
 **`be0debf53657`** · `Unclassified/src/EquationDisplay.cpp` · proof not assessed
@@ -659,12 +690,15 @@ Earlier paths and their donor versions: `Unclassified/src/EquationDisplay.cpp`.
 </details>
 
 **`d3ef1062d2cf`** · `Unclassified/src/EquationDisplay.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -757,16 +791,20 @@ Earlier paths and their donor versions: `Unclassified/src/EquationDisplay.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/GuiItem.cpp`.
 
 **`b330f009874f`** · `App/src/gui/GuiItem.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/gui/GuiItem.cpp)
 - canonical · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/gui/GuiItem.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/App/src/gui/GuiItem.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/gui/GuiItem.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/gui/GuiItem.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/gui/GuiItem.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`f8cc580b38d5`** · `App/src/gui/GuiItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/gui/GuiItem.cpp)
 - public · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/GuiItem.cpp)
 
 **`09b0cdb48230`** · `Unclassified/src/GuiItem.cpp` · proof not assessed
@@ -784,16 +822,20 @@ Earlier paths and their donor versions: `Unclassified/src/GuiItem.cpp`.
 </details>
 
 **`168988e8a7b5`** · `Unclassified/src/GuiItem.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/GuiItem.cpp)
 - canonical · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/src/GuiItem.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/Unclassified/src/GuiItem.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Unclassified/src/GuiItem.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Unclassified/src/GuiItem.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Unclassified/src/GuiItem.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`7beda929a26f`** · `Unclassified/src/GuiItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/GuiItem.cpp)
 - public · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/GuiItem.cpp)
 
 **`88241ff06820`** · `Unclassified/src/GuiItem.cpp` · proof not assessed
@@ -888,28 +930,36 @@ Earlier paths and their donor versions: `Unclassified/src/GuiItem.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/HealthHud.cpp`.
 
 **`90addb559ab4`** · `App/src/gui/HealthHud.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/gui/HealthHud.cpp)
 - public · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/HealthHud.cpp)
 
 **`dac2a8916cb1`** · `App/src/gui/HealthHud.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/gui/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/gui/HealthHud.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/App/src/gui/HealthHud.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/gui/HealthHud.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/gui/HealthHud.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/gui/HealthHud.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`6dd7ade84e7d`** · `Unclassified/src/HealthHud.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/HealthHud.cpp)
 - public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/HealthHud.cpp)
 
 **`7a2a66bcdb2c`** · `Unclassified/src/HealthHud.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/src/HealthHud.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/Unclassified/src/HealthHud.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Unclassified/src/HealthHud.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Unclassified/src/HealthHud.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Unclassified/src/HealthHud.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1011,16 +1061,20 @@ Earlier paths and their donor versions: `Unclassified/src/HealthHud.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/Widget.cpp`.
 
 **`2a71763608ca`** · `App/src/gui/Widget.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/gui/Widget.cpp)
 - canonical · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/gui/Widget.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/App/src/gui/Widget.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/gui/Widget.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/gui/Widget.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/gui/Widget.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`94117d15f7cb`** · `App/src/gui/Widget.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/gui/Widget.cpp)
 - public · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/Widget.cpp)
 
 **`2a71763608ca`** · `Unclassified/src/Widget.cpp` · proof not assessed
@@ -1114,15 +1168,19 @@ Earlier paths and their donor versions: `Unclassified/src/Widget.cpp`.
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/Widget.cpp)
 
 **`82bf1eee33ea`** · `Unclassified/src/Widget.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/Widget.cpp)
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/Widget.cpp)
 
 **`eec56f6fa6f0`** · `Unclassified/src/Widget.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
 - canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/Unclassified/src/Widget.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Unclassified/src/Widget.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Unclassified/src/Widget.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Unclassified/src/Widget.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1134,15 +1192,19 @@ Earlier paths and their donor versions: `Unclassified/src/Widget.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/WidgetButtons.cpp`.
 
 **`e5b341d17807`** · `App/src/gui/WidgetButtons.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/gui/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/WidgetButtons.cpp)
 
 **`e6600180b5e7`** · `App/src/gui/WidgetButtons.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/gui/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/gui/WidgetButtons.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/App/src/gui/WidgetButtons.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/gui/WidgetButtons.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/gui/WidgetButtons.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/gui/WidgetButtons.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1189,6 +1251,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetButtons.cpp`.
 - public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/WidgetButtons.cpp)
 
 **`d259542b7363`** · `Unclassified/src/WidgetButtons.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/WidgetButtons.cpp)
 
 **`e6600180b5e7`** · `Unclassified/src/WidgetButtons.cpp` · proof not assessed
@@ -1240,12 +1303,15 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetButtons.cpp`.
 </details>
 
 **`eb394e033ab1`** · `Unclassified/src/WidgetButtons.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>4 retained local origins</summary>
 
 - local · `work/native-candidates/u2/prepared/canonical/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

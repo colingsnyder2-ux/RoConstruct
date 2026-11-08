@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/ArrowToolBase.cpp`.
 
 **`295d51426bed`** · `App/src/tool/ArrowToolBase.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp)
 - canonical · colingsnyder2-ux · [tool/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp)
 - canonical · colingsnyder2-ux · [tool/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp)
 - canonical · colingsnyder2-ux · [tool/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp)
@@ -19,7 +20,7 @@ Earlier paths and their donor versions: `native-classes/ArrowToolBase.cpp`.
 - canonical · colingsnyder2-ux · [tool/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp)
 - canonical · colingsnyder2-ux · [tool/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
@@ -31,10 +32,13 @@ Earlier paths and their donor versions: `native-classes/ArrowToolBase.cpp`.
 - local · `work/o28/c/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/tool/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`3e0bcfd7ac30`** · `App/src/tool/ArrowToolBase.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/tool/ArrowToolBase.cpp)
 - public · colingsnyder2-ux · [tool/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/tool/ArrowToolBase.cpp)
 - public · colingsnyder2-ux · [tool/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/tool/ArrowToolBase.cpp)
 - public · colingsnyder2-ux · [tool/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/tool/ArrowToolBase.cpp)
@@ -73,6 +77,8 @@ Earlier paths and their donor versions: `native-classes/ArrowToolBase.cpp`.
 </details>
 
 **`085fb89e697a`** · `native-classes/ArrowToolBase.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ArrowToolBase.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ArrowToolBase.cpp)
 - public · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ArrowToolBase.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/ArrowToolBase.cpp)
 - public · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/ArrowToolBase.cpp)
@@ -94,7 +100,7 @@ Earlier paths and their donor versions: `native-classes/ArrowToolBase.cpp`.
 - public · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ArrowToolBase.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ArrowToolBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-classes/ArrowToolBase.cpp)
 
-<details><summary>10 retained local origins</summary>
+<details><summary>12 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
@@ -106,6 +112,8 @@ Earlier paths and their donor versions: `native-classes/ArrowToolBase.cpp`.
 - local · `work/o28/c/rebuild/2008-06/native-classes/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-classes/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-classes/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-classes/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-classes/ArrowToolBase.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -267,6 +275,7 @@ Earlier paths and their donor versions: `native-classes/ArrowToolFactory.cpp`.
 - public · colingsnyder2-ux · [tool/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/ArrowToolFactory.cpp)
 
 **`0b90a8881549`** · `App/src/tool/ArrowToolFactory.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp)
@@ -301,7 +310,7 @@ Earlier paths and their donor versions: `native-classes/ArrowToolFactory.cpp`.
 - canonical · colingsnyder2-ux · [tool/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
@@ -314,10 +323,13 @@ Earlier paths and their donor versions: `native-classes/ArrowToolFactory.cpp`.
 - local · `work/o28/c/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/tool/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`14b371c8df20`** · `App/src/tool/ArrowToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/tool/ArrowToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/tool/ArrowToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/tool/ArrowToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/tool/ArrowToolFactory.cpp)
@@ -417,6 +429,8 @@ Earlier paths and their donor versions: `native-classes/ArrowToolFactory.cpp`.
 </details>
 
 **`88b239e3ed85`** · `native-classes/ArrowToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ArrowToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ArrowToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ArrowToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/ArrowToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/ArrowToolFactory.cpp)
@@ -484,7 +498,7 @@ Earlier paths and their donor versions: `native-classes/ArrowToolFactory.cpp`.
 - public · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/ArrowToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ArrowToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/ArrowToolFactory.cpp)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
@@ -497,6 +511,8 @@ Earlier paths and their donor versions: `native-classes/ArrowToolFactory.cpp`.
 - local · `work/o28/c/rebuild/2008-06/native-classes/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-classes/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-classes/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-classes/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-classes/ArrowToolFactory.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -517,6 +533,7 @@ Earlier paths and their donor versions: `native-classes/ArrowToolFactory.cpp`.
 Earlier paths and their donor versions: `native-classes/AxisMoveToolBounds.cpp`.
 
 **`4b2a68a78466`** · `App/src/tool/AxisMoveToolBounds.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp)
 - canonical · colingsnyder2-ux · [tool/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp)
 - canonical · colingsnyder2-ux · [tool/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp)
 - canonical · colingsnyder2-ux · [tool/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp)
@@ -551,7 +568,7 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolBounds.cpp`.
 - canonical · colingsnyder2-ux · [tool/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp)
 - canonical · colingsnyder2-ux · [tool/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
@@ -564,6 +581,8 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolBounds.cpp`.
 - local · `work/o28/c/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/tool/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -605,6 +624,7 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolBounds.cpp`.
 - public · colingsnyder2-ux · [tool/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/AxisMoveToolBounds.cpp)
 
 **`c8ff2405802f`** · `App/src/tool/AxisMoveToolBounds.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/tool/AxisMoveToolBounds.cpp)
 - public · colingsnyder2-ux · [tool/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/tool/AxisMoveToolBounds.cpp)
 - public · colingsnyder2-ux · [tool/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/tool/AxisMoveToolBounds.cpp)
 - public · colingsnyder2-ux · [tool/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/tool/AxisMoveToolBounds.cpp)
@@ -620,6 +640,8 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolBounds.cpp`.
 </details>
 
 **`3040c193bbb3`** · `native-classes/AxisMoveToolBounds.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/AxisMoveToolBounds.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/AxisMoveToolBounds.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/AxisMoveToolBounds.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/AxisMoveToolBounds.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/AxisMoveToolBounds.cpp)
@@ -687,7 +709,7 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolBounds.cpp`.
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/AxisMoveToolBounds.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/AxisMoveToolBounds.cpp)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
@@ -700,6 +722,8 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolBounds.cpp`.
 - local · `work/o28/c/rebuild/2008-06/native-classes/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-classes/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-classes/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-classes/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-classes/AxisMoveToolBounds.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -804,6 +828,7 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolCore.cpp`.
 </details>
 
 **`74836ef11605`** · `App/src/tool/AxisMoveToolCore.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp)
 - canonical · colingsnyder2-ux · [tool/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp)
 - canonical · colingsnyder2-ux · [tool/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp)
 - canonical · colingsnyder2-ux · [tool/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp)
@@ -838,7 +863,7 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolCore.cpp`.
 - canonical · colingsnyder2-ux · [tool/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp)
 - canonical · colingsnyder2-ux · [tool/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
@@ -851,10 +876,13 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolCore.cpp`.
 - local · `work/o28/c/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/tool/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`9c093260fd80`** · `App/src/tool/AxisMoveToolCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/tool/AxisMoveToolCore.cpp)
 - public · colingsnyder2-ux · [tool/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/tool/AxisMoveToolCore.cpp)
 - public · colingsnyder2-ux · [tool/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/tool/AxisMoveToolCore.cpp)
 - public · colingsnyder2-ux · [tool/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/tool/AxisMoveToolCore.cpp)
@@ -961,6 +989,8 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolCore.cpp`.
 </details>
 
 **`dd67833c4f8f`** · `native-classes/AxisMoveToolCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/AxisMoveToolCore.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/AxisMoveToolCore.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/AxisMoveToolCore.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/AxisMoveToolCore.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/AxisMoveToolCore.cpp)
@@ -1028,7 +1058,7 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolCore.cpp`.
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/AxisMoveToolCore.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/AxisMoveToolCore.cpp)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
@@ -1041,6 +1071,8 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolCore.cpp`.
 - local · `work/o28/c/rebuild/2008-06/native-classes/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-classes/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-classes/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-classes/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-classes/AxisMoveToolCore.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

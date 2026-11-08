@@ -33,6 +33,7 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTools.h`.
 - public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/tool/SurfaceTools.h)
 
 **`13b3df7406b7`** · `App/include/tool/SurfaceTools.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/tool/SurfaceTools.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/tool/SurfaceTools.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/tool/SurfaceTools.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/tool/SurfaceTools.h)
@@ -64,7 +65,7 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTools.h`.
 - canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/SurfaceTools.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/SurfaceTools.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
@@ -111,6 +112,7 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTools.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
@@ -126,10 +128,13 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTools.h`.
 - local · `work/o28/c/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/include/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`64a51454d822`** · `App/include/tool/SurfaceTools.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/tool/SurfaceTools.h)
 - public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/tool/SurfaceTools.h)
 - public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/tool/SurfaceTools.h)
 - public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/tool/SurfaceTools.h)
@@ -229,6 +234,8 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTools.h`.
 </details>
 
 **`f6084ddc7e56`** · `native-headers/tool/SurfaceTools.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/tool/SurfaceTools.h)
+- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
 - public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/tool/SurfaceTools.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
 - public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/tool/SurfaceTools.h)
@@ -290,7 +297,7 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTools.h`.
 - public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/SurfaceTools.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
@@ -338,6 +345,7 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTools.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
@@ -355,6 +363,8 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTools.h`.
 - local · `work/o28/c/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -407,6 +417,7 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTools.h`.
 Earlier paths and their donor versions: `native-headers/tool/ToolsArrow.h`.
 
 **`0b94554711b2`** · `App/include/tool/ToolsArrow.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/tool/ToolsArrow.h)
 - canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/tool/ToolsArrow.h)
 - canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/tool/ToolsArrow.h)
 - canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/tool/ToolsArrow.h)
@@ -438,7 +449,7 @@ Earlier paths and their donor versions: `native-headers/tool/ToolsArrow.h`.
 - canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/ToolsArrow.h)
 - canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/ToolsArrow.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
@@ -485,6 +496,7 @@ Earlier paths and their donor versions: `native-headers/tool/ToolsArrow.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
@@ -500,10 +512,13 @@ Earlier paths and their donor versions: `native-headers/tool/ToolsArrow.h`.
 - local · `work/o28/c/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/include/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`533f2b7eac6c`** · `App/include/tool/ToolsArrow.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/tool/ToolsArrow.h)
 - public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/tool/ToolsArrow.h)
 - public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/tool/ToolsArrow.h)
 - public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/tool/ToolsArrow.h)
@@ -638,6 +653,8 @@ Earlier paths and their donor versions: `native-headers/tool/ToolsArrow.h`.
 </details>
 
 **`bc97575c9ff9`** · `native-headers/tool/ToolsArrow.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/tool/ToolsArrow.h)
+- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
 - public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/tool/ToolsArrow.h)
 - canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
 - public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/tool/ToolsArrow.h)
@@ -699,7 +716,7 @@ Earlier paths and their donor versions: `native-headers/tool/ToolsArrow.h`.
 - public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/ToolsArrow.h)
 - canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
@@ -747,6 +764,7 @@ Earlier paths and their donor versions: `native-headers/tool/ToolsArrow.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
@@ -764,6 +782,8 @@ Earlier paths and their donor versions: `native-headers/tool/ToolsArrow.h`.
 - local · `work/o28/c/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -798,6 +818,7 @@ Earlier paths and their donor versions: `native-headers/tool/ToolsArrow.h`.
 Earlier paths and their donor versions: `native-classes/AnchorTool.cpp`.
 
 **`06d162e91ede`** · `App/src/tool/AnchorTool.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/tool/AnchorTool.cpp)
 - canonical · colingsnyder2-ux · [tool/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/tool/AnchorTool.cpp)
 - canonical · colingsnyder2-ux · [tool/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/tool/AnchorTool.cpp)
 - canonical · colingsnyder2-ux · [tool/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/tool/AnchorTool.cpp)
@@ -832,7 +853,7 @@ Earlier paths and their donor versions: `native-classes/AnchorTool.cpp`.
 - canonical · colingsnyder2-ux · [tool/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/AnchorTool.cpp)
 - canonical · colingsnyder2-ux · [tool/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/AnchorTool.cpp)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/tool/AnchorTool.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/tool/AnchorTool.cpp` · root `b52aa15feaea5a0c`
@@ -845,6 +866,8 @@ Earlier paths and their donor versions: `native-classes/AnchorTool.cpp`.
 - local · `work/o28/c/rebuild/2008-06/App/src/tool/AnchorTool.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/App/src/tool/AnchorTool.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/App/src/tool/AnchorTool.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/tool/AnchorTool.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/tool/AnchorTool.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -886,6 +909,7 @@ Earlier paths and their donor versions: `native-classes/AnchorTool.cpp`.
 - public · colingsnyder2-ux · [tool/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/AnchorTool.cpp)
 
 **`c05dd1564a96`** · `App/src/tool/AnchorTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/tool/AnchorTool.cpp)
 - public · colingsnyder2-ux · [tool/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/tool/AnchorTool.cpp)
 - public · colingsnyder2-ux · [tool/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/tool/AnchorTool.cpp)
 - public · colingsnyder2-ux · [tool/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/tool/AnchorTool.cpp)
@@ -948,6 +972,8 @@ Earlier paths and their donor versions: `native-classes/AnchorTool.cpp`.
 </details>
 
 **`5ef3b2c4b8a5`** · `native-classes/AnchorTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/AnchorTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/AnchorTool.cpp)
 - public · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/AnchorTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/AnchorTool.cpp)
 - public · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/AnchorTool.cpp)
@@ -1015,7 +1041,7 @@ Earlier paths and their donor versions: `native-classes/AnchorTool.cpp`.
 - public · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/AnchorTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AnchorTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/AnchorTool.cpp)
 
-<details><summary>11 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/AnchorTool.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/AnchorTool.cpp` · root `b52aa15feaea5a0c`
@@ -1028,6 +1054,8 @@ Earlier paths and their donor versions: `native-classes/AnchorTool.cpp`.
 - local · `work/o28/c/rebuild/2008-06/native-classes/AnchorTool.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-classes/AnchorTool.cpp` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-classes/AnchorTool.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-classes/AnchorTool.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-classes/AnchorTool.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

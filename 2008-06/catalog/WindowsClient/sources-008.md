@@ -32,6 +32,7 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 - public · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 
 **`3267871722f7`** · `WindowsClient/include/CInsertObjectDialog.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 - canonical · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 - canonical · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 - canonical · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h)
@@ -62,7 +63,7 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 - canonical · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 - canonical · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 
-<details><summary>58 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
@@ -107,6 +108,7 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
@@ -122,6 +124,8 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 - local · `work/o28/c/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -135,6 +139,7 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 </details>
 
 **`7ecf739cb4cb`** · `WindowsClient/include/CInsertObjectDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 - public · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 - public · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 - public · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/WindowsClient/include/CInsertObjectDialog.h)
@@ -284,6 +289,8 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 </details>
 
 **`c22c4cda4d26`** · `native-headers/CInsertObjectDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CInsertObjectDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CInsertObjectDialog.h)
 - public · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CInsertObjectDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/CInsertObjectDialog.h)
 - public · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/CInsertObjectDialog.h)
@@ -343,7 +350,7 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 - public · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CInsertObjectDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CInsertObjectDialog.h)
 
-<details><summary>61 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
@@ -389,6 +396,7 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
@@ -406,6 +414,8 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 - local · `work/o28/c/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -436,6 +446,7 @@ Earlier paths and their donor versions: `native-headers/CInstanceExplorer.h`.
 - public · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CInstanceExplorer.h)
 
 **`72f7745ab1d2`** · `WindowsClient/include/CInstanceExplorer.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CInstanceExplorer.h)
 - public · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/include/CInstanceExplorer.h)
 - public · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/WindowsClient/include/CInstanceExplorer.h)
 - public · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/WindowsClient/include/CInstanceExplorer.h)
@@ -451,6 +462,7 @@ Earlier paths and their donor versions: `native-headers/CInstanceExplorer.h`.
 </details>
 
 **`a20334685cce`** · `WindowsClient/include/CInstanceExplorer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h)
 - canonical · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h)
 - canonical · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h)
 - canonical · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h)
@@ -476,7 +488,7 @@ Earlier paths and their donor versions: `native-headers/CInstanceExplorer.h`.
 - canonical · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h)
 - canonical · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h)
 
-<details><summary>49 retained local origins</summary>
+<details><summary>52 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
@@ -513,6 +525,7 @@ Earlier paths and their donor versions: `native-headers/CInstanceExplorer.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
@@ -527,6 +540,8 @@ Earlier paths and their donor versions: `native-headers/CInstanceExplorer.h`.
 - local · `work/o28/c/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -647,6 +662,8 @@ Earlier paths and their donor versions: `native-headers/CInstanceExplorer.h`.
 </details>
 
 **`be500eedb05c`** · `native-headers/CInstanceExplorer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CInstanceExplorer.h)
+- canonical · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CInstanceExplorer.h)
 - public · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CInstanceExplorer.h)
 - canonical · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/CInstanceExplorer.h)
 - public · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/CInstanceExplorer.h)
@@ -696,7 +713,7 @@ Earlier paths and their donor versions: `native-headers/CInstanceExplorer.h`.
 - public · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CInstanceExplorer.h)
 - canonical · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CInstanceExplorer.h)
 
-<details><summary>52 retained local origins</summary>
+<details><summary>55 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
@@ -734,6 +751,7 @@ Earlier paths and their donor versions: `native-headers/CInstanceExplorer.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
@@ -750,6 +768,8 @@ Earlier paths and their donor versions: `native-headers/CInstanceExplorer.h`.
 - local · `work/o28/c/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 
 </details>
 

@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/util/ImageContent.h`.
 
 **`6f5e23f5b14b`** · `Base/include/util/ImageContent.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Base/include/util/ImageContent.h)
 - canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Base/include/util/ImageContent.h)
 - canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Base/include/util/ImageContent.h)
 - canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Base/include/util/ImageContent.h)
@@ -39,7 +40,7 @@ Earlier paths and their donor versions: `native-headers/util/ImageContent.h`.
 - canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Base/include/util/ImageContent.h)
 - canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Base/include/util/ImageContent.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
@@ -86,6 +87,7 @@ Earlier paths and their donor versions: `native-headers/util/ImageContent.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
@@ -101,10 +103,13 @@ Earlier paths and their donor versions: `native-headers/util/ImageContent.h`.
 - local · `work/o28/c/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Base/include/util/ImageContent.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`779a0618ff3e`** · `Base/include/util/ImageContent.h` · proof not assessed
+- public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Base/include/util/ImageContent.h)
 - public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Base/include/util/ImageContent.h)
 - public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Base/include/util/ImageContent.h)
 - public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Base/include/util/ImageContent.h)
@@ -237,6 +242,8 @@ Earlier paths and their donor versions: `native-headers/util/ImageContent.h`.
 - public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/util/ImageContent.h)
 
 **`b3efc5f459fb`** · `native-headers/util/ImageContent.h` · proof not assessed
+- public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/util/ImageContent.h)
+- canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/util/ImageContent.h)
 - public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/util/ImageContent.h)
 - canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/util/ImageContent.h)
 - public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/util/ImageContent.h)
@@ -298,7 +305,7 @@ Earlier paths and their donor versions: `native-headers/util/ImageContent.h`.
 - public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/util/ImageContent.h)
 - canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/util/ImageContent.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
@@ -346,6 +353,7 @@ Earlier paths and their donor versions: `native-headers/util/ImageContent.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
@@ -363,6 +371,8 @@ Earlier paths and their donor versions: `native-headers/util/ImageContent.h`.
 - local · `work/o28/c/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-headers/util/ImageContent.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -440,6 +450,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/LDrawEntities.h)
 
 **`b972e611a8c9`** · `Base/include/util/LDrawEntities.h` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Base/include/util/LDrawEntities.h)
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Base/include/util/LDrawEntities.h)
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Base/include/util/LDrawEntities.h)
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Base/include/util/LDrawEntities.h)
@@ -455,6 +466,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 </details>
 
 **`f32e7707c13e`** · `Base/include/util/LDrawEntities.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h)
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h)
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h)
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h)
@@ -486,7 +498,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h)
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
@@ -533,6 +545,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
@@ -548,6 +561,8 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 - local · `work/o28/c/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Base/include/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -592,6 +607,8 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 </details>
 
 **`7dae70ce7033`** · `native-headers/util/LDrawEntities.h` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/util/LDrawEntities.h)
+- canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/util/LDrawEntities.h)
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/util/LDrawEntities.h)
@@ -653,7 +670,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/util/LDrawEntities.h)
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
@@ -701,6 +718,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
@@ -718,6 +736,8 @@ Earlier paths and their donor versions: `native-headers/util/LDrawEntities.h`.
 - local · `work/o28/c/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-headers/util/LDrawEntities.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -822,6 +842,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/LDrawMapRoot.h)
 
 **`8fb0c262bb2c`** · `Base/include/util/LDrawMapRoot.h` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Base/include/util/LDrawMapRoot.h)
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Base/include/util/LDrawMapRoot.h)
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Base/include/util/LDrawMapRoot.h)
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Base/include/util/LDrawMapRoot.h)
@@ -837,6 +858,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 </details>
 
 **`a5ff11ca8c93`** · `Base/include/util/LDrawMapRoot.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h)
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h)
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h)
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h)
@@ -868,7 +890,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h)
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
@@ -915,6 +937,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
@@ -930,6 +953,8 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 - local · `work/o28/c/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Base/include/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -1028,6 +1053,8 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 </details>
 
 **`bba39ca4c3ed`** · `native-headers/util/LDrawMapRoot.h` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/util/LDrawMapRoot.h)
+- canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/util/LDrawMapRoot.h)
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/util/LDrawMapRoot.h)
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/util/LDrawMapRoot.h)
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/util/LDrawMapRoot.h)
@@ -1089,7 +1116,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/util/LDrawMapRoot.h)
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/util/LDrawMapRoot.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
@@ -1137,6 +1164,7 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
@@ -1154,6 +1182,8 @@ Earlier paths and their donor versions: `native-headers/util/LDrawMapRoot.h`.
 - local · `work/o28/c/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/b/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 - local · `work/o29/c/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-headers/util/LDrawMapRoot.h` · root `b52aa15feaea5a0c`
 
 </details>
 
