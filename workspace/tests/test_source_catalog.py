@@ -380,3 +380,22 @@ def test_generated_map_json_is_compact_and_complete(tmp_path, monkeypatch):
     data = json.loads(text)
     assert '\n  ' not in text
     assert any(row['path'] == 'App/src/A.cpp' for group in data['groups'] for row in group['files'])
+
+
+def test_experiment_trial_appears_in_catalog_and_map(tmp_path, monkeypatch):
+    monkeypatch.setattr(source_catalog, 'tree_entries', lambda root, ref, prefix:
+                        {'Probe.cpp': 'trial-blob'} if prefix.endswith('/experiments/trials') else {})
+    rows = source_catalog.native_entries(tmp_path, 'work', 'workspace/rebuild/2008-06')
+    assert rows['experiments/trials/Probe.cpp'] == 'trial-blob'
+    assert source_catalog.logical_native_path('workspace/rebuild/2008-06/experiments/trials/Probe.cpp') == 'experiments/trials/Probe.cpp'
+    assert source_catalog.map_group('experiments/trials/Probe.cpp') == 'Experiments/trials'
+
+
+def test_unclassified_probe_alias_tracks_trial_source(tmp_path):
+    import subprocess
+    subprocess.run(['git', 'init', '-q'], cwd=tmp_path, check=True)
+    def blob(data):
+        return subprocess.check_output(['git', 'hash-object', '-w', '--stdin'], cwd=tmp_path, input=data).decode().strip()
+    old, new = 'Unclassified/src/Probe.cpp', 'experiments/trials/Probe.cpp'
+    shim = blob(b'// Compatibility translation unit; compile this file or the organized source, not both.\n#include "../../experiments/trials/Probe.cpp"\n')
+    assert source_catalog.compatibility_aliases(tmp_path, {old: shim, new: blob(b'// original\n')}) == {old: new}

@@ -24,7 +24,7 @@ NATIVE_SCOPES = ('native-classes', 'native-headers', 'native-world')
 ORGANIZED_SCOPES = tuple(project + '/' + area for project in
                          ('App', 'Base', 'Network', 'Rendering', 'WindowsClient', 'Studio', 'Unclassified')
                          for area in ('src', 'include'))
-EXPERIMENT_SCOPES = ('experiments/overlays',)
+EXPERIMENT_SCOPES = ('experiments/overlays', 'experiments/trials')
 
 # Browse groups only.  These do not rename files, claim original project layout,
 # or affect integration decisions.  Leave weakly identified paths in Other.
@@ -35,6 +35,7 @@ MAP_GROUPS = (
     ('App/tool', ('tool/',)),
     ('Unclassified', ()),
     ('Experiments/overlays', ()),
+    ('Experiments/trials', ()),
     ('Studio', ()),
     ('WindowsClient', ('app', 'frame', 'view', 'doc', 'dialog', 'browser', 'editor',
                     'command', 'verb', 'toolbox', 'propertygrid', 'propgrid', 'explorer', 'script')),
@@ -186,6 +187,8 @@ def map_group(path):
     searchable = path.lower().replace('\\', '/')
     if searchable.startswith('experiments/overlays/'):
         return 'Experiments/overlays'
+    if searchable.startswith('experiments/trials/'):
+        return 'Experiments/trials'
     parts = searchable.split('/')
     if len(parts) >= 3 and parts[1] in ('src', 'include'):
         projects = {'base': 'Base/util', 'network': 'Network', 'rendering': 'Rendering',
@@ -617,7 +620,7 @@ def catalog(root, ref, include_local=False):
         'schema': 1,
         'authority': 'RoConstruct/work/workspace',
         'work_commit': commit,
-        'scope': ('Native source and explicitly inactive overlay catalog. Blob equality proves same stored bytes; '
+        'scope': ('Native source and explicitly inactive experiment catalog. Blob equality proves same stored bytes; '
                   'it does not prove class identity, ABI, selection, or runtime readiness.'),
         'canonical_prefix': canonical_prefix,
         'public_prefix': public_prefix,
