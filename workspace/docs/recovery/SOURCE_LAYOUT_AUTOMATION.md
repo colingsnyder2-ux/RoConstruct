@@ -69,3 +69,12 @@ Inactive `tests/*Trial.cpp` files may use the same preservation-only flow with
 `experiments/trials/` targets. All three locations must compile to matching
 objects; old test paths remain compatibility translation units. This organizes
 experiments and does not promote or select them as native providers.
+
+For trial batches, preparation freezes sibling test headers from the recorded
+commit and creates reviewed forwarding headers for direct includes. Verification
+checks their bytes against that commit, rejects different public dependencies,
+and includes required unchanged test headers in both manifests as input guards.
+Lease those headers as well as the moved sources. Keep those guard entries in
+the manifest: integration must reject upstream changes to build inputs.
+Generated `.cpp` overlays, relative includes and other missing inputs still
+require separate review; this does not invent or promote them.

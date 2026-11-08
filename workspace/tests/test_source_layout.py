@@ -12,6 +12,48 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def test_trial_headers_are_frozen_and_wrapped(source_repo):
+    root, spec = source_repo
+    contents = {'NativeThingTrial.cpp': b'#include "NativeThingTrial.h"\nint f(){return value;}\n',
+                'NativeThingTrial.h': b'const int value = 3;\n'}
+    for prefix in ('workspace/rebuild/2008-06/tests', '2008-06/tests'):
+        for name, data in contents.items():
+            path = root / prefix / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(data)
+    subprocess.run(['git', 'add', '.'], cwd=root, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                    'commit', '-qm', 'trial'], cwd=root, check=True)
+    base = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    spec = {'base': base, 'moves': [{'source': 'tests/NativeThingTrial.cpp',
+            'target': 'experiments/trials/NativeThingTrial.cpp', 'checks': [], 'preservation_only': True}]}
+    out = root / 'work/native-candidates/trial'
+    plan = source_layout.prepare(root, spec, out)
+    assert plan['trial_wrappers'] == ['NativeThingTrial.h']
+    for tree in ('original', 'candidate'):
+        assert (out / tree / 'tests/NativeThingTrial.h').read_bytes() == contents['NativeThingTrial.h']
+    assert (out / 'candidate/experiments/trials/NativeThingTrial.h').read_bytes() == b'#include "../../tests/NativeThingTrial.h"\n'
+    for prefix in ('workspace/rebuild/2008-06', '2008-06'):
+        wrapper = root / prefix / 'experiments/trials/NativeThingTrial.h'
+        wrapper.parent.mkdir(parents=True, exist_ok=True)
+        wrapper.write_bytes(b'#include "../../tests/NativeThingTrial.h"\r\n')
+    subprocess.run(['git', 'add', '.'], cwd=root, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                    'commit', '-qm', 'existing wrapper'], cwd=root, check=True)
+    spec['base'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    second = root / 'work/native-candidates/trial-second'
+    source_layout.prepare(root, spec, second)
+    committed = subprocess.check_output(['git', 'show', spec['base'] + ':workspace/rebuild/2008-06/experiments/trials/NativeThingTrial.h'], cwd=root)
+    assert (second / 'candidate/experiments/trials/NativeThingTrial.h').read_bytes() == committed
+    (root / '2008-06/tests/NativeThingTrial.h').write_text('different\n')
+    subprocess.run(['git', 'add', '.'], cwd=root, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                    'commit', '-qm', 'different public header'], cwd=root, check=True)
+    spec['base'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    with pytest.raises(ValueError, match='Public trial header differs'):
+        source_layout.prepare(root, spec, root / 'work/native-candidates/trial-third')
+
+
 @pytest.fixture
 def source_repo(tmp_path):
     subprocess.run(['git', 'init', '-q'], cwd=tmp_path, check=True)
@@ -142,6 +184,58 @@ def make_run(root, out, different=False, wrong_check=False):
         'completed_sources': 3, 'shared_headers_changed': [], 'observer_sha256': digest(runner)}))
     (run / 'results.json').write_text(json.dumps(rows))
     return run
+
+
+def test_trial_header_guards_and_drift(source_repo, monkeypatch):
+    root, _ = source_repo
+    for prefix in ('workspace/rebuild/2008-06/tests', '2008-06/tests'):
+        for name, data in {'NativeThingTrial.cpp': b'#include "NativeThingTrial.h"\nint f(){return 3;}\n',
+                           'NativeThingTrial.h': b'const int value=3;\n'}.items():
+            path = root / prefix / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(data)
+    subprocess.run(['git', 'add', '.'], cwd=root, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                    'commit', '-qm', 'trial'], cwd=root, check=True)
+    base = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    spec = {'base': base, 'moves': [{'source': 'tests/NativeThingTrial.cpp',
+            'target': 'experiments/trials/NativeThingTrial.cpp', 'checks': [], 'preservation_only': True}]}
+    out = root / 'work/native-candidates/trial-verification'
+    source_layout.prepare(root, spec, out)
+    run = root / 'work/2008-06/native-check-runs/trial'
+    run.mkdir(parents=True)
+    compiler = run / 'compiler'
+    compiler.write_bytes(b'compiler')
+    sources = (out / 'original/tests/NativeThingTrial.cpp', out / 'candidate/tests/NativeThingTrial.cpp',
+               out / 'candidate/experiments/trials/NativeThingTrial.cpp')
+    rows = []
+    for index, source in enumerate(sources):
+        obj = run / ('unit%d.obj' % index)
+        obj.write_bytes(b'object')
+        header = out / ('original' if index == 0 else 'candidate') / 'tests/NativeThingTrial.h'
+        dependencies = {str(source): digest(source), str(header): digest(header)}
+        if index:
+            wrapper = out / 'candidate/experiments/trials/NativeThingTrial.h'
+            dependencies[str(wrapper)] = digest(wrapper)
+        rows.append({'source': str(source), 'status': 'complete', 'object': str(obj),
+                     'source_sha256': digest(source), 'object_sha256': digest(obj), 'flags': ['/O2'],
+                     'build_inputs': {'compiler': {str(compiler): digest(compiler)}},
+                     'dependencies': dependencies, 'checks': []})
+    runner = root / 'workspace/rebuild/2008-06/tests/native_check_runner.py'
+    (run / 'summary.json').write_text(json.dumps({'state': 'complete', 'total_sources': 3,
+        'completed_sources': 3, 'shared_headers_changed': [], 'observer_sha256': digest(runner)}))
+    (run / 'results.json').write_text(json.dumps(rows))
+    monkeypatch.setattr(source_layout, 'object_identity', lambda raw: raw)
+    result = source_layout.verify(root, out, run)
+    assert len(result['accepted']) == 1
+    manifest = json.loads((out / 'integration-manifest.json').read_text())
+    assert 'rebuild/2008-06/tests/NativeThingTrial.h' in manifest['files']
+    assert 'rebuild/2008-06/experiments/trials/NativeThingTrial.h' in manifest['files']
+    for name in ('review.json', 'integration-manifest.json', 'public-manifest.json', 'public-package.json'):
+        (out / name).unlink()
+    (out / 'candidate/tests/NativeThingTrial.h').write_bytes(b'changed')
+    result = source_layout.verify(root, out, run)
+    assert not result['accepted'] and 'changed' in result['skipped'][0]['reason'].lower()
 
 
 def test_preservation_only_checks_whole_object_without_claiming_original(source_repo, monkeypatch):

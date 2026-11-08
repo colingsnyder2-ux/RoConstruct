@@ -80,6 +80,62 @@ def snapshot_headers(root, base, output):
         target.write_bytes(blobs[blob])
 
 
+def trial_wrapper_bytes(root, base, name):
+    if not isinstance(name, str) or str(safe(name)) != name or '/' in name or not name.endswith(('.h', '.hpp')):
+        raise ValueError('Unsafe trial header name')
+    expected = ('#include "../../tests/' + name + '"\n').encode()
+    paths = ('workspace/rebuild/2008-06/experiments/trials/', '2008-06/experiments/trials/')
+    versions = []
+    for prefix in paths:
+        result = subprocess.run(['git', 'show', base + ':' + prefix + name], cwd=root, capture_output=True)
+        versions.append(None if result.returncode else result.stdout)
+    if versions == [None, None]:
+        return expected
+    if versions[0] is None or versions[0] != versions[1] or versions[0].replace(b'\r\n', b'\n') != expected:
+        raise ValueError('Existing trial header wrapper differs: ' + name)
+    return versions[0]
+
+
+def snapshot_trial_headers(root, base, out, staged):
+    """Freeze sibling test headers and forward organized trial includes to them."""
+    trial_sources = [native for old, _, native, _, _, _ in staged if old.startswith('tests/')]
+    if not trial_sources:
+        return {}, []
+    prefix = 'workspace/rebuild/2008-06/tests/'
+    entries = {}
+    for row in git(root, 'ls-tree', '-rz', base, '--', prefix).split(b'\0'):
+        if not row:
+            continue
+        meta, path = row.split(b'\t', 1)
+        name = path.decode('utf-8')[len(prefix):]
+        if '/' not in name and name.endswith(('.h', '.hpp')):
+            safe(name)
+            mode, kind, blob = meta.split()
+            if mode not in (b'100644', b'100755') or kind != b'blob':
+                raise ValueError('Non-regular test header: ' + name)
+            entries[name] = blob.decode()
+    used = set()
+    for source in trial_sources:
+        used.update(name.decode() for name in re.findall(rb'(?m)^\s*#\s*include\s*"([^"/\\]+)"', source)
+                    if name.decode() in entries)
+    for name in sorted(used):
+        public = git(root, 'rev-parse', base + ':2008-06/tests/' + name).decode().strip()
+        if public != entries[name]:
+            raise ValueError('Public trial header differs: ' + name)
+        trial_wrapper_bytes(root, base, name)
+    for name, blob in entries.items():
+        content = git(root, 'cat-file', 'blob', blob)
+        for tree in ('original', 'candidate'):
+            target = out / tree / 'tests' / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(content)
+    for name in sorted(used):
+        target = out / 'candidate/experiments/trials' / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(trial_wrapper_bytes(root, base, name))
+    return entries, sorted(used)
+
+
 def checked_base(root, base):
     if not re.fullmatch('[0-9a-f]{40}', base):
         raise ValueError('Base must be an exact commit ID')
@@ -170,6 +226,7 @@ def prepare(root, spec, out):
         staged.append(inspect_move(root, base, row))
     out.mkdir(parents=True, exist_ok=False)
     snapshot_headers(root, base, out / 'frozen/rebuild/2008-06/native-headers')
+    trial_headers, trial_wrappers = snapshot_trial_headers(root, base, out, staged)
     jobs, records = [], []
     for old, new, native, public, shim, checks in staged:
         original = out / 'original' / old
@@ -193,7 +250,8 @@ def prepare(root, spec, out):
                             checks=checks, preservation_only=not bool(checks),
                             public_variant=public_variant))
     plan = dict(base=base, header_tree=git(root, 'rev-parse', base + ':workspace/rebuild/2008-06/native-headers').decode().strip(),
-                runner_sha256=sha(git(root, 'show', base + ':workspace/rebuild/2008-06/tests/native_check_runner.py')), moves=records)
+                runner_sha256=sha(git(root, 'show', base + ':workspace/rebuild/2008-06/tests/native_check_runner.py')), moves=records,
+                trial_headers=trial_headers, trial_wrappers=trial_wrappers)
     (out / 'plan.json').write_text(json.dumps(plan, indent=2) + '\n', encoding='utf-8')
     (out / 'batch.json').write_text(json.dumps({'jobs': jobs}, indent=2) + '\n', encoding='utf-8')
     return plan
@@ -306,6 +364,23 @@ def verify(root, out, run):
                 raise ValueError('Non-regular canonical header')
             header_blobs[path.decode()[len(prefix):]] = blob.decode()
     frozen = (out / 'frozen/rebuild/2008-06').resolve()
+    trial_headers = plan.get('trial_headers', {})
+    trial_wrappers = set(plan.get('trial_wrappers', []))
+    wrapper_contents = {name: trial_wrapper_bytes(root, plan['base'], name) for name in trial_wrappers}
+    if trial_headers:
+        prefix_tests = 'workspace/rebuild/2008-06/tests/'
+        actual_headers = {}
+        for row in git(root, 'ls-tree', '-rz', plan['base'], '--', prefix_tests).split(b'\0'):
+            if row:
+                meta, path = row.split(b'\t', 1)
+                name = path.decode()[len(prefix_tests):]
+                if '/' not in name and name.endswith(('.h', '.hpp')):
+                    mode, kind, blob = meta.split()
+                    if mode not in (b'100644', b'100755') or kind != b'blob':
+                        raise ValueError('Non-regular trial header')
+                    actual_headers[name] = blob.decode()
+        if actual_headers != trial_headers or not trial_wrappers <= set(trial_headers):
+            raise ValueError('Trial header snapshot differs from base')
     unfrozen_roots = tuple((root / 'rebuild/2008-06' / header_root).resolve() for header_root in roots)
     resolved_paths = {}
     def resolved(path):
@@ -323,10 +398,11 @@ def verify(root, out, run):
             content = path.read_bytes()
             fingerprints[path] = (sha(content), hashlib.sha1(b'blob ' + str(len(content)).encode() + b'\0' + content).hexdigest())
         return fingerprints[path]
-    accepted, skipped = [], []
+    accepted, skipped, required_test_headers, required_trial_wrappers = [], [], set(), set()
     for move in plan['moves']:
         old, new = safe(move['source']), safe(move['target'])
         try:
+            move_test_headers, move_wrappers = set(), set()
             pair = [index[str(path.resolve()).casefold()] for path in
                     (out / 'original' / old, out / 'candidate' / old, out / 'candidate' / new)]
             raw = []
@@ -354,6 +430,15 @@ def verify(root, out, run):
                             raise ValueError('Frozen header differs from canonical base: ' + path)
                     elif any(dependency.is_relative_to(header_root) for header_root in unfrozen_roots):
                         raise ValueError('Unfrozen native header: ' + path)
+                    elif dependency.parent in (resolved(out / 'original/tests'), resolved(out / 'candidate/tests')) and dependency.suffix in ('.h', '.hpp'):
+                        if trial_headers.get(dependency.name) != dependency_blob:
+                            raise ValueError('Unverified trial header: ' + path)
+                        move_test_headers.add(dependency.name)
+                    elif dependency.parent == resolved(out / 'candidate/experiments/trials') and dependency.suffix in ('.h', '.hpp'):
+                        expected = wrapper_contents.get(dependency.name, b'')
+                        if dependency.name not in trial_wrappers or fingerprint(dependency)[0] != sha(expected):
+                            raise ValueError('Unverified trial header wrapper: ' + path)
+                        move_wrappers.add(dependency.name)
                 if not result['build_inputs'].get('compiler'):
                     raise ValueError('Compiler identity missing')
                 for path, digest in result['build_inputs']['compiler'].items():
@@ -398,6 +483,12 @@ def verify(root, out, run):
                 raise ValueError('Compatibility source differs from reviewed wrapper')
             if not move.get('public_variant') and (out / 'public-shim' / old).read_bytes() != compatibility_shim(old, new, public):
                 raise ValueError('Public compatibility source differs from reviewed wrapper')
+            for name in move_test_headers:
+                public_blob = git(root, 'rev-parse', plan['base'] + ':2008-06/tests/' + name).decode().strip()
+                if public_blob != trial_headers[name]:
+                    raise ValueError('Public trial dependency differs: ' + name)
+            required_test_headers.update(move_test_headers)
+            required_trial_wrappers.update(move_wrappers)
             accepted.append(dict(move, proofs=[{key: r[key] for key in
                 ('source_sha256', 'object_sha256', 'flags', 'dependencies', 'build_inputs', 'checks')}
                 for r in pair]))
@@ -422,6 +513,14 @@ def verify(root, out, run):
         else:
             mirror['2008-06/' + old] = str(out / 'public-shim' / old)
             mirror['2008-06/' + new] = str(out / 'public' / old)
+    for name in sorted(required_test_headers):
+        path = str(out / 'original/tests' / name)
+        manifest['files']['rebuild/2008-06/tests/' + name] = path
+        mirror['2008-06/tests/' + name] = path
+    for name in sorted(required_trial_wrappers):
+        path = str(out / 'candidate/experiments/trials' / name)
+        manifest['files']['rebuild/2008-06/experiments/trials/' + name] = path
+        mirror['2008-06/experiments/trials/' + name] = path
     package_output = None
     if mirror:
         package = json.loads(git(root, 'show', plan['base'] + ':2008-06/package.json'))
