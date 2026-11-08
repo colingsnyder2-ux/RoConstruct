@@ -9,7 +9,7 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 | [App/v8xml](App/v8xml/README.md) | 5 |
 | [App/reflection](App/reflection/README.md) | 14 |
 | [Studio](Studio/README.md) | 0 |
-| [WindowsClient](WindowsClient/README.md) | 384 |
+| [WindowsClient](WindowsClient/README.md) | 387 |
 | [App/v8datamodel](App/v8datamodel/README.md) | 200 |
 | [App/v8world](App/v8world/README.md) | 107 |
 | [Network](Network/README.md) | 56 |
@@ -19,7 +19,7 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 
 ## Coverage
 
-59 sources checked; 0 errors.
+60 sources checked; 0 errors.
 
 See [source-map.json](../source-map.json) for revisions, hashes, origins, errors and exclusions.
 Local-only candidates have no public code URL until separately reviewed and published.
