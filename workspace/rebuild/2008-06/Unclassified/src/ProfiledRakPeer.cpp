@@ -1,7 +1,2 @@
-#include "ProfiledRakPeer.h"
-
-bool ProfiledRakPeer::RunUpdateCycle()
-{
-    RBX::Profiling::Mark mark(*profiler, false);
-    return RakPeer::RunUpdateCycle();
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../Network/src/ProfiledRakPeer.cpp"
