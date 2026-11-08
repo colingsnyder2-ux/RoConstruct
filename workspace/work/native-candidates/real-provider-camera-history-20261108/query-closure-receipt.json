@@ -1,0 +1,36 @@
+{
+  "exit_code": 1120,
+  "historical_providers": [
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeChangeHistoryEnableFull.obj",
+      "sha256": "e4f837a2fb52d176f44b905bd498068e9095abf06322ca76ce192f060bc2d01e"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeChangeHistoryQueriesFull.obj",
+      "sha256": "2c248c4f1e575e61575c036deeefb69ccf7cbdfeca73aff71ec747dd826570d9"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeChangeHistoryResetFull.obj",
+      "sha256": "4d0061c954e06c8807b971ad5a3b874d2e86985c55bb3e99c272c687bfe44c6f"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeChangeHistoryStartFull.obj",
+      "sha256": "56f9a4a76932d8add1736f04a4e0d4ed2634d8e65e26b1e361fea93b82989a4b"
+    }
+  ],
+  "old_unresolved": 127,
+  "new_unresolved": 128,
+  "resolved": [
+    "public: bool __thiscall RBX::ChangeHistoryService::queryPlay(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,int)",
+    "public: bool __thiscall RBX::ChangeHistoryService::queryUnplay(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,int)",
+    "public: void __thiscall RBX::ChangeHistoryService::setEnabled(bool)"
+  ],
+  "introduced": [
+    "char const * const RBX::sInstance",
+    "public: __thiscall RBX::HistoryRecord::HistoryRecord(class RBX::ChangeHistoryService *)",
+    "public: void __thiscall RBX::ChangeHistoryService::commit(char const *)",
+    "public: void __thiscall RBX::ChangeHistoryService::mergeFirst(void)"
+  ],
+  "duplicates": [],
+  "scope": "Link-only historical-provider experiment. Source freshness, ABI, runtime and original selection are not proven; do not execute."
+}

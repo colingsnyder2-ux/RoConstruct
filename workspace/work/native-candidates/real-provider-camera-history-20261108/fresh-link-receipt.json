@@ -1,0 +1,24 @@
+{
+  "exit_code": 1120,
+  "old_unresolved": 127,
+  "new_unresolved": 125,
+  "resolved": [
+    "public: virtual void __thiscall RBX::CameraCenterCommand::doIt(class RBX::IDataState *)",
+    "public: virtual void __thiscall RBX::CameraZoomExtentsCommand::doIt(class RBX::IDataState *)"
+  ],
+  "introduced": [],
+  "duplicates": [],
+  "provider_objects": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\CameraCenterCommand.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\camera-family-fresh-link\\CameraCenterCommand.obj",
+      "sha256": "0cb4207288cdc17092307a707cd0a7d05eee3cd0e41a490b55c565693143b9a5"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\CameraZoomExtentsAction.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\camera-family-fresh-link\\CameraZoomExtentsAction.obj",
+      "sha256": "d8049216aea266e58f0ce6ead1036aeb6204ce61fad3ff9139135b33d70928ba"
+    }
+  ],
+  "scope": "Fresh-object link-only diagnostic. Indirect calls, full call binding, provider selection, ABI, EH, runtime and server credit remain unproven."
+}

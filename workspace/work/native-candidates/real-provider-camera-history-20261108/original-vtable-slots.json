@@ -1,0 +1,16 @@
+{
+  "image_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "original_slots": [
+    {
+      "address": "005823f0",
+      "slot": "00817bc0",
+      "slot_target": "005823f0"
+    },
+    {
+      "address": "00582f50",
+      "slot": "00817b94",
+      "slot_target": "00582f50"
+    }
+  ],
+  "scope": "Original vtable entry identity only. Does not prove compiled provider selection, ABI or runtime."
+}

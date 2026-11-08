@@ -1,0 +1,26 @@
+{
+  "exit_code": 1120,
+  "historical_providers": [
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeChangeHistoryEnableFull.obj",
+      "sha256": "e4f837a2fb52d176f44b905bd498068e9095abf06322ca76ce192f060bc2d01e"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeChangeHistoryQueriesFull.obj",
+      "sha256": "2c248c4f1e575e61575c036deeefb69ccf7cbdfeca73aff71ec747dd826570d9"
+    }
+  ],
+  "old_unresolved": 127,
+  "new_unresolved": 126,
+  "resolved": [
+    "public: bool __thiscall RBX::ChangeHistoryService::queryPlay(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,int)",
+    "public: bool __thiscall RBX::ChangeHistoryService::queryUnplay(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,int)",
+    "public: void __thiscall RBX::ChangeHistoryService::setEnabled(bool)"
+  ],
+  "introduced": [
+    "public: void __thiscall RBX::ChangeHistoryService::reset(void)",
+    "public: void __thiscall RBX::ChangeHistoryService::start(void)"
+  ],
+  "duplicates": [],
+  "scope": "Link-only historical-provider experiment. Source freshness, ABI, runtime and original selection are not proven; do not execute."
+}

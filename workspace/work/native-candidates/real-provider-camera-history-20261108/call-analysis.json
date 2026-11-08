@@ -1,0 +1,379 @@
+[
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\CameraCenterCommand.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\work\\2008-06\\native-check-runs\\20261108-030300-ba0776f9\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005823f0",
+        "requested_symbol": "?doIt@CameraCenterCommand@RBX@@UAEXPAVIDataState@2@@Z",
+        "status": "exact",
+        "symbol": "?doIt@CameraCenterCommand@RBX@@UAEXPAVIDataState@2@@Z",
+        "score": 100,
+        "target_size": 562,
+        "object_size": 562,
+        "target_sha256": "23193f00ef3cd546531c472a942d8612ea3193c989aebf52001ccaddd436b748",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8493996,
+            4
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 56,
+              "target": "00581d80",
+              "symbol": "?createService@?$ServiceClient@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@RBX@@ABEPAV?$FilteredSelection@VPVInstance@RBX@@@2@_N@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 92,
+              "target": "00581d80",
+              "symbol": "?createService@?$ServiceClient@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@RBX@@ABEPAV?$FilteredSelection@VPVInstance@RBX@@@2@_N@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 124,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 144,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 174,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 195,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 202,
+              "target": "0057dee0",
+              "symbol": "?unionWith@Extents@RBX@@QAEXABV12@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 363,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 367,
+              "target": "005cddd0",
+              "symbol": "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 372,
+              "target": "00513e20",
+              "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 382,
+              "target": "00513220",
+              "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 430,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 434,
+              "target": "005cdf00",
+              "symbol": "?setCameraFocus@Camera@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 445,
+              "target": "005807b0",
+              "symbol": "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 455,
+              "target": "005bd820",
+              "symbol": "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 472,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 482,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 519,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 540,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 1.907
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\CameraZoomExtentsAction.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\work\\2008-06\\native-check-runs\\20261108-030300-ba0776f9\\unit-001\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00582f50",
+        "requested_symbol": "?doIt@CameraZoomExtentsCommand@RBX@@UAEXPAVIDataState@2@@Z",
+        "status": "exact",
+        "symbol": "?doIt@CameraZoomExtentsCommand@RBX@@UAEXPAVIDataState@2@@Z",
+        "score": 100,
+        "target_size": 691,
+        "object_size": 691,
+        "target_sha256": "e914163a19d4fb8bd5a366577a01bfd428af6b34f11601049338b32c3cccfe1c",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 51,
+              "target": "00510960",
+              "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 76,
+              "target": "00510960",
+              "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 119,
+              "target": "00581d80",
+              "symbol": "?createService@?$ServiceClient@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@RBX@@ABEPAV?$FilteredSelection@VPVInstance@RBX@@@2@_N@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 152,
+              "target": "00581d80",
+              "symbol": "?createService@?$ServiceClient@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@RBX@@ABEPAV?$FilteredSelection@VPVInstance@RBX@@@2@_N@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 184,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 204,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 271,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 292,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 299,
+              "target": "0057dee0",
+              "symbol": "?unionWith@Extents@RBX@@QAEXABV12@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 340,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 344,
+              "target": "005cddd0",
+              "symbol": "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 424,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 428,
+              "target": "005ce0d0",
+              "symbol": "?zoomExtents@Camera@RBX@@QAEXVExtents@2@ABVRect2D@G3D@@W4ZoomType@12@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 439,
+              "target": "005807b0",
+              "symbol": "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 449,
+              "target": "005bd820",
+              "symbol": "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 466,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 490,
+              "target": "0058c5c0",
+              "symbol": "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 506,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 571,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 575,
+              "target": "005ce400",
+              "symbol": "?zoomExtents@Camera@RBX@@QAE_NABVRect2D@G3D@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 586,
+              "target": "005807b0",
+              "symbol": "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 596,
+              "target": "005bd820",
+              "symbol": "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 610,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 647,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 668,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.016
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

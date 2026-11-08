@@ -1,0 +1,27 @@
+{
+  "exit_code": 1120,
+  "historical_providers": [
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeCameraUnitsFull.obj",
+      "sha256": "ee113cdba2ef6e7e86e0d2629889cf8189d0152ecb559db2dc6c2dd7db6cdd72"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeCameraHistoryFull.obj",
+      "sha256": "2294c65ae23698b30d55b75874d091840098f93077f127ecd7a45c26af95030c"
+    }
+  ],
+  "old_unresolved": 127,
+  "new_unresolved": 127,
+  "resolved": [
+    "public: bool __thiscall RBX::Camera::tiltUnits(int)",
+    "public: void __thiscall RBX::Camera::panUnits(int)",
+    "void __cdecl RBX::recordCameraHistory(char const *,class RBX::Instance const *)"
+  ],
+  "introduced": [
+    "float const RBX::cameraRadiansToDegrees",
+    "public: class RBX::ChangeHistoryService * __thiscall RBX::ServiceProvider::find<class RBX::ChangeHistoryService>(void)const ",
+    "public: void __thiscall RBX::ChangeHistoryService::commit(char const *)"
+  ],
+  "duplicates": [],
+  "scope": "Link-only historical-provider experiment. Source freshness, ABI, runtime and original selection are not proven; do not execute."
+}

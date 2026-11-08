@@ -1,0 +1,29 @@
+{
+  "exit_code": 1120,
+  "historical_providers": [
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeChangeHistoryPlaybackFull.obj",
+      "sha256": "b3f47c564085815e448abc4a7f1c80e307025d2f61f2e46532a1fdc688c20219"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\ServiceChangeHistoryCreateFull.obj",
+      "sha256": "d13e51f48d76de388d59c9606af48d3e3702ca6b985a22247957a409f757a9c3"
+    }
+  ],
+  "old_unresolved": 127,
+  "new_unresolved": 129,
+  "resolved": [
+    "public: class RBX::ChangeHistoryService * __thiscall RBX::ServiceProvider::create<class RBX::ChangeHistoryService>(void)const ",
+    "public: void __thiscall RBX::ChangeHistoryService::play(void)",
+    "public: void __thiscall RBX::ChangeHistoryService::unplay(void)"
+  ],
+  "introduced": [
+    "public: __thiscall RBX::ChangeHistoryService::ChangeHistoryService(void)",
+    "public: class RBX::ChangeHistoryService * __thiscall RBX::ServiceProvider::find<class RBX::ChangeHistoryService>(void)const ",
+    "public: static unsigned int __cdecl RBX::ServiceProvider::newIndex(void)",
+    "public: void __thiscall RBX::HistoryRecord::play(void)",
+    "public: void __thiscall RBX::HistoryRecord::unplay(void)"
+  ],
+  "duplicates": [],
+  "scope": "Link-only historical-provider experiment. Source freshness, ABI, runtime and original selection are not proven; do not execute."
+}
