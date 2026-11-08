@@ -1,0 +1,653 @@
+{
+  "base": "d8f4d4c16fd00d7cc1ac5d3690d7060f677cb1cd",
+  "scope": "Layout equivalence under recorded compiler and dependency inputs only; no original identity, runtime, executable selection or server-credit claim.",
+  "moves": [
+    {
+      "old": "Unclassified/src/PVFrameOps.cpp",
+      "new": "Base/src/util/PVFrameOps.cpp",
+      "legacy": "native-classes/PVFrameOps.cpp",
+      "source_sha256": "0c25851a31227dc9b312b2b939ca4e4a3d276bc5b0390b6660f6bd786e18b34e",
+      "relocated_sha256": "0c25851a31227dc9b312b2b939ca4e4a3d276bc5b0390b6660f6bd786e18b34e",
+      "historical_public_sha256": "d10220f6ece4a879111cb3ba60a45c5c3a6369984b31a173bc029cacfa3c4a7e",
+      "historical_status_unverified": "// >>> native-status (generated) -- do not edit >>>\n// PVFrameOps | 2008-06 | inactive\n// unmapped (no indexed address) | unmapped (no binary link) | by -\n// <<< native-status | src 0c25851a | roc native-status --write"
+    }
+  ],
+  "runs": [
+    {
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085116-e0954175",
+      "results_sha256": "49245a31b695ec478c7f09b99dd6219bfa99263f5b4e3fa8d61fdd46b8119cc5"
+    },
+    {
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085117-21ee51ba",
+      "results_sha256": "c0feefa5e47c31c07581dc1a1200c086e3e896ef8cccbd0fcfa3c7afcf8b697c"
+    },
+    {
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085118-23ec0f44",
+      "results_sha256": "94133d9987c7701065d09ef04f59e03d1242e90854101714cacb4b488df8f141"
+    },
+    {
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085133-55c2bb11",
+      "results_sha256": "632b11ce1082c0aa342fa51aaa8bdf828375fad9df76b096687fee3cee592156"
+    },
+    {
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085134-77280a2a",
+      "results_sha256": "ac6e7d4ab535dfa2ad7999f089cf1b487758372ce1e0dbcb6b75b27c21d2a418"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include\\util\\PV.h",
+      "sha256": "ec33aea150b4c990923a7a587596db70f0553827703e73652c100dfa7cd040bd"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include\\util\\Velocity.h",
+      "sha256": "c73ee332da881fe69ac17a34984c6e6911bc8ea3ca560ae9c731a80519924927"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\Array.h",
+      "sha256": "1f619c606374fc0c674652dc121f8af8a3b2d1de2787ba8dfe7fc75ddd230e27"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\BinaryFormat.h",
+      "sha256": "ac12133ca77588244cecb19bd02512ed3fa9184ab61df5be3d38354755ae5d56"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\CoordinateFrame.h",
+      "sha256": "70030cf522fe3b6f5160a0dc3eea6ad7c179ac48a22b5ae0572dea2da654bfc2"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\G3DGameUnits.h",
+      "sha256": "efda7b9273bf0ae807ce910fb655c6d1aeea94a17adcdbc6c379c3936e3b1f1a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\Matrix3.h",
+      "sha256": "d00c01c940cab7d7585eeef12881ba9432313e5f7480249ce2ea2262c48a9302"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\System.h",
+      "sha256": "f83cff965cbe4c0557782651363583954f38c81919c27887100bcfe20e185741"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\Vector2.h",
+      "sha256": "3e4666425bfd37c57afb28d232699463906a33e3e3ea942c2f4ab5347982905a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\Vector2int16.h",
+      "sha256": "2dec0b935c98eb1e5aa9cef1a5a1bed896d68aa9b994cbc9fb91cda9e8b8c952"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\Vector3.h",
+      "sha256": "55fb769a793ded13ee3ac8c384b24b5d0f396d9a796e01dbc9af4d78e62ddc5f"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\Vector3.inl",
+      "sha256": "9ddc199f0b765354b026fd99c0e553f19ac78802e4f84b783feff94cd4fd5874"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\Vector4.h",
+      "sha256": "fe0c7b6700cf5ded5a9e77c07048b9fd00d7a5fe31e1052462e3125a9805320a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\Vector4.inl",
+      "sha256": "0339499da96b3d150689505a172bd98a31412b33b80e0d56c4cc5b9c4cc4a378"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\debug.h",
+      "sha256": "2e8861933f5c5b849187e5c4d10819c2e92d77870872eaba1f6e9971bf53e2a8"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\debugAssert.h",
+      "sha256": "06aed1535d6fa87594af888200417a6cdbc9837b7eab744dfda21540321ca0b2"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\debugPrintf.h",
+      "sha256": "89453f064a539a2c133f63b1a0626b9356d03044ba9cf693181a110bd93a5c65"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\format.h",
+      "sha256": "413266ecb4a92eb34924d7cf6b88fe01bcf7d7aa07f59210b4c62f4cdfb9d34a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\g3dmath.h",
+      "sha256": "2062b984a8a605d9ac9d4f8931e3fd20609017e3d5890528a92f8218d7676c0f"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\g3dmath.inl",
+      "sha256": "08a61fb9a5794179c43b7a4b7566f5cdb685f25239e4e1502697f21aaac8aa21"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D\\platform.h",
+      "sha256": "6d5996fa7b792dc64df7aa3059069cd03487b1bdacd6f312aab47199c9a0b791"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\Common7\\IDE\\mspdb80.dll",
+      "sha256": "4df8c3cacee00a48d528ce58deaff404b8e25b2c31eaf0a3a22871308ca44363"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\c1.dll",
+      "sha256": "2b461633d791d431413163a18bdb72954eb702bdad2d94e969f4da81f7dc5973"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\c1xx.dll",
+      "sha256": "c3fead41f9013e5c1bd530d454a717c46480d76ca911e7a291e801165091d886"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\c2.dll",
+      "sha256": "215c21b66b7769e65fff3ca6a9af498c5a896695abdf69e2412f3c2cacd73c5b"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+      "sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\CodeAnalysis\\sourceannotations.h",
+      "sha256": "492e8bf2c45a6a2a33e295d73b44dcb3d67a4bf37de1db63c01324985c5675ef"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\algorithm",
+      "sha256": "9e28583b05f58ce04431c3b30005b7f0ccfc9b4a76c62398c7f9fd00793b5af7"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\assert.h",
+      "sha256": "a7c76438970ba544e6f1082a89ed4b8c6b577c30f96e2210dcad9bd6f51bbf0b"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cfloat",
+      "sha256": "59440b5948f62c1bf9f6bd260dbcedbb8a9eb98bef5d7da6b9965644897d22b7"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\climits",
+      "sha256": "e02813776512e545a7cddcb5cf97fe1c82dc8cfb587039593682c9f00ce21cb4"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cmath",
+      "sha256": "ed6a95d849bccfd854bb9871e666d5e28953628c068ba51beb2bc32ddc0d6766"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\crtassem.h",
+      "sha256": "6e91403c5dd83b1d996837132960dde8d703381c2820178478e2a7f374bc780a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\crtdbg.h",
+      "sha256": "5ae2e3a9f2d36ffbd1f5f9585d19419d2b00d5aabdc8876a2591cfd82da99e80"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\crtdefs.h",
+      "sha256": "718c0fe0fd6110215ab8c7ad2c79121c3e940c43b90dee2030f19d595dcec018"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\crtwrn.h",
+      "sha256": "f7f6ce0271c2bb90b0b9e07e9ebb7d98a9fc4585dfe437e11d5c8e93c140f11c"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cstdarg",
+      "sha256": "5e5e58f07ea8c5b430a4a79dc4d2efcef4e1e3c374eeae6b2b14ede591375ea6"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cstddef",
+      "sha256": "6ad1bb9465c2b9e0d97583b9b56acc6f78316384ca36daaab6efd0550068d59b"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cstdio",
+      "sha256": "5acb814b7db101e619f4b30088b3918823e340844d0cc8b455f0557cc4ab4ae3"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cstdlib",
+      "sha256": "687b09c5c4960ac4c8749de9d824c1c313f2af0d3cde68b8104833d9d272312f"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cstring",
+      "sha256": "3a54848b4cf709a6b0936508a6905cbfd1b4b91661833e5b573c76419f09d875"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\ctype.h",
+      "sha256": "31fc9b23bc16f88f05722dfa118e4ce5f3305d200293a25e6897eefd5991f0d7"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\cwchar",
+      "sha256": "daceb41d0686b3166d6d3a1c8cd1bdd6d080b3f1a1abf1b026f0240d6f2f293d"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\eh.h",
+      "sha256": "96b650363a5b6cbb0d519af9fa638cc3f8acb10285f4e0f0fde081661fb19ecf"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\exception",
+      "sha256": "7398b7dc3ab844603844d76255970c546c7797a8d820173ab26a6185830d5178"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\excpt.h",
+      "sha256": "bbd53c9a366cdc181606ca5f97b43907cb1ab2079054ea44a53e800f09aafbc6"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\float.h",
+      "sha256": "f11e3dda248221a38bc19de1270b8ea02f3b688daebc2e652bba911bc6111b0a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\ios",
+      "sha256": "cffe017ecd38d253e0ce76e16c9a3aa2bb54ef8b6465a00cce12d52053d27af7"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\iosfwd",
+      "sha256": "5475dc20ed7b117b0b4604d59969a1cddb7b11b2f0f6fa3f50611f9751269c12"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\iostream",
+      "sha256": "4e33d6f06087a90f5f27cf2197490f896c80497b8f46fcf68122345882456868"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\istream",
+      "sha256": "d8ad368326716d9e8f5dee70a6fa329004693c7f67374d924b9a9b96a4a43f26"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\iterator",
+      "sha256": "72dbfbfdd46659b5e3082b53fe65f2a020527a75dde8477d2cb6f0859877736b"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\limits",
+      "sha256": "9b3b899f4f7bab72233a62dbdbf07d10ef2be0b7a29950d5e9a17135ee561c34"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\limits.h",
+      "sha256": "2b989d57b00c4c5c47518388428b14d90443f5e003117c25c7f0df064d883005"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\locale.h",
+      "sha256": "94b4f5b2fd9667eb11d7b40feb58db9f2086319378581ad6093daab6e851f838"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\malloc.h",
+      "sha256": "dd16da751b7d626c3230c8490890697b698eef9b1eb1d46d9de4e4dd19055a32"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\math.h",
+      "sha256": "eda60df304774cca62e6ddb025c790c0e0b74a9cac2fb5d5051851c895984eeb"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\memory",
+      "sha256": "2c3905b3432414da67fe110986f26e3b15022ea5f22787ba9fe09e0524d378c7"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\mmintrin.h",
+      "sha256": "6db2bb1b8dd35221563513f5ec90b602b30fc77412175d9b9e47a4f445f335a3"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\new",
+      "sha256": "693999d736b1827935ddd6c14083b4d44dd5782b0ce47025e05bff5edd00bf29"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\ostream",
+      "sha256": "74d287973749df090c24e7d8e8b53d1c438edbcdc6a1944b957553bd0eaf9103"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\sal.h",
+      "sha256": "c25c776da247c8d3c145cb9afcbc81eea81912f588166de4f84cec9baf8fac18"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\share.h",
+      "sha256": "c0fcc6e1758bf0362d75f6cc4b2a2c41dd9d4d2286114724670000e4a912454b"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\stdarg.h",
+      "sha256": "df1a7532a769f3d266eaa8e68215066910d2e07d31a6ca19081150d73e4d5fe7"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\stddef.h",
+      "sha256": "2e604fb2a77340a25599dec98c283ce0b3d3373ab86473ab29bb1715e7c3a7b5"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\stdexcept",
+      "sha256": "09a34bce5467eac227a5b4b835ed71fdd65d5aeaccdcdcfc8cbadc51148647f7"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\stdio.h",
+      "sha256": "6bfd372dfe186587b84f5bee916af281baa68bd274c0ab17697954039a03e9ad"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\stdlib.h",
+      "sha256": "f8cf8dc763a4d57b604e6c8ce7699726dd9ff50cafbde27fb46e5c1eaf6ff718"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\streambuf",
+      "sha256": "68c937564ae56483a9aa02771d32024ce049a282e6bb7cf4ca6eb4879dff16b2"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\string",
+      "sha256": "e6088b68daf907b85267f3f732b983866cb82c4401b256935660d73cc82617a4"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\string.h",
+      "sha256": "984ee4ebe5e79679ead40e0822eb3b28cdfba241dcb9746a0ca0ce1d13631a3a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\swprintf.inl",
+      "sha256": "fe65a446685d03da6af5d85e969bba363284843ba26cd646f88719787b0f2531"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\typeinfo",
+      "sha256": "331ff999a901db6d437392e8e711f91045b962a1e98ac0a7429799619e5a44a4"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\use_ansi.h",
+      "sha256": "672019e959d8cdd9e9bf216e6c74bed0189986c5b8659f2462c7902e1e3f003b"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\utility",
+      "sha256": "22c6e90f1358f8df2b3a13e36acce72a4091fd175b4a8e84cac3b169b3b14c3d"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\vadefs.h",
+      "sha256": "aae1adc7f057aa349aafd6e78388f3065516cacd3ab1e1adb175d5f269d2b8a2"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\vector",
+      "sha256": "d4e8bf448ca7e879a6404ed839b83016146513600825611154eca9a7c17652dd"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\wchar.h",
+      "sha256": "09ed2ef2b89b34a1dfd577025d5c047d861f03db567efa130f2ccc2380f7b6d8"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\wtime.inl",
+      "sha256": "4be4fa6b7531a938b4ca936fdb8149e2388878251f6b87a568f445e6eccd8762"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xdebug",
+      "sha256": "c2850f4ccdf816fbae80136f054c1cc3b94fbb92b8b4f540eea3b9788512658c"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xiosbase",
+      "sha256": "7218de75602e0fddb67a8eee48ce4d389746c5fa5679c7c2f6e1c6a033d2abaa"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xlocale",
+      "sha256": "5874f74b2c1519d605785b87909ad8b6b8abc627562b665c1264a1e6f67a26da"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xlocinfo",
+      "sha256": "5eee3f7fe3f38af813fe55e4b25a3ac651d1431309665ba0aedc5e47d52428b3"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xlocinfo.h",
+      "sha256": "0960c4405f4b273a6de2435625df2862833255c58eaabbf78c3ac67641325167"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xlocnum",
+      "sha256": "36fafafdb4f5a8c4cdb51145bc28857a14d540bf9b3f44d28dabff27339fb4a2"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xmemory",
+      "sha256": "78f61087b9fcda38c80f18ef7a59a14e10a78de239f87aba13e282769b75538d"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xmmintrin.h",
+      "sha256": "bf7c683670928ceac529583ec5fb8790fe95d100a481430741e7d9c2b5f4925a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xstddef",
+      "sha256": "0a01b93b8f58c90a416633dbe60ee11f4844038f6d8d42ae8bd36ec6d3ecbb67"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xstring",
+      "sha256": "09f2e47e92ca601817cea05d8e08a2045b0c079f912fbe9125a40117348e29be"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\xutility",
+      "sha256": "ef94b8bae26597f0c39fa0f6d685cdaa8ed5628e1e2bc4dbdadea78cd577a163"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\ymath.h",
+      "sha256": "b5a8032d23bc4073909014b4e7b8cff8e39f5691a6c23fb5b7b494cbd7efdb3d"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include\\yvals.h",
+      "sha256": "f2cf5625d2a60310032d8a6f130bf037811f87ad4a6026089e784d611d8ed6ca"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\BaseTsd.h",
+      "sha256": "3c3a6c4c0752e0f5bd3cbca58e3dbada10d82f8d51be5fc2c40d3be3068172df"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\Guiddef.h",
+      "sha256": "59bea48aaa0c275a8f8079c17c3060672d59a8866a4861a249b1e7a2bdc48b46"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\Ime_cmodes.h",
+      "sha256": "8c9669711383eb7107f23b14eccfa64f09ae8984b77f540683fd45e392a64df6"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\Imm.h",
+      "sha256": "808ad877fa0b22d92c4c955e2054b289904aafb3a9aebebfa828ae7fe124b5a4"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\Mcx.h",
+      "sha256": "773893f69fb068a1bc3c9c9b202fc1f15ad774636378bb70aa29cc91cd2ff0c0"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\PopPack.h",
+      "sha256": "ec63d9f8674384c26f55168f1a4c669af495e5dcc026851b80bbe0c4a4d3c9fd"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\PshPack1.h",
+      "sha256": "190cd1abc6985e0d1adda05d2ea021a72c1f3c15170da9c5670245de503b0aaa"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\PshPack2.h",
+      "sha256": "1255c3a5beda9e467812f3105664b250123f101e62a6c86b1aa15e0c4a732ccc"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\PshPack4.h",
+      "sha256": "b569ef62133e68dbbc395f6df74590399ac431803f33d2b1ac763724d921faad"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\PshPack8.h",
+      "sha256": "552638ffd3f742d261e4945e9846e98fe960a7b4324891b8b72e02783403e872"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\Reason.h",
+      "sha256": "38bf53c345c3a8ec9ebc880d2ee0319d40db3c0658e65fc41e10ba348d7115e5"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\StrAlign.h",
+      "sha256": "c88dd32e32b6aa90958de87cdc9268d2dcb7d4cd6ed5e5f82dba6e3e3697791f"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\Tvout.h",
+      "sha256": "d57d93ec7f8b1e4e7e59a40c068b43435a9948624e98c3498804b4fdf4355ab6"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\VerRsrc.h",
+      "sha256": "e1bb4a3fac68695bd05a0be172a7ff5e3b91f871b91abb893cc44de99491c2ab"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinBase.h",
+      "sha256": "384c5a5f869063de39f84ed19a31d5bb5fe6c07067e3cf096f23a24a6f8b87f1"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinCon.h",
+      "sha256": "bd81ef38be00ce70acf5595b1cfbc2714fe2fa4b839f72cd36e898066ca64da3"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinDef.h",
+      "sha256": "c7e13031113743322a1ecbcebdb1ae8da09130082df2a4fcaf6bfc1183706f1b"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinError.h",
+      "sha256": "f7164539c42c290d7b8136d8a477e863b30c3707c60ed91a9b281f0e071bbb5c"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinGDI.h",
+      "sha256": "5d44c4919966c7017088721901d7fbe59ce18174df757b6b0b42346bcb4d247f"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinNT.h",
+      "sha256": "9fc5347c7451bb3c7433cc36b4d2f0260c6eea9a8ce0cbd7e426fbf2ed898a00"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinNetWk.h",
+      "sha256": "082dfb90cad859d92b317fcfe5dc9e3df2e1b5b8e6dc97d77f6a8f569c83b154"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinNls.h",
+      "sha256": "a2b7f0e62bb0a12fc6d0ed2003850ee0b81db51e307f6328b7640a491633e607"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinReg.h",
+      "sha256": "9081314a013b49282c9034e7d2f367f7b41782efc7bbe2532a61983ab4bc1848"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinSvc.h",
+      "sha256": "1216a2955ccd5ea0a299d9ca81adc905acff79437df0bcaea0ac66ee41fb8a97"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinUser.h",
+      "sha256": "1f2c8c705334a3743f38ea87310623b8d26e0e05e8d5fc002e4653bc6b9ca301"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\WinVer.h",
+      "sha256": "167110abfa6b0bd62822db22730ad1d4b6f40b831fc18961448de2bcbcb02fe5"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\Windows.h",
+      "sha256": "5c4970263724e56c13ab0f28d1cf49bec1cb0f29c32cb5a00069c5db73438ae3"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\driverspecs.h",
+      "sha256": "9b6492713612074e74cd1ebb0366fc9ac9d4954bcb521d73af9e936775a3627e"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\kernelspecs.h",
+      "sha256": "e1dfb56abfc1b4e1f27b62bc5e5b75ae104001b7d95a4b6d1b9b83c047487578"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\ktmtypes.h",
+      "sha256": "f4e58889fe9fbd26ce0bb18e7a203295fd6d4ae88b56ed9dc7bed125083bf38f"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\sal_supp.h",
+      "sha256": "cb19b584602a30067b588f9e5ea3f9442f6b14f43b27b5bb8394d031b18f9a72"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\sdkddkver.h",
+      "sha256": "9eca2c43b0c6a65895ff5628c2b6596527296301c0786d39583ca79c796702a7"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\sdv_driverspecs.h",
+      "sha256": "09bf5e54d6e71b406ea6a84245cfb3d78a0efbaa1e21a294a8e3be02df43599a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\specstrings.h",
+      "sha256": "21b8419869244f9fe6daf72b5f477823131dcd110118307b9fae20775e5c86a1"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\specstrings_strict.h",
+      "sha256": "4bc656b4e568d38d4b09653366ffcc33e2c5ad31ae9f74b924357803ff50d353"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\specstrings_supp.h",
+      "sha256": "6863ef536de1e0399795f3e62d25c218e379b656efea9c7d078e77f089b561d3"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\specstrings_undef.h",
+      "sha256": "d6aa8686e37a65f311b04f58cabc272b6d3a2502383e38a8f05a04cb8a2a81fd"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\wnnc.h",
+      "sha256": "076a2ad4b12b9da3309859567d256841a51272c29840887f95f15c29c29793fd"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085116-e0954175\\unit-000\\candidate.obj",
+      "sha256": "ced1a6d4bf9d10a0b962526ab9e81b4cfd51735d61856101453f334fcd5339b6"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085117-21ee51ba\\unit-000\\candidate.obj",
+      "sha256": "3dca564fa40f652934ff882f03cd444924e67976e530933f8a0dd52889fd81a2"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085118-23ec0f44\\unit-000\\candidate.obj",
+      "sha256": "afbd271bfc82b288acd54af77e940d61c329cf57395205baa0b780a1a46f25ce"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085133-55c2bb11\\unit-000\\candidate.obj",
+      "sha256": "1fd7f189549f582bcf6f06836cac98493dd1951c2c1cadaa1ea206860642d608"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085134-77280a2a\\unit-000\\candidate.obj",
+      "sha256": "6659355e283b654d9035ffdc3bbdf8d1a21396793acc013b0043056c400ebec9"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085208-c349ac51\\unit-000\\candidate.obj",
+      "sha256": "da1cc480e1ae62272795816aab0e9281486c72941ec4dc2a02ecc86d926d456e"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085209-52bc137e\\unit-000\\candidate.obj",
+      "sha256": "99e642e5241664da5d7cf87cbd95db36aa8b11bb184868060364082a7897f274"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\candidate\\Base\\src\\util\\PVFrameOps.cpp",
+      "sha256": "0c25851a31227dc9b312b2b939ca4e4a3d276bc5b0390b6660f6bd786e18b34e"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\candidate\\Base\\src\\util\\PVFrameOps.h",
+      "sha256": "8a4c075c7b45bff4eb8dfb7f92123dfb6f61cbc99bfe578477197aee8efb0a3e"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\candidate\\Unclassified\\src\\PVFrameOps.cpp",
+      "sha256": "942808abc4f75cbf290f7fbdb3ed46ab026f7549687c2b1d4ab37a858638ee09"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\candidate\\Unclassified\\src\\PVFrameOps.h",
+      "sha256": "3f008c9648bac4338cbcbc8cc09f804835d1c082d6fae329e17f0b71d4434556"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\candidate\\native-classes\\PVFrameOps.cpp",
+      "sha256": "606c5e8f7ecb6b5e3c97297d06b2c7f0c3917f112f4ae9929a2489fab983befe"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\candidate\\native-classes\\PVFrameOps.h",
+      "sha256": "287d6cdf8b3b652d5f18b5f6df8f1049f6e4fb95eaae66b79328c8effee9f85a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\candidate\\tests\\PVFrameHeaderCheck.cpp",
+      "sha256": "ee4d14f382a4f11e72a160a1852c197d4e2bfb0f8bf6ed27c8487d4fbceeeaef"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\original\\Unclassified\\src\\PVFrameOps.cpp",
+      "sha256": "0c25851a31227dc9b312b2b939ca4e4a3d276bc5b0390b6660f6bd786e18b34e"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\original\\Unclassified\\src\\PVFrameOps.h",
+      "sha256": "8a4c075c7b45bff4eb8dfb7f92123dfb6f61cbc99bfe578477197aee8efb0a3e"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\original\\native-classes\\PVFrameOps.cpp",
+      "sha256": "606c5e8f7ecb6b5e3c97297d06b2c7f0c3917f112f4ae9929a2489fab983befe"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\original\\native-classes\\PVFrameOps.h",
+      "sha256": "287d6cdf8b3b652d5f18b5f6df8f1049f6e4fb95eaae66b79328c8effee9f85a"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\r7\\original\\tests\\PVFrameHeaderCheck.cpp",
+      "sha256": "ee4d14f382a4f11e72a160a1852c197d4e2bfb0f8bf6ed27c8487d4fbceeeaef"
+    }
+  ],
+  "header_move": {
+    "old": "rebuild/2008-06/Unclassified/src/PVFrameOps.h",
+    "new": "rebuild/2008-06/Base/src/util/PVFrameOps.h",
+    "legacy": "rebuild/2008-06/native-classes/PVFrameOps.h",
+    "sha256": "8a4c075c7b45bff4eb8dfb7f92123dfb6f61cbc99bfe578477197aee8efb0a3e",
+    "original_public_sha256": "212d9eacfd65d27557dd5268b38d41569a7ef49fbb6111d2a69359a5abe812a5",
+    "historical_status_unverified": "// >>> native-status (generated) -- do not edit >>>\n// PVFrameOps | 2008-06 | inactive\n// unmapped (no indexed address) | unmapped (no binary link) | by -\n// <<< native-status | src 8a4c075c | roc native-status --write",
+    "compatibility_check": {
+      "runs": [
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085208-c349ac51",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-085209-52bc137e"
+      ],
+      "header_sha256": "8a4c075c7b45bff4eb8dfb7f92123dfb6f61cbc99bfe578477197aee8efb0a3e",
+      "original_object_sha256": "da1cc480e1ae62272795816aab0e9281486c72941ec4dc2a02ecc86d926d456e",
+      "candidate_object_sha256": "99e642e5241664da5d7cf87cbd95db36aa8b11bb184868060364082a7897f274",
+      "passed": true
+    }
+  }
+}

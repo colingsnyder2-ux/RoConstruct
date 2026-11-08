@@ -564,8 +564,8 @@
     "Unclassified/src/NativeClassNames.cpp": "e8943c1b5dd96e8e0f4a6588601107f310e0afc82071edb3df97e042bd00b054",
     "Unclassified/src/NativeWorkspaceClassNames.cpp": "e7093e27fef6156cffb33e45183310c47973187d81a405e8baef123e68973819",
     "Unclassified/src/NetworkPhysics.cpp": "9ed618cccb3fa31b385a70e5000e621f273277cb2ec4b5704b63407e4268502c",
-    "Unclassified/src/PVFrameOps.cpp": "d10220f6ece4a879111cb3ba60a45c5c3a6369984b31a173bc029cacfa3c4a7e",
-    "Unclassified/src/PVFrameOps.h": "212d9eacfd65d27557dd5268b38d41569a7ef49fbb6111d2a69359a5abe812a5",
+    "Unclassified/src/PVFrameOps.cpp": "8ad7b2693bdb8c09f0fc02140b9b1edb4e11572eac1f2f25ddceea6d0f70ea16",
+    "Unclassified/src/PVFrameOps.h": "c82a7463507892eaf7ce06542ccd2bd537ce54b03b539d42e38b8f3c2a91c37e",
     "Unclassified/src/PartInstanceLocked.cpp": "30bfc6041cf8d6aef08f4e2c92f6bd34aa8825ae751daf9f6acc12576cfe6d6a",
     "Unclassified/src/PeerClassName.cpp": "d771032a5d7ba490e9fc7a26be1eee040352c5501e5a971cd471fcd7d370adda",
     "Unclassified/src/PeerConstructor.cpp": "448b4e424a1df2790d16d64427d0a36c0602bd29467bc980c6d779fc5d2945ec",
@@ -12251,7 +12251,10 @@
     "experiments/trials/G3DVector3Subtract.cpp": "ffe6c42345a9a3ae7c981e254a45a921cb515ce7da6856fda5282c3e82137c53",
     "experiments/trials/Vector3Subtract.cpp": "509016c9a116e7f9e6886df6f99b673d177b13ec033c1db9957f873c8e09c6b7",
     "experiments/trials/ContentProvider.cpp": "30445ea9d401caf8b52a0577a300c545322af2bcf1e1e3c39d78f73b0328e337",
-    "manifests/unclassified-probes-layout-20261108.json": "b1671c22e50c5e9db09bc8a49606bd79aa51e2931310d6626916bc558a409ea4"
+    "manifests/unclassified-probes-layout-20261108.json": "b1671c22e50c5e9db09bc8a49606bd79aa51e2931310d6626916bc558a409ea4",
+    "Base/src/util/PVFrameOps.cpp": "826b01ac07c8c0996680b34bd57bbee084a706370ce2e282be650a0eec1c6f66",
+    "manifests/pvframe-layout-20261108.json": "633b7b8a570150d21f28529680b9611228deefd4b188c2d0c24537e0509b1141",
+    "Base/src/util/PVFrameOps.h": "75b8855ba5af5433e0a294e6f45cd14927dfe19a2628e10f4ccd99137531f117"
   },
   "format": 1,
   "large_files": {},

@@ -1,12 +1,6 @@
-// Internal descriptive helper names; original symbol names are unknown.
-// ABI evidence: complete005991c0, accepted005989d0, and verified SDK00598a60.
-#pragma once
+// Compatibility header; declarations live at the organized path.
 // >>> native-status (generated) -- do not edit >>>
-// PVFrameOps | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src 8a4c075c | roc native-status --write
-#include "util/PV.h"
-namespace RBX {
-void recoveredFrameMultiply(const G3D::CoordinateFrame&, const G3D::CoordinateFrame&, G3D::CoordinateFrame&);
-void recoveredPVLocalFrame(const PV&, const G3D::CoordinateFrame&, PV&);
-}
+// PVFrameOps | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src 3f008c96 | roc native-status --write
+#include "../../Base/src/util/PVFrameOps.h"

@@ -1,20 +1,6 @@
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// PVFrameOps | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src 0c25851a | roc native-status --write
-#pragma float_control(precise, off)
-#include "PVFrameOps.h"
-
-// Genuine SDK dependency; independently matches00598a60.
-__declspec(noinline) RBX::Velocity RBX::PV::velocityAtPoint(const G3D::Vector3& worldPos) const
-	{
-		G3D::Vector3 v1 = worldPos - this->position.translation;
-		G3D::Vector3 v2 = this->velocity.rotational.cross(v1);
-		return Velocity(this->velocity.linear + v2, this->velocity.rotational);
-	}
-
-void RBX::recoveredPVLocalFrame(const PV& source, const G3D::CoordinateFrame& local, PV& result)
-{
-    recoveredFrameMultiply(source.position, local, result.position);
-    result.velocity = source.velocityAtPoint(result.position.translation);
-}
+// PVFrameOps | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src 942808ab | roc native-status --write
+#include "../../Base/src/util/PVFrameOps.cpp"
