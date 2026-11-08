@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 </details>
 
 **`57dde75342e4`** · `Network/include/Network/Player.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Network/include/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Network/include/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Network/include/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Network/include/Network/Player.h)
@@ -55,6 +56,7 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Network/include/Network/Player.h)
 
 **`e73fccf6dab0`** · `Network/include/Network/Player.h` · proof not assessed
+- canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Network/include/Network/Player.h)
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Network/include/Network/Player.h)
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Network/include/Network/Player.h)
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Network/include/Network/Player.h)
@@ -84,7 +86,7 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Network/include/Network/Player.h)
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Network/include/Network/Player.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
@@ -126,6 +128,8 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
@@ -136,6 +140,10 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Network/include/Network/Player.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -148,6 +156,8 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 </details>
 
 **`35397c1b3b8e`** · `native-headers/Network/Player.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/Network/Player.h)
+- canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/Network/Player.h)
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/Player.h)
@@ -205,7 +215,7 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/Network/Player.h)
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/Network/Player.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
@@ -248,6 +258,8 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
@@ -260,6 +272,10 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/Network/Player.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -377,6 +393,7 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 </details>
 
 **`ef0b23c8106a`** · `native-headers/Network/Player.h` · proof not assessed
+- draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
 - draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
 - draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
 - draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
@@ -434,6 +451,7 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 
 **`345d1496b220`** · `Network/include/Network/Players.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Network/include/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Network/include/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Network/include/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Network/include/Network/Players.h)
@@ -481,6 +499,7 @@ Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Network/include/Network/Players.h)
 
 **`ff84418a3ea3`** · `Network/include/Network/Players.h` · proof not assessed
+- canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Network/include/Network/Players.h)
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Network/include/Network/Players.h)
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Network/include/Network/Players.h)
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Network/include/Network/Players.h)
@@ -510,7 +529,7 @@ Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Network/include/Network/Players.h)
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Network/include/Network/Players.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
@@ -552,6 +571,8 @@ Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
@@ -562,6 +583,10 @@ Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Network/include/Network/Players.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -613,6 +638,8 @@ Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 </details>
 
 **`951e9a9eec37`** · `native-headers/Network/Players.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/Network/Players.h)
+- canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/Network/Players.h)
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/Players.h)
@@ -670,7 +697,7 @@ Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/Network/Players.h)
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/Network/Players.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
@@ -713,6 +740,8 @@ Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
@@ -725,6 +754,10 @@ Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/Network/Players.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -832,6 +865,7 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Network/include/Network/ReplicatorMarker.h)
 
 **`125194a785bb`** · `Network/include/Network/ReplicatorMarker.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Network/include/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Network/include/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Network/include/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Network/include/Network/ReplicatorMarker.h)
@@ -845,6 +879,7 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 </details>
 
 **`5adb1015d369`** · `Network/include/Network/ReplicatorMarker.h` · proof not assessed
+- canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h)
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h)
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h)
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h)
@@ -874,7 +909,7 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h)
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
@@ -916,6 +951,8 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
@@ -926,6 +963,10 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -954,6 +995,8 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/Network/ReplicatorMarker.h)
 
 **`224c162d829e`** · `native-headers/Network/ReplicatorMarker.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/Network/ReplicatorMarker.h)
+- canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/Network/ReplicatorMarker.h)
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/ReplicatorMarker.h)
@@ -1011,7 +1054,7 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/Network/ReplicatorMarker.h)
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
@@ -1054,6 +1097,8 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
@@ -1066,6 +1111,10 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h` · root `b52aa15feaea5a0c`
 
 </details>
 

@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/v8datamodel/Value.h`.
 
 **`2f9734d365fd`** · `App/include/v8datamodel/Value.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8datamodel/Value.h)
 - public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/v8datamodel/Value.h)
 - public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/v8datamodel/Value.h)
 - public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/Value.h)
@@ -21,6 +22,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Value.h`.
 </details>
 
 **`4d348ae3c3e8`** · `App/include/v8datamodel/Value.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8datamodel/Value.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/v8datamodel/Value.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/v8datamodel/Value.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/Value.h)
@@ -47,7 +49,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Value.h`.
 - canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/Value.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/Value.h)
 
-<details><summary>44 retained local origins</summary>
+<details><summary>50 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
@@ -83,6 +85,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Value.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
@@ -93,6 +97,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Value.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/include/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -227,6 +235,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Value.h`.
 </details>
 
 **`d37aaae825ee`** · `native-headers/v8datamodel/Value.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/v8datamodel/Value.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/v8datamodel/Value.h)
 - public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/v8datamodel/Value.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/v8datamodel/Value.h)
 - public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8datamodel/Value.h)
@@ -278,7 +288,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Value.h`.
 - public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Value.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Value.h)
 
-<details><summary>47 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
@@ -315,6 +325,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Value.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
@@ -327,6 +339,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Value.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -400,6 +416,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Visit.h`.
 - public · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8datamodel/Visit.h)
 
 **`8a3004a778fa`** · `App/include/v8datamodel/Visit.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8datamodel/Visit.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/v8datamodel/Visit.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/v8datamodel/Visit.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/Visit.h)
@@ -426,7 +443,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Visit.h`.
 - canonical · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/Visit.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/Visit.h)
 
-<details><summary>44 retained local origins</summary>
+<details><summary>50 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
@@ -462,6 +479,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Visit.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
@@ -472,10 +491,15 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Visit.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/include/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`e7f3ede98d89`** · `App/include/v8datamodel/Visit.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8datamodel/Visit.h)
 - public · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/v8datamodel/Visit.h)
 - public · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/v8datamodel/Visit.h)
 - public · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/Visit.h)
@@ -555,6 +579,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Visit.h`.
 - public · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-headers/v8datamodel/Visit.h)
 
 **`8760370853c2`** · `native-headers/v8datamodel/Visit.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/v8datamodel/Visit.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/v8datamodel/Visit.h)
 - public · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/v8datamodel/Visit.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/v8datamodel/Visit.h)
 - public · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8datamodel/Visit.h)
@@ -606,7 +632,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Visit.h`.
 - public · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Visit.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Visit.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Visit.h)
 
-<details><summary>47 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
@@ -643,6 +669,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Visit.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
@@ -655,6 +683,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Visit.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/v8datamodel/Visit.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -728,6 +760,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Visit.h`.
 Earlier paths and their donor versions: `native-headers/v8datamodel/Workspace.h`.
 
 **`0779e42eb4ae`** · `App/include/v8datamodel/Workspace.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8datamodel/Workspace.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/v8datamodel/Workspace.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/v8datamodel/Workspace.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/Workspace.h)
@@ -757,7 +790,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Workspace.h`
 - canonical · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/Workspace.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/Workspace.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
@@ -799,6 +832,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Workspace.h`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
@@ -809,6 +844,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Workspace.h`
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/include/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -847,6 +886,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Workspace.h`
 </details>
 
 **`fd1f3211ec67`** · `App/include/v8datamodel/Workspace.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8datamodel/Workspace.h)
 - public · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/v8datamodel/Workspace.h)
 - public · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/v8datamodel/Workspace.h)
 - public · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/Workspace.h)
@@ -924,8 +964,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Workspace.h`
 - public · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8datamodel/Workspace.h)
 
 **`1e5d90039ba4`** · `native-headers/v8datamodel/Workspace.h` · proof not assessed
-- draft · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Workspace.h)
+- draft · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Workspace.h)
 - fork · coldek · [v8datamodel/Workspace.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8datamodel/Workspace.h)
+- draft · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Workspace.h)
 - draft · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Workspace.h)
 - draft · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Workspace.h)
 - draft · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Workspace.h)
@@ -992,6 +1033,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Workspace.h`
 </details>
 
 **`b579687e2291`** · `native-headers/v8datamodel/Workspace.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/v8datamodel/Workspace.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/v8datamodel/Workspace.h)
 - public · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/v8datamodel/Workspace.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/v8datamodel/Workspace.h)
 - public · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8datamodel/Workspace.h)
@@ -1049,7 +1092,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Workspace.h`
 - public · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Workspace.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Workspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Workspace.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
@@ -1092,6 +1135,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Workspace.h`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
@@ -1104,6 +1149,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Workspace.h`
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/v8datamodel/Workspace.h` · root `b52aa15feaea5a0c`
 
 </details>
 

@@ -33,6 +33,7 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTool.h`.
 - public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/tool/ShootTool.h)
 
 **`46827d0499f5`** · `App/include/tool/ShootTool.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/tool/ShootTool.h)
 - canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/tool/ShootTool.h)
 - canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/tool/ShootTool.h)
 - canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/tool/ShootTool.h)
@@ -62,7 +63,7 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTool.h`.
 - canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/ShootTool.h)
 - canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/ShootTool.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
@@ -104,6 +105,8 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTool.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
@@ -114,6 +117,10 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTool.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/include/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -127,6 +134,7 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTool.h`.
 </details>
 
 **`92b8cf06273f`** · `App/include/tool/ShootTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/tool/ShootTool.h)
 - public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/tool/ShootTool.h)
 - public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/tool/ShootTool.h)
 - public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/tool/ShootTool.h)
@@ -212,6 +220,8 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTool.h`.
 </details>
 
 **`468c68b21ac6`** · `native-headers/tool/ShootTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/tool/ShootTool.h)
+- canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h)
 - public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/tool/ShootTool.h)
 - canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h)
 - public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/tool/ShootTool.h)
@@ -269,7 +279,7 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTool.h`.
 - public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/ShootTool.h)
 - canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
@@ -312,6 +322,8 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTool.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
@@ -324,6 +336,10 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTool.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/tool/ShootTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -379,6 +395,7 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTool.h`.
 Earlier paths and their donor versions: `native-headers/tool/ShootTools.h`.
 
 **`1000d50a1c9b`** · `App/include/tool/ShootTools.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/tool/ShootTools.h)
 - public · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/tool/ShootTools.h)
 - public · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/tool/ShootTools.h)
 - public · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/tool/ShootTools.h)
@@ -392,6 +409,7 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTools.h`.
 </details>
 
 **`8728a84fad18`** · `App/include/tool/ShootTools.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/tool/ShootTools.h)
 - canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/tool/ShootTools.h)
 - canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/tool/ShootTools.h)
 - canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/tool/ShootTools.h)
@@ -421,7 +439,7 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTools.h`.
 - canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/ShootTools.h)
 - canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/ShootTools.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
@@ -463,6 +481,8 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTools.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
@@ -473,6 +493,10 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTools.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/include/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -528,6 +552,8 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTools.h`.
 </details>
 
 **`7d24e9970608`** · `native-headers/tool/ShootTools.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/tool/ShootTools.h)
+- canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h)
 - public · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/tool/ShootTools.h)
 - canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h)
 - public · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/tool/ShootTools.h)
@@ -585,7 +611,7 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTools.h`.
 - public · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/ShootTools.h)
 - canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
@@ -628,6 +654,8 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTools.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
@@ -640,6 +668,10 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTools.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/tool/ShootTools.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -750,6 +782,7 @@ Earlier paths and their donor versions: `native-headers/tool/ShootTools.h`.
 Earlier paths and their donor versions: `native-headers/tool/SurfaceTool.h`.
 
 **`47b27405155d`** · `App/include/tool/SurfaceTool.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/tool/SurfaceTool.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/tool/SurfaceTool.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/tool/SurfaceTool.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/tool/SurfaceTool.h)
@@ -779,7 +812,7 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTool.h`.
 - canonical · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/SurfaceTool.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/SurfaceTool.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
@@ -821,6 +854,8 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTool.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
@@ -831,6 +866,10 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTool.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/include/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -860,6 +899,7 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTool.h`.
 - public · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/tool/SurfaceTool.h)
 
 **`bc8a5ec04d56`** · `App/include/tool/SurfaceTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/tool/SurfaceTool.h)
 - public · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/tool/SurfaceTool.h)
 - public · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/tool/SurfaceTool.h)
 - public · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/tool/SurfaceTool.h)
@@ -942,6 +982,8 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTool.h`.
 </details>
 
 **`9d5b9d23b7b2`** · `native-headers/tool/SurfaceTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/tool/SurfaceTool.h)
+- canonical · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/tool/SurfaceTool.h)
 - public · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/tool/SurfaceTool.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/tool/SurfaceTool.h)
 - public · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/tool/SurfaceTool.h)
@@ -999,7 +1041,7 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTool.h`.
 - public · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/SurfaceTool.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/SurfaceTool.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
@@ -1042,6 +1084,8 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTool.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
@@ -1054,6 +1098,10 @@ Earlier paths and their donor versions: `native-headers/tool/SurfaceTool.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/tool/SurfaceTool.h` · root `b52aa15feaea5a0c`
 
 </details>
 

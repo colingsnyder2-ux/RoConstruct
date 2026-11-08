@@ -33,6 +33,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8datamodel/custommesh.h)
 
 **`4efca610d3b4`** · `App/include/v8datamodel/custommesh.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
@@ -62,7 +63,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
@@ -104,6 +105,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
@@ -114,6 +117,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -127,6 +134,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 </details>
 
 **`f2b2e0822c02`** · `App/include/v8datamodel/custommesh.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8datamodel/custommesh.h)
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/v8datamodel/custommesh.h)
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/v8datamodel/custommesh.h)
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/custommesh.h)
@@ -221,6 +229,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 </details>
 
 **`6b16c553b4a8`** · `native-headers/v8datamodel/custommesh.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/v8datamodel/custommesh.h)
+- canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/v8datamodel/custommesh.h)
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/v8datamodel/custommesh.h)
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8datamodel/custommesh.h)
@@ -278,7 +288,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/custommesh.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
@@ -321,6 +331,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
@@ -333,6 +345,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -371,15 +387,22 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 Earlier paths and their donor versions: `native-classes/Accoutrement.cpp`.
 
 **`19668bdd02b3`** · `App/src/v8datamodel/Accoutrement.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 
-<details><summary>2 retained local origins</summary>
+<details><summary>8 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -465,6 +488,7 @@ Earlier paths and their donor versions: `native-classes/Accoutrement.cpp`.
 </details>
 
 **`bfaefb76a4b1`** · `App/src/v8datamodel/Accoutrement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/v8datamodel/Accoutrement.cpp)
@@ -539,6 +563,8 @@ Earlier paths and their donor versions: `native-classes/Accoutrement.cpp`.
 </details>
 
 **`b21287866b02`** · `native-classes/Accoutrement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/Accoutrement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
 - public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
 - public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/Accoutrement.cpp)
@@ -602,11 +628,17 @@ Earlier paths and their donor versions: `native-classes/Accoutrement.cpp`.
 - public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
 
-<details><summary>3 retained local origins</summary>
+<details><summary>9 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/Accoutrement.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-classes/Accoutrement.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-classes/Accoutrement.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-classes/Accoutrement.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-classes/Accoutrement.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -680,6 +712,7 @@ Earlier paths and their donor versions: `native-classes/Backpack.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/Backpack.cpp)
 
 **`e4d3d33d73c9`** · `App/src/v8datamodel/Backpack.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8datamodel/Backpack.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/v8datamodel/Backpack.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/v8datamodel/Backpack.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/v8datamodel/Backpack.cpp)
@@ -693,6 +726,7 @@ Earlier paths and their donor versions: `native-classes/Backpack.cpp`.
 </details>
 
 **`f8245cf65501`** · `App/src/v8datamodel/Backpack.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp)
@@ -725,15 +759,22 @@ Earlier paths and their donor versions: `native-classes/Backpack.cpp`.
 - canonical · colingsnyder2-ux · [v8datamodel/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp)
 
-<details><summary>3 retained local origins</summary>
+<details><summary>9 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/src/v8datamodel/Backpack.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`066570525040`** · `native-classes/Backpack.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/bff0348f52a765629094596b5b5b0eaea2a59a6a148f4e8b7a4ac4a1e88b0a78/rebuild/2008-06/native-classes/Backpack.cpp)
 - draft · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/bff0348f52a765629094596b5b5b0eaea2a59a6a148f4e8b7a4ac4a1e88b0a78/rebuild/2008-06/native-classes/Backpack.cpp)
 - draft · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/bff0348f52a765629094596b5b5b0eaea2a59a6a148f4e8b7a4ac4a1e88b0a78/rebuild/2008-06/native-classes/Backpack.cpp)
 - draft · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/bff0348f52a765629094596b5b5b0eaea2a59a6a148f4e8b7a4ac4a1e88b0a78/rebuild/2008-06/native-classes/Backpack.cpp)
@@ -806,6 +847,8 @@ Earlier paths and their donor versions: `native-classes/Backpack.cpp`.
 </details>
 
 **`622d2f605871`** · `native-classes/Backpack.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/Backpack.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/Backpack.cpp)
 - public · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/Backpack.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/Backpack.cpp)
 - public · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/Backpack.cpp)
@@ -869,11 +912,17 @@ Earlier paths and their donor versions: `native-classes/Backpack.cpp`.
 - public · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/Backpack.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Backpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/Backpack.cpp)
 
-<details><summary>3 retained local origins</summary>
+<details><summary>9 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/Backpack.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/Backpack.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/Backpack.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/Backpack.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/Backpack.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-classes/Backpack.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-classes/Backpack.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-classes/Backpack.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-classes/Backpack.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

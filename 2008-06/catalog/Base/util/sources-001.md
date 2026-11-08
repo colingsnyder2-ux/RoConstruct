@@ -55,6 +55,7 @@ Earlier paths and their donor versions: `native-headers/util/ContentRequest.h`.
 - public · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/ContentRequest.h)
 
 **`9513943a5b9f`** · `Base/include/util/ContentRequest.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Base/include/util/ContentRequest.h)
 - canonical · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Base/include/util/ContentRequest.h)
 - canonical · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Base/include/util/ContentRequest.h)
 - canonical · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Base/include/util/ContentRequest.h)
@@ -84,7 +85,7 @@ Earlier paths and their donor versions: `native-headers/util/ContentRequest.h`.
 - canonical · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Base/include/util/ContentRequest.h)
 - canonical · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Base/include/util/ContentRequest.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
@@ -126,6 +127,8 @@ Earlier paths and their donor versions: `native-headers/util/ContentRequest.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
@@ -136,10 +139,15 @@ Earlier paths and their donor versions: `native-headers/util/ContentRequest.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Base/include/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`caa2ba49a791`** · `Base/include/util/ContentRequest.h` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Base/include/util/ContentRequest.h)
 - public · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Base/include/util/ContentRequest.h)
 - public · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Base/include/util/ContentRequest.h)
 - public · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Base/include/util/ContentRequest.h)
@@ -176,6 +184,8 @@ Earlier paths and their donor versions: `native-headers/util/ContentRequest.h`.
 </details>
 
 **`1ec5be9a9228`** · `native-headers/util/ContentRequest.h` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/util/ContentRequest.h)
+- canonical · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/util/ContentRequest.h)
 - public · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/util/ContentRequest.h)
 - canonical · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/util/ContentRequest.h)
 - public · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/util/ContentRequest.h)
@@ -233,7 +243,7 @@ Earlier paths and their donor versions: `native-headers/util/ContentRequest.h`.
 - public · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/util/ContentRequest.h)
 - canonical · colingsnyder2-ux · [util/ContentRequest.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/util/ContentRequest.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
@@ -276,6 +286,8 @@ Earlier paths and their donor versions: `native-headers/util/ContentRequest.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
@@ -288,6 +300,10 @@ Earlier paths and their donor versions: `native-headers/util/ContentRequest.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/util/ContentRequest.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -384,6 +400,7 @@ Earlier paths and their donor versions: `native-headers/util/ContentRequest.h`.
 Earlier paths and their donor versions: `native-headers/util/EventDataBase.h`.
 
 **`046753c58d4d`** · `Base/include/util/EventDataBase.h` · proof not assessed
+- public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Base/include/util/EventDataBase.h)
 - public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Base/include/util/EventDataBase.h)
 - public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Base/include/util/EventDataBase.h)
 - public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Base/include/util/EventDataBase.h)
@@ -432,6 +449,7 @@ Earlier paths and their donor versions: `native-headers/util/EventDataBase.h`.
 </details>
 
 **`fc0e33acd523`** · `Base/include/util/EventDataBase.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Base/include/util/EventDataBase.h)
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Base/include/util/EventDataBase.h)
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Base/include/util/EventDataBase.h)
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Base/include/util/EventDataBase.h)
@@ -462,7 +480,7 @@ Earlier paths and their donor versions: `native-headers/util/EventDataBase.h`.
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Base/include/util/EventDataBase.h)
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Base/include/util/EventDataBase.h)
 
-<details><summary>52 retained local origins</summary>
+<details><summary>58 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
@@ -506,6 +524,8 @@ Earlier paths and their donor versions: `native-headers/util/EventDataBase.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
@@ -516,10 +536,16 @@ Earlier paths and their donor versions: `native-headers/util/EventDataBase.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Base/include/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 **`0dbc88628261`** · `native-headers/util/EventDataBase.h` · proof not assessed
+- public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/util/EventDataBase.h)
+- canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h)
 - public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/util/EventDataBase.h)
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h)
 - public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/util/EventDataBase.h)
@@ -579,7 +605,7 @@ Earlier paths and their donor versions: `native-headers/util/EventDataBase.h`.
 - public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/util/EventDataBase.h)
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h)
 
-<details><summary>55 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
@@ -624,6 +650,8 @@ Earlier paths and their donor versions: `native-headers/util/EventDataBase.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
@@ -636,6 +664,10 @@ Earlier paths and their donor versions: `native-headers/util/EventDataBase.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/util/EventDataBase.h` · root `b52aa15feaea5a0c`
 
 </details>
 

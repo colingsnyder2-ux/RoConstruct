@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 
 **`5119044b58a9`** · `Network/include/Network/IdSerializer.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Network/include/Network/IdSerializer.h)
 - public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Network/include/Network/IdSerializer.h)
 - public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Network/include/Network/IdSerializer.h)
 - public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Network/include/Network/IdSerializer.h)
@@ -30,6 +31,7 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 </details>
 
 **`d1508651db8c`** · `Network/include/Network/IdSerializer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h)
 - canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h)
 - canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h)
 - canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h)
@@ -59,7 +61,7 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 - canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h)
 - canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
@@ -101,6 +103,8 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
@@ -111,6 +115,10 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Network/include/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -178,6 +186,8 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 </details>
 
 **`cd0e7289c8c1`** · `native-headers/Network/IdSerializer.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/Network/IdSerializer.h)
+- canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/Network/IdSerializer.h)
 - public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/Network/IdSerializer.h)
 - canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/Network/IdSerializer.h)
 - public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/IdSerializer.h)
@@ -235,7 +245,7 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 - public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/Network/IdSerializer.h)
 - canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/Network/IdSerializer.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
@@ -278,6 +288,8 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
@@ -290,6 +302,10 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/Network/IdSerializer.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -367,6 +383,7 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.h`.
 
 **`00a18186ef87`** · `Network/include/Network/NetworkSettings.h` · proof not assessed
+- canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h)
@@ -396,7 +413,7 @@ Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
@@ -438,6 +455,8 @@ Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
@@ -448,6 +467,10 @@ Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Network/include/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -461,6 +484,7 @@ Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.
 </details>
 
 **`8ed8d07e6161`** · `Network/include/Network/NetworkSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Network/include/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Network/include/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Network/include/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Network/include/Network/NetworkSettings.h)
@@ -576,6 +600,8 @@ Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.
 </details>
 
 **`59b95939bbe3`** · `native-headers/Network/NetworkSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/Network/NetworkSettings.h)
+- canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/NetworkSettings.h)
@@ -633,7 +659,7 @@ Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
@@ -676,6 +702,8 @@ Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
@@ -688,6 +716,10 @@ Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -740,6 +772,7 @@ Earlier paths and their donor versions: `native-headers/Network/PhysicsReplicati
 </details>
 
 **`4946f8f5518b`** · `Network/include/Network/PhysicsReplication.h` · proof not assessed
+- canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Network/include/Network/PhysicsReplication.h)
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Network/include/Network/PhysicsReplication.h)
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Network/include/Network/PhysicsReplication.h)
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Network/include/Network/PhysicsReplication.h)
@@ -769,7 +802,7 @@ Earlier paths and their donor versions: `native-headers/Network/PhysicsReplicati
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Network/include/Network/PhysicsReplication.h)
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Network/include/Network/PhysicsReplication.h)
 
-<details><summary>50 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
@@ -811,6 +844,8 @@ Earlier paths and their donor versions: `native-headers/Network/PhysicsReplicati
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
@@ -821,6 +856,10 @@ Earlier paths and their donor versions: `native-headers/Network/PhysicsReplicati
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Network/include/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -850,6 +889,7 @@ Earlier paths and their donor versions: `native-headers/Network/PhysicsReplicati
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Network/include/Network/PhysicsReplication.h)
 
 **`c9a1d73be55f`** · `Network/include/Network/PhysicsReplication.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Network/include/Network/PhysicsReplication.h)
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Network/include/Network/PhysicsReplication.h)
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Network/include/Network/PhysicsReplication.h)
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Network/include/Network/PhysicsReplication.h)
@@ -967,6 +1007,8 @@ Earlier paths and their donor versions: `native-headers/Network/PhysicsReplicati
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/Network/PhysicsReplication.h)
 
 **`e5440f249e72`** · `native-headers/Network/PhysicsReplication.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/Network/PhysicsReplication.h)
+- canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h)
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/Network/PhysicsReplication.h)
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h)
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/PhysicsReplication.h)
@@ -1024,7 +1066,7 @@ Earlier paths and their donor versions: `native-headers/Network/PhysicsReplicati
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/Network/PhysicsReplication.h)
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
@@ -1067,6 +1109,8 @@ Earlier paths and their donor versions: `native-headers/Network/PhysicsReplicati
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
@@ -1079,6 +1123,10 @@ Earlier paths and their donor versions: `native-headers/Network/PhysicsReplicati
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-headers/Network/PhysicsReplication.h` · root `b52aa15feaea5a0c`
 
 </details>
 

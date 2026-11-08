@@ -3,1030 +3,1221 @@
 [Project index](README.md) · [Previous](sources-002.md) · [Next](sources-004.md)
 
 <details>
-<summary>experiments/overlays/part-resize/v8datamodel/PartInstance.h — diverged; 8 content versions</summary>
+<summary>experiments/overlays/engine-world/v8world/ContactManager.h — diverged; 8 content versions</summary>
 
-Earlier paths and their donor versions: `Unclassified/include/part-resize/v8datamodel/PartInstance.h`.
+Earlier paths and their donor versions: `Unclassified/include/engine-world/v8world/ContactManager.h`.
 
-**`6b8d8b8bd130`** · `experiments/overlays/part-resize/v8datamodel/PartInstance.h` · proof not assessed
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/part-resize/v8datamodel/PartInstance.h)
+**`3a7baadcbb8d`** · `experiments/overlays/engine-world/v8world/ContactManager.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
 
-**`f991ba5336a0`** · `experiments/overlays/part-resize/v8datamodel/PartInstance.h` · proof not assessed
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/part-resize/v8datamodel/PartInstance.h)
+<details><summary>9 retained local origins</summary>
 
-<details><summary>3 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`34eb93be313b`** · `Unclassified/include/part-resize/v8datamodel/PartInstance.h` · proof not assessed
+**`da4b274bf506`** · `experiments/overlays/engine-world/v8world/ContactManager.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
+
+**`01920080315e`** · `Unclassified/include/engine-world/v8world/ContactManager.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+
+<details><summary>9 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`1bd7ffc7d2f6`** · `Unclassified/include/engine-world/v8world/ContactManager.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+
+**`3a7baadcbb8d`** · `Unclassified/include/engine-world/v8world/ContactManager.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+
+<details><summary>44 retained local origins</summary>
+
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`49af3a11953b`** · `Unclassified/include/engine-world/v8world/ContactManager.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`58ba481bac4c`** · `Unclassified/include/part-resize/v8datamodel/PartInstance.h` · proof not assessed
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
+**`65ae82c6152d`** · `Unclassified/include/engine-world/v8world/ContactManager.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 
-**`6b8d8b8bd130`** · `Unclassified/include/part-resize/v8datamodel/PartInstance.h` · proof not assessed
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
+**`da4b274bf506`** · `Unclassified/include/engine-world/v8world/ContactManager.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 
 <details><summary>1 retained local origins</summary>
 
-- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`9122d76c94b2`** · `Unclassified/include/part-resize/v8datamodel/PartInstance.h` · proof not assessed
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-
-**`f3daa1da1408`** · `Unclassified/include/part-resize/v8datamodel/PartInstance.h` · proof not assessed
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-
-<details><summary>3 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`f991ba5336a0`** · `Unclassified/include/part-resize/v8datamodel/PartInstance.h` · proof not assessed
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
-
-<details><summary>42 retained local origins</summary>
-
-- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 </details>
 
 <details>
-<summary>experiments/overlays/pv-parent/v8tree/Instance.h — diverged; 8 content versions</summary>
+<summary>experiments/overlays/engine-world/v8world/World.h — diverged; 8 content versions</summary>
 
-Earlier paths and their donor versions: `Unclassified/include/pv-parent/v8tree/Instance.h`.
+Earlier paths and their donor versions: `Unclassified/include/engine-world/v8world/World.h`.
 
-**`851779a2195e`** · `experiments/overlays/pv-parent/v8tree/Instance.h` · proof not assessed
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/pv-parent/v8tree/Instance.h)
+**`db9c41e5016a`** · `experiments/overlays/engine-world/v8world/World.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/engine-world/v8world/World.h)
 
-**`8f2bfb017efa`** · `experiments/overlays/pv-parent/v8tree/Instance.h` · proof not assessed
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/pv-parent/v8tree/Instance.h)
+**`ef02e3a94a57`** · `experiments/overlays/engine-world/v8world/World.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h)
 
-<details><summary>3 retained local origins</summary>
+<details><summary>9 retained local origins</summary>
 
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`3ff023bc8f69`** · `Unclassified/include/pv-parent/v8tree/Instance.h` · proof not assessed
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
+**`0d781674685a`** · `Unclassified/include/engine-world/v8world/World.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 
-**`759fd621f72b`** · `Unclassified/include/pv-parent/v8tree/Instance.h` · proof not assessed
+<details><summary>9 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`64c069e43dd2`** · `Unclassified/include/engine-world/v8world/World.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`851779a2195e`** · `Unclassified/include/pv-parent/v8tree/Instance.h` · proof not assessed
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
+**`bbb36aeedcdb`** · `Unclassified/include/engine-world/v8world/World.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/engine-world/v8world/World.h)
+
+**`cfd2ebb5a7b8`** · `Unclassified/include/engine-world/v8world/World.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/engine-world/v8world/World.h)
+
+**`db9c41e5016a`** · `Unclassified/include/engine-world/v8world/World.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/engine-world/v8world/World.h)
 
 <details><summary>1 retained local origins</summary>
 
-- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`8f2bfb017efa`** · `Unclassified/include/pv-parent/v8tree/Instance.h` · proof not assessed
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
+**`ef02e3a94a57`** · `Unclassified/include/engine-world/v8world/World.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 
-<details><summary>42 retained local origins</summary>
+<details><summary>44 retained local origins</summary>
 
-- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`dffa51a9c824`** · `Unclassified/include/pv-parent/v8tree/Instance.h` · proof not assessed
-- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-
-<details><summary>3 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 
 </details>
-
-**`e5f8fbfa2e0d`** · `Unclassified/include/pv-parent/v8tree/Instance.h` · proof not assessed
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
-- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 
 </details>
 
 <details>
-<summary>experiments/overlays/runservice-events/reflection/function.h — equivalent; 4 content versions</summary>
+<summary>experiments/overlays/instance-base-callbacks/reflection/function.h — equivalent; 4 content versions</summary>
 
-Earlier paths and their donor versions: `Unclassified/include/runservice-events/reflection/function.h`.
+Earlier paths and their donor versions: `Unclassified/include/instance-base-callbacks/reflection/function.h`.
 
-**`2318a4caad41`** · `experiments/overlays/runservice-events/reflection/function.h` · proof not assessed
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/runservice-events/reflection/function.h)
+**`2318a4caad41`** · `experiments/overlays/instance-base-callbacks/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
 
-<details><summary>4 retained local origins</summary>
+<details><summary>10 retained local origins</summary>
 
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/overlays/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`2318a4caad41`** · `Unclassified/include/runservice-events/reflection/function.h` · proof not assessed
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
+**`2318a4caad41`** · `Unclassified/include/instance-base-callbacks/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 
 <details><summary>45 retained local origins</summary>
 
-- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`25b96294c915`** · `Unclassified/include/runservice-events/reflection/function.h` · proof not assessed
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
+**`8219e6e0bac4`** · `Unclassified/include/instance-base-callbacks/reflection/function.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 
-<details><summary>4 retained local origins</summary>
+<details><summary>8 retained local origins</summary>
 
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ecea4ac6a014`** · `Unclassified/include/runservice-events/reflection/function.h` · proof not assessed
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/runservice-events/reflection/function.h)
-
-</details>
-
-<details>
-<summary>experiments/overlays/runservice-events/util/Events.h — equivalent; 5 content versions</summary>
-
-Earlier paths and their donor versions: `Unclassified/include/runservice-events/util/Events.h`.
-
-**`5145442d3fd3`** · `experiments/overlays/runservice-events/util/Events.h` · proof not assessed
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/runservice-events/util/Events.h)
-
-<details><summary>4 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/overlays/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`3d55bfe98960`** · `Unclassified/include/runservice-events/util/Events.h` · proof not assessed
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/runservice-events/util/Events.h)
-
-**`5145442d3fd3`** · `Unclassified/include/runservice-events/util/Events.h` · proof not assessed
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-
-<details><summary>43 retained local origins</summary>
-
-- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`d876c7134378`** · `Unclassified/include/runservice-events/util/Events.h` · proof not assessed
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
-
-<details><summary>4 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`df73f4419eff`** · `Unclassified/include/runservice-events/util/Events.h` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
-
-</details>
+**`95a675270f7d`** · `Unclassified/include/instance-base-callbacks/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 
 </details>
 
 <details>
-<summary>experiments/overlays/script-file-load/security/SecurityContext.h — diverged; 8 content versions</summary>
+<summary>experiments/overlays/metadata-load/v8xml/SerializerV2.h — diverged; 8 content versions</summary>
 
-Earlier paths and their donor versions: `Unclassified/include/script-file-load/security/SecurityContext.h`.
+Earlier paths and their donor versions: `Unclassified/include/metadata-load/v8xml/SerializerV2.h`.
 
-**`0410e1e44eb6`** · `experiments/overlays/script-file-load/security/SecurityContext.h` · proof not assessed
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/script-file-load/security/SecurityContext.h)
+**`2cf757d43b45`** · `experiments/overlays/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h)
 
-**`0f8e19d45605`** · `experiments/overlays/script-file-load/security/SecurityContext.h` · proof not assessed
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/script-file-load/security/SecurityContext.h)
+<details><summary>9 retained local origins</summary>
 
-<details><summary>4 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/overlays/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`0410e1e44eb6`** · `Unclassified/include/script-file-load/security/SecurityContext.h` · proof not assessed
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
+**`c2f2d55ce886`** · `experiments/overlays/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/metadata-load/v8xml/SerializerV2.h)
+
+**`2a0580a6bb9c`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+
+<details><summary>9 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`2cf757d43b45`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+
+<details><summary>44 retained local origins</summary>
+
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7c70f1a36945`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+
+**`840a449228d4`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+
+**`c2f2d55ce886`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 
 <details><summary>1 retained local origins</summary>
 
-- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`0f8e19d45605`** · `Unclassified/include/script-file-load/security/SecurityContext.h` · proof not assessed
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-
-<details><summary>43 retained local origins</summary>
-
-- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`b518fbab8c86`** · `Unclassified/include/script-file-load/security/SecurityContext.h` · proof not assessed
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-
-**`b95736ead151`** · `Unclassified/include/script-file-load/security/SecurityContext.h` · proof not assessed
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-
-<details><summary>4 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`f3578c747c4a`** · `Unclassified/include/script-file-load/security/SecurityContext.h` · proof not assessed
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
-
-**`f54e888f5552`** · `Unclassified/include/script-file-load/security/SecurityContext.h` · proof not assessed
+**`f540dd93e683`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 </details>
 
 <details>
-<summary>experiments/overlays/serializer-load/reflection/function.h — equivalent; 4 content versions</summary>
+<summary>experiments/overlays/mfc-metadata/atlsimpstr.h — diverged; 8 content versions</summary>
 
-Earlier paths and their donor versions: `Unclassified/include/serializer-load/reflection/function.h`.
+Earlier paths and their donor versions: `Unclassified/include/mfc-metadata/atlsimpstr.h`.
 
-**`2318a4caad41`** · `experiments/overlays/serializer-load/reflection/function.h` · proof not assessed
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h)
+**`42aab33e9945`** · `experiments/overlays/mfc-metadata/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h)
 
-<details><summary>4 retained local origins</summary>
+**`c16fa7c691f4`** · `experiments/overlays/mfc-metadata/atlsimpstr.h` · proof not assessed
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h)
 
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
+<details><summary>10 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/overlays/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`2318a4caad41`** · `Unclassified/include/serializer-load/reflection/function.h` · proof not assessed
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
+**`08d3ba75860d`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`42aab33e9945`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`5bf7214eef0c`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+
+<details><summary>8 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7d10ce544051`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+
+**`89fe2de963d0`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+
+**`c16fa7c691f4`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 
 <details><summary>45 retained local origins</summary>
 
-- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ba60acba5611`** · `Unclassified/include/serializer-load/reflection/function.h` · proof not assessed
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-
-**`e47854105018`** · `Unclassified/include/serializer-load/reflection/function.h` · proof not assessed
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
-
-<details><summary>4 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 
 </details>
 
 </details>
 
 <details>
-<summary>experiments/overlays/serializer-load/util/Name.h — equivalent; 5 content versions</summary>
+<summary>experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h — diverged; 8 content versions</summary>
 
-Earlier paths and their donor versions: `Unclassified/include/serializer-load/util/Name.h`.
+Earlier paths and their donor versions: `Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h`.
 
-**`e307ecb78073`** · `experiments/overlays/serializer-load/util/Name.h` · proof not assessed
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h)
+**`c2a57e7aa27e`** · `experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h)
 
-<details><summary>4 retained local origins</summary>
+<details><summary>9 retained local origins</summary>
 
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`1ffc2a823e91`** · `Unclassified/include/serializer-load/util/Name.h` · proof not assessed
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/serializer-load/util/Name.h)
-
-**`936ca432d661`** · `Unclassified/include/serializer-load/util/Name.h` · proof not assessed
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-
-<details><summary>4 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`e307ecb78073`** · `Unclassified/include/serializer-load/util/Name.h` · proof not assessed
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/serializer-load/util/Name.h)
-- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
+**`fb9324ad0ec8`** · `experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/mfc-noinline-pcxstr/atlsimpstr.h)
 
-<details><summary>43 retained local origins</summary>
+**`09e845d6c2d7`** · `Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 
-- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e96babe55baa`** · `Unclassified/include/serializer-load/util/Name.h` · proof not assessed
+**`3cb12a1ec9ea`** · `Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`78721d506c04`** · `Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+
+<details><summary>9 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`956d445682d7`** · `Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+
+**`c2a57e7aa27e`** · `Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+
+<details><summary>44 retained local origins</summary>
+
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`fb9324ad0ec8`** · `Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/overlays/nullable-class-name/util/Object.h — diverged; 8 content versions</summary>
+
+Earlier paths and their donor versions: `Unclassified/include/nullable-class-name/util/Object.h`.
+
+**`2a144c1513aa`** · `experiments/overlays/nullable-class-name/util/Object.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/experiments/overlays/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/nullable-class-name/util/Object.h)
+
+**`c85200e9f0bb`** · `experiments/overlays/nullable-class-name/util/Object.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h)
+
+<details><summary>10 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/overlays/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`15cfade0c10a`** · `Unclassified/include/nullable-class-name/util/Object.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+
+**`29b03997a888`** · `Unclassified/include/nullable-class-name/util/Object.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+
+<details><summary>8 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`2a144c1513aa`** · `Unclassified/include/nullable-class-name/util/Object.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`74656c593bbe`** · `Unclassified/include/nullable-class-name/util/Object.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`767c028f4ff1`** · `Unclassified/include/nullable-class-name/util/Object.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+
+**`c85200e9f0bb`** · `Unclassified/include/nullable-class-name/util/Object.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+
+<details><summary>43 retained local origins</summary>
+
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/overlays/part-embedded/util/Extents.h — candidate-only; 1 content versions</summary>
+
+**`12ae5d7944d4`** · `experiments/overlays/part-embedded/util/Extents.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/overlays/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/overlays/part-embedded/v8datamodel/PartInstance.h — candidate-only; 1 content versions</summary>
+
+**`d57edcf10bad`** · `experiments/overlays/part-embedded/v8datamodel/PartInstance.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/overlays/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/overlays/part-embedded/v8world/Primitive.h — candidate-only; 1 content versions</summary>
+
+**`9f2c3a69dc2b`** · `experiments/overlays/part-embedded/v8world/Primitive.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/overlays/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 
 </details>
 
