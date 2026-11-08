@@ -12042,7 +12042,11 @@
     "scripts/build/layout_map.py": "a003f4d972d01c4ef5d0d06e0357b95311bcd821952d11bd75975e06c55a0db7",
     "scripts/build/size_check.py": "932b4327e5e8b44c80b63b9bd0fcd680c152a4103250d1a0aadf5e39c02261cf",
     "scripts/build/swap_build.py": "a6f370545c914a01060cf7cafda3c302fc98f606e726312c27c4fee386797bec",
-    "scripts/build/swap_plan.py": "87611839ec9bfedd7c92c39c17d3244ad3cde86d1ee470d9dc13d1d9bd4f3d02"
+    "scripts/build/swap_plan.py": "87611839ec9bfedd7c92c39c17d3244ad3cde86d1ee470d9dc13d1d9bd4f3d02",
+    "compile_test.py": "309be6ff02b0be9d128d01e11e764b648b481ad221317d8348bd8da3c4b6c213",
+    "build/compile_test.py": "e96f84f80ade7966d97d450466093542a9c958b2dd64d601ad27936d91a25c32",
+    "scripts/build/compile_test.py": "e96f84f80ade7966d97d450466093542a9c958b2dd64d601ad27936d91a25c32",
+    "manifests/compile-launcher-layout-20261108.json": "6db800c7b693ea25f5f5023ed4fbc1b6b1476676134af47bf327e11428c1abff"
   },
   "format": 1,
   "large_files": {},
