@@ -84,7 +84,7 @@ namespace RBX
 			JointsService* service = static_cast<JointsService*>(serviceArray[index].get());
 			if (service) return service;
 		}
-		boost::shared_ptr<Instance> item = findServiceByClassName(Name::declare("JointsService"));
+		boost::shared_ptr<Instance> item = findServiceByClassName(Name::declare("JointsService", -1));
 		if (!item) return NULL;
 		serviceArray[index] = item;
 		return static_cast<JointsService*>(item.get());
