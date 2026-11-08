@@ -22,11 +22,6 @@ namespace RBX
 	static Reflection::SignalDesc<PhysicsService, void(boost::shared_ptr<Instance>)> event_AssemblyAdded("AssemblyAdded", "part");
 	static Reflection::SignalDesc<PhysicsService, void(boost::shared_ptr<Instance>)> event_AssemblyRemoved("AssemblyRemoved", "part");
 
-	PhysicsService::PhysicsService()
-	{
-		setName("PhysicsService");
-	}
-
 	PhysicsService::~PhysicsService()
 	{
 	}
