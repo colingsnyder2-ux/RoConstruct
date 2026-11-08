@@ -546,7 +546,7 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeSurfaceToolFull.obj', 'NativeFlatToolFull.obj',
                       'NativeSurfaceToolSiblingsFull.obj', 'NativeSurfaceToolFactoriesFull.obj',
                       'NativeNullToolFull.obj', 'NativeMouseCommandFull.obj', 'NativeMouseCommandDistanceFull.obj',
-                      'NativeModelToolFull.obj', 'NativeModelToolFactoriesFull.obj',
+                      'NativeModelToolFull.obj', 'NativeAxisMoveToolCoreFull.obj', 'NativeModelToolFactoriesFull.obj',
                       'NativeModelToolNamesFull.obj', 'NativeModelToolActionsFull.obj',
                       'NativeAnchorToolFull.obj', 'NativeInstanceAnchorChildrenFull.obj',
                       'NativeWorkspaceFindTopInstanceFull.obj',
@@ -563,7 +563,7 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeFillToolColorFull.obj', 'NativePVInstanceTopParentFull.obj',
                       'NativeModelSetFrontToolFull.obj',
                       'NativeChangeHistoryStartFull.obj',
-                      'NativeWorldServiceFactoriesFull.obj',
+                      'NativeWorldServiceFactoriesFull.obj', 'NativePhysicsServiceFull.obj', 'NativePhysicsServiceProviderFull.obj', 'NativeJointsServiceFull.obj',
                       
                       'NativeSlingshotToolCoreFull.obj', 'NativeRocketToolCoreFull.obj', 'NativeRocketToolProjectileFull.obj', 'NativeRocketToolLaunchFull.obj', 'NativeEngineStatsFull.obj', 'NativeContactManagerStatsFull.obj', 'NativeSpatialHashStatsFull.obj', 'NativeShootToolMethodsFull.obj', 'NativeShootToolShootFull.obj', 'NativeSlingshotToolLaunchFull.obj', 'NativeSlingshotBallisticFull.obj', 'NativeSlingshotToolProjectileFull.obj', 'NativeContentProviderCreateContextFull.obj', 'NativeContentIdAssetsFull.obj', 'NativeContentProviderLoadFull.obj',
                       'NativeResizeToolCoreFull.obj', 'NativeResizeToolMethodsFull.obj', 'NativeResizeToolMoveFull.obj', 'NativeResizeToolDragFull.obj', 'NativeResizeToolFindFull.obj', 'NativeResizeToolRenderFull.obj', 'NativeMathClosestRayFull.obj', 'NativeHandleHitTestFull.obj', 'NativePartInstanceResizeFull.obj', 'NativeHandleRadiusFull.obj',
