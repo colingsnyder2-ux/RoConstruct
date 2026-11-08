@@ -38,6 +38,7 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - draft · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/9e5d7a71d3c341bdfb04ac029b7f2cce5340dd624d82e66a5aa7487abed442a2/rebuild/2008-06/native-classes/BodyMovers.cpp)
 - draft · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/9e5d7a71d3c341bdfb04ac029b7f2cce5340dd624d82e66a5aa7487abed442a2/rebuild/2008-06/native-classes/BodyMovers.cpp)
 - draft · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/9e5d7a71d3c341bdfb04ac029b7f2cce5340dd624d82e66a5aa7487abed442a2/rebuild/2008-06/native-classes/BodyMovers.cpp)
+- draft · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/9e5d7a71d3c341bdfb04ac029b7f2cce5340dd624d82e66a5aa7487abed442a2/rebuild/2008-06/native-classes/BodyMovers.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -174,6 +175,8 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/BodyMovers.cpp)
 - public · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/BodyMovers.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/BodyMovers.cpp)
+- public · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/BodyMovers.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BodyMovers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/BodyMovers.cpp)
 
 </details>
 
@@ -227,6 +230,7 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/BrickColorColor3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/BrickColorColor3.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorColor3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/BrickColorColor3.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorColor3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/BrickColorColor3.cpp)
+- public · colingsnyder2-ux · [native-classes/BrickColorColor3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/BrickColorColor3.cpp)
 
 **`cc08138ed819`** · `native-classes/BrickColorColor3.cpp` · proof not assessed
 
@@ -280,6 +284,7 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/BrickColorConversions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/BrickColorConversions.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorConversions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/BrickColorConversions.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorConversions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/BrickColorConversions.cpp)
+- public · colingsnyder2-ux · [native-classes/BrickColorConversions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/BrickColorConversions.cpp)
 
 **`68fb43327237`** · `native-classes/BrickColorConversions.cpp` · proof not assessed
 
@@ -357,6 +362,7 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/BrickColorMapAccess.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/BrickColorMapAccess.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorMapAccess.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/BrickColorMapAccess.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorMapAccess.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/BrickColorMapAccess.cpp)
+- public · colingsnyder2-ux · [native-classes/BrickColorMapAccess.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/BrickColorMapAccess.cpp)
 
 </details>
 
@@ -410,6 +416,7 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/BrickColorMapSingleton.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/BrickColorMapSingleton.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/BrickColorMapSingleton.cpp)
+- public · colingsnyder2-ux · [native-classes/BrickColorMapSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/BrickColorMapSingleton.cpp)
 
 **`f6fd5a1d5fb6`** · `native-classes/BrickColorMapSingleton.cpp` · proof not assessed
 
@@ -479,6 +486,7 @@ Compatibility path for `App/src/v8datamodel/BodyMovers.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/BrickColorProviders.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/BrickColorProviders.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/BrickColorProviders.cpp)
+- public · colingsnyder2-ux · [native-classes/BrickColorProviders.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/BrickColorProviders.cpp)
 
 </details>
 
@@ -733,6 +741,8 @@ Compatibility path for `WindowsClient/src/CChatPrompt.cpp`; compile either path,
 - canonical · colingsnyder2-ux · [native-classes/CChatPrompt.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/CChatPrompt.cpp)
 - public · colingsnyder2-ux · [native-classes/CChatPrompt.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/CChatPrompt.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CChatPrompt.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CChatPrompt.cpp)
+- public · colingsnyder2-ux · [native-classes/CChatPrompt.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CChatPrompt.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CChatPrompt.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CChatPrompt.cpp)
 
 </details>
 
@@ -770,6 +780,7 @@ Compatibility path for `WindowsClient/src/CChatPrompt.cpp`; compile either path,
 - public · colingsnyder2-ux · [native-classes/CChatPromptWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/CChatPromptWindow.cpp)
 - public · colingsnyder2-ux · [native-classes/CChatPromptWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/CChatPromptWindow.cpp)
 - public · colingsnyder2-ux · [native-classes/CChatPromptWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/CChatPromptWindow.cpp)
+- public · colingsnyder2-ux · [native-classes/CChatPromptWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CChatPromptWindow.cpp)
 
 **`092fa29e42c6`** · `native-classes/CChatPromptWindow.cpp` · proof not assessed
 
@@ -1050,6 +1061,8 @@ Compatibility path for `Unclassified/src/CMarshalWindow.cpp`; compile either pat
 - canonical · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/CMarshalWindow.cpp)
 - public · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/CMarshalWindow.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CMarshalWindow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CMarshalWindow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CMarshalWindow.cpp)
 
 </details>
 
@@ -1177,6 +1190,8 @@ Compatibility path for `WindowsClient/src/CPatchedControlComboBox.cpp`; compile 
 - canonical · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp)
 - public · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/CPatchedControlComboBox.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp)
+- public · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CPatchedControlComboBox.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp)
 
 </details>
 
@@ -1304,5 +1319,7 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 - canonical · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/CRobloxControlColorSelector.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp)
+- public · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CRobloxControlColorSelector.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp)
 
 </details>

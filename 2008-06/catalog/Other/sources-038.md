@@ -136,6 +136,8 @@ Compatibility path for `App/include/gui/WidgetMenuItem.h`; compile either path, 
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h)
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/gui/WidgetMenuItem.h)
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h)
+- public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/gui/WidgetMenuItem.h)
+- canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h)
 
 </details>
 
@@ -175,6 +177,7 @@ Compatibility path for `App/include/gui/WidgetMenuItem.h`; compile either path, 
 - draft · colingsnyder2-ux · [leaves2008/BlockBlockContact2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-headers/leaves2008/BlockBlockContact2008.h)
 - draft · colingsnyder2-ux · [leaves2008/BlockBlockContact2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-headers/leaves2008/BlockBlockContact2008.h)
 - draft · colingsnyder2-ux · [leaves2008/BlockBlockContact2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-headers/leaves2008/BlockBlockContact2008.h)
+- draft · colingsnyder2-ux · [leaves2008/BlockBlockContact2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-headers/leaves2008/BlockBlockContact2008.h)
 
 <details><summary>1 retained local origins</summary>
 
@@ -220,6 +223,7 @@ Compatibility path for `App/include/gui/WidgetMenuItem.h`; compile either path, 
 - draft · colingsnyder2-ux · [leaves2008/GuiTarget2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h)
 - draft · colingsnyder2-ux · [leaves2008/GuiTarget2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h)
 - draft · colingsnyder2-ux · [leaves2008/GuiTarget2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h)
+- draft · colingsnyder2-ux · [leaves2008/GuiTarget2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -266,6 +270,7 @@ Compatibility path for `App/include/gui/WidgetMenuItem.h`; compile either path, 
 - draft · colingsnyder2-ux · [leaves2008/IndexBox2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h)
 - draft · colingsnyder2-ux · [leaves2008/IndexBox2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h)
 - draft · colingsnyder2-ux · [leaves2008/IndexBox2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h)
+- draft · colingsnyder2-ux · [leaves2008/IndexBox2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -312,6 +317,7 @@ Compatibility path for `App/include/gui/WidgetMenuItem.h`; compile either path, 
 - draft · colingsnyder2-ux · [leaves2008/Log2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Log2008.h)
 - draft · colingsnyder2-ux · [leaves2008/Log2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Log2008.h)
 - draft · colingsnyder2-ux · [leaves2008/Log2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Log2008.h)
+- draft · colingsnyder2-ux · [leaves2008/Log2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Log2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -358,6 +364,7 @@ Compatibility path for `App/include/gui/WidgetMenuItem.h`; compile either path, 
 - draft · colingsnyder2-ux · [leaves2008/NullController2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/NullController2008.h)
 - draft · colingsnyder2-ux · [leaves2008/NullController2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/NullController2008.h)
 - draft · colingsnyder2-ux · [leaves2008/NullController2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/NullController2008.h)
+- draft · colingsnyder2-ux · [leaves2008/NullController2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/NullController2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -404,6 +411,7 @@ Compatibility path for `App/include/gui/WidgetMenuItem.h`; compile either path, 
 - draft · colingsnyder2-ux · [leaves2008/Point2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Point2008.h)
 - draft · colingsnyder2-ux · [leaves2008/Point2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Point2008.h)
 - draft · colingsnyder2-ux · [leaves2008/Point2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Point2008.h)
+- draft · colingsnyder2-ux · [leaves2008/Point2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Point2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -450,6 +458,7 @@ Compatibility path for `App/include/gui/WidgetMenuItem.h`; compile either path, 
 - draft · colingsnyder2-ux · [leaves2008/RevoluteLink2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h)
 - draft · colingsnyder2-ux · [leaves2008/RevoluteLink2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h)
 - draft · colingsnyder2-ux · [leaves2008/RevoluteLink2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h)
+- draft · colingsnyder2-ux · [leaves2008/RevoluteLink2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -496,6 +505,7 @@ Compatibility path for `App/include/gui/WidgetMenuItem.h`; compile either path, 
 - draft · colingsnyder2-ux · [leaves2008/StandardOut2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h)
 - draft · colingsnyder2-ux · [leaves2008/StandardOut2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h)
 - draft · colingsnyder2-ux · [leaves2008/StandardOut2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h)
+- draft · colingsnyder2-ux · [leaves2008/StandardOut2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -540,6 +550,7 @@ Compatibility path for `App/include/gui/WidgetMenuItem.h`; compile either path, 
 - public · colingsnyder2-ux · [mfc-import-length/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/mfc-import-length/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-import-length/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-headers/mfc-import-length/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-import-length/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/mfc-import-length/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-import-length/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/mfc-import-length/atlsimpstr.h)
 
 **`710dbbc036bb`** · `native-headers/mfc-import-length/atlsimpstr.h` · proof not assessed
 
@@ -704,6 +715,8 @@ Compatibility path for `Unclassified/include/mfc-metadata/atlsimpstr.h`; compile
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 
 </details>
 
@@ -852,6 +865,8 @@ Compatibility path for `Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h`; 
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 
 </details>
 
@@ -997,6 +1012,8 @@ Compatibility path for `App/include/stats/Stats.h`; compile either path, never b
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
+- public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/stats/Stats.h)
+- canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
 
 </details>
 

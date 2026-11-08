@@ -246,6 +246,8 @@ Compatibility path for `Unclassified/src/Guid.cpp`; compile either path, never b
 - canonical · colingsnyder2-ux · [native-classes/Guid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/Guid.cpp)
 - public · colingsnyder2-ux · [native-classes/Guid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/Guid.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Guid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/Guid.cpp)
+- public · colingsnyder2-ux · [native-classes/Guid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/Guid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Guid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/Guid.cpp)
 
 </details>
 
@@ -307,6 +309,7 @@ Compatibility path for `Unclassified/src/Guid.cpp`; compile either path, never b
 - public · colingsnyder2-ux · [native-classes/GuidGeneration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/GuidGeneration.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidGeneration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/GuidGeneration.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidGeneration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/GuidGeneration.cpp)
+- public · colingsnyder2-ux · [native-classes/GuidGeneration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/GuidGeneration.cpp)
 
 </details>
 
@@ -561,6 +564,8 @@ Compatibility path for `App/src/v8tree/GuidItem.cpp`; compile either path, never
 - canonical · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/GuidItem.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/GuidItem.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/GuidItem.cpp)
+- public · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/GuidItem.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuidItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/GuidItem.cpp)
 
 </details>
 
@@ -733,6 +738,8 @@ Compatibility path for `Unclassified/src/GuidRegistryConstructor.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/GuidRegistryConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/GuidRegistryConstructor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/GuidRegistryConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/GuidRegistryConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/GuidRegistryConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuidRegistryConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/GuidRegistryConstructor.cpp)
 
 </details>
 
@@ -892,6 +899,8 @@ Compatibility path for `Unclassified/src/GuidRegistryCriticalSection.cpp`; compi
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryCriticalSection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/GuidRegistryCriticalSection.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryCriticalSection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/GuidRegistryCriticalSection.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryCriticalSection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/GuidRegistryCriticalSection.cpp)
+- public · colingsnyder2-ux · [native-classes/GuidRegistryCriticalSection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/GuidRegistryCriticalSection.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuidRegistryCriticalSection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/GuidRegistryCriticalSection.cpp)
 
 </details>
 
@@ -1051,6 +1060,8 @@ Compatibility path for `Unclassified/src/GuidRegistryInitialize.cpp`; compile ei
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/GuidRegistryInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/GuidRegistryInitialize.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/GuidRegistryInitialize.cpp)
+- public · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/GuidRegistryInitialize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/GuidRegistryInitialize.cpp)
 
 </details>
 
@@ -1210,5 +1221,7 @@ Compatibility path for `Unclassified/src/GuidRegistryMutex.cpp`; compile either 
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/GuidRegistryMutex.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/GuidRegistryMutex.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/GuidRegistryMutex.cpp)
+- public · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/GuidRegistryMutex.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/GuidRegistryMutex.cpp)
 
 </details>

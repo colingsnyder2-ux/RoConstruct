@@ -162,6 +162,8 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryReset.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/ChangeHistoryReset.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ChangeHistoryReset.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ChangeHistoryReset.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ChangeHistoryReset.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ChangeHistoryReset.cpp)
 
 </details>
 
@@ -285,6 +287,8 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryStart.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/ChangeHistoryStart.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ChangeHistoryStart.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ChangeHistoryStart.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ChangeHistoryStart.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ChangeHistoryStart.cpp)
 
 </details>
 
@@ -539,6 +543,8 @@ Compatibility path for `WindowsClient/src/ChatEnter.cpp`; compile either path, n
 - canonical · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/ChatEnter.cpp)
 - public · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ChatEnter.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ChatEnter.cpp)
+- public · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ChatEnter.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ChatEnter.cpp)
 
 </details>
 
@@ -652,6 +658,8 @@ Compatibility path for `Unclassified/src/ChatOutput.cpp`; compile either path, n
 - canonical · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/ChatOutput.cpp)
 - public · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ChatOutput.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ChatOutput.cpp)
+- public · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ChatOutput.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ChatOutput.cpp)
 
 </details>
 
@@ -783,6 +791,8 @@ Compatibility path for `App/src/v8world/CleanStage2008.cpp`; compile either path
 - draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/CleanStage2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/CleanStage2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 
 <details><summary>3 retained local origins</summary>
 
@@ -841,6 +851,8 @@ Compatibility path for `App/src/v8world/CleanStage2008.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/CleanStage2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CleanStage2008.cpp)
+- public · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CleanStage2008.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 
 </details>
 
@@ -992,6 +1004,8 @@ Compatibility path for `App/src/v8datamodel/ClearBackpack.cpp`; compile either p
 - canonical · colingsnyder2-ux · [native-classes/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/ClearBackpack.cpp)
 - public · colingsnyder2-ux · [native-classes/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ClearBackpack.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ClearBackpack.cpp)
+- public · colingsnyder2-ux · [native-classes/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ClearBackpack.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ClearBackpack.cpp)
 
 </details>
 
@@ -1115,5 +1129,7 @@ Compatibility path for `App/src/v8datamodel/ClearStarterpack.cpp`; compile eithe
 - canonical · colingsnyder2-ux · [native-classes/ClearStarterpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/ClearStarterpack.cpp)
 - public · colingsnyder2-ux · [native-classes/ClearStarterpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ClearStarterpack.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ClearStarterpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ClearStarterpack.cpp)
+- public · colingsnyder2-ux · [native-classes/ClearStarterpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ClearStarterpack.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ClearStarterpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ClearStarterpack.cpp)
 
 </details>

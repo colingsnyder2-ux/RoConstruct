@@ -267,6 +267,8 @@ Compatibility path for `WindowsClient/include/CChatPrompt.h`; compile either pat
 - canonical · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/CChatPrompt.h)
 - public · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/CChatPrompt.h)
 - canonical · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/CChatPrompt.h)
+- public · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/CChatPrompt.h)
+- canonical · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/CChatPrompt.h)
 
 </details>
 
@@ -415,6 +417,8 @@ Compatibility path for `WindowsClient/include/CPatchedControlComboBox.h`; compil
 - canonical · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/CPatchedControlComboBox.h)
 - public · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/CPatchedControlComboBox.h)
 - canonical · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/CPatchedControlComboBox.h)
+- public · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/CPatchedControlComboBox.h)
+- canonical · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/CPatchedControlComboBox.h)
 
 </details>
 
@@ -570,6 +574,8 @@ Compatibility path for `WindowsClient/include/CRobloxControlColorSelector.h`; co
 - canonical · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h)
+- public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/CRobloxControlColorSelector.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h)
 
 </details>
 
@@ -718,6 +724,8 @@ Compatibility path for `WindowsClient/include/CRobloxTreeCtrl.h`; compile either
 - canonical · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/CRobloxTreeCtrl.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h)
+- public · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/CRobloxTreeCtrl.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h)
 
 </details>
 
@@ -986,6 +994,8 @@ Compatibility path for `WindowsClient/include/ChatEnter.h`; compile either path,
 - canonical · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/ChatEnter.h)
 - public · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/ChatEnter.h)
 - canonical · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/ChatEnter.h)
+- public · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/ChatEnter.h)
+- canonical · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/ChatEnter.h)
 
 </details>
 
@@ -1031,6 +1041,7 @@ Compatibility path for `WindowsClient/include/ChatEnter.h`; compile either path,
 - public · colingsnyder2-ux · [native-headers/ErrorUploaderState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/ErrorUploaderState.h)
 - public · colingsnyder2-ux · [native-headers/ErrorUploaderState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-headers/ErrorUploaderState.h)
 - public · colingsnyder2-ux · [native-headers/ErrorUploaderState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/ErrorUploaderState.h)
+- public · colingsnyder2-ux · [native-headers/ErrorUploaderState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/ErrorUploaderState.h)
 
 **`9dbf6a2b7026`** · `native-headers/ErrorUploaderState.h` · proof not assessed
 
@@ -1195,6 +1206,8 @@ Compatibility path for `WindowsClient/include/InsertObject.h`; compile either pa
 - canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/InsertObject.h)
 - public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/InsertObject.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/InsertObject.h)
+- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/InsertObject.h)
+- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/InsertObject.h)
 
 </details>
 

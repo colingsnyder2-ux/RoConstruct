@@ -111,6 +111,8 @@ Compatibility path for `Unclassified/src/NetworkPhysics.cpp`; compile either pat
 - canonical · colingsnyder2-ux · [native-classes/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/NetworkPhysics.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/NetworkPhysics.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/NetworkPhysics.cpp)
+- public · colingsnyder2-ux · [native-classes/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/NetworkPhysics.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/NetworkPhysics.cpp)
 
 </details>
 
@@ -258,6 +260,8 @@ Compatibility path for `App/src/v8datamodel/PartTool.cpp`; compile either path, 
 - canonical · colingsnyder2-ux · [native-classes/PartTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/PartTool.cpp)
 - public · colingsnyder2-ux · [native-classes/PartTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/PartTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PartTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/PartTool.cpp)
+- public · colingsnyder2-ux · [native-classes/PartTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/PartTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PartTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/PartTool.cpp)
 
 </details>
 
@@ -381,6 +385,8 @@ Compatibility path for `App/src/v8datamodel/PartToolFactories.cpp`; compile eith
 - canonical · colingsnyder2-ux · [native-classes/PartToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/PartToolFactories.cpp)
 - public · colingsnyder2-ux · [native-classes/PartToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/PartToolFactories.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PartToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/PartToolFactories.cpp)
+- public · colingsnyder2-ux · [native-classes/PartToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/PartToolFactories.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PartToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/PartToolFactories.cpp)
 
 </details>
 
@@ -504,6 +510,8 @@ Compatibility path for `App/src/v8datamodel/PartTools.cpp`; compile either path,
 - canonical · colingsnyder2-ux · [native-classes/PartTools.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/PartTools.cpp)
 - public · colingsnyder2-ux · [native-classes/PartTools.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/PartTools.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PartTools.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/PartTools.cpp)
+- public · colingsnyder2-ux · [native-classes/PartTools.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/PartTools.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PartTools.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/PartTools.cpp)
 
 </details>
 
@@ -541,6 +549,7 @@ Compatibility path for `App/src/v8datamodel/PartTools.cpp`; compile either path,
 - public · colingsnyder2-ux · [native-classes/PrimitiveLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/PrimitiveLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PrimitiveLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/PrimitiveLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PrimitiveLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/PrimitiveLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/PrimitiveLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/PrimitiveLifetime.cpp)
 
 **`46ff25558f2a`** · `native-classes/PrimitiveLifetime.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/PrimitiveLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/PrimitiveLifetime.cpp)
@@ -575,6 +584,7 @@ Compatibility path for `App/src/v8datamodel/PartTools.cpp`; compile either path,
 - canonical · colingsnyder2-ux · [native-classes/PrimitiveLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-classes/PrimitiveLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PrimitiveLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/PrimitiveLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PrimitiveLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/PrimitiveLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PrimitiveLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/PrimitiveLifetime.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -763,6 +773,8 @@ Compatibility path for `Unclassified/src/WeldSnapActions.cpp`; compile either pa
 **`d70d155af13f`** · `native-classes/WeldSnapActions.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WeldSnapActions.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WeldSnapActions.cpp)
+- public · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WeldSnapActions.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WeldSnapActions.cpp)
 
 </details>
 
@@ -843,6 +855,8 @@ Compatibility path for `App/src/v8datamodel/WorkspaceCamera.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceCamera.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceCamera.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceCamera.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceCamera.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceCamera.cpp)
 
 </details>
 
@@ -973,6 +987,8 @@ Compatibility path for `App/src/v8datamodel/WorkspaceClassName.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceClassName.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceClassName.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceClassName.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceClassName.cpp)
 
 </details>
 
@@ -1010,6 +1026,7 @@ Compatibility path for `App/src/v8datamodel/WorkspaceClassName.cpp`; compile eit
 - draft · colingsnyder2-ux · [native-classes/WorkspaceClassNameData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/a67c4c23fced66e91f371b660fb26826e348e02a0d71914f700fd8ae375ae8f2/rebuild/2008-06/native-classes/WorkspaceClassNameData.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceClassNameData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/a67c4c23fced66e91f371b660fb26826e348e02a0d71914f700fd8ae375ae8f2/rebuild/2008-06/native-classes/WorkspaceClassNameData.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceClassNameData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/a67c4c23fced66e91f371b660fb26826e348e02a0d71914f700fd8ae375ae8f2/rebuild/2008-06/native-classes/WorkspaceClassNameData.cpp)
+- draft · colingsnyder2-ux · [native-classes/WorkspaceClassNameData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/a67c4c23fced66e91f371b660fb26826e348e02a0d71914f700fd8ae375ae8f2/rebuild/2008-06/native-classes/WorkspaceClassNameData.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -1139,6 +1156,8 @@ Compatibility path for `Unclassified/src/WorkspaceClose.cpp`; compile either pat
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceClose.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceClose.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceClose.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceClose.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceClose.cpp)
 
 </details>
 
@@ -1262,5 +1281,7 @@ Compatibility path for `App/src/v8datamodel/WorkspaceEvents.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceEvents.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceEvents.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceEvents.cpp)
 
 </details>

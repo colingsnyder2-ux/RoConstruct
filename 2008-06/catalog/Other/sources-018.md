@@ -122,6 +122,8 @@ Compatibility path for `App/src/tool/HammerTool.cpp`; compile either path, never
 - canonical · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/HammerTool.cpp)
 - public · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/HammerTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HammerTool.cpp)
+- public · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HammerTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HammerTool.cpp)
 
 </details>
 
@@ -245,6 +247,8 @@ Compatibility path for `App/src/tool/HammerToolFactory.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/HammerToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/HammerToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HammerToolFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HammerToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HammerToolFactory.cpp)
 
 </details>
 
@@ -368,6 +372,8 @@ Compatibility path for `Unclassified/src/HandleHitTest.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HandleHitTest.cpp)
+- public · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HandleHitTest.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HandleHitTest.cpp)
 
 </details>
 
@@ -491,6 +497,8 @@ Compatibility path for `Unclassified/src/HandleRadius.cpp`; compile either path,
 - canonical · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/HandleRadius.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HandleRadius.cpp)
+- public · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HandleRadius.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HandleRadius.cpp)
 
 </details>
 
@@ -604,6 +612,8 @@ Compatibility path for `Unclassified/src/HealthHud.cpp`; compile either path, ne
 - canonical · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/HealthHud.cpp)
 - public · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HealthHud.cpp)
+- public · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HealthHud.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HealthHud.cpp)
 
 </details>
 
@@ -727,6 +737,8 @@ Compatibility path for `App/src/v8datamodel/HistoryItemCaptureProperty.cpp`; com
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
+- public · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
 
 </details>
 
@@ -890,6 +902,8 @@ Compatibility path for `App/src/v8datamodel/HistoryItemPlayback.cpp`; compile ei
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/HistoryItemPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/HistoryItemPlayback.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HistoryItemPlayback.cpp)
+- public · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HistoryItemPlayback.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HistoryItemPlayback.cpp)
 
 </details>
 
@@ -1051,6 +1065,8 @@ Compatibility path for `App/src/v8datamodel/HistoryItemPropertyTrial.cpp`; compi
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
+- public · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
 
 </details>
 
@@ -1212,5 +1228,7 @@ Compatibility path for `App/src/v8datamodel/HistoryItemState.cpp`; compile eithe
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/HistoryItemState.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/HistoryItemState.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HistoryItemState.cpp)
+- public · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HistoryItemState.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HistoryItemState.cpp)
 
 </details>

@@ -267,6 +267,8 @@ Compatibility path for `WindowsClient/include/LoginRenewer.h`; compile either pa
 - canonical · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/LoginRenewer.h)
 - public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/LoginRenewer.h)
+- public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/LoginRenewer.h)
+- canonical · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/LoginRenewer.h)
 
 </details>
 
@@ -429,6 +431,8 @@ Compatibility path for `Unclassified/include/LuaArgs.h`; compile either path, ne
 - canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/LuaArgs.h)
 - canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
+- public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/LuaArgs.h)
+- canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 
 </details>
 
@@ -602,6 +606,8 @@ Compatibility path for `Network/include/ReliabilityLayer.h`; compile either path
 - canonical · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h)
 - public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/ReliabilityLayer.h)
 - canonical · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h)
+- public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/ReliabilityLayer.h)
+- canonical · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h)
 
 </details>
 
@@ -896,6 +902,8 @@ Compatibility path for `Unclassified/include/RobloxLib.h`; compile either path, 
 - canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/RobloxLib.h)
 - canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
+- public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/RobloxLib.h)
+- canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 
 </details>
 
@@ -1044,6 +1052,8 @@ Compatibility path for `WindowsClient/include/VersionInfo.h`; compile either pat
 - canonical · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/VersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/VersionInfo.h)
 - canonical · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/VersionInfo.h)
+- public · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/VersionInfo.h)
+- canonical · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/VersionInfo.h)
 
 </details>
 
@@ -1161,6 +1171,8 @@ Compatibility path for `Unclassified/include/axis-vector-negation/G3D/Vector3.h`
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
+- public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
+- canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 
 </details>
 
@@ -1262,5 +1274,7 @@ Compatibility path for `Unclassified/include/axis-vector-negation/G3D/Vector3.in
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
+- public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
+- canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 
 </details>

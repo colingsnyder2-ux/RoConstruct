@@ -122,6 +122,8 @@ Compatibility path for `App/src/v8datamodel/ControllerActions.cpp`; compile eith
 - canonical · colingsnyder2-ux · [native-classes/ControllerActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/ControllerActions.cpp)
 - public · colingsnyder2-ux · [native-classes/ControllerActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ControllerActions.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ControllerActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ControllerActions.cpp)
+- public · colingsnyder2-ux · [native-classes/ControllerActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ControllerActions.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ControllerActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ControllerActions.cpp)
 
 </details>
 
@@ -245,6 +247,8 @@ Compatibility path for `App/src/v8datamodel/ControllerEnabled.cpp`; compile eith
 - canonical · colingsnyder2-ux · [native-classes/ControllerEnabled.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/ControllerEnabled.cpp)
 - public · colingsnyder2-ux · [native-classes/ControllerEnabled.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ControllerEnabled.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ControllerEnabled.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ControllerEnabled.cpp)
+- public · colingsnyder2-ux · [native-classes/ControllerEnabled.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ControllerEnabled.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ControllerEnabled.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ControllerEnabled.cpp)
 
 </details>
 
@@ -384,6 +388,8 @@ Compatibility path for `Unclassified/src/DebugableDump.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/DebugableDump.cpp)
 - public · colingsnyder2-ux · [native-classes/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/DebugableDump.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/DebugableDump.cpp)
+- public · colingsnyder2-ux · [native-classes/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/DebugableDump.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/DebugableDump.cpp)
 
 </details>
 
@@ -507,6 +513,8 @@ Compatibility path for `App/src/tool/DragTool.cpp`; compile either path, never b
 - canonical · colingsnyder2-ux · [native-classes/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/DragTool.cpp)
 - public · colingsnyder2-ux · [native-classes/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/DragTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/DragTool.cpp)
+- public · colingsnyder2-ux · [native-classes/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/DragTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/DragTool.cpp)
 
 </details>
 
@@ -630,6 +638,8 @@ Compatibility path for `App/src/tool/DraggerLineMove.cpp`; compile either path, 
 - canonical · colingsnyder2-ux · [native-classes/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/DraggerLineMove.cpp)
 - public · colingsnyder2-ux · [native-classes/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/DraggerLineMove.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/DraggerLineMove.cpp)
+- public · colingsnyder2-ux · [native-classes/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/DraggerLineMove.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/DraggerLineMove.cpp)
 
 </details>
 
@@ -667,6 +677,7 @@ Compatibility path for `App/src/tool/DraggerLineMove.cpp`; compile either path, 
 - draft · colingsnyder2-ux · [native-classes/DraggerMoveGoal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/f3b3b93255fbf4fb62dd884a44d613c3fd341aa21ded6fa9b8949dd1155960c0/rebuild/2008-06/native-classes/DraggerMoveGoal.cpp)
 - draft · colingsnyder2-ux · [native-classes/DraggerMoveGoal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/f3b3b93255fbf4fb62dd884a44d613c3fd341aa21ded6fa9b8949dd1155960c0/rebuild/2008-06/native-classes/DraggerMoveGoal.cpp)
 - draft · colingsnyder2-ux · [native-classes/DraggerMoveGoal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/f3b3b93255fbf4fb62dd884a44d613c3fd341aa21ded6fa9b8949dd1155960c0/rebuild/2008-06/native-classes/DraggerMoveGoal.cpp)
+- draft · colingsnyder2-ux · [native-classes/DraggerMoveGoal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/f3b3b93255fbf4fb62dd884a44d613c3fd341aa21ded6fa9b8949dd1155960c0/rebuild/2008-06/native-classes/DraggerMoveGoal.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -796,6 +807,8 @@ Compatibility path for `App/src/tool/DraggerPlacement.cpp`; compile either path,
 - canonical · colingsnyder2-ux · [native-classes/DraggerPlacement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/DraggerPlacement.cpp)
 - public · colingsnyder2-ux · [native-classes/DraggerPlacement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/DraggerPlacement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DraggerPlacement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/DraggerPlacement.cpp)
+- public · colingsnyder2-ux · [native-classes/DraggerPlacement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/DraggerPlacement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DraggerPlacement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/DraggerPlacement.cpp)
 
 </details>
 
@@ -833,6 +846,7 @@ Compatibility path for `App/src/tool/DraggerPlacement.cpp`; compile either path,
 - draft · colingsnyder2-ux · [native-classes/DraggerSafePlace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/a7e12e8ee30c49221e0f8126c9df4e24e7c6328a70dbf607b4764a14ad74aeaf/rebuild/2008-06/native-classes/DraggerSafePlace.cpp)
 - draft · colingsnyder2-ux · [native-classes/DraggerSafePlace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/a7e12e8ee30c49221e0f8126c9df4e24e7c6328a70dbf607b4764a14ad74aeaf/rebuild/2008-06/native-classes/DraggerSafePlace.cpp)
 - draft · colingsnyder2-ux · [native-classes/DraggerSafePlace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/a7e12e8ee30c49221e0f8126c9df4e24e7c6328a70dbf607b4764a14ad74aeaf/rebuild/2008-06/native-classes/DraggerSafePlace.cpp)
+- draft · colingsnyder2-ux · [native-classes/DraggerSafePlace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/a7e12e8ee30c49221e0f8126c9df4e24e7c6328a70dbf607b4764a14ad74aeaf/rebuild/2008-06/native-classes/DraggerSafePlace.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -962,6 +976,8 @@ Compatibility path for `App/src/v8datamodel/EngineStats.cpp`; compile either pat
 - canonical · colingsnyder2-ux · [native-classes/EngineStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/EngineStats.cpp)
 - public · colingsnyder2-ux · [native-classes/EngineStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/EngineStats.cpp)
 - canonical · colingsnyder2-ux · [native-classes/EngineStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/EngineStats.cpp)
+- public · colingsnyder2-ux · [native-classes/EngineStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/EngineStats.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EngineStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/EngineStats.cpp)
 
 </details>
 
@@ -1075,6 +1091,8 @@ Compatibility path for `Unclassified/src/EquationDisplay.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [native-classes/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [native-classes/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/EquationDisplay.cpp)
+- public · colingsnyder2-ux · [native-classes/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/EquationDisplay.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/EquationDisplay.cpp)
 
 </details>
 
@@ -1120,6 +1138,7 @@ Compatibility path for `Unclassified/src/EquationDisplay.cpp`; compile either pa
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderCallback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/ErrorUploaderCallback.cpp)
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderCallback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/ErrorUploaderCallback.cpp)
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderCallback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ErrorUploaderCallback.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderCallback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ErrorUploaderCallback.cpp)
 
 **`b4ba57870846`** · `native-classes/ErrorUploaderCallback.cpp` · proof not assessed
 
@@ -1181,6 +1200,7 @@ Compatibility path for `Unclassified/src/EquationDisplay.cpp`; compile either pa
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/ErrorUploaderConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/ErrorUploaderConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ErrorUploaderConstructor.cpp)
 
 **`7e68941fe5ca`** · `native-classes/ErrorUploaderConstructor.cpp` · proof not assessed
 
@@ -1234,6 +1254,7 @@ Compatibility path for `Unclassified/src/EquationDisplay.cpp`; compile either pa
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/ErrorUploaderState.cpp)
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/ErrorUploaderState.cpp)
 - public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ErrorUploaderState.cpp)
 
 **`4fc43922958a`** · `native-classes/ErrorUploaderState.cpp` · proof not assessed
 

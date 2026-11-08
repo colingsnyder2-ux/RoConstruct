@@ -29,6 +29,7 @@ Earlier paths and their donor versions: `native-classes/MouseCommand.cpp`.
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommand.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommand.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommand.cpp)
+- canonical · colingsnyder2-ux · [v8datamodel/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommand.cpp)
 
 **`14e010be82b6`** · `App/src/v8datamodel/MouseCommand.cpp` · proof not assessed
 - public · colingsnyder2-ux · [v8datamodel/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/App/src/v8datamodel/MouseCommand.cpp)
@@ -52,6 +53,7 @@ Earlier paths and their donor versions: `native-classes/MouseCommand.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/v8datamodel/MouseCommand.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/App/src/v8datamodel/MouseCommand.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/v8datamodel/MouseCommand.cpp)
+- public · colingsnyder2-ux · [v8datamodel/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/v8datamodel/MouseCommand.cpp)
 
 **`0faea00d9479`** · `native-classes/MouseCommand.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/MouseCommand.cpp)
@@ -177,6 +179,8 @@ Earlier paths and their donor versions: `native-classes/MouseCommand.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/MouseCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/MouseCommand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/MouseCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/MouseCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/MouseCommand.cpp)
 
 </details>
 
@@ -207,6 +211,7 @@ Earlier paths and their donor versions: `native-classes/MouseCommandCapture.cpp`
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandCapture.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandCapture.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandCapture.cpp)
+- canonical · colingsnyder2-ux · [v8datamodel/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandCapture.cpp)
 
 **`fc8cafee97b8`** · `App/src/v8datamodel/MouseCommandCapture.cpp` · proof not assessed
 - public · colingsnyder2-ux · [v8datamodel/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/App/src/v8datamodel/MouseCommandCapture.cpp)
@@ -230,6 +235,7 @@ Earlier paths and their donor versions: `native-classes/MouseCommandCapture.cpp`
 - public · colingsnyder2-ux · [v8datamodel/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/v8datamodel/MouseCommandCapture.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/App/src/v8datamodel/MouseCommandCapture.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/v8datamodel/MouseCommandCapture.cpp)
+- public · colingsnyder2-ux · [v8datamodel/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/v8datamodel/MouseCommandCapture.cpp)
 
 **`0ed11022b9b4`** · `native-classes/MouseCommandCapture.cpp` · proof not assessed
 
@@ -346,6 +352,8 @@ Earlier paths and their donor versions: `native-classes/MouseCommandCapture.cpp`
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/MouseCommandCapture.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/MouseCommandCapture.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/MouseCommandCapture.cpp)
+- public · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/MouseCommandCapture.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/MouseCommandCapture.cpp)
 
 </details>
 
@@ -376,6 +384,7 @@ Earlier paths and their donor versions: `native-classes/MouseCommandDistance.cpp
 - public · colingsnyder2-ux · [v8datamodel/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/v8datamodel/MouseCommandDistance.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/App/src/v8datamodel/MouseCommandDistance.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/v8datamodel/MouseCommandDistance.cpp)
+- public · colingsnyder2-ux · [v8datamodel/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/v8datamodel/MouseCommandDistance.cpp)
 
 **`e259bb02ab8e`** · `App/src/v8datamodel/MouseCommandDistance.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandDistance.cpp)
@@ -399,6 +408,7 @@ Earlier paths and their donor versions: `native-classes/MouseCommandDistance.cpp
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandDistance.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandDistance.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandDistance.cpp)
+- canonical · colingsnyder2-ux · [v8datamodel/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandDistance.cpp)
 
 **`074519978baa`** · `native-classes/MouseCommandDistance.cpp` · proof not assessed
 
@@ -524,6 +534,8 @@ Earlier paths and their donor versions: `native-classes/MouseCommandDistance.cpp
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/MouseCommandDistance.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/MouseCommandDistance.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/MouseCommandDistance.cpp)
+- public · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/MouseCommandDistance.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/MouseCommandDistance.cpp)
 
 </details>
 
@@ -554,6 +566,7 @@ Earlier paths and their donor versions: `native-classes/MouseCommandLifetime.cpp
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandLifetime.cpp)
+- canonical · colingsnyder2-ux · [v8datamodel/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/v8datamodel/MouseCommandLifetime.cpp)
 
 **`d4c7f24e364a`** · `App/src/v8datamodel/MouseCommandLifetime.cpp` · proof not assessed
 - public · colingsnyder2-ux · [v8datamodel/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/App/src/v8datamodel/MouseCommandLifetime.cpp)
@@ -577,6 +590,7 @@ Earlier paths and their donor versions: `native-classes/MouseCommandLifetime.cpp
 - public · colingsnyder2-ux · [v8datamodel/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/v8datamodel/MouseCommandLifetime.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/App/src/v8datamodel/MouseCommandLifetime.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/v8datamodel/MouseCommandLifetime.cpp)
+- public · colingsnyder2-ux · [v8datamodel/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/v8datamodel/MouseCommandLifetime.cpp)
 
 **`27a325124b49`** · `native-classes/MouseCommandLifetime.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/MouseCommandLifetime.cpp)
@@ -700,6 +714,8 @@ Earlier paths and their donor versions: `native-classes/MouseCommandLifetime.cpp
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/MouseCommandLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/MouseCommandLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/MouseCommandLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/MouseCommandLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/MouseCommandLifetime.cpp)
 
 </details>
 
@@ -730,6 +746,7 @@ Earlier paths and their donor versions: `native-classes/MouseGetDecal.cpp`.
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
+- canonical · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 
 **`7b747d4fb40a`** · `App/src/v8datamodel/MouseGetDecal.cpp` · proof not assessed
 - public · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
@@ -753,6 +770,7 @@ Earlier paths and their donor versions: `native-classes/MouseGetDecal.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
+- public · colingsnyder2-ux · [v8datamodel/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/v8datamodel/MouseGetDecal.cpp)
 
 **`18e38345ce4e`** · `native-classes/MouseGetDecal.cpp` · proof not assessed
 
@@ -869,6 +887,8 @@ Earlier paths and their donor versions: `native-classes/MouseGetDecal.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/MouseGetDecal.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/MouseGetDecal.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/MouseGetDecal.cpp)
+- public · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/MouseGetDecal.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/MouseGetDecal.cpp)
 
 </details>
 
@@ -899,6 +919,7 @@ Earlier paths and their donor versions: `native-classes/MouseGetSurface.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 - public · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
+- public · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 
 **`06c227084567`** · `App/src/v8datamodel/MouseGetSurface.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
@@ -922,6 +943,7 @@ Earlier paths and their donor versions: `native-classes/MouseGetSurface.cpp`.
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
+- canonical · colingsnyder2-ux · [v8datamodel/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/v8datamodel/MouseGetSurface.cpp)
 
 **`01be885902fe`** · `native-classes/MouseGetSurface.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/MouseGetSurface.cpp)
@@ -1038,5 +1060,7 @@ Earlier paths and their donor versions: `native-classes/MouseGetSurface.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/MouseGetSurface.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/MouseGetSurface.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/MouseGetSurface.cpp)
+- public · colingsnyder2-ux · [native-classes/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/MouseGetSurface.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseGetSurface.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/MouseGetSurface.cpp)
 
 </details>

@@ -342,6 +342,8 @@ Compatibility path for `WindowsClient/include/CWorkspace.h`; compile either path
 - canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
 - public · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/CWorkspace.h)
 - canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
+- public · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/CWorkspace.h)
+- canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
 
 </details>
 
@@ -478,6 +480,8 @@ Compatibility path for `Network/include/Network/PhysicsReplication.h`; compile e
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h)
 - public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/Network/PhysicsReplication.h)
 - canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h)
+- public · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/Network/PhysicsReplication.h)
+- canonical · colingsnyder2-ux · [Network/PhysicsReplication.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/Network/PhysicsReplication.h)
 
 </details>
 
@@ -629,6 +633,8 @@ Compatibility path for `Unclassified/include/camera-zoom/util/Extents.h`; compil
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h)
+- public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/camera-zoom/util/Extents.h)
+- canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h)
 
 </details>
 
@@ -769,6 +775,8 @@ Compatibility path for `App/include/humanoid/Humanoid.h`; compile either path, n
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
+- public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/humanoid/Humanoid.h)
+- canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 
 </details>
 
@@ -808,6 +816,7 @@ Compatibility path for `App/include/humanoid/Humanoid.h`; compile either path, n
 - draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
 - draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
 - draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
+- draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -1085,5 +1094,7 @@ Compatibility path for `App/include/humanoid/HumanoidFloorFields.h`; compile eit
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 
 </details>

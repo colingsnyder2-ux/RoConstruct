@@ -255,6 +255,8 @@ Compatibility path for `Base/include/util/EventDataBase.h`; compile either path,
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h)
 - public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/EventDataBase.h)
 - canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h)
+- public · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/EventDataBase.h)
+- canonical · colingsnyder2-ux · [util/EventDataBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/EventDataBase.h)
 
 </details>
 
@@ -537,6 +539,8 @@ Compatibility path for `Base/include/util/Events.h`; compile either path, never 
 - canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/Events.h)
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/Events.h)
 - canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/Events.h)
+- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/Events.h)
+- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/Events.h)
 
 </details>
 
@@ -685,6 +689,8 @@ Compatibility path for `Base/include/util/Extents.h`; compile either path, never
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/Extents.h)
+- public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/Extents.h)
+- canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/Extents.h)
 
 </details>
 
@@ -825,6 +831,8 @@ Compatibility path for `Base/include/util/FileSystem.h`; compile either path, ne
 - canonical · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/FileSystem.h)
 - public · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/FileSystem.h)
 - canonical · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/FileSystem.h)
+- public · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/FileSystem.h)
+- canonical · colingsnyder2-ux · [util/FileSystem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/FileSystem.h)
 
 </details>
 
@@ -1133,6 +1141,8 @@ Compatibility path for `Base/include/util/GuidItem.h`; compile either path, neve
 - canonical · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/GuidItem.h)
 - public · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/GuidItem.h)
 - canonical · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/GuidItem.h)
+- public · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/GuidItem.h)
+- canonical · colingsnyder2-ux · [util/GuidItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/GuidItem.h)
 
 </details>
 
@@ -1313,5 +1323,7 @@ Compatibility path for `Base/include/util/GuidRegistry.h`; compile either path, 
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/GuidRegistry.h)
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
+- public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/GuidRegistry.h)
+- canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
 
 </details>

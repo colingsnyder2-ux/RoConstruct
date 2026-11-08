@@ -136,6 +136,8 @@ Compatibility path for `App/include/gui/ArrowPanel.h`; compile either path, neve
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
 - public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/gui/ArrowPanel.h)
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
+- public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/gui/ArrowPanel.h)
+- canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
 
 </details>
 
@@ -273,6 +275,8 @@ Compatibility path for `App/include/gui/ChatOutput.h`; compile either path, neve
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
 - public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/gui/ChatOutput.h)
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
+- public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/gui/ChatOutput.h)
+- canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
 
 </details>
 
@@ -410,6 +414,8 @@ Compatibility path for `App/include/gui/EquationDisplay.h`; compile either path,
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
 - public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/gui/EquationDisplay.h)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
+- public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/gui/EquationDisplay.h)
+- canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
 
 </details>
 
@@ -701,6 +707,8 @@ Compatibility path for `App/include/gui/Gui.h`; compile either path, never both.
 - canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/gui/Gui.h)
 - public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/gui/Gui.h)
 - canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/gui/Gui.h)
+- public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/gui/Gui.h)
+- canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/gui/Gui.h)
 
 </details>
 
@@ -838,6 +846,8 @@ Compatibility path for `App/include/gui/HealthHud.h`; compile either path, never
 - canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
 - public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/gui/HealthHud.h)
 - canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
+- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/gui/HealthHud.h)
+- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
 
 </details>
 
@@ -977,6 +987,8 @@ Compatibility path for `App/include/gui/ScoreHud.h`; compile either path, never 
 - canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
 - public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/gui/ScoreHud.h)
 - canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
+- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/gui/ScoreHud.h)
+- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
 
 </details>
 
@@ -1114,6 +1126,8 @@ Compatibility path for `App/include/gui/Widget.h`; compile either path, never bo
 - canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
 - public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/gui/Widget.h)
 - canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
+- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/gui/Widget.h)
+- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
 
 </details>
 
@@ -1251,6 +1265,8 @@ Compatibility path for `App/include/gui/WidgetButtons.h`; compile either path, n
 - canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
 - public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/gui/WidgetButtons.h)
 - canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
+- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/gui/WidgetButtons.h)
+- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
 
 </details>
 
@@ -1388,5 +1404,7 @@ Compatibility path for `App/include/gui/WidgetChat.h`; compile either path, neve
 - canonical · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h)
 - public · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/gui/WidgetChat.h)
 - canonical · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h)
+- public · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/gui/WidgetChat.h)
+- canonical · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h)
 
 </details>

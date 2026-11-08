@@ -140,6 +140,8 @@ Compatibility path for `Unclassified/src/WorkspaceRaiseError.cpp`; compile eithe
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceRaiseError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceRaiseError.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceRaiseError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceRaiseError.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceRaiseError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceRaiseError.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceRaiseError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceRaiseError.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceRaiseError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceRaiseError.cpp)
 
 </details>
 
@@ -263,6 +265,8 @@ Compatibility path for `App/src/v8datamodel/WorkspaceSelectAll.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceSelectAll.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceSelectAll.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceSelectAll.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceSelectAll.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceSelectAll.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceSelectAll.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceSelectAll.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceSelectAll.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceSelectAll.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceSelectAll.cpp)
 
 </details>
 
@@ -390,6 +394,8 @@ Compatibility path for `App/src/v8datamodel/WorkspaceSharedFrom.cpp`; compile ei
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceSharedFrom.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceSharedFrom.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceSharedFrom.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceSharedFrom.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceSharedFrom.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceSharedFrom.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceSharedFrom.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceSharedFrom.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceSharedFrom.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceSharedFrom.cpp)
 
 </details>
 
@@ -517,6 +523,8 @@ Compatibility path for `Unclassified/src/WorkspaceSiteError.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceSiteError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceSiteError.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceSiteError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceSiteError.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceSiteError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceSiteError.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceSiteError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceSiteError.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceSiteError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceSiteError.cpp)
 
 </details>
 
@@ -680,6 +688,8 @@ Compatibility path for `Unclassified/src/WorkspaceSiteTrust.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceSiteTrust.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceSiteTrust.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceSiteTrust.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceSiteTrust.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceSiteTrust.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceSiteTrust.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceSiteTrust.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceSiteTrust.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceSiteTrust.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceSiteTrust.cpp)
 
 </details>
 
@@ -820,6 +830,8 @@ Compatibility path for `Unclassified/src/WorkspaceStatus.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceStatus.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceStatus.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceStatus.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceStatus.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceStatus.cpp)
 
 </details>
 
@@ -956,6 +968,8 @@ Compatibility path for `App/src/v8xml/WorkspaceWrite.cpp`; compile either path, 
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceWrite.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceWrite.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceWrite.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceWrite.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceWrite.cpp)
 
 </details>
 
@@ -1010,6 +1024,7 @@ Compatibility path for `App/src/v8xml/WorkspaceWrite.cpp`; compile either path, 
 - draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
+- draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -1066,6 +1081,7 @@ Compatibility path for `App/src/v8xml/WorkspaceWrite.cpp`; compile either path, 
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -1109,5 +1125,6 @@ Compatibility path for `App/src/v8xml/WorkspaceWrite.cpp`; compile either path, 
 - public · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/WorkspaceXmlWriter.cpp)
+- public · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 
 </details>

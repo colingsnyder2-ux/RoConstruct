@@ -139,6 +139,8 @@ Compatibility path for `Base/include/util/LDrawEntities.h`; compile either path,
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
 - public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/LDrawEntities.h)
 - canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
+- public · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/LDrawEntities.h)
+- canonical · colingsnyder2-ux · [util/LDrawEntities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/LDrawEntities.h)
 
 </details>
 
@@ -279,6 +281,8 @@ Compatibility path for `Base/include/util/LDrawMapRoot.h`; compile either path, 
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/LDrawMapRoot.h)
 - public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/LDrawMapRoot.h)
 - canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/LDrawMapRoot.h)
+- public · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/LDrawMapRoot.h)
+- canonical · colingsnyder2-ux · [util/LDrawMapRoot.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/LDrawMapRoot.h)
 
 </details>
 
@@ -419,6 +423,8 @@ Compatibility path for `Base/include/util/LDrawParser.h`; compile either path, n
 - canonical · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/LDrawParser.h)
 - public · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/LDrawParser.h)
 - canonical · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/LDrawParser.h)
+- public · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/LDrawParser.h)
+- canonical · colingsnyder2-ux · [util/LDrawParser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/LDrawParser.h)
 
 </details>
 
@@ -525,6 +531,8 @@ Compatibility path for `Base/include/util/Log.h`; compile either path, never bot
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/Log.h)
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/Log.h)
+- public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/Log.h)
+- canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/Log.h)
 
 </details>
 
@@ -663,6 +671,8 @@ Compatibility path for `Base/include/util/MD5Hasher2008.h`; compile either path,
 - canonical · colingsnyder2-ux · [util/MD5Hasher2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/MD5Hasher2008.h)
 - public · colingsnyder2-ux · [util/MD5Hasher2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/MD5Hasher2008.h)
 - canonical · colingsnyder2-ux · [util/MD5Hasher2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/MD5Hasher2008.h)
+- public · colingsnyder2-ux · [util/MD5Hasher2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/MD5Hasher2008.h)
+- canonical · colingsnyder2-ux · [util/MD5Hasher2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/MD5Hasher2008.h)
 
 </details>
 
@@ -926,6 +936,8 @@ Compatibility path for `Base/include/util/MarshalWindow.h`; compile either path,
 - canonical · colingsnyder2-ux · [util/MarshalWindow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/MarshalWindow.h)
 - public · colingsnyder2-ux · [util/MarshalWindow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/MarshalWindow.h)
 - canonical · colingsnyder2-ux · [util/MarshalWindow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/MarshalWindow.h)
+- public · colingsnyder2-ux · [util/MarshalWindow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/MarshalWindow.h)
+- canonical · colingsnyder2-ux · [util/MarshalWindow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/MarshalWindow.h)
 
 </details>
 
@@ -1183,6 +1195,8 @@ Compatibility path for `Base/include/util/MarshaledListener.h`; compile either p
 - canonical · colingsnyder2-ux · [util/MarshaledListener.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/MarshaledListener.h)
 - public · colingsnyder2-ux · [util/MarshaledListener.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/MarshaledListener.h)
 - canonical · colingsnyder2-ux · [util/MarshaledListener.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/MarshaledListener.h)
+- public · colingsnyder2-ux · [util/MarshaledListener.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/MarshaledListener.h)
+- canonical · colingsnyder2-ux · [util/MarshaledListener.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/MarshaledListener.h)
 
 </details>
 
@@ -1323,5 +1337,7 @@ Compatibility path for `Base/include/util/MovementKeys.h`; compile either path, 
 - canonical · colingsnyder2-ux · [util/MovementKeys.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/util/MovementKeys.h)
 - public · colingsnyder2-ux · [util/MovementKeys.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/util/MovementKeys.h)
 - canonical · colingsnyder2-ux · [util/MovementKeys.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/util/MovementKeys.h)
+- public · colingsnyder2-ux · [util/MovementKeys.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/util/MovementKeys.h)
+- canonical · colingsnyder2-ux · [util/MovementKeys.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/util/MovementKeys.h)
 
 </details>
