@@ -11398,7 +11398,7 @@
     "tests/matching/record_native_services_maps.py": "eb61cfe756ac9e186e3a38abc412b37cdf16a444bb6696b4d93f163181093649",
     "tests/matching/record_native_settings_items_maps.py": "2c04551c02fedcc7b03728461bc154c4985ecaf011c9ed366934de21beba6aaf",
     "tests/runtime/record_p0_runtime.py": "da27997f44b14dc80ef37d38c1acae3f6bc59680e7ffcb5e85b7ca8b406c1c1f",
-    "SOURCE_LAYOUT.txt": "3d877cb7dbdf798c984caed2270c4658b6c6953f8fdef8943a6b0ff37a296a53",
+    "SOURCE_LAYOUT.txt": "64205599b32cfab35e7edf73cd31e3d0eb8c35a9486eb486f0b8f5b852218bad",
     "manifests/python-test-layout-20261108.json": "67216bf0f9cbfda76665949ce6aac6ed0400ca612c6d1540f12e268876d74e81",
     "tests/matching/probe_native_guiditem_sound_link_worker.py": "950247df12c4d973c37658066d51afd9e50956748f0d2b1962c68f4db875db70",
     "tests/matching/probe_native_sound_integrated_link_worker.py": "b36e236f6b85f09fda19abccb2225aa596ab49cfdd143a825a482785a5edcd92",
@@ -12046,7 +12046,11 @@
     "compile_test.py": "309be6ff02b0be9d128d01e11e764b648b481ad221317d8348bd8da3c4b6c213",
     "build/compile_test.py": "e96f84f80ade7966d97d450466093542a9c958b2dd64d601ad27936d91a25c32",
     "scripts/build/compile_test.py": "e96f84f80ade7966d97d450466093542a9c958b2dd64d601ad27936d91a25c32",
-    "manifests/compile-launcher-layout-20261108.json": "6db800c7b693ea25f5f5023ed4fbc1b6b1476676134af47bf327e11428c1abff"
+    "manifests/compile-launcher-layout-20261108.json": "6db800c7b693ea25f5f5023ed4fbc1b6b1476676134af47bf327e11428c1abff",
+    "setup_source_views.ps1": "4c1d22b715ab532688c2cb682a6045bc7f8ec196f489b0695368b3b6ecfdc646",
+    "build/setup_source_views.ps1": "190001adcee8f2fc88ecce4fffeeae7b21ea075d5ff9193ad14a74bc950a9376",
+    "scripts/build/setup_source_views.ps1": "190001adcee8f2fc88ecce4fffeeae7b21ea075d5ff9193ad14a74bc950a9376",
+    "manifests/source-views-layout-20261108.json": "fbd899a5b4773b7f62c6e482285c3de30425ca77eff49ac489622324798a124c"
   },
   "format": 1,
   "large_files": {},

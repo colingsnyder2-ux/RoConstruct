@@ -1,0 +1,8 @@
+{
+  "base": "5ce04f86fc840c4c420775b008cc5eb9a3a0f2aa",
+  "old": "rebuild/2008-06/setup_source_views.ps1",
+  "new": "rebuild/2008-06/build/setup_source_views.ps1",
+  "original_sha256": "d437e48b7e51e5b65384f1ba339312814422a0df3f2b8fc1ab7bc1808843eac3",
+  "new_sha256": "190001adcee8f2fc88ecce4fffeeae7b21ea075d5ff9193ad14a74bc950a9376",
+  "scope": "Setup source root preserved. Existing entry point delegates to organized script."
+}
