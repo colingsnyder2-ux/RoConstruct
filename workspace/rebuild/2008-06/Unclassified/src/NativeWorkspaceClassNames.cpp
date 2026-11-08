@@ -1,6 +1,2 @@
-namespace RBX {
-char sWorkspace[] = "Workspace";
-char sRootInstance[] = "RootInstance";
-char sModel[] = "Model";
-char sPVInstance[] = "PVInstance";
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../App/src/v8datamodel/NativeWorkspaceClassNames.cpp"

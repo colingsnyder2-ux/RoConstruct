@@ -1,6 +1,2 @@
-namespace RBX {
-extern const char sInstance[] = "Instance";
-char sSelection[] = "Selection";
-char sTexture[] = "Texture";
-char sRunService[] = "RunService";
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../App/src/v8datamodel/NativeClassNames.cpp"

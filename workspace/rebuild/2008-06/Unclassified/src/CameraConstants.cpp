@@ -1,3 +1,2 @@
-namespace RBX {
-extern const float cameraRadiansToDegrees = 57.2957763671875f;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../App/src/v8datamodel/CameraConstants.cpp"
