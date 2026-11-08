@@ -349,3 +349,14 @@ def test_experimental_overlay_alias_targets_real_file(tmp_path):
     new = 'experiments/overlays/test/Example.h'
     shim = blob(b'// Compatibility header; experiment lives in the organized path.\n#include "../../../experiments/overlays/test/Example.h"\n')
     assert source_catalog.compatibility_aliases(tmp_path, {old: shim, new: blob(b'// original\n')}) == {old: new}
+
+
+def test_unclassified_source_alias_tracks_organized_code(tmp_path):
+    import subprocess
+    subprocess.run(['git', 'init', '-q'], cwd=tmp_path, check=True)
+    def blob(data):
+        return subprocess.check_output(['git', 'hash-object', '-w', '--stdin'], cwd=tmp_path, input=data).decode().strip()
+    old = 'Unclassified/src/Widget.cpp'
+    new = 'App/src/gui/Widget.cpp'
+    shim = blob(b'// Compatibility translation unit; compile this file or the organized source, not both.\n#include "../../App/src/gui/Widget.cpp"\n')
+    assert source_catalog.compatibility_aliases(tmp_path, {old: shim, new: blob(b'// original\n')}) == {old: new}

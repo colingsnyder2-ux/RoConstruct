@@ -1,7 +1,2 @@
-#include "CRobloxApp.h"
-#include "CIDEDocManager.h"
-
-void CRobloxApp::initializeEmptyDocument()
-{
-    static_cast<CIDEDocManager*>(m_pDocManager)->templates[0]->OpenDocumentFile(NULL, TRUE);
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../WindowsClient/src/AppDocumentStartup.cpp"

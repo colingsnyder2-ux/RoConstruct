@@ -1,4 +1,2 @@
-#include "StandardVerbs.h"
-
-RBX::RunStateVerb::~RunStateVerb() {}
-RBX::EditSelectionVerb::~EditSelectionVerb() {}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../WindowsClient/src/VerbLifetime.cpp"

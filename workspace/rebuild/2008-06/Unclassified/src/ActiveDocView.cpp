@@ -1,3 +1,2 @@
-#include "ActiveDocView.h"
-ActiveDocView::ActiveDocView() { activeDocViews.insert(this); }
-ActiveDocView::~ActiveDocView() { activeDocViews.erase(this); }
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../WindowsClient/src/ActiveDocView.cpp"

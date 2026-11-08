@@ -1,20 +1,3 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-#include "util/UserInputBase.h"
-namespace RBX {
-bool MovementKeys::any() const
-{
-    return up || down || left || right || w || s || a || d || space;
-}
-void UserInputBase::getMovementKeys(MovementKeys& keys) const
-{
-    keys.up = keyDown(SDLK_UP);
-    keys.down = keyDown(SDLK_DOWN);
-    keys.left = keyDown(SDLK_LEFT);
-    keys.right = keyDown(SDLK_RIGHT);
-    keys.w = keyDown(SDLK_w);
-    keys.s = keyDown(SDLK_s);
-    keys.a = keyDown(SDLK_a);
-    keys.d = keyDown(SDLK_d);
-    keys.space = keyDown(SDLK_SPACE);
-}
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../Base/src/util/UserInputMovement.cpp"

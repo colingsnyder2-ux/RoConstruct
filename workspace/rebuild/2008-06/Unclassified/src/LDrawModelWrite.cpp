@@ -1,20 +1,3 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
-#include "util/LDrawEntities.h"
-
-namespace RBX { namespace LDraw2Lua {
-void LDrawModel::writeLua(std::ostream& out) const
-{
-    if (items.size() > 0) {
-        out << "-- " << "Get the current workspace" << "\n";
-        out << "local w = game:service(\"Workspace\")" << "\n";
-        out << "\n";
-        out << "-- " << "Create a new model" << "\n";
-        out << "m = Instance.new(\"Model\")" << "\n";
-        out << "m.Name = \"" << name.c_str() << "\"" << "\n";
-        out << "m.Parent = w" << "\n";
-        out << "\n";
-        size_t count = items.size();
-        for (size_t i = 0; i < count; ++i) items.at(i)->writeLua(out, "m");
-    }
-}
-} }
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../Base/src/util/LDrawModelWrite.cpp"

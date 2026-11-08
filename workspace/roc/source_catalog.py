@@ -88,7 +88,7 @@ def native_entries(root, ref, prefix):
 def compatibility_aliases(root, canonical):
     """Recognize only exact shims pointing to tracked organized sources."""
     import io
-    candidates = {p: b for p, b in canonical.items() if p.startswith(('native-classes/', 'native-headers/', 'Unclassified/include/'))}
+    candidates = {p: b for p, b in canonical.items() if p.startswith(('native-classes/', 'native-headers/', 'Unclassified/include/', 'Unclassified/src/'))}
     ids = sorted(set(candidates.values()))
     if not ids:
         return {}
