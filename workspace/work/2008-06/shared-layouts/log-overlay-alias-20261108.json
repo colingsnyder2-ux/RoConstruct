@@ -1,0 +1,21 @@
+{
+  "base": "80feb91329cabcc4fe6899747909f38ecef60760",
+  "scope": "Header alias; no original-match, runtime, ABI completeness or integration credit claim.",
+  "public_original_sha256": "4766e4d45bc3ce99b00aec63c7dfa94926a7dcda9b1560bde3c6e74340f62f18",
+  "canonical_definition_sha256": "3eca32f03f33ce0d70077f4393ab235b912227c77d0a61d61e1fe1cea5d9cf6d",
+  "alias_sha256": "f92092d430b4081eeee590416d948da4de764730f8424a7a55e8a563068a2bf7",
+  "comparison": "public generated banner removed equals canonical definition, line endings normalized",
+  "checks": [
+    {
+      "source_sha256": "da969a6b47fc0f9c514ab938e651189100080cf39331fa9c05477891a2aef772",
+      "object_sha256": "3df9955feffcbdc1a4e4e1e39856c83cf31a241ffa961d40e95daf55c55abec0",
+      "status": "complete"
+    },
+    {
+      "source_sha256": "da969a6b47fc0f9c514ab938e651189100080cf39331fa9c05477891a2aef772",
+      "object_sha256": "99e44955bda525ab15aac0ca6cded7ab64612108ea0b51c6ecb61b538d82770f",
+      "status": "complete"
+    }
+  ],
+  "object_comparison": "Function bytes, data and relocation identities match for Log size probe."
+}
