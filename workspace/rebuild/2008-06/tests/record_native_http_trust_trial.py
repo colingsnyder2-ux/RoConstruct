@@ -11,7 +11,7 @@ from roc import match, rebuild
 
 probe = root / 'rebuild/2008-06/out/native-layouts/http-trust-probe'
 probe.mkdir(exist_ok=True)
-source = root / 'rebuild/2008-06/tests/NativeHttpTrustTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeHttpTrustTrial.cpp'
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 obj = probe / 'trial.obj'
 flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]

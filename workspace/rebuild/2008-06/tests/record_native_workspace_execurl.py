@@ -12,7 +12,7 @@ from roc import match, rebuild
 out = root / 'rebuild/2008-06/out/native-layouts'
 probe = out / 'execurl-probe'
 probe.mkdir(exist_ok=True)
-source = root / 'rebuild/2008-06/tests/NativeWorkspaceExecUrlTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeWorkspaceExecUrlTrial.cpp'
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 flags = [x for x in base['flags'] if x != '/c' and not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
 flags += ['/I' + str(root / 'rebuild/2008-06/tests'), '/P', str(source)]
@@ -47,6 +47,6 @@ for i in range(table[7]):
 for prefix, value in [('??$create@VContentProvider@RBX@@', 0x41eea0), ('?getContent@ContentProvider@RBX@@', 0x561f20), ('??$copy_impl@', 0x451300), ('?execScript@CWorkspace@@', 0x46b230), ('?reportWorkspaceSiteError@@', 0x429330), ('?workspaceSiteErrorContext@@', 0x8164f8), ('__imp_??B?$CSimpleStringT@', 0x803ee0), ('__imp_?c_str@', 0x802464)]:
     assert any(k.startswith(prefix) and value in values for k, values in bindings.items()), (prefix, bindings)
 sha = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
-receipt = {'scope': 'Inactive exact method; ContentProvider shared layout, class lifetimes and live ownership remain unproven. Do not run.', 'source_sha256': sha(source), 'observer_sha256': sha(Path(__file__)), 'provider_trial_sha256': sha(root / 'rebuild/2008-06/tests/NativeContentProviderTrial.cpp'), 'header_sha256': sha(root / 'rebuild/2008-06/native-headers/CWorkspace.h'), 'profile_sha256': sha(profile), 'object_sha256': sha(obj), 'symbol': name, 'address': '0046c430', 'size': len(body), 'exact': True, 'bindings': {k: [hex(v) for v in sorted(values)] for k, values in bindings.items()}, 'flags': compile_flags}
+receipt = {'scope': 'Inactive exact method; ContentProvider shared layout, class lifetimes and live ownership remain unproven. Do not run.', 'source_sha256': sha(source), 'observer_sha256': sha(Path(__file__)), 'provider_trial_sha256': sha(root / 'rebuild/2008-06/experiments/trials/NativeContentProviderTrial.cpp'), 'header_sha256': sha(root / 'rebuild/2008-06/native-headers/CWorkspace.h'), 'profile_sha256': sha(profile), 'object_sha256': sha(obj), 'symbol': name, 'address': '0046c430', 'size': len(body), 'exact': True, 'bindings': {k: [hex(v) for v in sorted(values)] for k, values in bindings.items()}, 'flags': compile_flags}
 (root / 'work/2008-06/shared-layouts/workspace-execurl-trial.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS native ExecUrlScript and original call bindings')

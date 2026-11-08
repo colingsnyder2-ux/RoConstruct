@@ -13,7 +13,7 @@ from roc import match, rebuild
 
 out = root / 'rebuild/2008-06/out/native-layouts/decal-factory-probe'
 out.mkdir(exist_ok=True)
-source = root / 'rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeDocumentInitializeTrial.cpp'
 text = source.read_text().replace('#include "Network/Players.h"', '#include "Network/Players.h"\n#include "v8datamodel/Decal.h"')
 text += '\nboost::shared_ptr<Decal> InsertDecal::createInstance() { return Creatable<Instance>::create<Decal>(); }\n'
 text += 'boost::shared_ptr<Decal> InsertTexture::createInstance() { return Creatable<Instance>::create<Texture>(); }\n'

@@ -12,8 +12,8 @@ sys.path.insert(0, str(root))
 from roc import match, rebuild
 
 out = root / 'rebuild/2008-06/out/native-layouts'
-source = root / 'rebuild/2008-06/tests/NativeContentGetTrial.cpp'
-layout = root / 'rebuild/2008-06/tests/NativeContentProviderTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeContentGetTrial.cpp'
+layout = root / 'rebuild/2008-06/experiments/trials/NativeContentProviderTrial.cpp'
 base = json.loads((root / 'work/2008-06/shared-layouts/instance-after-service-link.json').read_text())
 flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('InstanceLifetime.cpp')]
 obj = out / 'NativeContentGetTrial.obj'

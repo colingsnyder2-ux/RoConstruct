@@ -9,7 +9,7 @@ for name in ('Selection.h','Workspace.h'):
  else:
   needle='static bool showWorldCoord;';assert data.count(needle)==1;data=data.replace(needle,'boost::shared_ptr<ModelInstance> group(std::vector<boost::shared_ptr<Instance> >::const_iterator, std::vector<boost::shared_ptr<Instance> >::const_iterator);\n        '+needle)
  (overlay/name).write_text(data)
-src=root/'rebuild/2008-06/tests/NativeGroupActionTrial.cpp';obj=out/'NativeGroupActionTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags.insert(0,'/I'+str(work));code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],work);assert code==0,log
+src=root/'rebuild/2008-06/experiments/trials/NativeGroupActionTrial.cpp';obj=out/'NativeGroupActionTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags.insert(0,'/I'+str(work));code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],work);assert code==0,log
 raw=obj.read_bytes();sections,symbols,defs,_=match._coff_data_index(raw);name,body,refs=next(x for x in match.coff_functions(raw) if x[0].startswith('?doIt@GroupSelectionVerb@'));target,targetrefs,_=match.target('2008-06','00580c00');assert match.exact_match(target,targetrefs,body,refs);start,index=defs[name];table=sections[index];bindings={}
 for i in range(table[7]):
  off,sym,kind=struct.unpack_from('<IIH',raw,table[5]+i*10);off-=start

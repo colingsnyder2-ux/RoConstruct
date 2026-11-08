@@ -78,7 +78,7 @@ for address, prefix, expected in [
         assert any(k.startswith(symbol) and v == destination for k, v in edges.items()), (address, symbol, edges)
     rows.append({'address': address, 'symbol': name, 'size': len(body), 'direct_calls': {k: hex(v) for k, v in edges.items()}})
 
-fixture = root / 'rebuild/2008-06/tests/NativeParentDescriptorTrial.cpp'
+fixture = root / 'rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp'
 fixture_obj = out / 'NativeParentDescriptorTrial.obj'
 fixture_flags = flags[:-2] + ['/Fo' + str(fixture_obj), str(fixture)]
 code, log = rebuild.run(rebuild.toolchain(21022), 'cl', fixture_flags, out)

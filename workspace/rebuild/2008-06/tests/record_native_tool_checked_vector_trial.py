@@ -18,7 +18,7 @@ text = workspace.read_text()
 before = 'RBXASSERT(currentCommand.get());'
 assert text.count(before) == 1
 (overlay / 'v8datamodel/Workspace.h').write_text(text.replace(before, '', 1))
-source = root / 'rebuild/2008-06/tests/NativeToolCheckedTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeToolCheckedTrial.cpp'
 obj = out / 'NativeToolCheckedVectorTrial.obj'
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]

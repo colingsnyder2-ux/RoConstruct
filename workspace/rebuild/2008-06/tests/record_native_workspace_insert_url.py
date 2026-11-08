@@ -12,7 +12,7 @@ from roc import match, rebuild
 out = root / 'rebuild/2008-06/out/native-layouts'
 probe = out / 'content-insert-probe'
 probe.mkdir(exist_ok=True)
-source = root / 'rebuild/2008-06/tests/NativeWorkspaceInsertUrlTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeWorkspaceInsertUrlTrial.cpp'
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 flags = [x for x in base['flags'] if x != '/c' and not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
 flags += ['/I' + str(root / 'rebuild/2008-06/tests'), '/P', str(source)]
@@ -56,6 +56,6 @@ for prefix, address, expected in checks:
         assert any(k.startswith(key) and value in values for k, values in bindings.items()), (key, bindings)
     rows.append({'symbol': name, 'address': hex(address), 'size': len(body), 'exact': True, 'bindings': {k: [hex(v) for v in sorted(values)] for k, values in bindings.items()}})
 sha = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
-receipt = {'scope': 'Inactive insertion profile matches; trust dependencies, provider layout, object ownership and live ABI remain unproven. Do not run.', 'source_sha256': sha(source), 'observer_sha256': sha(Path(__file__)), 'header_sha256': sha(root / 'rebuild/2008-06/native-headers/CWorkspace.h'), 'provider_trial_sha256': sha(root / 'rebuild/2008-06/tests/NativeContentProviderTrial.cpp'), 'profile_sha256': sha(profile), 'object_sha256': sha(obj), 'methods': rows, 'flags': compile_flags}
+receipt = {'scope': 'Inactive insertion profile matches; trust dependencies, provider layout, object ownership and live ABI remain unproven. Do not run.', 'source_sha256': sha(source), 'observer_sha256': sha(Path(__file__)), 'header_sha256': sha(root / 'rebuild/2008-06/native-headers/CWorkspace.h'), 'provider_trial_sha256': sha(root / 'rebuild/2008-06/experiments/trials/NativeContentProviderTrial.cpp'), 'profile_sha256': sha(profile), 'object_sha256': sha(obj), 'methods': rows, 'flags': compile_flags}
 (root / 'work/2008-06/shared-layouts/workspace-insert-url-trial.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS native Workspace insertion and URL helper')

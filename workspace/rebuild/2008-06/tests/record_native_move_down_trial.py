@@ -7,7 +7,7 @@ sys.path.insert(0, str(main))
 from roc import match, rebuild
 base = json.loads((main / "work/2008-06/shared-layouts/document-swap-current.json").read_text())
 obj = own / "NativeSelectionCommandsMoveDownTrial.obj"
-flags = [x for x in base["flags"] if not x.startswith("/Fo") and not x.endswith("NativeDocumentLayout.cpp")] + ["/Fo" + str(obj), str(main / "rebuild/2008-06/tests/NativeSelectionCommandsTrial.cpp")]
+flags = [x for x in base["flags"] if not x.startswith("/Fo") and not x.endswith("NativeDocumentLayout.cpp")] + ["/Fo" + str(obj), str(main / "rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp")]
 code, log = rebuild.run(rebuild.toolchain(21022), "cl", flags, own)
 assert code == 0, log
 raw = obj.read_bytes()

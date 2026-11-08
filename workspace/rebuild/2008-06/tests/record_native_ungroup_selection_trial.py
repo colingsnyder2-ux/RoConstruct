@@ -6,7 +6,7 @@ root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc i
 out=root/'rebuild/2008-06/out/native-layouts';overlay=out/'ungroup-include/v8datamodel';overlay.mkdir(parents=True,exist_ok=True)
 header=root/'rebuild/2008-06/native-headers/v8datamodel/Selection.h';text=header.read_text();assert text.count('T* findFirst(bool (*predicate)(T*));')==1
 (overlay/'Selection.h').write_text(text)
-source=root/'rebuild/2008-06/tests/NativeUngroupSelectionTrial.cpp';obj=out/'NativeUngroupSelectionTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags.insert(0,'/I'+str(overlay.parent))
+source=root/'rebuild/2008-06/experiments/trials/NativeUngroupSelectionTrial.cpp';obj=out/'NativeUngroupSelectionTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags.insert(0,'/I'+str(overlay.parent))
 code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(source)],out);assert code==0,log
 raw=obj.read_bytes();rows=[]
 for prefix,addr,exact in [('?isEnabled@UngroupSelectionVerb','00582b50',True),('?hasChildren@RBX@@','0057e110',True),('?findFirst@?$FilteredSelection','0057edb0',True)]:
