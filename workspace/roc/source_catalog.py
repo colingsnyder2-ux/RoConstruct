@@ -691,7 +691,7 @@ def main():
             args.map_output.parent.mkdir(parents=True, exist_ok=True)
             mapped = source_map(result)
             map_temp = args.map_output.with_suffix(args.map_output.suffix + '.tmp')
-            map_temp.write_text(json.dumps(mapped, indent=2) + '\n', encoding='utf-8')
+            map_temp.write_text(json.dumps(mapped, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
             map_temp.replace(args.map_output)
             markdown = args.map_output.with_suffix('.md')
             markdown.write_text(render_source_map_markdown(mapped, browse.name), encoding='utf-8')

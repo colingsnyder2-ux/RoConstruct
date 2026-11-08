@@ -360,3 +360,23 @@ def test_unclassified_source_alias_tracks_organized_code(tmp_path):
     new = 'App/src/gui/Widget.cpp'
     shim = blob(b'// Compatibility translation unit; compile this file or the organized source, not both.\n#include "../../App/src/gui/Widget.cpp"\n')
     assert source_catalog.compatibility_aliases(tmp_path, {old: shim, new: blob(b'// original\n')}) == {old: new}
+
+
+def test_generated_map_json_is_compact_and_complete(tmp_path, monkeypatch):
+    import json, sys
+    from roc.native_drafts import Inbox
+    rows = [{'path': 'App/src/A.cpp', 'state': 'equivalent', 'canonical_blob': 'a', 'public_blob': 'a'}]
+    catalog = dict(work_commit='abc', authority='test', scope='test', files=rows, summary={})
+    monkeypatch.setattr(source_catalog, 'catalog', lambda *args: catalog)
+    monkeypatch.setattr(source_catalog, 'git', lambda *args: '')
+    monkeypatch.setattr(source_catalog, 'source_versions', lambda *args: dict(versions=[], sources=[], errors=[]))
+    monkeypatch.setattr(source_catalog, 'prior_source_map', lambda *args: None)
+    monkeypatch.setattr(Inbox, 'archive', lambda self: [])
+    monkeypatch.setattr(source_catalog, 'write_browse', lambda *args: None)
+    output, mapped = tmp_path / 'catalog.json', tmp_path / 'map.json'
+    monkeypatch.setattr(sys, 'argv', ['source_catalog', '--output', str(output), '--map-output', str(mapped)])
+    source_catalog.main()
+    text = mapped.read_text(encoding='utf-8')
+    data = json.loads(text)
+    assert '\n  ' not in text
+    assert any(row['path'] == 'App/src/A.cpp' for group in data['groups'] for row in group['files'])
