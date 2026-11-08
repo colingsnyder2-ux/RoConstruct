@@ -1,3 +1,2 @@
-#include "v8datamodel/PhysicsService.h"
-
-template boost::shared_ptr<RBX::PhysicsService> RBX::Creatable<RBX::Instance>::create<RBX::PhysicsService>();
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8datamodel/PhysicsServiceAllocation.cpp"
