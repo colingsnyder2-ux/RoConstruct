@@ -378,3 +378,24 @@ def test_object_identity_compares_local_binding_and_section(monkeypatch):
     assert first[0][0][0] == '.text'
     assert first == source_layout.object_identity(obj(2))
     assert first != source_layout.object_identity(obj(3))
+
+
+def test_prepare_accepts_scoped_existing_accepted_source(source_repo):
+    root, spec = source_repo
+    old = 'native-classes/accepted/App/util/Thing.cpp'
+    for prefix in ('workspace/rebuild/2008-06/', '2008-06/'):
+        path = root / prefix / old
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(b'int thing() { return 1; }\n')
+    subprocess.run(['git', 'add', '.'], cwd=root, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                    'commit', '-qm', 'donor'], cwd=root, check=True)
+    spec['base'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    spec['moves'][0].update(source=old, target='Base/src/util/Thing.cpp', checks=[], preservation_only=True)
+    out = root / 'work/native-candidates/test'
+    source_layout.prepare(root, spec, out)
+    assert (out / 'candidate/Base/src/util/Thing.cpp').read_bytes() == b'int thing() { return 1; }\n'
+    assert '#include "../../../../Base/src/util/Thing.cpp"' in (out / 'candidate' / old).read_text()
+    spec['moves'][0]['source'] = 'native-classes/unreviewed/App/Thing.cpp'
+    with pytest.raises(ValueError):
+        source_layout.inspect_move(root, spec['base'], spec['moves'][0])

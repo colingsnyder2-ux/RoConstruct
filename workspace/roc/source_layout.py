@@ -89,7 +89,8 @@ def checked_base(root, base):
 
 def inspect_move(root, base, row):
     old, new = safe(row['source']), safe(row['target'])
-    if (len(old.parts) != 2 or old.parts[0] != 'native-classes' or old.suffix != '.cpp'
+    source_ok = (len(old.parts) == 2 or (len(old.parts) >= 4 and old.parts[1] == 'accepted'))
+    if (not source_ok or old.parts[0] != 'native-classes' or old.suffix != '.cpp'
             or len(new.parts) < 3 or new.parts[0] not in PROJECTS or new.parts[1] != 'src'
             or new.name != old.name or (not row.get('checks') and row.get('preservation_only') is not True)):
         raise ValueError('Move needs a native source, matching project destination and independent checks or explicit preservation-only mode')
