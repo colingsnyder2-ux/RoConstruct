@@ -86,7 +86,7 @@ def native_entries(root, ref, prefix):
 def compatibility_aliases(root, canonical):
     """Recognize only exact shims pointing to tracked organized sources."""
     import io
-    candidates = {p: b for p, b in canonical.items() if p.startswith('native-classes/')}
+    candidates = {p: b for p, b in canonical.items() if p.startswith(('native-classes/', 'native-headers/'))}
     ids = sorted(set(candidates.values()))
     if not ids:
         return {}
@@ -100,7 +100,8 @@ def compatibility_aliases(root, canonical):
         blobs[sha] = stream.read(int(header[2]))
         stream.read(1)
     pattern = re.compile(rb'(?:[ ]*// native-flags:[^\n]*\n)?'
-                         rb'// Compatibility translation unit; compile this file or the organized source, not both\.\n'
+                         rb'(?:// Compatibility translation unit; compile this file or the organized source, not both\.'
+                         rb'|// Compatibility header; declarations live at the organized path\.)\n'
                          rb'#include "([^"\n]+)"\n?')
     aliases = {}
     for path, sha in candidates.items():

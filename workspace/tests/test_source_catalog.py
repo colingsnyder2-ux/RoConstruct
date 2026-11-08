@@ -233,8 +233,11 @@ def test_compatibility_paths_show_old_donors_with_moved_source(tmp_path):
     git('init', '-q')
     base = tmp_path / 'workspace/rebuild/2008-06'
     old, target = 'native-classes/Example.cpp', 'App/src/v8tree/Example.cpp'
+    old_header, target_header = 'native-headers/v8tree/Example.h', 'App/include/v8tree/Example.h'
     for path, data in [(old, '// Compatibility translation unit; compile this file or the organized source, not both.\n#include "../App/src/v8tree/Example.cpp"\n'),
                        (target, 'void Example::run() {}\n'),
+                       (old_header, '// Compatibility header; declarations live at the organized path.\n#include "../../App/include/v8tree/Example.h"\n'),
+                       (target_header, '#pragma once\nclass Example;\n'),
                        ('native-classes/NotShim.cpp', '#include "../App/src/v8tree/Example.cpp"\n')]:
         p = base / path
         p.parent.mkdir(parents=True, exist_ok=True)
@@ -244,7 +247,7 @@ def test_compatibility_paths_show_old_donors_with_moved_source(tmp_path):
     commit = git('rev-parse', 'HEAD')
     canonical = source_catalog.native_entries(tmp_path, commit, 'workspace/rebuild/2008-06')
     aliases = source_catalog.compatibility_aliases(tmp_path, canonical)
-    assert aliases == {old: target}
+    assert aliases == {old: target, old_header: target_header}
     result = source_catalog.source_map(dict(work_commit=commit, authority='test', scope='test',
         files=source_catalog.classify_files(canonical, {}), compatibility_aliases=aliases,
         alternatives=dict(sources=[], errors=[], versions=[dict(path=old, blob='123456789abcdef',
