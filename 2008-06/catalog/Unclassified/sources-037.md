@@ -72,6 +72,7 @@ Earlier paths and their donor versions: `native-classes/ImageContentRegistration
 </details>
 
 **`64e61158ad0b`** · `Unclassified/src/ImageContentRegistration.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
@@ -88,6 +89,7 @@ Earlier paths and their donor versions: `native-classes/ImageContentRegistration
 </details>
 
 **`c56a7dbae0da`** · `Unclassified/src/ImageContentRegistration.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ImageContentRegistration.cpp)
@@ -141,6 +143,8 @@ Earlier paths and their donor versions: `native-classes/ImageContentRegistration
 </details>
 
 **`0a6a9b35ab46`** · `native-classes/ImageContentRegistration.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ImageContentRegistration.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [native-classes/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [native-classes/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ImageContentRegistration.cpp)
@@ -326,6 +330,7 @@ Compatibility path for `Base/src/util/ImageMimeType.cpp`; compile either path, n
 Earlier paths and their donor versions: `native-classes/ImageMimeType.cpp`.
 
 **`04fe098a5a96`** · `Unclassified/src/ImageMimeType.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ImageMimeType.cpp)
 - canonical · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ImageMimeType.cpp)
 - canonical · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ImageMimeType.cpp)
 - canonical · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ImageMimeType.cpp)
@@ -413,6 +418,7 @@ Earlier paths and their donor versions: `native-classes/ImageMimeType.cpp`.
 </details>
 
 **`df7f1c148fed`** · `Unclassified/src/ImageMimeType.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ImageMimeType.cpp)
@@ -478,6 +484,8 @@ Earlier paths and their donor versions: `native-classes/ImageMimeType.cpp`.
 </details>
 
 **`718588db65cf`** · `native-classes/ImageMimeType.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ImageMimeType.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [native-classes/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ImageMimeType.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [native-classes/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ImageMimeType.cpp)
@@ -658,6 +666,7 @@ Earlier paths and their donor versions: `native-classes/InsertModelFromRobloxVer
 </details>
 
 **`8e7ced526a72`** · `Unclassified/src/InsertModelFromRobloxVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
@@ -707,6 +716,7 @@ Earlier paths and their donor versions: `native-classes/InsertModelFromRobloxVer
 </details>
 
 **`a5f958f77e21`** · `Unclassified/src/InsertModelFromRobloxVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
@@ -722,6 +732,8 @@ Earlier paths and their donor versions: `native-classes/InsertModelFromRobloxVer
 </details>
 
 **`1a8f3f753642`** · `native-classes/InsertModelFromRobloxVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)

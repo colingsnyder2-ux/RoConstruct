@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/v8datamodel/PartInstance.h`.
 
 **`0cc75cbb912d`** · `App/include/v8datamodel/PartInstance.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/include/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/include/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/v8datamodel/PartInstance.h)
@@ -43,7 +44,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PartInstance
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/PartInstance.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
@@ -94,6 +95,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PartInstance
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/App/include/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/App/include/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
@@ -124,6 +126,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PartInstance
 </details>
 
 **`51a721fe8cf8`** · `App/include/v8datamodel/PartInstance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/include/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/include/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/v8datamodel/PartInstance.h)
@@ -261,6 +264,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PartInstance
 </details>
 
 **`5fd84bbe9de6`** · `native-headers/v8datamodel/PartInstance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/PartInstance.h)
+- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/v8datamodel/PartInstance.h)
@@ -330,7 +335,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PartInstance
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h)
 
-<details><summary>69 retained local origins</summary>
+<details><summary>70 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
@@ -382,6 +387,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PartInstance
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
@@ -474,6 +480,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PhysicsServi
 - public · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8datamodel/PhysicsService.h)
 
 **`c4e2f2eb0e55`** · `App/include/v8datamodel/PhysicsService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/include/v8datamodel/PhysicsService.h)
 - public · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/include/v8datamodel/PhysicsService.h)
 - public · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/v8datamodel/PhysicsService.h)
 - public · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/v8datamodel/PhysicsService.h)
@@ -493,6 +500,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PhysicsServi
 </details>
 
 **`d5d28dd7daae`** · `App/include/v8datamodel/PhysicsService.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h)
@@ -525,7 +533,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PhysicsServi
 - canonical · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
@@ -570,6 +578,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PhysicsServi
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
@@ -609,6 +618,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PhysicsServi
 </details>
 
 **`2a98a99b0f4f`** · `native-headers/v8datamodel/PhysicsService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/PhysicsService.h)
+- canonical · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h)
 - public · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/PhysicsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h)
 - public · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/v8datamodel/PhysicsService.h)
@@ -672,7 +683,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PhysicsServi
 - public · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/PhysicsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
@@ -718,6 +729,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PhysicsServi
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h` · root `b52aa15feaea5a0c`
@@ -749,6 +761,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/PhysicsServi
 </details>
 
 **`9f40aacb4345`** · `native-headers/v8datamodel/PhysicsService.h` · proof not assessed
+- draft · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/7c91d3ce2e4e2506a6faacd386dcc0b4586ffd9d12ed221027e223d571944889/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h)
 - draft · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/7c91d3ce2e4e2506a6faacd386dcc0b4586ffd9d12ed221027e223d571944889/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h)
 - draft · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/7c91d3ce2e4e2506a6faacd386dcc0b4586ffd9d12ed221027e223d571944889/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h)
 - draft · colingsnyder2-ux · [v8datamodel/PhysicsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/7c91d3ce2e4e2506a6faacd386dcc0b4586ffd9d12ed221027e223d571944889/rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h)

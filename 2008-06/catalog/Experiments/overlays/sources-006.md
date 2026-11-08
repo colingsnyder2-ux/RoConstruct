@@ -8,6 +8,8 @@
 Earlier paths and their donor versions: `Unclassified/include/serializer-load/reflection/function.h`.
 
 **`2318a4caad41`** · `experiments/overlays/serializer-load/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/overlays/serializer-load/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/experiments/overlays/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/experiments/overlays/serializer-load/reflection/function.h)
@@ -25,7 +27,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/re
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -37,6 +39,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/re
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -151,6 +154,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/re
 </details>
 
 **`ba60acba5611`** · `Unclassified/include/serializer-load/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/serializer-load/reflection/function.h)
@@ -161,6 +165,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/re
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 
 **`e47854105018`** · `Unclassified/include/serializer-load/reflection/function.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
@@ -170,7 +175,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/re
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -181,6 +186,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/re
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -201,6 +207,8 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/re
 Earlier paths and their donor versions: `Unclassified/include/serializer-load/util/Name.h`.
 
 **`e307ecb78073`** · `experiments/overlays/serializer-load/util/Name.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/overlays/serializer-load/util/Name.h)
+- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/experiments/overlays/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/experiments/overlays/serializer-load/util/Name.h)
@@ -218,7 +226,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/ut
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
@@ -230,6 +238,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/ut
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
@@ -242,6 +251,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/ut
 </details>
 
 **`1ffc2a823e91`** · `Unclassified/include/serializer-load/util/Name.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/serializer-load/util/Name.h)
@@ -252,6 +262,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/ut
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/serializer-load/util/Name.h)
 
 **`936ca432d661`** · `Unclassified/include/serializer-load/util/Name.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
@@ -261,7 +272,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/ut
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
@@ -272,6 +283,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/ut
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h` · root `b52aa15feaea5a0c`
@@ -401,6 +413,8 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/ut
 Earlier paths and their donor versions: `Unclassified/include/serializer-load/v8tree/Instance.h`.
 
 **`f98c2ed9ad43`** · `experiments/overlays/serializer-load/v8tree/Instance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h)
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h)
@@ -418,7 +432,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/v8
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -430,6 +444,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/v8
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -442,6 +457,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/v8
 </details>
 
 **`4158c65ee204`** · `Unclassified/include/serializer-load/v8tree/Instance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
@@ -461,6 +477,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/v8
 </details>
 
 **`ec99d4f51816`** · `Unclassified/include/serializer-load/v8tree/Instance.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
@@ -470,7 +487,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/v8
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -481,6 +498,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/v8
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -601,6 +619,7 @@ Earlier paths and their donor versions: `Unclassified/include/serializer-load/v8
 Earlier paths and their donor versions: `Unclassified/include/slingshot-load/util/ContentProvider.h`.
 
 **`819f50c54736`** · `experiments/overlays/slingshot-load/util/ContentProvider.h` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h)
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h)
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h)
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h)
@@ -611,6 +630,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h)
 
 **`9d6cd78c8eb4`** · `experiments/overlays/slingshot-load/util/ContentProvider.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h)
 - canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h)
 - canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h)
 - canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h)
@@ -620,7 +640,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 - canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h)
 - canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
@@ -632,6 +652,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
@@ -644,6 +665,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 </details>
 
 **`467c4641cb5e`** · `Unclassified/include/slingshot-load/util/ContentProvider.h` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
@@ -677,6 +699,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 
 **`6a0593be7610`** · `Unclassified/include/slingshot-load/util/ContentProvider.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 - canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 - canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 - canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
@@ -686,7 +709,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 - canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 - canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
@@ -697,6 +720,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h` · root `b52aa15feaea5a0c`
@@ -813,6 +837,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 Earlier paths and their donor versions: `Unclassified/include/slingshot-load/util/NativeContentProvider.h`.
 
 **`3bfe195fd8a9`** · `experiments/overlays/slingshot-load/util/NativeContentProvider.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h)
@@ -822,7 +847,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
@@ -834,6 +859,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
@@ -846,6 +872,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 </details>
 
 **`cc2371db41d8`** · `experiments/overlays/slingshot-load/util/NativeContentProvider.h` · proof not assessed
+- public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/experiments/overlays/slingshot-load/util/NativeContentProvider.h)
@@ -941,6 +968,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 </details>
 
 **`80c06740adf4`** · `Unclassified/include/slingshot-load/util/NativeContentProvider.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
@@ -950,7 +978,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
@@ -961,6 +989,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
@@ -985,6 +1014,7 @@ Earlier paths and their donor versions: `Unclassified/include/slingshot-load/uti
 </details>
 
 **`e093a5dd6501`** · `Unclassified/include/slingshot-load/util/NativeContentProvider.h` · proof not assessed
+- public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)

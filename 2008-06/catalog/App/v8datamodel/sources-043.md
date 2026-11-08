@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/DecalLifetime.cpp`.
 
 **`2b9dd78d2468`** · `App/src/v8datamodel/DecalLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/DecalLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/DecalLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/DecalLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8datamodel/DecalLifetime.cpp)
@@ -65,6 +66,7 @@ Earlier paths and their donor versions: `native-classes/DecalLifetime.cpp`.
 </details>
 
 **`4c677ba83f0f`** · `App/src/v8datamodel/DecalLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/DecalLifetime.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/DecalLifetime.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/DecalLifetime.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8datamodel/DecalLifetime.cpp)
@@ -184,6 +186,8 @@ Earlier paths and their donor versions: `native-classes/DecalLifetime.cpp`.
 </details>
 
 **`c8e86ce81397`** · `native-classes/DecalLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/DecalLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/DecalLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/DecalLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/DecalLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/DecalLifetime.cpp)
@@ -369,6 +373,7 @@ Earlier paths and their donor versions: `native-classes/DocumentExecute.cpp`.
 </details>
 
 **`88c7a168c0fe`** · `App/src/v8datamodel/DocumentExecute.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/DocumentExecute.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/DocumentExecute.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/DocumentExecute.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8datamodel/DocumentExecute.cpp)
@@ -388,6 +393,7 @@ Earlier paths and their donor versions: `native-classes/DocumentExecute.cpp`.
 </details>
 
 **`c3636b4f025d`** · `App/src/v8datamodel/DocumentExecute.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/DocumentExecute.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/DocumentExecute.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/DocumentExecute.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8datamodel/DocumentExecute.cpp)
@@ -466,6 +472,8 @@ Earlier paths and their donor versions: `native-classes/DocumentExecute.cpp`.
 </details>
 
 **`21b4354a6767`** · `native-classes/DocumentExecute.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/DocumentExecute.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/DocumentExecute.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/DocumentExecute.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/DocumentExecute.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentExecute.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/DocumentExecute.cpp)
@@ -640,6 +648,7 @@ Earlier paths and their donor versions: `native-classes/EditSelectionVerbConstru
 </details>
 
 **`6377d3926981`** · `App/src/v8datamodel/EditSelectionVerbConstructor.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/EditSelectionVerbConstructor.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/EditSelectionVerbConstructor.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/EditSelectionVerbConstructor.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8datamodel/EditSelectionVerbConstructor.cpp)
@@ -725,6 +734,7 @@ Earlier paths and their donor versions: `native-classes/EditSelectionVerbConstru
 - public · colingsnyder2-ux · [v8datamodel/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/EditSelectionVerbConstructor.cpp)
 
 **`d7d2692c647d`** · `App/src/v8datamodel/EditSelectionVerbConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/EditSelectionVerbConstructor.cpp)
 - public · colingsnyder2-ux · [v8datamodel/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/EditSelectionVerbConstructor.cpp)
 - public · colingsnyder2-ux · [v8datamodel/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/EditSelectionVerbConstructor.cpp)
 - public · colingsnyder2-ux · [v8datamodel/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8datamodel/EditSelectionVerbConstructor.cpp)
@@ -829,6 +839,8 @@ Earlier paths and their donor versions: `native-classes/EditSelectionVerbConstru
 </details>
 
 **`edd35cf363d3`** · `native-classes/EditSelectionVerbConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/EditSelectionVerbConstructor.cpp)

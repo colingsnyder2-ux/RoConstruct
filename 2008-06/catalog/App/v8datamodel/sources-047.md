@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/Flag.cpp`.
 
 **`6402f724c18d`** · `App/src/v8datamodel/Flag.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/Flag.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/Flag.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/Flag.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8datamodel/Flag.cpp)
@@ -56,6 +57,7 @@ Earlier paths and their donor versions: `native-classes/Flag.cpp`.
 </details>
 
 **`c660725439db`** · `App/src/v8datamodel/Flag.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/Flag.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/Flag.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/Flag.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8datamodel/Flag.cpp)
@@ -142,6 +144,8 @@ Earlier paths and their donor versions: `native-classes/Flag.cpp`.
 - public · colingsnyder2-ux · [native-classes/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/Flag.cpp)
 
 **`a623b3cf34b4`** · `native-classes/Flag.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/Flag.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/Flag.cpp)
 - public · colingsnyder2-ux · [native-classes/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/Flag.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/Flag.cpp)
 - public · colingsnyder2-ux · [native-classes/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/Flag.cpp)
@@ -326,6 +330,7 @@ Earlier paths and their donor versions: `native-classes/FlagStand.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/FlagStand.cpp)
 
 **`83a1b2a12760`** · `App/src/v8datamodel/FlagStand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/FlagStand.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/FlagStand.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/FlagStand.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8datamodel/FlagStand.cpp)
@@ -354,6 +359,7 @@ Earlier paths and their donor versions: `native-classes/FlagStand.cpp`.
 </details>
 
 **`f5fc83d4506d`** · `App/src/v8datamodel/FlagStand.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/FlagStand.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/FlagStand.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/FlagStand.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8datamodel/FlagStand.cpp)
@@ -411,6 +417,8 @@ Earlier paths and their donor versions: `native-classes/FlagStand.cpp`.
 </details>
 
 **`2eb010df1b83`** · `native-classes/FlagStand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/FlagStand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/FlagStand.cpp)
 - public · colingsnyder2-ux · [native-classes/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/FlagStand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/FlagStand.cpp)
 - public · colingsnyder2-ux · [native-classes/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/FlagStand.cpp)
@@ -596,6 +604,7 @@ Earlier paths and their donor versions: `native-classes/FlagStand.cpp`.
 Earlier paths and their donor versions: `native-classes/FlagStandService.cpp`.
 
 **`206f0fb7c948`** · `App/src/v8datamodel/FlagStandService.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/FlagStandService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/FlagStandService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/FlagStandService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8datamodel/FlagStandService.cpp)
@@ -662,6 +671,7 @@ Earlier paths and their donor versions: `native-classes/FlagStandService.cpp`.
 </details>
 
 **`93a7f21c29aa`** · `App/src/v8datamodel/FlagStandService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/FlagStandService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/FlagStandService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/FlagStandService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8datamodel/FlagStandService.cpp)
@@ -777,6 +787,8 @@ Earlier paths and their donor versions: `native-classes/FlagStandService.cpp`.
 </details>
 
 **`897b1b29c68d`** · `native-classes/FlagStandService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/FlagStandService.cpp)
+- canonical · colingsnyder2-ux · [native-classes/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/FlagStandService.cpp)
 - public · colingsnyder2-ux · [native-classes/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/FlagStandService.cpp)
 - canonical · colingsnyder2-ux · [native-classes/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/FlagStandService.cpp)
 - public · colingsnyder2-ux · [native-classes/FlagStandService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/FlagStandService.cpp)

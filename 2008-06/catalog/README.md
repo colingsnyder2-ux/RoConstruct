@@ -11,6 +11,7 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 | [App/tool](App/tool/README.md) | 103 |
 | [Unclassified](Unclassified/README.md) | 203 |
 | [Experiments/overlays](Experiments/overlays/README.md) | 35 |
+| [Experiments/trials](Experiments/trials/README.md) | 260 |
 | [Studio](Studio/README.md) | 0 |
 | [WindowsClient](WindowsClient/README.md) | 581 |
 | [App/v8datamodel](App/v8datamodel/README.md) | 405 |
@@ -22,7 +23,7 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 
 ## Coverage
 
-114 sources checked; 0 errors.
+116 sources checked; 0 errors.
 
 See [source-map.json](../source-map.json) for revisions, hashes, origins, errors and exclusions.
 Local-only candidates have no public code URL until separately reviewed and published.

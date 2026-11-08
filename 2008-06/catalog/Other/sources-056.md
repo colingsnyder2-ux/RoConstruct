@@ -49,6 +49,8 @@ Compatibility path for `App/src/v8datamodel/VisitFactory.cpp`; compile either pa
 </details>
 
 **`6930c6aa7c48`** · `native-classes/VisitFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/VisitFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/VisitFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/VisitFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/VisitFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/VisitFactory.cpp)
@@ -204,6 +206,8 @@ Compatibility path for `Unclassified/src/Widget.cpp`; compile either path, never
 </details>
 
 **`09d416f50899`** · `native-classes/Widget.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/Widget.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/Widget.cpp)
 - public · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/Widget.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/Widget.cpp)
 - public · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/Widget.cpp)
@@ -356,6 +360,7 @@ Compatibility path for `Unclassified/src/Widget.cpp`; compile either path, never
 </details>
 
 **`86565c4d946e`** · `native-classes/Widget.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)
 - draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)
 - draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)
 - draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)
@@ -445,6 +450,7 @@ Compatibility path for `Unclassified/src/WidgetButtons.cpp`; compile either path
 </details>
 
 **`8df09f685399`** · `native-classes/WidgetButtons.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/605888022c35d2b0c3add8ddd3550bb9f21e847819195ea1a0baf3c06055273e/rebuild/2008-06/native-classes/WidgetButtons.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/605888022c35d2b0c3add8ddd3550bb9f21e847819195ea1a0baf3c06055273e/rebuild/2008-06/native-classes/WidgetButtons.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/605888022c35d2b0c3add8ddd3550bb9f21e847819195ea1a0baf3c06055273e/rebuild/2008-06/native-classes/WidgetButtons.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/605888022c35d2b0c3add8ddd3550bb9f21e847819195ea1a0baf3c06055273e/rebuild/2008-06/native-classes/WidgetButtons.cpp)
@@ -559,6 +565,8 @@ Compatibility path for `Unclassified/src/WidgetButtons.cpp`; compile either path
 </details>
 
 **`e73a7d4fd541`** · `native-classes/WidgetButtons.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/WidgetButtons.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/WidgetButtons.cpp)
@@ -734,6 +742,7 @@ Compatibility path for `Unclassified/src/WidgetChat.cpp`; compile either path, n
 </details>
 
 **`ab1887e09fc7`** · `native-classes/WidgetChat.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/7805b2c81b2646cd49aa8b24704c11b91b78b46244c035c7c080d81cdc931883/rebuild/2008-06/native-classes/WidgetChat.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/7805b2c81b2646cd49aa8b24704c11b91b78b46244c035c7c080d81cdc931883/rebuild/2008-06/native-classes/WidgetChat.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/7805b2c81b2646cd49aa8b24704c11b91b78b46244c035c7c080d81cdc931883/rebuild/2008-06/native-classes/WidgetChat.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/7805b2c81b2646cd49aa8b24704c11b91b78b46244c035c7c080d81cdc931883/rebuild/2008-06/native-classes/WidgetChat.cpp)
@@ -790,6 +799,8 @@ Compatibility path for `Unclassified/src/WidgetChat.cpp`; compile either path, n
 </details>
 
 **`afbd55060897`** · `native-classes/WidgetChat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/WidgetChat.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/WidgetChat.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/WidgetChat.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/WidgetChat.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/WidgetChat.cpp)
@@ -936,6 +947,8 @@ Compatibility path for `Unclassified/src/WidgetMenuItem.cpp`; compile either pat
 </details>
 
 **`d7fd15361280`** · `native-classes/WidgetMenuItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/WidgetMenuItem.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/WidgetMenuItem.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/WidgetMenuItem.cpp)

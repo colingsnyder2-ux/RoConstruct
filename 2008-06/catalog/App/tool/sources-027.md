@@ -3,1078 +3,921 @@
 [Project index](README.md) · [Previous](sources-026.md) · [Next](sources-028.md)
 
 <details>
-<summary>native-headers/tool/AxisMoveTool.h — equivalent; 7 content versions</summary>
+<summary>App/src/tool/ToolVerbCheckedModel.cpp — diverged; 12 content versions</summary>
 
-Compatibility path for `App/include/tool/AxisMoveTool.h`; compile either path, never both.
+Earlier paths and their donor versions: `native-classes/ToolVerbCheckedModel.cpp`.
 
-**`0990093dc20d`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
+**`41b539a553ba`** · `App/src/tool/ToolVerbCheckedModel.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
-- local · `rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`4312316eb510`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
+**`a900c560282d`** · `App/src/tool/ToolVerbCheckedModel.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+
+**`c6e3cf3bad3e`** · `App/src/tool/ToolVerbCheckedModel.cpp` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/AxisMoveTool.h`
-- local · `local/findings/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`43f066f65ccb`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-
-<details><summary>69 retained local origins</summary>
-
-- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root-20261107/after/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root-20261107/before/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-run-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`8275550d1d55`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
-
-<details><summary>16 retained local origins</summary>
-
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`a31d0a1220c4`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
-- fork · mewpokemons · [tool/AxisMoveTool.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- fork · mewpokemons · [tool/AxisMoveTool.h](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- fork · mewpokemons · [tool/AxisMoveTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- fork · mewpokemons · [tool/AxisMoveTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
-
-<details><summary>22 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/datamodel-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/datamodel-layout-20261107/retry/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-bulk-20261107/before/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-layout-20261107/after/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-layout-20261107/before/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/history-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mass-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mass-layout-20261107/rest/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-layout-automation-pilot-20261107/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-layout-partial-20261107/bulk/frozen/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`b3e51c830b4d`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
+**`df8eee342138`** · `App/src/tool/ToolVerbCheckedModel.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/tool/ToolVerbCheckedModel.cpp)
 
 <details><summary>1 retained local origins</summary>
 
-- local · `2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/src/tool/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`b7731375755d`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/AxisMoveTool.h)
-- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/AxisMoveTool.h)
+**`41b539a553ba`** · `native-classes/ToolVerbCheckedModel.cpp` · proof not assessed
+- fork · coldek · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+
+<details><summary>7 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-<details>
-<summary>native-headers/tool/BasicMouseTools.h — equivalent; 9 content versions</summary>
+**`71a4464b011d`** · `native-classes/ToolVerbCheckedModel.cpp` · proof not assessed
 
-Compatibility path for `App/include/tool/BasicMouseTools.h`; compile either path, never both.
+<details><summary>1 retained local origins</summary>
 
-**`4c55b79291d7`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+- local · `rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a5054a06413f`** · `native-classes/ToolVerbCheckedModel.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a900c560282d`** · `native-classes/ToolVerbCheckedModel.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+
+**`b7f4a4be68df`** · `native-classes/ToolVerbCheckedModel.cpp` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/BasicMouseTools.h`
-- local · `local/findings/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp`
+- local · `local/findings/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`5316689fafa8`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/BasicMouseTools.h)
+**`c6e3cf3bad3e`** · `native-classes/ToolVerbCheckedModel.cpp` · proof not assessed
 
-**`806ffde74b2a`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+<details><summary>6 retained local origins</summary>
 
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`8151dc8f8b10`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+**`e11ec068ccea`** · `native-classes/ToolVerbCheckedModel.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/ToolVerbCheckedModel.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp)
 
-<details><summary>5 retained local origins</summary>
+<details><summary>13 retained local origins</summary>
 
-- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`91c13a9eee64`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
-- fork · mewpokemons · [tool/BasicMouseTools.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- fork · mewpokemons · [tool/BasicMouseTools.h](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- fork · mewpokemons · [tool/BasicMouseTools.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- fork · mewpokemons · [tool/BasicMouseTools.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-
-<details><summary>22 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/datamodel-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/datamodel-layout-20261107/retry/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-bulk-20261107/before/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-layout-20261107/after/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-layout-20261107/before/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/history-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mass-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mass-layout-20261107/rest/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-layout-automation-pilot-20261107/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-layout-partial-20261107/bulk/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`9a550cb8b6b3`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/BasicMouseTools.h)
-- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-
-<details><summary>69 retained local origins</summary>
-
-- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root-20261107/after/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root-20261107/before/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-run-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`ac7d575e5aa0`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
-- fork · coldek · [tool/BasicMouseTools.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
-- fork · mewpokemons · [tool/BasicMouseTools.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+**`f56c7bf8e11b`** · `native-classes/ToolVerbCheckedModel.cpp` · proof not assessed
 
-<details><summary>1 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
-- local · `work/fork-merge/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`b9a87a211c12`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
-
-<details><summary>16 retained local origins</summary>
-
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`f863fb2ef0ba`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 </details>
 
 <details>
-<summary>native-headers/tool/DragTool.h — equivalent; 7 content versions</summary>
+<summary>App/src/tool/ToolVerbCheckedResize.cpp — diverged; 12 content versions</summary>
 
-Compatibility path for `App/include/tool/DragTool.h`; compile either path, never both.
+Earlier paths and their donor versions: `native-classes/ToolVerbCheckedResize.cpp`.
 
-**`0492285c8229`** · `native-headers/tool/DragTool.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`145d852ef13a`** · `native-headers/tool/DragTool.h` · proof not assessed
+**`72e11ae4850e`** · `App/src/tool/ToolVerbCheckedResize.cpp` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/DragTool.h`
-- local · `local/findings/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`6152fbefeb0b`** · `native-headers/tool/DragTool.h` · proof not assessed
+**`8427c9abb2b5`** · `App/src/tool/ToolVerbCheckedResize.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+
+**`8d9ed26c341e`** · `App/src/tool/ToolVerbCheckedResize.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+
+<details><summary>13 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`aa7ed2d56a67`** · `App/src/tool/ToolVerbCheckedResize.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/tool/ToolVerbCheckedResize.cpp)
 
 <details><summary>1 retained local origins</summary>
 
-- local · `rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/src/tool/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`723014e125ad`** · `native-headers/tool/DragTool.h` · proof not assessed
+**`64b0cc9d1ef5`** · `native-classes/ToolVerbCheckedResize.cpp` · proof not assessed
 
-<details><summary>21 retained local origins</summary>
+<details><summary>2 retained local origins</summary>
 
-- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`857f2a1b0361`** · `native-headers/tool/DragTool.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/DragTool.h)
+**`652af809cb39`** · `native-classes/ToolVerbCheckedResize.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
 
-**`ccd71fb4675f`** · `native-headers/tool/DragTool.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+<details><summary>13 retained local origins</summary>
 
-<details><summary>69 retained local origins</summary>
-
-- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root-20261107/before/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-run-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`d5bd1b3208e6`** · `native-headers/tool/DragTool.h` · proof not assessed
-- fork · coldek · [tool/DragTool.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/DragTool.h)
-- fork · mewpokemons · [tool/DragTool.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/tool/DragTool.h)
-- fork · mewpokemons · [tool/DragTool.h](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-headers/tool/DragTool.h)
-- fork · mewpokemons · [tool/DragTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/DragTool.h)
-- fork · mewpokemons · [tool/DragTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- fork · mewpokemons · [tool/DragTool.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
-- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+**`65c4190d6157`** · `native-classes/ToolVerbCheckedResize.cpp` · proof not assessed
 
-<details><summary>23 retained local origins</summary>
+<details><summary>1 retained local origins</summary>
 
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/datamodel-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/datamodel-layout-20261107/retry/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-bulk-20261107/before/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-layout-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-layout-20261107/before/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/history-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mass-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mass-layout-20261107/rest/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-layout-automation-pilot-20261107/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-layout-partial-20261107/bulk/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`72e11ae4850e`** · `native-classes/ToolVerbCheckedResize.cpp` · proof not assessed
+
+<details><summary>3 retained local origins</summary>
+
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7adeab28279a`** · `native-classes/ToolVerbCheckedResize.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`8427c9abb2b5`** · `native-classes/ToolVerbCheckedResize.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+
+**`8d9ed26c341e`** · `native-classes/ToolVerbCheckedResize.cpp` · proof not assessed
+- fork · coldek · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedResize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp)
+
+<details><summary>10 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`f6c5112d5180`** · `native-classes/ToolVerbCheckedResize.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp`
+- local · `local/findings/2008-06/native-classes/ToolVerbCheckedResize.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
 </details>
 
 <details>
-<summary>native-headers/tool/FlatTool.h — equivalent; 7 content versions</summary>
+<summary>App/src/tool/ToolVerbCheckedShoot.cpp — diverged; 12 content versions</summary>
 
-Compatibility path for `App/include/tool/FlatTool.h`; compile either path, never both.
+Earlier paths and their donor versions: `native-classes/ToolVerbCheckedShoot.cpp`.
 
-**`25f09a08b37c`** · `native-headers/tool/FlatTool.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/FlatTool.h)
+**`87ab32b4e378`** · `App/src/tool/ToolVerbCheckedShoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
 
-**`2c448f7ed40e`** · `native-headers/tool/FlatTool.h` · proof not assessed
+**`bc6da1a684d2`** · `App/src/tool/ToolVerbCheckedShoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
 
 <details><summary>1 retained local origins</summary>
 
-- local · `2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`4f5fa9c89e97`** · `native-headers/tool/FlatTool.h` · proof not assessed
-- fork · coldek · [tool/FlatTool.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- fork · mewpokemons · [tool/FlatTool.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- fork · mewpokemons · [tool/FlatTool.h](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- fork · mewpokemons · [tool/FlatTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- fork · mewpokemons · [tool/FlatTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- fork · mewpokemons · [tool/FlatTool.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-
-<details><summary>23 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/datamodel-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/datamodel-layout-20261107/retry/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-bulk-20261107/before/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-layout-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-layout-20261107/before/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/history-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mass-layout-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mass-layout-20261107/rest/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-layout-automation-pilot-20261107/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-layout-partial-20261107/bulk/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`515266a18b69`** · `native-headers/tool/FlatTool.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/FlatTool.h)
-- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
-
-<details><summary>69 retained local origins</summary>
-
-- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/after-retry/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest2-20261107/before/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/after-reduced/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest3-20261107/before/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/after-reduced/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root-20261107/before/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-full-pass-run-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`7874e8f134b5`** · `native-headers/tool/FlatTool.h` · proof not assessed
-
-<details><summary>21 retained local origins</summary>
-
-- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`820b27448fe4`** · `native-headers/tool/FlatTool.h` · proof not assessed
+**`d71b5f621517`** · `App/src/tool/ToolVerbCheckedShoot.cpp` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
 
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/FlatTool.h`
-- local · `local/findings/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 
-**`9eeea8925334`** · `native-headers/tool/FlatTool.h` · proof not assessed
+**`f295096eaead`** · `App/src/tool/ToolVerbCheckedShoot.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [tool/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp)
+
+<details><summary>13 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/App/src/tool/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`062da290725f`** · `native-classes/ToolVerbCheckedShoot.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp`
+- local · `local/findings/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`6977cc784407`** · `native-classes/ToolVerbCheckedShoot.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`84c25fdd4945`** · `native-classes/ToolVerbCheckedShoot.cpp` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
 
-- local · `rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`87ab32b4e378`** · `native-classes/ToolVerbCheckedShoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+
+**`ae3f526baed2`** · `native-classes/ToolVerbCheckedShoot.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d71b5f621517`** · `native-classes/ToolVerbCheckedShoot.cpp` · proof not assessed
+
+<details><summary>3 retained local origins</summary>
+
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e105496c07e8`** · `native-classes/ToolVerbCheckedShoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- public · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+
+<details><summary>13 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`f295096eaead`** · `native-classes/ToolVerbCheckedShoot.cpp` · proof not assessed
+- fork · coldek · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- fork · mewpokemons · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCheckedShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp)
+
+<details><summary>10 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

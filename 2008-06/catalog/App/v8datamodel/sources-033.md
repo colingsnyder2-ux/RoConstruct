@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/CameraUnits.cpp`.
 
 **`17906058c9d0`** · `App/src/v8datamodel/CameraUnits.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8datamodel/CameraUnits.cpp)
@@ -65,6 +66,7 @@ Earlier paths and their donor versions: `native-classes/CameraUnits.cpp`.
 </details>
 
 **`4077e47e1b07`** · `App/src/v8datamodel/CameraUnits.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8datamodel/CameraUnits.cpp)
@@ -167,6 +169,8 @@ Earlier paths and their donor versions: `native-classes/CameraUnits.cpp`.
 </details>
 
 **`3e5b375d0a2b`** · `native-classes/CameraUnits.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CameraUnits.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CameraUnits.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CameraUnits.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CameraUnits.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CameraUnits.cpp)
@@ -353,6 +357,7 @@ Earlier paths and their donor versions: `native-classes/CameraZoomExtentsAction.
 - public · colingsnyder2-ux · [v8datamodel/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/CameraZoomExtentsAction.cpp)
 
 **`14f30a989b21`** · `App/src/v8datamodel/CameraZoomExtentsAction.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/CameraZoomExtentsAction.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/CameraZoomExtentsAction.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/CameraZoomExtentsAction.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8datamodel/CameraZoomExtentsAction.cpp)
@@ -410,6 +415,7 @@ Earlier paths and their donor versions: `native-classes/CameraZoomExtentsAction.
 </details>
 
 **`77f18423d594`** · `App/src/v8datamodel/CameraZoomExtentsAction.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/CameraZoomExtentsAction.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/CameraZoomExtentsAction.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/CameraZoomExtentsAction.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8datamodel/CameraZoomExtentsAction.cpp)
@@ -488,6 +494,8 @@ Earlier paths and their donor versions: `native-classes/CameraZoomExtentsAction.
 </details>
 
 **`190ce14686a8`** · `native-classes/CameraZoomExtentsAction.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CameraZoomExtentsAction.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CameraZoomExtentsAction.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CameraZoomExtentsAction.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CameraZoomExtentsAction.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CameraZoomExtentsAction.cpp)
@@ -624,6 +632,7 @@ Earlier paths and their donor versions: `native-classes/CameraZoomExtentsAction.
 Earlier paths and their donor versions: `native-classes/ChangeHistoryCommit.cpp`.
 
 **`3919e67254c1`** · `App/src/v8datamodel/ChangeHistoryCommit.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryCommit.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryCommit.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryCommit.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryCommit.cpp)
@@ -657,6 +666,7 @@ Earlier paths and their donor versions: `native-classes/ChangeHistoryCommit.cpp`
 </details>
 
 **`46bb3c30641d`** · `App/src/v8datamodel/ChangeHistoryCommit.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/ChangeHistoryCommit.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/ChangeHistoryCommit.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/ChangeHistoryCommit.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8datamodel/ChangeHistoryCommit.cpp)
@@ -761,6 +771,8 @@ Earlier paths and their donor versions: `native-classes/ChangeHistoryCommit.cpp`
 </details>
 
 **`636267799ae6`** · `native-classes/ChangeHistoryCommit.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ChangeHistoryCommit.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ChangeHistoryCommit.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ChangeHistoryCommit.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ChangeHistoryCommit.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ChangeHistoryCommit.cpp)

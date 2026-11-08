@@ -26,6 +26,7 @@ Earlier paths and their donor versions: `native-headers/ProfiledRakPeer.h`.
 - public · colingsnyder2-ux · [include/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Network/include/ProfiledRakPeer.h)
 
 **`071cc0551211`** · `Network/include/ProfiledRakPeer.h` · proof not assessed
+- public · colingsnyder2-ux · [include/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Network/include/ProfiledRakPeer.h)
 - public · colingsnyder2-ux · [include/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Network/include/ProfiledRakPeer.h)
 - public · colingsnyder2-ux · [include/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Network/include/ProfiledRakPeer.h)
 - public · colingsnyder2-ux · [include/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Network/include/ProfiledRakPeer.h)
@@ -45,6 +46,7 @@ Earlier paths and their donor versions: `native-headers/ProfiledRakPeer.h`.
 </details>
 
 **`c3d4d27c6f72`** · `Network/include/ProfiledRakPeer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Network/include/ProfiledRakPeer.h)
 - canonical · colingsnyder2-ux · [include/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Network/include/ProfiledRakPeer.h)
 - canonical · colingsnyder2-ux · [include/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Network/include/ProfiledRakPeer.h)
 - canonical · colingsnyder2-ux · [include/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Network/include/ProfiledRakPeer.h)
@@ -73,7 +75,7 @@ Earlier paths and their donor versions: `native-headers/ProfiledRakPeer.h`.
 - canonical · colingsnyder2-ux · [include/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Network/include/ProfiledRakPeer.h)
 - canonical · colingsnyder2-ux · [include/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Network/include/ProfiledRakPeer.h)
 
-<details><summary>53 retained local origins</summary>
+<details><summary>54 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Network/include/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Network/include/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
@@ -112,6 +114,7 @@ Earlier paths and their donor versions: `native-headers/ProfiledRakPeer.h`.
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Network/include/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Network/include/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Network/include/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/Network/include/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Network/include/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Network/include/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/Network/include/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
@@ -171,6 +174,8 @@ Earlier paths and their donor versions: `native-headers/ProfiledRakPeer.h`.
 </details>
 
 **`951a4ca164ed`** · `native-headers/ProfiledRakPeer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/ProfiledRakPeer.h)
+- canonical · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/ProfiledRakPeer.h)
 - public · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/ProfiledRakPeer.h)
 - canonical · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/ProfiledRakPeer.h)
 - public · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/ProfiledRakPeer.h)
@@ -226,7 +231,7 @@ Earlier paths and their donor versions: `native-headers/ProfiledRakPeer.h`.
 - public · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/ProfiledRakPeer.h)
 - canonical · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/ProfiledRakPeer.h)
 
-<details><summary>56 retained local origins</summary>
+<details><summary>57 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
@@ -266,6 +271,7 @@ Earlier paths and their donor versions: `native-headers/ProfiledRakPeer.h`.
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/ProfiledRakPeer.h` · root `b52aa15feaea5a0c`
@@ -428,6 +434,7 @@ Earlier paths and their donor versions: `native-headers/RakPeer.h`.
 - public · colingsnyder2-ux · [include/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Network/include/RakPeer.h)
 
 **`5301c5a278fe`** · `Network/include/RakPeer.h` · proof not assessed
+- public · colingsnyder2-ux · [include/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Network/include/RakPeer.h)
 - public · colingsnyder2-ux · [include/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Network/include/RakPeer.h)
 - public · colingsnyder2-ux · [include/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Network/include/RakPeer.h)
 - public · colingsnyder2-ux · [include/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Network/include/RakPeer.h)
@@ -456,6 +463,7 @@ Earlier paths and their donor versions: `native-headers/RakPeer.h`.
 </details>
 
 **`abc1e899ed73`** · `Network/include/RakPeer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Network/include/RakPeer.h)
 - canonical · colingsnyder2-ux · [include/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Network/include/RakPeer.h)
 - canonical · colingsnyder2-ux · [include/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Network/include/RakPeer.h)
 - canonical · colingsnyder2-ux · [include/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Network/include/RakPeer.h)
@@ -486,7 +494,7 @@ Earlier paths and their donor versions: `native-headers/RakPeer.h`.
 - canonical · colingsnyder2-ux · [include/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Network/include/RakPeer.h)
 - canonical · colingsnyder2-ux · [include/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Network/include/RakPeer.h)
 
-<details><summary>58 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Network/include/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Network/include/RakPeer.h` · root `b52aa15feaea5a0c`
@@ -529,6 +537,7 @@ Earlier paths and their donor versions: `native-headers/RakPeer.h`.
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Network/include/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Network/include/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Network/include/RakPeer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/Network/include/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Network/include/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Network/include/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Network/include/RakPeer.h` · root `b52aa15feaea5a0c`
@@ -550,6 +559,8 @@ Earlier paths and their donor versions: `native-headers/RakPeer.h`.
 </details>
 
 **`2363aa188e76`** · `native-headers/RakPeer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/RakPeer.h)
+- canonical · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/RakPeer.h)
 - public · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/RakPeer.h)
 - canonical · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/RakPeer.h)
 - public · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/RakPeer.h)
@@ -609,7 +620,7 @@ Earlier paths and their donor versions: `native-headers/RakPeer.h`.
 - public · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/RakPeer.h)
 - canonical · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/RakPeer.h)
 
-<details><summary>61 retained local origins</summary>
+<details><summary>62 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/RakPeer.h` · root `b52aa15feaea5a0c`
@@ -653,6 +664,7 @@ Earlier paths and their donor versions: `native-headers/RakPeer.h`.
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/RakPeer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/RakPeer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/RakPeer.h` · root `b52aa15feaea5a0c`
@@ -810,6 +822,7 @@ Earlier paths and their donor versions: `native-headers/RakPeer.h`.
 Earlier paths and their donor versions: `native-headers/RakPeerInterface.h`.
 
 **`33d34b28abdd`** · `Network/include/RakPeerInterface.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Network/include/RakPeerInterface.h)
 - canonical · colingsnyder2-ux · [include/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Network/include/RakPeerInterface.h)
 - canonical · colingsnyder2-ux · [include/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Network/include/RakPeerInterface.h)
 - canonical · colingsnyder2-ux · [include/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Network/include/RakPeerInterface.h)
@@ -840,7 +853,7 @@ Earlier paths and their donor versions: `native-headers/RakPeerInterface.h`.
 - canonical · colingsnyder2-ux · [include/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Network/include/RakPeerInterface.h)
 - canonical · colingsnyder2-ux · [include/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Network/include/RakPeerInterface.h)
 
-<details><summary>58 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Network/include/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Network/include/RakPeerInterface.h` · root `b52aa15feaea5a0c`
@@ -883,6 +896,7 @@ Earlier paths and their donor versions: `native-headers/RakPeerInterface.h`.
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Network/include/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Network/include/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Network/include/RakPeerInterface.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/Network/include/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Network/include/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Network/include/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Network/include/RakPeerInterface.h` · root `b52aa15feaea5a0c`
@@ -913,6 +927,7 @@ Earlier paths and their donor versions: `native-headers/RakPeerInterface.h`.
 </details>
 
 **`5e70653ddf2e`** · `Network/include/RakPeerInterface.h` · proof not assessed
+- public · colingsnyder2-ux · [include/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Network/include/RakPeerInterface.h)
 - public · colingsnyder2-ux · [include/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Network/include/RakPeerInterface.h)
 - public · colingsnyder2-ux · [include/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Network/include/RakPeerInterface.h)
 - public · colingsnyder2-ux · [include/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Network/include/RakPeerInterface.h)
@@ -1062,6 +1077,8 @@ Earlier paths and their donor versions: `native-headers/RakPeerInterface.h`.
 - public · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-headers/RakPeerInterface.h)
 
 **`9778bfa8363c`** · `native-headers/RakPeerInterface.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/RakPeerInterface.h)
+- canonical · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/RakPeerInterface.h)
 - public · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/RakPeerInterface.h)
 - canonical · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/RakPeerInterface.h)
 - public · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/RakPeerInterface.h)
@@ -1121,7 +1138,7 @@ Earlier paths and their donor versions: `native-headers/RakPeerInterface.h`.
 - public · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/RakPeerInterface.h)
 - canonical · colingsnyder2-ux · [native-headers/RakPeerInterface.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/RakPeerInterface.h)
 
-<details><summary>61 retained local origins</summary>
+<details><summary>62 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/RakPeerInterface.h` · root `b52aa15feaea5a0c`
@@ -1165,6 +1182,7 @@ Earlier paths and their donor versions: `native-headers/RakPeerInterface.h`.
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/RakPeerInterface.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/RakPeerInterface.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/RakPeerInterface.h` · root `b52aa15feaea5a0c`
