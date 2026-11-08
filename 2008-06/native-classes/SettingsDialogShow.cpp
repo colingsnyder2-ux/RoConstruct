@@ -1,17 +1,2 @@
-// >>> native-status (generated) -- do not edit >>>
-// SettingsDialogShow | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
-// <<< native-status | src 9a454061 | roc native-status --write
-#include "CSettingsDialog.h"
-#include "v8datamodel/GlobalSettings.h"
-
-void showSettingsDialog(CWnd* parent)
-{
-    if (AfxMessageBox(136, MB_OKCANCEL | MB_ICONEXCLAMATION) == IDOK) {
-        CSettingsDialog dialog(parent);
-        if (dialog.DoModal() == IDOK) {
-            AfxMessageBox(142, MB_ICONINFORMATION);
-            RBX::GlobalSettings::singleton()->saveState();
-        }
-    }
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8datamodel/SettingsDialogShow.cpp"

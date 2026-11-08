@@ -1,10 +1,2 @@
-// >>> native-status (generated) -- do not edit >>>
-// SelectionFront | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
-// <<< native-status | src 2aa88ff0 | roc native-status --write
-#include "v8datamodel/Selection.h"
-
-boost::shared_ptr<RBX::Instance> RBX::Selection::front() const
-{
-    return selection->size() > 0 ? *selection->begin() : boost::shared_ptr<Instance>();
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8datamodel/SelectionFront.cpp"

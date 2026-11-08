@@ -1,23 +1,3 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
-// >>> native-status (generated) -- do not edit >>>
-// DocumentLoadFromString | 2008-06 | inactive
-// 0/1 exact by name (0%) | 0/1 exact bodies | no strings | verified 2026-11-07| by EspClaude (deepseek:deepseek-chat)
-// <<< native-status | src 878ca781 | roc native-status --write
-#include <afxwin.h>
-#include "CRobloxDoc.h"
-#include "v8datamodel/DataModel.h"
-#include "script/ScriptContext.h"
-#include "reflection/type.h"
-
-int CRobloxDoc::loadFromString(std::string text)
-{
-    RBX::DataModel::Lock lock(getDataModel());
-    RBX::Reflection::ValueCollection args;
-    try {
-        getDataModel()->create<RBX::ScriptContext>()->executeInNewThread(
-            RBX::Security::LocalGUI, text.c_str(), "Doc script", args);
-        return 1;
-    } catch (std::exception&) {
-        return 0;
-    }
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../WindowsClient/src/DocumentLoadFromString.cpp"
