@@ -26,12 +26,15 @@ ranked.sort(key=lambda x:(-x['unique_symbols'],-x['error_lines'],x['family']))
 verifier=(root/'rebuild/2008-06/tests/verify_document_swap.py').read_text();checks=next(ast.literal_eval(node.value) for node in ast.parse(verifier).body if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='steps' for t in node.targets))
 tests=root/'rebuild/2008-06/tests';coverage={}
 for name in checks:
- path=tests/name
+ path=tests/'matching'/name
+ if not path.is_file():path=tests/name
  if path.exists():
   text=path.read_text(encoding='utf-8');coverage[name]=set(re.findall(r'[\w.-]+\.obj',text,re.I))
 candidate_recorders=collections.defaultdict(list)
 for path in tests.glob('record_*.py'):
  if path.name=='record_native_document_link_trial.py':continue
+ relocated=tests/'matching'/path.name
+ if relocated.is_file():path=relocated
  for objname in set(re.findall(r'[\w.-]+\.obj',path.read_text(encoding='utf-8',errors='replace'),re.I)):
   candidate_recorders[objname].append(path.name)
 objects=[x.replace('\\','/').split('/')[-1] for x in receipt['objects']]

@@ -1,31 +1,3 @@
-import hashlib,json,struct,sys
-from pathlib import Path
-import pefile
-root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
-out=root/'rebuild/2008-06/out/native-layouts';work=out/'worker-slingshot';overlay=work/'shoot-include';(overlay/'v8tree').mkdir(parents=True,exist_ok=True);(overlay/'v8datamodel').mkdir(parents=True,exist_ok=True)
-instance=root/'rebuild/2008-06/native-headers/v8tree/Instance.h';data=instance.read_text();needle='    void removeAllChildren();';assert data.count(needle)==1;(overlay/'v8tree/Instance.h').write_text(data.replace(needle,needle+'\n    boost::shared_ptr<Instance> clone();'))
-part=root/'rebuild/2008-06/native-headers/v8datamodel/PartInstance.h';data=part.read_text();assert data.count('boost::scoped_ptr<Primitive> primitive;')==1;data=data.replace('#include "v8world/World.h"','#include "v8world/World.h"\n#include "v8world/Primitive.h"').replace('boost::scoped_ptr<Primitive> primitive;','Primitive primitive;').replace('primitive.get()','&primitive');(overlay/'v8datamodel/PartInstance.h').write_text(data)
-src=root/'rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp';obj=work/'NativeShootWorkerTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags[:0]=['/I'+str(overlay),'/I'+str(out/'workspace-model-vector-include')];code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],work);assert code==0,log
-raw=obj.read_bytes();sections,symbols,defs,_=match._coff_data_index(raw);name,body,refs=next(x for x in match.coff_functions(raw) if x[0].startswith('?shoot@ShootTool'));target,targetrefs,_=match.target('2008-06','0063e890');assert match.exact_match(target,targetrefs,body,refs);start,index=defs[name];table=sections[index];bindings={}
-for i in range(table[7]):
- off,sym,kind=struct.unpack_from('<IIH',raw,table[5]+10*i);off-=start
- if 0<=off<len(body)-3:
-  value=struct.unpack_from('<I',target,off)[0]
-  if kind==20:value=(0x63e890+off+4+struct.unpack_from('<i',target,off)[0])&0xffffffff
-  bindings[symbols[sym][0]]=value
-for prefix,address in [('?getLocalHeadFromContext@Humanoid@',0x5d7990),('?clone@Instance@',0x559350),('??$shared_static_cast@VPartInstance@RBX@@VInstance@',0x5a1680),('?setParent@Instance@',0x55a8f0),('?getCoordinateFrame@PartInstance@',0x598cb0),('?setPV@Primitive@',0x5e85b0),('??$create@VSoundService@',0x5807b0),('?playSound@SoundService@',0x5bd820)]:assert any(k.startswith(prefix) and v==address for k,v in bindings.items()),(prefix,bindings)
-imagepath=root/'work/2008-06/original-p4-reference/Roblox.exe';pe=pefile.PE(str(imagepath));image=pe.OPTIONAL_HEADER.ImageBase;read=lambda a,n:pe.get_data(a-image,n)
-assert read(0x59d685,6)==bytes.fromhex('8dbe28020000') and read(0x59ba9c,6)==bytes.fromhex('8d8e28020000')
-for call,target_addr in [(0x59d695,0x5e8770),(0x59baa7,0x5e7df0)]:
- code=read(call,5);assert code[0]==0xe8 and (call+5+struct.unpack('<i',code[1:])[0])&0xffffffff==target_addr
-assert read(0x63e9a6,3)==bytes.fromhex('8b4044') and read(0x63e9c1,3)==bytes.fromhex('8b4248')
-assert read(0x41e9df,5)==bytes.fromhex('6804040000')
-for call,target_addr in [(0x41ea06,0x59d4d0)]:
- code=read(call,5);assert code[0]==0xe8 and (call+5+struct.unpack('<i',code[1:])[0])&0xffffffff==target_addr
-layout=work/'layout-include/v8datamodel';layout.mkdir(parents=True,exist_ok=True);layout_data=(overlay/'v8datamodel/PartInstance.h').read_text();assert layout_data.count('Primitive primitive;')==1;(layout/'PartInstance.h').write_text(layout_data.replace('Primitive primitive;','public: Primitive primitive; private:'))
-layout_src=work/'PartLayoutProbe.cpp';layout_src.write_text('#include "v8datamodel/PartInstance.h"\nextern "C" unsigned slingshot_worker_part_size = sizeof(RBX::PartInstance);\nextern "C" unsigned slingshot_worker_primitive_offset = offsetof(RBX::PartInstance,primitive);\n');layout_obj=work/'PartLayoutProbe.obj';layout_flags=['/I'+str(layout.parent)]+flags;code,log=rebuild.run(rebuild.toolchain(21022),'cl',layout_flags+['/Fo'+str(layout_obj),str(layout_src)],work);assert code==0,log
-layout_raw=layout_obj.read_bytes();layout_sections,_,layout_defs,_=match._coff_data_index(layout_raw)
-def layout_value(symbol):
- off,index=layout_defs[symbol];return struct.unpack_from('<I',layout_raw,layout_sections[index][4]+off)[0]
-candidate_size=layout_value('_slingshot_worker_part_size');candidate_offset=layout_value('_slingshot_worker_primitive_offset');assert (candidate_size,candidate_offset)==(0x3b4,0x228)
-sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();evidence=root/'work/2008-06/shared-layouts/part-embedded-primitive-evidence.json';receipt={'scope':'Inactive ShootTool::shoot matches bytes and direct calls; virtual slot +0x40 creates PartInstance, +0x44 launch, +0x48 returns sound enum passed to playSound. Candidate PartInstance is 0x3b4 versus original 0x404 allocation; candidate ctor/dtor not verified, never run.','address':'0x63e890','size':len(body),'bindings':{k:hex(v) for k,v in bindings.items()},'part_primitive_proof':{'offset':'0x228','candidate_size':hex(candidate_size),'candidate_primitive_offset':hex(candidate_offset),'original_allocation_size':'0x404','original_factory':'0x41e9c0','candidate_constructor_match':'not checked','candidate_destructor_match':'not checked','constructor_instruction':'0x59d685','constructor_call':'0x59d695 -> 0x5e8770','destructor_instruction':'0x59ba9c','destructor_call':'0x59baa7 -> 0x5e7df0','original_image_sha256':sha(imagepath),'previous_evidence_sha256':sha(evidence),'native_part_header_sha256':sha(part),'part_overlay_sha256':sha(overlay/'v8datamodel/PartInstance.h'),'layout_probe_object_sha256':sha(layout_obj)},'source_sha256':sha(src),'object_sha256':sha(obj),'header_sha256':sha(root/'rebuild/2008-06/tests/NativeSlingshotWorkerTrial.h'),'instance_overlay_sha256':sha(overlay/'v8tree/Instance.h'),'observer_sha256':sha(Path(__file__))};(root/'work/2008-06/shared-layouts/shoot-worker-trial.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PASS ShootTool::shoot bytes, calls and embedded Primitive constructor/destructor evidence')
+# Compatibility entry point; implementation is in matching/.
+__file__ = str(__import__('pathlib').Path(__file__).parent / 'matching' / 'record_native_shoot_worker_trial.py')
+exec(compile(open(__file__, 'rb').read(), __file__, 'exec'))
