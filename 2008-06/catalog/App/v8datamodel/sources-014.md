@@ -16,6 +16,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointInstanc
 </details>
 
 **`64fc5237c281`** · `App/include/v8datamodel/JointInstance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/include/v8datamodel/JointInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/v8datamodel/JointInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/v8datamodel/JointInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/v8datamodel/JointInstance.h)
@@ -51,6 +52,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointInstanc
 </details>
 
 **`d2bd13f4734d`** · `App/include/v8datamodel/JointInstance.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/include/v8datamodel/JointInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/v8datamodel/JointInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/v8datamodel/JointInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/v8datamodel/JointInstance.h)
@@ -85,7 +87,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointInstanc
 - canonical · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/JointInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/JointInstance.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
@@ -133,6 +135,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointInstanc
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/App/include/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
@@ -188,6 +191,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointInstanc
 </details>
 
 **`263d50119767`** · `native-headers/v8datamodel/JointInstance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/JointInstance.h)
+- canonical · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/v8datamodel/JointInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/v8datamodel/JointInstance.h)
@@ -255,7 +260,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointInstanc
 - public · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/JointInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>69 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
@@ -306,6 +311,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointInstanc
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/JointInstance.h` · root `b52aa15feaea5a0c`
@@ -444,6 +450,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointInstanc
 Earlier paths and their donor versions: `native-headers/v8datamodel/JointsService.h`.
 
 **`54a9119a7c0b`** · `App/include/v8datamodel/JointsService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/include/v8datamodel/JointsService.h)
 - public · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/v8datamodel/JointsService.h)
 - public · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/v8datamodel/JointsService.h)
 - public · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/v8datamodel/JointsService.h)
@@ -496,6 +503,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointsServic
 </details>
 
 **`f066e2d17567`** · `App/include/v8datamodel/JointsService.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/include/v8datamodel/JointsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/v8datamodel/JointsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/v8datamodel/JointsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/v8datamodel/JointsService.h)
@@ -530,7 +538,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointsServic
 - canonical · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/JointsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/JointsService.h)
 
-<details><summary>65 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
@@ -580,6 +588,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointsServic
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/App/include/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
@@ -609,6 +618,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointsServic
 </details>
 
 **`57de7fb19089`** · `native-headers/v8datamodel/JointsService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/JointsService.h)
+- canonical · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/v8datamodel/JointsService.h)
 - public · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/v8datamodel/JointsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/v8datamodel/JointsService.h)
 - public · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/v8datamodel/JointsService.h)
@@ -676,7 +687,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointsServic
 - public · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/JointsService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/JointsService.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>69 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
@@ -727,6 +738,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointsServic
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/JointsService.h` · root `b52aa15feaea5a0c`
@@ -796,8 +808,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/JointsServic
 </details>
 
 **`eee78f0fc752`** · `native-headers/v8datamodel/JointsService.h` · proof not assessed
-- draft · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/JointsService.h)
+- draft · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/JointsService.h)
 - fork · coldek · [v8datamodel/JointsService.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8datamodel/JointsService.h)
+- draft · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/JointsService.h)
 - draft · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/JointsService.h)
 - draft · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/JointsService.h)
 - draft · colingsnyder2-ux · [v8datamodel/JointsService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/JointsService.h)

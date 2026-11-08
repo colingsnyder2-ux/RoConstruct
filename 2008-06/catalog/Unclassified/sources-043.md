@@ -81,12 +81,14 @@ Earlier paths and their donor versions: `native-classes/LogFormatMemory.cpp`.
 </details>
 
 **`8529be04dfe9`** · `Unclassified/src/LogFormatMemory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/LogFormatMemory.cpp)
 
 **`b5b8a7904c78`** · `Unclassified/src/LogFormatMemory.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - canonical · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - canonical · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - canonical · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/LogFormatMemory.cpp)
@@ -159,6 +161,8 @@ Earlier paths and their donor versions: `native-classes/LogFormatMemory.cpp`.
 </details>
 
 **`1623621c4783`** · `native-classes/LogFormatMemory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/LogFormatMemory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/LogFormatMemory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LogFormatMemory.cpp)
@@ -335,6 +339,7 @@ Earlier paths and their donor versions: `native-classes/LoginRenewer.cpp`.
 </details>
 
 **`5797bfd3a95d`** · `Unclassified/src/LoginRenewer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/LoginRenewer.cpp)
@@ -382,6 +387,7 @@ Earlier paths and their donor versions: `native-classes/LoginRenewer.cpp`.
 </details>
 
 **`a42335289240`** · `Unclassified/src/LoginRenewer.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
@@ -617,6 +623,8 @@ Earlier paths and their donor versions: `native-classes/LoginRenewer.cpp`.
 </details>
 
 **`dda2f583fd5d`** · `native-classes/LoginRenewer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/LoginRenewer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LoginRenewer.cpp)
@@ -716,6 +724,7 @@ Compatibility path for `App/src/script/LuaAllocatorStats.cpp`; compile either pa
 Earlier paths and their donor versions: `native-classes/LuaAllocatorStats.cpp`.
 
 **`530dbefb5341`** · `Unclassified/src/LuaAllocatorStats.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - canonical · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - canonical · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - canonical · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
@@ -830,6 +839,7 @@ Earlier paths and their donor versions: `native-classes/LuaAllocatorStats.cpp`.
 </details>
 
 **`d261362c3ec3`** · `Unclassified/src/LuaAllocatorStats.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
@@ -945,6 +955,8 @@ Earlier paths and their donor versions: `native-classes/LuaAllocatorStats.cpp`.
 </details>
 
 **`b9b55529efb3`** · `native-classes/LuaAllocatorStats.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/LuaAllocatorStats.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/LuaAllocatorStats.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LuaAllocatorStats.cpp)

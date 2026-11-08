@@ -17,6 +17,7 @@ Compatibility path for `Unclassified/src/ActiveDocumentData.cpp`; compile either
 </details>
 
 **`27b38225b02c`** · `native-classes/ActiveDocumentData.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
@@ -121,6 +122,7 @@ Compatibility path for `Unclassified/src/ActiveDocumentData.cpp`; compile either
 </details>
 
 **`b23d96eb179f`** · `native-classes/ActiveDocumentData.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/e9638214409f12cb1bc43b827a7ffaee309b289705eea80716d01adf37de22a9/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 - draft · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/e9638214409f12cb1bc43b827a7ffaee309b289705eea80716d01adf37de22a9/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 - draft · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/e9638214409f12cb1bc43b827a7ffaee309b289705eea80716d01adf37de22a9/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
 - draft · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/e9638214409f12cb1bc43b827a7ffaee309b289705eea80716d01adf37de22a9/rebuild/2008-06/native-classes/ActiveDocumentData.cpp)
@@ -184,6 +186,7 @@ Compatibility path for `Unclassified/src/ActiveDocumentData.cpp`; compile either
 </details>
 
 **`bfe89c39fa05`** · `native-classes/ActiveDocumentData.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ActiveDocumentData.cpp)
 - public · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ActiveDocumentData.cpp)
 - public · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ActiveDocumentData.cpp)
 - public · colingsnyder2-ux · [native-classes/ActiveDocumentData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ActiveDocumentData.cpp)
@@ -303,6 +306,8 @@ Compatibility path for `Unclassified/src/ActiveDocumentData.cpp`; compile either
 Compatibility path for `Unclassified/src/AppDocumentStartup.cpp`; compile either path, never both.
 
 **`37e922836c8a`** · `native-classes/AppDocumentStartup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AppDocumentStartup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/AppDocumentStartup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AppDocumentStartup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/AppDocumentStartup.cpp)
 - public · colingsnyder2-ux · [native-classes/AppDocumentStartup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/AppDocumentStartup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AppDocumentStartup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/AppDocumentStartup.cpp)
 - public · colingsnyder2-ux · [native-classes/AppDocumentStartup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/AppDocumentStartup.cpp)
@@ -518,6 +523,8 @@ Compatibility path for `Unclassified/src/AppFramework.cpp`; compile either path,
 </details>
 
 **`f343e03c5823`** · `native-classes/AppFramework.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AppFramework.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/AppFramework.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AppFramework.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/AppFramework.cpp)
 - public · colingsnyder2-ux · [native-classes/AppFramework.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/AppFramework.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AppFramework.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/AppFramework.cpp)
 - public · colingsnyder2-ux · [native-classes/AppFramework.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/AppFramework.cpp)
@@ -755,6 +762,8 @@ Compatibility path for `Unclassified/src/AppOpenFile.cpp`; compile either path, 
 </details>
 
 **`4f9548d7bd74`** · `native-classes/AppOpenFile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/AppOpenFile.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/AppOpenFile.cpp)
 - public · colingsnyder2-ux · [native-classes/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/AppOpenFile.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/AppOpenFile.cpp)
 - public · colingsnyder2-ux · [native-classes/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/AppOpenFile.cpp)
@@ -911,6 +920,8 @@ Compatibility path for `Unclassified/src/AppOpenFiles.cpp`; compile either path,
 </details>
 
 **`40aa25591134`** · `native-classes/AppOpenFiles.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/AppOpenFiles.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/AppOpenFiles.cpp)
 - public · colingsnyder2-ux · [native-classes/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/AppOpenFiles.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/AppOpenFiles.cpp)
 - public · colingsnyder2-ux · [native-classes/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/AppOpenFiles.cpp)
@@ -1351,35 +1362,5 @@ Compatibility path for `Unclassified/src/AppOpenFiles.cpp`; compile either path,
 - fork · mewpokemons · [native-classes/AppUnit570_2008Reflection.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/AppUnit570_2008Reflection.cpp)
 - fork · mewpokemons · [native-classes/AppUnit570_2008Reflection.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/AppUnit570_2008Reflection.cpp)
 - fork · mewpokemons · [native-classes/AppUnit570_2008Reflection.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/AppUnit570_2008Reflection.cpp)
-
-</details>
-
-<details>
-<summary>native-classes/AppUnit570_2008ServiceProvider.cpp — candidate-only; 1 content versions</summary>
-
-**`a71c0178a81d`** · `native-classes/AppUnit570_2008ServiceProvider.cpp` · proof not assessed
-- fork · mewpokemons · [native-classes/AppUnit570_2008ServiceProvider.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/AppUnit570_2008ServiceProvider.cpp)
-- fork · mewpokemons · [native-classes/AppUnit570_2008ServiceProvider.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/AppUnit570_2008ServiceProvider.cpp)
-- fork · mewpokemons · [native-classes/AppUnit570_2008ServiceProvider.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/AppUnit570_2008ServiceProvider.cpp)
-
-</details>
-
-<details>
-<summary>native-classes/AppUnit57C_2008ModelInstance.cpp — candidate-only; 1 content versions</summary>
-
-**`f1025ba347ff`** · `native-classes/AppUnit57C_2008ModelInstance.cpp` · proof not assessed
-- fork · mewpokemons · [native-classes/AppUnit57C_2008ModelInstance.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp)
-- fork · mewpokemons · [native-classes/AppUnit57C_2008ModelInstance.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp)
-- fork · mewpokemons · [native-classes/AppUnit57C_2008ModelInstance.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp)
-
-</details>
-
-<details>
-<summary>native-classes/AppUnit57C_2008Script.cpp — candidate-only; 1 content versions</summary>
-
-**`02c1cc3f60f3`** · `native-classes/AppUnit57C_2008Script.cpp` · proof not assessed
-- fork · mewpokemons · [native-classes/AppUnit57C_2008Script.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/AppUnit57C_2008Script.cpp)
-- fork · mewpokemons · [native-classes/AppUnit57C_2008Script.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/AppUnit57C_2008Script.cpp)
-- fork · mewpokemons · [native-classes/AppUnit57C_2008Script.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/AppUnit57C_2008Script.cpp)
 
 </details>

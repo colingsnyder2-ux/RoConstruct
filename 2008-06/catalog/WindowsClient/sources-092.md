@@ -177,6 +177,8 @@ Compatibility path for `WindowsClient/src/CSelectionPropGrid.cpp`; compile eithe
 </details>
 
 **`e449fb336f5e`** · `native-classes/CSelectionPropGrid.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CSelectionPropGrid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CSelectionPropGrid.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CSelectionPropGrid.cpp)
@@ -348,6 +350,8 @@ Compatibility path for `WindowsClient/src/CSelectionPropGridEvents.cpp`; compile
 </details>
 
 **`9337e880bea4`** · `native-classes/CSelectionPropGridEvents.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CSelectionPropGridEvents.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CSelectionPropGridEvents.cpp)
@@ -628,6 +632,8 @@ Compatibility path for `WindowsClient/src/CSelectionPropGridSelection.cpp`; comp
 </details>
 
 **`4af9e76453f5`** · `native-classes/CSelectionPropGridSelection.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CSelectionPropGridSelection.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CSelectionPropGridSelection.cpp)
@@ -820,6 +826,8 @@ Compatibility path for `WindowsClient/src/CSettingsDialog.cpp`; compile either p
 - public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CSettingsDialog.cpp)
 
 **`39c018bbf9d4`** · `native-classes/CSettingsDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CSettingsDialog.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CSettingsDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CSettingsDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CSettingsDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CSettingsDialog.cpp)

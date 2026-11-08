@@ -52,6 +52,7 @@ Earlier paths and their donor versions: `native-classes/HandleHitTest.cpp`.
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/HandleHitTest.cpp)
 
 **`b36ad78b17c2`** · `Unclassified/src/HandleHitTest.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/HandleHitTest.cpp)
@@ -117,6 +118,7 @@ Earlier paths and their donor versions: `native-classes/HandleHitTest.cpp`.
 </details>
 
 **`e76d6e616783`** · `Unclassified/src/HandleHitTest.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
@@ -207,6 +209,8 @@ Earlier paths and their donor versions: `native-classes/HandleHitTest.cpp`.
 </details>
 
 **`e2f0c1cd2125`** · `native-classes/HandleHitTest.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HandleHitTest.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HandleHitTest.cpp)
@@ -315,6 +319,7 @@ Compatibility path for `Rendering/src/AppDraw/HandleRadius.cpp`; compile either 
 Earlier paths and their donor versions: `native-classes/HandleRadius.cpp`.
 
 **`039696672f10`** · `Unclassified/src/HandleRadius.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/HandleRadius.cpp)
@@ -327,6 +332,7 @@ Earlier paths and their donor versions: `native-classes/HandleRadius.cpp`.
 </details>
 
 **`1409a17dee8d`** · `Unclassified/src/HandleRadius.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/HandleRadius.cpp)
 - public · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/HandleRadius.cpp)
 - public · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/HandleRadius.cpp)
 - public · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/HandleRadius.cpp)
@@ -443,6 +449,8 @@ Earlier paths and their donor versions: `native-classes/HandleRadius.cpp`.
 </details>
 
 **`25c75cc874d7`** · `native-classes/HandleRadius.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HandleRadius.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/HandleRadius.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/HandleRadius.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HandleRadius.cpp)
@@ -620,12 +628,14 @@ Compatibility path for `App/src/gui/HealthHud.cpp`; compile either path, never b
 Earlier paths and their donor versions: `native-classes/HealthHud.cpp`.
 
 **`6dd7ade84e7d`** · `Unclassified/src/HealthHud.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/HealthHud.cpp)
 - public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/HealthHud.cpp)
 - public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/HealthHud.cpp)
 - public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/HealthHud.cpp)
 - public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/HealthHud.cpp)
 
 **`7a2a66bcdb2c`** · `Unclassified/src/HealthHud.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/HealthHud.cpp)
@@ -770,6 +780,8 @@ Earlier paths and their donor versions: `native-classes/HealthHud.cpp`.
 </details>
 
 **`aaceee2cd00a`** · `native-classes/HealthHud.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HealthHud.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/HealthHud.cpp)
 - public · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/HealthHud.cpp)
 - public · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HealthHud.cpp)
@@ -919,6 +931,7 @@ Earlier paths and their donor versions: `native-classes/HumanoidState.cpp`.
 - public · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/HumanoidState.cpp)
 
 **`73ffa7b3ce36`** · `Unclassified/src/HumanoidState.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/HumanoidState.cpp)
 - canonical · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/HumanoidState.cpp)
 - canonical · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/HumanoidState.cpp)
 - canonical · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/HumanoidState.cpp)
@@ -961,6 +974,7 @@ Earlier paths and their donor versions: `native-classes/HumanoidState.cpp`.
 </details>
 
 **`f1dd5bcdc3fc`** · `Unclassified/src/HumanoidState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/HumanoidState.cpp)
 - public · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/HumanoidState.cpp)
 - public · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/HumanoidState.cpp)
 - public · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/HumanoidState.cpp)
@@ -1092,6 +1106,8 @@ Earlier paths and their donor versions: `native-classes/HumanoidState.cpp`.
 </details>
 
 **`d446b6f15725`** · `native-classes/HumanoidState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HumanoidState.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/HumanoidState.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HumanoidState.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/HumanoidState.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HumanoidState.cpp)

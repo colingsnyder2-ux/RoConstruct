@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/CRobloxDHtmlDialog.h`.
 
 **`4301ebf2d657`** · `WindowsClient/include/CRobloxDHtmlDialog.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - canonical · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - canonical · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - canonical · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
@@ -41,7 +42,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDHtmlDialog.h`.
 - canonical · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - canonical · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
@@ -89,6 +90,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDHtmlDialog.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
@@ -143,6 +145,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDHtmlDialog.h`.
 - public · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 
 **`cdb154c39f34`** · `WindowsClient/include/CRobloxDHtmlDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - public · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - public · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
 - public · colingsnyder2-ux · [include/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CRobloxDHtmlDialog.h)
@@ -220,6 +223,8 @@ Earlier paths and their donor versions: `native-headers/CRobloxDHtmlDialog.h`.
 </details>
 
 **`88724f138d72`** · `native-headers/CRobloxDHtmlDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CRobloxDHtmlDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/CRobloxDHtmlDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CRobloxDHtmlDialog.h)
@@ -285,7 +290,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDHtmlDialog.h`.
 - public · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CRobloxDHtmlDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxDHtmlDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
@@ -334,6 +339,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDHtmlDialog.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CRobloxDHtmlDialog.h` · root `b52aa15feaea5a0c`
@@ -544,6 +550,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDHtmlDialog.h`.
 Earlier paths and their donor versions: `native-headers/CRobloxDoc.h`.
 
 **`0e9132224535`** · `WindowsClient/include/CRobloxDoc.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h)
 - canonical · colingsnyder2-ux · [include/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h)
 - canonical · colingsnyder2-ux · [include/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h)
 - canonical · colingsnyder2-ux · [include/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h)
@@ -577,7 +584,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDoc.h`.
 - canonical · colingsnyder2-ux · [include/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h)
 - canonical · colingsnyder2-ux · [include/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h` · root `b52aa15feaea5a0c`
@@ -625,6 +632,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDoc.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CRobloxDoc.h` · root `b52aa15feaea5a0c`
@@ -679,6 +687,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDoc.h`.
 </details>
 
 **`a9b9322f491b`** · `WindowsClient/include/CRobloxDoc.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/CRobloxDoc.h)
 - public · colingsnyder2-ux · [include/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/CRobloxDoc.h)
 - public · colingsnyder2-ux · [include/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CRobloxDoc.h)
 - public · colingsnyder2-ux · [include/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CRobloxDoc.h)
@@ -789,6 +798,8 @@ Earlier paths and their donor versions: `native-headers/CRobloxDoc.h`.
 </details>
 
 **`46ac62515201`** · `native-headers/CRobloxDoc.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CRobloxDoc.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/CRobloxDoc.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/CRobloxDoc.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/CRobloxDoc.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CRobloxDoc.h)
@@ -854,7 +865,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDoc.h`.
 - public · colingsnyder2-ux · [native-headers/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CRobloxDoc.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CRobloxDoc.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
@@ -903,6 +914,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxDoc.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CRobloxDoc.h` · root `b52aa15feaea5a0c`

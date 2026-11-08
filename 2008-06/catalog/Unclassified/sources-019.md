@@ -113,6 +113,7 @@ Earlier paths and their donor versions: `native-headers/workspace-camera/reflect
 </details>
 
 **`2fc061b80937`** · `Unclassified/include/workspace-camera/reflection/function.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
@@ -120,7 +121,7 @@ Earlier paths and their donor versions: `native-headers/workspace-camera/reflect
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -130,6 +131,7 @@ Earlier paths and their donor versions: `native-headers/workspace-camera/reflect
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -144,6 +146,7 @@ Earlier paths and their donor versions: `native-headers/workspace-camera/reflect
 </details>
 
 **`f19cdf746d8e`** · `Unclassified/include/workspace-camera/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
@@ -216,6 +219,8 @@ Earlier paths and their donor versions: `native-headers/workspace-camera/reflect
 </details>
 
 **`34818bf706a9`** · `native-headers/workspace-camera/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/workspace-camera/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/workspace-camera/reflection/function.h)
@@ -279,7 +284,7 @@ Earlier paths and their donor versions: `native-headers/workspace-camera/reflect
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -326,6 +331,7 @@ Earlier paths and their donor versions: `native-headers/workspace-camera/reflect
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -365,6 +371,7 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 </details>
 
 **`365e37bdf5af`** · `Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
@@ -414,6 +421,7 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 
 **`c2a51a511331`** · `Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
@@ -446,7 +454,7 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -491,6 +499,7 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -512,6 +521,8 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 </details>
 
 **`1ab726448df1`** · `native-headers/writer-2008/v8xml/XmlSerializer.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
@@ -575,7 +586,7 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -622,6 +633,7 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -645,6 +657,7 @@ Earlier paths and their donor versions: `native-headers/writer-2008/v8xml/XmlSer
 </details>
 
 **`27c830f7288c`** · `native-headers/writer-2008/v8xml/XmlSerializer.h` · proof not assessed
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)

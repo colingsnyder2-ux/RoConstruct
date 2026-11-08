@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/CWorkspaceLoad.cpp`.
 
 **`01b80ff7c00b`** · `WindowsClient/src/CWorkspaceLoad.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CWorkspaceLoad.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CWorkspaceLoad.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CWorkspaceLoad.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CWorkspaceLoad.cpp)
@@ -46,6 +47,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceLoad.cpp`.
 - public · colingsnyder2-ux · [src/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CWorkspaceLoad.cpp)
 
 **`5222a21cf237`** · `WindowsClient/src/CWorkspaceLoad.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceLoad.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceLoad.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceLoad.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceLoad.cpp)
@@ -221,6 +223,8 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceLoad.cpp`.
 </details>
 
 **`b2024c7bf521`** · `native-classes/CWorkspaceLoad.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWorkspaceLoad.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CWorkspaceLoad.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CWorkspaceLoad.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CWorkspaceLoad.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CWorkspaceLoad.cpp)
@@ -336,6 +340,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceLoad.cpp`.
 Earlier paths and their donor versions: `native-classes/CWorkspaceObjectSafety.cpp`.
 
 **`13c77a7cc4fe`** · `WindowsClient/src/CWorkspaceObjectSafety.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CWorkspaceObjectSafety.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CWorkspaceObjectSafety.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CWorkspaceObjectSafety.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CWorkspaceObjectSafety.cpp)
@@ -354,6 +359,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceObjectSafety.c
 </details>
 
 **`63210d5362d6`** · `WindowsClient/src/CWorkspaceObjectSafety.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceObjectSafety.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceObjectSafety.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceObjectSafety.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceObjectSafety.cpp)
@@ -447,6 +453,8 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceObjectSafety.c
 - public · colingsnyder2-ux · [src/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CWorkspaceObjectSafety.cpp)
 
 **`397a2365e1c8`** · `native-classes/CWorkspaceObjectSafety.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CWorkspaceObjectSafety.cpp)

@@ -3,6 +3,36 @@
 [Project index](README.md) · [Previous](sources-076.md) · [Next](sources-078.md)
 
 <details>
+<summary>native-classes/AppUnit570_2008ServiceProvider.cpp — candidate-only; 1 content versions</summary>
+
+**`a71c0178a81d`** · `native-classes/AppUnit570_2008ServiceProvider.cpp` · proof not assessed
+- fork · mewpokemons · [native-classes/AppUnit570_2008ServiceProvider.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/AppUnit570_2008ServiceProvider.cpp)
+- fork · mewpokemons · [native-classes/AppUnit570_2008ServiceProvider.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/AppUnit570_2008ServiceProvider.cpp)
+- fork · mewpokemons · [native-classes/AppUnit570_2008ServiceProvider.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/AppUnit570_2008ServiceProvider.cpp)
+
+</details>
+
+<details>
+<summary>native-classes/AppUnit57C_2008ModelInstance.cpp — candidate-only; 1 content versions</summary>
+
+**`f1025ba347ff`** · `native-classes/AppUnit57C_2008ModelInstance.cpp` · proof not assessed
+- fork · mewpokemons · [native-classes/AppUnit57C_2008ModelInstance.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp)
+- fork · mewpokemons · [native-classes/AppUnit57C_2008ModelInstance.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp)
+- fork · mewpokemons · [native-classes/AppUnit57C_2008ModelInstance.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp)
+
+</details>
+
+<details>
+<summary>native-classes/AppUnit57C_2008Script.cpp — candidate-only; 1 content versions</summary>
+
+**`02c1cc3f60f3`** · `native-classes/AppUnit57C_2008Script.cpp` · proof not assessed
+- fork · mewpokemons · [native-classes/AppUnit57C_2008Script.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/AppUnit57C_2008Script.cpp)
+- fork · mewpokemons · [native-classes/AppUnit57C_2008Script.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/AppUnit57C_2008Script.cpp)
+- fork · mewpokemons · [native-classes/AppUnit57C_2008Script.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/AppUnit57C_2008Script.cpp)
+
+</details>
+
+<details>
 <summary>native-classes/AppUnit588_2008ChangeHistory.cpp — candidate-only; 1 content versions</summary>
 
 **`51c0555f144b`** · `native-classes/AppUnit588_2008ChangeHistory.cpp` · proof not assessed
@@ -235,6 +265,8 @@ Compatibility path for `Unclassified/src/ApplicationBaseUrl.cpp`; compile either
 - public · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ApplicationBaseUrl.cpp)
 
 **`35067f074450`** · `native-classes/ApplicationBaseUrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ApplicationBaseUrl.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ApplicationBaseUrl.cpp)
 - public · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ApplicationBaseUrl.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ApplicationBaseUrl.cpp)
 - public · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ApplicationBaseUrl.cpp)
@@ -470,6 +502,7 @@ Compatibility path for `Unclassified/src/ApplicationBaseUrl.cpp`; compile either
 </details>
 
 **`3f750762b8d9`** · `native-classes/ApplicationExceptionLog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ApplicationExceptionLog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ApplicationExceptionLog.cpp)
 - public · colingsnyder2-ux · [native-classes/ApplicationExceptionLog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ApplicationExceptionLog.cpp)
 - public · colingsnyder2-ux · [native-classes/ApplicationExceptionLog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ApplicationExceptionLog.cpp)
 - public · colingsnyder2-ux · [native-classes/ApplicationExceptionLog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ApplicationExceptionLog.cpp)
@@ -549,6 +582,8 @@ Compatibility path for `Unclassified/src/ApplicationWindowClass.cpp`; compile ei
 </details>
 
 **`0458110472a8`** · `native-classes/ApplicationWindowClass.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ApplicationWindowClass.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ApplicationWindowClass.cpp)
 - public · colingsnyder2-ux · [native-classes/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ApplicationWindowClass.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ApplicationWindowClass.cpp)
 - public · colingsnyder2-ux · [native-classes/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ApplicationWindowClass.cpp)
@@ -714,6 +749,8 @@ Compatibility path for `Unclassified/src/AxisVerbConstructors.cpp`; compile eith
 </details>
 
 **`75d19b2029da`** · `native-classes/AxisVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/AxisVerbConstructors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/AxisVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/AxisVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/AxisVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/AxisVerbConstructors.cpp)
@@ -932,6 +969,8 @@ Compatibility path for `Unclassified/src/BasicVerbConstructors.cpp`; compile eit
 </details>
 
 **`26e53db60f0a`** · `native-classes/BasicVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/BasicVerbConstructors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/BasicVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/BasicVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/BasicVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/BasicVerbConstructors.cpp)
@@ -1075,6 +1114,8 @@ Compatibility path for `Unclassified/src/BasicVerbConstructors.cpp`; compile eit
 Compatibility path for `Unclassified/src/BoolPropertyVerb.cpp`; compile either path, never both.
 
 **`11b7c126c92c`** · `native-classes/BoolPropertyVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/BoolPropertyVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/BoolPropertyVerb.cpp)

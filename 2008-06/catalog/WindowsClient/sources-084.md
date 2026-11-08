@@ -14,6 +14,7 @@
 </details>
 
 **`543aa964d723`** · `native-classes/CMainFramePropertyGrid.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CMainFramePropertyGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CMainFramePropertyGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CMainFramePropertyGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CMainFramePropertyGrid.cpp)
@@ -138,6 +139,8 @@ Compatibility path for `WindowsClient/src/CMainFrameSettingsCommand.cpp`; compil
 </details>
 
 **`bd5308a610f6`** · `native-classes/CMainFrameSettingsCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
@@ -250,6 +253,8 @@ Compatibility path for `WindowsClient/src/CMainFrameSettingsCommand.cpp`; compil
 Compatibility path for `WindowsClient/src/CMainFrameShow.cpp`; compile either path, never both.
 
 **`479110ed9434`** · `native-classes/CMainFrameShow.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CMainFrameShow.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CMainFrameShow.cpp)
@@ -586,6 +591,8 @@ Compatibility path for `WindowsClient/src/CMainFrameToolbars.cpp`; compile eithe
 </details>
 
 **`83e5f7e0e00d`** · `native-classes/CMainFrameToolbars.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameToolbars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CMainFrameToolbars.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameToolbars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CMainFrameToolbars.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameToolbars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CMainFrameToolbars.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameToolbars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CMainFrameToolbars.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameToolbars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CMainFrameToolbars.cpp)
@@ -729,6 +736,8 @@ Compatibility path for `WindowsClient/src/CMainFrameToolbars.cpp`; compile eithe
 Compatibility path for `WindowsClient/src/CMainFrameWindow.cpp`; compile either path, never both.
 
 **`111a271ad374`** · `native-classes/CMainFrameWindow.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CMainFrameWindow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CMainFrameWindow.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CMainFrameWindow.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CMainFrameWindow.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CMainFrameWindow.cpp)
@@ -951,6 +960,8 @@ Compatibility path for `WindowsClient/src/CMainFrameXtp.cpp`; compile either pat
 </details>
 
 **`1fdaf6394075`** · `native-classes/CMainFrameXtp.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CMainFrameXtp.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CMainFrameXtp.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CMainFrameXtp.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CMainFrameXtp.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CMainFrameXtp.cpp)
@@ -1110,6 +1121,7 @@ Compatibility path for `WindowsClient/src/CMainFrameXtp.cpp`; compile either pat
 </details>
 
 **`8e1c5dc8bfd3`** · `native-classes/CMainFrameXtp.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)
 - archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)
 - archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)
 - archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)

@@ -51,6 +51,7 @@ Earlier paths and their donor versions: `native-classes/SerializerRoot.cpp`.
 </details>
 
 **`0875605fa696`** · `Unclassified/src/SerializerRoot.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/SerializerRoot.cpp)
 - canonical · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/SerializerRoot.cpp)
 - canonical · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/SerializerRoot.cpp)
 - canonical · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/SerializerRoot.cpp)
@@ -91,6 +92,7 @@ Earlier paths and their donor versions: `native-classes/SerializerRoot.cpp`.
 - public · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/SerializerRoot.cpp)
 
 **`cf22a32cb3af`** · `Unclassified/src/SerializerRoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/SerializerRoot.cpp)
@@ -113,6 +115,8 @@ Earlier paths and their donor versions: `native-classes/SerializerRoot.cpp`.
 </details>
 
 **`42f93f20abbc`** · `native-classes/SerializerRoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/SerializerRoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/SerializerRoot.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SerializerRoot.cpp)
@@ -431,6 +435,7 @@ Earlier paths and their donor versions: `native-classes/ServiceProvider.cpp`.
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ServiceProvider.cpp)
 
 **`37280e28e71d`** · `Unclassified/src/ServiceProvider.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ServiceProvider.cpp)
@@ -486,6 +491,7 @@ Earlier paths and their donor versions: `native-classes/ServiceProvider.cpp`.
 </details>
 
 **`9690dd985693`** · `Unclassified/src/ServiceProvider.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)
@@ -719,6 +725,8 @@ Earlier paths and their donor versions: `native-classes/ServiceProvider.cpp`.
 </details>
 
 **`602c43c09d99`** · `native-classes/ServiceProvider.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ServiceProvider.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ServiceProvider.cpp)
@@ -882,11 +890,13 @@ Compatibility path for `App/src/tool/SlingshotBallistic.cpp`; compile either pat
 Earlier paths and their donor versions: `native-classes/SlingshotBallistic.cpp`.
 
 **`29292519be23`** · `Unclassified/src/SlingshotBallistic.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 
 **`31308bbfa4a0`** · `Unclassified/src/SlingshotBallistic.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - canonical · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - canonical · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - canonical · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/SlingshotBallistic.cpp)
@@ -1001,6 +1011,8 @@ Earlier paths and their donor versions: `native-classes/SlingshotBallistic.cpp`.
 </details>
 
 **`1015431d697c`** · `native-classes/SlingshotBallistic.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/SlingshotBallistic.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/SlingshotBallistic.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SlingshotBallistic.cpp)

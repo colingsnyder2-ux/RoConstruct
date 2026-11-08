@@ -52,6 +52,7 @@ Earlier paths and their donor versions: `native-classes/ChatOutput.cpp`.
 - public · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ChatOutput.cpp)
 
 **`7e9f73a6bce0`** · `Unclassified/src/ChatOutput.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ChatOutput.cpp)
 - canonical · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ChatOutput.cpp)
 - canonical · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ChatOutput.cpp)
 - canonical · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ChatOutput.cpp)
@@ -115,6 +116,7 @@ Earlier paths and their donor versions: `native-classes/ChatOutput.cpp`.
 </details>
 
 **`dce739d0d4bf`** · `Unclassified/src/ChatOutput.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ChatOutput.cpp)
 - public · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ChatOutput.cpp)
 - public · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ChatOutput.cpp)
 - public · colingsnyder2-ux · [src/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ChatOutput.cpp)
@@ -198,6 +200,8 @@ Earlier paths and their donor versions: `native-classes/ChatOutput.cpp`.
 </details>
 
 **`ee90dbb73e1e`** · `native-classes/ChatOutput.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ChatOutput.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ChatOutput.cpp)
 - public · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ChatOutput.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ChatOutput.cpp)
 - public · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ChatOutput.cpp)
@@ -297,6 +301,7 @@ Compatibility path for `Base/src/util/ContentIdAssets.cpp`; compile either path,
 Earlier paths and their donor versions: `native-classes/ContentIdAssets.cpp`.
 
 **`2077aaf2cce6`** · `Unclassified/src/ContentIdAssets.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ContentIdAssets.cpp)
 - canonical · colingsnyder2-ux · [src/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ContentIdAssets.cpp)
 - canonical · colingsnyder2-ux · [src/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ContentIdAssets.cpp)
 - canonical · colingsnyder2-ux · [src/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ContentIdAssets.cpp)
@@ -402,6 +407,7 @@ Earlier paths and their donor versions: `native-classes/ContentIdAssets.cpp`.
 </details>
 
 **`667203532710`** · `Unclassified/src/ContentIdAssets.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ContentIdAssets.cpp)
 - public · colingsnyder2-ux · [src/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ContentIdAssets.cpp)
 - public · colingsnyder2-ux · [src/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ContentIdAssets.cpp)
 - public · colingsnyder2-ux · [src/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ContentIdAssets.cpp)
@@ -483,6 +489,8 @@ Earlier paths and their donor versions: `native-classes/ContentIdAssets.cpp`.
 </details>
 
 **`960b3e2167d4`** · `native-classes/ContentIdAssets.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ContentIdAssets.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ContentIdAssets.cpp)
 - public · colingsnyder2-ux · [native-classes/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ContentIdAssets.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ContentIdAssets.cpp)
 - public · colingsnyder2-ux · [native-classes/ContentIdAssets.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ContentIdAssets.cpp)
@@ -600,6 +608,7 @@ Earlier paths and their donor versions: `native-classes/ContentIdAssets.cpp`.
 Earlier paths and their donor versions: `native-classes/ContentProvider.cpp`.
 
 **`782762f3f1e0`** · `Unclassified/src/ContentProvider.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ContentProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ContentProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ContentProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ContentProvider.cpp)
@@ -632,6 +641,7 @@ Earlier paths and their donor versions: `native-classes/ContentProvider.cpp`.
 </details>
 
 **`8b2439c12656`** · `Unclassified/src/ContentProvider.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ContentProvider.cpp)
 - public · colingsnyder2-ux · [src/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ContentProvider.cpp)
 - public · colingsnyder2-ux · [src/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ContentProvider.cpp)
 - public · colingsnyder2-ux · [src/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ContentProvider.cpp)
@@ -752,6 +762,8 @@ Earlier paths and their donor versions: `native-classes/ContentProvider.cpp`.
 </details>
 
 **`8031177aad32`** · `native-classes/ContentProvider.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ContentProvider.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ContentProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ContentProvider.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ContentProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/ContentProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ContentProvider.cpp)
@@ -850,6 +862,7 @@ Compatibility path for `Base/src/util/ContentProviderCacheSupport.cpp`; compile 
 Earlier paths and their donor versions: `native-classes/ContentProviderCacheSupport.cpp`.
 
 **`18062568a439`** · `Unclassified/src/ContentProviderCacheSupport.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
@@ -967,11 +980,14 @@ Earlier paths and their donor versions: `native-classes/ContentProviderCacheSupp
 </details>
 
 **`bc8b3a35c6cb`** · `Unclassified/src/ContentProviderCacheSupport.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 
 **`128aaca12ff1`** · `native-classes/ContentProviderCacheSupport.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ContentProviderCacheSupport.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ContentProviderCacheSupport.cpp)
 - public · colingsnyder2-ux · [native-classes/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ContentProviderCacheSupport.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ContentProviderCacheSupport.cpp)
 - public · colingsnyder2-ux · [native-classes/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ContentProviderCacheSupport.cpp)

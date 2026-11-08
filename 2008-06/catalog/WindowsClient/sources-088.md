@@ -114,6 +114,8 @@ Compatibility path for `WindowsClient/src/CPropGridRefresh.cpp`; compile either 
 </details>
 
 **`bad4d3490f95`** · `native-classes/CPropGridRefresh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CPropGridRefresh.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CPropGridRefresh.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CPropGridRefresh.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CPropGridRefresh.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CPropGridRefresh.cpp)
@@ -317,6 +319,8 @@ Compatibility path for `WindowsClient/src/CPropertyGridItemBrickColor.cpp`; comp
 </details>
 
 **`dbb56b47c4b0`** · `native-classes/CPropertyGridItemBrickColor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CPropertyGridItemBrickColor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CPropertyGridItemBrickColor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CPropertyGridItemBrickColor.cpp)
@@ -507,6 +511,7 @@ Compatibility path for `WindowsClient/src/CPropertyGridItemBrickColor.cpp`; comp
 </details>
 
 **`850ec37080bc`** · `native-classes/CRbxDocTemplate.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRbxDocTemplate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRbxDocTemplate.cpp)
 - public · colingsnyder2-ux · [native-classes/CRbxDocTemplate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRbxDocTemplate.cpp)
 - public · colingsnyder2-ux · [native-classes/CRbxDocTemplate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRbxDocTemplate.cpp)
 - public · colingsnyder2-ux · [native-classes/CRbxDocTemplate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CRbxDocTemplate.cpp)
@@ -588,6 +593,7 @@ Compatibility path for `WindowsClient/src/CRobloxApp.cpp`; compile either path, 
 </details>
 
 **`65008028cd72`** · `native-classes/CRobloxApp.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/43c0d445cb2c28e516c3fd78f65e6deacafbce3581ae04eb5a8636c807435883/rebuild/2008-06/native-classes/CRobloxApp.cpp)
 - draft · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/43c0d445cb2c28e516c3fd78f65e6deacafbce3581ae04eb5a8636c807435883/rebuild/2008-06/native-classes/CRobloxApp.cpp)
 - draft · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/43c0d445cb2c28e516c3fd78f65e6deacafbce3581ae04eb5a8636c807435883/rebuild/2008-06/native-classes/CRobloxApp.cpp)
 - draft · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/43c0d445cb2c28e516c3fd78f65e6deacafbce3581ae04eb5a8636c807435883/rebuild/2008-06/native-classes/CRobloxApp.cpp)
@@ -703,6 +709,8 @@ Compatibility path for `WindowsClient/src/CRobloxApp.cpp`; compile either path, 
 - public · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CRobloxApp.cpp)
 
 **`f394beddaed5`** · `native-classes/CRobloxApp.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxApp.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CRobloxApp.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRobloxApp.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CRobloxApp.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRobloxApp.cpp)
@@ -795,6 +803,7 @@ Compatibility path for `WindowsClient/src/CRobloxApp.cpp`; compile either path, 
 </details>
 
 **`f6356bb90bf8`** · `native-classes/CRobloxApp.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/871bc584d0dbe3dc15e5e9d69a31caec3f7ba38819f3f2757fc3a0448edc1561/rebuild/2008-06/native-classes/CRobloxApp.cpp)
 - draft · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/871bc584d0dbe3dc15e5e9d69a31caec3f7ba38819f3f2757fc3a0448edc1561/rebuild/2008-06/native-classes/CRobloxApp.cpp)
 - draft · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/871bc584d0dbe3dc15e5e9d69a31caec3f7ba38819f3f2757fc3a0448edc1561/rebuild/2008-06/native-classes/CRobloxApp.cpp)
 - draft · colingsnyder2-ux · [native-classes/CRobloxApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/871bc584d0dbe3dc15e5e9d69a31caec3f7ba38819f3f2757fc3a0448edc1561/rebuild/2008-06/native-classes/CRobloxApp.cpp)
@@ -862,6 +871,7 @@ Compatibility path for `WindowsClient/src/CRobloxApp.cpp`; compile either path, 
 </details>
 
 **`6eca50de4649`** · `native-classes/CRobloxCommandLineInfo.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxCommandLineInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxCommandLineInfo.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxCommandLineInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRobloxCommandLineInfo.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxCommandLineInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRobloxCommandLineInfo.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxCommandLineInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CRobloxCommandLineInfo.cpp)

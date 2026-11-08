@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/util/Utilities.h`.
 
 **`695034671077`** · `experiments/overlays/cow-noinline-read/util/Utilities.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
@@ -16,7 +17,7 @@ Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 
-<details><summary>17 retained local origins</summary>
+<details><summary>18 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -27,6 +28,7 @@ Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -39,6 +41,7 @@ Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/
 </details>
 
 **`8fa2c3ecade4`** · `experiments/overlays/cow-noinline-read/util/Utilities.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
@@ -48,6 +51,7 @@ Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/cow-noinline-read/util/Utilities.h)
 
 **`05ae638a5067`** · `Unclassified/include/cow-noinline-read/util/Utilities.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
@@ -56,7 +60,7 @@ Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 
-<details><summary>17 retained local origins</summary>
+<details><summary>18 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -66,6 +70,7 @@ Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -198,6 +203,7 @@ Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/
 </details>
 
 **`a1adef8590b3`** · `Unclassified/include/cow-noinline-read/util/Utilities.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
@@ -214,6 +220,7 @@ Earlier paths and their donor versions: `Unclassified/include/cow-noinline-read/
 Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/Rect.h`.
 
 **`135d725a2d1d`** · `experiments/overlays/draw-handles/util/Rect.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h)
@@ -222,7 +229,7 @@ Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 
-<details><summary>17 retained local origins</summary>
+<details><summary>18 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -233,6 +240,7 @@ Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -245,6 +253,7 @@ Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/
 </details>
 
 **`15f22d7605ba`** · `experiments/overlays/draw-handles/util/Rect.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/experiments/overlays/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/experiments/overlays/draw-handles/util/Rect.h)
@@ -373,6 +382,7 @@ Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 
 **`b2191ed683cf`** · `Unclassified/include/draw-handles/util/Rect.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/include/draw-handles/util/Rect.h)
@@ -382,6 +392,7 @@ Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 
 **`b59ce50456b4`** · `Unclassified/include/draw-handles/util/Rect.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
@@ -390,7 +401,7 @@ Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 
-<details><summary>17 retained local origins</summary>
+<details><summary>18 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -400,6 +411,7 @@ Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -420,6 +432,7 @@ Earlier paths and their donor versions: `Unclassified/include/draw-handles/util/
 Earlier paths and their donor versions: `Unclassified/include/engine-world/v8world/ContactManager.h`.
 
 **`3a7baadcbb8d`** · `experiments/overlays/engine-world/v8world/ContactManager.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
@@ -427,7 +440,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
 
-<details><summary>16 retained local origins</summary>
+<details><summary>17 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
@@ -437,6 +450,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
@@ -449,6 +463,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 </details>
 
 **`da4b274bf506`** · `experiments/overlays/engine-world/v8world/ContactManager.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
@@ -457,6 +472,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/engine-world/v8world/ContactManager.h)
 
 **`01920080315e`** · `Unclassified/include/engine-world/v8world/ContactManager.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
@@ -464,7 +480,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
@@ -474,6 +490,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h` · root `b52aa15feaea5a0c`
@@ -596,6 +613,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 </details>
 
 **`65ae82c6152d`** · `Unclassified/include/engine-world/v8world/ContactManager.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/include/engine-world/v8world/ContactManager.h)
@@ -623,6 +641,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 Earlier paths and their donor versions: `Unclassified/include/engine-world/v8world/World.h`.
 
 **`db9c41e5016a`** · `experiments/overlays/engine-world/v8world/World.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/experiments/overlays/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/experiments/overlays/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/experiments/overlays/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/experiments/overlays/engine-world/v8world/World.h)
@@ -631,6 +650,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/engine-world/v8world/World.h)
 
 **`ef02e3a94a57`** · `experiments/overlays/engine-world/v8world/World.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h)
@@ -638,7 +658,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h)
 
-<details><summary>16 retained local origins</summary>
+<details><summary>17 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
@@ -648,6 +668,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
@@ -660,6 +681,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 </details>
 
 **`0d781674685a`** · `Unclassified/include/engine-world/v8world/World.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
@@ -667,7 +689,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
@@ -677,6 +699,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
@@ -723,6 +746,7 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/engine-world/v8world/World.h)
 
 **`cfd2ebb5a7b8`** · `Unclassified/include/engine-world/v8world/World.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/include/engine-world/v8world/World.h)
@@ -826,6 +850,8 @@ Earlier paths and their donor versions: `Unclassified/include/engine-world/v8wor
 Earlier paths and their donor versions: `Unclassified/include/instance-base-callbacks/reflection/function.h`.
 
 **`2318a4caad41`** · `experiments/overlays/instance-base-callbacks/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
@@ -841,7 +867,7 @@ Earlier paths and their donor versions: `Unclassified/include/instance-base-call
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h)
 
-<details><summary>17 retained local origins</summary>
+<details><summary>18 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -852,6 +878,7 @@ Earlier paths and their donor versions: `Unclassified/include/instance-base-call
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -962,6 +989,7 @@ Earlier paths and their donor versions: `Unclassified/include/instance-base-call
 </details>
 
 **`8219e6e0bac4`** · `Unclassified/include/instance-base-callbacks/reflection/function.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
@@ -970,7 +998,7 @@ Earlier paths and their donor versions: `Unclassified/include/instance-base-call
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 
-<details><summary>17 retained local origins</summary>
+<details><summary>18 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -980,6 +1008,7 @@ Earlier paths and their donor versions: `Unclassified/include/instance-base-call
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -993,6 +1022,7 @@ Earlier paths and their donor versions: `Unclassified/include/instance-base-call
 </details>
 
 **`95a675270f7d`** · `Unclassified/include/instance-base-callbacks/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)

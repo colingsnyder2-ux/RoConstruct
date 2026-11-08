@@ -8,6 +8,8 @@
 Earlier paths and their donor versions: `Unclassified/include/workspace-camera/reflection/function.h`.
 
 **`2318a4caad41`** · `experiments/overlays/workspace-camera/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/experiments/overlays/workspace-camera/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/experiments/overlays/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/experiments/overlays/workspace-camera/reflection/function.h)
@@ -21,7 +23,7 @@ Earlier paths and their donor versions: `Unclassified/include/workspace-camera/r
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/experiments/overlays/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h)
 
-<details><summary>16 retained local origins</summary>
+<details><summary>17 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -31,6 +33,7 @@ Earlier paths and their donor versions: `Unclassified/include/workspace-camera/r
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/b/rebuild/2008-06/experiments/overlays/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -146,6 +149,7 @@ Earlier paths and their donor versions: `Unclassified/include/workspace-camera/r
 </details>
 
 **`2fc061b80937`** · `Unclassified/include/workspace-camera/reflection/function.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
@@ -153,7 +157,7 @@ Earlier paths and their donor versions: `Unclassified/include/workspace-camera/r
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 
-<details><summary>18 retained local origins</summary>
+<details><summary>19 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -163,6 +167,7 @@ Earlier paths and their donor versions: `Unclassified/include/workspace-camera/r
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/Unclassified/include/workspace-camera/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -177,6 +182,7 @@ Earlier paths and their donor versions: `Unclassified/include/workspace-camera/r
 </details>
 
 **`f19cdf746d8e`** · `Unclassified/include/workspace-camera/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/include/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/include/workspace-camera/reflection/function.h)

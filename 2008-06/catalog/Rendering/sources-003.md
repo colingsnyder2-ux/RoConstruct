@@ -8,10 +8,12 @@
 Earlier paths and their donor versions: `Unclassified/src/RenderMaterialNew.cpp`.
 
 **`8fef811255a6`** · `Rendering/src/RenderLib/RenderMaterialNew.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [RenderLib/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/RenderLib/RenderMaterialNew.cpp)
 - canonical · colingsnyder2-ux · [RenderLib/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/RenderLib/RenderMaterialNew.cpp)
 - canonical · colingsnyder2-ux · [RenderLib/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/RenderLib/RenderMaterialNew.cpp)
 
 **`fe1fbec52b40`** · `Rendering/src/RenderLib/RenderMaterialNew.cpp` · proof not assessed
+- public · colingsnyder2-ux · [RenderLib/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/RenderLib/RenderMaterialNew.cpp)
 - public · colingsnyder2-ux · [RenderLib/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/RenderLib/RenderMaterialNew.cpp)
 - public · colingsnyder2-ux · [RenderLib/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/RenderLib/RenderMaterialNew.cpp)
 
@@ -83,10 +85,12 @@ Earlier paths and their donor versions: `Unclassified/src/RenderMaterialNew.cpp`
 </details>
 
 **`af20568cb66a`** · `Unclassified/src/RenderMaterialNew.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 - canonical · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 - canonical · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 
 **`af9427153979`** · `Unclassified/src/RenderMaterialNew.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 - public · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 - public · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 
@@ -114,14 +118,17 @@ Earlier paths and their donor versions: `Unclassified/src/RenderMaterialNew.cpp`
 Earlier paths and their donor versions: `Unclassified/src/TextureProxyBase2008.cpp`.
 
 **`844796d1a59b`** · `Rendering/src/RenderLib/TextureProxyBase2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [RenderLib/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/RenderLib/TextureProxyBase2008.cpp)
 - public · colingsnyder2-ux · [RenderLib/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/RenderLib/TextureProxyBase2008.cpp)
 - public · colingsnyder2-ux · [RenderLib/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/RenderLib/TextureProxyBase2008.cpp)
 
 **`abbae7928c35`** · `Rendering/src/RenderLib/TextureProxyBase2008.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [RenderLib/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/RenderLib/TextureProxyBase2008.cpp)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/RenderLib/TextureProxyBase2008.cpp)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/RenderLib/TextureProxyBase2008.cpp)
 
 **`6d9b4b553998`** · `Unclassified/src/TextureProxyBase2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 
@@ -190,6 +197,7 @@ Earlier paths and their donor versions: `Unclassified/src/TextureProxyBase2008.c
 - public · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 
 **`c39e55c985bd`** · `Unclassified/src/TextureProxyBase2008.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 
@@ -210,10 +218,12 @@ Earlier paths and their donor versions: `Unclassified/src/TextureProxyBase2008.c
 Earlier paths and their donor versions: `Unclassified/src/TextureProxyRender.cpp`.
 
 **`5387f8b1a104`** · `Rendering/src/RenderLib/TextureProxyRender.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [RenderLib/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/RenderLib/TextureProxyRender.cpp)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/RenderLib/TextureProxyRender.cpp)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/RenderLib/TextureProxyRender.cpp)
 
 **`920b6efcf88a`** · `Rendering/src/RenderLib/TextureProxyRender.cpp` · proof not assessed
+- public · colingsnyder2-ux · [RenderLib/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/RenderLib/TextureProxyRender.cpp)
 - public · colingsnyder2-ux · [RenderLib/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/RenderLib/TextureProxyRender.cpp)
 - public · colingsnyder2-ux · [RenderLib/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/RenderLib/TextureProxyRender.cpp)
 
@@ -292,6 +302,7 @@ Earlier paths and their donor versions: `Unclassified/src/TextureProxyRender.cpp
 </details>
 
 **`68a595ef4677`** · `Unclassified/src/TextureProxyRender.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRender.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRender.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRender.cpp)
 
@@ -305,6 +316,7 @@ Earlier paths and their donor versions: `Unclassified/src/TextureProxyRender.cpp
 </details>
 
 **`dc44c2db53f4`** · `Unclassified/src/TextureProxyRender.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/TextureProxyRender.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/TextureProxyRender.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/TextureProxyRender.cpp)
 
@@ -316,10 +328,12 @@ Earlier paths and their donor versions: `Unclassified/src/TextureProxyRender.cpp
 Earlier paths and their donor versions: `Unclassified/src/TextureProxyRenderNew.cpp`.
 
 **`4a22da44add9`** · `Rendering/src/RenderLib/TextureProxyRenderNew.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [RenderLib/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/RenderLib/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/RenderLib/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/RenderLib/TextureProxyRenderNew.cpp)
 
 **`e480438d7f87`** · `Rendering/src/RenderLib/TextureProxyRenderNew.cpp` · proof not assessed
+- public · colingsnyder2-ux · [RenderLib/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/RenderLib/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [RenderLib/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/RenderLib/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [RenderLib/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/RenderLib/TextureProxyRenderNew.cpp)
 
@@ -390,10 +404,12 @@ Earlier paths and their donor versions: `Unclassified/src/TextureProxyRenderNew.
 </details>
 
 **`52f2ac25c846`** · `Unclassified/src/TextureProxyRenderNew.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 
 **`6a6d5f5a9ac2`** · `Unclassified/src/TextureProxyRenderNew.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 
@@ -414,12 +430,14 @@ Earlier paths and their donor versions: `Unclassified/src/TextureProxyRenderNew.
 Earlier paths and their donor versions: `Unclassified/src/ViewNewBevelMesh.cpp`.
 
 **`0a4032e87922`** · `Rendering/src/ViewNew/ViewNewBevelMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/ViewNew/ViewNewBevelMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/ViewNew/ViewNewBevelMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/ViewNew/ViewNewBevelMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Rendering/src/ViewNew/ViewNewBevelMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Rendering/src/ViewNew/ViewNewBevelMesh.cpp)
 
 **`4e727cd40e36`** · `Rendering/src/ViewNew/ViewNewBevelMesh.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [ViewNew/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewBevelMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewBevelMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewBevelMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewBevelMesh.cpp)
@@ -492,6 +510,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewBevelMesh.cpp`.
 </details>
 
 **`897835c92d6f`** · `Unclassified/src/ViewNewBevelMesh.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ViewNewBevelMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ViewNewBevelMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ViewNewBevelMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ViewNewBevelMesh.cpp)
@@ -548,6 +567,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewBevelMesh.cpp`.
 </details>
 
 **`e3e71ba6c3fe`** · `Unclassified/src/ViewNewBevelMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ViewNewBevelMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ViewNewBevelMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ViewNewBevelMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ViewNewBevelMesh.cpp)
@@ -561,12 +581,14 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewBevelMesh.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/ViewNewCylinderMesh.cpp`.
 
 **`4a5840e10792`** · `Rendering/src/ViewNew/ViewNewCylinderMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/ViewNew/ViewNewCylinderMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/ViewNew/ViewNewCylinderMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/ViewNew/ViewNewCylinderMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Rendering/src/ViewNew/ViewNewCylinderMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Rendering/src/ViewNew/ViewNewCylinderMesh.cpp)
 
 **`cc33a7b4bb83`** · `Rendering/src/ViewNew/ViewNewCylinderMesh.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [ViewNew/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewCylinderMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewCylinderMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewCylinderMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewCylinderMesh.cpp)
@@ -596,12 +618,14 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewCylinderMesh.cp
 </details>
 
 **`80e4d323a76d`** · `Unclassified/src/ViewNewCylinderMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ViewNewCylinderMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ViewNewCylinderMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ViewNewCylinderMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ViewNewCylinderMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/ViewNewCylinderMesh.cpp)
 
 **`c51853056a9f`** · `Unclassified/src/ViewNewCylinderMesh.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ViewNewCylinderMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ViewNewCylinderMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ViewNewCylinderMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ViewNewCylinderMesh.cpp)
@@ -708,12 +732,14 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewCylinderMesh.cp
 Earlier paths and their donor versions: `Unclassified/src/ViewNewHeadMesh.cpp`.
 
 **`6b362afbc80b`** · `Rendering/src/ViewNew/ViewNewHeadMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/ViewNew/ViewNewHeadMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/ViewNew/ViewNewHeadMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/ViewNew/ViewNewHeadMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Rendering/src/ViewNew/ViewNewHeadMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Rendering/src/ViewNew/ViewNewHeadMesh.cpp)
 
 **`a4c603eb710e`** · `Rendering/src/ViewNew/ViewNewHeadMesh.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [ViewNew/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewHeadMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewHeadMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewHeadMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewHeadMesh.cpp)
@@ -743,6 +769,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewHeadMesh.cpp`.
 </details>
 
 **`32d7fe387616`** · `Unclassified/src/ViewNewHeadMesh.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ViewNewHeadMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ViewNewHeadMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ViewNewHeadMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ViewNewHeadMesh.cpp)
@@ -815,6 +842,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewHeadMesh.cpp`.
 </details>
 
 **`e30508bfa7f4`** · `Unclassified/src/ViewNewHeadMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ViewNewHeadMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ViewNewHeadMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ViewNewHeadMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ViewNewHeadMesh.cpp)
@@ -855,12 +883,14 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewHeadMesh.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/ViewNewQuadVolume.cpp`.
 
 **`350a81116a32`** · `Rendering/src/ViewNew/ViewNewQuadVolume.cpp` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/ViewNew/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/ViewNew/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/ViewNew/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Rendering/src/ViewNew/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Rendering/src/ViewNew/ViewNewQuadVolume.cpp)
 
 **`914d2240ad00`** · `Rendering/src/ViewNew/ViewNewQuadVolume.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [ViewNew/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewQuadVolume.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewQuadVolume.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewQuadVolume.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewQuadVolume.cpp)
@@ -876,6 +906,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewQuadVolume.cpp`
 </details>
 
 **`3b69e5bc86a5`** · `Unclassified/src/ViewNewQuadVolume.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
@@ -971,6 +1002,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewQuadVolume.cpp`
 </details>
 
 **`e83655c26f72`** · `Unclassified/src/ViewNewQuadVolume.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
@@ -1002,12 +1034,14 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewQuadVolume.cpp`
 Earlier paths and their donor versions: `Unclassified/src/ViewNewSphereMesh.cpp`.
 
 **`9cda581ab6d5`** · `Rendering/src/ViewNew/ViewNewSphereMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/ViewNew/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/ViewNew/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/ViewNew/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Rendering/src/ViewNew/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [ViewNew/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Rendering/src/ViewNew/ViewNewSphereMesh.cpp)
 
 **`bdbeb0a04318`** · `Rendering/src/ViewNew/ViewNewSphereMesh.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [ViewNew/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [ViewNew/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Rendering/src/ViewNew/ViewNewSphereMesh.cpp)
@@ -1064,6 +1098,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewSphereMesh.cpp`
 </details>
 
 **`8913ecd0df11`** · `Unclassified/src/ViewNewSphereMesh.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
@@ -1136,6 +1171,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewNewSphereMesh.cpp`
 </details>
 
 **`c78d7825175c`** · `Unclassified/src/ViewNewSphereMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)

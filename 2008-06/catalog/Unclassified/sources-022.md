@@ -10,6 +10,7 @@ Compatibility path for `WindowsClient/src/AppOpenFile.cpp`; compile either path,
 Earlier paths and their donor versions: `native-classes/AppOpenFile.cpp`.
 
 **`0204e3750841`** · `Unclassified/src/AppOpenFile.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/AppOpenFile.cpp)
 - canonical · colingsnyder2-ux · [src/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/AppOpenFile.cpp)
 - canonical · colingsnyder2-ux · [src/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/AppOpenFile.cpp)
 - canonical · colingsnyder2-ux · [src/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/AppOpenFile.cpp)
@@ -34,6 +35,7 @@ Earlier paths and their donor versions: `native-classes/AppOpenFile.cpp`.
 </details>
 
 **`074bec3ac9ca`** · `Unclassified/src/AppOpenFile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/AppOpenFile.cpp)
 - public · colingsnyder2-ux · [src/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/AppOpenFile.cpp)
 - public · colingsnyder2-ux · [src/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/AppOpenFile.cpp)
 - public · colingsnyder2-ux · [src/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/AppOpenFile.cpp)
@@ -137,6 +139,8 @@ Earlier paths and their donor versions: `native-classes/AppOpenFile.cpp`.
 </details>
 
 **`4f9548d7bd74`** · `native-classes/AppOpenFile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/AppOpenFile.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/AppOpenFile.cpp)
 - public · colingsnyder2-ux · [native-classes/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/AppOpenFile.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/AppOpenFile.cpp)
 - public · colingsnyder2-ux · [native-classes/AppOpenFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/AppOpenFile.cpp)
@@ -287,6 +291,7 @@ Compatibility path for `WindowsClient/src/AppOpenFiles.cpp`; compile either path
 Earlier paths and their donor versions: `native-classes/AppOpenFiles.cpp`.
 
 **`0acbb4045ef8`** · `Unclassified/src/AppOpenFiles.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/AppOpenFiles.cpp)
 - public · colingsnyder2-ux · [src/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/AppOpenFiles.cpp)
 - public · colingsnyder2-ux · [src/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/AppOpenFiles.cpp)
 - public · colingsnyder2-ux · [src/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/AppOpenFiles.cpp)
@@ -364,6 +369,7 @@ Earlier paths and their donor versions: `native-classes/AppOpenFiles.cpp`.
 </details>
 
 **`a8598c86f653`** · `Unclassified/src/AppOpenFiles.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/AppOpenFiles.cpp)
 - canonical · colingsnyder2-ux · [src/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/AppOpenFiles.cpp)
 - canonical · colingsnyder2-ux · [src/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/AppOpenFiles.cpp)
 - canonical · colingsnyder2-ux · [src/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/AppOpenFiles.cpp)
@@ -414,6 +420,8 @@ Earlier paths and their donor versions: `native-classes/AppOpenFiles.cpp`.
 </details>
 
 **`40aa25591134`** · `native-classes/AppOpenFiles.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/AppOpenFiles.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/AppOpenFiles.cpp)
 - public · colingsnyder2-ux · [native-classes/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/AppOpenFiles.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/AppOpenFiles.cpp)
 - public · colingsnyder2-ux · [native-classes/AppOpenFiles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/AppOpenFiles.cpp)
@@ -657,6 +665,7 @@ Earlier paths and their donor versions: `native-classes/ApplicationBaseUrl.cpp`.
 </details>
 
 **`ab2d423cb57d`** · `Unclassified/src/ApplicationBaseUrl.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ApplicationBaseUrl.cpp)
 - canonical · colingsnyder2-ux · [src/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ApplicationBaseUrl.cpp)
 - canonical · colingsnyder2-ux · [src/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ApplicationBaseUrl.cpp)
 - canonical · colingsnyder2-ux · [src/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ApplicationBaseUrl.cpp)
@@ -678,6 +687,7 @@ Earlier paths and their donor versions: `native-classes/ApplicationBaseUrl.cpp`.
 </details>
 
 **`d3177b6b9852`** · `Unclassified/src/ApplicationBaseUrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ApplicationBaseUrl.cpp)
 - public · colingsnyder2-ux · [src/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ApplicationBaseUrl.cpp)
 - public · colingsnyder2-ux · [src/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ApplicationBaseUrl.cpp)
 - public · colingsnyder2-ux · [src/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ApplicationBaseUrl.cpp)
@@ -696,6 +706,8 @@ Earlier paths and their donor versions: `native-classes/ApplicationBaseUrl.cpp`.
 - public · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ApplicationBaseUrl.cpp)
 
 **`35067f074450`** · `native-classes/ApplicationBaseUrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ApplicationBaseUrl.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ApplicationBaseUrl.cpp)
 - public · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ApplicationBaseUrl.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ApplicationBaseUrl.cpp)
 - public · colingsnyder2-ux · [native-classes/ApplicationBaseUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ApplicationBaseUrl.cpp)
@@ -919,6 +931,7 @@ Compatibility path for `WindowsClient/src/ApplicationWindowClass.cpp`; compile e
 Earlier paths and their donor versions: `native-classes/ApplicationWindowClass.cpp`.
 
 **`27db5d1b6378`** · `Unclassified/src/ApplicationWindowClass.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ApplicationWindowClass.cpp)
 - public · colingsnyder2-ux · [src/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ApplicationWindowClass.cpp)
 - public · colingsnyder2-ux · [src/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/ApplicationWindowClass.cpp)
 - public · colingsnyder2-ux · [src/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ApplicationWindowClass.cpp)
@@ -948,6 +961,7 @@ Earlier paths and their donor versions: `native-classes/ApplicationWindowClass.c
 </details>
 
 **`8eca26181bb3`** · `Unclassified/src/ApplicationWindowClass.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ApplicationWindowClass.cpp)
 - canonical · colingsnyder2-ux · [src/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ApplicationWindowClass.cpp)
 - canonical · colingsnyder2-ux · [src/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/ApplicationWindowClass.cpp)
 - canonical · colingsnyder2-ux · [src/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/ApplicationWindowClass.cpp)
@@ -1046,6 +1060,8 @@ Earlier paths and their donor versions: `native-classes/ApplicationWindowClass.c
 </details>
 
 **`0458110472a8`** · `native-classes/ApplicationWindowClass.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ApplicationWindowClass.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ApplicationWindowClass.cpp)
 - public · colingsnyder2-ux · [native-classes/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ApplicationWindowClass.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ApplicationWindowClass.cpp)
 - public · colingsnyder2-ux · [native-classes/ApplicationWindowClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ApplicationWindowClass.cpp)

@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/RenderLib/Material2008.h`.
 
 **`0581f01712de`** · `Rendering/include/RenderLib/Material2008.h` · proof not assessed
+- public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/include/RenderLib/Material2008.h)
 - public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/include/RenderLib/Material2008.h)
 - public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/include/RenderLib/Material2008.h)
 - public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Rendering/include/RenderLib/Material2008.h)
@@ -35,6 +36,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/Material2008.h
 </details>
 
 **`c61f2e3ab70a`** · `Rendering/include/RenderLib/Material2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h)
@@ -65,7 +67,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/Material2008.h
 - canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h)
 
-<details><summary>58 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
@@ -108,6 +110,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/Material2008.h
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Rendering/include/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
@@ -150,6 +153,8 @@ Earlier paths and their donor versions: `native-headers/RenderLib/Material2008.h
 - public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Rendering/include/RenderLib/Material2008.h)
 
 **`1e2a67ae372c`** · `native-headers/RenderLib/Material2008.h` · proof not assessed
+- public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/RenderLib/Material2008.h)
+- canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/RenderLib/Material2008.h)
 - public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/RenderLib/Material2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/RenderLib/Material2008.h)
 - public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/RenderLib/Material2008.h)
@@ -209,7 +214,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/Material2008.h
 - public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/RenderLib/Material2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/RenderLib/Material2008.h)
 
-<details><summary>61 retained local origins</summary>
+<details><summary>62 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
@@ -253,6 +258,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/Material2008.h
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/RenderLib/Material2008.h` · root `b52aa15feaea5a0c`
@@ -403,6 +409,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/Material2008.h
 Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy2008.h`.
 
 **`90a832fe7b7b`** · `Rendering/include/RenderLib/TextureProxy2008.h` · proof not assessed
+- public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
@@ -421,6 +428,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 </details>
 
 **`deac1eb3ebe1`** · `Rendering/include/RenderLib/TextureProxy2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
@@ -451,7 +459,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 
-<details><summary>58 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
@@ -494,6 +502,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
@@ -558,6 +567,8 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 - fork · mewpokemons · [RenderLib/TextureProxy2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 
 **`5521ecebd1bf`** · `native-headers/RenderLib/TextureProxy2008.h` · proof not assessed
+- public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/RenderLib/TextureProxy2008.h)
+- canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/RenderLib/TextureProxy2008.h)
@@ -617,7 +628,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 
-<details><summary>61 retained local origins</summary>
+<details><summary>62 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
@@ -661,6 +672,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
@@ -800,11 +812,13 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 Earlier paths and their donor versions: `Unclassified/src/HandleHitTest.cpp`.
 
 **`0106b19dc810`** · `Rendering/src/AppDraw/HandleHitTest.cpp` · proof not assessed
+- public · colingsnyder2-ux · [AppDraw/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/AppDraw/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [AppDraw/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/AppDraw/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [AppDraw/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/AppDraw/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [AppDraw/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Rendering/src/AppDraw/HandleHitTest.cpp)
 
 **`c92f1d224705`** · `Rendering/src/AppDraw/HandleHitTest.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [AppDraw/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/AppDraw/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [AppDraw/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/AppDraw/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [AppDraw/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/AppDraw/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [AppDraw/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Rendering/src/AppDraw/HandleHitTest.cpp)
@@ -859,6 +873,7 @@ Earlier paths and their donor versions: `Unclassified/src/HandleHitTest.cpp`.
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/HandleHitTest.cpp)
 
 **`b36ad78b17c2`** · `Unclassified/src/HandleHitTest.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/HandleHitTest.cpp)
@@ -924,6 +939,7 @@ Earlier paths and their donor versions: `Unclassified/src/HandleHitTest.cpp`.
 </details>
 
 **`e76d6e616783`** · `Unclassified/src/HandleHitTest.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
@@ -943,11 +959,13 @@ Earlier paths and their donor versions: `Unclassified/src/HandleHitTest.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/HandleRadius.cpp`.
 
 **`4f779e6227e7`** · `Rendering/src/AppDraw/HandleRadius.cpp` · proof not assessed
+- public · colingsnyder2-ux · [AppDraw/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/AppDraw/HandleRadius.cpp)
 - public · colingsnyder2-ux · [AppDraw/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/AppDraw/HandleRadius.cpp)
 - public · colingsnyder2-ux · [AppDraw/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/AppDraw/HandleRadius.cpp)
 - public · colingsnyder2-ux · [AppDraw/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Rendering/src/AppDraw/HandleRadius.cpp)
 
 **`5921add73209`** · `Rendering/src/AppDraw/HandleRadius.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [AppDraw/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/AppDraw/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [AppDraw/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/AppDraw/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [AppDraw/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/AppDraw/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [AppDraw/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Rendering/src/AppDraw/HandleRadius.cpp)
@@ -960,6 +978,7 @@ Earlier paths and their donor versions: `Unclassified/src/HandleRadius.cpp`.
 </details>
 
 **`039696672f10`** · `Unclassified/src/HandleRadius.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/HandleRadius.cpp)
@@ -972,6 +991,7 @@ Earlier paths and their donor versions: `Unclassified/src/HandleRadius.cpp`.
 </details>
 
 **`1409a17dee8d`** · `Unclassified/src/HandleRadius.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/HandleRadius.cpp)
 - public · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/HandleRadius.cpp)
 - public · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/HandleRadius.cpp)
 - public · colingsnyder2-ux · [src/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/HandleRadius.cpp)
@@ -1086,18 +1106,22 @@ Earlier paths and their donor versions: `Unclassified/src/HandleRadius.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/RenderMaterial.cpp`.
 
 **`8d01e711156a`** · `Rendering/src/RenderLib/RenderMaterial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [RenderLib/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Rendering/src/RenderLib/RenderMaterial.cpp)
 - public · colingsnyder2-ux · [RenderLib/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Rendering/src/RenderLib/RenderMaterial.cpp)
 - public · colingsnyder2-ux · [RenderLib/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Rendering/src/RenderLib/RenderMaterial.cpp)
 
 **`e1f1e74c0bad`** · `Rendering/src/RenderLib/RenderMaterial.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [RenderLib/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Rendering/src/RenderLib/RenderMaterial.cpp)
 - canonical · colingsnyder2-ux · [RenderLib/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Rendering/src/RenderLib/RenderMaterial.cpp)
 - canonical · colingsnyder2-ux · [RenderLib/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Rendering/src/RenderLib/RenderMaterial.cpp)
 
 **`3e996618ac36`** · `Unclassified/src/RenderMaterial.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/RenderMaterial.cpp)
 - canonical · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/RenderMaterial.cpp)
 - canonical · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/RenderMaterial.cpp)
 
 **`5c4c83b7314c`** · `Unclassified/src/RenderMaterial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/RenderMaterial.cpp)
 - public · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/RenderMaterial.cpp)
 - public · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/RenderMaterial.cpp)
 

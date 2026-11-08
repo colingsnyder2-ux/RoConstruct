@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/CRobloxDHtmlDialog.cpp`.
 
 **`12cf2394df89`** · `WindowsClient/src/CRobloxDHtmlDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CRobloxDHtmlDialog.cpp)
 - public · colingsnyder2-ux · [src/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CRobloxDHtmlDialog.cpp)
 - public · colingsnyder2-ux · [src/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CRobloxDHtmlDialog.cpp)
 - public · colingsnyder2-ux · [src/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CRobloxDHtmlDialog.cpp)
@@ -63,6 +64,7 @@ Earlier paths and their donor versions: `native-classes/CRobloxDHtmlDialog.cpp`.
 - public · colingsnyder2-ux · [src/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CRobloxDHtmlDialog.cpp)
 
 **`aa352b85394e`** · `WindowsClient/src/CRobloxDHtmlDialog.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CRobloxDHtmlDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CRobloxDHtmlDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CRobloxDHtmlDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CRobloxDHtmlDialog.cpp)
@@ -188,6 +190,8 @@ Earlier paths and their donor versions: `native-classes/CRobloxDHtmlDialog.cpp`.
 - public · colingsnyder2-ux · [native-classes/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CRobloxDHtmlDialog.cpp)
 
 **`847bb9120dc2`** · `native-classes/CRobloxDHtmlDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxDHtmlDialog.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CRobloxDHtmlDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRobloxDHtmlDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CRobloxDHtmlDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxDHtmlDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRobloxDHtmlDialog.cpp)
@@ -453,6 +457,8 @@ Earlier paths and their donor versions: `native-classes/CRobloxDHtmlDialog.cpp`.
 Earlier paths and their donor versions: `native-classes/CRobloxDoc.cpp`.
 
 **`091572a52e11`** · `WindowsClient/src/CRobloxDoc.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CRobloxDoc.cpp)
+- canonical · colingsnyder2-ux · [src/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CRobloxDoc.cpp)
 - public · colingsnyder2-ux · [src/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CRobloxDoc.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CRobloxDoc.cpp)
 - public · colingsnyder2-ux · [src/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CRobloxDoc.cpp)
@@ -631,6 +637,7 @@ Earlier paths and their donor versions: `native-classes/CRobloxDoc.cpp`.
 </details>
 
 **`408aca70ccd1`** · `native-classes/CRobloxDoc.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxDoc.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRobloxDoc.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRobloxDoc.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CRobloxDoc.cpp)
@@ -657,6 +664,7 @@ Earlier paths and their donor versions: `native-classes/CRobloxDoc.cpp`.
 </details>
 
 **`568cc7f8ba3d`** · `native-classes/CRobloxDoc.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CRobloxDoc.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CRobloxDoc.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/CRobloxDoc.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/CRobloxDoc.cpp)

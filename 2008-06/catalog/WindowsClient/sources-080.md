@@ -91,6 +91,8 @@ Compatibility path for `WindowsClient/src/CChildFrame.cpp`; compile either path,
 </details>
 
 **`fc82b93b6080`** · `native-classes/CChildFrame.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CChildFrame.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CChildFrame.cpp)
 - public · colingsnyder2-ux · [native-classes/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CChildFrame.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CChildFrame.cpp)
 - public · colingsnyder2-ux · [native-classes/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CChildFrame.cpp)
@@ -201,6 +203,8 @@ Compatibility path for `WindowsClient/src/CChildFrame.cpp`; compile either path,
 Compatibility path for `WindowsClient/src/CClassTreeView.cpp`; compile either path, never both.
 
 **`01039288d09e`** · `native-classes/CClassTreeView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CClassTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CClassTreeView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CClassTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp)
 - public · colingsnyder2-ux · [native-classes/CClassTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CClassTreeView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CClassTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CClassTreeView.cpp)
 - public · colingsnyder2-ux · [native-classes/CClassTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CClassTreeView.cpp)
@@ -568,6 +572,8 @@ Compatibility path for `WindowsClient/src/CDataModelPropGrid.cpp`; compile eithe
 </details>
 
 **`e4449ca9f972`** · `native-classes/CDataModelPropGrid.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CDataModelPropGrid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CDataModelPropGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CDataModelPropGrid.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CDataModelPropGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CDataModelPropGrid.cpp)
@@ -692,6 +698,8 @@ Compatibility path for `WindowsClient/src/CDataModelPropGridUpdate.cpp`; compile
 </details>
 
 **`77b3b60e1ea0`** · `native-classes/CDataModelPropGridUpdate.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
 - public · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
 - public · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
@@ -1004,6 +1012,8 @@ Compatibility path for `WindowsClient/src/CDeclarationView.cpp`; compile either 
 </details>
 
 **`d64ca68aa1bc`** · `native-classes/CDeclarationView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CDeclarationView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CDeclarationView.cpp)
 - public · colingsnyder2-ux · [native-classes/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CDeclarationView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CDeclarationView.cpp)
 - public · colingsnyder2-ux · [native-classes/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CDeclarationView.cpp)
@@ -1169,6 +1179,7 @@ Compatibility path for `WindowsClient/src/CDeclarationView.cpp`; compile either 
 - public · colingsnyder2-ux · [native-classes/CIDEDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/CIDEDocManager.cpp)
 
 **`4452877bf0d1`** · `native-classes/CIDEDocManager.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CIDEDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CIDEDocManager.cpp)
 - public · colingsnyder2-ux · [native-classes/CIDEDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CIDEDocManager.cpp)
 - public · colingsnyder2-ux · [native-classes/CIDEDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CIDEDocManager.cpp)
 - public · colingsnyder2-ux · [native-classes/CIDEDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CIDEDocManager.cpp)

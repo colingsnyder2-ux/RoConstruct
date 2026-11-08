@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/CWorkspaceSiteCheck.cpp`.
 
 **`6e2c4334b8c9`** · `WindowsClient/src/CWorkspaceSiteCheck.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CWorkspaceSiteCheck.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CWorkspaceSiteCheck.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CWorkspaceSiteCheck.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CWorkspaceSiteCheck.cpp)
@@ -26,6 +27,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceSiteCheck.cpp`
 </details>
 
 **`7431ee8be2f8`** · `WindowsClient/src/CWorkspaceSiteCheck.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceSiteCheck.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceSiteCheck.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceSiteCheck.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceSiteCheck.cpp)
@@ -198,6 +200,8 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceSiteCheck.cpp`
 </details>
 
 **`8fdff8ac3e4f`** · `native-classes/CWorkspaceSiteCheck.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWorkspaceSiteCheck.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CWorkspaceSiteCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CWorkspaceSiteCheck.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CWorkspaceSiteCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceSiteCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CWorkspaceSiteCheck.cpp)
@@ -357,6 +361,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceSiteCheck.cpp`
 Earlier paths and their donor versions: `native-classes/CWorkspaceSiteUrl.cpp`.
 
 **`099c9aefab2f`** · `WindowsClient/src/CWorkspaceSiteUrl.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceSiteUrl.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceSiteUrl.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceSiteUrl.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceSiteUrl.cpp)
@@ -450,6 +455,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceSiteUrl.cpp`.
 </details>
 
 **`f20d4e85f59e`** · `WindowsClient/src/CWorkspaceSiteUrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CWorkspaceSiteUrl.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CWorkspaceSiteUrl.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CWorkspaceSiteUrl.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CWorkspaceSiteUrl.cpp)
@@ -593,6 +599,8 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceSiteUrl.cpp`.
 </details>
 
 **`fb21165dcbab`** · `native-classes/CWorkspaceSiteUrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWorkspaceSiteUrl.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CWorkspaceSiteUrl.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CWorkspaceSiteUrl.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CWorkspaceSiteUrl.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CWorkspaceSiteUrl.cpp)
@@ -692,6 +700,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceSiteUrl.cpp`.
 Earlier paths and their donor versions: `native-classes/ChatEnter.cpp`.
 
 **`1b541ceda4f1`** · `WindowsClient/src/ChatEnter.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/ChatEnter.cpp)
 - public · colingsnyder2-ux · [src/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/ChatEnter.cpp)
 - public · colingsnyder2-ux · [src/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/ChatEnter.cpp)
 - public · colingsnyder2-ux · [src/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/ChatEnter.cpp)
@@ -731,6 +740,7 @@ Earlier paths and their donor versions: `native-classes/ChatEnter.cpp`.
 </details>
 
 **`910b83aa1967`** · `WindowsClient/src/ChatEnter.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/ChatEnter.cpp)
 - canonical · colingsnyder2-ux · [src/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/ChatEnter.cpp)
 - canonical · colingsnyder2-ux · [src/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/ChatEnter.cpp)
 - canonical · colingsnyder2-ux · [src/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/ChatEnter.cpp)
@@ -784,6 +794,8 @@ Earlier paths and their donor versions: `native-classes/ChatEnter.cpp`.
 </details>
 
 **`2b505ecf60fa`** · `native-classes/ChatEnter.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ChatEnter.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/ChatEnter.cpp)
 - public · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/ChatEnter.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/ChatEnter.cpp)
 - public · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ChatEnter.cpp)

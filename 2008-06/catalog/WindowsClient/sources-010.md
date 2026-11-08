@@ -27,6 +27,7 @@ Earlier paths and their donor versions: `native-headers/CMainFrameBases.h`.
 - public · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CMainFrameBases.h)
 
 **`792089e47592`** · `WindowsClient/include/CMainFrameBases.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/CMainFrameBases.h)
 - public · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/CMainFrameBases.h)
 - public · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CMainFrameBases.h)
 - public · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CMainFrameBases.h)
@@ -45,6 +46,7 @@ Earlier paths and their donor versions: `native-headers/CMainFrameBases.h`.
 </details>
 
 **`c83f6b1fa4d3`** · `WindowsClient/include/CMainFrameBases.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h)
 - canonical · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h)
 - canonical · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h)
 - canonical · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h)
@@ -73,7 +75,7 @@ Earlier paths and their donor versions: `native-headers/CMainFrameBases.h`.
 - canonical · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h)
 - canonical · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h)
 
-<details><summary>54 retained local origins</summary>
+<details><summary>55 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h` · root `b52aa15feaea5a0c`
@@ -113,6 +115,7 @@ Earlier paths and their donor versions: `native-headers/CMainFrameBases.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h` · root `b52aa15feaea5a0c`
@@ -171,6 +174,8 @@ Earlier paths and their donor versions: `native-headers/CMainFrameBases.h`.
 - public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/CMainFrameBases.h)
 
 **`3f4c2af5d10e`** · `native-headers/CMainFrameBases.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CMainFrameBases.h)
+- canonical · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/CMainFrameBases.h)
 - public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/CMainFrameBases.h)
 - canonical · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/CMainFrameBases.h)
 - public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CMainFrameBases.h)
@@ -226,7 +231,7 @@ Earlier paths and their donor versions: `native-headers/CMainFrameBases.h`.
 - public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CMainFrameBases.h)
 - canonical · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CMainFrameBases.h)
 
-<details><summary>57 retained local origins</summary>
+<details><summary>58 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
@@ -267,6 +272,7 @@ Earlier paths and their donor versions: `native-headers/CMainFrameBases.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
@@ -527,6 +533,7 @@ Earlier paths and their donor versions: `native-headers/CMainFrameBases.h`.
 Earlier paths and their donor versions: `native-headers/CMemberTreeView.h`.
 
 **`37447f5eb988`** · `WindowsClient/include/CMemberTreeView.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/CMemberTreeView.h)
 - public · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/CMemberTreeView.h)
 - public · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CMemberTreeView.h)
 - public · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CMemberTreeView.h)
@@ -578,6 +585,7 @@ Earlier paths and their donor versions: `native-headers/CMemberTreeView.h`.
 </details>
 
 **`d57904d3c107`** · `WindowsClient/include/CMemberTreeView.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h)
 - canonical · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h)
 - canonical · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h)
 - canonical · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h)
@@ -611,7 +619,7 @@ Earlier paths and their donor versions: `native-headers/CMemberTreeView.h`.
 - canonical · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h)
 - canonical · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h` · root `b52aa15feaea5a0c`
@@ -659,6 +667,7 @@ Earlier paths and their donor versions: `native-headers/CMemberTreeView.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h` · root `b52aa15feaea5a0c`
@@ -680,6 +689,8 @@ Earlier paths and their donor versions: `native-headers/CMemberTreeView.h`.
 </details>
 
 **`371d6bb2828c`** · `native-headers/CMemberTreeView.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CMemberTreeView.h)
+- canonical · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/CMemberTreeView.h)
 - public · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/CMemberTreeView.h)
 - canonical · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/CMemberTreeView.h)
 - public · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CMemberTreeView.h)
@@ -745,7 +756,7 @@ Earlier paths and their donor versions: `native-headers/CMemberTreeView.h`.
 - public · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CMemberTreeView.h)
 - canonical · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CMemberTreeView.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CMemberTreeView.h` · root `b52aa15feaea5a0c`
@@ -794,6 +805,7 @@ Earlier paths and their donor versions: `native-headers/CMemberTreeView.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CMemberTreeView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CMemberTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CMemberTreeView.h` · root `b52aa15feaea5a0c`

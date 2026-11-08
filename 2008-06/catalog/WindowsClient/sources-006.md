@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/CContent.h`.
 
 **`70961ee3bc25`** · `WindowsClient/include/CContent.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/CContent.h)
 - public · colingsnyder2-ux · [include/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/CContent.h)
 - public · colingsnyder2-ux · [include/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CContent.h)
 - public · colingsnyder2-ux · [include/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CContent.h)
@@ -45,6 +46,7 @@ Earlier paths and their donor versions: `native-headers/CContent.h`.
 - public · colingsnyder2-ux · [include/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CContent.h)
 
 **`e5d9d5406bf6`** · `WindowsClient/include/CContent.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/CContent.h)
 - canonical · colingsnyder2-ux · [include/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/CContent.h)
 - canonical · colingsnyder2-ux · [include/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CContent.h)
 - canonical · colingsnyder2-ux · [include/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CContent.h)
@@ -73,7 +75,7 @@ Earlier paths and their donor versions: `native-headers/CContent.h`.
 - canonical · colingsnyder2-ux · [include/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CContent.h)
 - canonical · colingsnyder2-ux · [include/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CContent.h)
 
-<details><summary>54 retained local origins</summary>
+<details><summary>55 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CContent.h` · root `b52aa15feaea5a0c`
@@ -113,6 +115,7 @@ Earlier paths and their donor versions: `native-headers/CContent.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CContent.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CContent.h` · root `b52aa15feaea5a0c`
@@ -150,6 +153,8 @@ Earlier paths and their donor versions: `native-headers/CContent.h`.
 </details>
 
 **`45924bac3579`** · `native-headers/CContent.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CContent.h)
+- canonical · colingsnyder2-ux · [native-headers/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/CContent.h)
 - public · colingsnyder2-ux · [native-headers/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/CContent.h)
 - canonical · colingsnyder2-ux · [native-headers/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/CContent.h)
 - public · colingsnyder2-ux · [native-headers/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CContent.h)
@@ -205,7 +210,7 @@ Earlier paths and their donor versions: `native-headers/CContent.h`.
 - public · colingsnyder2-ux · [native-headers/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CContent.h)
 - canonical · colingsnyder2-ux · [native-headers/CContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CContent.h)
 
-<details><summary>57 retained local origins</summary>
+<details><summary>58 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CContent.h` · root `b52aa15feaea5a0c`
@@ -246,6 +251,7 @@ Earlier paths and their donor versions: `native-headers/CContent.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CContent.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CContent.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CContent.h` · root `b52aa15feaea5a0c`
@@ -430,6 +436,7 @@ Earlier paths and their donor versions: `native-headers/CDataModelPropGrid.h`.
 </details>
 
 **`0f20c25ca336`** · `WindowsClient/include/CDataModelPropGrid.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/CDataModelPropGrid.h)
 - public · colingsnyder2-ux · [include/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/CDataModelPropGrid.h)
 - public · colingsnyder2-ux · [include/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CDataModelPropGrid.h)
 - public · colingsnyder2-ux · [include/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CDataModelPropGrid.h)
@@ -467,6 +474,7 @@ Earlier paths and their donor versions: `native-headers/CDataModelPropGrid.h`.
 - public · colingsnyder2-ux · [include/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CDataModelPropGrid.h)
 
 **`58a8a00791b2`** · `WindowsClient/include/CDataModelPropGrid.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h)
 - canonical · colingsnyder2-ux · [include/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h)
 - canonical · colingsnyder2-ux · [include/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h)
 - canonical · colingsnyder2-ux · [include/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h)
@@ -495,7 +503,7 @@ Earlier paths and their donor versions: `native-headers/CDataModelPropGrid.h`.
 - canonical · colingsnyder2-ux · [include/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h)
 - canonical · colingsnyder2-ux · [include/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h)
 
-<details><summary>54 retained local origins</summary>
+<details><summary>55 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
@@ -535,6 +543,7 @@ Earlier paths and their donor versions: `native-headers/CDataModelPropGrid.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
@@ -694,6 +703,8 @@ Earlier paths and their donor versions: `native-headers/CDataModelPropGrid.h`.
 </details>
 
 **`3640a5a06045`** · `native-headers/CDataModelPropGrid.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CDataModelPropGrid.h)
+- canonical · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/CDataModelPropGrid.h)
 - public · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/CDataModelPropGrid.h)
 - canonical · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/CDataModelPropGrid.h)
 - public · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CDataModelPropGrid.h)
@@ -749,7 +760,7 @@ Earlier paths and their donor versions: `native-headers/CDataModelPropGrid.h`.
 - public · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CDataModelPropGrid.h)
 - canonical · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CDataModelPropGrid.h)
 
-<details><summary>57 retained local origins</summary>
+<details><summary>58 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
@@ -790,6 +801,7 @@ Earlier paths and their donor versions: `native-headers/CDataModelPropGrid.h`.
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`

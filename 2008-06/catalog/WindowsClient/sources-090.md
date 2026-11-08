@@ -63,6 +63,8 @@ Compatibility path for `WindowsClient/src/CRobloxReportView.cpp`; compile either
 </details>
 
 **`a17da3aa98c7`** · `native-classes/CRobloxReportView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxReportView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CRobloxReportView.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRobloxReportView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CRobloxReportView.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRobloxReportView.cpp)
@@ -248,6 +250,7 @@ Compatibility path for `WindowsClient/src/CRobloxReportView.cpp`; compile either
 </details>
 
 **`e45a083d91e1`** · `native-classes/CRobloxReportViewChildAdded.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxReportViewChildAdded.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxReportViewChildAdded.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportViewChildAdded.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRobloxReportViewChildAdded.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportViewChildAdded.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRobloxReportViewChildAdded.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportViewChildAdded.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CRobloxReportViewChildAdded.cpp)
@@ -333,6 +336,7 @@ Compatibility path for `WindowsClient/src/CRobloxReportView.cpp`; compile either
 - public · colingsnyder2-ux · [native-classes/CRobloxReportViewDataModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/CRobloxReportViewDataModel.cpp)
 
 **`ac11c1eb6371`** · `native-classes/CRobloxReportViewDataModel.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxReportViewDataModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxReportViewDataModel.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportViewDataModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRobloxReportViewDataModel.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportViewDataModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRobloxReportViewDataModel.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportViewDataModel.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CRobloxReportViewDataModel.cpp)
@@ -500,6 +504,8 @@ Compatibility path for `WindowsClient/src/CRobloxView.cpp`; compile either path,
 </details>
 
 **`9913b2a3b5b2`** · `native-classes/CRobloxView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CRobloxView.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRobloxView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CRobloxView.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRobloxView.cpp)
@@ -715,6 +721,7 @@ Compatibility path for `WindowsClient/src/CRobloxView.cpp`; compile either path,
 <summary>native-classes/CRobloxViewHelp.cpp — public-only; 5 content versions</summary>
 
 **`11dcc98593cc`** · `native-classes/CRobloxViewHelp.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxViewHelp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxViewHelp.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxViewHelp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRobloxViewHelp.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxViewHelp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRobloxViewHelp.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxViewHelp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CRobloxViewHelp.cpp)
@@ -895,6 +902,8 @@ Compatibility path for `WindowsClient/src/CRobloxViewInit.cpp`; compile either p
 </details>
 
 **`8d8ebab09e17`** · `native-classes/CRobloxViewInit.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxViewInit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxViewInit.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxViewInit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CRobloxViewInit.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxViewInit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRobloxViewInit.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxViewInit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CRobloxViewInit.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxViewInit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRobloxViewInit.cpp)

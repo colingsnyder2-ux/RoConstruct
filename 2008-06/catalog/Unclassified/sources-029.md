@@ -51,6 +51,7 @@ Earlier paths and their donor versions: `native-classes/DataModelLock.cpp`.
 </details>
 
 **`651cc907ea15`** · `Unclassified/src/DataModelLock.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/DataModelLock.cpp)
 - public · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/DataModelLock.cpp)
 - public · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/DataModelLock.cpp)
 - public · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/DataModelLock.cpp)
@@ -83,6 +84,7 @@ Earlier paths and their donor versions: `native-classes/DataModelLock.cpp`.
 - public · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/DataModelLock.cpp)
 
 **`b1aaf5a80777`** · `Unclassified/src/DataModelLock.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/DataModelLock.cpp)
 - canonical · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/DataModelLock.cpp)
 - canonical · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/DataModelLock.cpp)
 - canonical · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/DataModelLock.cpp)
@@ -302,6 +304,8 @@ Earlier paths and their donor versions: `native-classes/DataModelLock.cpp`.
 </details>
 
 **`6ccac7320bb2`** · `native-classes/DataModelLock.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/DataModelLock.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/DataModelLock.cpp)
 - public · colingsnyder2-ux · [native-classes/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/DataModelLock.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/DataModelLock.cpp)
 - public · colingsnyder2-ux · [native-classes/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/DataModelLock.cpp)
@@ -447,11 +451,13 @@ Earlier paths and their donor versions: `native-classes/DebugableDump.cpp`.
 - public · colingsnyder2-ux · [src/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/DebugableDump.cpp)
 
 **`5ed7025ad1fb`** · `Unclassified/src/DebugableDump.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/DebugableDump.cpp)
 - public · colingsnyder2-ux · [src/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/DebugableDump.cpp)
 - public · colingsnyder2-ux · [src/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/DebugableDump.cpp)
 - public · colingsnyder2-ux · [src/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/DebugableDump.cpp)
 
 **`97d03ee6cca5`** · `Unclassified/src/DebugableDump.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/DebugableDump.cpp)
 - canonical · colingsnyder2-ux · [src/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/DebugableDump.cpp)
 - canonical · colingsnyder2-ux · [src/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/DebugableDump.cpp)
 - canonical · colingsnyder2-ux · [src/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/DebugableDump.cpp)
@@ -560,6 +566,8 @@ Earlier paths and their donor versions: `native-classes/DebugableDump.cpp`.
 - public · colingsnyder2-ux · [native-classes/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/DebugableDump.cpp)
 
 **`6055024a6c25`** · `native-classes/DebugableDump.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/DebugableDump.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/DebugableDump.cpp)
 - public · colingsnyder2-ux · [native-classes/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/DebugableDump.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/DebugableDump.cpp)
 - public · colingsnyder2-ux · [native-classes/DebugableDump.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/DebugableDump.cpp)
@@ -749,6 +757,7 @@ Earlier paths and their donor versions: `native-classes/DocumentException.cpp`.
 </details>
 
 **`7de543974a95`** · `Unclassified/src/DocumentException.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
@@ -839,6 +848,7 @@ Earlier paths and their donor versions: `native-classes/DocumentException.cpp`.
 </details>
 
 **`fb20dd87a488`** · `Unclassified/src/DocumentException.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/DocumentException.cpp)
 - public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/DocumentException.cpp)
 - public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/DocumentException.cpp)
 - public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/DocumentException.cpp)
@@ -853,6 +863,8 @@ Earlier paths and their donor versions: `native-classes/DocumentException.cpp`.
 </details>
 
 **`2c3dd47d53bb`** · `native-classes/DocumentException.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/DocumentException.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/DocumentException.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/DocumentException.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/DocumentException.cpp)

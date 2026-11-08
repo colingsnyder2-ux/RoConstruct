@@ -175,6 +175,8 @@ Compatibility path for `WindowsClient/src/CAboutRobloxDialogData.cpp`; compile e
 </details>
 
 **`e4df2e0bad50`** · `native-classes/CAboutRobloxDialogData.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CAboutRobloxDialogData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CAboutRobloxDialogData.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CAboutRobloxDialogData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CAboutRobloxDialogData.cpp)
 - public · colingsnyder2-ux · [native-classes/CAboutRobloxDialogData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CAboutRobloxDialogData.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CAboutRobloxDialogData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CAboutRobloxDialogData.cpp)
 - public · colingsnyder2-ux · [native-classes/CAboutRobloxDialogData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CAboutRobloxDialogData.cpp)
@@ -305,8 +307,9 @@ Compatibility path for `WindowsClient/src/CAboutRobloxDialogData.cpp`; compile e
 <summary>native-classes/CBrowserDoc.cpp — public-only; 7 content versions</summary>
 
 **`1f35c20866a7`** · `native-classes/CBrowserDoc.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
+- draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
 - fork · coldek · [native-classes/CBrowserDoc.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
+- draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
@@ -415,6 +418,7 @@ Compatibility path for `WindowsClient/src/CAboutRobloxDialogData.cpp`; compile e
 - public · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/CBrowserDoc.cpp)
 
 **`78953ac8e2a2`** · `native-classes/CBrowserDoc.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CBrowserDoc.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CBrowserDoc.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CBrowserDoc.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CBrowserDoc.cpp)
@@ -470,6 +474,7 @@ Compatibility path for `WindowsClient/src/CAboutRobloxDialogData.cpp`; compile e
 </details>
 
 **`602a92707273`** · `native-classes/CBrowserDocManager.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CBrowserDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CBrowserDocManager.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CBrowserDocManager.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CBrowserDocManager.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CBrowserDocManager.cpp)
@@ -595,6 +600,8 @@ Compatibility path for `WindowsClient/src/CBrowserFrameWnd.cpp`; compile either 
 - public · colingsnyder2-ux · [native-classes/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CBrowserFrameWnd.cpp)
 
 **`451dba91b9f0`** · `native-classes/CBrowserFrameWnd.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CBrowserFrameWnd.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CBrowserFrameWnd.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CBrowserFrameWnd.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CBrowserFrameWnd.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CBrowserFrameWnd.cpp)
@@ -801,6 +808,8 @@ Compatibility path for `WindowsClient/src/CBrowserView.cpp`; compile either path
 </details>
 
 **`b4be8b58a917`** · `native-classes/CBrowserView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CBrowserView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CBrowserView.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CBrowserView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CBrowserView.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CBrowserView.cpp)
@@ -925,8 +934,9 @@ Compatibility path for `WindowsClient/src/CBrowserView.cpp`; compile either path
 </details>
 
 **`388e887b9cb6`** · `native-classes/CBrowserViewExternal.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/CBrowserViewExternal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternal.cpp)
+- draft · colingsnyder2-ux · [native-classes/CBrowserViewExternal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternal.cpp)
 - fork · coldek · [native-classes/CBrowserViewExternal.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/CBrowserViewExternal.cpp)
+- draft · colingsnyder2-ux · [native-classes/CBrowserViewExternal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternal.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserViewExternal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternal.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserViewExternal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternal.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserViewExternal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternal.cpp)
@@ -986,8 +996,9 @@ Compatibility path for `WindowsClient/src/CBrowserView.cpp`; compile either path
 <summary>native-classes/CBrowserViewExternalGuids.cpp — candidate-only; 1 content versions</summary>
 
 **`6d5d0f27a386`** · `native-classes/CBrowserViewExternalGuids.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/CBrowserViewExternalGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp)
+- draft · colingsnyder2-ux · [native-classes/CBrowserViewExternalGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp)
 - fork · coldek · [native-classes/CBrowserViewExternalGuids.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp)
+- draft · colingsnyder2-ux · [native-classes/CBrowserViewExternalGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserViewExternalGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserViewExternalGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserViewExternalGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp)

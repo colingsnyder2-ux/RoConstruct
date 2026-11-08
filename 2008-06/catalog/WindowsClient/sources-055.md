@@ -45,6 +45,7 @@ Earlier paths and their donor versions: `native-classes/CPropGridRefresh.cpp`.
 - public · colingsnyder2-ux · [src/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CPropGridRefresh.cpp)
 
 **`c5e142224dcb`** · `WindowsClient/src/CPropGridRefresh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CPropGridRefresh.cpp)
 - public · colingsnyder2-ux · [src/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CPropGridRefresh.cpp)
 - public · colingsnyder2-ux · [src/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CPropGridRefresh.cpp)
 - public · colingsnyder2-ux · [src/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CPropGridRefresh.cpp)
@@ -63,6 +64,7 @@ Earlier paths and their donor versions: `native-classes/CPropGridRefresh.cpp`.
 </details>
 
 **`d1d533d9a5e0`** · `WindowsClient/src/CPropGridRefresh.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CPropGridRefresh.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CPropGridRefresh.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CPropGridRefresh.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CPropGridRefresh.cpp)
@@ -225,6 +227,8 @@ Earlier paths and their donor versions: `native-classes/CPropGridRefresh.cpp`.
 </details>
 
 **`bad4d3490f95`** · `native-classes/CPropGridRefresh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CPropGridRefresh.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CPropGridRefresh.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CPropGridRefresh.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CPropGridRefresh.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CPropGridRefresh.cpp)
@@ -374,6 +378,7 @@ Earlier paths and their donor versions: `native-classes/CPropGridRefresh.cpp`.
 Earlier paths and their donor versions: `native-classes/CPropertyGridItemBrickColor.cpp`.
 
 **`033426fe792e`** · `WindowsClient/src/CPropertyGridItemBrickColor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CPropertyGridItemBrickColor.cpp)
 - public · colingsnyder2-ux · [src/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CPropertyGridItemBrickColor.cpp)
 - public · colingsnyder2-ux · [src/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CPropertyGridItemBrickColor.cpp)
 - public · colingsnyder2-ux · [src/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CPropertyGridItemBrickColor.cpp)
@@ -421,6 +426,7 @@ Earlier paths and their donor versions: `native-classes/CPropertyGridItemBrickCo
 </details>
 
 **`fc2227f52359`** · `WindowsClient/src/CPropertyGridItemBrickColor.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CPropertyGridItemBrickColor.cpp)
 - canonical · colingsnyder2-ux · [src/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CPropertyGridItemBrickColor.cpp)
 - canonical · colingsnyder2-ux · [src/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CPropertyGridItemBrickColor.cpp)
 - canonical · colingsnyder2-ux · [src/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CPropertyGridItemBrickColor.cpp)
@@ -531,6 +537,8 @@ Earlier paths and their donor versions: `native-classes/CPropertyGridItemBrickCo
 </details>
 
 **`dbb56b47c4b0`** · `native-classes/CPropertyGridItemBrickColor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CPropertyGridItemBrickColor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CPropertyGridItemBrickColor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropertyGridItemBrickColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CPropertyGridItemBrickColor.cpp)
@@ -697,6 +705,7 @@ Earlier paths and their donor versions: `native-classes/CRenderSettings.cpp`.
 - public · colingsnyder2-ux · [src/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CRenderSettings.cpp)
 
 **`4702d92f981e`** · `WindowsClient/src/CRenderSettings.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CRenderSettings.cpp)
 - public · colingsnyder2-ux · [src/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CRenderSettings.cpp)
 - public · colingsnyder2-ux · [src/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CRenderSettings.cpp)
 - public · colingsnyder2-ux · [src/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CRenderSettings.cpp)
@@ -724,6 +733,7 @@ Earlier paths and their donor versions: `native-classes/CRenderSettings.cpp`.
 </details>
 
 **`b8a45b34c2a4`** · `WindowsClient/src/CRenderSettings.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CRenderSettings.cpp)
 - canonical · colingsnyder2-ux · [src/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CRenderSettings.cpp)
 - canonical · colingsnyder2-ux · [src/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CRenderSettings.cpp)
 - canonical · colingsnyder2-ux · [src/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CRenderSettings.cpp)
@@ -865,6 +875,8 @@ Earlier paths and their donor versions: `native-classes/CRenderSettings.cpp`.
 </details>
 
 **`bb0f69715316`** · `native-classes/CRenderSettings.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRenderSettings.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CRenderSettings.cpp)
 - public · colingsnyder2-ux · [native-classes/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CRenderSettings.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CRenderSettings.cpp)
 - public · colingsnyder2-ux · [native-classes/CRenderSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CRenderSettings.cpp)

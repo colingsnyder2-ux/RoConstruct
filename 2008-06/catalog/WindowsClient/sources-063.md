@@ -41,6 +41,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionPropGrid.cpp`.
 - public · colingsnyder2-ux · [src/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CSelectionPropGrid.cpp)
 
 **`0ae183cf841c`** · `WindowsClient/src/CSelectionPropGrid.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGrid.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGrid.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGrid.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGrid.cpp)
@@ -112,6 +113,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionPropGrid.cpp`.
 </details>
 
 **`31fe8024ec44`** · `WindowsClient/src/CSelectionPropGrid.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CSelectionPropGrid.cpp)
 - public · colingsnyder2-ux · [src/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CSelectionPropGrid.cpp)
 - public · colingsnyder2-ux · [src/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CSelectionPropGrid.cpp)
 - public · colingsnyder2-ux · [src/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CSelectionPropGrid.cpp)
@@ -299,6 +301,8 @@ Earlier paths and their donor versions: `native-classes/CSelectionPropGrid.cpp`.
 </details>
 
 **`e449fb336f5e`** · `native-classes/CSelectionPropGrid.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CSelectionPropGrid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CSelectionPropGrid.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CSelectionPropGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CSelectionPropGrid.cpp)
@@ -442,6 +446,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionPropGridEvents
 - public · colingsnyder2-ux · [src/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CSelectionPropGridEvents.cpp)
 
 **`29f9516ff843`** · `WindowsClient/src/CSelectionPropGridEvents.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CSelectionPropGridEvents.cpp)
 - public · colingsnyder2-ux · [src/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CSelectionPropGridEvents.cpp)
 - public · colingsnyder2-ux · [src/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CSelectionPropGridEvents.cpp)
 - public · colingsnyder2-ux · [src/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CSelectionPropGridEvents.cpp)
@@ -460,6 +465,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionPropGridEvents
 </details>
 
 **`92b7e02a98cd`** · `WindowsClient/src/CSelectionPropGridEvents.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGridEvents.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGridEvents.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGridEvents.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGridEvents.cpp)
@@ -592,6 +598,8 @@ Earlier paths and their donor versions: `native-classes/CSelectionPropGridEvents
 </details>
 
 **`9337e880bea4`** · `native-classes/CSelectionPropGridEvents.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CSelectionPropGridEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CSelectionPropGridEvents.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CSelectionPropGridEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CSelectionPropGridEvents.cpp)

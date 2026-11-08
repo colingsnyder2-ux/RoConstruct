@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `Unclassified/src/StatsService.cpp`.
 
 **`278e319c52e6`** · `App/src/stats/StatsService.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [stats/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/stats/StatsService.cpp)
 - canonical · colingsnyder2-ux · [stats/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/stats/StatsService.cpp)
 - canonical · colingsnyder2-ux · [stats/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/stats/StatsService.cpp)
 - canonical · colingsnyder2-ux · [stats/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/stats/StatsService.cpp)
@@ -20,6 +21,7 @@ Earlier paths and their donor versions: `Unclassified/src/StatsService.cpp`.
 </details>
 
 **`4960df20922d`** · `App/src/stats/StatsService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [stats/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/stats/StatsService.cpp)
 - public · colingsnyder2-ux · [stats/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/stats/StatsService.cpp)
 - public · colingsnyder2-ux · [stats/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/stats/StatsService.cpp)
 - public · colingsnyder2-ux · [stats/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/stats/StatsService.cpp)
@@ -110,6 +112,7 @@ Earlier paths and their donor versions: `Unclassified/src/StatsService.cpp`.
 </details>
 
 **`50299d315ecd`** · `Unclassified/src/StatsService.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/StatsService.cpp)
 - canonical · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/StatsService.cpp)
 - canonical · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/StatsService.cpp)
 - canonical · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/StatsService.cpp)
@@ -122,6 +125,7 @@ Earlier paths and their donor versions: `Unclassified/src/StatsService.cpp`.
 </details>
 
 **`91a248e93649`** · `Unclassified/src/StatsService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/StatsService.cpp)
 - public · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/StatsService.cpp)
 - public · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/StatsService.cpp)
 - public · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/StatsService.cpp)
@@ -143,11 +147,13 @@ Earlier paths and their donor versions: `Unclassified/src/StatsService.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/Kernel2008.cpp`.
 
 **`0be0cecac8be`** · `App/src/v8kernel/Kernel2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8kernel/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8kernel/Kernel2008.cpp)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8kernel/Kernel2008.cpp)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8kernel/Kernel2008.cpp)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8kernel/Kernel2008.cpp)
 
 **`212dcee928d7`** · `App/src/v8kernel/Kernel2008.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8kernel/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8kernel/Kernel2008.cpp)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8kernel/Kernel2008.cpp)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8kernel/Kernel2008.cpp)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/v8kernel/Kernel2008.cpp)
@@ -262,11 +268,13 @@ Earlier paths and their donor versions: `Unclassified/src/Kernel2008.cpp`.
 </details>
 
 **`dc7a4a09ecc4`** · `Unclassified/src/Kernel2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/Kernel2008.cpp)
 - public · colingsnyder2-ux · [src/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/Kernel2008.cpp)
 - public · colingsnyder2-ux · [src/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/Kernel2008.cpp)
 - public · colingsnyder2-ux · [src/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/Kernel2008.cpp)
 
 **`f6ed31bc2e1f`** · `Unclassified/src/Kernel2008.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/Kernel2008.cpp)
 - canonical · colingsnyder2-ux · [src/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/Kernel2008.cpp)
 - canonical · colingsnyder2-ux · [src/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/Kernel2008.cpp)
 - canonical · colingsnyder2-ux · [src/Kernel2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/Kernel2008.cpp)
@@ -286,6 +294,7 @@ Earlier paths and their donor versions: `Unclassified/src/Kernel2008.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/KernelConnector.cpp`.
 
 **`0e9be61d412c`** · `App/src/v8kernel/KernelConnector.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8kernel/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8kernel/KernelConnector.cpp)
 - canonical · colingsnyder2-ux · [v8kernel/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8kernel/KernelConnector.cpp)
 - canonical · colingsnyder2-ux · [v8kernel/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8kernel/KernelConnector.cpp)
 - canonical · colingsnyder2-ux · [v8kernel/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/v8kernel/KernelConnector.cpp)
@@ -301,6 +310,7 @@ Earlier paths and their donor versions: `Unclassified/src/KernelConnector.cpp`.
 </details>
 
 **`70b01f77780b`** · `App/src/v8kernel/KernelConnector.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8kernel/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8kernel/KernelConnector.cpp)
 - public · colingsnyder2-ux · [v8kernel/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8kernel/KernelConnector.cpp)
 - public · colingsnyder2-ux · [v8kernel/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8kernel/KernelConnector.cpp)
 - public · colingsnyder2-ux · [v8kernel/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8kernel/KernelConnector.cpp)
@@ -355,6 +365,7 @@ Earlier paths and their donor versions: `Unclassified/src/KernelConnector.cpp`.
 </details>
 
 **`12e6781befcd`** · `Unclassified/src/KernelConnector.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/KernelConnector.cpp)
 - canonical · colingsnyder2-ux · [src/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/KernelConnector.cpp)
 - canonical · colingsnyder2-ux · [src/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/KernelConnector.cpp)
 - canonical · colingsnyder2-ux · [src/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/KernelConnector.cpp)
@@ -397,6 +408,7 @@ Earlier paths and their donor versions: `Unclassified/src/KernelConnector.cpp`.
 - public · colingsnyder2-ux · [src/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/KernelConnector.cpp)
 
 **`9d2617c0d552`** · `Unclassified/src/KernelConnector.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/KernelConnector.cpp)
 - public · colingsnyder2-ux · [src/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/KernelConnector.cpp)
 - public · colingsnyder2-ux · [src/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/KernelConnector.cpp)
 - public · colingsnyder2-ux · [src/KernelConnector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/KernelConnector.cpp)
@@ -502,6 +514,8 @@ Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either pa
 </details>
 
 **`b21287866b02`** · `native-classes/Accoutrement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/Accoutrement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
 - public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
 - public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/Accoutrement.cpp)

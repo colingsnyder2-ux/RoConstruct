@@ -39,6 +39,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 
 **`aaa7b9ac7462`** · `App/include/humanoid/HumanoidFloorFields.h` · proof not assessed
+- canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
@@ -70,7 +71,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
@@ -114,6 +115,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
@@ -135,6 +137,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 </details>
 
 **`be4c115a5fff`** · `App/include/humanoid/HumanoidFloorFields.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/humanoid/HumanoidFloorFields.h)
@@ -178,6 +181,8 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 </details>
 
 **`5c44809b6a15`** · `native-headers/humanoid/HumanoidFloorFields.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
@@ -239,7 +244,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 
-<details><summary>62 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
@@ -284,6 +289,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
@@ -540,6 +546,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 Earlier paths and their donor versions: `native-headers/humanoid/HumanoidState.h`.
 
 **`33a9fac17d36`** · `App/include/humanoid/HumanoidState.h` · proof not assessed
+- canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/include/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/humanoid/HumanoidState.h)
@@ -572,7 +579,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidState.h
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/humanoid/HumanoidState.h)
 
-<details><summary>61 retained local origins</summary>
+<details><summary>62 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
@@ -618,6 +625,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidState.h
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/App/include/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
@@ -639,6 +647,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidState.h
 </details>
 
 **`4d49da00face`** · `App/include/humanoid/HumanoidState.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/include/humanoid/HumanoidState.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/humanoid/HumanoidState.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/humanoid/HumanoidState.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/humanoid/HumanoidState.h)
@@ -697,6 +706,8 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidState.h
 </details>
 
 **`1d0757782e03`** · `native-headers/humanoid/HumanoidState.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/humanoid/HumanoidState.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/humanoid/HumanoidState.h)
@@ -760,7 +771,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidState.h
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
@@ -807,6 +818,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidState.h
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/humanoid/HumanoidState.h` · root `b52aa15feaea5a0c`

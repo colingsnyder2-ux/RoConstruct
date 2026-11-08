@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionPropGridSelect
 </details>
 
 **`a0481441a691`** · `WindowsClient/src/CSelectionPropGridSelection.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGridSelection.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGridSelection.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGridSelection.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CSelectionPropGridSelection.cpp)
@@ -79,6 +80,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionPropGridSelect
 </details>
 
 **`d35e700d3d65`** · `WindowsClient/src/CSelectionPropGridSelection.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CSelectionPropGridSelection.cpp)
 - public · colingsnyder2-ux · [src/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CSelectionPropGridSelection.cpp)
 - public · colingsnyder2-ux · [src/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CSelectionPropGridSelection.cpp)
 - public · colingsnyder2-ux · [src/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CSelectionPropGridSelection.cpp)
@@ -215,6 +217,8 @@ Earlier paths and their donor versions: `native-classes/CSelectionPropGridSelect
 </details>
 
 **`4af9e76453f5`** · `native-classes/CSelectionPropGridSelection.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CSelectionPropGridSelection.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CSelectionPropGridSelection.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionPropGridSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CSelectionPropGridSelection.cpp)
@@ -400,6 +404,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionPropGridSelect
 Earlier paths and their donor versions: `native-classes/CSelectionTreeCtrl.cpp`.
 
 **`1fb7c1bbda56`** · `WindowsClient/src/CSelectionTreeCtrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CSelectionTreeCtrl.cpp)
 - public · colingsnyder2-ux · [src/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CSelectionTreeCtrl.cpp)
 - public · colingsnyder2-ux · [src/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CSelectionTreeCtrl.cpp)
 - public · colingsnyder2-ux · [src/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CSelectionTreeCtrl.cpp)
@@ -415,6 +420,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionTreeCtrl.cpp`.
 - public · colingsnyder2-ux · [src/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/WindowsClient/src/CSelectionTreeCtrl.cpp)
 
 **`c5e85959df79`** · `WindowsClient/src/CSelectionTreeCtrl.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CSelectionTreeCtrl.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CSelectionTreeCtrl.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CSelectionTreeCtrl.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CSelectionTreeCtrl.cpp)
@@ -518,6 +524,8 @@ Earlier paths and their donor versions: `native-classes/CSelectionTreeCtrl.cpp`.
 </details>
 
 **`79da4ff1b3ab`** · `native-classes/CSelectionTreeCtrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CSelectionTreeCtrl.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CSelectionTreeCtrl.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CSelectionTreeCtrl.cpp)
@@ -646,6 +654,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionTreeCtrl.cpp`.
 Earlier paths and their donor versions: `native-classes/CSettingsDialog.cpp`.
 
 **`359ef5984cc3`** · `WindowsClient/src/CSettingsDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CSettingsDialog.cpp)
 - public · colingsnyder2-ux · [src/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CSettingsDialog.cpp)
 - public · colingsnyder2-ux · [src/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/CSettingsDialog.cpp)
 - public · colingsnyder2-ux · [src/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/CSettingsDialog.cpp)
@@ -698,6 +707,7 @@ Earlier paths and their donor versions: `native-classes/CSettingsDialog.cpp`.
 </details>
 
 **`86a919519ccf`** · `WindowsClient/src/CSettingsDialog.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CSettingsDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CSettingsDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/CSettingsDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/CSettingsDialog.cpp)
@@ -767,6 +777,8 @@ Earlier paths and their donor versions: `native-classes/CSettingsDialog.cpp`.
 - public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CSettingsDialog.cpp)
 
 **`39c018bbf9d4`** · `native-classes/CSettingsDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CSettingsDialog.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CSettingsDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CSettingsDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CSettingsDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CSettingsDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CSettingsDialog.cpp)

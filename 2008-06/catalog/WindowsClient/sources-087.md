@@ -109,6 +109,8 @@ Compatibility path for `WindowsClient/src/CPropGridInstances.cpp`; compile eithe
 </details>
 
 **`a8a2a03f2c2e`** · `native-classes/CPropGridInstances.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPropGridInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CPropGridInstances.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropGridInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CPropGridInstances.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CPropGridInstances.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropGridInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CPropGridInstances.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridInstances.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CPropGridInstances.cpp)
@@ -271,6 +273,8 @@ Compatibility path for `WindowsClient/src/CPropGridInstances.cpp`; compile eithe
 Compatibility path for `WindowsClient/src/CPropGridItem.cpp`; compile either path, never both.
 
 **`1143ea81577c`** · `native-classes/CPropGridItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPropGridItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CPropGridItem.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropGridItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CPropGridItem.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CPropGridItem.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropGridItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CPropGridItem.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CPropGridItem.cpp)
@@ -534,6 +538,8 @@ Compatibility path for `WindowsClient/src/CPropGridMap.cpp`; compile either path
 </details>
 
 **`5d533d6fe01b`** · `native-classes/CPropGridMap.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPropGridMap.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CPropGridMap.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropGridMap.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CPropGridMap.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridMap.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CPropGridMap.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropGridMap.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CPropGridMap.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridMap.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CPropGridMap.cpp)
@@ -823,6 +829,8 @@ Compatibility path for `WindowsClient/src/CPropGridRebuild.cpp`; compile either 
 </details>
 
 **`751d861e3652`** · `native-classes/CPropGridRebuild.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPropGridRebuild.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CPropGridRebuild.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropGridRebuild.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/CPropGridRebuild.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridRebuild.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CPropGridRebuild.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropGridRebuild.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/CPropGridRebuild.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridRebuild.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CPropGridRebuild.cpp)
