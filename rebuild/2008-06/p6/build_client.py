@@ -360,7 +360,7 @@ if NATIVE_DOC:
                         ('NativePVInstanceTopParentFull.obj', ROOT / 'rebuild/2008-06/native-classes/PVInstanceTopParent.cpp'),
                         ('NativeModelSetFrontToolFull.obj', ROOT / 'rebuild/2008-06/native-classes/ModelSetFrontTool.cpp'),
                         ('NativeChangeHistoryStartFull.obj', ROOT / 'rebuild/2008-06/native-classes/ChangeHistoryStart.cpp'),
-                        ('NativeWorldServiceFactoriesFull.obj', 'NativePhysicsServiceFull.obj', 'NativePhysicsServiceProviderFull.obj', 'NativeJointsServiceFull.obj', ROOT / 'rebuild/2008-06/native-classes/WorldServiceFactories.cpp'),
+                        ('NativeWorldServiceFactoriesFull.obj', ROOT / 'rebuild/2008-06/native-classes/WorldServiceFactories.cpp'),
                         ('NativePhysicsServiceFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsService.cpp'),
                         ('NativePhysicsServiceProviderFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceProvider.cpp'),
                         ('NativeJointsServiceFull.obj', ROOT / 'rebuild/2008-06/native-classes/JointsService.cpp'),
