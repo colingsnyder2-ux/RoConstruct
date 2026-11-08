@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/ServiceProvider.cpp`.
 
 **`0da31bac0d4c`** · `Unclassified/src/ServiceProvider.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ServiceProvider.cpp)
@@ -23,6 +24,7 @@ Earlier paths and their donor versions: `native-classes/ServiceProvider.cpp`.
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ServiceProvider.cpp)
 
 **`4a951d54b42c`** · `Unclassified/src/ServiceProvider.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)
@@ -279,6 +281,8 @@ Earlier paths and their donor versions: `native-classes/ServiceProvider.cpp`.
 </details>
 
 **`602c43c09d99`** · `native-classes/ServiceProvider.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ServiceProvider.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ServiceProvider.cpp)
@@ -413,6 +417,7 @@ Earlier paths and their donor versions: `native-classes/ServiceProvider.cpp`.
 Earlier paths and their donor versions: `native-classes/SlingshotBallistic.cpp`.
 
 **`4537ea0aae4f`** · `Unclassified/src/SlingshotBallistic.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/SlingshotBallistic.cpp)
@@ -460,6 +465,7 @@ Earlier paths and their donor versions: `native-classes/SlingshotBallistic.cpp`.
 </details>
 
 **`f5b9d630d610`** · `Unclassified/src/SlingshotBallistic.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - canonical · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - canonical · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/SlingshotBallistic.cpp)
 - canonical · colingsnyder2-ux · [src/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/SlingshotBallistic.cpp)
@@ -496,6 +502,8 @@ Earlier paths and their donor versions: `native-classes/SlingshotBallistic.cpp`.
 </details>
 
 **`1015431d697c`** · `native-classes/SlingshotBallistic.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/SlingshotBallistic.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SlingshotBallistic.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SlingshotBallistic.cpp)
@@ -653,6 +661,7 @@ Earlier paths and their donor versions: `native-classes/SlingshotBallistic.cpp`.
 Earlier paths and their donor versions: `native-classes/SoundClassName.cpp`.
 
 **`33a51482143e`** · `Unclassified/src/SoundClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/SoundClassName.cpp)
 - public · colingsnyder2-ux · [src/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/SoundClassName.cpp)
 - public · colingsnyder2-ux · [src/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/SoundClassName.cpp)
 - public · colingsnyder2-ux · [src/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/SoundClassName.cpp)
@@ -664,6 +673,7 @@ Earlier paths and their donor versions: `native-classes/SoundClassName.cpp`.
 </details>
 
 **`53a96f61fdf9`** · `Unclassified/src/SoundClassName.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/SoundClassName.cpp)
 - canonical · colingsnyder2-ux · [src/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/SoundClassName.cpp)
 - canonical · colingsnyder2-ux · [src/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/SoundClassName.cpp)
 - canonical · colingsnyder2-ux · [src/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/SoundClassName.cpp)
@@ -821,6 +831,8 @@ Earlier paths and their donor versions: `native-classes/SoundClassName.cpp`.
 </details>
 
 **`aa70b682f5f1`** · `native-classes/SoundClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/SoundClassName.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/SoundClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SoundClassName.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SoundClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SoundClassName.cpp)
@@ -909,6 +921,7 @@ Earlier paths and their donor versions: `native-classes/SoundClassNames.cpp`.
 </details>
 
 **`47db9ba3cb33`** · `Unclassified/src/SoundClassNames.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/SoundClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/SoundClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/SoundClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/SoundClassNames.cpp)
@@ -945,6 +958,7 @@ Earlier paths and their donor versions: `native-classes/SoundClassNames.cpp`.
 </details>
 
 **`604078c3cfc7`** · `Unclassified/src/SoundClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/SoundClassNames.cpp)
@@ -1045,6 +1059,8 @@ Earlier paths and their donor versions: `native-classes/SoundClassNames.cpp`.
 </details>
 
 **`5f5333270f4c`** · `native-classes/SoundClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/SoundClassNames.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SoundClassNames.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SoundClassNames.cpp)

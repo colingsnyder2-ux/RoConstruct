@@ -35,6 +35,7 @@ Earlier paths and their donor versions: `native-classes/ViewNewSphereMesh.cpp`.
 - public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 
 **`78c5bd2d0a96`** · `Unclassified/src/ViewNewSphereMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
@@ -55,6 +56,7 @@ Earlier paths and their donor versions: `native-classes/ViewNewSphereMesh.cpp`.
 </details>
 
 **`bdbeb0a04318`** · `Unclassified/src/ViewNewSphereMesh.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
@@ -120,6 +122,7 @@ Earlier paths and their donor versions: `native-classes/ViewNewSphereMesh.cpp`.
 </details>
 
 **`734fd8024ef8`** · `native-classes/ViewNewSphereMesh.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - fork · mewpokemons · [native-classes/ViewNewSphereMesh.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - fork · mewpokemons · [native-classes/ViewNewSphereMesh.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
@@ -187,6 +190,8 @@ Earlier paths and their donor versions: `native-classes/ViewNewSphereMesh.cpp`.
 </details>
 
 **`a12e117656ba`** · `native-classes/ViewNewSphereMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ViewNewSphereMesh.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ViewNewSphereMesh.cpp)
@@ -301,6 +306,7 @@ Earlier paths and their donor versions: `native-classes/ViewVerbs.cpp`.
 </details>
 
 **`4b056fcd8f5e`** · `Unclassified/src/ViewVerbs.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
@@ -322,6 +328,7 @@ Earlier paths and their donor versions: `native-classes/ViewVerbs.cpp`.
 </details>
 
 **`97f9da93022e`** · `Unclassified/src/ViewVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ViewVerbs.cpp)
@@ -455,6 +462,8 @@ Earlier paths and their donor versions: `native-classes/ViewVerbs.cpp`.
 </details>
 
 **`b7c2d0f9244e`** · `native-classes/ViewVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ViewVerbs.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ViewVerbs.cpp)
@@ -529,6 +538,7 @@ Earlier paths and their donor versions: `native-classes/WeldSnapActions.cpp`.
 </details>
 
 **`2c2af5ebb463`** · `Unclassified/src/WeldSnapActions.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - canonical · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - canonical · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - canonical · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/WeldSnapActions.cpp)
@@ -552,6 +562,7 @@ Earlier paths and their donor versions: `native-classes/WeldSnapActions.cpp`.
 </details>
 
 **`31a7a92a8317`** · `Unclassified/src/WeldSnapActions.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - public · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - public · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - public · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/WeldSnapActions.cpp)
@@ -671,6 +682,8 @@ Earlier paths and their donor versions: `native-classes/WeldSnapActions.cpp`.
 </details>
 
 **`d70d155af13f`** · `native-classes/WeldSnapActions.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/WeldSnapActions.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/WeldSnapActions.cpp)
 - public · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/WeldSnapActions.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/WeldSnapActions.cpp)
 - public · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/WeldSnapActions.cpp)
@@ -730,6 +743,7 @@ Earlier paths and their donor versions: `native-classes/WeldSnapActions.cpp`.
 Earlier paths and their donor versions: `native-classes/Widget.cpp`.
 
 **`2a71763608ca`** · `Unclassified/src/Widget.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
 - canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
 - canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
 - canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
@@ -775,6 +789,7 @@ Earlier paths and their donor versions: `native-classes/Widget.cpp`.
 </details>
 
 **`524d474fc29c`** · `Unclassified/src/Widget.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/Widget.cpp)
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/Widget.cpp)
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/Widget.cpp)
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/Widget.cpp)
@@ -813,6 +828,8 @@ Earlier paths and their donor versions: `native-classes/Widget.cpp`.
 </details>
 
 **`09d416f50899`** · `native-classes/Widget.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/Widget.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/Widget.cpp)
 - public · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/Widget.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/Widget.cpp)
 - public · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/Widget.cpp)
@@ -936,6 +953,7 @@ Earlier paths and their donor versions: `native-classes/Widget.cpp`.
 </details>
 
 **`86565c4d946e`** · `native-classes/Widget.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)
 - draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)
 - draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)
 - draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)

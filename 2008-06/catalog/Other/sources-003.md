@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/gui/Widget.h`.
 
 **`4a084418e0f9`** · `App/include/gui/Widget.h` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/gui/Widget.h)
 - canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/gui/Widget.h)
 - canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/gui/Widget.h)
 - canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/gui/Widget.h)
@@ -81,6 +82,7 @@ Earlier paths and their donor versions: `native-headers/gui/Widget.h`.
 </details>
 
 **`62532064f101`** · `App/include/gui/Widget.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/gui/Widget.h)
 - public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/gui/Widget.h)
 - public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/gui/Widget.h)
 - public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/gui/Widget.h)
@@ -237,6 +239,8 @@ Earlier paths and their donor versions: `native-headers/gui/Widget.h`.
 </details>
 
 **`dd2000792082`** · `native-headers/gui/Widget.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/gui/Widget.h)
+- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
 - public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/gui/Widget.h)
 - canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
 - public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/gui/Widget.h)
@@ -353,6 +357,7 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetButtons.h`.
 </details>
 
 **`112ffa40da5b`** · `App/include/gui/WidgetButtons.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/gui/WidgetButtons.h)
 - public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/gui/WidgetButtons.h)
 - public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/gui/WidgetButtons.h)
 - public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/gui/WidgetButtons.h)
@@ -364,6 +369,7 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetButtons.h`.
 </details>
 
 **`bc71b95fea8e`** · `App/include/gui/WidgetButtons.h` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/gui/WidgetButtons.h)
 - canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/gui/WidgetButtons.h)
 - canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/gui/WidgetButtons.h)
 - canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/gui/WidgetButtons.h)
@@ -556,6 +562,8 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetButtons.h`.
 </details>
 
 **`c6b122bfc559`** · `native-headers/gui/WidgetButtons.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/gui/WidgetButtons.h)
+- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
 - public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/gui/WidgetButtons.h)
 - canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
 - public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/gui/WidgetButtons.h)
@@ -680,6 +688,7 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetButtons.h`.
 Earlier paths and their donor versions: `native-headers/gui/WidgetChat.h`.
 
 **`550667108b50`** · `App/include/gui/WidgetChat.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/gui/WidgetChat.h)
 - public · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/gui/WidgetChat.h)
 - public · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/gui/WidgetChat.h)
 - public · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/gui/WidgetChat.h)
@@ -723,6 +732,7 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetChat.h`.
 </details>
 
 **`8d7da0b13137`** · `App/include/gui/WidgetChat.h` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/gui/WidgetChat.h)
 - canonical · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/gui/WidgetChat.h)
 - canonical · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/gui/WidgetChat.h)
 - canonical · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/gui/WidgetChat.h)
@@ -813,6 +823,8 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetChat.h`.
 </details>
 
 **`389a497abfe2`** · `native-headers/gui/WidgetChat.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/gui/WidgetChat.h)
+- canonical · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h)
 - public · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/gui/WidgetChat.h)
 - canonical · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/gui/WidgetChat.h)
 - public · colingsnyder2-ux · [gui/WidgetChat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/gui/WidgetChat.h)

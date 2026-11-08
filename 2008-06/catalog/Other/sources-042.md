@@ -56,6 +56,8 @@ Compatibility path for `App/src/v8datamodel/Teams.cpp`; compile either path, nev
 </details>
 
 **`6c02d138f933`** · `native-classes/Teams.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/Teams.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/Teams.cpp)
 - public · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/Teams.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/Teams.cpp)
 - public · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/Teams.cpp)
@@ -131,6 +133,7 @@ Compatibility path for `App/src/v8datamodel/Teams.cpp`; compile either path, nev
 </details>
 
 **`bae6952d8f72`** · `native-classes/Teams.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/d4308c8ec5ccac3ce2196710389f4634be0c443c69ac1d4a637ee7287b797b7a/rebuild/2008-06/native-classes/Teams.cpp)
 - draft · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/d4308c8ec5ccac3ce2196710389f4634be0c443c69ac1d4a637ee7287b797b7a/rebuild/2008-06/native-classes/Teams.cpp)
 - draft · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/d4308c8ec5ccac3ce2196710389f4634be0c443c69ac1d4a637ee7287b797b7a/rebuild/2008-06/native-classes/Teams.cpp)
 - draft · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/d4308c8ec5ccac3ce2196710389f4634be0c443c69ac1d4a637ee7287b797b7a/rebuild/2008-06/native-classes/Teams.cpp)
@@ -229,6 +232,8 @@ Compatibility path for `App/src/v8datamodel/Teams.cpp`; compile either path, nev
 </details>
 
 **`9a4ed1f0d0b4`** · `native-classes/TextDisplay.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/TextDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/849402b0fcbc16161338707843a99ab83b07647c8e4372bdef17df6a692326ac/rebuild/2008-06/native-classes/TextDisplay.cpp)
+- draft · colingsnyder2-ux · [native-classes/TextDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/bb1e9adef004c88bee63a3451683b61e0e757a2747648d6a7c3081ac6371aeff/rebuild/2008-06/native-classes/TextDisplay.cpp)
 - draft · colingsnyder2-ux · [native-classes/TextDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/849402b0fcbc16161338707843a99ab83b07647c8e4372bdef17df6a692326ac/rebuild/2008-06/native-classes/TextDisplay.cpp)
 - draft · colingsnyder2-ux · [native-classes/TextDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/bb1e9adef004c88bee63a3451683b61e0e757a2747648d6a7c3081ac6371aeff/rebuild/2008-06/native-classes/TextDisplay.cpp)
 - draft · colingsnyder2-ux · [native-classes/TextDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/849402b0fcbc16161338707843a99ab83b07647c8e4372bdef17df6a692326ac/rebuild/2008-06/native-classes/TextDisplay.cpp)
@@ -316,6 +321,8 @@ Compatibility path for `App/src/v8datamodel/Teams.cpp`; compile either path, nev
 </details>
 
 **`ebc87942ed43`** · `native-classes/TextDisplay.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/TextDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/0243ccd23b57896c0d197165eec065f73cb054f49ffe046946bf30cd4c98767c/rebuild/2008-06/native-classes/TextDisplay.cpp)
+- draft · colingsnyder2-ux · [native-classes/TextDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/084600535f3ccd3adfa7060e2ce65989422957e299c294e169c5475f69e0c65e/rebuild/2008-06/native-classes/TextDisplay.cpp)
 - draft · colingsnyder2-ux · [native-classes/TextDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/0243ccd23b57896c0d197165eec065f73cb054f49ffe046946bf30cd4c98767c/rebuild/2008-06/native-classes/TextDisplay.cpp)
 - draft · colingsnyder2-ux · [native-classes/TextDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/084600535f3ccd3adfa7060e2ce65989422957e299c294e169c5475f69e0c65e/rebuild/2008-06/native-classes/TextDisplay.cpp)
 - draft · colingsnyder2-ux · [native-classes/TextDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/0243ccd23b57896c0d197165eec065f73cb054f49ffe046946bf30cd4c98767c/rebuild/2008-06/native-classes/TextDisplay.cpp)
@@ -447,6 +454,7 @@ Compatibility path for `App/src/v8datamodel/Tool.cpp`; compile either path, neve
 </details>
 
 **`2a5a76976569`** · `native-classes/Tool.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Tool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/444189595baa8926a2b6876addfbd73ebcb1664a6a3da3d35c049f2e1c421cd1/rebuild/2008-06/native-classes/Tool.cpp)
 - draft · colingsnyder2-ux · [native-classes/Tool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/444189595baa8926a2b6876addfbd73ebcb1664a6a3da3d35c049f2e1c421cd1/rebuild/2008-06/native-classes/Tool.cpp)
 - draft · colingsnyder2-ux · [native-classes/Tool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/444189595baa8926a2b6876addfbd73ebcb1664a6a3da3d35c049f2e1c421cd1/rebuild/2008-06/native-classes/Tool.cpp)
 - draft · colingsnyder2-ux · [native-classes/Tool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/444189595baa8926a2b6876addfbd73ebcb1664a6a3da3d35c049f2e1c421cd1/rebuild/2008-06/native-classes/Tool.cpp)
@@ -512,6 +520,8 @@ Compatibility path for `App/src/v8datamodel/Tool.cpp`; compile either path, neve
 </details>
 
 **`bf09fbb648d0`** · `native-classes/Tool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Tool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/Tool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Tool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/Tool.cpp)
 - public · colingsnyder2-ux · [native-classes/Tool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/Tool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Tool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/Tool.cpp)
 - public · colingsnyder2-ux · [native-classes/Tool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/Tool.cpp)

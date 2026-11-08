@@ -3,9 +3,14 @@
 [Project index](README.md) · [Previous](sources-011.md) · [Next](sources-013.md)
 
 <details>
-<summary>Unclassified/include/serializer-load/v8tree/Instance.h — equivalent; 5 content versions</summary>
+<summary>Unclassified/include/serializer-load/v8tree/Instance.h — diverged; 7 content versions</summary>
+
+Compatibility path for `experiments/overlays/serializer-load/v8tree/Instance.h`; compile either path, never both.
 
 Earlier paths and their donor versions: `native-headers/serializer-load/v8tree/Instance.h`.
+
+**`4158c65ee204`** · `Unclassified/include/serializer-load/v8tree/Instance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
 
 **`c5b3f326d820`** · `Unclassified/include/serializer-load/v8tree/Instance.h` · proof not assessed
 
@@ -15,6 +20,9 @@ Earlier paths and their donor versions: `native-headers/serializer-load/v8tree/I
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 
 </details>
+
+**`ec99d4f51816`** · `Unclassified/include/serializer-load/v8tree/Instance.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
 
 **`f98c2ed9ad43`** · `Unclassified/include/serializer-load/v8tree/Instance.h` · proof not assessed
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/serializer-load/v8tree/Instance.h)
@@ -114,6 +122,8 @@ Earlier paths and their donor versions: `native-headers/serializer-load/v8tree/I
 </details>
 
 **`08e3553047eb`** · `native-headers/serializer-load/v8tree/Instance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/serializer-load/v8tree/Instance.h)
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/serializer-load/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/serializer-load/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/serializer-load/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/serializer-load/v8tree/Instance.h)
@@ -290,9 +300,14 @@ Earlier paths and their donor versions: `native-headers/serializer-load/v8tree/I
 </details>
 
 <details>
-<summary>Unclassified/include/slingshot-load/util/ContentProvider.h — diverged; 11 content versions</summary>
+<summary>Unclassified/include/slingshot-load/util/ContentProvider.h — diverged; 13 content versions</summary>
+
+Compatibility path for `experiments/overlays/slingshot-load/util/ContentProvider.h`; compile either path, never both.
 
 Earlier paths and their donor versions: `native-headers/slingshot-load/util/ContentProvider.h`.
+
+**`467c4641cb5e`** · `Unclassified/include/slingshot-load/util/ContentProvider.h` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 
 **`624695ec700c`** · `Unclassified/include/slingshot-load/util/ContentProvider.h` · proof not assessed
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
@@ -316,6 +331,9 @@ Earlier paths and their donor versions: `native-headers/slingshot-load/util/Cont
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
+
+**`6a0593be7610`** · `Unclassified/include/slingshot-load/util/ContentProvider.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
 
 **`819f50c54736`** · `Unclassified/include/slingshot-load/util/ContentProvider.h` · proof not assessed
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/slingshot-load/util/ContentProvider.h)
@@ -428,6 +446,8 @@ Earlier paths and their donor versions: `native-headers/slingshot-load/util/Cont
 </details>
 
 **`4b0d71fa1e3d`** · `native-headers/slingshot-load/util/ContentProvider.h` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/slingshot-load/util/ContentProvider.h)
+- canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/slingshot-load/util/ContentProvider.h)
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/slingshot-load/util/ContentProvider.h)
 - canonical · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/slingshot-load/util/ContentProvider.h)
 - public · colingsnyder2-ux · [util/ContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/slingshot-load/util/ContentProvider.h)
@@ -629,7 +649,9 @@ Earlier paths and their donor versions: `native-headers/slingshot-load/util/Cont
 </details>
 
 <details>
-<summary>Unclassified/include/slingshot-load/util/NativeContentProvider.h — diverged; 11 content versions</summary>
+<summary>Unclassified/include/slingshot-load/util/NativeContentProvider.h — diverged; 13 content versions</summary>
+
+Compatibility path for `experiments/overlays/slingshot-load/util/NativeContentProvider.h`; compile either path, never both.
 
 Earlier paths and their donor versions: `native-headers/slingshot-load/util/NativeContentProvider.h`.
 
@@ -715,6 +737,9 @@ Earlier paths and their donor versions: `native-headers/slingshot-load/util/Nati
 
 </details>
 
+**`80c06740adf4`** · `Unclassified/include/slingshot-load/util/NativeContentProvider.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
+
 **`cc2371db41d8`** · `Unclassified/include/slingshot-load/util/NativeContentProvider.h` · proof not assessed
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
@@ -725,6 +750,9 @@ Earlier paths and their donor versions: `native-headers/slingshot-load/util/Nati
 - local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 
 </details>
+
+**`e093a5dd6501`** · `Unclassified/include/slingshot-load/util/NativeContentProvider.h` · proof not assessed
+- public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
 
 **`ec9209acf267`** · `Unclassified/include/slingshot-load/util/NativeContentProvider.h` · proof not assessed
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/slingshot-load/util/NativeContentProvider.h)
@@ -824,6 +852,8 @@ Earlier paths and their donor versions: `native-headers/slingshot-load/util/Nati
 </details>
 
 **`85a8e01bae1d`** · `native-headers/slingshot-load/util/NativeContentProvider.h` · proof not assessed
+- public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/slingshot-load/util/NativeContentProvider.h)
+- canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/slingshot-load/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/slingshot-load/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/slingshot-load/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/slingshot-load/util/NativeContentProvider.h)

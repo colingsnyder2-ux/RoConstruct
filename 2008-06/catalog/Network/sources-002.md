@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 </details>
 
 **`57dde75342e4`** · `Network/include/Network/Player.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Network/include/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Network/include/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Network/include/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Network/include/Network/Player.h)
@@ -53,6 +54,7 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Network/include/Network/Player.h)
 
 **`e73fccf6dab0`** · `Network/include/Network/Player.h` · proof not assessed
+- canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Network/include/Network/Player.h)
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Network/include/Network/Player.h)
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Network/include/Network/Player.h)
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Network/include/Network/Player.h)
@@ -140,6 +142,8 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 </details>
 
 **`35397c1b3b8e`** · `native-headers/Network/Player.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/Player.h)
+- canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/Network/Player.h)
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/Network/Player.h)
@@ -361,6 +365,7 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 </details>
 
 **`ef0b23c8106a`** · `native-headers/Network/Player.h` · proof not assessed
+- draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
 - draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
 - draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
 - draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
@@ -416,6 +421,7 @@ Earlier paths and their donor versions: `native-headers/Network/Player.h`.
 Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 
 **`345d1496b220`** · `Network/include/Network/Players.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Network/include/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Network/include/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Network/include/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Network/include/Network/Players.h)
@@ -461,6 +467,7 @@ Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Network/include/Network/Players.h)
 
 **`ff84418a3ea3`** · `Network/include/Network/Players.h` · proof not assessed
+- canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Network/include/Network/Players.h)
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Network/include/Network/Players.h)
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Network/include/Network/Players.h)
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Network/include/Network/Players.h)
@@ -587,6 +594,8 @@ Earlier paths and their donor versions: `native-headers/Network/Players.h`.
 </details>
 
 **`951e9a9eec37`** · `native-headers/Network/Players.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/Players.h)
+- canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/Network/Players.h)
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/Network/Players.h)
@@ -798,6 +807,7 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Network/include/Network/ReplicatorMarker.h)
 
 **`125194a785bb`** · `Network/include/Network/ReplicatorMarker.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Network/include/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Network/include/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Network/include/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Network/include/Network/ReplicatorMarker.h)
@@ -809,6 +819,7 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 </details>
 
 **`5adb1015d369`** · `Network/include/Network/ReplicatorMarker.h` · proof not assessed
+- canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h)
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h)
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h)
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Network/include/Network/ReplicatorMarker.h)
@@ -912,6 +923,8 @@ Earlier paths and their donor versions: `native-headers/Network/ReplicatorMarker
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/Network/ReplicatorMarker.h)
 
 **`224c162d829e`** · `native-headers/Network/ReplicatorMarker.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/ReplicatorMarker.h)
+- canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/Network/ReplicatorMarker.h)
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/Network/ReplicatorMarker.h)

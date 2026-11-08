@@ -72,6 +72,8 @@ Compatibility path for `App/include/v8kernel/Connector2008.h`; compile either pa
 </details>
 
 **`7b32d3bdeef9`** · `native-headers/v8kernel/Connector2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8kernel/Connector2008.h)
+- canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/v8kernel/Connector2008.h)
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8kernel/Connector2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8kernel/Connector2008.h)
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8kernel/Connector2008.h)
@@ -341,6 +343,8 @@ Compatibility path for `App/include/v8kernel/Kernel2008.h`; compile either path,
 </details>
 
 **`e49ac1b33a80`** · `native-headers/v8kernel/Kernel2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8kernel/Kernel2008.h)
+- canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8kernel/Kernel2008.h)
@@ -557,6 +561,8 @@ Compatibility path for `App/include/v8world/Ball2008.h`; compile either path, ne
 - public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8world/Ball2008.h)
 
 **`b3990ee65878`** · `native-headers/v8world/Ball2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8world/Ball2008.h)
+- canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/v8world/Ball2008.h)
 - public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8world/Ball2008.h)
 - canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8world/Ball2008.h)
 - public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8world/Ball2008.h)
@@ -727,6 +733,8 @@ Compatibility path for `App/include/v8world/Block2008.h`; compile either path, n
 </details>
 
 **`aca04a1d4c09`** · `native-headers/v8world/Block2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8world/Block2008.h)
+- canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/v8world/Block2008.h)
 - public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8world/Block2008.h)
 - canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8world/Block2008.h)
 - public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8world/Block2008.h)
@@ -915,6 +923,8 @@ Compatibility path for `App/include/v8world/Block2008.h`; compile either path, n
 Compatibility path for `App/include/v8world/CleanStage2008.h`; compile either path, never both.
 
 **`41752aec2e98`** · `native-headers/v8world/CleanStage2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8world/CleanStage2008.h)
+- canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/v8world/CleanStage2008.h)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8world/CleanStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8world/CleanStage2008.h)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8world/CleanStage2008.h)

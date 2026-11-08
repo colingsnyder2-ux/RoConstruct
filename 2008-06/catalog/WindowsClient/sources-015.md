@@ -40,6 +40,7 @@ Earlier paths and their donor versions: `native-headers/CScriptDoc.h`.
 - public · colingsnyder2-ux · [include/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CScriptDoc.h)
 
 **`501da49ea3ac`** · `WindowsClient/include/CScriptDoc.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/WindowsClient/include/CScriptDoc.h)
 - canonical · colingsnyder2-ux · [include/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/WindowsClient/include/CScriptDoc.h)
 - canonical · colingsnyder2-ux · [include/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/CScriptDoc.h)
 - canonical · colingsnyder2-ux · [include/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/include/CScriptDoc.h)
@@ -113,6 +114,7 @@ Earlier paths and their donor versions: `native-headers/CScriptDoc.h`.
 </details>
 
 **`a2cf5a0a3c64`** · `WindowsClient/include/CScriptDoc.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/WindowsClient/include/CScriptDoc.h)
 - public · colingsnyder2-ux · [include/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/WindowsClient/include/CScriptDoc.h)
 - public · colingsnyder2-ux · [include/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/CScriptDoc.h)
 - public · colingsnyder2-ux · [include/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/include/CScriptDoc.h)
@@ -237,6 +239,8 @@ Earlier paths and their donor versions: `native-headers/CScriptDoc.h`.
 </details>
 
 **`54a46fa22758`** · `native-headers/CScriptDoc.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/CScriptDoc.h)
+- canonical · colingsnyder2-ux · [native-headers/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/CScriptDoc.h)
 - public · colingsnyder2-ux · [native-headers/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/CScriptDoc.h)
 - canonical · colingsnyder2-ux · [native-headers/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/CScriptDoc.h)
 - public · colingsnyder2-ux · [native-headers/CScriptDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/CScriptDoc.h)
@@ -379,6 +383,7 @@ Earlier paths and their donor versions: `native-headers/CScriptEditor.h`.
 - public · colingsnyder2-ux · [include/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CScriptEditor.h)
 
 **`98b51fb5510b`** · `WindowsClient/include/CScriptEditor.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/WindowsClient/include/CScriptEditor.h)
 - canonical · colingsnyder2-ux · [include/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/WindowsClient/include/CScriptEditor.h)
 - canonical · colingsnyder2-ux · [include/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/CScriptEditor.h)
 - canonical · colingsnyder2-ux · [include/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/include/CScriptEditor.h)
@@ -438,6 +443,7 @@ Earlier paths and their donor versions: `native-headers/CScriptEditor.h`.
 </details>
 
 **`c956b9853b5e`** · `WindowsClient/include/CScriptEditor.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/WindowsClient/include/CScriptEditor.h)
 - public · colingsnyder2-ux · [include/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/WindowsClient/include/CScriptEditor.h)
 - public · colingsnyder2-ux · [include/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/CScriptEditor.h)
 - public · colingsnyder2-ux · [include/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/include/CScriptEditor.h)
@@ -606,6 +612,8 @@ Earlier paths and their donor versions: `native-headers/CScriptEditor.h`.
 </details>
 
 **`c72139ebdd75`** · `native-headers/CScriptEditor.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/CScriptEditor.h)
+- canonical · colingsnyder2-ux · [native-headers/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/CScriptEditor.h)
 - public · colingsnyder2-ux · [native-headers/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/CScriptEditor.h)
 - canonical · colingsnyder2-ux · [native-headers/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/CScriptEditor.h)
 - public · colingsnyder2-ux · [native-headers/CScriptEditor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/CScriptEditor.h)
@@ -694,6 +702,7 @@ Earlier paths and their donor versions: `native-headers/CScriptEditor.h`.
 Earlier paths and their donor versions: `native-headers/CSecureHtmlView.h`.
 
 **`29e9832e9eb6`** · `WindowsClient/include/CSecureHtmlView.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/WindowsClient/include/CSecureHtmlView.h)
 - public · colingsnyder2-ux · [include/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/WindowsClient/include/CSecureHtmlView.h)
 - public · colingsnyder2-ux · [include/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/CSecureHtmlView.h)
 - public · colingsnyder2-ux · [include/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/include/CSecureHtmlView.h)
@@ -738,6 +747,7 @@ Earlier paths and their donor versions: `native-headers/CSecureHtmlView.h`.
 </details>
 
 **`b3db00d59961`** · `WindowsClient/include/CSecureHtmlView.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/WindowsClient/include/CSecureHtmlView.h)
 - canonical · colingsnyder2-ux · [include/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/WindowsClient/include/CSecureHtmlView.h)
 - canonical · colingsnyder2-ux · [include/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/CSecureHtmlView.h)
 - canonical · colingsnyder2-ux · [include/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/include/CSecureHtmlView.h)
@@ -917,6 +927,8 @@ Earlier paths and their donor versions: `native-headers/CSecureHtmlView.h`.
 </details>
 
 **`e830e88e9ed0`** · `native-headers/CSecureHtmlView.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/CSecureHtmlView.h)
+- canonical · colingsnyder2-ux · [native-headers/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h)
 - public · colingsnyder2-ux · [native-headers/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/CSecureHtmlView.h)
 - canonical · colingsnyder2-ux · [native-headers/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/CSecureHtmlView.h)
 - public · colingsnyder2-ux · [native-headers/CSecureHtmlView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/CSecureHtmlView.h)

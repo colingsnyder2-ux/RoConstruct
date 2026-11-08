@@ -31,6 +31,7 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/stats/Stats.h)
 
 **`e530d9903932`** · `App/include/stats/Stats.h` · proof not assessed
+- canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/stats/Stats.h)
@@ -104,6 +105,7 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 </details>
 
 **`ea32bb741673`** · `App/include/stats/Stats.h` · proof not assessed
+- public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/stats/Stats.h)
@@ -124,6 +126,8 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 </details>
 
 **`0946295e9e38`** · `native-headers/stats/Stats.h` · proof not assessed
+- public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/stats/Stats.h)
+- canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/stats/Stats.h)
@@ -352,6 +356,7 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 Earlier paths and their donor versions: `native-headers/stats/WorkspaceStatsItem.h`.
 
 **`4a2488ccf572`** · `App/include/stats/WorkspaceStatsItem.h` · proof not assessed
+- canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/stats/WorkspaceStatsItem.h)
 - canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/stats/WorkspaceStatsItem.h)
 - canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/stats/WorkspaceStatsItem.h)
 - canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/stats/WorkspaceStatsItem.h)
@@ -422,6 +427,7 @@ Earlier paths and their donor versions: `native-headers/stats/WorkspaceStatsItem
 </details>
 
 **`717c0ac211f6`** · `App/include/stats/WorkspaceStatsItem.h` · proof not assessed
+- public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/stats/WorkspaceStatsItem.h)
 - public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/stats/WorkspaceStatsItem.h)
 - public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/stats/WorkspaceStatsItem.h)
 - public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/stats/WorkspaceStatsItem.h)
@@ -464,6 +470,8 @@ Earlier paths and their donor versions: `native-headers/stats/WorkspaceStatsItem
 </details>
 
 **`34f2e7f8a761`** · `native-headers/stats/WorkspaceStatsItem.h` · proof not assessed
+- public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/stats/WorkspaceStatsItem.h)
+- canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h)
 - public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/stats/WorkspaceStatsItem.h)
 - canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h)
 - public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/stats/WorkspaceStatsItem.h)
@@ -690,6 +698,7 @@ Earlier paths and their donor versions: `native-headers/stats/WorkspaceStatsItem
 Earlier paths and their donor versions: `native-headers/v8kernel/Connector2008.h`.
 
 **`0bb8bbebb8a3`** · `App/include/v8kernel/Connector2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/v8kernel/Connector2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8kernel/Connector2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8kernel/Connector2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8kernel/Connector2008.h)
@@ -763,6 +772,7 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Connector2008.h
 </details>
 
 **`7b61cbb076db`** · `App/include/v8kernel/Connector2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/v8kernel/Connector2008.h)
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8kernel/Connector2008.h)
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8kernel/Connector2008.h)
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8kernel/Connector2008.h)
@@ -870,6 +880,8 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Connector2008.h
 </details>
 
 **`7b32d3bdeef9`** · `native-headers/v8kernel/Connector2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8kernel/Connector2008.h)
+- canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/v8kernel/Connector2008.h)
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8kernel/Connector2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8kernel/Connector2008.h)
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8kernel/Connector2008.h)

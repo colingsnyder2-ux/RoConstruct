@@ -16,6 +16,8 @@ Compatibility path for `Network/include/Network/Player.h`; compile either path, 
 </details>
 
 **`35397c1b3b8e`** · `native-headers/Network/Player.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/Player.h)
+- canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/Network/Player.h)
 - canonical · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/Network/Player.h)
 - public · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/Network/Player.h)
@@ -237,6 +239,7 @@ Compatibility path for `Network/include/Network/Player.h`; compile either path, 
 </details>
 
 **`ef0b23c8106a`** · `native-headers/Network/Player.h` · proof not assessed
+- draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
 - draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
 - draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
 - draft · colingsnyder2-ux · [Network/Player.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-headers/Network/Player.h)
@@ -339,6 +342,8 @@ Compatibility path for `Network/include/Network/Players.h`; compile either path,
 </details>
 
 **`951e9a9eec37`** · `native-headers/Network/Players.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/Players.h)
+- canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/Network/Players.h)
 - canonical · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/Network/Players.h)
 - public · colingsnyder2-ux · [Network/Players.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/Network/Players.h)
@@ -549,6 +554,8 @@ Compatibility path for `Network/include/Network/ReplicatorMarker.h`; compile eit
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/Network/ReplicatorMarker.h)
 
 **`224c162d829e`** · `native-headers/Network/ReplicatorMarker.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Network/ReplicatorMarker.h)
+- canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/Network/ReplicatorMarker.h)
 - canonical · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/Network/ReplicatorMarker.h)
 - public · colingsnyder2-ux · [Network/ReplicatorMarker.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/Network/ReplicatorMarker.h)
@@ -792,6 +799,8 @@ Compatibility path for `Network/include/ProfiledRakPeer.h`; compile either path,
 </details>
 
 **`951a4ca164ed`** · `native-headers/ProfiledRakPeer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/ProfiledRakPeer.h)
+- canonical · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/ProfiledRakPeer.h)
 - public · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/ProfiledRakPeer.h)
 - canonical · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/ProfiledRakPeer.h)
 - public · colingsnyder2-ux · [native-headers/ProfiledRakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/ProfiledRakPeer.h)
@@ -992,6 +1001,8 @@ Compatibility path for `Network/include/ProfiledRakPeer.h`; compile either path,
 Compatibility path for `Network/include/RakPeer.h`; compile either path, never both.
 
 **`2363aa188e76`** · `native-headers/RakPeer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/RakPeer.h)
+- canonical · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/RakPeer.h)
 - public · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/RakPeer.h)
 - canonical · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/RakPeer.h)
 - public · colingsnyder2-ux · [native-headers/RakPeer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/RakPeer.h)

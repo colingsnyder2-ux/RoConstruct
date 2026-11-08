@@ -3,7 +3,9 @@
 [Project index](README.md) · [Previous](sources-010.md) · [Next](sources-012.md)
 
 <details>
-<summary>Unclassified/include/script-file-load/security/SecurityContext.h — diverged; 11 content versions</summary>
+<summary>Unclassified/include/script-file-load/security/SecurityContext.h — diverged; 13 content versions</summary>
+
+Compatibility path for `experiments/overlays/script-file-load/security/SecurityContext.h`; compile either path, never both.
 
 Earlier paths and their donor versions: `native-headers/script-file-load/security/SecurityContext.h`.
 
@@ -90,6 +92,12 @@ Earlier paths and their donor versions: `native-headers/script-file-load/securit
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h` · root `b52aa15feaea5a0c`
 
 </details>
+
+**`b518fbab8c86`** · `Unclassified/include/script-file-load/security/SecurityContext.h` · proof not assessed
+- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
+
+**`b95736ead151`** · `Unclassified/include/script-file-load/security/SecurityContext.h` · proof not assessed
+- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
 
 **`f3578c747c4a`** · `Unclassified/include/script-file-load/security/SecurityContext.h` · proof not assessed
 - public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
@@ -196,6 +204,8 @@ Earlier paths and their donor versions: `native-headers/script-file-load/securit
 </details>
 
 **`af4afc914898`** · `native-headers/script-file-load/security/SecurityContext.h` · proof not assessed
+- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/script-file-load/security/SecurityContext.h)
+- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/script-file-load/security/SecurityContext.h)
 - public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/script-file-load/security/SecurityContext.h)
 - canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/script-file-load/security/SecurityContext.h)
 - public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/script-file-load/security/SecurityContext.h)
@@ -339,7 +349,9 @@ Earlier paths and their donor versions: `native-headers/script-file-load/securit
 </details>
 
 <details>
-<summary>Unclassified/include/serializer-load/reflection/function.h — equivalent; 3 content versions</summary>
+<summary>Unclassified/include/serializer-load/reflection/function.h — diverged; 5 content versions</summary>
+
+Compatibility path for `experiments/overlays/serializer-load/reflection/function.h`; compile either path, never both.
 
 Earlier paths and their donor versions: `native-headers/serializer-load/reflection/function.h`.
 
@@ -442,6 +454,12 @@ Earlier paths and their donor versions: `native-headers/serializer-load/reflecti
 
 </details>
 
+**`ba60acba5611`** · `Unclassified/include/serializer-load/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/serializer-load/reflection/function.h)
+
+**`e47854105018`** · `Unclassified/include/serializer-load/reflection/function.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
+
 **`2318a4caad41`** · `native-headers/serializer-load/reflection/function.h` · proof not assessed
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/serializer-load/reflection/function.h)
@@ -510,6 +528,8 @@ Earlier paths and their donor versions: `native-headers/serializer-load/reflecti
 </details>
 
 **`439f090fcc1f`** · `native-headers/serializer-load/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/serializer-load/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/serializer-load/reflection/function.h)
@@ -612,9 +632,17 @@ Earlier paths and their donor versions: `native-headers/serializer-load/reflecti
 </details>
 
 <details>
-<summary>Unclassified/include/serializer-load/util/Name.h — equivalent; 5 content versions</summary>
+<summary>Unclassified/include/serializer-load/util/Name.h — diverged; 7 content versions</summary>
+
+Compatibility path for `experiments/overlays/serializer-load/util/Name.h`; compile either path, never both.
 
 Earlier paths and their donor versions: `native-headers/serializer-load/util/Name.h`.
+
+**`1ffc2a823e91`** · `Unclassified/include/serializer-load/util/Name.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/serializer-load/util/Name.h)
+
+**`936ca432d661`** · `Unclassified/include/serializer-load/util/Name.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
 
 **`e307ecb78073`** · `Unclassified/include/serializer-load/util/Name.h` · proof not assessed
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/serializer-load/util/Name.h)
@@ -723,6 +751,8 @@ Earlier paths and their donor versions: `native-headers/serializer-load/util/Nam
 </details>
 
 **`0f4862d43899`** · `native-headers/serializer-load/util/Name.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/serializer-load/util/Name.h)
+- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/serializer-load/util/Name.h)

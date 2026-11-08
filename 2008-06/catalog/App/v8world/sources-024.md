@@ -8,6 +8,8 @@
 Compatibility path for `App/include/stats/WorkspaceStatsItem.h`; compile either path, never both.
 
 **`34f2e7f8a761`** · `native-headers/stats/WorkspaceStatsItem.h` · proof not assessed
+- public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/stats/WorkspaceStatsItem.h)
+- canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h)
 - public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/stats/WorkspaceStatsItem.h)
 - canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h)
 - public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/stats/WorkspaceStatsItem.h)
@@ -243,6 +245,8 @@ Compatibility path for `App/include/v8world/JointStage2008.h`; compile either pa
 </details>
 
 **`424c563f892e`** · `native-headers/v8world/JointStage2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8world/JointStage2008.h)
+- canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
 - public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8world/JointStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
 - public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8world/JointStage2008.h)
@@ -462,6 +466,8 @@ Compatibility path for `App/include/v8world/Joints2008.h`; compile either path, 
 </details>
 
 **`23b96c917e7d`** · `native-headers/v8world/Joints2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/v8world/Joints2008.h)
+- canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/v8world/Joints2008.h)
 - public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8world/Joints2008.h)
 - canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8world/Joints2008.h)
 - public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8world/Joints2008.h)

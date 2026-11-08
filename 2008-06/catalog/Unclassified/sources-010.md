@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 </details>
 
 **`851779a2195e`** · `Unclassified/include/pv-parent/v8tree/Instance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
@@ -28,6 +29,7 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 </details>
 
 **`8f2bfb017efa`** · `Unclassified/include/pv-parent/v8tree/Instance.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
@@ -214,6 +216,8 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 </details>
 
 **`b9011e940a02`** · `native-headers/pv-parent/v8tree/Instance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/pv-parent/v8tree/Instance.h)
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/pv-parent/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/pv-parent/v8tree/Instance.h)
@@ -338,7 +342,9 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 </details>
 
 <details>
-<summary>Unclassified/include/runservice-events/reflection/function.h — equivalent; 3 content versions</summary>
+<summary>Unclassified/include/runservice-events/reflection/function.h — diverged; 5 content versions</summary>
+
+Compatibility path for `experiments/overlays/runservice-events/reflection/function.h`; compile either path, never both.
 
 Earlier paths and their donor versions: `native-headers/runservice-events/reflection/function.h`.
 
@@ -441,7 +447,15 @@ Earlier paths and their donor versions: `native-headers/runservice-events/reflec
 
 </details>
 
+**`25b96294c915`** · `Unclassified/include/runservice-events/reflection/function.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
+
+**`ecea4ac6a014`** · `Unclassified/include/runservice-events/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/runservice-events/reflection/function.h)
+
 **`22d8b1e99045`** · `native-headers/runservice-events/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/runservice-events/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/runservice-events/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/runservice-events/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/runservice-events/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/runservice-events/reflection/function.h)
@@ -608,9 +622,14 @@ Earlier paths and their donor versions: `native-headers/runservice-events/reflec
 </details>
 
 <details>
-<summary>Unclassified/include/runservice-events/util/Events.h — equivalent; 7 content versions</summary>
+<summary>Unclassified/include/runservice-events/util/Events.h — diverged; 9 content versions</summary>
+
+Compatibility path for `experiments/overlays/runservice-events/util/Events.h`; compile either path, never both.
 
 Earlier paths and their donor versions: `native-headers/runservice-events/util/Events.h`.
+
+**`3d55bfe98960`** · `Unclassified/include/runservice-events/util/Events.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/include/runservice-events/util/Events.h)
 
 **`5145442d3fd3`** · `Unclassified/include/runservice-events/util/Events.h` · proof not assessed
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/runservice-events/util/Events.h)
@@ -709,6 +728,9 @@ Earlier paths and their donor versions: `native-headers/runservice-events/util/E
 
 </details>
 
+**`d876c7134378`** · `Unclassified/include/runservice-events/util/Events.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
+
 **`df73f4419eff`** · `Unclassified/include/runservice-events/util/Events.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
@@ -804,6 +826,8 @@ Earlier paths and their donor versions: `native-headers/runservice-events/util/E
 </details>
 
 **`f29f780855af`** · `native-headers/runservice-events/util/Events.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/runservice-events/util/Events.h)
+- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/runservice-events/util/Events.h)
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/runservice-events/util/Events.h)
 - canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/runservice-events/util/Events.h)
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/runservice-events/util/Events.h)

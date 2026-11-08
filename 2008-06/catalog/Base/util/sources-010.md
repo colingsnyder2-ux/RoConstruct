@@ -33,6 +33,7 @@ Earlier paths and their donor versions: `native-headers/util/UserInputBase.h`.
 - public · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/UserInputBase.h)
 
 **`1abddbcf437d`** · `Base/include/util/UserInputBase.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Base/include/util/UserInputBase.h)
 - canonical · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Base/include/util/UserInputBase.h)
 - canonical · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Base/include/util/UserInputBase.h)
 - canonical · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Base/include/util/UserInputBase.h)
@@ -121,6 +122,7 @@ Earlier paths and their donor versions: `native-headers/util/UserInputBase.h`.
 </details>
 
 **`9d3815267079`** · `Base/include/util/UserInputBase.h` · proof not assessed
+- public · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Base/include/util/UserInputBase.h)
 - public · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Base/include/util/UserInputBase.h)
 - public · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Base/include/util/UserInputBase.h)
 - public · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Base/include/util/UserInputBase.h)
@@ -195,6 +197,8 @@ Earlier paths and their donor versions: `native-headers/util/UserInputBase.h`.
 </details>
 
 **`2d24409f72a7`** · `native-headers/util/UserInputBase.h` · proof not assessed
+- public · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/util/UserInputBase.h)
+- canonical · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/util/UserInputBase.h)
 - public · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/util/UserInputBase.h)
 - canonical · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/util/UserInputBase.h)
 - public · colingsnyder2-ux · [util/UserInputBase.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/util/UserInputBase.h)
@@ -381,6 +385,7 @@ Earlier paths and their donor versions: `native-headers/util/Vector6.h`.
 - public · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/Vector6.h)
 
 **`8e52ed6ac494`** · `Base/include/util/Vector6.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Base/include/util/Vector6.h)
 - public · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Base/include/util/Vector6.h)
 - public · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Base/include/util/Vector6.h)
 - public · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Base/include/util/Vector6.h)
@@ -392,6 +397,7 @@ Earlier paths and their donor versions: `native-headers/util/Vector6.h`.
 </details>
 
 **`a7e255c8589f`** · `Base/include/util/Vector6.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Base/include/util/Vector6.h)
 - canonical · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Base/include/util/Vector6.h)
 - canonical · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Base/include/util/Vector6.h)
 - canonical · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Base/include/util/Vector6.h)
@@ -491,6 +497,8 @@ Earlier paths and their donor versions: `native-headers/util/Vector6.h`.
 </details>
 
 **`32b743d1ff9f`** · `native-headers/util/Vector6.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/util/Vector6.h)
+- canonical · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/util/Vector6.h)
 - public · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/util/Vector6.h)
 - canonical · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/util/Vector6.h)
 - public · colingsnyder2-ux · [util/Vector6.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/util/Vector6.h)
@@ -749,6 +757,7 @@ Earlier paths and their donor versions: `native-headers/util/scopedassign.h`.
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/scopedassign.h)
 
 **`796d0f57b958`** · `Base/include/util/scopedassign.h` · proof not assessed
+- public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Base/include/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Base/include/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Base/include/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Base/include/util/scopedassign.h)
@@ -760,6 +769,7 @@ Earlier paths and their donor versions: `native-headers/util/scopedassign.h`.
 </details>
 
 **`c5f64132fb33`** · `Base/include/util/scopedassign.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Base/include/util/scopedassign.h)
 - canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Base/include/util/scopedassign.h)
 - canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Base/include/util/scopedassign.h)
 - canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Base/include/util/scopedassign.h)
@@ -878,6 +888,8 @@ Earlier paths and their donor versions: `native-headers/util/scopedassign.h`.
 </details>
 
 **`41e5c7730c2d`** · `native-headers/util/scopedassign.h` · proof not assessed
+- public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/util/scopedassign.h)
+- canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/util/scopedassign.h)
 - canonical · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/util/scopedassign.h)
 - public · colingsnyder2-ux · [util/scopedassign.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/util/scopedassign.h)
@@ -1073,6 +1085,7 @@ Earlier paths and their donor versions: `native-headers/util/scopedassign.h`.
 Earlier paths and their donor versions: `native-classes/accepted/App/util/Name.cpp`.
 
 **`345365f62d4f`** · `Base/src/util/Name.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Base/src/util/Name.cpp)
 - canonical · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Base/src/util/Name.cpp)
 - canonical · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Base/src/util/Name.cpp)
 - canonical · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Base/src/util/Name.cpp)
@@ -1090,6 +1103,7 @@ Earlier paths and their donor versions: `native-classes/accepted/App/util/Name.c
 </details>
 
 **`c5123dab253a`** · `Base/src/util/Name.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Base/src/util/Name.cpp)
 - public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Base/src/util/Name.cpp)
 - public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Base/src/util/Name.cpp)
 - public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Base/src/util/Name.cpp)
@@ -1211,6 +1225,8 @@ Earlier paths and their donor versions: `native-classes/accepted/App/util/Name.c
 </details>
 
 **`829e4c4f7853`** · `native-classes/accepted/App/util/Name.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/accepted/App/util/Name.cpp)
+- canonical · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/accepted/App/util/Name.cpp)
 - public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/accepted/App/util/Name.cpp)
 - canonical · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/accepted/App/util/Name.cpp)
 - public · colingsnyder2-ux · [util/Name.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/accepted/App/util/Name.cpp)

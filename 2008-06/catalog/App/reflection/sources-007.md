@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-classes/SoundTypedProperties.cpp
 </details>
 
 **`387c0b2f47c1`** · `App/src/reflection/SoundTypedProperties.cpp` · proof not assessed
+- public · colingsnyder2-ux · [reflection/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/reflection/SoundTypedProperties.cpp)
 - public · colingsnyder2-ux · [reflection/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/reflection/SoundTypedProperties.cpp)
 - public · colingsnyder2-ux · [reflection/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/reflection/SoundTypedProperties.cpp)
 - public · colingsnyder2-ux · [reflection/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/reflection/SoundTypedProperties.cpp)
@@ -56,6 +57,7 @@ Earlier paths and their donor versions: `native-classes/SoundTypedProperties.cpp
 - public · colingsnyder2-ux · [reflection/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/reflection/SoundTypedProperties.cpp)
 
 **`8c1bbc8b8052`** · `App/src/reflection/SoundTypedProperties.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/reflection/SoundTypedProperties.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/reflection/SoundTypedProperties.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/reflection/SoundTypedProperties.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/reflection/SoundTypedProperties.cpp)
@@ -177,6 +179,8 @@ Earlier paths and their donor versions: `native-classes/SoundTypedProperties.cpp
 </details>
 
 **`8fc7e50d0773`** · `native-classes/SoundTypedProperties.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/SoundTypedProperties.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/SoundTypedProperties.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SoundTypedProperties.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SoundTypedProperties.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundTypedProperties.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SoundTypedProperties.cpp)
@@ -250,6 +254,7 @@ Earlier paths and their donor versions: `native-classes/SoundTypedProperties.cpp
 Earlier paths and their donor versions: `native-classes/SoundValueConvertFloat.cpp`.
 
 **`304123aa7fc2`** · `App/src/reflection/SoundValueConvertFloat.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/reflection/SoundValueConvertFloat.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/reflection/SoundValueConvertFloat.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/reflection/SoundValueConvertFloat.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/reflection/SoundValueConvertFloat.cpp)
@@ -287,6 +292,7 @@ Earlier paths and their donor versions: `native-classes/SoundValueConvertFloat.c
 </details>
 
 **`9e9c0435b8d7`** · `App/src/reflection/SoundValueConvertFloat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [reflection/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/reflection/SoundValueConvertFloat.cpp)
 - public · colingsnyder2-ux · [reflection/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/reflection/SoundValueConvertFloat.cpp)
 - public · colingsnyder2-ux · [reflection/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/reflection/SoundValueConvertFloat.cpp)
 - public · colingsnyder2-ux · [reflection/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/reflection/SoundValueConvertFloat.cpp)
@@ -411,6 +417,8 @@ Earlier paths and their donor versions: `native-classes/SoundValueConvertFloat.c
 </details>
 
 **`f64e48acb449`** · `native-classes/SoundValueConvertFloat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/SoundValueConvertFloat.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/SoundValueConvertFloat.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SoundValueConvertFloat.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SoundValueConvertFloat.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundValueConvertFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SoundValueConvertFloat.cpp)
@@ -492,6 +500,7 @@ Earlier paths and their donor versions: `native-classes/SoundValueConvertFloat.c
 Earlier paths and their donor versions: `native-classes/SoundValueConvertSoundId.cpp`.
 
 **`246da86f5d2d`** · `App/src/reflection/SoundValueConvertSoundId.cpp` · proof not assessed
+- public · colingsnyder2-ux · [reflection/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/reflection/SoundValueConvertSoundId.cpp)
 - public · colingsnyder2-ux · [reflection/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/reflection/SoundValueConvertSoundId.cpp)
 - public · colingsnyder2-ux · [reflection/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/reflection/SoundValueConvertSoundId.cpp)
 - public · colingsnyder2-ux · [reflection/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/reflection/SoundValueConvertSoundId.cpp)
@@ -540,6 +549,7 @@ Earlier paths and their donor versions: `native-classes/SoundValueConvertSoundId
 - public · colingsnyder2-ux · [reflection/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/reflection/SoundValueConvertSoundId.cpp)
 
 **`bccc4b20cb35`** · `App/src/reflection/SoundValueConvertSoundId.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/reflection/SoundValueConvertSoundId.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/reflection/SoundValueConvertSoundId.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/reflection/SoundValueConvertSoundId.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/reflection/SoundValueConvertSoundId.cpp)
@@ -614,6 +624,8 @@ Earlier paths and their donor versions: `native-classes/SoundValueConvertSoundId
 </details>
 
 **`9996302b7e7e`** · `native-classes/SoundValueConvertSoundId.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/SoundValueConvertSoundId.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/SoundValueConvertSoundId.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SoundValueConvertSoundId.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SoundValueConvertSoundId.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundValueConvertSoundId.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SoundValueConvertSoundId.cpp)
@@ -762,6 +774,7 @@ Earlier paths and their donor versions: `native-classes/SoundValueGenericFloat.c
 - public · colingsnyder2-ux · [reflection/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/reflection/SoundValueGenericFloat.cpp)
 
 **`2c7343dd9c2b`** · `App/src/reflection/SoundValueGenericFloat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [reflection/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/reflection/SoundValueGenericFloat.cpp)
 - public · colingsnyder2-ux · [reflection/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/reflection/SoundValueGenericFloat.cpp)
 - public · colingsnyder2-ux · [reflection/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/reflection/SoundValueGenericFloat.cpp)
 - public · colingsnyder2-ux · [reflection/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/reflection/SoundValueGenericFloat.cpp)
@@ -773,6 +786,7 @@ Earlier paths and their donor versions: `native-classes/SoundValueGenericFloat.c
 </details>
 
 **`7785577d942a`** · `App/src/reflection/SoundValueGenericFloat.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/reflection/SoundValueGenericFloat.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/reflection/SoundValueGenericFloat.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/reflection/SoundValueGenericFloat.cpp)
 - canonical · colingsnyder2-ux · [reflection/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/reflection/SoundValueGenericFloat.cpp)
@@ -848,6 +862,8 @@ Earlier paths and their donor versions: `native-classes/SoundValueGenericFloat.c
 </details>
 
 **`6dbd327bd501`** · `native-classes/SoundValueGenericFloat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/SoundValueGenericFloat.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/SoundValueGenericFloat.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SoundValueGenericFloat.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SoundValueGenericFloat.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundValueGenericFloat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SoundValueGenericFloat.cpp)

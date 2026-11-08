@@ -35,6 +35,7 @@ Earlier paths and their donor versions: `native-classes/MyXTPCommandBars.cpp`.
 - public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 
 **`35f1f6399b30`** · `Unclassified/src/MyXTPCommandBars.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
@@ -71,6 +72,7 @@ Earlier paths and their donor versions: `native-classes/MyXTPCommandBars.cpp`.
 </details>
 
 **`54e64d9d1961`** · `Unclassified/src/MyXTPCommandBars.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
@@ -284,6 +286,8 @@ Earlier paths and their donor versions: `native-classes/MyXTPCommandBars.cpp`.
 </details>
 
 **`a27553662a14`** · `native-classes/MyXTPCommandBars.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MyXTPCommandBars.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MyXTPCommandBars.cpp)
 - public · colingsnyder2-ux · [native-classes/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MyXTPCommandBars.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/MyXTPCommandBars.cpp)
 - public · colingsnyder2-ux · [native-classes/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MyXTPCommandBars.cpp)
@@ -408,6 +412,7 @@ Earlier paths and their donor versions: `native-classes/NameCompare.cpp`.
 </details>
 
 **`be1cc8f7d956`** · `Unclassified/src/NameCompare.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/NameCompare.cpp)
 - canonical · colingsnyder2-ux · [src/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/NameCompare.cpp)
 - canonical · colingsnyder2-ux · [src/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/NameCompare.cpp)
 - canonical · colingsnyder2-ux · [src/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/NameCompare.cpp)
@@ -444,6 +449,7 @@ Earlier paths and their donor versions: `native-classes/NameCompare.cpp`.
 </details>
 
 **`e6427d290dc1`** · `Unclassified/src/NameCompare.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/NameCompare.cpp)
 - public · colingsnyder2-ux · [src/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/NameCompare.cpp)
 - public · colingsnyder2-ux · [src/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/NameCompare.cpp)
 - public · colingsnyder2-ux · [src/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/NameCompare.cpp)
@@ -485,6 +491,8 @@ Earlier paths and their donor versions: `native-classes/NameCompare.cpp`.
 - public · colingsnyder2-ux · [native-classes/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/NameCompare.cpp)
 
 **`a04fbe9e8ef7`** · `native-classes/NameCompare.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/NameCompare.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/NameCompare.cpp)
 - public · colingsnyder2-ux · [native-classes/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/NameCompare.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/NameCompare.cpp)
 - public · colingsnyder2-ux · [native-classes/NameCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/NameCompare.cpp)
@@ -612,6 +620,7 @@ Earlier paths and their donor versions: `native-classes/NameCompare.cpp`.
 Earlier paths and their donor versions: `native-classes/NameNull.cpp`.
 
 **`2b458d2c3b2e`** · `Unclassified/src/NameNull.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/NameNull.cpp)
 - canonical · colingsnyder2-ux · [src/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/NameNull.cpp)
 - canonical · colingsnyder2-ux · [src/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/NameNull.cpp)
 - canonical · colingsnyder2-ux · [src/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/NameNull.cpp)
@@ -675,6 +684,7 @@ Earlier paths and their donor versions: `native-classes/NameNull.cpp`.
 - public · colingsnyder2-ux · [src/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/NameNull.cpp)
 
 **`9f8f93fddd63`** · `Unclassified/src/NameNull.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/NameNull.cpp)
 - public · colingsnyder2-ux · [src/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/NameNull.cpp)
 - public · colingsnyder2-ux · [src/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/NameNull.cpp)
 - public · colingsnyder2-ux · [src/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/NameNull.cpp)
@@ -772,6 +782,8 @@ Earlier paths and their donor versions: `native-classes/NameNull.cpp`.
 </details>
 
 **`e307d11ac3d1`** · `native-classes/NameNull.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/NameNull.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/NameNull.cpp)
 - public · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/NameNull.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/NameNull.cpp)
 - public · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/NameNull.cpp)
@@ -888,6 +900,7 @@ Earlier paths and their donor versions: `native-classes/NativeClassNames.cpp`.
 </details>
 
 **`63350c6fe252`** · `Unclassified/src/NativeClassNames.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/NativeClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/NativeClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/NativeClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/NativeClassNames.cpp)
@@ -924,6 +937,7 @@ Earlier paths and their donor versions: `native-classes/NativeClassNames.cpp`.
 </details>
 
 **`b0d2dd2c8848`** · `Unclassified/src/NativeClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/NativeClassNames.cpp)
 - public · colingsnyder2-ux · [src/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/NativeClassNames.cpp)
 - public · colingsnyder2-ux · [src/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/NativeClassNames.cpp)
 - public · colingsnyder2-ux · [src/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/NativeClassNames.cpp)
@@ -995,6 +1009,8 @@ Earlier paths and their donor versions: `native-classes/NativeClassNames.cpp`.
 </details>
 
 **`61893c1c3484`** · `native-classes/NativeClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/NativeClassNames.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/NativeClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/NativeClassNames.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/NativeClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/NativeClassNames.cpp)

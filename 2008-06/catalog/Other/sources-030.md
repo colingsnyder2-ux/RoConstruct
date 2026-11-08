@@ -218,6 +218,8 @@ Compatibility path for `Unclassified/src/LoginRenewer.cpp`; compile either path,
 </details>
 
 **`dda2f583fd5d`** · `native-classes/LoginRenewer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/LoginRenewer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/LoginRenewer.cpp)
@@ -398,6 +400,8 @@ Compatibility path for `Unclassified/src/LuaAllocatorStats.cpp`; compile either 
 </details>
 
 **`b9b55529efb3`** · `native-classes/LuaAllocatorStats.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/LuaAllocatorStats.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/LuaAllocatorStats.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/LuaAllocatorStats.cpp)
@@ -486,6 +490,8 @@ Compatibility path for `Unclassified/src/LuaAllocatorStats.cpp`; compile either 
 Compatibility path for `Unclassified/src/LuaArgs.cpp`; compile either path, never both.
 
 **`05c439900526`** · `native-classes/LuaArgs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/LuaArgs.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/LuaArgs.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/LuaArgs.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/LuaArgs.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/LuaArgs.cpp)
@@ -761,6 +767,7 @@ Compatibility path for `Unclassified/src/LuaArgs.cpp`; compile either path, neve
 - public · colingsnyder2-ux · [native-classes/MainLogManagerState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MainLogManagerState.cpp)
 
 **`b105c115c080`** · `native-classes/MainLogManagerState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MainLogManagerState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MainLogManagerState.cpp)
 - public · colingsnyder2-ux · [native-classes/MainLogManagerState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MainLogManagerState.cpp)
 - public · colingsnyder2-ux · [native-classes/MainLogManagerState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MainLogManagerState.cpp)
 - public · colingsnyder2-ux · [native-classes/MainLogManagerState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/MainLogManagerState.cpp)
@@ -839,6 +846,7 @@ Compatibility path for `Unclassified/src/LuaArgs.cpp`; compile either path, neve
 </details>
 
 **`ea05cb3e7211`** · `native-classes/MainLogPath.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MainLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MainLogPath.cpp)
 - public · colingsnyder2-ux · [native-classes/MainLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MainLogPath.cpp)
 - public · colingsnyder2-ux · [native-classes/MainLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MainLogPath.cpp)
 - public · colingsnyder2-ux · [native-classes/MainLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/MainLogPath.cpp)
@@ -909,6 +917,7 @@ Compatibility path for `Unclassified/src/LuaArgs.cpp`; compile either path, neve
 - public · colingsnyder2-ux · [native-classes/MainLogProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MainLogProvider.cpp)
 
 **`4b094b2e2e3c`** · `native-classes/MainLogProvider.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MainLogProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MainLogProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/MainLogProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MainLogProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/MainLogProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MainLogProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/MainLogProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/MainLogProvider.cpp)
@@ -1000,6 +1009,7 @@ Compatibility path for `Unclassified/src/LuaArgs.cpp`; compile either path, neve
 </details>
 
 **`75a064c256c0`** · `native-classes/MarshalWindowGlobals.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MarshalWindowGlobals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MarshalWindowGlobals.cpp)
 - public · colingsnyder2-ux · [native-classes/MarshalWindowGlobals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MarshalWindowGlobals.cpp)
 - public · colingsnyder2-ux · [native-classes/MarshalWindowGlobals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MarshalWindowGlobals.cpp)
 - public · colingsnyder2-ux · [native-classes/MarshalWindowGlobals.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/MarshalWindowGlobals.cpp)
@@ -1052,6 +1062,8 @@ Compatibility path for `Unclassified/src/MarshalWindowRegistry.cpp`; compile eit
 </details>
 
 **`6465e65a478d`** · `native-classes/MarshalWindowRegistry.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MarshalWindowRegistry.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MarshalWindowRegistry.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MarshalWindowRegistry.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MarshalWindowRegistry.cpp)
 - public · colingsnyder2-ux · [native-classes/MarshalWindowRegistry.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MarshalWindowRegistry.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MarshalWindowRegistry.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/MarshalWindowRegistry.cpp)
 - public · colingsnyder2-ux · [native-classes/MarshalWindowRegistry.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MarshalWindowRegistry.cpp)

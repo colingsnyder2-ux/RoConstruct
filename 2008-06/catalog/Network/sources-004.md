@@ -28,6 +28,7 @@ Earlier paths and their donor versions: `native-headers/ReliabilityLayer.h`.
 - public · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Network/include/ReliabilityLayer.h)
 
 **`2eb14f210c0e`** · `Network/include/ReliabilityLayer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Network/include/ReliabilityLayer.h)
 - canonical · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Network/include/ReliabilityLayer.h)
 - canonical · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Network/include/ReliabilityLayer.h)
 - canonical · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Network/include/ReliabilityLayer.h)
@@ -94,6 +95,7 @@ Earlier paths and their donor versions: `native-headers/ReliabilityLayer.h`.
 </details>
 
 **`d47105f8f081`** · `Network/include/ReliabilityLayer.h` · proof not assessed
+- public · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Network/include/ReliabilityLayer.h)
 - public · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Network/include/ReliabilityLayer.h)
 - public · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Network/include/ReliabilityLayer.h)
 - public · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Network/include/ReliabilityLayer.h)
@@ -240,6 +242,8 @@ Earlier paths and their donor versions: `native-headers/ReliabilityLayer.h`.
 </details>
 
 **`f2d47271f118`** · `native-headers/ReliabilityLayer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/ReliabilityLayer.h)
+- canonical · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h)
 - public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/ReliabilityLayer.h)
 - canonical · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h)
 - public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/ReliabilityLayer.h)
@@ -337,6 +341,7 @@ Earlier paths and their donor versions: `native-headers/ReliabilityLayer.h`.
 Earlier paths and their donor versions: `native-headers/Replicator.h`.
 
 **`4235a637aa93`** · `Network/include/Replicator.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Network/include/Replicator.h)
 - canonical · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Network/include/Replicator.h)
 - canonical · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Network/include/Replicator.h)
 - canonical · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Network/include/Replicator.h)
@@ -410,6 +415,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Network/include/Replicator.h)
 
 **`8046074691c0`** · `Network/include/Replicator.h` · proof not assessed
+- public · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Network/include/Replicator.h)
 - public · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Network/include/Replicator.h)
 - public · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Network/include/Replicator.h)
 - public · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Network/include/Replicator.h)
@@ -571,6 +577,8 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 </details>
 
 **`cc54ea1cd529`** · `native-headers/Replicator.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/Replicator.h)
+- canonical · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/Replicator.h)
 - public · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/Replicator.h)
 - canonical · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/Replicator.h)
 - public · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/Replicator.h)
@@ -868,6 +876,8 @@ Compatibility path for `WindowsClient/src/CMultiPlayerPane.cpp`; compile either 
 </details>
 
 **`977fca1bfefd`** · `native-classes/CMultiPlayerPane.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/CMultiPlayerPane.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp)
 - public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/CMultiPlayerPane.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp)
 - public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CMultiPlayerPane.cpp)

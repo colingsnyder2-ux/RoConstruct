@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 
 **`7d21f553e663`** · `WindowsClient/include/LoginRenewer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
@@ -84,6 +85,7 @@ Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 </details>
 
 **`a3a99ac34ff4`** · `WindowsClient/include/LoginRenewer.h` · proof not assessed
+- public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/WindowsClient/include/LoginRenewer.h)
 - public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/WindowsClient/include/LoginRenewer.h)
 - public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/LoginRenewer.h)
 - public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/include/LoginRenewer.h)
@@ -368,6 +370,8 @@ Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 </details>
 
 **`fe4fcea04f27`** · `native-headers/LoginRenewer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/LoginRenewer.h)
+- canonical · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/LoginRenewer.h)
 - public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/LoginRenewer.h)
 - public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/LoginRenewer.h)
@@ -479,6 +483,7 @@ Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 
 **`167bd43d75b7`** · `WindowsClient/include/MyXTPCommandBars.h` · proof not assessed
+- public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/include/MyXTPCommandBars.h)
@@ -490,6 +495,7 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 </details>
 
 **`234396e760f4`** · `WindowsClient/include/MyXTPCommandBars.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
@@ -649,6 +655,8 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 </details>
 
 **`55bea8260b23`** · `native-headers/MyXTPCommandBars.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/MyXTPCommandBars.h)
+- canonical · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/MyXTPCommandBars.h)

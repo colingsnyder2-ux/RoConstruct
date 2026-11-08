@@ -35,6 +35,7 @@ Earlier paths and their donor versions: `native-classes/AtlErrorCore.cpp`.
 - public · colingsnyder2-ux · [src/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/AtlErrorCore.cpp)
 
 **`db0535ad32e3`** · `Unclassified/src/AtlErrorCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/AtlErrorCore.cpp)
 - public · colingsnyder2-ux · [src/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/AtlErrorCore.cpp)
 - public · colingsnyder2-ux · [src/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/AtlErrorCore.cpp)
 - public · colingsnyder2-ux · [src/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/AtlErrorCore.cpp)
@@ -46,6 +47,7 @@ Earlier paths and their donor versions: `native-classes/AtlErrorCore.cpp`.
 </details>
 
 **`dc2ce7788f87`** · `Unclassified/src/AtlErrorCore.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/AtlErrorCore.cpp)
 - canonical · colingsnyder2-ux · [src/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/AtlErrorCore.cpp)
 - canonical · colingsnyder2-ux · [src/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/AtlErrorCore.cpp)
 - canonical · colingsnyder2-ux · [src/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/AtlErrorCore.cpp)
@@ -121,6 +123,8 @@ Earlier paths and their donor versions: `native-classes/AtlErrorCore.cpp`.
 </details>
 
 **`9c1b1ed14fa9`** · `native-classes/AtlErrorCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/AtlErrorCore.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/AtlErrorCore.cpp)
 - public · colingsnyder2-ux · [native-classes/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/AtlErrorCore.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/AtlErrorCore.cpp)
 - public · colingsnyder2-ux · [native-classes/AtlErrorCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/AtlErrorCore.cpp)
@@ -252,6 +256,7 @@ Earlier paths and their donor versions: `native-classes/AtlErrorCore.cpp`.
 Earlier paths and their donor versions: `native-classes/AuthoringSettings.cpp`.
 
 **`67a408f84acc`** · `Unclassified/src/AuthoringSettings.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - canonical · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - canonical · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - canonical · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/AuthoringSettings.cpp)
@@ -297,6 +302,7 @@ Earlier paths and their donor versions: `native-classes/AuthoringSettings.cpp`.
 </details>
 
 **`e8e9b581451f`** · `Unclassified/src/AuthoringSettings.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - public · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - public · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - public · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/AuthoringSettings.cpp)
@@ -431,6 +437,8 @@ Earlier paths and their donor versions: `native-classes/AuthoringSettings.cpp`.
 </details>
 
 **`ff6810839a22`** · `native-classes/AuthoringSettings.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/AuthoringSettings.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/AuthoringSettings.cpp)
 - public · colingsnyder2-ux · [native-classes/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/AuthoringSettings.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/AuthoringSettings.cpp)
 - public · colingsnyder2-ux · [native-classes/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/AuthoringSettings.cpp)
@@ -511,6 +519,7 @@ Earlier paths and their donor versions: `native-classes/AxisVerbConstructors.cpp
 </details>
 
 **`95b22cdb518d`** · `Unclassified/src/AxisVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/AxisVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/AxisVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/AxisVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/AxisVerbConstructors.cpp)
@@ -522,6 +531,7 @@ Earlier paths and their donor versions: `native-classes/AxisVerbConstructors.cpp
 </details>
 
 **`bb1dcbf7f60b`** · `Unclassified/src/AxisVerbConstructors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/AxisVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/AxisVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/AxisVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/AxisVerbConstructors.cpp)
@@ -602,6 +612,8 @@ Earlier paths and their donor versions: `native-classes/AxisVerbConstructors.cpp
 </details>
 
 **`75d19b2029da`** · `native-classes/AxisVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/AxisVerbConstructors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/AxisVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/AxisVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/AxisVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/AxisVerbConstructors.cpp)
@@ -742,6 +754,7 @@ Earlier paths and their donor versions: `native-classes/AxisVerbConstructors.cpp
 Earlier paths and their donor versions: `native-classes/BasicVerbConstructors.cpp`.
 
 **`565a7017e8c4`** · `Unclassified/src/BasicVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/BasicVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/BasicVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/BasicVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/BasicVerbConstructors.cpp)
@@ -773,6 +786,7 @@ Earlier paths and their donor versions: `native-classes/BasicVerbConstructors.cp
 - public · colingsnyder2-ux · [src/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/BasicVerbConstructors.cpp)
 
 **`e2d85dc2de8f`** · `Unclassified/src/BasicVerbConstructors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/BasicVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/BasicVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/BasicVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/BasicVerbConstructors.cpp)
@@ -848,6 +862,8 @@ Earlier paths and their donor versions: `native-classes/BasicVerbConstructors.cp
 </details>
 
 **`26e53db60f0a`** · `native-classes/BasicVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/BasicVerbConstructors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/BasicVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/BasicVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/BasicVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/BasicVerbConstructors.cpp)
@@ -965,6 +981,7 @@ Earlier paths and their donor versions: `native-classes/BasicVerbConstructors.cp
 Earlier paths and their donor versions: `native-classes/BoolPropertyVerb.cpp`.
 
 **`2a329c516f22`** · `Unclassified/src/BoolPropertyVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
@@ -996,6 +1013,7 @@ Earlier paths and their donor versions: `native-classes/BoolPropertyVerb.cpp`.
 </details>
 
 **`e56c799b995d`** · `Unclassified/src/BoolPropertyVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
@@ -1021,6 +1039,8 @@ Earlier paths and their donor versions: `native-classes/BoolPropertyVerb.cpp`.
 </details>
 
 **`11b7c126c92c`** · `native-classes/BoolPropertyVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/BoolPropertyVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/BoolPropertyVerb.cpp)

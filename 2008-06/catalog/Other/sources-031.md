@@ -71,6 +71,8 @@ Compatibility path for `App/src/tool/MegaDraggerMovement.cpp`; compile either pa
 </details>
 
 **`96b5348257ea`** · `native-classes/MegaDraggerMovement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MegaDraggerMovement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MegaDraggerMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MegaDraggerMovement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/MegaDraggerMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MegaDraggerMovement.cpp)
@@ -163,6 +165,8 @@ Compatibility path for `App/src/tool/MegaDraggerMovement.cpp`; compile either pa
 <summary>native-classes/MenuSpacer.cpp — candidate-only; 1 content versions</summary>
 
 **`f914c31ed678`** · `native-classes/MenuSpacer.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MenuSpacer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/5ffcb4abdce10dd9139a9a1e1593d66996a40e47058d0083e8ebf98a26107d59/rebuild/2008-06/native-classes/MenuSpacer.cpp)
+- draft · colingsnyder2-ux · [native-classes/MenuSpacer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/ca804816996c34856987bd13d98f2bd3de599b3dfed573d77fe641674880ee5d/rebuild/2008-06/native-classes/MenuSpacer.cpp)
 - draft · colingsnyder2-ux · [native-classes/MenuSpacer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/5ffcb4abdce10dd9139a9a1e1593d66996a40e47058d0083e8ebf98a26107d59/rebuild/2008-06/native-classes/MenuSpacer.cpp)
 - draft · colingsnyder2-ux · [native-classes/MenuSpacer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/ca804816996c34856987bd13d98f2bd3de599b3dfed573d77fe641674880ee5d/rebuild/2008-06/native-classes/MenuSpacer.cpp)
 - draft · colingsnyder2-ux · [native-classes/MenuSpacer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/5ffcb4abdce10dd9139a9a1e1593d66996a40e47058d0083e8ebf98a26107d59/rebuild/2008-06/native-classes/MenuSpacer.cpp)
@@ -256,6 +260,7 @@ Compatibility path for `App/src/tool/MegaDraggerMovement.cpp`; compile either pa
 <summary>native-classes/MergeBinder.cpp — candidate-only; 1 content versions</summary>
 
 **`728793ffcfc0`** · `native-classes/MergeBinder.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MergeBinder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/MergeBinder.cpp)
 - draft · colingsnyder2-ux · [native-classes/MergeBinder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/MergeBinder.cpp)
 - fork · mewpokemons · [native-classes/MergeBinder.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/MergeBinder.cpp)
 - fork · mewpokemons · [native-classes/MergeBinder.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/MergeBinder.cpp)
@@ -387,6 +392,8 @@ Compatibility path for `App/src/v8datamodel/Message.cpp`; compile either path, n
 </details>
 
 **`9d6a3c91c119`** · `native-classes/Message.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/Message.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/Message.cpp)
 - public · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/Message.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/Message.cpp)
 - public · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/Message.cpp)
@@ -563,6 +570,8 @@ Compatibility path for `App/src/reflection/MetadataClass.cpp`; compile either pa
 </details>
 
 **`6f1d5f8eefb5`** · `native-classes/MetadataClass.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MetadataClass.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MetadataClass.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MetadataClass.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/MetadataClass.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MetadataClass.cpp)
@@ -664,6 +673,8 @@ Compatibility path for `App/src/reflection/MetadataClassNames.cpp`; compile eith
 </details>
 
 **`64f4f6958850`** · `native-classes/MetadataClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MetadataClassNames.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MetadataClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MetadataClassNames.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/MetadataClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MetadataClassNames.cpp)
@@ -851,6 +862,8 @@ Compatibility path for `App/src/reflection/MetadataClassesLookup.cpp`; compile e
 </details>
 
 **`844cdc13281c`** · `native-classes/MetadataClassesLookup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MetadataClassesLookup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MetadataClassesLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MetadataClassesLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/MetadataClassesLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MetadataClassesLookup.cpp)
@@ -1016,6 +1029,8 @@ Compatibility path for `App/src/reflection/MetadataClassesRegister.cpp`; compile
 </details>
 
 **`8123d9aa4059`** · `native-classes/MetadataClassesRegister.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MetadataClassesRegister.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MetadataClassesRegister.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MetadataClassesRegister.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/MetadataClassesRegister.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MetadataClassesRegister.cpp)
@@ -1118,83 +1133,5 @@ Compatibility path for `App/src/reflection/MetadataClassesRegister.cpp`; compile
 - public · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/MetadataClassesRegister.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/MetadataClassesRegister.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/MetadataClassesRegister.cpp)
-
-</details>
-
-<details>
-<summary>native-classes/MetadataMemberLookup.cpp — public-only; 5 content versions</summary>
-
-**`4dff393d20e5`** · `native-classes/MetadataMemberLookup.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/MetadataMemberLookup.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`6cc62740b2ad`** · `native-classes/MetadataMemberLookup.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `local/findings/2008-06/native-classes/MetadataMemberLookup.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`7a75ecb89778`** · `native-classes/MetadataMemberLookup.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/MetadataMemberLookup.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`9b12be883671`** · `native-classes/MetadataMemberLookup.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/MetadataMemberLookup.cpp)
-
-<details><summary>1 retained local origins</summary>
-
-- local · `work/native-candidates/status-labels-20261108/public/2008-06/native-classes/MetadataMemberLookup.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e243f46dbe64`** · `native-classes/MetadataMemberLookup.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/MetadataMemberLookup.cpp)
-- public · colingsnyder2-ux · [native-classes/MetadataMemberLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MetadataMemberLookup.cpp)
 
 </details>

@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/ScriptContextLifetime.cpp`.
 
 **`183f272ffc3c`** · `Unclassified/src/ScriptContextLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/ScriptContextLifetime.cpp)
 - public · colingsnyder2-ux · [src/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ScriptContextLifetime.cpp)
 - public · colingsnyder2-ux · [src/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ScriptContextLifetime.cpp)
 - public · colingsnyder2-ux · [src/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ScriptContextLifetime.cpp)
@@ -28,6 +29,7 @@ Earlier paths and their donor versions: `native-classes/ScriptContextLifetime.cp
 </details>
 
 **`b565326c9ca2`** · `Unclassified/src/ScriptContextLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/ScriptContextLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ScriptContextLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ScriptContextLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ScriptContextLifetime.cpp)
@@ -149,6 +151,8 @@ Earlier paths and their donor versions: `native-classes/ScriptContextLifetime.cp
 </details>
 
 **`46aca5ba28d1`** · `native-classes/ScriptContextLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ScriptContextLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ScriptContextLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ScriptContextLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ScriptContextLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ScriptContextLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ScriptContextLifetime.cpp)
@@ -291,6 +295,7 @@ Earlier paths and their donor versions: `native-classes/ScriptContextLifetime.cp
 Earlier paths and their donor versions: `native-classes/ScriptFileLoad.cpp`.
 
 **`1df5a30cd4bb`** · `Unclassified/src/ScriptFileLoad.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/ScriptFileLoad.cpp)
 - canonical · colingsnyder2-ux · [src/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ScriptFileLoad.cpp)
 - canonical · colingsnyder2-ux · [src/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ScriptFileLoad.cpp)
 - canonical · colingsnyder2-ux · [src/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ScriptFileLoad.cpp)
@@ -336,6 +341,7 @@ Earlier paths and their donor versions: `native-classes/ScriptFileLoad.cpp`.
 </details>
 
 **`5425fc1081a5`** · `Unclassified/src/ScriptFileLoad.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/ScriptFileLoad.cpp)
 - public · colingsnyder2-ux · [src/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ScriptFileLoad.cpp)
 - public · colingsnyder2-ux · [src/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ScriptFileLoad.cpp)
 - public · colingsnyder2-ux · [src/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ScriptFileLoad.cpp)
@@ -374,6 +380,8 @@ Earlier paths and their donor versions: `native-classes/ScriptFileLoad.cpp`.
 - public · colingsnyder2-ux · [src/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ScriptFileLoad.cpp)
 
 **`13c06f214081`** · `native-classes/ScriptFileLoad.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ScriptFileLoad.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ScriptFileLoad.cpp)
 - public · colingsnyder2-ux · [native-classes/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ScriptFileLoad.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ScriptFileLoad.cpp)
 - public · colingsnyder2-ux · [native-classes/ScriptFileLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ScriptFileLoad.cpp)
@@ -538,6 +546,7 @@ Earlier paths and their donor versions: `native-classes/ScriptFileLoad.cpp`.
 Earlier paths and their donor versions: `native-classes/SelectionVerbConstructors.cpp`.
 
 **`05df2127aac5`** · `Unclassified/src/SelectionVerbConstructors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
@@ -583,6 +592,7 @@ Earlier paths and their donor versions: `native-classes/SelectionVerbConstructor
 </details>
 
 **`c2468b9e3543`** · `Unclassified/src/SelectionVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
@@ -711,6 +721,8 @@ Earlier paths and their donor versions: `native-classes/SelectionVerbConstructor
 - public · colingsnyder2-ux · [native-classes/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/SelectionVerbConstructors.cpp)
 
 **`e5f2e675c297`** · `native-classes/SelectionVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/SelectionVerbConstructors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/SelectionVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SelectionVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SelectionVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SelectionVerbConstructors.cpp)
@@ -782,6 +794,7 @@ Earlier paths and their donor versions: `native-classes/SelectionVerbConstructor
 Earlier paths and their donor versions: `native-classes/SerializerRoot.cpp`.
 
 **`01b9eab3b303`** · `Unclassified/src/SerializerRoot.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/SerializerRoot.cpp)
 - canonical · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/SerializerRoot.cpp)
 - canonical · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/SerializerRoot.cpp)
 - canonical · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/SerializerRoot.cpp)
@@ -817,6 +830,7 @@ Earlier paths and their donor versions: `native-classes/SerializerRoot.cpp`.
 </details>
 
 **`2ee6bc7d816d`** · `Unclassified/src/SerializerRoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [src/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/SerializerRoot.cpp)
@@ -849,6 +863,8 @@ Earlier paths and their donor versions: `native-classes/SerializerRoot.cpp`.
 </details>
 
 **`42f93f20abbc`** · `native-classes/SerializerRoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/SerializerRoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SerializerRoot.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SerializerRoot.cpp)

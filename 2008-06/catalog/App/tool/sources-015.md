@@ -45,6 +45,7 @@ Earlier paths and their donor versions: `native-classes/RocketToolCore.cpp`.
 - public · colingsnyder2-ux · [tool/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/RocketToolCore.cpp)
 
 **`3eecb3a587e0`** · `App/src/tool/RocketToolCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/tool/RocketToolCore.cpp)
 - public · colingsnyder2-ux · [tool/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/tool/RocketToolCore.cpp)
 - public · colingsnyder2-ux · [tool/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/tool/RocketToolCore.cpp)
 - public · colingsnyder2-ux · [tool/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/tool/RocketToolCore.cpp)
@@ -56,6 +57,7 @@ Earlier paths and their donor versions: `native-classes/RocketToolCore.cpp`.
 </details>
 
 **`98153812bbf2`** · `App/src/tool/RocketToolCore.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/tool/RocketToolCore.cpp)
 - canonical · colingsnyder2-ux · [tool/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/tool/RocketToolCore.cpp)
 - canonical · colingsnyder2-ux · [tool/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/tool/RocketToolCore.cpp)
 - canonical · colingsnyder2-ux · [tool/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/tool/RocketToolCore.cpp)
@@ -126,6 +128,8 @@ Earlier paths and their donor versions: `native-classes/RocketToolCore.cpp`.
 </details>
 
 **`96944aedf69c`** · `native-classes/RocketToolCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/RocketToolCore.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/RocketToolCore.cpp)
 - public · colingsnyder2-ux · [native-classes/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/RocketToolCore.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/RocketToolCore.cpp)
 - public · colingsnyder2-ux · [native-classes/RocketToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/RocketToolCore.cpp)
@@ -250,6 +254,7 @@ Earlier paths and their donor versions: `native-classes/RocketToolCore.cpp`.
 Earlier paths and their donor versions: `native-classes/RocketToolLaunch.cpp`.
 
 **`2eaec7a297b1`** · `App/src/tool/RocketToolLaunch.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/tool/RocketToolLaunch.cpp)
 - canonical · colingsnyder2-ux · [tool/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/tool/RocketToolLaunch.cpp)
 - canonical · colingsnyder2-ux · [tool/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/tool/RocketToolLaunch.cpp)
 - canonical · colingsnyder2-ux · [tool/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/tool/RocketToolLaunch.cpp)
@@ -287,6 +292,7 @@ Earlier paths and their donor versions: `native-classes/RocketToolLaunch.cpp`.
 </details>
 
 **`31188eb7a2c2`** · `App/src/tool/RocketToolLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/tool/RocketToolLaunch.cpp)
 - public · colingsnyder2-ux · [tool/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/tool/RocketToolLaunch.cpp)
 - public · colingsnyder2-ux · [tool/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/tool/RocketToolLaunch.cpp)
 - public · colingsnyder2-ux · [tool/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/tool/RocketToolLaunch.cpp)
@@ -411,6 +417,8 @@ Earlier paths and their donor versions: `native-classes/RocketToolLaunch.cpp`.
 </details>
 
 **`867ced1f5df7`** · `native-classes/RocketToolLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/RocketToolLaunch.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/RocketToolLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/RocketToolLaunch.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/RocketToolLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/RocketToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/RocketToolLaunch.cpp)
@@ -501,6 +509,7 @@ Earlier paths and their donor versions: `native-classes/RocketToolProjectile.cpp
 </details>
 
 **`86c038e5c3ab`** · `App/src/tool/RocketToolProjectile.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/tool/RocketToolProjectile.cpp)
 - canonical · colingsnyder2-ux · [tool/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/tool/RocketToolProjectile.cpp)
 - canonical · colingsnyder2-ux · [tool/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/tool/RocketToolProjectile.cpp)
 - canonical · colingsnyder2-ux · [tool/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/tool/RocketToolProjectile.cpp)
@@ -538,6 +547,7 @@ Earlier paths and their donor versions: `native-classes/RocketToolProjectile.cpp
 </details>
 
 **`bdb270ed728e`** · `App/src/tool/RocketToolProjectile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/tool/RocketToolProjectile.cpp)
 - public · colingsnyder2-ux · [tool/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/tool/RocketToolProjectile.cpp)
 - public · colingsnyder2-ux · [tool/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/tool/RocketToolProjectile.cpp)
 - public · colingsnyder2-ux · [tool/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/tool/RocketToolProjectile.cpp)
@@ -661,6 +671,8 @@ Earlier paths and their donor versions: `native-classes/RocketToolProjectile.cpp
 - public · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/RocketToolProjectile.cpp)
 
 **`fa4ced07fed2`** · `native-classes/RocketToolProjectile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/RocketToolProjectile.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/RocketToolProjectile.cpp)
 - public · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/RocketToolProjectile.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/RocketToolProjectile.cpp)
 - public · colingsnyder2-ux · [native-classes/RocketToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/RocketToolProjectile.cpp)
@@ -734,6 +746,7 @@ Earlier paths and their donor versions: `native-classes/RocketToolProjectile.cpp
 Earlier paths and their donor versions: `native-classes/ShootToolMethods.cpp`.
 
 **`449b9f2b7722`** · `App/src/tool/ShootToolMethods.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/tool/ShootToolMethods.cpp)
 - public · colingsnyder2-ux · [tool/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/tool/ShootToolMethods.cpp)
 - public · colingsnyder2-ux · [tool/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/tool/ShootToolMethods.cpp)
 - public · colingsnyder2-ux · [tool/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/tool/ShootToolMethods.cpp)
@@ -782,6 +795,7 @@ Earlier paths and their donor versions: `native-classes/ShootToolMethods.cpp`.
 </details>
 
 **`f03648839e9a`** · `App/src/tool/ShootToolMethods.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/tool/ShootToolMethods.cpp)
 - canonical · colingsnyder2-ux · [tool/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/tool/ShootToolMethods.cpp)
 - canonical · colingsnyder2-ux · [tool/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/tool/ShootToolMethods.cpp)
 - canonical · colingsnyder2-ux · [tool/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/tool/ShootToolMethods.cpp)
@@ -856,6 +870,8 @@ Earlier paths and their donor versions: `native-classes/ShootToolMethods.cpp`.
 - public · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ShootToolMethods.cpp)
 
 **`8e45e7c4b450`** · `native-classes/ShootToolMethods.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ShootToolMethods.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ShootToolMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ShootToolMethods.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ShootToolMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ShootToolMethods.cpp)
@@ -1004,6 +1020,7 @@ Earlier paths and their donor versions: `native-classes/ShootToolShoot.cpp`.
 - public · colingsnyder2-ux · [tool/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/ShootToolShoot.cpp)
 
 **`20c195ec5c9f`** · `App/src/tool/ShootToolShoot.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/src/tool/ShootToolShoot.cpp)
 - canonical · colingsnyder2-ux · [tool/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/tool/ShootToolShoot.cpp)
 - canonical · colingsnyder2-ux · [tool/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/tool/ShootToolShoot.cpp)
 - canonical · colingsnyder2-ux · [tool/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/tool/ShootToolShoot.cpp)
@@ -1050,6 +1067,7 @@ Earlier paths and their donor versions: `native-classes/ShootToolShoot.cpp`.
 </details>
 
 **`97b04028002a`** · `App/src/tool/ShootToolShoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/src/tool/ShootToolShoot.cpp)
 - public · colingsnyder2-ux · [tool/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/tool/ShootToolShoot.cpp)
 - public · colingsnyder2-ux · [tool/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/tool/ShootToolShoot.cpp)
 - public · colingsnyder2-ux · [tool/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/tool/ShootToolShoot.cpp)
@@ -1079,6 +1097,8 @@ Earlier paths and their donor versions: `native-classes/ShootToolShoot.cpp`.
 </details>
 
 **`0ec2272d90d2`** · `native-classes/ShootToolShoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ShootToolShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ShootToolShoot.cpp)
 - public · colingsnyder2-ux · [native-classes/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ShootToolShoot.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ShootToolShoot.cpp)
 - public · colingsnyder2-ux · [native-classes/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ShootToolShoot.cpp)
