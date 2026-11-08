@@ -28,6 +28,7 @@ Earlier paths and their donor versions: `native-classes/InstanceChildPermission.
 - public · colingsnyder2-ux · [v8tree/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/src/v8tree/InstanceChildPermission.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/src/v8tree/InstanceChildPermission.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/v8tree/InstanceChildPermission.cpp)
+- public · colingsnyder2-ux · [v8tree/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/App/src/v8tree/InstanceChildPermission.cpp)
 
 **`e151e2038ac1`** · `App/src/v8tree/InstanceChildPermission.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [v8tree/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/App/src/v8tree/InstanceChildPermission.cpp)
@@ -50,6 +51,7 @@ Earlier paths and their donor versions: `native-classes/InstanceChildPermission.
 - canonical · colingsnyder2-ux · [v8tree/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/src/v8tree/InstanceChildPermission.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/src/v8tree/InstanceChildPermission.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/v8tree/InstanceChildPermission.cpp)
+- canonical · colingsnyder2-ux · [v8tree/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/App/src/v8tree/InstanceChildPermission.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -77,6 +79,7 @@ Earlier paths and their donor versions: `native-classes/InstanceChildPermission.
 - archive · colingsnyder2-ux · [native-classes/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceChildPermission.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceChildPermission.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceChildPermission.cpp)
+- archive · colingsnyder2-ux · [native-classes/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceChildPermission.cpp)
 
 **`616bb083cc8d`** · `native-classes/InstanceChildPermission.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/InstanceChildPermission.cpp)
@@ -119,6 +122,8 @@ Earlier paths and their donor versions: `native-classes/InstanceChildPermission.
 - canonical · colingsnyder2-ux · [native-classes/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/InstanceChildPermission.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/InstanceChildPermission.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/InstanceChildPermission.cpp)
+- public · colingsnyder2-ux · [native-classes/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/InstanceChildPermission.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceChildPermission.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/InstanceChildPermission.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -206,6 +211,7 @@ Earlier paths and their donor versions: `native-classes/InstanceClassLookup.cpp`
 - canonical · colingsnyder2-ux · [v8tree/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/src/v8tree/InstanceClassLookup.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/src/v8tree/InstanceClassLookup.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/v8tree/InstanceClassLookup.cpp)
+- canonical · colingsnyder2-ux · [v8tree/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/App/src/v8tree/InstanceClassLookup.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -234,6 +240,7 @@ Earlier paths and their donor versions: `native-classes/InstanceClassLookup.cpp`
 - public · colingsnyder2-ux · [v8tree/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/src/v8tree/InstanceClassLookup.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/src/v8tree/InstanceClassLookup.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/v8tree/InstanceClassLookup.cpp)
+- public · colingsnyder2-ux · [v8tree/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/App/src/v8tree/InstanceClassLookup.cpp)
 
 **`236dc0434659`** · `native-classes/InstanceClassLookup.cpp` · proof not assessed
 - fork · coldek · [native-classes/InstanceClassLookup.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/InstanceClassLookup.cpp)
@@ -331,6 +338,7 @@ Earlier paths and their donor versions: `native-classes/InstanceClassLookup.cpp`
 - archive · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceClassLookup.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceClassLookup.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceClassLookup.cpp)
+- archive · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceClassLookup.cpp)
 
 **`7f2b56d90860`** · `native-classes/InstanceClassLookup.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/InstanceClassLookup.cpp)
@@ -373,6 +381,8 @@ Earlier paths and their donor versions: `native-classes/InstanceClassLookup.cpp`
 - canonical · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/InstanceClassLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/InstanceClassLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/InstanceClassLookup.cpp)
+- public · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/InstanceClassLookup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/InstanceClassLookup.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -422,6 +432,7 @@ Earlier paths and their donor versions: `native-classes/InstanceDescendantEvents
 - public · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
+- public · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 
 **`ff846bbf1d92`** · `App/src/v8tree/InstanceDescendantEvents.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
@@ -441,6 +452,7 @@ Earlier paths and their donor versions: `native-classes/InstanceDescendantEvents
 - canonical · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
+- canonical · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 
 **`1b6f3066a569`** · `native-classes/InstanceDescendantEvents.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/InstanceDescendantEvents.cpp)
@@ -463,6 +475,7 @@ Earlier paths and their donor versions: `native-classes/InstanceDescendantEvents
 - archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
+- archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
 
 **`2703f8eceedb`** · `native-classes/InstanceDescendantEvents.cpp` · proof not assessed
 
@@ -566,6 +579,8 @@ Earlier paths and their donor versions: `native-classes/InstanceDescendantEvents
 - canonical · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp)
+- public · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/InstanceDescendantEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp)
 
 **`903213cbe253`** · `native-classes/InstanceDescendantEvents.cpp` · proof not assessed
 
@@ -630,6 +645,7 @@ Earlier paths and their donor versions: `native-classes/InstanceLifetime.cpp`.
 - canonical · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/v8tree/InstanceLifetime.cpp)
+- canonical · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 
 **`8a60d2ac2c84`** · `App/src/v8tree/InstanceLifetime.cpp` · proof not assessed
 - public · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/App/src/v8tree/InstanceLifetime.cpp)
@@ -649,6 +665,7 @@ Earlier paths and their donor versions: `native-classes/InstanceLifetime.cpp`.
 - public · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/v8tree/InstanceLifetime.cpp)
+- public · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 
 **`09d9e2648b84`** · `native-classes/InstanceLifetime.cpp` · proof not assessed
 
@@ -806,6 +823,7 @@ Earlier paths and their donor versions: `native-classes/InstanceLifetime.cpp`.
 - archive · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceLifetime.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceLifetime.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceLifetime.cpp)
+- archive · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceLifetime.cpp)
 
 **`9b371fa931fe`** · `native-classes/InstanceLifetime.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/InstanceLifetime.cpp)
@@ -842,6 +860,8 @@ Earlier paths and their donor versions: `native-classes/InstanceLifetime.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/InstanceLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/InstanceLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/InstanceLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/InstanceLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/InstanceLifetime.cpp)
 
 **`a7ee43dfa202`** · `native-classes/InstanceLifetime.cpp` · proof not assessed
 
@@ -933,6 +953,7 @@ Earlier paths and their donor versions: `native-classes/InstanceNameDescriptor.c
 - public · colingsnyder2-ux · [v8tree/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/src/v8tree/InstanceNameDescriptor.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/src/v8tree/InstanceNameDescriptor.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/v8tree/InstanceNameDescriptor.cpp)
+- public · colingsnyder2-ux · [v8tree/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/App/src/v8tree/InstanceNameDescriptor.cpp)
 
 **`9eb0b26cca6a`** · `App/src/v8tree/InstanceNameDescriptor.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [v8tree/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/App/src/v8tree/InstanceNameDescriptor.cpp)
@@ -952,6 +973,7 @@ Earlier paths and their donor versions: `native-classes/InstanceNameDescriptor.c
 - canonical · colingsnyder2-ux · [v8tree/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/src/v8tree/InstanceNameDescriptor.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/src/v8tree/InstanceNameDescriptor.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/v8tree/InstanceNameDescriptor.cpp)
+- canonical · colingsnyder2-ux · [v8tree/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/App/src/v8tree/InstanceNameDescriptor.cpp)
 
 **`1202e1ff9a86`** · `native-classes/InstanceNameDescriptor.cpp` · proof not assessed
 
@@ -982,6 +1004,7 @@ Earlier paths and their donor versions: `native-classes/InstanceNameDescriptor.c
 - archive · colingsnyder2-ux · [native-classes/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceNameDescriptor.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceNameDescriptor.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceNameDescriptor.cpp)
+- archive · colingsnyder2-ux · [native-classes/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceNameDescriptor.cpp)
 
 **`9eb0b26cca6a`** · `native-classes/InstanceNameDescriptor.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/InstanceNameDescriptor.cpp)
@@ -1032,6 +1055,8 @@ Earlier paths and their donor versions: `native-classes/InstanceNameDescriptor.c
 - canonical · colingsnyder2-ux · [native-classes/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/InstanceNameDescriptor.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/InstanceNameDescriptor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/InstanceNameDescriptor.cpp)
+- public · colingsnyder2-ux · [native-classes/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/InstanceNameDescriptor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceNameDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/InstanceNameDescriptor.cpp)
 
 **`d01f9b22821a`** · `native-classes/InstanceNameDescriptor.cpp` · proof not assessed
 

@@ -11,17 +11,17 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 | [App/tool](App/tool/README.md) | 97 |
 | [Unclassified](Unclassified/README.md) | 158 |
 | [Studio](Studio/README.md) | 0 |
-| [WindowsClient](WindowsClient/README.md) | 499 |
-| [App/v8datamodel](App/v8datamodel/README.md) | 390 |
+| [WindowsClient](WindowsClient/README.md) | 504 |
+| [App/v8datamodel](App/v8datamodel/README.md) | 391 |
 | [App/v8world](App/v8world/README.md) | 130 |
-| [Network](Network/README.md) | 65 |
+| [Network](Network/README.md) | 66 |
 | [Rendering](Rendering/README.md) | 63 |
 | [Base/util](Base/util/README.md) | 93 |
 | [Other](Other/README.md) | 367 |
 
 ## Coverage
 
-73 sources checked; 0 errors.
+74 sources checked; 0 errors.
 
 See [source-map.json](../source-map.json) for revisions, hashes, origins, errors and exclusions.
 Local-only candidates have no public code URL until separately reviewed and published.
