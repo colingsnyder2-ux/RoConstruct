@@ -287,7 +287,7 @@ def banner_for(key, fe, text_body):
 
     # freshness: verified if all receipts present; else historical if any; else unmapped
     if total == 0:
-        fresh = "unmapped (no binary link)"
+        fresh = "unmapped (no indexed address)"
         date = ""
     elif fe["receipts"]:
         fresh = "receipt-listed (not revalidated)"
@@ -321,7 +321,7 @@ def banner_for(key, fe, text_body):
     src = file_hash(text_body)
     named_part = f" | named {named}" if named > 0 else ""
     if total == 0:
-        metric_line = f"// unmapped (no binary link) | {miner_field} {model_field}".strip()
+        metric_line = f"// unmapped (no indexed address) | {miner_field} {model_field}".strip()
     else:
         metric_line = f"// {exact}/{total} mapped addresses reported exact (subset)" + named_part + f" | {str_field} | {fresh}" + (f" {date}" if date else "") + f" | {miner_field} {model_field}".strip()
     lines = [

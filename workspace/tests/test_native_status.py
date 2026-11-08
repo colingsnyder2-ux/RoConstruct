@@ -204,3 +204,17 @@ def test_status_uses_legacy_snapshot_until_site_is_ready(tmp_path, monkeypatch):
     current.parent.mkdir()
     current.write_text('{"marker": "new"}')
     assert module.load_integration()['marker'] == 'new'
+
+
+def test_unmapped_status_describes_the_index(monkeypatch):
+    path = Path(__file__).resolve().parents[1] / 'roc/native_status.py'
+    spec = importlib.util.spec_from_file_location('native_status_unmapped_test', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    monkeypatch.setattr(module, '_integ', lambda: {})
+    fields = dict(addrs=[], exact=0, named=0, partial=0, strings=set(),
+                  miners=collections.Counter(), models=collections.Counter(), receipts=set(),
+                  is_header=False, **{'class': 'Example'})
+    banner = module.banner_for('Example.cpp', fields, 'void example() {}')
+    assert 'unmapped (no indexed address)' in banner
+    assert 'no binary link' not in banner
