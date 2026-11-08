@@ -14,10 +14,10 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 | WindowsClient | 476 | 158 | 178 | 24 | 0 | 116 |
 | App/v8datamodel | 390 | 134 | 209 | 25 | 0 | 22 |
 | App/v8world | 130 | 73 | 33 | 2 | 0 | 22 |
-| Network | 62 | 10 | 24 | 15 | 0 | 13 |
+| Network | 65 | 12 | 25 | 15 | 0 | 13 |
 | Rendering | 63 | 16 | 10 | 4 | 0 | 33 |
 | Base/util | 93 | 48 | 30 | 12 | 0 | 3 |
-| Other | 367 | 202 | 38 | 37 | 0 | 90 |
+| Other | 367 | 203 | 37 | 37 | 0 | 90 |
 
 Byte differences include **802 banner-only**, **1 line-ending-only**, and
 **2 requiring method review**. Metadata equality is not runtime proof.
