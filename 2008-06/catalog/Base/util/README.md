@@ -4,7 +4,7 @@
 
 Expand a native path for every distinct content version. No candidate is auto-promoted.
 
-- [native-classes/CChatPromptLifetime.cpp → native-classes/MetadataContainersLifetime.cpp](sources-001.md)
-- [native-classes/MetadataItemLifetime.cpp → native-headers/util/Events.h](sources-002.md)
-- [native-headers/util/Extents.h → native-headers/util/MovementKeys.h](sources-003.md)
-- [native-headers/util/Name.h → native-headers/util/scopedassign.h](sources-004.md)
+- [native-classes/CChatPromptLifetime.cpp → native-classes/MathTiltQuadrant.cpp](sources-001.md)
+- [native-classes/MetadataClassesLifetime.cpp → native-headers/util/EventDataBase.h](sources-002.md)
+- [native-headers/util/Events.h → native-headers/util/MarshalWindow.h](sources-003.md)
+- [native-headers/util/MarshaledListener.h → native-headers/util/scopedassign.h](sources-004.md)

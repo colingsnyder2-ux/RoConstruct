@@ -10,12 +10,12 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 | App/reflection | 14 | 5 | 8 | 1 | 0 | 0 |
 | Studio | 0 | 0 | 0 | 0 | 0 | 0 |
 | WindowsClient | 387 | 35 | 212 | 24 | 0 | 116 |
-| App/v8datamodel | 204 | 5 | 152 | 25 | 0 | 22 |
+| App/v8datamodel | 213 | 11 | 155 | 25 | 0 | 22 |
 | App/v8world | 107 | 2 | 81 | 2 | 0 | 22 |
 | Network | 56 | 0 | 28 | 15 | 0 | 13 |
 | Rendering | 59 | 1 | 21 | 4 | 0 | 33 |
-| Base/util | 67 | 3 | 49 | 12 | 0 | 3 |
-| Other | 359 | 3 | 229 | 37 | 0 | 90 |
+| Base/util | 67 | 4 | 48 | 12 | 0 | 3 |
+| Other | 359 | 5 | 227 | 37 | 0 | 90 |
 
 Byte differences include **802 banner-only**, **1 line-ending-only**, and
 **2 requiring method review**. Metadata equality is not runtime proof.
