@@ -1,6 +1,7 @@
 // Inactive native recovery of RBX::Accoutrement and RBX::Hat.
 // Layout and evidence: native-headers/v8datamodel/Accoutrement.h. Verified by tests/record_native_appearance.py.
 #include "v8datamodel/Accoutrement.h"
+#include "v8datamodel/PartInstance.h"
 
 namespace RBX
 {
@@ -123,4 +124,17 @@ namespace RBX
 	{
 		setName("Hat");
 	}
+	// @005b08a0: findFirstChildByName 00557950 ("Handle" 00834a28), dynamic_cast Instance -> PartInstance
+	const PartInstance* Accoutrement::getHandleConst() const
+	{
+		return dynamic_cast<PartInstance*>(findFirstChildByName("Handle"));
+	}
+
+	// @005b0b70 (ILocation this): PartInstance::getCoordinateFrame 00598cb0, CoordinateFrame() 004782d0
+	const G3D::CoordinateFrame Accoutrement::getLocation() const
+	{
+		const PartInstance* handle = getHandleConst();
+		return handle ? handle->getCoordinateFrame() : G3D::CoordinateFrame();
+	}
+
 }

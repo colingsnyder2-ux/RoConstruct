@@ -1,0 +1,65 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\fork-accoutrement-20261108\\candidate-v3.cpp",
+      "checks": [
+        {
+          "addr": "005b08a0",
+          "symbol": "?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ",
+          "calls": [
+            {
+              "offset": 36,
+              "target": "00802458",
+              "kind": "import",
+              "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+            },
+            {
+              "offset": 71,
+              "target": "00557950",
+              "symbol": "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+            },
+            {
+              "offset": 77,
+              "target": "006a17c6",
+              "symbol": "___RTDynamicCast"
+            },
+            {
+              "offset": 99,
+              "target": "00802468",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "005b0b70",
+          "symbol": "?getLocation@Accoutrement@RBX@@MBE?BVCoordinateFrame@G3D@@XZ",
+          "calls": [
+            {
+              "offset": 19,
+              "target": "005b08a0",
+              "symbol": "?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ"
+            },
+            {
+              "offset": 30,
+              "target": "00598cb0",
+              "symbol": "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+            },
+            {
+              "offset": 41,
+              "target": "004782d0",
+              "symbol": "??0CoordinateFrame@G3D@@QAE@XZ"
+            },
+            {
+              "offset": 55,
+              "target": "00513220",
+              "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

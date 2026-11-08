@@ -1,0 +1,33 @@
+== 005e44c0 37 bytes unit=RBX::VMotor::?$FactoryProduct
+005e44c0  mov eax, dword ptr [esp + 4]
+005e44c4  push esi
+005e44c5  mov esi, ecx
+005e44c7  mov ecx, dword ptr [esi + 0x150]
+005e44cd  push eax
+005e44ce  push 1
+005e44d0  call 0x645750  ; fn_00645750 [unit? RBX::RigidJoint]
+005e44d5  push 0x97ab90
+005e44da  mov ecx, esi
+005e44dc  call 0x40db00  ; fn_0040db00 [unit? RBX::Reflection::Metadata::VMember::?$FactoryProduct]
+005e44e1  pop esi
+005e44e2  ret 4
+== 007f6d00 56 bytes unit=seg_007f0000
+007f6d00  push esi
+007f6d01  push 5
+007f6d03  xor ecx, ecx
+007f6d05  push ecx
+007f6d06  mov eax, 0x5e44c0  ; fn_005e44c0 [unit? RBX::VMotor::?$FactoryProduct]
+007f6d0b  push eax
+007f6d0c  xor esi, esi
+007f6d0e  push esi
+007f6d0f  mov edx, 0x5e27c0  ; fn_005e27c0 [unit? RBX::JointInstance]
+007f6d14  push edx
+007f6d15  push 0x822490
+007f6d1a  push 0x83f6e8
+007f6d1f  mov ecx, 0x97ab90
+007f6d24  call 0x5e3630  ; fn_005e3630 [unit? RBX::VModelInstance::?$RefPropDescriptor]
+007f6d29  push 0x7ff980  ; fn_007ff980 [unit? seg_007f0000]
+007f6d2e  call 0x6a17af  ; fn_006a17af [unit? ActiveDocView]
+007f6d33  add esp, 4
+007f6d36  pop esi
+007f6d37  ret 

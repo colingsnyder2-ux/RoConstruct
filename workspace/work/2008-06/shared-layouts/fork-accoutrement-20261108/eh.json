@@ -1,0 +1,68 @@
+{
+  "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+  "address": "005b08a0",
+  "primary_body_size": 123,
+  "primary_body_exact": true,
+  "tool_sha256": "e039440a7006da9c49c261fb8e2fec67935e6564745d296897e76620dd3e2bff",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-045504-a2b49627\\unit-000\\candidate.obj",
+  "object_sha256": "7988f850608470fc3d063362c3f5d6a74c8f1b73f7c5cf7fa477c3b39803aa74",
+  "import_library_inputs": [
+    {
+      "library": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib",
+      "sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+    },
+    {
+      "library": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcprt.lib",
+      "sha256": "6bedbd9c1bddf28a984a58e4548ffa9286f172e55fb5dd2af0b1a1a34d81b020"
+    },
+    {
+      "library": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Lib\\kernel32.lib",
+      "sha256": "5c76cde0da4a277962316070b966e0829d35df93d5b54d79d81f964e56cd4819"
+    }
+  ],
+  "provider_inputs": [],
+  "events": [
+    {
+      "symbol": "__ehhandler$?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ",
+      "original": "0x7ce709",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ",
+      "original": "0x8e98f4",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "zero_initialized": false,
+      "original_bytes": "2205931901000000ec988e00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ",
+      "original": "0x8e98ec",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "zero_initialized": false,
+      "original_bytes": "ffffffff00e77c00",
+      "native_bytes": "ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ$0",
+      "original": "0x7ce700",
+      "kind": "cleanup/handler code",
+      "size": 9,
+      "exact": true
+    },
+    {
+      "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+      "original": "0x802468",
+      "kind": "external",
+      "exact": true
+    }
+  ],
+  "errors": []
+}

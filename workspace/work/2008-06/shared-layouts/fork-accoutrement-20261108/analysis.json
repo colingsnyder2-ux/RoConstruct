@@ -1,0 +1,129 @@
+[
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\fork-accoutrement-20261108\\candidate-v3.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-045504-a2b49627\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005b08a0",
+        "requested_symbol": "?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ",
+        "status": "exact",
+        "symbol": "?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ",
+        "score": 100,
+        "target_size": 123,
+        "object_size": 123,
+        "target_sha256": "2ae60efb0581ccd28a973155a349384dc0df940070c418a2cb6bd5aff958f281",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8604200,
+            7
+          ],
+          [
+            9624912,
+            31
+          ],
+          [
+            9605244,
+            27
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 36,
+              "target": "00802458",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 71,
+              "target": "00557950",
+              "symbol": "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 77,
+              "target": "006a17c6",
+              "symbol": "___RTDynamicCast",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 99,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {
+            "C:\\Users\\colin\\RoConstruct\\clients\\2008-06\\Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+            "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8",
+            "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcprt.lib": "6bedbd9c1bddf28a984a58e4548ffa9286f172e55fb5dd2af0b1a1a34d81b020"
+          },
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 2.062
+      },
+      {
+        "addr": "005b0b70",
+        "requested_symbol": "?getLocation@Accoutrement@RBX@@MBE?BVCoordinateFrame@G3D@@XZ",
+        "status": "exact",
+        "symbol": "?getLocation@Accoutrement@RBX@@MBE?BVCoordinateFrame@G3D@@XZ",
+        "score": 100,
+        "target_size": 88,
+        "object_size": 88,
+        "target_sha256": "469c6886eb93b3841aec676acb397c5e387bb425e613458a3dde51a273454012",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 19,
+              "target": "005b08a0",
+              "symbol": "?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 30,
+              "target": "00598cb0",
+              "symbol": "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 41,
+              "target": "004782d0",
+              "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 55,
+              "target": "00513220",
+              "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

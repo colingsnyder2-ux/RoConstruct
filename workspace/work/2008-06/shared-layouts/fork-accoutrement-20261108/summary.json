@@ -1,0 +1,25 @@
+{
+  "scope": "Inactive source-only integration. Original code/data and direct calls checked; no selected executable, full dependency ABI, runtime or server credit.",
+  "base": "99d28d7dbd1a32e369ae44b547557d540dc62a8e",
+  "contributor_fork_commit": "a355381b77",
+  "contributor_source": "rebuild/2008-06/native-classes/AppUnit5B0_2008Accoutrement.cpp",
+  "contributor_source_sha256": "66a8223499fb594b8cb826d46a3fb66a975ed46add95f31834e585f292690bbc",
+  "integrated": [
+    "005b08a0",
+    "005b0b70"
+  ],
+  "existing_exact_checks": 34,
+  "new_exact_checks": 2,
+  "direct_call_bindings": 8,
+  "existing_functions_preserved": 396,
+  "eh_graph_nodes": 5,
+  "affected_layout_compile": "NativeAppearanceLayout.cpp",
+  "parked": [
+    "005b0840",
+    "005b2670",
+    "005b2750",
+    "005b28d0",
+    "005b2a40"
+  ],
+  "blocker": "C1 setter original RTTI says JointInstance while the current declaration uses AutoJoint; readProperty not exact. See inactive candidate blockers."
+}

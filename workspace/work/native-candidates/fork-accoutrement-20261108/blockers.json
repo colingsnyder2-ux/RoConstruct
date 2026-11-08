@@ -1,0 +1,29 @@
+{
+  "donor_commit": "a355381b77",
+  "original_path": "rebuild/2008-06/native-classes/AppUnit5B0_2008Accoutrement.cpp",
+  "original_sha256": "66a8223499fb594b8cb826d46a3fb66a975ed46add95f31834e585f292690bbc",
+  "parked": [
+    "005b0840",
+    "005b2670",
+    "005b2750",
+    "005b28d0",
+    "005b2a40"
+  ],
+  "candidate_v2_sha256": "588d43153445c6ad17fbea93e91f21f5014c5f88f712a8f8ac80d3e9828550f2",
+  "blocker": "Original static initializer 007f6d00 registers property C1 with setter 005e44c0. Constructor 005e3630 installs vtable 0083e9c4, whose original RTTI names PropDescriptor<JointInstance, CoordinateFrame>. Current header declares setC1 on AutoJoint; class ownership and ABI conflict require independent resolution. readProperty is non-exact in donor receipt.",
+  "evidence": {
+    "property_name_address": "0083f6e8",
+    "property_name": "C1",
+    "descriptor_vtable": "0083e9c4",
+    "complete_object_locator": "008ab95c",
+    "type_descriptor": "00955190",
+    "type_name": ".?AV?$PropDescriptor@VJointInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@",
+    "assembly_sha256": "fa329b6023c8c60d8e0d3ca10acfb0e98a0f2e6cc346746f8edbe587d1fec550"
+  },
+  "revisit": "Only after independently verified JointInstance/AutoJoint ownership and ABI or new original evidence; retry readProperty only after inputs change.",
+  "scope": "Inactive source proposal; no executable selection, runtime activation or server credit.",
+  "candidate_methods": [
+    "005b08a0",
+    "005b0b70"
+  ]
+}
