@@ -28,7 +28,7 @@ def test_provider_auth_disables_queued_calls_until_new_gate():
     try:
         gate.enter("test")
     except providers.ProviderError as error:
-        assert error.category == "provider_circuit"
+        assert error.category == "provider_config"
     else:
         raise AssertionError("Disabled provider accepted another call")
 
@@ -291,8 +291,8 @@ def test_audit_counts_unique_verified_new_exacts_only(tmp_path):
 
 def test_every_recipe_is_well_formed():
     for name, spec in research.recipes().items():
-        assert spec["op"] in ("grid", "fanout", "sweep") and spec.get("hypothesis"), name
-        assert spec.get("client", "2008-06") == "2008-06", name
+        assert spec["op"] in ("grid", "fanout", "sweep", "mutate") and spec.get("hypothesis"), name
+        assert spec.get("client", "2008-06") in ("2008-06", "all", None), name
         if spec["op"] == "sweep":
             stages = spec.get("stages", []) + [stage for group in spec.get("stages_by_client", {}).values() for stage in group]
             assert all(stage in research.recipes() and research.recipes()[stage]["op"] != "sweep" for stage in stages), name

@@ -132,9 +132,9 @@ def test_find_functions():
     )
     funcs = find_functions(code, base, {base}, [0x1006])
     assert funcs == [
-        {"addr": "00001000", "size": 11, "relocs": [6], "calls": 1, "kind": "code"},
-        {"addr": "0000100c", "size": 3, "relocs": [], "calls": 0, "kind": "code"},
-        {"addr": "00001010", "size": 1, "relocs": [], "calls": 0, "kind": "code"},
+        {"addr": "00001000", "size": 11, "relocs": [6], "calls": 1, "kind": "code", "start_evidence": ["pointer"]},
+        {"addr": "0000100c", "size": 3, "relocs": [], "calls": 0, "kind": "code", "start_evidence": ["call"]},
+        {"addr": "00001010", "size": 1, "relocs": [], "calls": 0, "kind": "code", "start_evidence": ["aligned"]},
     ], funcs
     assert asm_shape(bytes.fromhex("8b442404c3"), 0x1000) == "mov eax, dword ptr [esp + N] ; ret"
 
@@ -1639,7 +1639,7 @@ def test_refsource_name_recovery():
     assert not [n for n in anon if n and n[0].isupper()]
     # _plausible keeps only names present in the tree, longest first
     assert refsource._plausible(["nstance", "VInstance"], {"VInstance": []}) == ["VInstance"]
-    if refsource.TREE.exists():
+    if refsource.TREE.exists() and (refsource.TREE / "ROBLOX2016-main" / "Network" / "raknet" / "Source" / "RakPeer.cpp").exists():
         body = refsource.extract_method("ROBLOX2016-main\\Network\\raknet\\Source\\RakPeer.cpp", "RakPeer")
         assert body and len(body) <= 6000
         context = refsource.extract_method_context("ROBLOX2016-main\\Network\\raknet\\Source\\RakPeer.cpp", "RakPeer")
