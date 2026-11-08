@@ -15,7 +15,7 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 | App/v8datamodel | 390 | 134 | 209 | 25 | 0 | 22 |
 | App/v8world | 130 | 73 | 33 | 2 | 0 | 22 |
 | Network | 62 | 10 | 24 | 15 | 0 | 13 |
-| Rendering | 60 | 13 | 10 | 4 | 0 | 33 |
+| Rendering | 63 | 16 | 10 | 4 | 0 | 33 |
 | Base/util | 93 | 48 | 30 | 12 | 0 | 3 |
 | Other | 367 | 202 | 38 | 37 | 0 | 90 |
 

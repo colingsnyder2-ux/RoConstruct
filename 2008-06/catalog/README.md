@@ -15,13 +15,13 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 | [App/v8datamodel](App/v8datamodel/README.md) | 390 |
 | [App/v8world](App/v8world/README.md) | 130 |
 | [Network](Network/README.md) | 62 |
-| [Rendering](Rendering/README.md) | 60 |
+| [Rendering](Rendering/README.md) | 63 |
 | [Base/util](Base/util/README.md) | 93 |
 | [Other](Other/README.md) | 367 |
 
 ## Coverage
 
-70 sources checked; 0 errors.
+71 sources checked; 0 errors.
 
 See [source-map.json](../source-map.json) for revisions, hashes, origins, errors and exclusions.
 Local-only candidates have no public code URL until separately reviewed and published.
