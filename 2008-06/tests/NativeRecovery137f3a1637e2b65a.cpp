@@ -1,5 +1,2 @@
-#include "v8tree/Service.h"
-template<class T> struct NativeRecoverySink { static T value; };
-template<class T> T NativeRecoverySink<T>::value;
-template<class T> void nativeRecoveryKeep(T value){NativeRecoverySink<T>::value=value;}
-void nativeRecoveryProbe(){nativeRecoveryKeep(&RBX::ServiceProvider::create);}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "matching/NativeRecovery137f3a1637e2b65a.cpp"

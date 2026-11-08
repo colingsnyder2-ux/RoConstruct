@@ -1,2 +1,2 @@
-#include "v8datamodel/MouseCommand.h"
-namespace RBX { void MouseCommand::capture() { capturedMouse = true; } }
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "matching/NativeMouseCaptureRocketWorker.cpp"

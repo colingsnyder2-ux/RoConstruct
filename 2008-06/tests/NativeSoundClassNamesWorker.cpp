@@ -1,8 +1,2 @@
-namespace RBX {
-char sGameSettings[] = "GameSettings";
-namespace Stats { char sStatsItem[] = "StatsItem"; }
-namespace Soundscape {
-char sSoundChannel[] = "Sound";
-char sSoundService[] = "SoundService";
-}
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "matching/NativeSoundClassNamesWorker.cpp"

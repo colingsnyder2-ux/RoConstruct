@@ -1,6 +1,2 @@
-#include "CWorkspace.h"
-
-void destroyNativeWorkspace(CWorkspace* workspace)
-{
-    workspace->CWorkspace::~CWorkspace();
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "matching/NativeWorkspaceDestructor.cpp"
