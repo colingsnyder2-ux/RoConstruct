@@ -1,10 +1,6 @@
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// NativeWorkspaceClassNames | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src cbc29433 | roc native-status --write
-namespace RBX {
-char sWorkspace[] = "Workspace";
-char sRootInstance[] = "RootInstance";
-char sModel[] = "Model";
-char sPVInstance[] = "PVInstance";
-}
+// NativeWorkspaceClassNames | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src 05eba903 | roc native-status --write
+#include "../../App/src/v8datamodel/NativeWorkspaceClassNames.cpp"
