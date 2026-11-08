@@ -153,7 +153,8 @@ cache_dir = rebuild.workspace(client) / 'out' / 'p6' / 'native-doc-cache'
 overlay_path = data_overlay[1] if data_overlay else None
 # The generated overlay is recreated every run even when byte-identical; its
 # timestamp must not flush the native-doc object cache.
-header_root = (ROOT / 'rebuild/2008-06/native-headers').resolve()
+native_root = (ROOT / 'rebuild/2008-06').resolve()
+header_root = (native_root / 'native-headers').resolve()
 def native_deps(source):
     pending, seen = [source.resolve()], set()
     while pending:
@@ -164,13 +165,14 @@ def native_deps(source):
         for name in re.findall(r'^\s*#include\s+"([^"]+)"', path.read_text(errors='replace'), re.M):
             local, native = (path.parent / name).resolve(), (header_root / name).resolve()
             child = local if local.exists() else native
-            if child.exists() and (str(child).startswith(str(header_root)) or child.parent == path.parent):
+            if child.exists() and (child.is_relative_to(native_root) or child.parent == path.parent):
                 pending.append(child)
     return sorted([str(path.relative_to(ROOT)) if str(path).startswith(str(ROOT)) else str(path), hashlib.sha256(path.read_bytes()).hexdigest()]
                   for path in seen)
 def cache_key(source, flags):
-    key = {'schema': 2, 'source': str(source.resolve()),
+    key = {'schema': 3, 'source': str(source.resolve()),
            'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
+           'compiler_sha256': hashlib.sha256(Path(tc['cl']).read_bytes()).hexdigest(),
            'native_deps': native_deps(source),
            'flags': hashlib.sha256('\0'.join(flags).encode()).hexdigest()}
     # Angle includes can select per-source STL/MFC overrides. Track those
@@ -182,8 +184,10 @@ def cache_key(source, flags):
             if folder != header_root and folder.is_relative_to(header_root) and folder.is_dir():
                 profile_headers.update(path for path in folder.rglob('*') if path.is_file())
     if profile_headers:
-        key['native_profile_headers'] = [[str(path.relative_to(ROOT)), hashlib.sha256(path.read_bytes()).hexdigest()]
-                                         for path in sorted(profile_headers)]
+        profile_deps = {}
+        for path in sorted(profile_headers):
+            profile_deps.update(native_deps(path))
+        key['native_profile_headers'] = [[name, digest] for name, digest in sorted(profile_deps.items())]
     return key
 def cache_paths(name, key):
     variant = hashlib.sha256(json.dumps(key, sort_keys=True).encode()).hexdigest()
