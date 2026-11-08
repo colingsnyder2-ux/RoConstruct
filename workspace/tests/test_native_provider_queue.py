@@ -39,6 +39,19 @@ class ProviderQueueTests(unittest.TestCase):
             self.assertEqual(result['queue'][0]['status'], 'object_definition_found')
             self.assertEqual(len(result['queue'][0]['object_definitions'][0]['sha256']), 64)
 
+    def test_default_search_includes_organized_sources(self):
+        with tempfile.TemporaryDirectory() as folder:
+            base = Path(folder)
+            moved = base / 'App/src/v8datamodel'
+            moved.mkdir(parents=True)
+            (moved / 'Service.cpp').write_text('void Service::start() {}\n')
+            (base / 'native-classes').mkdir()
+            log = base / 'link.log'
+            log.write_text(error())
+            result = queue.inventory(log, [], queue.default_source_dirs(base))
+            self.assertEqual(result['queue'][0]['status'], 'source_lead_only')
+            self.assertEqual(result['queue'][0]['source_leads'][0]['path'], str(moved / 'Service.cpp'))
+
     def test_2001_without_reference_and_constructor(self):
         line = 'a.obj : error LNK2001: unresolved external symbol "public: __thiscall RBX::Thing::Thing(void)" (??0Thing@RBX@@QAE@XZ)'
         self.assertEqual(len(queue.parse_errors(line)), 1)

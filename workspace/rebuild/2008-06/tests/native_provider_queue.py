@@ -86,15 +86,21 @@ def inventory(log, object_dirs, source_dirs):
             'counts': dict(Counter(row['status'] for row in rows)), 'queue': rows}
 
 
+def default_source_dirs(base):
+    folders = [base / name for name in ('native-classes', 'native-headers', 'native-world', 'tests')]
+    folders += [base / project / kind for project in ('App', 'Base', 'Network', 'Rendering', 'WindowsClient', 'Studio', 'Unclassified') for kind in ('src', 'include')]
+    return [path for path in folders if path.is_dir()]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--log', type=Path, default=BASE / 'out/p6/native-doc-link.log')
     parser.add_argument('--object-dir', type=Path, action='append', help='repeatable; defaults to out/p6 and out/native-layouts')
-    parser.add_argument('--source-dir', type=Path, action='append', help='repeatable; defaults to native-classes, native-headers and tests')
+    parser.add_argument('--source-dir', type=Path, action='append', help='repeatable; defaults to organized and legacy native source, headers and tests')
     parser.add_argument('--output', type=Path, default=ROOT / 'work/2008-06/shared-layouts/native-provider-queue.json')
     args = parser.parse_args()
     folders = args.object_dir or [BASE / 'out/p6', BASE / 'out/native-layouts']
-    sources = args.source_dir or [BASE / 'native-classes', BASE / 'native-headers', BASE / 'tests']
+    sources = args.source_dir or default_source_dirs(BASE)
     for path in [args.log, *folders, *sources]:
         if not path.exists():
             parser.error('missing input: ' + str(path))
