@@ -65,3 +65,7 @@ Native-classes counterparts are compatibility units; compile either path per fil
 
 App/src/v8datamodel/ also contains the reviewed model source batch.
 Native-classes counterparts are compatibility units; compile either path per file.
+
+Project src/ directories also contain the reviewed mass source-layout batch.
+Native-classes counterparts are compatibility units; compile either path per file.
+Preservation-only moves retain previous proof status and do not prove original identity.

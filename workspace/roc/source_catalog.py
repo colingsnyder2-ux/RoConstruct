@@ -31,6 +31,7 @@ MAP_GROUPS = (
     ('App/v8tree', ('v8tree/', 'native-classes/instance', 'appunit558_2008instance')),
     ('App/v8xml', ('v8xml/',)),
     ('App/reflection', ('reflection/',)),
+    ('App/tool', ('tool/',)),
     ('Studio', ()),
     ('WindowsClient', ('app', 'frame', 'view', 'doc', 'dialog', 'browser', 'editor',
                     'command', 'verb', 'toolbox', 'propertygrid', 'propgrid', 'explorer', 'script')),
@@ -178,7 +179,7 @@ def map_group(path):
         if parts[0] == 'app':
             return {'v8tree': 'App/v8tree', 'v8xml': 'App/v8xml',
                     'reflection': 'App/reflection', 'v8datamodel': 'App/v8datamodel',
-                    'v8world': 'App/v8world'}.get(parts[2], 'Other')
+                    'v8world': 'App/v8world', 'tool': 'App/tool'}.get(parts[2], 'Other')
     for group, terms in MAP_GROUPS:
         if any(term in searchable for term in terms):
             return group

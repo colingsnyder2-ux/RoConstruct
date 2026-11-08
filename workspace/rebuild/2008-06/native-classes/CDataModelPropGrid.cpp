@@ -1,6 +1,2 @@
-#include "CDataModelPropGrid.h"
-IMPLEMENT_DYNAMIC(CDataModelPropGrid, CSelectionPropGrid)
-
-CDataModelPropGrid::CDataModelPropGrid()
-{
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../WindowsClient/src/CDataModelPropGrid.cpp"

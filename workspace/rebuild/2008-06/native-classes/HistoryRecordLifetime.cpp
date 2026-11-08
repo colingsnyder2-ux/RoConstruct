@@ -1,6 +1,2 @@
-#include "v8datamodel/HistoryRecord.h"
-
-RBX::HistoryRecord::HistoryRecord(ChangeHistoryService* owner)
-    : service(owner)
-{
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8datamodel/HistoryRecordLifetime.cpp"

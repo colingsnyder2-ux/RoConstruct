@@ -1,6 +1,2 @@
-#include "v8datamodel/Selection.h"
-
-boost::shared_ptr<RBX::Instance> RBX::Selection::front() const
-{
-    return selection->size() > 0 ? *selection->begin() : boost::shared_ptr<Instance>();
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8datamodel/SelectionFront.cpp"

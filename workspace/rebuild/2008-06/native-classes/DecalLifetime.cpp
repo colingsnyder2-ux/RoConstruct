@@ -1,6 +1,2 @@
-#include "v8datamodel/Decal.h"
-
-namespace RBX {
-Decal::Decal() : specular(0.0f), shiny(20.0f) { setName("Decal"); }
-Texture::Texture() : studsPerTile(2.0f, 2.0f) { setName("Texture"); }
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8datamodel/DecalLifetime.cpp"

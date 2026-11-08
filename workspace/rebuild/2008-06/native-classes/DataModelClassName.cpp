@@ -1,4 +1,2 @@
-#include "v8datamodel/DataModel.h"
-namespace RBX {
-char sDataModel[] = "DataModel";
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8datamodel/DataModelClassName.cpp"

@@ -1,16 +1,2 @@
-#include "v8datamodel/DataModel.h"
-#include "v8datamodel/Workspace.h"
-#include "tool/ResizeTool.h"
-#include "StandardVerbs.h"
-namespace RBX {
-char sResizeTool[] = "Resize";
-ResizeTool::ResizeTool(Workspace* w) : Named<ArrowToolBase, sResizeTool>(w), overHandle(false), moveAxis(0), movePerp(0) {}
-
-template<> MouseCommand* TToolVerb<ResizeTool, RunStateVerb>::newMouseCommand() {
-    return new ResizeTool(dataModel->getWorkspace());
-}
-
-template<> const Name& Named<ArrowToolBase, sResizeTool>::getName() const {
-    return NativeToolName<ResizeTool>::get();
-}
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/tool/ResizeToolCore.cpp"

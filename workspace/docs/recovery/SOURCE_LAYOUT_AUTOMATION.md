@@ -21,6 +21,11 @@ and original identities before using the spec. Checks are input evidence;
 never infer them solely from candidate output. Each source needs at least one.
 The tool rejects relative source includes, pre-existing destinations, public
 code differences and ambiguous compiler flags; review those cases separately.
+For an existing canonical file without original-match evidence, an explicit
+`"preservation_only": true` and empty `checks` permit a move only after both
+translation units compile to identical non-debug objects and named relocations.
+This preserves existing source and status; it does not prove original identity,
+authorize a new provider, or establish ABI, selection or runtime safety.
 
 ```text
 python -m roc.source_layout --root REPOSITORY prepare --spec SPEC.json --out REPOSITORY/work/native-candidates/NEW_BATCH
@@ -28,9 +33,10 @@ python -m roc.source_layout --root REPOSITORY run --out REPOSITORY/work/native-c
 ```
 
 The plan records the canonical runner hash. Review that exact runner first;
-pass its SHA-256 as `--approved-runner`. Each candidate compiles once with
-frozen canonical headers. The tool rechecks original code/data, source, header
-and compiler hashes, and compares all non-debug object sections and named
+pass its SHA-256 as `--approved-runner`. The original-location source, old-path
+shim and organized source each compile once with frozen canonical headers.
+The tool rechecks original code/data, source, header and compiler hashes,
+and compares all non-debug object sections and named
 relocations. Files that fail any check stay skipped. It writes `review.json`,
 `integration-manifest.json` and `public-manifest.json` in the new folder.
 If every job finished but some sources failed, successful pairs are verified

@@ -58,6 +58,18 @@ def test_prepare_rejects_unsafe_and_unreviewed_moves(source_repo):
     assert not out.exists()
 
 
+def test_preservation_only_requires_explicit_opt_in(source_repo):
+    root, spec = source_repo
+    out = root / 'work/native-candidates/test'
+    spec['moves'][0]['checks'] = []
+    with pytest.raises(ValueError):
+        source_layout.prepare(root, spec, out)
+    spec['moves'][0]['preservation_only'] = True
+    plan = source_layout.prepare(root, spec, out)
+    assert plan['moves'][0]['preservation_only'] is True
+    assert plan['moves'][0]['checks'] == []
+
+
 def test_compatibility_shim_preserves_flags_after_comments():
     old = source_layout.safe('native-classes/Thing.cpp')
     new = source_layout.safe('WindowsClient/src/Thing.cpp')
@@ -87,10 +99,11 @@ def make_run(root, out, different=False, wrong_check=False):
     compiler = run / 'compiler'
     compiler.write_bytes(b'compiler')
     rows = []
-    for index, source in enumerate((out / 'candidate/native-classes/Thing.cpp',
+    for index, source in enumerate((out / 'original/native-classes/Thing.cpp',
+                                    out / 'candidate/native-classes/Thing.cpp',
                                     out / 'candidate/WindowsClient/src/Thing.cpp')):
         obj = run / ('unit%d.obj' % index)
-        obj.write_bytes(b'different' if index and different else b'object')
+        obj.write_bytes(b'different' if index == 2 and different else b'object')
         header = out / 'frozen/rebuild/2008-06/native-headers/thing.h'
         rows.append({'source': str(source), 'status': 'complete', 'object': str(obj),
                      'source_sha256': digest(source), 'object_sha256': digest(obj), 'flags': ['/O2'],
@@ -99,10 +112,45 @@ def make_run(root, out, different=False, wrong_check=False):
                      'checks': [{'addr': '00400001' if wrong_check else '00400000',
                                  'requested_symbol': '?thing@', 'status': 'exact', 'data_errors': []}]})
     runner = root / 'workspace/rebuild/2008-06/tests/native_check_runner.py'
-    (run / 'summary.json').write_text(json.dumps({'state': 'complete', 'total_sources': 2,
-        'completed_sources': 2, 'shared_headers_changed': [], 'observer_sha256': digest(runner)}))
+    (run / 'summary.json').write_text(json.dumps({'state': 'complete', 'total_sources': 3,
+        'completed_sources': 3, 'shared_headers_changed': [], 'observer_sha256': digest(runner)}))
     (run / 'results.json').write_text(json.dumps(rows))
     return run
+
+
+def test_preservation_only_checks_whole_object_without_claiming_original(source_repo, monkeypatch):
+    root, spec = source_repo
+    spec['moves'][0].update(checks=[], preservation_only=True)
+    out = root / 'work/native-candidates/test'
+    source_layout.prepare(root, spec, out)
+    run = make_run(root, out)
+    rows = json.loads((run / 'results.json').read_text())
+    for row in rows:
+        row['checks'] = []
+    (run / 'results.json').write_text(json.dumps(rows))
+    monkeypatch.setattr(source_layout, 'object_identity', lambda raw: raw)
+    result = source_layout.verify(root, out, run)
+    assert result['accepted'][0]['preservation_only'] is True
+    assert 'do not prove original identity' in result['scope']
+
+
+def test_rejects_original_location_object_difference(source_repo, monkeypatch):
+    root, spec = source_repo
+    spec['moves'][0].update(checks=[], preservation_only=True)
+    out = root / 'work/native-candidates/test'
+    source_layout.prepare(root, spec, out)
+    run = make_run(root, out)
+    rows = json.loads((run / 'results.json').read_text())
+    for row in rows:
+        row['checks'] = []
+    original = Path(rows[0]['object'])
+    original.write_bytes(b'different original object')
+    rows[0]['object_sha256'] = digest(original)
+    (run / 'results.json').write_text(json.dumps(rows))
+    monkeypatch.setattr(source_layout, 'object_identity', lambda raw: raw)
+    result = source_layout.verify(root, out, run)
+    assert not result['accepted']
+    assert 'relocations differ' in result['skipped'][0]['reason']
 
 
 @pytest.mark.parametrize('different,wrong_check,accepted', [(False, False, 1), (True, False, 0), (False, True, 0)])
@@ -136,6 +184,24 @@ def test_verify_rejects_changed_dependency(source_repo, monkeypatch):
     result = source_layout.verify(root, out, run)
     assert not result['accepted']
     assert 'Compiler changed' in result['skipped'][0]['reason']
+
+
+def test_verify_rechecks_cached_inputs_after_batch(source_repo, monkeypatch):
+    root, spec = source_repo
+    out = root / 'work/native-candidates/test'
+    source_layout.prepare(root, spec, out)
+    run = make_run(root, out)
+    def change_compiler(raw):
+        (run / 'compiler').write_bytes(b'changed during verification')
+        return raw
+    monkeypatch.setattr(source_layout, 'object_identity', change_compiler)
+    monkeypatch.setattr(source_layout.match, 'coff_functions', lambda raw: [('?thing@', b'body', [])])
+    monkeypatch.setattr(source_layout.match, 'target', lambda client, addr: (b'body', [], None))
+    monkeypatch.setattr(source_layout.match, 'exact_match', lambda *args: True)
+    monkeypatch.setattr(source_layout.match, 'coff_data_refs', lambda *args: [])
+    monkeypatch.setattr(source_layout.match, 'data_check', lambda *args: ([], []))
+    with pytest.raises(ValueError, match='Input changed during batch verification'):
+        source_layout.verify(root, out, run)
 
 
 def test_verify_rejects_tampered_frozen_header(source_repo, monkeypatch):
@@ -186,11 +252,11 @@ def test_finished_partial_batch_skips_failed_sources(source_repo, monkeypatch):
     source_layout.prepare(root, spec, out)
     run = make_run(root, out)
     rows = json.loads((run / 'results.json').read_text())
-    for source in (out / 'candidate/native-classes/Other.cpp', out / 'candidate/WindowsClient/src/Other.cpp'):
+    for source in (out / 'original/native-classes/Other.cpp', out / 'candidate/native-classes/Other.cpp', out / 'candidate/WindowsClient/src/Other.cpp'):
         rows.append({'source': str(source), 'status': 'failed'})
     (run / 'results.json').write_text(json.dumps(rows))
     summary = json.loads((run / 'summary.json').read_text())
-    summary.update(state='failed', total_sources=4, completed_sources=4)
+    summary.update(state='failed', total_sources=6, completed_sources=6)
     (run / 'summary.json').write_text(json.dumps(summary))
     monkeypatch.setattr(source_layout, 'object_identity', lambda raw: raw)
     monkeypatch.setattr(source_layout.match, 'coff_functions', lambda raw: [('?thing@', b'body', [])])

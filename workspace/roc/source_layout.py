@@ -90,9 +90,9 @@ def inspect_move(root, base, row):
     old, new = safe(row['source']), safe(row['target'])
     if (len(old.parts) != 2 or old.parts[0] != 'native-classes' or old.suffix != '.cpp'
             or len(new.parts) < 3 or new.parts[0] not in PROJECTS or new.parts[1] != 'src'
-            or new.name != old.name or not row.get('checks')):
-        raise ValueError('Move needs a native source, matching project destination and independent checks')
-    for check in row['checks']:
+            or new.name != old.name or (not row.get('checks') and row.get('preservation_only') is not True)):
+        raise ValueError('Move needs a native source, matching project destination and independent checks or explicit preservation-only mode')
+    for check in row.get('checks', []):
         if (not isinstance(check, dict) or not isinstance(check.get('addr'), str)
                 or not re.fullmatch('[0-9a-fA-F]{8}', check['addr'])
                 or not isinstance(check.get('symbol'), str) or not check['symbol']):
@@ -108,7 +108,7 @@ def inspect_move(root, base, row):
         check = subprocess.run(['git', 'cat-file', '-e', base + ':' + prefix + newpath], cwd=root, capture_output=True)
         if check.returncode == 0:
             raise ValueError('Destination already exists: ' + prefix + newpath)
-    return oldpath, newpath, native, public, compatibility_shim(old, new, native), row['checks']
+    return oldpath, newpath, native, public, compatibility_shim(old, new, native), row.get('checks', [])
 
 
 def suggest(root, base, target_prefix, checks, output):
@@ -163,6 +163,10 @@ def prepare(root, spec, out):
     snapshot_headers(root, base, out / 'frozen/rebuild/2008-06/native-headers')
     jobs, records = [], []
     for old, new, native, public, shim, checks in staged:
+        original = out / 'original' / old
+        original.parent.mkdir(parents=True, exist_ok=True)
+        original.write_bytes(native)
+        jobs.append(dict(source=str(original), checks=checks))
         for name, content in ((old, shim), (new, native)):
             path = out / 'candidate' / name
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -171,7 +175,8 @@ def prepare(root, spec, out):
         pub = out / 'public' / old
         pub.parent.mkdir(parents=True, exist_ok=True)
         pub.write_bytes(public)
-        records.append(dict(source=old, target=new, source_sha256=sha(native), public_sha256=sha(public), checks=checks))
+        records.append(dict(source=old, target=new, source_sha256=sha(native), public_sha256=sha(public),
+                            checks=checks, preservation_only=not bool(checks)))
     plan = dict(base=base, header_tree=git(root, 'rev-parse', base + ':workspace/rebuild/2008-06/native-headers').decode().strip(),
                 runner_sha256=sha(git(root, 'show', base + ':workspace/rebuild/2008-06/tests/native_check_runner.py')), moves=records)
     (out / 'plan.json').write_text(json.dumps(plan, indent=2) + '\n', encoding='utf-8')
@@ -206,7 +211,7 @@ def verify(root, out, run):
     plan = json.loads((out / 'plan.json').read_text(encoding='utf-8'))
     summary = json.loads((run / 'summary.json').read_text(encoding='utf-8'))
     results = json.loads((run / 'results.json').read_text(encoding='utf-8'))
-    total = len(plan['moves']) * 2
+    total = len(plan['moves']) * 3
     if (summary.get('state') not in ('complete', 'failed') or summary.get('error')
             or summary.get('shared_headers_changed') != [] or summary.get('total_sources') != total
             or summary.get('completed_sources') != total or len(results) != total):
@@ -229,11 +234,19 @@ def verify(root, out, run):
     index = {str(Path(r['source']).resolve()).casefold(): r for r in results}
     if len(index) != len(results):
         raise ValueError('Duplicate runner source')
+    fingerprints = {}
+    def fingerprint(path):
+        path = Path(path).resolve()
+        if path not in fingerprints:
+            content = path.read_bytes()
+            fingerprints[path] = (sha(content), hashlib.sha1(b'blob ' + str(len(content)).encode() + b'\0' + content).hexdigest())
+        return fingerprints[path]
     accepted, skipped = [], []
     for move in plan['moves']:
         old, new = safe(move['source']), safe(move['target'])
         try:
-            pair = [index[str((out / 'candidate' / p).resolve()).casefold()] for p in (old, new)]
+            pair = [index[str(path.resolve()).casefold()] for path in
+                    (out / 'original' / old, out / 'candidate' / old, out / 'candidate' / new)]
             raw = []
             for result in pair:
                 if result.get('status') != 'complete':
@@ -242,28 +255,27 @@ def verify(root, out, run):
                 source = Path(result['source'])
                 obj = Path(result['object'])
                 if (result.get('changed_inputs')
-                        or not result.get('build_inputs') or sha(source.read_bytes()) != result.get('source_sha256')
+                        or not result.get('build_inputs') or fingerprint(source)[0] != result.get('source_sha256')
                         or not obj.resolve().is_relative_to(run)
-                        or sha(obj.read_bytes()) != result.get('object_sha256')):
+                        or fingerprint(obj)[0] != result.get('object_sha256')):
                     raise ValueError('Incomplete or stale source/object')
                 if not any(Path(path).resolve() == source.resolve() for path in result.get('dependencies', {})):
                     raise ValueError('Source dependency missing from receipt')
                 for path, digest in result['dependencies'].items():
                     dependency = Path(path).resolve()
-                    content = dependency.read_bytes()
-                    if sha(content) != digest:
+                    dependency_sha, dependency_blob = fingerprint(dependency)
+                    if dependency_sha != digest:
                         raise ValueError('Dependency changed: ' + path)
                     if dependency.is_relative_to(frozen):
                         relative = dependency.relative_to(frozen).as_posix()
-                        blob = hashlib.sha1(b'blob ' + str(len(content)).encode() + b'\0' + content).hexdigest()
-                        if header_blobs.get(relative) != blob:
+                        if header_blobs.get(relative) != dependency_blob:
                             raise ValueError('Frozen header differs from canonical base: ' + path)
                     elif dependency.is_relative_to((root / 'rebuild/2008-06/native-headers').resolve()):
                         raise ValueError('Unfrozen native header: ' + path)
                 if not result['build_inputs'].get('compiler'):
                     raise ValueError('Compiler identity missing')
                 for path, digest in result['build_inputs']['compiler'].items():
-                    if sha(Path(path).read_bytes()) != digest:
+                    if fingerprint(path)[0] != digest:
                         raise ValueError('Compiler changed: ' + path)
                 if any(row.get('status') != 'exact' or row.get('data_errors') for row in result['checks']):
                     raise ValueError('Original code/data check failed')
@@ -286,15 +298,19 @@ def verify(root, out, run):
                     if errors:
                         raise ValueError('Independent original data check failed')
                 raw.append(obj.read_bytes())
-            if pair[0]['flags'] != pair[1]['flags']:
+            if any(result['flags'] != pair[0]['flags'] for result in pair[1:]):
                 raise ValueError('Build flags differ')
-            if object_identity(raw[0]) != object_identity(raw[1]):
+            if any(result['build_inputs'] != pair[0]['build_inputs'] for result in pair[1:]):
+                raise ValueError('Build toolchain differs')
+            identity = object_identity(raw[0])
+            if any(object_identity(value) != identity for value in raw[1:]):
                 raise ValueError('Code/data or named relocations differ')
             native = git(root, 'show', plan['base'] + ':workspace/rebuild/2008-06/' + str(old))
             public = git(root, 'show', plan['base'] + ':2008-06/' + str(old))
             if sha(native) != move['source_sha256'] or sha(public) != move['public_sha256']:
                 raise ValueError('Recorded base content changed')
-            if (out / 'candidate' / new).read_bytes() != native or (out / 'public' / old).read_bytes() != public:
+            if ((out / 'original' / old).read_bytes() != native or (out / 'candidate' / new).read_bytes() != native
+                    or (out / 'public' / old).read_bytes() != public):
                 raise ValueError('Candidate or public snapshot changed')
             if (out / 'candidate' / old).read_bytes() != compatibility_shim(old, new, native):
                 raise ValueError('Compatibility source differs from reviewed wrapper')
@@ -303,6 +319,9 @@ def verify(root, out, run):
                 for r in pair]))
         except (KeyError, OSError, ValueError) as error:
             skipped.append(dict(move, reason=str(error)))
+    for path, (expected, _) in fingerprints.items():
+        if sha(path.read_bytes()) != expected:
+            raise ValueError('Input changed during batch verification: ' + str(path))
     manifest = {'base': plan['base'], 'files': {}}
     mirror = {}
     for move in accepted:
@@ -312,7 +331,7 @@ def verify(root, out, run):
         mirror['2008-06/' + old] = str(out / 'candidate' / old)
         mirror['2008-06/' + new] = str(out / 'public' / old)
     report = dict(base=plan['base'], header_tree=plan['header_tree'], run=str(run), accepted=accepted,
-                  skipped=skipped, scope='Object equivalence and listed original code/data checks only; no runtime or server credit.')
+                  skipped=skipped, scope='Object equivalence and listed original code/data checks only; preservation-only moves do not prove original identity; no runtime or server credit.')
     outputs = (('review.json', report), ('integration-manifest.json', manifest), ('public-manifest.json', mirror))
     if any((out / name).exists() for name, _ in outputs):
         raise FileExistsError('Refusing to overwrite existing review output')
