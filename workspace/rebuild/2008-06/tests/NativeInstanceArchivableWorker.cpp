@@ -1,4 +1,2 @@
-#include "v8tree/Instance.h"
-namespace RBX {
-Reflection::BoundProp<bool, 1> Instance::propArchivable("archivable", "Behavior", &Instance::archivable, Reflection::PropertyDescriptor::STANDARD);
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "matching/NativeInstanceArchivableWorker.cpp"

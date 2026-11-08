@@ -1,5 +1,2 @@
-#include "util/IRenderable.h"
-template<class T> struct NativeRecoverySink { static T value; };
-template<class T> T NativeRecoverySink<T>::value;
-template<class T> void nativeRecoveryKeep(T value){NativeRecoverySink<T>::value=value;}
-void nativeRecoveryProbe(){nativeRecoveryKeep(&RBX::IRenderable::render3dSelect);}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "matching/NativeRecoverya4260b95aa8e760f.cpp"

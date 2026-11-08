@@ -1,1 +1,2 @@
-namespace RBX { namespace Network { char sPeer[] = "NetworkPeer"; } }
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "matching/NativePeerClassNameWorker.cpp"

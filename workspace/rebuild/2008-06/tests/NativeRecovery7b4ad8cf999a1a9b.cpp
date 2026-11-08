@@ -1,5 +1,2 @@
-#include "v8datamodel/DataModel.h"
-template<class T> struct NativeRecoverySink { static T value; };
-template<class T> T NativeRecoverySink<T>::value;
-template<class T> void nativeRecoveryKeep(T value){NativeRecoverySink<T>::value=value;}
-void nativeRecoveryProbe(){nativeRecoveryKeep(&RBX::DataModel::setDirty);}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "matching/NativeRecovery7b4ad8cf999a1a9b.cpp"

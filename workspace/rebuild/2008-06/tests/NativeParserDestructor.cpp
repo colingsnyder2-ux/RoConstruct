@@ -1,6 +1,2 @@
-#include "v8xml/XmlSerializer.h"
-
-void destroyNativeTextXmlParser(TextXmlParser* parser)
-{
-    parser->~TextXmlParser();
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "matching/NativeParserDestructor.cpp"

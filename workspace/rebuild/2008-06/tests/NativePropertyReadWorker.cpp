@@ -1,4 +1,2 @@
-#include "reflection/property.h"
-namespace RBX { namespace Reflection {
-void PropertyDescriptor::read(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const { readValue(instance, element, binder); }
-}}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "matching/NativePropertyReadWorker.cpp"

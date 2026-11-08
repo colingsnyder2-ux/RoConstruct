@@ -1,2 +1,2 @@
-#include "util/Sound.h"
-StockSound::StockSound() { RBX::Instance::propArchivable.setValue(this, false); }
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "matching/NativeStockSoundCtorWorker.cpp"
