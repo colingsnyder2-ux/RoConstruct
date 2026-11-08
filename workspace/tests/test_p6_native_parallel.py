@@ -6,6 +6,7 @@ from pathlib import Path
 import re
 from types import SimpleNamespace
 import threading
+import time
 
 
 def test_parallel_doc_jobs_isolate_outputs_and_cache(tmp_path):
@@ -25,7 +26,7 @@ def test_parallel_doc_jobs_isolate_outputs_and_cache(tmp_path):
             writes[obj] = flags
         return (2 if obj == 'Failed.obj' else 0), obj
 
-    def store(name, key, obj):
+    def store(name, key, obj, include_log=None, started_ns=None):
         with lock:
             assert name not in cached
             cached[name] = obj
@@ -34,7 +35,7 @@ def test_parallel_doc_jobs_isolate_outputs_and_cache(tmp_path):
                  mfc=tmp_path / 'mfc', xtp=tmp_path / 'xtp', includes=[],
                  cache_key=lambda source, flags: (str(source), tuple(flags)),
                  restore_cached=lambda *args: False, store_cached=store,
-                 hashlib=hashlib, tc={}, rebuild=SimpleNamespace(run=run), out=tmp_path)
+                 hashlib=hashlib, time=time, NATIVE_DOC_CACHE=False, tc={}, rebuild=SimpleNamespace(run=run), out=tmp_path)
     exec(compile(ast.Module(body=[function], type_ignores=[]), str(builder), 'exec'), scope)
     jobs = []
     for i, obj in enumerate(['NativeDocExtra00.obj', 'NativeFileSystemFull.obj', 'Failed.obj']):
@@ -47,6 +48,6 @@ def test_parallel_doc_jobs_isolate_outputs_and_cache(tmp_path):
     assert len(writes) == 3 and len(cached) == 2
     assert 'Failed.obj' not in cached.values()
     assert any(name.startswith('NativeDocExtra00.obj-') for name in cached)
-    assert '/DNATIVE_FILE_SYSTEM_APPDATA_ONLY' in writes['NativeFileSystemFull.obj']
+    assert '/DNATIVE_FILE_SYSTEM_APPDATA_ONLY' not in writes['NativeFileSystemFull.obj']
     assert tmp_path / 'rebuild/2008-06/native-headers/profile' in [
         Path(flag[2:]) for flag in writes['NativeDocExtra00.obj'] if flag.startswith('/I')]

@@ -72,12 +72,14 @@ def test_inactive_source_links_require_published_content(tmp_path):
     blob = hashlib.sha1(b'blob ' + str(len(body)).encode() + b'\0' + body).hexdigest()
     receipt = tmp_path / 'work/2008-06/shared-layouts/lifetime.json'
     receipt.parent.mkdir(parents=True)
-    receipt.write_text(json.dumps({'sources': {source.replace('/', '\\'): 'recorded-hash'}}))
+    receipt.write_text(json.dumps({'sources': {source.replace('/', '\\'): hashlib.sha256(path.read_bytes()).hexdigest()}}))
     inactive = {'005a4d90': ['RBX::Workspace::Workspace', True, 'lifetime.json'],
                 '00500000': ['Draft::handle_500000', False, source]}
     result = integration_site.inactive_sources(tmp_path, inactive, {source: blob})
     assert result['005a4d90'] == {'path': 'workspace/' + source, 'line': 2}
     assert result['00500000']['path'] == 'workspace/' + source
+    receipt.write_text(json.dumps({'sources': {source: '0' * 64}}))
+    assert '005a4d90' not in integration_site.inactive_sources(tmp_path, inactive, {source: blob})
     assert integration_site.inactive_sources(tmp_path, inactive, {}) == {}
     path.write_text('Different in-flight worker body')
     assert integration_site.inactive_sources(tmp_path, inactive, {source: blob}) == {}
@@ -176,3 +178,42 @@ def test_runner_receipts_from_work_refresh_without_checkout_changes(tmp_path):
     assert path.read_text() == 'worker edits remain untouched'
     assert git('rev-parse', 'HEAD') == head
     assert (tmp_path / '.git/index').read_bytes() == index
+
+
+def test_published_blob_and_wrapper_resolve_without_overwriting_dirty_work(tmp_path):
+    import subprocess
+    subprocess.run(['git', 'init', '-q', str(tmp_path)], check=True)
+    source = 'rebuild/2008-06/native-classes/Example.cpp'
+    target = 'rebuild/2008-06/WindowsClient/src/Example.cpp'
+    wrapper = b'// Compatibility translation unit.\n#include "../WindowsClient/src/Example.cpp"\n'
+    body = b'// Published definition\nvoid Example::run() {}\n'
+    def blob(data):
+        return subprocess.run(['git', 'hash-object', '-w', '--stdin'], input=data,
+                              cwd=tmp_path, capture_output=True, check=True).stdout.decode().strip()
+    published = {source: blob(wrapper), target: blob(body)}
+    local = tmp_path / source
+    local.parent.mkdir(parents=True)
+    local.write_text('dirty worker contents')
+    receipts = tmp_path / 'work/2008-06/shared-layouts'
+    receipts.mkdir(parents=True)
+    (receipts / 'example.json').write_text(json.dumps({'sources': {source: __import__('hashlib').sha256(body).hexdigest()}}))
+    (receipts / 'wrong.json').write_text(json.dumps({'sources': {source: '0' * 64}}))
+    inactive = {'00400000': ['Example::run', True, 'example.json'],
+                '00400001': ['Example::run', True, 'wrong.json']}
+    result = integration_site.inactive_sources(tmp_path, inactive, published)
+    assert result == {'00400000': {'path': 'workspace/' + target, 'line': 2}}
+    assert local.read_text() == 'dirty worker contents'
+
+
+def test_missing_or_cyclic_published_wrapper_is_not_linked(tmp_path):
+    import subprocess
+    subprocess.run(['git', 'init', '-q', str(tmp_path)], check=True)
+    source = 'rebuild/2008-06/native-classes/Example.cpp'
+    body = b'#include "Example.cpp"\n'
+    oid = subprocess.run(['git', 'hash-object', '-w', '--stdin'], input=body,
+                         cwd=tmp_path, capture_output=True, check=True).stdout.decode().strip()
+    receipts = tmp_path / 'work/2008-06/shared-layouts'
+    receipts.mkdir(parents=True)
+    (receipts / 'example.json').write_text(json.dumps({'source': source}))
+    inactive = {'00400000': ['Example::run', True, 'example.json']}
+    assert integration_site.inactive_sources(tmp_path, inactive, {source: oid}) == {}

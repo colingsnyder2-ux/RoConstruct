@@ -7,6 +7,7 @@ import sqlite3
 import hashlib
 import io
 import subprocess
+import posixpath
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
@@ -244,7 +245,7 @@ def inactive_sources(root, inactive, published=None):
                 if row:
                     meta, path = row.split(b'\t', 1)
                     published[path.decode().removeprefix('workspace/')] = meta.split()[2].decode()
-    links, receipts, texts = {}, {}, {}
+    links, receipts, texts, origins = {}, {}, {}, {}
     for addr, row in inactive.items():
         receipt = row[2]
         if receipt not in receipts:
@@ -265,22 +266,78 @@ def inactive_sources(root, inactive, published=None):
         usable = []
         method = '::'.join(row[0].split('::')[-2:])
         for path in sorted(candidates):
-            if path not in texts:
-                try:
-                    body = (root / path).read_bytes()
-                    blob = hashlib.sha1(b'blob ' + str(len(body)).encode() + b'\0' + body).hexdigest()
-                    normalized = body.replace(b'\r\n', b'\n')
-                    normalized_blob = hashlib.sha1(b'blob ' + str(len(normalized)).encode() + b'\0' + normalized).hexdigest()
-                    texts[path] = body.decode('utf-8', errors='replace') if published[path] in (blob, normalized_blob) else ''
-                except OSError:
-                    texts[path] = ''
-            text = texts[path]
+            # Read the exact published blob when the shared checkout is dirty.
+            # Follow compatibility wrappers, so links identify the real source.
+            seen = set()
+            original_path = path
+            used_published = False
+            while path in published and path not in seen:
+                seen.add(path)
+                if path not in texts:
+                    body = b''
+                    try:
+                        local = (root / path).read_bytes()
+                        blob = hashlib.sha1(b'blob ' + str(len(local)).encode() + b'\0' + local).hexdigest()
+                        normalized = local.replace(b'\r\n', b'\n')
+                        normalized_blob = hashlib.sha1(b'blob ' + str(len(normalized)).encode() + b'\0' + normalized).hexdigest()
+                        if published[path] in (blob, normalized_blob):
+                            body = local
+                    except OSError:
+                        pass
+                    if not body and re.fullmatch(r'[0-9a-f]{40}', published[path]):
+                        result = subprocess.run(['git', 'cat-file', 'blob', published[path]], cwd=root, capture_output=True)
+                        if result.returncode == 0:
+                            candidate = result.stdout
+                            blob = hashlib.sha1(b'blob ' + str(len(candidate)).encode() + b'\0' + candidate).hexdigest()
+                            if blob == published[path]:
+                                body = candidate
+                                used_published = True
+                    texts[path] = body.decode('utf-8', errors='replace')
+                    origins[path] = (hashlib.sha256(body).hexdigest(), used_published)
+                text = texts[path]
+                used_published = used_published or origins[path][1]
+                if not text:
+                    break
+                meaningful = [line.strip() for line in text.splitlines()
+                              if line.strip() and not line.strip().startswith('//') and line.strip() != '#pragma once']
+                wrapper = re.fullmatch(r'#\s*include\s*"([^"\n]+)"', meaningful[0]) if len(meaningful) == 1 else None
+                if not wrapper:
+                    break
+                target = posixpath.normpath(posixpath.join(posixpath.dirname(path), wrapper[1]))
+                if not target.startswith('rebuild/2008-06/') or target not in published or target in seen:
+                    text = ''
+                    break
+                path = target
+                used_published = True
             if not text:
                 continue
+            if used_published or row[1]:
+                # A path alone does not prove the receipt describes this blob.
+                try:
+                    proof = json.loads(receipts[receipt])
+                except (ValueError, TypeError):
+                    continue
+                expected_hash = origins[path][0]
+                paths = (original_path, path)
+                def recorded(value):
+                    if isinstance(value, dict):
+                        for key, item in value.items():
+                            normalized = key.replace('\\', '/') if isinstance(key, str) else ''
+                            if any(normalized == p or normalized.endswith('/' + p) for p in paths) and item == expected_hash:
+                                return True
+                        source = str(value.get('source', '')).replace('\\', '/')
+                        if any(source == p or source.endswith('/' + p) for p in paths) and value.get('source_sha256') == expected_hash:
+                            return True
+                        return any(recorded(item) for item in value.values())
+                    return isinstance(value, list) and any(recorded(item) for item in value)
+                if not recorded(proof):
+                    continue
             lines = [n for n, line in enumerate(text.splitlines(), 1)
                      if method + '(' in line or method + ' (' in line or 'handle_' + addr.lstrip('0') in line]
             if lines or len(candidates) == 1:
-                usable.append({'path': 'workspace/' + path, 'line': lines[0] if lines else 1})
+                link = {'path': 'workspace/' + path, 'line': lines[0] if lines else 1}
+                if link not in usable:
+                    usable.append(link)
         if len(usable) == 1:
             links[addr] = usable[0]
     return links

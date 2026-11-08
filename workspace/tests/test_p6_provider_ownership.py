@@ -98,3 +98,16 @@ def test_split_create_profile_keeps_its_define():
     assert len(matching) == 1
     values = {n.value for n in ast.walk(matching[0]) if isinstance(n, ast.Constant) and isinstance(n.value, str)}
     assert '/DSERVICE_HISTORY_CREATE_ONLY' in values
+
+
+def test_full_filesystem_and_repaired_archive_are_native_doc_only():
+    tree = ast.parse(SOURCE.read_text(encoding='utf-8'))
+    compile_fn = next(n for n in ast.walk(tree) if isinstance(n, ast.FunctionDef) and n.name == 'compile_doc_source')
+    assert 'NATIVE_FILE_SYSTEM_APPDATA_ONLY' not in ast.unparse(compile_fn)
+    calls = [n for n in ast.walk(tree) if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute)
+             and isinstance(n.func.value, ast.Name) and n.func.value.id == 'glue_owner' and n.func.attr == 'build']
+    assert len(calls) == 1
+    assert 'NativeFileSystemFull.obj' in ast.unparse(calls[0])
+    assert 'glue_content_provider.command.json' in ast.unparse(calls[0])
+    assert any(isinstance(n, ast.If) and isinstance(n.test, ast.Name) and n.test.id == 'NATIVE_DOC'
+               and any(c is calls[0] for c in ast.walk(n)) for n in tree.body)

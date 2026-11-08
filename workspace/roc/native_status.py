@@ -368,6 +368,11 @@ def main():
     args = parse_args()
     if args.staged and getattr(args, 'write', False):
         raise ValueError('--staged cannot be combined with --write')
+    if getattr(args, 'write', False):
+        mapped = load_links().values()
+        if not any((ROOT / (path if path.startswith('rebuild/') else 'rebuild/' + path)).is_file() for path in mapped):
+            print('error: refusing banner write without usable native source mappings', file=sys.stderr)
+            return 1
     entries = build_index(args.path)
     staged_prefix = ''
     if args.staged:
@@ -379,6 +384,9 @@ def main():
             staged_prefix = subprocess.check_output(['git', 'rev-parse', '--show-prefix'], cwd=ROOT, text=True).strip()
     if entries and not args.path and not args.staged and not any(v.get("addrs") for v in entries.values()):
         print("warning: no native source mappings; banner counts and attribution are unavailable", file=sys.stderr)
+        if getattr(args, 'write', False):
+            print("error: refusing full-tree write without native source mappings", file=sys.stderr)
+            return 1
     if args.json:
         out = {k: dict(v, miners=dict(v["miners"]), models=dict(v["models"]),
                        strings=sorted(v["strings"]), receipts=sorted(v["receipts"]))
@@ -398,6 +406,10 @@ def main():
         bom = b'\xef\xbb\xbf' if raw.startswith(b'\xef\xbb\xbf') else b''
         content = raw[len(bom):]
         if b'\r' in content.replace(b'\r\n', b'') or (b'\r\n' in content and b'\n' in content.replace(b'\r\n', b'')):
+            if args.check:
+                stale += 1
+                print(f'UNSUPPORTED LINE ENDINGS: {key}')
+                continue
             raise ValueError('Mixed or unsupported line endings: ' + str(p))
         eol = b'\r\n' if b'\r\n' in content else b'\n'
         text = content.replace(b'\r\n', b'\n').decode('utf-8')

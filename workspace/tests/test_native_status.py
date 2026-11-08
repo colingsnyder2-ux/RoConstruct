@@ -127,12 +127,16 @@ def test_write_preserves_crlf_and_bom_and_is_idempotent(tmp_path, monkeypatch):
     spec.loader.exec_module(module)
     source = tmp_path / 'file.cpp'
     source.write_bytes(b'\xef\xbb\xbf// native-flags: /O2\r\nint f() { return 1; }\r\n')
+    mapped = tmp_path / 'rebuild/2008-06/native-classes/other.cpp'
+    mapped.parent.mkdir(parents=True)
+    mapped.write_text('void mapped() {}')
     fields = dict(addrs=[], exact=0, named=0, partial=0, strings=set(), miners=collections.Counter(),
                   models=collections.Counter(), receipts=set(), is_header=False, **{'class': 'Example'})
     monkeypatch.setattr(module, 'ROOT', tmp_path)
     monkeypatch.setattr(module, '_integ', lambda: {})
-    monkeypatch.setattr(module, 'parse_args', lambda: SimpleNamespace(path=None, staged=False, json=False, check=False, write=True))
+    monkeypatch.setattr(module, 'parse_args', lambda: SimpleNamespace(path='file.cpp', staged=False, json=False, check=False, write=True))
     monkeypatch.setattr(module, 'build_index', lambda _: {'file.cpp': fields})
+    monkeypatch.setattr(module, 'load_links', lambda: {'00400000': 'rebuild/2008-06/native-classes/other.cpp'})
     monkeypatch.setattr(module, 'require_live_leases', lambda paths: float('inf'))
     assert module.main() == 0
     first = source.read_bytes()
@@ -218,3 +222,42 @@ def test_unmapped_status_describes_the_index(monkeypatch):
     banner = module.banner_for('Example.cpp', fields, 'void example() {}')
     assert 'unmapped (no indexed address)' in banner
     assert 'no binary link' not in banner
+
+
+@pytest.mark.parametrize('path_glob', [None, 'file.cpp'])
+@pytest.mark.parametrize('links', [{}, {'00400000': 'rebuild/2008-06/native-classes/missing.cpp'}])
+def test_missing_mappings_refuses_full_tree_write(tmp_path, monkeypatch, capsys, path_glob, links):
+    path = Path(__file__).resolve().parents[1] / 'roc/native_status.py'
+    spec = importlib.util.spec_from_file_location('native_status_no_mappings_test', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    source = tmp_path / 'example.cpp'
+    original = b'void f() {}\n'
+    source.write_bytes(original)
+    monkeypatch.setattr(module, 'ROOT', tmp_path)
+    monkeypatch.setattr(module, 'parse_args', lambda: SimpleNamespace(path=path_glob, staged=False, json=False, write=True))
+    monkeypatch.setattr(module, 'load_links', lambda: links)
+    monkeypatch.setattr(module, 'build_index', lambda _: {'example.cpp': {'addrs': []}})
+    assert module.main() == 1
+    assert source.read_bytes() == original
+    assert 'refusing banner write' in capsys.readouterr().err
+
+
+def test_check_reports_mixed_line_endings_and_continues(tmp_path, monkeypatch, capsys):
+    path = Path(__file__).resolve().parents[1] / 'roc/native_status.py'
+    spec = importlib.util.spec_from_file_location('native_status_mixed_test', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    (tmp_path / 'mixed.cpp').write_bytes(b'line1\nline2\r\n')
+    (tmp_path / 'other.cpp').write_bytes(b'int x;\n')
+    fields = dict(addrs=[], exact=0, named=0, partial=0, strings=set(), miners=collections.Counter(),
+                  models=collections.Counter(), receipts=set(), is_header=False, **{'class': 'Example'})
+    monkeypatch.setattr(module, 'ROOT', tmp_path)
+    monkeypatch.setattr(module, '_integ', lambda: {})
+    monkeypatch.setattr(module, 'parse_args', lambda: SimpleNamespace(path=None, staged=False, json=False, check=True, write=False))
+    monkeypatch.setattr(module, 'build_index', lambda _: {'mixed.cpp': fields, 'other.cpp': fields})
+    assert module.main() == 1
+    output = capsys.readouterr().out
+    assert 'UNSUPPORTED LINE ENDINGS: mixed.cpp' in output
+    assert 'STALE: other.cpp' in output
+    assert '2 stale/missing banners' in output

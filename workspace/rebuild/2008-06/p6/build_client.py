@@ -1,6 +1,6 @@
 """Link out/p6/Roblox.exe: MFC client, RTM appmodul.cpp, original resources, and
 the player's engine libraries from this worktree's own player build."""
-import hashlib, json, os, re, shutil, subprocess, sys
+import hashlib, json, os, re, shutil, subprocess, sys, time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
@@ -232,6 +232,27 @@ def cache_key(source, flags):
            'compiler_sha256': hashlib.sha256(Path(tc['cl']).read_bytes()).hexdigest(),
            'native_deps': native_deps(source),
            'flags': hashlib.sha256('\0'.join(flags).encode()).hexdigest()}
+    compiler = Path(tc['cl'])
+    tools = [compiler.with_name(name) for name in ('c1.dll', 'c1xx.dll', 'c2.dll')]
+    if tc.get('mspdb'):
+        tools.append(Path(tc['mspdb']))
+    key['compiler_components'] = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+                                  for path in tools}
+    key['toolchain_includes'] = {name: str(tc.get(name) or '') for name in ('vc_include', 'sdk_include', 'atlmfc_include')}
+    environment = rebuild.env(tc)
+    key['compiler_environment'] = {name: environment.get(name, '') for name in ('CL', '_CL_', 'INCLUDE', 'VSLANG')}
+    key['unsupported_cache_flags'] = any(flag.startswith('@') or flag.lower().startswith(('/yu', '/yc')) or (flag.lower().startswith('/fp') and not flag.lower().startswith('/fp:')) for flag in flags)
+    roots = [source.absolute().parent] + [Path(tc[name]) for name in ('vc_include', 'sdk_include', 'atlmfc_include') if tc.get(name)]
+    for index, flag in enumerate(flags):
+        if flag.lower() == '/i' and index + 1 < len(flags):
+            roots.append(Path(flags[index + 1].strip('"')))
+        elif flag.lower().startswith('/i') and len(flag) > 2:
+            roots.append(Path(flag[2:].strip('"')))
+    roots = [path if path.is_absolute() else out / path for path in roots]
+    if any(part.is_symlink() or (hasattr(part, 'is_junction') and part.is_junction())
+           for path in roots for part in (path, *path.parents)):
+        key['unsupported_cache_flags'] = True
+    key['include_roots'] = sorted({str(path.resolve()) for path in roots})
     # Angle includes can select per-source STL/MFC overrides. Track those
     # directories without invalidating every object for unrelated native headers.
     profile_headers = set()
@@ -251,6 +272,52 @@ def cache_paths(name, key):
     folder = cache_dir / 'variants' / variant
     return folder / name, folder / (name + '.json')
 
+def directory_signature(path):
+    entries = []
+    with os.scandir(path) as scan:
+        for entry in scan:
+            child = Path(entry.path)
+            if entry.is_symlink() or (hasattr(child, 'is_junction') and child.is_junction()):
+                raise OSError('Linked include directory entry: ' + str(child))
+            entries.append((entry.name.casefold(), entry.is_dir(follow_symlinks=False)))
+    return hashlib.sha256(json.dumps(sorted(entries)).encode()).hexdigest()
+
+
+def include_directories(roots, started_ns):
+    result = {}
+    for root in sorted({str(Path(p).resolve()) for p in roots}, key=len):
+        path = Path(root)
+        if any(path.is_relative_to(Path(parent)) for parent in result if result[parent] is not None):
+            continue
+        if not path.exists():
+            result[root] = None
+            continue
+        if not path.is_dir() or path.is_symlink() or (hasattr(path, 'is_junction') and path.is_junction()):
+            raise OSError('Unsupported include root: ' + root)
+        for folder, dirs, files in os.walk(path, followlinks=False, onerror=lambda error: (_ for _ in ()).throw(error)):
+            directory = Path(folder)
+            if directory.stat().st_mtime_ns >= started_ns:
+                raise RuntimeError('Include directory changed during compilation: ' + folder)
+            result[str(directory)] = directory_signature(directory)
+    return result
+
+
+def directories_unchanged(directories):
+    if not isinstance(directories, dict) or not directories:
+        return False
+    try:
+        return all((not Path(name).exists()) if signature is None else
+                   (Path(name).is_dir() and not Path(name).is_symlink() and
+                    not (hasattr(Path(name), 'is_junction') and Path(name).is_junction()) and
+                    directory_signature(name) == signature)
+                   for name, signature in directories.items())
+    except OSError:
+        return False
+
+
+restored_cache_records = []
+
+
 def restore_cached(name, key, target=None):
     artifact, receipt = cache_paths(name, key)
     if not (NATIVE_DOC and NATIVE_DOC_CACHE and artifact.exists() and receipt.exists()):
@@ -259,20 +326,111 @@ def restore_cached(name, key, target=None):
         recorded = json.loads(receipt.read_text())
     except (OSError, ValueError):
         return False
-    if recorded != key:
+    if not isinstance(recorded, dict) or recorded.get('key') != key:
         return False
-    shutil.copyfile(artifact, out / (target or name))
+    if key.get('unsupported_cache_flags') or any(key.get('compiler_environment', {}).get(name) for name in ('CL', '_CL_')):
+        return False
+    if recorded.get('object_sha256') != hashlib.sha256(artifact.read_bytes()).hexdigest():
+        return False
+    if not directories_unchanged(recorded.get('include_directories')):
+        return False
+    dependencies = recorded.get('dependencies')
+    if not isinstance(dependencies, dict) or not dependencies:
+        return False
+    for path, digest in dependencies.items():
+        if not Path(path).is_file() or hashlib.sha256(Path(path).read_bytes()).hexdigest() != digest:
+            return False
+    destination = out / (target or name)
+    shutil.copyfile(artifact, destination)
+    if hashlib.sha256(destination.read_bytes()).hexdigest() != recorded['object_sha256']:
+        raise RuntimeError('Cached object changed during restore: ' + str(artifact))
+    restored_cache_records.append((destination, recorded))
     return True
-def store_cached(name, key, source=None):
+def store_cached(name, key, source=None, include_log=None, started_ns=None):
     if NATIVE_DOC and NATIVE_DOC_CACHE:
+        if include_log is None or started_ns is None:
+            return
+        if key.get('unsupported_cache_flags') or any(key.get('compiler_environment', {}).get(name) for name in ('CL', '_CL_')):
+            return
+        includes = {Path(hit.group(1).strip()).resolve() for line in include_log.splitlines()
+                    if (hit := re.match(r'^\s*Note: including file:\s*(.*?)\s*$', line))}
+        if not includes:
+            return
+        if any(not path.is_file() or path.stat().st_mtime_ns >= started_ns for path in includes):
+            raise RuntimeError('Header changed during compilation')
+        dependencies = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted(includes)}
+        try:
+            directories = include_directories(key.get('include_roots', []) + [str(path.parent) for path in includes], started_ns)
+            # Quoted ../ includes can search above an include root. Track every
+            # potential parent in the compiler's including-file search stack.
+            source_path = Path(key['source']) if key.get('source') else None
+            search_files = includes | ({source_path} if source_path else set())
+            upward = set()
+            for path in search_files:
+                for line in path.read_text(encoding='utf-8', errors='replace').splitlines():
+                    if re.match(r'^\s*#\s*(?:import|using|include_next)\b|^\s*#\s*pragma\s+include_alias\b', line) or any(token in line for token in ('__has_include', '__DATE__', '__TIME__', '__TIMESTAMP__')):
+                        return
+                    directive = re.match(r'^\s*#\s*include\s+(.+?)\s*$', line)
+                    if not directive:
+                        continue
+                    literal = re.match(r'^[<"]([^>"]+)[>"]', directive.group(1))
+                    if not literal:
+                        return  # Macro-generated include names cannot be inventoried safely.
+                    include_name = literal.group(1).replace('\\', '/')
+                    if '..' in include_name.split('/'):
+                        upward.add(include_name)
+            parents = {path.parent for path in search_files}
+            parents.update(Path(path) for path in key.get('include_roots', []))
+            for include_name in upward:
+                for parent in parents:
+                    candidate = (parent / include_name).resolve().parent
+                    label = str(candidate)
+                    if label in directories:
+                        continue
+                    if not candidate.exists():
+                        directories[label] = None
+                    elif not candidate.is_dir() or candidate.stat().st_mtime_ns >= started_ns:
+                        return
+                    else:
+                        directories[label] = directory_signature(candidate)
+        except OSError:
+            return
+        if not directories_unchanged(directories):
+            return
         artifact, receipt = cache_paths(name, key)
         artifact.parent.mkdir(parents=True, exist_ok=True)
         pending = artifact.with_name(artifact.name + '.tmp-' + str(os.getpid()))
         shutil.copyfile(out / (source or name), pending)
         os.replace(pending, artifact)
         pending = receipt.with_name(receipt.name + '.tmp-' + str(os.getpid()))
-        pending.write_text(json.dumps(key, sort_keys=True))
+        metadata = {'key': key, 'object_sha256': hashlib.sha256(artifact.read_bytes()).hexdigest(), 'dependencies': dependencies, 'include_directories': directories}
+        pending.write_text(json.dumps(metadata, sort_keys=True))
         os.replace(pending, receipt)
+        restored_cache_records.append((out / (source or name), metadata))
+def assert_cached_inputs_unchanged():
+    for destination, receipt in restored_cache_records:
+        key = receipt['key']
+        if not destination.is_file() or hashlib.sha256(destination.read_bytes()).hexdigest() != receipt['object_sha256']:
+            raise RuntimeError('Restored cached object changed: ' + str(destination))
+        if not directories_unchanged(receipt['include_directories']):
+            raise RuntimeError('Include search tree changed after cache restore')
+        inputs = dict(receipt['dependencies'])
+        inputs[key['source']] = key['source_sha256']
+        inputs[str(tc['cl'])] = key['compiler_sha256']
+        inputs.update(key['compiler_components'])
+        for name, digest in key.get('native_deps', []) + key.get('native_profile_headers', []):
+            path = Path(name)
+            inputs[str(path if path.is_absolute() else ROOT / path)] = digest
+        for name, digest in inputs.items():
+            path = Path(name)
+            if (path.exists() if digest is None else
+                    not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest):
+                raise RuntimeError('Cached input changed after restore: ' + name)
+        environment = rebuild.env(tc)
+        if any(environment.get(name, '') != value for name, value in key.get('compiler_environment', {}).items()):
+            raise RuntimeError('Compiler environment changed after cache restore')
+
+
 data_flags = data_defines.split() + [engine["flags"]]
 data_key = cache_key(HERE / 'P6Data.cpp', data_flags)
 if not restore_cached('CoreP6Data.obj', data_key, 'P6Data.obj'):
@@ -289,11 +447,14 @@ for obj, source, flags in units:
     cache_name = 'Core-' + obj
     if restore_cached(cache_name, key, obj):
         continue
-    code, text = rebuild.run(tc, "cl", flags + ["/Fo" + obj, str(source)], out)
+    started_ns = time.time_ns()
+    code, text = rebuild.run(tc, "cl", flags + (["/showIncludes"] if NATIVE_DOC_CACHE else []) + ["/Fo" + obj, str(source)], out)
     print(text[-2500:])
     if code:
         sys.exit(code)
-    store_cached(cache_name, key, obj)
+    if NATIVE_DOC_CACHE and cache_key(source, flags) != key:
+        raise RuntimeError('Source or compiler changed during compilation: ' + str(source))
+    store_cached(cache_name, key, obj, text if NATIVE_DOC_CACHE else None, started_ns)
 if NATIVE_DOC:
     doc_flags = mfc_flags + ["/D" + d for d in data_defines.split()] + ["/I" + str(ROOT / 'rebuild/2008-06/native-headers'), "/I" + str(HERE)] + ["/I" + str(i) for i in includes]
     doc_sources = [('NativeCRobloxDoc.obj', ROOT / 'rebuild/2008-06/native-classes/CRobloxDoc.cpp'),
@@ -565,7 +726,7 @@ if NATIVE_DOC:
     # once their source/header/flag stamp matches.
     def compile_doc_source(job):
         obj, source = job
-        source_flags = doc_flags + (['/DNATIVE_FILE_SYSTEM_APPDATA_ONLY'] if obj == 'NativeFileSystemFull.obj' else [])
+        source_flags = doc_flags
         pinned = re.search(r'^// native-flags: (.*)$', source.read_text(encoding='utf-8-sig', errors='replace'), re.M)
         if obj == 'ServiceChangeHistoryCreateFull.obj':
             # This second translation unit instantiates creation, not the lookup profile.
@@ -586,9 +747,12 @@ if NATIVE_DOC:
             cache_name += '-' + hashlib.sha256(str(source.resolve()).encode()).hexdigest()[:12]
         if restore_cached(cache_name, key, obj):
             return 0, ''
-        code, text = rebuild.run(tc, 'cl', source_flags + ['/Fo' + obj, str(source)], out)
+        started_ns = time.time_ns()
+        code, text = rebuild.run(tc, 'cl', source_flags + (['/showIncludes'] if NATIVE_DOC_CACHE else []) + ['/Fo' + obj, str(source)], out)
+        if not code and NATIVE_DOC_CACHE and cache_key(source, source_flags) != key:
+            raise RuntimeError('Source or compiler changed during compilation: ' + str(source))
         if not code:
-            store_cached(cache_name, key, obj)
+            store_cached(cache_name, key, obj, text if NATIVE_DOC_CACHE else None, started_ns)
         return code, text
     # Each job owns its object/cache path; no debug/PCH files are shared.
     assert len({obj for obj, _ in doc_sources}) == len(doc_sources)
@@ -721,6 +885,12 @@ if NATIVE_DOC:
     script_app_library = script_context_owner.build(SNAPSHOT, out, tc)
     import part_getter_owner
     script_app_library = part_getter_owner.build(SNAPSHOT, out, tc, script_app_library)
+    # Diagnostic only: rebuild the stale glue owner and select the complete native FileSystem.
+    import glue_owner
+    script_app_library = glue_owner.build(
+        SNAPSHOT / 'RbxgsApp/layer-glue/glue_content_provider.command.json', script_app_library,
+        ROOT / 'rebuild/2008-06/glue/rbxgs/glue_content_provider.cpp',
+        out / 'NativeFileSystemFull.obj', out / 'glue-owner', tc)
     libs = [script_app_library if path.resolve() == original_app_library.resolve() else path for path in libs]
 native_doc_aliases = ['/alternatename:?createNativeWorkspace@@YGJPAPAVCWorkspace@@@Z=?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z'] if NATIVE_DOC else []
 native_doc_verbose = (['/VERBOSE'] if os.environ.get('ROC_NATIVE_DOC_VERBOSE_LIB') == 'full' else ['/VERBOSE:LIB']) if NATIVE_DOC and os.environ.get('ROC_NATIVE_DOC_VERBOSE_LIB') else []
@@ -746,7 +916,9 @@ if native_md5_proof:
     link_args = [str(replacement) if arg == str(original_archive) else arg for arg in link_args]
     link_args.insert(0, str(native_object))
     (out / 'native-md5-link-command.json').write_text(json.dumps(dict(cwd=str(out), arguments=link_args), indent=2))
+assert_cached_inputs_unchanged()
 code, text = rebuild.run(tc, "link", link_args, out)
+assert_cached_inputs_unchanged()
 if native_md5_proof:
     (out / 'native-md5-link.log').write_text(text)
     if code == 0:
