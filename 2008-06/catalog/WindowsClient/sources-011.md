@@ -20,6 +20,7 @@ Earlier paths and their donor versions: `native-headers/CWorkspace.h`.
 - canonical · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/include/CWorkspace.h)
 - canonical · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/include/CWorkspace.h)
 - canonical · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/include/CWorkspace.h)
+- canonical · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CWorkspace.h)
 
 **`d2ad3a018bf0`** · `WindowsClient/include/CWorkspace.h` · proof not assessed
 - public · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CWorkspace.h)
@@ -34,6 +35,7 @@ Earlier paths and their donor versions: `native-headers/CWorkspace.h`.
 - public · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/include/CWorkspace.h)
 - public · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/include/CWorkspace.h)
 - public · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/include/CWorkspace.h)
+- public · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/include/CWorkspace.h)
 
 **`0897e0b76e49`** · `native-headers/CWorkspace.h` · proof not assessed
 
@@ -372,6 +374,8 @@ Earlier paths and their donor versions: `native-headers/CWorkspace.h`.
 - canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
 - public · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/CWorkspace.h)
 - canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
+- public · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/CWorkspace.h)
+- canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
 
 </details>
 
@@ -392,6 +396,7 @@ Earlier paths and their donor versions: `native-headers/CWrapperView.h`.
 - public · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/include/CWrapperView.h)
 - public · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/include/CWrapperView.h)
 - public · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/include/CWrapperView.h)
+- public · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/include/CWrapperView.h)
 
 **`933bfc3cedb1`** · `WindowsClient/include/CWrapperView.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/CWrapperView.h)
@@ -405,6 +410,7 @@ Earlier paths and their donor versions: `native-headers/CWrapperView.h`.
 - canonical · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/include/CWrapperView.h)
 - canonical · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/include/CWrapperView.h)
 - canonical · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/include/CWrapperView.h)
+- canonical · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CWrapperView.h)
 
 **`7c90f3142901`** · `native-headers/CWrapperView.h` · proof not assessed
 
@@ -548,6 +554,8 @@ Earlier paths and their donor versions: `native-headers/CWrapperView.h`.
 - canonical · colingsnyder2-ux · [native-headers/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/CWrapperView.h)
 - public · colingsnyder2-ux · [native-headers/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/CWrapperView.h)
 - canonical · colingsnyder2-ux · [native-headers/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/CWrapperView.h)
+- public · colingsnyder2-ux · [native-headers/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/CWrapperView.h)
+- canonical · colingsnyder2-ux · [native-headers/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/CWrapperView.h)
 
 </details>
 
@@ -568,6 +576,7 @@ Earlier paths and their donor versions: `native-headers/ChatEnter.h`.
 - public · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/include/ChatEnter.h)
 - public · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/include/ChatEnter.h)
 - public · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/include/ChatEnter.h)
+- public · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/include/ChatEnter.h)
 
 **`e70c62cfd6a2`** · `WindowsClient/include/ChatEnter.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/ChatEnter.h)
@@ -581,6 +590,7 @@ Earlier paths and their donor versions: `native-headers/ChatEnter.h`.
 - canonical · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/include/ChatEnter.h)
 - canonical · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/include/ChatEnter.h)
 - canonical · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/include/ChatEnter.h)
+- canonical · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/ChatEnter.h)
 
 **`246436902c19`** · `native-headers/ChatEnter.h` · proof not assessed
 
@@ -844,6 +854,8 @@ Earlier paths and their donor versions: `native-headers/ChatEnter.h`.
 - canonical · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/ChatEnter.h)
 - public · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/ChatEnter.h)
 - canonical · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/ChatEnter.h)
+- public · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/ChatEnter.h)
+- canonical · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/ChatEnter.h)
 
 </details>
 
@@ -865,6 +877,7 @@ Earlier paths and their donor versions: `native-headers/ClipboardVerbs.h`.
 - canonical · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/include/ClipboardVerbs.h)
 - canonical · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/include/ClipboardVerbs.h)
 - canonical · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/include/ClipboardVerbs.h)
+- canonical · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/ClipboardVerbs.h)
 
 **`f736bd295726`** · `WindowsClient/include/ClipboardVerbs.h` · proof not assessed
 - public · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/ClipboardVerbs.h)
@@ -879,6 +892,7 @@ Earlier paths and their donor versions: `native-headers/ClipboardVerbs.h`.
 - public · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/include/ClipboardVerbs.h)
 - public · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/include/ClipboardVerbs.h)
 - public · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/include/ClipboardVerbs.h)
+- public · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/include/ClipboardVerbs.h)
 
 **`34d4883050d5`** · `native-headers/ClipboardVerbs.h` · proof not assessed
 - canonical · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/ClipboardVerbs.h)
@@ -1014,6 +1028,8 @@ Earlier paths and their donor versions: `native-headers/ClipboardVerbs.h`.
 - canonical · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/ClipboardVerbs.h)
 - public · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/ClipboardVerbs.h)
 - canonical · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/ClipboardVerbs.h)
+- public · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/ClipboardVerbs.h)
+- canonical · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/ClipboardVerbs.h)
 
 </details>
 
@@ -1035,6 +1051,7 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 - canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
 - canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
 - canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
+- canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
 
 **`bd619f24c5e8`** · `WindowsClient/include/InsertDecal.h` · proof not assessed
 - public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/InsertDecal.h)
@@ -1049,6 +1066,7 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 - public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/include/InsertDecal.h)
 - public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/include/InsertDecal.h)
 - public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/include/InsertDecal.h)
+- public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/include/InsertDecal.h)
 
 **`3654b0afd63e`** · `native-headers/InsertDecal.h` · proof not assessed
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
@@ -1184,5 +1202,7 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 - public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/InsertDecal.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
+- public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/InsertDecal.h)
+- canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 
 </details>

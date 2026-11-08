@@ -302,6 +302,8 @@ Compatibility path for `WindowsClient/src/CWorkspace.cpp`; compile either path, 
 - canonical · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CWorkspace.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CWorkspace.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CWorkspace.cpp)
+- public · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/CWorkspace.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/CWorkspace.cpp)
 
 </details>
 
@@ -341,6 +343,7 @@ Compatibility path for `WindowsClient/src/CWorkspace.cpp`; compile either path, 
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceClose.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceClose.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceClose.cpp)
+- draft · colingsnyder2-ux · [native-classes/CWorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceClose.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -523,6 +526,8 @@ Compatibility path for `WindowsClient/src/CWorkspaceInsert.cpp`; compile either 
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceInsert.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CWorkspaceInsert.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceInsert.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CWorkspaceInsert.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceInsert.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CWorkspaceInsert.cpp)
+- public · colingsnyder2-ux · [native-classes/CWorkspaceInsert.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/CWorkspaceInsert.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceInsert.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/CWorkspaceInsert.cpp)
 
 </details>
 
@@ -689,6 +694,8 @@ Compatibility path for `WindowsClient/src/CWorkspaceLoad.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CWorkspaceLoad.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CWorkspaceLoad.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CWorkspaceLoad.cpp)
+- public · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/CWorkspaceLoad.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/CWorkspaceLoad.cpp)
 
 </details>
 
@@ -854,6 +861,8 @@ Compatibility path for `WindowsClient/src/CWorkspaceObjectSafety.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
+- public · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
 
 </details>
 
@@ -1035,6 +1044,9 @@ Compatibility path for `WindowsClient/src/CWorkspaceSave.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceSave.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/1c32901e2e6d433d55c4f3b64862239ead89ce2ff0c8f6c8483f44ecaee99659/rebuild/2008-06/native-classes/CWorkspaceSave.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceSave.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/c0d9635ebd4026124eb9d4da5501cb93bb18695bb59c7f3ccacbfc02ecdce860/rebuild/2008-06/native-classes/CWorkspaceSave.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceSave.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/fb5c172cf8d0418b446646f9eb5d76c2280b393f7494527c389e0b640b3ebedb/rebuild/2008-06/native-classes/CWorkspaceSave.cpp)
+- draft · colingsnyder2-ux · [native-classes/CWorkspaceSave.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/drafts/files/1c32901e2e6d433d55c4f3b64862239ead89ce2ff0c8f6c8483f44ecaee99659/rebuild/2008-06/native-classes/CWorkspaceSave.cpp)
+- draft · colingsnyder2-ux · [native-classes/CWorkspaceSave.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/drafts/files/c0d9635ebd4026124eb9d4da5501cb93bb18695bb59c7f3ccacbfc02ecdce860/rebuild/2008-06/native-classes/CWorkspaceSave.cpp)
+- draft · colingsnyder2-ux · [native-classes/CWorkspaceSave.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/drafts/files/fb5c172cf8d0418b446646f9eb5d76c2280b393f7494527c389e0b640b3ebedb/rebuild/2008-06/native-classes/CWorkspaceSave.cpp)
 
 <details><summary>4 retained local origins</summary>
 
@@ -1114,5 +1126,7 @@ Compatibility path for `WindowsClient/src/CWorkspaceSave.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceSave.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CWorkspaceSave.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceSave.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CWorkspaceSave.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceSave.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CWorkspaceSave.cpp)
+- public · colingsnyder2-ux · [native-classes/CWorkspaceSave.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/CWorkspaceSave.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceSave.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/CWorkspaceSave.cpp)
 
 </details>

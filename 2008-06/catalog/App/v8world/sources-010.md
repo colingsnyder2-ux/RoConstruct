@@ -124,6 +124,8 @@ Compatibility path for `Unclassified/src/LDrawPartParent.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/LDrawPartParent.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/LDrawPartParent.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/LDrawPartParent.cpp)
+- public · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/LDrawPartParent.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/LDrawPartParent.cpp)
 
 </details>
 
@@ -249,6 +251,8 @@ Compatibility path for `Unclassified/src/LDrawPartShape.cpp`; compile either pat
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/LDrawPartShape.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/LDrawPartShape.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/LDrawPartShape.cpp)
+- public · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/LDrawPartShape.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/LDrawPartShape.cpp)
 
 </details>
 
@@ -374,6 +378,8 @@ Compatibility path for `Unclassified/src/LDrawPartTransform.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/LDrawPartTransform.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/LDrawPartTransform.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/LDrawPartTransform.cpp)
+- public · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/LDrawPartTransform.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/LDrawPartTransform.cpp)
 
 </details>
 
@@ -499,6 +505,8 @@ Compatibility path for `Unclassified/src/LDrawPartWrite.cpp`; compile either pat
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/LDrawPartWrite.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/LDrawPartWrite.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/LDrawPartWrite.cpp)
+- public · colingsnyder2-ux · [native-classes/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/LDrawPartWrite.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/LDrawPartWrite.cpp)
 
 </details>
 
@@ -624,6 +632,8 @@ Compatibility path for `App/src/tool/ModelSetFrontTool.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ModelSetFrontTool.cpp)
 - public · colingsnyder2-ux · [native-classes/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ModelSetFrontTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ModelSetFrontTool.cpp)
+- public · colingsnyder2-ux · [native-classes/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/ModelSetFrontTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/ModelSetFrontTool.cpp)
 
 </details>
 
@@ -749,6 +759,8 @@ Compatibility path for `App/src/tool/ModelTool.cpp`; compile either path, never 
 - canonical · colingsnyder2-ux · [native-classes/ModelTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ModelTool.cpp)
 - public · colingsnyder2-ux · [native-classes/ModelTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ModelTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ModelTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ModelTool.cpp)
+- public · colingsnyder2-ux · [native-classes/ModelTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/ModelTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ModelTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/ModelTool.cpp)
 
 </details>
 
@@ -874,6 +886,8 @@ Compatibility path for `App/src/tool/ModelToolActions.cpp`; compile either path,
 - canonical · colingsnyder2-ux · [native-classes/ModelToolActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ModelToolActions.cpp)
 - public · colingsnyder2-ux · [native-classes/ModelToolActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ModelToolActions.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ModelToolActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ModelToolActions.cpp)
+- public · colingsnyder2-ux · [native-classes/ModelToolActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/ModelToolActions.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ModelToolActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/ModelToolActions.cpp)
 
 </details>
 
@@ -999,6 +1013,8 @@ Compatibility path for `App/src/tool/ModelToolFactories.cpp`; compile either pat
 - canonical · colingsnyder2-ux · [native-classes/ModelToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ModelToolFactories.cpp)
 - public · colingsnyder2-ux · [native-classes/ModelToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ModelToolFactories.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ModelToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ModelToolFactories.cpp)
+- public · colingsnyder2-ux · [native-classes/ModelToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/ModelToolFactories.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ModelToolFactories.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/ModelToolFactories.cpp)
 
 </details>
 
@@ -1124,6 +1140,8 @@ Compatibility path for `App/src/tool/ModelToolNames.cpp`; compile either path, n
 - canonical · colingsnyder2-ux · [native-classes/ModelToolNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/ModelToolNames.cpp)
 - public · colingsnyder2-ux · [native-classes/ModelToolNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/ModelToolNames.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ModelToolNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/ModelToolNames.cpp)
+- public · colingsnyder2-ux · [native-classes/ModelToolNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/ModelToolNames.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ModelToolNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/ModelToolNames.cpp)
 
 </details>
 
@@ -1256,5 +1274,7 @@ Compatibility path for `Unclassified/src/NativeWorkspaceClassNames.cpp`; compile
 - canonical · colingsnyder2-ux · [native-classes/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/NativeWorkspaceClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/NativeWorkspaceClassNames.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/NativeWorkspaceClassNames.cpp)
+- public · colingsnyder2-ux · [native-classes/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/NativeWorkspaceClassNames.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/NativeWorkspaceClassNames.cpp)
 
 </details>

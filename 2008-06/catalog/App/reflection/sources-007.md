@@ -93,6 +93,8 @@ Compatibility path for `Unclassified/include/serializer-load/reflection/function
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/serializer-load/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/serializer-load/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/serializer-load/reflection/function.h)
 
 </details>
 
@@ -184,5 +186,7 @@ Compatibility path for `Unclassified/include/workspace-camera/reflection/functio
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/workspace-camera/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/workspace-camera/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/workspace-camera/reflection/function.h)
 
 </details>

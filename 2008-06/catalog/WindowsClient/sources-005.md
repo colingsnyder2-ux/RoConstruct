@@ -25,6 +25,7 @@ Earlier paths and their donor versions: `native-headers/CMemberTreeView.h`.
 - public · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/include/CMemberTreeView.h)
 - public · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/include/CMemberTreeView.h)
 - public · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/include/CMemberTreeView.h)
+- public · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/include/CMemberTreeView.h)
 
 **`d57904d3c107`** · `WindowsClient/include/CMemberTreeView.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h)
@@ -44,6 +45,7 @@ Earlier paths and their donor versions: `native-headers/CMemberTreeView.h`.
 - canonical · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h)
 - canonical · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h)
 - canonical · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h)
+- canonical · colingsnyder2-ux · [include/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CMemberTreeView.h)
 
 **`3958a1994297`** · `native-headers/CMemberTreeView.h` · proof not assessed
 
@@ -187,6 +189,8 @@ Earlier paths and their donor versions: `native-headers/CMemberTreeView.h`.
 - canonical · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/CMemberTreeView.h)
 - public · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/CMemberTreeView.h)
 - canonical · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/CMemberTreeView.h)
+- public · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/CMemberTreeView.h)
+- canonical · colingsnyder2-ux · [native-headers/CMemberTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/CMemberTreeView.h)
 
 </details>
 
@@ -211,6 +215,7 @@ Earlier paths and their donor versions: `native-headers/CMultiPlayerPane.h`.
 - public · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 - public · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 - public · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/include/CMultiPlayerPane.h)
+- public · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 
 **`e58c531535e1`** · `WindowsClient/include/CMultiPlayerPane.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h)
@@ -228,6 +233,7 @@ Earlier paths and their donor versions: `native-headers/CMultiPlayerPane.h`.
 - canonical · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 - canonical · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 - canonical · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h)
+- canonical · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 
 **`228a09696728`** · `native-headers/CMultiPlayerPane.h` · proof not assessed
 - public · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/CMultiPlayerPane.h)
@@ -491,6 +497,8 @@ Earlier paths and their donor versions: `native-headers/CMultiPlayerPane.h`.
 - canonical · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/CMultiPlayerPane.h)
 - public · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/CMultiPlayerPane.h)
 - canonical · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/CMultiPlayerPane.h)
+- public · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/CMultiPlayerPane.h)
+- canonical · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/CMultiPlayerPane.h)
 
 </details>
 
@@ -516,6 +524,7 @@ Earlier paths and their donor versions: `native-headers/CObjectBrowser.h`.
 - public · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/include/CObjectBrowser.h)
 - public · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/include/CObjectBrowser.h)
 - public · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/include/CObjectBrowser.h)
+- public · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/include/CObjectBrowser.h)
 
 **`51dd6a8d681e`** · `WindowsClient/include/CObjectBrowser.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h)
@@ -534,6 +543,7 @@ Earlier paths and their donor versions: `native-headers/CObjectBrowser.h`.
 - canonical · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h)
 - canonical · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h)
 - canonical · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h)
+- canonical · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h)
 
 **`11802a7029a6`** · `native-headers/CObjectBrowser.h` · proof not assessed
 
@@ -674,6 +684,8 @@ Earlier paths and their donor versions: `native-headers/CObjectBrowser.h`.
 - canonical · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/CObjectBrowser.h)
 - public · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/CObjectBrowser.h)
 - canonical · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/CObjectBrowser.h)
+- public · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/CObjectBrowser.h)
+- canonical · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/CObjectBrowser.h)
 
 </details>
 
@@ -700,6 +712,7 @@ Earlier paths and their donor versions: `native-headers/COutputView.h`.
 - canonical · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h)
 - canonical · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h)
 - canonical · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h)
+- canonical · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h)
 
 **`6ca00c5a4e1b`** · `WindowsClient/include/COutputView.h` · proof not assessed
 - public · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/WindowsClient/include/COutputView.h)
@@ -719,6 +732,7 @@ Earlier paths and their donor versions: `native-headers/COutputView.h`.
 - public · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/include/COutputView.h)
 - public · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/include/COutputView.h)
 - public · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/include/COutputView.h)
+- public · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/include/COutputView.h)
 
 **`18a34454990d`** · `native-headers/COutputView.h` · proof not assessed
 - canonical · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/COutputView.h)
@@ -862,6 +876,8 @@ Earlier paths and their donor versions: `native-headers/COutputView.h`.
 - canonical · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/COutputView.h)
 - public · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/COutputView.h)
 - canonical · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/COutputView.h)
+- public · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/COutputView.h)
+- canonical · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/COutputView.h)
 
 </details>
 
@@ -888,6 +904,7 @@ Earlier paths and their donor versions: `native-headers/CPatchedControlComboBox.
 - public · colingsnyder2-ux · [include/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/include/CPatchedControlComboBox.h)
 - public · colingsnyder2-ux · [include/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/include/CPatchedControlComboBox.h)
 - public · colingsnyder2-ux · [include/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/include/CPatchedControlComboBox.h)
+- public · colingsnyder2-ux · [include/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/include/CPatchedControlComboBox.h)
 
 **`d7cfc2e6ce58`** · `WindowsClient/include/CPatchedControlComboBox.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/WindowsClient/include/CPatchedControlComboBox.h)
@@ -907,6 +924,7 @@ Earlier paths and their donor versions: `native-headers/CPatchedControlComboBox.
 - canonical · colingsnyder2-ux · [include/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/include/CPatchedControlComboBox.h)
 - canonical · colingsnyder2-ux · [include/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/include/CPatchedControlComboBox.h)
 - canonical · colingsnyder2-ux · [include/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/include/CPatchedControlComboBox.h)
+- canonical · colingsnyder2-ux · [include/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CPatchedControlComboBox.h)
 
 **`1769a8f07672`** · `native-headers/CPatchedControlComboBox.h` · proof not assessed
 
@@ -1050,5 +1068,7 @@ Earlier paths and their donor versions: `native-headers/CPatchedControlComboBox.
 - canonical · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/CPatchedControlComboBox.h)
 - public · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/CPatchedControlComboBox.h)
 - canonical · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/CPatchedControlComboBox.h)
+- public · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/CPatchedControlComboBox.h)
+- canonical · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/CPatchedControlComboBox.h)
 
 </details>

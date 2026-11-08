@@ -29,6 +29,7 @@ Earlier paths and their donor versions: `native-classes/CContentUpload.cpp`.
 - public · colingsnyder2-ux · [src/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/src/CContentUpload.cpp)
 - public · colingsnyder2-ux · [src/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/src/CContentUpload.cpp)
 - public · colingsnyder2-ux · [src/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/src/CContentUpload.cpp)
+- public · colingsnyder2-ux · [src/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/src/CContentUpload.cpp)
 
 **`be1357d6a699`** · `WindowsClient/src/CContentUpload.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [src/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/WindowsClient/src/CContentUpload.cpp)
@@ -52,6 +53,7 @@ Earlier paths and their donor versions: `native-classes/CContentUpload.cpp`.
 - canonical · colingsnyder2-ux · [src/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/src/CContentUpload.cpp)
 - canonical · colingsnyder2-ux · [src/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/src/CContentUpload.cpp)
 - canonical · colingsnyder2-ux · [src/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/src/CContentUpload.cpp)
+- canonical · colingsnyder2-ux · [src/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/src/CContentUpload.cpp)
 
 **`119fa1755788`** · `native-classes/CContentUpload.cpp` · proof not assessed
 
@@ -202,6 +204,8 @@ Earlier paths and their donor versions: `native-classes/CContentUpload.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CContentUpload.cpp)
 - public · colingsnyder2-ux · [native-classes/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CContentUpload.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CContentUpload.cpp)
+- public · colingsnyder2-ux · [native-classes/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/CContentUpload.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CContentUpload.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/CContentUpload.cpp)
 
 </details>
 
@@ -232,6 +236,7 @@ Earlier paths and their donor versions: `native-classes/CDataModelPropGrid.cpp`.
 - public · colingsnyder2-ux · [src/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/src/CDataModelPropGrid.cpp)
 - public · colingsnyder2-ux · [src/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/src/CDataModelPropGrid.cpp)
 - public · colingsnyder2-ux · [src/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/src/CDataModelPropGrid.cpp)
+- public · colingsnyder2-ux · [src/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/src/CDataModelPropGrid.cpp)
 
 **`d355c9dfb1c3`** · `WindowsClient/src/CDataModelPropGrid.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [src/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGrid.cpp)
@@ -255,6 +260,7 @@ Earlier paths and their donor versions: `native-classes/CDataModelPropGrid.cpp`.
 - canonical · colingsnyder2-ux · [src/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGrid.cpp)
 - canonical · colingsnyder2-ux · [src/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGrid.cpp)
 - canonical · colingsnyder2-ux · [src/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGrid.cpp)
+- canonical · colingsnyder2-ux · [src/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGrid.cpp)
 
 **`02b2e7c6268e`** · `native-classes/CDataModelPropGrid.cpp` · proof not assessed
 
@@ -467,6 +473,8 @@ Earlier paths and their donor versions: `native-classes/CDataModelPropGrid.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CDataModelPropGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CDataModelPropGrid.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CDataModelPropGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/CDataModelPropGrid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CDataModelPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/CDataModelPropGrid.cpp)
 
 </details>
 
@@ -501,6 +509,7 @@ Earlier paths and their donor versions: `native-classes/CDataModelPropGridUpdate
 - public · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
 - public · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
 - public · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
+- public · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
 
 **`8ba5431b3e3a`** · `WindowsClient/src/CDataModelPropGridUpdate.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
@@ -528,6 +537,7 @@ Earlier paths and their donor versions: `native-classes/CDataModelPropGridUpdate
 - canonical · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
 - canonical · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
 - canonical · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
+- canonical · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
 
 **`3a914ca7525e`** · `native-classes/CDataModelPropGridUpdate.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
@@ -740,6 +750,8 @@ Earlier paths and their donor versions: `native-classes/CDataModelPropGridUpdate
 - canonical · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
 - public · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
+- public · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
 
 </details>
 
@@ -770,6 +782,7 @@ Earlier paths and their donor versions: `native-classes/CDeclarationView.cpp`.
 - public · colingsnyder2-ux · [src/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/WindowsClient/src/CDeclarationView.cpp)
 - public · colingsnyder2-ux · [src/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/WindowsClient/src/CDeclarationView.cpp)
 - public · colingsnyder2-ux · [src/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/WindowsClient/src/CDeclarationView.cpp)
+- public · colingsnyder2-ux · [src/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/WindowsClient/src/CDeclarationView.cpp)
 
 **`d6a0ab1be6a9`** · `WindowsClient/src/CDeclarationView.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [src/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/WindowsClient/src/CDeclarationView.cpp)
@@ -793,6 +806,7 @@ Earlier paths and their donor versions: `native-classes/CDeclarationView.cpp`.
 - canonical · colingsnyder2-ux · [src/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/WindowsClient/src/CDeclarationView.cpp)
 - canonical · colingsnyder2-ux · [src/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/WindowsClient/src/CDeclarationView.cpp)
 - canonical · colingsnyder2-ux · [src/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/WindowsClient/src/CDeclarationView.cpp)
+- canonical · colingsnyder2-ux · [src/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/src/CDeclarationView.cpp)
 
 **`0767c67d4209`** · `native-classes/CDeclarationView.cpp` · proof not assessed
 
@@ -915,5 +929,7 @@ Earlier paths and their donor versions: `native-classes/CDeclarationView.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CDeclarationView.cpp)
 - public · colingsnyder2-ux · [native-classes/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CDeclarationView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CDeclarationView.cpp)
+- public · colingsnyder2-ux · [native-classes/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/CDeclarationView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CDeclarationView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/CDeclarationView.cpp)
 
 </details>

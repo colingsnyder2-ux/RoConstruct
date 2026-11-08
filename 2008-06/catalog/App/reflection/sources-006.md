@@ -149,6 +149,8 @@ Compatibility path for `App/include/reflection/descriptor.h`; compile either pat
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
+- public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/reflection/descriptor.h)
+- canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
 
 </details>
 
@@ -299,6 +301,8 @@ Compatibility path for `App/include/reflection/enumconverter.h`; compile either 
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
+- public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/reflection/enumconverter.h)
+- canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
 
 </details>
 
@@ -345,6 +349,7 @@ Compatibility path for `App/include/reflection/enumconverter.h`; compile either 
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/native-headers/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/native-headers/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/reflection/function.h)
 
 **`cb9d28404b55`** · `native-headers/reflection/function.h` · proof not assessed
 
@@ -503,6 +508,8 @@ Compatibility path for `App/include/reflection/member.h`; compile either path, n
 - canonical · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/reflection/member.h)
 - public · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/reflection/member.h)
 - canonical · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/reflection/member.h)
+- public · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/reflection/member.h)
+- canonical · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/reflection/member.h)
 
 </details>
 
@@ -646,6 +653,8 @@ Compatibility path for `App/include/reflection/property.h`; compile either path,
 - canonical · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/reflection/property.h)
 - public · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/reflection/property.h)
 - canonical · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/reflection/property.h)
+- public · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/reflection/property.h)
+- canonical · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/reflection/property.h)
 
 </details>
 
@@ -820,6 +829,8 @@ Compatibility path for `App/include/reflection/reflection.h`; compile either pat
 - canonical · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/reflection/reflection.h)
 - public · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/reflection/reflection.h)
 - canonical · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/reflection/reflection.h)
+- public · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/reflection/reflection.h)
+- canonical · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/reflection/reflection.h)
 
 </details>
 
@@ -962,6 +973,8 @@ Compatibility path for `App/include/reflection/signal.h`; compile either path, n
 - canonical · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/reflection/signal.h)
 - public · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/reflection/signal.h)
 - canonical · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/reflection/signal.h)
+- public · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/reflection/signal.h)
+- canonical · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/reflection/signal.h)
 
 </details>
 
@@ -1025,6 +1038,7 @@ Compatibility path for `App/include/reflection/type.h`; compile either path, nev
 - draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
 - draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
 - draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
+- draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -1186,6 +1200,8 @@ Compatibility path for `App/include/reflection/type.h`; compile either path, nev
 - canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/reflection/type.h)
 - public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/reflection/type.h)
 - canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/reflection/type.h)
+- public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/reflection/type.h)
+- canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/reflection/type.h)
 
 </details>
 
@@ -1277,5 +1293,7 @@ Compatibility path for `Unclassified/include/runservice-events/reflection/functi
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/runservice-events/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/runservice-events/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/runservice-events/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/runservice-events/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/runservice-events/reflection/function.h)
 
 </details>

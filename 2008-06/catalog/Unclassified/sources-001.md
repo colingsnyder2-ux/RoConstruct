@@ -20,6 +20,7 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 - canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
+- canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
 
 **`de7977dfe155`** · `Unclassified/include/AuthoringSettings.h` · proof not assessed
 - public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Unclassified/include/AuthoringSettings.h)
@@ -34,6 +35,7 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 - public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/AuthoringSettings.h)
 - public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/AuthoringSettings.h)
 - public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/AuthoringSettings.h)
+- public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/AuthoringSettings.h)
 
 **`34a2155d523d`** · `native-headers/AuthoringSettings.h` · proof not assessed
 
@@ -177,6 +179,8 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 - canonical · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/AuthoringSettings.h)
 - public · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/AuthoringSettings.h)
+- public · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/AuthoringSettings.h)
+- canonical · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/AuthoringSettings.h)
 
 </details>
 
@@ -198,6 +202,7 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 - public · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/LuaArgs.h)
 - public · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/LuaArgs.h)
 - public · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/LuaArgs.h)
+- public · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/LuaArgs.h)
 
 **`a32f2a8d3ab6`** · `Unclassified/include/LuaArgs.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
@@ -212,6 +217,7 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
+- canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
 
 **`1ba7e4016455`** · `native-headers/LuaArgs.h` · proof not assessed
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/LuaArgs.h)
@@ -369,6 +375,8 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 - canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/LuaArgs.h)
 - canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
+- public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/LuaArgs.h)
+- canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 
 </details>
 
@@ -395,6 +403,7 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
+- canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 
 **`af4d35943b8d`** · `Unclassified/include/RobloxLib.h` · proof not assessed
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/Unclassified/include/RobloxLib.h)
@@ -414,6 +423,7 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/RobloxLib.h)
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/RobloxLib.h)
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/RobloxLib.h)
+- public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/RobloxLib.h)
 
 **`16b2982ba9c5`** · `native-headers/RobloxLib.h` · proof not assessed
 
@@ -703,6 +713,8 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/RobloxLib.h)
 - canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
+- public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/RobloxLib.h)
+- canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 
 </details>
 
@@ -728,6 +740,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
+- canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 
 **`84b49fcb9145`** · `Unclassified/include/axis-vector-negation/G3D/Vector3.h` · proof not assessed
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
@@ -746,6 +759,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
+- public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 
 **`15229453e1dc`** · `native-headers/axis-vector-negation/G3D/Vector3.h` · proof not assessed
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
@@ -858,6 +872,8 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
+- public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
+- canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 
 </details>
 
@@ -883,6 +899,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
+- public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 
 **`0f1229abd593`** · `Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · proof not assessed
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
@@ -901,6 +918,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
+- canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 
 **`07d06b685c04`** · `native-headers/axis-vector-negation/G3D/Vector3.inl` · proof not assessed
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
@@ -997,6 +1015,8 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
+- public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
+- canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 
 </details>
 
@@ -1038,6 +1058,8 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/ref
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 
 **`2318a4caad41`** · `native-headers/axis-vector-negation/reflection/function.h` · proof not assessed
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/axis-vector-negation/reflection/function.h)
@@ -1123,5 +1145,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/ref
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-headers/axis-vector-negation/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h)
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-headers/axis-vector-negation/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h)
 
 </details>

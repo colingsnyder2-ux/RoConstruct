@@ -124,6 +124,8 @@ Compatibility path for `App/src/v8datamodel/CameraZoomExtentsAction.cpp`; compil
 - canonical · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CameraZoomExtentsAction.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CameraZoomExtentsAction.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CameraZoomExtentsAction.cpp)
+- public · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/CameraZoomExtentsAction.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/CameraZoomExtentsAction.cpp)
 
 </details>
 
@@ -249,6 +251,8 @@ Compatibility path for `App/src/v8datamodel/CollectDragParts.cpp`; compile eithe
 - canonical · colingsnyder2-ux · [native-classes/CollectDragParts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/CollectDragParts.cpp)
 - public · colingsnyder2-ux · [native-classes/CollectDragParts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/CollectDragParts.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CollectDragParts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/CollectDragParts.cpp)
+- public · colingsnyder2-ux · [native-classes/CollectDragParts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/CollectDragParts.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CollectDragParts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/CollectDragParts.cpp)
 
 </details>
 
@@ -374,6 +378,8 @@ Compatibility path for `App/src/tool/DragPrimitiveBounds.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/DragPrimitiveBounds.cpp)
 - public · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/DragPrimitiveBounds.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/DragPrimitiveBounds.cpp)
+- public · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/DragPrimitiveBounds.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/DragPrimitiveBounds.cpp)
 
 </details>
 
@@ -427,6 +433,7 @@ Compatibility path for `App/src/tool/DragPrimitiveBounds.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/Humanoid2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/Humanoid2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/Humanoid2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/Humanoid2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -476,6 +483,7 @@ Compatibility path for `App/src/tool/DragPrimitiveBounds.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/Humanoid2008Parts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008Parts.cpp)
 - draft · colingsnyder2-ux · [native-classes/Humanoid2008Parts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008Parts.cpp)
 - draft · colingsnyder2-ux · [native-classes/Humanoid2008Parts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008Parts.cpp)
+- draft · colingsnyder2-ux · [native-classes/Humanoid2008Parts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008Parts.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -609,6 +617,8 @@ Compatibility path for `Unclassified/src/HumanoidState.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HumanoidState.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HumanoidState.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HumanoidState.cpp)
+- public · colingsnyder2-ux · [native-classes/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/HumanoidState.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/HumanoidState.cpp)
 
 </details>
 
@@ -735,6 +745,8 @@ Compatibility path for `Unclassified/src/HumanoidStates1.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/HumanoidStates1.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HumanoidStates1.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidStates1.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HumanoidStates1.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HumanoidStates1.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HumanoidStates1.cpp)
+- public · colingsnyder2-ux · [native-classes/HumanoidStates1.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/HumanoidStates1.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HumanoidStates1.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/HumanoidStates1.cpp)
 
 </details>
 
@@ -861,6 +873,8 @@ Compatibility path for `Unclassified/src/HumanoidStates1Leaves.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/HumanoidStates1Leaves.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidStates1Leaves.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HumanoidStates1Leaves.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HumanoidStates1Leaves.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp)
+- public · colingsnyder2-ux · [native-classes/HumanoidStates1Leaves.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/HumanoidStates1Leaves.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HumanoidStates1Leaves.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp)
 
 </details>
 
@@ -987,5 +1001,7 @@ Compatibility path for `App/src/v8datamodel/HumanoidStates2.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/HumanoidStates2.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/native-classes/HumanoidStates2.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidStates2.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/HumanoidStates2.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HumanoidStates2.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HumanoidStates2.cpp)
+- public · colingsnyder2-ux · [native-classes/HumanoidStates2.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/HumanoidStates2.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HumanoidStates2.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/HumanoidStates2.cpp)
 
 </details>
