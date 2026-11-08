@@ -1,6 +1,8 @@
 // 2008-06 native RBX::JointsService (inactive); evidence in native-headers/v8datamodel/JointsService.h.
 // Verified by tests/record_native_services.py.
 #include "v8datamodel/JointsService.h"
+#include "v8tree/Service.h"
+#include <boost/thread/once.hpp>
 
 namespace RBX
 {
@@ -61,5 +63,30 @@ namespace RBX
 			onRemoving(renderable);
 
 		Instance::onDescendentRemoving(instance);
+	}
+
+	// ServiceProvider find (unsplit; uses explicit name since JointsService is NonFactoryProduct<Instance,NULL>)
+	template<class Class> size_t ServiceProvider::doGetClassIndex() {
+		static size_t index = newIndex();
+		return index;
+	}
+	template<class Class> void ServiceProvider::callDoGetClassIndex() { doGetClassIndex<Class>(); }
+	template<class Class> size_t ServiceProvider::getClassIndex() {
+		static boost::once_flag flag = BOOST_ONCE_INIT;
+		boost::call_once(&callDoGetClassIndex<Class>, flag);
+		return doGetClassIndex<Class>();
+	}
+	template<> JointsService* ServiceProvider::find<JointsService>() const {
+		size_t index = getClassIndex<JointsService>();
+		if (index + 1 > serviceArray.size()) {
+			serviceArray.resize(index + 1, boost::shared_ptr<Instance>());
+		} else {
+			JointsService* service = static_cast<JointsService*>(serviceArray[index].get());
+			if (service) return service;
+		}
+		boost::shared_ptr<Instance> item = findServiceByClassName(Name::declare("JointsService"));
+		if (!item) return NULL;
+		serviceArray[index] = item;
+		return static_cast<JointsService*>(item.get());
 	}
 }

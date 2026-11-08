@@ -56,7 +56,7 @@ namespace RBX
 	}
 #endif
 
-	// ServiceProvider find support (unsplit from PhysicsServiceFind; pattern adapted)
+	// ServiceProvider find/create support (unsplit from PhysicsServiceFind/Allocation; pattern adapted)
 	template<class Class> size_t ServiceProvider::doGetClassIndex() {
 		static size_t index = newIndex();
 		return index;
@@ -80,4 +80,5 @@ namespace RBX
 		serviceArray[index] = item;
 		return static_cast<PhysicsService*>(item.get());
 	}
+	template boost::shared_ptr<PhysicsService> Creatable<Instance>::create<PhysicsService>();
 }
