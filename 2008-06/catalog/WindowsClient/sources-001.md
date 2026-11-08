@@ -9,9 +9,11 @@ Earlier paths and their donor versions: `native-classes/ActiveDocViewRefresh.cpp
 
 **`2b4ccb504ab5`** · `WindowsClient/src/ActiveDocViewRefresh.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [src/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/WindowsClient/src/ActiveDocViewRefresh.cpp)
+- canonical · colingsnyder2-ux · [src/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/WindowsClient/src/ActiveDocViewRefresh.cpp)
 
 **`da70778e7dd7`** · `WindowsClient/src/ActiveDocViewRefresh.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/WindowsClient/src/ActiveDocViewRefresh.cpp)
+- public · colingsnyder2-ux · [src/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/WindowsClient/src/ActiveDocViewRefresh.cpp)
 
 **`2b4ccb504ab5`** · `native-classes/ActiveDocViewRefresh.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/ActiveDocViewRefresh.cpp)
@@ -167,6 +169,8 @@ Earlier paths and their donor versions: `native-classes/ActiveDocViewRefresh.cpp
 **`17e5c746c93d`** · `native-classes/ActiveDocViewRefresh.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/ActiveDocViewRefresh.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/ActiveDocViewRefresh.cpp)
+- public · colingsnyder2-ux · [native-classes/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/ActiveDocViewRefresh.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/ActiveDocViewRefresh.cpp)
 
 </details>
 
@@ -178,10 +182,12 @@ Earlier paths and their donor versions: `native-classes/CBrowserFrameWnd.cpp`.
 **`177ecd29124c`** · `WindowsClient/src/CBrowserFrameWnd.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [src/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/WindowsClient/src/CBrowserFrameWnd.cpp)
 - canonical · colingsnyder2-ux · [src/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/WindowsClient/src/CBrowserFrameWnd.cpp)
+- canonical · colingsnyder2-ux · [src/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/WindowsClient/src/CBrowserFrameWnd.cpp)
 
 **`27732dd6a305`** · `WindowsClient/src/CBrowserFrameWnd.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/WindowsClient/src/CBrowserFrameWnd.cpp)
 - public · colingsnyder2-ux · [src/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/WindowsClient/src/CBrowserFrameWnd.cpp)
+- public · colingsnyder2-ux · [src/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/WindowsClient/src/CBrowserFrameWnd.cpp)
 
 **`0fd3fa66fc84`** · `native-classes/CBrowserFrameWnd.cpp` · proof not assessed
 
@@ -231,6 +237,8 @@ Earlier paths and their donor versions: `native-classes/CBrowserFrameWnd.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/CBrowserFrameWnd.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CBrowserFrameWnd.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CBrowserFrameWnd.cpp)
+- public · colingsnyder2-ux · [native-classes/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CBrowserFrameWnd.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CBrowserFrameWnd.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CBrowserFrameWnd.cpp)
 
 **`4f7c29ae9ad4`** · `native-classes/CBrowserFrameWnd.cpp` · proof not assessed
 
@@ -267,10 +275,12 @@ Earlier paths and their donor versions: `native-classes/CBrowserView.cpp`.
 **`0565e0e98c7a`** · `WindowsClient/src/CBrowserView.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [src/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/WindowsClient/src/CBrowserView.cpp)
 - canonical · colingsnyder2-ux · [src/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/WindowsClient/src/CBrowserView.cpp)
+- canonical · colingsnyder2-ux · [src/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/WindowsClient/src/CBrowserView.cpp)
 
 **`5cc53d4786ae`** · `WindowsClient/src/CBrowserView.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/WindowsClient/src/CBrowserView.cpp)
 - public · colingsnyder2-ux · [src/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/WindowsClient/src/CBrowserView.cpp)
+- public · colingsnyder2-ux · [src/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/WindowsClient/src/CBrowserView.cpp)
 
 **`00cfbe72df1a`** · `native-classes/CBrowserView.cpp` · proof not assessed
 
@@ -337,6 +347,8 @@ Earlier paths and their donor versions: `native-classes/CBrowserView.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/CBrowserView.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CBrowserView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CBrowserView.cpp)
+- public · colingsnyder2-ux · [native-classes/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CBrowserView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CBrowserView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CBrowserView.cpp)
 
 **`d5b9ba825deb`** · `native-classes/CBrowserView.cpp` · proof not assessed
 
@@ -356,10 +368,12 @@ Earlier paths and their donor versions: `native-classes/CChildFrame.cpp`.
 **`508a71e7819e`** · `WindowsClient/src/CChildFrame.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [src/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/WindowsClient/src/CChildFrame.cpp)
 - canonical · colingsnyder2-ux · [src/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/WindowsClient/src/CChildFrame.cpp)
+- canonical · colingsnyder2-ux · [src/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/WindowsClient/src/CChildFrame.cpp)
 
 **`f834246fb0cc`** · `WindowsClient/src/CChildFrame.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/WindowsClient/src/CChildFrame.cpp)
 - public · colingsnyder2-ux · [src/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/WindowsClient/src/CChildFrame.cpp)
+- public · colingsnyder2-ux · [src/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/WindowsClient/src/CChildFrame.cpp)
 
 **`2125e645058e`** · `native-classes/CChildFrame.cpp` · proof not assessed
 
@@ -438,6 +452,8 @@ Earlier paths and their donor versions: `native-classes/CChildFrame.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/CChildFrame.cpp)
 - public · colingsnyder2-ux · [native-classes/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CChildFrame.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CChildFrame.cpp)
+- public · colingsnyder2-ux · [native-classes/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CChildFrame.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CChildFrame.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CChildFrame.cpp)
 
 </details>
 
@@ -448,9 +464,11 @@ Earlier paths and their donor versions: `native-classes/CDataModelPropGridUpdate
 
 **`3a914ca7525e`** · `WindowsClient/src/CDataModelPropGridUpdate.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
+- public · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
 
 **`8ba5431b3e3a`** · `WindowsClient/src/CDataModelPropGridUpdate.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
+- canonical · colingsnyder2-ux · [src/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/WindowsClient/src/CDataModelPropGridUpdate.cpp)
 
 **`3a914ca7525e`** · `native-classes/CDataModelPropGridUpdate.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
@@ -615,6 +633,8 @@ Earlier paths and their donor versions: `native-classes/CDataModelPropGridUpdate
 **`77b3b60e1ea0`** · `native-classes/CDataModelPropGridUpdate.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
+- public · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CDataModelPropGridUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CDataModelPropGridUpdate.cpp)
 
 </details>
 
@@ -627,11 +647,13 @@ Earlier paths and their donor versions: `native-classes/CMainFrameColor.cpp`.
 - canonical · colingsnyder2-ux · [src/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameColor.cpp)
 - canonical · colingsnyder2-ux · [src/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameColor.cpp)
 - canonical · colingsnyder2-ux · [src/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameColor.cpp)
+- canonical · colingsnyder2-ux · [src/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameColor.cpp)
 
 **`f8b1bb242248`** · `WindowsClient/src/CMainFrameColor.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/WindowsClient/src/CMainFrameColor.cpp)
 - public · colingsnyder2-ux · [src/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/WindowsClient/src/CMainFrameColor.cpp)
 - public · colingsnyder2-ux · [src/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/WindowsClient/src/CMainFrameColor.cpp)
+- public · colingsnyder2-ux · [src/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/WindowsClient/src/CMainFrameColor.cpp)
 
 **`3e69c4b1f3b9`** · `native-classes/CMainFrameColor.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/CMainFrameColor.cpp)
@@ -662,6 +684,8 @@ Earlier paths and their donor versions: `native-classes/CMainFrameColor.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/CMainFrameColor.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CMainFrameColor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CMainFrameColor.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CMainFrameColor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CMainFrameColor.cpp)
 
 **`5addad50bbf8`** · `native-classes/CMainFrameColor.cpp` · proof not assessed
 
@@ -852,11 +876,13 @@ Earlier paths and their donor versions: `native-classes/CMainFrameConstructor.cp
 - canonical · colingsnyder2-ux · [src/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameConstructor.cpp)
+- canonical · colingsnyder2-ux · [src/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameConstructor.cpp)
 
 **`70fbb0a72e70`** · `WindowsClient/src/CMainFrameConstructor.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/WindowsClient/src/CMainFrameConstructor.cpp)
 - public · colingsnyder2-ux · [src/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/WindowsClient/src/CMainFrameConstructor.cpp)
 - public · colingsnyder2-ux · [src/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/WindowsClient/src/CMainFrameConstructor.cpp)
+- public · colingsnyder2-ux · [src/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/WindowsClient/src/CMainFrameConstructor.cpp)
 
 **`10ccdee92b6c`** · `native-classes/CMainFrameConstructor.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/CMainFrameConstructor.cpp)
@@ -942,6 +968,8 @@ Earlier paths and their donor versions: `native-classes/CMainFrameConstructor.cp
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/CMainFrameConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CMainFrameConstructor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CMainFrameConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CMainFrameConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CMainFrameConstructor.cpp)
 
 **`d655d6ce192f`** · `native-classes/CMainFrameConstructor.cpp` · proof not assessed
 
@@ -1086,11 +1114,13 @@ Earlier paths and their donor versions: `native-classes/CMainFrameCreate.cpp`.
 - canonical · colingsnyder2-ux · [src/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameCreate.cpp)
 - canonical · colingsnyder2-ux · [src/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameCreate.cpp)
 - canonical · colingsnyder2-ux · [src/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameCreate.cpp)
+- canonical · colingsnyder2-ux · [src/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameCreate.cpp)
 
 **`84da85385675`** · `WindowsClient/src/CMainFrameCreate.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/WindowsClient/src/CMainFrameCreate.cpp)
 - public · colingsnyder2-ux · [src/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/WindowsClient/src/CMainFrameCreate.cpp)
 - public · colingsnyder2-ux · [src/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/WindowsClient/src/CMainFrameCreate.cpp)
+- public · colingsnyder2-ux · [src/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/WindowsClient/src/CMainFrameCreate.cpp)
 
 **`0fcb8811b915`** · `native-classes/CMainFrameCreate.cpp` · proof not assessed
 
@@ -1252,6 +1282,8 @@ Earlier paths and their donor versions: `native-classes/CMainFrameCreate.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/CMainFrameCreate.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CMainFrameCreate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CMainFrameCreate.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CMainFrameCreate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CMainFrameCreate.cpp)
 
 **`84a780ac385c`** · `native-classes/CMainFrameCreate.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameCreate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/CMainFrameCreate.cpp)
