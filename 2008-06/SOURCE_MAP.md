@@ -12,15 +12,15 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 | Unclassified | 203 | 1 | 202 | 0 | 0 | 0 |
 | Experiments/overlays | 35 | 9 | 22 | 0 | 0 | 4 |
 | Studio | 0 | 0 | 0 | 0 | 0 | 0 |
-| WindowsClient | 575 | 199 | 222 | 24 | 0 | 130 |
-| App/v8datamodel | 400 | 147 | 206 | 25 | 0 | 22 |
+| WindowsClient | 581 | 199 | 222 | 24 | 0 | 136 |
+| App/v8datamodel | 405 | 147 | 211 | 25 | 0 | 22 |
 | App/v8world | 133 | 80 | 29 | 2 | 0 | 22 |
-| Network | 78 | 27 | 22 | 15 | 0 | 14 |
+| Network | 79 | 27 | 23 | 15 | 0 | 14 |
 | Rendering | 75 | 22 | 16 | 4 | 0 | 33 |
 | Base/util | 142 | 51 | 76 | 11 | 0 | 4 |
-| Other | 384 | 217 | 40 | 37 | 0 | 90 |
+| Other | 385 | 217 | 41 | 37 | 0 | 90 |
 
-Byte differences include **980 banner-only**, **1 line-ending-only**, and
+Byte differences include **987 banner-only**, **1 line-ending-only**, and
 **2 requiring method review**. 1 header aliases match their target content.
 Content equality is not ABI, selection or runtime proof.
 

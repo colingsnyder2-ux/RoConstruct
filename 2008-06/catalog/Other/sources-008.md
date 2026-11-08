@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/script/ScriptContext.h`.
 
 **`1115fef106f8`** · `App/include/script/ScriptContext.h` · proof not assessed
+- canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/script/ScriptContext.h)
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/script/ScriptContext.h)
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/script/ScriptContext.h)
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/script/ScriptContext.h)
@@ -39,7 +40,7 @@ Earlier paths and their donor versions: `native-headers/script/ScriptContext.h`.
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/script/ScriptContext.h)
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/script/ScriptContext.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/script/ScriptContext.h` · root `b52aa15feaea5a0c`
@@ -84,6 +85,7 @@ Earlier paths and their donor versions: `native-headers/script/ScriptContext.h`.
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/script/ScriptContext.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/script/ScriptContext.h` · root `b52aa15feaea5a0c`
@@ -114,6 +116,7 @@ Earlier paths and their donor versions: `native-headers/script/ScriptContext.h`.
 </details>
 
 **`c832b84c7f51`** · `App/include/script/ScriptContext.h` · proof not assessed
+- public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/script/ScriptContext.h)
 - public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/script/ScriptContext.h)
 - public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/script/ScriptContext.h)
 - public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/script/ScriptContext.h)
@@ -155,6 +158,7 @@ Earlier paths and their donor versions: `native-headers/script/ScriptContext.h`.
 
 **`1115fef106f8`** · `native-headers/script/ScriptContext.h` · proof not assessed
 - fork · mewpokemons · [script/ScriptContext.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/script/ScriptContext.h)
+- fork · mewpokemons · [script/ScriptContext.h](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-headers/script/ScriptContext.h)
 - fork · mewpokemons · [script/ScriptContext.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/script/ScriptContext.h)
 - fork · mewpokemons · [script/ScriptContext.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/script/ScriptContext.h)
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/script/ScriptContext.h)
@@ -280,6 +284,8 @@ Earlier paths and their donor versions: `native-headers/script/ScriptContext.h`.
 </details>
 
 **`8bee1c9f14a1`** · `native-headers/script/ScriptContext.h` · proof not assessed
+- public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/script/ScriptContext.h)
+- canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/script/ScriptContext.h)
 - public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/script/ScriptContext.h)
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/script/ScriptContext.h)
 - public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/script/ScriptContext.h)
@@ -341,7 +347,7 @@ Earlier paths and their donor versions: `native-headers/script/ScriptContext.h`.
 - public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/script/ScriptContext.h)
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/script/ScriptContext.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/script/ScriptContext.h` · root `b52aa15feaea5a0c`
@@ -387,6 +393,7 @@ Earlier paths and their donor versions: `native-headers/script/ScriptContext.h`.
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/script/ScriptContext.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/script/ScriptContext.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/script/ScriptContext.h` · root `b52aa15feaea5a0c`
@@ -512,6 +519,7 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/stats/Stats.h)
 
 **`e530d9903932`** · `App/include/stats/Stats.h` · proof not assessed
+- canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/stats/Stats.h)
@@ -543,7 +551,7 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/stats/Stats.h` · root `b52aa15feaea5a0c`
@@ -588,6 +596,7 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/stats/Stats.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/stats/Stats.h` · root `b52aa15feaea5a0c`
@@ -609,6 +618,7 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 </details>
 
 **`ea32bb741673`** · `App/include/stats/Stats.h` · proof not assessed
+- public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/stats/Stats.h)
@@ -635,6 +645,8 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 </details>
 
 **`0946295e9e38`** · `native-headers/stats/Stats.h` · proof not assessed
+- public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/stats/Stats.h)
+- canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/stats/Stats.h)
@@ -696,7 +708,7 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
@@ -742,6 +754,7 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/stats/Stats.h` · root `b52aa15feaea5a0c`
@@ -883,6 +896,7 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 
 **`f9a6eb494039`** · `native-headers/stats/Stats.h` · proof not assessed
 - fork · mewpokemons · [stats/Stats.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/stats/Stats.h)
+- fork · mewpokemons · [stats/Stats.h](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-headers/stats/Stats.h)
 - fork · mewpokemons · [stats/Stats.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/stats/Stats.h)
 
 </details>

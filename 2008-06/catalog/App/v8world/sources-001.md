@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/v8world/Ball2008.h`.
 
 **`11d3322c87ee`** · `App/include/v8world/Ball2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/v8world/Ball2008.h)
 - public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/v8world/Ball2008.h)
 - public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/v8world/Ball2008.h)
 - public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8world/Ball2008.h)
@@ -25,6 +26,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Ball2008.h`.
 </details>
 
 **`63a71a460d6a`** · `App/include/v8world/Ball2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/v8world/Ball2008.h)
 - canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/v8world/Ball2008.h)
 - canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/v8world/Ball2008.h)
 - canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8world/Ball2008.h)
@@ -58,7 +60,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Ball2008.h`.
 - canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8world/Ball2008.h)
 - canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8world/Ball2008.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
@@ -107,6 +109,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Ball2008.h`.
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
@@ -171,6 +174,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Ball2008.h`.
 
 **`63a71a460d6a`** · `native-headers/v8world/Ball2008.h` · proof not assessed
 - fork · mewpokemons · [v8world/Ball2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/v8world/Ball2008.h)
+- fork · mewpokemons · [v8world/Ball2008.h](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-headers/v8world/Ball2008.h)
 - fork · mewpokemons · [v8world/Ball2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/v8world/Ball2008.h)
 - fork · mewpokemons · [v8world/Ball2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8world/Ball2008.h)
 - canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/v8world/Ball2008.h)
@@ -244,6 +248,8 @@ Earlier paths and their donor versions: `native-headers/v8world/Ball2008.h`.
 - public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8world/Ball2008.h)
 
 **`b3990ee65878`** · `native-headers/v8world/Ball2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/v8world/Ball2008.h)
+- canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/v8world/Ball2008.h)
 - public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/v8world/Ball2008.h)
 - canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/v8world/Ball2008.h)
 - public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/v8world/Ball2008.h)
@@ -309,7 +315,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Ball2008.h`.
 - public · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8world/Ball2008.h)
 - canonical · colingsnyder2-ux · [v8world/Ball2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8world/Ball2008.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>68 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
@@ -359,6 +365,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Ball2008.h`.
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8world/Ball2008.h` · root `b52aa15feaea5a0c`
@@ -437,6 +444,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Block2008.h`.
 - public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8world/Block2008.h)
 
 **`3b8706871c85`** · `App/include/v8world/Block2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/v8world/Block2008.h)
 - public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/v8world/Block2008.h)
 - public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/v8world/Block2008.h)
 - public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8world/Block2008.h)
@@ -454,6 +462,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Block2008.h`.
 </details>
 
 **`ce40df8167b5`** · `App/include/v8world/Block2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/v8world/Block2008.h)
 - canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/v8world/Block2008.h)
 - canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/v8world/Block2008.h)
 - canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8world/Block2008.h)
@@ -487,7 +496,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Block2008.h`.
 - canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8world/Block2008.h)
 - canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8world/Block2008.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8world/Block2008.h` · root `b52aa15feaea5a0c`
@@ -536,6 +545,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Block2008.h`.
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8world/Block2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8world/Block2008.h` · root `b52aa15feaea5a0c`
@@ -598,6 +608,8 @@ Earlier paths and their donor versions: `native-headers/v8world/Block2008.h`.
 </details>
 
 **`aca04a1d4c09`** · `native-headers/v8world/Block2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/v8world/Block2008.h)
+- canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/v8world/Block2008.h)
 - public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/v8world/Block2008.h)
 - canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/v8world/Block2008.h)
 - public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/v8world/Block2008.h)
@@ -663,7 +675,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Block2008.h`.
 - public · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8world/Block2008.h)
 - canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8world/Block2008.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>68 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8world/Block2008.h` · root `b52aa15feaea5a0c`
@@ -713,6 +725,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Block2008.h`.
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8world/Block2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8world/Block2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8world/Block2008.h` · root `b52aa15feaea5a0c`
@@ -745,6 +758,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Block2008.h`.
 
 **`ce40df8167b5`** · `native-headers/v8world/Block2008.h` · proof not assessed
 - fork · mewpokemons · [v8world/Block2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/v8world/Block2008.h)
+- fork · mewpokemons · [v8world/Block2008.h](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-headers/v8world/Block2008.h)
 - fork · mewpokemons · [v8world/Block2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/v8world/Block2008.h)
 - fork · mewpokemons · [v8world/Block2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8world/Block2008.h)
 - canonical · colingsnyder2-ux · [v8world/Block2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/v8world/Block2008.h)
@@ -816,6 +830,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Block2008.h`.
 Earlier paths and their donor versions: `native-headers/v8world/CleanStage2008.h`.
 
 **`79b587bb9a0a`** · `App/include/v8world/CleanStage2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/v8world/CleanStage2008.h)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/v8world/CleanStage2008.h)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/v8world/CleanStage2008.h)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8world/CleanStage2008.h)
@@ -867,6 +882,7 @@ Earlier paths and their donor versions: `native-headers/v8world/CleanStage2008.h
 - public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8world/CleanStage2008.h)
 
 **`fbfe19936ad3`** · `App/include/v8world/CleanStage2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/v8world/CleanStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/v8world/CleanStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/v8world/CleanStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8world/CleanStage2008.h)
@@ -900,7 +916,7 @@ Earlier paths and their donor versions: `native-headers/v8world/CleanStage2008.h
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8world/CleanStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8world/CleanStage2008.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
@@ -949,6 +965,7 @@ Earlier paths and their donor versions: `native-headers/v8world/CleanStage2008.h
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
@@ -970,6 +987,8 @@ Earlier paths and their donor versions: `native-headers/v8world/CleanStage2008.h
 </details>
 
 **`41752aec2e98`** · `native-headers/v8world/CleanStage2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/v8world/CleanStage2008.h)
+- canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/v8world/CleanStage2008.h)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/v8world/CleanStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/v8world/CleanStage2008.h)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/v8world/CleanStage2008.h)
@@ -1035,7 +1054,7 @@ Earlier paths and their donor versions: `native-headers/v8world/CleanStage2008.h
 - public · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8world/CleanStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8world/CleanStage2008.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>68 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
@@ -1085,6 +1104,7 @@ Earlier paths and their donor versions: `native-headers/v8world/CleanStage2008.h
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8world/CleanStage2008.h` · root `b52aa15feaea5a0c`
@@ -1164,6 +1184,7 @@ Earlier paths and their donor versions: `native-headers/v8world/CleanStage2008.h
 
 **`fbfe19936ad3`** · `native-headers/v8world/CleanStage2008.h` · proof not assessed
 - fork · mewpokemons · [v8world/CleanStage2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/v8world/CleanStage2008.h)
+- fork · mewpokemons · [v8world/CleanStage2008.h](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-headers/v8world/CleanStage2008.h)
 - fork · mewpokemons · [v8world/CleanStage2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/v8world/CleanStage2008.h)
 - fork · mewpokemons · [v8world/CleanStage2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8world/CleanStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/v8world/CleanStage2008.h)
