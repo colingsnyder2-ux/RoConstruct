@@ -3,6 +3,177 @@
 [Project index](README.md) · [Previous](sources-007.md) · [Next](sources-009.md)
 
 <details>
+<summary>native-classes/StringValueGet.cpp — public-only; 4 content versions</summary>
+
+**`12a0ee158ede`** · `native-classes/StringValueGet.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/StringValueGet.cpp)
+- public · colingsnyder2-ux · [native-classes/StringValueGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/StringValueGet.cpp)
+
+**`2848f4e83d25`** · `native-classes/StringValueGet.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/StringValueGet.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`47ed165515bd`** · `native-classes/StringValueGet.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/StringValueGet.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`9ef5028314b0`** · `native-classes/StringValueGet.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/StringValueGet.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/ThreadLogFactory.cpp — public-only; 4 content versions</summary>
+
+**`5d6167a22766`** · `native-classes/ThreadLogFactory.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/ThreadLogFactory.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`61ae98d0aa7b`** · `native-classes/ThreadLogFactory.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/ThreadLogFactory.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`6c9583d80ce3`** · `native-classes/ThreadLogFactory.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/ThreadLogFactory.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d6466c1b7e6f`** · `native-classes/ThreadLogFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ThreadLogFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ThreadLogFactory.cpp)
+
+</details>
+
+<details>
+<summary>native-classes/ThreadLogPath.cpp — public-only; 4 content versions</summary>
+
+**`4b2dfd90f2e8`** · `native-classes/ThreadLogPath.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/ThreadLogPath.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`525d73d2332c`** · `native-classes/ThreadLogPath.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/ThreadLogPath.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7dcdc24b978e`** · `native-classes/ThreadLogPath.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/ThreadLogPath.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`8ddb94d995c3`** · `native-classes/ThreadLogPath.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ThreadLogPath.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadLogPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ThreadLogPath.cpp)
+
+</details>
+
+<details>
 <summary>native-classes/ThreadName.cpp — public-only; 4 content versions</summary>
 
 **`331b44a60eec`** · `native-classes/ThreadName.cpp` · proof not assessed
@@ -55,6 +226,7 @@
 - public · colingsnyder2-ux · [native-classes/ThreadName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/ThreadName.cpp)
 - public · colingsnyder2-ux · [native-classes/ThreadName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/ThreadName.cpp)
 - public · colingsnyder2-ux · [native-classes/ThreadName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ThreadName.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ThreadName.cpp)
 
 </details>
 
@@ -87,6 +259,7 @@
 - public · colingsnyder2-ux · [native-classes/ThreadNameState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/ThreadNameState.cpp)
 - public · colingsnyder2-ux · [native-classes/ThreadNameState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/ThreadNameState.cpp)
 - public · colingsnyder2-ux · [native-classes/ThreadNameState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ThreadNameState.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadNameState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ThreadNameState.cpp)
 
 **`8de51864c2c7`** · `native-classes/ThreadNameState.cpp` · proof not assessed
 
@@ -167,6 +340,7 @@
 - public · colingsnyder2-ux · [native-classes/ThreadNameStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/ThreadNameStorage.cpp)
 - public · colingsnyder2-ux · [native-classes/ThreadNameStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/ThreadNameStorage.cpp)
 - public · colingsnyder2-ux · [native-classes/ThreadNameStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ThreadNameStorage.cpp)
+- public · colingsnyder2-ux · [native-classes/ThreadNameStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ThreadNameStorage.cpp)
 
 </details>
 
@@ -207,6 +381,7 @@
 - public · colingsnyder2-ux · [native-classes/UserInputBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/UserInputBaseLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/UserInputBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/UserInputBaseLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/UserInputBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/UserInputBaseLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/UserInputBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/UserInputBaseLifetime.cpp)
 
 **`8c10931793ae`** · `native-classes/UserInputBaseLifetime.cpp` · proof not assessed
 
@@ -267,6 +442,7 @@
 - public · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/WorldLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/WorldLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/WorldLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/WorldLifetime.cpp)
 
 **`8cfa4134b1b8`** · `native-classes/WorldLifetime.cpp` · proof not assessed
 
@@ -321,6 +497,7 @@
 - canonical · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/WorldLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/WorldLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/WorldLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/WorldLifetime.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -409,6 +586,8 @@ Compatibility path for `App/src/v8xml/XmlNameValuePairClear.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp)
 - public · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/XmlNameValuePairClear.cpp)
 - canonical · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp)
+- public · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/XmlNameValuePairClear.cpp)
+- canonical · colingsnyder2-ux · [native-classes/XmlNameValuePairClear.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp)
 
 </details>
 
@@ -658,6 +837,8 @@ Compatibility path for `WindowsClient/include/CFileVersionInfo.h`; compile eithe
 - canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/CFileVersionInfo.h)
 - canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
+- public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/CFileVersionInfo.h)
+- canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 
 </details>
 
@@ -804,6 +985,8 @@ Compatibility path for `Unclassified/include/cow-noinline-read/util/Utilities.h`
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
+- public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
+- canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 
 </details>
 
@@ -934,6 +1117,8 @@ Compatibility path for `Unclassified/include/draw-handles/util/Rect.h`; compile 
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
+- public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/draw-handles/util/Rect.h)
+- canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 
 </details>
 
@@ -982,6 +1167,7 @@ Compatibility path for `Unclassified/include/draw-handles/util/Rect.h`; compile 
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/log-2008/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-headers/log-2008/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/log-2008/util/Log.h)
+- public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/log-2008/util/Log.h)
 
 **`e2b20cc18149`** · `native-headers/log-2008/util/Log.h` · proof not assessed
 
@@ -1120,6 +1306,8 @@ Compatibility path for `Unclassified/include/nullable-class-name/util/Object.h`;
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/nullable-class-name/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
 
 </details>
 
@@ -1209,5 +1397,7 @@ Compatibility path for `Unclassified/include/serializer-load/util/Name.h`; compi
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/serializer-load/util/Name.h)
+- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/serializer-load/util/Name.h)
+- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/serializer-load/util/Name.h)
 
 </details>

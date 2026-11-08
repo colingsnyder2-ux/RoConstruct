@@ -4,8 +4,9 @@
 
 Expand a native path for every distinct content version. No candidate is auto-promoted.
 
-- [Network/include/Network/IdSerializer.h → Network/include/RakPeer.h](sources-001.md)
-- [Network/include/RakPeerInterface.h → native-classes/HttpTrustState.cpp](sources-002.md)
-- [native-classes/HttpWinHttp.cpp → native-classes/ProfiledRakPeer.cpp](sources-003.md)
-- [native-classes/RakPeerBandwidth.cpp → native-headers/Network/ClientProxy2008.h](sources-004.md)
-- [native-headers/Network/IdSerializer.h → native-headers/util/Http.h](sources-005.md)
+- [Network/include/Network/IdSerializer.h → Network/include/ProfiledRakPeer.h](sources-001.md)
+- [Network/include/RakPeer.h → native-classes/HttpTransport.cpp](sources-002.md)
+- [native-classes/HttpTransportState.cpp → native-classes/PlayersAbusePredicate.cpp](sources-003.md)
+- [native-classes/PlayersLifetime.cpp → native-classes/ReplicatorMarker.cpp](sources-004.md)
+- [native-headers/CMultiPlayerPane.h → native-headers/RakPeerInterface.h](sources-005.md)
+- [native-headers/Replicator.h → native-headers/util/Http.h](sources-006.md)

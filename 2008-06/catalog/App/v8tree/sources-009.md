@@ -55,6 +55,7 @@
 - public · colingsnyder2-ux · [native-classes/InstanceParentDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/InstanceParentDescriptor.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceParentDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/InstanceParentDescriptor.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceParentDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/InstanceParentDescriptor.cpp)
+- public · colingsnyder2-ux · [native-classes/InstanceParentDescriptor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/InstanceParentDescriptor.cpp)
 
 </details>
 
@@ -135,6 +136,8 @@ Compatibility path for `App/src/v8tree/InstanceReadChildren.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/InstanceReadChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/InstanceReadChildren.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceReadChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/InstanceReadChildren.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceReadChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/InstanceReadChildren.cpp)
+- public · colingsnyder2-ux · [native-classes/InstanceReadChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/InstanceReadChildren.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceReadChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/InstanceReadChildren.cpp)
 
 **`e0be32087215`** · `native-classes/InstanceReadChildren.cpp` · proof not assessed
 
@@ -170,6 +173,7 @@ Compatibility path for `App/src/v8tree/InstanceReadChildren.cpp`; compile either
 - archive · colingsnyder2-ux · [native-classes/InstanceReadChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadChildren.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceReadChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadChildren.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceReadChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadChildren.cpp)
+- archive · colingsnyder2-ux · [native-classes/InstanceReadChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadChildren.cpp)
 
 **`f14026d94a79`** · `native-classes/InstanceReadChildren.cpp` · proof not assessed
 
@@ -307,6 +311,7 @@ Compatibility path for `App/src/v8tree/InstanceReadProperty.cpp`; compile either
 - archive · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadProperty.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadProperty.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadProperty.cpp)
+- archive · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadProperty.cpp)
 
 **`91368edbe08d`** · `native-classes/InstanceReadProperty.cpp` · proof not assessed
 
@@ -363,6 +368,8 @@ Compatibility path for `App/src/v8tree/InstanceReadProperty.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/InstanceReadProperty.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/InstanceReadProperty.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/InstanceReadProperty.cpp)
+- public · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/InstanceReadProperty.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/InstanceReadProperty.cpp)
 
 </details>
 
@@ -557,6 +564,7 @@ Compatibility path for `App/src/v8tree/InstanceReadProperty.cpp`; compile either
 - public · colingsnyder2-ux · [native-classes/InstanceSerialization.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/InstanceSerialization.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceSerialization.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/InstanceSerialization.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceSerialization.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/InstanceSerialization.cpp)
+- public · colingsnyder2-ux · [native-classes/InstanceSerialization.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/InstanceSerialization.cpp)
 
 **`b4a1018ce6ce`** · `native-classes/InstanceSerialization.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/InstanceSerialization.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/InstanceSerialization.cpp)
@@ -586,6 +594,7 @@ Compatibility path for `App/src/v8tree/InstanceReadProperty.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/InstanceSerialization.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/InstanceSerialization.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceSerialization.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/InstanceSerialization.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceSerialization.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/InstanceSerialization.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceSerialization.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/InstanceSerialization.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -644,6 +653,7 @@ Compatibility path for `App/src/v8tree/InstanceSignalDescriptors.cpp`; compile e
 - archive · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceSignalDescriptors.cpp)
+- archive · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 
 **`580925e2be25`** · `native-classes/InstanceSignalDescriptors.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/InstanceSignalDescriptors.cpp)
@@ -773,6 +783,8 @@ Compatibility path for `App/src/v8tree/InstanceSignalDescriptors.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/InstanceSignalDescriptors.cpp)
+- public · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/InstanceSignalDescriptors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 
 **`fccf86044560`** · `native-classes/InstanceSignalDescriptors.cpp` · proof not assessed
 
@@ -813,6 +825,7 @@ Compatibility path for `App/src/v8tree/InstanceSignalDescriptors.cpp`; compile e
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/instance-ancestor-inline/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-headers/instance-ancestor-inline/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/instance-ancestor-inline/v8tree/Instance.h)
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/instance-ancestor-inline/v8tree/Instance.h)
 
 **`6705c002a2ce`** · `native-headers/instance-ancestor-inline/v8tree/Instance.h` · proof not assessed
 
@@ -967,6 +980,8 @@ Compatibility path for `Unclassified/include/pv-parent/v8tree/Instance.h`; compi
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/pv-parent/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h)
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/pv-parent/v8tree/Instance.h)
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h)
 
 </details>
 
@@ -1056,5 +1071,7 @@ Compatibility path for `Unclassified/include/serializer-load/v8tree/Instance.h`;
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/serializer-load/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/serializer-load/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/serializer-load/v8tree/Instance.h)
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/serializer-load/v8tree/Instance.h)
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/serializer-load/v8tree/Instance.h)
 
 </details>

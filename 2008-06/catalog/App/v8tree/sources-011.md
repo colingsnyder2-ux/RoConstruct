@@ -360,6 +360,8 @@ Compatibility path for `App/include/v8tree/Service.h`; compile either path, neve
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/v8tree/Service.h)
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/v8tree/Service.h)
+- public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/v8tree/Service.h)
+- canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/v8tree/Service.h)
 
 </details>
 
@@ -658,6 +660,8 @@ Compatibility path for `App/include/v8tree/Verb.h`; compile either path, never b
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/v8tree/Verb.h)
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/v8tree/Verb.h)
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/v8tree/Verb.h)
+- public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/v8tree/Verb.h)
+- canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/v8tree/Verb.h)
 
 </details>
 
@@ -956,5 +960,7 @@ Compatibility path for `App/include/v8tree/VerbContainer.h`; compile either path
 - canonical · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/v8tree/VerbContainer.h)
 - public · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/v8tree/VerbContainer.h)
 - canonical · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/v8tree/VerbContainer.h)
+- public · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/v8tree/VerbContainer.h)
+- canonical · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/v8tree/VerbContainer.h)
 
 </details>

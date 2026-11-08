@@ -166,6 +166,8 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryEnable.cpp`; compile ei
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryEnable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ChangeHistoryEnable.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryEnable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ChangeHistoryEnable.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryEnable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ChangeHistoryEnable.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryEnable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ChangeHistoryEnable.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryEnable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ChangeHistoryEnable.cpp)
 
 </details>
 
@@ -329,6 +331,8 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryFactory.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ChangeHistoryFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ChangeHistoryFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ChangeHistoryFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ChangeHistoryFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ChangeHistoryFactory.cpp)
 
 </details>
 
@@ -413,6 +417,7 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryFactory.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ChangeHistoryPlayback.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 
 <details><summary>33 retained local origins</summary>
 
@@ -478,6 +483,7 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryFactory.cpp`; compile e
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ChangeHistoryPlayback.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 
 </details>
 
@@ -631,6 +637,8 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryQueries.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ChangeHistoryQueries.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ChangeHistoryQueries.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ChangeHistoryQueries.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ChangeHistoryQueries.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ChangeHistoryQueries.cpp)
 
 </details>
 
@@ -784,6 +792,8 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryReset.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ChangeHistoryReset.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ChangeHistoryReset.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ChangeHistoryReset.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ChangeHistoryReset.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ChangeHistoryReset.cpp)
 
 </details>
 
@@ -897,6 +907,8 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryStart.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ChangeHistoryStart.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ChangeHistoryStart.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ChangeHistoryStart.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ChangeHistoryStart.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ChangeHistoryStart.cpp)
 
 </details>
 
@@ -1079,6 +1091,7 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryStart.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/ChatEnter.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ChatEnter.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ChatEnter.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ChatEnter.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -1129,6 +1142,7 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryStart.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/ChatEnter.cpp)
 - public · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/native-classes/ChatEnter.cpp)
 - public · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ChatEnter.cpp)
+- public · colingsnyder2-ux · [native-classes/ChatEnter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ChatEnter.cpp)
 
 **`c56d389e0ce9`** · `native-classes/ChatEnter.cpp` · proof not assessed
 
@@ -1240,5 +1254,7 @@ Compatibility path for `Unclassified/src/ChatOutput.cpp`; compile either path, n
 - canonical · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-classes/ChatOutput.cpp)
 - public · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-classes/ChatOutput.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-classes/ChatOutput.cpp)
+- public · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/ChatOutput.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChatOutput.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ChatOutput.cpp)
 
 </details>

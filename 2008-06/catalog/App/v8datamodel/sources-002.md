@@ -20,6 +20,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h)
+- canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h)
 
 **`b5cfcb1e01c2`** · `App/include/v8datamodel/ClickDetector.h` · proof not assessed
 - public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/v8datamodel/ClickDetector.h)
@@ -34,6 +35,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 - public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/App/include/v8datamodel/ClickDetector.h)
 - public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/App/include/v8datamodel/ClickDetector.h)
 - public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/include/v8datamodel/ClickDetector.h)
+- public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/include/v8datamodel/ClickDetector.h)
 
 **`3fcb37b10c85`** · `native-headers/v8datamodel/ClickDetector.h` · proof not assessed
 
@@ -122,6 +124,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 - draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
+- draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 
 <details><summary>4 retained local origins</summary>
 
@@ -195,6 +198,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
+- public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/v8datamodel/ClickDetector.h)
+- canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 
 </details>
 
@@ -216,6 +221,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 - public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/App/include/v8datamodel/Clothing.h)
 - public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/App/include/v8datamodel/Clothing.h)
 - public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/include/v8datamodel/Clothing.h)
+- public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/include/v8datamodel/Clothing.h)
 
 **`abd4ddf551a5`** · `App/include/v8datamodel/Clothing.h` · proof not assessed
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/include/v8datamodel/Clothing.h)
@@ -230,6 +236,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/App/include/v8datamodel/Clothing.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/App/include/v8datamodel/Clothing.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/include/v8datamodel/Clothing.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/include/v8datamodel/Clothing.h)
 
 **`37ea17ff9833`** · `native-headers/v8datamodel/Clothing.h` · proof not assessed
 - public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/v8datamodel/Clothing.h)
@@ -358,6 +365,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/v8datamodel/Clothing.h)
 - public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/v8datamodel/Clothing.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/v8datamodel/Clothing.h)
+- public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/v8datamodel/Clothing.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/v8datamodel/Clothing.h)
 
 </details>
 
@@ -379,6 +388,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DataModel.h`
 - canonical · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/App/include/v8datamodel/DataModel.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/App/include/v8datamodel/DataModel.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/include/v8datamodel/DataModel.h)
+- canonical · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/include/v8datamodel/DataModel.h)
 
 **`c7cdfac2f5dd`** · `App/include/v8datamodel/DataModel.h` · proof not assessed
 - public · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/v8datamodel/DataModel.h)
@@ -393,6 +403,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DataModel.h`
 - public · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/App/include/v8datamodel/DataModel.h)
 - public · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/App/include/v8datamodel/DataModel.h)
 - public · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/include/v8datamodel/DataModel.h)
+- public · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/include/v8datamodel/DataModel.h)
 
 **`1a947f7e4d5d`** · `native-headers/v8datamodel/DataModel.h` · proof not assessed
 
@@ -705,6 +716,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DataModel.h`
 - canonical · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/v8datamodel/DataModel.h)
 - public · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/v8datamodel/DataModel.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/v8datamodel/DataModel.h)
+- public · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/v8datamodel/DataModel.h)
+- canonical · colingsnyder2-ux · [v8datamodel/DataModel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/v8datamodel/DataModel.h)
 
 </details>
 
@@ -726,6 +739,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebrisServic
 - canonical · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/App/include/v8datamodel/DebrisService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/App/include/v8datamodel/DebrisService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/include/v8datamodel/DebrisService.h)
+- canonical · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/include/v8datamodel/DebrisService.h)
 
 **`75732f15715c`** · `App/include/v8datamodel/DebrisService.h` · proof not assessed
 - public · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/v8datamodel/DebrisService.h)
@@ -740,6 +754,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebrisServic
 - public · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/App/include/v8datamodel/DebrisService.h)
 - public · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/App/include/v8datamodel/DebrisService.h)
 - public · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/include/v8datamodel/DebrisService.h)
+- public · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/include/v8datamodel/DebrisService.h)
 
 **`62b16c6d7ae4`** · `native-headers/v8datamodel/DebrisService.h` · proof not assessed
 
@@ -866,6 +881,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebrisServic
 - draft · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/DebrisService.h)
 - draft · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/DebrisService.h)
 - draft · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/DebrisService.h)
+- draft · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/DebrisService.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -899,6 +915,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebrisServic
 - canonical · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/v8datamodel/DebrisService.h)
 - public · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/v8datamodel/DebrisService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/v8datamodel/DebrisService.h)
+- public · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/v8datamodel/DebrisService.h)
+- canonical · colingsnyder2-ux · [v8datamodel/DebrisService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/v8datamodel/DebrisService.h)
 
 </details>
 
@@ -920,6 +938,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 - public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/App/include/v8datamodel/DebugSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/2008-06/App/include/v8datamodel/DebugSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/include/v8datamodel/DebugSettings.h)
+- public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/include/v8datamodel/DebugSettings.h)
 
 **`cece77ea768b`** · `App/include/v8datamodel/DebugSettings.h` · proof not assessed
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h)
@@ -934,6 +953,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h)
+- canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h)
 
 **`15baea93ffe5`** · `native-headers/v8datamodel/DebugSettings.h` · proof not assessed
 
@@ -1013,6 +1033,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 - draft · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/11bc7d781e061c0974dc56819e6fd678fe8e856d5e057b16b5559f91976709bf/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
 - draft · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/drafts/files/11bc7d781e061c0974dc56819e6fd678fe8e856d5e057b16b5559f91976709bf/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
 - draft · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/11bc7d781e061c0974dc56819e6fd678fe8e856d5e057b16b5559f91976709bf/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
+- draft · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/11bc7d781e061c0974dc56819e6fd678fe8e856d5e057b16b5559f91976709bf/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -1107,5 +1128,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/61c61c244d49a66b4817cc8946a1234ad40d45ee/workspace/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/v8datamodel/DebugSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
+- public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/v8datamodel/DebugSettings.h)
+- canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
 
 </details>

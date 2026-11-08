@@ -9,9 +9,9 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 | App/v8xml | 13 | 6 | 6 | 0 | 0 | 1 |
 | App/reflection | 42 | 13 | 28 | 1 | 0 | 0 |
 | App/tool | 97 | 18 | 79 | 0 | 0 | 0 |
-| Unclassified | 178 | 11 | 167 | 0 | 0 | 0 |
+| Unclassified | 180 | 11 | 169 | 0 | 0 | 0 |
 | Studio | 0 | 0 | 0 | 0 | 0 | 0 |
-| WindowsClient | 504 | 177 | 187 | 24 | 0 | 116 |
+| WindowsClient | 504 | 179 | 185 | 24 | 0 | 116 |
 | App/v8datamodel | 391 | 140 | 204 | 25 | 0 | 22 |
 | App/v8world | 130 | 76 | 30 | 2 | 0 | 22 |
 | Network | 67 | 26 | 13 | 15 | 0 | 13 |
