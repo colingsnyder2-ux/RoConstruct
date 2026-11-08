@@ -9,7 +9,7 @@ Build a read-only inventory before any reconciliation:
 
 ```text
 git fetch --no-write-fetch-head findings refs/heads/work:refs/remotes/findings/work
-python -m roc.source_catalog --ref refs/remotes/findings/work --local --output work/source-catalog/2008-06-COMMIT.json --map-output work/source-map/2008-06-COMMIT.json
+python -m roc.source_catalog --ref refs/remotes/findings/work --output work/source-navigation/RUN/catalog.json --map-output work/source-navigation/RUN/source-map.json
 ```
 
 The catalog pairs only `native-classes`, `native-headers`, and `native-world`.
@@ -20,10 +20,36 @@ moves, deletes, compiles, executes, or promotes source. A per-output lock stops
 duplicate long local inventories from racing the same result path.
 
 `--map-output` also writes a generated JSON map plus a Markdown browse index beside
-it. It groups native paths conservatively into Studio/App, Engine/DataModel,
-Engine/World, Network, Rendering, Shared/Util, and Other. This is a navigation
+it. It groups native paths conservatively into WindowsClient, App/v8tree,
+App/v8datamodel, App/v8world, App/v8xml, App/reflection, Network, Rendering,
+Base/util, and Other. Links identify the exact
+cataloged revision and distinguish canonical from public source. This is a navigation
 layer only: it never moves files, rewrites includes, changes provenance, or
-promotes code.
+promotes code. A new `catalog/` directory beside the map contains compact,
+expandable project pages. Use a fresh RUN directory; existing results are never
+overwritten. `--browse-output` selects another new browse directory.
+
+## Every navigation build includes donor versions
+
+`--map-output` automatically indexes fetched contributor refs under
+`refs/remotes/` and `refs/forks/`, local branch history, committed draft files, the durable local inbox,
+the current checkout, registered worktrees and nearby RoConstruct snapshots.
+Refresh contributor fork refs first with the existing intake/discovery workflow.
+The catalog never fetches, uploads, compiles or promotes contributor code itself.
+`--all-sources` enables the same intake for JSON-only output. `--donor-ref REF`
+and `--source-root FOLDER` include additional known branches or temporary folders.
+
+Versions are grouped by explicit 2008-06 native logical path and exact Git blob
+identity. Every origin survives deduplication. Other client versions cannot enter
+this map. Contributor and draft links pin immutable commits; local-only versions
+retain a path and content hash without pretending a public URL exists. Original
+scripts are never executed. Candidate proof/runtime status stays not-assessed.
+
+Coverage, errors and excluded generated/vendor directory names are included in
+JSON. Address-only mined functions and unmapped trials remain separate evidence;
+they are not silently relabeled as native providers. A content inventory is not
+method review, and a locally newer file is not automatically the best version.
+Neither generation nor alias recovery advances contributor review cursors.
 
 ## Source lanes
 
