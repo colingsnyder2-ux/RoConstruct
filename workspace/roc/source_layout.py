@@ -194,8 +194,24 @@ def prepare(root, spec, out):
     return plan
 
 
+def local_symbol_identities(symbols):
+    """Normalize one file-local MSVC namespace only for uniquely defined targets."""
+    pattern = re.compile(r'\?A0x[0-9a-fA-F]{8}@@')
+    tags = {tag for name, _, _, _ in symbols.values() for tag in pattern.findall(name)}
+    if len(tags) != 1:
+        return {}
+    grouped = {}
+    for name, value, section, kind in symbols.values():
+        if pattern.search(name):
+            grouped.setdefault(name, set()).add((section, value, kind))
+    return {name: (pattern.sub('?A0xLOCAL@@', name), *next(iter(locations)))
+            for name, locations in grouped.items()
+            if len(locations) == 1 and next(iter(locations))[0] > 0}
+
+
 def object_identity(raw):
     sections, symbols, _, _ = match._coff_data_index(raw)
+    local = local_symbol_identities(symbols)
     result = []
     for section in sections:
         name = section[0].rstrip(b'\0').decode('latin-1')
@@ -207,9 +223,12 @@ def object_identity(raw):
             offset, sym, kind = struct.unpack_from('<IIH', raw, section[5] + 10 * index)
             if sym not in symbols:
                 raise ValueError('Unresolved COFF symbol index')
-            relocs.append((offset, symbols[sym][0], kind))
+            symbol_name = symbols[sym][0]
+            relocs.append((offset, local.get(symbol_name, (symbol_name,)), kind))
         result.append((name, section[9], data, relocs))
-    return result, match.coff_functions(raw)
+    functions = [(local.get(name, (name,)), body, relocs)
+                 for name, body, relocs in match.coff_functions(raw)]
+    return result, functions
 
 
 def verify(root, out, run):

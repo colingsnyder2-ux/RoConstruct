@@ -342,3 +342,39 @@ def test_verify_rejects_tampered_organized_header(source_repo, monkeypatch):
     result = source_layout.verify(root, out, run)
     assert not result['accepted']
     assert 'Frozen header differs from canonical base' in result['skipped'][0]['reason']
+
+
+def test_local_symbol_identity_checks_definition_and_rejects_ambiguity():
+    a = {0: ('?helper@?A0x12345678@@YAXXZ', 4, 2, 32)}
+    b = {0: ('?helper@?A0x87654321@@YAXXZ', 4, 2, 32)}
+    assert next(iter(source_layout.local_symbol_identities(a).values())) == next(iter(source_layout.local_symbol_identities(b).values()))
+    b[0] = (b[0][0], 5, 2, 32)
+    assert next(iter(source_layout.local_symbol_identities(a).values())) != next(iter(source_layout.local_symbol_identities(b).values()))
+    assert not source_layout.local_symbol_identities({0: (a[0][0], 4, 0, 32)})
+    assert not source_layout.local_symbol_identities({0: a[0], 1: (a[0][0], 8, 2, 32)})
+    assert not source_layout.local_symbol_identities({0: a[0], 1: ('?other@?A0x87654321@@YAXXZ', 4, 2, 32)})
+
+
+def test_object_identity_compares_local_binding_and_section(monkeypatch):
+    import struct
+    def fake_index(raw):
+        tag = '12345678' if raw[0] == 1 else '87654321'
+        value = 5 if raw[0] == 3 else 4
+        name = '?helper@?A0x' + tag + '@@YAXXZ'
+        section = (b'.text', 0, 0, 4, 10, 20, 0, 1, 0, 0x60000020)
+        return [section], {1: (name, value, 1, 32)}, {}, {}
+    def fake_functions(raw):
+        tag = '12345678' if raw[0] == 1 else '87654321'
+        return [('?helper@?A0x' + tag + '@@YAXXZ', b'body', [])]
+    def obj(which):
+        raw = bytearray(40)
+        raw[0] = which
+        raw[10:14] = b'code'
+        struct.pack_into('<IIH', raw, 20, 0, 1, 20)
+        return bytes(raw)
+    monkeypatch.setattr(source_layout.match, '_coff_data_index', fake_index)
+    monkeypatch.setattr(source_layout.match, 'coff_functions', fake_functions)
+    first = source_layout.object_identity(obj(1))
+    assert first[0][0][0] == '.text'
+    assert first == source_layout.object_identity(obj(2))
+    assert first != source_layout.object_identity(obj(3))
