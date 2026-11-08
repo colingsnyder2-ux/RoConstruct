@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // CBrowserView | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src d39eb600 | roc native-status --write
 #include "CBrowserView.h"
 #include "CBrowserDoc.h"

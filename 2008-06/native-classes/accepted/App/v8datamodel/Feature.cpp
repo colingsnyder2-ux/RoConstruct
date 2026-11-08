@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // Feature | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src a022f53b | roc native-status --write
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/Workspace.h"

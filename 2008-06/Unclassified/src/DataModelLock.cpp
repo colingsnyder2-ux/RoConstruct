@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // DataModelLock | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 81d4e6c9 | roc native-status --write
 #include "../../native-headers/v8datamodel/DataModel.h"
 

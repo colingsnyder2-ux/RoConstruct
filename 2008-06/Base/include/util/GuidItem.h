@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // GuidItem | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src c5b82919 | roc native-status --write
 #include "util/Guid.h"
 

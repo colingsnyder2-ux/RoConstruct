@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DVector3Subtract | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 46beb812 | roc native-status --write
 namespace G3D {
 class Vector3 {

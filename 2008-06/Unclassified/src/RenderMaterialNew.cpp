@@ -4,7 +4,7 @@
 // (2008-06, inactive native recovery). Image block 007accc0..007ad9cf.
 // >>> native-status (generated) -- do not edit >>>
 // RenderMaterialNew | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src e7a06aec | roc native-status --write
 #include "RenderLib/Material2008.h"
 #include <OgreMaterialManager.h>

@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // CScriptDoc | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 126550ee | roc native-status --write
 #include <afxwin.h>
 #include <boost/shared_ptr.hpp>

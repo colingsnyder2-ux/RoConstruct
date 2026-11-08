@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // GuidRegistryMutex | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 25589d8e | roc native-status --write
 #include <windows.h>
 #include "util/GuidRegistry.h"

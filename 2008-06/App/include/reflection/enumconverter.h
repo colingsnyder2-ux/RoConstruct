@@ -6,7 +6,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // enumconverter | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 06f7b13f | roc native-status --write
 #include <boost/bind.hpp>
 #include <vector>

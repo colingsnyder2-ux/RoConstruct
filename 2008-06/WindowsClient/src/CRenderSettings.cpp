@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // CRenderSettings | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 71eb9d9a | roc native-status --write
 #include "CRenderSettings.h"
 #include "reflection/enumconverter.h"

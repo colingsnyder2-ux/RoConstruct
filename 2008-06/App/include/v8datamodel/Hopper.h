@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // Hopper | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src b43abcdd | roc native-status --write
 // 2008-06 native RBX::Hopper, StarterPackService, LegacyHopperService, BackpackItem and HopperBin (inactive). Shape
 // after the donor tools/rbxgs v8datamodel/Hopper.h; the one change is the class-name template argument (a const char

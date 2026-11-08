@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // Contact2008 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src e83b7ece | roc native-status --write
 // 2008-06 native RBX::Contact, BallBallContact, BallBlockContact (inactive). Declared under a non-colliding name:
 // the original path v8world/Contact.h is reached through the donor World.h / CollisionStage.h and the maintainer

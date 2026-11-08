@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // SoundClassName | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src c390dbf8 | roc native-status --write
 #include "util/Sound.h"
 namespace RBX {

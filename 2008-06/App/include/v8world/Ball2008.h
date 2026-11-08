@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // Ball2008 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src d12fc9ab | roc native-status --write
 // 2008-06 native RBX::Ball (inactive); non-colliding name, see v8world/Geometry2008.h.
 //   RTTI     vtable 0083f814 .?AVBall@RBX@@ -> Geometry (mdisp 0); 9 slots: 0 onSetSize 00649190, 1 ??_G 005e73b0

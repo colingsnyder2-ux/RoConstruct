@@ -1,7 +1,7 @@
 // Recovered against 2008-06, based on available PJ Naughter/OpenRBX implementation.
 // >>> native-status (generated) -- do not edit >>>
 // CVersionInfo | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 68d5dac6 | roc native-status --write
 #include <afxwin.h>
 #include "VersionInfo.h"

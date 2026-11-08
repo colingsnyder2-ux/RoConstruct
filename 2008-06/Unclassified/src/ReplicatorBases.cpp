@@ -8,7 +8,7 @@
 // Verified by tests/record_native_replicator.py.
 // >>> native-status (generated) -- do not edit >>>
 // ReplicatorBases | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 1d9e7735 | roc native-status --write
 #include "Network/IdSerializer.h"
 

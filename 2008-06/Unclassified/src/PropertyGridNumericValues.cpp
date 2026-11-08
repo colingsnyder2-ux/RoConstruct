@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // PropertyGridNumericValues | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 4916062d | roc native-status --write
 #include "PropertyGridItems.h"
 #include <stdio.h>

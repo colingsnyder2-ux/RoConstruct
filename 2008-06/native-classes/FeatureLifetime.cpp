@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // FeatureLifetime | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 3b71432d | roc native-status --write
 #include "v8datamodel/Feature.h"
 namespace RBX {

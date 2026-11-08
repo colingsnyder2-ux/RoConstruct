@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // TextureProxyBase2008 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src d2bbd67d | roc native-status --write
 // RBX::TextureProxyBase as compiled into the June 2008 client (inactive native recovery).
 //

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // WorkspaceSelectAll | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 6b25c60c | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"

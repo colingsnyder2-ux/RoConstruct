@@ -7,7 +7,7 @@
 // primitive's edge lists through the native Primitive (not available).
 // >>> native-status (generated) -- do not edit >>>
 // JointStage2008 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src dde7b28c | roc native-status --write
 #include "v8world/JointStage2008.h"
 #include "v8world/Primitive.h"

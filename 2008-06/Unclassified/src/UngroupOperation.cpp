@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // UngroupOperation | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src cffcbc11 | roc native-status --write
 #include "../../native-headers/v8tree/Instance.h"
 #include <vector>

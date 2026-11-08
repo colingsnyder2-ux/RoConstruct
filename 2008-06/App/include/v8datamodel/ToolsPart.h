@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // ToolsPart | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 779a932c | roc native-status --write
 
 // 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/ToolsPart.h: class names are .data

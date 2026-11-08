@@ -7,7 +7,7 @@
 // putInStage / putInKernel), removeFromPipeline 00645820 (`currentStage = NULL`).
 // >>> native-status (generated) -- do not edit >>>
 // CleanStage2008 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 67b9edf4 | roc native-status --write
 #include "v8world/CleanStage2008.h"
 #include "v8world/JointStage2008.h"

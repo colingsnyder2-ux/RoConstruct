@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // RenderBaseMesh | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src cd3617d0 | roc native-status --write
 // 2008-06 native RBX::RenderBase::Mesh / Mesh::Level (inactive; base declarations for the ViewNew meshes).
 // The RenderBase library bodies themselves (00547f60..0054c...) are compiled /Od and are not recovered here.

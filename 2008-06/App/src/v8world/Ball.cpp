@@ -3,7 +3,7 @@
 // onSetSize, hitTest).
 // >>> native-status (generated) -- do not edit >>>
 // Ball | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src bfdf6b9e | roc native-status --write
 #include "v8world/Ball2008.h"
 #include "util/Math.h"

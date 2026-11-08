@@ -1,7 +1,7 @@
 // Inactive native Instance hierarchy method; contributor provenance in manifest.
 // >>> native-status (generated) -- do not edit >>>
 // InstanceContains | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// unmapped (no indexed address) | by -
 // <<< native-status | src 528dff7b | roc native-status --write
 #include "v8tree/Instance.h"
 

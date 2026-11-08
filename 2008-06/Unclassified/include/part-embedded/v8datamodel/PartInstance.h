@@ -3,7 +3,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // PartInstance | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 8f09901d | roc native-status --write
 #include "AppDraw/Part.h"
 #include "v8world/Primitive.h"

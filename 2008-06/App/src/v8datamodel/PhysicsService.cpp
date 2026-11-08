@@ -3,7 +3,7 @@
 // (World.h proposal): they compile only under NATIVE_PHYSICSSERVICE_PENDING against a generated World.h copy.
 // >>> native-status (generated) -- do not edit >>>
 // PhysicsService | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src bf960d4a | roc native-status --write
 #include "v8datamodel/PhysicsService.h"
 #include "v8datamodel/PartInstance.h"

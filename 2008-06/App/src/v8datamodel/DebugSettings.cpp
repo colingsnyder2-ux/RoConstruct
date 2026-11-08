@@ -4,7 +4,7 @@
 // generated header copy (recorded pending-build-only, not counted).
 // >>> native-status (generated) -- do not edit >>>
 // DebugSettings | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 9fbf36de | roc native-status --write
 #include "v8datamodel/DebugSettings.h"
 #include "v8datamodel/PartInstance.h"

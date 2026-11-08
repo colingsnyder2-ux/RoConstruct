@@ -2,7 +2,7 @@
 // June anchor swap is evidenced at 0064cc40/0064ccf0; full ABI/physics parity remains unproven.
 // >>> native-status (generated) -- do not edit >>>
 // Clump | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src d61ee90d | roc native-status --write
 #ifndef V8WORLD_CLUMP2_H
 #define V8WORLD_CLUMP2_H

@@ -1,7 +1,7 @@
 // CRobloxDoc command setup (initializeCommands 00451b60) and the verbs it creates; promoted from tests/NativeDocumentInitializeTrial.cpp.
 // >>> native-status (generated) -- do not edit >>>
 // CRobloxDocCommands | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src a1d25c91 | roc native-status --write
 #include <afxwin.h>
 #include <boost/scoped_ptr.hpp>

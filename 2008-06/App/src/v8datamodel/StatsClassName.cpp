@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // StatsClassName | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src f3a0c633 | roc native-status --write
 #include "v8datamodel/Stats.h"
 namespace RBX {

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // WeldSnapActions | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 291f7752 | roc native-status --write
 #include "../../native-headers/StandardVerbs.h"
 #include "../../native-headers/v8datamodel/Workspace.h"

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // AxisMoveToolCore | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src ea06c01d | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"

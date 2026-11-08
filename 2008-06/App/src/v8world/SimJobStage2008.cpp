@@ -6,7 +6,7 @@
 // mechanism rows (0064d0f0 .. 0064d2a0, 0064d3d0, 0064d410) need Assembly / Mechanism / ContactManager (not built).
 // >>> native-status (generated) -- do not edit >>>
 // SimJobStage2008 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 85b1689e | roc native-status --write
 #include "v8world/SimJobStage2008.h"
 #include "v8world/SimJob2008.h"

@@ -2,7 +2,7 @@
 // Inactive recovery. Render predicate ABI and ClickDetector query remain unproven.
 // >>> native-status (generated) -- do not edit >>>
 // NewNullTool | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 7408d784 | roc native-status --write
 #include "tool/NullTool.h"
 #include "v8datamodel/UserController.h"

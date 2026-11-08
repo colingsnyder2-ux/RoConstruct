@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // ThreadLogFactory | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 1812bccd | roc native-status --write
 #include "CRobloxApp.h"
 #include <boost/thread/once.hpp>

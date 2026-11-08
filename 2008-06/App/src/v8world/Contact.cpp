@@ -5,7 +5,7 @@
 // Primitive / Body / ContactConnector layouts and are not part of this unit yet.
 // >>> native-status (generated) -- do not edit >>>
 // Contact | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 4c385f91 | roc native-status --write
 #include "v8world/Contact2008.h"
 #include "v8kernel/Kernel.h"

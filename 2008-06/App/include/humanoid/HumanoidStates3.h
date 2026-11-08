@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // HumanoidStates3 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 8c98aa08 | roc native-status --write
 #include "humanoid/HumanoidState.h"
 #include "util/Name.h"

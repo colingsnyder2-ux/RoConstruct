@@ -4,7 +4,7 @@
 // slots 1 / 2 fold into 0074eed0).
 // >>> native-status (generated) -- do not edit >>>
 // SimJob2008 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 67053efb | roc native-status --write
 #include "v8world/SimJob2008.h"
 

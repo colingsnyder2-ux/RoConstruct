@@ -5,7 +5,7 @@
 // 0064d380 (the destructor is inline; vtable 0084b174 is emitted here).
 // >>> native-status (generated) -- do not edit >>>
 // SimJobStage2008Ctor | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 8dee7ece | roc native-status --write
 #include "v8world/SimJobStage2008.h"
 #include "v8world/SimJob2008.h"

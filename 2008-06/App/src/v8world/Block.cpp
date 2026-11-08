@@ -4,7 +4,7 @@
 // std::map<Vector3, BlockTemplate*, myLess> members it instantiates.
 // >>> native-status (generated) -- do not edit >>>
 // Block | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 9a6ebc17 | roc native-status --write
 #include "v8world/Block2008.h"
 #include "util/Math.h"

@@ -2,7 +2,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // RunStateOwner | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src f6c39ef2 | roc native-status --write
 #include "reflection/reflection.h"
 #include "reflection/signal.h"

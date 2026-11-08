@@ -2,7 +2,7 @@
 // (OnClose 00431f10 needs CString::operator PCXSTR out of line; hideEditorChrome 004309f0, showEditorChrome 00430f50)
 // >>> native-status (generated) -- do not edit >>>
 // CMainFrameCommands | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src dfae80fb | roc native-status --write
 #include "CMainFrame.h"
 #include "util/standardout.h"

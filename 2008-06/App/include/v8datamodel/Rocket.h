@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // Rocket | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src fba2f12a | roc native-status --write
 // 2008-06 native RBX::Rocket (inactive): a BodyMover subclass (RTTI .?AVRocket@RBX@@ lists BodyMover as its base,
 // DescribedCreatable<Rocket, BodyMover, sRocket>). The original compiles it in the BodyMover unit (0062e090..

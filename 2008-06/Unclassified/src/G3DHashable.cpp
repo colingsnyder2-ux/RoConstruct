@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DHashable | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 00acb129 | roc native-status --write
 #include <G3D/Table.h>
 

@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // ChatOutput | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src bea74b68 | roc native-status --write
 // 2008-06 native RBX::ChatLine and RBX::ChatOutput (inactive). Shape after the donor tools/rbxgs gui/ChatOutput.h.
 // Read from the binary (tests/record_native_hud.py checks it):

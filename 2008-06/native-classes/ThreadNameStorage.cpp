@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // ThreadNameStorage | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src a76f366b | roc native-status --write
 #include <string>
 #include <boost/thread/once.hpp>

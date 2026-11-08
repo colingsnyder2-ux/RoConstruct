@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // CDeclarationView | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 4f0dc92a | roc native-status --write
 #include "CDeclarationView.h"
 #include "reflection/function.h"

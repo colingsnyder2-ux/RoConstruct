@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // WidgetButtons | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 8be27ac8 | roc native-status --write
 // 2008-06 native RBX::KeyButton, ImageWidget, ImageButton and ImageKeyButton (inactive): the original gui Button unit
 // 0064ef90..0064f6a0. Shape after the donor tools/rbxgs gui/Button.h (TextButton, ImageToggleButton and

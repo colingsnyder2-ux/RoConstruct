@@ -6,7 +6,7 @@
 // sendPackets 004cd420 and receivePacket 004c83b0 are declared only (open).
 // >>> native-status (generated) -- do not edit >>>
 // NetworkPhysics | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src b4a7a546 | roc native-status --write
 #include "Network/PhysicsReplication.h"
 

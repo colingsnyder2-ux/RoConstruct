@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // Backpack | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 9221815b | roc native-status --write
 // 2008-06 native RBX::Backpack (inactive). Shape after the donor tools/rbxgs v8datamodel/Backpack.h; the one change is
 // the class-name template argument (a const char array, RTTI $1?sBackpack@2@3QBDB). From the 2008-06 binary:

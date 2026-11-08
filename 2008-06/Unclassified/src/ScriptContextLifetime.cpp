@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // ScriptContextLifetime | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src fa545853 | roc native-status --write
 #include "script/ScriptContext.h"
 #include <boost/date_time/posix_time/posix_time.hpp>

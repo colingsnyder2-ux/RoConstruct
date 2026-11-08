@@ -2,7 +2,7 @@
 // Body matches the original across its main and exception-handler fragments.
 // >>> native-status (generated) -- do not edit >>>
 // SecureHtmlAdSyndicator | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src ab564ca1 | roc native-status --write
 #include <afxwin.h>
 #include <atlutil.h>

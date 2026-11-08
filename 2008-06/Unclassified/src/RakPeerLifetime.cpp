@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // RakPeerLifetime | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src e2cf7b9f | roc native-status --write
 #include <malloc.h>
 /// \file

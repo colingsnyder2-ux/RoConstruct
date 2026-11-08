@@ -5,7 +5,7 @@
 // Body and are not part of this unit yet.
 // >>> native-status (generated) -- do not edit >>>
 // WorldJointGlue | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src d55b03ad | roc native-status --write
 #include "v8world/Joints2008.h"
 #include "v8kernel/Constants.h"

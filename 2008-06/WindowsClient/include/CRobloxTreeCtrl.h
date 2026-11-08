@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // CRobloxTreeCtrl | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src a3e8e8f9 | roc native-status --write
 #include <XTToolkitPro.h>
 #include <boost/shared_ptr.hpp>

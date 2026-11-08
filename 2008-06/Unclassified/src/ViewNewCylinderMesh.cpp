@@ -1,7 +1,7 @@
 // 2008-06 native RBX::ViewNew::CylinderBuilder / CylinderAlongXMesh (inactive): the unit 004fd430..004fdaef.
 // >>> native-status (generated) -- do not edit >>>
 // ViewNewCylinderMesh | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 21552895 | roc native-status --write
 #include "ViewNew/CylinderMesh.h"
 #include <algorithm>

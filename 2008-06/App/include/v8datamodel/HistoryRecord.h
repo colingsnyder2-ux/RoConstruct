@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // HistoryRecord | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src f36d0b4e | roc native-status --write
 #include "reflection/type.h"
 #include <boost/shared_ptr.hpp>

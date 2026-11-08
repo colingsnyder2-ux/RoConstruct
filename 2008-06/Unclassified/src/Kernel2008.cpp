@@ -6,7 +6,7 @@
 // stepWorld 005fb3f0 and the insert / remove rows are not built (Body / Point / Connector).
 // >>> native-status (generated) -- do not edit >>>
 // Kernel2008 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src e8423b3a | roc native-status --write
 #include "v8kernel/Kernel2008.h"
 #include "v8kernel/KernelData.h"

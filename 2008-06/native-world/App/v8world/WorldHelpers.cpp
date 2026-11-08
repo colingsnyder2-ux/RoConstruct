@@ -2,7 +2,7 @@
 // Bodies from openrbx Guid.cpp, Primitive.cpp, MotorJoint.cpp and Link.cpp.
 // >>> native-status (generated) -- do not edit >>>
 // WorldHelpers | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 5faff7d6 | roc native-status --write
 #include "util/Guid.h"
 #include "v8world/Primitive.h"

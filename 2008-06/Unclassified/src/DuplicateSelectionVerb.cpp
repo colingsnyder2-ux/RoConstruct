@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // DuplicateSelectionVerb | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src bbffc239 | roc native-status --write
 #include "../../native-headers/StandardVerbs.h"
 #include "../../native-headers/v8datamodel/Workspace.h"

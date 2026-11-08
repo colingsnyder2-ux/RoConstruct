@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // Teams | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 81ffd764 | roc native-status --write
 // 2008-06 native RBX::Teams (inactive). Shape after the donor tools/rbxgs Teams.h; evidence:
 //   RTTI       vtable 0083ce54 .?AVTeams@RBX@@ -> DescribedCreatable<Teams, Instance, sTeams>,

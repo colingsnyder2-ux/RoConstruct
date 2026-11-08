@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // FilteredSelectionService | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 14d696a9 | roc native-status --write
 #include "v8datamodel/Selection.h"
 #include "v8datamodel/PVInstance.h"

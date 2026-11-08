@@ -6,7 +6,7 @@
 // ~Marker scalar deleting 004b8600, shared_count<Marker> 004ac040): a codegen analog, not the original unit.
 // >>> native-status (generated) -- do not edit >>>
 // ReplicatorMarker | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 7077a441 | roc native-status --write
 #include "Network/ReplicatorMarker.h"
 

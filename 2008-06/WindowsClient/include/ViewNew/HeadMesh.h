@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // HeadMesh | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src e75efeea | roc native-status --write
 // 2008-06 native RBX::ViewNew::HeadBuilder / HeadMesh (inactive).
 //   HeadBuilder  vtable 00827194 .?AVHeadBuilder@ViewNew@RBX@@ -> LevelBuilder (mdisp 0); slots 0 build 00500d30

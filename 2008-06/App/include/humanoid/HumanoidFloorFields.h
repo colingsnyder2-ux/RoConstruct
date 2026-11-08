@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // HumanoidFloorFields | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src bd1a681b | roc native-status --write
 #include <boost/shared_ptr.hpp>
 #include <G3D/CoordinateFrame.h>

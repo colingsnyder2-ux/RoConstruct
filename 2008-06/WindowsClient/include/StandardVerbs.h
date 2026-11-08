@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // StandardVerbs | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 76c76e1d | roc native-status --write
 // Shared declarations recovered from roc_standard_verbs_native_dtor_12e1e07074f347f2.cpp.
 // Native 005c7ea0 StandardVerbs composition, derived from 0x704 allocation,

@@ -5,7 +5,7 @@
 // 006065d0, 00606670, 00606780) need the native Body / Point / GeoPair kernels and are not part of this unit yet.
 // >>> native-status (generated) -- do not edit >>>
 // KernelConnector | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 01c94ab4 | roc native-status --write
 #include "v8kernel/Connector2008.h"
 

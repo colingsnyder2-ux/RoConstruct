@@ -2,7 +2,7 @@
 // Verified by tests/record_native_services.py.
 // >>> native-status (generated) -- do not edit >>>
 // JointsService | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 9119c1e2 | roc native-status --write
 #include "v8datamodel/JointsService.h"
 

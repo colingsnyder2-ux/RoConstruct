@@ -17,7 +17,7 @@
 
 // >>> native-status (generated) -- do not edit >>>
 // RakPeerInterface | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 02c6d817 | roc native-status --write
 #ifndef __RAK_PEER_INTERFACE_H
 #define __RAK_PEER_INTERFACE_H

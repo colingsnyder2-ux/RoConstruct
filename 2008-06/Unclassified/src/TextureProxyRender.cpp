@@ -6,7 +6,7 @@
 // slot 007b8fe0 and ??_G 007b9350). resolve 007b8610 / MegaTextureProxy::resolve 007b9000 are not built.
 // >>> native-status (generated) -- do not edit >>>
 // TextureProxyRender | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 58c15739 | roc native-status --write
 #include "RenderLib/TextureProxy2008.h"
 

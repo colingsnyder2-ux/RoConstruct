@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /I{headers}/std-noinline-ldraw-parse
 // >>> native-status (generated) -- do not edit >>>
 // LDrawParserParse | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 3703c272 | roc native-status --write
 #include "util/LDrawParser.h"
 #include "util/LDrawMapRoot.h"

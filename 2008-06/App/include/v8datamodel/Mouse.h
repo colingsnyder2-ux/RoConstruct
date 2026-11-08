@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // Mouse | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 780e1ec8 | roc native-status --write
 // 2008-06 native RBX::Mouse (inactive). Shape after the donor tools/rbxgs v8datamodel/Mouse.h. The changes are the
 // class-name template argument, a const char array (RTTI $1?sMouse@2@3QBDB; "Mouse" at 0084b260 in .rdata), and the

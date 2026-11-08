@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // scopedassign | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src e78e76bf | roc native-status --write
 #ifndef UTIL_SCOPEDASSIGN_H
 #define UTIL_SCOPEDASSIGN_H

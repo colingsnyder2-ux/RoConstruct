@@ -2,7 +2,7 @@
 // Inactive native HumanoidState base methods (2008-06). Not in any build list.
 // >>> native-status (generated) -- do not edit >>>
 // HumanoidState | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src ff825017 | roc native-status --write
 #include "humanoid/HumanoidState.h"
 #include "humanoid/Humanoid.h"

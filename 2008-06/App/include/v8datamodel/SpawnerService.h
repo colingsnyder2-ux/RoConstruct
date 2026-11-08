@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // SpawnerService | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 00d1445a | roc native-status --write
 // 2008-06 native RBX::SpawnerService (inactive). Shape after the donor tools/rbxgs SpawnLocation.h; every base,
 // field and virtual below is read from the 2008-06 binary:

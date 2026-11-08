@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // Stats | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src a9eb69da | roc native-status --write
 // 2008-06 native RBX::Stats::Item, TypedStatsItem<T>, TypedMemItem and StatsService (inactive). Shape after the
 // donor tools/rbxgs v8datamodel/Stats.h; every base, field, virtual and argument below is read from the 2008-06

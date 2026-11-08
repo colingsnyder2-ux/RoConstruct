@@ -2,7 +2,7 @@
 // The 2008 client was built without RBXASSERT: getCurrentMouseCommand inlines to a plain load.
 // >>> native-status (generated) -- do not edit >>>
 // ToolVerbFactories | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 596ff440 | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8datamodel/DataModel.h"

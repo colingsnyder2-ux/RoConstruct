@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // Material2008 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 5c8afd63 | roc native-status --write
 // RBX::RenderBase::MaterialBase, RBX::Render::Material and RBX::RenderNew::Material (with their Level classes) as
 // compiled into the June 2008 client (inactive native recovery).

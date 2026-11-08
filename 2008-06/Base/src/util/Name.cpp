@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // Name | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 00e40ccb | roc native-status --write
 #include "util/Name.h"
 #include "util/Debug.h"

@@ -4,7 +4,7 @@
 // Verified by tests/record_native_flag_family.py.
 // >>> native-status (generated) -- do not edit >>>
 // FlagStand | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 7d2ca4f8 | roc native-status --write
 #include "v8datamodel/FlagStand.h"
 #include "reflection/signal.h"

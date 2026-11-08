@@ -7,7 +7,7 @@
 // NATIVE_WORLD_JOINTS_PENDING_WORLD and the recorder's PROPOSALS).
 // >>> native-status (generated) -- do not edit >>>
 // WorldJoint | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 5a41769b | roc native-status --write
 #include "v8world/Joints2008.h"
 #include "util/Math.h"

@@ -1,7 +1,7 @@
 // Inactive candidate: listener and signal ABI still under investigation.
 // >>> native-status (generated) -- do not edit >>>
 // InstanceDescendantEvents | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src e833f3be | roc native-status --write
 #include "v8tree/InstanceEvents.h"
 

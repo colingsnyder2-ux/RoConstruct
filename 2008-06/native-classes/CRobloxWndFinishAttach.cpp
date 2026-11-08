@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // CRobloxWndFinishAttach | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src f524b8af | roc native-status --write
 #include <afxwin.h>
 #include "util/NativeContentProvider.h"

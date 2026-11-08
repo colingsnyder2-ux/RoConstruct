@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // BrickColorColor3 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src fcd2c7f1 | roc native-status --write
 #include "v8datamodel/BrickColor.h"
 

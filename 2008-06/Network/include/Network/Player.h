@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // Player | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 91a4a333 | roc native-status --write
 // 2008-06 native RBX::Network::Player (inactive). Shape after the donor tools/rbxgs Network/Player.h;
 // every base, field, virtual and descriptor below is read from the 2008-06 binary:

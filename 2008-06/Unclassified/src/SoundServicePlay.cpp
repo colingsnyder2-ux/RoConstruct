@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // SoundServicePlay | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src e9898e9d | roc native-status --write
 #include "util/Sound.h"
 

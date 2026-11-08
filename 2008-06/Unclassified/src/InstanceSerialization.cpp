@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // InstanceSerialization | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src e51748a5 | roc native-status --write
 #include "../../native-headers/v8tree/Instance.h"
 #include "../../native-headers/v8xml/XmlElement.h"

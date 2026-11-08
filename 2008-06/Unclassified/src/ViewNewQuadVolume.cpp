@@ -1,7 +1,7 @@
 // 2008-06 native RBX::ViewNew::LevelBuilder (inactive): the QuadVolume unit 00500ca0..0050103f (+ Array<unsigned>::append 00500690).
 // >>> native-status (generated) -- do not edit >>>
 // ViewNewQuadVolume | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 1f25f6a0 | roc native-status --write
 #include "ViewNew/QuadVolume.h"
 

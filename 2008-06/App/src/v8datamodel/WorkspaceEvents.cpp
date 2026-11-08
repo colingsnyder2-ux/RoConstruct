@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // WorkspaceEvents | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src ec1e22e6 | roc native-status --write
 #include <afxwin.h>
 #include "CWorkspace.h"

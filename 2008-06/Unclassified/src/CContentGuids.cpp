@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // CContentGuids | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 2f4939cf | roc native-status --write
 #include <guiddef.h>
 

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // CAboutRobloxDialog | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src f0b941d0 | roc native-status --write
 #include "CAboutRobloxDialog.h"
 

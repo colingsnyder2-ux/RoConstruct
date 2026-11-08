@@ -5,7 +5,7 @@
 // exact=false (pending-build-only).
 // >>> native-status (generated) -- do not edit >>>
 // Backpack | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 6e5e7f84 | roc native-status --write
 #ifdef NATIVE_BACKPACK_PENDING
 #include "v8datamodel/Backpack.h"

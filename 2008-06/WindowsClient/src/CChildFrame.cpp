@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // CChildFrame | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src fa5b8315 | roc native-status --write
 #include "CChildFrame.h"
 

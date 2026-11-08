@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // GroupDragTool | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src f73d602f | roc native-status --write
 #include "v8datamodel/MouseCommand.h"
 #include "tool/MegaDragger.h"

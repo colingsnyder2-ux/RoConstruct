@@ -5,7 +5,7 @@
 // the MovingNoPhysicsBase family needs the proposed SimJob declaration (NATIVE_SIMJOB_PENDING).
 // >>> native-status (generated) -- do not edit >>>
 // HumanoidStates3 | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src 0e4ae394 | roc native-status --write
 #include "humanoid/HumanoidStates3.h"
 #include "humanoid/Humanoid.h"

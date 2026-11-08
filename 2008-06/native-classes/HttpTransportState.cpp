@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // HttpTransportState | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src daf52148 | roc native-status --write
 namespace RBX {
 int httpTransportMode = -1;

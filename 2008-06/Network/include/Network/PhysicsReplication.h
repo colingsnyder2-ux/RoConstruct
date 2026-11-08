@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // PhysicsReplication | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src c8318741 | roc native-status --write
 // 2008-06 native RBX::Network physics replication interfaces and their two simple implementations (inactive).
 // The donor tree has none of these classes (its Replicator.cpp sends physics itself); names follow the 2008 RTTI.

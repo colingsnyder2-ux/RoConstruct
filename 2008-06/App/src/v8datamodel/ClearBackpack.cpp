@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
 // ClearBackpack | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
+// unmapped (no indexed address) | unmapped (no binary link) | by -
 // <<< native-status | src edce6d72 | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "Network/Players.h"
