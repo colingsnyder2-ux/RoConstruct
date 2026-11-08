@@ -599,7 +599,7 @@ if NATIVE_DOC:
     libs = [script_app_library if path.resolve() == original_app_library.resolve() else path for path in libs]
 native_doc_aliases = ['/alternatename:?createNativeWorkspace@@YGJPAPAVCWorkspace@@@Z=?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z'] if NATIVE_DOC else []
 native_doc_verbose = (['/VERBOSE'] if os.environ.get('ROC_NATIVE_DOC_VERBOSE_LIB') == 'full' else ['/VERBOSE:LIB']) if NATIVE_DOC and os.environ.get('ROC_NATIVE_DOC_VERBOSE_LIB') else []
-link_args = (["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE:X86", "/MAP:" + output_name + ".map", "/OUT:" + output_name + ".exe",
+link_args = (["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE:X86", "/FORCE:MULTIPLE", "/MAP:" + output_name + ".map", "/OUT:" + output_name + ".exe",
                                       "/NODEFAULTLIB:mfcs90.lib", "/MANIFEST:NO"] + native_doc_aliases + native_doc_verbose + [u[0] for u in units] + [str(ROOT / "rebuild/2008-06/out/native-layouts" / name) for name in ("NativeFrameIconsFresh.obj", "NativeFrameIconWidth.obj", "NativeDHtmlDialog.obj", "NativeAboutDialog.obj", "NativeAboutDialogData.obj", "NativeFileVersionInfo.obj", "NativeGLCaps.obj")] + ["P6Data.obj", "roblox.res", "mfc90.lib"]
                          + native_doc_objects
                          + [str(l) for l in libs] + [s + ".lib" for s in system]
