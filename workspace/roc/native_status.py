@@ -40,7 +40,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CLIENT = "2008-06"
 NATIVE_DIRS = ["native-classes", "native-headers", "native-world"] + [
     project + "/" + area for project in
-    ("App", "Base", "Network", "Rendering", "WindowsClient", "Studio")
+    ("App", "Base", "Network", "Rendering", "WindowsClient", "Studio", "Unclassified")
     for area in ("src", "include")
 ]
 

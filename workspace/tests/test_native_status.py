@@ -163,7 +163,7 @@ def test_write_requires_live_owned_lease(monkeypatch):
 @pytest.mark.parametrize('scope', [
     'App/src', 'App/include', 'Base/src', 'Base/include', 'Network/src', 'Network/include',
     'Rendering/src', 'Rendering/include', 'WindowsClient/src', 'WindowsClient/include',
-    'Studio/src', 'Studio/include',
+    'Studio/src', 'Studio/include', 'Unclassified/src', 'Unclassified/include',
 ])
 def test_every_project_scope_is_scanned_and_links_are_retained(tmp_path, monkeypatch, scope):
     path = Path(__file__).resolve().parents[1] / 'roc/native_status.py'

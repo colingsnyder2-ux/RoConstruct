@@ -705,10 +705,25 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
                    overlay=None):
     """Plain whole-file cl /c build (no mining wrapper): header search order is the ABI choice.
     append: a header included after each source, e.g. template bodies a tree declares but never defines."""
+    sources = list(sources)
+    includes, compiled = _overlaid(includes, sources, overlay)
+    selected = {os.path.normcase(str(Path(path).resolve())) for path in compiled}
+    marker = b'// Compatibility translation unit; compile this file or the organized source, not both.'
+    for path in map(Path, compiled):
+        if not path.is_file():
+            continue
+        content = path.read_bytes()
+        if marker not in content:
+            continue
+        targets = re.findall(rb'(?m)^\s*#\s*include\s+"([^"\r\n]+\.cpp)"', content)
+        if len(targets) != 1:
+            raise ValueError('Invalid native compatibility source: ' + str(path))
+        original = os.path.normcase(str((path.parent / os.fsdecode(targets[0])).resolve()))
+        if original in selected:
+            raise ValueError('Duplicate native source and compatibility unit: ' + str(path))
     tc = toolchain(cl)
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    includes, compiled = _overlaid(includes, sources, overlay)
     cache_root = os.path.normcase(os.path.abspath(ROOT))
     cache_prefix = cache_root.rstrip(os.sep) + os.sep
     @functools.lru_cache(maxsize=None)

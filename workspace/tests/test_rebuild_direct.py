@@ -9,6 +9,29 @@ from pathlib import Path
 from roc import rebuild
 
 
+def test_direct_compile_rejects_compatibility_unit_and_its_provider(tmp_path, monkeypatch):
+    old = tmp_path / 'native-classes' / 'Thing.cpp'
+    new = tmp_path / 'App' / 'src' / 'Thing.cpp'
+    old.parent.mkdir()
+    new.parent.mkdir(parents=True)
+    new.write_text('int thing() { return 1; }')
+    old.write_text('// Compatibility translation unit; compile this file or the organized source, not both.\n'
+                   '#include "../App/src/Thing.cpp"\n')
+    monkeypatch.setattr(rebuild, 'toolchain', lambda _: pytest.fail('duplicate must fail before toolchain'))
+    with pytest.raises(ValueError, match='Duplicate native source'):
+        rebuild.compile_direct('2008-06', [old, new], tmp_path / 'out', [], '')
+    assert not (tmp_path / 'out').exists()
+
+
+def test_direct_compile_accepts_source_iterator(tmp_path, monkeypatch):
+    source = tmp_path / 'Thing.cpp'
+    source.write_text('int thing() { return 1; }')
+    monkeypatch.setattr(rebuild, 'toolchain', lambda _: {})
+    monkeypatch.setattr(rebuild, 'run', lambda *args: (0, ''))
+    result = rebuild.compile_direct('2008-06', iter([source]), tmp_path / 'out', [], '')
+    assert result[str(source)][0]
+
+
 def test_overlay_only_source_compiles_caches_and_detects_new_original(tmp_path, monkeypatch):
     tree, overlay, output = tmp_path/'tree', tmp_path/'overlay', tmp_path/'out'
     tree.mkdir(); overlay.mkdir()
