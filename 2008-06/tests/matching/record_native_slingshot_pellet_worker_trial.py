@@ -1,0 +1,17 @@
+import hashlib,json,struct,sys
+from pathlib import Path
+import pefile
+root=Path(__file__).resolve().parents[4];sys.path.insert(0,str(root));from roc import match,rebuild
+out=root/'rebuild/2008-06/out/native-layouts';work=out/'worker-slingshot';overlay=work/'include/util';overlay.mkdir(parents=True,exist_ok=True);provider=root/'tools/rbxgs/Client/App/include/util/ContentProvider.h';data=provider.read_text();needle='static ContentId fromAssets(const std::string& filePath);';assert data.count(needle)==1;(overlay/'ContentProvider.h').write_text(data.replace(needle,'static ContentId fromAssets(const char* filePath);'))
+provider_trial=root/'rebuild/2008-06/experiments/trials/NativeContentProviderTrial.cpp';data=provider_trial.read_text();needle='    ContentProvider();';assert data.count(needle)==1;(work/'NativeContentProviderSlingshotOverlay.cpp').write_text(data.replace(needle,'    void load(ContentId, std::vector<boost::shared_ptr<Instance> >&);\n'+needle))
+src=root/'rebuild/2008-06/tests/NativeSlingshotPelletWorkerTrial.cpp';obj=work/'NativeSlingshotPelletWorkerTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags[:0]=['/I'+str(work/'include'),'/I'+str(work),'/I'+str(out/'workspace-model-vector-include')];code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],work);assert code==0,log
+raw=obj.read_bytes();sections,symbols,defs,_=match._coff_data_index(raw);name,body,refs=next(x for x in match.coff_functions(raw) if x[0].startswith('?createProjectile@SlingshotTool'));target,targetrefs,_=match.target('2008-06','0063ea30');assert match.exact_match(target,targetrefs,body,refs);start,index=defs[name];table=sections[index];bindings={}
+for i in range(table[7]):
+ off,sym,kind=struct.unpack_from('<IIH',raw,table[5]+10*i);off-=start
+ if 0<=off<len(body)-3:
+  value=struct.unpack_from('<I',target,off)[0]
+  if kind==20:value=(0x63ea30+off+4+struct.unpack_from('<i',target,off)[0])&0xffffffff
+  bindings[symbols[sym][0]]=value
+for prefix,address in [('?fromAssets@ContentId@RBX@@SA?AV12@PBD',0x55bd80),('??$create@VContentProvider@',0x465210),('?load@ContentProvider@',0x5628e0),('??$shared_static_cast@VPartInstance@RBX@@VInstance@',0x5a1680),('??1?$vector@V?$shared_ptr@VInstance@',0x5a2fe0)]:assert any(k.startswith(prefix) and v==address for k,v in bindings.items()),(prefix,bindings)
+pe=pefile.PE(str(root/'work/2008-06/original-p4-reference/Roblox.exe'));image=pe.OPTIONAL_HEADER.ImageBase;rd=lambda a:struct.unpack('<I',pe.get_data(a-image,4))[0];assert rd(0x839a64+16*4)==0x63ea30;assert pe.get_string_at_rva(0x84a3b0-image)==b'Fonts\\SlingshotPellet.rbxm'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();receipt={'scope':'Inactive Slingshot projectile factory matches bytes, vtable slot and call targets; const-char fromAssets and ContentProvider load declarations provisional until their definitions and runtime ABI are checked.','address':'0x63ea30','size':len(body),'symbol':name,'bindings':{k:hex(v) for k,v in bindings.items()},'source_sha256':sha(src),'object_sha256':sha(obj),'header_sha256':sha(root/'rebuild/2008-06/tests/NativeSlingshotWorkerTrial.h'),'provider_overlay_sha256':sha(overlay/'ContentProvider.h'),'observer_sha256':sha(Path(__file__))};(root/'work/2008-06/shared-layouts/slingshot-pellet-worker-trial.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PASS Slingshot projectile factory and bindings')

@@ -1,16 +1,3 @@
-import hashlib,json,struct,sys
-from pathlib import Path
-import pefile
-root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
-out=root/'rebuild/2008-06/out/native-layouts';overlay=out/'ungroup-action-include/v8datamodel';overlay.mkdir(parents=True,exist_ok=True);header=root/'rebuild/2008-06/native-headers/v8datamodel/Selection.h';data=header.read_text();assert data.count('friend class CanNotSelectCommand;')==1 and data.count('addToSelection(first->get());')==1;data=data.replace('friend class CanNotSelectCommand;','friend class CanNotSelectCommand;\n    friend class UngroupSelectionVerb;').replace('addToSelection(first->get());','addToSelection(*first);');(overlay/'Selection.h').write_text(data)
-src=root/'rebuild/2008-06/experiments/trials/NativeUngroupActionTrial.cpp';obj=out/'NativeUngroupActionTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags.insert(0,'/I'+str(overlay.parent));code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],out);assert code==0,log
-raw=obj.read_bytes();sections,symbols,defs,_=match._coff_data_index(raw);functions=match.coff_functions(raw);rows=[]
-for prefix,address,expected in [('?doIt@UngroupSelectionVerb@',0x580d10,[('?checkRunPermissions@',0x57d250),('??$create@V?$FilteredSelection@VModelInstance',0x5806c0),('?shared_from_this@',0x42af90),('??RUngroupOperation@',0x57fb10),('??$setSelection@',0x420d20),('??$create@VSoundService@',0x4531e0),('?playSound@SoundService@',0x5bd820),('?recordCameraHistory@',0x58c5c0)]),('??$setSelection@V?$_Vector_iterator@PAVInstance@',0x420d20,[])]:
- name,body,refs=next(x for x in functions if x[0].startswith(prefix));target,targetrefs,_=match.target('2008-06','%08x'%address);assert match.exact_match(target,targetrefs,body,refs);start,index=defs[name];table=sections[index];bindings={}
- for i in range(table[7]):
-  off,sym,kind=struct.unpack_from('<IIH',raw,table[5]+10*i);off-=start
-  if kind==20 and 0<=off<len(body)-3:bindings[symbols[sym][0]]=(address+off+4+struct.unpack_from('<i',target,off)[0])&0xffffffff
- for key,value in expected:assert any(k.startswith(key) and v==value for k,v in bindings.items()),(key,bindings)
- rows.append({'address':hex(address),'size':len(body),'symbol':name,'bindings':{k:hex(v) for k,v in bindings.items()}})
-pe=pefile.PE(str(root/'work/2008-06/original-p4-reference/Roblox.exe'));assert struct.unpack('<I',pe.get_data(0x8307dc+16-pe.OPTIONAL_HEADER.ImageBase,4))[0]==0x580d10
-sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();receipt={'scope':'Inactive ungroup action and raw-selection helper match bytes, calls and vtable; temporary selection overlay, functor and runtime ABI unproven.','methods':rows,'source_sha256':sha(src),'object_sha256':sha(obj),'selection_header_sha256':sha(header),'overlay_sha256':sha(overlay/'Selection.h'),'observer_sha256':sha(Path(__file__))};(root/'work/2008-06/shared-layouts/ungroup-action-trial.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PASS ungroup action and selection helper')
+# Compatibility entry point; implementation is in matching/.
+__file__ = str(__import__('pathlib').Path(__file__).parent / 'matching' / 'record_native_ungroup_action_trial.py')
+exec(compile(open(__file__, 'rb').read(), __file__, 'exec'))

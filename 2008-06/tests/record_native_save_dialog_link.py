@@ -1,13 +1,3 @@
-"""Link native save dialogs into a separate P6-derived diagnostic PE; never alter active binary."""
-import pathlib,sys,json,hashlib,subprocess
-r=pathlib.Path(__file__).resolve().parents[3];sys.path.insert(0,str(r));from roc import rebuild
-snap=r/'rebuild/2008-06/out';p6=snap/'p6';out=snap/'native-layouts/save-dialog-link-trial';out.mkdir(parents=True,exist_ok=True);spec=rebuild.load_module('2008-06','player');libs=[snap/spec['name']/'linked/linked.lib'];pending=list(spec['depends'])
-while pending:
- dep=rebuild.load_module('2008-06',pending.pop(0));lib=snap/dep['name']/'linked/linked.lib'
- if lib not in libs:libs.append(lib);pending+=dep.get('depends',[])
-libs.append(snap/'XTP/linked/linked.lib');libs += [rebuild.dll_import_lib('2008-06',d) for d in spec['import_dlls']]
-objects=[p6/x for x in ['RobloxShell.obj','MyXTPCommandBars.obj','appmodul.obj','P6Engine.obj','P6Data.obj','roblox.res','mfc90.lib']]+[snap/'native-layouts'/x for x in ['NativeFrameIconsFresh.obj','NativeFrameIconWidth.obj','NativeDHtmlDialog.obj','NativeAboutDialog.obj','NativeAboutDialogData.obj','NativeFileVersionInfo.obj','NativeGLCaps.obj','NativeSaveDialogProfile.obj','NativeApplicationBaseUrl.obj']]
-system=['gdiplus','kernel32','user32','gdi32','advapi32','shell32','ole32','oleaut32','comdlg32','comctl32','ws2_32','winmm','opengl32','glu32','imagehlp','version','wininet','dbghelp','psapi'];args=['/nologo','/SUBSYSTEM:WINDOWS','/MACHINE:X86','/MAP:SaveLink.map','/OUT:SaveLink.exe','/NODEFAULTLIB:mfcs90.lib','/MANIFEST:NO','/INCLUDE:??0CPublishAsPlaceDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z','/INCLUDE:??0CSaveModelToRobloxDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z']+[str(x) for x in objects+libs]+[x+'.lib' for x in system]+['/NODEFAULTLIB:'+x for x in rebuild.VENDOR_AUTOLINK];c,log=rebuild.run(rebuild.toolchain(),'link',args,out);assert c==0,log
-exe=out/'SaveLink.exe';mapfile=out/'SaveLink.map';text=mapfile.read_text(errors='replace');required=['??0CPublishAsPlaceDialog@@','??0CSaveModelToRobloxDialog@@','?WindowClosing@CSaveToRobloxDialog@@','?applicationBaseUrl@@','?applicationBaseUrlText@@'];assert all(x in text for x in required)
-sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();receipt=dict(revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=r,text=True).strip(),source_sha256=sha(pathlib.Path(__file__)),link_exit=c,link_flags=args,exe_sha256=sha(exe),map_sha256=sha(mapfile),object_sha256={str(p.relative_to(r)):sha(p) for p in objects},library_sha256={str(p.relative_to(r)) if p.is_relative_to(r) else str(p):sha(p) for p in libs},verified_map_symbols=required,scope='Isolated link with forced native dialog constructors; no runtime invocation, swap or integration credit. BaseUrl startup population and complete virtual/data linkage remain open.')
-(r/'work/2008-06/shared-layouts/save-dialog-link-working.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PASS: isolated link and retained native save-dialog symbols')
+# Compatibility entry point; implementation is in matching/.
+__file__ = str(__import__('pathlib').Path(__file__).parent / 'matching' / 'record_native_save_dialog_link.py')
+exec(compile(open(__file__, 'rb').read(), __file__, 'exec'))
