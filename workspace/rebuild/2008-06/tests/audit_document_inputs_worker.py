@@ -13,7 +13,7 @@ covered = set()
 for node in ast.walk(verifier):
     if isinstance(node, ast.Constant) and isinstance(node.value, str) and node.value.startswith('record_native_') and node.value.endswith('.py'):
         covered.add(node.value)
-scripts = {p.name: p.read_text(encoding='utf-8', errors='replace').lower() for p in tests.glob('record_native_*.py')}
+scripts = {p.name: ((tests / 'matching' / p.name) if (tests / 'matching' / p.name).is_file() else p).read_text(encoding='utf-8', errors='replace').lower() for p in tests.glob('record_native_*.py')}
 script_literals = {}
 for name, text in scripts.items():
     try:
