@@ -1,0 +1,347 @@
+{
+  "base": "1d5ac7eeafbc2a3c443a7aa9f890c492ddc2e25f",
+  "root_scripts_scanned": 699,
+  "moves": [
+    {
+      "old": "tests/probe_native_guiditem_sound_link_worker.py",
+      "new": "tests/matching/probe_native_guiditem_sound_link_worker.py",
+      "original_sha256": "d4e419d31275072949fcdf21b0de0700134eb09478c2e982516d9363c02248b2",
+      "relocated_sha256": "950247df12c4d973c37658066d51afd9e50956748f0d2b1962c68f4db875db70",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/probe_native_sound_integrated_link_worker.py",
+      "new": "tests/matching/probe_native_sound_integrated_link_worker.py",
+      "original_sha256": "13083c952d8cca7cba5f894b8877f69ae4b226f7b8a5b786bfe189d8027f117e",
+      "relocated_sha256": "b36e236f6b85f09fda19abccb2225aa596ab49cfdd143a825a482785a5edcd92",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/probe_native_sound_name_link_worker.py",
+      "new": "tests/matching/probe_native_sound_name_link_worker.py",
+      "original_sha256": "9010c26e789e38ff605547fca0fe46b3ebcb3d3fb36cc2873220602b32e7f072",
+      "relocated_sha256": "429bac8b1e8f273c5e7b9125c8f48a94e6881d9decac9f9aea6ff95b4272c189",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/probe_native_sound_property_link_worker.py",
+      "new": "tests/matching/probe_native_sound_property_link_worker.py",
+      "original_sha256": "ae18556d801a0e2a068b6ddf70d3443212cef9f29a18777e3246b6395fdc0f22",
+      "relocated_sha256": "62a3f6361e5bc08e692dca950cf6e4959c7b0bbf7c3e29d4bd76f5a7f33b3757",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/probe_native_sound_singleton_link_worker.py",
+      "new": "tests/matching/probe_native_sound_singleton_link_worker.py",
+      "original_sha256": "35ad44dbb3759e0de3eb393494eff9741b50e6afcc791546a80d54b519d1c76f",
+      "relocated_sha256": "70b0e4fc5c801fd1c3555d1e141addca9933589d48af04388fbf9c0e4c3a102a",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/probe_native_sound_storage_link_worker.py",
+      "new": "tests/matching/probe_native_sound_storage_link_worker.py",
+      "original_sha256": "67f4da6303276465172b6371f632efaf3e0fad18b22b1506a505970817e440fc",
+      "relocated_sha256": "817e1a051342df3ce6cb67c703bdd9e3fa826065861fc83d8530fac4aac0cf38",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/probe_native_sound_typed_variant_link_worker.py",
+      "new": "tests/matching/probe_native_sound_typed_variant_link_worker.py",
+      "original_sha256": "36e534cb08bb8ff74c40d9fbb7af35d9050f6a45679f83abe838568e3a760b5c",
+      "relocated_sha256": "0e861e8e5c1e97fac97f11e1c516e8042a1b782df437ecd017cddfc7458a6660",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_body_flags_worker.py",
+      "new": "tests/matching/record_native_body_flags_worker.py",
+      "original_sha256": "9d842dbd89c85a6fbc256e9eb4cc719e959285612c980d65efe75b7bff9afb46",
+      "relocated_sha256": "f19de85a15ed04880c2cb9f87d6d28d89aacc2a8b3a85a0b5eb0aeb7ca10191c",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_body_mass_state_worker.py",
+      "new": "tests/matching/record_native_body_mass_state_worker.py",
+      "original_sha256": "770f7147c1b9ae52bd1b5ed10050bbf52fb06bd1b2b5e5fbe780855d75b17b16",
+      "relocated_sha256": "94f31b2965e04086cac72f72a15946d8fb7b9301dff5a6223f6bc55711d087ec",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_body_order2_worker.py",
+      "new": "tests/matching/record_native_body_order2_worker.py",
+      "original_sha256": "9c6693b580657061b9eca87eee728af219f9de9d79789f7c9c27e832e3a7b651",
+      "relocated_sha256": "6130761aa9f1220b5f729b72be700374687100a698974e97773c8c7b601a6ae2",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_body_order_worker.py",
+      "new": "tests/matching/record_native_body_order_worker.py",
+      "original_sha256": "b6a29715525c1255b8d83439e96bf3dd88ada7e5b6e867b17c1363ae1a6ce6f4",
+      "relocated_sha256": "616efaae1ad29969d6c3d840ea696f002ddbf7be977be3fd14bd9f0c75c66c9a",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_character_lifetime_audit.py",
+      "new": "tests/matching/record_native_character_lifetime_audit.py",
+      "original_sha256": "104e1b02de043ff45e8627d87aecc55b2269e1d37994d5bd9f9255a32270817e",
+      "relocated_sha256": "8a66bfcb006b2a1ad226f00d9f8811b77de4dd013198ac07e71a17c408cd165a",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_guiditem_current_worker.py",
+      "new": "tests/matching/record_native_guiditem_current_worker.py",
+      "original_sha256": "9e7d000751112cb1bbd96f9ced139601fa472e1830b3bf6f0328443cdf1fef14",
+      "relocated_sha256": "874213ca27c3d330e61a96d1a1e453d2b308b786cd638350dba87734d7a892ca",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_instance_access_audit_worker.py",
+      "new": "tests/matching/record_native_instance_access_audit_worker.py",
+      "original_sha256": "5e690de305784f460df4aaf501be0a42c416f4ff7b43174cd8f06b1fc2bbe7a0",
+      "relocated_sha256": "ecc749da5bc06beb1a13569377e3d69f903ffe3f1ba95e9b179082c6071004cd",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_instance_read_property_native_worker.py",
+      "new": "tests/matching/record_native_instance_read_property_native_worker.py",
+      "original_sha256": "476a31b34fa9ba13cc7c7c5dc5b3b95a45fad08fd482eb956b933e93ab72b453",
+      "relocated_sha256": "6ebbb87063982856de0477fc66857763e3c0291a2a23a862377a2f198165b371",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_part_tail_identity_worker.py",
+      "new": "tests/matching/record_native_part_tail_identity_worker.py",
+      "original_sha256": "9be6f4fe7e0d89371fbd1553a0438076fb9a7829543b1cad32a4e09e9597b883",
+      "relocated_sha256": "73b2ac64b4f11f86c086b0fedf5c59c430399d522cbf5f73602c1ce3f4e2a26c",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_peer_profiler_ownership_worker.py",
+      "new": "tests/matching/record_native_peer_profiler_ownership_worker.py",
+      "original_sha256": "6ea2443323c78b3b6c11fac5fbcac6fbd59361c3c06edaf154714629ffb574cf",
+      "relocated_sha256": "23536ea80c1d99df32f943d1c9b0c551d76b96c62d13bf83d92301fc9b3ff841",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_profiled_peer_no_release_worker.py",
+      "new": "tests/matching/record_native_profiled_peer_no_release_worker.py",
+      "original_sha256": "5fcb5edd1b5a510d6ba24b0171fffcbbb4f2441399e8ba99678435e74c177675",
+      "relocated_sha256": "9e5a338d12e8092ccdfe84ae8a8841e75b0aa0fcd75ce1a0f6d5093a829ad247",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_profiled_peer_rtti_worker.py",
+      "new": "tests/matching/record_native_profiled_peer_rtti_worker.py",
+      "original_sha256": "5046e6afa09a1870c268f8a2f6111368933762c49a40d270949ac73cbba6e860",
+      "relocated_sha256": "6fe5e97d3a86c426b2061a04843b35628031505ca4a91dfb7123c126d22be909",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_profiled_peer_size_worker.py",
+      "new": "tests/matching/record_native_profiled_peer_size_worker.py",
+      "original_sha256": "f871eb316d12006a207c1a090d2d6ec7b6693d56030c1f591fc280d6bf3eefad",
+      "relocated_sha256": "9b2a76ef3a0b735f34f82490d6f4d69e3cb401afd9b9f48d6b6a5921be2e28a3",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_property_all_slots_worker.py",
+      "new": "tests/matching/record_native_property_all_slots_worker.py",
+      "original_sha256": "a983ee071545c95f3e4a597ebfb277d01b3beb7602dbb6d08e7c5ac255e71445",
+      "relocated_sha256": "02208f61542a3131b82eea09c01a2d0a6727d6275d371800d45fb5c23611fb84",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_property_read_worker.py",
+      "new": "tests/matching/record_native_property_read_worker.py",
+      "original_sha256": "1c08c50468cf467a22b028cdb5fc5d61662314b20db98f2839225cc48d78ada1",
+      "relocated_sha256": "7592d70f35eab05344a1fe5caf5bf86f30b97a3827a518c4025c08661979cff2",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_property_variant_signatures_worker.py",
+      "new": "tests/matching/record_native_property_variant_signatures_worker.py",
+      "original_sha256": "59c334b0f4ee442ae253724eaf7885824ec9b667864fa869b95e25ee07f80f88",
+      "relocated_sha256": "bbed77bddee6b776306d821a80787ae416c9511497609df045df5d2402857fed",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_property_vtables_worker.py",
+      "new": "tests/matching/record_native_property_vtables_worker.py",
+      "original_sha256": "99158e3c3f1f91026402fc590bad92f03eb7ad71b817f7b5a3ba185daa5c7191",
+      "relocated_sha256": "d447202fcbec8eebc0e21d14b1eda26ae4c20359857e7a24158ba0be8e5ac3b8",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_rakpeer_config_worker.py",
+      "new": "tests/matching/record_native_rakpeer_config_worker.py",
+      "original_sha256": "808e7ce0b0697df7c1ef49fdaa6274d978a6ae8cba338e17d3e13f51d0af2bae",
+      "relocated_sha256": "ab6191c3730ed6ec569a9f1b79e002bfe336262d73fe85ad3ff59ca1c5a8c1e4",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_rakpeer_donor_lifetime_worker.py",
+      "new": "tests/matching/record_native_rakpeer_donor_lifetime_worker.py",
+      "original_sha256": "bb41edbd39fbdbfc7ea29a6a3fbea9bab2cb3e0647badca2b1d8976c9f42331b",
+      "relocated_sha256": "e9c7a9f11e6772abe854681e7076848b8bdaf94ec37b58f023c188fe7e49b247",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_rakpeer_reliability_overlay_worker.py",
+      "new": "tests/matching/record_native_rakpeer_reliability_overlay_worker.py",
+      "original_sha256": "a1102a0add99f10a682fdad99b9da1db5c3161a36d965099b65c2e278fe6f74a",
+      "relocated_sha256": "2b98afb102b7d8289cefb8880409a8192f1353e717a44e83e6c78a764d4a6e72",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_rakpeer_simulator_layout_worker.py",
+      "new": "tests/matching/record_native_rakpeer_simulator_layout_worker.py",
+      "original_sha256": "610f3810247ea22d0fee3184581c4a6598a4d475dc691667ce6cd3992b69171c",
+      "relocated_sha256": "f31812ad8c5e0f99f44c06a1432f027c9352d046d990b07a112336da61b35ca5",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_rakpeer_size_overlay_worker.py",
+      "new": "tests/matching/record_native_rakpeer_size_overlay_worker.py",
+      "original_sha256": "771e5d323efc93fb15b7e93fd709253ec647a1c3aab4753471a1f72fdc1eb1fd",
+      "relocated_sha256": "7b2f63cd0698fc9cae7d858a063ee2ded0295a3084e39904c6b8b88c1686d195",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_rakpeer_vtable_methods_worker.py",
+      "new": "tests/matching/record_native_rakpeer_vtable_methods_worker.py",
+      "original_sha256": "8bbd0008e375fb70db847e9394fffd595f22c523ba78edf5101c661c1dc24416",
+      "relocated_sha256": "dfe83283cecd236686b12edc6199925b37e537c631a9a4e861611db76f97e09e",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_simbody_dt_worker.py",
+      "new": "tests/matching/record_native_simbody_dt_worker.py",
+      "original_sha256": "b12c95e398eb7c646b56d401b2161ce7c8cc53b40ee50a209ac5e3cf2bd6c8a7",
+      "relocated_sha256": "6bb39f15a52fe881d09f35513169f4efd1010765ed3f3b16ebdcfb98a1118747",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_simbody_dt_writers_worker.py",
+      "new": "tests/matching/record_native_simbody_dt_writers_worker.py",
+      "original_sha256": "742e8f725dbe3eaa658fb1d6ba45f355fd09ba2f6097373dd713829baa2eb93b",
+      "relocated_sha256": "30074c2b72445c9161af6d7ebb8eea362ac1218365a158eaa8fba06f7ddc9b43",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_simbody_tail_impulses_worker.py",
+      "new": "tests/matching/record_native_simbody_tail_impulses_worker.py",
+      "original_sha256": "12012e466470856d8f1a316f930d1299a19d5b45d7000b68d4f9c6d0bede5c59",
+      "relocated_sha256": "19fca601cb812135fceee124ded1a98429c065e44897915e003ef687e8e9e0ec",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_simbody_vector_type_worker.py",
+      "new": "tests/matching/record_native_simbody_vector_type_worker.py",
+      "original_sha256": "30c9ccceeaa064a771d54bfdf1506ad7a432b0fd2ba2b234e2f0f2e990c88c4a",
+      "relocated_sha256": "69f032c73aa9cfe233c083d7a7014bd283cccf77c545ee82893d894e5cff78b2",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_sound_header_worker.py",
+      "new": "tests/matching/record_native_sound_header_worker.py",
+      "original_sha256": "1dbbebec79e1ca9208410ea9ff0026e081601b1fc2b80375db289beebbed789e",
+      "relocated_sha256": "67b82e370eda191e44bad80fe251ca851e20904f7b18ff548a823b8b96edd7de",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_sound_lifetime_bindings_worker.py",
+      "new": "tests/matching/record_native_sound_lifetime_bindings_worker.py",
+      "original_sha256": "821eb6387215e275f0332491a83ea65cbb30b2bc3e0713d8d5aa3ec387be7959",
+      "relocated_sha256": "e29946bbb59a8ec68becd79c525de74de98e2e8b4259b24f0c7ec3d1cc16fe09",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_sound_lifetime_helper_worker.py",
+      "new": "tests/matching/record_native_sound_lifetime_helper_worker.py",
+      "original_sha256": "5e8acf89f74f2796241e7f1ab89c22fc61e4854ab83706518190c0d2a28068b5",
+      "relocated_sha256": "01b923369f0004266c680c7008cbcee7d06955d0f12bb5ea78c4efb43e435926",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_sound_property_overlay_worker.py",
+      "new": "tests/matching/record_native_sound_property_overlay_worker.py",
+      "original_sha256": "903b9d23026431f4d73f1d4e98fee24a3853e354daac3081cad28882b8728f15",
+      "relocated_sha256": "2bc50cd4037498452d1f287f10e6f9c42fff5fbbfb427818270300fc01910fed",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_sound_typed_properties_current_worker.py",
+      "new": "tests/matching/record_native_sound_typed_properties_current_worker.py",
+      "original_sha256": "257d680ca659cc668460de53051e6474c22c10e88a75188abd8dc79875075ce8",
+      "relocated_sha256": "57e992c58c3720d1cc528a3abe9257b71dc2889f7330adac39b6eedbdc6a0d4a",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_sound_typed_variant_direct_worker.py",
+      "new": "tests/matching/record_native_sound_typed_variant_direct_worker.py",
+      "original_sha256": "9250382b3caa1c836c9cfd263a405395ebe3785fb1ef3c72b4d28a5d3f386df7",
+      "relocated_sha256": "c42bf0e856ee10ca1c81da61a5d140436f9c359afa8c52818f296f6aac5cad50",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_sound_typed_variant_inline_worker.py",
+      "new": "tests/matching/record_native_sound_typed_variant_inline_worker.py",
+      "original_sha256": "98641feacf0f7f1b909c5730de1c7e3f4233903fa12a3f69fc17f106c2b7f1ec",
+      "relocated_sha256": "f83c680c866e1a8960ab261736a907f649c56150a1462d002cb64d9b4f2f5db5",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_sound_typed_variant_worker.py",
+      "new": "tests/matching/record_native_sound_typed_variant_worker.py",
+      "original_sha256": "a3e09524ff8ac5d430ff98c01686f04026130a301842adcb5e1c27b69bb8d4cf",
+      "relocated_sha256": "2209e693f522833d46c2ebc569a1880a56b5cb28d8c7938da925164de2e9de82",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_sound_value_get_worker.py",
+      "new": "tests/matching/record_native_sound_value_get_worker.py",
+      "original_sha256": "887811f33b9a7522705aa9d5a9f2b71b799a1053f38b5e4f512f80d74ea3e5c3",
+      "relocated_sha256": "0484e9b8e714045c5f17ac90ebff25687e580eafb8ee62d3de4d7838c77e9f54",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_tool_checked_trial.py",
+      "new": "tests/matching/record_native_tool_checked_trial.py",
+      "original_sha256": "e1d7aef1cdc54489df6545957cc603c0148e17923d7cadf035e5d2272b399236",
+      "relocated_sha256": "fab70a1dfce1ebcd5a52b737ba4e3df06a96cef28cb6e8e792751427133599a4",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_workspace_actual_profile_worker.py",
+      "new": "tests/matching/record_native_workspace_actual_profile_worker.py",
+      "original_sha256": "35984f0845d0bf41a8288547da95ab50496e6870e932caca042473f738bc2202",
+      "relocated_sha256": "ffd4fa9eb746c7583e3312645ece7ec93841bd11ff80a26025609de7ffd8ac20",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_workspace_native_profile_worker.py",
+      "new": "tests/matching/record_native_workspace_native_profile_worker.py",
+      "original_sha256": "70941909160d7335d19543d63699710f2ba1a2145a295ee175968058f7fb7a63",
+      "relocated_sha256": "5319f540f1f5d4924afa108753c4cc1aca49353716de6afdbb83ddd827690da9",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_workspace_writer_eh_api_worker.py",
+      "new": "tests/matching/record_native_workspace_writer_eh_api_worker.py",
+      "original_sha256": "ba6ddd32443f04dbab1166cc14e123d40c377f9b042153335450aa3dc8b86f67",
+      "relocated_sha256": "2507a0b6d4f71126601673f5c78591ab301328bc00cecab26ddd0ab07053c3d4",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_workspace_writer_options_worker.py",
+      "new": "tests/matching/record_native_workspace_writer_options_worker.py",
+      "original_sha256": "12d5f1e5b3c586a5b35bc3a0f03c5166ce9dc814a61d2478a2efa66d48f8fbf8",
+      "relocated_sha256": "782da865b6556b1b5118192868ffee1bfff10ee2e011e34737280992aacb4882",
+      "root_depth_adjustments": 1
+    }
+  ],
+  "excluded_counts": {
+    "requires_individual_review": 642,
+    "externally_referenced": 9
+  },
+  "scope": "Only root-depth expressions changed; compatibility entry points retained. Historical observer hashes remain historical. No native, ABI, runtime or server-credit claim."
+}

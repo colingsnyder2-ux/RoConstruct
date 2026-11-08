@@ -1,0 +1,11 @@
+import json,sys,hashlib,struct
+from pathlib import Path
+root=Path(__file__).resolve().parents[4];sys.path.insert(0,str(root));from roc import match,rebuild
+out=root/'rebuild/2008-06/out/native-layouts/workspace-writer-api-worker';(out/'v8xml').mkdir(parents=True,exist_ok=True);data=(root/'rebuild/2008-06/out/native-layouts/write-worker/v8xml/XmlSerializer.h').read_text();(out/'v8xml/XmlSerializer.h').write_text(data);orig=(root/'rebuild/2008-06/tests/NativeWorkspaceWriterNearWorker.cpp').read_text();prior=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());base=[x for x in prior['flags'] if not x.startswith(('/Fo','/O','/EH')) and not x.lower().endswith('.cpp')];base[:0]=['/I'+str(out),'/I'+str(root/'rebuild/2008-06/tests')];target,tr,_=match.target('2008-06','0046b860');rows=[]
+variants=[('ob0','/O2 /Ob0 /EHsc',True),('ob1','/O2 /Ob1 /EHsc',True),('ob2','/O2 /Ob2 /EHsc',True),('ehs','/O2 /EHs',True),('eha','/O2 /EHa',True),('fpfast','/O2 /fp:fast /EHsc',True),('fpstrict','/O2 /fp:strict /EHsc',True),('o1','/O1 /EHsc',True),('global_ob1','/O2 /Ob1 /EHsc',False),('global_ob2','/O2 /Ob2 /EHsc',False),('global_ehs','/O2 /EHs',False)]
+for name,opts,pragma in variants:
+ s=orig if pragma else orig.replace('#pragma inline_depth(1)\n','');src=out/(name+'.cpp');src.write_text(s);obj=out/(name+'.obj');code,log=rebuild.run(rebuild.toolchain(21022),'cl',base+opts.split()+['/Fo'+str(obj),str(src)],out);row={'variant':name,'exit':code}
+ if code==0:
+  raw=obj.read_bytes();sym,body,refs=next(x for x in match.coff_functions(raw) if x[0].startswith('?write@CWorkspace@@'));row.update(size=len(body),exact=match.exact_match(target,tr,body,refs));sections,symbols,defs,_=match._coff_data_index(raw);start,index=defs['__unwindtable$'+sym];sec=sections[index];row['eh_states']=struct.unpack_from('<I',raw,sec[4]+start+12)[0]
+ rows.append(row);print(row,flush=True)
+result={'scope':'Isolated compiler option trials against typed source, no synthetic dummy; exact masking relocations. Failure does not prove impossible.','variants':rows,'source_sha256':hashlib.sha256(orig.encode()).hexdigest()};(root/'work/2008-06/shared-layouts/workspace-writer-options-worker.json').write_text(json.dumps(result,indent=2)+'\n')

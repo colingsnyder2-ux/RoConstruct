@@ -1,0 +1,4 @@
+import json,sys
+from pathlib import Path
+root=Path(__file__).resolve().parents[4];sys.path.insert(0,str(root));from roc import rebuild
+prior=json.loads((root/'work/2008-06/shared-layouts/profiling-integrated.json').read_text());flags=[x for x in prior['flags'] if not x.startswith('/Fo') and not x.lower().endswith('.cpp')];out=root/'rebuild/2008-06/out/native-layouts/profiled-peer-worker';out.mkdir(parents=True,exist_ok=True);src=root/'rebuild/2008-06/tests/NativeProfiledRakPeerSizeWorker.cpp';obj=out/'NativeProfiledRakPeerSizeWorker.obj';flags+=['/I'+str(root/'tools/rbxgs/Client/Network/raknet30/Source'),'/I'+str(root/'tools/rbxgs/Client/Network'),'/d1reportSingleClassLayoutRakPeer'];code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],out);(out/'size.log').write_text(log);print('exit',code);print('\n'.join(x for x in log.splitlines() if 'size(' in x or 'error C' in x)[:3000])

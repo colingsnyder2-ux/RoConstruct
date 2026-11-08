@@ -1,0 +1,24 @@
+import json,sys,hashlib
+from pathlib import Path
+root=Path(__file__).resolve().parents[4];sys.path.insert(0,str(root));from roc import rebuild,match
+out=root/'rebuild/2008-06/out/native-layouts/rakpeer-config-worker';out.mkdir(parents=True,exist_ok=True);donor=root/'tools/rbxgs/Client/Network/raknet30/Source';header=(donor/'RakPeer.h').read_text();old='#ifndef _RELEASE\n\tdouble _maxSendBPS;\n\tunsigned short _minExtraPing, _extraPingVariance;\n#endif';assert header.count(old)==1;header=header.replace(old,'\tdouble _maxSendBPS;\n\tunsigned short _minExtraPing, _extraPingVariance;');old='#if defined (_WIN32) && defined(USE_WAIT_FOR_MULTIPLE_EVENTS)\n\tWSAEVENT recvEvent;\n#endif';assert header.count(old)==1;header=header.replace(old,'');header=header.replace('RouterInterface *router;', 'RouterInterface *router;\n    unsigned int maxOutgoingBPS;');(out/'RakPeer.h').write_text(header)
+s=(donor/'RakPeer.cpp').read_text();old='#if defined (_WIN32) && defined(USE_WAIT_FOR_MULTIPLE_EVENTS)\n\trecvEvent = INVALID_HANDLE_VALUE;\n#endif';assert s.count(old)==1;s=s.replace(old,'');old='#ifndef _RELEASE\n\t_maxSendBPS=0.0;\n\t_minExtraPing=0;\n\t_extraPingVariance=0;\n#endif';assert s.count(old)==1;s=s.replace(old,'\t_maxSendBPS=0.0;\n\t_minExtraPing=0;\n\t_extraPingVariance=0;');s=s.replace('StringTable::RemoveReference();\n}', 'StringTable::RemoveReference();\n    CloseHandle(processPacketsThreadHandle);\n}',1).replace('RakPeer::RakPeer()\n{', 'RakPeer::RakPeer() : processPacketsThreadHandle(0)\n{',1).replace('networkIDManager=0;', 'networkIDManager=0;\n    maxOutgoingBPS=0;',1)
+# Compile only genuine donor lifetime definitions; the rest of old networking code still expects recvEvent.
+start=s.index('RakPeer::RakPeer()');end=s.index('// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n/// \\brief Starts',start);prefix=s[:start];src=out/'RakPeerLifetime.cpp';src.write_text('#include <malloc.h>\n'+prefix+s[start:end]);prior=json.loads((root/'work/2008-06/shared-layouts/profiling-integrated.json').read_text());flags=[x for x in prior['flags'] if not x.startswith('/Fo') and not x.lower().endswith('.cpp')];flags.insert(0,'/I'+str(out));flags+=['/I'+str(donor),'/I'+str(root/'tools/rbxgs/Client/Network')];obj=out/'RakPeerLifetime.obj';code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],out);(out/'compile.log').write_text(log);rows=[]
+if code==0:
+ for pre,addr in [('??0RakPeer@@',0x4c18d0),('??1RakPeer@@',0x4c4d50)]:
+  name,body,refs=next(x for x in match.coff_functions(obj.read_bytes()) if x[0].startswith(pre));target,tr,_=match.target('2008-06','%08x'%addr);rows.append({'symbol':name,'size':len(body),'target_size':len(target),'exact':match.exact_match(target,tr,body,refs)})
+result={'scope':'Isolated authentic donor lifetime with 2008 field config and original-observed HANDLE lifecycle. No runtime proof; if not exact do not promote.','compile_exit':code,'errors':[x for x in log.splitlines() if 'error C' in x][:20],'methods':rows,'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'header_sha256':hashlib.sha256((out/'RakPeer.h').read_bytes()).hexdigest()};(root/'work/2008-06/shared-layouts/rakpeer-config-worker.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
+import struct
+raw=obj.read_bytes();sections,symbols,defs,_=match._coff_data_index(raw)
+for row in rows:
+ addr=0x4c18d0 if row['symbol'].startswith('??0') else 0x4c4d50;target,_,_=match.target('2008-06','%08x'%addr);start,index=defs[row['symbol']];table=sections[index];bindings={}
+ for i in range(table[7]):
+  off,sym,kind=struct.unpack_from('<IIH',raw,table[5]+10*i);off-=start
+  if 0<=off<len(target)-3:
+   value=struct.unpack_from('<I',target,off)[0]
+   if kind==20:value=(addr+off+4+struct.unpack_from('<i',target,off)[0])&0xffffffff
+   bindings[symbols[sym][0]]=hex(value)
+ row['bindings']=bindings
+assert rows[0]['exact'] and rows[1]['exact'];assert any(k.startswith('??0BitStream@RakNet@@') and v=='0x4a5090' for k,v in rows[0]['bindings'].items());assert any(k.startswith('__imp__CloseHandle') and v=='0x802234' for k,v in rows[1]['bindings'].items()),rows[1]['bindings']
+result['scope']='Original-observed real fields and HANDLE lifecycle; ctor/dtor exact with relocation masking, selected bindings checked. Global ABI and runtime unproven.';result['methods']=rows;result['object_sha256']=hashlib.sha256(raw).hexdigest();result['source_donor_evidence']='tools/openrbx/3rdparty/RakNet30/Source/RakPeer.h declares maxOutgoingBPS; matching setter 0x4bbef0 stores +0x730';(root/'work/2008-06/shared-layouts/rakpeer-config-worker.json').write_text(json.dumps(result,indent=2)+'\n');print('PASS both lifetimes and BitStream/CloseHandle targets')
