@@ -1,5 +1,2 @@
-#include "v8datamodel/Visit.h"
-
-namespace RBX {
-template boost::shared_ptr<Visit> Creatable<Instance>::create<Visit>();
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8datamodel/VisitFactory.cpp"

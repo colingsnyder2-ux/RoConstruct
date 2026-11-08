@@ -206,8 +206,13 @@ def verify(root, out, run):
     plan = json.loads((out / 'plan.json').read_text(encoding='utf-8'))
     summary = json.loads((run / 'summary.json').read_text(encoding='utf-8'))
     results = json.loads((run / 'results.json').read_text(encoding='utf-8'))
-    if summary.get('state') != 'complete' or summary.get('shared_headers_changed'):
+    total = len(plan['moves']) * 2
+    if (summary.get('state') not in ('complete', 'failed') or summary.get('error')
+            or summary.get('shared_headers_changed') != [] or summary.get('total_sources') != total
+            or summary.get('completed_sources') != total or len(results) != total):
         raise ValueError('Runner incomplete or shared headers changed')
+    if summary.get('state') == 'failed' and not any(row.get('status') != 'complete' for row in results):
+        raise ValueError('Failed runner has no failed source')
     runner = git(root, 'show', plan['base'] + ':workspace/rebuild/2008-06/tests/native_check_runner.py')
     if summary.get('observer_sha256') != sha(runner):
         raise ValueError('Runner differs from reviewed canonical version')
@@ -231,9 +236,12 @@ def verify(root, out, run):
             pair = [index[str((out / 'candidate' / p).resolve()).casefold()] for p in (old, new)]
             raw = []
             for result in pair:
+                if result.get('status') != 'complete':
+                    raise ValueError('Source failed: ' + result.get('error', 'no compiler receipt')
+                                     + ('; log: ' + result['log'] if result.get('log') else ''))
                 source = Path(result['source'])
                 obj = Path(result['object'])
-                if (result.get('status') != 'complete' or result.get('changed_inputs')
+                if (result.get('changed_inputs')
                         or not result.get('build_inputs') or sha(source.read_bytes()) != result.get('source_sha256')
                         or not obj.resolve().is_relative_to(run)
                         or sha(obj.read_bytes()) != result.get('object_sha256')):
@@ -343,14 +351,14 @@ module.main()
     process = subprocess.run([sys.executable, '-c', command, str(root), str(out), str(runner_file), str(workers)],
                              cwd=root, capture_output=True, text=True, encoding='utf-8', errors='replace')
     (out / 'runner.log').write_text(process.stdout + process.stderr, encoding='utf-8')
-    if process.returncode:
-        raise RuntimeError('Native runner failed; inspect ' + str(out / 'runner.log'))
     summaries = []
     for line in process.stdout.splitlines():
         if line.startswith('{'):
             summaries.append(json.loads(line))
     if len(summaries) != 1 or not summaries[0].get('run'):
         raise ValueError('Runner did not return one complete run')
+    if process.returncode and not (process.returncode == 1 and summaries[0].get('state') == 'failed'):
+        raise RuntimeError('Native runner failed; inspect ' + str(out / 'runner.log'))
     return verify_with_root(root, out, summaries[0]['run'])
 
 

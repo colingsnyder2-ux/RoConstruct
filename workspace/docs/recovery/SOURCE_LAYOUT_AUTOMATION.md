@@ -33,6 +33,10 @@ frozen canonical headers. The tool rechecks original code/data, source, header
 and compiler hashes, and compares all non-debug object sections and named
 relocations. Files that fail any check stay skipped. It writes `review.json`,
 `integration-manifest.json` and `public-manifest.json` in the new folder.
+If every job finished but some sources failed, successful pairs are verified
+and retained automatically; failed pairs stay in the report for later review.
+An interrupted run or changed shared headers invalidates the batch. No bisect
+or recompilation is needed to separate successful pairs in a finished run.
 
 For an already completed isolated runner, use `verify --out NEW_BATCH --run
 RUN_DIRECTORY`; the saved runner must match the canonical runner for the base.

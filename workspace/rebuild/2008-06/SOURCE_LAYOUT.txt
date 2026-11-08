@@ -62,3 +62,6 @@ Native-classes counterparts are compatibility units; compile either path per fil
 
 App/src/v8datamodel/ also contains the reviewed DataModel service source batch.
 Native-classes counterparts are compatibility units; compile either path per file.
+
+App/src/v8datamodel/ also contains the reviewed model source batch.
+Native-classes counterparts are compatibility units; compile either path per file.

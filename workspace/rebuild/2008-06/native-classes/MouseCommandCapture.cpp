@@ -1,9 +1,3 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-#include "v8datamodel/MouseCommand.h"
-
-namespace RBX {
-void MouseCommand::capture()
-{
-    capturedMouse = true;
-}
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../App/src/v8datamodel/MouseCommandCapture.cpp"

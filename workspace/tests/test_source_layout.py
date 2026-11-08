@@ -99,7 +99,8 @@ def make_run(root, out, different=False, wrong_check=False):
                      'checks': [{'addr': '00400001' if wrong_check else '00400000',
                                  'requested_symbol': '?thing@', 'status': 'exact', 'data_errors': []}]})
     runner = root / 'workspace/rebuild/2008-06/tests/native_check_runner.py'
-    (run / 'summary.json').write_text(json.dumps({'state': 'complete', 'shared_headers_changed': [], 'observer_sha256': digest(runner)}))
+    (run / 'summary.json').write_text(json.dumps({'state': 'complete', 'total_sources': 2,
+        'completed_sources': 2, 'shared_headers_changed': [], 'observer_sha256': digest(runner)}))
     (run / 'results.json').write_text(json.dumps(rows))
     return run
 
@@ -169,3 +170,47 @@ def test_run_rejects_unapproved_runner(source_repo):
     source_layout.prepare(root, spec, out)
     with pytest.raises(ValueError, match='runner hash'):
         source_layout.run(root, out, '0' * 64, 1)
+
+
+def test_finished_partial_batch_skips_failed_sources(source_repo, monkeypatch):
+    root, spec = source_repo
+    for prefix in ('workspace/rebuild/2008-06/', '2008-06/'):
+        (root / prefix / 'native-classes/Other.cpp').write_bytes(b'int other() { return 2; }\n')
+    subprocess.run(['git', 'add', '.'], cwd=root, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                    'commit', '-qm', 'add other'], cwd=root, check=True)
+    spec['base'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    spec['moves'].append({'source': 'native-classes/Other.cpp', 'target': 'WindowsClient/src/Other.cpp',
+                          'checks': [{'addr': '00400001', 'symbol': '?other@'}]})
+    out = root / 'work/native-candidates/test'
+    source_layout.prepare(root, spec, out)
+    run = make_run(root, out)
+    rows = json.loads((run / 'results.json').read_text())
+    for source in (out / 'candidate/native-classes/Other.cpp', out / 'candidate/WindowsClient/src/Other.cpp'):
+        rows.append({'source': str(source), 'status': 'failed'})
+    (run / 'results.json').write_text(json.dumps(rows))
+    summary = json.loads((run / 'summary.json').read_text())
+    summary.update(state='failed', total_sources=4, completed_sources=4)
+    (run / 'summary.json').write_text(json.dumps(summary))
+    monkeypatch.setattr(source_layout, 'object_identity', lambda raw: raw)
+    monkeypatch.setattr(source_layout.match, 'coff_functions', lambda raw: [('?thing@', b'body', [])])
+    monkeypatch.setattr(source_layout.match, 'target', lambda client, addr: (b'body', [], None))
+    monkeypatch.setattr(source_layout.match, 'exact_match', lambda *args: True)
+    monkeypatch.setattr(source_layout.match, 'coff_data_refs', lambda *args: [])
+    monkeypatch.setattr(source_layout.match, 'data_check', lambda *args: ([], []))
+    result = source_layout.verify(root, out, run)
+    assert len(result['accepted']) == 1
+    assert len(result['skipped']) == 1
+    assert 'Other.cpp' in result['skipped'][0]['source']
+
+
+def test_incomplete_failed_batch_is_not_accepted(source_repo):
+    root, spec = source_repo
+    out = root / 'work/native-candidates/test'
+    source_layout.prepare(root, spec, out)
+    run = make_run(root, out)
+    summary = json.loads((run / 'summary.json').read_text())
+    summary.update(state='failed', completed_sources=1, error='worker failed')
+    (run / 'summary.json').write_text(json.dumps(summary))
+    with pytest.raises(ValueError, match='Runner incomplete'):
+        source_layout.verify(root, out, run)
