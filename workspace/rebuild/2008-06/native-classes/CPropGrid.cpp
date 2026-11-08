@@ -1,11 +1,2 @@
-#include "CPropGrid.h"
-IMPLEMENT_DYNAMIC(CPropGrid, CXTPPropertyGrid)
-
-CPropGrid::CPropGrid() : dataModel(NULL), posted(false), dirty(false)
-{
-    m_bHelpVisible = FALSE;
-}
-
-CPropGrid::~CPropGrid()
-{
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../WindowsClient/src/CPropGrid.cpp"

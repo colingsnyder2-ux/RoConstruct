@@ -1,7 +1,2 @@
-#include "CSelectionPropGrid.h"
-IMPLEMENT_DYNAMIC(CSelectionPropGrid, CPropGrid)
-
-CSelectionPropGrid::~CSelectionPropGrid()
-{
-    setSelection(NULL);
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../WindowsClient/src/CSelectionPropGrid.cpp"
