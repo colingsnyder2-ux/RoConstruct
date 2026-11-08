@@ -258,3 +258,45 @@ def test_compatibility_paths_show_old_donors_with_moved_source(tmp_path):
     assert 'https://github.com/example/repo/blob/abc/' in text
     other = ''.join(p.read_text(encoding='utf-8') for p in (tmp_path / 'browse/Other').glob('*.md'))
     assert 'compile either path, never both' in other
+
+
+def test_prior_source_versions_and_origins_survive_refresh():
+    import pytest
+    current = dict(versions=[dict(path='native-classes/A.cpp', blob='one', origins=[{'ref': 'new'}])],
+                   sources=[{'source': 'new'}], errors=[], excluded_directory_names=['tools'])
+    previous = dict(versions=[dict(path='native-classes/A.cpp', blob='one', origins=[{'ref': 'old'}], sha256='abc'),
+                              dict(path='native-classes/B.cpp', blob='two', origins=[{'ref': 'old'}])],
+                    sources=[{'source': 'old'}], excluded_directory_names=['cache'])
+    result = source_catalog.preserve_prior_versions(current, previous)
+    assert [(row['path'], row['blob']) for row in result['versions']] == [
+        ('native-classes/A.cpp', 'one'), ('native-classes/B.cpp', 'two')]
+    assert result['versions'][0]['origins'] == [{'ref': 'new'}, {'ref': 'old'}]
+    assert result['versions'][0]['sha256'] == 'abc'
+    assert result['sources'] == [{'source': 'new'}, {'source': 'old'}]
+    assert result['excluded_directory_names'] == ['cache', 'tools']
+    previous['versions'][0]['sha256'] = 'conflict'
+    with pytest.raises(ValueError, match='Conflicting source digest'):
+        source_catalog.preserve_prior_versions(result, previous)
+    with pytest.raises(ValueError, match='lacks version inventory'):
+        source_catalog.preserve_prior_versions(result, {})
+
+
+def test_previous_source_map_reads_only_pinned_git_commit(tmp_path):
+    import json
+    import subprocess
+    import pytest
+    def git(*args):
+        return subprocess.check_output(['git', *args], cwd=tmp_path, text=True).strip()
+    git('init', '-q')
+    path = tmp_path / '2008-06/source-map.json'
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps({'schema': 1, 'alternatives': {'versions': []}}))
+    git('add', '.')
+    git('-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-qm', 'valid')
+    commit = git('rev-parse', 'HEAD')
+    path.write_text('corrupt uncommitted file')
+    assert source_catalog.prior_source_map(tmp_path, commit) == {'versions': []}
+    git('add', '.')
+    git('-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-qm', 'bad')
+    with pytest.raises(ValueError):
+        source_catalog.prior_source_map(tmp_path, git('rev-parse', 'HEAD'))

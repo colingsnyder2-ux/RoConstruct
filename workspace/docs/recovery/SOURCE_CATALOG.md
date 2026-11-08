@@ -36,6 +36,11 @@ overwritten. `--browse-output` selects another new browse directory.
 the current checkout, registered worktrees and nearby RoConstruct snapshots.
 Refresh contributor fork refs first with the existing intake/discovery workflow.
 The catalog never fetches, uploads, compiles or promotes contributor code itself.
+Every map refresh merges the previously published version and origin inventory
+from the selected commit. Older donor links remain visible even when their local
+refs or temporary folders have disappeared; current scan errors remain separate.
+A malformed previous map or conflicting content hashes stops the refresh.
+
 `--all-sources` enables the same intake for JSON-only output. `--donor-ref REF`
 and `--source-root FOLDER` include additional known branches or temporary folders.
 

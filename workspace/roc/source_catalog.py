@@ -325,6 +325,49 @@ def source_versions(root, commit, donor_refs=(), source_roots=(), draft_files=No
                 scope='Explicit 2008-06 native paths only; unmapped trials and other clients are not promoted.')
 
 
+def preserve_prior_versions(current, previous):
+    """Retain published source identities and provenance across full scans."""
+    if not isinstance(previous, dict) or not isinstance(previous.get('versions'), list):
+        raise ValueError('Previous source map lacks version inventory')
+    versions = {(row['path'], row['blob']): row for row in current['versions']}
+    for row in previous['versions']:
+        key = row['path'], row['blob']
+        if not isinstance(row.get('origins'), list):
+            raise ValueError('Previous source version lacks origins: ' + key[0])
+        if key not in versions:
+            versions[key] = row
+            continue
+        entry = versions[key]
+        if row.get('sha256') and entry.get('sha256') and row['sha256'] != entry['sha256']:
+            raise ValueError('Conflicting source digest: ' + key[0])
+        if row.get('sha256'):
+            entry['sha256'] = row['sha256']
+        for origin in row['origins']:
+            if origin not in entry['origins']:
+                entry['origins'].append(origin)
+    current['versions'] = sorted(versions.values(), key=lambda row: (row['path'], row['blob']))
+    sources = {json.dumps(row, sort_keys=True) for row in current['sources']}
+    for row in previous.get('sources', []):
+        identity = json.dumps(row, sort_keys=True)
+        if identity not in sources:
+            current['sources'].append(row)
+            sources.add(identity)
+    current['excluded_directory_names'] = sorted(set(current.get('excluded_directory_names', [])) |
+                                                 set(previous.get('excluded_directory_names', [])))
+    return current
+
+
+def prior_source_map(root, commit):
+    path = commit + ':2008-06/source-map.json'
+    exists = subprocess.run(['git', 'cat-file', '-e', path], cwd=root, capture_output=True)
+    if exists.returncode:
+        return None
+    value = json.loads(subprocess.check_output(['git', 'show', path], cwd=root))
+    if not isinstance(value, dict) or value.get('schema') != 1 or not isinstance(value.get('alternatives'), dict):
+        raise ValueError('Published source map is malformed')
+    return value['alternatives']
+
+
 def source_map(data):
     """Make a stable, generated browse map from a source-catalog result."""
     groups = {name: [] for name, _ in MAP_GROUPS}
@@ -614,6 +657,10 @@ def main():
                                 if folder.is_dir() and folder != ROOT)
         if args.all_sources or args.map_output or donor_refs or source_roots:
             result['alternatives'] = source_versions(ROOT, result['work_commit'], donor_refs, source_roots, draft_files)
+            if args.map_output:
+                previous = prior_source_map(ROOT, result['work_commit'])
+                if previous is not None:
+                    preserve_prior_versions(result['alternatives'], previous)
         temporary = args.output.with_suffix(args.output.suffix + '.tmp')
         temporary.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
         temporary.replace(args.output)
