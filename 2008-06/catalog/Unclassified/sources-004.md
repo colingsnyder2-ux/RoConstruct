@@ -40,10 +40,18 @@ Earlier paths and their donor versions: `native-headers/boost-function-pod-vtabl
 </details>
 
 **`69c522ab9b8f`** · `Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · proof not assessed
+- public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 - public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 - public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`ab5c643ebf14`** · `Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
@@ -68,8 +76,10 @@ Earlier paths and their donor versions: `native-headers/boost-function-pod-vtabl
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp)
 
-<details><summary>36 retained local origins</summary>
+<details><summary>42 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
@@ -86,6 +96,9 @@ Earlier paths and their donor versions: `native-headers/boost-function-pod-vtabl
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
@@ -97,6 +110,7 @@ Earlier paths and their donor versions: `native-headers/boost-function-pod-vtabl
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
@@ -167,6 +181,8 @@ Earlier paths and their donor versions: `native-headers/boost-function-pod-vtabl
 </details>
 
 **`9d7206c5f1fe`** · `native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · proof not assessed
+- public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
+- canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
 - public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
 - public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
@@ -214,8 +230,10 @@ Earlier paths and their donor versions: `native-headers/boost-function-pod-vtabl
 - public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
@@ -232,6 +250,9 @@ Earlier paths and their donor versions: `native-headers/boost-function-pod-vtabl
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
@@ -244,6 +265,7 @@ Earlier paths and their donor versions: `native-headers/boost-function-pod-vtabl
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · root `b52aa15feaea5a0c`
@@ -325,6 +347,7 @@ Earlier paths and their donor versions: `native-headers/boost-function-pod-vtabl
 Earlier paths and their donor versions: `native-headers/boost-inline-nothrow/boost/shared_ptr.hpp`.
 
 **`4f6cd24139bb`** · `Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
@@ -349,8 +372,10 @@ Earlier paths and their donor versions: `native-headers/boost-inline-nothrow/boo
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 
-<details><summary>36 retained local origins</summary>
+<details><summary>42 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -367,6 +392,9 @@ Earlier paths and their donor versions: `native-headers/boost-inline-nothrow/boo
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -378,6 +406,7 @@ Earlier paths and their donor versions: `native-headers/boost-inline-nothrow/boo
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -400,8 +429,15 @@ Earlier paths and their donor versions: `native-headers/boost-inline-nothrow/boo
 </details>
 
 **`7cb122d925fc`** · `Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`f57e6c929fa0`** · `Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp` · proof not assessed
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/boost-inline-nothrow/boost/shared_ptr.hpp)
@@ -444,6 +480,8 @@ Earlier paths and their donor versions: `native-headers/boost-inline-nothrow/boo
 </details>
 
 **`3cf321b8a60b`** · `native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
@@ -491,8 +529,10 @@ Earlier paths and their donor versions: `native-headers/boost-inline-nothrow/boo
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -509,6 +549,9 @@ Earlier paths and their donor versions: `native-headers/boost-inline-nothrow/boo
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -521,6 +564,7 @@ Earlier paths and their donor versions: `native-headers/boost-inline-nothrow/boo
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -649,8 +693,15 @@ Earlier paths and their donor versions: `native-headers/boost-inline-nothrow/boo
 Earlier paths and their donor versions: `native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp`.
 
 **`0ee326f808aa`** · `Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`170be5d9a564`** · `Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · proof not assessed
 
@@ -662,6 +713,7 @@ Earlier paths and their donor versions: `native-headers/boost-noinline-shared-de
 </details>
 
 **`7f13fbebdb2a`** · `Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
@@ -685,8 +737,10 @@ Earlier paths and their donor versions: `native-headers/boost-noinline-shared-de
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 
-<details><summary>34 retained local origins</summary>
+<details><summary>40 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -701,6 +755,9 @@ Earlier paths and their donor versions: `native-headers/boost-noinline-shared-de
 - local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -712,6 +769,7 @@ Earlier paths and their donor versions: `native-headers/boost-noinline-shared-de
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -777,6 +835,8 @@ Earlier paths and their donor versions: `native-headers/boost-noinline-shared-de
 </details>
 
 **`3e032ffccd1a`** · `native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
@@ -822,8 +882,10 @@ Earlier paths and their donor versions: `native-headers/boost-noinline-shared-de
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 
-<details><summary>37 retained local origins</summary>
+<details><summary>43 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -838,6 +900,9 @@ Earlier paths and their donor versions: `native-headers/boost-noinline-shared-de
 - local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -850,6 +915,7 @@ Earlier paths and their donor versions: `native-headers/boost-noinline-shared-de
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`

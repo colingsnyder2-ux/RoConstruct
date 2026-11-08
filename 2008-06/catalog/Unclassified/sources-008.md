@@ -30,8 +30,15 @@ Earlier paths and their donor versions: `native-headers/nullable-class-name/util
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
 
 **`2a144c1513aa`** · `Unclassified/include/nullable-class-name/util/Object.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`74656c593bbe`** · `Unclassified/include/nullable-class-name/util/Object.h` · proof not assessed
 
@@ -43,6 +50,7 @@ Earlier paths and their donor versions: `native-headers/nullable-class-name/util
 </details>
 
 **`c85200e9f0bb`** · `Unclassified/include/nullable-class-name/util/Object.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
@@ -66,8 +74,10 @@ Earlier paths and their donor versions: `native-headers/nullable-class-name/util
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h)
 
-<details><summary>34 retained local origins</summary>
+<details><summary>40 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
@@ -82,6 +92,9 @@ Earlier paths and their donor versions: `native-headers/nullable-class-name/util
 - local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
@@ -93,6 +106,7 @@ Earlier paths and their donor versions: `native-headers/nullable-class-name/util
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
@@ -106,6 +120,8 @@ Earlier paths and their donor versions: `native-headers/nullable-class-name/util
 </details>
 
 **`10c865a95cf8`** · `native-headers/nullable-class-name/util/Object.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/nullable-class-name/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/nullable-class-name/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/nullable-class-name/util/Object.h)
@@ -151,8 +167,10 @@ Earlier paths and their donor versions: `native-headers/nullable-class-name/util
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/nullable-class-name/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h)
 
-<details><summary>37 retained local origins</summary>
+<details><summary>43 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
@@ -167,6 +185,9 @@ Earlier paths and their donor versions: `native-headers/nullable-class-name/util
 - local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
@@ -179,6 +200,7 @@ Earlier paths and their donor versions: `native-headers/nullable-class-name/util
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/nullable-class-name/util/Object.h` · root `b52aa15feaea5a0c`
@@ -321,6 +343,7 @@ Earlier paths and their donor versions: `native-headers/nullable-class-name/util
 Earlier paths and their donor versions: `native-headers/part-embedded/util/Extents.h`.
 
 **`12ae5d7944d4`** · `Unclassified/include/part-embedded/util/Extents.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h)
@@ -345,8 +368,10 @@ Earlier paths and their donor versions: `native-headers/part-embedded/util/Exten
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h)
 
-<details><summary>36 retained local origins</summary>
+<details><summary>42 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -363,6 +388,9 @@ Earlier paths and their donor versions: `native-headers/part-embedded/util/Exten
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -374,6 +402,7 @@ Earlier paths and their donor versions: `native-headers/part-embedded/util/Exten
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -387,8 +416,15 @@ Earlier paths and their donor versions: `native-headers/part-embedded/util/Exten
 </details>
 
 **`1e6995dda4d3`** · `Unclassified/include/part-embedded/util/Extents.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/part-embedded/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/part-embedded/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/part-embedded/util/Extents.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`446cd5f539f7`** · `Unclassified/include/part-embedded/util/Extents.h` · proof not assessed
 
@@ -539,6 +575,8 @@ Earlier paths and their donor versions: `native-headers/part-embedded/util/Exten
 </details>
 
 **`df402a213a20`** · `native-headers/part-embedded/util/Extents.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/part-embedded/util/Extents.h)
+- canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/part-embedded/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/part-embedded/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/part-embedded/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/part-embedded/util/Extents.h)
@@ -586,8 +624,10 @@ Earlier paths and their donor versions: `native-headers/part-embedded/util/Exten
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/part-embedded/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/part-embedded/util/Extents.h)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -604,6 +644,9 @@ Earlier paths and their donor versions: `native-headers/part-embedded/util/Exten
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -616,6 +659,7 @@ Earlier paths and their donor versions: `native-headers/part-embedded/util/Exten
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/part-embedded/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -638,8 +682,15 @@ Earlier paths and their donor versions: `native-headers/part-embedded/util/Exten
 Earlier paths and their donor versions: `native-headers/part-embedded/v8datamodel/PartInstance.h`.
 
 **`2f7883911d3b`** · `Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`43b4c5d0a6b3`** · `Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · proof not assessed
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h)
@@ -674,6 +725,7 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8datamode
 </details>
 
 **`d57edcf10bad`** · `Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h)
@@ -698,8 +750,10 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8datamode
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h)
 
-<details><summary>36 retained local origins</summary>
+<details><summary>42 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
@@ -716,6 +770,9 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8datamode
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
@@ -727,6 +784,7 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8datamode
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
@@ -803,6 +861,8 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8datamode
 </details>
 
 **`b2f787963930`** · `native-headers/part-embedded/v8datamodel/PartInstance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h)
+- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h)
@@ -850,8 +910,10 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8datamode
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
@@ -868,6 +930,9 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8datamode
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
@@ -880,6 +945,7 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8datamode
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h` · root `b52aa15feaea5a0c`

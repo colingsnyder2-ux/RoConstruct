@@ -8,10 +8,18 @@
 Earlier paths and their donor versions: `native-classes/InstanceReadProperty.cpp`.
 
 **`1f99c5d567f7`** · `App/src/v8tree/InstanceReadProperty.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/v8tree/InstanceReadProperty.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/v8tree/InstanceReadProperty.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/v8tree/InstanceReadProperty.cpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/src/v8tree/InstanceReadProperty.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`28d249e1936e`** · `App/src/v8tree/InstanceReadProperty.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/v8tree/InstanceReadProperty.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/v8tree/InstanceReadProperty.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/v8tree/InstanceReadProperty.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8tree/InstanceReadProperty.cpp)
@@ -194,6 +202,7 @@ Earlier paths and their donor versions: `native-classes/InstanceReadProperty.cpp
 </details>
 
 **`8abba9f293d1`** · `native-classes/InstanceReadProperty.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadProperty.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadProperty.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadProperty.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceReadProperty.cpp)
@@ -242,6 +251,8 @@ Earlier paths and their donor versions: `native-classes/InstanceReadProperty.cpp
 </details>
 
 **`9b4ea946d257`** · `native-classes/InstanceReadProperty.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/InstanceReadProperty.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/InstanceReadProperty.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/InstanceReadProperty.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/InstanceReadProperty.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceReadProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/InstanceReadProperty.cpp)
@@ -378,6 +389,7 @@ Earlier paths and their donor versions: `native-classes/InstanceSignalDescriptor
 - public · colingsnyder2-ux · [v8tree/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8tree/InstanceSignalDescriptors.cpp)
 
 **`580925e2be25`** · `App/src/v8tree/InstanceSignalDescriptors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/v8tree/InstanceSignalDescriptors.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/v8tree/InstanceSignalDescriptors.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/v8tree/InstanceSignalDescriptors.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8tree/InstanceSignalDescriptors.cpp)
@@ -422,8 +434,15 @@ Earlier paths and their donor versions: `native-classes/InstanceSignalDescriptor
 </details>
 
 **`95528226db17`** · `App/src/v8tree/InstanceSignalDescriptors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/v8tree/InstanceSignalDescriptors.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/v8tree/InstanceSignalDescriptors.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/v8tree/InstanceSignalDescriptors.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/src/v8tree/InstanceSignalDescriptors.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`e5097b031b92`** · `App/src/v8tree/InstanceSignalDescriptors.cpp` · proof not assessed
 
@@ -435,6 +454,7 @@ Earlier paths and their donor versions: `native-classes/InstanceSignalDescriptor
 </details>
 
 **`1d2e9d859ac6`** · `native-classes/InstanceSignalDescriptors.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceSignalDescriptors.cpp)
@@ -568,6 +588,8 @@ Earlier paths and their donor versions: `native-classes/InstanceSignalDescriptor
 </details>
 
 **`eee4f97914c5`** · `native-classes/InstanceSignalDescriptors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/InstanceSignalDescriptors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/InstanceSignalDescriptors.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceSignalDescriptors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/InstanceSignalDescriptors.cpp)
@@ -662,6 +684,7 @@ Earlier paths and their donor versions: `native-classes/InstanceSignalDescriptor
 Earlier paths and their donor versions: `native-classes/ScoreHud.cpp`.
 
 **`9e0094a8a84f`** · `App/src/v8tree/ScoreHud.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/v8tree/ScoreHud.cpp)
 - public · colingsnyder2-ux · [v8tree/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/v8tree/ScoreHud.cpp)
 - public · colingsnyder2-ux · [v8tree/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/v8tree/ScoreHud.cpp)
 - public · colingsnyder2-ux · [v8tree/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/src/v8tree/ScoreHud.cpp)
@@ -701,6 +724,7 @@ Earlier paths and their donor versions: `native-classes/ScoreHud.cpp`.
 </details>
 
 **`b6d6e23cdd58`** · `App/src/v8tree/ScoreHud.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/v8tree/ScoreHud.cpp)
 - canonical · colingsnyder2-ux · [v8tree/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/v8tree/ScoreHud.cpp)
 - canonical · colingsnyder2-ux · [v8tree/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/v8tree/ScoreHud.cpp)
 - canonical · colingsnyder2-ux · [v8tree/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8tree/ScoreHud.cpp)
@@ -770,6 +794,8 @@ Earlier paths and their donor versions: `native-classes/ScoreHud.cpp`.
 - public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ScoreHud.cpp)
 
 **`b08e1b9c4734`** · `native-classes/ScoreHud.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ScoreHud.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ScoreHud.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ScoreHud.cpp)
@@ -867,6 +893,9 @@ Earlier paths and their donor versions: `native-classes/ScoreHud.cpp`.
 </details>
 
 **`cedd955592cd`** · `native-classes/ScoreHud.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/0c68805773bd0e93646c9b73a930df4e024b67cac10fa3275db82be2ed05e498/rebuild/2008-06/native-classes/ScoreHud.cpp)
+- draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/7972c6cbe62f0d62c5480125c4feaf2709fc36dbc9d1f89bb455769a568ad277/rebuild/2008-06/native-classes/ScoreHud.cpp)
+- draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/c28adbf310e0c2778c1ca02f0879d4d6ad57f0c04b351be3226633b4bbfd1872/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/0c68805773bd0e93646c9b73a930df4e024b67cac10fa3275db82be2ed05e498/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/7972c6cbe62f0d62c5480125c4feaf2709fc36dbc9d1f89bb455769a568ad277/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/c28adbf310e0c2778c1ca02f0879d4d6ad57f0c04b351be3226633b4bbfd1872/rebuild/2008-06/native-classes/ScoreHud.cpp)

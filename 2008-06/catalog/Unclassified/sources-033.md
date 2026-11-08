@@ -35,8 +35,15 @@ Earlier paths and their donor versions: `native-classes/MathTiltQuadrant.cpp`.
 - public · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 
 **`63ff93ea0055`** · `Unclassified/src/MathTiltQuadrant.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 - public · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 - public · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/MathTiltQuadrant.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`9981c670c1b1`** · `Unclassified/src/MathTiltQuadrant.cpp` · proof not assessed
 
@@ -48,6 +55,7 @@ Earlier paths and their donor versions: `native-classes/MathTiltQuadrant.cpp`.
 </details>
 
 **`d4cd944dd423`** · `Unclassified/src/MathTiltQuadrant.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 - canonical · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 - canonical · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 - canonical · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
@@ -83,6 +91,8 @@ Earlier paths and their donor versions: `native-classes/MathTiltQuadrant.cpp`.
 </details>
 
 **`06053e3ac139`** · `native-classes/MathTiltQuadrant.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MathTiltQuadrant.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/MathTiltQuadrant.cpp)
 - public · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MathTiltQuadrant.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/MathTiltQuadrant.cpp)
 - public · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/MathTiltQuadrant.cpp)
@@ -247,8 +257,15 @@ Earlier paths and their donor versions: `native-classes/MoveHandleHit.cpp`.
 </details>
 
 **`a7c475e17381`** · `Unclassified/src/MoveHandleHit.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/MoveHandleHit.cpp)
 - public · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/MoveHandleHit.cpp)
 - public · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/MoveHandleHit.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/MoveHandleHit.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`c593caefe785`** · `Unclassified/src/MoveHandleHit.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/MoveHandleHit.cpp)
@@ -278,6 +295,7 @@ Earlier paths and their donor versions: `native-classes/MoveHandleHit.cpp`.
 - public · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/MoveHandleHit.cpp)
 
 **`fb024b1ee058`** · `Unclassified/src/MoveHandleHit.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/MoveHandleHit.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/MoveHandleHit.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/MoveHandleHit.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/MoveHandleHit.cpp)
@@ -330,6 +348,8 @@ Earlier paths and their donor versions: `native-classes/MoveHandleHit.cpp`.
 </details>
 
 **`4b638ef89043`** · `native-classes/MoveHandleHit.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MoveHandleHit.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/MoveHandleHit.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MoveHandleHit.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/MoveHandleHit.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/MoveHandleHit.cpp)
@@ -495,6 +515,7 @@ Earlier paths and their donor versions: `native-classes/MoveHandleRadius.cpp`.
 - public · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 
 **`de0346a068b9`** · `Unclassified/src/MoveHandleRadius.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/MoveHandleRadius.cpp)
@@ -539,10 +560,19 @@ Earlier paths and their donor versions: `native-classes/MoveHandleRadius.cpp`.
 </details>
 
 **`eed588102eef`** · `Unclassified/src/MoveHandleRadius.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 - public · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 - public · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/MoveHandleRadius.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`1ace2769d000`** · `native-classes/MoveHandleRadius.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MoveHandleRadius.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/MoveHandleRadius.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MoveHandleRadius.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/MoveHandleRadius.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/MoveHandleRadius.cpp)
@@ -698,8 +728,15 @@ Earlier paths and their donor versions: `native-classes/MoveHandleRadius.cpp`.
 Earlier paths and their donor versions: `native-classes/MoveUpSelectionVerb.cpp`.
 
 **`0a886b2d86ca`** · `Unclassified/src/MoveUpSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`0b2c39c2bf9f`** · `Unclassified/src/MoveUpSelectionVerb.cpp` · proof not assessed
 
@@ -711,6 +748,7 @@ Earlier paths and their donor versions: `native-classes/MoveUpSelectionVerb.cpp`
 </details>
 
 **`765d30f2a811`** · `Unclassified/src/MoveUpSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
@@ -842,6 +880,8 @@ Earlier paths and their donor versions: `native-classes/MoveUpSelectionVerb.cpp`
 </details>
 
 **`5433a614b25e`** · `native-classes/MoveUpSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MoveUpSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/MoveUpSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/MoveUpSelectionVerb.cpp)

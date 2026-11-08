@@ -42,10 +42,18 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 </details>
 
 **`975ec3401671`** · `App/include/v8datamodel/DebugSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/DebugSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8datamodel/DebugSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8datamodel/DebugSettings.h)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`cece77ea768b`** · `App/include/v8datamodel/DebugSettings.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h)
@@ -72,8 +80,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
@@ -94,6 +104,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
@@ -105,6 +118,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
@@ -149,6 +163,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 - public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8datamodel/DebugSettings.h)
 
 **`4d7eca20fcaf`** · `native-headers/v8datamodel/DebugSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8datamodel/DebugSettings.h)
+- canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8datamodel/DebugSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8datamodel/DebugSettings.h)
@@ -200,8 +216,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 - public · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/DebugSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
@@ -222,6 +240,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
@@ -234,6 +255,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h` · root `b52aa15feaea5a0c`
@@ -270,6 +292,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 </details>
 
 **`b7def245af9f`** · `native-headers/v8datamodel/DebugSettings.h` · proof not assessed
+- draft · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/11bc7d781e061c0974dc56819e6fd678fe8e856d5e057b16b5559f91976709bf/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
 - draft · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/11bc7d781e061c0974dc56819e6fd678fe8e856d5e057b16b5559f91976709bf/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
 - draft · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/11bc7d781e061c0974dc56819e6fd678fe8e856d5e057b16b5559f91976709bf/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
 - draft · colingsnyder2-ux · [v8datamodel/DebugSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/11bc7d781e061c0974dc56819e6fd678fe8e856d5e057b16b5559f91976709bf/rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h)
@@ -396,6 +419,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/DebugSetting
 Earlier paths and their donor versions: `native-headers/v8datamodel/Decal.h`.
 
 **`05a68b9ea14d`** · `App/include/v8datamodel/Decal.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/Decal.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8datamodel/Decal.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8datamodel/Decal.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8datamodel/Decal.h)
@@ -422,8 +446,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Decal.h`.
 - canonical · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/Decal.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/Decal.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
@@ -444,6 +470,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Decal.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
@@ -455,6 +484,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Decal.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
@@ -502,8 +532,15 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Decal.h`.
 </details>
 
 **`ce4a451f7ced`** · `App/include/v8datamodel/Decal.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/Decal.h)
 - public · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8datamodel/Decal.h)
 - public · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8datamodel/Decal.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`05a68b9ea14d`** · `native-headers/v8datamodel/Decal.h` · proof not assessed
 - fork · mewpokemons · [v8datamodel/Decal.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/v8datamodel/Decal.h)
@@ -597,6 +634,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Decal.h`.
 </details>
 
 **`7b4a06c4cb5e`** · `native-headers/v8datamodel/Decal.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8datamodel/Decal.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8datamodel/Decal.h)
 - public · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8datamodel/Decal.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8datamodel/Decal.h)
 - public · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8datamodel/Decal.h)
@@ -648,8 +687,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Decal.h`.
 - public · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Decal.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Decal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Decal.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
@@ -670,6 +711,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Decal.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
@@ -682,6 +726,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Decal.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Decal.h` · root `b52aa15feaea5a0c`
@@ -730,8 +775,15 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Explosion.h`
 </details>
 
 **`42e07c079465`** · `App/include/v8datamodel/Explosion.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/Explosion.h)
 - public · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8datamodel/Explosion.h)
 - public · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8datamodel/Explosion.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`79c1688058cc`** · `App/include/v8datamodel/Explosion.h` · proof not assessed
 - public · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/include/v8datamodel/Explosion.h)
@@ -759,6 +811,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Explosion.h`
 - public · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8datamodel/Explosion.h)
 
 **`ed941773eb5c`** · `App/include/v8datamodel/Explosion.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/Explosion.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8datamodel/Explosion.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8datamodel/Explosion.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8datamodel/Explosion.h)
@@ -785,8 +838,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Explosion.h`
 - canonical · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/Explosion.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/Explosion.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
@@ -807,6 +862,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Explosion.h`
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
@@ -818,6 +876,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Explosion.h`
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
@@ -831,11 +890,12 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Explosion.h`
 </details>
 
 **`0043876703e5`** · `native-headers/v8datamodel/Explosion.h` · proof not assessed
+- draft · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
+- fork · coldek · [v8datamodel/Explosion.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
 - draft · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
 - draft · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
 - draft · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
 - draft · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
-- fork · coldek · [v8datamodel/Explosion.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
 - draft · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
 - draft · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
 - draft · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
@@ -951,6 +1011,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Explosion.h`
 </details>
 
 **`d221984a015b`** · `native-headers/v8datamodel/Explosion.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8datamodel/Explosion.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
 - public · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8datamodel/Explosion.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
 - public · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8datamodel/Explosion.h)
@@ -1002,8 +1064,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Explosion.h`
 - public · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Explosion.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Explosion.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Explosion.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
@@ -1024,6 +1088,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Explosion.h`
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
@@ -1036,6 +1103,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Explosion.h`
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Explosion.h` · root `b52aa15feaea5a0c`

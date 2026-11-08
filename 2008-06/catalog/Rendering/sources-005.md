@@ -40,6 +40,8 @@ Compatibility path for `WindowsClient/include/CClassImages.h`; compile either pa
 </details>
 
 **`38c3920c34da`** · `native-headers/CClassImages.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/CClassImages.h)
+- canonical · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/CClassImages.h)
 - public · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/CClassImages.h)
 - canonical · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/CClassImages.h)
 - public · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/CClassImages.h)
@@ -89,8 +91,10 @@ Compatibility path for `WindowsClient/include/CClassImages.h`; compile either pa
 - public · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CClassImages.h)
 - canonical · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CClassImages.h)
 
-<details><summary>41 retained local origins</summary>
+<details><summary>47 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
@@ -109,6 +113,9 @@ Compatibility path for `WindowsClient/include/CClassImages.h`; compile either pa
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
@@ -121,6 +128,7 @@ Compatibility path for `WindowsClient/include/CClassImages.h`; compile either pa
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CClassImages.h` · root `b52aa15feaea5a0c`
@@ -237,8 +245,15 @@ Compatibility path for `WindowsClient/include/CClassImages.h`; compile either pa
 </details>
 
 **`3226d7250176`** · `native-headers/GLG3D/RenderDevice.h` · proof not assessed
+- public · colingsnyder2-ux · [GLG3D/RenderDevice.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/GLG3D/RenderDevice.h)
 - public · colingsnyder2-ux · [GLG3D/RenderDevice.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/GLG3D/RenderDevice.h)
 - public · colingsnyder2-ux · [GLG3D/RenderDevice.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/GLG3D/RenderDevice.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/native-headers/GLG3D/RenderDevice.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`47a7602375f3`** · `native-headers/GLG3D/RenderDevice.h` · proof not assessed
 
@@ -395,6 +410,8 @@ Compatibility path for `WindowsClient/include/InsertDecal.h`; compile either pat
 </details>
 
 **`b92208e42884`** · `native-headers/InsertDecal.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/InsertDecal.h)
+- canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 - public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/InsertDecal.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 - public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/InsertDecal.h)
@@ -434,8 +451,10 @@ Compatibility path for `WindowsClient/include/InsertDecal.h`; compile either pat
 - public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/InsertDecal.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 
-<details><summary>32 retained local origins</summary>
+<details><summary>38 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
@@ -446,6 +465,9 @@ Compatibility path for `WindowsClient/include/InsertDecal.h`; compile either pat
 - local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
@@ -458,6 +480,7 @@ Compatibility path for `WindowsClient/include/InsertDecal.h`; compile either pat
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
@@ -519,11 +542,12 @@ Compatibility path for `WindowsClient/include/InsertDecal.h`; compile either pat
 - fork · mewpokemons · [OgreRbx/RbxSceneManager2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
 
 **`de41bfe81fd5`** · `native-headers/OgreRbx/RbxSceneManager2008.h` · proof not assessed
+- draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
+- fork · mewpokemons · [OgreRbx/RbxSceneManager2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
-- fork · mewpokemons · [OgreRbx/RbxSceneManager2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
@@ -590,12 +614,13 @@ Compatibility path for `WindowsClient/include/InsertDecal.h`; compile either pat
 <summary>native-headers/OgreRbxNode/RbxSceneNode2008.h — candidate-only; 1 content versions</summary>
 
 **`c8640a35f69a`** · `native-headers/OgreRbxNode/RbxSceneNode2008.h` · proof not assessed
+- draft · colingsnyder2-ux · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
+- fork · mewpokemons · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
+- fork · mewpokemons · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
-- fork · mewpokemons · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
-- fork · mewpokemons · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
 - fork · mewpokemons · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
@@ -644,12 +669,13 @@ Compatibility path for `WindowsClient/include/InsertDecal.h`; compile either pat
 <summary>native-headers/OgreRbxNode/TwoDManager2008.h — candidate-only; 1 content versions</summary>
 
 **`40e093300c39`** · `native-headers/OgreRbxNode/TwoDManager2008.h` · proof not assessed
+- draft · colingsnyder2-ux · [OgreRbxNode/TwoDManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
+- fork · mewpokemons · [OgreRbxNode/TwoDManager2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
+- fork · mewpokemons · [OgreRbxNode/TwoDManager2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/TwoDManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/TwoDManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/TwoDManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/TwoDManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
-- fork · mewpokemons · [OgreRbxNode/TwoDManager2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
-- fork · mewpokemons · [OgreRbxNode/TwoDManager2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/TwoDManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
 - fork · mewpokemons · [OgreRbxNode/TwoDManager2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/TwoDManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
@@ -758,6 +784,7 @@ Compatibility path for `Rendering/include/RbxGraphics/Adorn.h`; compile either p
 </details>
 
 **`c1b8d09982bc`** · `native-headers/RbxGraphics/Adorn.h` · proof not assessed
+- draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
@@ -805,6 +832,8 @@ Compatibility path for `Rendering/include/RbxGraphics/Adorn.h`; compile either p
 </details>
 
 **`cf7714acb2ad`** · `native-headers/RbxGraphics/Adorn.h` · proof not assessed
+- public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/RbxGraphics/Adorn.h)
+- canonical · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 - public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/RbxGraphics/Adorn.h)
 - canonical · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 - public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/RbxGraphics/Adorn.h)
@@ -856,8 +885,10 @@ Compatibility path for `Rendering/include/RbxGraphics/Adorn.h`; compile either p
 - public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/RbxGraphics/Adorn.h)
 - canonical · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
@@ -878,6 +909,9 @@ Compatibility path for `Rendering/include/RbxGraphics/Adorn.h`; compile either p
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
@@ -890,6 +924,7 @@ Compatibility path for `Rendering/include/RbxGraphics/Adorn.h`; compile either p
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h` · root `b52aa15feaea5a0c`
@@ -969,12 +1004,13 @@ Compatibility path for `Rendering/include/RbxGraphics/Adorn.h`; compile either p
 <summary>native-headers/RbxGraphics/Adorn2008.h — candidate-only; 1 content versions</summary>
 
 **`867fa5b479b7`** · `native-headers/RbxGraphics/Adorn2008.h` · proof not assessed
+- draft · colingsnyder2-ux · [RbxGraphics/Adorn2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
+- fork · mewpokemons · [RbxGraphics/Adorn2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
+- fork · mewpokemons · [RbxGraphics/Adorn2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
-- fork · mewpokemons · [RbxGraphics/Adorn2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
-- fork · mewpokemons · [RbxGraphics/Adorn2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
 - fork · mewpokemons · [RbxGraphics/Adorn2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
@@ -1024,12 +1060,13 @@ Compatibility path for `Rendering/include/RbxGraphics/Adorn.h`; compile either p
 <summary>native-headers/RbxGraphics/AdornRbxGfx2008.h — candidate-only; 1 content versions</summary>
 
 **`d7c46d058b3e`** · `native-headers/RbxGraphics/AdornRbxGfx2008.h` · proof not assessed
+- draft · colingsnyder2-ux · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
+- fork · mewpokemons · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
+- fork · mewpokemons · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
-- fork · mewpokemons · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
-- fork · mewpokemons · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
 - fork · mewpokemons · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)

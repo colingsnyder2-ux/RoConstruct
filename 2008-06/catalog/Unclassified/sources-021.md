@@ -8,8 +8,15 @@
 Earlier paths and their donor versions: `native-classes/DocumentException.cpp`.
 
 **`3b637bf76ed9`** · `Unclassified/src/DocumentException.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/DocumentException.cpp)
 - public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/DocumentException.cpp)
 - public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/DocumentException.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/DocumentException.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`72a311dd3489`** · `Unclassified/src/DocumentException.cpp` · proof not assessed
 
@@ -48,6 +55,7 @@ Earlier paths and their donor versions: `native-classes/DocumentException.cpp`.
 - public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/DocumentException.cpp)
 
 **`e80f3c3063d7`** · `Unclassified/src/DocumentException.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
@@ -92,6 +100,8 @@ Earlier paths and their donor versions: `native-classes/DocumentException.cpp`.
 </details>
 
 **`2c3dd47d53bb`** · `native-classes/DocumentException.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/DocumentException.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/DocumentException.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/DocumentException.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/DocumentException.cpp)
@@ -287,6 +297,7 @@ Earlier paths and their donor versions: `native-classes/DocumentLaunch.cpp`.
 </details>
 
 **`4fdafff98dfd`** · `Unclassified/src/DocumentLaunch.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
@@ -322,8 +333,15 @@ Earlier paths and their donor versions: `native-classes/DocumentLaunch.cpp`.
 </details>
 
 **`702af7c704bb`** · `Unclassified/src/DocumentLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/DocumentLaunch.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/DocumentLaunch.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`8ad38e466322`** · `Unclassified/src/DocumentLaunch.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/DocumentLaunch.cpp)
@@ -353,6 +371,8 @@ Earlier paths and their donor versions: `native-classes/DocumentLaunch.cpp`.
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/DocumentLaunch.cpp)
 
 **`066a6c952150`** · `native-classes/DocumentLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/DocumentLaunch.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/DocumentLaunch.cpp)
@@ -548,6 +568,7 @@ Earlier paths and their donor versions: `native-classes/DocumentLaunch.cpp`.
 Earlier paths and their donor versions: `native-classes/DuplicateSelectionVerb.cpp`.
 
 **`31fa45cdb478`** · `Unclassified/src/DuplicateSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
@@ -590,8 +611,15 @@ Earlier paths and their donor versions: `native-classes/DuplicateSelectionVerb.c
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 
 **`f49fb8c66c53`** · `Unclassified/src/DuplicateSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`5097b1352ca0`** · `native-classes/DuplicateSelectionVerb.cpp` · proof not assessed
 
@@ -692,6 +720,8 @@ Earlier paths and their donor versions: `native-classes/DuplicateSelectionVerb.c
 </details>
 
 **`abe52b7f4d60`** · `native-classes/DuplicateSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/DuplicateSelectionVerb.cpp)
@@ -768,6 +798,7 @@ Earlier paths and their donor versions: `native-classes/EquationDisplay.cpp`.
 </details>
 
 **`de62d1af4eb5`** · `Unclassified/src/EquationDisplay.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/EquationDisplay.cpp)
@@ -797,6 +828,7 @@ Earlier paths and their donor versions: `native-classes/EquationDisplay.cpp`.
 - public · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/EquationDisplay.cpp)
 
 **`e99dfb17b287`** · `Unclassified/src/EquationDisplay.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp)
@@ -899,6 +931,8 @@ Earlier paths and their donor versions: `native-classes/EquationDisplay.cpp`.
 </details>
 
 **`ea0fd2eb5a12`** · `native-classes/EquationDisplay.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/EquationDisplay.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [native-classes/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [native-classes/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [native-classes/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/EquationDisplay.cpp)
@@ -1004,10 +1038,18 @@ Earlier paths and their donor versions: `native-classes/ExitCommand.cpp`.
 - public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ExitCommand.cpp)
 
 **`49db69b1e2f2`** · `Unclassified/src/ExitCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ExitCommand.cpp)
 - public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ExitCommand.cpp)
 - public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ExitCommand.cpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`985303cea55b`** · `Unclassified/src/ExitCommand.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ExitCommand.cpp)
 - canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ExitCommand.cpp)
 - canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ExitCommand.cpp)
 - canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/ExitCommand.cpp)
@@ -1052,6 +1094,8 @@ Earlier paths and their donor versions: `native-classes/ExitCommand.cpp`.
 </details>
 
 **`182e8346e2ca`** · `native-classes/ExitCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ExitCommand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ExitCommand.cpp)

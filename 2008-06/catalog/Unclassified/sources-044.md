@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/SoundConstructors.cpp`.
 
 **`5f1011148e10`** · `Unclassified/src/SoundConstructors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/SoundConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/SoundConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/SoundConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/SoundConstructors.cpp)
@@ -79,8 +80,15 @@ Earlier paths and their donor versions: `native-classes/SoundConstructors.cpp`.
 - public · colingsnyder2-ux · [src/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/SoundConstructors.cpp)
 
 **`d518975ccc2d`** · `Unclassified/src/SoundConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/SoundConstructors.cpp)
 - public · colingsnyder2-ux · [src/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/SoundConstructors.cpp)
 - public · colingsnyder2-ux · [src/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/SoundConstructors.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/SoundConstructors.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`22396559af25`** · `native-classes/SoundConstructors.cpp` · proof not assessed
 
@@ -110,6 +118,8 @@ Earlier paths and their donor versions: `native-classes/SoundConstructors.cpp`.
 </details>
 
 **`5d52d1b427ec`** · `native-classes/SoundConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SoundConstructors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SoundConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SoundConstructors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/SoundConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/SoundConstructors.cpp)
@@ -245,6 +255,7 @@ Earlier paths and their donor versions: `native-classes/SoundConstructors.cpp`.
 Earlier paths and their donor versions: `native-classes/SoundServicePlay.cpp`.
 
 **`8775911ac968`** · `Unclassified/src/SoundServicePlay.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/SoundServicePlay.cpp)
 - canonical · colingsnyder2-ux · [src/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/SoundServicePlay.cpp)
 - canonical · colingsnyder2-ux · [src/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/SoundServicePlay.cpp)
 - canonical · colingsnyder2-ux · [src/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/SoundServicePlay.cpp)
@@ -280,8 +291,15 @@ Earlier paths and their donor versions: `native-classes/SoundServicePlay.cpp`.
 </details>
 
 **`dc1037855c08`** · `Unclassified/src/SoundServicePlay.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/SoundServicePlay.cpp)
 - public · colingsnyder2-ux · [src/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/SoundServicePlay.cpp)
 - public · colingsnyder2-ux · [src/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/SoundServicePlay.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/SoundServicePlay.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`ed8844f9b19d`** · `Unclassified/src/SoundServicePlay.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/SoundServicePlay.cpp)
@@ -337,6 +355,8 @@ Earlier paths and their donor versions: `native-classes/SoundServicePlay.cpp`.
 </details>
 
 **`6416f50f5e9c`** · `native-classes/SoundServicePlay.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SoundServicePlay.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SoundServicePlay.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/SoundServicePlay.cpp)
@@ -502,10 +522,18 @@ Earlier paths and their donor versions: `native-classes/SoundStringConverter.cpp
 </details>
 
 **`4f0a5f815494`** · `Unclassified/src/SoundStringConverter.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/SoundStringConverter.cpp)
 - public · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/SoundStringConverter.cpp)
 - public · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/SoundStringConverter.cpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/SoundStringConverter.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`54763a2d3d22`** · `Unclassified/src/SoundStringConverter.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/SoundStringConverter.cpp)
 - canonical · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/SoundStringConverter.cpp)
 - canonical · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/SoundStringConverter.cpp)
 - canonical · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/SoundStringConverter.cpp)
@@ -632,6 +660,8 @@ Earlier paths and their donor versions: `native-classes/SoundStringConverter.cpp
 </details>
 
 **`6d0067842bdb`** · `native-classes/SoundStringConverter.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SoundStringConverter.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SoundStringConverter.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SoundStringConverter.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/SoundStringConverter.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/SoundStringConverter.cpp)
@@ -732,6 +762,7 @@ Earlier paths and their donor versions: `native-classes/StandardVerbs.cpp`.
 </details>
 
 **`4c81cba772d1`** · `Unclassified/src/StandardVerbs.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
@@ -757,6 +788,7 @@ Earlier paths and their donor versions: `native-classes/StandardVerbs.cpp`.
 </details>
 
 **`c9835b7ad962`** · `Unclassified/src/StandardVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/StandardVerbs.cpp)
@@ -978,6 +1010,8 @@ Earlier paths and their donor versions: `native-classes/StandardVerbs.cpp`.
 - public · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/StandardVerbs.cpp)
 
 **`44720b1056e7`** · `native-classes/StandardVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/StandardVerbs.cpp)
+- canonical · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/StandardVerbs.cpp)

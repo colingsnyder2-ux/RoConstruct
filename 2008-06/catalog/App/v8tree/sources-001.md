@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/v8tree/IDataState.h`.
 
 **`27e18f92e3ce`** · `App/include/v8tree/IDataState.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8tree/IDataState.h)
 - canonical · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8tree/IDataState.h)
 - canonical · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8tree/IDataState.h)
 - canonical · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8tree/IDataState.h)
@@ -35,8 +36,10 @@ Earlier paths and their donor versions: `native-headers/v8tree/IDataState.h`.
 - canonical · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8tree/IDataState.h)
 - canonical · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8tree/IDataState.h)
 
-<details><summary>42 retained local origins</summary>
+<details><summary>48 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/before/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
@@ -59,6 +62,9 @@ Earlier paths and their donor versions: `native-headers/v8tree/IDataState.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
@@ -70,6 +76,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/IDataState.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
@@ -83,8 +90,15 @@ Earlier paths and their donor versions: `native-headers/v8tree/IDataState.h`.
 </details>
 
 **`4cdc85bfa54e`** · `App/include/v8tree/IDataState.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8tree/IDataState.h)
 - public · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8tree/IDataState.h)
 - public · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8tree/IDataState.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`5f7333f70248`** · `App/include/v8tree/IDataState.h` · proof not assessed
 - public · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/include/v8tree/IDataState.h)
@@ -295,6 +309,8 @@ Earlier paths and their donor versions: `native-headers/v8tree/IDataState.h`.
 - public · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/v8tree/IDataState.h)
 
 **`687850a54c55`** · `native-headers/v8tree/IDataState.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8tree/IDataState.h)
+- canonical · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8tree/IDataState.h)
 - public · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8tree/IDataState.h)
 - canonical · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8tree/IDataState.h)
 - public · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8tree/IDataState.h)
@@ -348,8 +364,10 @@ Earlier paths and their donor versions: `native-headers/v8tree/IDataState.h`.
 - public · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8tree/IDataState.h)
 - canonical · colingsnyder2-ux · [v8tree/IDataState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8tree/IDataState.h)
 
-<details><summary>45 retained local origins</summary>
+<details><summary>51 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/before/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
@@ -372,6 +390,9 @@ Earlier paths and their donor versions: `native-headers/v8tree/IDataState.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
@@ -384,6 +405,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/IDataState.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8tree/IDataState.h` · root `b52aa15feaea5a0c`
@@ -491,6 +513,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/IDataState.h`.
 Earlier paths and their donor versions: `native-headers/v8tree/Instance.h`.
 
 **`6c8860e39e6a`** · `App/include/v8tree/Instance.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8tree/Instance.h)
@@ -517,8 +540,10 @@ Earlier paths and their donor versions: `native-headers/v8tree/Instance.h`.
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8tree/Instance.h)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -538,6 +563,9 @@ Earlier paths and their donor versions: `native-headers/v8tree/Instance.h`.
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -549,6 +577,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Instance.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -571,8 +600,15 @@ Earlier paths and their donor versions: `native-headers/v8tree/Instance.h`.
 </details>
 
 **`d1749709fa9e`** · `App/include/v8tree/Instance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8tree/Instance.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`de912d78ad3b`** · `App/include/v8tree/Instance.h` · proof not assessed
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/include/v8tree/Instance.h)
@@ -644,6 +680,8 @@ Earlier paths and their donor versions: `native-headers/v8tree/Instance.h`.
 </details>
 
 **`208619be4ef4`** · `native-headers/v8tree/Instance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8tree/Instance.h)
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8tree/Instance.h)
@@ -695,8 +733,10 @@ Earlier paths and their donor versions: `native-headers/v8tree/Instance.h`.
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8tree/Instance.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -717,6 +757,9 @@ Earlier paths and their donor versions: `native-headers/v8tree/Instance.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -729,6 +772,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Instance.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -1063,6 +1107,8 @@ Earlier paths and their donor versions: `native-headers/v8tree/Instance.h`.
 </details>
 
 **`ecda23cbd98d`** · `native-headers/v8tree/Instance.h` · proof not assessed
+- draft · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/0c68805773bd0e93646c9b73a930df4e024b67cac10fa3275db82be2ed05e498/rebuild/2008-06/native-headers/v8tree/Instance.h)
+- draft · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/7972c6cbe62f0d62c5480125c4feaf2709fc36dbc9d1f89bb455769a568ad277/rebuild/2008-06/native-headers/v8tree/Instance.h)
 - draft · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/0c68805773bd0e93646c9b73a930df4e024b67cac10fa3275db82be2ed05e498/rebuild/2008-06/native-headers/v8tree/Instance.h)
 - draft · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/7972c6cbe62f0d62c5480125c4feaf2709fc36dbc9d1f89bb455769a568ad277/rebuild/2008-06/native-headers/v8tree/Instance.h)
 - draft · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/0c68805773bd0e93646c9b73a930df4e024b67cac10fa3275db82be2ed05e498/rebuild/2008-06/native-headers/v8tree/Instance.h)

@@ -17,10 +17,18 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 </details>
 
 **`851779a2195e`** · `Unclassified/include/pv-parent/v8tree/Instance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`8f2bfb017efa`** · `Unclassified/include/pv-parent/v8tree/Instance.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
@@ -44,8 +52,10 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h)
 
-<details><summary>34 retained local origins</summary>
+<details><summary>40 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -60,6 +70,9 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 - local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -71,6 +84,7 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -200,6 +214,8 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 </details>
 
 **`b9011e940a02`** · `native-headers/pv-parent/v8tree/Instance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/pv-parent/v8tree/Instance.h)
+- canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/pv-parent/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h)
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/pv-parent/v8tree/Instance.h)
@@ -245,8 +261,10 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 - public · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/pv-parent/v8tree/Instance.h)
 - canonical · colingsnyder2-ux · [v8tree/Instance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h)
 
-<details><summary>37 retained local origins</summary>
+<details><summary>43 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -261,6 +279,9 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 - local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -273,6 +294,7 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/pv-parent/v8tree/Instance.h` · root `b52aa15feaea5a0c`
@@ -321,6 +343,8 @@ Earlier paths and their donor versions: `native-headers/pv-parent/v8tree/Instanc
 Earlier paths and their donor versions: `native-headers/runservice-events/reflection/function.h`.
 
 **`2318a4caad41`** · `Unclassified/include/runservice-events/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/runservice-events/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/runservice-events/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/runservice-events/reflection/function.h)
@@ -368,8 +392,10 @@ Earlier paths and their donor versions: `native-headers/runservice-events/reflec
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/runservice-events/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h)
 
-<details><summary>38 retained local origins</summary>
+<details><summary>44 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -386,6 +412,9 @@ Earlier paths and their donor versions: `native-headers/runservice-events/reflec
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -397,6 +426,7 @@ Earlier paths and their donor versions: `native-headers/runservice-events/reflec
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -412,6 +442,8 @@ Earlier paths and their donor versions: `native-headers/runservice-events/reflec
 </details>
 
 **`22d8b1e99045`** · `native-headers/runservice-events/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/runservice-events/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/runservice-events/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/runservice-events/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/runservice-events/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/runservice-events/reflection/function.h)
@@ -459,8 +491,10 @@ Earlier paths and their donor versions: `native-headers/runservice-events/reflec
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/runservice-events/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/runservice-events/reflection/function.h)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -477,6 +511,9 @@ Earlier paths and their donor versions: `native-headers/runservice-events/reflec
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -489,6 +526,7 @@ Earlier paths and their donor versions: `native-headers/runservice-events/reflec
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/runservice-events/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -575,6 +613,8 @@ Earlier paths and their donor versions: `native-headers/runservice-events/reflec
 Earlier paths and their donor versions: `native-headers/runservice-events/util/Events.h`.
 
 **`5145442d3fd3`** · `Unclassified/include/runservice-events/util/Events.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/runservice-events/util/Events.h)
+- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/runservice-events/util/Events.h)
 - canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/runservice-events/util/Events.h)
@@ -622,8 +662,10 @@ Earlier paths and their donor versions: `native-headers/runservice-events/util/E
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/runservice-events/util/Events.h)
 - canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h)
 
-<details><summary>36 retained local origins</summary>
+<details><summary>42 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
@@ -640,6 +682,9 @@ Earlier paths and their donor versions: `native-headers/runservice-events/util/E
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
@@ -651,6 +696,7 @@ Earlier paths and their donor versions: `native-headers/runservice-events/util/E
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
@@ -758,6 +804,8 @@ Earlier paths and their donor versions: `native-headers/runservice-events/util/E
 </details>
 
 **`f29f780855af`** · `native-headers/runservice-events/util/Events.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/runservice-events/util/Events.h)
+- canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/runservice-events/util/Events.h)
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/runservice-events/util/Events.h)
 - canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/runservice-events/util/Events.h)
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/runservice-events/util/Events.h)
@@ -805,8 +853,10 @@ Earlier paths and their donor versions: `native-headers/runservice-events/util/E
 - public · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/runservice-events/util/Events.h)
 - canonical · colingsnyder2-ux · [util/Events.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/runservice-events/util/Events.h)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
@@ -823,6 +873,9 @@ Earlier paths and their donor versions: `native-headers/runservice-events/util/E
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
@@ -835,6 +888,7 @@ Earlier paths and their donor versions: `native-headers/runservice-events/util/E
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/runservice-events/util/Events.h` · root `b52aa15feaea5a0c`

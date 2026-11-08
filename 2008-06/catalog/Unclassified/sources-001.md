@@ -8,8 +8,15 @@
 Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 
 **`12809e268c12`** · `Unclassified/include/AuthoringSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/AuthoringSettings.h)
 - public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/AuthoringSettings.h)
 - public · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/AuthoringSettings.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`6275dddb1037`** · `Unclassified/include/AuthoringSettings.h` · proof not assessed
 
@@ -21,6 +28,7 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 </details>
 
 **`9dc3fb3bd28e`** · `Unclassified/include/AuthoringSettings.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
@@ -41,8 +49,10 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 - canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [include/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/AuthoringSettings.h)
 
-<details><summary>29 retained local origins</summary>
+<details><summary>35 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
@@ -53,6 +63,9 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 - local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
@@ -64,6 +77,7 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/AuthoringSettings.h` · root `b52aa15feaea5a0c`
@@ -234,6 +248,8 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 - public · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/AuthoringSettings.h)
 
 **`f75ae26eeddc`** · `native-headers/AuthoringSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/AuthoringSettings.h)
+- canonical · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/AuthoringSettings.h)
 - public · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/AuthoringSettings.h)
 - public · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/AuthoringSettings.h)
@@ -273,8 +289,10 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 - public · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/AuthoringSettings.h)
 - canonical · colingsnyder2-ux · [native-headers/AuthoringSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/AuthoringSettings.h)
 
-<details><summary>32 retained local origins</summary>
+<details><summary>38 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
@@ -285,6 +303,9 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 - local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
@@ -297,6 +318,7 @@ Earlier paths and their donor versions: `native-headers/AuthoringSettings.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/AuthoringSettings.h` · root `b52aa15feaea5a0c`
@@ -346,6 +368,7 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 </details>
 
 **`a32f2a8d3ab6`** · `Unclassified/include/LuaArgs.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
@@ -366,8 +389,10 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
 - canonical · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/LuaArgs.h)
 
-<details><summary>29 retained local origins</summary>
+<details><summary>35 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
@@ -378,6 +403,9 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 - local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
@@ -389,6 +417,7 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
@@ -401,8 +430,15 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 </details>
 
 **`f4a1ea963e07`** · `Unclassified/include/LuaArgs.h` · proof not assessed
+- public · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/LuaArgs.h)
 - public · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/LuaArgs.h)
 - public · colingsnyder2-ux · [include/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/LuaArgs.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/LuaArgs.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`1ba7e4016455`** · `native-headers/LuaArgs.h` · proof not assessed
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/LuaArgs.h)
@@ -558,6 +594,8 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 </details>
 
 **`b3eae13679e0`** · `native-headers/LuaArgs.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/LuaArgs.h)
+- canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/LuaArgs.h)
 - canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/LuaArgs.h)
@@ -597,8 +635,10 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/LuaArgs.h)
 - canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 
-<details><summary>32 retained local origins</summary>
+<details><summary>38 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/before/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
@@ -609,6 +649,9 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 - local · `work/native-candidates/header-rest4-20261107/before/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
@@ -621,6 +664,7 @@ Earlier paths and their donor versions: `native-headers/LuaArgs.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
@@ -651,6 +695,7 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 </details>
 
 **`7c1fdd06fc7b`** · `Unclassified/include/RobloxLib.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
@@ -676,8 +721,10 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 
-<details><summary>38 retained local origins</summary>
+<details><summary>44 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
@@ -696,6 +743,9 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
@@ -707,6 +757,7 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
@@ -720,8 +771,15 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 </details>
 
 **`9a9717bbbcb3`** · `Unclassified/include/RobloxLib.h` · proof not assessed
+- public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/RobloxLib.h)
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/RobloxLib.h)
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/RobloxLib.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`af4d35943b8d`** · `Unclassified/include/RobloxLib.h` · proof not assessed
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/RobloxLib.h)
@@ -1014,6 +1072,8 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/RobloxLib.h)
 
 **`e6b2ebab5c8d`** · `native-headers/RobloxLib.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/RobloxLib.h)
+- canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/RobloxLib.h)
 - canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/RobloxLib.h)
@@ -1063,8 +1123,10 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/RobloxLib.h)
 - canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 
-<details><summary>41 retained local origins</summary>
+<details><summary>47 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
@@ -1083,6 +1145,9 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
@@ -1095,6 +1160,7 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`

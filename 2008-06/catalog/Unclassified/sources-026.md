@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/HumanoidStates3.cpp`.
 
 **`6591e4417dfe`** · `Unclassified/src/HumanoidStates3.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/HumanoidStates3.cpp)
 - canonical · colingsnyder2-ux · [src/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/HumanoidStates3.cpp)
 - canonical · colingsnyder2-ux · [src/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/HumanoidStates3.cpp)
 - canonical · colingsnyder2-ux · [src/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/HumanoidStates3.cpp)
@@ -30,8 +31,15 @@ Earlier paths and their donor versions: `native-classes/HumanoidStates3.cpp`.
 </details>
 
 **`6e467470209d`** · `Unclassified/src/HumanoidStates3.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/HumanoidStates3.cpp)
 - public · colingsnyder2-ux · [src/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/HumanoidStates3.cpp)
 - public · colingsnyder2-ux · [src/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/HumanoidStates3.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/HumanoidStates3.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`787d4771fdaf`** · `Unclassified/src/HumanoidStates3.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/HumanoidStates3.cpp)
@@ -57,6 +65,15 @@ Earlier paths and their donor versions: `native-classes/HumanoidStates3.cpp`.
 </details>
 
 **`144101538f84`** · `native-classes/HumanoidStates3.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/16f002ebbc907cdc31770e6dba3063a0aad90721f45f9b3dd4e44b545cb777c3/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
+- draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/1b1d93072d137eb6ad0823c4c29d9854b452fe6c5edaed7b78663c798ce9fdbc/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
+- draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
+- draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/32e731867b812c14d30c0b776977faf273805d6c504692dbf51781c776af60cb/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
+- draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/73b6f2a24d9dabf695fb68e209034c19737cc17bf69c4ff6e59bba973c422dfa/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
+- draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/8857881ab146b4b3422f173aa4499f6e1b27db7efe08b317804d5319f4104508/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
+- draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
+- draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/cb4020c26e008a9e68f3538ec9656e1a499c2cfa4fefaea8784484d8e1fae512/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
+- draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/d39272889f217a674d465200e5f29828a937a79fe53bfd7ef10e6a49ed7db69c/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
 - draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/16f002ebbc907cdc31770e6dba3063a0aad90721f45f9b3dd4e44b545cb777c3/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
 - draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/1b1d93072d137eb6ad0823c4c29d9854b452fe6c5edaed7b78663c798ce9fdbc/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
 - draft · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
@@ -517,6 +534,8 @@ Earlier paths and their donor versions: `native-classes/HumanoidStates3.cpp`.
 </details>
 
 **`a25f06c48169`** · `native-classes/HumanoidStates3.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/HumanoidStates3.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/HumanoidStates3.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/HumanoidStates3.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidStates3.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/HumanoidStates3.cpp)
@@ -578,6 +597,7 @@ Earlier paths and their donor versions: `native-classes/HumanoidStates3.cpp`.
 Earlier paths and their donor versions: `native-classes/ImageContentRegistration.cpp`.
 
 **`177b720a5a39`** · `Unclassified/src/ImageContentRegistration.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
@@ -613,8 +633,15 @@ Earlier paths and their donor versions: `native-classes/ImageContentRegistration
 </details>
 
 **`1921ea9c0672`** · `Unclassified/src/ImageContentRegistration.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ImageContentRegistration.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/ImageContentRegistration.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`d091ecfce13b`** · `Unclassified/src/ImageContentRegistration.cpp` · proof not assessed
 
@@ -663,6 +690,8 @@ Earlier paths and their donor versions: `native-classes/ImageContentRegistration
 </details>
 
 **`0a6a9b35ab46`** · `native-classes/ImageContentRegistration.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ImageContentRegistration.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [native-classes/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [native-classes/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ImageContentRegistration.cpp)

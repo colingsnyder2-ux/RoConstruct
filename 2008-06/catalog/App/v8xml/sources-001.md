@@ -8,10 +8,18 @@
 Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 
 **`424c088e2602`** · `App/include/v8xml/XmlElement.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8xml/XmlElement.h)
 - public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8xml/XmlElement.h)
 - public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8xml/XmlElement.h)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`4735a94a2fc1`** · `App/include/v8xml/XmlElement.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8xml/XmlElement.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8xml/XmlElement.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8xml/XmlElement.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8xml/XmlElement.h)
@@ -38,8 +46,10 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8xml/XmlElement.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8xml/XmlElement.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
@@ -60,6 +70,9 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
@@ -71,6 +84,7 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
@@ -176,6 +190,8 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 </details>
 
 **`58126df16669`** · `native-headers/v8xml/XmlElement.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8xml/XmlElement.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
 - public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8xml/XmlElement.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
 - public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8xml/XmlElement.h)
@@ -227,8 +243,10 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 - public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8xml/XmlElement.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
@@ -249,6 +267,9 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
@@ -261,6 +282,7 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8xml/XmlElement.h` · root `b52aa15feaea5a0c`
@@ -487,8 +509,15 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 
 **`6323d7a2ae49`** · `App/include/v8xml/XmlSerializer.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8xml/XmlSerializer.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`90059989803d`** · `App/include/v8xml/XmlSerializer.h` · proof not assessed
 
@@ -500,6 +529,7 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 </details>
 
 **`926ed9a2e40b`** · `App/include/v8xml/XmlSerializer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8xml/XmlSerializer.h)
@@ -526,8 +556,10 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8xml/XmlSerializer.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -548,6 +580,9 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -559,6 +594,7 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -614,6 +650,8 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 </details>
 
 **`7493de3a4fc1`** · `native-headers/v8xml/XmlSerializer.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8xml/XmlSerializer.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8xml/XmlSerializer.h)
@@ -665,8 +703,10 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -687,6 +727,9 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -699,6 +742,7 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -896,6 +940,7 @@ Earlier paths and their donor versions: `native-classes/ContentProviderLoad.cpp`
 - public · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 
 **`784ce3952830`** · `App/src/v8xml/ContentProviderLoad.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 - canonical · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 - canonical · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 - canonical · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
@@ -932,8 +977,15 @@ Earlier paths and their donor versions: `native-classes/ContentProviderLoad.cpp`
 </details>
 
 **`86ab0e39bab6`** · `App/src/v8xml/ContentProviderLoad.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 - public · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 - public · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/src/v8xml/ContentProviderLoad.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`01265bbd701a`** · `native-classes/ContentProviderLoad.cpp` · proof not assessed
 
@@ -1011,6 +1063,8 @@ Earlier paths and their donor versions: `native-classes/ContentProviderLoad.cpp`
 </details>
 
 **`a9a833f9aa21`** · `native-classes/ContentProviderLoad.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ContentProviderLoad.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ContentProviderLoad.cpp)
 - public · colingsnyder2-ux · [native-classes/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ContentProviderLoad.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ContentProviderLoad.cpp)
 - public · colingsnyder2-ux · [native-classes/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ContentProviderLoad.cpp)

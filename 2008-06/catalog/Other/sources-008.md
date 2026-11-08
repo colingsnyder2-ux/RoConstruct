@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 
 **`289c865ef1b0`** · `App/include/v8kernel/Kernel2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
@@ -32,8 +33,10 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 
-<details><summary>36 retained local origins</summary>
+<details><summary>42 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
@@ -50,6 +53,9 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
@@ -61,6 +67,7 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
@@ -97,8 +104,15 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8kernel/Kernel2008.h)
 
 **`8bf1a1630523`** · `App/include/v8kernel/Kernel2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8kernel/Kernel2008.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`b86fb2a2c616`** · `App/include/v8kernel/Kernel2008.h` · proof not assessed
 
@@ -214,6 +228,8 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 </details>
 
 **`e49ac1b33a80`** · `native-headers/v8kernel/Kernel2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8kernel/Kernel2008.h)
+- canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8kernel/Kernel2008.h)
@@ -261,8 +277,10 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
@@ -279,6 +297,9 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
@@ -291,6 +312,7 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h` · root `b52aa15feaea5a0c`
@@ -317,7 +339,7 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 </details>
 
 <details>
-<summary>native-classes/Accoutrement.cpp — equivalent; 8 content versions</summary>
+<summary>native-classes/Accoutrement.cpp — equivalent; 9 content versions</summary>
 
 Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either path, never both.
 
@@ -390,6 +412,8 @@ Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either pa
 </details>
 
 **`b21287866b02`** · `native-classes/Accoutrement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/Accoutrement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
 - public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
 - public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/Accoutrement.cpp)
@@ -467,6 +491,14 @@ Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either pa
 <details><summary>1 retained local origins</summary>
 
 - local · `rebuild/2008-06/native-classes/Accoutrement.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d971b870ddb4`** · `native-classes/Accoutrement.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-classes/Accoutrement.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

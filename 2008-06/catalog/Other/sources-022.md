@@ -75,6 +75,8 @@ Compatibility path for `App/src/tool/GrabTool.cpp`; compile either path, never b
 - public · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/GrabTool.cpp)
 
 **`72ca3990070e`** · `native-classes/GrabTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/GrabTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/GrabTool.cpp)
 - public · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/GrabTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/GrabTool.cpp)
 - public · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/GrabTool.cpp)
@@ -181,6 +183,8 @@ Compatibility path for `App/src/tool/GrabToolFactory.cpp`; compile either path, 
 </details>
 
 **`6cca54a5b6ad`** · `native-classes/GrabToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/GrabToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/GrabToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/GrabToolFactory.cpp)
@@ -370,6 +374,8 @@ Compatibility path for `Unclassified/src/GuiItem.cpp`; compile either path, neve
 </details>
 
 **`5fcfaacd21b5`** · `native-classes/GuiItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/GuiItem.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/GuiItem.cpp)
 - public · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/GuiItem.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/GuiItem.cpp)
 - public · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/GuiItem.cpp)

@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetector.h`.
 
 **`615753856efa`** · `App/include/v8datamodel/ClickDetector.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h)
@@ -34,8 +35,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
@@ -56,6 +59,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
@@ -67,6 +73,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
@@ -114,8 +121,15 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 </details>
 
 **`e4f35ea991b4`** · `App/include/v8datamodel/ClickDetector.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/ClickDetector.h)
 - public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8datamodel/ClickDetector.h)
 - public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8datamodel/ClickDetector.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`3fcb37b10c85`** · `native-headers/v8datamodel/ClickDetector.h` · proof not assessed
 
@@ -172,6 +186,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 </details>
 
 **`62604fe28467`** · `native-headers/v8datamodel/ClickDetector.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8datamodel/ClickDetector.h)
+- canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8datamodel/ClickDetector.h)
@@ -223,8 +239,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 - public · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
@@ -245,6 +263,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
@@ -257,6 +278,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h` · root `b52aa15feaea5a0c`
@@ -289,11 +311,12 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ClickDetecto
 </details>
 
 **`a058a35a1634`** · `native-headers/v8datamodel/ClickDetector.h` · proof not assessed
+- draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
+- fork · coldek · [v8datamodel/ClickDetector.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
-- fork · coldek · [v8datamodel/ClickDetector.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
 - draft · colingsnyder2-ux · [v8datamodel/ClickDetector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h)
@@ -409,8 +432,15 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 - public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8datamodel/Clothing.h)
 
 **`8fbd08425728`** · `App/include/v8datamodel/Clothing.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/Clothing.h)
 - public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8datamodel/Clothing.h)
 - public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8datamodel/Clothing.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`957be7ed7b32`** · `App/include/v8datamodel/Clothing.h` · proof not assessed
 
@@ -422,6 +452,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 </details>
 
 **`abd4ddf551a5`** · `App/include/v8datamodel/Clothing.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/Clothing.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8datamodel/Clothing.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8datamodel/Clothing.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8datamodel/Clothing.h)
@@ -448,8 +479,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/Clothing.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/Clothing.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
@@ -470,6 +503,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
@@ -481,6 +517,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
@@ -517,6 +554,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 </details>
 
 **`9520153a4a88`** · `native-headers/v8datamodel/Clothing.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8datamodel/Clothing.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8datamodel/Clothing.h)
 - public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8datamodel/Clothing.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8datamodel/Clothing.h)
 - public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8datamodel/Clothing.h)
@@ -568,8 +607,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 - public · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Clothing.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Clothing.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Clothing.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
@@ -590,6 +631,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
@@ -602,6 +646,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Clothing.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Clothing.h` · root `b52aa15feaea5a0c`

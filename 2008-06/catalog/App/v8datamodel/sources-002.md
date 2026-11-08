@@ -42,10 +42,18 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 </details>
 
 **`ba935decc8ee`** · `App/include/v8datamodel/BodyMovers.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/BodyMovers.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8datamodel/BodyMovers.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8datamodel/BodyMovers.h)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`f2e6aae224c2`** · `App/include/v8datamodel/BodyMovers.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
@@ -72,8 +80,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
@@ -94,6 +104,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
@@ -105,6 +118,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
@@ -175,6 +189,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 </details>
 
 **`927b7b7ec87e`** · `native-headers/v8datamodel/BodyMovers.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8datamodel/BodyMovers.h)
+- canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8datamodel/BodyMovers.h)
@@ -226,8 +242,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 - public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
@@ -248,6 +266,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
@@ -260,6 +281,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
@@ -340,6 +362,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 Earlier paths and their donor versions: `native-headers/v8datamodel/Camera.h`.
 
 **`0d953e291986`** · `App/include/v8datamodel/Camera.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/Camera.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8datamodel/Camera.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8datamodel/Camera.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8datamodel/Camera.h)
@@ -366,8 +389,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Camera.h`.
 - canonical · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/Camera.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/Camera.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
@@ -388,6 +413,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Camera.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
@@ -399,6 +427,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Camera.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
@@ -412,8 +441,15 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Camera.h`.
 </details>
 
 **`468c05435f7f`** · `App/include/v8datamodel/Camera.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/Camera.h)
 - public · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8datamodel/Camera.h)
 - public · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8datamodel/Camera.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`dc7a10803b86`** · `App/include/v8datamodel/Camera.h` · proof not assessed
 
@@ -509,6 +545,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Camera.h`.
 </details>
 
 **`6b5f5ec231ea`** · `native-headers/v8datamodel/Camera.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8datamodel/Camera.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
 - public · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8datamodel/Camera.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
 - public · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8datamodel/Camera.h)
@@ -560,8 +598,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Camera.h`.
 - public · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Camera.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
@@ -582,6 +622,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Camera.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
@@ -594,6 +637,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Camera.h`.
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Camera.h` · root `b52aa15feaea5a0c`
@@ -661,11 +705,12 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Camera.h`.
 - public · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8datamodel/Camera.h)
 
 **`f1080f4406b0`** · `native-headers/v8datamodel/Camera.h` · proof not assessed
+- draft · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
+- fork · coldek · [v8datamodel/Camera.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
 - draft · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
 - draft · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
 - draft · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
 - draft · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
-- fork · coldek · [v8datamodel/Camera.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
 - draft · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
 - draft · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
 - draft · colingsnyder2-ux · [v8datamodel/Camera.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Camera.h)
@@ -725,8 +770,15 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ChangeHistor
 </details>
 
 **`2e93192bf6ef`** · `App/include/v8datamodel/ChangeHistoryService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/v8datamodel/ChangeHistoryService.h)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/v8datamodel/ChangeHistoryService.h)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/v8datamodel/ChangeHistoryService.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`a1e0fe18da8a`** · `App/include/v8datamodel/ChangeHistoryService.h` · proof not assessed
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/include/v8datamodel/ChangeHistoryService.h)
@@ -754,6 +806,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ChangeHistor
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8datamodel/ChangeHistoryService.h)
 
 **`ee1bd3b0600e`** · `App/include/v8datamodel/ChangeHistoryService.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h)
@@ -780,8 +833,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ChangeHistor
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
@@ -802,6 +857,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ChangeHistor
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
@@ -813,6 +871,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ChangeHistor
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
@@ -954,6 +1013,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ChangeHistor
 </details>
 
 **`6c70440a8d5b`** · `native-headers/v8datamodel/ChangeHistoryService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/v8datamodel/ChangeHistoryService.h)
+- canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/v8datamodel/ChangeHistoryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/v8datamodel/ChangeHistoryService.h)
@@ -1005,8 +1066,10 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ChangeHistor
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/ChangeHistoryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
@@ -1027,6 +1090,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ChangeHistor
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
@@ -1039,6 +1105,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/ChangeHistor
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h` · root `b52aa15feaea5a0c`

@@ -6,6 +6,9 @@
 <summary>native-classes/AdornG3D.cpp — candidate-only; 7 content versions</summary>
 
 **`3bb9e227b210`** · `native-classes/AdornG3D.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/1606ed5b88e100edb4468491a464cb6425429dfe32c76ddd46c7100f909a0647/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/165405131017937995d208d7b00557e8eca154dc32bcc5bdda9fbcb683587168/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/936c5183944c1a7165337a74b325ed7845afce5465d69b4958fcbe3f0097dd07/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/1606ed5b88e100edb4468491a464cb6425429dfe32c76ddd46c7100f909a0647/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/165405131017937995d208d7b00557e8eca154dc32bcc5bdda9fbcb683587168/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/936c5183944c1a7165337a74b325ed7845afce5465d69b4958fcbe3f0097dd07/rebuild/2008-06/native-classes/AdornG3D.cpp)
@@ -131,6 +134,7 @@
 </details>
 
 **`666351db05bc`** · `native-classes/AdornG3D.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/c4c8eba122c8e51ace5b28af239399d4d493e49569e0eae94ac8597ffe7e93d6/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/c4c8eba122c8e51ace5b28af239399d4d493e49569e0eae94ac8597ffe7e93d6/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/c4c8eba122c8e51ace5b28af239399d4d493e49569e0eae94ac8597ffe7e93d6/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/c4c8eba122c8e51ace5b28af239399d4d493e49569e0eae94ac8597ffe7e93d6/rebuild/2008-06/native-classes/AdornG3D.cpp)
@@ -177,6 +181,8 @@
 </details>
 
 **`a17f595b9e9d`** · `native-classes/AdornG3D.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/3a25f406169093f23a27e2e57793cacc8d457641df1b7dfcf68c6aff8abbbeb4/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/d54c19d68f89770dcc7741cfbe7b70fa962b0d9ad812b0a66fae93a36cd1f2da/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/3a25f406169093f23a27e2e57793cacc8d457641df1b7dfcf68c6aff8abbbeb4/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/d54c19d68f89770dcc7741cfbe7b70fa962b0d9ad812b0a66fae93a36cd1f2da/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/3a25f406169093f23a27e2e57793cacc8d457641df1b7dfcf68c6aff8abbbeb4/rebuild/2008-06/native-classes/AdornG3D.cpp)
@@ -262,6 +268,8 @@
 </details>
 
 **`a9de93f7817d`** · `native-classes/AdornG3D.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/42bf8301d879ed0ece38a9f32d16cdffab690010ebd7493cc8e642592c1748f9/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/cba0435330ee5c1faaf24bd53b1ab463ad691482a4925a0c39d2024e29963ee3/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/42bf8301d879ed0ece38a9f32d16cdffab690010ebd7493cc8e642592c1748f9/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/cba0435330ee5c1faaf24bd53b1ab463ad691482a4925a0c39d2024e29963ee3/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/42bf8301d879ed0ece38a9f32d16cdffab690010ebd7493cc8e642592c1748f9/rebuild/2008-06/native-classes/AdornG3D.cpp)
@@ -347,6 +355,7 @@
 </details>
 
 **`ca5315b22a87`** · `native-classes/AdornG3D.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/0acd4a8177695d190d54f4455ee8937ec93aa827b15851d9815d01c82c392704/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/0acd4a8177695d190d54f4455ee8937ec93aa827b15851d9815d01c82c392704/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/0acd4a8177695d190d54f4455ee8937ec93aa827b15851d9815d01c82c392704/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/0acd4a8177695d190d54f4455ee8937ec93aa827b15851d9815d01c82c392704/rebuild/2008-06/native-classes/AdornG3D.cpp)
@@ -393,6 +402,7 @@
 </details>
 
 **`ea91838230cf`** · `native-classes/AdornG3D.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/457ab983562584c9f8d79d9ef169459c4cf8d5872a39eaad02707b3012bb0abe/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/457ab983562584c9f8d79d9ef169459c4cf8d5872a39eaad02707b3012bb0abe/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/457ab983562584c9f8d79d9ef169459c4cf8d5872a39eaad02707b3012bb0abe/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/457ab983562584c9f8d79d9ef169459c4cf8d5872a39eaad02707b3012bb0abe/rebuild/2008-06/native-classes/AdornG3D.cpp)
@@ -439,12 +449,13 @@
 </details>
 
 **`fd6b8a7fb37b`** · `native-classes/AdornG3D.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- fork · mewpokemons · [native-classes/AdornG3D.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- fork · mewpokemons · [native-classes/AdornG3D.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp)
-- fork · mewpokemons · [native-classes/AdornG3D.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/AdornG3D.cpp)
-- fork · mewpokemons · [native-classes/AdornG3D.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - fork · mewpokemons · [native-classes/AdornG3D.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp)

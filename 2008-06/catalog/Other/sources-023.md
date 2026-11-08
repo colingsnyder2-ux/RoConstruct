@@ -6,6 +6,7 @@
 <summary>native-classes/GuiRoot.cpp — candidate-only; 7 content versions</summary>
 
 **`04824811510f`** · `native-classes/GuiRoot.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/336deb149faa4bf294fb58683ea9c0d38c0dc6a97384f4fc36a9127ec827ed25/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/336deb149faa4bf294fb58683ea9c0d38c0dc6a97384f4fc36a9127ec827ed25/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/336deb149faa4bf294fb58683ea9c0d38c0dc6a97384f4fc36a9127ec827ed25/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/336deb149faa4bf294fb58683ea9c0d38c0dc6a97384f4fc36a9127ec827ed25/rebuild/2008-06/native-classes/GuiRoot.cpp)
@@ -52,6 +53,9 @@
 </details>
 
 **`1057ad9820cf`** · `native-classes/GuiRoot.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/2c872b82f2dab6ad875504b580e04d7fb99927818d35b28bb3598f3abda55671/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/8dc61f52ca7889e9c94abfd241bd243c1abde231999d88d1990b0781f342ad05/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/df84ab692b18687028d1c9f480ff31c9c59ee76e23883357333606947afdc566/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/2c872b82f2dab6ad875504b580e04d7fb99927818d35b28bb3598f3abda55671/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/8dc61f52ca7889e9c94abfd241bd243c1abde231999d88d1990b0781f342ad05/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/df84ab692b18687028d1c9f480ff31c9c59ee76e23883357333606947afdc566/rebuild/2008-06/native-classes/GuiRoot.cpp)
@@ -176,6 +180,11 @@
 </details>
 
 **`2328839a4958`** · `native-classes/GuiRoot.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/01817beb830a55ccf4ebd5bf25abddce58ef3c7fd8f5c47078b95de99e465927/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/0859f4d5cbedfdaf55aea52f8d32dbd2d404b4235c6d25e1c05fc5b4cb4a9952/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/287d6e51b40c053b2949769c0133e324fbc4d89fd6ff2d670609caab07b9fff3/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/bc505f9c7b154127ff0534dd91e83230a81ec2fc439b6543234c92d08c722263/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/f178a1911c497dadaf77126bce1c9682042ca84b03616050c4cc68b6467f49a8/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/01817beb830a55ccf4ebd5bf25abddce58ef3c7fd8f5c47078b95de99e465927/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/0859f4d5cbedfdaf55aea52f8d32dbd2d404b4235c6d25e1c05fc5b4cb4a9952/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/287d6e51b40c053b2949769c0133e324fbc4d89fd6ff2d670609caab07b9fff3/rebuild/2008-06/native-classes/GuiRoot.cpp)
@@ -379,6 +388,9 @@
 </details>
 
 **`3035529613e5`** · `native-classes/GuiRoot.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/b97a05e65e32cedbf604c3eac21d8d65c9ed95b65f83564165756ea35a8337d4/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/c3034a9b557efa9dbff04a14bdd40b34ebd0582eb10f2e4808c623db45d1bc25/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/d7768520bedf633be74b9ce4e7bd5c11e9e328cf8601edc2e648e592f092bafb/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/b97a05e65e32cedbf604c3eac21d8d65c9ed95b65f83564165756ea35a8337d4/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/c3034a9b557efa9dbff04a14bdd40b34ebd0582eb10f2e4808c623db45d1bc25/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/d7768520bedf633be74b9ce4e7bd5c11e9e328cf8601edc2e648e592f092bafb/rebuild/2008-06/native-classes/GuiRoot.cpp)
@@ -503,6 +515,7 @@
 </details>
 
 **`75e5f770efbd`** · `native-classes/GuiRoot.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/2c7163e6c57d1966cb637ef5f314addfb67a818d0be2a5a7685471ef531b90fc/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/2c7163e6c57d1966cb637ef5f314addfb67a818d0be2a5a7685471ef531b90fc/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/2c7163e6c57d1966cb637ef5f314addfb67a818d0be2a5a7685471ef531b90fc/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/2c7163e6c57d1966cb637ef5f314addfb67a818d0be2a5a7685471ef531b90fc/rebuild/2008-06/native-classes/GuiRoot.cpp)
@@ -549,6 +562,7 @@
 </details>
 
 **`ac0bf1dd7bf2`** · `native-classes/GuiRoot.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/4b1a4b0000550f8d39c4380cffb4defe1b7922a5e6d548a86d866bdc4b0bbaa3/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/4b1a4b0000550f8d39c4380cffb4defe1b7922a5e6d548a86d866bdc4b0bbaa3/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/4b1a4b0000550f8d39c4380cffb4defe1b7922a5e6d548a86d866bdc4b0bbaa3/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/4b1a4b0000550f8d39c4380cffb4defe1b7922a5e6d548a86d866bdc4b0bbaa3/rebuild/2008-06/native-classes/GuiRoot.cpp)
@@ -595,6 +609,12 @@
 </details>
 
 **`b76be51f43b9`** · `native-classes/GuiRoot.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/0088cb27b20ebea6df9b6e80567d927582ff8faba30638bdf3c501bee65c1e53/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/0cb30f6c3fb95db0e34834f4b433a71276a48bd8e1326ac3863ca41973c8081e/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/8167beef63bc6fd29e05eabfa4cf308db87d4f9b625c2d8f884f2f15ebc757ad/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/894756cdf5db47a7551cf3caa2081bb32a3837aa2e0c7832378e1421be94ef4d/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/ce6c5e7ece609ee13e99c34756194cb97f3c79f24f5b8dcd3bff5c3955834a32/rebuild/2008-06/native-classes/GuiRoot.cpp)
+- draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/df07e881d2a3c19fbef1c944c2685829346047ffdb08a22ef299ed01cdaf3eb4/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/0088cb27b20ebea6df9b6e80567d927582ff8faba30638bdf3c501bee65c1e53/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/0cb30f6c3fb95db0e34834f4b433a71276a48bd8e1326ac3863ca41973c8081e/rebuild/2008-06/native-classes/GuiRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/GuiRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/8167beef63bc6fd29e05eabfa4cf308db87d4f9b625c2d8f884f2f15ebc757ad/rebuild/2008-06/native-classes/GuiRoot.cpp)

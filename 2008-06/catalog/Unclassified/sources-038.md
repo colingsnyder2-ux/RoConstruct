@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/PlayersLifetime.cpp`.
 
 **`114728474833`** · `Unclassified/src/PlayersLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/PlayersLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/PlayersLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/PlayersLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/PlayersLifetime.cpp)
@@ -48,8 +49,15 @@ Earlier paths and their donor versions: `native-classes/PlayersLifetime.cpp`.
 - public · colingsnyder2-ux · [src/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/PlayersLifetime.cpp)
 
 **`70df32fbb66e`** · `Unclassified/src/PlayersLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/PlayersLifetime.cpp)
 - public · colingsnyder2-ux · [src/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/PlayersLifetime.cpp)
 - public · colingsnyder2-ux · [src/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/PlayersLifetime.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/PlayersLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`ef398024a010`** · `Unclassified/src/PlayersLifetime.cpp` · proof not assessed
 
@@ -147,6 +155,8 @@ Earlier paths and their donor versions: `native-classes/PlayersLifetime.cpp`.
 </details>
 
 **`ca1ca300d62d`** · `native-classes/PlayersLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/PlayersLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/PlayersLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/PlayersLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/PlayersLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/PlayersLifetime.cpp)
@@ -268,6 +278,7 @@ Earlier paths and their donor versions: `native-classes/ProfiledRakPeer.cpp`.
 </details>
 
 **`7d99ea29c2fa`** · `Unclassified/src/ProfiledRakPeer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ProfiledRakPeer.cpp)
 - public · colingsnyder2-ux · [src/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ProfiledRakPeer.cpp)
 - public · colingsnyder2-ux · [src/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ProfiledRakPeer.cpp)
 - public · colingsnyder2-ux · [src/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/ProfiledRakPeer.cpp)
@@ -284,6 +295,7 @@ Earlier paths and their donor versions: `native-classes/ProfiledRakPeer.cpp`.
 - public · colingsnyder2-ux · [src/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ProfiledRakPeer.cpp)
 
 **`9df83f27de4b`** · `Unclassified/src/ProfiledRakPeer.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ProfiledRakPeer.cpp)
 - canonical · colingsnyder2-ux · [src/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ProfiledRakPeer.cpp)
 - canonical · colingsnyder2-ux · [src/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ProfiledRakPeer.cpp)
 - canonical · colingsnyder2-ux · [src/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/ProfiledRakPeer.cpp)
@@ -428,6 +440,8 @@ Earlier paths and their donor versions: `native-classes/ProfiledRakPeer.cpp`.
 </details>
 
 **`d1f9d4eec053`** · `native-classes/ProfiledRakPeer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ProfiledRakPeer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ProfiledRakPeer.cpp)
 - public · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ProfiledRakPeer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ProfiledRakPeer.cpp)
 - public · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ProfiledRakPeer.cpp)
@@ -480,6 +494,7 @@ Earlier paths and their donor versions: `native-classes/Profiling.cpp`.
 </details>
 
 **`a2c1ce34ab89`** · `Unclassified/src/Profiling.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/Profiling.cpp)
 - public · colingsnyder2-ux · [src/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/Profiling.cpp)
 - public · colingsnyder2-ux · [src/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/Profiling.cpp)
 - public · colingsnyder2-ux · [src/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/Profiling.cpp)
@@ -509,6 +524,7 @@ Earlier paths and their donor versions: `native-classes/Profiling.cpp`.
 - public · colingsnyder2-ux · [src/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/Profiling.cpp)
 
 **`b73373afe9a4`** · `Unclassified/src/Profiling.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/Profiling.cpp)
 - canonical · colingsnyder2-ux · [src/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/Profiling.cpp)
 - canonical · colingsnyder2-ux · [src/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/Profiling.cpp)
 - canonical · colingsnyder2-ux · [src/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/Profiling.cpp)
@@ -622,6 +638,8 @@ Earlier paths and their donor versions: `native-classes/Profiling.cpp`.
 </details>
 
 **`c96ec8ba2b9d`** · `native-classes/Profiling.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/Profiling.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/Profiling.cpp)
 - public · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/Profiling.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/Profiling.cpp)
 - public · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/Profiling.cpp)
@@ -699,10 +717,18 @@ Earlier paths and their donor versions: `native-classes/Profiling.cpp`.
 Earlier paths and their donor versions: `native-classes/PropertyGridNumericValues.cpp`.
 
 **`335b7a846c3a`** · `Unclassified/src/PropertyGridNumericValues.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 - public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 - public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/PropertyGridNumericValues.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`39677dd2da0e`** · `Unclassified/src/PropertyGridNumericValues.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 - canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 - canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 - canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
@@ -816,6 +842,8 @@ Earlier paths and their donor versions: `native-classes/PropertyGridNumericValue
 </details>
 
 **`6b71e6157ccc`** · `native-classes/PropertyGridNumericValues.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/PropertyGridNumericValues.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/PropertyGridNumericValues.cpp)
 - public · colingsnyder2-ux · [native-classes/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/PropertyGridNumericValues.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/PropertyGridNumericValues.cpp)
 - public · colingsnyder2-ux · [native-classes/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/PropertyGridNumericValues.cpp)
@@ -986,8 +1014,15 @@ Earlier paths and their donor versions: `native-classes/RakPeerBandwidth.cpp`.
 </details>
 
 **`7c47d144624d`** · `Unclassified/src/RakPeerBandwidth.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/RakPeerBandwidth.cpp)
 - public · colingsnyder2-ux · [src/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/RakPeerBandwidth.cpp)
 - public · colingsnyder2-ux · [src/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/RakPeerBandwidth.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/RakPeerBandwidth.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`a3bff2f296a1`** · `Unclassified/src/RakPeerBandwidth.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/RakPeerBandwidth.cpp)
@@ -1006,6 +1041,7 @@ Earlier paths and their donor versions: `native-classes/RakPeerBandwidth.cpp`.
 - public · colingsnyder2-ux · [src/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/RakPeerBandwidth.cpp)
 
 **`aa4a6baf941f`** · `Unclassified/src/RakPeerBandwidth.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/RakPeerBandwidth.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/RakPeerBandwidth.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/RakPeerBandwidth.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/RakPeerBandwidth.cpp)
@@ -1056,6 +1092,8 @@ Earlier paths and their donor versions: `native-classes/RakPeerBandwidth.cpp`.
 </details>
 
 **`61457f96b41f`** · `native-classes/RakPeerBandwidth.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/RakPeerBandwidth.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/RakPeerBandwidth.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/RakPeerBandwidth.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/RakPeerBandwidth.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/RakPeerBandwidth.cpp)

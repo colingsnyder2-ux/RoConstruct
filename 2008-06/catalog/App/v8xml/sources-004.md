@@ -8,6 +8,8 @@
 Compatibility path for `Unclassified/include/writer-2008/v8xml/XmlSerializer.h`; compile either path, never both.
 
 **`1ab726448df1`** · `native-headers/writer-2008/v8xml/XmlSerializer.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
@@ -55,8 +57,10 @@ Compatibility path for `Unclassified/include/writer-2008/v8xml/XmlSerializer.h`;
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -73,6 +77,9 @@ Compatibility path for `Unclassified/include/writer-2008/v8xml/XmlSerializer.h`;
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -85,6 +92,7 @@ Compatibility path for `Unclassified/include/writer-2008/v8xml/XmlSerializer.h`;
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h` · root `b52aa15feaea5a0c`
@@ -100,6 +108,7 @@ Compatibility path for `Unclassified/include/writer-2008/v8xml/XmlSerializer.h`;
 </details>
 
 **`27c830f7288c`** · `native-headers/writer-2008/v8xml/XmlSerializer.h` · proof not assessed
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-headers/writer-2008/v8xml/XmlSerializer.h)
@@ -262,6 +271,8 @@ Compatibility path for `Unclassified/include/writer-2008/v8xml/XmlSerializer.h`;
 <summary>native-headers/writer-state-2008/v8xml/XmlSerializer.h — candidate-only; 2 content versions</summary>
 
 **`17f06d56e6c3`** · `native-headers/writer-state-2008/v8xml/XmlSerializer.h` · proof not assessed
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/a7620cc076b3837789e15d6124380b9c9373655f59317675f3d8db4fd983a1d1/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/a7620cc076b3837789e15d6124380b9c9373655f59317675f3d8db4fd983a1d1/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
@@ -347,6 +358,7 @@ Compatibility path for `Unclassified/include/writer-2008/v8xml/XmlSerializer.h`;
 </details>
 
 **`fd8436be3051`** · `native-headers/writer-state-2008/v8xml/XmlSerializer.h` · proof not assessed
+- draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/02d2238bab09712f788776e8da4dc67820e5dd82be9886369644887aaedf6658/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/02d2238bab09712f788776e8da4dc67820e5dd82be9886369644887aaedf6658/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/02d2238bab09712f788776e8da4dc67820e5dd82be9886369644887aaedf6658/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)
 - draft · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/02d2238bab09712f788776e8da4dc67820e5dd82be9886369644887aaedf6658/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h)

@@ -28,6 +28,8 @@ Compatibility path for `App/src/v8datamodel/ClearStarterpack.cpp`; compile eithe
 </details>
 
 **`29e7ee18cfe4`** · `native-classes/ClearStarterpack.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ClearStarterpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ClearStarterpack.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ClearStarterpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ClearStarterpack.cpp)
 - public · colingsnyder2-ux · [native-classes/ClearStarterpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ClearStarterpack.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ClearStarterpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ClearStarterpack.cpp)
 - public · colingsnyder2-ux · [native-classes/ClearStarterpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ClearStarterpack.cpp)
@@ -163,11 +165,12 @@ Compatibility path for `App/src/v8datamodel/ClearStarterpack.cpp`; compile eithe
 Compatibility path for `App/src/v8datamodel/ClickDetector.cpp`; compile either path, never both.
 
 **`02f276d680b7`** · `native-classes/ClickDetector.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ClickDetector.cpp)
+- fork · coldek · [native-classes/ClickDetector.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/ClickDetector.cpp)
 - draft · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ClickDetector.cpp)
 - draft · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ClickDetector.cpp)
 - draft · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ClickDetector.cpp)
 - draft · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ClickDetector.cpp)
-- fork · coldek · [native-classes/ClickDetector.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/ClickDetector.cpp)
 - draft · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ClickDetector.cpp)
 - draft · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ClickDetector.cpp)
 - draft · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ClickDetector.cpp)
@@ -221,6 +224,8 @@ Compatibility path for `App/src/v8datamodel/ClickDetector.cpp`; compile either p
 </details>
 
 **`26f6d14d64a9`** · `native-classes/ClickDetector.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ClickDetector.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ClickDetector.cpp)
 - public · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ClickDetector.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ClickDetector.cpp)
 - public · colingsnyder2-ux · [native-classes/ClickDetector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ClickDetector.cpp)
@@ -375,6 +380,8 @@ Compatibility path for `App/src/v8datamodel/ClickDetector.cpp`; compile either p
 Compatibility path for `WindowsClient/src/ClipboardActions.cpp`; compile either path, never both.
 
 **`0248cb69311e`** · `native-classes/ClipboardActions.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ClipboardActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ClipboardActions.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ClipboardActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ClipboardActions.cpp)
 - public · colingsnyder2-ux · [native-classes/ClipboardActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ClipboardActions.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ClipboardActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ClipboardActions.cpp)
 - public · colingsnyder2-ux · [native-classes/ClipboardActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ClipboardActions.cpp)
@@ -621,6 +628,8 @@ Compatibility path for `App/src/tool/CloneTool.cpp`; compile either path, never 
 </details>
 
 **`e94332ec1786`** · `native-classes/CloneTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/CloneTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/CloneTool.cpp)
 - public · colingsnyder2-ux · [native-classes/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CloneTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CloneTool.cpp)
 - public · colingsnyder2-ux · [native-classes/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CloneTool.cpp)
@@ -747,6 +756,8 @@ Compatibility path for `App/src/tool/CloneToolFactory.cpp`; compile either path,
 </details>
 
 **`922e04d3c73e`** · `native-classes/CloneToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/CloneToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/CloneToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CloneToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CloneToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CloneToolFactory.cpp)

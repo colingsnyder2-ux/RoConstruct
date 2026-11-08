@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/NativeWorkspaceClassNames.cpp`.
 
 **`4cd597fffeca`** · `Unclassified/src/NativeWorkspaceClassNames.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/NativeWorkspaceClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/NativeWorkspaceClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/NativeWorkspaceClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/NativeWorkspaceClassNames.cpp)
@@ -70,8 +71,15 @@ Earlier paths and their donor versions: `native-classes/NativeWorkspaceClassName
 - public · colingsnyder2-ux · [src/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/NativeWorkspaceClassNames.cpp)
 
 **`735688e98dc4`** · `Unclassified/src/NativeWorkspaceClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/NativeWorkspaceClassNames.cpp)
 - public · colingsnyder2-ux · [src/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/NativeWorkspaceClassNames.cpp)
 - public · colingsnyder2-ux · [src/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/NativeWorkspaceClassNames.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/NativeWorkspaceClassNames.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`e61b5679532d`** · `Unclassified/src/NativeWorkspaceClassNames.cpp` · proof not assessed
 
@@ -128,6 +136,8 @@ Earlier paths and their donor versions: `native-classes/NativeWorkspaceClassName
 </details>
 
 **`5351fb7a7986`** · `native-classes/NativeWorkspaceClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/NativeWorkspaceClassNames.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/NativeWorkspaceClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/NativeWorkspaceClassNames.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/NativeWorkspaceClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/NativeWorkspaceClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/NativeWorkspaceClassNames.cpp)
@@ -254,10 +264,18 @@ Earlier paths and their donor versions: `native-classes/NetworkPhysics.cpp`.
 </details>
 
 **`1daff1e54323`** · `Unclassified/src/NetworkPhysics.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/NetworkPhysics.cpp)
 - public · colingsnyder2-ux · [src/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/NetworkPhysics.cpp)
 - public · colingsnyder2-ux · [src/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/NetworkPhysics.cpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/NetworkPhysics.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`76c2d3bc63d5`** · `Unclassified/src/NetworkPhysics.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/NetworkPhysics.cpp)
 - canonical · colingsnyder2-ux · [src/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/NetworkPhysics.cpp)
 - canonical · colingsnyder2-ux · [src/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/NetworkPhysics.cpp)
 - canonical · colingsnyder2-ux · [src/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/NetworkPhysics.cpp)
@@ -382,6 +400,8 @@ Earlier paths and their donor versions: `native-classes/NetworkPhysics.cpp`.
 </details>
 
 **`a6c23619ae39`** · `native-classes/NetworkPhysics.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/NetworkPhysics.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/NetworkPhysics.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/NetworkPhysics.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/NetworkPhysics.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPhysics.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/NetworkPhysics.cpp)
@@ -464,10 +484,18 @@ Earlier paths and their donor versions: `native-classes/NetworkPhysics.cpp`.
 Earlier paths and their donor versions: `native-classes/PVFrameOps.cpp`.
 
 **`4049a050f1cf`** · `Unclassified/src/PVFrameOps.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/PVFrameOps.cpp)
 - public · colingsnyder2-ux · [src/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/PVFrameOps.cpp)
 - public · colingsnyder2-ux · [src/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/PVFrameOps.cpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/PVFrameOps.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`426dfc067335`** · `Unclassified/src/PVFrameOps.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/PVFrameOps.cpp)
 - canonical · colingsnyder2-ux · [src/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/PVFrameOps.cpp)
 - canonical · colingsnyder2-ux · [src/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/PVFrameOps.cpp)
 - canonical · colingsnyder2-ux · [src/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/PVFrameOps.cpp)
@@ -620,6 +648,8 @@ Earlier paths and their donor versions: `native-classes/PVFrameOps.cpp`.
 </details>
 
 **`e8350af2fa46`** · `native-classes/PVFrameOps.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/PVFrameOps.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/PVFrameOps.cpp)
 - public · colingsnyder2-ux · [native-classes/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/PVFrameOps.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/PVFrameOps.cpp)
 - public · colingsnyder2-ux · [native-classes/PVFrameOps.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/PVFrameOps.cpp)
@@ -688,8 +718,15 @@ Earlier paths and their donor versions: `native-classes/PVFrameOps.cpp`.
 Earlier paths and their donor versions: `native-classes/PVFrameOps.h`.
 
 **`7236a46d0165`** · `Unclassified/src/PVFrameOps.h` · proof not assessed
+- public · colingsnyder2-ux · [src/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/PVFrameOps.h)
 - public · colingsnyder2-ux · [src/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/PVFrameOps.h)
 - public · colingsnyder2-ux · [src/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/PVFrameOps.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/PVFrameOps.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`73d4f6405867`** · `Unclassified/src/PVFrameOps.h` · proof not assessed
 - public · colingsnyder2-ux · [src/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/PVFrameOps.h)
@@ -705,6 +742,7 @@ Earlier paths and their donor versions: `native-classes/PVFrameOps.h`.
 - public · colingsnyder2-ux · [src/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/PVFrameOps.h)
 
 **`a685a4ecb42f`** · `Unclassified/src/PVFrameOps.h` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/PVFrameOps.h)
 - canonical · colingsnyder2-ux · [src/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/PVFrameOps.h)
 - canonical · colingsnyder2-ux · [src/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/PVFrameOps.h)
 - canonical · colingsnyder2-ux · [src/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/PVFrameOps.h)
@@ -825,6 +863,8 @@ Earlier paths and their donor versions: `native-classes/PVFrameOps.h`.
 </details>
 
 **`b7e9b44063fc`** · `native-classes/PVFrameOps.h` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/PVFrameOps.h)
+- canonical · colingsnyder2-ux · [native-classes/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/PVFrameOps.h)
 - public · colingsnyder2-ux · [native-classes/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/PVFrameOps.h)
 - canonical · colingsnyder2-ux · [native-classes/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/PVFrameOps.h)
 - public · colingsnyder2-ux · [native-classes/PVFrameOps.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/PVFrameOps.h)
@@ -908,8 +948,15 @@ Earlier paths and their donor versions: `native-classes/PartInstanceLocked.cpp`.
 - public · colingsnyder2-ux · [src/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/PartInstanceLocked.cpp)
 
 **`53470ce75545`** · `Unclassified/src/PartInstanceLocked.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/PartInstanceLocked.cpp)
 - public · colingsnyder2-ux · [src/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/PartInstanceLocked.cpp)
 - public · colingsnyder2-ux · [src/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/PartInstanceLocked.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/PartInstanceLocked.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`811b35a35847`** · `Unclassified/src/PartInstanceLocked.cpp` · proof not assessed
 
@@ -921,6 +968,7 @@ Earlier paths and their donor versions: `native-classes/PartInstanceLocked.cpp`.
 </details>
 
 **`b1b47c4d13b6`** · `Unclassified/src/PartInstanceLocked.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/PartInstanceLocked.cpp)
 - canonical · colingsnyder2-ux · [src/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/PartInstanceLocked.cpp)
 - canonical · colingsnyder2-ux · [src/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/PartInstanceLocked.cpp)
 - canonical · colingsnyder2-ux · [src/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/PartInstanceLocked.cpp)
@@ -1010,6 +1058,8 @@ Earlier paths and their donor versions: `native-classes/PartInstanceLocked.cpp`.
 </details>
 
 **`d6e9fe193b0c`** · `native-classes/PartInstanceLocked.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/PartInstanceLocked.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/PartInstanceLocked.cpp)
 - public · colingsnyder2-ux · [native-classes/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/PartInstanceLocked.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/PartInstanceLocked.cpp)
 - public · colingsnyder2-ux · [native-classes/PartInstanceLocked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/PartInstanceLocked.cpp)

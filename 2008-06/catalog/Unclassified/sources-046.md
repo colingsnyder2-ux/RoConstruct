@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/TextureProxyRenderNew.cpp`.
 
 **`3c5c8b6fde5c`** · `Unclassified/src/TextureProxyRenderNew.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
@@ -26,6 +27,7 @@ Earlier paths and their donor versions: `native-classes/TextureProxyRenderNew.cp
 - public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 
 **`4a22da44add9`** · `Unclassified/src/TextureProxyRenderNew.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
@@ -133,6 +135,8 @@ Earlier paths and their donor versions: `native-classes/TextureProxyRenderNew.cp
 </details>
 
 **`5acf3363371d`** · `native-classes/TextureProxyRenderNew.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/TextureProxyRenderNew.cpp)
@@ -205,8 +209,15 @@ Earlier paths and their donor versions: `native-classes/TextureProxyRenderNew.cp
 Earlier paths and their donor versions: `native-classes/ToolVerbChecked.cpp`.
 
 **`3e13048af775`** · `Unclassified/src/ToolVerbChecked.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 - public · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 - public · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ToolVerbChecked.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/ToolVerbChecked.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`5e6c300bcc8d`** · `Unclassified/src/ToolVerbChecked.cpp` · proof not assessed
 
@@ -234,6 +245,7 @@ Earlier paths and their donor versions: `native-classes/ToolVerbChecked.cpp`.
 </details>
 
 **`9d7391fe3900`** · `Unclassified/src/ToolVerbChecked.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 - canonical · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 - canonical · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 - canonical · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/ToolVerbChecked.cpp)
@@ -291,6 +303,8 @@ Earlier paths and their donor versions: `native-classes/ToolVerbChecked.cpp`.
 - public · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/ToolVerbChecked.cpp)
 
 **`4585a5de85fb`** · `native-classes/ToolVerbChecked.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ToolVerbChecked.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ToolVerbChecked.cpp)
 - public · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ToolVerbChecked.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ToolVerbChecked.cpp)
 - public · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ToolVerbChecked.cpp)
@@ -427,6 +441,7 @@ Earlier paths and their donor versions: `native-classes/ToolVerbChecked.cpp`.
 Earlier paths and their donor versions: `native-classes/UngroupOperation.cpp`.
 
 **`072cc31c476e`** · `Unclassified/src/UngroupOperation.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
@@ -460,8 +475,15 @@ Earlier paths and their donor versions: `native-classes/UngroupOperation.cpp`.
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/UngroupOperation.cpp)
 
 **`e460e0c0c1a3`** · `Unclassified/src/UngroupOperation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/UngroupOperation.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/UngroupOperation.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`f3de7431083c`** · `Unclassified/src/UngroupOperation.cpp` · proof not assessed
 
@@ -499,6 +521,8 @@ Earlier paths and their donor versions: `native-classes/UngroupOperation.cpp`.
 </details>
 
 **`7e04682211d6`** · `native-classes/UngroupOperation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/UngroupOperation.cpp)
+- canonical · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/UngroupOperation.cpp)
@@ -638,8 +662,15 @@ Earlier paths and their donor versions: `native-classes/UngroupOperation.cpp`.
 Earlier paths and their donor versions: `native-classes/UserInputMovement.cpp`.
 
 **`0e3c4d5b9558`** · `Unclassified/src/UserInputMovement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/UserInputMovement.cpp)
 - public · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/UserInputMovement.cpp)
 - public · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/UserInputMovement.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/UserInputMovement.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`27634163a145`** · `Unclassified/src/UserInputMovement.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/UserInputMovement.cpp)
@@ -678,6 +709,7 @@ Earlier paths and their donor versions: `native-classes/UserInputMovement.cpp`.
 </details>
 
 **`90fe86d2da63`** · `Unclassified/src/UserInputMovement.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/UserInputMovement.cpp)
 - canonical · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/UserInputMovement.cpp)
 - canonical · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/UserInputMovement.cpp)
 - canonical · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/UserInputMovement.cpp)
@@ -799,6 +831,8 @@ Earlier paths and their donor versions: `native-classes/UserInputMovement.cpp`.
 </details>
 
 **`ecb25ce4bb3f`** · `native-classes/UserInputMovement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/UserInputMovement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/UserInputMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/UserInputMovement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/UserInputMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/UserInputMovement.cpp)
@@ -868,8 +902,15 @@ Earlier paths and their donor versions: `native-classes/UserInputMovement.cpp`.
 Earlier paths and their donor versions: `native-classes/Vector3Subtract.cpp`.
 
 **`23728809e9d0`** · `Unclassified/src/Vector3Subtract.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/Vector3Subtract.cpp)
 - public · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/Vector3Subtract.cpp)
 - public · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/Vector3Subtract.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/Vector3Subtract.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`318b877c0d0b`** · `Unclassified/src/Vector3Subtract.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/Vector3Subtract.cpp)
@@ -899,6 +940,7 @@ Earlier paths and their donor versions: `native-classes/Vector3Subtract.cpp`.
 - public · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/Vector3Subtract.cpp)
 
 **`718c044af5a7`** · `Unclassified/src/Vector3Subtract.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/Vector3Subtract.cpp)
 - canonical · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/Vector3Subtract.cpp)
 - canonical · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/Vector3Subtract.cpp)
 - canonical · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/Vector3Subtract.cpp)
@@ -1025,6 +1067,8 @@ Earlier paths and their donor versions: `native-classes/Vector3Subtract.cpp`.
 </details>
 
 **`c78753a047e0`** · `native-classes/Vector3Subtract.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/Vector3Subtract.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/Vector3Subtract.cpp)
 - public · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/Vector3Subtract.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/Vector3Subtract.cpp)
 - public · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/Vector3Subtract.cpp)

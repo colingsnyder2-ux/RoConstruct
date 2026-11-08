@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/camera-zoom/util/Extents.h`.
 
 **`15a77df18499`** · `Unclassified/include/camera-zoom/util/Extents.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
@@ -32,8 +33,10 @@ Earlier paths and their donor versions: `native-headers/camera-zoom/util/Extents
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 
-<details><summary>36 retained local origins</summary>
+<details><summary>42 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -50,6 +53,9 @@ Earlier paths and their donor versions: `native-headers/camera-zoom/util/Extents
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -61,6 +67,7 @@ Earlier paths and their donor versions: `native-headers/camera-zoom/util/Extents
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -83,8 +90,15 @@ Earlier paths and their donor versions: `native-headers/camera-zoom/util/Extents
 </details>
 
 **`3c434de37ece`** · `Unclassified/include/camera-zoom/util/Extents.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`55def3201d1b`** · `Unclassified/include/camera-zoom/util/Extents.h` · proof not assessed
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/camera-zoom/util/Extents.h)
@@ -217,6 +231,8 @@ Earlier paths and their donor versions: `native-headers/camera-zoom/util/Extents
 </details>
 
 **`c7fcfe1b5761`** · `native-headers/camera-zoom/util/Extents.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/camera-zoom/util/Extents.h)
+- canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h)
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/camera-zoom/util/Extents.h)
@@ -264,8 +280,10 @@ Earlier paths and their donor versions: `native-headers/camera-zoom/util/Extents
 - public · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/camera-zoom/util/Extents.h)
 - canonical · colingsnyder2-ux · [util/Extents.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -282,6 +300,9 @@ Earlier paths and their donor versions: `native-headers/camera-zoom/util/Extents
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -294,6 +315,7 @@ Earlier paths and their donor versions: `native-headers/camera-zoom/util/Extents
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/camera-zoom/util/Extents.h` · root `b52aa15feaea5a0c`
@@ -348,6 +370,7 @@ Earlier paths and their donor versions: `native-headers/cow-noinline-read/util/U
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 
 **`695034671077`** · `Unclassified/include/cow-noinline-read/util/Utilities.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
@@ -372,8 +395,10 @@ Earlier paths and their donor versions: `native-headers/cow-noinline-read/util/U
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 
-<details><summary>36 retained local origins</summary>
+<details><summary>42 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -390,6 +415,9 @@ Earlier paths and their donor versions: `native-headers/cow-noinline-read/util/U
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -401,6 +429,7 @@ Earlier paths and their donor versions: `native-headers/cow-noinline-read/util/U
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -423,8 +452,15 @@ Earlier paths and their donor versions: `native-headers/cow-noinline-read/util/U
 </details>
 
 **`8fa2c3ecade4`** · `Unclassified/include/cow-noinline-read/util/Utilities.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`0721044cfa37`** · `native-headers/cow-noinline-read/util/Utilities.h` · proof not assessed
 
@@ -543,6 +579,8 @@ Earlier paths and their donor versions: `native-headers/cow-noinline-read/util/U
 </details>
 
 **`ef612ec5d56d`** · `native-headers/cow-noinline-read/util/Utilities.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
+- canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
@@ -590,8 +628,10 @@ Earlier paths and their donor versions: `native-headers/cow-noinline-read/util/U
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -608,6 +648,9 @@ Earlier paths and their donor versions: `native-headers/cow-noinline-read/util/U
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -620,6 +663,7 @@ Earlier paths and their donor versions: `native-headers/cow-noinline-read/util/U
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -642,6 +686,7 @@ Earlier paths and their donor versions: `native-headers/cow-noinline-read/util/U
 Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h`.
 
 **`135d725a2d1d`** · `Unclassified/include/draw-handles/util/Rect.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
@@ -666,8 +711,10 @@ Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 
-<details><summary>36 retained local origins</summary>
+<details><summary>42 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -684,6 +731,9 @@ Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -695,6 +745,7 @@ Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -708,8 +759,15 @@ Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h
 </details>
 
 **`15f22d7605ba`** · `Unclassified/include/draw-handles/util/Rect.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/draw-handles/util/Rect.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/include/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`6a922ec2d349`** · `Unclassified/include/draw-handles/util/Rect.h` · proof not assessed
 
@@ -800,6 +858,8 @@ Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h
 </details>
 
 **`52361b9a463b`** · `native-headers/draw-handles/util/Rect.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/draw-handles/util/Rect.h)
+- canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/draw-handles/util/Rect.h)
@@ -847,8 +907,10 @@ Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>45 retained local origins</summary>
 
+- local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-final-pass-20261107/after-reduced/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -865,6 +927,9 @@ Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h
 - local · `work/native-candidates/header-root2-20261107/after/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/baseline/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/joint-ownership-20261108/candidate-v2/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -877,6 +942,7 @@ Earlier paths and their donor versions: `native-headers/draw-handles/util/Rect.h
 - local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`

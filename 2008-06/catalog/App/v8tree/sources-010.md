@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/SelectionGroup.cpp`.
 
 **`7c90335fbdcd`** · `App/src/v8tree/SelectionGroup.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/v8tree/SelectionGroup.cpp)
 - canonical · colingsnyder2-ux · [v8tree/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/v8tree/SelectionGroup.cpp)
 - canonical · colingsnyder2-ux · [v8tree/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/v8tree/SelectionGroup.cpp)
 - canonical · colingsnyder2-ux · [v8tree/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8tree/SelectionGroup.cpp)
@@ -81,8 +82,15 @@ Earlier paths and their donor versions: `native-classes/SelectionGroup.cpp`.
 </details>
 
 **`ff343852459a`** · `App/src/v8tree/SelectionGroup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/v8tree/SelectionGroup.cpp)
 - public · colingsnyder2-ux · [v8tree/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/v8tree/SelectionGroup.cpp)
 - public · colingsnyder2-ux · [v8tree/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/v8tree/SelectionGroup.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/src/v8tree/SelectionGroup.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`494306ad0e69`** · `native-classes/SelectionGroup.cpp` · proof not assessed
 
@@ -247,6 +255,8 @@ Earlier paths and their donor versions: `native-classes/SelectionGroup.cpp`.
 </details>
 
 **`e37e41207d90`** · `native-classes/SelectionGroup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/SelectionGroup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/SelectionGroup.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/SelectionGroup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/SelectionGroup.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionGroup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/SelectionGroup.cpp)
@@ -346,6 +356,7 @@ Earlier paths and their donor versions: `native-classes/ServiceLookup.cpp`.
 - public · colingsnyder2-ux · [v8tree/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8tree/ServiceLookup.cpp)
 
 **`598dc992c809`** · `App/src/v8tree/ServiceLookup.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/v8tree/ServiceLookup.cpp)
 - canonical · colingsnyder2-ux · [v8tree/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/v8tree/ServiceLookup.cpp)
 - canonical · colingsnyder2-ux · [v8tree/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/v8tree/ServiceLookup.cpp)
 - canonical · colingsnyder2-ux · [v8tree/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8tree/ServiceLookup.cpp)
@@ -382,8 +393,15 @@ Earlier paths and their donor versions: `native-classes/ServiceLookup.cpp`.
 </details>
 
 **`ae2e9e9884d3`** · `App/src/v8tree/ServiceLookup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/v8tree/ServiceLookup.cpp)
 - public · colingsnyder2-ux · [v8tree/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/v8tree/ServiceLookup.cpp)
 - public · colingsnyder2-ux · [v8tree/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/v8tree/ServiceLookup.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/src/v8tree/ServiceLookup.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`f7bb05d4e8e4`** · `App/src/v8tree/ServiceLookup.cpp` · proof not assessed
 
@@ -415,6 +433,8 @@ Earlier paths and their donor versions: `native-classes/ServiceLookup.cpp`.
 - public · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ServiceLookup.cpp)
 
 **`4bac43920b27`** · `native-classes/ServiceLookup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ServiceLookup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ServiceLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ServiceLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ServiceLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ServiceLookup.cpp)
@@ -599,8 +619,15 @@ Earlier paths and their donor versions: `native-classes/VerbBaseLifetime.cpp`.
 </details>
 
 **`3f57ebeba771`** · `App/src/v8tree/VerbBaseLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/src/v8tree/VerbBaseLifetime.cpp)
 - public · colingsnyder2-ux · [v8tree/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/v8tree/VerbBaseLifetime.cpp)
 - public · colingsnyder2-ux · [v8tree/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/v8tree/VerbBaseLifetime.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/App/src/v8tree/VerbBaseLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`c29347173300`** · `App/src/v8tree/VerbBaseLifetime.cpp` · proof not assessed
 - public · colingsnyder2-ux · [v8tree/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/src/v8tree/VerbBaseLifetime.cpp)
@@ -630,6 +657,7 @@ Earlier paths and their donor versions: `native-classes/VerbBaseLifetime.cpp`.
 - public · colingsnyder2-ux · [v8tree/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8tree/VerbBaseLifetime.cpp)
 
 **`d6bbb334dbd2`** · `App/src/v8tree/VerbBaseLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/src/v8tree/VerbBaseLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8tree/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/v8tree/VerbBaseLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8tree/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/v8tree/VerbBaseLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8tree/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8tree/VerbBaseLifetime.cpp)
@@ -791,6 +819,8 @@ Earlier paths and their donor versions: `native-classes/VerbBaseLifetime.cpp`.
 </details>
 
 **`e027d281c5a3`** · `native-classes/VerbBaseLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/VerbBaseLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/VerbBaseLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/VerbBaseLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/VerbBaseLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbBaseLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/VerbBaseLifetime.cpp)
@@ -909,6 +939,7 @@ Compatibility path for `App/src/v8tree/InstanceAncestorChanged.cpp`; compile eit
 </details>
 
 **`1cf7409b723f`** · `native-classes/InstanceAncestorChanged.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/archive/source-snapshots/20261107-instance-layout-more/2008-06/native-classes/InstanceAncestorChanged.cpp)
@@ -1011,6 +1042,8 @@ Compatibility path for `App/src/v8tree/InstanceAncestorChanged.cpp`; compile eit
 </details>
 
 **`da025803d738`** · `native-classes/InstanceAncestorChanged.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/InstanceAncestorChanged.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceAncestorChanged.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/InstanceAncestorChanged.cpp)

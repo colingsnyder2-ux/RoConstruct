@@ -33,6 +33,7 @@ Earlier paths and their donor versions: `native-classes/ReliabilityLayerLifetime
 - public · colingsnyder2-ux · [src/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ReliabilityLayerLifetime.cpp)
 
 **`b1dd3571fbf7`** · `Unclassified/src/ReliabilityLayerLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ReliabilityLayerLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ReliabilityLayerLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ReliabilityLayerLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/ReliabilityLayerLifetime.cpp)
@@ -57,10 +58,19 @@ Earlier paths and their donor versions: `native-classes/ReliabilityLayerLifetime
 </details>
 
 **`d35098d03b1c`** · `Unclassified/src/ReliabilityLayerLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ReliabilityLayerLifetime.cpp)
 - public · colingsnyder2-ux · [src/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ReliabilityLayerLifetime.cpp)
 - public · colingsnyder2-ux · [src/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ReliabilityLayerLifetime.cpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/ReliabilityLayerLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`3802aa93e386`** · `native-classes/ReliabilityLayerLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ReliabilityLayerLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ReliabilityLayerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ReliabilityLayerLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ReliabilityLayerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ReliabilityLayerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ReliabilityLayerLifetime.cpp)
@@ -225,6 +235,7 @@ Earlier paths and their donor versions: `native-classes/RenderMaterial.cpp`.
 </details>
 
 **`abecee1cc307`** · `Unclassified/src/RenderMaterial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/RenderMaterial.cpp)
 - public · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/RenderMaterial.cpp)
 - public · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/RenderMaterial.cpp)
 - public · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/RenderMaterial.cpp)
@@ -243,6 +254,7 @@ Earlier paths and their donor versions: `native-classes/RenderMaterial.cpp`.
 - public · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/RenderMaterial.cpp)
 
 **`e1f1e74c0bad`** · `Unclassified/src/RenderMaterial.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/RenderMaterial.cpp)
 - canonical · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/RenderMaterial.cpp)
 - canonical · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/RenderMaterial.cpp)
 - canonical · colingsnyder2-ux · [src/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/RenderMaterial.cpp)
@@ -283,6 +295,8 @@ Earlier paths and their donor versions: `native-classes/RenderMaterial.cpp`.
 </details>
 
 **`4e0e3d3845b6`** · `native-classes/RenderMaterial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/RenderMaterial.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/RenderMaterial.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/RenderMaterial.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/RenderMaterial.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/RenderMaterial.cpp)
@@ -411,10 +425,18 @@ Earlier paths and their donor versions: `native-classes/RenderMaterial.cpp`.
 Earlier paths and their donor versions: `native-classes/RenderMaterialNew.cpp`.
 
 **`35e063cf1e19`** · `Unclassified/src/RenderMaterialNew.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 - public · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 - public · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/RenderMaterialNew.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`8fef811255a6`** · `Unclassified/src/RenderMaterialNew.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 - canonical · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 - canonical · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/RenderMaterialNew.cpp)
 - canonical · colingsnyder2-ux · [src/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/RenderMaterialNew.cpp)
@@ -529,6 +551,8 @@ Earlier paths and their donor versions: `native-classes/RenderMaterialNew.cpp`.
 </details>
 
 **`a11ee1ba28fb`** · `native-classes/RenderMaterialNew.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/RenderMaterialNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/RenderMaterialNew.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/RenderMaterialNew.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/RenderMaterialNew.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/RenderMaterialNew.cpp)
@@ -608,6 +632,7 @@ Earlier paths and their donor versions: `native-classes/RenderMaterialNew.cpp`.
 Earlier paths and their donor versions: `native-classes/ReplicatorBases.cpp`.
 
 **`04a01c0a900a`** · `Unclassified/src/ReplicatorBases.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ReplicatorBases.cpp)
 - canonical · colingsnyder2-ux · [src/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ReplicatorBases.cpp)
 - canonical · colingsnyder2-ux · [src/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ReplicatorBases.cpp)
 - canonical · colingsnyder2-ux · [src/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/ReplicatorBases.cpp)
@@ -679,8 +704,15 @@ Earlier paths and their donor versions: `native-classes/ReplicatorBases.cpp`.
 </details>
 
 **`b20ca5a6c2a7`** · `Unclassified/src/ReplicatorBases.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ReplicatorBases.cpp)
 - public · colingsnyder2-ux · [src/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ReplicatorBases.cpp)
 - public · colingsnyder2-ux · [src/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ReplicatorBases.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/ReplicatorBases.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`04a01c0a900a`** · `native-classes/ReplicatorBases.cpp` · proof not assessed
 - fork · mewpokemons · [native-classes/ReplicatorBases.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/ReplicatorBases.cpp)
@@ -750,6 +782,8 @@ Earlier paths and their donor versions: `native-classes/ReplicatorBases.cpp`.
 </details>
 
 **`c37203af9b5e`** · `native-classes/ReplicatorBases.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ReplicatorBases.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ReplicatorBases.cpp)
 - public · colingsnyder2-ux · [native-classes/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ReplicatorBases.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ReplicatorBases.cpp)
 - public · colingsnyder2-ux · [native-classes/ReplicatorBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ReplicatorBases.cpp)
@@ -863,6 +897,7 @@ Earlier paths and their donor versions: `native-classes/ReplicatorMarker.cpp`.
 - public · colingsnyder2-ux · [src/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ReplicatorMarker.cpp)
 
 **`d71adce767e7`** · `Unclassified/src/ReplicatorMarker.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/ReplicatorMarker.cpp)
 - canonical · colingsnyder2-ux · [src/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/ReplicatorMarker.cpp)
 - canonical · colingsnyder2-ux · [src/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/ReplicatorMarker.cpp)
 - canonical · colingsnyder2-ux · [src/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/ReplicatorMarker.cpp)
@@ -898,10 +933,19 @@ Earlier paths and their donor versions: `native-classes/ReplicatorMarker.cpp`.
 </details>
 
 **`f6ca56e5dd36`** · `Unclassified/src/ReplicatorMarker.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/ReplicatorMarker.cpp)
 - public · colingsnyder2-ux · [src/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/ReplicatorMarker.cpp)
 - public · colingsnyder2-ux · [src/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/ReplicatorMarker.cpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/ReplicatorMarker.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`47000943eeb9`** · `native-classes/ReplicatorMarker.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ReplicatorMarker.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/ReplicatorMarker.cpp)
 - public · colingsnyder2-ux · [native-classes/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/ReplicatorMarker.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/ReplicatorMarker.cpp)
 - public · colingsnyder2-ux · [native-classes/ReplicatorMarker.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/ReplicatorMarker.cpp)

@@ -8,8 +8,15 @@
 Earlier paths and their donor versions: `native-classes/PeerClassName.cpp`.
 
 **`49b9fb6e3a69`** · `Unclassified/src/PeerClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/PeerClassName.cpp)
 - public · colingsnyder2-ux · [src/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/PeerClassName.cpp)
 - public · colingsnyder2-ux · [src/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/PeerClassName.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/PeerClassName.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`568de1e45d4e`** · `Unclassified/src/PeerClassName.cpp` · proof not assessed
 - public · colingsnyder2-ux · [src/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/PeerClassName.cpp)
@@ -39,6 +46,7 @@ Earlier paths and their donor versions: `native-classes/PeerClassName.cpp`.
 - public · colingsnyder2-ux · [src/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/PeerClassName.cpp)
 
 **`61631ccb7833`** · `Unclassified/src/PeerClassName.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/PeerClassName.cpp)
 - canonical · colingsnyder2-ux · [src/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/PeerClassName.cpp)
 - canonical · colingsnyder2-ux · [src/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/PeerClassName.cpp)
 - canonical · colingsnyder2-ux · [src/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/PeerClassName.cpp)
@@ -169,6 +177,8 @@ Earlier paths and their donor versions: `native-classes/PeerClassName.cpp`.
 </details>
 
 **`e1b4f856e23a`** · `native-classes/PeerClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/PeerClassName.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/PeerClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/PeerClassName.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/PeerClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/PeerClassName.cpp)
@@ -263,6 +273,7 @@ Earlier paths and their donor versions: `native-classes/PeerConstructor.cpp`.
 - public · colingsnyder2-ux · [src/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/PeerConstructor.cpp)
 
 **`a1298db710ad`** · `Unclassified/src/PeerConstructor.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/PeerConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/PeerConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/PeerConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/PeerConstructor.cpp)
@@ -287,8 +298,15 @@ Earlier paths and their donor versions: `native-classes/PeerConstructor.cpp`.
 </details>
 
 **`d8fdd2062984`** · `Unclassified/src/PeerConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/PeerConstructor.cpp)
 - public · colingsnyder2-ux · [src/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/PeerConstructor.cpp)
 - public · colingsnyder2-ux · [src/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/PeerConstructor.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/PeerConstructor.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`03f89e0ac71c`** · `native-classes/PeerConstructor.cpp` · proof not assessed
 
@@ -318,6 +336,8 @@ Earlier paths and their donor versions: `native-classes/PeerConstructor.cpp`.
 </details>
 
 **`478a82d087cc`** · `native-classes/PeerConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/PeerConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/PeerConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/PeerConstructor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/PeerConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/PeerConstructor.cpp)
@@ -474,8 +494,15 @@ Earlier paths and their donor versions: `native-classes/PeerLifetime.cpp`.
 - public · colingsnyder2-ux · [src/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/PeerLifetime.cpp)
 
 **`53eeceffd912`** · `Unclassified/src/PeerLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/PeerLifetime.cpp)
 - public · colingsnyder2-ux · [src/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/PeerLifetime.cpp)
 - public · colingsnyder2-ux · [src/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/PeerLifetime.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/PeerLifetime.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`9b15763e21ef`** · `Unclassified/src/PeerLifetime.cpp` · proof not assessed
 
@@ -487,6 +514,7 @@ Earlier paths and their donor versions: `native-classes/PeerLifetime.cpp`.
 </details>
 
 **`fb1b3538665f`** · `Unclassified/src/PeerLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/PeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/PeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/PeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/PeerLifetime.cpp)
@@ -543,6 +571,8 @@ Earlier paths and their donor versions: `native-classes/PeerLifetime.cpp`.
 </details>
 
 **`501f0fff8ea1`** · `native-classes/PeerLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/PeerLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/PeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/PeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/PeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/PeerLifetime.cpp)
@@ -672,8 +702,15 @@ Earlier paths and their donor versions: `native-classes/PeerLifetime.cpp`.
 Earlier paths and their donor versions: `native-classes/PeerUpdate.cpp`.
 
 **`7befe699ca8f`** · `Unclassified/src/PeerUpdate.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/PeerUpdate.cpp)
 - public · colingsnyder2-ux · [src/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/PeerUpdate.cpp)
 - public · colingsnyder2-ux · [src/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/PeerUpdate.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/PeerUpdate.cpp` · root `b52aa15feaea5a0c`
+
+</details>
 
 **`8b93e9a56295`** · `Unclassified/src/PeerUpdate.cpp` · proof not assessed
 
@@ -700,6 +737,7 @@ Earlier paths and their donor versions: `native-classes/PeerUpdate.cpp`.
 - public · colingsnyder2-ux · [src/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/PeerUpdate.cpp)
 
 **`f47c8c4c5f2a`** · `Unclassified/src/PeerUpdate.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/PeerUpdate.cpp)
 - canonical · colingsnyder2-ux · [src/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/PeerUpdate.cpp)
 - canonical · colingsnyder2-ux · [src/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/PeerUpdate.cpp)
 - canonical · colingsnyder2-ux · [src/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/PeerUpdate.cpp)
@@ -740,6 +778,8 @@ Earlier paths and their donor versions: `native-classes/PeerUpdate.cpp`.
 </details>
 
 **`9b9807007331`** · `native-classes/PeerUpdate.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/PeerUpdate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/PeerUpdate.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/PeerUpdate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/PeerUpdate.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/PeerUpdate.cpp)
@@ -912,6 +952,7 @@ Earlier paths and their donor versions: `native-classes/PlayersAbusePredicate.cp
 - public · colingsnyder2-ux · [src/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/PlayersAbusePredicate.cpp)
 
 **`84cb47fe5249`** · `Unclassified/src/PlayersAbusePredicate.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/PlayersAbusePredicate.cpp)
 - canonical · colingsnyder2-ux · [src/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/PlayersAbusePredicate.cpp)
 - canonical · colingsnyder2-ux · [src/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/PlayersAbusePredicate.cpp)
 - canonical · colingsnyder2-ux · [src/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/PlayersAbusePredicate.cpp)
@@ -956,10 +997,19 @@ Earlier paths and their donor versions: `native-classes/PlayersAbusePredicate.cp
 </details>
 
 **`e0adf7d48682`** · `Unclassified/src/PlayersAbusePredicate.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/PlayersAbusePredicate.cpp)
 - public · colingsnyder2-ux · [src/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/PlayersAbusePredicate.cpp)
 - public · colingsnyder2-ux · [src/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/PlayersAbusePredicate.cpp)
 
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/PlayersAbusePredicate.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`162d21c555df`** · `native-classes/PlayersAbusePredicate.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/PlayersAbusePredicate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/PlayersAbusePredicate.cpp)
 - public · colingsnyder2-ux · [native-classes/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/PlayersAbusePredicate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/PlayersAbusePredicate.cpp)
 - public · colingsnyder2-ux · [native-classes/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/PlayersAbusePredicate.cpp)
