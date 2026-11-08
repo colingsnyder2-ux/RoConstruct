@@ -90,10 +90,14 @@ def checked_base(root, base):
 def inspect_move(root, base, row):
     old, new = safe(row['source']), safe(row['target'])
     source_ok = (len(old.parts) == 2 or (len(old.parts) >= 4 and old.parts[1] == 'accepted'))
-    if (not source_ok or old.parts[0] != 'native-classes' or old.suffix != '.cpp'
-            or len(new.parts) < 3 or new.parts[0] not in PROJECTS or new.parts[1] != 'src'
-            or new.name != old.name or (not row.get('checks') and row.get('preservation_only') is not True)):
-        raise ValueError('Move needs a native source, matching project destination and independent checks or explicit preservation-only mode')
+    native = (source_ok and old.parts[0] == 'native-classes' and old.suffix == '.cpp'
+              and len(new.parts) >= 3 and new.parts[0] in PROJECTS and new.parts[1] == 'src'
+              and (bool(row.get('checks')) or row.get('preservation_only') is True))
+    trial = (len(old.parts) == 2 and old.parts[0] == 'tests' and old.name.endswith('Trial.cpp')
+             and len(new.parts) == 3 and new.parts[:2] == ('experiments', 'trials')
+             and row.get('preservation_only') is True and not row.get('checks'))
+    if new.name != old.name or not (native or trial):
+        raise ValueError('Move needs a native source or inactive trial, matching destination and required evidence')
     for check in row.get('checks', []):
         if (not isinstance(check, dict) or not isinstance(check.get('addr'), str)
                 or not re.fullmatch('[0-9a-fA-F]{8}', check['addr'])
@@ -227,8 +231,11 @@ def object_identity(raw):
             symbol_name = symbols[sym][0]
             relocs.append((offset, local.get(symbol_name, (symbol_name,)), kind))
         result.append((name, section[9], data, relocs))
-    functions = [(local.get(name, (name,)), body, relocs)
-                 for name, body, relocs in match.coff_functions(raw)]
+    # Full section bytes and relocations above already cover each function body.
+    # Retain every defined function symbol and location without disassembling it.
+    functions = [(local.get(name, (name,)), value, section, kind)
+                 for name, value, section, kind in symbols.values()
+                 if section > 0 and kind == 0x20 and not sections[section - 1][-1] & 0x800]
     return result, functions
 
 
@@ -299,12 +306,19 @@ def verify(root, out, run):
                 raise ValueError('Non-regular canonical header')
             header_blobs[path.decode()[len(prefix):]] = blob.decode()
     frozen = (out / 'frozen/rebuild/2008-06').resolve()
-    index = {str(Path(r['source']).resolve()).casefold(): r for r in results}
+    unfrozen_roots = tuple((root / 'rebuild/2008-06' / header_root).resolve() for header_root in roots)
+    resolved_paths = {}
+    def resolved(path):
+        key = os.fspath(path)
+        if key not in resolved_paths:
+            resolved_paths[key] = Path(path).resolve()
+        return resolved_paths[key]
+    index = {str(resolved(r['source'])).casefold(): r for r in results}
     if len(index) != len(results):
         raise ValueError('Duplicate runner source')
     fingerprints = {}
     def fingerprint(path):
-        path = Path(path).resolve()
+        path = resolved(path)
         if path not in fingerprints:
             content = path.read_bytes()
             fingerprints[path] = (sha(content), hashlib.sha1(b'blob ' + str(len(content)).encode() + b'\0' + content).hexdigest())
@@ -327,10 +341,10 @@ def verify(root, out, run):
                         or not obj.resolve().is_relative_to(run)
                         or fingerprint(obj)[0] != result.get('object_sha256')):
                     raise ValueError('Incomplete or stale source/object')
-                if not any(Path(path).resolve() == source.resolve() for path in result.get('dependencies', {})):
+                if not any(resolved(path) == resolved(source) for path in result.get('dependencies', {})):
                     raise ValueError('Source dependency missing from receipt')
                 for path, digest in result['dependencies'].items():
-                    dependency = Path(path).resolve()
+                    dependency = resolved(path)
                     dependency_sha, dependency_blob = fingerprint(dependency)
                     if dependency_sha != digest:
                         raise ValueError('Dependency changed: ' + path)
@@ -338,7 +352,7 @@ def verify(root, out, run):
                         relative = dependency.relative_to(frozen).as_posix()
                         if header_blobs.get(relative) != dependency_blob:
                             raise ValueError('Frozen header differs from canonical base: ' + path)
-                    elif any(dependency.is_relative_to((root / 'rebuild/2008-06' / header_root).resolve()) for header_root in roots):
+                    elif any(dependency.is_relative_to(header_root) for header_root in unfrozen_roots):
                         raise ValueError('Unfrozen native header: ' + path)
                 if not result['build_inputs'].get('compiler'):
                     raise ValueError('Compiler identity missing')
@@ -392,6 +406,11 @@ def verify(root, out, run):
     for path, (expected, _) in fingerprints.items():
         if sha(path.read_bytes()) != expected:
             raise ValueError('Input changed during batch verification: ' + str(path))
+    for original, target in resolved_paths.items():
+        if Path(original).resolve() != target:
+            raise ValueError('Input path changed during batch verification: ' + original)
+    if tuple((root / 'rebuild/2008-06' / name).resolve() for name in roots) != unfrozen_roots:
+        raise ValueError('Header roots changed during batch verification')
     manifest = {'base': plan['base'], 'files': {}}
     mirror = {}
     for move in accepted:

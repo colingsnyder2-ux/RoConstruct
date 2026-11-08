@@ -26,6 +26,7 @@ named definitions can conflict even when object file names differ.
   p6/            client shell and build tooling
   glue/          adapter code
   tests/         regression, matching, ABI, runtime and exploratory checks
+  experiments/trials/  inactive trial implementations; tests/ retains compatibility paths
 
 The optional local Source/ views describe donor inputs from tools/rbxgs/Client
 and are not tracked directories. Their availability depends on local setup.

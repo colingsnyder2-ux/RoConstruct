@@ -63,3 +63,9 @@ Use the existing `roc.findings_workspace integrate --manifest ...` and its
 exact-tree preservation checks; mirror reviewed public paths and refresh the
 package and navigation separately. Never compile both a compatibility unit
 and its organized source into one target.
+
+
+Inactive `tests/*Trial.cpp` files may use the same preservation-only flow with
+`experiments/trials/` targets. All three locations must compile to matching
+objects; old test paths remain compatibility translation units. This organizes
+experiments and does not promote or select them as native providers.

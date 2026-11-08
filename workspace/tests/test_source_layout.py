@@ -466,3 +466,69 @@ def test_public_package_rejects_unrelated_stale_entry(source_repo):
     base = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
     with pytest.raises(ValueError, match='package entry is stale: other.h'):
         source_layout.validate_public_package(root, base, data)
+
+
+def test_trial_move_requires_inactive_scope_and_preservation_only(source_repo):
+    root, spec = source_repo
+    old = 'tests/NativeThingTrial.cpp'
+    for prefix in ('workspace/rebuild/2008-06/', '2008-06/'):
+        path = root / prefix / old
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(b'int trial() { return 1; }\n')
+    subprocess.run(['git', 'add', '.'], cwd=root, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                    'commit', '-qm', 'trial'], cwd=root, check=True)
+    spec['base'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    spec['moves'][0].update(source=old, target='experiments/trials/NativeThingTrial.cpp', checks=[], preservation_only=True)
+    out = root / 'work/native-candidates/trial'
+    source_layout.prepare(root, spec, out)
+    assert (out / 'candidate/experiments/trials/NativeThingTrial.cpp').read_bytes() == b'int trial() { return 1; }\n'
+    assert '#include "../experiments/trials/NativeThingTrial.cpp"' in (out / 'candidate' / old).read_text()
+    for invalid in ('tests/NativeThing.cpp', 'native-classes/NativeThingTrial.cpp'):
+        spec['moves'][0]['source'] = invalid
+        with pytest.raises(ValueError):
+            source_layout.inspect_move(root, spec['base'], spec['moves'][0])
+    spec['moves'][0].update(source=old, target='App/src/NativeThingTrial.cpp')
+    with pytest.raises(ValueError):
+        source_layout.inspect_move(root, spec['base'], spec['moves'][0])
+
+
+def test_object_identity_checks_public_function_locations_without_disassembly(monkeypatch):
+    def index(raw):
+        section = (b'.text', 0, 0, 4, 10, 20, 0, 0, 0, 0x60000020)
+        return [section], {0: ('?public@@YAXXZ', raw[0], 1, 32)}, {}, {}
+    monkeypatch.setattr(source_layout.match, '_coff_data_index', index)
+    monkeypatch.setattr(source_layout.match, 'coff_functions', lambda raw: (_ for _ in ()).throw(AssertionError('no disassembly')))
+    one = bytearray(30)
+    one[0] = 1
+    one[10:14] = b'code'
+    two = bytearray(one)
+    two[0] = 2
+    assert source_layout.object_identity(bytes(one)) != source_layout.object_identity(bytes(two))
+
+
+def test_cached_resolution_rechecks_input_paths(source_repo, monkeypatch):
+    root, spec = source_repo
+    spec['moves'][0].update(checks=[], preservation_only=True)
+    out = root / 'work/native-candidates/test'
+    source_layout.prepare(root, spec, out)
+    run = make_run(root, out)
+    rows = json.loads((run / 'results.json').read_text())
+    for row in rows:
+        row['checks'] = []
+    (run / 'results.json').write_text(json.dumps(rows))
+    header = out / 'frozen/rebuild/2008-06/native-headers/thing.h'
+    original = Path.resolve
+    switched = {'value': False}
+    def resolve(path, *args, **kwargs):
+        result = original(path, *args, **kwargs)
+        if switched['value'] and str(path) == str(header):
+            return result.with_name('different.h')
+        return result
+    def identity(raw):
+        switched['value'] = True
+        return raw
+    monkeypatch.setattr(Path, 'resolve', resolve)
+    monkeypatch.setattr(source_layout, 'object_identity', identity)
+    with pytest.raises(ValueError, match='Input path changed'):
+        source_layout.verify(root, out, run)

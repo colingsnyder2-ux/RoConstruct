@@ -1,5 +1,2 @@
-#include "reflection/property.h"
-namespace RBX { namespace Reflection {
-template bool TypedPropertyDescriptor<bool>::isReadOnly() const;
-template bool TypedPropertyDescriptor<bool>::isWriteOnly() const;
-}}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeGetSetSlotsWorkerTrial.cpp"

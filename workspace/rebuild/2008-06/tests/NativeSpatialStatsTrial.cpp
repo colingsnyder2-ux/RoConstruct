@@ -1,1 +1,2 @@
-namespace RBX { class SpatialHash { public: void doStats(); }; void SpatialHash::doStats() {} }
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeSpatialStatsTrial.cpp"

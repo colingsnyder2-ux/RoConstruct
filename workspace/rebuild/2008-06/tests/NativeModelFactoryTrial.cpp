@@ -1,2 +1,2 @@
-#include "v8datamodel/ModelInstance.h"
-namespace RBX { template boost::shared_ptr<ModelInstance> Creatable<Instance>::create<ModelInstance>(); }
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeModelFactoryTrial.cpp"

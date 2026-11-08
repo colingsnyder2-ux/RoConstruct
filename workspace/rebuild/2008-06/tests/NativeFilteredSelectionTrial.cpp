@@ -1,5 +1,2 @@
-#include "v8datamodel/PVInstance.h"
-#include "v8datamodel/Selection.h"
-namespace RBX {
-template class FilteredSelection<PVInstance>;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeFilteredSelectionTrial.cpp"

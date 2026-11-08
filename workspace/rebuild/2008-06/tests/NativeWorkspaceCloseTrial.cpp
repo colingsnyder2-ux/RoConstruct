@@ -1,8 +1,2 @@
-#include <afxwin.h>
-#include "CWorkspace.h"
-
-HRESULT __stdcall CWorkspace::Close() {
-    AFX_MANAGE_STATE(AfxGetAppModuleState());
-    cleanup();
-    return S_OK;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeWorkspaceCloseTrial.cpp"
