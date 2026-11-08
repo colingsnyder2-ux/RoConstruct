@@ -1,84 +1,41 @@
 2008-06 source layout
 
-Source/App       -> tools/rbxgs/Client/App
-Source/Network   -> tools/rbxgs/Client/Network
-Source/RbxView   -> tools/rbxgs/Client/RbxView
-Source/Rendering -> tools/rbxgs/Client/Rendering
-Source/Recovered -> native-classes (recovered implementation candidates)
-Source/Include   -> native-headers (shared recovered declarations)
+The maintained source is workspace/rebuild/2008-06 on RoConstruct work.
+The top-level 2008-06 tree is a public source view. See 2008-06/SOURCE_MAP.md
+and source-map.json at the repository root for navigation and donor provenance.
 
-The Source/ entries above describe optional local views of donor inputs; they
-are not tracked directories in the published work tree. Their availability
-depends on local setup. Module recipes and patches select the code actually
-built. A source file is not proof of native runtime integration.
+Project directories contain recovered source or headers:
+  App/src, App/include                 application and DataModel code
+  Base/include                         shared base headers
+  Network/include                      network headers
+  Rendering/include                    rendering headers
+  WindowsClient/src, WindowsClient/include   Windows client code
+  Unclassified/src, Unclassified/include    project placement unresolved
 
-Shared recovered declarations: native-headers/
-Recovered implementations and inactive trials: native-classes/
-Current P6 shell and build: p6/
-Player adapters and regression tests: tests/
-Build recipes: modules/
-Native promotions and ABI changes: patches/
-Generated source catalog: ../../local/units/generated-units.json (repo root local/)
-Audit, variants and imported snapshots: ../../work/2008-06/native-source-audit/
-Historical local packages: see the owner's archive inventory; paths vary by machine.
+Migration is incomplete. native-classes/ and native-headers/ contain both
+unmoved files and compatibility files for moved implementations or headers.
+native-world/ retains recovered world code. A compatibility translation unit
+includes the implementation at its new path: compile either path, never both.
+Select providers through existing module recipes and patch manifests; do not
+infer executable selection from a file's location. In particular, similarly
+named definitions can conflict even when object file names differ.
 
-Full native CRobloxApp/Doc/View/Frame integration remains incomplete.
+  modules/       build recipes
+  patches/       native selection and ABI changes
+  manifests/     layout and proof inventories
+  p6/            client shell and build tooling
+  glue/          adapter code
+  tests/         regression, matching, ABI, runtime and exploratory checks
 
-Physical source migration pilot:
-App/src/v8tree/InstanceChildLookup.cpp contains the recovered implementation.
-native-classes/InstanceChildLookup.cpp is a compatibility translation unit.
-Compile one path or the other, never both. The method remains inactive until selected and gated.
+The optional local Source/ views describe donor inputs from tools/rbxgs/Client
+and are not tracked directories. Their availability depends on local setup.
+Other local snapshots and experiments remain evidence, not maintained source;
+see the catalog for alternative versions and provenance. Do not delete unique
+inputs or move experiments without checking build and proof dependencies.
 
-App/src/v8tree/InstanceBaseCallbacks.cpp contains the recovered implementation.
-native-classes/InstanceBaseCallbacks.cpp is its compatibility translation unit.
-Compile one path or the other, never both.
+The layout manifests document individual moves and their verification scope.
+Moving code or finding an exact body does not establish linked selection, ABI,
+runtime safety, a complete class swap or server credit. Full native
+CRobloxApp, CMainFrame, CRobloxView and CRobloxDoc integration remains incomplete.
 
-App/src/v8tree/ contains the moved InstanceChildPermission, InstanceClassLookup
-and InstanceAnchorChildren implementations. Their native-classes counterparts
-are compatibility translation units. Compile either path per file, never both.
 
-App/src/v8tree/ also contains InstanceAncestorChanged, InstanceChildListener,
-InstanceReadChildren and InstanceReadProperty. Their native-classes counterparts
-are compatibility translation units. Compile either path per file, never both.
-
-App/src/v8tree/ also contains InstanceLifetime, InstanceDescendantEvents,
-InstanceNameDescriptor and InstanceSignalDescriptors. Their native-classes
-counterparts are compatibility units. Compile either path per file, never both.
-
-WindowsClient/src/ contains the moved CMainFrame source batch. Their
-native-classes counterparts are compatibility units. Compile either path
-per file, never both. CMainFrameCommands remains at its original path.
-
-WindowsClient/src/ also holds the reviewed browser, explorer, settings and
-property-grid source batch. Native-classes counterparts are compatibility units;
-compile either path per file, never both. See manifests for exact file list.
-
-WindowsClient/src/ also contains the report view, property-grid update and
-active-document view refresh sources. Native-classes counterparts are
-compatibility units; compile either path per file, never both.
-
-App/src/v8datamodel/ contains the reviewed ChangeHistory source batch.
-Native-classes counterparts are compatibility units; compile either path per file.
-
-App/src/v8datamodel/ also contains the reviewed DataModel service source batch.
-Native-classes counterparts are compatibility units; compile either path per file.
-
-App/src/v8datamodel/ also contains the reviewed model source batch.
-Native-classes counterparts are compatibility units; compile either path per file.
-
-Project src/ directories also contain the reviewed mass source-layout batch.
-Native-classes counterparts are compatibility units; compile either path per file.
-Preservation-only moves retain previous proof status and do not prove original identity.
-
-The second mass batch preserves divergent public originals at their old paths.
-Unclassified/src holds code awaiting project identification; no runtime claim is implied.
-
-Seven leaf headers live under project include/ paths; native-headers/ retains include shims.
-
-Project include/ paths also hold the reviewed bulk header batch; native-headers/ retains compatibility includes.
-
-Project include/ paths also hold the reviewed root header batch; native-headers/ retains compatibility includes.
-
-Project include/ paths also hold the reviewed remaining header batch; native-headers/ retains compatibility includes.
-
-Project include/ paths also hold the reviewed remaining header batch; native-headers/ retains compatibility includes.
