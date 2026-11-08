@@ -1,0 +1,14 @@
+{
+  "analysis.json": "777fb2dd92199c2acb676058e2f7781420ae193b63cfed3266d461f66aa887ab",
+  "baseline-link-log.txt": "e6b5d07356eae059c7c1222d4b6b28c3b4f13e72dd2222ce5ba459970d048388",
+  "compile-results.json": "b5231aa4a68eed57eda31f86a48945a06c952439d6c5bb02210e2da4f37d3715",
+  "compile-summary.json": "db9e272e55e0395f4561cb06f864397801cd2cf6ead5e9f7afb97d877f787b6f",
+  "link-log.txt": "bfab2ac54a3da8e55f130ce119b6cff2aea48642135ba16d0a846a20f010f922",
+  "link-receipt.json": "4130e01688b89a48aee4e5431473ef992e032a7c1084060a65969958e3afa735",
+  "manager-hypotheses.json": "a2391df1cf1a10b91813f6e6ad5f2427e79bf1f4d74adf8bea4a4ddee3420799",
+  "original-assembly.txt": "de1f215c194d554bc2e0004ab5008dd2f8fda48120c74e64103de0ea65893649",
+  "README.md": "8e2680e8a095d5355025dea5cb0cbdb2daaf978bca9a213fa21e0b6dec247332",
+  "candidate/ApplicationBaseUrl.cpp": "80b442d240e84aa5108639c00935462cc1716aac339ee5c3fc8abedb1289bd68",
+  "candidate/CRobloxCommandLineInfo.cpp": "53b3e74ddc5dbc6f91f5a85b49c6b7f95d678634d60818c41d253ee49b605ba3",
+  "candidate/CRobloxCommandLineInfo.h": "71c7a276dd19e78464cb4f1789c409899da09e754ae29915ae665b15f1e117a9"
+}

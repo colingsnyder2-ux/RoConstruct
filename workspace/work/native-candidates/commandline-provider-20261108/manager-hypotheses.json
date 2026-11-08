@@ -1,0 +1,57 @@
+[
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\CheckCBrowserDocManager.obj",
+    "sha256": "3e00e7d1f295a22540df5e437e05876c4bf6325a666475efc6c2ec85e0599229",
+    "exit_code": 1120,
+    "before": 125,
+    "after": 127,
+    "resolved": [
+      "public: __thiscall CBrowserDocManager::CBrowserDocManager(void)"
+    ],
+    "introduced": [
+      "public: static struct CRuntimeClass * __stdcall CBrowserDoc::GetThisClass(void)",
+      "public: static struct CRuntimeClass * __stdcall CBrowserFrameWnd::GetThisClass(void)",
+      "public: static struct CRuntimeClass * __stdcall CPlayBrowserView::GetThisClass(void)"
+    ],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\CheckCIDEDocManager.obj",
+    "sha256": "09b99e9fae52398c98aae76c14402a4ace55080c3b5d3064231ea507d407545d",
+    "exit_code": 1120,
+    "before": 125,
+    "after": 132,
+    "resolved": [
+      "public: __thiscall CIDEDocManager::CIDEDocManager(bool)"
+    ],
+    "introduced": [
+      "public: static struct CRuntimeClass * __stdcall CBrowserDoc::GetThisClass(void)",
+      "public: static struct CRuntimeClass * __stdcall CChildFrame::GetThisClass(void)",
+      "public: static struct CRuntimeClass * __stdcall CIDEBrowserView::GetThisClass(void)",
+      "public: static struct CRuntimeClass * __stdcall CRbxChildFrame::GetThisClass(void)",
+      "public: static struct CRuntimeClass * __stdcall CRobloxReportDocView::GetThisClass(void)",
+      "public: static struct CRuntimeClass * __stdcall CScriptEditor::GetThisClass(void)",
+      "public: virtual class CFrameWnd * __thiscall CRbxDocTemplate::CreateNewFrame(class CDocument *,class CFrameWnd *)",
+      "public: virtual void __thiscall CRbxPlayDocTemplate::RemoveDocument(class CDocument *)"
+    ],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\CheckCRobloxCommandLineInfo.obj",
+    "sha256": "eef30471af376f212e3a132fa0a5eeafc1149ae31e449b52d4de8db27bf4dc65",
+    "exit_code": 1120,
+    "before": 125,
+    "after": 124,
+    "resolved": [
+      "public: __thiscall CRobloxCommandLineInfo::CRobloxCommandLineInfo(void)",
+      "public: virtual __thiscall CRobloxCommandLineInfo::~CRobloxCommandLineInfo(void)"
+    ],
+    "introduced": [
+      "class ATL::CStringT<char,class StrTraitMFC_DLL<char,class ATL::ChTraitsCRT<char> > > applicationBaseUrlText"
+    ],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  }
+]

@@ -1,0 +1,103 @@
+[
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\commandline-native-review-20261108\\source\\native-classes\\CRobloxCommandLineInfo.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081120-b693bffb\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "0044c1b0",
+        "requested_symbol": "??0CRobloxCommandLineInfo",
+        "status": "exact",
+        "symbol": "??0CRobloxCommandLineInfo@@QAE@XZ",
+        "score": 100,
+        "target_size": 346,
+        "object_size": 346,
+        "target_sha256": "7007202c825d83f67192f577e7234fba1fbecefd27fce4520eb06a114f28f0c7",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8481348,
+            24
+          ],
+          [
+            8466008,
+            2
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 1.75
+      },
+      {
+        "addr": "0044c360",
+        "requested_symbol": "??1CRobloxCommandLineInfo",
+        "status": "exact",
+        "symbol": "??1CRobloxCommandLineInfo@@UAE@XZ",
+        "score": 100,
+        "target_size": 102,
+        "object_size": 102,
+        "target_sha256": "4c7dd438c5c69020eaa564c747859041fec2d2e6eafa6d9de18d34d6223fc89d",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "0044d200",
+        "requested_symbol": "?ParseParam@CRobloxCommandLineInfo",
+        "status": "exact",
+        "symbol": "?ParseParam@CRobloxCommandLineInfo@@UAEXPBDHH@Z",
+        "score": 100,
+        "target_size": 567,
+        "object_size": 567,
+        "target_sha256": "9ef2656fe3a1acb763cc8847361870cf96c79785c1ad97dc2f68a85e6835c6e0",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8482208,
+            5
+          ],
+          [
+            8482200,
+            8
+          ],
+          [
+            8481720,
+            8
+          ],
+          [
+            8482192,
+            7
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "0044c310",
+        "requested_symbol": "?nativeCommandLineBaseUrl",
+        "status": "exact",
+        "symbol": "?nativeCommandLineBaseUrl@@YAXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+        "score": 100,
+        "target_size": 69,
+        "object_size": 69,
+        "target_sha256": "99e07668299db8f9198df64fe8ef0ce330401fa8d87a94278309069acd9021a0",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\commandline-native-review-20261108\\source\\native-classes\\ApplicationBaseUrl.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081120-b693bffb\\unit-001\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [],
+    "coverage": [],
+    "layouts": []
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "exit_code": 1120,
+  "before": 125,
+  "after": 122,
+  "resolved": [
+    "class ATL::CStringT<char,class StrTraitMFC_DLL<char,class ATL::ChTraitsCRT<char> > > __cdecl applicationBaseUrl(void)",
+    "public: __thiscall CRobloxCommandLineInfo::CRobloxCommandLineInfo(void)",
+    "public: virtual __thiscall CRobloxCommandLineInfo::~CRobloxCommandLineInfo(void)"
+  ],
+  "introduced": [],
+  "duplicates": [],
+  "provider_objects": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\commandline-native-review-20261108\\source\\native-classes\\CRobloxCommandLineInfo.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081120-b693bffb\\unit-000\\candidate.obj",
+      "sha256": "24fa8f1006bff9f6162fb06f861d65403c3fc91c947e457df8f0a3c9311e3b1c"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\commandline-native-review-20261108\\source\\native-classes\\ApplicationBaseUrl.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081120-b693bffb\\unit-001\\candidate.obj",
+      "sha256": "b15552452a0b1ff504d784ac517d078863024bc3fa0e7e98de36c4cacd286cef"
+    }
+  ],
+  "scope": "Fresh candidate link-only diagnostic; call bindings, ABI, EH, runtime, original selection and server credit unproven. Do not run."
+}

@@ -1,0 +1,336 @@
+== 0044c1b0 346 bytes unit=CRobloxModule
+0044c1b0  push -1
+0044c1b2  push 0x7c11fc  ; fn_007c11fc [unit? seg_007c0000]
+0044c1b7  mov eax, dword ptr fs:[0]
+0044c1bd  push eax
+0044c1be  mov dword ptr fs:[0], esp
+0044c1c5  sub esp, 0x2c
+0044c1c8  push ebx
+0044c1c9  push esi
+0044c1ca  mov esi, ecx
+0044c1cc  push edi
+0044c1cd  mov dword ptr [esp + 0x10], esi
+0044c1d1  call 0x6a1262  ; MFC ??0CCommandLineInfo@@QAE@XZ
+0044c1d6  xor ebx, ebx
+0044c1d8  push 4
+0044c1da  mov dword ptr [esp + 0x44], ebx
+0044c1de  mov dword ptr [esi], 0x816a44
+0044c1e4  mov byte ptr [esi + 0x28], bl
+0044c1e7  mov byte ptr [esi + 0x29], bl
+0044c1ea  mov byte ptr [esi + 0x2a], bl
+0044c1ed  mov byte ptr [esi + 0x2b], bl
+0044c1f0  mov byte ptr [esi + 0x2c], bl
+0044c1f3  mov byte ptr [esi + 0x2d], bl
+0044c1f6  mov byte ptr [esi + 0x2e], bl
+0044c1f9  mov byte ptr [esi + 0x2f], bl
+0044c1fc  lea edi, [esi + 0x30]
+0044c1ff  call 0x6a0920  ; MFC ??2@YAPAXI@Z
+0044c204  add esp, 4
+0044c207  cmp eax, ebx
+0044c209  je 0x44c20f
+0044c20b  mov dword ptr [eax], edi
+0044c20d  jmp 0x44c211
+0044c20f  xor eax, eax
+0044c211  mov dword ptr [edi], eax
+0044c213  mov dword ptr [edi + 0xc], ebx
+0044c216  mov dword ptr [edi + 0x10], ebx
+0044c219  mov dword ptr [edi + 0x14], ebx
+0044c21c  mov eax, dword ptr [0x802820]  ; MSVCR90.dll!__argc
+0044c221  cmp dword ptr [eax], ebx
+0044c223  mov byte ptr [esp + 0x40], 2
+0044c228  jle 0x44c2f6
+0044c22e  lea ecx, [esp + 0x1c]
+0044c232  call dword ptr [0x802460]  ; MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+0044c238  mov ecx, dword ptr [0x802820]  ; MSVCR90.dll!__argc
+0044c23e  xor edi, edi
+0044c240  cmp dword ptr [ecx], ebx
+0044c242  mov byte ptr [esp + 0x40], 3
+0044c247  jle 0x44c284
+0044c249  lea esp, [esp]
+0044c250  cmp edi, ebx
+0044c252  je 0x44c263
+0044c254  push 0x812e58
+0044c259  lea ecx, [esp + 0x20]
+0044c25d  call dword ptr [0x802448]  ; MSVCP90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z
+0044c263  mov edx, dword ptr [0x802824]  ; MSVCR90.dll!__argv
+0044c269  mov eax, dword ptr [edx]
+0044c26b  mov ecx, dword ptr [eax + edi*4]
+0044c26e  push ecx
+0044c26f  lea ecx, [esp + 0x20]
+0044c273  call dword ptr [0x802448]  ; MSVCP90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z
+0044c279  mov edx, dword ptr [0x802820]  ; MSVCR90.dll!__argc
+0044c27f  inc edi
+0044c280  cmp edi, dword ptr [edx]
+0044c282  jl 0x44c250
+0044c284  lea eax, [esp + 0x14]
+0044c288  push eax
+0044c289  call 0x569620  ; fn_00569620 [unit? RBX::ServiceProvider]
+0044c28e  add esp, 4
+0044c291  mov edi, dword ptr [eax]
+0044c293  lea ecx, [esp + 0x1c]
+0044c297  mov byte ptr [esp + 0x40], 4
+0044c29c  call dword ptr [0x802464]  ; MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ
+0044c2a2  push eax
+0044c2a3  push 1
+0044c2a5  push edi
+0044c2a6  call 0x5693a0  ; fn_005693a0 [unit? RBX::ServiceProvider]
+0044c2ab  mov eax, dword ptr [esp + 0x24]
+0044c2af  add esp, 0xc
+0044c2b2  mov byte ptr [esp + 0x40], 3
+0044c2b7  cmp eax, ebx
+0044c2b9  je 0x44c2e7
+0044c2bb  mov edi, eax
+0044c2bd  add eax, 4
+0044c2c0  or ecx, 0xffffffff
+0044c2c3  lock xadd dword ptr [eax], ecx
+0044c2c7  jne 0x44c2e7
+0044c2c9  mov edx, dword ptr [edi]
+0044c2cb  mov eax, dword ptr [edx + 4]
+0044c2ce  mov ecx, edi
+0044c2d0  call eax
+0044c2d2  lea ecx, [edi + 8]
+0044c2d5  or edx, 0xffffffff
+0044c2d8  lock xadd dword ptr [ecx], edx
+0044c2dc  jne 0x44c2e7
+0044c2de  mov eax, dword ptr [edi]
+0044c2e0  mov edx, dword ptr [eax + 8]
+0044c2e3  mov ecx, edi
+0044c2e5  call edx
+0044c2e7  lea ecx, [esp + 0x1c]
+0044c2eb  mov byte ptr [esp + 0x40], 2
+0044c2f0  call dword ptr [0x802468]  ; MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+0044c2f6  mov ecx, dword ptr [esp + 0x38]
+0044c2fa  pop edi
+0044c2fb  mov eax, esi
+0044c2fd  pop esi
+0044c2fe  pop ebx
+0044c2ff  mov dword ptr fs:[0], ecx
+0044c306  add esp, 0x38
+0044c309  ret 
+== 0044c360 102 bytes unit=CRobloxModule
+0044c360  push -1
+0044c362  push 0x7c1220  ; fn_007c1220 [unit? seg_007c0000]
+0044c367  mov eax, dword ptr fs:[0]
+0044c36d  push eax
+0044c36e  mov dword ptr fs:[0], esp
+0044c375  sub esp, 8
+0044c378  push esi
+0044c379  mov esi, ecx
+0044c37b  push edi
+0044c37c  mov dword ptr [esp + 8], esi
+0044c380  lea edi, [esi + 0x30]
+0044c383  mov dword ptr [esp + 0x18], 0
+0044c38b  mov dword ptr [esp + 0xc], edi
+0044c38f  mov ecx, edi
+0044c391  mov byte ptr [esp + 0x18], 1
+0044c396  call 0x4077d0  ; fn_004077d0 [unit? VCApp::?$IObjectSafetyRobloxImpl]
+0044c39b  mov edi, dword ptr [edi]
+0044c39d  push edi
+0044c39e  call 0x6a067a  ; MFC ??3@YAXPAX@Z
+0044c3a3  add esp, 4
+0044c3a6  mov ecx, esi
+0044c3a8  mov dword ptr [esp + 0x18], 0xffffffff
+0044c3b0  call 0x6a125c  ; MFC ??1CCommandLineInfo@@UAE@XZ
+0044c3b5  mov ecx, dword ptr [esp + 0x10]
+0044c3b9  pop edi
+0044c3ba  pop esi
+0044c3bb  mov dword ptr fs:[0], ecx
+0044c3c2  add esp, 0x14
+0044c3c5  ret 
+== 0044d200 567 bytes unit=CRobloxCommandLineInfo
+0044d200  push -1
+0044d202  mov eax, dword ptr fs:[0]
+0044d208  push 0x7ce709  ; fn_007ce709 [unit? seg_007c0000]
+0044d20d  push eax
+0044d20e  mov dword ptr fs:[0], esp
+0044d215  sub esp, 0x20
+0044d218  push ebx
+0044d219  push ebp
+0044d21a  push esi
+0044d21b  push edi
+0044d21c  mov edi, ecx
+0044d21e  cmp byte ptr [edi + 0x28], 0
+0044d222  je 0x44d263
+0044d224  mov eax, dword ptr [esp + 0x40]
+0044d228  push ecx
+0044d229  mov ecx, esp
+0044d22b  mov dword ptr [esp + 0x14], esp
+0044d22f  push eax
+0044d230  call dword ptr [0x803f10]  ; mfc90.dll!#310
+0044d236  call 0x44c310  ; fn_0044c310 [unit? CRobloxModule]
+0044d23b  mov ecx, dword ptr [esp + 0x4c]
+0044d23f  add esp, 4
+0044d242  push ecx
+0044d243  mov ecx, edi
+0044d245  mov byte ptr [edi + 0x28], 0
+0044d249  call 0x6a132e  ; MFC ?ParseLast@CCommandLineInfo@@IAEXH@Z
+0044d24e  mov ecx, dword ptr [esp + 0x30]
+0044d252  mov dword ptr fs:[0], ecx
+0044d259  pop edi
+0044d25a  pop esi
+0044d25b  pop ebp
+0044d25c  pop ebx
+0044d25d  add esp, 0x2c
+0044d260  ret 0xc
+0044d263  cmp byte ptr [edi + 0x29], 0
+0044d267  je 0x44d2c4
+0044d269  mov edx, dword ptr [esp + 0x40]
+0044d26d  push edx
+0044d26e  lea ecx, [esp + 0x18]
+0044d272  call dword ptr [0x802458]  ; MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z
+0044d278  lea eax, [esp + 0x14]
+0044d27c  push eax
+0044d27d  lea ecx, [edi + 0x30]
+0044d280  mov dword ptr [esp + 0x3c], 0
+0044d288  call 0x429aa0  ; fn_00429aa0 [unit? ThreadLogManager]
+0044d28d  lea ecx, [esp + 0x14]
+0044d291  mov dword ptr [esp + 0x38], 0xffffffff
+0044d299  call dword ptr [0x802468]  ; MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+0044d29f  mov ecx, dword ptr [esp + 0x48]
+0044d2a3  push ecx
+0044d2a4  mov ecx, edi
+0044d2a6  mov byte ptr [edi + 0x29], 0
+0044d2aa  call 0x6a132e  ; MFC ?ParseLast@CCommandLineInfo@@IAEXH@Z
+0044d2af  mov ecx, dword ptr [esp + 0x30]
+0044d2b3  mov dword ptr fs:[0], ecx
+0044d2ba  pop edi
+0044d2bb  pop esi
+0044d2bc  pop ebp
+0044d2bd  pop ebx
+0044d2be  add esp, 0x2c
+0044d2c1  ret 0xc
+0044d2c4  mov ebp, dword ptr [esp + 0x44]
+0044d2c8  mov esi, dword ptr [esp + 0x40]
+0044d2cc  test ebp, ebp
+0044d2ce  je 0x44d414
+0044d2d4  push 0x816da0
+0044d2d9  lea ecx, [esp + 0x44]
+0044d2dd  call dword ptr [0x803f10]  ; mfc90.dll!#310
+0044d2e3  push esi
+0044d2e4  mov ecx, eax
+0044d2e6  call dword ptr [0x803628]  ; mfc90.dll!#1607
+0044d2ec  test eax, eax
+0044d2ee  lea ecx, [esp + 0x40]
+0044d2f2  sete bl
+0044d2f5  call dword ptr [0x803f14]  ; mfc90.dll!#601
+0044d2fb  test bl, bl
+0044d2fd  je 0x44d324
+0044d2ff  mov edx, dword ptr [esp + 0x48]
+0044d303  push edx
+0044d304  mov ecx, edi
+0044d306  mov byte ptr [edi + 0x2f], 1
+0044d30a  call 0x6a132e  ; MFC ?ParseLast@CCommandLineInfo@@IAEXH@Z
+0044d30f  mov ecx, dword ptr [esp + 0x30]
+0044d313  mov dword ptr fs:[0], ecx
+0044d31a  pop edi
+0044d31b  pop esi
+0044d31c  pop ebp
+0044d31d  pop ebx
+0044d31e  add esp, 0x2c
+0044d321  ret 0xc
+0044d324  push 0x816d98
+0044d329  lea ecx, [esp + 0x44]
+0044d32d  call dword ptr [0x803f10]  ; mfc90.dll!#310
+0044d333  push esi
+0044d334  mov ecx, eax
+0044d336  call dword ptr [0x803628]  ; mfc90.dll!#1607
+0044d33c  test eax, eax
+0044d33e  lea ecx, [esp + 0x40]
+0044d342  sete bl
+0044d345  call dword ptr [0x803f14]  ; mfc90.dll!#601
+0044d34b  test bl, bl
+0044d34d  je 0x44d374
+0044d34f  mov eax, dword ptr [esp + 0x48]
+0044d353  push eax
+0044d354  mov ecx, edi
+0044d356  mov byte ptr [edi + 0x2e], 1
+0044d35a  call 0x6a132e  ; MFC ?ParseLast@CCommandLineInfo@@IAEXH@Z
+0044d35f  mov ecx, dword ptr [esp + 0x30]
+0044d363  mov dword ptr fs:[0], ecx
+0044d36a  pop edi
+0044d36b  pop esi
+0044d36c  pop ebp
+0044d36d  pop ebx
+0044d36e  add esp, 0x2c
+0044d371  ret 0xc
+0044d374  push 0x816bb8
+0044d379  lea ecx, [esp + 0x44]
+0044d37d  call dword ptr [0x803f10]  ; mfc90.dll!#310
+0044d383  push esi
+0044d384  mov ecx, eax
+0044d386  call dword ptr [0x803628]  ; mfc90.dll!#1607
+0044d38c  test eax, eax
+0044d38e  lea ecx, [esp + 0x40]
+0044d392  sete bl
+0044d395  call dword ptr [0x803f14]  ; mfc90.dll!#601
+0044d39b  test bl, bl
+0044d39d  je 0x44d3c4
+0044d39f  mov ecx, dword ptr [esp + 0x48]
+0044d3a3  push ecx
+0044d3a4  mov ecx, edi
+0044d3a6  mov byte ptr [edi + 0x28], 1
+0044d3aa  call 0x6a132e  ; MFC ?ParseLast@CCommandLineInfo@@IAEXH@Z
+0044d3af  mov ecx, dword ptr [esp + 0x30]
+0044d3b3  mov dword ptr fs:[0], ecx
+0044d3ba  pop edi
+0044d3bb  pop esi
+0044d3bc  pop ebp
+0044d3bd  pop ebx
+0044d3be  add esp, 0x2c
+0044d3c1  ret 0xc
+0044d3c4  push 0x816d90
+0044d3c9  lea ecx, [esp + 0x48]
+0044d3cd  call dword ptr [0x803f10]  ; mfc90.dll!#310
+0044d3d3  push esi
+0044d3d4  mov ecx, eax
+0044d3d6  call dword ptr [0x803628]  ; mfc90.dll!#1607
+0044d3dc  test eax, eax
+0044d3de  lea ecx, [esp + 0x44]
+0044d3e2  sete bl
+0044d3e5  call dword ptr [0x803f14]  ; mfc90.dll!#601
+0044d3eb  test bl, bl
+0044d3ed  je 0x44d414
+0044d3ef  mov edx, dword ptr [esp + 0x48]
+0044d3f3  push edx
+0044d3f4  mov ecx, edi
+0044d3f6  mov byte ptr [edi + 0x29], 1
+0044d3fa  call 0x6a132e  ; MFC ?ParseLast@CCommandLineInfo@@IAEXH@Z
+0044d3ff  mov ecx, dword ptr [esp + 0x30]
+0044d403  mov dword ptr fs:[0], ecx
+0044d40a  pop edi
+0044d40b  pop esi
+0044d40c  pop ebp
+0044d40d  pop ebx
+0044d40e  add esp, 0x2c
+0044d411  ret 0xc
+0044d414  mov eax, dword ptr [esp + 0x48]
+0044d418  push eax
+0044d419  push ebp
+0044d41a  push esi
+0044d41b  mov ecx, edi
+0044d41d  call 0x6a1328  ; MFC ?ParseParam@CCommandLineInfo@@UAEXPBDHH@Z
+0044d422  mov ecx, dword ptr [esp + 0x30]
+0044d426  pop edi
+0044d427  pop esi
+0044d428  pop ebp
+0044d429  mov dword ptr fs:[0], ecx
+0044d430  pop ebx
+0044d431  add esp, 0x2c
+0044d434  ret 0xc
+== 0044c310 69 bytes unit=CRobloxModule
+0044c310  mov eax, dword ptr fs:[0]
+0044c316  push -1
+0044c318  push 0x7c0399  ; fn_007c0399 [unit? CSpinButtonCtrl]
+0044c31d  push eax
+0044c31e  mov dword ptr fs:[0], esp
+0044c325  lea eax, [esp + 0x10]
+0044c329  push eax
+0044c32a  mov ecx, 0x96dcf0
+0044c32f  mov dword ptr [esp + 0xc], 0
+0044c337  call dword ptr [0x803144]  ; mfc90.dll!#817
+0044c33d  lea ecx, [esp + 0x10]
+0044c341  call dword ptr [0x803f14]  ; mfc90.dll!#601
+0044c347  mov ecx, dword ptr [esp]
+0044c34a  mov dword ptr fs:[0], ecx
+0044c351  add esp, 0xc
+0044c354  ret 
