@@ -1,0 +1,116 @@
+[
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\datamodel-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\DataModelTiming.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081541-bc203fc6\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005757d0",
+        "requested_symbol": "?getGameTime@DataModel@RBX",
+        "status": "exact",
+        "symbol": "?getGameTime@DataModel@RBX@@QBENXZ",
+        "score": 100,
+        "target_size": 13,
+        "object_size": 13,
+        "target_sha256": "dfab317605d49424b93b3632a6e3751958cca628c58f169bc593c9b0c3d28fb3",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 1.813
+      },
+      {
+        "addr": "005757e0",
+        "requested_symbol": "?getFrameRate@DataModel@RBX",
+        "status": "exact",
+        "symbol": "?getFrameRate@DataModel@RBX@@QBENXZ",
+        "score": 100,
+        "target_size": 13,
+        "object_size": 13,
+        "target_sha256": "17d8ec9840d80b3bd5d020ff1215e2720b384a906ee4e17d1f84ea891861f8f6",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\datamodel-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\DataModelDutyCycle.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081541-bc203fc6\\unit-001\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005757f0",
+        "requested_symbol": "?getDutyCycle@DataModel@RBX",
+        "status": "exact",
+        "symbol": "?getDutyCycle@DataModel@RBX@@QBENXZ",
+        "score": 100,
+        "target_size": 35,
+        "object_size": 35,
+        "target_sha256": "aef7cf8b73fccf8d02f5af1bf6dd68df7129a960cb61b4437f078057153379ff",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\datamodel-providers-fresh-20261108\\source\\App\\src\\script\\LuaAllocatorStats.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081541-bc203fc6\\unit-002\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005c8940",
+        "requested_symbol": "?getHeapStats@LuaAllocator@@",
+        "status": "exact",
+        "symbol": "?getHeapStats@LuaAllocator@@QBEXAAI0@Z",
+        "score": 100,
+        "target_size": 20,
+        "object_size": 20,
+        "target_sha256": "839606a2640fbe1bbef3198bb0b8e7755560746bb8b979ed5fdde2fe2457f675",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

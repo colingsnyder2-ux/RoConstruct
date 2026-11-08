@@ -1,0 +1,39 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\datamodel-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\DataModelTiming.cpp",
+      "checks": [
+        {
+          "addr": "005757d0",
+          "symbol": "?getGameTime@DataModel@RBX",
+          "calls": []
+        },
+        {
+          "addr": "005757e0",
+          "symbol": "?getFrameRate@DataModel@RBX",
+          "calls": []
+        }
+      ]
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\datamodel-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\DataModelDutyCycle.cpp",
+      "checks": [
+        {
+          "addr": "005757f0",
+          "symbol": "?getDutyCycle@DataModel@RBX",
+          "calls": []
+        }
+      ]
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\datamodel-providers-fresh-20261108\\source\\App\\src\\script\\LuaAllocatorStats.cpp",
+      "checks": [
+        {
+          "addr": "005c8940",
+          "symbol": "?getHeapStats@LuaAllocator@@",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

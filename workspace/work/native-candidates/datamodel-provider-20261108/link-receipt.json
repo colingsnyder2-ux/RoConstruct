@@ -1,0 +1,31 @@
+{
+  "exit_code": 1120,
+  "before": 122,
+  "after": 118,
+  "resolved": [
+    "public: double __thiscall RBX::DataModel::getDutyCycle(void)const ",
+    "public: double __thiscall RBX::DataModel::getFrameRate(void)const ",
+    "public: double __thiscall RBX::DataModel::getGameTime(void)const ",
+    "public: void __thiscall LuaAllocator::getHeapStats(unsigned int &,unsigned int &)const "
+  ],
+  "introduced": [],
+  "duplicates": [],
+  "provider_objects": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\datamodel-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\DataModelTiming.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081541-bc203fc6\\unit-000\\candidate.obj",
+      "sha256": "fb31b40b43a68254d43706f771399a30c43b12dc69039d32f830caa273b2b0ff"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\datamodel-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\DataModelDutyCycle.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081541-bc203fc6\\unit-001\\candidate.obj",
+      "sha256": "196aba26c771b076537136e0d4dd02c851a2318134044e0e535b450204df3078"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\datamodel-providers-fresh-20261108\\source\\App\\src\\script\\LuaAllocatorStats.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081541-bc203fc6\\unit-002\\candidate.obj",
+      "sha256": "3fb6f8356acbe07f789e7e6c2f141328d47f97d195621623e28b8868c98b056c"
+    }
+  ],
+  "scope": "Fresh candidate link-only diagnostic; call bindings, ABI, EH, runtime, original selection and server credit unproven. Do not run."
+}

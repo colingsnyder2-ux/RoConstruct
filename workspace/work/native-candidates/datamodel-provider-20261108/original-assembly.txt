@@ -1,0 +1,25 @@
+== 005757d0 13 bytes unit=RBX::DataModel
+005757d0  mov eax, dword ptr [ecx + 0x20c]
+005757d6  fld qword ptr [eax + 0x1b8]
+005757dc  ret 
+== 005757e0 13 bytes unit=RBX::DataModel
+005757e0  mov eax, dword ptr [ecx + 0x20c]
+005757e6  fld qword ptr [eax + 0x228]
+005757ec  ret 
+== 005757f0 35 bytes unit=RBX::DataModel
+005757f0  mov eax, dword ptr [ecx + 0x20c]
+005757f6  fld qword ptr [eax + 0x1d8]
+005757fc  fadd qword ptr [eax + 0x1d0]
+00575802  fadd qword ptr [eax + 0x1c8]
+00575808  fld1 
+0057580a  fdiv dword ptr [eax + 0x1c0]
+00575810  fmulp st(1)
+00575812  ret 
+== 005c8940 20 bytes unit=RBX::LaserTool
+005c8940  mov eax, dword ptr [ecx]
+005c8942  mov edx, dword ptr [esp + 4]
+005c8946  mov dword ptr [edx], eax
+005c8948  mov eax, dword ptr [ecx + 4]
+005c894b  mov ecx, dword ptr [esp + 8]
+005c894f  mov dword ptr [ecx], eax
+005c8951  ret 8

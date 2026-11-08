@@ -1,0 +1,42 @@
+[
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeDataModelTimingFull.obj",
+    "sha256": "ff63424eb715687d0659df7812e5c36fea8af232c8aea19d8349b3b7ed34f951",
+    "exit_code": 1120,
+    "before": 122,
+    "after": 120,
+    "resolved": [
+      "public: double __thiscall RBX::DataModel::getFrameRate(void)const ",
+      "public: double __thiscall RBX::DataModel::getGameTime(void)const "
+    ],
+    "introduced": [],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeDataModelDutyCycleFull.obj",
+    "sha256": "85a15b6520bacac5d945abe8ec74546a016aa0b9421bd4ef5d2ccf3b80bf8fd6",
+    "exit_code": 1120,
+    "before": 122,
+    "after": 121,
+    "resolved": [
+      "public: double __thiscall RBX::DataModel::getDutyCycle(void)const "
+    ],
+    "introduced": [],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeLuaAllocatorStatsFull.obj",
+    "sha256": "ea6cb747d47ac971c7ca152eb13f8c055a9c0ece14c01a5af8f9a05f799f1b5a",
+    "exit_code": 1120,
+    "before": 122,
+    "after": 121,
+    "resolved": [
+      "public: void __thiscall LuaAllocator::getHeapStats(unsigned int &,unsigned int &)const "
+    ],
+    "introduced": [],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  }
+]
