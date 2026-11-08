@@ -1,0 +1,877 @@
+{
+  "base": "dcb67c8cbf18b05353fe98ff372a0d137cb1c684",
+  "scope": "Historical P5 proof artifacts, not current acceptance or runtime claims.",
+  "audit": "Exact names checked against tracked source and other work folders; generated package inventories excluded.",
+  "files": [
+    {
+      "original": "workspace/work/2008-06/p5-anchor-assets-bf2c154c4c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-anchor-assets-bf2c154c4c/receipt.json",
+      "git_blob": "ef6356f25a27123fa2c88efae0fe33afcafe12ce",
+      "sha256": "670ce04b81bda3e68ef145f690e95f83706bce1eb4dd0669f681c81927bc02b8"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-anchor-lifetime-bf2c154c4c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-anchor-lifetime-bf2c154c4c/receipt.json",
+      "git_blob": "ee9df756255ad4bf2f99f4ffc47739414c5c8211",
+      "sha256": "d9ee37afbf00e1dd5c42b7d91989df1e23bd70dc5bbc0ca56faf2ac771811727"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-anchor-script-bf2c154c4c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-anchor-script-bf2c154c4c/receipt.json",
+      "git_blob": "a3ab4dd696666abb6f8c723571f0abc804edfce1",
+      "sha256": "39c829d6930aa9cfeeedab3a70f8513aa7ef828649aaededc19cce9767b0d9e1"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-anchor-sound-regression-bf2c154c4c/device-stdout.txt",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-anchor-sound-regression-bf2c154c4c/device-stdout.txt",
+      "git_blob": "bcdc40b42990c17916f792e268f95df10bd96a5f",
+      "sha256": "29d181d9e60560804d05424e1e23479d54a233865b635fc41ed529514272b468"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-anchor-sound-regression-bf2c154c4c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-anchor-sound-regression-bf2c154c4c/receipt.json",
+      "git_blob": "abd0e19fea5883746586936dc1e86ed38b7d0b71",
+      "sha256": "f394a6177a8b124eeacf61da02103663c0a74fa0a679e3842e5da5ce4f81283c"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-anchor-sound-regression-bf2c154c4c/stdout.txt",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-anchor-sound-regression-bf2c154c4c/stdout.txt",
+      "git_blob": "52f72462545893b14580be8e55dcde3ef5b5f951",
+      "sha256": "a82c1bd6fac4513306c1dc969b01d7d4fe24e6f5f7e342e465c172e9a4d23994"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-assets-0f8a33aff3/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-assets-0f8a33aff3/receipt.json",
+      "git_blob": "73f540aa77ee0187461c2cecc2bfe474ee307e6c",
+      "sha256": "b7554831d723e4da5f8b63c1ebe640debfaf49d61fde28c783b0daa7ac721868"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-anchor-wait-0ad4f9deef/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-anchor-wait-0ad4f9deef/receipt.json",
+      "git_blob": "259020722c8c48b93b253c7adc3387e31b0f1910",
+      "sha256": "1fc946c1316a00017b4619b15db711f66f9990657c2f871975433b3e2e13dd62"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-assets-d75855c620/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-assets-d75855c620/receipt.json",
+      "git_blob": "1b788598afa725ffd7c69aaee2bf55afbe8ad04e",
+      "sha256": "8f53ffcf4c21cc5b6de497686cbae8589d311c0271af269c53e8f5b971b9819f"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-climb-0ad4f9deef/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-climb-0ad4f9deef/receipt.json",
+      "git_blob": "a2b81a106c2875ac6b7178d6bab91cb74db2e79b",
+      "sha256": "dcbd61b1787fa5614fc60c0c1cc7f6be0e5ca09e8d7bd654cd0b921978574353"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-combined-0ad4f9deef/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-combined-0ad4f9deef/receipt.json",
+      "git_blob": "b3ce5d0b4c14681debc38328ca2ac64d580dbcc9",
+      "sha256": "aea8841172501c12f555f4091e7873b776a79032bd307c8cab89b16adcdc3cca"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-contact-d75855c620/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-contact-d75855c620/receipt.json",
+      "git_blob": "360a2ed8909f71bbc57594fa1e3e1c55c9b52497",
+      "sha256": "3bbf4b6146be4461fbaf7d05223366968d1246eb0b9faf01c41b2d2bc22b7eb4"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-controller-0ad4f9deef/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-controller-0ad4f9deef/receipt.json",
+      "git_blob": "18d40e2e51c5a7d0cebb10116dbd8d8134e524d3",
+      "sha256": "718e4ed20744cb7b23f29970829819cc529505b08261e3b600a44d762e640b60"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-golf-d75855c620/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-golf-d75855c620/receipt.json",
+      "git_blob": "a665435fa16bb0ebb87d0921399c163529803a6d",
+      "sha256": "07b6c0af7855078702b3657376869978785a873ec94f99f081d07ea9b1056883"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-heartbeat-396376bf09/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-heartbeat-396376bf09/receipt.json",
+      "git_blob": "3ef1bbdac567614f051c262f3642bc2c3e6a778d",
+      "sha256": "0def0da06c51a77e2200d32fe25a012ef1a48cc0d4fb08e9f22bbeeac8c0bca6"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-lifetime-d75855c620/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-lifetime-d75855c620/receipt.json",
+      "git_blob": "1094d8d43ea83a161c86c543ad21caac3ced1314",
+      "sha256": "fdbcc20988681c9f7c379358ef1af9d110b3d13207af61c9c7d4d8d8b96333d9"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-lifetime-isolated-0ad4f9deef/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-lifetime-isolated-0ad4f9deef/receipt.json",
+      "git_blob": "e32713d637c916735156c5c78bcfd75a9316043c",
+      "sha256": "a613f21ca7927aef5bb22bb01abdfc2895fd5b340c96ec0a4a1cfd68de15c1f5"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-p0-0ad4f9deef/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-p0-0ad4f9deef/receipt.json",
+      "git_blob": "bda1f387a5a3c973b298065a44d1ad6367520f07",
+      "sha256": "2e93cdcd802a1274587a668fcf4f420733ce7a6ecc8c1cf03399702624562aea"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-regression-0ad4f9deef/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-regression-0ad4f9deef/receipt.json",
+      "git_blob": "6803a47d3853dacc3b1e69ace8e73df92bd8bfac",
+      "sha256": "b74afb9d378e6bfdf1b1f99cce208775042153bf99b374e3b2ce15713f6bef44"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-script-0ad4f9deef/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-script-0ad4f9deef/receipt.json",
+      "git_blob": "8f19020497b792e4bc6c1d3723873bda697340bf",
+      "sha256": "c15361125d8cbe6ba323f9fb6a6757a77b7ab93270153406de7d1db1b378ee79"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-short-396376bf09/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-short-396376bf09/receipt.json",
+      "git_blob": "696636d4587fe642580c9a0bef95320f314d86fb",
+      "sha256": "adbcdfb3ab989f51cf3794522ef207cf7a131be358bdc1f21ecf5b8eecc9f382"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-stepped-396376bf09/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-stepped-396376bf09/receipt.json",
+      "git_blob": "fc16454c0e89a53c5d6858cfaccd27071a1728d6",
+      "sha256": "c7a687b5b9a686fccb904e9c23cb977ce49cc8edc71e2a1a7b21f2e0b0881bce"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-values-d75855c620/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-values-d75855c620/receipt.json",
+      "git_blob": "8cb5190e435839cfe0d4a23871f03e6af4382666",
+      "sha256": "87553e5a2905dbed317da070c3be7a0f1c84d473d6e965466ac08b33b6f3b1e0"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-cadence-wait-396376bf09/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-cadence-wait-396376bf09/receipt.json",
+      "git_blob": "d6d0f12f1de3b77f2b9d6e28cf705672717c554c",
+      "sha256": "27b544dd83669d46caf220fe4182b38096a4dc95f39127f771268e79d05961ff"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-camera-7143c96f2c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-camera-7143c96f2c/receipt.json",
+      "git_blob": "8555e5bbd495e8bd992a5d4ee6af5e48b8a7eb87",
+      "sha256": "d180c95f614c05ad0d9fa4f467a8a3986d0cbe8a2a4a3c69a339a34f721b2980"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-camera-assets-7143c96f2c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-camera-assets-7143c96f2c/receipt.json",
+      "git_blob": "61cf7c075f507260a3514a6322d44294e0ae5dee",
+      "sha256": "834fd7a180a18359301123f646306920460137be7486ea2d320a6148a4d5ccc6"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-camera-climb-7143c96f2c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-camera-climb-7143c96f2c/receipt.json",
+      "git_blob": "779f4fc8507baedb346c290f2eb9c8a443d20ba8",
+      "sha256": "e2dc20303954cf96720f12bce75c285774c730239f4d2fa44800e0b1c60e652a"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-camera-controller-7143c96f2c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-camera-controller-7143c96f2c/receipt.json",
+      "git_blob": "77de8d2e674a6b83f072d5710484aa7b1ef7d393",
+      "sha256": "98bb19bf408938188a893210c213f318fca3dd78aa8548e5f6ddfa7ebcb93288"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-camera-lifetime-7143c96f2c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-camera-lifetime-7143c96f2c/receipt.json",
+      "git_blob": "522549f68d861f9ab3e4249e700326cea398dcd4",
+      "sha256": "2da453f1d5a9c84d63f407ada687fab62e52ac98b4ae24c8ec5880e7ddcd7475"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-camera-p0-7143c96f2c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-camera-p0-7143c96f2c/receipt.json",
+      "git_blob": "8bcaa99b0afc79f6052179ff37d9a5205b03a079",
+      "sha256": "1ff251eed6f9d5b970228fac093cb0a677ead1f7d2ad519c4e9aece1468e7996"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-camera-script-7143c96f2c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-camera-script-7143c96f2c/receipt.json",
+      "git_blob": "8c348be79993c3393afdd3ac8a1c6f4bf7d737fa",
+      "sha256": "70fb20c5710a4003cd065fe84a57e0890338ede3340de907cdcc58baa79b6bfb"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-camera-spawn-7143c96f2c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-camera-spawn-7143c96f2c/receipt.json",
+      "git_blob": "1fdeab0c2239bb57e4d1088b357a9f2e7ae65453",
+      "sha256": "5e353bde189836a501b16f0679851d34cd22a697fe6b7ac90b3c1f9f704a1dad"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-assets-226e4308cc/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-assets-226e4308cc/receipt.json",
+      "git_blob": "0f25e5eda8b09817283f79777c6d27e1c8cf1ad1",
+      "sha256": "0471abd2a425a9c315734bd048b8486b8aa621b44acea6ce1c4fdf6e2b9dea18"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-controller-226e4308cc/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-controller-226e4308cc/receipt.json",
+      "git_blob": "a9a91507d5da6a23e141831d1fe8a5757f1f6bda",
+      "sha256": "8e97f2fbfe9300256e6a52aa9921aea48d9ef385b2f239ebc10ca8088fd38d94"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-controller-ff34299c3b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-controller-ff34299c3b/receipt.json",
+      "git_blob": "30216c8f3d6924c542b697cd72bf16aa8b84796c",
+      "sha256": "7040d6a05d3ee2af35c7dbab89bf8060c225df1b49dd26de777bf62e914ca8d3"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-lifetime-226e4308cc/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-lifetime-226e4308cc/receipt.json",
+      "git_blob": "3b6d65bc033ebe105a8e8bd9dd04eb2ce866d7a9",
+      "sha256": "ef69888e648a6cb567f1c0d21a3f37e78cb4135ce2965437e4f753096e32ede2"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-lifetime-ff34299c3b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-lifetime-ff34299c3b/receipt.json",
+      "git_blob": "ab76f8b0d270249a813626e2e85288f0e234c1e8",
+      "sha256": "01c2b3483bb1126e7c834ff630bf26b841a66a3b3a443f4e93d68f45c3df937d"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-p0-226e4308cc/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-p0-226e4308cc/receipt.json",
+      "git_blob": "6922fe8c21d57ea4d8e77e09a2c07537ca9a90a9",
+      "sha256": "ec149ba8265d746efec4cf5d5f85781f7c58ff7508e127e4863c3d38f9ef3b85"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-runtime-226e4308cc/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-runtime-226e4308cc/receipt.json",
+      "git_blob": "4b9d72a694d387df37da0aeea14583cf7a00d207",
+      "sha256": "e74dc869ebb3791b76514aad57df90d1b472be68d5d87cf7670966d374829cb6"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-script-226e4308cc/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-script-226e4308cc/receipt.json",
+      "git_blob": "3b73489601b2697518d4fcb44926e9ca47a3a476",
+      "sha256": "58876ff1eeed1dc4427681dbd803b391abb26c17e0113ea9499b2849fd9b9e6f"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-sensor-226e4308cc/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-sensor-226e4308cc/receipt.json",
+      "git_blob": "d2a4139829661c6da9ecda90c8541f45c1c9e6e5",
+      "sha256": "5a6c55ec9d018b1c272f95b3beacb843c71393ca5b7ebf2313c15380bde646bf"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-sensor-ff34299c3b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-sensor-ff34299c3b/receipt.json",
+      "git_blob": "c548d46e30f2e7a2d32777985566604a68b95ab6",
+      "sha256": "2400702fc3143194b9305bff7e3d207a9aae3f54e666c8c25ef53fab3b1cbc5e"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-sound-226e4308cc/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-sound-226e4308cc/receipt.json",
+      "git_blob": "0a9b6bca3ac82cb2749ac4b953199752cebe8cea",
+      "sha256": "26f22bfca2b8be668f441aae471fed68adc40659a13ba2d4902d2deaf6fbb13b"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-spawn-226e4308cc/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-spawn-226e4308cc/receipt.json",
+      "git_blob": "a5a05ac79bdfd4181468a00bdf2dfcd277f14d25",
+      "sha256": "5b65b778c36697eeb8efcae80732625de676ce9079511c193618d9cd5aa77855"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-climb-spawn-ff34299c3b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-climb-spawn-ff34299c3b/receipt.json",
+      "git_blob": "9d0d09744fd4350346ef86fa7bc422fc8620f8bc",
+      "sha256": "c0744bd704a849db59f011d77b110cff151b9942c2afa9ef73b0cb5557ade516"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-contact-script-a4af240151/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-contact-script-a4af240151/receipt.json",
+      "git_blob": "164c1f4789962e3c3158326d7174298f30d0bb10",
+      "sha256": "9086f48fd751a4d6fd77b17d747e5ac24ab64914e59eeca54d687d7c08b47a15"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-contact-script-lifetime-a4af240151/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-contact-script-lifetime-a4af240151/receipt.json",
+      "git_blob": "4d475132e39ed0691adeea452f59f0c65c5f0697",
+      "sha256": "140d42788bb1236838150f364862e21936895d8b781f6e325f1d8e84eb631f6b"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-contact-script-p0-a4af240151/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-contact-script-p0-a4af240151/receipt.json",
+      "git_blob": "3889195e4a8f7c8f178625dd0c9f4f78e1b70b29",
+      "sha256": "05f978965e0a6e51f086396a4dceb82526b316f561dab7ac7a81888b6b106be3"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-contact-script-scheduling-a4af240151/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-contact-script-scheduling-a4af240151/receipt.json",
+      "git_blob": "3c4f29aab9314a7ad1317827434cc743d04f4a4d",
+      "sha256": "aa16759f31e9fd1779a06657e9bf9747e72a0e82681c682685791e7926aaf121"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-contact-script-values-a4af240151/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-contact-script-values-a4af240151/receipt.json",
+      "git_blob": "729ec25882d7cc3bb87902ec278c800e9e6ad2dc",
+      "sha256": "e7577c50b811bd7c1780e84a860184d7453811a6d70fe35554dc6fec5dde6cd3"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-controller-0f8a33aff3/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-controller-0f8a33aff3/receipt.json",
+      "git_blob": "3865b5733e0574acaaf367cd2ee606ec77407650",
+      "sha256": "debb64063b4be522bc667ff7e01471337c544d9054171c2b9cb6f29c6249d8a1"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-controller-anchor-1f22f9eb1c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-controller-anchor-1f22f9eb1c/receipt.json",
+      "git_blob": "a4c00455d6394adbcd8faa0a41899c5e0edce824",
+      "sha256": "2ce074b7a79a6270d13f16465fb66ecc4fc2f1c54788556bfa48a30bcd62f1fa"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-controller-assets-1f22f9eb1c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-controller-assets-1f22f9eb1c/receipt.json",
+      "git_blob": "f3ead690c78cd8d46be24ccb11e54ebfce345a0b",
+      "sha256": "87442010842a2249c5557d87718fb17e5621b61e56a23267a0d16efe575c6b5d"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-controller-lifetime-1f22f9eb1c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-controller-lifetime-1f22f9eb1c/receipt.json",
+      "git_blob": "b5ad51630990fb7056ccd1e459b95393916f5d1c",
+      "sha256": "b6ba3cf174e26a39d2f478972426529a6ccae05ddd3b93d8ddc846e1445df7a4"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-controller-p0-1f22f9eb1c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-controller-p0-1f22f9eb1c/receipt.json",
+      "git_blob": "c9c382ce454ddd4846b7c7ca5538756344957ae8",
+      "sha256": "18f3124f38461712c9cc4db629f94dc757a5ad12c910f7e63bfda76d0d9d5cf3"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-controller-script-1f22f9eb1c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-controller-script-1f22f9eb1c/receipt.json",
+      "git_blob": "6b5f8ce892c2136fcdca673a63e165a5381ae103",
+      "sha256": "5999c423f65a63e82901215560fe2810b40167fbccb94f4fc06682c8c6b19d31"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-controller-sound-1f22f9eb1c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-controller-sound-1f22f9eb1c/receipt.json",
+      "git_blob": "abcdddd1f869396d101827e52a21d25d222b845e",
+      "sha256": "85dfd209bc779c724e48a3f0e77e45c7a5a0854463a316920806deee2e2ee78f"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-demo-c76495854b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-demo-c76495854b/receipt.json",
+      "git_blob": "faefc6e3aa3ae933022bb788b9c6480c35925f9d",
+      "sha256": "efe217c6aa0608855dc56ddb1cb154bf2eb2908fbab214ece96ef489b68eb2eb"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-double-anchor-6c7b1ff3a8/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-double-anchor-6c7b1ff3a8/receipt.json",
+      "git_blob": "c1f96e71b2d284762feea591d248a3cda5216996",
+      "sha256": "ed0520002b8ce89253f4fd71407609d6e0e7cdb1babd0ca27e024aff134cfe2f"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-double-assets-6c7b1ff3a8/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-double-assets-6c7b1ff3a8/receipt.json",
+      "git_blob": "8c98edcefb478d389dbd17a86518fc57e380ba43",
+      "sha256": "996255df94076a31efc2e51c760999853a4f363ecc79e6a20f7182a6f4d46eaa"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-double-combined-6c7b1ff3a8/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-double-combined-6c7b1ff3a8/receipt.json",
+      "git_blob": "1f9fcfd8c95fe17eab6fe9bba98d5a6e46d1f71a",
+      "sha256": "ec3728bb4da9800321db3c74381d575bae5dd2a3575d0a00d9fc303be4bb4dce"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-double-golf-6c7b1ff3a8/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-double-golf-6c7b1ff3a8/receipt.json",
+      "git_blob": "58368fe041a3b593fb12cf7d3b833edfc815c8a2",
+      "sha256": "de0259eaa2536d2da0e79a4e825b53734b8cefeca9df07a5f33ede472f6eb2c9"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-double-lifetime-6c7b1ff3a8/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-double-lifetime-6c7b1ff3a8/receipt.json",
+      "git_blob": "17d7b80c771055bcc4e96f1c4c01a6fbb3b50504",
+      "sha256": "a47a4f7729243e1fe282005d6259e8d037421274c9c70bd2ae6e8bd906269c49"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-double-p0-6c7b1ff3a8/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-double-p0-6c7b1ff3a8/receipt.json",
+      "git_blob": "3d341a33567274f5e6ebcfd70dbd418f30a8e33c",
+      "sha256": "8f821080dff1720bf9a347c14e1dc957945b1cd52cb1883de4a18e27fee33a13"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-double-script-6c7b1ff3a8/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-double-script-6c7b1ff3a8/receipt.json",
+      "git_blob": "bcba18a49b97f6d7aeaf30105ce543996a4283bf",
+      "sha256": "0b36624237934555c3c7b7f9a6fe9eeaeeed75b8a7ed393813bb736f3b0febd7"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-double-values-6c7b1ff3a8/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-double-values-6c7b1ff3a8/receipt.json",
+      "git_blob": "32fedfaafdd2e1054563104ba6979bade4073dfd",
+      "sha256": "ce432afd1346aae59e913ef22dc8cdfa618de9598c311d06937f088bd95aa3dd"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-freefall-controller-9484069c6b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-freefall-controller-9484069c6b/receipt.json",
+      "git_blob": "f5846f1c928b85e99b88119b44bc4f1459ffb7e4",
+      "sha256": "aec3532e3d90963dadb92f898cc602d288a5071e233a68ffa06f2725a10b13c6"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-freefall-lifetime-9484069c6b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-freefall-lifetime-9484069c6b/receipt.json",
+      "git_blob": "b095ccfad22ec95af09705abcf08f24f6fd3ba65",
+      "sha256": "f551fae4f7658c41471c0df59615712a7c1727f579f7cb0b2c1d386117507394"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-freefall-script-9484069c6b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-freefall-script-9484069c6b/receipt.json",
+      "git_blob": "2a7b7118fbe1c69fcf720996111c4411ba67afc6",
+      "sha256": "7b129512e8cc62f8da46b42bc1efb8473dc6b1bcd079de8c020b6e14164e315b"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-freefall-spawn-9484069c6b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-freefall-spawn-9484069c6b/receipt.json",
+      "git_blob": "3f313e55db20abee043ba8337c945e84c85fa23b",
+      "sha256": "73ee30de09b38ff2ec779d7e29159c13ebe113d88f9d34f3fcef1199da288cd7"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-golf-shutdown-1-3e7fa3c6ec/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-golf-shutdown-1-3e7fa3c6ec/receipt.json",
+      "git_blob": "a0fca76264083217489fa615b851e3a048d37337",
+      "sha256": "55c59c5c848a8f2d94b13ef8351bbb50607ce9f64426a0d1f9c5b171883c9dc9"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-golf-shutdown-2-3e7fa3c6ec/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-golf-shutdown-2-3e7fa3c6ec/receipt.json",
+      "git_blob": "a0fca76264083217489fa615b851e3a048d37337",
+      "sha256": "55c59c5c848a8f2d94b13ef8351bbb50607ce9f64426a0d1f9c5b171883c9dc9"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-golf-shutdown-3-3e7fa3c6ec/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-golf-shutdown-3-3e7fa3c6ec/receipt.json",
+      "git_blob": "a0fca76264083217489fa615b851e3a048d37337",
+      "sha256": "55c59c5c848a8f2d94b13ef8351bbb50607ce9f64426a0d1f9c5b171883c9dc9"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-golf-shutdown-4-3e7fa3c6ec/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-golf-shutdown-4-3e7fa3c6ec/receipt.json",
+      "git_blob": "a0fca76264083217489fa615b851e3a048d37337",
+      "sha256": "55c59c5c848a8f2d94b13ef8351bbb50607ce9f64426a0d1f9c5b171883c9dc9"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-head-assets-4732a013da/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-head-assets-4732a013da/receipt.json",
+      "git_blob": "5a8441fdf355ce24cae0ec76f43e1ad75e7391bf",
+      "sha256": "b203980f037e485e880b59d10a9defeb7132f681b5a28f1676a2baa49d6b2912"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-head-controller-4732a013da/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-head-controller-4732a013da/receipt.json",
+      "git_blob": "b9065e9714440bb3512c8d02b377820dcd7b5cc7",
+      "sha256": "25bf4b85d84b38eb36525aa8abbfffcb858214821b7bf809ec9c51bb618454a0"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-head-lifetime-4732a013da/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-head-lifetime-4732a013da/receipt.json",
+      "git_blob": "b34a1a0694ba2ce652b8613700dc0d4740f26cee",
+      "sha256": "9d0f3b2a3c40049089b65496d9ba3b0d0388e61f6e35fe32784bee96100e24ce"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-head-spawn-4732a013da/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-head-spawn-4732a013da/receipt.json",
+      "git_blob": "39bbdc7fbefdcbc6730b40d6a51e4f3008f9e01c",
+      "sha256": "047ad5edb1025408530839df4bdda6a06da51a69e22659f8430b5931ad275bab"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-humanoid-original-1-b5f903a918/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-humanoid-original-1-b5f903a918/receipt.json",
+      "git_blob": "c5c3dda3578434c38c97c83cc28b2d469053343e",
+      "sha256": "e59fc34b7a8f18e0784b8d467a70b18565a99aab257ccada90b18adfb4f97d70"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-humanoid-original-2-b5f903a918/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-humanoid-original-2-b5f903a918/receipt.json",
+      "git_blob": "7440507fc86fd74e877168e2361992cde8930a35",
+      "sha256": "aa583b57a1b8ac10438d51974b579ad67d26e2f1b307890821609ab4b4894685"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-lifetime-0f8a33aff3/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-lifetime-0f8a33aff3/receipt.json",
+      "git_blob": "8442df7c7fc797ebbfd4f784a84cad1394df7124",
+      "sha256": "6727bc5fcffbf99c861e2fb1294ba85b6c91fe512d3b9f0e7ff7442698d98ec4"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-long-map-0-3090182770/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-long-map-0-3090182770/receipt.json",
+      "git_blob": "9b8523ee980cff634678f6346b24819626262589",
+      "sha256": "5626359cea175e49af0479a162498634a0b9b048325490050c8a1fda576f9314"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-long-map-1-3090182770/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-long-map-1-3090182770/receipt.json",
+      "git_blob": "35414f759ae04182f34e5731dac76f77449b6f55",
+      "sha256": "39c7ec81ea87c9c38809130bbb6dc0f57d1f86cd0ae81a14b8d2127d3e8eb9f5"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-long-map-2-3090182770/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-long-map-2-3090182770/receipt.json",
+      "git_blob": "b52e807efc4c48735456fed1fed72118cf068ba9",
+      "sha256": "53579f7257b11d0c2df593b51c24cff92e2499dab9bd0f7a8f5bd4a4422024a7"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-lua-38adac8064/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-lua-38adac8064/receipt.json",
+      "git_blob": "f134ee8d6f2da32535a22127bf913a7cd0414fe1",
+      "sha256": "1401d53af284c54388c2b07a2affdd1983359bbd9471187b5965bae9f0509818"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-lua-assets-38adac8064/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-lua-assets-38adac8064/receipt.json",
+      "git_blob": "439b478213874b97295ffc063d0b479d4fe60824",
+      "sha256": "3e3a3fe9838011b726bb8024eb1b5c860404bd2de890de4bbbd9aa477d44794e"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-lua-controller-38adac8064/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-lua-controller-38adac8064/receipt.json",
+      "git_blob": "77b36c4975130a5dc2f09bad0fb901cc19b8be1d",
+      "sha256": "4279adae005842436f616ec1c5999c7458482bffceb2312e286a1aeb6e50b7b7"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-lua-lifetime-38adac8064/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-lua-lifetime-38adac8064/receipt.json",
+      "git_blob": "a92f6b7d6fc02cd81ae4e8d4c51fb489391049fa",
+      "sha256": "41edad561eca7f27ed9b27163e6ecdae02755ee93ad66126850558dde33a645b"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-lua-p0-38adac8064/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-lua-p0-38adac8064/receipt.json",
+      "git_blob": "763dfaec2dfef06137b0d795142a1e443d9c9b2a",
+      "sha256": "88ed50b6df1687ac6c5993c47987fd88d584ff327566f03ef0063a6c570d5eb6"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-lua-script-38adac8064/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-lua-script-38adac8064/receipt.json",
+      "git_blob": "eefd05f890c8045cff2b28ae902c1ba1c8a6a567",
+      "sha256": "8b81af327fad88557850a35d1af198170148ddbd5be9fa9084d7d1f0b37debde"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-lua-sound-38adac8064/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-lua-sound-38adac8064/receipt.json",
+      "git_blob": "271a5ca660a841022416dc1ebded636a1b57a047",
+      "sha256": "ba90afb9fe63951bcabf94dfb519c59693701cec0f26674ba79570f3fbac542f"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-anchor-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-anchor-033913505c/receipt.json",
+      "git_blob": "3572d0b3e10f749610c5ac5b3e268d84c037d295",
+      "sha256": "26e57727d0acd8a985e2a18f0e850b7370d2386d66567af220750d421183be4d"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-assets-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-assets-033913505c/receipt.json",
+      "git_blob": "64ccb2a3d7ec94b25a600a47879821f593b2372b",
+      "sha256": "f3ede03c5fea812bad5dc8587dd0077f404d20918baaf9d4dad3fb4716569413"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-behavior-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-behavior-033913505c/receipt.json",
+      "git_blob": "c4018173fe8ffe54d2ded928854b70d97709a18d",
+      "sha256": "b43db18599eb3dc3bd9b4f2388c6aea2e8d78e16ffeb96f1da038f876fc7193c"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-cadence-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-cadence-033913505c/receipt.json",
+      "git_blob": "e30d652bb55638eb0222c0315b483296c085ef3a",
+      "sha256": "4ce3ab096c3b1dba67401de4b6c992e6be361c3417d15c51ecb3684b9576bf3a"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-climb-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-climb-033913505c/receipt.json",
+      "git_blob": "ba453f37411ced030610640b06dc9c1c47cac2a7",
+      "sha256": "10c18952642d5128d2dcd8eb828b44ed57919d17407dfb2a132b91ed47e15352"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-combined-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-combined-033913505c/receipt.json",
+      "git_blob": "4e0f406ec2cfdf53cbd7d46e982f26544ad480c2",
+      "sha256": "ca1f0fe267db79854f146ae1d1df9267b48310bedaf707d8aa1d70e20a7c3c40"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-controller-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-controller-033913505c/receipt.json",
+      "git_blob": "82efe5d11e84639b6efeeecb8c9c5dc963b4599e",
+      "sha256": "146186bb9a051312cba173c2ad70213f1d789ef4c76b3225c381db6370feebaf"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-golf-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-golf-033913505c/receipt.json",
+      "git_blob": "95b24badd4b9784f6a775d5a8dde003b7e638f2e",
+      "sha256": "111f612129784c9b857a08be1a4fbc0d03e2f2d5d4471542b50e82cc39dd9333"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-lifetime-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-lifetime-033913505c/receipt.json",
+      "git_blob": "87836170b969378be2a907e83de9303b0ba12827",
+      "sha256": "e1087f973e7174dd446c17c2b3d2f84b85ecfb8cc8120ab49b1c376775027680"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-original-anchor-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-original-anchor-033913505c/receipt.json",
+      "git_blob": "01faae7d6fe2333dbc408ffc53ed0459b82b12c5",
+      "sha256": "8e65a637d38b3f91be9756a7f6817094ea68568538814348d80bb3325aec2f03"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-p0-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-p0-033913505c/receipt.json",
+      "git_blob": "6df22096cbcf174acaa1525f0b31bc8abb3864f5",
+      "sha256": "022fa9bac5ba2f5724afece1109658f14c4683b5b3e3ff91916743f67a2a9356"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-script-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-script-033913505c/receipt.json",
+      "git_blob": "b9a3e955cfcb92e722bb735d8b2afce69b682bdc",
+      "sha256": "155a1d827049b60b64d2cb1d5aa68ceb006e7e04311b2eb8d7db67c3d893f1cd"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-spawn-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-spawn-033913505c/receipt.json",
+      "git_blob": "5bd9c1bc2f89620796af4a09d5e74b355bf3f894",
+      "sha256": "71516be0316a43af518ae5026e0211a9cf59ea33eb262b5c45ee5ad00fc14dc3"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-nativeforce-values-033913505c/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-nativeforce-values-033913505c/receipt.json",
+      "git_blob": "a2e024ac8136eaa8e5f239e480a011ba73a736b7",
+      "sha256": "ea237079f0828ca092b36ff4a960026975617e992a8efd4722c72bc2d7ddac34"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-original-anchor-1-e9be161e82/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-original-anchor-1-e9be161e82/receipt.json",
+      "git_blob": "dcda6aac6b85189ea291d039bab759e0e6ee1e4a",
+      "sha256": "7a945bb5c344873fcd65842569ac769989a611baa05294d7529dafd29ef304b8"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-original-anchor-2-e9be161e82/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-original-anchor-2-e9be161e82/receipt.json",
+      "git_blob": "71c0a732fd96a09ec5ff742bf757508b643a877a",
+      "sha256": "ff2c049d1b36c98fc48d55eb40d15b0368b99e76eba7f4f52190b7a7cccc1a94"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-original-fall-2-0bc4b85c42/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-original-fall-2-0bc4b85c42/receipt.json",
+      "git_blob": "3f65658b2e3b9e3c622d169a49dcd68aea42e8f4",
+      "sha256": "925f41c4f40847235e574fcb83170d3591d2006f17a04c3bd059f6f375e0a6fd"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-original-platform-1-c3f6475891/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-original-platform-1-c3f6475891/receipt.json",
+      "git_blob": "38e719b810661fb3d399a5dc11f73a70ef4e6c6a",
+      "sha256": "7f6c87f04d9deabde402a1e1375fa231939cee14f45bf38d95f7a4002b5204bc"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-original-platform-2-c3f6475891/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-original-platform-2-c3f6475891/receipt.json",
+      "git_blob": "38e719b810661fb3d399a5dc11f73a70ef4e6c6a",
+      "sha256": "7f6c87f04d9deabde402a1e1375fa231939cee14f45bf38d95f7a4002b5204bc"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-p0-0f8a33aff3/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-p0-0f8a33aff3/receipt.json",
+      "git_blob": "7cfd360095d4d1c432cbf630ae6f8c5a148dbdcd",
+      "sha256": "6ad10f18f17b2df8ec64d6c08b09bbe813f3299000fc076907525caa62bb6400"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-play-assets-c76495854b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-play-assets-c76495854b/receipt.json",
+      "git_blob": "d51b60501f2e324c3d2f8c731fc433c1cab0b519",
+      "sha256": "acfae098d3d1f787b2c79ac526e13a92219e21d4aad85d032d8034660226309c"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-play-c76495854b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-play-c76495854b/receipt.json",
+      "git_blob": "e98101309e142f45fd8e0e59185104062d6d874c",
+      "sha256": "5d203f4e0b3486ca559a4d1d8816ae55b583cf9669a582278386b9bc538af513"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-play-camera-c76495854b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-play-camera-c76495854b/receipt.json",
+      "git_blob": "10ea90f7b49678f5cadbdb938c6f58ba9162d8b6",
+      "sha256": "24200a82c79da58367573aceae0f16044fd8c116f0e2db0cac8874c34d73c1e9"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-play-climb-c76495854b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-play-climb-c76495854b/receipt.json",
+      "git_blob": "8bcd9dafa34bdaa5064ff5aea203b9a4f885e310",
+      "sha256": "4365876795458894fd911912f11d3de86ba6e1937c7c5006e8f180fb47b5992c"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-play-controller-c76495854b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-play-controller-c76495854b/receipt.json",
+      "git_blob": "db65f252de714bf305c34570b602f12f30d4987c",
+      "sha256": "fa2621361c440e98388c05fc677f6f791d052b8c7756db0093206c46ed08b195"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-play-lifetime-c76495854b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-play-lifetime-c76495854b/receipt.json",
+      "git_blob": "db2d399b8df089c1ad3a2ba6daa64aaa7af042ed",
+      "sha256": "aff06d076fa67e42c6146893fd449f5922020243d666f94b84f872f42a1f8e35"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-play-p0-c76495854b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-play-p0-c76495854b/receipt.json",
+      "git_blob": "1259d50c014577178cf0b39ead685f8e34b3018f",
+      "sha256": "092282dccb2cd37679a283546db37c7eb18302d1e53a15155e7b31ba55179712"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-play-script-c76495854b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-play-script-c76495854b/receipt.json",
+      "git_blob": "affb30cdc4b7e14d52c2c15d1b62ad10ba3c733e",
+      "sha256": "32b98c1e9e2dc1dec69d38728a3a9e495b127bad9618c87e23bb931d9dca2b0b"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-play-spawn-c76495854b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-play-spawn-c76495854b/receipt.json",
+      "git_blob": "fd0c3a958d863e565452d9328414bf6082d66039",
+      "sha256": "fe2f6039ead958077d985073824a84030c13dde4bc9c0bec9991f6ff041688c7"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-script-0f8a33aff3/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-script-0f8a33aff3/receipt.json",
+      "git_blob": "f007d822c4a140908e104a5b49370066b30e7925",
+      "sha256": "fba40e0a28cbcacf1112972a9d2373d7348234fbf987548b5ac25bfcf3935d7d"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-script-lifetime-3e7fa3c6ec/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-script-lifetime-3e7fa3c6ec/receipt.json",
+      "git_blob": "497228e2aecdcb42e667368f4842da7990c18c15",
+      "sha256": "752e48bfd7f9bd7dc6a7aab384af75640042514da8dd7969268eb559acbb3d85"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-shutdown-assets-3e7fa3c6ec/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-shutdown-assets-3e7fa3c6ec/receipt.json",
+      "git_blob": "8d84c74a79fbed90f6be06546655718aa5a2129b",
+      "sha256": "4e6d2dfb35434787030736bccc94ca03ae3b73894d83b3525285aaf9d5f1b617"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-shutdown-contact-3e7fa3c6ec/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-shutdown-contact-3e7fa3c6ec/receipt.json",
+      "git_blob": "a81a7b50c466abd2c79543cb76b7bbceb3fbe7c0",
+      "sha256": "c2c24fbdaf11c307615ca565bd80912cd2167b3584026d7ccb7e31941788fb0e"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-shutdown-lifetime-3e7fa3c6ec/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-shutdown-lifetime-3e7fa3c6ec/receipt.json",
+      "git_blob": "10ddea644cb4cede2418865f654233f664176a66",
+      "sha256": "f61dafdb57f290c50d47eae532a51d46ffd1620dc7d0048dc23dec373d04ee54"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-shutdown-p0-3e7fa3c6ec/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-shutdown-p0-3e7fa3c6ec/receipt.json",
+      "git_blob": "10178052521df5c2f121f73720ced338cbdc927e",
+      "sha256": "61837e4e03098a97e9a379b74111785182407eb96f12ef44a1b70ef79f3f0142"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-shutdown-script-3e7fa3c6ec/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-shutdown-script-3e7fa3c6ec/receipt.json",
+      "git_blob": "123e76c40a2a1859d6ca91b07957885916f99025",
+      "sha256": "cb0cf1f57b42f250975522ece89942f9ed2fb9748b42aa329ca1aae7cb07aee0"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-shutdown-values-3e7fa3c6ec/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-shutdown-values-3e7fa3c6ec/receipt.json",
+      "git_blob": "a7f55b122688705765539e9b340b609d79fc28a3",
+      "sha256": "e801d9f3e4240950073fea358f60f5b21aa3add10dea61bf22f391cc36eed852"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-sound-0f8a33aff3/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-sound-0f8a33aff3/receipt.json",
+      "git_blob": "8904021b07bb816e60689e574e0f2c1504a1d4db",
+      "sha256": "76ffbb592c7e28231bc3984d7897902802f4a8e6bd66ab3d1154a613fea8d94e"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-spawn-0f8a33aff3/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-spawn-0f8a33aff3/receipt.json",
+      "git_blob": "b5a21544e3cfaeffecf70e446153f1db2cd25a04",
+      "sha256": "9792c7899123ccf94d4a273ea4d0f8f0a0680efe4cfe0ac361f18924228d8e9e"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-supplied-bread-c76495854b/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-supplied-bread-c76495854b/receipt.json",
+      "git_blob": "4815cbdb696bf4ee7b3e47a5a79e27132e8fa3b8",
+      "sha256": "158eecc0b1646ee665605b82dae28e0853735159e372e54b9318a35e8e255bb6"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-typed-assets-8474b02525/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-typed-assets-8474b02525/receipt.json",
+      "git_blob": "80483c520158768cd91db45dfa524ebb18d53ded",
+      "sha256": "4b1f26aba989ad6b045dccf3f94a7a0f0ae4ace56029d144f047eb4e6f66f241"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-typed-lifetime-8474b02525/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-typed-lifetime-8474b02525/receipt.json",
+      "git_blob": "b048f470f17cbde77b21b349c69bbb1e0e23ad1d",
+      "sha256": "d5a809f259a88eb9fccec297acfe18d048e72909979fbf2fa5667df0cde686e9"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-typed-map-audit-8474b02525/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-typed-map-audit-8474b02525/receipt.json",
+      "git_blob": "5e5281717ce07c66a4286481c5148138ea6b367e",
+      "sha256": "5340694cc3d670b2c790baba82b00bf4649d43274f17381211362f8ad22626e3"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-typed-p0-8474b02525/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-typed-p0-8474b02525/receipt.json",
+      "git_blob": "07bfc428d57889726628175e49acab14522faf4c",
+      "sha256": "8365977e6b3a03a81ac3aefe7c83d780ba3d263f88f8bb3e04f51cd3fb40bdd1"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-typed-script-8474b02525/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-typed-script-8474b02525/receipt.json",
+      "git_blob": "5dcda4ec046f420d5eecd60119cf01a46d04f91b",
+      "sha256": "cccbf4a85b86190138d6f3f13008b6534526ed2e4412e4ff20f3a47d4bfb0703"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-typed-supplied-8474b02525/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-typed-supplied-8474b02525/receipt.json",
+      "git_blob": "a22793565657c5a4332eb95ac5b4ef73d0b076dd",
+      "sha256": "683cd3d57781cba1901e6f04cb083bbe70d5445425885119e5cf2d826e34d319"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-typed-values-8474b02525/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-typed-values-8474b02525/receipt.json",
+      "git_blob": "ed7adb019f576076059582fb2bf41f7c2db90057",
+      "sha256": "cec6e2c737e2b2ed9e1b9464b8bcc1956586c974a5d708e99e82559c443ca2c4"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-values-62955063a7/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-values-62955063a7/receipt.json",
+      "git_blob": "ee9fbae2bd20e42b07a0d559159d126b513f5256",
+      "sha256": "4eb723025c7bb8ce75fb81a810c3356168eea212aa07565cbc098293a6acbd2d"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-values-assets-62955063a7/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-values-assets-62955063a7/receipt.json",
+      "git_blob": "0fa9e6e0ae9ed12fc8d2d11e5113ce3e3aba23ef",
+      "sha256": "94870e52450e45ce35e84a25db5f38deb5848f1798866bbc54abc19f7f772ae6"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-values-inventory-62955063a7/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-values-inventory-62955063a7/receipt.json",
+      "git_blob": "6b02989bc32e7b9c9ec9207bf87f714fe96d96ec",
+      "sha256": "170afcec3afcdb6f753cb2e4f194c4fb204814df6c038ec07a91c1d4cc201504"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-values-lifetime-62955063a7/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-values-lifetime-62955063a7/receipt.json",
+      "git_blob": "400da1a1b3f6321cf5b0545dc7cbe8b0c64a1709",
+      "sha256": "b03033e6f81e4b7b0dfb5a50843d26220d7f5f87b8506f9b69678518fb5dba18"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-values-p0-62955063a7/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-values-p0-62955063a7/receipt.json",
+      "git_blob": "cb0c5e6797aad2c30b9ca0221b888e26aa99a616",
+      "sha256": "667420aa0341bea8e1824a9c8864c29383d9400ba3afdb846b160db7d40afea1"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-values-script-62955063a7/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-values-script-62955063a7/receipt.json",
+      "git_blob": "ecc99b27eaf5dfd7bdc699f38180ff483a7927d8",
+      "sha256": "8a3a1a0e9ef4116787d1e36c82f331db4fecb8dc447c0b5d674dcb9b9547e695"
+    },
+    {
+      "original": "workspace/work/2008-06/p5-wait-6c7b1ff3a8/receipt.json",
+      "archive": "archive/proofs/2008-06-historical-p5-20261107/p5-wait-6c7b1ff3a8/receipt.json",
+      "git_blob": "920a9d5b0610fd4c9d017e598a4f9f9f835fe883",
+      "sha256": "ad68c6e3d9e010fa5be194e2782dbb90fbb21c1ec531ee20073fdb3135a6d3ed"
+    }
+  ]
+}
