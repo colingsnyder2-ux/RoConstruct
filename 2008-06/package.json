@@ -208,7 +208,7 @@
     "App/src/tool/ToolVerbCheckedSurface.cpp": "4dc42dfc8021d2d0d807184cbfdbd234c0c41495a1da2a53c6774f8e682e19ea",
     "App/src/tool/ToolVerbFactories.cpp": "231fab4c21312f65e9fe21654f406ff717fe6041bacefd7fe68dc976104fa114",
     "App/src/tool/ToolVerbFactoriesBasic.cpp": "a1e9cb84ddeadbc0eff0bbe3c26f9c57ef98ccc609511cf03aaa3c04d3ddad32",
-    "App/src/v8datamodel/Accoutrement.cpp": "8eacfdbf82a2768612748688b81e50890c885bcfc65f2fd5f1abd84844d86ec4",
+    "App/src/v8datamodel/Accoutrement.cpp": "eef521d67061613090c50f3bf308192379f81e3f287beea645d3f89df8920cf9",
     "App/src/v8datamodel/Backpack.cpp": "ffa3e4c223e3d8069790ed8002657a6f30ff0429acf5e674d87ad587ff12449b",
     "App/src/v8datamodel/BodyColors.cpp": "9c621d72f02736cf78c0dd16cf4bd173382451fca94b44cb822ad7de915ac9fe",
     "App/src/v8datamodel/BodyMovers.cpp": "6740e2fc5742098ee401175694f5caebe367655621f1c17a1223432067e89a6a",

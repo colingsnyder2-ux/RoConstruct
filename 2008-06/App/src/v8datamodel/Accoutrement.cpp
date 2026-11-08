@@ -1,10 +1,11 @@
 // Inactive native recovery of RBX::Accoutrement and RBX::Hat.
 // Layout and evidence: native-headers/v8datamodel/Accoutrement.h. Verified by tests/record_native_appearance.py.
 // >>> native-status (generated) -- do not edit >>>
-// Accoutrement | 2008-06 | linked
-// 1/1 exact by name (100%) | named 1 | 1/1 exact bodies | no strings | verified 2026-11-07| by -
-// <<< native-status | src 04a5eada | roc native-status --write
+// Accoutrement | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src 8e239941 | roc native-status --write
 #include "v8datamodel/Accoutrement.h"
+#include "v8datamodel/PartInstance.h"
 
 namespace RBX
 {
@@ -127,4 +128,17 @@ namespace RBX
 	{
 		setName("Hat");
 	}
+	// @005b08a0: findFirstChildByName 00557950 ("Handle" 00834a28), dynamic_cast Instance -> PartInstance
+	const PartInstance* Accoutrement::getHandleConst() const
+	{
+		return dynamic_cast<PartInstance*>(findFirstChildByName("Handle"));
+	}
+
+	// @005b0b70 (ILocation this): PartInstance::getCoordinateFrame 00598cb0, CoordinateFrame() 004782d0
+	const G3D::CoordinateFrame Accoutrement::getLocation() const
+	{
+		const PartInstance* handle = getHandleConst();
+		return handle ? handle->getCoordinateFrame() : G3D::CoordinateFrame();
+	}
+
 }
