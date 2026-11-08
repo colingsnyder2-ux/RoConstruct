@@ -102,7 +102,7 @@ def compiler_flags(source, override=None):
 
 
 def import_evidence():
-    """Read actual PE import names and trusted VC9 CRT import-library aliases."""
+    """Read PE import names and configured VC9 CRT/SDK import-library aliases."""
     from roc import clients
     import pefile
     image = clients.exe_path('2008-06', clients.load()['2008-06'])
@@ -122,8 +122,11 @@ def import_evidence():
     pe.close()
     aliases = {}
     directory = ROOT / 'tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/lib'
-    for name in ('msvcrt.lib', 'msvcprt.lib'):
-        path = directory / name
+    paths = [directory / name for name in ('msvcrt.lib', 'msvcprt.lib')]
+    sdk = rebuild.toolchain(21022).get('sdk_lib')
+    if sdk and (Path(sdk) / 'Kernel32.Lib').is_file():
+        paths.append(Path(sdk) / 'Kernel32.Lib')
+    for path in paths:
         data = path.read_bytes()
         hashes[str(path)] = hashlib.sha256(data).hexdigest()
         if not data.startswith(b'!<arch>\n'):
