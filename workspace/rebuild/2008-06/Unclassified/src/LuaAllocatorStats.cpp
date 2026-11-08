@@ -1,8 +1,2 @@
-#include <cstddef>
-#include "script/LuaMemory.h"
-
-void LuaAllocator::getHeapStats(size_t& bytes, size_t& blocks) const
-{
-    bytes = heapSize;
-    blocks = heapCount;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../App/src/script/LuaAllocatorStats.cpp"

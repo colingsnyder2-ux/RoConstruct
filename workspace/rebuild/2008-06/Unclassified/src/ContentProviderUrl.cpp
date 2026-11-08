@@ -1,8 +1,2 @@
-#include "util/ContentProvider.h"
-
-bool RBX::ContentProvider::isUrl(const std::string& value)
-{
-    if (value.find("http://") == 0) return true;
-    if (value.find("https://") == 0) return true;
-    return false;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../Base/src/util/ContentProviderUrl.cpp"
