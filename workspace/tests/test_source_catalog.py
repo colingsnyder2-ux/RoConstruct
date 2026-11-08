@@ -399,3 +399,25 @@ def test_unclassified_probe_alias_tracks_trial_source(tmp_path):
     old, new = 'Unclassified/src/Probe.cpp', 'experiments/trials/Probe.cpp'
     shim = blob(b'// Compatibility translation unit; compile this file or the organized source, not both.\n#include "../../experiments/trials/Probe.cpp"\n')
     assert source_catalog.compatibility_aliases(tmp_path, {old: shim, new: blob(b'// original\n')}) == {old: new}
+
+
+def test_source_map_shards_preserve_origins_and_reject_corruption(tmp_path):
+    import json, subprocess
+    subprocess.run(['git', 'init', '-q'], cwd=tmp_path, check=True)
+    source = tmp_path / '2008-06'
+    source.mkdir()
+    versions = [dict(path='App/src/%d.cpp' % i, blob=str(i),
+                     origins=[dict(kind='local', path='work/trial/%d.cpp' % i)]) for i in range(5)]
+    shards = source_catalog.write_version_shards(source / 'source-map-versions', versions, max_bytes=160)
+    assert len(shards) > 1
+    alternatives = dict(version_shards=shards, version_count=len(versions), sources=[], errors=[])
+    (source / 'source-map.json').write_text(json.dumps(dict(schema=1, alternatives=alternatives)), encoding='utf-8')
+    subprocess.run(['git', 'add', '.'], cwd=tmp_path, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-qm', 'map'], cwd=tmp_path, check=True)
+    assert source_catalog.prior_source_map(tmp_path, 'HEAD')['versions'] == versions
+    (source / shards[0]['path']).write_text('[]', encoding='utf-8')
+    subprocess.run(['git', 'add', '.'], cwd=tmp_path, check=True)
+    subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-qm', 'corrupt'], cwd=tmp_path, check=True)
+    import pytest
+    with pytest.raises(ValueError, match='hash mismatch'):
+        source_catalog.prior_source_map(tmp_path, 'HEAD')

@@ -389,7 +389,55 @@ def prior_source_map(root, commit):
     value = json.loads(subprocess.check_output(['git', 'show', path], cwd=root))
     if not isinstance(value, dict) or value.get('schema') != 1 or not isinstance(value.get('alternatives'), dict):
         raise ValueError('Published source map is malformed')
-    return value['alternatives']
+    alternatives = value['alternatives']
+    shards = alternatives.get('version_shards')
+    if shards is not None:
+        if not isinstance(shards, list) or 'versions' in alternatives:
+            raise ValueError('Published source-map shard index is malformed')
+        versions = []
+        for item in shards:
+            name = item.get('path', '')
+            if not re.fullmatch(r'source-map-versions/[0-9]{4,}\.json', name):
+                raise ValueError('Unsafe source-map shard path')
+            content = subprocess.check_output(['git', 'show', commit + ':2008-06/' + name], cwd=root)
+            if hashlib.sha256(content).hexdigest() != item.get('sha256'):
+                raise ValueError('Source-map shard hash mismatch: ' + name)
+            rows = json.loads(content)
+            if not isinstance(rows, list) or len(rows) != item.get('count'):
+                raise ValueError('Source-map shard count mismatch: ' + name)
+            versions.extend(rows)
+        if len(versions) != alternatives.get('version_count'):
+            raise ValueError('Source-map version total mismatch')
+        alternatives = dict(alternatives, versions=versions)
+        alternatives.pop('version_shards', None)
+        alternatives.pop('version_count', None)
+    return alternatives
+
+
+def write_version_shards(folder, versions, max_bytes=8 * 1024 * 1024):
+    """Write complete version rows into bounded, integrity-addressed JSON files."""
+    folder.mkdir(parents=True, exist_ok=False)
+    shards, batch, size = [], [], 3
+    def flush():
+        if not batch:
+            return
+        content = b'[' + b','.join(batch) + b']\n'
+        name = '%04d.json' % len(shards)
+        (folder / name).write_bytes(content)
+        shards.append(dict(path='source-map-versions/' + name,
+                           sha256=hashlib.sha256(content).hexdigest(), count=len(batch)))
+        batch.clear()
+    for row in versions:
+        item = json.dumps(row, ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+        if len(item) + 3 > max_bytes:
+            raise ValueError('Source-map version exceeds shard size: ' + row['path'])
+        if batch and size + len(item) + 1 > max_bytes:
+            flush()
+            size = 3
+        batch.append(item)
+        size += len(item) + 1
+    flush()
+    return shards
 
 
 def source_map(data):
@@ -659,6 +707,9 @@ def main():
             raise SystemExit('Refusing to overwrite catalog: ' + str(args.output))
         if args.map_output and args.map_output.exists():
             raise SystemExit('Refusing to overwrite source map: ' + str(args.map_output))
+        versions_folder = args.map_output.parent / 'source-map-versions' if args.map_output else None
+        if versions_folder and versions_folder.exists():
+            raise SystemExit('Refusing to overwrite source-map versions: ' + str(versions_folder))
         browse = args.browse_output or (args.map_output.parent / 'catalog' if args.map_output else None)
         if browse and browse.exists():
             raise SystemExit('Refusing to overwrite browse directory: ' + str(browse))
@@ -693,8 +744,13 @@ def main():
         if args.map_output:
             args.map_output.parent.mkdir(parents=True, exist_ok=True)
             mapped = source_map(result)
+            alternatives = dict(mapped['alternatives'])
+            versions = alternatives.pop('versions')
+            alternatives['version_shards'] = write_version_shards(versions_folder, versions)
+            alternatives['version_count'] = len(versions)
+            index = dict(mapped, alternatives=alternatives)
             map_temp = args.map_output.with_suffix(args.map_output.suffix + '.tmp')
-            map_temp.write_text(json.dumps(mapped, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+            map_temp.write_text(json.dumps(index, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
             map_temp.replace(args.map_output)
             markdown = args.map_output.with_suffix('.md')
             markdown.write_text(render_source_map_markdown(mapped, browse.name), encoding='utf-8')

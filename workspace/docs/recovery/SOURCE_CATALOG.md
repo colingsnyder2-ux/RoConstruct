@@ -82,3 +82,10 @@ Compatibility translation units are linked to their organized sources in the
 browse pages. Earlier paths retain their distinct fork, draft and snapshot
 versions; the links do not imply that any donor was accepted. Compile either
 a compatibility path or its organized source, never both.
+
+The generated `source-map.json` keeps its project index and points to bounded
+`source-map-versions/*.json` files containing every version and origin. Each
+part includes a SHA-256 digest and row count in the index. Publish the index and
+all parts together. Later scans read and verify every part before carrying prior
+origins forward; a missing or changed part stops the scan. Older unsharded maps
+remain readable. Sharding does not review candidates or activate code.
