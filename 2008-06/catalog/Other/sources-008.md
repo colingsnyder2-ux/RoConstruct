@@ -108,6 +108,8 @@ Compatibility path for `WindowsClient/src/CPatchedControlComboBox.cpp`; compile 
 - canonical · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp)
 - public · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/CPatchedControlComboBox.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp)
+- public · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CPatchedControlComboBox.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp)
 
 </details>
 
@@ -217,6 +219,8 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 - canonical · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/CRobloxControlColorSelector.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp)
+- public · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CRobloxControlColorSelector.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp)
 
 </details>
 
@@ -283,6 +287,7 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 - public · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/CRobloxTreeCtrl.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/CRobloxTreeCtrl.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/CRobloxTreeCtrl.cpp)
+- public · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CRobloxTreeCtrl.cpp)
 
 **`d609e4c83ac5`** · `native-classes/CRobloxTreeCtrl.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp)
@@ -310,6 +315,7 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 - canonical · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp)
 
 <details><summary>7 retained local origins</summary>
 
@@ -374,6 +380,7 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 - public · colingsnyder2-ux · [native-classes/CRobloxWndActive.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/CRobloxWndActive.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxWndActive.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/CRobloxWndActive.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxWndActive.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/CRobloxWndActive.cpp)
+- public · colingsnyder2-ux · [native-classes/CRobloxWndActive.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CRobloxWndActive.cpp)
 
 </details>
 
@@ -418,6 +425,7 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 - public · colingsnyder2-ux · [native-classes/CRobloxWndFinishAttach.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/CRobloxWndFinishAttach.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxWndFinishAttach.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/CRobloxWndFinishAttach.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxWndFinishAttach.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/CRobloxWndFinishAttach.cpp)
+- public · colingsnyder2-ux · [native-classes/CRobloxWndFinishAttach.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CRobloxWndFinishAttach.cpp)
 
 **`761c41d6ab26`** · `native-classes/CRobloxWndFinishAttach.cpp` · proof not assessed
 
@@ -470,6 +478,7 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 - public · colingsnyder2-ux · [native-classes/CRobloxWndThrottle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/CRobloxWndThrottle.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxWndThrottle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/CRobloxWndThrottle.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxWndThrottle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/CRobloxWndThrottle.cpp)
+- public · colingsnyder2-ux · [native-classes/CRobloxWndThrottle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CRobloxWndThrottle.cpp)
 
 **`8fedeeb805cc`** · `native-classes/CRobloxWndThrottle.cpp` · proof not assessed
 
@@ -530,6 +539,7 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 - public · colingsnyder2-ux · [native-classes/CVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/CVersionInfo.cpp)
 - public · colingsnyder2-ux · [native-classes/CVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/CVersionInfo.cpp)
 - public · colingsnyder2-ux · [native-classes/CVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/CVersionInfo.cpp)
+- public · colingsnyder2-ux · [native-classes/CVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CVersionInfo.cpp)
 
 </details>
 
@@ -558,6 +568,7 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/ChangeHistoryBase.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/ChangeHistoryBase.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/ChangeHistoryBase.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryBase.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/ChangeHistoryBase.cpp)
 
 **`14330b099539`** · `native-classes/ChangeHistoryBase.cpp` · proof not assessed
 
@@ -612,6 +623,7 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/ChangeHistoryCommit.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/ChangeHistoryCommit.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/ChangeHistoryCommit.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/ChangeHistoryCommit.cpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -683,6 +695,7 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/ChangeHistoryCommit.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/ChangeHistoryCommit.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/ChangeHistoryCommit.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryCommit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/ChangeHistoryCommit.cpp)
 
 </details>
 
@@ -842,6 +855,8 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryEnable.cpp`; compile ei
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryEnable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/ChangeHistoryEnable.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryEnable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/ChangeHistoryEnable.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryEnable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/ChangeHistoryEnable.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryEnable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/ChangeHistoryEnable.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryEnable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/ChangeHistoryEnable.cpp)
 
 </details>
 
@@ -997,6 +1012,8 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryFactory.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/ChangeHistoryFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/ChangeHistoryFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/ChangeHistoryFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/ChangeHistoryFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/ChangeHistoryFactory.cpp)
 
 </details>
 
@@ -1077,6 +1094,7 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryFactory.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/ChangeHistoryPlayback.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 
 <details><summary>33 retained local origins</summary>
 
@@ -1138,6 +1156,7 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryFactory.cpp`; compile e
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/ChangeHistoryPlayback.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/ChangeHistoryPlayback.cpp)
 
 </details>
 
@@ -1283,5 +1302,7 @@ Compatibility path for `App/src/v8datamodel/ChangeHistoryQueries.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/ChangeHistoryQueries.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/ChangeHistoryQueries.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/ChangeHistoryQueries.cpp)
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/ChangeHistoryQueries.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/ChangeHistoryQueries.cpp)
 
 </details>

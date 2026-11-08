@@ -14,7 +14,7 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 | WindowsClient | 504 | 177 | 187 | 24 | 0 | 116 |
 | App/v8datamodel | 391 | 140 | 204 | 25 | 0 | 22 |
 | App/v8world | 130 | 74 | 32 | 2 | 0 | 22 |
-| Network | 66 | 13 | 25 | 15 | 0 | 13 |
+| Network | 67 | 14 | 25 | 15 | 0 | 13 |
 | Rendering | 63 | 17 | 9 | 4 | 0 | 33 |
 | Base/util | 93 | 48 | 30 | 12 | 0 | 3 |
 | Other | 367 | 207 | 33 | 37 | 0 | 90 |
