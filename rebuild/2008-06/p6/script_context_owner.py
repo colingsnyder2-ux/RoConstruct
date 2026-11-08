@@ -141,7 +141,7 @@ def build(snapshot, output, tc):
     }
     ra, rb = references(original), references(replacement)
     drift['reloc_changed'] = sorted(n for n in common if ra.get(n) != rb.get(n))
-    drift['data_changed'] = sorted(n for n in set(da) & set(db) if da[name] != db[name]) + sorted(set(db) - set(da))
+    drift['data_changed'] = sorted(n for n in set(da) & set(db) if da[n] != db[n]) + sorted(set(db) - set(da))
     code, log = rebuild.run(tc, 'lib', ['/nologo', '/OUT:' + str(target), str(archive), 'ScriptContext.obj'], folder)
     (folder / 'librarian.log').write_text(log)
     if code:
