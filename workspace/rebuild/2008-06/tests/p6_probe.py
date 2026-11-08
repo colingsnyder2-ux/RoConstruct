@@ -1,6 +1,6 @@
 """P6 native-doc diagnostic build wrapper; never executes a rebuilt client.
 
-CLI: preflight MANIFEST | start MANIFEST | run MANIFEST | status RUN | report RUN.
+CLI: preflight MANIFEST | start MANIFEST | run MANIFEST | status RUN | report RUN | relink COMMAND_JSON.
 Manifest: {"extras":["rebuild/2008-06/native-classes/FlatTool.cpp"],"cache":false,
 "snapshot":"rebuild/2008-06/out"}. All input paths relative to repo root (or
 absolute). start launches a hidden worker; output, stdout/stderr, exit receipt
@@ -228,12 +228,79 @@ def status(run):
     return receipt
 
 
+def relink(command_file, runs=None):
+    """Replay a saved link command into a new directory; never compile or run the client."""
+    command = json.loads(Path(command_file).read_text(encoding='utf-8-sig'))
+    cwd = Path(command['cwd']).resolve()
+    args = command['arguments']
+    if not cwd.is_dir() or not isinstance(args, list) or not all(isinstance(a, str) for a in args):
+        raise ValueError('invalid saved link command')
+    tc = rebuild.toolchain()
+    environment = rebuild.env(tc)
+    if any(environment.get(name) for name in ('LINK', '_LINK_')):
+        raise ValueError('LINK/_LINK_ environment flags are not supported')
+    paths = [cwd]
+    paths += [cwd / Path(a.split(':', 1)[1].strip('"')) for a in args if a.lower().startswith('/libpath:')]
+    paths += [cwd / Path(p) for p in environment.get('LIB', '').split(';') if p]
+    inputs, output_count, map_count, objects_reused = {}, 0, 0, 0
+    safe_options = ('/nologo', '/subsystem:', '/machine:', '/nodefaultlib:', '/manifest:no',
+                    '/alternatename:', '/verbose', '/verbose:', '/libpath:')
+    for arg in args:
+        lower = arg.lower()
+        if lower.startswith('/out:'):
+            output_count += 1
+        elif lower.startswith('/map:'):
+            map_count += 1
+        elif any(lower == v or (v.endswith(':') and lower.startswith(v)) for v in safe_options):
+            pass
+        elif lower.endswith(('.obj', '.lib', '.res')) and not arg.startswith('@'):
+            path = Path(arg.strip('"'))
+            candidates = [path] if path.is_absolute() else [base / path for base in paths]
+            found = next((p.resolve() for p in candidates if p.is_file()), None)
+            if not found:
+                raise ValueError('link input not found: ' + arg)
+            inputs[str(found)] = sha(found)
+            if path.suffix.lower() == '.obj':
+                objects_reused += 1
+        else:
+            raise ValueError('unsupported link argument: ' + arg)
+    if output_count != 1 or map_count != 1 or not inputs:
+        raise ValueError('link command requires one output, one map, and explicit inputs')
+    runs = Path(runs or RUNS).resolve()
+    runs.mkdir(parents=True, exist_ok=True)
+    run = runs / (time.strftime('%Y%m%d-%H%M%S') + '-' + uuid.uuid4().hex[:8])
+    run.mkdir()
+    replaced = ['/OUT:' + str(run / 'relinked.exe') if a.lower().startswith('/out:') else
+                '/MAP:' + str(run / 'relinked.map') if a.lower().startswith('/map:') else a for a in args]
+    linker_hash = sha(tc['link'])
+    started = time.monotonic()
+    code, output = rebuild.run(tc, 'link', replaced, cwd)
+    (run / 'link.log').write_text(output, encoding='utf-8')
+    changed = [path for path, digest in inputs.items() if not Path(path).is_file() or sha(path) != digest]
+    if not Path(tc['link']).is_file() or sha(tc['link']) != linker_hash:
+        changed.append(str(tc['link']))
+    detail = classify(code, '', '', output, (run / 'relinked.exe').is_file())
+    receipt = {'state': 'complete' if detail['outcome'] == 'linked' and not changed else 'failed', 'exit_code': code,
+               'seconds': round(time.monotonic() - started, 3), 'compiled_objects': 0,
+               'objects_reused': objects_reused, 'inputs': inputs,
+               'changed_inputs': changed, 'linker_sha256': linker_hash, 'command': replaced,
+               'cwd': str(cwd), 'run': str(run), 'outcome': 'inputs_changed' if changed else detail['outcome'],
+               'unique_unresolved': len(detail['blockers']), 'unique_duplicates': len(detail['duplicates']),
+               'scope': 'Link-only diagnostic; object freshness, implicit libraries, ABI and runtime are not verified.'}
+    save(run / 'result.json', detail)
+    save(run / 'summary.json', receipt)
+    return receipt
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=('preflight', 'start', 'run', 'status', 'report', '_worker'))
+    parser.add_argument('action', choices=('preflight', 'start', 'run', 'status', 'report', 'relink', '_worker'))
     parser.add_argument('input', type=Path, help='manifest or RUN directory')
     args = parser.parse_args(argv)
-    if args.action in ('preflight', 'start', 'run'):
+    if args.action == 'relink':
+        receipt = relink(args.input.resolve())
+        print(json.dumps(receipt, separators=(',', ':')))
+    elif args.action in ('preflight', 'start', 'run'):
         try:
             plan = preflight(json.loads(args.input.read_text(encoding='utf-8-sig')))
         except (ValueError, OSError, TypeError) as error:

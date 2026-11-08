@@ -239,5 +239,81 @@ out=Path(sys.argv[sys.argv.index('--native-doc-out')+1])
             self.assertEqual(result['outcome'], 'worker_lost')
 
 
+class RelinkTests(unittest.TestCase):
+    def test_relink_calls_only_linker_and_redirects_outputs(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            (base / 'a.obj').write_bytes(b'object')
+            (base / 'link.exe').write_bytes(b'linker')
+            command = base / 'command.json'
+            command.write_text(json.dumps({'cwd': str(base), 'arguments': [
+                '/nologo', '/OUT:old.exe', '/MAP:old.map', 'a.obj']}))
+            calls = []
+            def run(tc, tool, args, cwd):
+                calls.append((tool, args, cwd))
+                return 1, 'a.obj : error LNK2001: unresolved external symbol _missing'
+            with patch.object(probe.rebuild, 'toolchain', return_value={'link': base / 'link.exe'}), \
+                 patch.object(probe.rebuild, 'env', return_value={}), \
+                 patch.object(probe.rebuild, 'run', side_effect=run):
+                result = probe.relink(command, base / 'runs')
+            self.assertEqual([call[0] for call in calls], ['link'])
+            self.assertEqual(result['state'], 'failed')
+            self.assertEqual(result['unique_unresolved'], 1)
+            self.assertEqual(result['compiled_objects'], 0)
+            self.assertEqual(result['objects_reused'], 1)
+            self.assertTrue(any(a.startswith('/OUT:' + str(base / 'runs')) for a in calls[0][1]))
+            self.assertFalse((base / 'old.exe').exists())
+
+    def test_relink_resolves_libpath_before_environment(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            explicit = base / 'explicit'
+            implicit = base / 'implicit'
+            explicit.mkdir()
+            implicit.mkdir()
+            (explicit / 'a.lib').write_bytes(b'explicit')
+            (implicit / 'a.lib').write_bytes(b'implicit')
+            (base / 'link.exe').write_bytes(b'linker')
+            command = base / 'command.json'
+            command.write_text(json.dumps({'cwd': str(base), 'arguments': [
+                '/OUT:old.exe', '/MAP:old.map', '/LIBPATH:explicit', 'a.lib']}))
+            with patch.object(probe.rebuild, 'toolchain', return_value={'link': base / 'link.exe'}), \
+                 patch.object(probe.rebuild, 'env', return_value={'LIB': str(implicit)}), \
+                 patch.object(probe.rebuild, 'run', return_value=(1, 'link failed')):
+                result = probe.relink(command, base / 'runs')
+            self.assertIn(str(explicit / 'a.lib'), result['inputs'])
+            self.assertNotIn(str(implicit / 'a.lib'), result['inputs'])
+
+    def test_relink_rejects_input_changes_during_link(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            obj = base / 'a.obj'
+            obj.write_bytes(b'before')
+            (base / 'link.exe').write_bytes(b'linker')
+            command = base / 'command.json'
+            command.write_text(json.dumps({'cwd': str(base), 'arguments': ['/OUT:old.exe', '/MAP:old.map', 'a.obj']}))
+            def run(tc, tool, args, cwd):
+                obj.write_bytes(b'after')
+                return 1, 'link failed'
+            with patch.object(probe.rebuild, 'toolchain', return_value={'link': base / 'link.exe'}), \
+                 patch.object(probe.rebuild, 'env', return_value={}), \
+                 patch.object(probe.rebuild, 'run', side_effect=run):
+                result = probe.relink(command, base / 'runs')
+            self.assertEqual(result['outcome'], 'inputs_changed')
+            self.assertIn(str(obj), result['changed_inputs'])
+
+    def test_relink_rejects_response_file_before_launch(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            command = base / 'command.json'
+            command.write_text(json.dumps({'cwd': str(base), 'arguments': ['/OUT:old.exe', '/MAP:old.map', '@args.rsp']}))
+            with patch.object(probe.rebuild, 'toolchain', return_value={}), \
+                 patch.object(probe.rebuild, 'env', return_value={}), \
+                 patch.object(probe.rebuild, 'run') as run:
+                with self.assertRaisesRegex(ValueError, 'unsupported link argument'):
+                    probe.relink(command, base / 'runs')
+            run.assert_not_called()
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -172,6 +172,13 @@ server-verified credit. Unknown counts are null, not invented zeroes or credit.
 Report deltas against the recorded baseline only with fresh receipts. A selection
 count is not a class swap; a successful link is not runtime proof.
 
+## Owner linker diagnosis
+
+When a saved P6 diagnostic link fails, group its unresolved and duplicate symbols
+and search existing objects, libraries, and source with `python rebuild/2008-06/tests/native_provider_queue.py --log LINK_LOG --object-dir OBJECT_DIRECTORY --source-dir SOURCE_DIRECTORY`. Repeat directory flags as needed; source matches and library membership are leads, not proof of selection or ABI. Inspect scan errors before treating a missing provider as absent.
+
+For a saved `native-doc-link-command.json`, `python rebuild/2008-06/tests/p6_probe.py relink COMMAND_JSON` invokes the linker only and writes a separate run directory. It does not compile or execute the client. It hashes explicit inputs but does not prove object freshness or cover implicit libraries; recompile changed inputs and run the required matching, selection, ABI, and runtime gates separately. Resolve related dependency groups, then relink only after inputs change. An unresolved symbol alone is not a reason for a full rebuild.
+
 ## Persistent loop: repeat until explicitly stopped
 
 Repeat the recovery loop indefinitely within the user's authorized scope:
