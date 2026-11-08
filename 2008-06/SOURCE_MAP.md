@@ -20,7 +20,8 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 | Other | 367 | 217 | 23 | 37 | 0 | 90 |
 
 Byte differences include **804 banner-only**, **1 line-ending-only**, and
-**3 requiring method review**. Metadata equality is not runtime proof.
+**2 requiring method review**. 1 header aliases match their target content.
+Content equality is not ABI, selection or runtime proof.
 
 
 [Browse projects and all source versions](catalog/README.md)

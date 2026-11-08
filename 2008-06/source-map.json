@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "generated_from": {
-    "work_commit": "aca3e2d2000054b8c11bf990944e203ca57ca22d",
+    "work_commit": "50e6aa84d71d44173a64b8ee96dbced0a719cd59",
     "catalog_authority": "RoConstruct/work/workspace",
     "catalog_scope": "Native source catalog only. Blob equality proves same stored bytes; it does not prove class identity, ABI, selection, or runtime readiness."
   },
@@ -17191,7 +17191,7 @@
           "canonical_blob": "2eed001abbd45f2d5d8671a7d9ccffef9a3b860d",
           "public_blob": "dfbc4c3c61868ba67affb04da78b9d247c365f51",
           "state": "diverged",
-          "comparison": "requires-method-review",
+          "comparison": "alias-target-content",
           "compatibility_target": "Base/include/util/Log.h",
           "group": "Base/util"
         },
@@ -1448078,6 +1448078,7 @@
     "equivalent": 818,
     "line-endings-only": 1,
     "public-only": 127,
-    "requires-method-review": 3
+    "requires-method-review": 2,
+    "alias-target-content": 1
   }
 }
