@@ -1,0 +1,75 @@
+{
+  "base": "e88019aab08416e864995deb943262fe36012f39",
+  "root_scripts_scanned": 699,
+  "moves": [
+    {
+      "old": "tests/audit_native_archive_consumers.py",
+      "new": "tests/matching/audit_native_archive_consumers.py",
+      "original_sha256": "af0d954a9db9194d2d3f32747b70819d93c1a2382c4db30415336165c8eefcf9",
+      "relocated_sha256": "6b6357ec1de1602454df05971c370a1c1e6c5ede896ab60bf44948cee7f79298",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_atl_error_core_trial.py",
+      "new": "tests/matching/record_native_atl_error_core_trial.py",
+      "original_sha256": "dc4542e5bb66694a971b68da572b0a6082925b6b9ab79cc0a09f4a1fd399a580",
+      "relocated_sha256": "1efd809b2fd0330f6982f3c2fe4280327cd0625d6cb72b515282555f63d85109",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_clipboard_trial.py",
+      "new": "tests/matching/record_native_clipboard_trial.py",
+      "original_sha256": "6462e6f76b487fa337633392a2a066cd18d397f3b72a5bcdcce241bfb095c537",
+      "relocated_sha256": "e775623426d636c5d54d7f2b6945324c0b4920a6726a013a36ddb2faaaa70c4c",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_frame_icon_image_deps.py",
+      "new": "tests/matching/record_native_frame_icon_image_deps.py",
+      "original_sha256": "47bace003ea1616d0fc5c9420f9dce7c6795ab6934c971b37500e5a9a486bb11",
+      "relocated_sha256": "411cc8db42fe4ef91f326b4ad986942a5066f1312ee77dff0d11e74d70b220d5",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_move_down_trial.py",
+      "new": "tests/matching/record_native_move_down_trial.py",
+      "original_sha256": "5d0ed008fec33331ac0deb099b42aa98729d001ffe79cee12e2b71375071c262",
+      "relocated_sha256": "ab8030e6bb548903fd852eb27d8467c13d1622e56466fdfd10b4a04b26be337f",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_sound_typed_properties_integrated.py",
+      "new": "tests/matching/record_native_sound_typed_properties_integrated.py",
+      "original_sha256": "2580ad31140f60d0a20b668965fe5cc32f9699c441d3920671ef2860829955f8",
+      "relocated_sha256": "5a83c6f9447a56340ca95139be48b1f5650e35e7a59c8473ae7541c28b137da5",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_tool_lifetime_evidence.py",
+      "new": "tests/matching/record_native_tool_lifetime_evidence.py",
+      "original_sha256": "0bd6764fb27aa9091d5911fa86cb12a517ec0ebd436e41dca46ed3fa184de8bd",
+      "relocated_sha256": "9419e4bd82c57995108ccbe8172517f1a269f67d4f886ef2f98c7eff724bbb34",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_workspace_error_trial.py",
+      "new": "tests/matching/record_native_workspace_error_trial.py",
+      "original_sha256": "b36f7e0b03220aff9683cdb89e1d17316bc856077a233eb211149e3fe7b3058d",
+      "relocated_sha256": "4c144309dc7f757100272ebf13ba2e92149b163f9271c256f0143fb3c34c7a60",
+      "root_depth_adjustments": 1
+    },
+    {
+      "old": "tests/record_native_workspace_status_trial.py",
+      "new": "tests/matching/record_native_workspace_status_trial.py",
+      "original_sha256": "d434cf61a37fbcf37b1a433fd301ff931a7a5288db36e4e191b55ccad91363d4",
+      "relocated_sha256": "e37d723a31b072567b70396a24c1f5513c3a03fda183bb78c150fc2aad4b2c77",
+      "root_depth_adjustments": 1
+    }
+  ],
+  "excluded_counts": {
+    "requires_individual_review": 628,
+    "local_import": 62
+  },
+  "scope": "Root-depth expressions adjusted; referenced original entry points retained as wrappers. No native or runtime claim.",
+  "referenced_retained": 9
+}
