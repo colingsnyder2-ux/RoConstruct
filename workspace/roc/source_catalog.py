@@ -204,6 +204,7 @@ def logical_native_path(path):
 def source_versions(root, commit, donor_refs=(), source_roots=(), draft_files=None):
     """Index untrusted alternatives by exact content; never import or run them."""
     versions, errors, sources = {}, [], []
+    origin_keys = {}
     excluded = {'.git', '.venv', 'node_modules', '__pycache__', 'object-cache',
                 'libcache', 'tools', 'clients'}
     remotes = git(root, 'remote').splitlines()
@@ -212,8 +213,11 @@ def source_versions(root, commit, donor_refs=(), source_roots=(), draft_files=No
         key = (path, blob)
         entry = versions.setdefault(key, dict(path=path, blob=blob, origins=[],
                                               proof_status='not-assessed'))
-        if origin not in entry['origins']:
+        identity = json.dumps(origin, sort_keys=True)
+        seen = origin_keys.setdefault(key, set())
+        if identity not in seen:
             entry['origins'].append(origin)
+            seen.add(identity)
         if content is not None:
             entry['sha256'] = hashlib.sha256(content).hexdigest()
 
@@ -342,9 +346,12 @@ def preserve_prior_versions(current, previous):
             raise ValueError('Conflicting source digest: ' + key[0])
         if row.get('sha256'):
             entry['sha256'] = row['sha256']
+        seen = {json.dumps(origin, sort_keys=True) for origin in entry['origins']}
         for origin in row['origins']:
-            if origin not in entry['origins']:
+            identity = json.dumps(origin, sort_keys=True)
+            if identity not in seen:
                 entry['origins'].append(origin)
+                seen.add(identity)
     current['versions'] = sorted(versions.values(), key=lambda row: (row['path'], row['blob']))
     sources = {json.dumps(row, sort_keys=True) for row in current['sources']}
     for row in previous.get('sources', []):

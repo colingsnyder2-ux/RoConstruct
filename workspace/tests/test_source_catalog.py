@@ -300,3 +300,13 @@ def test_previous_source_map_reads_only_pinned_git_commit(tmp_path):
     git('-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-qm', 'bad')
     with pytest.raises(ValueError):
         source_catalog.prior_source_map(tmp_path, git('rev-parse', 'HEAD'))
+
+
+def test_preserve_many_repeated_origins_keeps_order_and_uniqueness():
+    from roc import source_catalog
+    existing = [{"ref": str(i), "kind": "local"} for i in range(300)]
+    prior = [{"kind": "local", "ref": str(i)} for i in range(150, 450)]
+    current = {"versions": [{"path": "native-classes/A.cpp", "blob": "a", "origins": existing.copy()}], "sources": [], "excluded_directory_names": []}
+    previous = {"versions": [{"path": "native-classes/A.cpp", "blob": "a", "origins": prior}], "sources": [], "excluded_directory_names": []}
+    result = source_catalog.preserve_prior_versions(current, previous)
+    assert [item["ref"] for item in result["versions"][0]["origins"]] == [str(i) for i in range(450)]
