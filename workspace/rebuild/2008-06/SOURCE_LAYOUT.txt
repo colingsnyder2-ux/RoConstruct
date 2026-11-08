@@ -52,3 +52,7 @@ per file, never both. CMainFrameCommands remains at its original path.
 WindowsClient/src/ also holds the reviewed browser, explorer, settings and
 property-grid source batch. Native-classes counterparts are compatibility units;
 compile either path per file, never both. See manifests for exact file list.
+
+WindowsClient/src/ also contains the report view, property-grid update and
+active-document view refresh sources. Native-classes counterparts are
+compatibility units; compile either path per file, never both.

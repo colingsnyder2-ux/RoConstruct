@@ -1,6 +1,2 @@
-#include "ActiveDocView.h"
-
-void ActiveDocView::refresh()
-{
-    update(activeDocDataModel, boost::shared_ptr<RBX::DataModel>());
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../WindowsClient/src/ActiveDocViewRefresh.cpp"
