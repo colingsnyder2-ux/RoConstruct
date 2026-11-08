@@ -3,11 +3,12 @@
 [Project index](README.md) · [Previous](sources-001.md) · [Next](sources-003.md)
 
 <details>
-<summary>App/include/v8world/Geometry2008.h — diverged; 9 content versions</summary>
+<summary>App/include/v8world/Geometry2008.h — diverged; 10 content versions</summary>
 
 Earlier paths and their donor versions: `native-headers/v8world/Geometry2008.h`.
 
 **`9f3586a84b87`** · `App/include/v8world/Geometry2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/include/v8world/Geometry2008.h)
 - public · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/include/v8world/Geometry2008.h)
 - public · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/v8world/Geometry2008.h)
 - public · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/App/include/v8world/Geometry2008.h)
@@ -30,7 +31,17 @@ Earlier paths and their donor versions: `native-headers/v8world/Geometry2008.h`.
 - public · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/App/include/v8world/Geometry2008.h)
 - public · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8world/Geometry2008.h)
 
+**`a30ebb27e20f`** · `App/include/v8world/Geometry2008.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`f3aaf5c05985`** · `App/include/v8world/Geometry2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/include/v8world/Geometry2008.h)
 - canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/include/v8world/Geometry2008.h)
 - canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/include/v8world/Geometry2008.h)
 - canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/App/include/v8world/Geometry2008.h)
@@ -53,7 +64,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Geometry2008.h`.
 - canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8world/Geometry2008.h)
 - canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8world/Geometry2008.h)
 
-<details><summary>33 retained local origins</summary>
+<details><summary>40 retained local origins</summary>
 
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
@@ -75,10 +86,17 @@ Earlier paths and their donor versions: `native-headers/v8world/Geometry2008.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
@@ -147,6 +165,8 @@ Earlier paths and their donor versions: `native-headers/v8world/Geometry2008.h`.
 </details>
 
 **`a7890597ab3d`** · `native-headers/v8world/Geometry2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/v8world/Geometry2008.h)
+- canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/v8world/Geometry2008.h)
 - public · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/v8world/Geometry2008.h)
 - canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-headers/v8world/Geometry2008.h)
 - public · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/v8world/Geometry2008.h)
@@ -190,7 +210,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Geometry2008.h`.
 - public · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8world/Geometry2008.h)
 - canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8world/Geometry2008.h)
 
-<details><summary>34 retained local origins</summary>
+<details><summary>43 retained local origins</summary>
 
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
@@ -212,14 +232,23 @@ Earlier paths and their donor versions: `native-headers/v8world/Geometry2008.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/native-headers/v8world/Geometry2008.h` · root `b52aa15feaea5a0c`
@@ -239,8 +268,8 @@ Earlier paths and their donor versions: `native-headers/v8world/Geometry2008.h`.
 
 **`f3aaf5c05985`** · `native-headers/v8world/Geometry2008.h` · proof not assessed
 - fork · mewpokemons · [v8world/Geometry2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/v8world/Geometry2008.h)
-- fork · mewpokemons · [v8world/Geometry2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8world/Geometry2008.h)
 - fork · mewpokemons · [v8world/Geometry2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/v8world/Geometry2008.h)
+- fork · mewpokemons · [v8world/Geometry2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8world/Geometry2008.h)
 - canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/v8world/Geometry2008.h)
 - canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/v8world/Geometry2008.h)
 - canonical · colingsnyder2-ux · [v8world/Geometry2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/v8world/Geometry2008.h)
@@ -282,11 +311,12 @@ Earlier paths and their donor versions: `native-headers/v8world/Geometry2008.h`.
 </details>
 
 <details>
-<summary>App/include/v8world/JointStage2008.h — diverged; 9 content versions</summary>
+<summary>App/include/v8world/JointStage2008.h — diverged; 10 content versions</summary>
 
 Earlier paths and their donor versions: `native-headers/v8world/JointStage2008.h`.
 
 **`592f98084e24`** · `App/include/v8world/JointStage2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/include/v8world/JointStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/include/v8world/JointStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/include/v8world/JointStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/App/include/v8world/JointStage2008.h)
@@ -309,7 +339,7 @@ Earlier paths and their donor versions: `native-headers/v8world/JointStage2008.h
 - canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8world/JointStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8world/JointStage2008.h)
 
-<details><summary>33 retained local origins</summary>
+<details><summary>40 retained local origins</summary>
 
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
@@ -331,10 +361,17 @@ Earlier paths and their donor versions: `native-headers/v8world/JointStage2008.h
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
@@ -348,6 +385,7 @@ Earlier paths and their donor versions: `native-headers/v8world/JointStage2008.h
 </details>
 
 **`e8adc18e400c`** · `App/include/v8world/JointStage2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/include/v8world/JointStage2008.h)
 - public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/include/v8world/JointStage2008.h)
 - public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/v8world/JointStage2008.h)
 - public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/App/include/v8world/JointStage2008.h)
@@ -370,6 +408,15 @@ Earlier paths and their donor versions: `native-headers/v8world/JointStage2008.h
 - public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/App/include/v8world/JointStage2008.h)
 - public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8world/JointStage2008.h)
 
+**`ff927245a0db`** · `App/include/v8world/JointStage2008.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/App/include/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`09b3ca06f381`** · `native-headers/v8world/JointStage2008.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
@@ -380,6 +427,8 @@ Earlier paths and their donor versions: `native-headers/v8world/JointStage2008.h
 </details>
 
 **`424c563f892e`** · `native-headers/v8world/JointStage2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/v8world/JointStage2008.h)
+- canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
 - public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/v8world/JointStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
 - public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/v8world/JointStage2008.h)
@@ -423,7 +472,7 @@ Earlier paths and their donor versions: `native-headers/v8world/JointStage2008.h
 - public · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8world/JointStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
 
-<details><summary>34 retained local origins</summary>
+<details><summary>43 retained local origins</summary>
 
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
@@ -445,14 +494,23 @@ Earlier paths and their donor versions: `native-headers/v8world/JointStage2008.h
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/native-headers/v8world/JointStage2008.h` · root `b52aa15feaea5a0c`
@@ -472,8 +530,8 @@ Earlier paths and their donor versions: `native-headers/v8world/JointStage2008.h
 
 **`592f98084e24`** · `native-headers/v8world/JointStage2008.h` · proof not assessed
 - fork · mewpokemons · [v8world/JointStage2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
-- fork · mewpokemons · [v8world/JointStage2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
 - fork · mewpokemons · [v8world/JointStage2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
+- fork · mewpokemons · [v8world/JointStage2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
 - canonical · colingsnyder2-ux · [v8world/JointStage2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/v8world/JointStage2008.h)
@@ -561,11 +619,21 @@ Earlier paths and their donor versions: `native-headers/v8world/JointStage2008.h
 </details>
 
 <details>
-<summary>App/include/v8world/Joints2008.h — diverged; 10 content versions</summary>
+<summary>App/include/v8world/Joints2008.h — diverged; 11 content versions</summary>
 
 Earlier paths and their donor versions: `native-headers/v8world/Joints2008.h`.
 
+**`26eac41a7620`** · `App/include/v8world/Joints2008.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+
+</details>
+
 **`3f470f779542`** · `App/include/v8world/Joints2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/include/v8world/Joints2008.h)
 - public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/include/v8world/Joints2008.h)
 - public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/v8world/Joints2008.h)
 - public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/App/include/v8world/Joints2008.h)
@@ -589,6 +657,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Joints2008.h`.
 - public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8world/Joints2008.h)
 
 **`f7c505523b9a`** · `App/include/v8world/Joints2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/include/v8world/Joints2008.h)
 - canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/include/v8world/Joints2008.h)
 - canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/include/v8world/Joints2008.h)
 - canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/App/include/v8world/Joints2008.h)
@@ -611,7 +680,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Joints2008.h`.
 - canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8world/Joints2008.h)
 - canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8world/Joints2008.h)
 
-<details><summary>33 retained local origins</summary>
+<details><summary>40 retained local origins</summary>
 
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
@@ -633,10 +702,17 @@ Earlier paths and their donor versions: `native-headers/v8world/Joints2008.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
@@ -658,6 +734,8 @@ Earlier paths and their donor versions: `native-headers/v8world/Joints2008.h`.
 </details>
 
 **`23b96c917e7d`** · `native-headers/v8world/Joints2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/v8world/Joints2008.h)
+- canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/v8world/Joints2008.h)
 - public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/v8world/Joints2008.h)
 - canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-headers/v8world/Joints2008.h)
 - public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/v8world/Joints2008.h)
@@ -701,7 +779,7 @@ Earlier paths and their donor versions: `native-headers/v8world/Joints2008.h`.
 - public · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8world/Joints2008.h)
 - canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8world/Joints2008.h)
 
-<details><summary>34 retained local origins</summary>
+<details><summary>43 retained local origins</summary>
 
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
@@ -723,14 +801,23 @@ Earlier paths and their donor versions: `native-headers/v8world/Joints2008.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/native-headers/v8world/Joints2008.h` · root `b52aa15feaea5a0c`
@@ -805,8 +892,8 @@ Earlier paths and their donor versions: `native-headers/v8world/Joints2008.h`.
 
 **`f7c505523b9a`** · `native-headers/v8world/Joints2008.h` · proof not assessed
 - fork · mewpokemons · [v8world/Joints2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/v8world/Joints2008.h)
-- fork · mewpokemons · [v8world/Joints2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8world/Joints2008.h)
 - fork · mewpokemons · [v8world/Joints2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/v8world/Joints2008.h)
+- fork · mewpokemons · [v8world/Joints2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8world/Joints2008.h)
 - canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/v8world/Joints2008.h)
 - canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/v8world/Joints2008.h)
 - canonical · colingsnyder2-ux · [v8world/Joints2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/v8world/Joints2008.h)
@@ -847,11 +934,12 @@ Earlier paths and their donor versions: `native-headers/v8world/Joints2008.h`.
 </details>
 
 <details>
-<summary>App/include/v8world/SimJob2008.h — diverged; 9 content versions</summary>
+<summary>App/include/v8world/SimJob2008.h — diverged; 10 content versions</summary>
 
 Earlier paths and their donor versions: `native-headers/v8world/SimJob2008.h`.
 
 **`5b8681a151a3`** · `App/include/v8world/SimJob2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/include/v8world/SimJob2008.h)
 - public · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/include/v8world/SimJob2008.h)
 - public · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/v8world/SimJob2008.h)
 - public · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/App/include/v8world/SimJob2008.h)
@@ -875,6 +963,7 @@ Earlier paths and their donor versions: `native-headers/v8world/SimJob2008.h`.
 - public · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8world/SimJob2008.h)
 
 **`8a123257c239`** · `App/include/v8world/SimJob2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/include/v8world/SimJob2008.h)
 - canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/include/v8world/SimJob2008.h)
 - canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/include/v8world/SimJob2008.h)
 - canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/App/include/v8world/SimJob2008.h)
@@ -897,7 +986,7 @@ Earlier paths and their donor versions: `native-headers/v8world/SimJob2008.h`.
 - canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8world/SimJob2008.h)
 - canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8world/SimJob2008.h)
 
-<details><summary>33 retained local origins</summary>
+<details><summary>40 retained local origins</summary>
 
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
@@ -919,10 +1008,17 @@ Earlier paths and their donor versions: `native-headers/v8world/SimJob2008.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
@@ -932,6 +1028,15 @@ Earlier paths and their donor versions: `native-headers/v8world/SimJob2008.h`.
 - local · `work/native-candidates/source-profile-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-rest-pass-20261107/batch/frozen/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`f9d2d740d03f`** · `App/include/v8world/SimJob2008.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/App/include/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 
 </details>
 
@@ -968,6 +1073,8 @@ Earlier paths and their donor versions: `native-headers/v8world/SimJob2008.h`.
 - public · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8world/SimJob2008.h)
 
 **`5f5d1a9322cf`** · `native-headers/v8world/SimJob2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/v8world/SimJob2008.h)
+- canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/native-headers/v8world/SimJob2008.h)
 - public · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/native-headers/v8world/SimJob2008.h)
 - canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/native-headers/v8world/SimJob2008.h)
 - public · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/v8world/SimJob2008.h)
@@ -1011,7 +1118,7 @@ Earlier paths and their donor versions: `native-headers/v8world/SimJob2008.h`.
 - public · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8world/SimJob2008.h)
 - canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8world/SimJob2008.h)
 
-<details><summary>34 retained local origins</summary>
+<details><summary>43 retained local origins</summary>
 
 - local · `work/native-candidates/header-bulk-20261107/after/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/header-dependency-probe-20261107/after/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
@@ -1033,14 +1140,23 @@ Earlier paths and their donor versions: `native-headers/v8world/SimJob2008.h`.
 - local · `work/native-candidates/header-root2-20261107/before/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-abi-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-accepted-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-fixed-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-full-pass-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-missing-includes-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/layout-network-includes-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-bulk-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-localheaders-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-test-sdk-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-run-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/native-headers/v8world/SimJob2008.h` · root `b52aa15feaea5a0c`
@@ -1052,8 +1168,8 @@ Earlier paths and their donor versions: `native-headers/v8world/SimJob2008.h`.
 
 **`8a123257c239`** · `native-headers/v8world/SimJob2008.h` · proof not assessed
 - fork · mewpokemons · [v8world/SimJob2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/v8world/SimJob2008.h)
-- fork · mewpokemons · [v8world/SimJob2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8world/SimJob2008.h)
 - fork · mewpokemons · [v8world/SimJob2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/v8world/SimJob2008.h)
+- fork · mewpokemons · [v8world/SimJob2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/v8world/SimJob2008.h)
 - canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/v8world/SimJob2008.h)
 - canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/v8world/SimJob2008.h)
 - canonical · colingsnyder2-ux · [v8world/SimJob2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/v8world/SimJob2008.h)
