@@ -1,6 +1,7 @@
 #pragma once
 #include "v8datamodel/Hopper.h"
 #include "Network/Player.h"
+#include "Network/Players.h"
 
 namespace RBX {
 extern char sLocalBackpackItem[];
