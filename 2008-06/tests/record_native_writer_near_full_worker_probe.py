@@ -1,23 +1,3 @@
-import hashlib,json,re,shutil,struct,subprocess,sys
-from pathlib import Path
-import pefile
-root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
-out=root/'rebuild/2008-06/out/native-layouts';work=out/'worker-writer-near/full-probe';work.mkdir(parents=True,exist_ok=True);proof=root/'work/2008-06/shared-layouts';base=json.loads((proof/'document-swap-provider-trial.json').read_text());trial=json.loads((proof/'workspace-writer-nearmatch-worker-trial.json').read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();mapping={};snapshot={}
-for index,path in enumerate(base['objects']):
- source=root/path;target=work/('%03d'%index)/source.name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target);mapping[str(source).lower()]=str(target);snapshot[path]=sha(target);assert snapshot[path]==base['objects'][path],('stale baseline object',path)
-archive=out/'document-swap-link-trial/RbxgsAppWithoutInstance.lib';archive_copy=work/'baseline.lib';shutil.copyfile(archive,archive_copy);mapping[str(archive).lower()]=str(archive_copy)
-near=out/'write-worker/NativeWorkspaceWriterNearWorker.obj';exact=out/'write-worker/NearWorkerImplicit.obj';assert sha(near)==trial['object_sha256'] and sha(exact)==trial['implicit_object_sha256']
-near_raw=near.read_bytes();exact_raw=exact.read_bytes();near_defs=rebuild.coff_externals(near_raw);exact_defs=rebuild.coff_externals(exact_raw);drop_near={s for s,v in near_defs.items() if v and (s.startswith('??0TextXmlWriterWithEmbeddedContent@@') or s.startswith('??1TextXmlWriterWithEmbeddedContent@@'))};drop_exact={s for s,v in exact_defs.items() if v and s.startswith('?write@CWorkspace@@')};assert len(drop_near)==2 and len(drop_exact)==1
-sections,symbols,definitions,_=match._coff_data_index(near_raw);caller=next(x[0] for x in match.coff_functions(near_raw) if x[0].startswith('?write@CWorkspace@@'));funclet=next(k for k in definitions if k.startswith('__unwindfunclet$'+caller));start,index=definitions[funclet];section=sections[index];candidate_cleanup=near_raw[section[4]+start:section[4]+start+8];assert candidate_cleanup[:4]==bytes.fromhex('8d4da8e9')
-relocations=[struct.unpack_from('<IIH',near_raw,section[5]+10*i) for i in range(section[7])];assert any(off==start+4 and kind==20 and symbols[sym][0].startswith('??1TextXmlWriterWithEmbeddedContent@@') for off,sym,kind in relocations)
-pe=pefile.PE(str(root/'work/2008-06/original-p4-reference/Roblox.exe'));image=pe.OPTIONAL_HEADER.ImageBase;original_cleanup=pe.get_data(0x7c39e0-image,8);assert original_cleanup[:4]==candidate_cleanup[:4] and (0x7c39e8+struct.unpack_from('<i',original_cleanup,4)[0])&0xffffffff==0x46b1e0
-near_copy=work/'near-caller.obj';near_copy.write_bytes(rebuild.strip_symbols(near_raw,drop=drop_near));exact_copy=work/'exact-lifetime.obj';exact_copy.write_bytes(rebuild.strip_symbols(exact_raw,drop=drop_exact));assert all(not rebuild.coff_externals(near_copy.read_bytes()).get(x) for x in drop_near);assert all(not rebuild.coff_externals(exact_copy.read_bytes()).get(x) for x in drop_exact)
-def link(name,extra):
- args=[]
- for arg in base['link_flags']:
-  if arg.upper().startswith('/OUT:'):arg='/OUT:'+name+'.exe'
-  elif arg.upper().startswith('/MAP:'):arg='/MAP:'+name+'.map'
-  else:arg=mapping.get(arg.lower(),arg)
-  args.append(arg)
- rsp=work/(name+'.rsp');rsp.write_text('\n'.join(subprocess.list2cmdline([arg]) for arg in args+list(map(str,extra)))+'\n');code,log=rebuild.run(rebuild.toolchain(21022),'link',['@'+str(rsp)],work);assert 'fatal error LNK1104' not in log,log[-2000:];(work/(name+'.log')).write_text(log);errors=[line for line in log.splitlines() if re.search(r'\berror LNK(?:2001|2019|2005)\b',line)];return code,errors
-bc,be=link('baseline',[]);cc,ce=link('candidate',[near_copy,exact_copy]);receipt={'scope':'NONEXACT writer caller; diagnostic link only, never run. Original 2 EH states differ from candidate 1; both cleanup funclets call the same writer destructor with the same receiver offset. Lifetime objects exact separately but binding/order and runtime unproven. Frozen copied inputs and donor archive.','baseline_exit':bc,'baseline_errors':be,'candidate_exit':cc,'candidate_errors':ce,'cleanup_funclet':{'original_address':'0x7c39e0','original_target':'0x46b1e0','original_receiver':'ebp-0x58','candidate_receiver':'ebp-0x58','candidate_target':'TextXmlWriterWithEmbeddedContent::~TextXmlWriterWithEmbeddedContent'},'snapshot_objects':snapshot,'archive_sha256':sha(archive_copy),'near_original_sha256':sha(near),'near_stripped_sha256':sha(near_copy),'exact_original_sha256':sha(exact),'exact_stripped_sha256':sha(exact_copy),'observer_sha256':sha(Path(__file__))};(proof/'workspace-writer-near-full-worker-probe.json').write_text(json.dumps(receipt,indent=2)+'\n');print('BASELINE',bc,len(be),'CANDIDATE',cc,len(ce));print('NEW ERRORS');print('\n'.join(x for x in ce if x not in set(be)))
+# Compatibility entry point; implementation is in matching/.
+__file__ = str(__import__('pathlib').Path(__file__).parent / 'matching' / 'record_native_writer_near_full_worker_probe.py')
+exec(compile(open(__file__, 'rb').read(), __file__, 'exec'))

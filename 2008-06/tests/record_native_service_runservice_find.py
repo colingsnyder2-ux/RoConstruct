@@ -1,14 +1,3 @@
-"""Verify native RunService lookup with the proven Boost destructor profile."""
-import hashlib,json,struct,sys
-from pathlib import Path
-root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
-r=json.loads((root/'work/2008-06/shared-layouts/service-provider-fresh-current.json').read_text());out=root/'rebuild/2008-06/out/native-layouts/service-runservice-find-probe';out.mkdir(parents=True,exist_ok=True);src=root/'rebuild/2008-06/native-classes/ServiceProvider.cpp';sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();assert sha(src)==r['sources'][str(src.relative_to(root))]
-flags=[x for x in r['flags'] if x!='/c' and not x.startswith('/Fo') and not x.endswith('ServiceProvider.cpp')]+['/P',str(src)];c,log=rebuild.run(rebuild.toolchain(21022),'cl',flags,out);assert c==0,log;text=(out/'ServiceProvider.i').read_text(errors='replace');needle='template<class T> class shared_ptr\n{\nprivate:';assert text.count(needle)==1;text=text.replace(needle,'template<class T> class shared_ptr\n{\npublic:\n    __declspec(noinline) ~shared_ptr() {}\nprivate:',1);profile=out/'ServiceProviderProfile.cpp';profile.write_text(text);obj=out/'ServiceProviderProfile.obj';compile=['/nologo','/c','/O2','/Ob2','/Oy','/GF','/GS-','/EHsc','/MD','/Fo'+str(obj),str(profile)];c,log=rebuild.run(rebuild.toolchain(21022),'cl',compile,out);assert c==0,log;raw=obj.read_bytes();f=match.coff_functions(raw);secs,syms,defs,_=match._coff_data_index(raw);rows=[]
-for prefix,address in [('??$find@VRunService@RBX@@@ServiceProvider',0x452c80),('??1?$shared_ptr@VInstance@RBX@@',0x600660)]:
- n,b,refs=next(x for x in f if x[0].startswith(prefix));t,tr,_=match.target('2008-06','%08x'%address);assert match.exact_match(t,tr,b,refs),(n,len(b),len(t));start,idx=defs[n];table=secs[idx];calls={}
- for i in range(table[7]):
-  off,si,kind=struct.unpack_from('<IIH',raw,table[5]+10*i);off-=start
-  if kind==20 and 0<=off<len(t)-3:calls.setdefault(syms[si][0],[]).append(hex((address+off+4+struct.unpack_from('<i',t,off)[0])&0xffffffff))
- rows.append({'address':hex(address),'symbol':n,'size':len(b),'calls':calls})
-values={v for addresses in rows[0]['calls'].values() for v in addresses};assert {'0x557330','0x44f3c0','0x4124c0','0x401a00','0x572a90','0x600660','0x4025b0'} <= values,values
-result={'scope':'Inactive noinline generated destructor profile; code and selected call targets match, full ABI, global cache identity and runtime unproven.','methods':rows,'source_sha256':sha(src),'object_sha256':sha(obj),'profile_sha256':sha(profile),'input_receipt_sha256':sha(root/'work/2008-06/shared-layouts/service-provider-fresh-current.json'),'observer_sha256':sha(Path(__file__)),'preprocess_flags':flags,'compile_flags':compile};(root/'work/2008-06/shared-layouts/service-runservice-find-profile.json').write_text(json.dumps(result,indent=2)+'\n');print('PASS RunService lookup and shared_ptr destructor with original call targets')
+# Compatibility entry point; implementation is in matching/.
+__file__ = str(__import__('pathlib').Path(__file__).parent / 'matching' / 'record_native_service_runservice_find.py')
+exec(compile(open(__file__, 'rb').read(), __file__, 'exec'))
