@@ -1,9 +1,2 @@
-#pragma once
-#include "StandardVerbs.h"
-
-class InsertObject : public RBX::RunStateVerb {
-    RBX::Instance* target() const;
-public:
-    __declspec(noinline) InsertObject(RBX::DataModel*);
-    virtual void doIt(RBX::IDataState*);
-};
+// Compatibility header; declarations live at the organized path.
+#include "../WindowsClient/include/InsertObject.h"
