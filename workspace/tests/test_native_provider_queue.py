@@ -34,7 +34,7 @@ class ProviderQueueTests(unittest.TestCase):
             (base / 'Service.obj').write_bytes(b'broken' + SYMBOL.encode('ascii'))
             result = queue.inventory(log, [base], [base])
             self.assertEqual(len(result['scan_errors']), 1)
-            with patch.object(queue.match, '_coff_data_index', return_value=([], {}, {SYMBOL: (0, 0)}, {})):
+            with patch.object(queue.rebuild, 'coff_externals', return_value={SYMBOL: True}):
                 result = queue.inventory(log, [base], [base])
             self.assertEqual(result['queue'][0]['status'], 'object_definition_found')
             self.assertEqual(len(result['queue'][0]['object_definitions'][0]['sha256']), 64)
@@ -56,6 +56,40 @@ class ProviderQueueTests(unittest.TestCase):
         line = 'a.obj : error LNK2001: unresolved external symbol "public: __thiscall RBX::Thing::Thing(void)" (??0Thing@RBX@@QAE@XZ)'
         self.assertEqual(len(queue.parse_errors(line)), 1)
         self.assertEqual(queue.source_terms(queue.parse_errors(line)[0]['display']), {('Thing', 'Thing')})
+
+
+    def test_library_provider_and_undefined_not_misreported(self):
+        with tempfile.TemporaryDirectory() as folder:
+            base = Path(folder)
+            log = base / 'link.log'
+            log.write_text(error())
+            archive = base / 'providers.lib'
+            archive.write_bytes(b'archive')
+            with patch.object(queue.libs, 'archive_members', return_value=[('candidate.obj', SYMBOL.encode())]):
+                with patch.object(queue.rebuild, 'coff_externals', return_value={SYMBOL: False}):
+                    result = queue.inventory(log, [base], [])
+                    self.assertEqual(result['queue'][0]['status'], 'no_provider_found')
+                with patch.object(queue.rebuild, 'coff_externals', return_value={SYMBOL: True}):
+                    result = queue.inventory(log, [base], [])
+                    self.assertEqual(result['queue'][0]['status'], 'library_definition_found')
+                    self.assertEqual(result['queue'][0]['library_definitions'][0]['member'], 'candidate.obj')
+                    self.assertEqual(result['libraries_scanned'], 1)
+
+    def test_short_import_object_reported_as_unscanned(self):
+        with tempfile.TemporaryDirectory() as folder:
+            base = Path(folder)
+            log = base / 'link.log'
+            log.write_text(error())
+            (base / 'imports.lib').write_bytes(b'archive')
+            with patch.object(queue.libs, 'archive_members', return_value=[('import.obj', b'\x00\x00\xff\xff' + SYMBOL.encode())]):
+                result = queue.inventory(log, [base], [])
+            self.assertEqual(result['queue'][0]['status'], 'no_provider_found')
+            self.assertIn('unsupported short import object', result['scan_errors'][0]['error'])
+
+    def test_plain_c_symbol(self):
+        row, = queue.parse_errors('main.obj : error LNK2001: unresolved external symbol _missing')
+        self.assertEqual(row['symbol'], '_missing')
+        self.assertEqual(row['requesters'], ['main.obj'])
 
     def test_template_member(self):
         self.assertIn(('TToolVerb', 'newMouseCommand'), queue.source_terms('RBX::TToolVerb<class RBX::ArrowTool,class RBX::RunStateVerb>::newMouseCommand(void)'))
