@@ -56,3 +56,6 @@ compile either path per file, never both. See manifests for exact file list.
 WindowsClient/src/ also contains the report view, property-grid update and
 active-document view refresh sources. Native-classes counterparts are
 compatibility units; compile either path per file, never both.
+
+App/src/v8datamodel/ contains the reviewed ChangeHistory source batch.
+Native-classes counterparts are compatibility units; compile either path per file.
