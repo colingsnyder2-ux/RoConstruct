@@ -1,4 +1,2 @@
-#include "NativeLDrawParserTrial.h"
-namespace RBX { namespace LDraw2Lua {
-LDrawParser::~LDrawParser() {}
-} }
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeLDrawParserLifetimeTrial.cpp"

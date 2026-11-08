@@ -6,7 +6,7 @@ root = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(root))
 from roc import match, rebuild
 out = root / 'rebuild/2008-06/out/native-layouts'
-source = root / 'rebuild/2008-06/tests/NativeResizeToolTrial.cpp'
+source = root / 'rebuild/2008-06/experiments/trials/NativeResizeToolTrial.cpp'
 header = root / 'rebuild/2008-06/tests/NativeResizeToolTrial.h'
 obj = out / 'NativeResizeToolTrial.obj'
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
@@ -58,7 +58,7 @@ for suffix, address, expected in [
         slots[offset // 4] = {'symbol': symbols[symbol][0], 'original_address': hex(target)}
     assert len(slots) == len(expected)
     vtables.append({'base': suffix, 'address': hex(address), 'slots': [slots[i] for i in range(len(expected))]})
-factory_source = root / 'rebuild/2008-06/tests/NativeResizeToolFactoryTrial.cpp'
+factory_source = root / 'rebuild/2008-06/experiments/trials/NativeResizeToolFactoryTrial.cpp'
 factory_obj = out / 'NativeResizeToolFactoryTrial.obj'
 code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/Fo' + str(factory_obj), str(factory_source)], out)
 assert code == 0, log

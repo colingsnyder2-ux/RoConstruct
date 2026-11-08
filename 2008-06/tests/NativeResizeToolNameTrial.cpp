@@ -1,7 +1,2 @@
-#include "NativeResizeToolTrial.h"
-#include "StandardVerbs.h"
-namespace RBX {
-template<> const Name& Named<ArrowToolBase, sResizeTool>::getName() const {
-    return NativeToolName<ResizeTool>::get();
-}
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeResizeToolNameTrial.cpp"

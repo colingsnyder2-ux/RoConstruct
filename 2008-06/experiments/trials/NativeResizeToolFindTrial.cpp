@@ -1,0 +1,23 @@
+#include "NativeResizeToolTrial.h"
+#include "v8datamodel/Selection.h"
+#include "v8datamodel/PartInstance.h"
+namespace RBX {
+class HandleHitTest {
+public:
+    static bool hitTestHandleLocal(const Extents&, const G3D::CoordinateFrame&, const G3D::Ray&, G3D::Vector3&, NormalId&);
+};
+void ResizeTool::findTargetPV(const UIEvent& inputObject) {
+    ServiceClient<Selection> selection(reinterpret_cast<Instance*>(workspace));
+    std::vector<boost::shared_ptr<Instance> >::const_iterator it;
+    for (it = selection->selection->begin(); it != selection->selection->end(); ++it) {
+        if (PartInstance* part = dynamic_cast<PartInstance*>(it->get())) {
+            G3D::Ray gridRay(getUnitMouseRay(inputObject));
+            if (HandleHitTest::hitTestHandleLocal(part->getExtentsLocal(), part->getLocation(), gridRay, hitPointGrid, localNormalId)) {
+                targetPV = shared_from(part);
+                return;
+            }
+        }
+    }
+    targetPV.reset();
+}
+}

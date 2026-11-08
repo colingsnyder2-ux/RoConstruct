@@ -44,7 +44,7 @@ for prefix,address,expected in [
     for symbol,wanted in expected:
         assert any(k.startswith(symbol) and v == wanted for k,v in bindings.items()), (symbol,bindings)
     rows.append({'address':hex(address),'size':len(body),'bindings':{k:hex(v) for k,v in bindings.items()}})
-state_source = root/'rebuild/2008-06/tests/NativeLDrawAssetStateTrial.cpp'
+state_source = root/'rebuild/2008-06/experiments/trials/NativeLDrawAssetStateTrial.cpp'
 state_obj = out/'NativeLDrawAssetStateTrial.obj'
 state_flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
 state_flags += ['/Fo'+str(state_obj),str(state_source)]

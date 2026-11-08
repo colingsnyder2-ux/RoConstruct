@@ -12,7 +12,7 @@ sys.path.insert(0,str(root))
 from roc import match,rebuild
 
 out = root/'rebuild/2008-06/out/native-layouts'
-source = root/'rebuild/2008-06/tests/NativeLDrawEntitiesTrial.cpp'
+source = root/'rebuild/2008-06/experiments/trials/NativeLDrawEntitiesTrial.cpp'
 header = root/'rebuild/2008-06/tests/NativeLDrawEntitiesTrial.h'
 base = json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]

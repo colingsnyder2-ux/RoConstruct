@@ -1,12 +1,2 @@
-#include "NativeLDrawEntitiesTrial.h"
-
-namespace RBX { namespace LDraw2Lua {
-bool LDrawPart::writeParent(std::ostream& out, std::string parent) const
-{
-    out << "part.Parent = " << parent.c_str();
-    out << "\n";
-    out << "part:MakeJoints()";
-    out << "\n";
-    return false;
-}
-} }
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeLDrawPartParentTrial.cpp"

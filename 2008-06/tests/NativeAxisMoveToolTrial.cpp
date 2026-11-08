@@ -1,5 +1,2 @@
-#include "NativeAxisMoveToolTrial.h"
-namespace RBX {
-AxisMoveTool::AxisMoveTool(Workspace* w) : Named<ArrowToolBase, sAxisMoveTool>(w), cursor("ArrowCursor"), dragging(false) {}
-void forceDestroy(AxisMoveTool* p) { delete p; }
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../experiments/trials/NativeAxisMoveToolTrial.cpp"
