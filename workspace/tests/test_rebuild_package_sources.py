@@ -99,3 +99,18 @@ def test_export_and_install_preserve_build_tool_wrappers(tmp_path):
     destination = tmp_path / 'restored'
     rebuild_install._restore_missing_inputs(package, destination)
     assert runpy.run_path(str(destination / 'example.py'))['RESULT'] == 42
+
+
+def test_install_retains_organized_compile_tool_without_package_launcher(tmp_path):
+    from roc import rebuild_install
+
+    package = tmp_path / 'package'
+    (package / 'config').mkdir(parents=True)
+    (package / 'config/rbxgs-app.json').write_text('{}')
+    (package / 'scripts/build').mkdir(parents=True)
+    (package / 'scripts/compile_test.py').write_text('package launcher')
+    (package / 'scripts/build/compile_test.py').write_text('organized tool')
+    destination = tmp_path / 'checkout/rebuild/2008-06'
+    rebuild_install._restore_missing_inputs(package, destination)
+    assert (destination / 'build/compile_test.py').read_text() == 'organized tool'
+    assert not (destination / 'compile_test.py').exists()

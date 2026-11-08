@@ -43,7 +43,7 @@ def _restore_missing_inputs(package, destination):
         if not source_root.is_dir():
             continue
         for path in source_root.rglob('*'):
-            if not path.is_file() or path.name == 'compile_test.py':
+            if not path.is_file() or (path.name == 'compile_test.py' and not (source == 'scripts' and path.relative_to(package / source).as_posix() == 'build/compile_test.py')):
                 continue
             copies.append((path, destination / target / path.relative_to(source_root)))
     if not any(target == destination / 'modules' / 'rbxgs-app.json' for _, target in copies):
@@ -88,7 +88,7 @@ def install(root, client='2008-06', package=None):
     for source, target in [('config', 'modules'), ('patches', 'patches'), ('tests', 'tests'),
                            ('src/glue', 'glue'), ('verification/manifests', 'manifests'), ('scripts', '')]:
         for path in (package / source).rglob('*'):
-            if not path.is_file() or path.name == 'compile_test.py':
+            if not path.is_file() or (path.name == 'compile_test.py' and not (source == 'scripts' and path.relative_to(package / source).as_posix() == 'build/compile_test.py')):
                 continue
             copies.append((path, destination / target / path.relative_to(package / source)))
     if not any(target == destination / 'modules/rbxgs-app.json' for _, target in copies):

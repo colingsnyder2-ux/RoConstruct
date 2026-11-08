@@ -1,0 +1,8 @@
+{
+  "base": "d4a58aa8bd78a4ce537951b299767ce6a672e162",
+  "old": "rebuild/2008-06/compile_test.py",
+  "new": "rebuild/2008-06/build/compile_test.py",
+  "original_sha256": "57ca2158bd5e7429503855fce119462791ece58892c6b64102507767ebcd2468",
+  "new_sha256": "e96f84f80ade7966d97d450466093542a9c958b2dd64d601ad27936d91a25c32",
+  "scope": "Source directory depth adjusted; original launcher path preserved."
+}
