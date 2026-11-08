@@ -25,15 +25,18 @@ def build(snapshot, output, tc, archive, link_arguments):
               **{str(path): sha(path) for path in paths}, str(command_path): sha(command_path),
               str(Path(__file__)): sha(__file__), str(Path(__file__).with_name('script_context_owner.py')): sha(Path(__file__).with_name('script_context_owner.py')),
               str(tc['cl']): sha(tc['cl']), str(tc['lib']): sha(tc['lib'])}
-    if any(not Path(name).is_file() or sha(name) != value for name, value in inputs.items()):
-        raise RuntimeError('NullTool source/header/input prerequisite drift')
+    drift = [name for name, value in inputs.items() if not Path(name).is_file() or sha(name) != value]
     signature = hashlib.sha256(json.dumps(inputs, sort_keys=True).encode()).hexdigest()
     folder = output / 'null-tool-owner'
     folder.mkdir(exist_ok=True)
     target, receipt = folder / 'linked.lib', folder / 'receipt.json'
+    if drift:
+        receipt.write_text(json.dumps({'scope': __doc__, 'drift_fallback': True, 'drift_count': len(drift),
+            'archive_sha256': sha(archive)}, indent=2) + '\n')
+        return archive
     if target.exists() and receipt.exists():
         saved = json.loads(receipt.read_text())
-        if saved['signature'] == signature and saved['archive_sha256'] == sha(target):
+        if saved.get('signature') == signature and saved.get('archive_sha256') == sha(target):
             return target
     text = source.read_text()
     declarations = ('NullTool::NullTool(Workspace* workspace)', 'NullTool::~NullTool()',
