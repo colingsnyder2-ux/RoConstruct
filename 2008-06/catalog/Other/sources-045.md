@@ -51,6 +51,8 @@ Compatibility path for `App/src/tool/SlingshotToolCore.cpp`; compile either path
 </details>
 
 **`4ceac90b9298`** · `native-classes/SlingshotToolCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SlingshotToolCore.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/SlingshotToolCore.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SlingshotToolCore.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/SlingshotToolCore.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SlingshotToolCore.cpp)
@@ -251,6 +253,8 @@ Compatibility path for `App/src/tool/SlingshotToolLaunch.cpp`; compile either pa
 </details>
 
 **`66335e6e8b15`** · `native-classes/SlingshotToolLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SlingshotToolLaunch.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/SlingshotToolLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SlingshotToolLaunch.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/SlingshotToolLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SlingshotToolLaunch.cpp)
@@ -366,6 +370,8 @@ Compatibility path for `App/src/tool/SlingshotToolLaunch.cpp`; compile either pa
 Compatibility path for `App/src/tool/SlingshotToolProjectile.cpp`; compile either path, never both.
 
 **`012b188c52f7`** · `native-classes/SlingshotToolProjectile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SlingshotToolProjectile.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/SlingshotToolProjectile.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SlingshotToolProjectile.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/SlingshotToolProjectile.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SlingshotToolProjectile.cpp)
@@ -630,6 +636,8 @@ Compatibility path for `Unclassified/src/SoundClassName.cpp`; compile either pat
 </details>
 
 **`aa70b682f5f1`** · `native-classes/SoundClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SoundClassName.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/SoundClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SoundClassName.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/SoundClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SoundClassName.cpp)
@@ -793,6 +801,8 @@ Compatibility path for `Unclassified/src/SoundClassNames.cpp`; compile either pa
 </details>
 
 **`5f5333270f4c`** · `native-classes/SoundClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SoundClassNames.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SoundClassNames.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SoundClassNames.cpp)
@@ -944,6 +954,8 @@ Compatibility path for `Unclassified/src/SoundConstructors.cpp`; compile either 
 </details>
 
 **`5d52d1b427ec`** · `native-classes/SoundConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SoundConstructors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/SoundConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SoundConstructors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/SoundConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SoundConstructors.cpp)

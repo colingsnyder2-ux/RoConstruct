@@ -6,6 +6,10 @@
 <summary>native-classes/CameraPredicates.cpp — candidate-only; 1 content versions</summary>
 
 **`abd9e9434b10`** · `native-classes/CameraPredicates.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CameraPredicates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/0aba936242780a9f80352b1375cc12e79400270a155059e5c83af9a43f4e8095/rebuild/2008-06/native-classes/CameraPredicates.cpp)
+- draft · colingsnyder2-ux · [native-classes/CameraPredicates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/rebuild/2008-06/native-classes/CameraPredicates.cpp)
+- draft · colingsnyder2-ux · [native-classes/CameraPredicates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/c481d81bdcdcacc0203b274d302687313d3577b94a4fff429b11be11bdeee6a4/rebuild/2008-06/native-classes/CameraPredicates.cpp)
+- draft · colingsnyder2-ux · [native-classes/CameraPredicates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/d3cc2060e271cca2449173e9c1ead2f844846759371e8964a1416ae0f1572355/rebuild/2008-06/native-classes/CameraPredicates.cpp)
 - draft · colingsnyder2-ux · [native-classes/CameraPredicates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/0aba936242780a9f80352b1375cc12e79400270a155059e5c83af9a43f4e8095/rebuild/2008-06/native-classes/CameraPredicates.cpp)
 - draft · colingsnyder2-ux · [native-classes/CameraPredicates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/rebuild/2008-06/native-classes/CameraPredicates.cpp)
 - draft · colingsnyder2-ux · [native-classes/CameraPredicates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/c481d81bdcdcacc0203b274d302687313d3577b94a4fff429b11be11bdeee6a4/rebuild/2008-06/native-classes/CameraPredicates.cpp)
@@ -245,6 +249,8 @@ Compatibility path for `App/src/v8datamodel/CameraUnits.cpp`; compile either pat
 </details>
 
 **`3e5b375d0a2b`** · `native-classes/CameraUnits.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CameraUnits.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/CameraUnits.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CameraUnits.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/CameraUnits.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/CameraUnits.cpp)
@@ -446,6 +452,8 @@ Compatibility path for `App/src/v8datamodel/CameraZoomExtentsAction.cpp`; compil
 </details>
 
 **`190ce14686a8`** · `native-classes/CameraZoomExtentsAction.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CameraZoomExtentsAction.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/CameraZoomExtentsAction.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CameraZoomExtentsAction.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/CameraZoomExtentsAction.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraZoomExtentsAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/CameraZoomExtentsAction.cpp)
@@ -593,6 +601,8 @@ Compatibility path for `App/src/v8datamodel/CollectDragParts.cpp`; compile eithe
 </details>
 
 **`796c36c79ec4`** · `native-classes/CollectDragParts.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CollectDragParts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CollectDragParts.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CollectDragParts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/CollectDragParts.cpp)
 - public · colingsnyder2-ux · [native-classes/CollectDragParts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CollectDragParts.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CollectDragParts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/CollectDragParts.cpp)
 - public · colingsnyder2-ux · [native-classes/CollectDragParts.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/CollectDragParts.cpp)
@@ -819,6 +829,8 @@ Compatibility path for `App/src/tool/DragPrimitiveBounds.cpp`; compile either pa
 </details>
 
 **`cab00d6a6bb8`** · `native-classes/DragPrimitiveBounds.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/DragPrimitiveBounds.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/DragPrimitiveBounds.cpp)
 - public · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/DragPrimitiveBounds.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/DragPrimitiveBounds.cpp)
 - public · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/DragPrimitiveBounds.cpp)
@@ -945,9 +957,10 @@ Compatibility path for `App/src/tool/DragPrimitiveBounds.cpp`; compile either pa
 <summary>native-classes/Humanoid2008.cpp — candidate-only; 1 content versions</summary>
 
 **`fa61e5130f5d`** · `native-classes/Humanoid2008.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/Humanoid2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/Humanoid2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008.cpp)
 - fork · mewpokemons · [native-classes/Humanoid2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/Humanoid2008.cpp)
 - fork · mewpokemons · [native-classes/Humanoid2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/Humanoid2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/Humanoid2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/Humanoid2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/Humanoid2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/Humanoid2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008.cpp)

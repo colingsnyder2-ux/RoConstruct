@@ -43,6 +43,7 @@ Earlier paths and their donor versions: `native-classes/InstanceDescendantEvents
 - public · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 
 **`2c2ead60e0e8`** · `App/src/v8tree/InstanceDescendantEvents.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
@@ -68,6 +69,7 @@ Earlier paths and their donor versions: `native-classes/InstanceDescendantEvents
 </details>
 
 **`ff846bbf1d92`** · `App/src/v8tree/InstanceDescendantEvents.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8tree/InstanceDescendantEvents.cpp)
@@ -130,6 +132,7 @@ Earlier paths and their donor versions: `native-classes/InstanceDescendantEvents
 </details>
 
 **`1b6f3066a569`** · `native-classes/InstanceDescendantEvents.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
@@ -252,6 +255,8 @@ Earlier paths and their donor versions: `native-classes/InstanceDescendantEvents
 </details>
 
 **`8814797e929a`** · `native-classes/InstanceDescendantEvents.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/InstanceDescendantEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/InstanceDescendantEvents.cpp)
@@ -414,6 +419,7 @@ Earlier paths and their donor versions: `native-classes/InstanceDescendantEvents
 Earlier paths and their donor versions: `native-classes/InstanceLifetime.cpp`.
 
 **`0712c145e63a`** · `App/src/v8tree/InstanceLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 - public · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8tree/InstanceLifetime.cpp)
@@ -430,6 +436,7 @@ Earlier paths and their donor versions: `native-classes/InstanceLifetime.cpp`.
 </details>
 
 **`33f7728259c4`** · `App/src/v8tree/InstanceLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8tree/InstanceLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8tree/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8tree/InstanceLifetime.cpp)
@@ -684,6 +691,7 @@ Earlier paths and their donor versions: `native-classes/InstanceLifetime.cpp`.
 </details>
 
 **`8a60d2ac2c84`** · `native-classes/InstanceLifetime.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceLifetime.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceLifetime.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceLifetime.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceLifetime.cpp)
@@ -730,6 +738,8 @@ Earlier paths and their donor versions: `native-classes/InstanceLifetime.cpp`.
 - archive · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceLifetime.cpp)
 
 **`9b371fa931fe`** · `native-classes/InstanceLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/InstanceLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/InstanceLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/InstanceLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/InstanceLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/InstanceLifetime.cpp)

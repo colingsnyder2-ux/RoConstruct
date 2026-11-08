@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/CSelectionTreeCtrl.h`.
 </details>
 
 **`9e6501113184`** · `WindowsClient/include/CSelectionTreeCtrl.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h)
 - canonical · colingsnyder2-ux · [include/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h)
 - canonical · colingsnyder2-ux · [include/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h)
 - canonical · colingsnyder2-ux · [include/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h)
@@ -43,7 +44,7 @@ Earlier paths and their donor versions: `native-headers/CSelectionTreeCtrl.h`.
 - canonical · colingsnyder2-ux · [include/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h)
 - canonical · colingsnyder2-ux · [include/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h)
 
-<details><summary>52 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
@@ -81,6 +82,7 @@ Earlier paths and their donor versions: `native-headers/CSelectionTreeCtrl.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
@@ -120,6 +122,7 @@ Earlier paths and their donor versions: `native-headers/CSelectionTreeCtrl.h`.
 - public · colingsnyder2-ux · [include/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CSelectionTreeCtrl.h)
 
 **`e21e5806f756`** · `WindowsClient/include/CSelectionTreeCtrl.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CSelectionTreeCtrl.h)
 - public · colingsnyder2-ux · [include/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CSelectionTreeCtrl.h)
 - public · colingsnyder2-ux · [include/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/include/CSelectionTreeCtrl.h)
 - public · colingsnyder2-ux · [include/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/WindowsClient/include/CSelectionTreeCtrl.h)
@@ -266,6 +269,8 @@ Earlier paths and their donor versions: `native-headers/CSelectionTreeCtrl.h`.
 - public · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/CSelectionTreeCtrl.h)
 
 **`c9de44fab720`** · `native-headers/CSelectionTreeCtrl.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CSelectionTreeCtrl.h)
+- canonical · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h)
 - public · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CSelectionTreeCtrl.h)
 - canonical · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h)
 - public · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CSelectionTreeCtrl.h)
@@ -317,7 +322,7 @@ Earlier paths and their donor versions: `native-headers/CSelectionTreeCtrl.h`.
 - public · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CSelectionTreeCtrl.h)
 - canonical · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h)
 
-<details><summary>55 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
@@ -356,6 +361,7 @@ Earlier paths and their donor versions: `native-headers/CSelectionTreeCtrl.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
@@ -422,6 +428,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsDialog.h`.
 - public · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CSettingsDialog.h)
 
 **`8ae57a1c0e57`** · `WindowsClient/include/CSettingsDialog.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h)
 - canonical · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h)
 - canonical · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h)
 - canonical · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h)
@@ -448,7 +455,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsDialog.h`.
 - canonical · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h)
 - canonical · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h)
 
-<details><summary>52 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h` · root `b52aa15feaea5a0c`
@@ -486,6 +493,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsDialog.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CSettingsDialog.h` · root `b52aa15feaea5a0c`
@@ -506,6 +514,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsDialog.h`.
 </details>
 
 **`bc7ff7af4f72`** · `WindowsClient/include/CSettingsDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CSettingsDialog.h)
 - public · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CSettingsDialog.h)
 - public · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/include/CSettingsDialog.h)
 - public · colingsnyder2-ux · [include/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/WindowsClient/include/CSettingsDialog.h)
@@ -653,6 +662,8 @@ Earlier paths and their donor versions: `native-headers/CSettingsDialog.h`.
 </details>
 
 **`93b1c82f9e30`** · `native-headers/CSettingsDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CSettingsDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CSettingsDialog.h)
 - public · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CSettingsDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CSettingsDialog.h)
 - public · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CSettingsDialog.h)
@@ -704,7 +715,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsDialog.h`.
 - public · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CSettingsDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CSettingsDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CSettingsDialog.h)
 
-<details><summary>55 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CSettingsDialog.h` · root `b52aa15feaea5a0c`
@@ -743,6 +754,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsDialog.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CSettingsDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CSettingsDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CSettingsDialog.h` · root `b52aa15feaea5a0c`
@@ -799,6 +811,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsExplorer.h`.
 - public · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CSettingsExplorer.h)
 
 **`97a3d0fd1b2b`** · `WindowsClient/include/CSettingsExplorer.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - public · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - public · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - public · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/WindowsClient/include/CSettingsExplorer.h)
@@ -824,6 +837,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsExplorer.h`.
 </details>
 
 **`c0b17cb298e1`** · `WindowsClient/include/CSettingsExplorer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - canonical · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - canonical · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - canonical · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h)
@@ -850,7 +864,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsExplorer.h`.
 - canonical · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h)
 - canonical · colingsnyder2-ux · [include/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h)
 
-<details><summary>52 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
@@ -888,6 +902,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsExplorer.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
@@ -908,6 +923,8 @@ Earlier paths and their donor versions: `native-headers/CSettingsExplorer.h`.
 </details>
 
 **`41baa3de21ba`** · `native-headers/CSettingsExplorer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CSettingsExplorer.h)
+- canonical · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CSettingsExplorer.h)
 - public · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CSettingsExplorer.h)
 - canonical · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CSettingsExplorer.h)
 - public · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CSettingsExplorer.h)
@@ -959,7 +976,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsExplorer.h`.
 - public · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CSettingsExplorer.h)
 - canonical · colingsnyder2-ux · [native-headers/CSettingsExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CSettingsExplorer.h)
 
-<details><summary>55 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
@@ -998,6 +1015,7 @@ Earlier paths and their donor versions: `native-headers/CSettingsExplorer.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CSettingsExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CSettingsExplorer.h` · root `b52aa15feaea5a0c`

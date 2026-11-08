@@ -72,6 +72,8 @@ Compatibility path for `Unclassified/src/LDrawParser.cpp`; compile either path, 
 </details>
 
 **`d961431ba4f2`** · `native-classes/LDrawParser.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawParser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LDrawParser.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawParser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/LDrawParser.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawParser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/LDrawParser.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawParser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/LDrawParser.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawParser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/LDrawParser.cpp)
@@ -255,6 +257,8 @@ Compatibility path for `Unclassified/src/LDrawParserParse.cpp`; compile either p
 </details>
 
 **`b3ac42182bff`** · `native-classes/LDrawParserParse.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawParserParse.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LDrawParserParse.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawParserParse.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/LDrawParserParse.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawParserParse.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/LDrawParserParse.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawParserParse.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/LDrawParserParse.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawParserParse.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/LDrawParserParse.cpp)
@@ -400,6 +404,8 @@ Compatibility path for `Unclassified/src/LDrawPath.cpp`; compile either path, ne
 </details>
 
 **`6e5e1ac4e6bd`** · `native-classes/LDrawPath.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LDrawPath.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/LDrawPath.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/LDrawPath.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/LDrawPath.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/LDrawPath.cpp)
@@ -589,6 +595,8 @@ Compatibility path for `App/src/tool/LaserTool.cpp`; compile either path, never 
 </details>
 
 **`5308dde912b0`** · `native-classes/LaserTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LaserTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/LaserTool.cpp)
 - public · colingsnyder2-ux · [native-classes/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/LaserTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/LaserTool.cpp)
 - public · colingsnyder2-ux · [native-classes/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/LaserTool.cpp)
@@ -776,6 +784,8 @@ Compatibility path for `App/src/tool/LaserToolFactory.cpp`; compile either path,
 </details>
 
 **`792f3c9b8c31`** · `native-classes/LaserToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LaserToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/LaserToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/LaserToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/LaserToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/LaserToolFactory.cpp)
@@ -919,9 +929,10 @@ Compatibility path for `App/src/tool/LaserToolFactory.cpp`; compile either path,
 <summary>native-classes/Leaves2008BlockBlockContact.cpp — candidate-only; 1 content versions</summary>
 
 **`2c423c0c5249`** · `native-classes/Leaves2008BlockBlockContact.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/Leaves2008BlockBlockContact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp)
+- draft · colingsnyder2-ux · [native-classes/Leaves2008BlockBlockContact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp)
 - fork · mewpokemons · [native-classes/Leaves2008BlockBlockContact.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp)
 - fork · mewpokemons · [native-classes/Leaves2008BlockBlockContact.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp)
+- draft · colingsnyder2-ux · [native-classes/Leaves2008BlockBlockContact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008BlockBlockContact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008BlockBlockContact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008BlockBlockContact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-classes/Leaves2008BlockBlockContact.cpp)
@@ -979,9 +990,10 @@ Compatibility path for `App/src/tool/LaserToolFactory.cpp`; compile either path,
 <summary>native-classes/Leaves2008IndexBox.cpp — candidate-only; 1 content versions</summary>
 
 **`5081cc32bbd2`** · `native-classes/Leaves2008IndexBox.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/Leaves2008IndexBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp)
+- draft · colingsnyder2-ux · [native-classes/Leaves2008IndexBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp)
 - fork · mewpokemons · [native-classes/Leaves2008IndexBox.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp)
 - fork · mewpokemons · [native-classes/Leaves2008IndexBox.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp)
+- draft · colingsnyder2-ux · [native-classes/Leaves2008IndexBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008IndexBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008IndexBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008IndexBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp)
@@ -1040,9 +1052,10 @@ Compatibility path for `App/src/tool/LaserToolFactory.cpp`; compile either path,
 <summary>native-classes/Leaves2008Log.cpp — candidate-only; 1 content versions</summary>
 
 **`5ee11ddb52c2`** · `native-classes/Leaves2008Log.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/Leaves2008Log.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008Log.cpp)
+- draft · colingsnyder2-ux · [native-classes/Leaves2008Log.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008Log.cpp)
 - fork · mewpokemons · [native-classes/Leaves2008Log.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/Leaves2008Log.cpp)
 - fork · mewpokemons · [native-classes/Leaves2008Log.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/Leaves2008Log.cpp)
+- draft · colingsnyder2-ux · [native-classes/Leaves2008Log.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008Log.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008Log.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008Log.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008Log.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008Log.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008Log.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008Log.cpp)

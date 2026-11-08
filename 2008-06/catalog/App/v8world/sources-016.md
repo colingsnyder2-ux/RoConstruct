@@ -16,6 +16,8 @@ Compatibility path for `App/src/v8world/JointStage2008.cpp`; compile either path
 </details>
 
 **`130703bc915f`** · `native-classes/JointStage2008.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/JointStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/JointStage2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/JointStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/JointStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/JointStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/JointStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/JointStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/JointStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/JointStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/JointStage2008.cpp)
@@ -193,6 +195,8 @@ Compatibility path for `App/src/v8world/JointStage2008.cpp`; compile either path
 </details>
 
 **`c4f963f2b26d`** · `native-classes/JointStage2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/JointStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/JointStage2008.cpp)
+- canonical · colingsnyder2-ux · [native-classes/JointStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/JointStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/JointStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/JointStage2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/JointStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/JointStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/JointStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/JointStage2008.cpp)
@@ -370,6 +374,8 @@ Compatibility path for `Unclassified/src/LDrawModelWrite.cpp`; compile either pa
 - public · colingsnyder2-ux · [native-classes/LDrawModelWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/LDrawModelWrite.cpp)
 
 **`c49bda2032cc`** · `native-classes/LDrawModelWrite.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawModelWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LDrawModelWrite.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawModelWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/LDrawModelWrite.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawModelWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/LDrawModelWrite.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawModelWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/LDrawModelWrite.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawModelWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/LDrawModelWrite.cpp)
@@ -566,6 +572,8 @@ Compatibility path for `Unclassified/src/LDrawPartColor.cpp`; compile either pat
 - public · colingsnyder2-ux · [native-classes/LDrawPartColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/LDrawPartColor.cpp)
 
 **`c9b153b2af92`** · `native-classes/LDrawPartColor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawPartColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LDrawPartColor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/LDrawPartColor.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/LDrawPartColor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/LDrawPartColor.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/LDrawPartColor.cpp)
@@ -659,6 +667,8 @@ Compatibility path for `Unclassified/src/LDrawPartColor.cpp`; compile either pat
 Compatibility path for `Unclassified/src/LDrawPartParent.cpp`; compile either path, never both.
 
 **`0126d7e985f4`** · `native-classes/LDrawPartParent.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LDrawPartParent.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/LDrawPartParent.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/LDrawPartParent.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/LDrawPartParent.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/LDrawPartParent.cpp)
@@ -846,6 +856,8 @@ Compatibility path for `Unclassified/src/LDrawPartShape.cpp`; compile either pat
 </details>
 
 **`49bc5d32b70c`** · `native-classes/LDrawPartShape.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LDrawPartShape.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/LDrawPartShape.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/LDrawPartShape.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/LDrawPartShape.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/LDrawPartShape.cpp)
@@ -1034,6 +1046,8 @@ Compatibility path for `Unclassified/src/LDrawPartTransform.cpp`; compile either
 </details>
 
 **`5f5664b010c4`** · `native-classes/LDrawPartTransform.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/LDrawPartTransform.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/LDrawPartTransform.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/LDrawPartTransform.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/LDrawPartTransform.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/LDrawPartTransform.cpp)

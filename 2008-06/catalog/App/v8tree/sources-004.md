@@ -33,6 +33,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8tree/Service.h)
 
 **`8b62e90c7dcb`** · `App/include/v8tree/Service.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/v8tree/Service.h)
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/v8tree/Service.h)
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8tree/Service.h)
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8tree/Service.h)
@@ -49,6 +50,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 </details>
 
 **`a27b4b64ff6d`** · `App/include/v8tree/Service.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
@@ -81,7 +83,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8tree/Service.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
@@ -129,6 +131,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8tree/Service.h` · root `b52aa15feaea5a0c`
@@ -261,6 +264,8 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 </details>
 
 **`58647b4997d8`** · `native-headers/v8tree/Service.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/v8tree/Service.h)
+- canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/v8tree/Service.h)
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/v8tree/Service.h)
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/v8tree/Service.h)
@@ -324,7 +329,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 - public · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8tree/Service.h)
 - canonical · colingsnyder2-ux · [v8tree/Service.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8tree/Service.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
@@ -373,6 +378,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Service.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8tree/Service.h` · root `b52aa15feaea5a0c`
@@ -674,6 +680,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Verb.h`.
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8tree/Verb.h)
 
 **`6e22167a4627`** · `App/include/v8tree/Verb.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/v8tree/Verb.h)
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/v8tree/Verb.h)
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8tree/Verb.h)
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8tree/Verb.h)
@@ -690,6 +697,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Verb.h`.
 </details>
 
 **`cb793beffeaf`** · `App/include/v8tree/Verb.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/v8tree/Verb.h)
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/v8tree/Verb.h)
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8tree/Verb.h)
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8tree/Verb.h)
@@ -722,7 +730,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Verb.h`.
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8tree/Verb.h)
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8tree/Verb.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8tree/Verb.h` · root `b52aa15feaea5a0c`
@@ -770,6 +778,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Verb.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8tree/Verb.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8tree/Verb.h` · root `b52aa15feaea5a0c`
@@ -981,6 +990,8 @@ Earlier paths and their donor versions: `native-headers/v8tree/Verb.h`.
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8tree/Verb.h)
 
 **`a7ddc03c8ea3`** · `native-headers/v8tree/Verb.h` · proof not assessed
+- public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/v8tree/Verb.h)
+- canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/v8tree/Verb.h)
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/v8tree/Verb.h)
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/v8tree/Verb.h)
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/v8tree/Verb.h)
@@ -1044,7 +1055,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Verb.h`.
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8tree/Verb.h)
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8tree/Verb.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8tree/Verb.h` · root `b52aa15feaea5a0c`
@@ -1093,6 +1104,7 @@ Earlier paths and their donor versions: `native-headers/v8tree/Verb.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8tree/Verb.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8tree/Verb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8tree/Verb.h` · root `b52aa15feaea5a0c`

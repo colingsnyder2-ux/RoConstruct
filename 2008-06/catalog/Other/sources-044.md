@@ -45,6 +45,8 @@ Compatibility path for `App/src/tool/ShootToolMethods.cpp`; compile either path,
 - public · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ShootToolMethods.cpp)
 
 **`8e45e7c4b450`** · `native-classes/ShootToolMethods.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ShootToolMethods.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ShootToolMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ShootToolMethods.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ShootToolMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/ShootToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ShootToolMethods.cpp)
@@ -205,6 +207,8 @@ Compatibility path for `App/src/tool/ShootToolShoot.cpp`; compile either path, n
 </details>
 
 **`0ec2272d90d2`** · `native-classes/ShootToolShoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ShootToolShoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ShootToolShoot.cpp)
 - public · colingsnyder2-ux · [native-classes/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ShootToolShoot.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ShootToolShoot.cpp)
 - public · colingsnyder2-ux · [native-classes/ShootToolShoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ShootToolShoot.cpp)
@@ -381,6 +385,8 @@ Compatibility path for `App/src/v8world/SimJob2008.cpp`; compile either path, ne
 </details>
 
 **`4c9c7413cb14`** · `native-classes/SimJob2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SimJob2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SimJob2008.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SimJob2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/SimJob2008.cpp)
 - public · colingsnyder2-ux · [native-classes/SimJob2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SimJob2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SimJob2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/SimJob2008.cpp)
 - public · colingsnyder2-ux · [native-classes/SimJob2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SimJob2008.cpp)
@@ -575,6 +581,8 @@ Compatibility path for `App/src/v8world/SimJobStage2008.cpp`; compile either pat
 </details>
 
 **`5892d7ada057`** · `native-classes/SimJobStage2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SimJobStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SimJobStage2008.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SimJobStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/SimJobStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/SimJobStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SimJobStage2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SimJobStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/SimJobStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/SimJobStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SimJobStage2008.cpp)
@@ -691,6 +699,8 @@ Compatibility path for `App/src/v8world/SimJobStage2008.cpp`; compile either pat
 - public · colingsnyder2-ux · [native-classes/SimJobStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/SimJobStage2008.cpp)
 
 **`ecf747d47eb6`** · `native-classes/SimJobStage2008.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/SimJobStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/SimJobStage2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/SimJobStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/SimJobStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SimJobStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/SimJobStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SimJobStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/SimJobStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SimJobStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/SimJobStage2008.cpp)
@@ -834,6 +844,8 @@ Compatibility path for `App/src/v8world/SimJobStage2008Ctor.cpp`; compile either
 - public · colingsnyder2-ux · [native-classes/SimJobStage2008Ctor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/SimJobStage2008Ctor.cpp)
 
 **`10f80ba26bc1`** · `native-classes/SimJobStage2008Ctor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SimJobStage2008Ctor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SimJobStage2008Ctor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SimJobStage2008Ctor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/SimJobStage2008Ctor.cpp)
 - public · colingsnyder2-ux · [native-classes/SimJobStage2008Ctor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SimJobStage2008Ctor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SimJobStage2008Ctor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/SimJobStage2008Ctor.cpp)
 - public · colingsnyder2-ux · [native-classes/SimJobStage2008Ctor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SimJobStage2008Ctor.cpp)
@@ -998,6 +1010,8 @@ Compatibility path for `App/src/v8world/SimJobStage2008Ctor.cpp`; compile either
 Compatibility path for `Unclassified/src/SlingshotBallistic.cpp`; compile either path, never both.
 
 **`1015431d697c`** · `native-classes/SlingshotBallistic.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SlingshotBallistic.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SlingshotBallistic.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/SlingshotBallistic.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotBallistic.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SlingshotBallistic.cpp)

@@ -6,9 +6,10 @@
 <summary>native-classes/SceneManagerAggregating2008.cpp — candidate-only; 2 content versions</summary>
 
 **`a19eecbb798e`** · `native-classes/SceneManagerAggregating2008.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - fork · mewpokemons · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - fork · mewpokemons · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
@@ -61,6 +62,7 @@
 </details>
 
 **`f1b0fe3b5085`** · `native-classes/SceneManagerAggregating2008.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/SceneManagerAggregating2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp)
@@ -154,6 +156,8 @@ Compatibility path for `App/src/v8tree/ScoreHud.cpp`; compile either path, never
 - public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ScoreHud.cpp)
 
 **`b08e1b9c4734`** · `native-classes/ScoreHud.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ScoreHud.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ScoreHud.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - public · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ScoreHud.cpp)
@@ -275,6 +279,9 @@ Compatibility path for `App/src/v8tree/ScoreHud.cpp`; compile either path, never
 </details>
 
 **`cedd955592cd`** · `native-classes/ScoreHud.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/0c68805773bd0e93646c9b73a930df4e024b67cac10fa3275db82be2ed05e498/rebuild/2008-06/native-classes/ScoreHud.cpp)
+- draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/7972c6cbe62f0d62c5480125c4feaf2709fc36dbc9d1f89bb455769a568ad277/rebuild/2008-06/native-classes/ScoreHud.cpp)
+- draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/c28adbf310e0c2778c1ca02f0879d4d6ad57f0c04b351be3226633b4bbfd1872/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/0c68805773bd0e93646c9b73a930df4e024b67cac10fa3275db82be2ed05e498/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/7972c6cbe62f0d62c5480125c4feaf2709fc36dbc9d1f89bb455769a568ad277/rebuild/2008-06/native-classes/ScoreHud.cpp)
 - draft · colingsnyder2-ux · [native-classes/ScoreHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/c28adbf310e0c2778c1ca02f0879d4d6ad57f0c04b351be3226633b4bbfd1872/rebuild/2008-06/native-classes/ScoreHud.cpp)
@@ -479,6 +486,8 @@ Compatibility path for `App/src/v8datamodel/Seat.cpp`; compile either path, neve
 </details>
 
 **`85e16769cc4c`** · `native-classes/Seat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Seat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/Seat.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Seat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/Seat.cpp)
 - public · colingsnyder2-ux · [native-classes/Seat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/Seat.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Seat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/Seat.cpp)
 - public · colingsnyder2-ux · [native-classes/Seat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/Seat.cpp)
@@ -681,6 +690,7 @@ Compatibility path for `App/src/v8datamodel/Seat.cpp`; compile either path, neve
 </details>
 
 **`e4e1c9805bef`** · `native-classes/SecureHtmlAdSyndicator.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SecureHtmlAdSyndicator.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SecureHtmlAdSyndicator.cpp)
 - public · colingsnyder2-ux · [native-classes/SecureHtmlAdSyndicator.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SecureHtmlAdSyndicator.cpp)
 - public · colingsnyder2-ux · [native-classes/SecureHtmlAdSyndicator.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SecureHtmlAdSyndicator.cpp)
 - public · colingsnyder2-ux · [native-classes/SecureHtmlAdSyndicator.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/SecureHtmlAdSyndicator.cpp)
@@ -721,6 +731,8 @@ Compatibility path for `Unclassified/src/SerializerRoot.cpp`; compile either pat
 </details>
 
 **`42f93f20abbc`** · `native-classes/SerializerRoot.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/SerializerRoot.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/SerializerRoot.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/SerializerRoot.cpp)
 - public · colingsnyder2-ux · [native-classes/SerializerRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/SerializerRoot.cpp)

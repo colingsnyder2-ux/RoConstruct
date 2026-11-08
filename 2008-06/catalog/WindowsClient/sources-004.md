@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/CChatPrompt.h`.
 
 **`0a198590922b`** · `WindowsClient/include/CChatPrompt.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CChatPrompt.h)
 - canonical · colingsnyder2-ux · [include/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CChatPrompt.h)
 - canonical · colingsnyder2-ux · [include/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/WindowsClient/include/CChatPrompt.h)
 - canonical · colingsnyder2-ux · [include/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/WindowsClient/include/CChatPrompt.h)
@@ -37,7 +38,7 @@ Earlier paths and their donor versions: `native-headers/CChatPrompt.h`.
 - canonical · colingsnyder2-ux · [include/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CChatPrompt.h)
 - canonical · colingsnyder2-ux · [include/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CChatPrompt.h)
 
-<details><summary>57 retained local origins</summary>
+<details><summary>58 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CChatPrompt.h` · root `b52aa15feaea5a0c`
@@ -79,6 +80,7 @@ Earlier paths and their donor versions: `native-headers/CChatPrompt.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CChatPrompt.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CChatPrompt.h` · root `b52aa15feaea5a0c`
@@ -100,6 +102,7 @@ Earlier paths and their donor versions: `native-headers/CChatPrompt.h`.
 </details>
 
 **`145da3955432`** · `WindowsClient/include/CChatPrompt.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CChatPrompt.h)
 - public · colingsnyder2-ux · [include/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CChatPrompt.h)
 - public · colingsnyder2-ux · [include/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/include/CChatPrompt.h)
 - public · colingsnyder2-ux · [include/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/WindowsClient/include/CChatPrompt.h)
@@ -203,6 +206,8 @@ Earlier paths and their donor versions: `native-headers/CChatPrompt.h`.
 </details>
 
 **`15ed7cc5de99`** · `native-headers/CChatPrompt.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CChatPrompt.h)
+- canonical · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CChatPrompt.h)
 - public · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CChatPrompt.h)
 - canonical · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CChatPrompt.h)
 - public · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CChatPrompt.h)
@@ -260,7 +265,7 @@ Earlier paths and their donor versions: `native-headers/CChatPrompt.h`.
 - public · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CChatPrompt.h)
 - canonical · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CChatPrompt.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
@@ -303,6 +308,7 @@ Earlier paths and their donor versions: `native-headers/CChatPrompt.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
@@ -534,6 +540,7 @@ Earlier paths and their donor versions: `native-headers/CChildFrame.h`.
 </details>
 
 **`5772d354f4ea`** · `WindowsClient/include/CChildFrame.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CChildFrame.h)
 - public · colingsnyder2-ux · [include/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CChildFrame.h)
 - public · colingsnyder2-ux · [include/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/include/CChildFrame.h)
 - public · colingsnyder2-ux · [include/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/WindowsClient/include/CChildFrame.h)
@@ -550,6 +557,7 @@ Earlier paths and their donor versions: `native-headers/CChildFrame.h`.
 </details>
 
 **`90a061748806`** · `WindowsClient/include/CChildFrame.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CChildFrame.h)
 - canonical · colingsnyder2-ux · [include/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CChildFrame.h)
 - canonical · colingsnyder2-ux · [include/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/WindowsClient/include/CChildFrame.h)
 - canonical · colingsnyder2-ux · [include/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/WindowsClient/include/CChildFrame.h)
@@ -580,7 +588,7 @@ Earlier paths and their donor versions: `native-headers/CChildFrame.h`.
 - canonical · colingsnyder2-ux · [include/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CChildFrame.h)
 - canonical · colingsnyder2-ux · [include/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CChildFrame.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CChildFrame.h` · root `b52aa15feaea5a0c`
@@ -624,6 +632,7 @@ Earlier paths and their donor versions: `native-headers/CChildFrame.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CChildFrame.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CChildFrame.h` · root `b52aa15feaea5a0c`
@@ -781,6 +790,8 @@ Earlier paths and their donor versions: `native-headers/CChildFrame.h`.
 - public · colingsnyder2-ux · [native-headers/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/CChildFrame.h)
 
 **`bb8fcb58f956`** · `native-headers/CChildFrame.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CChildFrame.h)
+- canonical · colingsnyder2-ux · [native-headers/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CChildFrame.h)
 - public · colingsnyder2-ux · [native-headers/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CChildFrame.h)
 - canonical · colingsnyder2-ux · [native-headers/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CChildFrame.h)
 - public · colingsnyder2-ux · [native-headers/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CChildFrame.h)
@@ -840,7 +851,7 @@ Earlier paths and their donor versions: `native-headers/CChildFrame.h`.
 - public · colingsnyder2-ux · [native-headers/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CChildFrame.h)
 - canonical · colingsnyder2-ux · [native-headers/CChildFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CChildFrame.h)
 
-<details><summary>62 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CChildFrame.h` · root `b52aa15feaea5a0c`
@@ -885,6 +896,7 @@ Earlier paths and their donor versions: `native-headers/CChildFrame.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CChildFrame.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CChildFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CChildFrame.h` · root `b52aa15feaea5a0c`

@@ -64,6 +64,8 @@ Compatibility path for `WindowsClient/include/CChatPrompt.h`; compile either pat
 </details>
 
 **`15ed7cc5de99`** · `native-headers/CChatPrompt.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CChatPrompt.h)
+- canonical · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CChatPrompt.h)
 - public · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CChatPrompt.h)
 - canonical · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CChatPrompt.h)
 - public · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CChatPrompt.h)
@@ -121,7 +123,7 @@ Compatibility path for `WindowsClient/include/CChatPrompt.h`; compile either pat
 - public · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CChatPrompt.h)
 - canonical · colingsnyder2-ux · [native-headers/CChatPrompt.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CChatPrompt.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
@@ -164,6 +166,7 @@ Compatibility path for `WindowsClient/include/CChatPrompt.h`; compile either pat
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CChatPrompt.h` · root `b52aa15feaea5a0c`
@@ -450,6 +453,8 @@ Compatibility path for `WindowsClient/include/CPatchedControlComboBox.h`; compil
 </details>
 
 **`b6bb3539716b`** · `native-headers/CPatchedControlComboBox.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CPatchedControlComboBox.h)
+- canonical · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CPatchedControlComboBox.h)
 - public · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CPatchedControlComboBox.h)
 - canonical · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CPatchedControlComboBox.h)
 - public · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CPatchedControlComboBox.h)
@@ -511,7 +516,7 @@ Compatibility path for `WindowsClient/include/CPatchedControlComboBox.h`; compil
 - public · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CPatchedControlComboBox.h)
 - canonical · colingsnyder2-ux · [native-headers/CPatchedControlComboBox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CPatchedControlComboBox.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CPatchedControlComboBox.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CPatchedControlComboBox.h` · root `b52aa15feaea5a0c`
@@ -558,6 +563,7 @@ Compatibility path for `WindowsClient/include/CPatchedControlComboBox.h`; compil
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CPatchedControlComboBox.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CPatchedControlComboBox.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CPatchedControlComboBox.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CPatchedControlComboBox.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CPatchedControlComboBox.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CPatchedControlComboBox.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CPatchedControlComboBox.h` · root `b52aa15feaea5a0c`
@@ -722,6 +728,8 @@ Compatibility path for `WindowsClient/include/CRobloxControlColorSelector.h`; co
 </details>
 
 **`8b2b32807c99`** · `native-headers/CRobloxControlColorSelector.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CRobloxControlColorSelector.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CRobloxControlColorSelector.h)
@@ -783,7 +791,7 @@ Compatibility path for `WindowsClient/include/CRobloxControlColorSelector.h`; co
 - public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
@@ -830,6 +838,7 @@ Compatibility path for `WindowsClient/include/CRobloxControlColorSelector.h`; co
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
@@ -917,6 +926,8 @@ Compatibility path for `WindowsClient/include/CRobloxTreeCtrl.h`; compile either
 </details>
 
 **`44a09c1a3f91`** · `native-headers/CRobloxTreeCtrl.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CRobloxTreeCtrl.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CRobloxTreeCtrl.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CRobloxTreeCtrl.h)
@@ -968,7 +979,7 @@ Compatibility path for `WindowsClient/include/CRobloxTreeCtrl.h`; compile either
 - public · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CRobloxTreeCtrl.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h)
 
-<details><summary>55 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
@@ -1007,6 +1018,7 @@ Compatibility path for `WindowsClient/include/CRobloxTreeCtrl.h`; compile either
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`

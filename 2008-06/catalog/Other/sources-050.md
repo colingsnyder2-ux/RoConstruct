@@ -6,6 +6,8 @@
 <summary>native-classes/TopMenuBar.cpp — candidate-only; 6 content versions</summary>
 
 **`480796206fc7`** · `native-classes/TopMenuBar.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/508f22c5866f3efab04b4caeccdbc2b36c585eb341566b6fff3d91a48bea014c/rebuild/2008-06/native-classes/TopMenuBar.cpp)
+- draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/b8f8a050b1ba0751541edac2e83c6d82d6dbaf5e377fcee7e819cca68daa7783/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/508f22c5866f3efab04b4caeccdbc2b36c585eb341566b6fff3d91a48bea014c/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/b8f8a050b1ba0751541edac2e83c6d82d6dbaf5e377fcee7e819cca68daa7783/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/508f22c5866f3efab04b4caeccdbc2b36c585eb341566b6fff3d91a48bea014c/rebuild/2008-06/native-classes/TopMenuBar.cpp)
@@ -104,6 +106,7 @@
 </details>
 
 **`4a62de3931a4`** · `native-classes/TopMenuBar.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/3f63987d27c9bb4ce18be9d87c15a8a77eef2fe42d46b3745f94103756ce87e8/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/3f63987d27c9bb4ce18be9d87c15a8a77eef2fe42d46b3745f94103756ce87e8/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/3f63987d27c9bb4ce18be9d87c15a8a77eef2fe42d46b3745f94103756ce87e8/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/3f63987d27c9bb4ce18be9d87c15a8a77eef2fe42d46b3745f94103756ce87e8/rebuild/2008-06/native-classes/TopMenuBar.cpp)
@@ -156,6 +159,7 @@
 </details>
 
 **`9c4823413fd0`** · `native-classes/TopMenuBar.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/3d60c15c47f1903a70623cdaead9c8bd863d944e96c0c5d2c31af48b35eb8308/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/3d60c15c47f1903a70623cdaead9c8bd863d944e96c0c5d2c31af48b35eb8308/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/3d60c15c47f1903a70623cdaead9c8bd863d944e96c0c5d2c31af48b35eb8308/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/3d60c15c47f1903a70623cdaead9c8bd863d944e96c0c5d2c31af48b35eb8308/rebuild/2008-06/native-classes/TopMenuBar.cpp)
@@ -208,6 +212,8 @@
 </details>
 
 **`dbd676def28b`** · `native-classes/TopMenuBar.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/924369e221e2f752974e8dffd2a593118f3dde5a482c6d1b0863a1201af96c82/rebuild/2008-06/native-classes/TopMenuBar.cpp)
+- draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/aa330a68940c37e648dfc3b8d9d531c7684195840c01ee0a8a06d78ef64bdd9d/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/924369e221e2f752974e8dffd2a593118f3dde5a482c6d1b0863a1201af96c82/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/aa330a68940c37e648dfc3b8d9d531c7684195840c01ee0a8a06d78ef64bdd9d/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/924369e221e2f752974e8dffd2a593118f3dde5a482c6d1b0863a1201af96c82/rebuild/2008-06/native-classes/TopMenuBar.cpp)
@@ -305,6 +311,7 @@
 </details>
 
 **`dd502d515339`** · `native-classes/TopMenuBar.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/c22cb0bbd2785abed583dff91e395cc98fc9d9e8a1852076075c114684df66d1/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/c22cb0bbd2785abed583dff91e395cc98fc9d9e8a1852076075c114684df66d1/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/c22cb0bbd2785abed583dff91e395cc98fc9d9e8a1852076075c114684df66d1/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/c22cb0bbd2785abed583dff91e395cc98fc9d9e8a1852076075c114684df66d1/rebuild/2008-06/native-classes/TopMenuBar.cpp)
@@ -357,6 +364,7 @@
 </details>
 
 **`f071caad75a5`** · `native-classes/TopMenuBar.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/6f2aadd9dd821f89848df294b10651f1fc0ae6fd0e8ca605f02706a4df4fb56c/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/6f2aadd9dd821f89848df294b10651f1fc0ae6fd0e8ca605f02706a4df4fb56c/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/6f2aadd9dd821f89848df294b10651f1fc0ae6fd0e8ca605f02706a4df4fb56c/rebuild/2008-06/native-classes/TopMenuBar.cpp)
 - draft · colingsnyder2-ux · [native-classes/TopMenuBar.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/6f2aadd9dd821f89848df294b10651f1fc0ae6fd0e8ca605f02706a4df4fb56c/rebuild/2008-06/native-classes/TopMenuBar.cpp)
@@ -440,6 +448,7 @@
 <summary>native-classes/TreeNodeAddChildren.cpp — public-only; 5 content versions</summary>
 
 **`650bbb51e313`** · `native-classes/TreeNodeAddChildren.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TreeNodeAddChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/TreeNodeAddChildren.cpp)
 - public · colingsnyder2-ux · [native-classes/TreeNodeAddChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/TreeNodeAddChildren.cpp)
 - public · colingsnyder2-ux · [native-classes/TreeNodeAddChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/TreeNodeAddChildren.cpp)
 - public · colingsnyder2-ux · [native-classes/TreeNodeAddChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/TreeNodeAddChildren.cpp)
@@ -585,6 +594,7 @@
 </details>
 
 **`e45fa385729c`** · `native-classes/TreeNodeRefresh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TreeNodeRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/TreeNodeRefresh.cpp)
 - public · colingsnyder2-ux · [native-classes/TreeNodeRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/TreeNodeRefresh.cpp)
 - public · colingsnyder2-ux · [native-classes/TreeNodeRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/TreeNodeRefresh.cpp)
 - public · colingsnyder2-ux · [native-classes/TreeNodeRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/TreeNodeRefresh.cpp)
@@ -606,6 +616,7 @@
 <summary>native-classes/TreeNodeRemoveChildren.cpp — public-only; 5 content versions</summary>
 
 **`2a5f5c13c0a9`** · `native-classes/TreeNodeRemoveChildren.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TreeNodeRemoveChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/TreeNodeRemoveChildren.cpp)
 - public · colingsnyder2-ux · [native-classes/TreeNodeRemoveChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/TreeNodeRemoveChildren.cpp)
 - public · colingsnyder2-ux · [native-classes/TreeNodeRemoveChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/TreeNodeRemoveChildren.cpp)
 - public · colingsnyder2-ux · [native-classes/TreeNodeRemoveChildren.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/TreeNodeRemoveChildren.cpp)
@@ -717,6 +728,8 @@ Compatibility path for `Unclassified/src/UngroupOperation.cpp`; compile either p
 </details>
 
 **`7e04682211d6`** · `native-classes/UngroupOperation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/UngroupOperation.cpp)
+- canonical · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/UngroupOperation.cpp)

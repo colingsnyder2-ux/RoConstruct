@@ -42,6 +42,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyColors.h
 - public · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8datamodel/BodyColors.h)
 
 **`d3989e7eca55`** · `App/include/v8datamodel/BodyColors.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/v8datamodel/BodyColors.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/v8datamodel/BodyColors.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8datamodel/BodyColors.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8datamodel/BodyColors.h)
@@ -74,7 +75,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyColors.h
 - canonical · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/BodyColors.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/BodyColors.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
@@ -122,6 +123,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyColors.h
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
@@ -143,6 +145,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyColors.h
 </details>
 
 **`dc97c141e87e`** · `App/include/v8datamodel/BodyColors.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/v8datamodel/BodyColors.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/v8datamodel/BodyColors.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8datamodel/BodyColors.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8datamodel/BodyColors.h)
@@ -190,6 +193,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyColors.h
 </details>
 
 **`805afb38597d`** · `native-headers/v8datamodel/BodyColors.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/v8datamodel/BodyColors.h)
+- canonical · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/v8datamodel/BodyColors.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/v8datamodel/BodyColors.h)
@@ -253,7 +258,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyColors.h
 - public · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/BodyColors.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyColors.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
@@ -302,6 +307,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyColors.h
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/BodyColors.h` · root `b52aa15feaea5a0c`
@@ -446,6 +452,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 </details>
 
 **`ba935decc8ee`** · `App/include/v8datamodel/BodyMovers.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/v8datamodel/BodyMovers.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/v8datamodel/BodyMovers.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/v8datamodel/BodyMovers.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/v8datamodel/BodyMovers.h)
@@ -462,6 +469,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 </details>
 
 **`f2e6aae224c2`** · `App/include/v8datamodel/BodyMovers.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
@@ -494,7 +502,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
@@ -542,6 +550,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
@@ -620,6 +629,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 </details>
 
 **`927b7b7ec87e`** · `native-headers/v8datamodel/BodyMovers.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/v8datamodel/BodyMovers.h)
+- canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h)
 - public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/v8datamodel/BodyMovers.h)
@@ -683,7 +694,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 - public · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/BodyMovers.h)
 - canonical · colingsnyder2-ux · [v8datamodel/BodyMovers.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
@@ -732,6 +743,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/BodyMovers.h
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h` · root `b52aa15feaea5a0c`

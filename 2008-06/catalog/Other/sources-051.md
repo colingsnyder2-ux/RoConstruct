@@ -29,6 +29,7 @@ Compatibility path for `App/src/v8datamodel/UserController.cpp`; compile either 
 </details>
 
 **`2f0565ac24eb`** · `native-classes/UserController.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/05456f4c39d3ed2ed145f313c32670754c19f87bd6cf1d70c3222240783dbfaa/rebuild/2008-06/native-classes/UserController.cpp)
 - draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/05456f4c39d3ed2ed145f313c32670754c19f87bd6cf1d70c3222240783dbfaa/rebuild/2008-06/native-classes/UserController.cpp)
 - draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/05456f4c39d3ed2ed145f313c32670754c19f87bd6cf1d70c3222240783dbfaa/rebuild/2008-06/native-classes/UserController.cpp)
 - draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/05456f4c39d3ed2ed145f313c32670754c19f87bd6cf1d70c3222240783dbfaa/rebuild/2008-06/native-classes/UserController.cpp)
@@ -102,6 +103,7 @@ Compatibility path for `App/src/v8datamodel/UserController.cpp`; compile either 
 - fork · mewpokemons · [native-classes/UserController.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/UserController.cpp)
 
 **`8bc3e061e780`** · `native-classes/UserController.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/3d4beabaebe9f08f631d4b197b3ff8aea8fad7bce239f1221b965bb248721502/rebuild/2008-06/native-classes/UserController.cpp)
 - draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/3d4beabaebe9f08f631d4b197b3ff8aea8fad7bce239f1221b965bb248721502/rebuild/2008-06/native-classes/UserController.cpp)
 - draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/3d4beabaebe9f08f631d4b197b3ff8aea8fad7bce239f1221b965bb248721502/rebuild/2008-06/native-classes/UserController.cpp)
 - draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/3d4beabaebe9f08f631d4b197b3ff8aea8fad7bce239f1221b965bb248721502/rebuild/2008-06/native-classes/UserController.cpp)
@@ -164,6 +166,7 @@ Compatibility path for `App/src/v8datamodel/UserController.cpp`; compile either 
 </details>
 
 **`a62196661f7f`** · `native-classes/UserController.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/2c0bb946204d71275368db8effa32e596dc586bd7bcf43ddf1d3a127573b70dc/rebuild/2008-06/native-classes/UserController.cpp)
 - draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/2c0bb946204d71275368db8effa32e596dc586bd7bcf43ddf1d3a127573b70dc/rebuild/2008-06/native-classes/UserController.cpp)
 - draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/2c0bb946204d71275368db8effa32e596dc586bd7bcf43ddf1d3a127573b70dc/rebuild/2008-06/native-classes/UserController.cpp)
 - draft · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/2c0bb946204d71275368db8effa32e596dc586bd7bcf43ddf1d3a127573b70dc/rebuild/2008-06/native-classes/UserController.cpp)
@@ -251,6 +254,8 @@ Compatibility path for `App/src/v8datamodel/UserController.cpp`; compile either 
 </details>
 
 **`d6476feab438`** · `native-classes/UserController.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/UserController.cpp)
+- canonical · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/UserController.cpp)
 - public · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/UserController.cpp)
 - canonical · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/UserController.cpp)
 - public · colingsnyder2-ux · [native-classes/UserController.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/UserController.cpp)
@@ -363,6 +368,7 @@ Compatibility path for `App/src/v8datamodel/UserController.cpp`; compile either 
 </details>
 
 **`70ea73704e62`** · `native-classes/UserInputBaseCursor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/UserInputBaseCursor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/UserInputBaseCursor.cpp)
 - public · colingsnyder2-ux · [native-classes/UserInputBaseCursor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/UserInputBaseCursor.cpp)
 - public · colingsnyder2-ux · [native-classes/UserInputBaseCursor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/UserInputBaseCursor.cpp)
 - public · colingsnyder2-ux · [native-classes/UserInputBaseCursor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/UserInputBaseCursor.cpp)
@@ -526,6 +532,8 @@ Compatibility path for `Unclassified/src/UserInputMovement.cpp`; compile either 
 </details>
 
 **`ecb25ce4bb3f`** · `native-classes/UserInputMovement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/UserInputMovement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/UserInputMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/UserInputMovement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/UserInputMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/UserInputMovement.cpp)
@@ -628,6 +636,8 @@ Compatibility path for `App/src/reflection/ValueConverter.cpp`; compile either p
 </details>
 
 **`3f5b0b70df35`** · `native-classes/ValueConverter.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ValueConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ValueConverter.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ValueConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ValueConverter.cpp)
 - public · colingsnyder2-ux · [native-classes/ValueConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ValueConverter.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ValueConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ValueConverter.cpp)
 - public · colingsnyder2-ux · [native-classes/ValueConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ValueConverter.cpp)
@@ -889,6 +899,8 @@ Compatibility path for `Unclassified/src/Vector3Subtract.cpp`; compile either pa
 </details>
 
 **`c78753a047e0`** · `native-classes/Vector3Subtract.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/Vector3Subtract.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/Vector3Subtract.cpp)
 - public · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/Vector3Subtract.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/Vector3Subtract.cpp)
 - public · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/Vector3Subtract.cpp)
@@ -1060,6 +1072,7 @@ Compatibility path for `Unclassified/src/Vector3Subtract.cpp`; compile either pa
 </details>
 
 **`293244c7ebc3`** · `native-classes/VisitCreator.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/VisitCreator.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/VisitCreator.cpp)
 - public · colingsnyder2-ux · [native-classes/VisitCreator.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/VisitCreator.cpp)
 - public · colingsnyder2-ux · [native-classes/VisitCreator.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/VisitCreator.cpp)
 - public · colingsnyder2-ux · [native-classes/VisitCreator.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/native-classes/VisitCreator.cpp)

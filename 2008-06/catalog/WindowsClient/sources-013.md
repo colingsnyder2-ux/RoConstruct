@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/CPropertyGridItemBrickColor.h`.
 
 **`2255e40573f0`** · `WindowsClient/include/CPropertyGridItemBrickColor.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h)
 - canonical · colingsnyder2-ux · [include/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h)
 - canonical · colingsnyder2-ux · [include/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h)
 - canonical · colingsnyder2-ux · [include/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h)
@@ -39,7 +40,7 @@ Earlier paths and their donor versions: `native-headers/CPropertyGridItemBrickCo
 - canonical · colingsnyder2-ux · [include/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h)
 - canonical · colingsnyder2-ux · [include/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h)
 
-<details><summary>61 retained local origins</summary>
+<details><summary>62 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
@@ -85,6 +86,7 @@ Earlier paths and their donor versions: `native-headers/CPropertyGridItemBrickCo
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
@@ -106,6 +108,7 @@ Earlier paths and their donor versions: `native-headers/CPropertyGridItemBrickCo
 </details>
 
 **`87791bc6113f`** · `WindowsClient/include/CPropertyGridItemBrickColor.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h)
 - public · colingsnyder2-ux · [include/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h)
 - public · colingsnyder2-ux · [include/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h)
 - public · colingsnyder2-ux · [include/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/WindowsClient/include/CPropertyGridItemBrickColor.h)
@@ -219,6 +222,8 @@ Earlier paths and their donor versions: `native-headers/CPropertyGridItemBrickCo
 </details>
 
 **`6f2a68de1512`** · `native-headers/CPropertyGridItemBrickColor.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CPropertyGridItemBrickColor.h)
+- canonical · colingsnyder2-ux · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h)
 - public · colingsnyder2-ux · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CPropertyGridItemBrickColor.h)
 - canonical · colingsnyder2-ux · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h)
 - public · colingsnyder2-ux · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CPropertyGridItemBrickColor.h)
@@ -280,7 +285,7 @@ Earlier paths and their donor versions: `native-headers/CPropertyGridItemBrickCo
 - public · colingsnyder2-ux · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CPropertyGridItemBrickColor.h)
 - canonical · colingsnyder2-ux · [native-headers/CPropertyGridItemBrickColor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
@@ -327,6 +332,7 @@ Earlier paths and their donor versions: `native-headers/CPropertyGridItemBrickCo
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h` · root `b52aa15feaea5a0c`
@@ -443,6 +449,7 @@ Earlier paths and their donor versions: `native-headers/CReflectionTreeView.h`.
 - public · colingsnyder2-ux · [include/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CReflectionTreeView.h)
 
 **`c99b6875dd72`** · `WindowsClient/include/CReflectionTreeView.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h)
 - canonical · colingsnyder2-ux · [include/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h)
 - canonical · colingsnyder2-ux · [include/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h)
 - canonical · colingsnyder2-ux · [include/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h)
@@ -474,7 +481,7 @@ Earlier paths and their donor versions: `native-headers/CReflectionTreeView.h`.
 - canonical · colingsnyder2-ux · [include/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h)
 - canonical · colingsnyder2-ux · [include/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h)
 
-<details><summary>61 retained local origins</summary>
+<details><summary>62 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
@@ -520,6 +527,7 @@ Earlier paths and their donor versions: `native-headers/CReflectionTreeView.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
@@ -541,6 +549,7 @@ Earlier paths and their donor versions: `native-headers/CReflectionTreeView.h`.
 </details>
 
 **`d28a2c793615`** · `WindowsClient/include/CReflectionTreeView.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CReflectionTreeView.h)
 - public · colingsnyder2-ux · [include/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CReflectionTreeView.h)
 - public · colingsnyder2-ux · [include/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/include/CReflectionTreeView.h)
 - public · colingsnyder2-ux · [include/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/WindowsClient/include/CReflectionTreeView.h)
@@ -566,6 +575,8 @@ Earlier paths and their donor versions: `native-headers/CReflectionTreeView.h`.
 </details>
 
 **`3b3a53bfe01f`** · `native-headers/CReflectionTreeView.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CReflectionTreeView.h)
+- canonical · colingsnyder2-ux · [native-headers/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h)
 - public · colingsnyder2-ux · [native-headers/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CReflectionTreeView.h)
 - canonical · colingsnyder2-ux · [native-headers/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h)
 - public · colingsnyder2-ux · [native-headers/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CReflectionTreeView.h)
@@ -627,7 +638,7 @@ Earlier paths and their donor versions: `native-headers/CReflectionTreeView.h`.
 - public · colingsnyder2-ux · [native-headers/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CReflectionTreeView.h)
 - canonical · colingsnyder2-ux · [native-headers/CReflectionTreeView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
@@ -674,6 +685,7 @@ Earlier paths and their donor versions: `native-headers/CReflectionTreeView.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CReflectionTreeView.h` · root `b52aa15feaea5a0c`

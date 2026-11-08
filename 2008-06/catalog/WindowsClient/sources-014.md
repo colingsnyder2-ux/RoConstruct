@@ -36,6 +36,7 @@ Earlier paths and their donor versions: `native-headers/CRenderSettings.h`.
 - public · colingsnyder2-ux · [include/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CRenderSettings.h)
 
 **`6af737027cca`** · `WindowsClient/include/CRenderSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CRenderSettings.h)
 - public · colingsnyder2-ux · [include/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CRenderSettings.h)
 - public · colingsnyder2-ux · [include/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/include/CRenderSettings.h)
 - public · colingsnyder2-ux · [include/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/WindowsClient/include/CRenderSettings.h)
@@ -52,6 +53,7 @@ Earlier paths and their donor versions: `native-headers/CRenderSettings.h`.
 </details>
 
 **`c8713634eaf8`** · `WindowsClient/include/CRenderSettings.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CRenderSettings.h)
 - canonical · colingsnyder2-ux · [include/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CRenderSettings.h)
 - canonical · colingsnyder2-ux · [include/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/WindowsClient/include/CRenderSettings.h)
 - canonical · colingsnyder2-ux · [include/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/WindowsClient/include/CRenderSettings.h)
@@ -78,7 +80,7 @@ Earlier paths and their donor versions: `native-headers/CRenderSettings.h`.
 - canonical · colingsnyder2-ux · [include/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CRenderSettings.h)
 - canonical · colingsnyder2-ux · [include/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CRenderSettings.h)
 
-<details><summary>52 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRenderSettings.h` · root `b52aa15feaea5a0c`
@@ -116,6 +118,7 @@ Earlier paths and their donor versions: `native-headers/CRenderSettings.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CRenderSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CRenderSettings.h` · root `b52aa15feaea5a0c`
@@ -202,6 +205,8 @@ Earlier paths and their donor versions: `native-headers/CRenderSettings.h`.
 - public · colingsnyder2-ux · [native-headers/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/CRenderSettings.h)
 
 **`60c7fc26cd10`** · `native-headers/CRenderSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CRenderSettings.h)
+- canonical · colingsnyder2-ux · [native-headers/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CRenderSettings.h)
 - public · colingsnyder2-ux · [native-headers/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CRenderSettings.h)
 - canonical · colingsnyder2-ux · [native-headers/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CRenderSettings.h)
 - public · colingsnyder2-ux · [native-headers/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CRenderSettings.h)
@@ -253,7 +258,7 @@ Earlier paths and their donor versions: `native-headers/CRenderSettings.h`.
 - public · colingsnyder2-ux · [native-headers/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CRenderSettings.h)
 - canonical · colingsnyder2-ux · [native-headers/CRenderSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CRenderSettings.h)
 
-<details><summary>55 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CRenderSettings.h` · root `b52aa15feaea5a0c`
@@ -292,6 +297,7 @@ Earlier paths and their donor versions: `native-headers/CRenderSettings.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CRenderSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CRenderSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CRenderSettings.h` · root `b52aa15feaea5a0c`
@@ -408,6 +414,8 @@ Earlier paths and their donor versions: `native-headers/CRenderSettings.h`.
 Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 
 **`25b8a6a3223f`** · `WindowsClient/include/CRobloxApp.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/include/CRobloxApp.h)
+- canonical · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/include/CRobloxApp.h)
 - public · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/include/CRobloxApp.h)
 - canonical · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/include/CRobloxApp.h)
 - public · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/include/CRobloxApp.h)
@@ -469,7 +477,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 - public · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CRobloxApp.h)
 - canonical · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CRobloxApp.h)
 
-<details><summary>61 retained local origins</summary>
+<details><summary>62 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
@@ -515,6 +523,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
@@ -628,6 +637,8 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 </details>
 
 **`87e678962c43`** · `native-headers/CRobloxApp.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/CRobloxApp.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/CRobloxApp.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/CRobloxApp.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/CRobloxApp.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/CRobloxApp.h)
@@ -689,7 +700,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 - public · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CRobloxApp.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CRobloxApp.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
@@ -736,6 +747,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
@@ -759,6 +771,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 </details>
 
 **`a378c4732806`** · `native-headers/CRobloxApp.h` · proof not assessed
+- archive · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CRobloxApp.h)
 - archive · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CRobloxApp.h)
 - archive · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CRobloxApp.h)
 - archive · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CRobloxApp.h)

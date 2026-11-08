@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/Contact.cpp`.
 
 **`3a76ab152e56`** · `App/src/v8world/Contact.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8world/Contact.cpp)
 - public · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8world/Contact.cpp)
 - public · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8world/Contact.cpp)
 - public · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8world/Contact.cpp)
@@ -24,6 +25,7 @@ Earlier paths and their donor versions: `native-classes/Contact.cpp`.
 </details>
 
 **`8f5f1d47d9ee`** · `App/src/v8world/Contact.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp)
 - canonical · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp)
 - canonical · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp)
 - canonical · colingsnyder2-ux · [v8world/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8world/Contact.cpp)
@@ -179,6 +181,8 @@ Earlier paths and their donor versions: `native-classes/Contact.cpp`.
 - public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/Contact.cpp)
 
 **`e64912ff8900`** · `native-classes/Contact.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/Contact.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/Contact.cpp)
 - public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/Contact.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/Contact.cpp)
 - public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/Contact.cpp)
@@ -296,6 +300,7 @@ Earlier paths and their donor versions: `native-classes/ContactManagerLifetime.c
 - public · colingsnyder2-ux · [v8world/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/App/src/v8world/ContactManagerLifetime.cpp)
 
 **`ecc27e3b8ca3`** · `App/src/v8world/ContactManagerLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8world/ContactManagerLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8world/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/v8world/ContactManagerLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8world/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8world/ContactManagerLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8world/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8world/ContactManagerLifetime.cpp)
@@ -326,6 +331,7 @@ Earlier paths and their donor versions: `native-classes/ContactManagerLifetime.c
 </details>
 
 **`f65c2665a655`** · `App/src/v8world/ContactManagerLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8world/ContactManagerLifetime.cpp)
 - public · colingsnyder2-ux · [v8world/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8world/ContactManagerLifetime.cpp)
 - public · colingsnyder2-ux · [v8world/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8world/ContactManagerLifetime.cpp)
 - public · colingsnyder2-ux · [v8world/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8world/ContactManagerLifetime.cpp)
@@ -428,6 +434,8 @@ Earlier paths and their donor versions: `native-classes/ContactManagerLifetime.c
 - public · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/ContactManagerLifetime.cpp)
 
 **`b3f484c7da6b`** · `native-classes/ContactManagerLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ContactManagerLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ContactManagerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ContactManagerLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ContactManagerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/ContactManagerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ContactManagerLifetime.cpp)
@@ -574,6 +582,7 @@ Earlier paths and their donor versions: `native-classes/ContactManagerStats.cpp`
 - public · colingsnyder2-ux · [v8world/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8world/ContactManagerStats.cpp)
 
 **`35bb9cffc030`** · `App/src/v8world/ContactManagerStats.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8world/ContactManagerStats.cpp)
 - public · colingsnyder2-ux · [v8world/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8world/ContactManagerStats.cpp)
 - public · colingsnyder2-ux · [v8world/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8world/ContactManagerStats.cpp)
 - public · colingsnyder2-ux · [v8world/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8world/ContactManagerStats.cpp)
@@ -590,6 +599,7 @@ Earlier paths and their donor versions: `native-classes/ContactManagerStats.cpp`
 </details>
 
 **`e94e2cfb37fa`** · `App/src/v8world/ContactManagerStats.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8world/ContactManagerStats.cpp)
 - canonical · colingsnyder2-ux · [v8world/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/v8world/ContactManagerStats.cpp)
 - canonical · colingsnyder2-ux · [v8world/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8world/ContactManagerStats.cpp)
 - canonical · colingsnyder2-ux · [v8world/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8world/ContactManagerStats.cpp)
@@ -676,6 +686,8 @@ Earlier paths and their donor versions: `native-classes/ContactManagerStats.cpp`
 </details>
 
 **`386c910c401c`** · `native-classes/ContactManagerStats.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ContactManagerStats.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ContactManagerStats.cpp)
 - public · colingsnyder2-ux · [native-classes/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ContactManagerStats.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ContactManagerStats.cpp)
 - public · colingsnyder2-ux · [native-classes/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ContactManagerStats.cpp)
@@ -860,6 +872,7 @@ Earlier paths and their donor versions: `native-classes/IWorldStage2008.cpp`.
 </details>
 
 **`d82882d6f76b`** · `App/src/v8world/IWorldStage2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8world/IWorldStage2008.cpp)
 - public · colingsnyder2-ux · [v8world/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8world/IWorldStage2008.cpp)
 - public · colingsnyder2-ux · [v8world/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8world/IWorldStage2008.cpp)
 - public · colingsnyder2-ux · [v8world/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8world/IWorldStage2008.cpp)
@@ -876,6 +889,7 @@ Earlier paths and their donor versions: `native-classes/IWorldStage2008.cpp`.
 </details>
 
 **`f0fb011cd792`** · `App/src/v8world/IWorldStage2008.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8world/IWorldStage2008.cpp)
 - canonical · colingsnyder2-ux · [v8world/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/v8world/IWorldStage2008.cpp)
 - canonical · colingsnyder2-ux · [v8world/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8world/IWorldStage2008.cpp)
 - canonical · colingsnyder2-ux · [v8world/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8world/IWorldStage2008.cpp)
@@ -958,6 +972,8 @@ Earlier paths and their donor versions: `native-classes/IWorldStage2008.cpp`.
 </details>
 
 **`3c73d5f33371`** · `native-classes/IWorldStage2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/IWorldStage2008.cpp)
+- canonical · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/IWorldStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/IWorldStage2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/IWorldStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/IWorldStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/IWorldStage2008.cpp)

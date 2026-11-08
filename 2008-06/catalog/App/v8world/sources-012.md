@@ -132,6 +132,8 @@ Compatibility path for `WindowsClient/src/CWorkspaceSiteUrl.cpp`; compile either
 </details>
 
 **`fb21165dcbab`** · `native-classes/CWorkspaceSiteUrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CWorkspaceSiteUrl.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/CWorkspaceSiteUrl.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CWorkspaceSiteUrl.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/CWorkspaceSiteUrl.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceSiteUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/CWorkspaceSiteUrl.cpp)
@@ -225,8 +227,9 @@ Compatibility path for `WindowsClient/src/CWorkspaceSiteUrl.cpp`; compile either
 <summary>native-classes/CWorkspaceWrite.cpp — candidate-only; 1 content versions</summary>
 
 **`106c69cff2eb`** · `native-classes/CWorkspaceWrite.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/CWorkspaceWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceWrite.cpp)
+- draft · colingsnyder2-ux · [native-classes/CWorkspaceWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceWrite.cpp)
 - fork · coldek · [native-classes/CWorkspaceWrite.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/CWorkspaceWrite.cpp)
+- draft · colingsnyder2-ux · [native-classes/CWorkspaceWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceWrite.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceWrite.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceWrite.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceWrite.cpp)
@@ -326,6 +329,8 @@ Compatibility path for `Unclassified/src/CameraConstants.cpp`; compile either pa
 </details>
 
 **`9abaed5e11b3`** · `native-classes/CameraConstants.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CameraConstants.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/CameraConstants.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CameraConstants.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/CameraConstants.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/CameraConstants.cpp)
@@ -556,6 +561,8 @@ Compatibility path for `App/src/v8datamodel/CameraFirstPerson.cpp`; compile eith
 - public · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CameraFirstPerson.cpp)
 
 **`892bd5e65d64`** · `native-classes/CameraFirstPerson.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CameraFirstPerson.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/CameraFirstPerson.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CameraFirstPerson.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/CameraFirstPerson.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/CameraFirstPerson.cpp)
@@ -679,6 +686,8 @@ Compatibility path for `App/src/v8datamodel/CameraFirstPerson.cpp`; compile eith
 Compatibility path for `App/src/v8datamodel/CameraHistory.cpp`; compile either path, never both.
 
 **`136fcde4abbb`** · `native-classes/CameraHistory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CameraHistory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/CameraHistory.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CameraHistory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/CameraHistory.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/CameraHistory.cpp)

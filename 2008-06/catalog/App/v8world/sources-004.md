@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/Ball.cpp`.
 
 **`4c67893130fa`** · `App/src/v8world/Ball.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8world/Ball.cpp)
 - public · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8world/Ball.cpp)
 - public · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8world/Ball.cpp)
 - public · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8world/Ball.cpp)
@@ -61,6 +62,7 @@ Earlier paths and their donor versions: `native-classes/Ball.cpp`.
 - public · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8world/Ball.cpp)
 
 **`fe56da7ec712`** · `App/src/v8world/Ball.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp)
 - canonical · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp)
 - canonical · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp)
 - canonical · colingsnyder2-ux · [v8world/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8world/Ball.cpp)
@@ -169,6 +171,8 @@ Earlier paths and their donor versions: `native-classes/Ball.cpp`.
 </details>
 
 **`f55c7a4cc4d2`** · `native-classes/Ball.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/Ball.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/Ball.cpp)
 - public · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/Ball.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/Ball.cpp)
 - public · colingsnyder2-ux · [native-classes/Ball.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/Ball.cpp)
@@ -328,6 +332,7 @@ Earlier paths and their donor versions: `native-classes/Block.cpp`.
 </details>
 
 **`e09a0c994d1e`** · `App/src/v8world/Block.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8world/Block.cpp)
 - canonical · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/v8world/Block.cpp)
 - canonical · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8world/Block.cpp)
 - canonical · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8world/Block.cpp)
@@ -382,6 +387,7 @@ Earlier paths and their donor versions: `native-classes/Block.cpp`.
 </details>
 
 **`f9687883c8bb`** · `App/src/v8world/Block.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8world/Block.cpp)
 - public · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8world/Block.cpp)
 - public · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8world/Block.cpp)
 - public · colingsnyder2-ux · [v8world/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8world/Block.cpp)
@@ -424,6 +430,8 @@ Earlier paths and their donor versions: `native-classes/Block.cpp`.
 </details>
 
 **`628f8eede21c`** · `native-classes/Block.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/Block.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/Block.cpp)
 - public · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/Block.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/Block.cpp)
 - public · colingsnyder2-ux · [native-classes/Block.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/Block.cpp)
@@ -574,6 +582,7 @@ Earlier paths and their donor versions: `native-classes/Block.cpp`.
 Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 
 **`30b7aa3f0cde`** · `App/src/v8world/CleanStage2008.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp)
 - canonical · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/src/v8world/CleanStage2008.cpp)
@@ -656,6 +665,7 @@ Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 - public · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8world/CleanStage2008.cpp)
 
 **`78aaeb7d9a62`** · `App/src/v8world/CleanStage2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/src/v8world/CleanStage2008.cpp)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8world/CleanStage2008.cpp)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/v8world/CleanStage2008.cpp)
 - public · colingsnyder2-ux · [v8world/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/src/v8world/CleanStage2008.cpp)
@@ -728,6 +738,8 @@ Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 - public · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CleanStage2008.cpp)
 
 **`58da3a56a107`** · `native-classes/CleanStage2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/CleanStage2008.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/CleanStage2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - public · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/CleanStage2008.cpp)
@@ -841,6 +853,8 @@ Earlier paths and their donor versions: `native-classes/CleanStage2008.cpp`.
 </details>
 
 **`e3cceef427f6`** · `native-classes/CleanStage2008.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/CleanStage2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/a03a27247e01ed0776d83e01d7319dbbdac5a40d3cabfcd6f8e00b622c4400a9/rebuild/2008-06/native-classes/CleanStage2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/CleanStage2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/760467483ce9cd043556fba79f34dddecb48ca4b955ae3f6ca894719beb52bbb/rebuild/2008-06/native-classes/CleanStage2008.cpp)

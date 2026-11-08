@@ -67,6 +67,8 @@ Compatibility path for `Unclassified/include/axis-vector-negation/G3D/Vector3.h`
 </details>
 
 **`73b5f2c012b4`** · `native-headers/axis-vector-negation/G3D/Vector3.h` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
+- canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
@@ -126,7 +128,7 @@ Compatibility path for `Unclassified/include/axis-vector-negation/G3D/Vector3.h`
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 
-<details><summary>62 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
@@ -171,6 +173,7 @@ Compatibility path for `Unclassified/include/axis-vector-negation/G3D/Vector3.h`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
@@ -310,6 +313,8 @@ Compatibility path for `Unclassified/include/axis-vector-negation/G3D/Vector3.in
 </details>
 
 **`987ef4ed8633`** · `native-headers/axis-vector-negation/G3D/Vector3.inl` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
+- canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
@@ -369,7 +374,7 @@ Compatibility path for `Unclassified/include/axis-vector-negation/G3D/Vector3.in
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 
-<details><summary>62 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
@@ -414,6 +419,7 @@ Compatibility path for `Unclassified/include/axis-vector-negation/G3D/Vector3.in
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
@@ -444,6 +450,8 @@ Compatibility path for `Unclassified/include/axis-vector-negation/G3D/Vector3.in
 Compatibility path for `Unclassified/include/boost-count-copy/boost/detail/shared_count.hpp`; compile either path, never both.
 
 **`0b88246e71ef`** · `native-headers/boost-count-copy/boost/detail/shared_count.hpp` · proof not assessed
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
 - public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
 - canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
 - public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
@@ -501,7 +509,7 @@ Compatibility path for `Unclassified/include/boost-count-copy/boost/detail/share
 - public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
 - canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
@@ -544,6 +552,7 @@ Compatibility path for `Unclassified/include/boost-count-copy/boost/detail/share
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
@@ -764,6 +773,8 @@ Compatibility path for `Unclassified/include/boost-explicit-shared-assignment/bo
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 
 **`ce027f2d46e7`** · `native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
@@ -821,7 +832,7 @@ Compatibility path for `Unclassified/include/boost-explicit-shared-assignment/bo
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>61 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
@@ -864,6 +875,7 @@ Compatibility path for `Unclassified/include/boost-explicit-shared-assignment/bo
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`

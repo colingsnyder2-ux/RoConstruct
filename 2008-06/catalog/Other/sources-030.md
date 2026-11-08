@@ -91,6 +91,8 @@ Compatibility path for `Unclassified/src/GuidRegistryInitialize.cpp`; compile ei
 </details>
 
 **`7ca2d64f21b7`** · `native-classes/GuidRegistryInitialize.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/GuidRegistryInitialize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/GuidRegistryInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/GuidRegistryInitialize.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/GuidRegistryInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/GuidRegistryInitialize.cpp)
@@ -306,6 +308,8 @@ Compatibility path for `Unclassified/src/GuidRegistryMutex.cpp`; compile either 
 </details>
 
 **`877ac26d8cbe`** · `native-classes/GuidRegistryMutex.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/GuidRegistryMutex.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/GuidRegistryMutex.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/GuidRegistryMutex.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/GuidRegistryMutex.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/GuidRegistryMutex.cpp)
@@ -476,6 +480,8 @@ Compatibility path for `App/src/tool/HammerTool.cpp`; compile either path, never
 </details>
 
 **`bdd13fc07d2a`** · `native-classes/HammerTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HammerTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/HammerTool.cpp)
 - public · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/HammerTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/HammerTool.cpp)
 - public · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/HammerTool.cpp)
@@ -667,6 +673,8 @@ Compatibility path for `App/src/tool/HammerToolFactory.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/HammerToolFactory.cpp)
 
 **`896f1d12da4e`** · `native-classes/HammerToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HammerToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/HammerToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/HammerToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/HammerToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/HammerToolFactory.cpp)
@@ -873,6 +881,8 @@ Compatibility path for `Unclassified/src/HandleHitTest.cpp`; compile either path
 </details>
 
 **`e2f0c1cd2125`** · `native-classes/HandleHitTest.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HandleHitTest.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/HandleHitTest.cpp)
@@ -984,6 +994,8 @@ Compatibility path for `Unclassified/src/HandleRadius.cpp`; compile either path,
 </details>
 
 **`25c75cc874d7`** · `native-classes/HandleRadius.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HandleRadius.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/HandleRadius.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/HandleRadius.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/HandleRadius.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/HandleRadius.cpp)

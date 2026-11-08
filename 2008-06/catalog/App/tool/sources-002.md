@@ -42,6 +42,7 @@ Earlier paths and their donor versions: `native-headers/tool/DragTool.h`.
 - public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/tool/DragTool.h)
 
 **`b29da024d1ba`** · `App/include/tool/DragTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/tool/DragTool.h)
 - public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/tool/DragTool.h)
 - public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/tool/DragTool.h)
 - public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/tool/DragTool.h)
@@ -58,6 +59,7 @@ Earlier paths and their donor versions: `native-headers/tool/DragTool.h`.
 </details>
 
 **`d5bd1b3208e6`** · `App/include/tool/DragTool.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/tool/DragTool.h)
 - canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/tool/DragTool.h)
 - canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/tool/DragTool.h)
 - canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/tool/DragTool.h)
@@ -90,7 +92,7 @@ Earlier paths and their donor versions: `native-headers/tool/DragTool.h`.
 - canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/DragTool.h)
 - canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/DragTool.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/DragTool.h` · root `b52aa15feaea5a0c`
@@ -138,6 +140,7 @@ Earlier paths and their donor versions: `native-headers/tool/DragTool.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/tool/DragTool.h` · root `b52aa15feaea5a0c`
@@ -227,6 +230,8 @@ Earlier paths and their donor versions: `native-headers/tool/DragTool.h`.
 - public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/DragTool.h)
 
 **`ccd71fb4675f`** · `native-headers/tool/DragTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
 - public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/tool/DragTool.h)
 - canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
 - public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/tool/DragTool.h)
@@ -290,7 +295,7 @@ Earlier paths and their donor versions: `native-headers/tool/DragTool.h`.
 - public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/DragTool.h)
 - canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
@@ -339,6 +344,7 @@ Earlier paths and their donor versions: `native-headers/tool/DragTool.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
@@ -442,6 +448,7 @@ Earlier paths and their donor versions: `native-headers/tool/FlatTool.h`.
 - public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/tool/FlatTool.h)
 
 **`4f5fa9c89e97`** · `App/include/tool/FlatTool.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/tool/FlatTool.h)
 - canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/tool/FlatTool.h)
 - canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/tool/FlatTool.h)
 - canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/tool/FlatTool.h)
@@ -474,7 +481,7 @@ Earlier paths and their donor versions: `native-headers/tool/FlatTool.h`.
 - canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/FlatTool.h)
 - canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/FlatTool.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/FlatTool.h` · root `b52aa15feaea5a0c`
@@ -522,6 +529,7 @@ Earlier paths and their donor versions: `native-headers/tool/FlatTool.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/tool/FlatTool.h` · root `b52aa15feaea5a0c`
@@ -552,6 +560,7 @@ Earlier paths and their donor versions: `native-headers/tool/FlatTool.h`.
 </details>
 
 **`9b60ae7a5cc5`** · `App/include/tool/FlatTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/tool/FlatTool.h)
 - public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/tool/FlatTool.h)
 - public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/tool/FlatTool.h)
 - public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/tool/FlatTool.h)
@@ -639,6 +648,8 @@ Earlier paths and their donor versions: `native-headers/tool/FlatTool.h`.
 </details>
 
 **`515266a18b69`** · `native-headers/tool/FlatTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
 - public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/tool/FlatTool.h)
 - canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
 - public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/tool/FlatTool.h)
@@ -702,7 +713,7 @@ Earlier paths and their donor versions: `native-headers/tool/FlatTool.h`.
 - public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/FlatTool.h)
 - canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
@@ -751,6 +762,7 @@ Earlier paths and their donor versions: `native-headers/tool/FlatTool.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
@@ -826,6 +838,7 @@ Earlier paths and their donor versions: `native-headers/tool/FlatTool.h`.
 Earlier paths and their donor versions: `native-headers/tool/GroupDragTool.h`.
 
 **`4825a875be8a`** · `App/include/tool/GroupDragTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/App/include/tool/GroupDragTool.h)
 - public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/include/tool/GroupDragTool.h)
 - public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/include/tool/GroupDragTool.h)
 - public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/App/include/tool/GroupDragTool.h)
@@ -876,6 +889,7 @@ Earlier paths and their donor versions: `native-headers/tool/GroupDragTool.h`.
 </details>
 
 **`a81b963d6aca`** · `App/include/tool/GroupDragTool.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/App/include/tool/GroupDragTool.h)
 - canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/App/include/tool/GroupDragTool.h)
 - canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/App/include/tool/GroupDragTool.h)
 - canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/App/include/tool/GroupDragTool.h)
@@ -908,7 +922,7 @@ Earlier paths and their donor versions: `native-headers/tool/GroupDragTool.h`.
 - canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/GroupDragTool.h)
 - canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/GroupDragTool.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
@@ -956,6 +970,7 @@ Earlier paths and their donor versions: `native-headers/tool/GroupDragTool.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
@@ -1077,6 +1092,8 @@ Earlier paths and their donor versions: `native-headers/tool/GroupDragTool.h`.
 </details>
 
 **`c41cc09bf7f5`** · `native-headers/tool/GroupDragTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
 - public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/tool/GroupDragTool.h)
 - canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
 - public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/tool/GroupDragTool.h)
@@ -1140,7 +1157,7 @@ Earlier paths and their donor versions: `native-headers/tool/GroupDragTool.h`.
 - public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/GroupDragTool.h)
 - canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
@@ -1189,6 +1206,7 @@ Earlier paths and their donor versions: `native-headers/tool/GroupDragTool.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`

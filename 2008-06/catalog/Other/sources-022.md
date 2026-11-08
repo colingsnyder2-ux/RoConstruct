@@ -47,6 +47,7 @@ Compatibility path for `App/src/v8datamodel/Clothing.cpp`; compile either path, 
 </details>
 
 **`837d70126fec`** · `native-classes/Clothing.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/499f227b31a6d19cdec8e52b674eb7b0dc4b32e07a7a8b818fd896c264313df6/rebuild/2008-06/native-classes/Clothing.cpp)
 - draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/499f227b31a6d19cdec8e52b674eb7b0dc4b32e07a7a8b818fd896c264313df6/rebuild/2008-06/native-classes/Clothing.cpp)
 - draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/499f227b31a6d19cdec8e52b674eb7b0dc4b32e07a7a8b818fd896c264313df6/rebuild/2008-06/native-classes/Clothing.cpp)
 - draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/499f227b31a6d19cdec8e52b674eb7b0dc4b32e07a7a8b818fd896c264313df6/rebuild/2008-06/native-classes/Clothing.cpp)
@@ -99,6 +100,9 @@ Compatibility path for `App/src/v8datamodel/Clothing.cpp`; compile either path, 
 </details>
 
 **`846813e1fbdb`** · `native-classes/Clothing.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/55d377fd86348ccd705319e92cf38ab6838719dc88650e4469a6892c6ee912d1/rebuild/2008-06/native-classes/Clothing.cpp)
+- draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/8046fbb6fda83fc87c20c1b14c9a8d884775854e1bb96e4fabb9c94dbfadd2c5/rebuild/2008-06/native-classes/Clothing.cpp)
+- draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/e3ce9b8ad861ca827ee42ac49191f4b6d2fa614ef00c59117cdeb2733819bc7c/rebuild/2008-06/native-classes/Clothing.cpp)
 - draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/55d377fd86348ccd705319e92cf38ab6838719dc88650e4469a6892c6ee912d1/rebuild/2008-06/native-classes/Clothing.cpp)
 - draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/8046fbb6fda83fc87c20c1b14c9a8d884775854e1bb96e4fabb9c94dbfadd2c5/rebuild/2008-06/native-classes/Clothing.cpp)
 - draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/e3ce9b8ad861ca827ee42ac49191f4b6d2fa614ef00c59117cdeb2733819bc7c/rebuild/2008-06/native-classes/Clothing.cpp)
@@ -242,6 +246,8 @@ Compatibility path for `App/src/v8datamodel/Clothing.cpp`; compile either path, 
 </details>
 
 **`9867c53a5158`** · `native-classes/Clothing.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/Clothing.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/Clothing.cpp)
 - public · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/Clothing.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/Clothing.cpp)
 - public · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/Clothing.cpp)
@@ -363,6 +369,7 @@ Compatibility path for `App/src/v8datamodel/Clothing.cpp`; compile either path, 
 </details>
 
 **`bb3f35df8215`** · `native-classes/Clothing.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/7f2f715841cd10ab07fa7959403c9a58a7145e8e6e701f6f387c64fd665415d0/rebuild/2008-06/native-classes/Clothing.cpp)
 - draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/drafts/files/7f2f715841cd10ab07fa7959403c9a58a7145e8e6e701f6f387c64fd665415d0/rebuild/2008-06/native-classes/Clothing.cpp)
 - draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/drafts/files/7f2f715841cd10ab07fa7959403c9a58a7145e8e6e701f6f387c64fd665415d0/rebuild/2008-06/native-classes/Clothing.cpp)
 - draft · colingsnyder2-ux · [native-classes/Clothing.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/drafts/files/7f2f715841cd10ab07fa7959403c9a58a7145e8e6e701f6f387c64fd665415d0/rebuild/2008-06/native-classes/Clothing.cpp)
@@ -515,6 +522,8 @@ Compatibility path for `App/src/v8world/Contact.cpp`; compile either path, never
 - public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/Contact.cpp)
 
 **`e64912ff8900`** · `native-classes/Contact.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/Contact.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/Contact.cpp)
 - public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/Contact.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/Contact.cpp)
 - public · colingsnyder2-ux · [native-classes/Contact.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/Contact.cpp)
@@ -672,6 +681,8 @@ Compatibility path for `App/src/v8world/ContactManagerStats.cpp`; compile either
 </details>
 
 **`386c910c401c`** · `native-classes/ContactManagerStats.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ContactManagerStats.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ContactManagerStats.cpp)
 - public · colingsnyder2-ux · [native-classes/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ContactManagerStats.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ContactManagerStats.cpp)
 - public · colingsnyder2-ux · [native-classes/ContactManagerStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ContactManagerStats.cpp)
@@ -884,6 +895,8 @@ Compatibility path for `App/src/v8datamodel/ControllerActions.cpp`; compile eith
 - public · colingsnyder2-ux · [native-classes/ControllerActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ControllerActions.cpp)
 
 **`a6d1a1575b3b`** · `native-classes/ControllerActions.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ControllerActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/ControllerActions.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ControllerActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/ControllerActions.cpp)
 - public · colingsnyder2-ux · [native-classes/ControllerActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/ControllerActions.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ControllerActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/ControllerActions.cpp)
 - public · colingsnyder2-ux · [native-classes/ControllerActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/ControllerActions.cpp)

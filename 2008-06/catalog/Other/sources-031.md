@@ -47,6 +47,8 @@ Compatibility path for `Unclassified/src/HealthHud.cpp`; compile either path, ne
 </details>
 
 **`aaceee2cd00a`** · `native-classes/HealthHud.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HealthHud.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/HealthHud.cpp)
 - public · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/HealthHud.cpp)
 - public · colingsnyder2-ux · [native-classes/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/HealthHud.cpp)
@@ -214,6 +216,8 @@ Compatibility path for `App/src/v8datamodel/HistoryItemCaptureProperty.cpp`; com
 </details>
 
 **`1501578839d3`** · `native-classes/HistoryItemCaptureProperty.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
@@ -454,6 +458,8 @@ Compatibility path for `App/src/v8datamodel/HistoryItemPlayback.cpp`; compile ei
 - public · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/HistoryItemPlayback.cpp)
 
 **`649117941dfc`** · `native-classes/HistoryItemPlayback.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HistoryItemPlayback.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/HistoryItemPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/HistoryItemPlayback.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/HistoryItemPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/HistoryItemPlayback.cpp)
@@ -688,6 +694,8 @@ Compatibility path for `App/src/v8datamodel/HistoryItemPropertyTrial.cpp`; compi
 </details>
 
 **`be54ddb6e364`** · `native-classes/HistoryItemPropertyTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemPropertyTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/HistoryItemPropertyTrial.cpp)
@@ -856,6 +864,8 @@ Compatibility path for `App/src/v8datamodel/HistoryItemState.cpp`; compile eithe
 </details>
 
 **`b7b4970f68de`** · `native-classes/HistoryItemState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/HistoryItemState.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/HistoryItemState.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/HistoryItemState.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/HistoryItemState.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/HistoryItemState.cpp)

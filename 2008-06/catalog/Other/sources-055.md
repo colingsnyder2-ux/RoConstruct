@@ -161,6 +161,8 @@ Compatibility path for `Unclassified/include/LuaArgs.h`; compile either path, ne
 </details>
 
 **`b3eae13679e0`** · `native-headers/LuaArgs.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/LuaArgs.h)
+- canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/LuaArgs.h)
 - canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/LuaArgs.h)
@@ -212,7 +214,7 @@ Compatibility path for `Unclassified/include/LuaArgs.h`; compile either path, ne
 - public · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/LuaArgs.h)
 - canonical · colingsnyder2-ux · [native-headers/LuaArgs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/LuaArgs.h)
 
-<details><summary>55 retained local origins</summary>
+<details><summary>56 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
@@ -251,6 +253,7 @@ Compatibility path for `Unclassified/include/LuaArgs.h`; compile either path, ne
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/LuaArgs.h` · root `b52aa15feaea5a0c`
@@ -443,6 +446,8 @@ Compatibility path for `Network/include/ReliabilityLayer.h`; compile either path
 </details>
 
 **`f2d47271f118`** · `native-headers/ReliabilityLayer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/ReliabilityLayer.h)
+- canonical · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h)
 - public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/ReliabilityLayer.h)
 - canonical · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h)
 - public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/ReliabilityLayer.h)
@@ -496,7 +501,7 @@ Compatibility path for `Network/include/ReliabilityLayer.h`; compile either path
 - public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/ReliabilityLayer.h)
 - canonical · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h)
 
-<details><summary>58 retained local origins</summary>
+<details><summary>59 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/ReliabilityLayer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/ReliabilityLayer.h` · root `b52aa15feaea5a0c`
@@ -537,6 +542,7 @@ Compatibility path for `Network/include/ReliabilityLayer.h`; compile either path
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/ReliabilityLayer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/ReliabilityLayer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/ReliabilityLayer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/ReliabilityLayer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/ReliabilityLayer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/ReliabilityLayer.h` · root `b52aa15feaea5a0c`
@@ -833,6 +839,8 @@ Compatibility path for `Unclassified/include/RobloxLib.h`; compile either path, 
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/RobloxLib.h)
 
 **`e6b2ebab5c8d`** · `native-headers/RobloxLib.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/RobloxLib.h)
+- canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/RobloxLib.h)
 - canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/RobloxLib.h)
@@ -894,7 +902,7 @@ Compatibility path for `Unclassified/include/RobloxLib.h`; compile either path, 
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/RobloxLib.h)
 - canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
@@ -941,6 +949,7 @@ Compatibility path for `Unclassified/include/RobloxLib.h`; compile either path, 
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
@@ -987,6 +996,8 @@ Compatibility path for `WindowsClient/include/VersionInfo.h`; compile either pat
 - public · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/VersionInfo.h)
 
 **`0af10f714ec2`** · `native-headers/VersionInfo.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-headers/VersionInfo.h)
+- canonical · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/VersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-headers/VersionInfo.h)
 - canonical · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-headers/VersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-headers/VersionInfo.h)
@@ -1048,7 +1059,7 @@ Compatibility path for `WindowsClient/include/VersionInfo.h`; compile either pat
 - public · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/VersionInfo.h)
 - canonical · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/VersionInfo.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/VersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/VersionInfo.h` · root `b52aa15feaea5a0c`
@@ -1095,6 +1106,7 @@ Compatibility path for `WindowsClient/include/VersionInfo.h`; compile either pat
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/VersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/VersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/VersionInfo.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/VersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/VersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/VersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/VersionInfo.h` · root `b52aa15feaea5a0c`

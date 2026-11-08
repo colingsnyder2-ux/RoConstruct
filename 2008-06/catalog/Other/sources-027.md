@@ -26,6 +26,8 @@ Compatibility path for `App/src/tool/GrabToolFactory.cpp`; compile either path, 
 </details>
 
 **`6cca54a5b6ad`** · `native-classes/GrabToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/GrabToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/GrabToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/GrabToolFactory.cpp)
@@ -239,6 +241,8 @@ Compatibility path for `Unclassified/src/GuiItem.cpp`; compile either path, neve
 </details>
 
 **`5fcfaacd21b5`** · `native-classes/GuiItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/native-classes/GuiItem.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/GuiItem.cpp)
 - public · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/native-classes/GuiItem.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/native-classes/GuiItem.cpp)
 - public · colingsnyder2-ux · [native-classes/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/native-classes/GuiItem.cpp)
