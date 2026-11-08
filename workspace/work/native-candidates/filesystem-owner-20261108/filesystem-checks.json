@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\fourth-providers-fresh-20261108\\source\\Base\\src\\util\\FileSystem.cpp",
+      "checks": [
+        {
+          "addr": "005a7ac0",
+          "symbol": "?getUserAppDataDirectory@FileSystem@RBX@@"
+        },
+        {
+          "addr": "005a7ea0",
+          "symbol": "?getCacheDirectory@FileSystem@RBX@@"
+        }
+      ]
+    }
+  ]
+}

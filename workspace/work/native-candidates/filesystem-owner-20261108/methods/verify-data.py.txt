@@ -1,0 +1,16 @@
+from pathlib import Path
+import sys,struct,re,collections,hashlib,json
+root=Path.cwd();sys.path.insert(0,str(root));from roc import match
+out=root/'work/native-candidates/filesystem-owner-trial-20261108';norm=lambda x:re.sub(r'\?A0x[0-9a-fA-F]+','?ANON',x)
+def facts(raw):
+ sec,sy,defs,_=match._coff_data_index(raw);v=[];seh=[]
+ for t in sec:
+  n=t[0].rstrip(b'\0').decode('latin-1');f=t[9]
+  if n=='.sxdata':seh.extend(norm(sy[x][0]) for x in struct.unpack('<'+'I'*(t[3]//4),raw[t[4]:t[4]+t[3]]));continue
+  if n.startswith(('.debug','.drectve','.text')) or f&0x20 or f&0x1000:continue
+  rel=[]
+  for i in range(t[7]):
+   off,sym,k=struct.unpack_from('<IIH',raw,t[5]+i*10);rel.append((off,k,norm(sy[sym][0])))
+  v.append((n,f,raw[t[4]:t[4]+t[3]] if t[4] else b'',tuple(sorted(rel))))
+ return collections.Counter(v),seh
+raw=[(out/n).read_bytes() for n in ('archive.obj','baseline.obj','without-cache.obj')];f=[facts(x) for x in raw];assert f[0]==f[1]==f[2];(out/'data-comparison.json').write_text(json.dumps({'object_sha256':[hashlib.sha256(x).hexdigest() for x in raw],'noncomdat_data_sections':sum(f[0][0].values()),'seh_symbol_entries':len(f[0][1]),'passed':True,'scope':'Non-COMDAT data bytes/relocations and SEH table symbol identities match; final runtime and ABI unproven.'},indent=2),encoding='utf-8');print('data/SEH comparison passed')

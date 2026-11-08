@@ -1,0 +1,36 @@
+from pathlib import Path
+import hashlib,json,re,sys
+root=Path.cwd();work=root/'work/native-candidates/real-provider-isolated-fast-20261108';checkout=work/'checkout';sys.path.insert(0,str(checkout));from roc import rebuild
+baseline=(root/'work/native-candidates/third-providers-fresh-20261108/fresh-link/link.txt').read_text(encoding='utf-8');camera=json.loads((work/'camera-family-fresh-link/receipt.json').read_text());verb=json.loads((work/'verb-family-fresh-link/receipt.json').read_text());assert camera['new_unresolved']==125 and not camera['duplicates'] and not camera['introduced'];command=json.loads((work/'replay-link-command.json').read_text());reused=json.loads((work/'replay-objects.json').read_text());sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+for name,h in reused.items():assert sha(Path(command['cwd'])/name)==h,name
+for r in verb['provider_objects']+camera['provider_objects']:assert sha(r['object'])==r['sha256']
+shell_run=checkout/'work/2008-06/native-check-runs/20261108-024400-3e22ba3a';shell=json.loads((shell_run/'results.json').read_text())[0];assert shell['status']=='complete' and sha(shell['object'])==shell['object_sha256']
+for p,h in shell['dependencies'].items():assert sha(p)==h
+for run in ('20261108-025631-74d8df81','20261108-030300-ba0776f9'):
+ for row in json.loads((checkout/'work/2008-06/native-check-runs'/run/'results.json').read_text()):
+  assert row['status']=='complete' and not row.get('changed_inputs') and sha(row['object'])==row['object_sha256']
+  for p,h in row['dependencies'].items():assert sha(p)==h
+cmdrows=json.loads((root/'work/2008-06/native-check-runs/20261108-081120-b693bffb/results.json').read_text())
+for row in cmdrows:
+ assert row['status']=='complete' and sha(row['object'])==row['object_sha256']
+ for p,h in row['dependencies'].items():assert sha(p)==h
+datarows=json.loads((root/'work/2008-06/native-check-runs/20261108-081541-bc203fc6/results.json').read_text())
+for row in datarows:
+ assert row['status']=='complete' and sha(row['object'])==row['object_sha256']
+ for p,h in row['dependencies'].items():assert sha(p)==h
+nextrows=json.loads((root/'work/2008-06/native-check-runs/20261108-081922-3715d537/results.json').read_text())
+for row in nextrows:
+ assert row['status']=='complete' and sha(row['object'])==row['object_sha256']
+ for p,h in row['dependencies'].items():assert sha(p)==h
+thirdrows=json.loads((root/'work/2008-06/native-check-runs/20261108-082247-0a5fbceb/results.json').read_text());thirdrows=[r for r in thirdrows if all(c['status']=='exact' and not c['data_errors'] for c in r['checks'])];assert len(thirdrows)==4
+for row in thirdrows:
+ assert row['status']=='complete' and sha(row['object'])==row['object_sha256']
+ for p,h in row['dependencies'].items():assert sha(p)==h
+run=root/'work/2008-06/native-check-runs/20261108-082615-dbf035be';summary=json.loads((run/'summary.json').read_text());rows=json.loads((run/'results.json').read_text());assert summary['verified_checks']==3 and summary['shared_headers_changed']==[] and len(rows)==3
+rows=[row for row in rows if all(c['status']=='exact' and not c['data_errors'] for c in row['checks'])];assert len(rows)==3
+for row in rows:
+ assert row['status']=='complete' and not row.get('changed_inputs') and sha(row['object'])==row['object_sha256']
+ for p,h in row['dependencies'].items():assert sha(p)==h
+missing=lambda s:set(re.findall(r'unresolved external symbol "([^"]+)"',s));duplicates=lambda s:set(re.findall(r'error LNK2005: "([^"]+)"',s));before=missing(baseline);assert len(before)==107
+replacement=json.loads((root/'work/native-candidates/filesystem-owner-trial-20261108/archive-replacement.json').read_text());assert sha(replacement['old_library'])==replacement['old_sha256'] and sha(replacement['new_library'])==replacement['new_sha256'] and sha(replacement['filtered_object'])==replacement['filtered_object_sha256']
+out=root/'work/native-candidates/filesystem-owner-trial-20261108/replacement-link';out.mkdir(exist_ok=False);args=command['args'];assert args.count('RobloxShell.obj')==1 and not any('/force' in a.lower() for a in args);args=[str(shell['object']) if a=='RobloxShell.obj' else '/OUT:'+str(out/'trial.exe') if a.startswith('/OUT:') else '/MAP:'+str(out/'trial.map') if a.startswith('/MAP:') else a for a in args];assert args.count(replacement['old_library'])==1;args=[replacement['new_library'] if a==replacement['old_library'] else a for a in args];index=args.index('P6Data.obj');args[index:index]=[replacement['filtered_object']];index=args.index('P6Data.obj');args[index:index]=[x['object'] for x in verb['provider_objects']+camera['provider_objects']]+[x['object'] for x in cmdrows]+[x['object'] for x in datarows]+[x['object'] for x in nextrows]+[x['object'] for x in thirdrows]+[x['object'] for x in rows];code,text=rebuild.run(rebuild.toolchain(),'link',args,Path(command['cwd']));(out/'link.txt').write_text(text,encoding='utf-8');after=missing(text);row={'exit_code':code,'before':len(before),'after':len(after),'resolved':sorted(before-after),'introduced':sorted(after-before),'duplicates':sorted(duplicates(text)),'provider_objects':[{'source':x['source'],'object':x['object'],'sha256':x['object_sha256']} for x in rows],'scope':'Fresh candidate link-only diagnostic; call bindings, ABI, EH, runtime, original selection and server credit unproven. Do not run.'};(out/'receipt.json').write_text(json.dumps(row,indent=2),encoding='utf-8');print('exit',code,'unresolved',len(before),'->',len(after),'resolved',len(row['resolved']),'introduced',len(row['introduced']),'duplicates',len(row['duplicates']))

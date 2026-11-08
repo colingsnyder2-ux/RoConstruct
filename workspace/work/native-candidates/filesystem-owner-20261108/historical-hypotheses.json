@@ -1,0 +1,56 @@
+[
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeWorkspaceLoadFull.obj",
+    "sha256": "a481bdfd7c839210b7a990734fc69d8ea018a9af3b4933ad8f1b7b5754d56b82",
+    "exit_code": 1120,
+    "before": 107,
+    "after": 106,
+    "resolved": [
+      "public: void __thiscall CWorkspace::load(class std::basic_istream<char,struct std::char_traits<char> > &)"
+    ],
+    "introduced": [],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeInsertObjectActionFull.obj",
+    "sha256": "b615f4fe14ffa6b6316a0c13f70771fbb0fe6d8b571e1708e1edf1a194a931cf",
+    "exit_code": 1120,
+    "before": 107,
+    "after": 106,
+    "resolved": [
+      "public: virtual void __thiscall InsertObject::doIt(class RBX::IDataState *)"
+    ],
+    "introduced": [],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeFileSystemFull.obj",
+    "sha256": "971849bf83b6fa14ce9621bc60b04137119696e077dfa38602a5129192ddde43",
+    "exit_code": 1120,
+    "before": 107,
+    "after": 106,
+    "resolved": [
+      "public: static class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl RBX::FileSystem::getUserAppDataDirectory(bool,char const *)"
+    ],
+    "introduced": [],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  },
+  {
+    "candidate": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeDocumentInsertModelFull.obj",
+    "sha256": "a95032d5fb7d19743032630a16e303810aca03cebf12d325300f0d7efc766b84",
+    "exit_code": 1120,
+    "before": 107,
+    "after": 107,
+    "resolved": [
+      "public: void __thiscall CRobloxDoc::handle_455c30(void)"
+    ],
+    "introduced": [
+      "public: int __thiscall CRobloxDoc::loadFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)"
+    ],
+    "duplicates": [],
+    "scope": "Historical object link-only hypothesis; source freshness, ABI, EH, runtime, original binding and selected provider unproven. Do not run."
+  }
+]

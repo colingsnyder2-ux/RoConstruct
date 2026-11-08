@@ -1,0 +1,8 @@
+from pathlib import Path
+import hashlib,json,sys,collections
+root=Path.cwd();sys.path.insert(0,str(root));from roc import rebuild
+out=root/'work/native-candidates/filesystem-owner-trial-20261108';r=json.loads((out/'extraction.json').read_text());lib=Path(r['library']);sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();assert sha(lib)==r['library_sha256'];tc=rebuild.toolchain(21022);code,text=rebuild.run(tc,'lib',['/nologo','/remove:glue_content_provider.obj','/out:'+str(out/'without-glue.lib'),str(lib)],out);print('remove exit',code,text[-200:]);assert code==0
+lists=[]
+for p in (lib,out/'without-glue.lib'):
+ code,text=rebuild.run(tc,'lib',['/nologo','/list',str(p)],out);assert code==0;(out/(p.stem+'-members.txt')).write_text(text,encoding='utf-8');lists.append(collections.Counter(x.strip().lower().replace('\\','/') for x in text.splitlines() if x.strip()))
+a,b=lists; removed=a-b;added=b-a;print('removed',list(removed.elements()),'added',list(added.elements()));assert len(list(removed.elements()))==1 and next(iter(removed)).endswith('glue_content_provider.obj') and not added;assert sha(lib)==r['library_sha256'];(out/'archive-replacement.json').write_text(json.dumps({'old_library':str(lib),'old_sha256':sha(lib),'new_library':str(out/'without-glue.lib'),'new_sha256':sha(out/'without-glue.lib'),'removed_member':list(removed.elements()),'filtered_object':str(out/'without-cache.obj'),'filtered_object_sha256':sha(out/'without-cache.obj')},indent=2),encoding='utf-8')

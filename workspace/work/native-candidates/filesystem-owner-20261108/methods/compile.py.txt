@@ -1,0 +1,7 @@
+from pathlib import Path
+import hashlib,json,sys
+root=Path.cwd();sys.path.insert(0,str(root));from roc import rebuild,match
+out=root/'work/native-candidates/filesystem-owner-trial-20261108';receipt=json.loads((root/'work/2008-06/shared-layouts/content-filtered-donor-trial.json').read_text());source=root/'rebuild/2008-06/out/native-layouts/content-source-probe/glue_content_provider.cpp';text=source.read_text();start=text.index('\tstd::string FileSystem::getCacheDirectory(bool create)');end=text.index('\n\t// Cached content',start);filtered=text[:start]+text[end:];assert text.count('FileSystem::getCacheDirectory(bool create)')==1 and 'ContentProvider::getContent(ContentId id)' in filtered
+baseline=out/'baseline.cpp';candidate=out/'without-cache.cpp';baseline.write_text(text,encoding='utf-8');candidate.write_text(filtered,encoding='utf-8');flags=receipt['flags'];assert not any(x.startswith('/Fo') for x in flags)
+for src in (baseline,candidate):
+ obj=src.with_suffix('.obj');code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/showIncludes','/Fo'+str(obj),str(src)],out);(out/(src.stem+'-compile.txt')).write_text(log,encoding='utf-8');print(src.name,'exit',code,flush=True);assert code==0

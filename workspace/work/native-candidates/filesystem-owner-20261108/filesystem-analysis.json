@@ -1,0 +1,106 @@
+[
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\fourth-providers-fresh-20261108\\source\\Base\\src\\util\\FileSystem.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082615-dbf035be\\unit-002\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005a7ac0",
+        "requested_symbol": "?getUserAppDataDirectory@FileSystem@RBX@@",
+        "status": "exact",
+        "symbol": "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+        "score": 100,
+        "target_size": 992,
+        "object_size": 992,
+        "target_sha256": "66d1ba81e61e83a61f7b5e1007d68b2c8a885fa82613e52047f7ae5572911c1a",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8602148,
+            12
+          ],
+          [
+            8602124,
+            21
+          ],
+          [
+            8602264,
+            78
+          ],
+          [
+            8602184,
+            78
+          ],
+          [
+            8602168,
+            9
+          ],
+          [
+            8435478,
+            1
+          ],
+          [
+            8435478,
+            1
+          ],
+          [
+            8602160,
+            8
+          ],
+          [
+            8435478,
+            1
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 1.797
+      },
+      {
+        "addr": "005a7ea0",
+        "requested_symbol": "?getCacheDirectory@FileSystem@RBX@@",
+        "status": "exact",
+        "symbol": "?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+        "score": 100,
+        "target_size": 548,
+        "object_size": 548,
+        "target_sha256": "cd5646254d3a1fdbe9e37760696d240a359f284e0b9ccbddb8f1ef941abdbff1",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8602148,
+            12
+          ],
+          [
+            8602124,
+            21
+          ],
+          [
+            8602360,
+            76
+          ],
+          [
+            8602168,
+            9
+          ],
+          [
+            8435478,
+            1
+          ],
+          [
+            8602344,
+            13
+          ],
+          [
+            8435478,
+            1
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

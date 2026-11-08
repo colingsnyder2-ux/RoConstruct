@@ -1,0 +1,24 @@
+{
+  "exit_code": 1120,
+  "before": 107,
+  "after": 105,
+  "resolved": [
+    "public: virtual void __thiscall InsertObject::doIt(class RBX::IDataState *)",
+    "public: void __thiscall CWorkspace::load(class std::basic_istream<char,struct std::char_traits<char> > &)"
+  ],
+  "introduced": [],
+  "duplicates": [],
+  "provider_objects": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\fourth-providers-fresh-20261108\\source\\WindowsClient\\src\\CWorkspaceLoad.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082615-dbf035be\\unit-000\\candidate.obj",
+      "sha256": "c3e7a522a8c9371c3e9a5a64da2561ef811534fdaf9018995fe5fdd756fa775e"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\fourth-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\InsertObjectAction.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082615-dbf035be\\unit-001\\candidate.obj",
+      "sha256": "ec0c4cc071c4683fc2c08328521769b0f4fb29e989add0d05acfb5584affffd9"
+    }
+  ],
+  "scope": "Fresh candidate link-only diagnostic; call bindings, ABI, EH, runtime, original selection and server credit unproven. Do not run."
+}

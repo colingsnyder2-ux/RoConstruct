@@ -1,0 +1,11 @@
+{
+  "archive_sha256": "9986df11293c1e0ec01262d214f28473023e5b77d402210b910bd36ba8155ebe",
+  "baseline_sha256": "d91c4f58b8c2a5e1cfd1474fa9219d8339371c752afde800ab2a94712c4a543f",
+  "filtered_sha256": "782dc48e4c6b87e2f1ddcd47bcf2d6235d52d7229ded6d3706d05d9217a924e6",
+  "baseline_functions": 314,
+  "retained_functions": 313,
+  "removed_symbols": [
+    "?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+  ],
+  "scope": "Retained function code, relocation symbols and referenced data match; standalone globals, linked selection, ABI and runtime still require proof."
+}

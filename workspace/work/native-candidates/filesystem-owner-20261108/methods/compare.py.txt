@@ -1,0 +1,19 @@
+from pathlib import Path
+import json,re,struct,hashlib,sys
+root=Path.cwd();sys.path.insert(0,str(root));from roc import match
+out=root/'work/native-candidates/filesystem-owner-trial-20261108';raws=[(out/x).read_bytes() for x in ('archive.obj','baseline.obj','without-cache.obj')];norm=lambda x:re.sub(r'\?A0x[0-9a-fA-F]+','?ANON',x)
+def functions(raw):return {norm(n):(n,b,r) for n,b,r in match.coff_functions(raw)}
+def reloc(raw,name,size):
+ sec,sy,defs,_=match._coff_data_index(raw);start,idx=defs[name];t=sec[idx];v=[]
+ for i in range(t[7]):
+  off,sym,kind=struct.unpack_from('<IIH',raw,t[5]+10*i);off-=start
+  if 0<=off<size:v.append((off,kind,norm(sy[sym][0])))
+ return sorted(v)
+f=[functions(x) for x in raws];print('function counts',*[len(x) for x in f]);assert f[0].keys()==f[1].keys();assert not (f[2].keys()-f[1].keys());removed=f[1].keys()-f[2].keys();print('removed count',len(removed));print('removed',sorted(removed)[:15]);assert sum(x.startswith('?getCacheDirectory@FileSystem@RBX@@') for x in removed)==1
+fail=[]
+for left,right,keys in ((0,1,f[0].keys()),(1,2,f[2].keys())):
+ for key in keys:
+  a,b=f[left][key],f[right][key]
+  if not match.exact_match(a[1],a[2],b[1],b[2]) or reloc(raws[left],a[0],len(a[1]))!=reloc(raws[right],b[0],len(b[1])) or match.coff_data_refs(raws[left],a[0])!=match.coff_data_refs(raws[right],b[0]):fail.append((left,right,key))
+print('retained code/reloc/data differences',len(fail));print(fail[:4]);assert not fail
+sha=lambda b:hashlib.sha256(b).hexdigest();(out/'comparison.json').write_text(json.dumps({'archive_sha256':sha(raws[0]),'baseline_sha256':sha(raws[1]),'filtered_sha256':sha(raws[2]),'baseline_functions':len(f[1]),'retained_functions':len(f[2]),'removed_symbols':sorted(removed),'scope':'Retained function code, relocation symbols and referenced data match; standalone globals, linked selection, ABI and runtime still require proof.'},indent=2),encoding='utf-8');print('retained provider comparisons passed')

@@ -1,0 +1,11 @@
+{
+  "old_library": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\out\\RbxgsApp\\linked\\linked.lib",
+  "old_sha256": "21e44d8cac6d3f14850180ccb2f8d5ed618fe129c9d5c1632186b78d52d03519",
+  "new_library": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\filesystem-owner-trial-20261108\\without-glue.lib",
+  "new_sha256": "62d75f5e7851478520de9e76895854dc11ab0e7daf9c3cab7a4ccd08e5968b53",
+  "removed_member": [
+    "glue_content_provider.obj"
+  ],
+  "filtered_object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\filesystem-owner-trial-20261108\\without-cache.obj",
+  "filtered_object_sha256": "782dc48e4c6b87e2f1ddcd47bcf2d6235d52d7229ded6d3706d05d9217a924e6"
+}
