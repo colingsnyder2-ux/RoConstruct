@@ -1,0 +1,47 @@
+{
+  "exit_code": 1120,
+  "historical_providers": [
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeEditSelectionVerbCtorFull.obj",
+      "sha256": "f355a51f0129a0c63d5a5d537fa912ca80038f7cea340087a8c838c07d96e796"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeRunStateVerbCtorFull.obj",
+      "sha256": "0fca2dfa76f8d74bef081edd212bf4a1c8fbb777a2eb8eed5fe90aaac6e8e1f3"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeVerbBaseLifetimeFull.obj",
+      "sha256": "4dd2e54e1ab26a106fde21820a010f35c21256c05eeb0818134cc6f20aeda270"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeVerbFull.obj",
+      "sha256": "d477b192d9f7c765ffe552e570cc5b1a3584e8b1b486282a5ab177e6d2e3dd79"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeVerbLifetimeFull.obj",
+      "sha256": "155f404df3d02df437c5025305f2d485063e371794027ddd3ce4e313cd3493cd"
+    },
+    {
+      "path": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-probe-runs\\20261104-174219-8a626b0c\\output\\NativeVerbQueriesFull.obj",
+      "sha256": "c95472b1595b402c44562d70b56f1927084640fdd5e2a4208219de5404796691"
+    }
+  ],
+  "old_duplicates": 0,
+  "new_duplicates": 0,
+  "duplicate_symbols": [],
+  "old_unresolved": 136,
+  "new_unresolved": 127,
+  "resolved": [
+    "protected: __thiscall RBX::EditSelectionVerb::EditSelectionVerb(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class RBX::DataModel *)",
+    "protected: __thiscall RBX::RunStateVerb::RunStateVerb(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class RBX::DataModel *)",
+    "protected: __thiscall RBX::Verb::Verb(class RBX::VerbContainer *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)",
+    "public: virtual __thiscall RBX::EditSelectionVerb::~EditSelectionVerb(void)",
+    "public: virtual __thiscall RBX::RunStateVerb::~RunStateVerb(void)",
+    "public: virtual __thiscall RBX::Verb::~Verb(void)",
+    "public: virtual bool __thiscall RBX::EditSelectionVerb::isEnabled(void)const ",
+    "public: virtual bool __thiscall RBX::Verb::isChecked(void)const ",
+    "public: virtual bool __thiscall RBX::Verb::isEnabled(void)const "
+  ],
+  "introduced": [],
+  "scope": "Link-only test of historical objects; source freshness, original matching, selection, ABI and runtime remain unproven. Never execute this diagnostic."
+}

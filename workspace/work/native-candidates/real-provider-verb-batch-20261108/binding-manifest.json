@@ -1,0 +1,46 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\VerbBaseLifetime.cpp",
+      "checks": [
+        {
+          "addr": "005832c0",
+          "symbol": "??1Verb@RBX@@UAE@XZ",
+          "calls": [
+            {
+              "offset": 21,
+              "symbol": "?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PAVVerb@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PAVVerb@2@@std@@@5@$0A@@std@@@std@@QAEIABQBVName@RBX@@@Z",
+              "target": "00405ce0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\VerbQueries.cpp",
+      "checks": [
+        {
+          "addr": "00565950",
+          "symbol": "?isEnabled@Verb@RBX@@UBE_NXZ",
+          "calls": []
+        },
+        {
+          "addr": "0060a2f0",
+          "symbol": "?isChecked@Verb@RBX@@UBE_NXZ",
+          "calls": []
+        },
+        {
+          "addr": "00582830",
+          "symbol": "?isEnabled@EditSelectionVerb@RBX@@UBE_NXZ",
+          "calls": [
+            {
+              "offset": 5,
+              "symbol": "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z",
+              "target": "00581cc0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\VerbBaseLifetime.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\work\\2008-06\\native-check-runs\\20261108-025631-74d8df81\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005832c0",
+        "requested_symbol": "??1Verb@RBX@@UAE@XZ",
+        "status": "exact",
+        "symbol": "??1Verb@RBX@@UAE@XZ",
+        "score": 100,
+        "target_size": 28,
+        "object_size": 28,
+        "target_sha256": "1c5a1fc2e403a92a2f489d13ccfd18b4fd694466ecdd770f637accfdc9558988",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 21,
+              "target": "00405ce0",
+              "symbol": "?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PAVVerb@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PAVVerb@2@@std@@@5@$0A@@std@@@std@@QAEIABQBVName@RBX@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 1.797
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\VerbQueries.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\work\\2008-06\\native-check-runs\\20261108-025631-74d8df81\\unit-002\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00565950",
+        "requested_symbol": "?isEnabled@Verb@RBX@@UBE_NXZ",
+        "status": "exact",
+        "symbol": "?isEnabled@Verb@RBX@@UBE_NXZ",
+        "score": 100,
+        "target_size": 3,
+        "object_size": 3,
+        "target_sha256": "e18aacce29affcdddaa5f641ac1ec12552e0fe9d066e6408941b1792818b8619",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "0060a2f0",
+        "requested_symbol": "?isChecked@Verb@RBX@@UBE_NXZ",
+        "status": "exact",
+        "symbol": "?isChecked@Verb@RBX@@UBE_NXZ",
+        "score": 100,
+        "target_size": 3,
+        "object_size": 3,
+        "target_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "00582830",
+        "requested_symbol": "?isEnabled@EditSelectionVerb@RBX@@UBE_NXZ",
+        "status": "exact",
+        "symbol": "?isEnabled@EditSelectionVerb@RBX@@UBE_NXZ",
+        "score": 100,
+        "target_size": 34,
+        "object_size": 34,
+        "target_sha256": "d29468e5c3d3d73b3e9d6b73553ccf63c3d07cb6a01656d23ebb8915250f0b94",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 5,
+              "target": "00581cc0",
+              "symbol": "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

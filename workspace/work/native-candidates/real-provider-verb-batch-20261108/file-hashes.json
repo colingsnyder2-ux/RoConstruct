@@ -1,0 +1,20 @@
+{
+  "binding-analysis.json": "eed1881a565b2e11a17ad36d19c1502d47f370e51b4c998fb2fd69eaf931077a",
+  "binding-manifest.json": "db93382fb7174dbdbd817036c7d8d4d54d53f1debc2be6876efaaa72f18f3e73",
+  "fresh-link-receipt.json": "379d1015e04e86921572b40405d88f6d6cb762ce9e3f0f2ea0d93391480f0a12",
+  "fresh-link.txt": "c69fc58b62afa522dfb51e93a707b541f393546c561a8f02d81dc73f6d51f4b8",
+  "historical-actions-receipt.json": "7485655d621061efb33d212d4ac2977cb62491e1c451f51d251f2dd7963da01e",
+  "historical-all-link.txt": "cab3a86acdcbdee1b366dd20dcd36376c411e6c85decb1806060912a88e912ad",
+  "historical-all-receipt.json": "eea35bc434a1b9daffbb437822664332820dc16514abcaaecec67a1484c89dd2",
+  "historical-core-receipt.json": "02238b60a61c0b5b3dc46914fd79821e3825463b6ffc56633618230c68fb0be3",
+  "input-hashes.json": "4282e8c938826fa23b55521ac9e5c1f274b7ba13849a0237802c0e55b18e2324",
+  "inventory.json": "10b0818dec34378736cec8b3c84bb7a656e68efaa904ae9f934fc077bbfc788b",
+  "prior-initializer-dependencies-trial.json": "3ae20da7fb156affd91a6a5e4504f1350041ceff371cef9ed19597a0e621b98d",
+  "prior-standard-verbs-constructor-trial.json": "8418d0117b04f4278a960d421cd5eb13b8c6fab36cce4654829753d653b3a529",
+  "prior-verb-ctor.json": "260f21111fb604a2e81b84b1fe8495c13d8861372ca8187388461471b7807459",
+  "prior-verb-lifetime-queries.json": "1a18ed74d508ac2800bde208c44bfae6fb16f1a10d3a8babbfac4bc7597cc2f3",
+  "README.md": "b5c4cd59037a46c33f70975291292d0db3f5fb8fa267f172b62ba41891ad9e53",
+  "runner-manifest.json": "07deda12637cc03c9ae5767fcccc93b38383ef5e841c4b1ba8b2f65a48f5ec71",
+  "runner-results.json": "e5cba4a00b823e9f5d6be8c7283bd1d6699c9d009e92a9d305d14cc2d6cb4bc8",
+  "runner-summary.json": "b39d80002ffbc2a298db2ecb418b8eb3553beda8d3a31ce171e190d4b6512dc3"
+}

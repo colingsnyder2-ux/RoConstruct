@@ -1,0 +1,53 @@
+{
+  "exit_code": 1120,
+  "old_unresolved": 136,
+  "new_unresolved": 127,
+  "resolved": [
+    "protected: __thiscall RBX::EditSelectionVerb::EditSelectionVerb(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class RBX::DataModel *)",
+    "protected: __thiscall RBX::RunStateVerb::RunStateVerb(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class RBX::DataModel *)",
+    "protected: __thiscall RBX::Verb::Verb(class RBX::VerbContainer *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)",
+    "public: virtual __thiscall RBX::EditSelectionVerb::~EditSelectionVerb(void)",
+    "public: virtual __thiscall RBX::RunStateVerb::~RunStateVerb(void)",
+    "public: virtual __thiscall RBX::Verb::~Verb(void)",
+    "public: virtual bool __thiscall RBX::EditSelectionVerb::isEnabled(void)const ",
+    "public: virtual bool __thiscall RBX::Verb::isChecked(void)const ",
+    "public: virtual bool __thiscall RBX::Verb::isEnabled(void)const "
+  ],
+  "introduced": [],
+  "duplicates": [],
+  "provider_objects": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\VerbBaseLifetime.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\verb-family-fresh-link\\VerbBaseLifetime.obj",
+      "sha256": "81d1bd81921f14b8c500b5ad5b409e2f05efea8eb0eb17bafd4cd67093e69403"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\VerbLifetime.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\verb-family-fresh-link\\VerbLifetime.obj",
+      "sha256": "e499e4bdcfb88c88e5dba5654adf746e4bdbf326fbd418094acc34b383ad7da5"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\VerbQueries.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\verb-family-fresh-link\\VerbQueries.obj",
+      "sha256": "cab3b494dd68aac91cba1960ddce967661b2ea2951d10f91198ec930e77cb69c"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\Verb.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\verb-family-fresh-link\\Verb.obj",
+      "sha256": "12de2288a3bd4b774e748481cd537e9d7d749d42e896b80f1264f6dc77dbe7c0"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\EditSelectionVerbConstructor.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\verb-family-fresh-link\\EditSelectionVerbConstructor.obj",
+      "sha256": "6d1489b664184734fa9b15b348222cbd41afd7e903e408d81e2f590fdf7151af"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\checkout\\rebuild\\2008-06\\native-classes\\RunStateVerbConstructor.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\verb-family-fresh-link\\RunStateVerbConstructor.obj",
+      "sha256": "27652ef1432f2328a671de65d43e8c78976eda798e8b737b07782a95f2cea277"
+    }
+  ],
+  "original_code_data_checks": 9,
+  "direct_call_checks": 4,
+  "scope": "Fresh-object link-only diagnostic. Five methods have incomplete call proof; provider selection, ABI, exception handling, runtime and server credit remain unproven."
+}
