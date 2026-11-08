@@ -9,15 +9,15 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 | App/v8xml | 13 | 6 | 6 | 0 | 0 | 1 |
 | App/reflection | 42 | 13 | 28 | 1 | 0 | 0 |
 | App/tool | 97 | 18 | 79 | 0 | 0 | 0 |
-| Unclassified | 156 | 11 | 145 | 0 | 0 | 0 |
+| Unclassified | 158 | 11 | 147 | 0 | 0 | 0 |
 | Studio | 0 | 0 | 0 | 0 | 0 | 0 |
-| WindowsClient | 476 | 158 | 178 | 24 | 0 | 116 |
-| App/v8datamodel | 390 | 134 | 209 | 25 | 0 | 22 |
-| App/v8world | 130 | 73 | 33 | 2 | 0 | 22 |
+| WindowsClient | 499 | 173 | 186 | 24 | 0 | 116 |
+| App/v8datamodel | 390 | 139 | 204 | 25 | 0 | 22 |
+| App/v8world | 130 | 74 | 32 | 2 | 0 | 22 |
 | Network | 65 | 12 | 25 | 15 | 0 | 13 |
-| Rendering | 63 | 16 | 10 | 4 | 0 | 33 |
+| Rendering | 63 | 17 | 9 | 4 | 0 | 33 |
 | Base/util | 93 | 48 | 30 | 12 | 0 | 3 |
-| Other | 367 | 203 | 37 | 37 | 0 | 90 |
+| Other | 367 | 206 | 34 | 37 | 0 | 90 |
 
 Byte differences include **802 banner-only**, **1 line-ending-only**, and
 **2 requiring method review**. Metadata equality is not runtime proof.

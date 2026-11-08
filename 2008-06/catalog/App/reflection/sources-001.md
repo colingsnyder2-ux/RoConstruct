@@ -14,6 +14,7 @@ Earlier paths and their donor versions: `native-headers/reflection/Metadata.h`.
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/reflection/Metadata.h)
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/reflection/Metadata.h)
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/reflection/Metadata.h)
+- canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/reflection/Metadata.h)
 
 **`ad0c18e7922d`** · `App/include/reflection/Metadata.h` · proof not assessed
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/reflection/Metadata.h)
@@ -22,6 +23,7 @@ Earlier paths and their donor versions: `native-headers/reflection/Metadata.h`.
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/reflection/Metadata.h)
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/reflection/Metadata.h)
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/reflection/Metadata.h)
+- public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/reflection/Metadata.h)
 
 **`1f4b33f6d7f4`** · `native-headers/reflection/Metadata.h` · proof not assessed
 
@@ -155,6 +157,8 @@ Earlier paths and their donor versions: `native-headers/reflection/Metadata.h`.
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/reflection/Metadata.h)
 - public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/reflection/Metadata.h)
 - canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/reflection/Metadata.h)
+- public · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/reflection/Metadata.h)
+- canonical · colingsnyder2-ux · [reflection/Metadata.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/reflection/Metadata.h)
 
 </details>
 
@@ -170,6 +174,7 @@ Earlier paths and their donor versions: `native-headers/reflection/descriptor.h`
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/reflection/descriptor.h)
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/reflection/descriptor.h)
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/reflection/descriptor.h)
+- public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/reflection/descriptor.h)
 
 **`c5150d5bca22`** · `App/include/reflection/descriptor.h` · proof not assessed
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/include/reflection/descriptor.h)
@@ -178,6 +183,7 @@ Earlier paths and their donor versions: `native-headers/reflection/descriptor.h`
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/reflection/descriptor.h)
+- canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/reflection/descriptor.h)
 
 **`0063e44074f6`** · `native-headers/reflection/descriptor.h` · proof not assessed
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/reflection/descriptor.h)
@@ -297,6 +303,8 @@ Earlier paths and their donor versions: `native-headers/reflection/descriptor.h`
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
 - public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/reflection/descriptor.h)
 - canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
+- public · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/reflection/descriptor.h)
+- canonical · colingsnyder2-ux · [reflection/descriptor.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/reflection/descriptor.h)
 
 </details>
 
@@ -312,6 +320,7 @@ Earlier paths and their donor versions: `native-headers/reflection/enumconverter
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/reflection/enumconverter.h)
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/reflection/enumconverter.h)
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/reflection/enumconverter.h)
+- public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/reflection/enumconverter.h)
 
 **`8ecb1458c9c0`** · `App/include/reflection/enumconverter.h` · proof not assessed
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/include/reflection/enumconverter.h)
@@ -320,6 +329,7 @@ Earlier paths and their donor versions: `native-headers/reflection/enumconverter
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/reflection/enumconverter.h)
+- canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/reflection/enumconverter.h)
 
 **`3b5faf665173`** · `native-headers/reflection/enumconverter.h` · proof not assessed
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/reflection/enumconverter.h)
@@ -439,6 +449,8 @@ Earlier paths and their donor versions: `native-headers/reflection/enumconverter
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
 - public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/reflection/enumconverter.h)
 - canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
+- public · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/reflection/enumconverter.h)
+- canonical · colingsnyder2-ux · [reflection/enumconverter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/reflection/enumconverter.h)
 
 </details>
 
@@ -454,6 +466,7 @@ Earlier paths and their donor versions: `native-headers/reflection/member.h`.
 - public · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/reflection/member.h)
 - public · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/reflection/member.h)
 - public · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/reflection/member.h)
+- public · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/reflection/member.h)
 
 **`9798f351b491`** · `App/include/reflection/member.h` · proof not assessed
 - canonical · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/include/reflection/member.h)
@@ -462,6 +475,7 @@ Earlier paths and their donor versions: `native-headers/reflection/member.h`.
 - canonical · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/reflection/member.h)
 - canonical · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/reflection/member.h)
 - canonical · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/reflection/member.h)
+- canonical · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/reflection/member.h)
 
 **`0599f526e7fc`** · `native-headers/reflection/member.h` · proof not assessed
 
@@ -573,6 +587,8 @@ Earlier paths and their donor versions: `native-headers/reflection/member.h`.
 - canonical · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/reflection/member.h)
 - public · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/reflection/member.h)
 - canonical · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/reflection/member.h)
+- public · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/reflection/member.h)
+- canonical · colingsnyder2-ux · [reflection/member.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/reflection/member.h)
 
 </details>
 
@@ -588,6 +604,7 @@ Earlier paths and their donor versions: `native-headers/reflection/property.h`.
 - public · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/reflection/property.h)
 - public · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/reflection/property.h)
 - public · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/reflection/property.h)
+- public · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/reflection/property.h)
 
 **`891c60d8ae3f`** · `App/include/reflection/property.h` · proof not assessed
 - canonical · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/include/reflection/property.h)
@@ -596,6 +613,7 @@ Earlier paths and their donor versions: `native-headers/reflection/property.h`.
 - canonical · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/reflection/property.h)
 - canonical · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/reflection/property.h)
 - canonical · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/reflection/property.h)
+- canonical · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/reflection/property.h)
 
 **`0d64df3e2ec8`** · `native-headers/reflection/property.h` · proof not assessed
 
@@ -708,6 +726,8 @@ Earlier paths and their donor versions: `native-headers/reflection/property.h`.
 - canonical · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/reflection/property.h)
 - public · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/reflection/property.h)
 - canonical · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/reflection/property.h)
+- public · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/reflection/property.h)
+- canonical · colingsnyder2-ux · [reflection/property.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/reflection/property.h)
 
 </details>
 
@@ -723,6 +743,7 @@ Earlier paths and their donor versions: `native-headers/reflection/reflection.h`
 - canonical · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/reflection/reflection.h)
 - canonical · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/reflection/reflection.h)
 - canonical · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/reflection/reflection.h)
+- canonical · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/reflection/reflection.h)
 
 **`eed9ee3cd8d9`** · `App/include/reflection/reflection.h` · proof not assessed
 - public · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/reflection/reflection.h)
@@ -731,6 +752,7 @@ Earlier paths and their donor versions: `native-headers/reflection/reflection.h`
 - public · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/reflection/reflection.h)
 - public · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/reflection/reflection.h)
 - public · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/reflection/reflection.h)
+- public · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/reflection/reflection.h)
 
 **`0b6c08189fb2`** · `native-headers/reflection/reflection.h` · proof not assessed
 
@@ -874,6 +896,8 @@ Earlier paths and their donor versions: `native-headers/reflection/reflection.h`
 - canonical · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/reflection/reflection.h)
 - public · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/reflection/reflection.h)
 - canonical · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/reflection/reflection.h)
+- public · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/reflection/reflection.h)
+- canonical · colingsnyder2-ux · [reflection/reflection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/reflection/reflection.h)
 
 </details>
 
@@ -889,6 +913,7 @@ Earlier paths and their donor versions: `native-headers/reflection/signal.h`.
 - public · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/reflection/signal.h)
 - public · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/reflection/signal.h)
 - public · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/reflection/signal.h)
+- public · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/reflection/signal.h)
 
 **`81eea9b87012`** · `App/include/reflection/signal.h` · proof not assessed
 - canonical · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/App/include/reflection/signal.h)
@@ -897,6 +922,7 @@ Earlier paths and their donor versions: `native-headers/reflection/signal.h`.
 - canonical · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/reflection/signal.h)
 - canonical · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/reflection/signal.h)
 - canonical · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/reflection/signal.h)
+- canonical · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/reflection/signal.h)
 
 **`214f182bff79`** · `native-headers/reflection/signal.h` · proof not assessed
 
@@ -1008,6 +1034,8 @@ Earlier paths and their donor versions: `native-headers/reflection/signal.h`.
 - canonical · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/reflection/signal.h)
 - public · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/reflection/signal.h)
 - canonical · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/reflection/signal.h)
+- public · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/reflection/signal.h)
+- canonical · colingsnyder2-ux · [reflection/signal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/reflection/signal.h)
 
 </details>
 
@@ -1023,6 +1051,7 @@ Earlier paths and their donor versions: `native-headers/reflection/type.h`.
 - canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/reflection/type.h)
 - canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/reflection/type.h)
 - canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/reflection/type.h)
+- canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/reflection/type.h)
 
 **`ee6fab21a1cc`** · `App/include/reflection/type.h` · proof not assessed
 - public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/reflection/type.h)
@@ -1031,6 +1060,7 @@ Earlier paths and their donor versions: `native-headers/reflection/type.h`.
 - public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/reflection/type.h)
 - public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/reflection/type.h)
 - public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/reflection/type.h)
+- public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/reflection/type.h)
 
 **`0fab084a522e`** · `native-headers/reflection/type.h` · proof not assessed
 
@@ -1075,6 +1105,7 @@ Earlier paths and their donor versions: `native-headers/reflection/type.h`.
 - draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
 - draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
 - draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
+- draft · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-headers/reflection/type.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -1212,6 +1243,8 @@ Earlier paths and their donor versions: `native-headers/reflection/type.h`.
 - canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/reflection/type.h)
 - public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/reflection/type.h)
 - canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/reflection/type.h)
+- public · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/reflection/type.h)
+- canonical · colingsnyder2-ux · [reflection/type.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/reflection/type.h)
 
 </details>
 
@@ -1230,6 +1263,7 @@ Earlier paths and their donor versions: `native-classes/MetadataClass.cpp`.
 - public · colingsnyder2-ux · [reflection/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/src/reflection/MetadataClass.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/src/reflection/MetadataClass.cpp)
 - public · colingsnyder2-ux · [reflection/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/src/reflection/MetadataClass.cpp)
+- public · colingsnyder2-ux · [reflection/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/reflection/MetadataClass.cpp)
 
 **`4d91447868ad`** · `App/src/reflection/MetadataClass.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [reflection/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/App/src/reflection/MetadataClass.cpp)
@@ -1241,6 +1275,7 @@ Earlier paths and their donor versions: `native-classes/MetadataClass.cpp`.
 - canonical · colingsnyder2-ux · [reflection/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/src/reflection/MetadataClass.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/src/reflection/MetadataClass.cpp)
 - canonical · colingsnyder2-ux · [reflection/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/src/reflection/MetadataClass.cpp)
+- canonical · colingsnyder2-ux · [reflection/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/reflection/MetadataClass.cpp)
 
 **`00c3a252b368`** · `native-classes/MetadataClass.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/MetadataClass.cpp)
@@ -1353,5 +1388,7 @@ Earlier paths and their donor versions: `native-classes/MetadataClass.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-classes/MetadataClass.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/MetadataClass.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/MetadataClass.cpp)
+- public · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/MetadataClass.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/MetadataClass.cpp)
 
 </details>

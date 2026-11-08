@@ -12,12 +12,14 @@ Earlier paths and their donor versions: `native-headers/script/ScriptContext.h`.
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/script/ScriptContext.h)
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/script/ScriptContext.h)
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/script/ScriptContext.h)
+- canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/script/ScriptContext.h)
 
 **`f1e5a3c92057`** · `App/include/script/ScriptContext.h` · proof not assessed
 - public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/App/include/script/ScriptContext.h)
 - public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/script/ScriptContext.h)
 - public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/script/ScriptContext.h)
 - public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/script/ScriptContext.h)
+- public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/script/ScriptContext.h)
 
 **`1115fef106f8`** · `native-headers/script/ScriptContext.h` · proof not assessed
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/script/ScriptContext.h)
@@ -211,6 +213,8 @@ Earlier paths and their donor versions: `native-headers/script/ScriptContext.h`.
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/script/ScriptContext.h)
 - public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/script/ScriptContext.h)
 - canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/script/ScriptContext.h)
+- public · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/script/ScriptContext.h)
+- canonical · colingsnyder2-ux · [script/ScriptContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/script/ScriptContext.h)
 
 </details>
 
@@ -224,12 +228,14 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/stats/Stats.h)
+- public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/stats/Stats.h)
 
 **`e530d9903932`** · `App/include/stats/Stats.h` · proof not assessed
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/stats/Stats.h)
+- canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/stats/Stats.h)
 
 **`0d1be6a9a3c6`** · `native-headers/stats/Stats.h` · proof not assessed
 
@@ -346,6 +352,8 @@ Earlier paths and their donor versions: `native-headers/stats/Stats.h`.
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
 - public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/stats/Stats.h)
 - canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
+- public · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/stats/Stats.h)
+- canonical · colingsnyder2-ux · [stats/Stats.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/stats/Stats.h)
 
 </details>
 
@@ -358,11 +366,13 @@ Earlier paths and their donor versions: `native-headers/stats/WorkspaceStatsItem
 - canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/stats/WorkspaceStatsItem.h)
 - canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/stats/WorkspaceStatsItem.h)
 - canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/stats/WorkspaceStatsItem.h)
+- canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/stats/WorkspaceStatsItem.h)
 
 **`ada3ae6b000a`** · `App/include/stats/WorkspaceStatsItem.h` · proof not assessed
 - public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/stats/WorkspaceStatsItem.h)
 - public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/stats/WorkspaceStatsItem.h)
 - public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/stats/WorkspaceStatsItem.h)
+- public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/stats/WorkspaceStatsItem.h)
 
 **`4a2488ccf572`** · `native-headers/stats/WorkspaceStatsItem.h` · proof not assessed
 - canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h)
@@ -477,6 +487,8 @@ Earlier paths and their donor versions: `native-headers/stats/WorkspaceStatsItem
 - canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h)
 - public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/stats/WorkspaceStatsItem.h)
 - canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h)
+- public · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/stats/WorkspaceStatsItem.h)
+- canonical · colingsnyder2-ux · [stats/WorkspaceStatsItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h)
 
 </details>
 
@@ -490,12 +502,14 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Connector2008.h
 - canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/v8kernel/Connector2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/v8kernel/Connector2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/v8kernel/Connector2008.h)
+- canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/v8kernel/Connector2008.h)
 
 **`8856b9103a23`** · `App/include/v8kernel/Connector2008.h` · proof not assessed
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/App/include/v8kernel/Connector2008.h)
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/v8kernel/Connector2008.h)
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/v8kernel/Connector2008.h)
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/v8kernel/Connector2008.h)
+- public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/v8kernel/Connector2008.h)
 
 **`0bb8bbebb8a3`** · `native-headers/v8kernel/Connector2008.h` · proof not assessed
 - canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/v8kernel/Connector2008.h)
@@ -604,6 +618,8 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Connector2008.h
 - canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/v8kernel/Connector2008.h)
 - public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/v8kernel/Connector2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/v8kernel/Connector2008.h)
+- public · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/v8kernel/Connector2008.h)
+- canonical · colingsnyder2-ux · [v8kernel/Connector2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/v8kernel/Connector2008.h)
 
 </details>
 
@@ -617,12 +633,14 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
+- canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/include/v8kernel/Kernel2008.h)
 
 **`7e62afd4ddce`** · `App/include/v8kernel/Kernel2008.h` · proof not assessed
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/App/include/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/App/include/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/App/include/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/App/include/v8kernel/Kernel2008.h)
+- public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/include/v8kernel/Kernel2008.h)
 
 **`21a6ab4dd01a`** · `native-headers/v8kernel/Kernel2008.h` · proof not assessed
 
@@ -731,6 +749,8 @@ Earlier paths and their donor versions: `native-headers/v8kernel/Kernel2008.h`.
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h)
 - public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/v8kernel/Kernel2008.h)
 - canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h)
+- public · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/v8kernel/Kernel2008.h)
+- canonical · colingsnyder2-ux · [v8kernel/Kernel2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/v8kernel/Kernel2008.h)
 
 </details>
 
@@ -833,6 +853,8 @@ Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
 - public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-classes/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
+- public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/Accoutrement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
 
 </details>
 
@@ -897,6 +919,9 @@ Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/1606ed5b88e100edb4468491a464cb6425429dfe32c76ddd46c7100f909a0647/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/165405131017937995d208d7b00557e8eca154dc32bcc5bdda9fbcb683587168/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/936c5183944c1a7165337a74b325ed7845afce5465d69b4958fcbe3f0097dd07/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/1606ed5b88e100edb4468491a464cb6425429dfe32c76ddd46c7100f909a0647/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/165405131017937995d208d7b00557e8eca154dc32bcc5bdda9fbcb683587168/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/936c5183944c1a7165337a74b325ed7845afce5465d69b4958fcbe3f0097dd07/rebuild/2008-06/native-classes/AdornG3D.cpp)
 
 <details><summary>4 retained local origins</summary>
 
@@ -927,6 +952,7 @@ Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/drafts/files/c4c8eba122c8e51ace5b28af239399d4d493e49569e0eae94ac8597ffe7e93d6/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/drafts/files/c4c8eba122c8e51ace5b28af239399d4d493e49569e0eae94ac8597ffe7e93d6/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/c4c8eba122c8e51ace5b28af239399d4d493e49569e0eae94ac8597ffe7e93d6/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/c4c8eba122c8e51ace5b28af239399d4d493e49569e0eae94ac8597ffe7e93d6/rebuild/2008-06/native-classes/AdornG3D.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -973,6 +999,8 @@ Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/drafts/files/d54c19d68f89770dcc7741cfbe7b70fa962b0d9ad812b0a66fae93a36cd1f2da/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/3a25f406169093f23a27e2e57793cacc8d457641df1b7dfcf68c6aff8abbbeb4/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/d54c19d68f89770dcc7741cfbe7b70fa962b0d9ad812b0a66fae93a36cd1f2da/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/3a25f406169093f23a27e2e57793cacc8d457641df1b7dfcf68c6aff8abbbeb4/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/d54c19d68f89770dcc7741cfbe7b70fa962b0d9ad812b0a66fae93a36cd1f2da/rebuild/2008-06/native-classes/AdornG3D.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -1020,6 +1048,8 @@ Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/drafts/files/cba0435330ee5c1faaf24bd53b1ab463ad691482a4925a0c39d2024e29963ee3/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/42bf8301d879ed0ece38a9f32d16cdffab690010ebd7493cc8e642592c1748f9/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/cba0435330ee5c1faaf24bd53b1ab463ad691482a4925a0c39d2024e29963ee3/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/42bf8301d879ed0ece38a9f32d16cdffab690010ebd7493cc8e642592c1748f9/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/cba0435330ee5c1faaf24bd53b1ab463ad691482a4925a0c39d2024e29963ee3/rebuild/2008-06/native-classes/AdornG3D.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -1048,6 +1078,7 @@ Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/drafts/files/0acd4a8177695d190d54f4455ee8937ec93aa827b15851d9815d01c82c392704/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/drafts/files/0acd4a8177695d190d54f4455ee8937ec93aa827b15851d9815d01c82c392704/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/0acd4a8177695d190d54f4455ee8937ec93aa827b15851d9815d01c82c392704/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/0acd4a8177695d190d54f4455ee8937ec93aa827b15851d9815d01c82c392704/rebuild/2008-06/native-classes/AdornG3D.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -1075,6 +1106,7 @@ Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/drafts/files/457ab983562584c9f8d79d9ef169459c4cf8d5872a39eaad02707b3012bb0abe/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/drafts/files/457ab983562584c9f8d79d9ef169459c4cf8d5872a39eaad02707b3012bb0abe/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/457ab983562584c9f8d79d9ef169459c4cf8d5872a39eaad02707b3012bb0abe/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/457ab983562584c9f8d79d9ef169459c4cf8d5872a39eaad02707b3012bb0abe/rebuild/2008-06/native-classes/AdornG3D.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -1104,6 +1136,7 @@ Compatibility path for `App/src/v8datamodel/Accoutrement.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp)
 - draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp)
+- draft · colingsnyder2-ux · [native-classes/AdornG3D.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp)
 
 <details><summary>2 retained local origins</summary>
 
