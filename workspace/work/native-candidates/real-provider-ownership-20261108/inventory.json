@@ -1,0 +1,17 @@
+{
+  "after-link-receipt.json": "b8f4dbc64067a1b26e0cdc3b697b5fd59562e51d10fca00c8d9b28b61c32a1b7",
+  "after-link.log.txt": "f470d703003143b61c4a28dd19c8519d1f21a182943b1307121199f79bfef353",
+  "before-link.log.txt": "4e39601f157c8d4e93ec914065eba94432ebcff9e405beb299adeaf3619da734",
+  "build-receipt.json": "5349d1ea021d6d23ae234da17cd22d8a1660558b1603ae4677778b96e3122d59",
+  "builder-candidate.py.txt": "9a46ddec4837d09b5f56511a160a379eee11ff01622f027b9fab3b39f4fd3e10",
+  "comparison.json": "edda5cf95a1adcc715d3a008adc3e88b1328ad4ad3f8fca22f4ef2d12a8ab555",
+  "compile-results.json": "2ced9221c05d9ac35af582e6e382de3d54f7474074240129a478ef8db3f2f54e",
+  "compile-summary.json": "5ca2d4ea8b62fd300e54b3348d500f74a21bafadbbc8d817360317c4dc87af70",
+  "input-hashes.json": "2ce1826a95e91d214f5f173f9126d98c21cf84811d7c9010f9e2d698ffbea23b",
+  "link-command.json": "14fcdc166acbf44457aa9d123709562fa0d206efcfd4a9e5d818b79cc1d341e3",
+  "README.md": "425258edba3d5ae1ca75a104e113db99cc8eab41d7f24c65c66b8287deca0c1e",
+  "reused-objects.json": "995bff0a86f52711eb9f4cd688bafe6b2a2b1272e36ae80a5ef72d21c5353d85",
+  "RobloxShellRecoveredTrial.cpp": "cf989b6b0d41902a2f87e170f98fa86a76417eca55d8b63ae8e737d78560e20a",
+  "shell-trial.diff.txt": "369f3294e2f6a9c38718ec4bc2b15578694789f06e7b155dc460181d51393a88",
+  "shell-trial2.diff.txt": "2bce3b3c67b921c15785d9aeb3a2d0a048c379c5a2d42d169cbf68ae83eb8565"
+}

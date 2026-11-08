@@ -1,0 +1,19 @@
+--- RobloxShellRecoveredTrial.cpp
++++ RobloxShellRecoveredTrial2.cpp
+@@ -216,13 +216,6 @@
+ 
+ CRobloxApp theApp;
+ 
+-void CMainFrame::OnExplorerOpen(NMHDR*, LRESULT* result) {
+-    HTREEITEM item = explorer.GetSelectedItem();
+-    CString source;
+-    source = "\1";
+-    if (item) P6DataProperties((void*)explorer.GetItemData(item), captureSource, &source);
+-    if (item && source != "\1") theApp.OpenScript((void*)explorer.GetItemData(item), explorer.GetItemText(item));
+-    *result = 0;
+-}
+-
+-static void RunScriptFile(const CString& path) { CRobloxApp::RunFile(path); }
++
++
++

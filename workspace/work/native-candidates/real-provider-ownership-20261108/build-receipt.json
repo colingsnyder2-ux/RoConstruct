@@ -1,0 +1,24 @@
+{
+  "base": "a7485e8eb5afda31b450dd4e12cd7a4372355bba",
+  "exit_code": 1120,
+  "seconds": 82.80386638641357,
+  "builder_sha256": "9a46ddec4837d09b5f56511a160a379eee11ff01622f027b9fab3b39f4fd3e10",
+  "input_drift": [],
+  "errors": [
+    "overedCMainFrameSettingsCommand.obj : error LNK2019: unresolved external symbol \"void __cdecl showSettingsDialog(class CWnd *)\" (?showSettingsDialog@@YAXPAVCWnd@@@Z) referenced in function \"public: void __thiscall CMainFrame::handle_42ee80(void)\" (?handle_42ee80@CMainFrame@@QAEXXZ)",
+    "RecoveredCMainFrameXtp.obj : error LNK2019: unresolved external symbol \"public: __thiscall CSelectionTreeCtrl::CSelectionTreeCtrl(void)\" (??0CSelectionTreeCtrl@@QAE@XZ) referenced in function \"protected: __thiscall CWrapperView::CWrapperView(void)\" (??0CWrapperView@@IAE@XZ)",
+    "RecoveredCMainFrameXtp.obj : error LNK2019: unresolved external symbol \"public: virtual __thiscall CSelectionTreeCtrl::~CSelectionTreeCtrl(void)\" (??1CSelectionTreeCtrl@@UAE@XZ) referenced in function \"public: virtual __thiscall CWrapperView::~CWrapperView(void)\" (??1CWrapperView@@UAE@XZ)",
+    "RecoveredCMainFrameXtp.obj : error LNK2001: unresolved external symbol \"public: virtual struct CRuntimeClass * __thiscall CPatchedControlComboBox::GetRuntimeClass(void)const \" (?GetRuntimeClass@CPatchedControlComboBox@@UBEPAUCRuntimeClass@@XZ)",
+    "RecoveredCMainFrameXtp.obj : error LNK2001: unresolved external symbol \"protected: virtual int __thiscall CPatchedControlComboBox::Compare(class CXTPControl *)\" (?Compare@CPatchedControlComboBox@@MAEHPAVCXTPControl@@@Z)",
+    "RecoveredCMainFrameXtp.obj : error LNK2001: unresolved external symbol \"public: virtual class CXTPControl * __thiscall CPatchedControlComboBox::Clone(int)\" (?Clone@CPatchedControlComboBox@@UAEPAVCXTPControl@@H@Z)",
+    "RecoveredCMainFrameXtp.obj : error LNK2019: unresolved external symbol \"public: __thiscall CRobloxControlColorSelector::CRobloxControlColorSelector(void)\" (??0CRobloxControlColorSelector@@QAE@XZ) referenced in function \"public: int __thiscall CMainFrame::handle_42fe00(void *)\" (?handle_42fe00@CMainFrame@@QAEHPAX@Z)",
+    "RecoveredCMainFrameXtp.obj : error LNK2019: unresolved external symbol \"public: static struct CRuntimeClass * __stdcall CRobloxReportPaneView::GetThisClass(void)\" (?GetThisClass@CRobloxReportPaneView@@SGPAUCRuntimeClass@@XZ) referenced in function \"public: long __thiscall CMainFrame::handle_4314e0(unsigned int,long)\" (?handle_4314e0@CMainFrame@@QAEJIJ@Z)",
+    "RecoveredCMainFrameXtp.obj : error LNK2019: unresolved external symbol \"public: static struct CRuntimeClass * __stdcall CStandardOutputView::GetThisClass(void)\" (?GetThisClass@CStandardOutputView@@SGPAUCRuntimeClass@@XZ) referenced in function \"public: long __thiscall CMainFrame::handle_4314e0(unsigned int,long)\" (?handle_4314e0@CMainFrame@@QAEJIJ@Z)",
+    "RecoveredCMainFrameXtp.obj : error LNK2019: unresolved external symbol \"public: void __thiscall ActiveDocView::refresh(void)\" (?refresh@ActiveDocView@@QAEXXZ) referenced in function \"public: long __thiscall CMainFrame::handle_4314e0(unsigned int,long)\" (?handle_4314e0@CMainFrame@@QAEJIJ@Z)",
+    "RecoveredCMainFrameXtp.obj : error LNK2019: unresolved external symbol \"public: __thiscall CDataModelPropGrid::CDataModelPropGrid(void)\" (??0CDataModelPropGrid@@QAE@XZ) referenced in function \"public: long __thiscall CMainFrame::handle_4314e0(unsigned int,long)\" (?handle_4314e0@CMainFrame@@QAEJIJ@Z)",
+    "RecoveredCMainFrameXtp.obj : error LNK2019: unresolved external symbol \"public: __thiscall CSelectionCaption::CSelectionCaption(void)\" (??0CSelectionCaption@@QAE@XZ) referenced in function \"public: long __thiscall CMainFrame::handle_4314e0(unsigned int,long)\" (?handle_4314e0@CMainFrame@@QAEJIJ@Z)",
+    "Roblox.exe : fatal error LNK1120: 134 unresolved externals"
+  ],
+  "log": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\real-provider-isolated-fast-20261108\\build-02.log",
+  "scope": "Isolated compile/link diagnostic only. No executable run, ABI or runtime proof."
+}
