@@ -29,6 +29,7 @@ named definitions can conflict even when object file names differ.
   tests/         regression, matching, ABI, runtime and exploratory checks
   tests/matching, tests/regression, tests/runtime  organized checks; old entry points remain compatible
   experiments/trials/  inactive trial implementations; tests/ retains compatibility paths
+  experiments/overlays/  isolated include profiles; legacy paths remain compatible
 
 The optional local Source/ views describe donor inputs from tools/rbxgs/Client
 and are not tracked directories. Their availability depends on local setup.
