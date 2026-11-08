@@ -9,9 +9,11 @@ Earlier paths and their donor versions: `native-headers/RbxGraphics/Adorn.h`.
 
 **`7bd2ad7920fb`** · `Rendering/include/RbxGraphics/Adorn.h` · proof not assessed
 - canonical · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/Rendering/include/RbxGraphics/Adorn.h)
+- canonical · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/Rendering/include/RbxGraphics/Adorn.h)
 
 **`d36eb12fdf85`** · `Rendering/include/RbxGraphics/Adorn.h` · proof not assessed
 - public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/Rendering/include/RbxGraphics/Adorn.h)
+- public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/Rendering/include/RbxGraphics/Adorn.h)
 
 **`78ee1f9abf5d`** · `native-headers/RbxGraphics/Adorn.h` · proof not assessed
 
@@ -65,6 +67,7 @@ Earlier paths and their donor versions: `native-headers/RbxGraphics/Adorn.h`.
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
+- draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -135,6 +138,8 @@ Earlier paths and their donor versions: `native-headers/RbxGraphics/Adorn.h`.
 **`cf7714acb2ad`** · `native-headers/RbxGraphics/Adorn.h` · proof not assessed
 - public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/RbxGraphics/Adorn.h)
 - canonical · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
+- public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/RbxGraphics/Adorn.h)
+- canonical · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 
 </details>
 
@@ -227,6 +232,7 @@ Compatibility path for `App/src/tool/AxisMoveToolRender.cpp`; compile either pat
 - archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
 - archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
 - archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
+- archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -293,6 +299,8 @@ Compatibility path for `App/src/tool/AxisMoveToolRender.cpp`; compile either pat
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/AxisMoveToolRender.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/AxisMoveToolRender.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/AxisMoveToolRender.cpp)
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/AxisMoveToolRender.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/AxisMoveToolRender.cpp)
 
 </details>
 
@@ -388,6 +396,8 @@ Compatibility path for `WindowsClient/src/CClassImages.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/CClassImages.cpp)
 - public · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/CClassImages.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/CClassImages.cpp)
+- public · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/CClassImages.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/CClassImages.cpp)
 
 </details>
 
@@ -519,6 +529,8 @@ Compatibility path for `App/src/v8datamodel/DecalBases.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/DecalBases.cpp)
 - public · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/DecalBases.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/DecalBases.cpp)
+- public · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/DecalBases.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/DecalBases.cpp)
 
 </details>
 
@@ -635,6 +647,8 @@ Compatibility path for `App/src/v8datamodel/DecalLifetime.cpp`; compile either p
 - canonical · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/DecalLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/DecalLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/DecalLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/DecalLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/DecalLifetime.cpp)
 
 </details>
 
@@ -669,6 +683,7 @@ Compatibility path for `App/src/v8datamodel/DecalLifetime.cpp`; compile either p
 - draft · colingsnyder2-ux · [native-classes/IRenderableLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/f35dc00415455d4d843b5b75b5104f5360755fb22b74f0900441e592ab060937/rebuild/2008-06/native-classes/IRenderableLifetime.cpp)
 - draft · colingsnyder2-ux · [native-classes/IRenderableLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/f35dc00415455d4d843b5b75b5104f5360755fb22b74f0900441e592ab060937/rebuild/2008-06/native-classes/IRenderableLifetime.cpp)
 - draft · colingsnyder2-ux · [native-classes/IRenderableLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/f35dc00415455d4d843b5b75b5104f5360755fb22b74f0900441e592ab060937/rebuild/2008-06/native-classes/IRenderableLifetime.cpp)
+- draft · colingsnyder2-ux · [native-classes/IRenderableLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/f35dc00415455d4d843b5b75b5104f5360755fb22b74f0900441e592ab060937/rebuild/2008-06/native-classes/IRenderableLifetime.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -766,6 +781,8 @@ Compatibility path for `Unclassified/src/ImageMimeType.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [native-classes/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/ImageMimeType.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/ImageMimeType.cpp)
+- public · colingsnyder2-ux · [native-classes/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/ImageMimeType.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/ImageMimeType.cpp)
 
 </details>
 
@@ -870,6 +887,8 @@ Compatibility path for `App/src/v8datamodel/InsertDecalAction.cpp`; compile eith
 - canonical · colingsnyder2-ux · [native-classes/InsertDecalAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/InsertDecalAction.cpp)
 - public · colingsnyder2-ux · [native-classes/InsertDecalAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/InsertDecalAction.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InsertDecalAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/InsertDecalAction.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertDecalAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/InsertDecalAction.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertDecalAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/InsertDecalAction.cpp)
 
 </details>
 
@@ -969,6 +988,8 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - canonical · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/MouseGetDecal.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/MouseGetDecal.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/MouseGetDecal.cpp)
+- public · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/MouseGetDecal.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseGetDecal.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/MouseGetDecal.cpp)
 
 </details>
 
@@ -992,6 +1013,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - draft · colingsnyder2-ux · [native-classes/OgreRbxNodeSceneNode.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp)
 - draft · colingsnyder2-ux · [native-classes/OgreRbxNodeSceneNode.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp)
 - draft · colingsnyder2-ux · [native-classes/OgreRbxNodeSceneNode.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp)
+- draft · colingsnyder2-ux · [native-classes/OgreRbxNodeSceneNode.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -1021,6 +1043,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - draft · colingsnyder2-ux · [native-classes/OgreRbxNodeTwoDManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp)
 - draft · colingsnyder2-ux · [native-classes/OgreRbxNodeTwoDManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp)
 - draft · colingsnyder2-ux · [native-classes/OgreRbxNodeTwoDManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp)
+- draft · colingsnyder2-ux · [native-classes/OgreRbxNodeTwoDManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -1052,6 +1075,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - draft · colingsnyder2-ux · [native-classes/OgreRbxSceneManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp)
 - draft · colingsnyder2-ux · [native-classes/OgreRbxSceneManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp)
 - draft · colingsnyder2-ux · [native-classes/OgreRbxSceneManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp)
+- draft · colingsnyder2-ux · [native-classes/OgreRbxSceneManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -1122,6 +1146,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - public · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/RenderMaterial.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/RenderMaterial.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/RenderMaterial.cpp)
+- public · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/RenderMaterial.cpp)
 
 **`e1f1e74c0bad`** · `native-classes/RenderMaterial.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/RenderMaterial.cpp)
@@ -1140,6 +1165,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - canonical · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/RenderMaterial.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/RenderMaterial.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/RenderMaterial.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RenderMaterial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/RenderMaterial.cpp)
 
 <details><summary>7 retained local origins</summary>
 
@@ -1192,6 +1218,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - canonical · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/RenderMaterialNew.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/RenderMaterialNew.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/RenderMaterialNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/RenderMaterialNew.cpp)
 
 <details><summary>7 retained local origins</summary>
 
@@ -1228,6 +1255,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - public · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/RenderMaterialNew.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/RenderMaterialNew.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/RenderMaterialNew.cpp)
+- public · colingsnyder2-ux · [native-classes/RenderMaterialNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/RenderMaterialNew.cpp)
 
 </details>
 
@@ -1249,6 +1277,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - draft · colingsnyder2-ux · [native-classes/RenderSceneBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/RenderSceneBase2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/RenderSceneBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/RenderSceneBase2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/RenderSceneBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/RenderSceneBase2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/RenderSceneBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/RenderSceneBase2008.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -1274,6 +1303,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - draft · colingsnyder2-ux · [native-classes/RenderSceneBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/RenderSceneBase2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/RenderSceneBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/RenderSceneBase2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/RenderSceneBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/RenderSceneBase2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/RenderSceneBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/RenderSceneBase2008.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -1305,6 +1335,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - draft · colingsnyder2-ux · [native-classes/RenderSceneNew2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/RenderSceneNew2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/RenderSceneNew2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/RenderSceneNew2008.cpp)
 - draft · colingsnyder2-ux · [native-classes/RenderSceneNew2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/RenderSceneNew2008.cpp)
+- draft · colingsnyder2-ux · [native-classes/RenderSceneNew2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/RenderSceneNew2008.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -1332,6 +1363,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - public · colingsnyder2-ux · [native-classes/RenderSpecData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/RenderSpecData.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderSpecData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/RenderSpecData.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderSpecData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/RenderSpecData.cpp)
+- public · colingsnyder2-ux · [native-classes/RenderSpecData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/RenderSpecData.cpp)
 
 **`4e11c46cc66e`** · `native-classes/RenderSpecData.cpp` · proof not assessed
 
@@ -1401,6 +1433,7 @@ Compatibility path for `App/src/v8datamodel/MouseGetDecal.cpp`; compile either p
 - public · colingsnyder2-ux · [native-classes/RenderSpecDataState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/RenderSpecDataState.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderSpecDataState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/RenderSpecDataState.cpp)
 - public · colingsnyder2-ux · [native-classes/RenderSpecDataState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/RenderSpecDataState.cpp)
+- public · colingsnyder2-ux · [native-classes/RenderSpecDataState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/RenderSpecDataState.cpp)
 
 </details>
 
@@ -1510,5 +1543,7 @@ Compatibility path for `App/src/tool/ResizeToolRender.cpp`; compile either path,
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/ResizeToolRender.cpp)
 - public · colingsnyder2-ux · [native-classes/ResizeToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/ResizeToolRender.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/ResizeToolRender.cpp)
+- public · colingsnyder2-ux · [native-classes/ResizeToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/ResizeToolRender.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ResizeToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/ResizeToolRender.cpp)
 
 </details>

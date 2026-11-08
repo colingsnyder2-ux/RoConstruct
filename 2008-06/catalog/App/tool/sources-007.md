@@ -1,6 +1,712 @@
 # App/tool
 
-[Project index](README.md) · [Previous](sources-006.md)
+[Project index](README.md) · [Previous](sources-006.md) · [Next](sources-008.md)
+
+<details>
+<summary>native-headers/tool/AxisMoveTool.h — equivalent; 7 content versions</summary>
+
+Compatibility path for `App/include/tool/AxisMoveTool.h`; compile either path, never both.
+
+**`0990093dc20d`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`4312316eb510`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/AxisMoveTool.h`
+- local · `local/findings/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`8275550d1d55`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
+
+<details><summary>16 retained local origins</summary>
+
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a31d0a1220c4`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- fork · mewpokemons · [tool/AxisMoveTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- fork · mewpokemons · [tool/AxisMoveTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`b3e51c830b4d`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/tool/AxisMoveTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`b7731375755d`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/AxisMoveTool.h)
+
+**`43f066f65ccb`** · `native-headers/tool/AxisMoveTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+- public · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/AxisMoveTool.h)
+- canonical · colingsnyder2-ux · [tool/AxisMoveTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/AxisMoveTool.h)
+
+</details>
+
+<details>
+<summary>native-headers/tool/BasicMouseTools.h — equivalent; 9 content versions</summary>
+
+Compatibility path for `App/include/tool/BasicMouseTools.h`; compile either path, never both.
+
+**`4c55b79291d7`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/BasicMouseTools.h`
+- local · `local/findings/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`5316689fafa8`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/BasicMouseTools.h)
+
+**`806ffde74b2a`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`8151dc8f8b10`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+
+<details><summary>5 retained local origins</summary>
+
+- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`91c13a9eee64`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- fork · mewpokemons · [tool/BasicMouseTools.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- fork · mewpokemons · [tool/BasicMouseTools.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`ac7d575e5aa0`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+- fork · coldek · [tool/BasicMouseTools.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- fork · mewpokemons · [tool/BasicMouseTools.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/fork-merge/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`b9a87a211c12`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+
+<details><summary>16 retained local origins</summary>
+
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`f863fb2ef0ba`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/tool/BasicMouseTools.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`9a550cb8b6b3`** · `native-headers/tool/BasicMouseTools.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+- public · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/BasicMouseTools.h)
+- canonical · colingsnyder2-ux · [tool/BasicMouseTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/BasicMouseTools.h)
+
+</details>
+
+<details>
+<summary>native-headers/tool/DragTool.h — equivalent; 7 content versions</summary>
+
+Compatibility path for `App/include/tool/DragTool.h`; compile either path, never both.
+
+**`0492285c8229`** · `native-headers/tool/DragTool.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`145d852ef13a`** · `native-headers/tool/DragTool.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/DragTool.h`
+- local · `local/findings/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`6152fbefeb0b`** · `native-headers/tool/DragTool.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`723014e125ad`** · `native-headers/tool/DragTool.h` · proof not assessed
+
+<details><summary>21 retained local origins</summary>
+
+- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`857f2a1b0361`** · `native-headers/tool/DragTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/DragTool.h)
+
+**`d5bd1b3208e6`** · `native-headers/tool/DragTool.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- fork · coldek · [tool/DragTool.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/DragTool.h)
+- fork · mewpokemons · [tool/DragTool.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/DragTool.h)
+- fork · mewpokemons · [tool/DragTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/DragTool.h)
+- fork · mewpokemons · [tool/DragTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+
+<details><summary>13 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/DragTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`ccd71fb4675f`** · `native-headers/tool/DragTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+- public · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/DragTool.h)
+- canonical · colingsnyder2-ux · [tool/DragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/DragTool.h)
+
+</details>
+
+<details>
+<summary>native-headers/tool/FlatTool.h — equivalent; 7 content versions</summary>
+
+Compatibility path for `App/include/tool/FlatTool.h`; compile either path, never both.
+
+**`25f09a08b37c`** · `native-headers/tool/FlatTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/FlatTool.h)
+
+**`2c448f7ed40e`** · `native-headers/tool/FlatTool.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`4f5fa9c89e97`** · `native-headers/tool/FlatTool.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- fork · coldek · [tool/FlatTool.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- fork · mewpokemons · [tool/FlatTool.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- fork · mewpokemons · [tool/FlatTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- fork · mewpokemons · [tool/FlatTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+
+<details><summary>13 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7874e8f134b5`** · `native-headers/tool/FlatTool.h` · proof not assessed
+
+<details><summary>21 retained local origins</summary>
+
+- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`820b27448fe4`** · `native-headers/tool/FlatTool.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/FlatTool.h`
+- local · `local/findings/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`9eeea8925334`** · `native-headers/tool/FlatTool.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/tool/FlatTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`515266a18b69`** · `native-headers/tool/FlatTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+- public · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/FlatTool.h)
+- canonical · colingsnyder2-ux · [tool/FlatTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/FlatTool.h)
+
+</details>
+
+<details>
+<summary>native-headers/tool/GroupDragTool.h — equivalent; 7 content versions</summary>
+
+Compatibility path for `App/include/tool/GroupDragTool.h`; compile either path, never both.
+
+**`693dd00ccc04`** · `native-headers/tool/GroupDragTool.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/GroupDragTool.h`
+- local · `local/findings/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`78076f0fbc84`** · `native-headers/tool/GroupDragTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/GroupDragTool.h)
+
+**`79cefa918a13`** · `native-headers/tool/GroupDragTool.h` · proof not assessed
+
+<details><summary>20 retained local origins</summary>
+
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`9288025bf241`** · `native-headers/tool/GroupDragTool.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a81b963d6aca`** · `native-headers/tool/GroupDragTool.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- fork · mewpokemons · [tool/GroupDragTool.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- fork · mewpokemons · [tool/GroupDragTool.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+
+<details><summary>8 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e81e118b4e2f`** · `native-headers/tool/GroupDragTool.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/tool/GroupDragTool.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`c41cc09bf7f5`** · `native-headers/tool/GroupDragTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+- public · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/GroupDragTool.h)
+- canonical · colingsnyder2-ux · [tool/GroupDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/GroupDragTool.h)
+
+</details>
+
+<details>
+<summary>native-headers/tool/MegaDragger.h — equivalent; 7 content versions</summary>
+
+Compatibility path for `App/include/tool/MegaDragger.h`; compile either path, never both.
+
+**`29af443c8508`** · `native-headers/tool/MegaDragger.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`2f4a05ab5827`** · `native-headers/tool/MegaDragger.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- fork · coldek · [tool/MegaDragger.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- fork · mewpokemons · [tool/MegaDragger.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- fork · mewpokemons · [tool/MegaDragger.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- fork · mewpokemons · [tool/MegaDragger.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+
+<details><summary>13 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7f37596c902f`** · `native-headers/tool/MegaDragger.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/MegaDragger.h)
+
+**`94318d89c2b3`** · `native-headers/tool/MegaDragger.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`9df44275918a`** · `native-headers/tool/MegaDragger.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/MegaDragger.h`
+- local · `local/findings/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d457290a43cc`** · `native-headers/tool/MegaDragger.h` · proof not assessed
+
+<details><summary>21 retained local origins</summary>
+
+- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`ef815671980a`** · `native-headers/tool/MegaDragger.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
+
+</details>
 
 <details>
 <summary>native-headers/tool/ModelTool.h — equivalent; 7 content versions</summary>
@@ -115,6 +821,8 @@ Compatibility path for `App/include/tool/ModelTool.h`; compile either path, neve
 **`77b30e58b4b4`** · `native-headers/tool/ModelTool.h` · proof not assessed
 - public · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/ModelTool.h)
 - canonical · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/ModelTool.h)
+- public · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/ModelTool.h)
+- canonical · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/ModelTool.h)
 
 </details>
 
@@ -231,6 +939,8 @@ Compatibility path for `App/include/tool/ModelTools.h`; compile either path, nev
 **`d1a7fc63545a`** · `native-headers/tool/ModelTools.h` · proof not assessed
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h)
+- public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/ModelTools.h)
+- canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h)
 
 </details>
 
@@ -339,6 +1049,8 @@ Compatibility path for `App/include/tool/NullTool.h`; compile either path, never
 **`a37cdb983414`** · `native-headers/tool/NullTool.h` · proof not assessed
 - public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/NullTool.h)
 - canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/NullTool.h)
+- public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/NullTool.h)
+- canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/NullTool.h)
 
 </details>
 
@@ -447,6 +1159,8 @@ Compatibility path for `App/include/tool/PartDragTool.h`; compile either path, n
 **`132b36c69af3`** · `native-headers/tool/PartDragTool.h` · proof not assessed
 - public · colingsnyder2-ux · [tool/PartDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/PartDragTool.h)
 - canonical · colingsnyder2-ux · [tool/PartDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/PartDragTool.h)
+- public · colingsnyder2-ux · [tool/PartDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/PartDragTool.h)
+- canonical · colingsnyder2-ux · [tool/PartDragTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/PartDragTool.h)
 
 </details>
 
@@ -563,6 +1277,8 @@ Compatibility path for `App/include/tool/ResizeTool.h`; compile either path, nev
 **`cf9a82a43043`** · `native-headers/tool/ResizeTool.h` · proof not assessed
 - public · colingsnyder2-ux · [tool/ResizeTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/ResizeTool.h)
 - canonical · colingsnyder2-ux · [tool/ResizeTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h)
+- public · colingsnyder2-ux · [tool/ResizeTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/ResizeTool.h)
+- canonical · colingsnyder2-ux · [tool/ResizeTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/ResizeTool.h)
 
 </details>
 
@@ -679,6 +1395,8 @@ Compatibility path for `App/include/tool/ShootTool.h`; compile either path, neve
 **`468c68b21ac6`** · `native-headers/tool/ShootTool.h` · proof not assessed
 - public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/ShootTool.h)
 - canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h)
+- public · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/ShootTool.h)
+- canonical · colingsnyder2-ux · [tool/ShootTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/ShootTool.h)
 
 </details>
 
@@ -795,6 +1513,8 @@ Compatibility path for `App/include/tool/ShootTools.h`; compile either path, nev
 **`7d24e9970608`** · `native-headers/tool/ShootTools.h` · proof not assessed
 - public · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/ShootTools.h)
 - canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h)
+- public · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/ShootTools.h)
+- canonical · colingsnyder2-ux · [tool/ShootTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/ShootTools.h)
 
 </details>
 
@@ -911,229 +1631,7 @@ Compatibility path for `App/include/tool/SurfaceTool.h`; compile either path, ne
 **`9d5b9d23b7b2`** · `native-headers/tool/SurfaceTool.h` · proof not assessed
 - public · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/SurfaceTool.h)
 - canonical · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/SurfaceTool.h)
-
-</details>
-
-<details>
-<summary>native-headers/tool/SurfaceTools.h — equivalent; 7 content versions</summary>
-
-Compatibility path for `App/include/tool/SurfaceTools.h`; compile either path, never both.
-
-**`05fe217744f6`** · `native-headers/tool/SurfaceTools.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`124b78a48b0b`** · `native-headers/tool/SurfaceTools.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/SurfaceTools.h)
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/SurfaceTools.h)
-
-**`13b3df7406b7`** · `native-headers/tool/SurfaceTools.h` · proof not assessed
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- fork · coldek · [tool/SurfaceTools.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- fork · mewpokemons · [tool/SurfaceTools.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- fork · mewpokemons · [tool/SurfaceTools.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- fork · mewpokemons · [tool/SurfaceTools.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-
-<details><summary>9 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`92211d7b8e04`** · `native-headers/tool/SurfaceTools.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`f8c75c271530`** · `native-headers/tool/SurfaceTools.h` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/SurfaceTools.h`
-- local · `local/findings/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`fe738200c274`** · `native-headers/tool/SurfaceTools.h` · proof not assessed
-
-<details><summary>25 retained local origins</summary>
-
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`f6084ddc7e56`** · `native-headers/tool/SurfaceTools.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/SurfaceTools.h)
-- canonical · colingsnyder2-ux · [tool/SurfaceTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/SurfaceTools.h)
-
-</details>
-
-<details>
-<summary>native-headers/tool/ToolsArrow.h — equivalent; 7 content versions</summary>
-
-Compatibility path for `App/include/tool/ToolsArrow.h`; compile either path, never both.
-
-**`0b94554711b2`** · `native-headers/tool/ToolsArrow.h` · proof not assessed
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- fork · mewpokemons · [tool/ToolsArrow.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- fork · mewpokemons · [tool/ToolsArrow.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
-
-<details><summary>8 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`4a9613816e16`** · `native-headers/tool/ToolsArrow.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`4be8b27a9079`** · `native-headers/tool/ToolsArrow.h` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/tool/ToolsArrow.h`
-- local · `local/findings/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`9c0bad51a75a`** · `native-headers/tool/ToolsArrow.h` · proof not assessed
-
-<details><summary>20 retained local origins</summary>
-
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`db29accaa9ba`** · `native-headers/tool/ToolsArrow.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/tool/ToolsArrow.h)
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/ToolsArrow.h)
-
-**`ec9387be5830`** · `native-headers/tool/ToolsArrow.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/tool/ToolsArrow.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`bc97575c9ff9`** · `native-headers/tool/ToolsArrow.h` · proof not assessed
-- public · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/tool/ToolsArrow.h)
-- canonical · colingsnyder2-ux · [tool/ToolsArrow.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/tool/ToolsArrow.h)
+- public · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/tool/SurfaceTool.h)
+- canonical · colingsnyder2-ux · [tool/SurfaceTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/tool/SurfaceTool.h)
 
 </details>

@@ -3,6 +3,14 @@
 [Project index](README.md) · [Previous](sources-001.md) · [Next](sources-003.md)
 
 <details>
+<summary>native-classes/NetworkClientServer2008Server.cpp — candidate-only; 1 content versions</summary>
+
+**`8e440925fb40`** · `native-classes/NetworkClientServer2008Server.cpp` · proof not assessed
+- fork · mewpokemons · [native-classes/NetworkClientServer2008Server.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/NetworkClientServer2008Server.cpp)
+
+</details>
+
+<details>
 <summary>native-classes/NetworkPlayer.cpp — equivalent; 8 content versions</summary>
 
 Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either path, never both.
@@ -98,6 +106,8 @@ Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either p
 - canonical · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/NetworkPlayer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp)
+- public · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/NetworkPlayer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp)
 
 </details>
 
@@ -119,6 +129,7 @@ Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either p
 - public · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/NetworkPlayers.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/NetworkPlayers.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/NetworkPlayers.cpp)
+- public · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/NetworkPlayers.cpp)
 
 **`2a097f0b2c89`** · `native-classes/NetworkPlayers.cpp` · proof not assessed
 
@@ -160,6 +171,7 @@ Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either p
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
+- draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -184,6 +196,7 @@ Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either p
 - canonical · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 
 <details><summary>5 retained local origins</summary>
 
@@ -210,6 +223,7 @@ Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either p
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 - draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
+- draft · colingsnyder2-ux · [native-classes/NetworkPlayers.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/e31710b9b4385d528ec508e7f9fb64e61f1a5d481ff1437958cd44ecef2ee07b/rebuild/2008-06/native-classes/NetworkPlayers.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -344,6 +358,8 @@ Compatibility path for `Unclassified/src/PeerClassName.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/PeerClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/PeerClassName.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/PeerClassName.cpp)
+- public · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/PeerClassName.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PeerClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/PeerClassName.cpp)
 
 </details>
 
@@ -383,6 +399,7 @@ Compatibility path for `Unclassified/src/PeerClassName.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/PeerConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/PeerConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/PeerConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/PeerConstructor.cpp)
 
 **`8d8a6295b074`** · `native-classes/PeerConstructor.cpp` · proof not assessed
 
@@ -409,6 +426,7 @@ Compatibility path for `Unclassified/src/PeerClassName.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/PeerConstructor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/PeerConstructor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/PeerConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PeerConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/PeerConstructor.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -459,6 +477,7 @@ Compatibility path for `Unclassified/src/PeerClassName.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/PeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/PeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/PeerLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/PeerLifetime.cpp)
 
 **`3c4f0c12d7aa`** · `native-classes/PeerLifetime.cpp` · proof not assessed
 
@@ -521,6 +540,7 @@ Compatibility path for `Unclassified/src/PeerClassName.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/PeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/PeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/PeerLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/PeerLifetime.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -589,6 +609,7 @@ Compatibility path for `Unclassified/src/PeerClassName.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/PeerUpdate.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/PeerUpdate.cpp)
 - public · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/PeerUpdate.cpp)
+- public · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/PeerUpdate.cpp)
 
 **`e5b00946cd1b`** · `native-classes/PeerUpdate.cpp` · proof not assessed
 
@@ -615,6 +636,7 @@ Compatibility path for `Unclassified/src/PeerClassName.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/PeerUpdate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/PeerUpdate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/PeerUpdate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PeerUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/PeerUpdate.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -767,6 +789,8 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/PlayersAbusePredicate.cpp)
 - public · colingsnyder2-ux · [native-classes/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/PlayersAbusePredicate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/PlayersAbusePredicate.cpp)
+- public · colingsnyder2-ux · [native-classes/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/PlayersAbusePredicate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PlayersAbusePredicate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/PlayersAbusePredicate.cpp)
 
 </details>
 
@@ -792,6 +816,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/PlayersLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/PlayersLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/PlayersLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/PlayersLifetime.cpp)
 
 <details><summary>10 retained local origins</summary>
 
@@ -823,6 +848,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/PlayersLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/PlayersLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/PlayersLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/PlayersLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/PlayersLifetime.cpp)
 
 **`76a5e77bec1d`** · `native-classes/PlayersLifetime.cpp` · proof not assessed
 
@@ -934,6 +960,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/PlayersSuperSafe.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/PlayersSuperSafe.cpp)
 - public · colingsnyder2-ux · [native-classes/PlayersSuperSafe.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/PlayersSuperSafe.cpp)
 - public · colingsnyder2-ux · [native-classes/PlayersSuperSafe.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/PlayersSuperSafe.cpp)
+- public · colingsnyder2-ux · [native-classes/PlayersSuperSafe.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/PlayersSuperSafe.cpp)
 
 **`f4c8a3d8ec5d`** · `native-classes/PlayersSuperSafe.cpp` · proof not assessed
 
@@ -990,6 +1017,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/ProfiledRakPeer.cpp)
 - public · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/ProfiledRakPeer.cpp)
 - public · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/ProfiledRakPeer.cpp)
+- public · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/ProfiledRakPeer.cpp)
 
 **`9df83f27de4b`** · `native-classes/ProfiledRakPeer.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/ProfiledRakPeer.cpp)
@@ -1008,6 +1036,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/ProfiledRakPeer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/ProfiledRakPeer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/ProfiledRakPeer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ProfiledRakPeer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/ProfiledRakPeer.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -1083,6 +1112,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/RakPeerBandwidth.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/RakPeerBandwidth.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/RakPeerBandwidth.cpp)
+- public · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/RakPeerBandwidth.cpp)
 
 **`aa4a6baf941f`** · `native-classes/RakPeerBandwidth.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/RakPeerBandwidth.cpp)
@@ -1101,6 +1131,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/RakPeerBandwidth.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/RakPeerBandwidth.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/RakPeerBandwidth.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerBandwidth.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/RakPeerBandwidth.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -1180,6 +1211,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
+- public · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
 
 **`bf274c0db4da`** · `native-classes/RakPeerBitStreamRPC.cpp` · proof not assessed
 
@@ -1206,6 +1238,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -1240,6 +1273,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/RakPeerCompression.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/RakPeerCompression.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/RakPeerCompression.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/RakPeerCompression.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -1275,6 +1309,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/RakPeerCompression.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/RakPeerCompression.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/RakPeerCompression.cpp)
+- public · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/RakPeerCompression.cpp)
 
 **`6b4087eaee15`** · `native-classes/RakPeerCompression.cpp` · proof not assessed
 
@@ -1346,6 +1381,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/RakPeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/RakPeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/RakPeerLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/RakPeerLifetime.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -1398,6 +1434,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/RakPeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/RakPeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/RakPeerLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/RakPeerLifetime.cpp)
 
 </details>
 
@@ -1429,6 +1466,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/RakPeerNetworkLoop.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -1477,6 +1515,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/RakPeerNetworkLoop.cpp)
+- public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 
 **`d1d165f066ed`** · `native-classes/RakPeerNetworkLoop.cpp` · proof not assessed
 
@@ -1536,6 +1575,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - canonical · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/RakPeerRawRPC.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/RakPeerRawRPC.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/RakPeerRawRPC.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/RakPeerRawRPC.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -1563,6 +1603,7 @@ Compatibility path for `Unclassified/src/PlayersAbusePredicate.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/RakPeerRawRPC.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/RakPeerRawRPC.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/RakPeerRawRPC.cpp)
+- public · colingsnyder2-ux · [native-classes/RakPeerRawRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/RakPeerRawRPC.cpp)
 
 **`eb0204562db0`** · `native-classes/RakPeerRawRPC.cpp` · proof not assessed
 

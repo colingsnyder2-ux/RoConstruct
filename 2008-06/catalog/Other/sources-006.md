@@ -3,6 +3,98 @@
 [Project index](README.md) · [Previous](sources-005.md) · [Next](sources-007.md)
 
 <details>
+<summary>native-classes/ErrorUploaderConstructor.cpp — public-only; 4 content versions</summary>
+
+**`03dbb9d3557e`** · `native-classes/ErrorUploaderConstructor.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/ErrorUploaderConstructor.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`5a01d197088d`** · `native-classes/ErrorUploaderConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/ErrorUploaderConstructor.cpp)
+
+**`7e68941fe5ca`** · `native-classes/ErrorUploaderConstructor.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/ErrorUploaderConstructor.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`94f8ab2d63c9`** · `native-classes/ErrorUploaderConstructor.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/ErrorUploaderConstructor.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/ErrorUploaderState.cpp — public-only; 4 content versions</summary>
+
+**`009011eb32c3`** · `native-classes/ErrorUploaderState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/ErrorUploaderState.cpp)
+- public · colingsnyder2-ux · [native-classes/ErrorUploaderState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/ErrorUploaderState.cpp)
+
+**`4fc43922958a`** · `native-classes/ErrorUploaderState.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/ErrorUploaderState.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`b29b103ebef4`** · `native-classes/ErrorUploaderState.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/ErrorUploaderState.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`bcf392f2400b`** · `native-classes/ErrorUploaderState.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/ErrorUploaderState.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>native-classes/Explosion.cpp — equivalent; 8 content versions</summary>
 
 Compatibility path for `App/src/v8datamodel/Explosion.cpp`; compile either path, never both.
@@ -31,6 +123,7 @@ Compatibility path for `App/src/v8datamodel/Explosion.cpp`; compile either path,
 - draft · colingsnyder2-ux · [native-classes/Explosion.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Explosion.cpp)
 - draft · colingsnyder2-ux · [native-classes/Explosion.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Explosion.cpp)
 - draft · colingsnyder2-ux · [native-classes/Explosion.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Explosion.cpp)
+- draft · colingsnyder2-ux · [native-classes/Explosion.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Explosion.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -116,6 +209,8 @@ Compatibility path for `App/src/v8datamodel/Explosion.cpp`; compile either path,
 - canonical · colingsnyder2-ux · [native-classes/Explosion.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/Explosion.cpp)
 - public · colingsnyder2-ux · [native-classes/Explosion.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/Explosion.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Explosion.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/Explosion.cpp)
+- public · colingsnyder2-ux · [native-classes/Explosion.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/Explosion.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Explosion.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/Explosion.cpp)
 
 </details>
 
@@ -235,6 +330,7 @@ Compatibility path for `App/src/v8datamodel/Feature.cpp`; compile either path, n
 - draft · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/0fc46a6f0af488c1efc0ef743775ee87753e94901f49ac5546b349f20e4dfc6b/rebuild/2008-06/native-classes/Feature.cpp)
 - draft · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/0fc46a6f0af488c1efc0ef743775ee87753e94901f49ac5546b349f20e4dfc6b/rebuild/2008-06/native-classes/Feature.cpp)
 - draft · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/0fc46a6f0af488c1efc0ef743775ee87753e94901f49ac5546b349f20e4dfc6b/rebuild/2008-06/native-classes/Feature.cpp)
+- draft · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/0fc46a6f0af488c1efc0ef743775ee87753e94901f49ac5546b349f20e4dfc6b/rebuild/2008-06/native-classes/Feature.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -270,6 +366,7 @@ Compatibility path for `App/src/v8datamodel/Feature.cpp`; compile either path, n
 - draft · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/717505fe7e5ae0a3727a598814c3cf12b452b1e3d2bdd7e3f45129080891f506/rebuild/2008-06/native-classes/Feature.cpp)
 - draft · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/717505fe7e5ae0a3727a598814c3cf12b452b1e3d2bdd7e3f45129080891f506/rebuild/2008-06/native-classes/Feature.cpp)
 - draft · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/717505fe7e5ae0a3727a598814c3cf12b452b1e3d2bdd7e3f45129080891f506/rebuild/2008-06/native-classes/Feature.cpp)
+- draft · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/717505fe7e5ae0a3727a598814c3cf12b452b1e3d2bdd7e3f45129080891f506/rebuild/2008-06/native-classes/Feature.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -287,6 +384,8 @@ Compatibility path for `App/src/v8datamodel/Feature.cpp`; compile either path, n
 - canonical · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/Feature.cpp)
 - public · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/Feature.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/Feature.cpp)
+- public · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/Feature.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Feature.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/Feature.cpp)
 
 </details>
 
@@ -378,6 +477,8 @@ Compatibility path for `App/src/v8datamodel/FillToolColor.cpp`; compile either p
 - canonical · colingsnyder2-ux · [native-classes/FillToolColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/FillToolColor.cpp)
 - public · colingsnyder2-ux · [native-classes/FillToolColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/FillToolColor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/FillToolColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/FillToolColor.cpp)
+- public · colingsnyder2-ux · [native-classes/FillToolColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/FillToolColor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/FillToolColor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/FillToolColor.cpp)
 
 </details>
 
@@ -426,6 +527,7 @@ Compatibility path for `App/src/v8datamodel/Filters.cpp`; compile either path, n
 - draft · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/7fb885be1c15bd48abb83b61ce37e32de88d99523c9bbe872d8d51eed0e29e4c/rebuild/2008-06/native-classes/Filters.cpp)
 - draft · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/7fb885be1c15bd48abb83b61ce37e32de88d99523c9bbe872d8d51eed0e29e4c/rebuild/2008-06/native-classes/Filters.cpp)
 - draft · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/7fb885be1c15bd48abb83b61ce37e32de88d99523c9bbe872d8d51eed0e29e4c/rebuild/2008-06/native-classes/Filters.cpp)
+- draft · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/7fb885be1c15bd48abb83b61ce37e32de88d99523c9bbe872d8d51eed0e29e4c/rebuild/2008-06/native-classes/Filters.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -487,6 +589,7 @@ Compatibility path for `App/src/v8datamodel/Filters.cpp`; compile either path, n
 - draft · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/bb2c59000c57061e83b243ebf2b0fd7be35ed3467b34bdc7a8cbeb659042c314/rebuild/2008-06/native-classes/Filters.cpp)
 - draft · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/bb2c59000c57061e83b243ebf2b0fd7be35ed3467b34bdc7a8cbeb659042c314/rebuild/2008-06/native-classes/Filters.cpp)
 - draft · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/bb2c59000c57061e83b243ebf2b0fd7be35ed3467b34bdc7a8cbeb659042c314/rebuild/2008-06/native-classes/Filters.cpp)
+- draft · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/bb2c59000c57061e83b243ebf2b0fd7be35ed3467b34bdc7a8cbeb659042c314/rebuild/2008-06/native-classes/Filters.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -504,6 +607,8 @@ Compatibility path for `App/src/v8datamodel/Filters.cpp`; compile either path, n
 - canonical · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/Filters.cpp)
 - public · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/Filters.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/Filters.cpp)
+- public · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/Filters.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Filters.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/Filters.cpp)
 
 </details>
 
@@ -607,6 +712,8 @@ Compatibility path for `App/src/v8datamodel/Flag.cpp`; compile either path, neve
 - canonical · colingsnyder2-ux · [native-classes/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/Flag.cpp)
 - public · colingsnyder2-ux · [native-classes/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/Flag.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/Flag.cpp)
+- public · colingsnyder2-ux · [native-classes/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/Flag.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Flag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/Flag.cpp)
 
 </details>
 
@@ -697,6 +804,8 @@ Compatibility path for `App/src/v8datamodel/FlagStand.cpp`; compile either path,
 - canonical · colingsnyder2-ux · [native-classes/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/FlagStand.cpp)
 - public · colingsnyder2-ux · [native-classes/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/FlagStand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/FlagStand.cpp)
+- public · colingsnyder2-ux · [native-classes/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/FlagStand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/FlagStand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/FlagStand.cpp)
 
 </details>
 
@@ -806,6 +915,8 @@ Compatibility path for `App/src/tool/FlatTool.cpp`; compile either path, never b
 - canonical · colingsnyder2-ux · [native-classes/FlatTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/FlatTool.cpp)
 - public · colingsnyder2-ux · [native-classes/FlatTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/FlatTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/FlatTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/FlatTool.cpp)
+- public · colingsnyder2-ux · [native-classes/FlatTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/FlatTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/FlatTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/FlatTool.cpp)
 
 </details>
 
@@ -901,6 +1012,8 @@ Compatibility path for `App/src/tool/FlatToolFactory.cpp`; compile either path, 
 - canonical · colingsnyder2-ux · [native-classes/FlatToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/FlatToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/FlatToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/FlatToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/FlatToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/FlatToolFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/FlatToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/FlatToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/FlatToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/FlatToolFactory.cpp)
 
 </details>
 
@@ -983,6 +1096,7 @@ Compatibility path for `App/src/v8datamodel/ForceField.cpp`; compile either path
 - draft · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/dba63e695b679838beb9c0049ac6d716218d506bd28be0e44d0fa131c9709ed5/rebuild/2008-06/native-classes/ForceField.cpp)
 - draft · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/dba63e695b679838beb9c0049ac6d716218d506bd28be0e44d0fa131c9709ed5/rebuild/2008-06/native-classes/ForceField.cpp)
 - draft · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/dba63e695b679838beb9c0049ac6d716218d506bd28be0e44d0fa131c9709ed5/rebuild/2008-06/native-classes/ForceField.cpp)
+- draft · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/dba63e695b679838beb9c0049ac6d716218d506bd28be0e44d0fa131c9709ed5/rebuild/2008-06/native-classes/ForceField.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -1007,6 +1121,7 @@ Compatibility path for `App/src/v8datamodel/ForceField.cpp`; compile either path
 - draft · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ForceField.cpp)
 - draft · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ForceField.cpp)
 - draft · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ForceField.cpp)
+- draft · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ForceField.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -1039,6 +1154,8 @@ Compatibility path for `App/src/v8datamodel/ForceField.cpp`; compile either path
 - canonical · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/ForceField.cpp)
 - public · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/ForceField.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/ForceField.cpp)
+- public · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/ForceField.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ForceField.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/ForceField.cpp)
 
 </details>
 
@@ -1134,6 +1251,8 @@ Compatibility path for `Unclassified/src/G3DVector3Subtract.cpp`; compile either
 - canonical · colingsnyder2-ux · [native-classes/G3DVector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/G3DVector3Subtract.cpp)
 - public · colingsnyder2-ux · [native-classes/G3DVector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/G3DVector3Subtract.cpp)
 - canonical · colingsnyder2-ux · [native-classes/G3DVector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/G3DVector3Subtract.cpp)
+- public · colingsnyder2-ux · [native-classes/G3DVector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/G3DVector3Subtract.cpp)
+- canonical · colingsnyder2-ux · [native-classes/G3DVector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/G3DVector3Subtract.cpp)
 
 </details>
 
@@ -1225,6 +1344,8 @@ Compatibility path for `App/src/tool/GameTool.cpp`; compile either path, never b
 - canonical · colingsnyder2-ux · [native-classes/GameTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/GameTool.cpp)
 - public · colingsnyder2-ux · [native-classes/GameTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/GameTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GameTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/GameTool.cpp)
+- public · colingsnyder2-ux · [native-classes/GameTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/GameTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GameTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/GameTool.cpp)
 
 </details>
 
@@ -1316,6 +1437,8 @@ Compatibility path for `App/src/tool/GameToolDrag.cpp`; compile either path, nev
 - canonical · colingsnyder2-ux · [native-classes/GameToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/GameToolDrag.cpp)
 - public · colingsnyder2-ux · [native-classes/GameToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/GameToolDrag.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GameToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/GameToolDrag.cpp)
+- public · colingsnyder2-ux · [native-classes/GameToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/GameToolDrag.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GameToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/GameToolDrag.cpp)
 
 </details>
 
@@ -1407,6 +1530,8 @@ Compatibility path for `App/src/tool/GameToolFactory.cpp`; compile either path, 
 - canonical · colingsnyder2-ux · [native-classes/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/GameToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/GameToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/GameToolFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/GameToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/GameToolFactory.cpp)
 
 </details>
 
@@ -1498,130 +1623,7 @@ Compatibility path for `App/src/tool/GrabTool.cpp`; compile either path, never b
 - canonical · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/GrabTool.cpp)
 - public · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/GrabTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/GrabTool.cpp)
-
-</details>
-
-<details>
-<summary>native-classes/GrabToolFactory.cpp — equivalent; 7 content versions</summary>
-
-Compatibility path for `App/src/tool/GrabToolFactory.cpp`; compile either path, never both.
-
-**`22d352cd2a1c`** · `native-classes/GrabToolFactory.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/GrabToolFactory.cpp`
-- local · `local/findings/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`3f35db51d9de`** · `native-classes/GrabToolFactory.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`9eed0e071785`** · `native-classes/GrabToolFactory.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`acb71548429e`** · `native-classes/GrabToolFactory.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/GrabToolFactory.cpp)
-
-**`b6adeff763df`** · `native-classes/GrabToolFactory.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e3d41246d8af`** · `native-classes/GrabToolFactory.cpp` · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- fork · mewpokemons · [native-classes/GrabToolFactory.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- fork · mewpokemons · [native-classes/GrabToolFactory.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-
-<details><summary>9 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/GrabToolFactory.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`6cca54a5b6ad`** · `native-classes/GrabToolFactory.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-classes/GrabToolFactory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
-
-</details>
-
-<details>
-<summary>native-classes/GroupDragTool.cpp — candidate-only; 1 content versions</summary>
-
-**`7e423c41ba16`** · `native-classes/GroupDragTool.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/GroupDragTool.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/Gui.cpp — candidate-only; 1 content versions</summary>
-
-**`f08c151b8247`** · `native-classes/Gui.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/Gui.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/GuiHudBuilder2008.cpp — candidate-only; 1 content versions</summary>
-
-**`982fb661e2f0`** · `native-classes/GuiHudBuilder2008.cpp` · proof not assessed
-- fork · mewpokemons · [native-classes/GuiHudBuilder2008.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/GuiHudBuilder2008.cpp)
+- public · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-classes/GrabTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-classes/GrabTool.cpp)
 
 </details>

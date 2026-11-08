@@ -3,6 +3,324 @@
 [Project index](README.md) · [Previous](sources-019.md) · [Next](sources-021.md)
 
 <details>
+<summary>native-headers/boost-count-copy/boost/detail/shared_count.hpp — diverged; 6 content versions</summary>
+
+**`0cb897199ae3`** · `native-headers/boost-count-copy/boost/detail/shared_count.hpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp`
+- local · `local/findings/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`15541b1ddcff`** · `native-headers/boost-count-copy/boost/detail/shared_count.hpp` · proof not assessed
+
+<details><summary>20 retained local origins</summary>
+
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`27460ec14ce1`** · `native-headers/boost-count-copy/boost/detail/shared_count.hpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`5ea41a2f2a1d`** · `native-headers/boost-count-copy/boost/detail/shared_count.hpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`c280ed25f19f`** · `native-headers/boost-count-copy/boost/detail/shared_count.hpp` · proof not assessed
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+
+**`d1f7a5090238`** · `native-headers/boost-count-copy/boost/detail/shared_count.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- fork · mewpokemons · [detail/shared_count.hpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- fork · mewpokemons · [detail/shared_count.hpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+
+<details><summary>8 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp — diverged; 6 content versions</summary>
+
+**`33b92b210f48`** · `native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp`
+- local · `local/findings/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`8348ce937eca`** · `native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`8e52554f20d9`** · `native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a223e6eea3a6`** · `native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · proof not assessed
+
+<details><summary>20 retained local origins</summary>
+
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`c77bca0c137f`** · `native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+
+**`f320574d323c`** · `native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- fork · mewpokemons · [boost/shared_ptr.hpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- fork · mewpokemons · [boost/shared_ptr.hpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+
+<details><summary>8 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-headers/boost-function-pod-vtable/boost/function/function_base.hpp — diverged; 6 content versions</summary>
+
+**`5616e0076ee0`** · `native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`ac25b6c31594`** · `native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · proof not assessed
+
+<details><summary>20 retained local origins</summary>
+
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`ae97afaa24e8`** · `native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · proof not assessed
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+
+**`bf797412e43f`** · `native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d3f28b8f9fe0`** · `native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp`
+- local · `local/findings/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d841405ac75b`** · `native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- fork · mewpokemons · [function/function_base.hpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- fork · mewpokemons · [function/function_base.hpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+
+<details><summary>8 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>native-headers/boost-function-pod-vtable/boost/function/function_template.hpp — diverged; 6 content versions</summary>
 
 **`03b11160def1`** · `native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · proof not assessed
@@ -20,6 +338,7 @@
 - public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
 - public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
 - public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
+- public · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
 
 **`1cc5cf9ef299`** · `native-headers/boost-function-pod-vtable/boost/function/function_template.hpp` · proof not assessed
 
@@ -78,6 +397,7 @@
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
 - canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
+- canonical · colingsnyder2-ux · [function/function_template.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp)
 
 <details><summary>12 retained local origins</summary>
 
@@ -143,6 +463,7 @@
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
 
 <details><summary>8 retained local origins</summary>
 
@@ -214,6 +535,7 @@
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/boost-inline-nothrow/boost/shared_ptr.hpp)
 
 </details>
 
@@ -283,6 +605,7 @@
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 
 <details><summary>9 retained local origins</summary>
 
@@ -322,6 +645,7 @@
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp)
 
 </details>
 
@@ -369,6 +693,7 @@
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 - public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/engine-world/v8world/ContactManager.h)
+- public · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 
 **`3a7baadcbb8d`** · `native-headers/engine-world/v8world/ContactManager.h` · proof not assessed
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
@@ -387,6 +712,7 @@
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 - canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
+- canonical · colingsnyder2-ux · [v8world/ContactManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h)
 
 <details><summary>8 retained local origins</summary>
 
@@ -533,6 +859,7 @@
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/engine-world/v8world/World.h)
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/engine-world/v8world/World.h)
 
 **`eaba202501dd`** · `native-headers/engine-world/v8world/World.h` · proof not assessed
 
@@ -559,6 +886,7 @@
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
 
 <details><summary>8 retained local origins</summary>
 
@@ -604,6 +932,7 @@
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
+- canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
 
 <details><summary>11 retained local origins</summary>
 
@@ -653,6 +982,7 @@
 - public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/gui/ArrowPanel.h)
 - public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/gui/ArrowPanel.h)
 - public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/gui/ArrowPanel.h)
+- public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/gui/ArrowPanel.h)
 
 **`ab556783628f`** · `native-headers/gui/ArrowPanel.h` · proof not assessed
 
@@ -719,6 +1049,7 @@
 - public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/gui/ChatOutput.h)
 - public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/gui/ChatOutput.h)
 - public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/gui/ChatOutput.h)
+- public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/gui/ChatOutput.h)
 
 **`bc38868dd543`** · `native-headers/gui/ChatOutput.h` · proof not assessed
 
@@ -758,6 +1089,7 @@
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
+- canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
 
 <details><summary>11 retained local origins</summary>
 
@@ -842,6 +1174,7 @@
 - public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/gui/EquationDisplay.h)
 - public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/gui/EquationDisplay.h)
 - public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/gui/EquationDisplay.h)
+- public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/gui/EquationDisplay.h)
 
 **`d95f93c1f842`** · `native-headers/gui/EquationDisplay.h` · proof not assessed
 
@@ -868,6 +1201,7 @@
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
+- canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
 
 <details><summary>11 retained local origins</summary>
 
@@ -917,6 +1251,7 @@
 - public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/gui/Gui.h)
 - public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/gui/Gui.h)
 - public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/gui/Gui.h)
+- public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/gui/Gui.h)
 
 **`6caa3b383263`** · `native-headers/gui/Gui.h` · proof not assessed
 
@@ -994,6 +1329,7 @@
 - canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/gui/Gui.h)
 - canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/gui/Gui.h)
 - canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/gui/Gui.h)
+- canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/gui/Gui.h)
 
 <details><summary>8 retained local origins</summary>
 
@@ -1139,411 +1475,5 @@
 - local · `work/native-throughput-20261102/script-context/snapshot/d28939faef5424a478f22570af009465f94e3dd76fad26484c9c2818f16acc85/rebuild/2008-06/native-headers/gui/Gui.h` · root `b52aa15feaea5a0c`
 
 </details>
-
-</details>
-
-<details>
-<summary>native-headers/gui/HealthHud.h — diverged; 6 content versions</summary>
-
-**`20a7088f5bb6`** · `native-headers/gui/HealthHud.h` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/HealthHud.h`
-- local · `local/findings/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`45fe548dfe95`** · `native-headers/gui/HealthHud.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`9d3e313362d4`** · `native-headers/gui/HealthHud.h` · proof not assessed
-
-<details><summary>14 retained local origins</summary>
-
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`c3afd10122ef`** · `native-headers/gui/HealthHud.h` · proof not assessed
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/gui/HealthHud.h)
-- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/gui/HealthHud.h)
-
-**`c8025463ceb6`** · `native-headers/gui/HealthHud.h` · proof not assessed
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- fork · mewpokemons · [gui/HealthHud.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- fork · mewpokemons · [gui/HealthHud.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
-
-<details><summary>11 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ede499bce9df`** · `native-headers/gui/HealthHud.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/gui/HealthHud.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-headers/gui/ScoreHud.h — diverged; 7 content versions</summary>
-
-**`1952321358a1`** · `native-headers/gui/ScoreHud.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`6626681b4456`** · `native-headers/gui/ScoreHud.h` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/ScoreHud.h`
-- local · `local/findings/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`b28bfd1cc3df`** · `native-headers/gui/ScoreHud.h` · proof not assessed
-
-<details><summary>14 retained local origins</summary>
-
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e0d774f26c46`** · `native-headers/gui/ScoreHud.h` · proof not assessed
-- fork · mewpokemons · [gui/ScoreHud.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-
-**`e64f8b21c3ae`** · `native-headers/gui/ScoreHud.h` · proof not assessed
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- fork · mewpokemons · [gui/ScoreHud.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
-
-<details><summary>11 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e7002bca2bf8`** · `native-headers/gui/ScoreHud.h` · proof not assessed
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/gui/ScoreHud.h)
-- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/gui/ScoreHud.h)
-
-**`f6b9e924894a`** · `native-headers/gui/ScoreHud.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/gui/ScoreHud.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-headers/gui/Widget.h — diverged; 6 content versions</summary>
-
-**`4a084418e0f9`** · `native-headers/gui/Widget.h` · proof not assessed
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- fork · mewpokemons · [gui/Widget.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/Widget.h)
-- fork · mewpokemons · [gui/Widget.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-- canonical · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/gui/Widget.h)
-
-<details><summary>11 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`4a58ad1f46bf`** · `native-headers/gui/Widget.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`4e431a65e502`** · `native-headers/gui/Widget.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`57e292c682fc`** · `native-headers/gui/Widget.h` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/Widget.h`
-- local · `local/findings/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`87c7ba4b3d55`** · `native-headers/gui/Widget.h` · proof not assessed
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/gui/Widget.h)
-- public · colingsnyder2-ux · [gui/Widget.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/gui/Widget.h)
-
-**`ae4e170c7615`** · `native-headers/gui/Widget.h` · proof not assessed
-
-<details><summary>14 retained local origins</summary>
-
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/Widget.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-headers/gui/WidgetButtons.h — diverged; 6 content versions</summary>
-
-**`0a265346e648`** · `native-headers/gui/WidgetButtons.h` · proof not assessed
-
-<details><summary>14 retained local origins</summary>
-
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`4c57afe77af1`** · `native-headers/gui/WidgetButtons.h` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/gui/WidgetButtons.h`
-- local · `local/findings/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`8a99cd3238c2`** · `native-headers/gui/WidgetButtons.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`bc71b95fea8e`** · `native-headers/gui/WidgetButtons.h` · proof not assessed
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- fork · mewpokemons · [gui/WidgetButtons.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- fork · mewpokemons · [gui/WidgetButtons.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-- canonical · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h)
-
-<details><summary>11 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`c59357ca735f`** · `native-headers/gui/WidgetButtons.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/gui/WidgetButtons.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`fbd35cd20ae3`** · `native-headers/gui/WidgetButtons.h` · proof not assessed
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/gui/WidgetButtons.h)
-- public · colingsnyder2-ux · [gui/WidgetButtons.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/gui/WidgetButtons.h)
 
 </details>
