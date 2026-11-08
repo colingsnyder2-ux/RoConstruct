@@ -30,6 +30,7 @@ Earlier paths and their donor versions: `native-classes/GameToolFactory.cpp`.
 - public · colingsnyder2-ux · [tool/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/tool/GameToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/tool/GameToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/App/src/tool/GameToolFactory.cpp)
+- public · colingsnyder2-ux · [tool/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/GameToolFactory.cpp)
 
 **`aa2fbeb0fb53`** · `App/src/tool/GameToolFactory.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [tool/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/App/src/tool/GameToolFactory.cpp)
@@ -54,6 +55,7 @@ Earlier paths and their donor versions: `native-classes/GameToolFactory.cpp`.
 - canonical · colingsnyder2-ux · [tool/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/tool/GameToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/tool/GameToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/GameToolFactory.cpp)
+- canonical · colingsnyder2-ux · [tool/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/GameToolFactory.cpp)
 
 **`02d2c1c1a3ea`** · `native-classes/GameToolFactory.cpp` · proof not assessed
 
@@ -174,6 +176,8 @@ Earlier paths and their donor versions: `native-classes/GameToolFactory.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/GameToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/GameToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/GameToolFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/GameToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GameToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/GameToolFactory.cpp)
 
 </details>
 
@@ -205,6 +209,7 @@ Earlier paths and their donor versions: `native-classes/GrabTool.cpp`.
 - canonical · colingsnyder2-ux · [tool/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/tool/GrabTool.cpp)
 - canonical · colingsnyder2-ux · [tool/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/tool/GrabTool.cpp)
 - canonical · colingsnyder2-ux · [tool/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/GrabTool.cpp)
+- canonical · colingsnyder2-ux · [tool/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/GrabTool.cpp)
 
 **`5ac83d13e09b`** · `App/src/tool/GrabTool.cpp` · proof not assessed
 - public · colingsnyder2-ux · [tool/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/App/src/tool/GrabTool.cpp)
@@ -229,6 +234,7 @@ Earlier paths and their donor versions: `native-classes/GrabTool.cpp`.
 - public · colingsnyder2-ux · [tool/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/tool/GrabTool.cpp)
 - public · colingsnyder2-ux · [tool/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/tool/GrabTool.cpp)
 - public · colingsnyder2-ux · [tool/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/App/src/tool/GrabTool.cpp)
+- public · colingsnyder2-ux · [tool/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/GrabTool.cpp)
 
 **`095e798cb4d4`** · `native-classes/GrabTool.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/GrabTool.cpp)
@@ -349,6 +355,8 @@ Earlier paths and their donor versions: `native-classes/GrabTool.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/GrabTool.cpp)
 - public · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/GrabTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/GrabTool.cpp)
+- public · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/GrabTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GrabTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/GrabTool.cpp)
 
 </details>
 
@@ -380,6 +388,7 @@ Earlier paths and their donor versions: `native-classes/GrabToolFactory.cpp`.
 - public · colingsnyder2-ux · [tool/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/tool/GrabToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/tool/GrabToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/App/src/tool/GrabToolFactory.cpp)
+- public · colingsnyder2-ux · [tool/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/GrabToolFactory.cpp)
 
 **`e3d41246d8af`** · `App/src/tool/GrabToolFactory.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [tool/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/App/src/tool/GrabToolFactory.cpp)
@@ -404,6 +413,7 @@ Earlier paths and their donor versions: `native-classes/GrabToolFactory.cpp`.
 - canonical · colingsnyder2-ux · [tool/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/tool/GrabToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/tool/GrabToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/GrabToolFactory.cpp)
+- canonical · colingsnyder2-ux · [tool/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/GrabToolFactory.cpp)
 
 **`22d352cd2a1c`** · `native-classes/GrabToolFactory.cpp` · proof not assessed
 
@@ -524,6 +534,8 @@ Earlier paths and their donor versions: `native-classes/GrabToolFactory.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/GrabToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/GrabToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GrabToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/GrabToolFactory.cpp)
 
 </details>
 
@@ -555,6 +567,7 @@ Earlier paths and their donor versions: `native-classes/HammerTool.cpp`.
 - public · colingsnyder2-ux · [tool/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/tool/HammerTool.cpp)
 - public · colingsnyder2-ux · [tool/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/tool/HammerTool.cpp)
 - public · colingsnyder2-ux · [tool/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/App/src/tool/HammerTool.cpp)
+- public · colingsnyder2-ux · [tool/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/HammerTool.cpp)
 
 **`ed5dbe792c10`** · `App/src/tool/HammerTool.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [tool/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/App/src/tool/HammerTool.cpp)
@@ -579,6 +592,7 @@ Earlier paths and their donor versions: `native-classes/HammerTool.cpp`.
 - canonical · colingsnyder2-ux · [tool/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/tool/HammerTool.cpp)
 - canonical · colingsnyder2-ux · [tool/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/tool/HammerTool.cpp)
 - canonical · colingsnyder2-ux · [tool/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/HammerTool.cpp)
+- canonical · colingsnyder2-ux · [tool/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/HammerTool.cpp)
 
 **`00b7dc64c30c`** · `native-classes/HammerTool.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HammerTool.cpp)
@@ -699,6 +713,8 @@ Earlier paths and their donor versions: `native-classes/HammerTool.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HammerTool.cpp)
 - public · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/HammerTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/HammerTool.cpp)
+- public · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/HammerTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HammerTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/HammerTool.cpp)
 
 </details>
 
@@ -730,6 +746,7 @@ Earlier paths and their donor versions: `native-classes/HammerToolFactory.cpp`.
 - canonical · colingsnyder2-ux · [tool/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/tool/HammerToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/tool/HammerToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/HammerToolFactory.cpp)
+- canonical · colingsnyder2-ux · [tool/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/HammerToolFactory.cpp)
 
 **`7e0f92864161`** · `App/src/tool/HammerToolFactory.cpp` · proof not assessed
 - public · colingsnyder2-ux · [tool/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/App/src/tool/HammerToolFactory.cpp)
@@ -754,6 +771,7 @@ Earlier paths and their donor versions: `native-classes/HammerToolFactory.cpp`.
 - public · colingsnyder2-ux · [tool/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/tool/HammerToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/tool/HammerToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/App/src/tool/HammerToolFactory.cpp)
+- public · colingsnyder2-ux · [tool/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/HammerToolFactory.cpp)
 
 **`3ea8656b0568`** · `native-classes/HammerToolFactory.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/HammerToolFactory.cpp)
@@ -874,6 +892,8 @@ Earlier paths and their donor versions: `native-classes/HammerToolFactory.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/HammerToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/HammerToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/HammerToolFactory.cpp)
+- public · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/HammerToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HammerToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/HammerToolFactory.cpp)
 
 </details>
 
@@ -905,6 +925,7 @@ Earlier paths and their donor versions: `native-classes/LaserTool.cpp`.
 - public · colingsnyder2-ux · [tool/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/App/src/tool/LaserTool.cpp)
 - public · colingsnyder2-ux · [tool/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/App/src/tool/LaserTool.cpp)
 - public · colingsnyder2-ux · [tool/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/App/src/tool/LaserTool.cpp)
+- public · colingsnyder2-ux · [tool/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/LaserTool.cpp)
 
 **`bdedc48412ed`** · `App/src/tool/LaserTool.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [tool/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/App/src/tool/LaserTool.cpp)
@@ -929,6 +950,7 @@ Earlier paths and their donor versions: `native-classes/LaserTool.cpp`.
 - canonical · colingsnyder2-ux · [tool/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/App/src/tool/LaserTool.cpp)
 - canonical · colingsnyder2-ux · [tool/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/App/src/tool/LaserTool.cpp)
 - canonical · colingsnyder2-ux · [tool/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/src/tool/LaserTool.cpp)
+- canonical · colingsnyder2-ux · [tool/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/src/tool/LaserTool.cpp)
 
 **`0e90407554af`** · `native-classes/LaserTool.cpp` · proof not assessed
 
@@ -1049,5 +1071,7 @@ Earlier paths and their donor versions: `native-classes/LaserTool.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/native-classes/LaserTool.cpp)
 - public · colingsnyder2-ux · [native-classes/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/LaserTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/LaserTool.cpp)
+- public · colingsnyder2-ux · [native-classes/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/LaserTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LaserTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/LaserTool.cpp)
 
 </details>
