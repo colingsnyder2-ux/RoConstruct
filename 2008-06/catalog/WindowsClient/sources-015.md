@@ -8,6 +8,8 @@
 Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 
 **`25b8a6a3223f`** · `WindowsClient/include/CRobloxApp.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/CRobloxApp.h)
+- canonical · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/CRobloxApp.h)
 - public · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/CRobloxApp.h)
 - canonical · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/CRobloxApp.h)
 - public · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/CRobloxApp.h)
@@ -79,7 +81,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 - public · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CRobloxApp.h)
 - canonical · colingsnyder2-ux · [include/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CRobloxApp.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>72 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
@@ -124,12 +126,18 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CRobloxApp.h` · root `b52aa15feaea5a0c`
@@ -243,6 +251,8 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 </details>
 
 **`87e678962c43`** · `native-headers/CRobloxApp.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/CRobloxApp.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/CRobloxApp.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CRobloxApp.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CRobloxApp.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CRobloxApp.h)
@@ -314,7 +324,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 - public · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CRobloxApp.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CRobloxApp.h)
 
-<details><summary>69 retained local origins</summary>
+<details><summary>75 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
@@ -360,12 +370,18 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CRobloxApp.h` · root `b52aa15feaea5a0c`
@@ -389,6 +405,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxApp.h`.
 </details>
 
 **`a378c4732806`** · `native-headers/CRobloxApp.h` · proof not assessed
+- archive · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CRobloxApp.h)
 - archive · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CRobloxApp.h)
 - archive · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CRobloxApp.h)
 - archive · colingsnyder2-ux · [native-headers/CRobloxApp.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CRobloxApp.h)
@@ -512,6 +529,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxControlColorSelec
 </details>
 
 **`62e29bd49187`** · `WindowsClient/include/CRobloxControlColorSelector.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
@@ -548,7 +566,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxControlColorSelec
 - canonical · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>72 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
@@ -593,12 +611,18 @@ Earlier paths and their donor versions: `native-headers/CRobloxControlColorSelec
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
@@ -620,6 +644,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxControlColorSelec
 </details>
 
 **`8ff5dcc22952`** · `WindowsClient/include/CRobloxControlColorSelector.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [include/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/CRobloxControlColorSelector.h)
@@ -744,6 +769,8 @@ Earlier paths and their donor versions: `native-headers/CRobloxControlColorSelec
 </details>
 
 **`8b2b32807c99`** · `native-headers/CRobloxControlColorSelector.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/CRobloxControlColorSelector.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CRobloxControlColorSelector.h)
@@ -815,7 +842,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxControlColorSelec
 - public · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CRobloxControlColorSelector.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxControlColorSelector.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h)
 
-<details><summary>69 retained local origins</summary>
+<details><summary>75 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
@@ -861,12 +888,18 @@ Earlier paths and their donor versions: `native-headers/CRobloxControlColorSelec
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CRobloxControlColorSelector.h` · root `b52aa15feaea5a0c`

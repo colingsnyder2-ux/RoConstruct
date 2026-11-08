@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `Unclassified/src/ImageContentRegistration.cpp`.
 
 **`177b720a5a39`** · `Base/src/util/ImageContentRegistration.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Base/src/util/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [util/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [util/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [util/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/ImageContentRegistration.cpp)
@@ -26,6 +27,7 @@ Earlier paths and their donor versions: `Unclassified/src/ImageContentRegistrati
 </details>
 
 **`c18131770aa4`** · `Base/src/util/ImageContentRegistration.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Base/src/util/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [util/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [util/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [util/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/ImageContentRegistration.cpp)
@@ -97,6 +99,7 @@ Earlier paths and their donor versions: `Unclassified/src/ImageContentRegistrati
 </details>
 
 **`64e61158ad0b`** · `Unclassified/src/ImageContentRegistration.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - canonical · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ImageContentRegistration.cpp)
@@ -115,6 +118,7 @@ Earlier paths and their donor versions: `Unclassified/src/ImageContentRegistrati
 </details>
 
 **`c56a7dbae0da`** · `Unclassified/src/ImageContentRegistration.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ImageContentRegistration.cpp)
 - public · colingsnyder2-ux · [src/ImageContentRegistration.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ImageContentRegistration.cpp)
@@ -167,6 +171,7 @@ Earlier paths and their donor versions: `Unclassified/src/ImageContentRegistrati
 Earlier paths and their donor versions: `Unclassified/src/ImageMimeType.cpp`.
 
 **`605e0672ff73`** · `Base/src/util/ImageMimeType.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Base/src/util/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [util/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [util/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [util/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/ImageMimeType.cpp)
@@ -176,6 +181,7 @@ Earlier paths and their donor versions: `Unclassified/src/ImageMimeType.cpp`.
 - public · colingsnyder2-ux · [util/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Base/src/util/ImageMimeType.cpp)
 
 **`6c8b4c31b749`** · `Base/src/util/ImageMimeType.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Base/src/util/ImageMimeType.cpp)
 - canonical · colingsnyder2-ux · [util/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/ImageMimeType.cpp)
 - canonical · colingsnyder2-ux · [util/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/ImageMimeType.cpp)
 - canonical · colingsnyder2-ux · [util/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/ImageMimeType.cpp)
@@ -194,6 +200,7 @@ Earlier paths and their donor versions: `Unclassified/src/ImageMimeType.cpp`.
 </details>
 
 **`04fe098a5a96`** · `Unclassified/src/ImageMimeType.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/ImageMimeType.cpp)
 - canonical · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ImageMimeType.cpp)
 - canonical · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ImageMimeType.cpp)
 - canonical · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ImageMimeType.cpp)
@@ -283,6 +290,7 @@ Earlier paths and their donor versions: `Unclassified/src/ImageMimeType.cpp`.
 </details>
 
 **`df7f1c148fed`** · `Unclassified/src/ImageMimeType.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ImageMimeType.cpp)
 - public · colingsnyder2-ux · [src/ImageMimeType.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ImageMimeType.cpp)
@@ -326,6 +334,7 @@ Earlier paths and their donor versions: `Unclassified/src/ImageMimeType.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/LDrawAssetState.cpp`.
 
 **`90cbac640fa6`** · `Base/src/util/LDrawAssetState.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Base/src/util/LDrawAssetState.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/LDrawAssetState.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/LDrawAssetState.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/LDrawAssetState.cpp)
@@ -344,6 +353,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawAssetState.cpp`.
 </details>
 
 **`bd2bf1f267f0`** · `Base/src/util/LDrawAssetState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Base/src/util/LDrawAssetState.cpp)
 - public · colingsnyder2-ux · [util/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/LDrawAssetState.cpp)
 - public · colingsnyder2-ux · [util/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/LDrawAssetState.cpp)
 - public · colingsnyder2-ux · [util/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/LDrawAssetState.cpp)
@@ -362,6 +372,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawAssetState.cpp`.
 </details>
 
 **`1463e7e4cd1e`** · `Unclassified/src/LDrawAssetState.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/LDrawAssetState.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/LDrawAssetState.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/LDrawAssetState.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/LDrawAssetState.cpp)
@@ -407,6 +418,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawAssetState.cpp`.
 - public · colingsnyder2-ux · [src/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/LDrawAssetState.cpp)
 
 **`8dfb2de3225b`** · `Unclassified/src/LDrawAssetState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/LDrawAssetState.cpp)
 - public · colingsnyder2-ux · [src/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/LDrawAssetState.cpp)
 - public · colingsnyder2-ux · [src/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/LDrawAssetState.cpp)
 - public · colingsnyder2-ux · [src/LDrawAssetState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/LDrawAssetState.cpp)
@@ -485,6 +497,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawAssetState.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/LDrawEntityLifetime.cpp`.
 
 **`17378a06c9a2`** · `Base/src/util/LDrawEntityLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Base/src/util/LDrawEntityLifetime.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/LDrawEntityLifetime.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/LDrawEntityLifetime.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/LDrawEntityLifetime.cpp)
@@ -503,6 +516,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawEntityLifetime.cp
 </details>
 
 **`e97ba8f24817`** · `Base/src/util/LDrawEntityLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Base/src/util/LDrawEntityLifetime.cpp)
 - public · colingsnyder2-ux · [util/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/LDrawEntityLifetime.cpp)
 - public · colingsnyder2-ux · [util/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/LDrawEntityLifetime.cpp)
 - public · colingsnyder2-ux · [util/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/LDrawEntityLifetime.cpp)
@@ -560,6 +574,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawEntityLifetime.cp
 </details>
 
 **`6b5cc80f8dd0`** · `Unclassified/src/LDrawEntityLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/LDrawEntityLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/LDrawEntityLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/LDrawEntityLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/LDrawEntityLifetime.cpp)
@@ -578,6 +593,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawEntityLifetime.cp
 </details>
 
 **`8835d8f42645`** · `Unclassified/src/LDrawEntityLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/LDrawEntityLifetime.cpp)
 - public · colingsnyder2-ux · [src/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/LDrawEntityLifetime.cpp)
 - public · colingsnyder2-ux · [src/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/LDrawEntityLifetime.cpp)
 - public · colingsnyder2-ux · [src/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/LDrawEntityLifetime.cpp)
@@ -644,6 +660,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawEntityLifetime.cp
 Earlier paths and their donor versions: `Unclassified/src/LDrawMapOperations.cpp`.
 
 **`a8a325ca364b`** · `Base/src/util/LDrawMapOperations.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Base/src/util/LDrawMapOperations.cpp)
 - public · colingsnyder2-ux · [util/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/LDrawMapOperations.cpp)
 - public · colingsnyder2-ux · [util/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/LDrawMapOperations.cpp)
 - public · colingsnyder2-ux · [util/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/LDrawMapOperations.cpp)
@@ -653,6 +670,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawMapOperations.cpp
 - public · colingsnyder2-ux · [util/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Base/src/util/LDrawMapOperations.cpp)
 
 **`d36b0e3140b7`** · `Base/src/util/LDrawMapOperations.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Base/src/util/LDrawMapOperations.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/LDrawMapOperations.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/LDrawMapOperations.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/LDrawMapOperations.cpp)
@@ -712,6 +730,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawMapOperations.cpp
 </details>
 
 **`39cdbb43f612`** · `Unclassified/src/LDrawMapOperations.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/LDrawMapOperations.cpp)
 - public · colingsnyder2-ux · [src/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/LDrawMapOperations.cpp)
 - public · colingsnyder2-ux · [src/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/LDrawMapOperations.cpp)
 - public · colingsnyder2-ux · [src/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/LDrawMapOperations.cpp)
@@ -730,6 +749,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawMapOperations.cpp
 </details>
 
 **`9b65da843a16`** · `Unclassified/src/LDrawMapOperations.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/LDrawMapOperations.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/LDrawMapOperations.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/LDrawMapOperations.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawMapOperations.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/LDrawMapOperations.cpp)
@@ -803,6 +823,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawMapOperations.cpp
 Earlier paths and their donor versions: `Unclassified/src/LDrawMapRootLifetime.cpp`.
 
 **`2e543f94f86c`** · `Base/src/util/LDrawMapRootLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Base/src/util/LDrawMapRootLifetime.cpp)
 - public · colingsnyder2-ux · [util/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/LDrawMapRootLifetime.cpp)
 - public · colingsnyder2-ux · [util/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/LDrawMapRootLifetime.cpp)
 - public · colingsnyder2-ux · [util/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/LDrawMapRootLifetime.cpp)
@@ -812,6 +833,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawMapRootLifetime.c
 - public · colingsnyder2-ux · [util/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Base/src/util/LDrawMapRootLifetime.cpp)
 
 **`58402f18c88f`** · `Base/src/util/LDrawMapRootLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Base/src/util/LDrawMapRootLifetime.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/LDrawMapRootLifetime.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/LDrawMapRootLifetime.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/LDrawMapRootLifetime.cpp)
@@ -928,6 +950,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawMapRootLifetime.c
 - public · colingsnyder2-ux · [src/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/LDrawMapRootLifetime.cpp)
 
 **`c92059e41a87`** · `Unclassified/src/LDrawMapRootLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/LDrawMapRootLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/LDrawMapRootLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/LDrawMapRootLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/LDrawMapRootLifetime.cpp)
@@ -946,6 +969,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawMapRootLifetime.c
 </details>
 
 **`e2b9ed03fbb7`** · `Unclassified/src/LDrawMapRootLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/LDrawMapRootLifetime.cpp)
 - public · colingsnyder2-ux · [src/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/LDrawMapRootLifetime.cpp)
 - public · colingsnyder2-ux · [src/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/LDrawMapRootLifetime.cpp)
 - public · colingsnyder2-ux · [src/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/LDrawMapRootLifetime.cpp)
@@ -962,6 +986,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawMapRootLifetime.c
 Earlier paths and their donor versions: `Unclassified/src/LDrawMapTags.cpp`.
 
 **`551523e291a1`** · `Base/src/util/LDrawMapTags.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Base/src/util/LDrawMapTags.cpp)
 - public · colingsnyder2-ux · [util/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/LDrawMapTags.cpp)
 - public · colingsnyder2-ux · [util/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/LDrawMapTags.cpp)
 - public · colingsnyder2-ux · [util/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/LDrawMapTags.cpp)
@@ -971,6 +996,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawMapTags.cpp`.
 - public · colingsnyder2-ux · [util/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Base/src/util/LDrawMapTags.cpp)
 
 **`c9f2bed81ceb`** · `Base/src/util/LDrawMapTags.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Base/src/util/LDrawMapTags.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/LDrawMapTags.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/LDrawMapTags.cpp)
 - canonical · colingsnyder2-ux · [util/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/LDrawMapTags.cpp)
@@ -1016,6 +1042,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawMapTags.cpp`.
 - public · colingsnyder2-ux · [src/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/LDrawMapTags.cpp)
 
 **`4dd2d9941894`** · `Unclassified/src/LDrawMapTags.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/LDrawMapTags.cpp)
 - public · colingsnyder2-ux · [src/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/LDrawMapTags.cpp)
 - public · colingsnyder2-ux · [src/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/LDrawMapTags.cpp)
 - public · colingsnyder2-ux · [src/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/LDrawMapTags.cpp)
@@ -1096,6 +1123,7 @@ Earlier paths and their donor versions: `Unclassified/src/LDrawMapTags.cpp`.
 </details>
 
 **`faf3e1990f94`** · `Unclassified/src/LDrawMapTags.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/LDrawMapTags.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/LDrawMapTags.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/LDrawMapTags.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawMapTags.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/LDrawMapTags.cpp)

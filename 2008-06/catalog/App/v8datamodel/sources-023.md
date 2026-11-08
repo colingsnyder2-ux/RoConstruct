@@ -33,6 +33,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpawnerServi
 - public · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8datamodel/SpawnerService.h)
 
 **`7da1690a6bf8`** · `App/include/v8datamodel/SpawnerService.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h)
@@ -70,7 +71,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpawnerServi
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>74 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
@@ -117,12 +118,18 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpawnerServi
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
@@ -153,6 +160,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpawnerServi
 </details>
 
 **`a6d370936ac6`** · `App/include/v8datamodel/SpawnerService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/include/v8datamodel/SpawnerService.h)
 - public · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/include/v8datamodel/SpawnerService.h)
 - public · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/include/v8datamodel/SpawnerService.h)
 - public · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/include/v8datamodel/SpawnerService.h)
@@ -189,6 +197,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpawnerServi
 - public · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8datamodel/SpawnerService.h)
 
 **`6369a5044e5c`** · `native-headers/v8datamodel/SpawnerService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/v8datamodel/SpawnerService.h)
+- canonical · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h)
 - public · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/SpawnerService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h)
 - public · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/SpawnerService.h)
@@ -262,7 +272,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpawnerServi
 - public · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/SpawnerService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnerService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h)
 
-<details><summary>71 retained local origins</summary>
+<details><summary>77 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
@@ -310,12 +320,18 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpawnerServi
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h` · root `b52aa15feaea5a0c`
@@ -443,6 +459,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpawnerServi
 Earlier paths and their donor versions: `native-headers/v8datamodel/SpecialShape.h`.
 
 **`3363d3c46dbe`** · `App/include/v8datamodel/SpecialShape.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h)
@@ -480,7 +497,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpecialShape
 - canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>74 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
@@ -527,12 +544,18 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpecialShape
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
@@ -588,6 +611,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpecialShape
 </details>
 
 **`e3d827565e11`** · `App/include/v8datamodel/SpecialShape.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/include/v8datamodel/SpecialShape.h)
 - public · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/include/v8datamodel/SpecialShape.h)
 - public · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/include/v8datamodel/SpecialShape.h)
 - public · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/include/v8datamodel/SpecialShape.h)
@@ -609,6 +633,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpecialShape
 </details>
 
 **`043d923916f3`** · `native-headers/v8datamodel/SpecialShape.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/v8datamodel/SpecialShape.h)
+- canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h)
 - public · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/SpecialShape.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h)
 - public · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/SpecialShape.h)
@@ -682,7 +708,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpecialShape
 - public · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/SpecialShape.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h)
 
-<details><summary>71 retained local origins</summary>
+<details><summary>77 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
@@ -730,12 +756,18 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpecialShape
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h` · root `b52aa15feaea5a0c`
@@ -853,8 +885,9 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpecialShape
 </details>
 
 **`bf0182292575`** · `native-headers/v8datamodel/SpecialShape.h` · proof not assessed
-- draft · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h)
+- draft · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h)
 - fork · coldek · [v8datamodel/SpecialShape.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h)
+- draft · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h)
 - draft · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h)
 - draft · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h)
 - draft · colingsnyder2-ux · [v8datamodel/SpecialShape.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h)

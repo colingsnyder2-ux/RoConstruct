@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 
 **`34ad0621e3d9`** · `WindowsClient/include/NativeExitCommand.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
@@ -46,7 +47,7 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 - canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>76 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
@@ -95,12 +96,18 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/NativeExitCommand.h` · root `b52aa15feaea5a0c`
@@ -131,6 +138,7 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 </details>
 
 **`abec716b6512`** · `WindowsClient/include/NativeExitCommand.h` · proof not assessed
+- public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/NativeExitCommand.h)
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/NativeExitCommand.h)
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/NativeExitCommand.h)
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/NativeExitCommand.h)
@@ -178,6 +186,8 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 - public · colingsnyder2-ux · [include/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/NativeExitCommand.h)
 
 **`205e74a7c566`** · `native-headers/NativeExitCommand.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/NativeExitCommand.h)
+- canonical · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/NativeExitCommand.h)
 - public · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/NativeExitCommand.h)
 - public · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/NativeExitCommand.h)
@@ -253,7 +263,7 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 - public · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/NativeExitCommand.h)
 - canonical · colingsnyder2-ux · [native-headers/NativeExitCommand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/NativeExitCommand.h)
 
-<details><summary>73 retained local origins</summary>
+<details><summary>79 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
@@ -303,12 +313,18 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/NativeExitCommand.h` · root `b52aa15feaea5a0c`
@@ -452,6 +468,7 @@ Earlier paths and their donor versions: `native-headers/NativeExitCommand.h`.
 Earlier paths and their donor versions: `native-headers/PropertyGridItems.h`.
 
 **`2361d18b27bc`** · `WindowsClient/include/PropertyGridItems.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h)
 - canonical · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h)
 - canonical · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h)
 - canonical · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h)
@@ -483,7 +500,7 @@ Earlier paths and their donor versions: `native-headers/PropertyGridItems.h`.
 - canonical · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h)
 - canonical · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h)
 
-<details><summary>57 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
@@ -520,12 +537,18 @@ Earlier paths and their donor versions: `native-headers/PropertyGridItems.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/PropertyGridItems.h` · root `b52aa15feaea5a0c`
@@ -574,6 +597,7 @@ Earlier paths and their donor versions: `native-headers/PropertyGridItems.h`.
 </details>
 
 **`ebc77cca159d`** · `WindowsClient/include/PropertyGridItems.h` · proof not assessed
+- public · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/PropertyGridItems.h)
 - public · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/PropertyGridItems.h)
 - public · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/PropertyGridItems.h)
 - public · colingsnyder2-ux · [include/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/PropertyGridItems.h)
@@ -823,6 +847,8 @@ Earlier paths and their donor versions: `native-headers/PropertyGridItems.h`.
 </details>
 
 **`ff71e28fb9bc`** · `native-headers/PropertyGridItems.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/PropertyGridItems.h)
+- canonical · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/PropertyGridItems.h)
 - public · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/PropertyGridItems.h)
 - canonical · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/PropertyGridItems.h)
 - public · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/PropertyGridItems.h)
@@ -884,7 +910,7 @@ Earlier paths and their donor versions: `native-headers/PropertyGridItems.h`.
 - public · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/PropertyGridItems.h)
 - canonical · colingsnyder2-ux · [native-headers/PropertyGridItems.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/PropertyGridItems.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
@@ -922,12 +948,18 @@ Earlier paths and their donor versions: `native-headers/PropertyGridItems.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/PropertyGridItems.h` · root `b52aa15feaea5a0c`

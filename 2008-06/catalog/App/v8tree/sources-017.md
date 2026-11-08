@@ -86,6 +86,7 @@ Compatibility path for `App/src/v8tree/InstanceClassLookup.cpp`; compile either 
 </details>
 
 **`717c1ce5c7ae`** · `native-classes/InstanceClassLookup.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceClassLookup.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceClassLookup.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceClassLookup.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/archive/source-snapshots/20261107-instance-layout/2008-06/native-classes/InstanceClassLookup.cpp)
@@ -145,6 +146,8 @@ Compatibility path for `App/src/v8tree/InstanceClassLookup.cpp`; compile either 
 </details>
 
 **`7f2b56d90860`** · `native-classes/InstanceClassLookup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/InstanceClassLookup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/InstanceClassLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/InstanceClassLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/InstanceClassLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceClassLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/InstanceClassLookup.cpp)
@@ -286,6 +289,7 @@ Compatibility path for `App/src/v8tree/InstanceClassLookup.cpp`; compile either 
 <summary>native-classes/InstanceClone.cpp — candidate-only; 2 content versions</summary>
 
 **`6b860deaff61`** · `native-classes/InstanceClone.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/InstanceClone.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/47bb80e62f72f19c80f5d9fe89d7edd61eb29154b94d295d24b3c35b38332636/rebuild/2008-06/native-classes/InstanceClone.cpp)
 - draft · colingsnyder2-ux · [native-classes/InstanceClone.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/47bb80e62f72f19c80f5d9fe89d7edd61eb29154b94d295d24b3c35b38332636/rebuild/2008-06/native-classes/InstanceClone.cpp)
 - draft · colingsnyder2-ux · [native-classes/InstanceClone.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/47bb80e62f72f19c80f5d9fe89d7edd61eb29154b94d295d24b3c35b38332636/rebuild/2008-06/native-classes/InstanceClone.cpp)
 - draft · colingsnyder2-ux · [native-classes/InstanceClone.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/47bb80e62f72f19c80f5d9fe89d7edd61eb29154b94d295d24b3c35b38332636/rebuild/2008-06/native-classes/InstanceClone.cpp)
@@ -343,6 +347,7 @@ Compatibility path for `App/src/v8tree/InstanceClassLookup.cpp`; compile either 
 </details>
 
 **`d9d7701134d3`** · `native-classes/InstanceClone.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/InstanceClone.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/e07a3a45bfef8a2fbfdf8886b58fb6d883b6c0adee5ca144200a9fb0055bfee5/rebuild/2008-06/native-classes/InstanceClone.cpp)
 - draft · colingsnyder2-ux · [native-classes/InstanceClone.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/e07a3a45bfef8a2fbfdf8886b58fb6d883b6c0adee5ca144200a9fb0055bfee5/rebuild/2008-06/native-classes/InstanceClone.cpp)
 - draft · colingsnyder2-ux · [native-classes/InstanceClone.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/e07a3a45bfef8a2fbfdf8886b58fb6d883b6c0adee5ca144200a9fb0055bfee5/rebuild/2008-06/native-classes/InstanceClone.cpp)
 - draft · colingsnyder2-ux · [native-classes/InstanceClone.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/e07a3a45bfef8a2fbfdf8886b58fb6d883b6c0adee5ca144200a9fb0055bfee5/rebuild/2008-06/native-classes/InstanceClone.cpp)
@@ -421,6 +426,7 @@ Compatibility path for `App/src/v8tree/InstanceClassLookup.cpp`; compile either 
 </details>
 
 **`dbe55f8c49ad`** · `native-classes/InstanceContainment.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceContainment.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/InstanceContainment.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceContainment.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/InstanceContainment.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceContainment.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/InstanceContainment.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceContainment.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/InstanceContainment.cpp)
@@ -500,6 +506,7 @@ Compatibility path for `App/src/v8tree/InstanceContains.cpp`; compile either pat
 - public · colingsnyder2-ux · [native-classes/InstanceContains.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/InstanceContains.cpp)
 
 **`af43f10ab99b`** · `native-classes/InstanceContains.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceContains.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/InstanceContains.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceContains.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/InstanceContains.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceContains.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/InstanceContains.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceContains.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/InstanceContains.cpp)
@@ -521,6 +528,7 @@ Compatibility path for `App/src/v8tree/InstanceContains.cpp`; compile either pat
 </details>
 
 **`cb8458004722`** · `native-classes/InstanceContains.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/InstanceContains.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/InstanceContains.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceContains.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/InstanceContains.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceContains.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/InstanceContains.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceContains.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/InstanceContains.cpp)
@@ -570,6 +578,7 @@ Compatibility path for `App/src/v8tree/InstanceContains.cpp`; compile either pat
 Compatibility path for `App/src/v8tree/InstanceDescendantEvents.cpp`; compile either path, never both.
 
 **`1b6f3066a569`** · `native-classes/InstanceDescendantEvents.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - archive · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/archive/source-snapshots/20261107-instance-layout-bulk/2008-06/native-classes/InstanceDescendantEvents.cpp)
@@ -697,6 +706,8 @@ Compatibility path for `App/src/v8tree/InstanceDescendantEvents.cpp`; compile ei
 </details>
 
 **`8814797e929a`** · `native-classes/InstanceDescendantEvents.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/InstanceDescendantEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceDescendantEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/InstanceDescendantEvents.cpp)
@@ -917,6 +928,7 @@ Compatibility path for `App/src/v8tree/InstanceDescendantEvents.cpp`; compile ei
 - public · colingsnyder2-ux · [native-classes/InstanceDescendantPropagation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/InstanceDescendantPropagation.cpp)
 
 **`99fcb9821c68`** · `native-classes/InstanceDescendantPropagation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InstanceDescendantPropagation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/InstanceDescendantPropagation.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceDescendantPropagation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/InstanceDescendantPropagation.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceDescendantPropagation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/InstanceDescendantPropagation.cpp)
 - public · colingsnyder2-ux · [native-classes/InstanceDescendantPropagation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/InstanceDescendantPropagation.cpp)
@@ -943,6 +955,7 @@ Compatibility path for `App/src/v8tree/InstanceDescendantEvents.cpp`; compile ei
 <summary>native-classes/InstanceFromXmlRoot.cpp — candidate-only; 1 content versions</summary>
 
 **`f14fd510c4c4`** · `native-classes/InstanceFromXmlRoot.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/InstanceFromXmlRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/982f30a6b5b7989ae1639fcad95e3a76649df490f6d1664dbe6192ef68fab4a5/rebuild/2008-06/native-classes/InstanceFromXmlRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/InstanceFromXmlRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/982f30a6b5b7989ae1639fcad95e3a76649df490f6d1664dbe6192ef68fab4a5/rebuild/2008-06/native-classes/InstanceFromXmlRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/InstanceFromXmlRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/982f30a6b5b7989ae1639fcad95e3a76649df490f6d1664dbe6192ef68fab4a5/rebuild/2008-06/native-classes/InstanceFromXmlRoot.cpp)
 - draft · colingsnyder2-ux · [native-classes/InstanceFromXmlRoot.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/982f30a6b5b7989ae1639fcad95e3a76649df490f6d1664dbe6192ef68fab4a5/rebuild/2008-06/native-classes/InstanceFromXmlRoot.cpp)

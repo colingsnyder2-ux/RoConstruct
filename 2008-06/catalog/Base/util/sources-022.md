@@ -99,6 +99,8 @@ Compatibility path for `Unclassified/src/G3DHashable.cpp`; compile either path, 
 </details>
 
 **`f9e5e0b5500d`** · `native-classes/G3DHashable.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/G3DHashable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/G3DHashable.cpp)
+- canonical · colingsnyder2-ux · [native-classes/G3DHashable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/G3DHashable.cpp)
 - public · colingsnyder2-ux · [native-classes/G3DHashable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/G3DHashable.cpp)
 - canonical · colingsnyder2-ux · [native-classes/G3DHashable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/G3DHashable.cpp)
 - public · colingsnyder2-ux · [native-classes/G3DHashable.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/G3DHashable.cpp)
@@ -261,6 +263,8 @@ Compatibility path for `App/src/tool/GameToolEvents.cpp`; compile either path, n
 </details>
 
 **`7f0135397849`** · `native-classes/GameToolEvents.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GameToolEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/GameToolEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GameToolEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/GameToolEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/GameToolEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/GameToolEvents.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GameToolEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/GameToolEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/GameToolEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/GameToolEvents.cpp)
@@ -508,6 +512,8 @@ Compatibility path for `App/src/v8datamodel/HistoryRecordLifetime.cpp`; compile 
 </details>
 
 **`dfa20400194a`** · `native-classes/HistoryRecordLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/HistoryRecordLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/HistoryRecordLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HistoryRecordLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/HistoryRecordLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HistoryRecordLifetime.cpp)
@@ -653,6 +659,8 @@ Compatibility path for `Unclassified/src/LDrawEntityLifetime.cpp`; compile eithe
 </details>
 
 **`365e200aaab9`** · `native-classes/LDrawEntityLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LDrawEntityLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/LDrawEntityLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LDrawEntityLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/LDrawEntityLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawEntityLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/LDrawEntityLifetime.cpp)
@@ -868,6 +876,8 @@ Compatibility path for `Unclassified/src/LDrawMapRootLifetime.cpp`; compile eith
 </details>
 
 **`9c3d86ee98ce`** · `native-classes/LDrawMapRootLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LDrawMapRootLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LDrawMapRootLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawMapRootLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/LDrawMapRootLifetime.cpp)
@@ -1033,6 +1043,8 @@ Compatibility path for `Unclassified/src/LDrawStringCompare.cpp`; compile either
 - public · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/LDrawStringCompare.cpp)
 
 **`628cc6a1f736`** · `native-classes/LDrawStringCompare.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LDrawStringCompare.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/LDrawStringCompare.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LDrawStringCompare.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/LDrawStringCompare.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/LDrawStringCompare.cpp)

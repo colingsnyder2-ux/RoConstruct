@@ -38,6 +38,8 @@ Compatibility path for `Unclassified/src/HumanoidStates1Leaves.cpp`; compile eit
 - public · colingsnyder2-ux · [native-classes/HumanoidStates1Leaves.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/HumanoidStates1Leaves.cpp)
 
 **`489bd219e109`** · `native-classes/HumanoidStates1Leaves.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HumanoidStates1Leaves.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/HumanoidStates1Leaves.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HumanoidStates1Leaves.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidStates1Leaves.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HumanoidStates1Leaves.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HumanoidStates1Leaves.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidStates1Leaves.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HumanoidStates1Leaves.cpp)
@@ -254,6 +256,8 @@ Compatibility path for `App/src/v8datamodel/HumanoidStates2.cpp`; compile either
 </details>
 
 **`8e9f6c86357e`** · `native-classes/HumanoidStates2.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HumanoidStates2.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/HumanoidStates2.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HumanoidStates2.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/HumanoidStates2.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidStates2.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HumanoidStates2.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HumanoidStates2.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/HumanoidStates2.cpp)
 - public · colingsnyder2-ux · [native-classes/HumanoidStates2.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HumanoidStates2.cpp)

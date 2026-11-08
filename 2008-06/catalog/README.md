@@ -19,11 +19,11 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 | [Network](Network/README.md) | 86 |
 | [Rendering](Rendering/README.md) | 75 |
 | [Base/util](Base/util/README.md) | 144 |
-| [Other](Other/README.md) | 385 |
+| [Other](Other/README.md) | 387 |
 
 ## Coverage
 
-118 sources checked; 0 errors.
+120 sources checked; 0 errors.
 
 See [source-map.json](../source-map.json) for revisions, hashes, origins, errors and exclusions.
 Local-only candidates have no public code URL until separately reviewed and published.

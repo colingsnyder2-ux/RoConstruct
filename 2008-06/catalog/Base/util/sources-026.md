@@ -33,6 +33,8 @@ Compatibility path for `WindowsClient/include/CFileVersionInfo.h`; compile eithe
 - public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/CFileVersionInfo.h)
 
 **`c9558cae78d7`** · `native-headers/CFileVersionInfo.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/CFileVersionInfo.h)
+- canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CFileVersionInfo.h)
 - canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CFileVersionInfo.h)
@@ -104,7 +106,7 @@ Compatibility path for `WindowsClient/include/CFileVersionInfo.h`; compile eithe
 - public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CFileVersionInfo.h)
 - canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 
-<details><summary>69 retained local origins</summary>
+<details><summary>75 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
@@ -150,12 +152,18 @@ Compatibility path for `WindowsClient/include/CFileVersionInfo.h`; compile eithe
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CFileVersionInfo.h` · root `b52aa15feaea5a0c`
@@ -530,6 +538,8 @@ Compatibility path for `Unclassified/include/cow-noinline-read/util/Utilities.h`
 </details>
 
 **`ef612ec5d56d`** · `native-headers/cow-noinline-read/util/Utilities.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
+- canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
@@ -599,7 +609,7 @@ Compatibility path for `Unclassified/include/cow-noinline-read/util/Utilities.h`
 - public · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 - canonical · colingsnyder2-ux · [util/Utilities.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>73 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -643,12 +653,18 @@ Compatibility path for `Unclassified/include/cow-noinline-read/util/Utilities.h`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h` · root `b52aa15feaea5a0c`
@@ -736,6 +752,8 @@ Compatibility path for `Unclassified/include/draw-handles/util/Rect.h`; compile 
 </details>
 
 **`52361b9a463b`** · `native-headers/draw-handles/util/Rect.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/draw-handles/util/Rect.h)
+- canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/draw-handles/util/Rect.h)
@@ -805,7 +823,7 @@ Compatibility path for `Unclassified/include/draw-handles/util/Rect.h`; compile 
 - public · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/draw-handles/util/Rect.h)
 - canonical · colingsnyder2-ux · [util/Rect.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>73 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -849,12 +867,18 @@ Compatibility path for `Unclassified/include/draw-handles/util/Rect.h`; compile 
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/draw-handles/util/Rect.h` · root `b52aa15feaea5a0c`
@@ -945,6 +969,7 @@ Compatibility path for `Unclassified/include/draw-handles/util/Rect.h`; compile 
 Compatibility path for `Base/include/util/Log.h`; compile either path, never both.
 
 **`2eed001abbd4`** · `native-headers/log-2008/util/Log.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/log-2008/util/Log.h)
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/log-2008/util/Log.h)
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/log-2008/util/Log.h)
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/log-2008/util/Log.h)
@@ -957,7 +982,7 @@ Compatibility path for `Base/include/util/Log.h`; compile either path, never bot
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/log-2008/util/Log.h)
 - canonical · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-headers/log-2008/util/Log.h)
 
-<details><summary>23 retained local origins</summary>
+<details><summary>29 retained local origins</summary>
 
 - local · `work/native-candidates/log-overlay-alias-20261108/candidate/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
@@ -966,12 +991,18 @@ Compatibility path for `Base/include/util/Log.h`; compile either path, never bot
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/native-headers/log-2008/util/Log.h` · root `b52aa15feaea5a0c`
@@ -1040,6 +1071,7 @@ Compatibility path for `Base/include/util/Log.h`; compile either path, never bot
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/log-2008/util/Log.h)
 
 **`dfbc4c3c6186`** · `native-headers/log-2008/util/Log.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/log-2008/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/log-2008/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/log-2008/util/Log.h)
 - public · colingsnyder2-ux · [util/Log.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/log-2008/util/Log.h)

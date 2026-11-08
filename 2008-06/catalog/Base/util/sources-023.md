@@ -38,6 +38,8 @@ Compatibility path for `Unclassified/src/LogFormatMemory.cpp`; compile either pa
 </details>
 
 **`1623621c4783`** · `native-classes/LogFormatMemory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LogFormatMemory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LogFormatMemory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/LogFormatMemory.cpp)
@@ -184,6 +186,7 @@ Compatibility path for `Unclassified/src/LogFormatMemory.cpp`; compile either pa
 </details>
 
 **`9479f9bebb19`** · `native-classes/LogFormatTime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LogFormatTime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LogFormatTime.cpp)
 - public · colingsnyder2-ux · [native-classes/LogFormatTime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LogFormatTime.cpp)
 - public · colingsnyder2-ux · [native-classes/LogFormatTime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/LogFormatTime.cpp)
 - public · colingsnyder2-ux · [native-classes/LogFormatTime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/LogFormatTime.cpp)
@@ -256,6 +259,7 @@ Compatibility path for `Unclassified/src/LogFormatMemory.cpp`; compile either pa
 <summary>native-classes/LogLifetime.cpp — public-only; 5 content versions</summary>
 
 **`2d3ace0d808b`** · `native-classes/LogLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LogLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LogLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/LogLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LogLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/LogLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/LogLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/LogLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/LogLifetime.cpp)
@@ -424,6 +428,8 @@ Compatibility path for `Unclassified/src/MD5Hasher.cpp`; compile either path, ne
 </details>
 
 **`8d2f75f2be72`** · `native-classes/MD5Hasher.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/MD5Hasher.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/MD5Hasher.cpp)
 - public · colingsnyder2-ux · [native-classes/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MD5Hasher.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/MD5Hasher.cpp)
 - public · colingsnyder2-ux · [native-classes/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/MD5Hasher.cpp)
@@ -581,6 +587,8 @@ Compatibility path for `Unclassified/src/MathClosestRay.cpp`; compile either pat
 </details>
 
 **`6f21fe1d2891`** · `native-classes/MathClosestRay.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MathClosestRay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/MathClosestRay.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MathClosestRay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/MathClosestRay.cpp)
 - public · colingsnyder2-ux · [native-classes/MathClosestRay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MathClosestRay.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MathClosestRay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/MathClosestRay.cpp)
 - public · colingsnyder2-ux · [native-classes/MathClosestRay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/MathClosestRay.cpp)
@@ -764,6 +772,8 @@ Compatibility path for `Unclassified/src/MathTiltMatrices.cpp`; compile either p
 </details>
 
 **`99c04574d844`** · `native-classes/MathTiltMatrices.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MathTiltMatrices.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/MathTiltMatrices.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MathTiltMatrices.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/MathTiltMatrices.cpp)
 - public · colingsnyder2-ux · [native-classes/MathTiltMatrices.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MathTiltMatrices.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MathTiltMatrices.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/MathTiltMatrices.cpp)
 - public · colingsnyder2-ux · [native-classes/MathTiltMatrices.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/MathTiltMatrices.cpp)
@@ -924,6 +934,8 @@ Compatibility path for `Unclassified/src/MathTiltMatrices.cpp`; compile either p
 Compatibility path for `Unclassified/src/MathTiltQuadrant.cpp`; compile either path, never both.
 
 **`06053e3ac139`** · `native-classes/MathTiltQuadrant.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/MathTiltQuadrant.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/MathTiltQuadrant.cpp)
 - public · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MathTiltQuadrant.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/MathTiltQuadrant.cpp)
 - public · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/MathTiltQuadrant.cpp)

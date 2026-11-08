@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/CRobloxTreeCtrl.h`.
 
 **`03b482eee0be`** · `WindowsClient/include/CRobloxTreeCtrl.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/CRobloxTreeCtrl.h)
 - public · colingsnyder2-ux · [include/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/CRobloxTreeCtrl.h)
 - public · colingsnyder2-ux · [include/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/CRobloxTreeCtrl.h)
 - public · colingsnyder2-ux · [include/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/CRobloxTreeCtrl.h)
@@ -29,6 +30,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxTreeCtrl.h`.
 </details>
 
 **`46a75496f727`** · `WindowsClient/include/CRobloxTreeCtrl.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h)
 - canonical · colingsnyder2-ux · [include/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h)
 - canonical · colingsnyder2-ux · [include/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h)
 - canonical · colingsnyder2-ux · [include/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h)
@@ -60,7 +62,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxTreeCtrl.h`.
 - canonical · colingsnyder2-ux · [include/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h)
 - canonical · colingsnyder2-ux · [include/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h)
 
-<details><summary>57 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
@@ -97,12 +99,18 @@ Earlier paths and their donor versions: `native-headers/CRobloxTreeCtrl.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
@@ -159,6 +167,8 @@ Earlier paths and their donor versions: `native-headers/CRobloxTreeCtrl.h`.
 </details>
 
 **`44a09c1a3f91`** · `native-headers/CRobloxTreeCtrl.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/CRobloxTreeCtrl.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CRobloxTreeCtrl.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CRobloxTreeCtrl.h)
@@ -220,7 +230,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxTreeCtrl.h`.
 - public · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CRobloxTreeCtrl.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
@@ -258,12 +268,18 @@ Earlier paths and their donor versions: `native-headers/CRobloxTreeCtrl.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CRobloxTreeCtrl.h` · root `b52aa15feaea5a0c`
@@ -425,6 +441,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxTreeCtrl.h`.
 Earlier paths and their donor versions: `native-headers/CRobloxView.h`.
 
 **`0ef2e22a195b`** · `WindowsClient/include/CRobloxView.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/CRobloxView.h)
 - canonical · colingsnyder2-ux · [include/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/CRobloxView.h)
 - canonical · colingsnyder2-ux · [include/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/CRobloxView.h)
 - canonical · colingsnyder2-ux · [include/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/CRobloxView.h)
@@ -456,7 +473,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxView.h`.
 - canonical · colingsnyder2-ux · [include/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CRobloxView.h)
 - canonical · colingsnyder2-ux · [include/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CRobloxView.h)
 
-<details><summary>57 retained local origins</summary>
+<details><summary>63 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
@@ -493,12 +510,18 @@ Earlier paths and their donor versions: `native-headers/CRobloxView.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CRobloxView.h` · root `b52aa15feaea5a0c`
@@ -538,6 +561,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxView.h`.
 - public · colingsnyder2-ux · [include/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CRobloxView.h)
 
 **`b4509f2cd943`** · `WindowsClient/include/CRobloxView.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/CRobloxView.h)
 - public · colingsnyder2-ux · [include/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/CRobloxView.h)
 - public · colingsnyder2-ux · [include/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/CRobloxView.h)
 - public · colingsnyder2-ux · [include/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/CRobloxView.h)
@@ -784,6 +808,8 @@ Earlier paths and their donor versions: `native-headers/CRobloxView.h`.
 </details>
 
 **`54cc4447d2c1`** · `native-headers/CRobloxView.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/CRobloxView.h)
+- canonical · colingsnyder2-ux · [native-headers/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/CRobloxView.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CRobloxView.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CRobloxView.h)
 - public · colingsnyder2-ux · [native-headers/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CRobloxView.h)
@@ -845,7 +871,7 @@ Earlier paths and their donor versions: `native-headers/CRobloxView.h`.
 - public · colingsnyder2-ux · [native-headers/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CRobloxView.h)
 - canonical · colingsnyder2-ux · [native-headers/CRobloxView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CRobloxView.h)
 
-<details><summary>60 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
@@ -883,12 +909,18 @@ Earlier paths and their donor versions: `native-headers/CRobloxView.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CRobloxView.h` · root `b52aa15feaea5a0c`

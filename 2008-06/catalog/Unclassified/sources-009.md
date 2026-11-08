@@ -10,6 +10,7 @@ Compatibility path for `experiments/overlays/engine-world/v8world/World.h`; comp
 Earlier paths and their donor versions: `native-headers/engine-world/v8world/World.h`.
 
 **`0d781674685a`** · `Unclassified/include/engine-world/v8world/World.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
@@ -20,19 +21,25 @@ Earlier paths and their donor versions: `native-headers/engine-world/v8world/Wor
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h)
 
-<details><summary>21 retained local origins</summary>
+<details><summary>27 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/Unclassified/include/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
@@ -79,6 +86,7 @@ Earlier paths and their donor versions: `native-headers/engine-world/v8world/Wor
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/engine-world/v8world/World.h)
 
 **`cfd2ebb5a7b8`** · `Unclassified/include/engine-world/v8world/World.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/engine-world/v8world/World.h)
@@ -248,6 +256,8 @@ Earlier paths and their donor versions: `native-headers/engine-world/v8world/Wor
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/engine-world/v8world/World.h)
 
 **`e311c157dc48`** · `native-headers/engine-world/v8world/World.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/engine-world/v8world/World.h)
+- canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/engine-world/v8world/World.h)
@@ -317,7 +327,7 @@ Earlier paths and their donor versions: `native-headers/engine-world/v8world/Wor
 - public · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/engine-world/v8world/World.h)
 - canonical · colingsnyder2-ux · [v8world/World.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>73 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
@@ -361,12 +371,18 @@ Earlier paths and their donor versions: `native-headers/engine-world/v8world/Wor
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/engine-world/v8world/World.h` · root `b52aa15feaea5a0c`
@@ -562,6 +578,7 @@ Earlier paths and their donor versions: `native-headers/instance-base-callbacks/
 </details>
 
 **`8219e6e0bac4`** · `Unclassified/include/instance-base-callbacks/reflection/function.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
@@ -573,19 +590,25 @@ Earlier paths and their donor versions: `native-headers/instance-base-callbacks/
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 
-<details><summary>20 retained local origins</summary>
+<details><summary>26 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -599,6 +622,7 @@ Earlier paths and their donor versions: `native-headers/instance-base-callbacks/
 </details>
 
 **`95a675270f7d`** · `Unclassified/include/instance-base-callbacks/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/instance-base-callbacks/reflection/function.h)
@@ -676,6 +700,8 @@ Earlier paths and their donor versions: `native-headers/instance-base-callbacks/
 </details>
 
 **`84ccda811e41`** · `native-headers/instance-base-callbacks/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
@@ -743,7 +769,7 @@ Earlier paths and their donor versions: `native-headers/instance-base-callbacks/
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h)
 
-<details><summary>65 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -785,12 +811,18 @@ Earlier paths and their donor versions: `native-headers/instance-base-callbacks/
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/instance-base-callbacks/reflection/function.h` · root `b52aa15feaea5a0c`

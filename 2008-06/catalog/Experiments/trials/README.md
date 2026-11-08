@@ -4,9 +4,9 @@
 
 Expand a native path for every distinct content version. No candidate is auto-promoted.
 
-- [experiments/trials/ContentProvider.cpp → experiments/trials/NativeCloneToolTrial.h](sources-001.md)
-- [experiments/trials/NativeClosestRayTrial.cpp → experiments/trials/NativeGrabToolTrial.h](sources-002.md)
-- [experiments/trials/NativeGroupActionTrial.cpp → experiments/trials/NativeMegaAliveTrial.cpp](sources-003.md)
-- [experiments/trials/NativeMegaSafeMoveTrial.cpp → experiments/trials/NativeShootWorkerTrial.cpp](sources-004.md)
-- [experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp → experiments/trials/NativeWorkspaceHResultWorkerTrial.cpp](sources-005.md)
-- [experiments/trials/NativeWorkspaceInsertUrlTrial.cpp → experiments/trials/Vector3Subtract.cpp](sources-006.md)
+- [experiments/trials/ContentProvider.cpp → experiments/trials/NativeCloneMethodsTrial.cpp](sources-001.md)
+- [experiments/trials/NativeCloneNameTrial.cpp → experiments/trials/NativeGameToolEventsTrial.cpp](sources-002.md)
+- [experiments/trials/NativeGameToolFactoryTrial.cpp → experiments/trials/NativeLDrawPartColorTrial.cpp](sources-003.md)
+- [experiments/trials/NativeLDrawPartParentTrial.cpp → experiments/trials/NativePartSetLockedCompactTrial.cpp](sources-004.md)
+- [experiments/trials/NativePartToolMethodsTrial.cpp → experiments/trials/NativeSurfaceVisitorsTrial.cpp](sources-005.md)
+- [experiments/trials/NativeSurfacesLookupTrial.cpp → experiments/trials/Vector3Subtract.cpp](sources-006.md)

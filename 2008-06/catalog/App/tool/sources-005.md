@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 
 **`5558e8b25ee5`** · `App/include/tool/ModelTools.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
@@ -45,7 +46,7 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>74 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
@@ -92,12 +93,18 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
@@ -153,6 +160,7 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/tool/ModelTools.h)
 
 **`dedc5124a3d6`** · `App/include/tool/ModelTools.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/include/tool/ModelTools.h)
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/include/tool/ModelTools.h)
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/include/tool/ModelTools.h)
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/include/tool/ModelTools.h)
@@ -283,6 +291,8 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/ModelTools.h)
 
 **`d1a7fc63545a`** · `native-headers/tool/ModelTools.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/tool/ModelTools.h)
+- canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h)
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h)
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/tool/ModelTools.h)
@@ -356,7 +366,7 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h)
 
-<details><summary>71 retained local origins</summary>
+<details><summary>77 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
@@ -404,12 +414,18 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
@@ -473,6 +489,7 @@ Earlier paths and their donor versions: `native-headers/tool/NullTool.h`.
 - public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/tool/NullTool.h)
 
 **`7828b517ff5a`** · `App/include/tool/NullTool.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/include/tool/NullTool.h)
 - canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/include/tool/NullTool.h)
 - canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/include/tool/NullTool.h)
 - canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/include/tool/NullTool.h)
@@ -510,7 +527,7 @@ Earlier paths and their donor versions: `native-headers/tool/NullTool.h`.
 - canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/NullTool.h)
 - canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/NullTool.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>74 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
@@ -557,12 +574,18 @@ Earlier paths and their donor versions: `native-headers/tool/NullTool.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/tool/NullTool.h` · root `b52aa15feaea5a0c`
@@ -584,6 +607,7 @@ Earlier paths and their donor versions: `native-headers/tool/NullTool.h`.
 </details>
 
 **`caf9379c0bf6`** · `App/include/tool/NullTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/include/tool/NullTool.h)
 - public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/include/tool/NullTool.h)
 - public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/include/tool/NullTool.h)
 - public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/include/tool/NullTool.h)
@@ -679,6 +703,8 @@ Earlier paths and their donor versions: `native-headers/tool/NullTool.h`.
 </details>
 
 **`a37cdb983414`** · `native-headers/tool/NullTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/tool/NullTool.h)
+- canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/tool/NullTool.h)
 - public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/tool/NullTool.h)
 - canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/tool/NullTool.h)
 - public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/tool/NullTool.h)
@@ -752,7 +778,7 @@ Earlier paths and their donor versions: `native-headers/tool/NullTool.h`.
 - public · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/NullTool.h)
 - canonical · colingsnyder2-ux · [tool/NullTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/NullTool.h)
 
-<details><summary>71 retained local origins</summary>
+<details><summary>77 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
@@ -800,12 +826,18 @@ Earlier paths and their donor versions: `native-headers/tool/NullTool.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/tool/NullTool.h` · root `b52aa15feaea5a0c`

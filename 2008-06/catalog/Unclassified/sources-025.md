@@ -25,6 +25,7 @@ Earlier paths and their donor versions: `native-classes/BoolPropertyVerb.cpp`.
 </details>
 
 **`7223efb56f06`** · `Unclassified/src/BoolPropertyVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
@@ -40,6 +41,7 @@ Earlier paths and their donor versions: `native-classes/BoolPropertyVerb.cpp`.
 </details>
 
 **`88196ef0af47`** · `Unclassified/src/BoolPropertyVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
@@ -108,6 +110,8 @@ Earlier paths and their donor versions: `native-classes/BoolPropertyVerb.cpp`.
 </details>
 
 **`11b7c126c92c`** · `native-classes/BoolPropertyVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/BoolPropertyVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/BoolPropertyVerb.cpp)
@@ -351,6 +355,7 @@ Earlier paths and their donor versions: `native-classes/BrowserViewExternalMetho
 </details>
 
 **`5a4654a81ada`** · `Unclassified/src/BrowserViewExternalMethods.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
@@ -369,6 +374,7 @@ Earlier paths and their donor versions: `native-classes/BrowserViewExternalMetho
 </details>
 
 **`67bf76985877`** · `Unclassified/src/BrowserViewExternalMethods.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
@@ -485,6 +491,8 @@ Earlier paths and their donor versions: `native-classes/BrowserViewExternalMetho
 - canonical · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/BrowserViewExternalMethods.cpp)
 
 **`e605cf23f0e7`** · `native-classes/BrowserViewExternalMethods.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/BrowserViewExternalMethods.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/BrowserViewExternalMethods.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/BrowserViewExternalMethods.cpp)
@@ -626,6 +634,7 @@ Earlier paths and their donor versions: `native-classes/CContentError.cpp`.
 - public · colingsnyder2-ux · [src/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/CContentError.cpp)
 
 **`3053828c50ad`** · `Unclassified/src/CContentError.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/CContentError.cpp)
 - canonical · colingsnyder2-ux · [src/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/CContentError.cpp)
 - canonical · colingsnyder2-ux · [src/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/CContentError.cpp)
 - canonical · colingsnyder2-ux · [src/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/CContentError.cpp)
@@ -716,6 +725,7 @@ Earlier paths and their donor versions: `native-classes/CContentError.cpp`.
 </details>
 
 **`fc2602a0f471`** · `Unclassified/src/CContentError.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/CContentError.cpp)
 - public · colingsnyder2-ux · [src/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/CContentError.cpp)
 - public · colingsnyder2-ux · [src/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/CContentError.cpp)
 - public · colingsnyder2-ux · [src/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/CContentError.cpp)
@@ -829,6 +839,8 @@ Earlier paths and their donor versions: `native-classes/CContentError.cpp`.
 </details>
 
 **`f37ff4df8ad3`** · `native-classes/CContentError.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/CContentError.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/CContentError.cpp)
 - public · colingsnyder2-ux · [native-classes/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CContentError.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CContentError.cpp)
 - public · colingsnyder2-ux · [native-classes/CContentError.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CContentError.cpp)

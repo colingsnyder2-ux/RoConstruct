@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8world/Pr
 </details>
 
 **`9f2c3a69dc2b`** · `Unclassified/include/part-embedded/v8world/Primitive.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 - canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 - canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 - canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
@@ -52,7 +53,7 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8world/Pr
 - canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 - canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 
-<details><summary>62 retained local origins</summary>
+<details><summary>68 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
@@ -94,12 +95,18 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8world/Pr
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
@@ -120,6 +127,7 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8world/Pr
 </details>
 
 **`b7fe33fb0f3a`** · `Unclassified/include/part-embedded/v8world/Primitive.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 - public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 - public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 - public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
@@ -182,6 +190,8 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8world/Pr
 </details>
 
 **`53a15d42d594`** · `native-headers/part-embedded/v8world/Primitive.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/part-embedded/v8world/Primitive.h)
+- canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
 - public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/part-embedded/v8world/Primitive.h)
 - canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
 - public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/part-embedded/v8world/Primitive.h)
@@ -251,7 +261,7 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8world/Pr
 - public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/part-embedded/v8world/Primitive.h)
 - canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>73 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
@@ -295,12 +305,18 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8world/Pr
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h` · root `b52aa15feaea5a0c`
@@ -441,6 +457,7 @@ Compatibility path for `experiments/overlays/part-resize/G3D/Matrix3.h`; compile
 Earlier paths and their donor versions: `native-headers/part-resize/G3D/Matrix3.h`.
 
 **`25d4d4b35f54`** · `Unclassified/include/part-resize/G3D/Matrix3.h` · proof not assessed
+- canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
 - canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
 - canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
 - canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
@@ -451,19 +468,25 @@ Earlier paths and their donor versions: `native-headers/part-resize/G3D/Matrix3.
 - canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
 - canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
 
-<details><summary>21 retained local origins</summary>
+<details><summary>27 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
@@ -584,6 +607,7 @@ Earlier paths and their donor versions: `native-headers/part-resize/G3D/Matrix3.
 </details>
 
 **`d8fd2e47ea50`** · `Unclassified/include/part-resize/G3D/Matrix3.h` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
 - public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
 - public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
 - public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
@@ -714,6 +738,7 @@ Earlier paths and their donor versions: `native-headers/part-resize/G3D/Matrix3.
 </details>
 
 **`e0d1989387ba`** · `native-headers/part-resize/G3D/Matrix3.h` · proof not assessed
+- archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
@@ -771,6 +796,8 @@ Earlier paths and their donor versions: `native-headers/part-resize/G3D/Matrix3.
 </details>
 
 **`e2f42b1cec09`** · `native-headers/part-resize/G3D/Matrix3.h` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/part-resize/G3D/Matrix3.h)
+- canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/part-resize/G3D/Matrix3.h)
@@ -838,7 +865,7 @@ Earlier paths and their donor versions: `native-headers/part-resize/G3D/Matrix3.
 - public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 
-<details><summary>65 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
@@ -880,12 +907,18 @@ Earlier paths and their donor versions: `native-headers/part-resize/G3D/Matrix3.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h` · root `b52aa15feaea5a0c`

@@ -34,6 +34,7 @@ Compatibility path for `WindowsClient/src/WorkspaceXmlWriter.cpp`; compile eithe
 </details>
 
 **`813f9736b8d4`** · `native-classes/WorkspaceXmlWriter.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
@@ -99,6 +100,8 @@ Compatibility path for `WindowsClient/src/WorkspaceXmlWriter.cpp`; compile eithe
 </details>
 
 **`e05708b554e3`** · `native-classes/WorkspaceXmlWriter.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/WorkspaceXmlWriter.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/WorkspaceXmlWriter.cpp)
@@ -259,6 +262,8 @@ Compatibility path for `App/src/v8world/WorldJoint.cpp`; compile either path, ne
 </details>
 
 **`2cea1fbf9de4`** · `native-classes/WorldJoint.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/62c1359b08847ee6025560fb8c3e955aca73ec104418ee887fba9bf0b21cb536/rebuild/2008-06/native-classes/WorldJoint.cpp)
+- draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/7d094b3d6c334ec9ab0bb8a63a47f8f43a9a85762ebd4cb2fee1c60c89a6c2e6/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/62c1359b08847ee6025560fb8c3e955aca73ec104418ee887fba9bf0b21cb536/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/7d094b3d6c334ec9ab0bb8a63a47f8f43a9a85762ebd4cb2fee1c60c89a6c2e6/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/62c1359b08847ee6025560fb8c3e955aca73ec104418ee887fba9bf0b21cb536/rebuild/2008-06/native-classes/WorldJoint.cpp)
@@ -367,6 +372,7 @@ Compatibility path for `App/src/v8world/WorldJoint.cpp`; compile either path, ne
 </details>
 
 **`3343c997d564`** · `native-classes/WorldJoint.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/5a153687cd36aa33874fe99eb6d3cde20172efab6d2cbdd31a880a7ac72e09a2/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/5a153687cd36aa33874fe99eb6d3cde20172efab6d2cbdd31a880a7ac72e09a2/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/5a153687cd36aa33874fe99eb6d3cde20172efab6d2cbdd31a880a7ac72e09a2/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/5a153687cd36aa33874fe99eb6d3cde20172efab6d2cbdd31a880a7ac72e09a2/rebuild/2008-06/native-classes/WorldJoint.cpp)
@@ -425,6 +431,7 @@ Compatibility path for `App/src/v8world/WorldJoint.cpp`; compile either path, ne
 </details>
 
 **`49a79072616d`** · `native-classes/WorldJoint.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/88ca4e3370a74a109e49cb4251d94a44f04b1723a7bda1112e4600c0d519e2cd/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/88ca4e3370a74a109e49cb4251d94a44f04b1723a7bda1112e4600c0d519e2cd/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/88ca4e3370a74a109e49cb4251d94a44f04b1723a7bda1112e4600c0d519e2cd/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/88ca4e3370a74a109e49cb4251d94a44f04b1723a7bda1112e4600c0d519e2cd/rebuild/2008-06/native-classes/WorldJoint.cpp)
@@ -527,6 +534,8 @@ Compatibility path for `App/src/v8world/WorldJoint.cpp`; compile either path, ne
 </details>
 
 **`9703a7fafa61`** · `native-classes/WorldJoint.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/WorldJoint.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WorldJoint.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/WorldJoint.cpp)
@@ -727,6 +736,8 @@ Compatibility path for `App/src/v8world/WorldJointGlue.cpp`; compile either path
 </details>
 
 **`fb73189e211c`** · `native-classes/WorldJointGlue.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/WorldJointGlue.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/WorldJointGlue.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WorldJointGlue.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/WorldJointGlue.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/WorldJointGlue.cpp)

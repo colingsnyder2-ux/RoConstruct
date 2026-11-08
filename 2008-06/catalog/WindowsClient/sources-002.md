@@ -40,6 +40,7 @@ Earlier paths and their donor versions: `native-headers/CBrowserDoc.h`.
 </details>
 
 **`83e200c0e679`** · `WindowsClient/include/CBrowserDoc.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h)
 - canonical · colingsnyder2-ux · [include/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h)
 - canonical · colingsnyder2-ux · [include/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h)
 - canonical · colingsnyder2-ux · [include/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h)
@@ -75,7 +76,7 @@ Earlier paths and their donor versions: `native-headers/CBrowserDoc.h`.
 - canonical · colingsnyder2-ux · [include/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h)
 - canonical · colingsnyder2-ux · [include/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>70 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
@@ -118,12 +119,18 @@ Earlier paths and their donor versions: `native-headers/CBrowserDoc.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CBrowserDoc.h` · root `b52aa15feaea5a0c`
@@ -145,6 +152,7 @@ Earlier paths and their donor versions: `native-headers/CBrowserDoc.h`.
 </details>
 
 **`9f4d05694017`** · `WindowsClient/include/CBrowserDoc.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/CBrowserDoc.h)
 - public · colingsnyder2-ux · [include/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/CBrowserDoc.h)
 - public · colingsnyder2-ux · [include/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/CBrowserDoc.h)
 - public · colingsnyder2-ux · [include/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/CBrowserDoc.h)
@@ -224,6 +232,8 @@ Earlier paths and their donor versions: `native-headers/CBrowserDoc.h`.
 </details>
 
 **`7f99fcb8162b`** · `native-headers/CBrowserDoc.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/CBrowserDoc.h)
+- canonical · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/CBrowserDoc.h)
 - public · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CBrowserDoc.h)
 - canonical · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CBrowserDoc.h)
 - public · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CBrowserDoc.h)
@@ -293,7 +303,7 @@ Earlier paths and their donor versions: `native-headers/CBrowserDoc.h`.
 - public · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CBrowserDoc.h)
 - canonical · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CBrowserDoc.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>73 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
@@ -337,12 +347,18 @@ Earlier paths and their donor versions: `native-headers/CBrowserDoc.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CBrowserDoc.h` · root `b52aa15feaea5a0c`
@@ -431,8 +447,9 @@ Earlier paths and their donor versions: `native-headers/CBrowserDoc.h`.
 </details>
 
 **`dd7912253c12`** · `native-headers/CBrowserDoc.h` · proof not assessed
-- draft · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/CBrowserDoc.h)
+- draft · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/CBrowserDoc.h)
 - fork · coldek · [native-headers/CBrowserDoc.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CBrowserDoc.h)
+- draft · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/CBrowserDoc.h)
 - draft · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/CBrowserDoc.h)
 - draft · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/CBrowserDoc.h)
 - draft · colingsnyder2-ux · [native-headers/CBrowserDoc.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/CBrowserDoc.h)
@@ -520,6 +537,7 @@ Earlier paths and their donor versions: `native-headers/CBrowserFrameWnd.h`.
 - public · colingsnyder2-ux · [include/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CBrowserFrameWnd.h)
 
 **`2ccd8064ec76`** · `WindowsClient/include/CBrowserFrameWnd.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/CBrowserFrameWnd.h)
 - public · colingsnyder2-ux · [include/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/CBrowserFrameWnd.h)
 - public · colingsnyder2-ux · [include/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/CBrowserFrameWnd.h)
 - public · colingsnyder2-ux · [include/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/CBrowserFrameWnd.h)
@@ -550,6 +568,7 @@ Earlier paths and their donor versions: `native-headers/CBrowserFrameWnd.h`.
 </details>
 
 **`f5d51f172f4f`** · `WindowsClient/include/CBrowserFrameWnd.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h)
 - canonical · colingsnyder2-ux · [include/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h)
 - canonical · colingsnyder2-ux · [include/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h)
 - canonical · colingsnyder2-ux · [include/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h)
@@ -585,7 +604,7 @@ Earlier paths and their donor versions: `native-headers/CBrowserFrameWnd.h`.
 - canonical · colingsnyder2-ux · [include/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h)
 - canonical · colingsnyder2-ux · [include/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>70 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
@@ -628,12 +647,18 @@ Earlier paths and their donor versions: `native-headers/CBrowserFrameWnd.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
@@ -672,6 +697,8 @@ Earlier paths and their donor versions: `native-headers/CBrowserFrameWnd.h`.
 - public · colingsnyder2-ux · [native-headers/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/CBrowserFrameWnd.h)
 
 **`5c5d3e33e8f7`** · `native-headers/CBrowserFrameWnd.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/CBrowserFrameWnd.h)
+- canonical · colingsnyder2-ux · [native-headers/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/CBrowserFrameWnd.h)
 - public · colingsnyder2-ux · [native-headers/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CBrowserFrameWnd.h)
 - canonical · colingsnyder2-ux · [native-headers/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CBrowserFrameWnd.h)
 - public · colingsnyder2-ux · [native-headers/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CBrowserFrameWnd.h)
@@ -741,7 +768,7 @@ Earlier paths and their donor versions: `native-headers/CBrowserFrameWnd.h`.
 - public · colingsnyder2-ux · [native-headers/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CBrowserFrameWnd.h)
 - canonical · colingsnyder2-ux · [native-headers/CBrowserFrameWnd.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CBrowserFrameWnd.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>73 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
@@ -785,12 +812,18 @@ Earlier paths and their donor versions: `native-headers/CBrowserFrameWnd.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CBrowserFrameWnd.h` · root `b52aa15feaea5a0c`

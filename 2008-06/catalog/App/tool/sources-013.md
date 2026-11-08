@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/DragPrimitiveBounds.cpp`.
 
 **`43eefd5f6342`** · `App/src/tool/DragPrimitiveBounds.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/DragPrimitiveBounds.cpp)
 - canonical · colingsnyder2-ux · [tool/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/DragPrimitiveBounds.cpp)
 - canonical · colingsnyder2-ux · [tool/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/DragPrimitiveBounds.cpp)
 - canonical · colingsnyder2-ux · [tool/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/tool/DragPrimitiveBounds.cpp)
@@ -76,6 +77,7 @@ Earlier paths and their donor versions: `native-classes/DragPrimitiveBounds.cpp`
 </details>
 
 **`a08bca6e8221`** · `App/src/tool/DragPrimitiveBounds.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/DragPrimitiveBounds.cpp)
 - public · colingsnyder2-ux · [tool/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/DragPrimitiveBounds.cpp)
 - public · colingsnyder2-ux · [tool/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/DragPrimitiveBounds.cpp)
 - public · colingsnyder2-ux · [tool/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/tool/DragPrimitiveBounds.cpp)
@@ -190,6 +192,8 @@ Earlier paths and their donor versions: `native-classes/DragPrimitiveBounds.cpp`
 </details>
 
 **`cab00d6a6bb8`** · `native-classes/DragPrimitiveBounds.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/DragPrimitiveBounds.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/DragPrimitiveBounds.cpp)
 - public · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DragPrimitiveBounds.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/DragPrimitiveBounds.cpp)
 - public · colingsnyder2-ux · [native-classes/DragPrimitiveBounds.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/DragPrimitiveBounds.cpp)
@@ -315,6 +319,7 @@ Earlier paths and their donor versions: `native-classes/DragPrimitiveBounds.cpp`
 Earlier paths and their donor versions: `native-classes/DragTool.cpp`.
 
 **`571a7150c208`** · `App/src/tool/DragTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/DragTool.cpp)
 - public · colingsnyder2-ux · [tool/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/DragTool.cpp)
 - public · colingsnyder2-ux · [tool/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/DragTool.cpp)
 - public · colingsnyder2-ux · [tool/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/tool/DragTool.cpp)
@@ -373,6 +378,7 @@ Earlier paths and their donor versions: `native-classes/DragTool.cpp`.
 </details>
 
 **`e4c45ce30a36`** · `App/src/tool/DragTool.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/DragTool.cpp)
 - canonical · colingsnyder2-ux · [tool/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/DragTool.cpp)
 - canonical · colingsnyder2-ux · [tool/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/DragTool.cpp)
 - canonical · colingsnyder2-ux · [tool/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/tool/DragTool.cpp)
@@ -517,6 +523,8 @@ Earlier paths and their donor versions: `native-classes/DragTool.cpp`.
 </details>
 
 **`ec41bfdb9c0e`** · `native-classes/DragTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/DragTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/DragTool.cpp)
 - public · colingsnyder2-ux · [native-classes/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DragTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/DragTool.cpp)
 - public · colingsnyder2-ux · [native-classes/DragTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/DragTool.cpp)
@@ -622,6 +630,7 @@ Earlier paths and their donor versions: `native-classes/DragTool.cpp`.
 Earlier paths and their donor versions: `native-classes/DraggerLineMove.cpp`.
 
 **`09a3dbf8a2db`** · `App/src/tool/DraggerLineMove.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/DraggerLineMove.cpp)
 - public · colingsnyder2-ux · [tool/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/DraggerLineMove.cpp)
 - public · colingsnyder2-ux · [tool/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/DraggerLineMove.cpp)
 - public · colingsnyder2-ux · [tool/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/tool/DraggerLineMove.cpp)
@@ -680,6 +689,7 @@ Earlier paths and their donor versions: `native-classes/DraggerLineMove.cpp`.
 - public · colingsnyder2-ux · [tool/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/DraggerLineMove.cpp)
 
 **`548a89cdbdcb`** · `App/src/tool/DraggerLineMove.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/DraggerLineMove.cpp)
 - canonical · colingsnyder2-ux · [tool/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/DraggerLineMove.cpp)
 - canonical · colingsnyder2-ux · [tool/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/DraggerLineMove.cpp)
 - canonical · colingsnyder2-ux · [tool/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/tool/DraggerLineMove.cpp)
@@ -815,6 +825,8 @@ Earlier paths and their donor versions: `native-classes/DraggerLineMove.cpp`.
 </details>
 
 **`ddae0dbd4397`** · `native-classes/DraggerLineMove.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/DraggerLineMove.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/DraggerLineMove.cpp)
 - public · colingsnyder2-ux · [native-classes/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DraggerLineMove.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/DraggerLineMove.cpp)
 - public · colingsnyder2-ux · [native-classes/DraggerLineMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/DraggerLineMove.cpp)

@@ -10,6 +10,7 @@ Compatibility path for `experiments/overlays/metadata-load/v8xml/SerializerV2.h`
 Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/SerializerV2.h`.
 
 **`2a0580a6bb9c`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
@@ -20,19 +21,25 @@ Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/Seri
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 
-<details><summary>21 retained local origins</summary>
+<details><summary>27 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/b/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
@@ -123,6 +130,7 @@ Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/Seri
 </details>
 
 **`7c70f1a36945`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
@@ -242,6 +250,8 @@ Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/Seri
 </details>
 
 **`6045ca18c6ce`** · `native-headers/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
@@ -311,7 +321,7 @@ Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/Seri
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>73 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
@@ -355,12 +365,18 @@ Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/Seri
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h` · root `b52aa15feaea5a0c`
@@ -466,6 +482,7 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 </details>
 
 **`5bf7214eef0c`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
@@ -477,19 +494,25 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 
-<details><summary>20 retained local origins</summary>
+<details><summary>26 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/o26/c/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
@@ -503,6 +526,7 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 </details>
 
 **`7d10ce544051`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
@@ -731,6 +755,8 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 </details>
 
 **`f0064c28d63e`** · `native-headers/mfc-metadata/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
@@ -800,7 +826,7 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>73 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
@@ -844,12 +870,18 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h` · root `b52aa15feaea5a0c`

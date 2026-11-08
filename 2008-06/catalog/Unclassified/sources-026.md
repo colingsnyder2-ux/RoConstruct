@@ -10,6 +10,7 @@ Compatibility path for `WindowsClient/src/CContentGuids.cpp`; compile either pat
 Earlier paths and their donor versions: `native-classes/CContentGuids.cpp`.
 
 **`16e05bd936bb`** · `Unclassified/src/CContentGuids.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/CContentGuids.cpp)
 - public · colingsnyder2-ux · [src/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/CContentGuids.cpp)
 - public · colingsnyder2-ux · [src/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/CContentGuids.cpp)
 - public · colingsnyder2-ux · [src/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/CContentGuids.cpp)
@@ -18,6 +19,7 @@ Earlier paths and their donor versions: `native-classes/CContentGuids.cpp`.
 - public · colingsnyder2-ux · [src/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/CContentGuids.cpp)
 
 **`24b6097ca54e`** · `Unclassified/src/CContentGuids.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/CContentGuids.cpp)
 - canonical · colingsnyder2-ux · [src/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/CContentGuids.cpp)
 - canonical · colingsnyder2-ux · [src/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/CContentGuids.cpp)
 - canonical · colingsnyder2-ux · [src/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/CContentGuids.cpp)
@@ -231,6 +233,8 @@ Earlier paths and their donor versions: `native-classes/CContentGuids.cpp`.
 </details>
 
 **`d325ede6774b`** · `native-classes/CContentGuids.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/CContentGuids.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/CContentGuids.cpp)
 - public · colingsnyder2-ux · [native-classes/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CContentGuids.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CContentGuids.cpp)
 - public · colingsnyder2-ux · [native-classes/CContentGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CContentGuids.cpp)
@@ -416,6 +420,7 @@ Earlier paths and their donor versions: `native-classes/CMarshalWindow.cpp`.
 </details>
 
 **`8d7513a844fb`** · `Unclassified/src/CMarshalWindow.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/CMarshalWindow.cpp)
 - public · colingsnyder2-ux · [src/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/CMarshalWindow.cpp)
 - public · colingsnyder2-ux · [src/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/CMarshalWindow.cpp)
 - public · colingsnyder2-ux · [src/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/CMarshalWindow.cpp)
@@ -425,6 +430,7 @@ Earlier paths and their donor versions: `native-classes/CMarshalWindow.cpp`.
 - public · colingsnyder2-ux · [src/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/CMarshalWindow.cpp)
 
 **`be509de5ce5b`** · `Unclassified/src/CMarshalWindow.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/CMarshalWindow.cpp)
 - canonical · colingsnyder2-ux · [src/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/CMarshalWindow.cpp)
 - canonical · colingsnyder2-ux · [src/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/CMarshalWindow.cpp)
 - canonical · colingsnyder2-ux · [src/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/CMarshalWindow.cpp)
@@ -470,6 +476,8 @@ Earlier paths and their donor versions: `native-classes/CMarshalWindow.cpp`.
 - public · colingsnyder2-ux · [src/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/CMarshalWindow.cpp)
 
 **`26ac07539470`** · `native-classes/CMarshalWindow.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/CMarshalWindow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/CMarshalWindow.cpp)
 - public · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CMarshalWindow.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CMarshalWindow.cpp)
 - public · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CMarshalWindow.cpp)
@@ -795,6 +803,7 @@ Compatibility path for `App/src/v8datamodel/CameraConstants.cpp`; compile either
 Earlier paths and their donor versions: `native-classes/CameraConstants.cpp`.
 
 **`09b05a21b9ca`** · `Unclassified/src/CameraConstants.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/CameraConstants.cpp)
 - public · colingsnyder2-ux · [src/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/CameraConstants.cpp)
 - public · colingsnyder2-ux · [src/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/CameraConstants.cpp)
 - public · colingsnyder2-ux · [src/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/CameraConstants.cpp)
@@ -891,6 +900,7 @@ Earlier paths and their donor versions: `native-classes/CameraConstants.cpp`.
 - public · colingsnyder2-ux · [src/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/CameraConstants.cpp)
 
 **`d264a0b5b913`** · `Unclassified/src/CameraConstants.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/CameraConstants.cpp)
 - canonical · colingsnyder2-ux · [src/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/CameraConstants.cpp)
 - canonical · colingsnyder2-ux · [src/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/CameraConstants.cpp)
 - canonical · colingsnyder2-ux · [src/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/CameraConstants.cpp)
@@ -941,6 +951,8 @@ Earlier paths and their donor versions: `native-classes/CameraConstants.cpp`.
 </details>
 
 **`9abaed5e11b3`** · `native-classes/CameraConstants.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/CameraConstants.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/CameraConstants.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CameraConstants.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CameraConstants.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraConstants.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CameraConstants.cpp)

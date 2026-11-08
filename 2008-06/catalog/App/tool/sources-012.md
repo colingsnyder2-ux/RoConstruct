@@ -8,6 +8,8 @@
 Earlier paths and their donor versions: `native-classes/AxisMoveToolRender.cpp`.
 
 **`22919f07a5ba`** · `App/src/tool/AxisMoveToolRender.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/AxisMoveToolRender.cpp)
+- canonical · colingsnyder2-ux · [tool/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolRender.cpp)
 - public · colingsnyder2-ux · [tool/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/AxisMoveToolRender.cpp)
 - canonical · colingsnyder2-ux · [tool/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/AxisMoveToolRender.cpp)
 - public · colingsnyder2-ux · [tool/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/AxisMoveToolRender.cpp)
@@ -115,6 +117,8 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolRender.cpp`.
 </details>
 
 **`0bfc9131ba65`** · `native-classes/AxisMoveToolRender.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/AxisMoveToolRender.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/AxisMoveToolRender.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/AxisMoveToolRender.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/AxisMoveToolRender.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/AxisMoveToolRender.cpp)
@@ -243,6 +247,7 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolRender.cpp`.
 </details>
 
 **`71c0ff47fb93`** · `native-classes/AxisMoveToolRender.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
 - archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
 - archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
 - archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
@@ -368,6 +373,7 @@ Earlier paths and their donor versions: `native-classes/AxisMoveToolRender.cpp`.
 Earlier paths and their donor versions: `native-classes/CloneTool.cpp`.
 
 **`0c2d547d6593`** · `App/src/tool/CloneTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/CloneTool.cpp)
 - public · colingsnyder2-ux · [tool/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/CloneTool.cpp)
 - public · colingsnyder2-ux · [tool/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/CloneTool.cpp)
 - public · colingsnyder2-ux · [tool/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/tool/CloneTool.cpp)
@@ -389,6 +395,7 @@ Earlier paths and their donor versions: `native-classes/CloneTool.cpp`.
 </details>
 
 **`15666d83bf7f`** · `App/src/tool/CloneTool.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/CloneTool.cpp)
 - canonical · colingsnyder2-ux · [tool/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/CloneTool.cpp)
 - canonical · colingsnyder2-ux · [tool/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/CloneTool.cpp)
 - canonical · colingsnyder2-ux · [tool/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/tool/CloneTool.cpp)
@@ -570,6 +577,8 @@ Earlier paths and their donor versions: `native-classes/CloneTool.cpp`.
 </details>
 
 **`e94332ec1786`** · `native-classes/CloneTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/CloneTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/CloneTool.cpp)
 - public · colingsnyder2-ux · [native-classes/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CloneTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CloneTool.cpp)
 - public · colingsnyder2-ux · [native-classes/CloneTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CloneTool.cpp)
@@ -684,6 +693,7 @@ Earlier paths and their donor versions: `native-classes/CloneToolFactory.cpp`.
 </details>
 
 **`3b9d2770afba`** · `App/src/tool/CloneToolFactory.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/CloneToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/CloneToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/CloneToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/tool/CloneToolFactory.cpp)
@@ -743,6 +753,7 @@ Earlier paths and their donor versions: `native-classes/CloneToolFactory.cpp`.
 </details>
 
 **`9f323e00235e`** · `App/src/tool/CloneToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/CloneToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/CloneToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/CloneToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/tool/CloneToolFactory.cpp)
@@ -848,6 +859,8 @@ Earlier paths and their donor versions: `native-classes/CloneToolFactory.cpp`.
 </details>
 
 **`922e04d3c73e`** · `native-classes/CloneToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/CloneToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/CloneToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CloneToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CloneToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/CloneToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CloneToolFactory.cpp)

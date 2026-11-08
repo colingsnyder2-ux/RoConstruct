@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 </details>
 
 **`7c1fdd06fc7b`** · `Unclassified/include/RobloxLib.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
@@ -53,7 +54,7 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 - canonical · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>72 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
@@ -98,12 +99,18 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/Unclassified/include/RobloxLib.h` · root `b52aa15feaea5a0c`
@@ -125,6 +132,7 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 </details>
 
 **`9a9717bbbcb3`** · `Unclassified/include/RobloxLib.h` · proof not assessed
+- public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/include/RobloxLib.h)
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/include/RobloxLib.h)
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/RobloxLib.h)
 - public · colingsnyder2-ux · [include/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/RobloxLib.h)
@@ -437,6 +445,8 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/RobloxLib.h)
 
 **`e6b2ebab5c8d`** · `native-headers/RobloxLib.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/RobloxLib.h)
+- canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/RobloxLib.h)
 - canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/RobloxLib.h)
@@ -508,7 +518,7 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - public · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/RobloxLib.h)
 - canonical · colingsnyder2-ux · [native-headers/RobloxLib.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/RobloxLib.h)
 
-<details><summary>69 retained local origins</summary>
+<details><summary>75 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
@@ -554,12 +564,18 @@ Earlier paths and their donor versions: `native-headers/RobloxLib.h`.
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/RobloxLib.h` · root `b52aa15feaea5a0c`
@@ -713,6 +729,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 
 **`b9b6700aef85`** · `Unclassified/include/axis-vector-negation/G3D/Vector3.h` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
@@ -723,6 +740,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 
 **`dd342ad071b0`** · `Unclassified/include/axis-vector-negation/G3D/Vector3.h` · proof not assessed
+- canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
@@ -732,16 +750,22 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 
-<details><summary>15 retained local origins</summary>
+<details><summary>21 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-final-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
@@ -812,6 +836,8 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 </details>
 
 **`73b5f2c012b4`** · `native-headers/axis-vector-negation/G3D/Vector3.h` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
+- canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
@@ -881,7 +907,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>73 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
@@ -925,12 +951,18 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r10/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r11/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r12/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r13/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r2/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r3/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r8/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r9/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h` · root `b52aa15feaea5a0c`
