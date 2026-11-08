@@ -2,26 +2,21 @@
 // >>> native-status (generated) -- do not edit >>>
 // ToolVerbChecked | 2008-06 | inactive
 // unmapped (no binary link) | unmapped (no binary link) | by -
-// <<< native-status | src f0b82bfe | roc native-status --write
+// <<< native-status | src 75de9938 | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 #include "tool/ToolsArrow.h"
+#include "tool/AxisMoveTool.h"
+#include "tool/BasicMouseTools.h"
+#include "tool/FlatTool.h"
+#include "tool/SurfaceTools.h"
+#include "tool/ModelTools.h"
+#include "tool/ResizeTool.h"
+#include "tool/ShootTools.h"
 #include "StandardVerbs.h"
-#include "../../tests/NativeAxisMoveToolTrial.h"
-#include "../../tests/NativeCloneToolTrial.h"
-#include "../../tests/NativeFlatToolTrial.h"
-#include "../../tests/NativeGameToolTrial.h"
-#include "../../tests/NativeSurfaceSiblingsTrial.h"
-#include "../../tests/NativeGrabToolTrial.h"
-#include "../../tests/NativeHammerWorkerTrial.h"
-#include "../../tests/NativeLaserTrial.h"
-#include "../../tests/NativeModelToolsTrial.h"
 #include "tool/NullTool.h"
 #include "v8datamodel/ToolsPart.h"
-#include "../../tests/NativeResizeToolTrial.h"
-#include "../../tests/NativeRocketWorkerTrial.h"
-#include "../../tests/NativeSlingshotWorkerTrial.h"
 #include "tool/GroupDragTool.h"
 #include "v8datamodel/PartInstance.h"
 #include "tool/PartDragTool.h"
