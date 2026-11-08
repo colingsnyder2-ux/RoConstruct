@@ -421,3 +421,51 @@ def test_source_map_shards_preserve_origins_and_reject_corruption(tmp_path):
     import pytest
     with pytest.raises(ValueError, match='hash mismatch'):
         source_catalog.prior_source_map(tmp_path, 'HEAD')
+
+
+def test_publication_requires_every_unchanged_shard(tmp_path):
+    import json
+    import pytest
+    folder = tmp_path / 'map'
+    folder.mkdir()
+    (folder / 'catalog').mkdir()
+    (folder / 'catalog' / 'README.md').write_text('catalog', encoding='utf-8')
+    (folder / 'source-map.md').write_text('map', encoding='utf-8')
+    versions = [dict(path='App/src/A.cpp', blob='a', origins=[dict(kind='local', path='work/a')])]
+    shards = source_catalog.write_version_shards(folder / 'source-map-versions', versions, max_bytes=200)
+    index = dict(schema=1, generated_from=dict(work_commit='a' * 40), groups=[],
+                 alternatives=dict(version_shards=shards, version_count=1, sources=[], errors=[]))
+    (folder / 'source-map.json').write_text(json.dumps(index), encoding='utf-8')
+    base, files = source_catalog.source_map_publication_files(folder)
+    assert base == 'a' * 40
+    assert '2008-06/source-map-versions/0000.json' in files
+    assert json.loads(files['2008-06/source-map-versions/0000.json']) == versions
+    (folder / shards[0]['path']).write_text('[]', encoding='utf-8')
+    with pytest.raises(ValueError, match='failed verification'):
+        source_catalog.source_map_publication_files(folder)
+    (folder / shards[0]['path']).unlink()
+    with pytest.raises(ValueError, match='Missing or unsafe'):
+        source_catalog.source_map_publication_files(folder)
+
+
+def test_publish_cli_does_not_generate_catalog(tmp_path, monkeypatch, capsys):
+    import json, sys
+    seen = []
+    monkeypatch.setattr(source_catalog, 'publish_source_map', lambda root, folder: seen.append(folder) or dict(commit='abc', changed=True))
+    monkeypatch.setattr(sys, 'argv', ['source_catalog', '--publish', str(tmp_path)])
+    source_catalog.main()
+    assert seen == [tmp_path]
+    assert json.loads(capsys.readouterr().out) == dict(commit='abc', changed=True)
+
+
+def test_publication_rejects_missing_previously_published_origins():
+    import pytest
+    old = dict(versions=[dict(path='A.cpp', blob='abc', sha256='digest',
+                              origins=[dict(kind='fork', ref='old')])],
+               sources=[dict(kind='fork', ref='old')], excluded_directory_names=['build'])
+    new = dict(sources=[dict(kind='fork', ref='old')], excluded_directory_names=['build'])
+    current = [dict(path='A.cpp', blob='abc', sha256='digest', origins=[])]
+    with pytest.raises(ValueError, match='origin is missing'):
+        source_catalog.require_prior_source_versions(old, new, current)
+    current[0]['origins'].append(dict(kind='fork', ref='old'))
+    source_catalog.require_prior_source_versions(old, new, current)

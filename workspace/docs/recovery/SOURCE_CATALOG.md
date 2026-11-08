@@ -89,3 +89,17 @@ part includes a SHA-256 digest and row count in the index. Publish the index and
 all parts together. Later scans read and verify every part before carrying prior
 origins forward; a missing or changed part stops the scan. Older unsharded maps
 remain readable. Sharding does not review candidates or activate code.
+
+To publish one generated map, the owner holds the integration guard and
+leases for `2008-06/SOURCE_MAP.md`, `2008-06/source-map.json`,
+`2008-06/source-map-versions/**` and `2008-06/catalog/**`, then runs:
+
+```text
+python -m roc.source_catalog --publish work/source-navigation/RUN
+```
+
+The publisher validates every shard, checks the source revision, uses an
+isolated index, and records preservation receipts before commit and push.
+A changed source tree or incomplete map fails closed; regenerate before retrying.
+Publication also rejects a map that omits any previously published version,
+origin, source lane, or exclusion. Repeating an identical publication is a no-op.

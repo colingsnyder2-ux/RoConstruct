@@ -1,9 +1,9 @@
-"""Inventory RoConstruct source trees without moving, replacing, or executing them.
+"""Inventory RoConstruct source trees and publish verified navigation.
 
 The catalog distinguishes the reviewed work snapshot from public mirrors, mined
 function stores, local snapshots, work artifacts, and later-version references.
 It is an index for review; it never promotes code or treats a source match as
-runtime proof.
+runtime proof. Publication changes only generated navigation on the work branch.
 """
 import argparse
 import hashlib
@@ -14,6 +14,7 @@ import posixpath
 from pathlib import Path
 import re
 import subprocess
+import sys
 from urllib.parse import quote
 
 from roc.native_drafts import ROOT, lock
@@ -394,11 +395,14 @@ def prior_source_map(root, commit):
     if shards is not None:
         if not isinstance(shards, list) or 'versions' in alternatives:
             raise ValueError('Published source-map shard index is malformed')
-        versions = []
+        versions, seen = [], set()
         for item in shards:
+            if not isinstance(item, dict):
+                raise ValueError('Malformed source-map shard')
             name = item.get('path', '')
-            if not re.fullmatch(r'source-map-versions/[0-9]{4,}\.json', name):
-                raise ValueError('Unsafe source-map shard path')
+            if not re.fullmatch(r'source-map-versions/[0-9]{4,}\.json', name) or name in seen:
+                raise ValueError('Unsafe or duplicate source-map shard path')
+            seen.add(name)
             content = subprocess.check_output(['git', 'show', commit + ':2008-06/' + name], cwd=root)
             if hashlib.sha256(content).hexdigest() != item.get('sha256'):
                 raise ValueError('Source-map shard hash mismatch: ' + name)
@@ -681,13 +685,162 @@ def catalog(root, ref, include_local=False):
     return result
 
 
+
+def source_map_publication_files(folder):
+    """Validate and collect one generated, sharded navigation snapshot."""
+    folder = Path(folder)
+    if folder.is_symlink() or not folder.is_dir():
+        raise ValueError('Source-map folder must be a real directory')
+    def read(relative):
+        path = folder / relative
+        if path.is_symlink() or not path.is_file() or not path.resolve().is_relative_to(folder.resolve()):
+            raise ValueError('Missing or unsafe source-map file: ' + relative)
+        data = path.read_bytes()
+        if len(data) >= 100_000_000:
+            raise ValueError('Source-map file exceeds publication limit: ' + relative)
+        return data
+    index = json.loads(read('source-map.json'))
+    base = index.get('generated_from', {}).get('work_commit', '')
+    if index.get('schema') != 1 or not isinstance(index.get('groups'), list) or not re.fullmatch(r'[0-9a-f]{40}', base):
+        raise ValueError('Source-map base is malformed')
+    alternatives = index.get('alternatives') or {}
+    shards = alternatives.get('version_shards')
+    if (not isinstance(alternatives.get('errors'), list) or alternatives['errors'] or
+            not isinstance(alternatives.get('sources'), list) or not isinstance(shards, list) or 'versions' in alternatives):
+        raise ValueError('Source-map inventory is incomplete or unsharded')
+    files = {'2008-06/source-map.json': read('source-map.json'),
+             '2008-06/SOURCE_MAP.md': read('source-map.md')}
+    count, seen = 0, set()
+    for item in shards:
+        if not isinstance(item, dict):
+            raise ValueError('Malformed source-map shard')
+        name = item.get('path', '')
+        if not re.fullmatch(r'source-map-versions/[0-9]{4,}\.json', name) or name in seen:
+            raise ValueError('Unsafe or duplicate source-map shard')
+        seen.add(name)
+        content = read(name)
+        rows = json.loads(content)
+        if (hashlib.sha256(content).hexdigest() != item.get('sha256') or
+                not isinstance(rows, list) or len(rows) != item.get('count')):
+            raise ValueError('Source-map shard failed verification: ' + name)
+        count += len(rows)
+        files['2008-06/' + name] = content
+    actual = {'source-map-versions/' + path.name for path in (folder / 'source-map-versions').glob('*.json')}
+    if seen != actual or count != alternatives.get('version_count'):
+        raise ValueError('Source-map shard set or version count differs')
+    browse = folder / 'catalog'
+    if browse.is_symlink() or not browse.is_dir():
+        raise ValueError('Missing or unsafe source-map catalog')
+    for path in browse.rglob('*.md'):
+        relative = path.relative_to(folder).as_posix()
+        files['2008-06/' + relative] = read(relative)
+    if '2008-06/catalog/README.md' not in files:
+        raise ValueError('Source-map catalog index is missing')
+    return base, files
+
+
+
+def require_prior_source_versions(previous, alternatives, versions):
+    """Reject a map that would hide a previously published version or origin."""
+    if previous is None:
+        return
+    current = {(row['path'], row['blob']): row for row in versions}
+    if len(current) != len(versions):
+        raise ValueError('Duplicate source-map version')
+    for row in previous['versions']:
+        key = row['path'], row['blob']
+        found = current.get(key)
+        if not found or row.get('sha256') and row['sha256'] != found.get('sha256'):
+            raise ValueError('Previously published source version is missing: ' + row['path'])
+        identities = {json.dumps(origin, sort_keys=True) for origin in found['origins']}
+        if any(json.dumps(origin, sort_keys=True) not in identities for origin in row['origins']):
+            raise ValueError('Previously published source origin is missing: ' + row['path'])
+    identities = {json.dumps(item, sort_keys=True) for item in alternatives['sources']}
+    if any(json.dumps(item, sort_keys=True) not in identities for item in previous.get('sources', [])):
+        raise ValueError('Previously published source lane is missing')
+    if not set(previous.get('excluded_directory_names', [])) <= set(alternatives.get('excluded_directory_names', [])):
+        raise ValueError('Previously published exclusion is missing')
+
+
+def publish_source_map(root, folder):
+    """Publish a complete generated map using an isolated index and no-loss gates."""
+    import tempfile
+    from roc.findings_transport import publish_files
+    root, folder = Path(root).resolve(), Path(folder)
+    if folder.is_symlink():
+        raise ValueError('Source-map folder cannot be a symlink')
+    folder = folder.resolve()
+    if not folder.is_relative_to((root / 'work/source-navigation').resolve()):
+        raise ValueError('Source map must be in work/source-navigation')
+    base, files = source_map_publication_files(folder)
+    subprocess.run(['git', 'rev-parse', '--verify', base + '^{commit}'], cwd=root, check=True, capture_output=True)
+    index = json.loads(files['2008-06/source-map.json'])
+    alternatives = index['alternatives']
+    versions = []
+    for item in alternatives['version_shards']:
+        versions.extend(json.loads(files['2008-06/' + item['path']]))
+    require_prior_source_versions(prior_source_map(root, base), alternatives, versions)
+    listing = subprocess.check_output(['git', 'ls-tree', '-rz', base, '--', '2008-06/'], cwd=root)
+    existing = {}
+    for row in listing.split(b'\0'):
+        if row:
+            meta, name = row.split(b'\t', 1)
+            existing[name.decode()] = meta.split()[2].decode()
+    def blob(data):
+        return hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+    complete_files = files
+    files = {name: data for name, data in files.items() if existing.get(name) != blob(data)}
+    source_scopes = ['workspace/rebuild/2008-06', 'workspace/roc/source_catalog.py']
+    source_scopes += ['2008-06/' + scope for scope in NATIVE_SCOPES + ORGANIZED_SCOPES + EXPERIMENT_SCOPES]
+    navigation_scopes = ['2008-06/catalog', '2008-06/SOURCE_MAP.md', '2008-06/source-map.json',
+                         '2008-06/source-map-versions']
+    def guard(head):
+        if subprocess.run(['git', 'diff', '--quiet', base, head, '--', *source_scopes], cwd=root).returncode:
+            raise ValueError('Source advanced; regenerate the map')
+        if subprocess.run(['git', 'diff', '--quiet', base, head, '--', *navigation_scopes], cwd=root).returncode:
+            listing = subprocess.check_output(['git', 'ls-tree', '-rz', head, '--', '2008-06/'], cwd=root)
+            current = {}
+            for row in listing.split(b'\0'):
+                if row:
+                    meta, name = row.split(b'\t', 1)
+                    current[name.decode()] = meta.split()[2].decode()
+            if any(current.get(name) != blob(data) for name, data in complete_files.items()):
+                raise ValueError('Navigation advanced; regenerate the map')
+    def verify(head, candidate):
+        changed = set(subprocess.check_output(['git', 'diff', '--name-only', '-z', head, candidate], cwd=root).decode().split('\0')) - {''}
+        if changed != set(files):
+            raise ValueError('Unexpected publication paths')
+        for scope in ('workspace', '2008-06'):
+            before = subprocess.check_output(['git', 'rev-parse', head + ':' + scope], cwd=root, text=True).strip()
+            after = subprocess.check_output(['git', 'rev-parse', candidate + ':' + scope], cwd=root, text=True).strip()
+            if scope == 'workspace' and before != after:
+                raise ValueError('Workspace changed during navigation publication')
+            receipts = folder / 'publication-receipts'
+            receipts.mkdir(exist_ok=True)
+            fd, name = tempfile.mkstemp(prefix=scope + '-', suffix='.json', dir=receipts)
+            os.close(fd)
+            subprocess.run([sys.executable, str(root / 'rebuild/2008-06/tests/verify_fork_preservation.py'),
+                            before, after, '--output', name], cwd=root, check=True, capture_output=True)
+            result = json.loads(Path(name).read_text(encoding='utf-8'))
+            if not result.get('passed') or result.get('losses'):
+                raise ValueError('Source preservation failed')
+    if not files:
+        subprocess.run(['git', 'fetch', '--no-write-fetch-head', 'findings',
+                        'refs/heads/work:refs/remotes/findings/work'], cwd=root, check=True, capture_output=True)
+        head = subprocess.check_output(['git', 'rev-parse', 'refs/remotes/findings/work'], cwd=root, text=True).strip()
+        guard(head)
+        return dict(commit=head, changed=False)
+    return publish_files(root, files, 'Refresh verified source navigation', guard=guard, verify=verify)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ref', default='refs/remotes/findings/work',
                         help='reviewed work ref; default: refs/remotes/findings/work')
     parser.add_argument('--local', action='store_true',
                         help='also fingerprint local snapshots; does not modify them')
-    parser.add_argument('--output', type=Path, required=True,
+    parser.add_argument('--publish', type=Path, help='publish a verified generated source map')
+    parser.add_argument('--output', type=Path,
                         help='new JSON output path; source trees are read only')
     parser.add_argument('--map-output', type=Path,
                         help='new generated source-map JSON; refuses overwrite')
@@ -700,6 +853,13 @@ def main():
     parser.add_argument('--browse-output', type=Path,
                         help='new project browse directory; default: catalog beside --map-output')
     args = parser.parse_args()
+    if args.publish:
+        if args.output or args.map_output or args.browse_output or args.local or args.all_sources or args.donor_ref or args.source_root:
+            parser.error('--publish cannot be combined with catalog generation options')
+        print(json.dumps(publish_source_map(ROOT, args.publish), sort_keys=True))
+        return
+    if not args.output:
+        parser.error('--output is required when generating a catalog')
     args.output.parent.mkdir(parents=True, exist_ok=True)
     lock_path = args.output.with_suffix(args.output.suffix + '.lock')
     with lock(lock_path):
