@@ -66,6 +66,7 @@ COMMON_FILES = [".gitattributes", "roc.py", "roc.cmd", "roc.sh", "install.cmd", 
 COMMON_FILES += ["docs/INTEGRATION.md", "docs/INTEGRATOR_PERFORMANCE.md", "benchmarks/native_compile_batches.py", "benchmarks/native_matcher.py", "docs/NATIVE_AGENT.md", "docs/MATCHING_AGENT.md", "research/libs-bundle.json", "research/native-units.json", "research/native-source-lock.json"]
 COMMON_FILES += ["benchmarks/integrator_models.py", "benchmarks/native_search.py", "benchmarks/integration_local.py"]
 COMMON_FILES += ["docs/NATIVE_INTEGRATION_WORKFLOW.md"]
+COMMON_FILES += ["docs/recovery/GRAPH_EVIDENCE.md", "docs/integration/OFFLINE_INTEGRATION.md", "docs/integration/history/INTEGRATOR_PERFORMANCE.md", "docs/integration/history/NATIVE_INTEGRATION_WORKFLOW.md"]
 COMMON_FILES += subprocess.check_output(["git", "ls-files", "rebuild/2008-06"],
                                         cwd=ROOT, text=True).splitlines()
 
