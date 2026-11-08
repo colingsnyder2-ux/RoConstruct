@@ -16,6 +16,7 @@ Earlier paths and their donor versions: `native-headers/CFileVersionInfo.h`.
 - public · colingsnyder2-ux · [include/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CFileVersionInfo.h)
 - public · colingsnyder2-ux · [include/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/CFileVersionInfo.h)
 - public · colingsnyder2-ux · [include/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/CFileVersionInfo.h)
+- public · colingsnyder2-ux · [include/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/CFileVersionInfo.h)
 
 **`cf1a2260edd5`** · `WindowsClient/include/CFileVersionInfo.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/WindowsClient/include/CFileVersionInfo.h)
@@ -26,6 +27,7 @@ Earlier paths and their donor versions: `native-headers/CFileVersionInfo.h`.
 - canonical · colingsnyder2-ux · [include/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/CFileVersionInfo.h)
 - canonical · colingsnyder2-ux · [include/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/CFileVersionInfo.h)
 - canonical · colingsnyder2-ux · [include/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/CFileVersionInfo.h)
+- canonical · colingsnyder2-ux · [include/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/CFileVersionInfo.h)
 
 **`70c6a65131fb`** · `native-headers/CFileVersionInfo.h` · proof not assessed
 
@@ -262,6 +264,8 @@ Earlier paths and their donor versions: `native-headers/CFileVersionInfo.h`.
 - canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/CFileVersionInfo.h)
 - canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
+- public · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/CFileVersionInfo.h)
+- canonical · colingsnyder2-ux · [native-headers/CFileVersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/CFileVersionInfo.h)
 
 </details>
 
@@ -279,6 +283,7 @@ Earlier paths and their donor versions: `native-headers/CIDEDocManager.h`.
 - canonical · colingsnyder2-ux · [include/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/CIDEDocManager.h)
 - canonical · colingsnyder2-ux · [include/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/CIDEDocManager.h)
 - canonical · colingsnyder2-ux · [include/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/CIDEDocManager.h)
+- canonical · colingsnyder2-ux · [include/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/CIDEDocManager.h)
 
 **`b75a33a9631d`** · `WindowsClient/include/CIDEDocManager.h` · proof not assessed
 - public · colingsnyder2-ux · [include/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/WindowsClient/include/CIDEDocManager.h)
@@ -289,6 +294,7 @@ Earlier paths and their donor versions: `native-headers/CIDEDocManager.h`.
 - public · colingsnyder2-ux · [include/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CIDEDocManager.h)
 - public · colingsnyder2-ux · [include/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/CIDEDocManager.h)
 - public · colingsnyder2-ux · [include/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/CIDEDocManager.h)
+- public · colingsnyder2-ux · [include/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/CIDEDocManager.h)
 
 **`222bd9db546f`** · `native-headers/CIDEDocManager.h` · proof not assessed
 
@@ -379,6 +385,8 @@ Earlier paths and their donor versions: `native-headers/CIDEDocManager.h`.
 - canonical · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/CIDEDocManager.h)
 - public · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/CIDEDocManager.h)
 - canonical · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/CIDEDocManager.h)
+- public · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/CIDEDocManager.h)
+- canonical · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/CIDEDocManager.h)
 
 </details>
 
@@ -396,6 +404,7 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 - public · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 - public · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 - public · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/CInsertObjectDialog.h)
+- public · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 
 **`3267871722f7`** · `WindowsClient/include/CInsertObjectDialog.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h)
@@ -406,6 +415,7 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 - canonical · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 - canonical · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 - canonical · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h)
+- canonical · colingsnyder2-ux · [include/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h)
 
 **`2d535d06ec3e`** · `native-headers/CInsertObjectDialog.h` · proof not assessed
 - public · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/CInsertObjectDialog.h)
@@ -545,6 +555,8 @@ Earlier paths and their donor versions: `native-headers/CInsertObjectDialog.h`.
 - canonical · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/CInsertObjectDialog.h)
 - public · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/CInsertObjectDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/CInsertObjectDialog.h)
+- public · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/CInsertObjectDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/CInsertObjectDialog.h)
 
 </details>
 
@@ -557,11 +569,13 @@ Earlier paths and their donor versions: `native-headers/CInstanceExplorer.h`.
 - public · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CInstanceExplorer.h)
 - public · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/CInstanceExplorer.h)
 - public · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/CInstanceExplorer.h)
+- public · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/CInstanceExplorer.h)
 
 **`a20334685cce`** · `WindowsClient/include/CInstanceExplorer.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h)
 - canonical · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h)
 - canonical · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h)
+- canonical · colingsnyder2-ux · [include/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/CInstanceExplorer.h)
 
 **`12d7e090b75e`** · `native-headers/CInstanceExplorer.h` · proof not assessed
 - public · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/CInstanceExplorer.h)
@@ -687,6 +701,8 @@ Earlier paths and their donor versions: `native-headers/CInstanceExplorer.h`.
 - canonical · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/CInstanceExplorer.h)
 - public · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/CInstanceExplorer.h)
 - canonical · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/CInstanceExplorer.h)
+- public · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/CInstanceExplorer.h)
+- canonical · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/CInstanceExplorer.h)
 
 </details>
 
@@ -702,6 +718,8 @@ Earlier paths and their donor versions: `native-headers/CMainFrame.h`.
 - canonical · colingsnyder2-ux · [include/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/CMainFrame.h)
 - public · colingsnyder2-ux · [include/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/CMainFrame.h)
 - canonical · colingsnyder2-ux · [include/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/CMainFrame.h)
+- public · colingsnyder2-ux · [include/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/CMainFrame.h)
+- canonical · colingsnyder2-ux · [include/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/CMainFrame.h)
 
 **`070a5d16c04c`** · `native-headers/CMainFrame.h` · proof not assessed
 
@@ -888,6 +906,7 @@ Earlier paths and their donor versions: `native-headers/CMainFrame.h`.
 - archive · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CMainFrame.h)
 - archive · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CMainFrame.h)
 - archive · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CMainFrame.h)
+- archive · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CMainFrame.h)
 
 <details><summary>1 retained local origins</summary>
 
@@ -1017,6 +1036,8 @@ Earlier paths and their donor versions: `native-headers/CMainFrame.h`.
 - canonical · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/CMainFrame.h)
 - public · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/CMainFrame.h)
 - canonical · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/CMainFrame.h)
+- public · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/CMainFrame.h)
+- canonical · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/CMainFrame.h)
 
 </details>
 
@@ -1029,11 +1050,13 @@ Earlier paths and their donor versions: `native-headers/CMainFrameBases.h`.
 - public · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CMainFrameBases.h)
 - public · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/CMainFrameBases.h)
 - public · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/CMainFrameBases.h)
+- public · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/CMainFrameBases.h)
 
 **`c83f6b1fa4d3`** · `WindowsClient/include/CMainFrameBases.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h)
 - canonical · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h)
 - canonical · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h)
+- canonical · colingsnyder2-ux · [include/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/CMainFrameBases.h)
 
 **`044fccb284f8`** · `native-headers/CMainFrameBases.h` · proof not assessed
 
@@ -1279,5 +1302,7 @@ Earlier paths and their donor versions: `native-headers/CMainFrameBases.h`.
 - canonical · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/CMainFrameBases.h)
 - public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/CMainFrameBases.h)
 - canonical · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/CMainFrameBases.h)
+- public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/CMainFrameBases.h)
+- canonical · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/CMainFrameBases.h)
 
 </details>

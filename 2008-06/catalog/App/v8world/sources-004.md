@@ -19,6 +19,7 @@ Earlier paths and their donor versions: `native-classes/WorldJointMulti.cpp`.
 - canonical · colingsnyder2-ux · [v8world/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/v8world/WorldJointMulti.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/App/src/v8world/WorldJointMulti.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/App/src/v8world/WorldJointMulti.cpp)
+- canonical · colingsnyder2-ux · [v8world/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/App/src/v8world/WorldJointMulti.cpp)
 
 **`925652bf6058`** · `App/src/v8world/WorldJointMulti.cpp` · proof not assessed
 - public · colingsnyder2-ux · [v8world/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/App/src/v8world/WorldJointMulti.cpp)
@@ -32,6 +33,7 @@ Earlier paths and their donor versions: `native-classes/WorldJointMulti.cpp`.
 - public · colingsnyder2-ux · [v8world/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/v8world/WorldJointMulti.cpp)
 - public · colingsnyder2-ux · [v8world/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/App/src/v8world/WorldJointMulti.cpp)
 - public · colingsnyder2-ux · [v8world/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/App/src/v8world/WorldJointMulti.cpp)
+- public · colingsnyder2-ux · [v8world/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/App/src/v8world/WorldJointMulti.cpp)
 
 **`6e0605416e25`** · `native-classes/WorldJointMulti.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [native-classes/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/WorldJointMulti.cpp)
@@ -129,6 +131,8 @@ Earlier paths and their donor versions: `native-classes/WorldJointMulti.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/WorldJointMulti.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/WorldJointMulti.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/WorldJointMulti.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/WorldJointMulti.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointMulti.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/WorldJointMulti.cpp)
 
 </details>
 
@@ -149,6 +153,7 @@ Earlier paths and their donor versions: `native-classes/WorldJointRigid.cpp`.
 - canonical · colingsnyder2-ux · [v8world/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/v8world/WorldJointRigid.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/App/src/v8world/WorldJointRigid.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/App/src/v8world/WorldJointRigid.cpp)
+- canonical · colingsnyder2-ux · [v8world/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/App/src/v8world/WorldJointRigid.cpp)
 
 **`7942421ce9df`** · `App/src/v8world/WorldJointRigid.cpp` · proof not assessed
 - public · colingsnyder2-ux · [v8world/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/App/src/v8world/WorldJointRigid.cpp)
@@ -162,6 +167,7 @@ Earlier paths and their donor versions: `native-classes/WorldJointRigid.cpp`.
 - public · colingsnyder2-ux · [v8world/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/v8world/WorldJointRigid.cpp)
 - public · colingsnyder2-ux · [v8world/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/App/src/v8world/WorldJointRigid.cpp)
 - public · colingsnyder2-ux · [v8world/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/App/src/v8world/WorldJointRigid.cpp)
+- public · colingsnyder2-ux · [v8world/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/App/src/v8world/WorldJointRigid.cpp)
 
 **`2e40da8d9bcc`** · `native-classes/WorldJointRigid.cpp` · proof not assessed
 
@@ -259,6 +265,8 @@ Earlier paths and their donor versions: `native-classes/WorldJointRigid.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/WorldJointRigid.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/WorldJointRigid.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/WorldJointRigid.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/WorldJointRigid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRigid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/WorldJointRigid.cpp)
 
 </details>
 
@@ -279,6 +287,7 @@ Earlier paths and their donor versions: `native-classes/WorldJointRotate.cpp`.
 - public · colingsnyder2-ux · [v8world/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/App/src/v8world/WorldJointRotate.cpp)
 - public · colingsnyder2-ux · [v8world/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/App/src/v8world/WorldJointRotate.cpp)
 - public · colingsnyder2-ux · [v8world/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/App/src/v8world/WorldJointRotate.cpp)
+- public · colingsnyder2-ux · [v8world/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/App/src/v8world/WorldJointRotate.cpp)
 
 **`fdd555cbadf3`** · `App/src/v8world/WorldJointRotate.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [v8world/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/App/src/v8world/WorldJointRotate.cpp)
@@ -292,6 +301,7 @@ Earlier paths and their donor versions: `native-classes/WorldJointRotate.cpp`.
 - canonical · colingsnyder2-ux · [v8world/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/App/src/v8world/WorldJointRotate.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/App/src/v8world/WorldJointRotate.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/App/src/v8world/WorldJointRotate.cpp)
+- canonical · colingsnyder2-ux · [v8world/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/App/src/v8world/WorldJointRotate.cpp)
 
 **`1d1600cf2035`** · `native-classes/WorldJointRotate.cpp` · proof not assessed
 
@@ -396,6 +406,8 @@ Earlier paths and their donor versions: `native-classes/WorldJointRotate.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/WorldJointRotate.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/WorldJointRotate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/WorldJointRotate.cpp)
+- public · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/WorldJointRotate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointRotate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/WorldJointRotate.cpp)
 
 </details>
 
@@ -476,6 +488,7 @@ Earlier paths and their donor versions: `native-classes/WorldJointRotate.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/CWorkspace.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/CWorkspace.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/CWorkspace.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/CWorkspace.cpp)
 
 <details><summary>6 retained local origins</summary>
 
@@ -675,6 +688,7 @@ Earlier paths and their donor versions: `native-classes/WorldJointRotate.cpp`.
 - public · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/CWorkspace.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/CWorkspace.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CWorkspace.cpp)
+- public · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/CWorkspace.cpp)
 
 **`b088ee7f795b`** · `native-classes/CWorkspace.cpp` · proof not assessed
 
@@ -739,6 +753,7 @@ Earlier paths and their donor versions: `native-classes/WorldJointRotate.cpp`.
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceClose.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceClose.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceClose.cpp)
+- draft · colingsnyder2-ux · [native-classes/CWorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceClose.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -903,6 +918,8 @@ Compatibility path for `WindowsClient/src/CWorkspaceInsert.cpp`; compile either 
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceInsert.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/CWorkspaceInsert.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceInsert.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CWorkspaceInsert.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceInsert.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/CWorkspaceInsert.cpp)
+- public · colingsnyder2-ux · [native-classes/CWorkspaceInsert.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/CWorkspaceInsert.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceInsert.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/CWorkspaceInsert.cpp)
 
 </details>
 
@@ -1051,6 +1068,8 @@ Compatibility path for `WindowsClient/src/CWorkspaceLoad.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/CWorkspaceLoad.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CWorkspaceLoad.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/CWorkspaceLoad.cpp)
+- public · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/CWorkspaceLoad.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/CWorkspaceLoad.cpp)
 
 </details>
 
@@ -1198,5 +1217,7 @@ Compatibility path for `WindowsClient/src/CWorkspaceObjectSafety.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
+- public · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceObjectSafety.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp)
 
 </details>

@@ -12,12 +12,14 @@ Earlier paths and their donor versions: `native-headers/ReliabilityLayer.h`.
 - public · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/Network/include/ReliabilityLayer.h)
 - public · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/Network/include/ReliabilityLayer.h)
 - public · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Network/include/ReliabilityLayer.h)
+- public · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Network/include/ReliabilityLayer.h)
 
 **`2eb14f210c0e`** · `Network/include/ReliabilityLayer.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/Network/include/ReliabilityLayer.h)
 - canonical · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/Network/include/ReliabilityLayer.h)
 - canonical · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/Network/include/ReliabilityLayer.h)
 - canonical · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Network/include/ReliabilityLayer.h)
+- canonical · colingsnyder2-ux · [include/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Network/include/ReliabilityLayer.h)
 
 **`1da4ab12dd3c`** · `native-headers/ReliabilityLayer.h` · proof not assessed
 - public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/ReliabilityLayer.h)
@@ -135,6 +137,8 @@ Earlier paths and their donor versions: `native-headers/ReliabilityLayer.h`.
 - canonical · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h)
 - public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/ReliabilityLayer.h)
 - canonical · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h)
+- public · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/ReliabilityLayer.h)
+- canonical · colingsnyder2-ux · [native-headers/ReliabilityLayer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/ReliabilityLayer.h)
 
 </details>
 
@@ -145,9 +149,11 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 
 **`4235a637aa93`** · `Network/include/Replicator.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/Network/include/Replicator.h)
+- canonical · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/Network/include/Replicator.h)
 
 **`6f9fd074c67e`** · `Network/include/Replicator.h` · proof not assessed
 - public · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/Network/include/Replicator.h)
+- public · colingsnyder2-ux · [include/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/Network/include/Replicator.h)
 
 **`4235a637aa93`** · `native-headers/Replicator.h` · proof not assessed
 - canonical · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/Replicator.h)
@@ -275,6 +281,8 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 **`cc54ea1cd529`** · `native-headers/Replicator.h` · proof not assessed
 - public · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/Replicator.h)
 - canonical · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/Replicator.h)
+- public · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/Replicator.h)
+- canonical · colingsnyder2-ux · [native-headers/Replicator.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/Replicator.h)
 
 </details>
 
@@ -446,6 +454,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - canonical · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp)
 
 <details><summary>10 retained local origins</summary>
 
@@ -494,6 +503,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/CMultiPlayerPane.cpp)
 - public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/CMultiPlayerPane.cpp)
 - public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/CMultiPlayerPane.cpp)
+- public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/CMultiPlayerPane.cpp)
 
 **`b469eee2b66c`** · `native-classes/CMultiPlayerPane.cpp` · proof not assessed
 
@@ -605,6 +615,10 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/9e304e3f0338d916caf7d99436ba36c1efe6d01dc5f35be35f1bc0f5df2eb590/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/a99ddb356dac24eba49aef9ea54b2d59d637703fc0242490c5945d64edca7a89/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/a9dcc3db0f0240f324e65b4664b0fbf83fa46377b1598ecc56117de1950b8f01/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/4180944e2b2573198702173e6d0ae92004aec4cdc342719426efb99afdccac90/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/9e304e3f0338d916caf7d99436ba36c1efe6d01dc5f35be35f1bc0f5df2eb590/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/a99ddb356dac24eba49aef9ea54b2d59d637703fc0242490c5945d64edca7a89/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/a9dcc3db0f0240f324e65b4664b0fbf83fa46377b1598ecc56117de1950b8f01/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 
 <details><summary>5 retained local origins</summary>
 
@@ -639,6 +653,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -687,6 +702,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/HttpLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/HttpLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/HttpLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/HttpLifetime.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -738,6 +754,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/HttpResultCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/HttpResultCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/HttpResultCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/HttpResultCheck.cpp)
 
 **`749812136bc3`** · `native-classes/HttpResultCheck.cpp` · proof not assessed
 
@@ -783,6 +800,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/HttpRobloxSite.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/HttpRobloxSite.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/HttpRobloxSite.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/HttpRobloxSite.cpp)
 
 **`5d0be21bf0b1`** · `native-classes/HttpRobloxSite.cpp` · proof not assessed
 
@@ -860,6 +878,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/HttpTransport.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/HttpTransport.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/HttpTransport.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/HttpTransport.cpp)
 
 </details>
 
@@ -889,6 +908,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/HttpTransportState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/HttpTransportState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/HttpTransportState.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/HttpTransportState.cpp)
 
 **`416e068428ab`** · `native-classes/HttpTransportState.cpp` · proof not assessed
 
@@ -966,6 +986,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/HttpTrustCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/HttpTrustCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/HttpTrustCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/HttpTrustCheck.cpp)
 
 </details>
 
@@ -1011,6 +1032,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/HttpTrustInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/HttpTrustInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/HttpTrustInitialize.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/HttpTrustInitialize.cpp)
 
 **`54f2d531a5d0`** · `native-classes/HttpTrustInitialize.cpp` · proof not assessed
 
@@ -1064,6 +1086,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/HttpTrustState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/HttpTrustState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/HttpTrustState.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/HttpTrustState.cpp)
 
 **`ee6d39a49a3a`** · `native-classes/HttpTrustState.cpp` · proof not assessed
 
@@ -1101,6 +1124,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/HttpWinHttp.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/HttpWinHttp.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/HttpWinHttp.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/HttpWinHttp.cpp)
 
 **`8a7927cbc951`** · `native-classes/HttpWinHttp.cpp` · proof not assessed
 
@@ -1162,6 +1186,7 @@ Earlier paths and their donor versions: `native-headers/Replicator.h`.
 - public · colingsnyder2-ux · [native-classes/HttpWinInet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-classes/HttpWinInet.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinInet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-classes/HttpWinInet.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinInet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/HttpWinInet.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpWinInet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/HttpWinInet.cpp)
 
 **`3320df1e48a2`** · `native-classes/HttpWinInet.cpp` · proof not assessed
 
@@ -1317,5 +1342,7 @@ Compatibility path for `App/src/v8datamodel/NetworkPlayer.cpp`; compile either p
 - canonical · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp)
 - public · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/NetworkPlayer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp)
+- public · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-classes/NetworkPlayer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NetworkPlayer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-classes/NetworkPlayer.cpp)
 
 </details>

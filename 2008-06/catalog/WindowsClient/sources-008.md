@@ -3,6 +3,344 @@
 [Project index](README.md) · [Previous](sources-007.md) · [Next](sources-009.md)
 
 <details>
+<summary>WindowsClient/include/CUploadPlaceDialog.h — diverged; 9 content versions</summary>
+
+Earlier paths and their donor versions: `native-headers/CUploadPlaceDialog.h`.
+
+**`68a8288e3bd4`** · `WindowsClient/include/CUploadPlaceDialog.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+
+**`ce44148f578d`** · `WindowsClient/include/CUploadPlaceDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [include/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/CUploadPlaceDialog.h)
+
+**`0e6172417073`** · `native-headers/CUploadPlaceDialog.h` · proof not assessed
+
+<details><summary>25 retained local origins</summary>
+
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`367fc313c0bc`** · `native-headers/CUploadPlaceDialog.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CUploadPlaceDialog.h`
+- local · `local/findings/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`3802b47f6030`** · `native-headers/CUploadPlaceDialog.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`68a8288e3bd4`** · `native-headers/CUploadPlaceDialog.h` · proof not assessed
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- fork · coldek · [native-headers/CUploadPlaceDialog.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- fork · mewpokemons · [native-headers/CUploadPlaceDialog.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- fork · mewpokemons · [native-headers/CUploadPlaceDialog.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- fork · mewpokemons · [native-headers/CUploadPlaceDialog.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+
+<details><summary>9 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`ab9837b4104b`** · `native-headers/CUploadPlaceDialog.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/CUploadPlaceDialog.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`ce44148f578d`** · `native-headers/CUploadPlaceDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/CUploadPlaceDialog.h)
+
+**`07eeaf02f613`** · `native-headers/CUploadPlaceDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+- public · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/CUploadPlaceDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CUploadPlaceDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/CUploadPlaceDialog.h)
+
+</details>
+
+<details>
+<summary>WindowsClient/include/CWebToolbox.h — diverged; 12 content versions</summary>
+
+Earlier paths and their donor versions: `native-headers/CWebToolbox.h`.
+
+**`18a5aa16f81f`** · `WindowsClient/include/CWebToolbox.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/WindowsClient/include/CWebToolbox.h)
+- public · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/WindowsClient/include/CWebToolbox.h)
+- public · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/WindowsClient/include/CWebToolbox.h)
+- public · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/WindowsClient/include/CWebToolbox.h)
+- public · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/WindowsClient/include/CWebToolbox.h)
+- public · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CWebToolbox.h)
+- public · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/CWebToolbox.h)
+- public · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/CWebToolbox.h)
+- public · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/CWebToolbox.h)
+
+**`ab516896dfe2`** · `WindowsClient/include/CWebToolbox.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/WindowsClient/include/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/WindowsClient/include/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/WindowsClient/include/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/WindowsClient/include/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/WindowsClient/include/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [include/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/CWebToolbox.h)
+
+**`18a5aa16f81f`** · `native-headers/CWebToolbox.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/CWebToolbox.h)
+
+**`463e803c8116`** · `native-headers/CWebToolbox.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-throughput-20261102/script-context/snapshot/d28939faef5424a478f22570af009465f94e3dd76fad26484c9c2818f16acc85/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7222eaff79cd`** · `native-headers/CWebToolbox.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7569b2a7bdaf`** · `native-headers/CWebToolbox.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a237febf731b`** · `native-headers/CWebToolbox.h` · proof not assessed
+
+<details><summary>3 retained local origins</summary>
+
+- local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-headers/CWebToolbox.h`
+- local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-headers/CWebToolbox.h`
+- local-branch refs/heads/codex/worker-selection-verbs@dd86b261e5b6 · `rebuild/2008-06/native-headers/CWebToolbox.h`
+
+</details>
+
+**`ab516896dfe2`** · `native-headers/CWebToolbox.h` · proof not assessed
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- fork · coldek · [native-headers/CWebToolbox.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/CWebToolbox.h)
+- fork · mewpokemons · [native-headers/CWebToolbox.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/CWebToolbox.h)
+- fork · mewpokemons · [native-headers/CWebToolbox.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/CWebToolbox.h)
+- fork · mewpokemons · [native-headers/CWebToolbox.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+
+<details><summary>9 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`b6f4bf486dd8`** · `native-headers/CWebToolbox.h` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/CWebToolbox.h`
+- local · `local/findings/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e2bd330ccc35`** · `native-headers/CWebToolbox.h` · proof not assessed
+
+<details><summary>25 retained local origins</summary>
+
+- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`eef126f0d974`** · `native-headers/CWebToolbox.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/crobloxview-20261102/t/rebuild/2008-06/native-headers/CWebToolbox.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`bc53becd521f`** · `native-headers/CWebToolbox.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+- public · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/CWebToolbox.h)
+- canonical · colingsnyder2-ux · [native-headers/CWebToolbox.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/CWebToolbox.h)
+
+</details>
+
+<details>
 <summary>WindowsClient/include/CWorkspace.h — diverged; 16 content versions</summary>
 
 Earlier paths and their donor versions: `native-headers/CWorkspace.h`.
@@ -11,11 +349,13 @@ Earlier paths and their donor versions: `native-headers/CWorkspace.h`.
 - canonical · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/CWorkspace.h)
 - canonical · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/CWorkspace.h)
 - canonical · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/CWorkspace.h)
+- canonical · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/CWorkspace.h)
 
 **`d2ad3a018bf0`** · `WindowsClient/include/CWorkspace.h` · proof not assessed
 - public · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/CWorkspace.h)
 - public · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/CWorkspace.h)
 - public · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/CWorkspace.h)
+- public · colingsnyder2-ux · [include/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/CWorkspace.h)
 
 **`0897e0b76e49`** · `native-headers/CWorkspace.h` · proof not assessed
 
@@ -336,6 +676,8 @@ Earlier paths and their donor versions: `native-headers/CWorkspace.h`.
 - canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
 - public · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/CWorkspace.h)
 - canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
+- public · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/CWorkspace.h)
+- canonical · colingsnyder2-ux · [native-headers/CWorkspace.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/CWorkspace.h)
 
 </details>
 
@@ -347,10 +689,12 @@ Earlier paths and their donor versions: `native-headers/CWrapperView.h`.
 **`80f8c66555ed`** · `WindowsClient/include/CWrapperView.h` · proof not assessed
 - public · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/CWrapperView.h)
 - public · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/CWrapperView.h)
+- public · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/CWrapperView.h)
 
 **`933bfc3cedb1`** · `WindowsClient/include/CWrapperView.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/CWrapperView.h)
 - canonical · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/CWrapperView.h)
+- canonical · colingsnyder2-ux · [include/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/CWrapperView.h)
 
 **`7c90f3142901`** · `native-headers/CWrapperView.h` · proof not assessed
 
@@ -476,6 +820,8 @@ Earlier paths and their donor versions: `native-headers/CWrapperView.h`.
 - canonical · colingsnyder2-ux · [native-headers/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/CWrapperView.h)
 - public · colingsnyder2-ux · [native-headers/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/CWrapperView.h)
 - canonical · colingsnyder2-ux · [native-headers/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/CWrapperView.h)
+- public · colingsnyder2-ux · [native-headers/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/CWrapperView.h)
+- canonical · colingsnyder2-ux · [native-headers/CWrapperView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/CWrapperView.h)
 
 </details>
 
@@ -487,10 +833,12 @@ Earlier paths and their donor versions: `native-headers/ChatEnter.h`.
 **`9d10157ad6d6`** · `WindowsClient/include/ChatEnter.h` · proof not assessed
 - public · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/ChatEnter.h)
 - public · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/ChatEnter.h)
+- public · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/ChatEnter.h)
 
 **`e70c62cfd6a2`** · `WindowsClient/include/ChatEnter.h` · proof not assessed
 - canonical · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/ChatEnter.h)
 - canonical · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/ChatEnter.h)
+- canonical · colingsnyder2-ux · [include/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/ChatEnter.h)
 
 **`246436902c19`** · `native-headers/ChatEnter.h` · proof not assessed
 
@@ -736,6 +1084,8 @@ Earlier paths and their donor versions: `native-headers/ChatEnter.h`.
 - canonical · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/ChatEnter.h)
 - public · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/ChatEnter.h)
 - canonical · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/ChatEnter.h)
+- public · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/ChatEnter.h)
+- canonical · colingsnyder2-ux · [native-headers/ChatEnter.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/ChatEnter.h)
 
 </details>
 
@@ -748,11 +1098,13 @@ Earlier paths and their donor versions: `native-headers/ClipboardVerbs.h`.
 - canonical · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/ClipboardVerbs.h)
 - canonical · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/ClipboardVerbs.h)
 - canonical · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/ClipboardVerbs.h)
+- canonical · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/ClipboardVerbs.h)
 
 **`f736bd295726`** · `WindowsClient/include/ClipboardVerbs.h` · proof not assessed
 - public · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/ClipboardVerbs.h)
 - public · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/ClipboardVerbs.h)
 - public · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/ClipboardVerbs.h)
+- public · colingsnyder2-ux · [include/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/ClipboardVerbs.h)
 
 **`34d4883050d5`** · `native-headers/ClipboardVerbs.h` · proof not assessed
 - canonical · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/ClipboardVerbs.h)
@@ -870,6 +1222,8 @@ Earlier paths and their donor versions: `native-headers/ClipboardVerbs.h`.
 - canonical · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/ClipboardVerbs.h)
 - public · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/ClipboardVerbs.h)
 - canonical · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/ClipboardVerbs.h)
+- public · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/ClipboardVerbs.h)
+- canonical · colingsnyder2-ux · [native-headers/ClipboardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/ClipboardVerbs.h)
 
 </details>
 
@@ -882,11 +1236,13 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 - canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
 - canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
 - canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
+- canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
 
 **`bd619f24c5e8`** · `WindowsClient/include/InsertDecal.h` · proof not assessed
 - public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/InsertDecal.h)
 - public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/InsertDecal.h)
 - public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/InsertDecal.h)
+- public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/WindowsClient/include/InsertDecal.h)
 
 **`3654b0afd63e`** · `native-headers/InsertDecal.h` · proof not assessed
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
@@ -1004,279 +1360,7 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 - public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/InsertDecal.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
-
-</details>
-
-<details>
-<summary>WindowsClient/include/InsertModelFromRobloxVerb.h — diverged; 9 content versions</summary>
-
-Earlier paths and their donor versions: `native-headers/InsertModelFromRobloxVerb.h`.
-
-**`20cc842771a5`** · `WindowsClient/include/InsertModelFromRobloxVerb.h` · proof not assessed
-- public · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
-
-**`c141ab7ad064`** · `WindowsClient/include/InsertModelFromRobloxVerb.h` · proof not assessed
-- canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
-
-**`0fbc8653051c`** · `native-headers/InsertModelFromRobloxVerb.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`20cc842771a5`** · `native-headers/InsertModelFromRobloxVerb.h` · proof not assessed
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-
-**`27352c361a22`** · `native-headers/InsertModelFromRobloxVerb.h` · proof not assessed
-
-<details><summary>21 retained local origins</summary>
-
-- local · `work/fork-integration/explosion-snapshot-asqpjrex/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-snapshot-_zqo42lu/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/stats-candidate-20261104-1458/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/mew-shared-headers-20261104/candidate/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`86a07a836d28`** · `native-headers/InsertModelFromRobloxVerb.h` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h`
-- local · `local/findings/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`a2c077c8dbd4`** · `native-headers/InsertModelFromRobloxVerb.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`c141ab7ad064`** · `native-headers/InsertModelFromRobloxVerb.h` · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- fork · coldek · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- fork · mewpokemons · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- fork · mewpokemons · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- fork · mewpokemons · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-
-<details><summary>13 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ea13606b884c`** · `native-headers/InsertModelFromRobloxVerb.h` · proof not assessed
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
-
-</details>
-
-<details>
-<summary>WindowsClient/include/InsertObject.h — diverged; 9 content versions</summary>
-
-Earlier paths and their donor versions: `native-headers/InsertObject.h`.
-
-**`8b0d99ac29ac`** · `WindowsClient/include/InsertObject.h` · proof not assessed
-- public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/WindowsClient/include/InsertObject.h)
-- public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/WindowsClient/include/InsertObject.h)
-- public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/WindowsClient/include/InsertObject.h)
-
-**`dccc8ba7ca6c`** · `WindowsClient/include/InsertObject.h` · proof not assessed
-- canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
-- canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
-- canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
-
-**`25621ff3a625`** · `native-headers/InsertObject.h` · proof not assessed
-
-<details><summary>16 retained local origins</summary>
-
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1756/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-1955/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261105-2207/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0009/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0213/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0613/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-0813/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1009/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-1216/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/doc-init-proof-20261107/snapshot/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-snapshot/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/public-native-reconcile-20261106/wrapper/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/workspace-write-recovery-20261106/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`4961d4360d49`** · `native-headers/InsertObject.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`816afc609048`** · `native-headers/InsertObject.h` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-headers/InsertObject.h`
-- local · `local/findings/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`8b0d99ac29ac`** · `native-headers/InsertObject.h` · proof not assessed
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/InsertObject.h)
-
-**`dccc8ba7ca6c`** · `native-headers/InsertObject.h` · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- fork · mewpokemons · [native-headers/InsertObject.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/InsertObject.h)
-- fork · mewpokemons · [native-headers/InsertObject.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d7f2449f46cc4e08237fd803cde4dd3b1bcfe596/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/493098ec935934cdbfefdee794f738fc57f6fc36/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/20261104-2200-material/snapshot/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/mew-instance-family-20261107/frozen/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/public-browserexternal-20261107/canonical-raw/workspace/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e82549997abe`** · `native-headers/InsertObject.h` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`67b464537b52`** · `native-headers/InsertObject.h` · proof not assessed
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dd8ce124b3fcecfaa4cfd85284d14b0d5b615678/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ee4a34fbdd96f6ef14f13d24b9be47a322b195d4/workspace/rebuild/2008-06/native-headers/InsertObject.h)
-- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-headers/InsertObject.h)
-- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/workspace/rebuild/2008-06/native-headers/InsertObject.h)
+- public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/2008-06/native-headers/InsertDecal.h)
+- canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2ad6227f442dbbb1e5aa4fa67e4377bba8e79ef9/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 
 </details>
