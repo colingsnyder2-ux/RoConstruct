@@ -180,3 +180,14 @@ def test_every_project_scope_is_scanned_and_links_are_retained(tmp_path, monkeyp
     monkeypatch.setattr(module, 'load_json', lambda path: {'sources': {'00500000': {'path': str(source.relative_to(tmp_path)).replace('\\', '/')}}})
     assert module.load_links()['00500000'].endswith(scope + '/Thing.cpp')
     assert str(source.relative_to(tmp_path)) in module.build_index()
+
+
+def test_path_filter_accepts_documented_relative_and_full_paths():
+    path = Path(__file__).resolve().parents[1] / 'roc/native_status.py'
+    spec = importlib.util.spec_from_file_location('native_status_path_test', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    key = 'rebuild/2008-06/App/src/tool/Tool.cpp'
+    assert module._matches('App/src/tool/*.cpp', key)
+    assert module._matches('rebuild/2008-06/App/src/tool/*.cpp', key)
+    assert not module._matches('Network/src/*.cpp', key)

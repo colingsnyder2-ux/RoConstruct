@@ -178,7 +178,10 @@ def _matches(path_glob, key):
     if not path_glob:
         return True
     import fnmatch
-    return fnmatch.fnmatch(key.replace("\\", "/"), path_glob)
+    key = key.replace("\\", "/")
+    prefix = f"rebuild/{CLIENT}/"
+    relative = key[len(prefix):] if key.startswith(prefix) else key
+    return fnmatch.fnmatch(key, path_glob) or fnmatch.fnmatch(relative, path_glob)
 
 
 def build_index(path_glob=None):
