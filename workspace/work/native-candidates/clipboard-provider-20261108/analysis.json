@@ -1,0 +1,96 @@
+[
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\clipboard-providers-fresh-20261108\\source\\WindowsClient\\src\\CWorkspaceSelection.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-083522-eba635b4\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "0046b750",
+        "requested_symbol": "?writeXmlSelection@CWorkspace@@",
+        "status": "exact",
+        "symbol": "?writeXmlSelection@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ",
+        "score": 100,
+        "target_size": 261,
+        "object_size": 261,
+        "target_sha256": "08d89ac9f1d2d598d1cac5db8482eadbe7389d1edb9902c780591dafa63f84d6",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 1.859
+      },
+      {
+        "addr": "0057e140",
+        "requested_symbol": "?collectSelection@@",
+        "status": "exact",
+        "symbol": "?collectSelection@@YAXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "score": 100,
+        "target_size": 140,
+        "object_size": 140,
+        "target_sha256": "56fb337b49c1da7552b3e09e455d3e5b6288e24f330fbf6574cc7684b1daa53d",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\clipboard-providers-fresh-20261108\\source\\WindowsClient\\src\\ClipboardActions.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-083522-eba635b4\\unit-001\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00415800",
+        "requested_symbol": "?doIt@CopyVerb@@",
+        "status": "exact",
+        "symbol": "?doIt@CopyVerb@@UAEXPAVIDataState@RBX@@@Z",
+        "score": 100,
+        "target_size": 479,
+        "object_size": 479,
+        "target_sha256": "c4ab968a13ec439a054e41e0cd1a20f2721bf99239c62036d8420c19a4d83d20",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8448540,
+            8
+          ],
+          [
+            8448288,
+            7
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.016
+      },
+      {
+        "addr": "00415510",
+        "requested_symbol": "?doIt@PasteVerb@@",
+        "status": "exact",
+        "symbol": "?doIt@PasteVerb@@UAEXPAVIDataState@RBX@@@Z",
+        "score": 100,
+        "target_size": 745,
+        "object_size": 745,
+        "target_sha256": "af9792dc3ebda16195a745657afe087fc1dde904227fed75fe8a302a0d881016",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8448556,
+            14
+          ],
+          [
+            8448288,
+            7
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "analysis.json": "7232b0f47f1b4ee7b98a9375f502274f19ce0b112614b8b365b8e6e53f84108b",
+  "baseline-link-log.txt": "4fe57b7ceed78454ea292c391b5e3259afbbc7e261b713cfa3bbce8c5c8ebcfa",
+  "compile-results.json": "06216068877f02f3bf8c9c0bcbca8d3e5486ea4c299f7f38670270cf8eb349c3",
+  "compile-summary.json": "58a1e89be012e50760d6c2c4f2383ed27731aa4f15283bf7546ed9c42f19e894",
+  "historical-hypotheses.json": "9186b86434d1a012dd4382321ff5f997c4f8b2cac46e0cbf447d801c3e663f62",
+  "link-log.txt": "e949989d53c59f82955342ffd1dfc2b4488e07f7a3ed8ea0cba3cf7fd4131a90",
+  "link-receipt.json": "35d11ab03c9db579e122cd509fc5a52078b234ecf250836a274f16c14360e4b1",
+  "original-assembly.txt": "4c3d55e274eb9bdbb1338191354cbc8e00ebe11db1afd6180d4059e96bb49823",
+  "README.md": "305f9ffac640cba01476265ab864d295d43e384eabf0b94fc6142d576d001d68",
+  "candidate/ClipboardActions.cpp": "c5cf548a93a10368918e84eaa1464b9bcffcd43561b1f257da2bd5e2d3b3f43b",
+  "candidate/CWorkspaceSelection.cpp": "34b8d98dd754bdd5f4bc3455829d406d5190374c8eb381b20532b34974380c05"
+}

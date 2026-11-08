@@ -1,0 +1,472 @@
+== 0046b750 261 bytes unit=VCWorkspace::?$CComObject
+0046b750  push -1
+0046b752  push 0x7c39d1  ; fn_007c39d1 [unit? seg_007c0000]
+0046b757  mov eax, dword ptr fs:[0]
+0046b75d  push eax
+0046b75e  mov dword ptr fs:[0], esp
+0046b765  sub esp, 0x1c
+0046b768  push ebx
+0046b769  push ebp
+0046b76a  push esi
+0046b76b  push edi
+0046b76c  xor edi, edi
+0046b76e  mov esi, ecx
+0046b770  mov dword ptr [esp + 0x34], edi
+0046b774  mov dword ptr [esp + 0x10], edi
+0046b778  call 0x591a30  ; fn_00591a30 [unit? RBX::RootInstance]
+0046b77d  mov ebx, dword ptr [esp + 0x3c]
+0046b781  mov dword ptr [ebx], eax
+0046b783  mov eax, dword ptr [esi + 0x24]
+0046b786  sub esp, 8
+0046b789  mov ecx, esp
+0046b78b  mov dword ptr [ecx], eax
+0046b78d  mov eax, dword ptr [esi + 0x28]
+0046b790  mov ebp, 1
+0046b795  mov dword ptr [esp + 0x3c], edi
+0046b799  mov dword ptr [esp + 0x18], ebp
+0046b79d  mov dword ptr [esp + 0x1c], esp
+0046b7a1  mov dword ptr [ecx + 4], eax
+0046b7a4  cmp eax, edi
+0046b7a6  je 0x46b7b1
+0046b7a8  add eax, 4
+0046b7ab  mov ecx, ebp
+0046b7ad  lock xadd dword ptr [eax], ecx
+0046b7b1  lea ecx, [esp + 0x28]
+0046b7b5  call 0x411b40  ; fn_00411b40 [unit? ChatEnter]
+0046b7ba  mov esi, dword ptr [esi + 0x24]
+0046b7bd  mov dword ptr [esp + 0x34], ebp
+0046b7c1  cmp esi, edi
+0046b7c3  je 0x46b7cd
+0046b7c5  mov eax, dword ptr [esi + 0x204]
+0046b7cb  jmp 0x46b7cf
+0046b7cd  xor eax, eax
+0046b7cf  push eax
+0046b7d0  call 0x421cb0  ; fn_00421cb0 [unit? CSettingsExplorer]
+0046b7d5  mov edx, dword ptr [ebx]
+0046b7d7  mov edi, eax
+0046b7d9  mov esi, dword ptr [edi + 0x154]
+0046b7df  mov ebp, dword ptr [esi + 0x10]
+0046b7e2  add esp, 4
+0046b7e5  mov dword ptr [esp + 0x14], edx
+0046b7e9  cmp dword ptr [esi + 0xc], ebp
+0046b7ec  jbe 0x46b7f4
+0046b7ee  call dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+0046b7f4  mov edi, dword ptr [edi + 0x154]
+0046b7fa  mov eax, dword ptr [esi]
+0046b7fc  mov esi, dword ptr [edi + 0xc]
+0046b7ff  mov dword ptr [esp + 0x18], eax
+0046b803  cmp esi, dword ptr [edi + 0x10]
+0046b806  jbe 0x46b80e
+0046b808  call dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+0046b80e  mov ecx, dword ptr [esp + 0x14]
+0046b812  mov edx, dword ptr [esp + 0x18]
+0046b816  mov edi, dword ptr [edi]
+0046b818  push ecx
+0046b819  mov eax, 0x57e140  ; fn_0057e140 [unit? RBX::ClearBackpack]
+0046b81e  push eax
+0046b81f  push ebp
+0046b820  push edx
+0046b821  push esi
+0046b822  lea eax, [esp + 0x2c]
+0046b826  push edi
+0046b827  push eax
+0046b828  call 0x423ba0  ; fn_00423ba0 [unit? CSelectionTreeCtrl]
+0046b82d  add esp, 0x1c
+0046b830  lea ecx, [esp + 0x20]
+0046b834  mov byte ptr [esp + 0x34], 0
+0046b839  call 0x5773c0  ; fn_005773c0 [unit? RBX::DataModel]
+0046b83e  mov ecx, dword ptr [esp + 0x2c]
+0046b842  pop edi
+0046b843  pop esi
+0046b844  pop ebp
+0046b845  mov eax, ebx
+0046b847  mov dword ptr fs:[0], ecx
+0046b84e  pop ebx
+0046b84f  add esp, 0x28
+0046b852  ret 4
+== 0057e140 140 bytes unit=RBX::ClearBackpack
+0057e140  mov eax, dword ptr fs:[0]
+0057e146  push -1
+0057e148  push 0x7c0418  ; fn_007c0418 [unit? CSpinButtonCtrl]
+0057e14d  push eax
+0057e14e  mov dword ptr fs:[0], esp
+0057e155  push esi
+0057e156  mov ecx, dword ptr [esp + 0x18]
+0057e15a  mov eax, dword ptr [ecx]
+0057e15c  mov edx, dword ptr [eax + 0x38]
+0057e15f  mov dword ptr [esp + 0xc], 0
+0057e167  call edx
+0057e169  test eax, eax
+0057e16b  je 0x57e182
+0057e16d  mov edx, dword ptr [esp + 0x14]
+0057e171  mov ecx, dword ptr [edx + 8]
+0057e174  test ecx, ecx
+0057e176  jne 0x57e17d
+0057e178  mov dword ptr [edx + 4], eax
+0057e17b  jmp 0x57e17f
+0057e17d  mov dword ptr [ecx], eax
+0057e17f  mov dword ptr [edx + 8], eax
+0057e182  mov esi, dword ptr [esp + 0x1c]
+0057e186  mov dword ptr [esp + 0xc], 0xffffffff
+0057e18e  test esi, esi
+0057e190  je 0x57e1bc
+0057e192  lea eax, [esi + 4]
+0057e195  or ecx, 0xffffffff
+0057e198  lock xadd dword ptr [eax], ecx
+0057e19c  jne 0x57e1bc
+0057e19e  mov edx, dword ptr [esi]
+0057e1a0  mov eax, dword ptr [edx + 4]
+0057e1a3  mov ecx, esi
+0057e1a5  call eax
+0057e1a7  lea ecx, [esi + 8]
+0057e1aa  or edx, 0xffffffff
+0057e1ad  lock xadd dword ptr [ecx], edx
+0057e1b1  jne 0x57e1bc
+0057e1b3  mov eax, dword ptr [esi]
+0057e1b5  mov edx, dword ptr [eax + 8]
+0057e1b8  mov ecx, esi
+0057e1ba  call edx
+0057e1bc  mov ecx, dword ptr [esp + 4]
+0057e1c0  mov dword ptr fs:[0], ecx
+0057e1c7  pop esi
+0057e1c8  add esp, 0xc
+0057e1cb  ret 
+== 00415800 479 bytes unit=CopyVerb
+00415800  push -1
+00415802  mov eax, dword ptr fs:[0]
+00415808  push 0x7bda13  ; fn_007bda13 [unit? CSpinButtonCtrl]
+0041580d  push eax
+0041580e  mov dword ptr fs:[0], esp
+00415815  sub esp, 0xcc
+0041581b  push ebx
+0041581c  push ebp
+0041581d  push esi
+0041581e  push edi
+0041581f  mov edi, ecx
+00415821  call 0x591a30  ; fn_00591a30 [unit? RBX::RootInstance]
+00415826  mov ecx, dword ptr [edi + 0x20]
+00415829  mov esi, eax
+0041582b  test ecx, ecx
+0041582d  je 0x415838
+0041582f  call 0x4153b0  ; fn_004153b0 [unit? RBX::VChangeHistoryService::?$FactoryProduct::Creator]
+00415834  mov ebp, eax
+00415836  jmp 0x41583a
+00415838  xor ebp, ebp
+0041583a  mov edi, dword ptr [ebp + 0x154]
+00415840  mov ebx, dword ptr [edi + 0x10]
+00415843  cmp dword ptr [edi + 0xc], ebx
+00415846  jbe 0x41584e
+00415848  call dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+0041584e  mov eax, dword ptr [edi]
+00415850  mov edi, dword ptr [ebp + 0x154]
+00415856  mov ebp, dword ptr [edi + 0xc]
+00415859  mov dword ptr [esp + 0x10], eax
+0041585d  cmp ebp, dword ptr [edi + 0x10]
+00415860  jbe 0x415868
+00415862  call dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+00415868  mov ecx, dword ptr [esp + 0x10]
+0041586c  mov edi, dword ptr [edi]
+0041586e  push esi
+0041586f  mov eax, 0x57e140  ; fn_0057e140 [unit? RBX::ClearBackpack]
+00415874  push eax
+00415875  push ebx
+00415876  push ecx
+00415877  push ebp
+00415878  lea edx, [esp + 0x24]
+0041587c  push edi
+0041587d  push edx
+0041587e  call 0x423ba0  ; fn_00423ba0 [unit? CSelectionTreeCtrl]
+00415883  add esp, 0x1c
+00415886  mov ebx, 1
+0041588b  push ebx
+0041588c  push 2
+0041588e  lea ecx, [esp + 0x64]
+00415892  call dword ptr [0x802430]  ; MSVCP90.dll!??0?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z
+00415898  lea eax, [esp + 0x5c]
+0041589c  push eax
+0041589d  lea ecx, [esp + 0x38]
+004158a1  mov dword ptr [esp + 0xe8], 0
+004158ac  call 0x58fff0  ; fn_0058fff0 [unit? TextXmlParser]
+004158b1  mov dword ptr [esp + 0x34], 0x80ea1c
+004158b9  push esi
+004158ba  lea ecx, [esp + 0x38]
+004158be  mov byte ptr [esp + 0xe8], bl
+004158c5  call 0x58e810  ; fn_0058e810 [unit? TextXmlWriter]
+004158ca  test esi, esi
+004158cc  je 0x4158de
+004158ce  mov ecx, esi
+004158d0  call 0x413a70  ; fn_00413a70 [unit? CopyVerb]
+004158d5  push esi
+004158d6  call 0x6a067a  ; MFC ??3@YAXPAX@Z
+004158db  add esp, 4
+004158de  call 0x6a0e4e  ; MFC ?AfxGetThread@@YGPAVCWinThread@@XZ
+004158e3  test eax, eax
+004158e5  je 0x4158f2
+004158e7  mov edx, dword ptr [eax]
+004158e9  mov ecx, eax
+004158eb  mov eax, dword ptr [edx + 0x7c]
+004158ee  call eax
+004158f0  jmp 0x4158f4
+004158f2  xor eax, eax
+004158f4  mov ecx, dword ptr [eax + 0x20]
+004158f7  push ecx
+004158f8  call dword ptr [0x802df4]  ; USER32.dll!OpenClipboard
+004158fe  test eax, eax
+00415900  je 0x41599e
+00415906  call dword ptr [0x802ddc]  ; USER32.dll!EmptyClipboard
+0041590c  lea edx, [esp + 0x18]
+00415910  push edx
+00415911  lea ecx, [esp + 0x60]
+00415915  call dword ptr [0x802434]  ; MSVCP90.dll!?str@?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ
+0041591b  mov eax, dword ptr [esp + 0x2c]
+0041591f  inc eax
+00415920  push eax
+00415921  push 2
+00415923  mov byte ptr [esp + 0xec], 2
+0041592b  call dword ptr [0x8021dc]  ; KERNEL32.dll!GlobalAlloc
+00415931  mov edi, eax
+00415933  push edi
+00415934  call dword ptr [0x8021d8]  ; KERNEL32.dll!GlobalLock
+0041593a  lea ecx, [esp + 0x18]
+0041593e  mov esi, eax
+00415940  call dword ptr [0x802464]  ; MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ
+00415946  mov edx, esi
+00415948  mov cl, byte ptr [eax]
+0041594a  mov byte ptr [edx], cl
+0041594c  add eax, ebx
+0041594e  add edx, ebx
+00415950  test cl, cl
+00415952  jne 0x415948
+00415954  push edi
+00415955  call dword ptr [0x8021d4]  ; KERNEL32.dll!GlobalUnlock
+0041595b  test byte ptr [0x96cbf4], bl
+00415961  jne 0x415979
+00415963  or dword ptr [0x96cbf4], ebx
+00415969  push 0x80e920
+0041596e  call dword ptr [0x802df0]  ; USER32.dll!RegisterClipboardFormatA
+00415974  mov dword ptr [0x96cbf0], eax
+00415979  mov ecx, dword ptr [0x96cbf0]
+0041597f  push edi
+00415980  push ecx
+00415981  call dword ptr [0x802de0]  ; USER32.dll!SetClipboardData
+00415987  call dword ptr [0x802de8]  ; USER32.dll!CloseClipboard
+0041598d  lea ecx, [esp + 0x18]
+00415991  mov byte ptr [esp + 0xe4], bl
+00415998  call dword ptr [0x802468]  ; MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+0041599e  lea ecx, [esp + 0x38]
+004159a2  mov byte ptr [esp + 0xe4], 0
+004159aa  call 0x4146d0  ; fn_004146d0 [unit? CopyVerb]
+004159af  lea ecx, [esp + 0x5c]
+004159b3  mov dword ptr [esp + 0xe4], 0xffffffff
+004159be  call dword ptr [0x802438]  ; MSVCP90.dll!??_D?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ
+004159c4  mov ecx, dword ptr [esp + 0xdc]
+004159cb  pop edi
+004159cc  pop esi
+004159cd  pop ebp
+004159ce  mov dword ptr fs:[0], ecx
+004159d5  pop ebx
+004159d6  add esp, 0xd8
+004159dc  ret 4
+== 00415510 745 bytes unit=PasteVerb
+00415510  push -1
+00415512  push 0x7bd9e5  ; fn_007bd9e5 [unit? CSpinButtonCtrl]
+00415517  mov eax, dword ptr fs:[0]
+0041551d  push eax
+0041551e  mov dword ptr fs:[0], esp
+00415525  sub esp, 0x120
+0041552b  push ebp
+0041552c  push esi
+0041552d  push edi
+0041552e  mov esi, ecx
+00415530  xor ebp, ebp
+00415532  push 0x80ea2c
+00415537  lea ecx, [esp + 0x48]
+0041553b  mov dword ptr [esp + 0x10], ebp
+0041553f  call dword ptr [0x802458]  ; MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z
+00415545  mov ecx, dword ptr [esi + 0xc]
+00415548  lea eax, [esp + 0x44]
+0041554c  push eax
+0041554d  mov dword ptr [esp + 0x138], ebp
+00415554  call 0x557950  ; fn_00557950 [unit? RBX::VInstance::?$NonFactoryProduct]
+00415559  lea ecx, [esp + 0x44]
+0041555d  mov edi, eax
+0041555f  mov dword ptr [esp + 0x134], 0xffffffff
+0041556a  call dword ptr [0x802468]  ; MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+00415570  cmp edi, ebp
+00415572  jne 0x4157df
+00415578  call 0x6a0e4e  ; MFC ?AfxGetThread@@YGPAVCWinThread@@XZ
+0041557d  cmp eax, ebp
+0041557f  je 0x41558c
+00415581  mov edx, dword ptr [eax]
+00415583  mov ecx, eax
+00415585  mov eax, dword ptr [edx + 0x7c]
+00415588  call eax
+0041558a  jmp 0x41558e
+0041558c  xor eax, eax
+0041558e  mov ecx, dword ptr [eax + 0x20]
+00415591  push ecx
+00415592  call dword ptr [0x802df4]  ; USER32.dll!OpenClipboard
+00415598  test eax, eax
+0041559a  je 0x4157df
+004155a0  test byte ptr [0x96cbf4], 1
+004155a7  jne 0x4155c0
+004155a9  or dword ptr [0x96cbf4], 1
+004155b0  push 0x80e920
+004155b5  call dword ptr [0x802df0]  ; USER32.dll!RegisterClipboardFormatA
+004155bb  mov dword ptr [0x96cbf0], eax
+004155c0  mov edx, dword ptr [0x96cbf0]
+004155c6  push ebx
+004155c7  push edx
+004155c8  call dword ptr [0x802de4]  ; USER32.dll!GetClipboardData
+004155ce  push eax
+004155cf  mov dword ptr [esp + 0x20], eax
+004155d3  call dword ptr [0x8021d8]  ; KERNEL32.dll!GlobalLock
+004155d9  lea ecx, [esp + 0x20]
+004155dd  mov edi, eax
+004155df  call 0x4293d0  ; fn_004293d0 [unit? ThreadLogManager]
+004155e4  push edi
+004155e5  lea ecx, [esp + 0x4c]
+004155e9  mov dword ptr [esp + 0x13c], 1
+004155f4  call dword ptr [0x802458]  ; MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z
+004155fa  push 1
+004155fc  push 1
+004155fe  lea eax, [esp + 0x50]
+00415602  push eax
+00415603  lea ecx, [esp + 0xb8]
+0041560a  mov byte ptr [esp + 0x144], 2
+00415612  call dword ptr [0x80243c]  ; MSVCP90.dll!??0?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z
+00415618  lea ecx, [esp + 0x48]
+0041561c  mov byte ptr [esp + 0x138], 4
+00415624  call dword ptr [0x802468]  ; MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+0041562a  lea ecx, [esp + 0xb4]
+00415631  push ecx
+00415632  lea ecx, [esp + 0x68]
+00415636  call 0x415350  ; fn_00415350 [unit? RBX::VChangeHistoryService::?$FactoryProduct::Creator]
+0041563b  lea edx, [esp + 0x18]
+0041563f  push edx
+00415640  lea ecx, [esp + 0x68]
+00415644  mov byte ptr [esp + 0x13c], 5
+0041564c  call 0x58f6c0  ; fn_0058f6c0 [unit? TextXmlParser]
+00415651  mov edi, dword ptr [eax]
+00415653  mov dword ptr [eax], ebp
+00415655  mov dword ptr [esp + 0x44], edi
+00415659  mov ecx, dword ptr [esp + 0x18]
+0041565d  mov byte ptr [esp + 0x138], 6
+00415665  cmp ecx, ebp
+00415667  je 0x415679
+00415669  mov ebx, ecx
+0041566b  call 0x413a70  ; fn_00413a70 [unit? CopyVerb]
+00415670  push ebx
+00415671  call 0x6a067a  ; MFC ??3@YAXPAX@Z
+00415676  add esp, 4
+00415679  mov ecx, dword ptr [esi + 0xc]
+0041567c  cmp ecx, ebp
+0041567e  je 0x41568b
+00415680  call 0x4153b0  ; fn_004153b0 [unit? RBX::VChangeHistoryService::?$FactoryProduct::Creator]
+00415685  mov dword ptr [esp + 0x14], eax
+00415689  jmp 0x415691
+0041568b  mov dword ptr [esp + 0x14], ebp
+0041568f  mov eax, ebp
+00415691  cmp byte ptr [esi + 0x10], 0
+00415695  je 0x4156c0
+00415697  mov ecx, dword ptr [eax + 0x154]
+0041569d  mov edx, dword ptr [ecx + 0x10]
+004156a0  sub edx, dword ptr [ecx + 0xc]
+004156a3  and edx, 0xfffffff8
+004156a6  cmp edx, 8
+004156a9  jne 0x4156c0
+004156ab  lea ecx, [esp + 0x3c]
+004156af  push ecx
+004156b0  mov ecx, eax
+004156b2  call 0x413c20  ; fn_00413c20 [unit? CopyVerb]
+004156b7  mov ebx, dword ptr [eax]
+004156b9  mov ecx, 1
+004156be  jmp 0x4156cd
+004156c0  mov edx, dword ptr [esi + 0xc]
+004156c3  mov ebx, dword ptr [edx + 0x204]
+004156c9  mov cl, byte ptr [esp + 0x10]
+004156cd  test cl, 1
+004156d0  je 0x4156db
+004156d2  lea ecx, [esp + 0x3c]
+004156d6  call 0x600660  ; ??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ
+004156db  xor eax, eax
+004156dd  cmp byte ptr [esi + 0x10], al
+004156e0  lea ecx, [esp + 0x20]
+004156e4  sete al
+004156e7  push ecx
+004156e8  push edi
+004156e9  lea ecx, [esp + 0x40]
+004156ed  inc eax
+004156ee  mov ebp, eax
+004156f0  call 0x593250  ; fn_00593250 [unit? ArchiveBinder]
+004156f5  mov edx, dword ptr [esi + 0xc]
+004156f8  mov ecx, dword ptr [edx + 0x204]
+004156fe  push 1
+00415700  push ebp
+00415701  push ebx
+00415702  lea eax, [esp + 0x2c]
+00415706  push eax
+00415707  call 0x5911d0  ; fn_005911d0 [unit? RBX::RootInstance]
+0041570c  mov eax, dword ptr [esp + 0x30]
+00415710  mov ecx, dword ptr [esp + 0x2c]
+00415714  mov ebx, eax
+00415716  cmp ecx, eax
+00415718  jbe 0x415728
+0041571a  call dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+00415720  mov eax, dword ptr [esp + 0x30]
+00415724  mov ecx, dword ptr [esp + 0x2c]
+00415728  mov ebp, dword ptr [esp + 0x20]
+0041572c  mov dword ptr [esp + 0x10], ecx
+00415730  cmp ecx, eax
+00415732  jbe 0x41573a
+00415734  call dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+0041573a  mov ecx, dword ptr [esp + 0x10]
+0041573e  mov edx, dword ptr [esp + 0x20]
+00415742  push ebx
+00415743  push ebp
+00415744  push ecx
+00415745  mov ecx, dword ptr [esp + 0x20]
+00415749  push edx
+0041574a  call 0x413b00  ; fn_00413b00 [unit? CopyVerb]
+0041574f  mov byte ptr [esp + 0x138], 5
+00415757  pop ebx
+00415758  test edi, edi
+0041575a  je 0x41576c
+0041575c  mov ecx, edi
+0041575e  call 0x413a70  ; fn_00413a70 [unit? CopyVerb]
+00415763  push edi
+00415764  call 0x6a067a  ; MFC ??3@YAXPAX@Z
+00415769  add esp, 4
+0041576c  lea ecx, [esp + 0x60]
+00415770  mov byte ptr [esp + 0x134], 4
+00415778  call 0x4147c0  ; fn_004147c0 [unit? CopyVerb]
+0041577d  lea ecx, [esp + 0xa8]
+00415784  mov byte ptr [esp + 0x134], 1
+0041578c  call dword ptr [0x802440]  ; MSVCP90.dll!??_D?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ
+00415792  mov eax, dword ptr [esp + 0x18]
+00415796  push eax
+00415797  call dword ptr [0x8021d4]  ; KERNEL32.dll!GlobalUnlock
+0041579d  call dword ptr [0x802de8]  ; USER32.dll!CloseClipboard
+004157a3  mov eax, dword ptr [esi + 4]
+004157a6  lea ecx, [eax + 4]
+004157a9  call dword ptr [0x802464]  ; MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ
+004157af  mov ecx, dword ptr [esi + 0xc]
+004157b2  push ecx
+004157b3  push eax
+004157b4  call 0x58c5c0  ; fn_0058c5c0 [unit? RBX::ChangeHistoryService]
+004157b9  mov ecx, dword ptr [esp + 0x144]
+004157c0  mov edx, dword ptr [ecx]
+004157c2  mov eax, dword ptr [edx]
+004157c4  add esp, 8
+004157c7  push 1
+004157c9  call eax
+004157cb  lea ecx, [esp + 0x1c]
+004157cf  mov dword ptr [esp + 0x134], 0xffffffff
+004157da  call 0x5a2fe0  ; fn_005a2fe0 [unit? RBX::Workspace]
+004157df  mov ecx, dword ptr [esp + 0x12c]
+004157e6  pop edi
+004157e7  pop esi
+004157e8  pop ebp
+004157e9  mov dword ptr fs:[0], ecx
+004157f0  add esp, 0x12c
+004157f6  ret 4

@@ -1,0 +1,24 @@
+{
+  "exit_code": 1120,
+  "before": 104,
+  "after": 102,
+  "resolved": [
+    "public: virtual void __thiscall CopyVerb::doIt(class RBX::IDataState *)",
+    "public: virtual void __thiscall PasteVerb::doIt(class RBX::IDataState *)"
+  ],
+  "introduced": [],
+  "duplicates": [],
+  "provider_objects": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\clipboard-providers-fresh-20261108\\source\\WindowsClient\\src\\CWorkspaceSelection.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-083522-eba635b4\\unit-000\\candidate.obj",
+      "sha256": "e09eeeb77f134c46b6295da617ebebb196db5133731c7d79f6811e2b3d422df1"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\clipboard-providers-fresh-20261108\\source\\WindowsClient\\src\\ClipboardActions.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-083522-eba635b4\\unit-001\\candidate.obj",
+      "sha256": "3beb5361f3a9be44253c81a9c5938db9d5df5540fead6659724a5eba3dd6b8fe"
+    }
+  ],
+  "scope": "Fresh candidate link-only diagnostic; call bindings, ABI, EH, runtime, original selection and server credit unproven. Do not run."
+}
